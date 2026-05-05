@@ -16,7 +16,10 @@ data/processed/*.parquet
 data/processed/*.csv
 db/*.duckdb
 db/parquet/*.parquet
-public/parquet/*.parquet
+# public/parquet/*.parquet IS COMMITTED — the static GitHub Pages site
+# loads these via DuckDB-Wasm HTTP-range reads, so they need to be in
+# the deployed artifact. The refresh-data.yml workflow opens a PR
+# to update them weekly. Total size ~500KB across ~32 parquet files.
 
 # Exception: verbatim external dataset (COMPASS-DOE/synthesis-networks, MIT).
 # This is a citable third-party snapshot, not a regenerable artifact.

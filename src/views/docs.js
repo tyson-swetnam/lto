@@ -28,16 +28,14 @@ const BASE = new URL('./', document.baseURI).href;
 // One entry per markdown file under /docs/. Order = tab order in the
 // UI. The first entry is the default tab when no slug is in the URL.
 const DOC_PAGES = [
-  { title: 'Purpose & MSI Handout',     path: 'docs/cod_purpose_and_msi_handout.md' },
-  { title: 'Methods',                   path: 'docs/METHODS.md' },
-  { title: 'References',                path: 'docs/REFERENCES.md' },
-  { title: 'Reference Documents Report',path: 'docs/reference_documents_report.md' },
-  { title: 'Map Visualization Plan',    path: 'docs/map_visualization_plan.md' },
-  { title: 'Funding Pipeline Plan',     path: 'docs/funding_pipeline_plan.md' },
-  { title: 'Suitability Roadmap',       path: 'docs/suitability_roadmap.md' },
-  { title: 'Personnel Gap Research',    path: 'docs/personnel_gap_research_plan.md' },
-  { title: 'ORCID Enrichment',          path: 'docs/orcid_enrichment_plan.md' },
-  { title: 'Google Scholar Enrichment', path: 'docs/google_scholar_enrichment_plan.md' },
+  { title: 'Overview',          path: 'docs/index.md' },
+  { title: 'Six Spheres',       path: 'docs/spheres.md' },
+  { title: 'Networks',          path: 'docs/networks.md' },
+  { title: 'Data Model',        path: 'docs/data-model.md' },
+  { title: 'Methods',           path: 'docs/methods.md' },
+  { title: 'Coverage',          path: 'docs/coverage.md' },
+  { title: 'Loops & Agents',    path: 'docs/loops.md' },
+  { title: 'Sources',           path: 'docs/sources.md' },
 ];
 
 // Compute slug once per page. Filename stem with underscores → dashes,
