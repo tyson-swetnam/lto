@@ -1,4 +1,6 @@
--- cod-kmap DuckDB schema (D1 deliverable)
+-- lto DuckDB schema (D1 deliverable)
+-- Forked from cod-kmap (MIT) and extended with the LTO six-sphere model
+-- (atmosphere, cryosphere, terrestrial, agriculture, ocean/estuarine, freshwater).
 -- Idempotent: safe to re-read against an existing DB.
 -- Load the spatial extension externally (INSTALL spatial; LOAD spatial;)
 -- before calling ST_Point on the locations table.
@@ -50,6 +52,11 @@ CREATE OR REPLACE TABLE facilities (
     url             VARCHAR,
     contact         VARCHAR,
     established     INTEGER,
+    -- LTO extensions ---------------------------------------------------------
+    record_length_years     INTEGER,                 -- continuous-record length in years (NULL when unknown)
+    long_term_threshold_met BOOLEAN,                 -- TRUE when established <= today-10y AND record_length_years >= 10 (per Peters et al. 2013)
+    data_portal_url         VARCHAR,                 -- canonical data portal / DOI landing page (EDI, NCEI, NWIS, etc.)
+    -- ------------------------------------------------------------------------
     created_at      TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -215,6 +222,55 @@ CREATE OR REPLACE TABLE ingest_runs (
     git_sha         VARCHAR,
     facility_count  INTEGER,
     status          VARCHAR                          -- success|failed|partial
+);
+
+-------------------------------------------------------------------------------
+-- LTO extensions: spheres, ecosystem types, Holdridge life zones
+-------------------------------------------------------------------------------
+-- Vocabularies seeded from schema/vocab/{spheres,ecosystem_types,life_zones}.csv.
+
+CREATE OR REPLACE TABLE spheres (
+    slug         VARCHAR PRIMARY KEY,                -- atmosphere|cryosphere|terrestrial|agriculture|ocean-estuarine|freshwater
+    label        VARCHAR NOT NULL,
+    description  VARCHAR
+);
+
+-- EcoTrends ecosystem types (Peters et al. 2013, table 1-2) plus
+-- WWF/Bailey-province extensions used by R-TER agents.
+CREATE OR REPLACE TABLE ecosystem_types (
+    slug         VARCHAR PRIMARY KEY,
+    label        VARCHAR NOT NULL,
+    source       VARCHAR,                            -- 'EcoTrends' | 'WWF biome' | 'Bailey ecoregion'
+    description  VARCHAR
+);
+
+-- Holdridge life zones used in Lugo et al. 2006 / EFR coverage analysis.
+CREATE OR REPLACE TABLE life_zones (
+    slug         VARCHAR PRIMARY KEY,
+    label        VARCHAR NOT NULL,
+    holdridge_class VARCHAR                          -- 'temperate-moist' | 'subtropical-dry' | 'subalpine-rain' | …
+);
+
+-- Facility ↔ sphere. A facility has exactly one `primary` sphere and may
+-- have any number of `secondary` spheres (e.g. Hubbard Brook is primary
+-- terrestrial + secondary atmosphere + freshwater).
+CREATE OR REPLACE TABLE facility_spheres (
+    facility_id  VARCHAR NOT NULL REFERENCES facilities(facility_id),
+    sphere_slug  VARCHAR NOT NULL REFERENCES spheres(slug),
+    role         VARCHAR NOT NULL,                   -- 'primary' | 'secondary'
+    PRIMARY KEY (facility_id, sphere_slug)
+);
+
+CREATE OR REPLACE TABLE facility_ecosystems (
+    facility_id     VARCHAR NOT NULL REFERENCES facilities(facility_id),
+    ecosystem_slug  VARCHAR NOT NULL REFERENCES ecosystem_types(slug),
+    PRIMARY KEY (facility_id, ecosystem_slug)
+);
+
+CREATE OR REPLACE TABLE facility_life_zones (
+    facility_id    VARCHAR NOT NULL REFERENCES facilities(facility_id),
+    life_zone_slug VARCHAR NOT NULL REFERENCES life_zones(slug),
+    PRIMARY KEY (facility_id, life_zone_slug)
 );
 
 -------------------------------------------------------------------------------
