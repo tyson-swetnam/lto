@@ -2,6 +2,21 @@ import maplibregl from 'maplibre-gl';
 import { fetchCSV } from './csv.js';
 import { DATA_BASE as BASE } from './config.js';
 
+// LTO six-sphere palette, used when the user picks "Color by primary
+// sphere" in the legend. Slugs match schema/vocab/spheres.csv. Colours
+// were chosen to be intuitive (sky blue for atmosphere, ice blue for
+// cryosphere, forest green for terrestrial, …) and to remain readable
+// against the Positron base map. Default fallback (#64748b slate) is
+// used for any facility row whose primary_sphere is null/missing.
+export const SPHERE_COLORS = {
+  'atmosphere':       '#5DADE2', // sky blue
+  'cryosphere':       '#AED6F1', // ice blue
+  'terrestrial':      '#52BE80', // forest green
+  'agriculture':      '#F4D03F', // wheat yellow
+  'ocean-estuarine':  '#1F618D', // deep ocean blue
+  'freshwater':       '#48C9B0', // freshwater teal
+};
+
 export const TYPE_COLORS = {
   federal: '#2563eb',
   state: '#f97316',
@@ -32,6 +47,45 @@ function typeColorExpr() {
   for (const [k, v] of Object.entries(TYPE_COLORS)) expr.push(k, v);
   expr.push('#64748b');
   return expr;
+}
+
+// Match against feature.properties.primary_sphere. Falls through to
+// slate (#64748b) for facilities whose primary_sphere is null — until
+// Wave B research populates facility_spheres for every facility, that
+// will include most rows.
+function sphereColorExpr() {
+  const expr = ['match', ['get', 'primary_sphere']];
+  for (const [k, v] of Object.entries(SPHERE_COLORS)) expr.push(k, v);
+  expr.push('#64748b');
+  return expr;
+}
+
+// Active marker color encoding. 'sphere' (default) paints by
+// primary_sphere; 'type' paints by facility_type (legacy behavior).
+// Persisted to localStorage so the user's choice survives reloads.
+let _colorMode = (() => {
+  try {
+    const v = localStorage.getItem('lto:colorMode');
+    return v === 'type' ? 'type' : 'sphere';
+  } catch (_) { return 'sphere'; }
+})();
+
+function colorExprFor(mode) {
+  return mode === 'type' ? typeColorExpr() : sphereColorExpr();
+}
+
+export function getColorMode() { return _colorMode; }
+export function setColorMode(mode) {
+  const next = mode === 'type' ? 'type' : 'sphere';
+  if (next === _colorMode) return;
+  _colorMode = next;
+  try { localStorage.setItem('lto:colorMode', next); } catch (_) { /* ignore */ }
+  // Repaint the live map (skip in stub mode where setPaintProperty is a no-op).
+  if (map && !_stubMode) {
+    try { map.setPaintProperty('facility-points', 'circle-color', colorExprFor(next)); }
+    catch (_) { /* layer not added yet */ }
+  }
+  refreshLegend();
 }
 
 let map;
@@ -179,7 +233,7 @@ export function initMap(container) {
       source: 'facilities',
       paint: {
         'circle-radius': 6,
-        'circle-color': typeColorExpr(),
+        'circle-color': colorExprFor(_colorMode),
         'circle-stroke-width': 1.5,
         'circle-stroke-color': '#fff',
       },
@@ -380,6 +434,10 @@ function makeLegendControl() {
         <div class="legend-body">
           <div class="legend-section legend-points">
             <div class="legend-section-label">Facilities</div>
+            <div class="legend-color-mode">
+              <label><input type="radio" name="color-mode" value="sphere" /> By primary sphere</label>
+              <label><input type="radio" name="color-mode" value="type" /> By facility type</label>
+            </div>
             <div class="legend-types" id="legend-types">Loading…</div>
           </div>
           <div class="legend-section legend-overlays" id="legend-overlays" hidden>
@@ -388,6 +446,15 @@ function makeLegendControl() {
           </div>
         </div>
       `;
+      // Reflect the persisted color mode in the radio group, then wire
+      // it up so a user click flips the marker color encoding live.
+      const radios = div.querySelectorAll('input[name="color-mode"]');
+      radios.forEach((r) => {
+        r.checked = (r.value === _colorMode);
+        r.addEventListener('change', (ev) => {
+          if (ev.target.checked) setColorMode(ev.target.value);
+        });
+      });
       div.querySelector('.legend-header').addEventListener('click', () => {
         div.classList.toggle('collapsed');
         div.querySelector('.legend-toggle').innerHTML =
@@ -426,9 +493,25 @@ function makeLegendControl() {
         'network', 'international-federal', 'international-university',
         'international-nonprofit', 'observatory',
       ]);
-      fetchCSV(`${BASE}vocab/facility_types.csv`).then((rows) => {
+
+      // Cache the type-chip HTML once (it depends only on the vocab
+      // CSV + TYPE_COLORS) and the sphere-chip HTML once (it's
+      // SPHERE_COLORS + an async fetch of the spheres vocab CSV for
+      // labels). renderChips() picks whichever block matches the
+      // current _colorMode.
+      let typeChipHtml = '';
+      let sphereChipHtml = Object.entries(SPHERE_COLORS).map(([slug, color]) =>
+        `<div class="legend-row"><span class="legend-chip" style="background:${color}"></span><span>${esc(slug)}</span></div>`
+      ).join('');
+
+      const renderChips = () => {
         const body = div.querySelector('#legend-types');
-        body.innerHTML = rows
+        if (!body) return;
+        body.innerHTML = (_colorMode === 'sphere') ? sphereChipHtml : typeChipHtml;
+      };
+
+      fetchCSV(`${BASE}vocab/facility_types.csv`).then((rows) => {
+        typeChipHtml = rows
           .filter((r) => SHOWN_TYPES.has(r.slug))
           .map((r) => {
             const color = TYPE_COLORS[r.slug] || '#64748b';
@@ -437,13 +520,37 @@ function makeLegendControl() {
               <span>${esc(r.label)}</span>
             </div>`;
           }).join('');
+        renderChips();
       }).catch(() => {
-        const body = div.querySelector('#legend-types');
-        body.innerHTML = Object.entries(TYPE_COLORS).map(([slug, color]) =>
+        typeChipHtml = Object.entries(TYPE_COLORS).map(([slug, color]) =>
           `<div class="legend-row"><span class="legend-chip" style="background:${color}"></span><span>${slug}</span></div>`
         ).join('');
+        renderChips();
       });
 
+      // Replace the sphere-chip stub with a label-rich version once
+      // the spheres vocab CSV lands. Tolerant of a missing CSV (e.g.
+      // before Wave A populated it on a fresh deploy) — falls back to
+      // the slug-only stub above.
+      fetchCSV(`${BASE}vocab/spheres.csv`).then((rows) => {
+        if (Array.isArray(rows) && rows.length) {
+          sphereChipHtml = rows.map((r) => {
+            const color = SPHERE_COLORS[r.slug] || '#64748b';
+            return `<div class="legend-row">
+              <span class="legend-chip" style="background:${color}"></span>
+              <span>${esc(r.label || r.slug)}</span>
+            </div>`;
+          }).join('');
+          renderChips();
+        }
+      }).catch(() => { /* keep stub */ });
+
+      // Re-render chips whenever the color mode changes. setColorMode()
+      // calls refreshLegend() which dispatches 'legend:refresh' on this
+      // element — piggy-back on the same event.
+      div.addEventListener('legend:refresh', renderChips);
+
+      renderChips();
       refresh();
       return div;
     },

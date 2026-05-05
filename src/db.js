@@ -160,10 +160,29 @@ export async function initDB() {
     // scripts/compute_area_metrics.py. Drives src/views/stats.js.
     'person_area_metrics', 'facility_area_funding',
     'funder_area_funding', 'area_coverage_matrix',
+    // LTO six-sphere model — vocab tables + facility cross-walks.
+    // Parquet files for these come from Wave C export_parquet.py and
+    // may not exist yet at runtime; the loop below tolerates a missing
+    // parquet file (each CREATE OR REPLACE VIEW is wrapped in try/catch)
+    // so the rest of the app keeps working until the export runs.
+    'spheres', 'ecosystem_types', 'life_zones',
+    'facility_spheres', 'facility_ecosystems', 'facility_life_zones',
   ];
   for (const t of tables) {
     const url = `${PARQUET_BASE}${t}.parquet`;
-    await newConn.query(`CREATE OR REPLACE VIEW ${t} AS SELECT * FROM read_parquet('${url}')`);
+    try {
+      await newConn.query(`CREATE OR REPLACE VIEW ${t} AS SELECT * FROM read_parquet('${url}')`);
+    } catch (err) {
+      // Parquet file missing or unreadable. Common for LTO six-sphere
+      // tables (spheres, ecosystem_types, life_zones, facility_spheres,
+      // facility_ecosystems, facility_life_zones) before Wave C's
+      // export_parquet.py has run — keep going so the rest of the
+      // schema (facilities, funders, etc.) still registers and the app
+      // remains usable. Downstream views that LEFT JOIN through these
+      // tables will themselves fail to create and skip via their own
+      // try/catch in helperViews below.
+      console.warn(`[db] view create failed for ${t} (parquet missing?):`, err.message);
+    }
   }
 
   // Helper views the SQL tab + future visualisations rely on. These
@@ -230,6 +249,53 @@ export async function initDB() {
        FROM funding_events fe
        JOIN funders    fu ON fu.funder_id  = fe.funder_id
        JOIN facilities f  ON f.facility_id = fe.facility_id`,
+
+    // LTO-aware facility enrichment. LEFT JOINs through facility_spheres
+    // → spheres and facility_ecosystems → ecosystem_types so SQL
+    // consumers see one row per facility with aggregated sphere and
+    // ecosystem labels alongside the existing research-area / network /
+    // funder / region rollups. If the LTO parquets aren't present yet
+    // the joins resolve to empty sets (DuckDB-Wasm won't fail the
+    // CREATE VIEW just because a referenced view contains zero rows;
+    // it does fail if the view itself doesn't exist, hence the
+    // try/catch around helperView creation below).
+    `CREATE OR REPLACE VIEW v_facility_enriched AS
+       SELECT f.facility_id,
+              f.canonical_name,
+              f.acronym,
+              f.facility_type,
+              f.country,
+              f.hq_lat,
+              f.hq_lng,
+              f.url,
+              f.parent_org,
+              f.established,
+              f.record_length_years,
+              f.long_term_threshold_met,
+              f.data_portal_url,
+              list(DISTINCT ra.label)        AS research_areas,
+              list(DISTINCT n.label)         AS networks,
+              list(DISTINCT fu.name)         AS funders,
+              list(DISTINCT r.name)          AS regions,
+              list(DISTINCT s.label)         AS spheres,
+              list(DISTINCT et.label)        AS ecosystem_types
+       FROM facilities f
+       LEFT JOIN area_links al        ON al.facility_id = f.facility_id
+       LEFT JOIN research_areas ra    ON ra.area_id    = al.area_id
+       LEFT JOIN network_membership nm ON nm.facility_id = f.facility_id
+       LEFT JOIN networks n           ON n.network_id   = nm.network_id
+       LEFT JOIN funding_links fl     ON fl.facility_id = f.facility_id
+       LEFT JOIN funders fu           ON fu.funder_id   = fl.funder_id
+       LEFT JOIN facility_regions fr  ON fr.facility_id = f.facility_id
+       LEFT JOIN regions r            ON r.region_id    = fr.region_id
+       LEFT JOIN facility_spheres   fs ON fs.facility_id = f.facility_id
+       LEFT JOIN spheres            s  ON s.sphere_id    = fs.sphere_id
+       LEFT JOIN facility_ecosystems fes ON fes.facility_id = f.facility_id
+       LEFT JOIN ecosystem_types    et ON et.ecosystem_id = fes.ecosystem_id
+       GROUP BY f.facility_id, f.canonical_name, f.acronym, f.facility_type,
+                f.country, f.hq_lat, f.hq_lng, f.url, f.parent_org,
+                f.established, f.record_length_years,
+                f.long_term_threshold_met, f.data_portal_url`,
 
     `CREATE OR REPLACE VIEW v_person_enriched AS
        SELECT p.person_id,
