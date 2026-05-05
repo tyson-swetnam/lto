@@ -219,6 +219,17 @@ def load_vocab(conn: duckdb.DuckDBPyConnection) -> None:
         [str(VOCAB_DIR / "networks.csv")],
     )
 
+    # LTO vocab tables (load only if CSVs are present).
+    for tbl in ("spheres", "ecosystem_types", "life_zones"):
+        csv_path = VOCAB_DIR / f"{tbl}.csv"
+        if not csv_path.exists():
+            continue
+        conn.execute(f"DELETE FROM main.{tbl}")
+        conn.execute(
+            f"INSERT INTO main.{tbl} SELECT * FROM read_csv_auto(?, header=True)",
+            [str(csv_path)],
+        )
+
 
 def insert_records(conn: duckdb.DuckDBPyConnection, records: list[Record]) -> None:
     today = datetime.now(timezone.utc).date()
@@ -227,7 +238,7 @@ def insert_records(conn: duckdb.DuckDBPyConnection, records: list[Record]) -> No
         d = r.raw
         conn.execute(
             """INSERT OR REPLACE INTO main.facilities VALUES
-               (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)""",
+               (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)""",
             [
                 r.fid,
                 d.get("canonical_name"),
@@ -242,8 +253,49 @@ def insert_records(conn: duckdb.DuckDBPyConnection, records: list[Record]) -> No
                 d.get("url"),
                 d.get("contact"),
                 d.get("established"),
+                d.get("record_length_years"),
+                d.get("long_term_threshold_met"),
+                d.get("data_portal_url"),
             ],
         )
+
+        # LTO sphere / ecosystem / life-zone link tables. Unknown slugs are
+        # silently dropped (rather than failing the whole record) so a
+        # single typo in an R-agent's output doesn't tank the ingest.
+        primary = d.get("primary_sphere")
+        if primary:
+            try:
+                conn.execute(
+                    "INSERT OR IGNORE INTO main.facility_spheres VALUES (?, ?, 'primary')",
+                    [r.fid, primary],
+                )
+            except duckdb.ConstraintException:
+                pass
+        for sec in d.get("secondary_spheres") or []:
+            if sec and sec != primary:
+                try:
+                    conn.execute(
+                        "INSERT OR IGNORE INTO main.facility_spheres VALUES (?, ?, 'secondary')",
+                        [r.fid, sec],
+                    )
+                except duckdb.ConstraintException:
+                    pass
+        for eco in d.get("ecosystem_types") or []:
+            try:
+                conn.execute(
+                    "INSERT OR IGNORE INTO main.facility_ecosystems VALUES (?, ?)",
+                    [r.fid, eco],
+                )
+            except duckdb.ConstraintException:
+                pass
+        for lz in d.get("life_zones") or []:
+            try:
+                conn.execute(
+                    "INSERT OR IGNORE INTO main.facility_life_zones VALUES (?, ?)",
+                    [r.fid, lz],
+                )
+            except duckdb.ConstraintException:
+                pass
 
         locations: list[dict] = d.get("locations") or []
         if not locations and d.get("hq"):
@@ -269,17 +321,23 @@ def insert_records(conn: duckdb.DuckDBPyConnection, records: list[Record]) -> No
             )
 
         for area in d.get("research_areas") or []:
-            conn.execute(
-                "INSERT OR IGNORE INTO main.area_links VALUES (?, ?)",
-                [r.fid, area],
-            )
+            try:
+                conn.execute(
+                    "INSERT OR IGNORE INTO main.area_links VALUES (?, ?)",
+                    [r.fid, area],
+                )
+            except duckdb.ConstraintException:
+                pass  # unknown research_area slug — drop the link silently
 
         for net in d.get("networks") or []:
             net_slug = net.lower() if isinstance(net, str) else str(net).lower()
-            conn.execute(
-                "INSERT OR IGNORE INTO main.network_membership VALUES (?, ?, ?)",
-                [r.fid, net_slug, None],
-            )
+            try:
+                conn.execute(
+                    "INSERT OR IGNORE INTO main.network_membership VALUES (?, ?, ?)",
+                    [r.fid, net_slug, None],
+                )
+            except duckdb.ConstraintException:
+                pass  # unknown network slug — drop the link silently
 
         for funder in d.get("funders") or []:
             fname = funder.get("name") if isinstance(funder, dict) else str(funder)
@@ -290,15 +348,23 @@ def insert_records(conn: duckdb.DuckDBPyConnection, records: list[Record]) -> No
                 "INSERT OR IGNORE INTO main.funders VALUES (?, ?, NULL, NULL, NULL, NULL)",
                 [fuid, fname],
             )
-            conn.execute(
-                "INSERT INTO main.funding_links VALUES (?, ?, NULL, NULL, NULL, ?, ?)",
-                [
-                    fuid,
-                    r.fid,
-                    (funder.get("relation") if isinstance(funder, dict) else None),
-                    d.get("provenance", {}).get("source_url"),
-                ],
-            )
+            # funding_links is a backwards-compat view over funding_events
+            # in the LTO schema. Insert into funding_events directly.
+            try:
+                conn.execute(
+                    """INSERT OR IGNORE INTO main.funding_events
+                       (event_id, funder_id, facility_id, relation, source_url, retrieved_at, confidence)
+                       VALUES (?, ?, ?, ?, ?, CURRENT_DATE, 'low')""",
+                    [
+                        location_id(fuid, r.fid),  # deterministic event_id stub
+                        fuid,
+                        r.fid,
+                        (funder.get("relation") if isinstance(funder, dict) else None),
+                        d.get("provenance", {}).get("source_url"),
+                    ],
+                )
+            except duckdb.Error:
+                pass  # event_id collision or schema drift; non-fatal
 
         prov = d.get("provenance") or {}
         conn.execute(

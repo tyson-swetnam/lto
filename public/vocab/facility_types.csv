@@ -17,6 +17,7 @@ virtual,Virtual,"RESERVED — organization without a single physical headquarter
 protected-area-federal,Federal protected area,"Federally-managed protected area: National Wildlife Refuge, National Park / Seashore / Lakeshore / Monument, USFS Research Natural Area, USFS Experimental Forest, designated Wilderness, etc. Often the underlying land for terrestrial coastal-ecosystem research."
 protected-area-state,State protected area,"State-managed protected area: state park, state wildlife management area, state nature preserve, state estuarine reserve, state aquatic preserve, etc."
 protected-area-private,Private protected area,"Privately-managed conservation property: TNC preserve, Audubon sanctuary, regional land trust holding, conservation easement, etc."
+field-station,Field station,"General-purpose terrestrial or freshwater field station — federal, university, or NGO-operated."
 university-field-station,University field station,"University-operated terrestrial field station for forestry, ecology, hydrology, climate, or agroecology research. Counterpart to university-marine-lab."
 experimental-forest-range,Experimental forest / range,"USDA Forest Service Experimental Forest or Experimental Range (Lugo et al. 2006) or USDA-ARS Range Research Laboratory. Long-term silvicultural / rangeland research property."
 ltar-site,LTAR site,"USDA-ARS Long-Term Agroecosystem Research site — paired conventional/aspirational cropping or rangeland system."

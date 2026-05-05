@@ -37,6 +37,13 @@ TABLES = [
     "regions",
     "region_area_links",
     "facility_regions",
+    # LTO six-sphere extension tables.
+    "spheres",
+    "ecosystem_types",
+    "life_zones",
+    "facility_spheres",
+    "facility_ecosystems",
+    "facility_life_zones",
 ]
 
 
@@ -51,15 +58,23 @@ def main() -> int:
             conn.execute(f"COPY (SELECT * FROM {t}) TO '{db_path}' (FORMAT PARQUET)")
             shutil.copyfile(db_path, OUT_WEB / f"{t}.parquet")
 
-        # lightweight geojson with just the facility_map view
+        # lightweight geojson — facility map points enriched with the
+        # primary_sphere from facility_spheres so the LTO sphere-color
+        # legend works without DuckDB-Wasm having to load every parquet.
         rows = conn.execute(
-            """SELECT id, name, acronym, type, country, lat, lng, url, parent_org
-               FROM v_facility_map"""
+            """SELECT v.id, v.name, v.acronym, v.type, v.country, v.lat, v.lng,
+                      v.url, v.parent_org, f.established,
+                      f.record_length_years, f.long_term_threshold_met,
+                      fs.sphere_slug AS primary_sphere
+               FROM v_facility_map v
+               JOIN facilities f ON f.facility_id = v.id
+               LEFT JOIN facility_spheres fs
+                 ON fs.facility_id = v.id AND fs.role = 'primary'"""
         ).fetchall()
 
     features = []
     for r in rows:
-        fid, name, acronym, ftype, country, lat, lng, url, parent = r
+        fid, name, acronym, ftype, country, lat, lng, url, parent, established, rly, ltm, primary_sphere = r
         features.append({
             "type": "Feature",
             "geometry": {"type": "Point", "coordinates": [lng, lat]},
@@ -71,6 +86,10 @@ def main() -> int:
                 "country": country,
                 "url": url,
                 "parent_org": parent,
+                "established": established,
+                "record_length_years": rly,
+                "long_term_threshold_met": ltm,
+                "primary_sphere": primary_sphere,
             },
         })
 
