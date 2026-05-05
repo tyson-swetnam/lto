@@ -44,6 +44,13 @@ TABLES = [
     "facility_spheres",
     "facility_ecosystems",
     "facility_life_zones",
+    # People tables (Wave F).
+    "people",
+    "facility_personnel",
+    "publications",
+    "authorship",
+    "person_areas",
+    "collaborations",
 ]
 
 
