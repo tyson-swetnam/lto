@@ -1,0 +1,41 @@
+slug,label,gcmd_uri,parent_slug
+oceanography,Oceanography,,
+physical-oceanography,Physical oceanography,https://gcmd.earthdata.nasa.gov/kms/concept/6ebc8b5c-6cd9-4e49-831e-695a7196c728,oceanography
+chemical-oceanography,Chemical oceanography,https://gcmd.earthdata.nasa.gov/kms/concept/32bf7b4a-b146-4e8d-a3ac-ab5dd99cd2e3,oceanography
+biological-oceanography,Biological oceanography,https://gcmd.earthdata.nasa.gov/kms/concept/a85fa946-c05c-4f40-9efd-8f4b8e8a36c0,oceanography
+coastal-processes,Coastal processes,,
+coastal-erosion,Coastal erosion,,coastal-processes
+sediment-transport,Sediment transport,,coastal-processes
+shoreline-change,Shoreline change,,coastal-processes
+estuaries-and-wetlands,Estuaries and wetlands,,
+marine-ecosystems,Marine ecosystems,,
+coral-reefs,Coral reefs,,marine-ecosystems
+seagrass,Seagrass,,marine-ecosystems
+kelp-forests,Kelp forests,,marine-ecosystems
+mangroves,Mangroves,,marine-ecosystems
+fisheries-and-aquaculture,Fisheries and aquaculture,,
+marine-geology,Marine geology,,
+marine-biogeochemistry,Marine biogeochemistry,,
+ocean-acidification,Ocean acidification,,
+ocean-observing-systems,Ocean observing systems,,
+marine-policy-and-socio-economics,Marine policy and socio-economics,,
+remote-sensing,Remote sensing,,
+harmful-algal-blooms,Harmful algal blooms,,
+marine-debris-and-plastics,Marine debris and plastics,,
+tsunamis-and-coastal-hazards,Tsunamis and coastal hazards,,
+climate-and-sea-level,Climate and sea level,,
+great-lakes,Great Lakes research,,
+polar-and-cryosphere,Polar and cryosphere,,
+marine-mammals,Marine mammals,,marine-ecosystems
+seabirds,Seabirds,,marine-ecosystems
+deep-sea,Deep sea,,marine-ecosystems
+long-term-ecological-research,Long-term ecological research,,
+coastal-terrestrial-ecosystems,Coastal terrestrial ecosystems,,
+salt-marshes,Salt marshes,,estuaries-and-wetlands
+tidal-wetlands,Tidal wetlands,,estuaries-and-wetlands
+coastal-disturbance,Coastal disturbance and resilience,,
+marine-ecology,Marine ecology,,
+wildlife-conservation,Wildlife conservation,,
+bottomland-swamps,Bottomland hardwood swamps,,coastal-terrestrial-ecosystems
+tidal-marshes,Tidal marshes,,estuaries-and-wetlands
+beach-and-dune,Beach and dune systems,,coastal-terrestrial-ecosystems

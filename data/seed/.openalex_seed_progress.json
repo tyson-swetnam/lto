@@ -1,0 +1,824 @@
+{
+  "01ef51b8abf6f751": {
+    "status": "unresolved"
+  },
+  "02a62062148246a9": {
+    "status": "unresolved"
+  },
+  "0553e5e87fe9b46f": {
+    "authors_found": 9,
+    "authors_written": 9,
+    "openalex_id": "I4210139150",
+    "status": "done"
+  },
+  "062a60fa77fbac44": {
+    "status": "unresolved"
+  },
+  "084d7f39d7bf0630": {
+    "status": "unresolved"
+  },
+  "0924c3fe89bb1392": {
+    "status": "unresolved"
+  },
+  "099f35eb7143a89d": {
+    "status": "unresolved"
+  },
+  "0ac30d8999613919": {
+    "status": "unresolved"
+  },
+  "0cc368787cd559c3": {
+    "status": "unresolved"
+  },
+  "0d6b1e55d4c3c23d": {
+    "status": "unresolved"
+  },
+  "0ea7f7e7b79ebe69": {
+    "status": "unresolved"
+  },
+  "10086fa6647815a9": {
+    "status": "unresolved"
+  },
+  "10694a61dc2bff96": {
+    "authors_found": 10,
+    "authors_written": 10,
+    "openalex_id": "I52218309",
+    "status": "done"
+  },
+  "133669bb0f48f72a": {
+    "authors_found": 10,
+    "authors_written": 10,
+    "openalex_id": "I4210109053",
+    "status": "done"
+  },
+  "1496a5fc3a668206": {
+    "status": "unresolved"
+  },
+  "14fa1197ed4975e3": {
+    "status": "unresolved"
+  },
+  "18254d33b94ff086": {
+    "status": "unresolved"
+  },
+  "1918f09bdc225b02": {
+    "authors_found": 0,
+    "authors_written": 0,
+    "openalex_id": "I4403928406",
+    "status": "done"
+  },
+  "1a8028552b3cd284": {
+    "status": "unresolved"
+  },
+  "1c669e4c303eec6c": {
+    "authors_found": 10,
+    "authors_written": 10,
+    "openalex_id": "I4210166920",
+    "status": "done"
+  },
+  "1ebdb6e51e3d1712": {
+    "status": "unresolved"
+  },
+  "21cd1a451847e669": {
+    "authors_found": 10,
+    "authors_written": 10,
+    "openalex_id": "I4387153569",
+    "status": "done"
+  },
+  "22defb4a3ee37d8a": {
+    "status": "unresolved"
+  },
+  "277c3e3d3e644ac8": {
+    "authors_found": 10,
+    "authors_written": 10,
+    "openalex_id": "I4389425301",
+    "status": "done"
+  },
+  "28ecd29a51526b27": {
+    "status": "unresolved"
+  },
+  "28fa3f8f2689c950": {
+    "authors_found": 9,
+    "authors_written": 9,
+    "openalex_id": "I4387930211",
+    "status": "done"
+  },
+  "2adc72ff42d9de08": {
+    "status": "unresolved"
+  },
+  "2b8c333e9c9d9a70": {
+    "authors_found": 10,
+    "authors_written": 10,
+    "openalex_id": "I2800360274",
+    "status": "done"
+  },
+  "2cc453376bcf3bb2": {
+    "status": "unresolved"
+  },
+  "2ee0905d8a3648cf": {
+    "status": "unresolved"
+  },
+  "30b002ce4547c553": {
+    "status": "unresolved"
+  },
+  "3469ffb3580cb811": {
+    "authors_found": 10,
+    "authors_written": 10,
+    "openalex_id": "I4210121297",
+    "status": "done"
+  },
+  "347afc985afeade9": {
+    "status": "unresolved"
+  },
+  "3645a75945a26b7f": {
+    "status": "unresolved"
+  },
+  "3a876da050a4b48e": {
+    "status": "unresolved"
+  },
+  "3cce246f72e42148": {
+    "status": "unresolved"
+  },
+  "3f6a9d8c60eeed6d": {
+    "authors_found": 10,
+    "authors_written": 10,
+    "openalex_id": "I4210127886",
+    "status": "done"
+  },
+  "3fa5ade5fba5bc5d": {
+    "status": "unresolved"
+  },
+  "3fd2353032a8a78a": {
+    "status": "unresolved"
+  },
+  "402ccdf886fa609d": {
+    "status": "unresolved"
+  },
+  "423b19ae442d5ee2": {
+    "status": "unresolved"
+  },
+  "449c081d421f2116": {
+    "status": "unresolved"
+  },
+  "451bf9392571f9f4": {
+    "status": "unresolved"
+  },
+  "458e96ead560e429": {
+    "status": "unresolved"
+  },
+  "46598db0265aaa38": {
+    "status": "unresolved"
+  },
+  "46f4a2ed3bfcd191": {
+    "status": "unresolved"
+  },
+  "4851cdabf00d14dc": {
+    "authors_found": 10,
+    "authors_written": 10,
+    "openalex_id": "I66958751",
+    "status": "done"
+  },
+  "48921a4314f79831": {
+    "status": "unresolved"
+  },
+  "48a4a144e3ad245f": {
+    "status": "unresolved"
+  },
+  "4a9623ab82dd8642": {
+    "status": "unresolved"
+  },
+  "4ac94e4e5da49682": {
+    "status": "unresolved"
+  },
+  "4b897473a3d94b82": {
+    "status": "unresolved"
+  },
+  "4e6f5356a20f5b36": {
+    "authors_found": 10,
+    "authors_written": 10,
+    "openalex_id": "I27841520",
+    "status": "done"
+  },
+  "4fc4a5777ced0680": {
+    "status": "unresolved"
+  },
+  "50642bf3064308c8": {
+    "authors_found": 0,
+    "authors_written": 0,
+    "openalex_id": "I4387155284",
+    "status": "done"
+  },
+  "50710e9affbebd3c": {
+    "status": "unresolved"
+  },
+  "5168181cc7acfbfe": {
+    "status": "unresolved"
+  },
+  "5173db142db727f4": {
+    "status": "unresolved"
+  },
+  "529ea1ba3767cf50": {
+    "status": "unresolved"
+  },
+  "57445202e95adced": {
+    "authors_found": 0,
+    "authors_written": 0,
+    "openalex_id": "I2802083237",
+    "status": "done"
+  },
+  "575fa84330e60c4b": {
+    "status": "unresolved"
+  },
+  "581719b5d39091b8": {
+    "status": "unresolved"
+  },
+  "58fdb3ec76d02a84": {
+    "authors_found": 10,
+    "authors_written": 10,
+    "openalex_id": "I128212801",
+    "status": "done"
+  },
+  "5a54e316e9347104": {
+    "status": "unresolved"
+  },
+  "5b42961d12b531c3": {
+    "status": "unresolved"
+  },
+  "5d3194ffda147bcd": {
+    "status": "unresolved"
+  },
+  "5da8e0cad0447427": {
+    "status": "unresolved"
+  },
+  "5f0be1e7e3ab216a": {
+    "authors_found": 10,
+    "authors_written": 10,
+    "openalex_id": "I126860399",
+    "status": "done"
+  },
+  "631d1b1f92e90f44": {
+    "status": "unresolved"
+  },
+  "659db848c8224d61": {
+    "status": "unresolved"
+  },
+  "66842a7d4e237822": {
+    "authors_found": 10,
+    "authors_written": 10,
+    "openalex_id": "I4387155864",
+    "status": "done"
+  },
+  "682babf9e6b9ee22": {
+    "status": "unresolved"
+  },
+  "68a6153f87c004c8": {
+    "authors_found": 10,
+    "authors_written": 10,
+    "openalex_id": "I2802094821",
+    "status": "done"
+  },
+  "68f6abc93d4b435e": {
+    "authors_found": 0,
+    "authors_written": 0,
+    "openalex_id": "I4405254811",
+    "status": "done"
+  },
+  "6aa3e3a88696247f": {
+    "status": "unresolved"
+  },
+  "6ad02ae32697c15e": {
+    "authors_found": 10,
+    "authors_written": 10,
+    "openalex_id": "I1338920048",
+    "status": "done"
+  },
+  "6b49d19b5accaf76": {
+    "status": "unresolved"
+  },
+  "6c1c08ecf5c58f40": {
+    "authors_found": 1,
+    "authors_written": 1,
+    "openalex_id": "I4387155546",
+    "status": "done"
+  },
+  "6d6ffba21e24b77d": {
+    "status": "unresolved"
+  },
+  "6d7e943efab25fe1": {
+    "authors_found": 10,
+    "authors_written": 10,
+    "openalex_id": "I57851904",
+    "status": "done"
+  },
+  "6dcd1846c872ec23": {
+    "status": "unresolved"
+  },
+  "6f2ee10f7ad85112": {
+    "status": "unresolved"
+  },
+  "6fa9e6e6a2bb24ad": {
+    "status": "unresolved"
+  },
+  "71923b1b17ed7d00": {
+    "authors_found": 10,
+    "authors_written": 10,
+    "openalex_id": "I4210160693",
+    "status": "done"
+  },
+  "72f3bc827d967bde": {
+    "status": "unresolved"
+  },
+  "73e278cd3c1aa946": {
+    "authors_found": 10,
+    "authors_written": 10,
+    "openalex_id": "I173945262",
+    "status": "done"
+  },
+  "78005ab19b533e20": {
+    "status": "unresolved"
+  },
+  "7ccb227e00b48eb6": {
+    "status": "unresolved"
+  },
+  "7ddbc5ef577648ee": {
+    "status": "unresolved"
+  },
+  "7df25b0304d189e5": {
+    "status": "unresolved"
+  },
+  "7fd58ccc7effab1d": {
+    "status": "unresolved"
+  },
+  "7ffaad0b0c5a6cdc": {
+    "authors_found": 10,
+    "authors_written": 10,
+    "openalex_id": "I2800520080",
+    "status": "done"
+  },
+  "80edf691ec74a1ad": {
+    "status": "unresolved"
+  },
+  "84d0739f9114da35": {
+    "authors_found": 10,
+    "authors_written": 10,
+    "openalex_id": "I2800663845",
+    "status": "done"
+  },
+  "84f4cf9530192cd8": {
+    "status": "unresolved"
+  },
+  "84fa48262b38b6c8": {
+    "authors_found": 10,
+    "authors_written": 10,
+    "openalex_id": "I2802220778",
+    "status": "done"
+  },
+  "857ab02255cf1f50": {
+    "authors_found": 10,
+    "authors_written": 10,
+    "openalex_id": "I4210109599",
+    "status": "done"
+  },
+  "885e59f7b4a660c3": {
+    "status": "unresolved"
+  },
+  "88a71bec0521cfdb": {
+    "status": "unresolved"
+  },
+  "8a9f792df16585ec": {
+    "status": "unresolved"
+  },
+  "8ab1a979b4929526": {
+    "status": "unresolved"
+  },
+  "8ae383aa534d8fe9": {
+    "status": "unresolved"
+  },
+  "8b17ffd2b418fb60": {
+    "status": "unresolved"
+  },
+  "8b91f78cdc556120": {
+    "authors_found": 0,
+    "authors_written": 0,
+    "openalex_id": "I4405266016",
+    "status": "done"
+  },
+  "8ba608dc2d9da6fe": {
+    "authors_found": 10,
+    "authors_written": 10,
+    "openalex_id": "I1319261023",
+    "status": "done"
+  },
+  "8c1ee7da2ea7726b": {
+    "status": "unresolved"
+  },
+  "8cb1dfe4421dcd93": {
+    "status": "unresolved"
+  },
+  "8cde9b7ba35da99b": {
+    "status": "unresolved"
+  },
+  "8ec1a3c5596cbc64": {
+    "status": "unresolved"
+  },
+  "8ef9ffb2262d2832": {
+    "status": "unresolved"
+  },
+  "8f8db306000bd353": {
+    "status": "unresolved"
+  },
+  "90d4c39b21cfce94": {
+    "authors_found": 10,
+    "authors_written": 10,
+    "openalex_id": "I17068995",
+    "status": "done"
+  },
+  "91b853954beaac0d": {
+    "status": "unresolved"
+  },
+  "92b08ded60b5ffdc": {
+    "status": "unresolved"
+  },
+  "92c3a14e84367d13": {
+    "authors_found": 10,
+    "authors_written": 10,
+    "openalex_id": "I4210157891",
+    "status": "done"
+  },
+  "960fc51b86672cc2": {
+    "status": "unresolved"
+  },
+  "986f25b13775f4bd": {
+    "authors_found": 10,
+    "authors_written": 10,
+    "openalex_id": "I64663401",
+    "status": "done"
+  },
+  "99abeaaed73bfb99": {
+    "status": "unresolved"
+  },
+  "9b4911f8fe1a9ebd": {
+    "status": "unresolved"
+  },
+  "9d4583c180914ac0": {
+    "status": "unresolved"
+  },
+  "9ef20e77fee35656": {
+    "authors_found": 10,
+    "authors_written": 10,
+    "openalex_id": "I2800026062",
+    "status": "done"
+  },
+  "a0e7e3bd6cc7d170": {
+    "status": "unresolved"
+  },
+  "a20ddd52546a3e50": {
+    "authors_found": 5,
+    "authors_written": 5,
+    "openalex_id": "I4403928401",
+    "status": "done"
+  },
+  "a24ed42e56a9687b": {
+    "authors_found": 10,
+    "authors_written": 10,
+    "openalex_id": "I200166512",
+    "status": "done"
+  },
+  "a288bd4be2da660c": {
+    "authors_found": 10,
+    "authors_written": 10,
+    "openalex_id": "I48447730",
+    "status": "done"
+  },
+  "a3250b6ee5b1e18e": {
+    "authors_found": 0,
+    "authors_written": 0,
+    "openalex_id": "I4387152819",
+    "status": "done"
+  },
+  "a3df950de95bd5e8": {
+    "status": "unresolved"
+  },
+  "a466a5260f8b77f9": {
+    "authors_found": 10,
+    "authors_written": 10,
+    "openalex_id": "I2801071809",
+    "status": "done"
+  },
+  "a544d4c9afd35a9e": {
+    "authors_found": 0,
+    "authors_written": 0,
+    "openalex_id": "I4403928417",
+    "status": "done"
+  },
+  "a90fce0f33af9666": {
+    "status": "unresolved"
+  },
+  "a96f84521fb6e77a": {
+    "status": "unresolved"
+  },
+  "a9c0b9f25cbf1b1a": {
+    "status": "unresolved"
+  },
+  "abb8b9a91bddfb11": {
+    "status": "unresolved"
+  },
+  "aca6068a4a665744": {
+    "status": "unresolved"
+  },
+  "acfc1994d0e6cc5e": {
+    "status": "unresolved"
+  },
+  "af3bb00254c972aa": {
+    "status": "unresolved"
+  },
+  "afb21dfd91a94e19": {
+    "authors_found": 10,
+    "authors_written": 10,
+    "openalex_id": "I4387154325",
+    "status": "done"
+  },
+  "b186ccd53158c323": {
+    "authors_found": 10,
+    "authors_written": 10,
+    "openalex_id": "I4210159128",
+    "status": "done"
+  },
+  "b18d4e304929d1f3": {
+    "status": "unresolved"
+  },
+  "b3c4acfee79eb573": {
+    "authors_found": 0,
+    "authors_written": 0,
+    "openalex_id": "I4387154482",
+    "status": "done"
+  },
+  "b4519c13bf6c6b9d": {
+    "status": "unresolved"
+  },
+  "b4769ffb0e4ad961": {
+    "status": "unresolved"
+  },
+  "b5ba4ac41401a0b9": {
+    "status": "unresolved"
+  },
+  "b606cca5ffa380be": {
+    "authors_found": 10,
+    "authors_written": 10,
+    "openalex_id": "I150209017",
+    "status": "done"
+  },
+  "b6ad40b6cd18f42e": {
+    "authors_found": 0,
+    "authors_written": 0,
+    "openalex_id": "I4387152662",
+    "status": "done"
+  },
+  "b874b379a2ab8d0e": {
+    "authors_found": 10,
+    "authors_written": 10,
+    "openalex_id": "I4210154282",
+    "status": "done"
+  },
+  "b925359d8a98761d": {
+    "status": "unresolved"
+  },
+  "b93f51cc632277b0": {
+    "authors_found": 0,
+    "authors_written": 0,
+    "openalex_id": "I4387152758",
+    "status": "done"
+  },
+  "b989d5d297c3dec3": {
+    "status": "unresolved"
+  },
+  "bb6dd560f85bea63": {
+    "status": "unresolved"
+  },
+  "bce6bbc358cc68e2": {
+    "authors_found": 10,
+    "authors_written": 10,
+    "openalex_id": "I4210165284",
+    "status": "done"
+  },
+  "bf2c2c67551f218f": {
+    "status": "unresolved"
+  },
+  "c0dace9d084af814": {
+    "status": "unresolved"
+  },
+  "c19eea5e35c4ff35": {
+    "status": "unresolved"
+  },
+  "c1b0708dda943534": {
+    "status": "unresolved"
+  },
+  "c36982e68e59a199": {
+    "status": "unresolved"
+  },
+  "c42a82d1eef0f701": {
+    "status": "unresolved"
+  },
+  "c4c28b594e7a187e": {
+    "status": "unresolved"
+  },
+  "c4f51733272b5589": {
+    "status": "unresolved"
+  },
+  "c54df27d3d5ff656": {
+    "status": "unresolved"
+  },
+  "c8a214243eb16597": {
+    "status": "unresolved"
+  },
+  "c90ab45e80368eb7": {
+    "status": "unresolved"
+  },
+  "c987433cec4502fa": {
+    "authors_found": 10,
+    "authors_written": 10,
+    "openalex_id": "I2902024922",
+    "status": "done"
+  },
+  "c9c6536a9b20e89c": {
+    "authors_found": 10,
+    "authors_written": 10,
+    "openalex_id": "I4392021168",
+    "status": "done"
+  },
+  "c9e8bbd26f35616d": {
+    "status": "unresolved"
+  },
+  "ca8eddbef5f313a1": {
+    "authors_found": 10,
+    "authors_written": 10,
+    "openalex_id": "I1319261023",
+    "status": "done"
+  },
+  "cc181c7953452ffc": {
+    "status": "unresolved"
+  },
+  "ccfca44c27995cea": {
+    "status": "unresolved"
+  },
+  "cdd9b79d479c6114": {
+    "status": "unresolved"
+  },
+  "cef7b266f9a94e69": {
+    "authors_found": 10,
+    "authors_written": 10,
+    "openalex_id": "I2802902549",
+    "status": "done"
+  },
+  "cf175bec84439fdb": {
+    "authors_found": 10,
+    "authors_written": 10,
+    "openalex_id": "I122690471",
+    "status": "done"
+  },
+  "cf68012de3b948de": {
+    "status": "unresolved"
+  },
+  "d0c73a05032034a7": {
+    "authors_found": 10,
+    "authors_written": 10,
+    "openalex_id": "I4387930260",
+    "status": "done"
+  },
+  "d1f3bc5d2ac35942": {
+    "authors_found": 10,
+    "authors_written": 10,
+    "openalex_id": "I4392021110",
+    "status": "done"
+  },
+  "d2beef812eb53bc7": {
+    "status": "unresolved"
+  },
+  "d2d962156f88888d": {
+    "status": "unresolved"
+  },
+  "d5b5e15fb487ebbf": {
+    "status": "unresolved"
+  },
+  "d8e10a908168815c": {
+    "authors_found": 0,
+    "authors_written": 0,
+    "openalex_id": "I4387155894",
+    "status": "done"
+  },
+  "d9bad8026c38e336": {
+    "status": "unresolved"
+  },
+  "db36727508052028": {
+    "status": "unresolved"
+  },
+  "db8a1128ce17073d": {
+    "status": "unresolved"
+  },
+  "dd3095175b685662": {
+    "authors_found": 10,
+    "authors_written": 10,
+    "openalex_id": "I4210124611",
+    "status": "done"
+  },
+  "dd32c151b310b8ae": {
+    "status": "unresolved"
+  },
+  "debbe06b574422c2": {
+    "status": "unresolved"
+  },
+  "def52201a4873868": {
+    "status": "unresolved"
+  },
+  "df62a44abf172c10": {
+    "status": "unresolved"
+  },
+  "e133deaf60dd7db1": {
+    "authors_found": 10,
+    "authors_written": 10,
+    "openalex_id": "I4210131645",
+    "status": "done"
+  },
+  "e1a7385483473434": {
+    "status": "unresolved"
+  },
+  "e1d90bc7ae247b52": {
+    "status": "unresolved"
+  },
+  "e588b74d29fe8c36": {
+    "status": "unresolved"
+  },
+  "e7a39a83c8bdd2a5": {
+    "authors_found": 10,
+    "authors_written": 10,
+    "openalex_id": "I4210163261",
+    "status": "done"
+  },
+  "e8745f0fbf24d064": {
+    "status": "unresolved"
+  },
+  "ec5c32126ce47483": {
+    "status": "unresolved"
+  },
+  "ef9274191b3336a5": {
+    "status": "unresolved"
+  },
+  "f01f6bcc9502e905": {
+    "status": "unresolved"
+  },
+  "f16c0b7401a72b61": {
+    "status": "unresolved"
+  },
+  "f1c0d2ed6d83eaae": {
+    "status": "unresolved"
+  },
+  "f2305f9313f76e04": {
+    "status": "unresolved"
+  },
+  "f2740cfda05ba96d": {
+    "authors_found": 10,
+    "authors_written": 10,
+    "openalex_id": "I2802200126",
+    "status": "done"
+  },
+  "f2d3fb18be6fc619": {
+    "status": "unresolved"
+  },
+  "f30201ec47817d0c": {
+    "status": "unresolved"
+  },
+  "f3b529d1eda8e073": {
+    "authors_found": 5,
+    "authors_written": 5,
+    "openalex_id": "I4387156201",
+    "status": "done"
+  },
+  "f668c822976512fe": {
+    "status": "unresolved"
+  },
+  "f70c698fb5ee353a": {
+    "status": "unresolved"
+  },
+  "f7b9e6a10daa22bb": {
+    "status": "unresolved"
+  },
+  "f858cc0d008257c3": {
+    "status": "unresolved"
+  },
+  "fab411b2258d63a5": {
+    "authors_found": 0,
+    "authors_written": 0,
+    "openalex_id": "I4391767873",
+    "status": "done"
+  },
+  "fbb4cc6a846a59fc": {
+    "authors_found": 5,
+    "authors_written": 5,
+    "openalex_id": "I4387154128",
+    "status": "done"
+  },
+  "fe150287423eeeb2": {
+    "status": "unresolved"
+  },
+  "fe678f45b43083ff": {
+    "status": "unresolved"
+  }
+}

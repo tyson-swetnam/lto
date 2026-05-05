@@ -1,0 +1,53 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # The site runs as plain static files at the repo root — index.html
+      # uses an importmap to load maplibre-gl and @duckdb/duckdb-wasm from
+      # esm.sh at runtime, so there is no bundle step. Stage just the
+      # front-end assets so we don't ship the data pipeline / agent specs
+      # as part of the live site.
+      - name: Stage static site
+        run: |
+          set -eu
+          mkdir -p _site
+          cp index.html _site/
+          cp favicon.svg _site/ 2>/dev/null || true
+          cp -R src _site/src
+          cp -R public _site/public
+          # Human-authored markdown lives at /docs/ in the repo and is
+          # rendered by src/views/docs.js. Without this stage step the
+          # Docs tab returns HTTP 404 for every page.
+          cp -R docs _site/docs
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

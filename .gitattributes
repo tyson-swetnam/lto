@@ -1,0 +1,6 @@
+# Large raster deliverables route through Git LFS when git-lfs is installed.
+# Running `git lfs install` locally (once) activates the hooks; until then
+# these files should stay untracked (see .gitignore).
+*.img filter=lfs diff=lfs merge=lfs -text
+*.tif filter=lfs diff=lfs merge=lfs -text
+*.tiff filter=lfs diff=lfs merge=lfs -text

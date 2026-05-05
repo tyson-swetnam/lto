@@ -1,0 +1,53 @@
+Network.Name,MainFundingAgency,Disturbances,Management.Structure,Geographic,CDEON Coordinated Distributed Experiments and Observations,EON Ecological Observatory Networks,LTMP Long-Term Monitoring Programs ,LTRN Long-Term Research Networks ,ORC Observational Research Consortia ,Terrestrial.Ecosystem,Freshwater.Ecosystem,Marine.Ecosystem,Atmospheric.Ecosystem,Coastal.Ecosystem
+International Tundra Experiment ITEX,Member Home Agencies,1,Bottom-Up,Global,1,0,0,0,0,1,0,0,0,0
+National Atmospheric Deposition Program NADP,USDA,0,Hybrid,USA,1,0,0,0,0,1,0,0,1,0
+Free-Air Carbon dioxide Enrichment FACE,DOE,1,Hybrid,USA,1,0,0,0,0,1,0,0,1,0
+Nutrient Network NutNet,"NSF RCN, LTER",0,Bottom-Up,Global,1,0,0,0,0,1,0,0,0,1
+"Investigating Nutrient Cycling in Terrestrial Ecosystems: Integrating Observations, Experiments, and Models INCyTE",NSF RCN,0,Bottom-Up,NA,1,0,0,0,1,1,0,0,0,0
+Greenhouse gas Reduction through Agricultural Carbon Enhancement network Gracenet,USDA,1,Directed,USA,1,0,0,0,0,1,0,0,1,0
+Next Generation Ecosystem Experiments NGEE,DOE,1,Hybrid,Global,1,0,0,0,0,1,1,0,1,1
+Marine GEO/ Tennenbaum Marine Observatories Network,Smithsonian; strategic partnerships,1,Bottom-Up,Global,1,0,0,0,1,1,0,1,0,1
+North American Carbon Program,"NASA, NIST, NOAA, NSF, DOE, EPA, USGS, USDA, USDA ARS, ESREES, USFS, USNRCS",1,Directed,North America,1,0,0,0,1,1,1,1,1,1
+National Ecological Observatory Network (NEON),"NSF; and MOUs with EPA, USGS, NOAA",1,Directed,Sites within 20 domains across North America,0,1,0,0,0,1,1,0,1,0
+STReam Experimental Observatory Network (STREON),NSF,0,Directed,part of NEON,0,1,0,0,0,0,1,0,0,0
+Global Ocean Observation System (GOOS),"UNESCO, IOC, WMO, UN, ISC (and regional funders)",0,Hybrid,Global network of regional alliances,0,1,0,0,0,0,0,1,0,0
+National Estuarine Research Reserves Network (NEER(N)),NOAA Office Coastal Management,1,Directed,"North American Estuaries in major ecoregions (cold-temperate, warm-temperate, etc)",0,1,0,0,0,0,1,1,0,1
+Sentinel Site Program,NOAA,1,Directed,"5 sites across North America (East Coast, Pacific, Gulf Coast, West Coast)",0,1,0,0,0,0,0,1,0,1
+Integrated Ocean Observing System (IOOS),NOAA,1,Directed,"North America; Regional assoications (Alaska, Caribbean, Central and Northern California, Gulf of Mexico, Great Lakes, Mid-Atlantic, Pacific Northwestt, Northeast Atlantic, Pacific Islands, Southern California, Southeast Atlantic ",0,1,0,0,0,0,1,1,0,1
+Global Wetlands Observation System (GWOS),EU Horizon 2020,0,Hybrid,Global network of regional alliances,0,1,0,0,0,0,0,0,0,1
+Group on Earth Observations Biodiversity Observation Network (GEO BON) ,Not Assessed,0,Hybrid,"""Network of Networks""",0,1,0,0,0,1,1,1,1,1
+National Marine Sanctuary (NMS),NOAA Coastal Ecosystem Science,1,Directed,"North America; 4 regions (Southeast, northwest, pacific islands, west coast) ",0,1,1,0,0,0,0,1,0,0
+National Rivers and Streams Assessment (NRSA),EPA,0,Directed,Not Assessed,0,0,1,0,0,0,1,0,0,0
+National coastal condition assessment (NCCA),EPA,0,Directed,Not Assessed,0,0,1,0,0,0,0,1,0,0
+National Lakes Assesment program (NLA),EPA,0,Directed,Not Assessed,0,0,1,0,0,0,1,0,0,0
+Clean Air Status and Trends Network,EPA,0,Directed,Not Assessed,0,0,1,0,0,0,0,0,1,0
+National Estuary Program (NEP),EPA,1,Directed,US; estuarines of national importance ,0,0,1,0,0,0,0,1,0,1
+National Water Quality Assessment (NAWQA),USGS,0,Directed,groundwaters and surface waters  nationwide,0,0,1,0,0,1,1,1,0,1
+US National Park Service Inventory and Monitoring Program,Interior,0,Directed,Not Assessed,0,0,1,0,0,1,1,1,0,1
+Earth resources observation and science center (EROS),USGS,0,Directed,Not Assessed,0,0,1,0,0,1,1,0,0,1
+National Wetland Condition Assessment (NWCA),EPA,0,Directed,Not Assessed,0,0,1,0,0,0,0,0,0,1
+National Centers for Coastal Ocean Science Divison,NOAA Coastal Ecosystem Science,1,Hybrid,Coastal laboratories near reserves ,0,0,1,0,0,0,0,1,0,1
+Atmospheric Radiation Measurement (ARM) Research Facility ,DOE,0,Hybrid,Not Assessed,0,0,0,1,0,0,0,0,1,0
+Experimental Forest Research (EFRs),USFS; USDA,1,Hybrid,Not Assessed,0,0,0,1,0,1,1,0,0,0
+Critical Zone (CZO ending FY 19 and CZN starting FY 20); associated with CZEN,NSF,1,Bottom-Up,Not Assessed,0,0,0,1,0,1,1,0,0,0
+Ocean Observatories Initiative (OOI),NSF,0,Directed,Oceanic Array Stations around North American waters,0,0,0,1,0,0,0,1,1,0
+FLUXNET- AmeriFlux,DOE,1,Hybrid,Not Assessed,0,0,0,1,0,1,0,0,1,1
+Long-Term Ecological Research (LTER),NSF,1,Bottom-Up,"North America, covering 23 ecosystems (eg. deciduous forest, estuaries, etc)",0,0,0,1,0,1,1,1,0,1
+Agricultural Research Service’s Long Term Agroecosystem Research (LTAR),USDA,1,Directed,Not Assessed,0,0,0,1,0,1,1,1,0,1
+Conservation Effects Assessment Project,USDA,1,Hybrid,USA,0,0,0,1,0,1,1,0,0,1
+Arctic Observing Network (AON),NSF (NOAA??),1,Bottom-Up,Arctic ,0,0,0,1,0,1,1,1,1,1
+Long-term research in environmental biology (LTREB),NSF,1,Bottom-Up,North America,0,0,0,1,0,1,1,0,0,1
+"Consortium of Universities for the Advancement of Hydrological Science, Inc. Universities Allied for Water Research (CUASHI)",NSF; NASA,0,Hybrid,International; infastructure support for US,0,0,0,0,1,1,1,0,0,0
+Large Lakes Observatory; Global Lakes Observation Network,NSF,0,Hybrid,Not Assessed,0,0,0,0,1,0,1,0,0,0
+International soil carbon network (ICN) and long-term soil experiments,LBNL; EPA,0,Bottom-Up,Not Assessed,0,0,0,0,1,1,0,0,0,0
+Forest Global Earth Observatory Network (ForestGEO),Smithsonian; strategic partnerships,1,Bottom-Up,Not Assessed,0,0,0,0,1,1,0,0,0,0
+Earth System Research Laboratory (ESRL),NOAA,0,Hybrid,Not Assessed,0,0,0,0,1,0,0,0,1,0
+Organization of Biological Field Stations (OBFS),NSF,0,Bottom-Up,Not Assessed,0,0,0,0,1,1,0,0,0,1
+National Association of Marine Laboratories (NAML),NSF,0,Bottom-Up,Not Assessed,0,0,0,0,1,0,0,1,0,1
+Coastal Zone Management (CZM),NOAA,0,Hybrid,68% of US States,0,0,0,0,1,0,0,1,0,1
+NOAA regional collaboration teams,NOAA,0,Directed,8 Regions in USA,0,0,0,0,1,0,0,1,0,1
+Study of environmental arctic change (SEARCH),"NSF, IARC, ARCUS",0,Bottom-Up,Arctic ,0,0,0,0,1,1,1,1,0,1
+Ocean Carbon and Biogeochemistry (OCB),"NSF, NOAA",1,Hybrid,Not Assessed,0,0,0,0,1,0,0,1,1,1
+Coastal Rainforest Margins Research Network,NSF RCN,0,Bottom-Up,Not Assessed,0,0,0,0,1,1,1,1,0,1
+Coastal Carbon Research Coordination Network,NSF RCN,0,Bottom-Up,CONUS,0,0,0,0,1,0,0,0,0,1
+Louisiana Coastwide Reference Monitoring System (CRMS),"DOI USGS; Coastal Wetlands Planning, Protection, and Restoration Act",0,Directed,Louisiana,0,0,1,0,0,1,1,1,0,1

@@ -1,0 +1,35 @@
+slug,label,aliases,level,url
+ioos,IOOS,U.S. Integrated Ocean Observing System|Integrated Ocean Observing System,us-national,https://ioos.us
+neracoos,NERACOOS,Northeastern Regional Association of Coastal Ocean Observing Systems,us-regional,https://neracoos.org
+maracoos,MARACOOS,Mid-Atlantic Regional Association Coastal Ocean Observing System,us-regional,https://maracoos.org
+secoora,SECOORA,Southeast Coastal Ocean Observing Regional Association,us-regional,https://secoora.org
+gcoos,GCOOS,Gulf of Mexico Coastal Ocean Observing System,us-regional,https://gcoos.org
+caricoos,CARICOOS,Caribbean Coastal Ocean Observing System,us-regional,https://caricoos.org
+sccoos,SCCOOS,Southern California Coastal Ocean Observing System,us-regional,https://sccoos.org
+cencoos,CeNCOOS,Central and Northern California Ocean Observing System,us-regional,https://cencoos.org
+nanoos,NANOOS,Northwest Association of Networked Ocean Observing Systems,us-regional,https://nanoos.org
+aoos,AOOS,Alaska Ocean Observing System,us-regional,https://aoos.org
+pacioos,PacIOOS,Pacific Islands Ocean Observing System,us-regional,https://pacioos.org
+ooi,OOI,Ocean Observatories Initiative,us-national,https://oceanobservatories.org
+lter,LTER,Long-Term Ecological Research Network,us-national,https://lternet.edu
+nerrs,NERRS,National Estuarine Research Reserve System,us-national,https://coast.noaa.gov/nerrs
+seagrant,Sea Grant,National Sea Grant College Program,us-national,https://seagrant.noaa.gov
+neon,NEON,National Ecological Observatory Network,us-national,https://www.neonscience.org
+onc,ONC,Ocean Networks Canada,canada-national,https://www.oceannetworks.ca
+goos,GOOS,Global Ocean Observing System,international,https://goosocean.org
+naml,NAML,National Association of Marine Laboratories,us-national,https://www.naml.org
+iocaribe,IOCARIBE,IOC Sub-Commission for the Caribbean and Adjacent Regions,international,https://iocaribe.ioc-unesco.org
+ltreb,LTREB,Long-term Research in Environmental Biology,us-national,https://www.nsf.gov/funding/opportunities/long-term-research-environmental-biology-ltreb
+nep,NEP,National Estuary Program,us-national,https://www.epa.gov/nep
+nms,NMS,National Marine Sanctuary System,us-national,https://sanctuaries.noaa.gov
+marinegeo,MarineGEO,Tennenbaum Marine Observatories Network / Marine Global Earth Observatory,international,https://marinegeo.si.edu
+sentinel-site,Sentinel Site,NOAA Sentinel Site Program,us-national,https://oceanservice.noaa.gov/sentinel-sites/
+lter-site,LTER Site,Long-Term Ecological Research member site,us-regional,https://lternet.edu/site/
+marine-monument,Marine National Monuments,U.S. Marine National Monument|USFWS Marine National Monuments,us-national,https://www.fws.gov/program/national-wildlife-refuge-system
+nps-coastal,NPS Coastal Units,National Park Service Coastal Units,us-national,https://www.nps.gov/
+epa-region,EPA Regions,U.S. EPA Administrative Regions,us-national,https://www.epa.gov/aboutepa/regional-and-geographic-offices
+nwrs,NWRS,National Wildlife Refuge System,us-national,https://www.fws.gov/program/national-wildlife-refuge-system
+nps-im,NPS-IM,NPS Inventory and Monitoring Program,us-national,https://www.nps.gov/im/
+usfs-rna-ef,USFS-RNA-EF,USFS Research Natural Area / Experimental Forest network,us-national,https://www.fs.usda.gov/research/rmrs/research-natural-areas
+nwps,NWPS,National Wilderness Preservation System,us-national,https://www.wilderness.net
+ramsar,RAMSAR,Ramsar Convention on Wetlands of International Importance,international,https://www.ramsar.org

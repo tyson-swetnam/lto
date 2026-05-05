@@ -1,0 +1,5 @@
+duckdb>=1.1.0
+polars>=1.0.0
+rapidfuzz>=3.9
+geopy>=2.4
+pyyaml>=6.0

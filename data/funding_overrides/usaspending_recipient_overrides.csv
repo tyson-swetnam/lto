@@ -1,0 +1,41 @@
+facility_id,recipient_search_text,award_id,description_match,notes
+# USAspending.gov recipient overrides for cod-kmap facilities.
+# Used by scripts/fetch_funding_usaspending.py.
+#
+# Each row pins a recipient_search_text string for a facility. Multiple
+# rows per facility = multiple recipients to query. award_id whitelists
+# specific known awards; description_match narrows to awards whose
+# Description contains a substring (case-insensitive).
+#
+# === Independent research institutes ===
+4851cdabf00d14dc,Woods Hole Oceanographic Institution,,,WHOI
+6ad02ae32697c15e,Marine Biological Laboratory,,,MBL
+84d0739f9114da35,Bigelow Laboratory for Ocean Sciences,,,Bigelow
+# Mote Marine Laboratory
+,Mote Marine Laboratory and Aquarium,,,Mote (find facility_id)
+# === University-hosted marine labs that USAspending tags under host ===
+659db848c8224d61,University of California Davis,,Bodega,BML
+21cd1a451847e669,University of Washington,,Friday Harbor,FHL
+5b42961d12b531c3,Oregon State University,,Hatfield Marine,HMSC
+48921a4314f79831,University of Hawaii System,,Hawaii Institute of Marine Biology,HIMB
+8b91f78cdc556120,Stanford University,,Hopkins Marine,HMS
+099f35eb7143a89d,University of Rhode Island,,Graduate School of Oceanography,URI-GSO
+099f35eb7143a89d,University of Rhode Island,,Narragansett,URI-GSO Bay Campus
+# === LTER sites ===
+a3250b6ee5b1e18e,University of California Santa Barbara,,Santa Barbara Coastal LTER,SBC LTER
+a3250b6ee5b1e18e,University of California Santa Barbara,,Land/Ocean Interactions,SBC LTER
+a3250b6ee5b1e18e,University of California Santa Barbara,,Kelp Forest,SBC LTER
+1496a5fc3a668206,Florida International University,,Florida Coastal Everglades,FCE LTER
+1496a5fc3a668206,Florida International University,,FCE LTER,FCE LTER variant
+8ae383aa534d8fe9,University of Georgia Research Foundation,,Georgia Coastal,GCE LTER
+b6ad40b6cd18f42e,University of California San Diego,,California Current Ecosystem,CCE LTER
+b3c4acfee79eb573,University of Virginia,,Virginia Coast Reserve,VCR LTER
+50642bf3064308c8,University of Alaska Fairbanks,,Northern Gulf of Alaska,NGA LTER
+b93f51cc632277b0,Marine Biological Laboratory,,Plum Island,PIE LTER
+# === Sea Grant programs (each housed at host university) ===
+,University of Connecticut,,Connecticut Sea Grant,CT SG
+,University of California San Diego,,California Sea Grant,CA SG
+# === Independent labs / aquaria with R&D portfolios ===
+ca8eddbef5f313a1,Monterey Bay Aquarium Foundation,,,MBA
+c987433cec4502fa,Dauphin Island Sea Lab,,,DISL
+c987433cec4502fa,Alabama Marine Environmental Sciences Consortium,,,DISL parent

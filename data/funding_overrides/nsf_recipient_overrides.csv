@@ -1,0 +1,85 @@
+facility_id,awardee_name,program_match,title_match,award_id,notes
+# NSF awardee + filter overrides for cod-kmap facilities.
+# Used by scripts/fetch_funding_nsf.py.
+#
+# Each row narrows the NSF Awards API search for one facility.
+# Multiple rows per facility are aggregated:
+#   awardee_name  — exact NSF awardeeName (one row per awardee to query)
+#   program_match — case-insensitive substring of fundProgramName.
+#                   ANY-match: an award is kept if it matches at least one row.
+#   title_match   — case-insensitive substring of award title (ANY-match).
+#   award_id      — exact NSF award id whitelist (skips API search).
+#
+# A row may set ONLY awardee_name (pulls all that awardee's NSF awards),
+# OR awardee_name + program_match (filters to a program family),
+# OR award_id (pins a specific known award).
+#
+# === LTER sites — coastal-relevant subset of US LTER Network ===
+# Each LTER's NSF awardee is the host university; the award is identified
+# by the LTER program name. NSF program for LTERs is
+# "BIOLOGICAL OCEANOGRAPHY, LONG TERM ECOLOGICAL RESEARCH" or sometimes
+# "ECOSYSTEM SCIENCE, LONG TERM ECOLOGICAL RESEARCH".
+#
+# Santa Barbara Coastal LTER (UCSB)
+a3250b6ee5b1e18e,University of California-Santa Barbara,LONG TERM ECOLOGICAL RESEARCH,Santa Barbara,,SBC LTER core renewals
+a3250b6ee5b1e18e,University of California-Santa Barbara,LONG TERM ECOLOGICAL RESEARCH,Land/Ocean,,SBC LTER VI title
+a3250b6ee5b1e18e,University of California-Santa Barbara,LONG TERM ECOLOGICAL RESEARCH,Kelp Forest,,SBC LTER kelp focus
+a3250b6ee5b1e18e,University of California-Santa Barbara,LONG TERM ECOLOGICAL RESEARCH,Land-Ocean,,SBC LTER VII variant
+# California Current Ecosystem LTER (Scripps / UCSD)
+b6ad40b6cd18f42e,University of California-San Diego Scripps Inst of Oceanography,LONG TERM ECOLOGICAL RESEARCH,California Current,,CCE LTER core
+b6ad40b6cd18f42e,University of California-San Diego Scripps Inst of Oceanography,LONG TERM ECOLOGICAL RESEARCH,CCE,,CCE LTER acronym
+# Florida Coastal Everglades LTER (FIU)
+1496a5fc3a668206,Florida International University,LONG TERM ECOLOGICAL RESEARCH,Florida Coastal Everglades,,FCE LTER core
+1496a5fc3a668206,Florida International University,LONG TERM ECOLOGICAL RESEARCH,FCE,,FCE LTER acronym
+# Georgia Coastal Ecosystems LTER (UGA)
+8ae383aa534d8fe9,University of Georgia Research Foundation Inc,LONG TERM ECOLOGICAL RESEARCH,Georgia Coastal,,GCE LTER core
+8ae383aa534d8fe9,University of Georgia Research Foundation Inc,LONG TERM ECOLOGICAL RESEARCH,GCE,,GCE LTER acronym
+# Plum Island Ecosystems LTER (MBL)
+b93f51cc632277b0,Marine Biological Laboratory,LONG TERM ECOLOGICAL RESEARCH,Plum Island,,PIE LTER core
+b93f51cc632277b0,Marine Biological Laboratory,LONG TERM ECOLOGICAL RESEARCH,PIE,,PIE LTER acronym
+# Virginia Coast Reserve LTER (UVA)
+b3c4acfee79eb573,University of Virginia Main Campus,LONG TERM ECOLOGICAL RESEARCH,Virginia Coast,,VCR LTER core
+b3c4acfee79eb573,University of Virginia Main Campus,LONG TERM ECOLOGICAL RESEARCH,VCR,,VCR LTER acronym
+b3c4acfee79eb573,University of Virginia Main Campus,LONG TERM ECOLOGICAL RESEARCH,Coast Reserve,,VCR LTER variant
+# Beaufort Lagoon Ecosystems LTER (Texas A&M Corpus Christi)
+01ef51b8abf6f751,University of Texas Marine Science Institute,LONG TERM ECOLOGICAL RESEARCH,Beaufort Lagoon,,BLE LTER core
+01ef51b8abf6f751,University of Texas at Austin,LONG TERM ECOLOGICAL RESEARCH,Beaufort Lagoon,,BLE LTER alt awardee
+01ef51b8abf6f751,University of Texas Marine Science Institute,LONG TERM ECOLOGICAL RESEARCH,BLE,,BLE LTER acronym
+# Northern Gulf of Alaska LTER (UAF)
+50642bf3064308c8,University of Alaska Fairbanks Campus,LONG TERM ECOLOGICAL RESEARCH,Northern Gulf of Alaska,,NGA LTER core
+50642bf3064308c8,University of Alaska Fairbanks Campus,LONG TERM ECOLOGICAL RESEARCH,NGA,,NGA LTER acronym
+50642bf3064308c8,University of Alaska Fairbanks Campus,LONG TERM ECOLOGICAL RESEARCH,Gulf of Alaska,,NGA LTER variant
+# North Temperate Lakes LTER (UW Madison) — kept for Great Lakes coverage
+d8e10a908168815c,University of Wisconsin-Madison,LONG TERM ECOLOGICAL RESEARCH,North Temperate Lakes,,NTL LTER core
+d8e10a908168815c,University of Wisconsin-Madison,LONG TERM ECOLOGICAL RESEARCH,NTL,,NTL LTER acronym
+# Northeast US Shelf LTER (WHOI / Rutgers)
+4b897473a3d94b82,Woods Hole Oceanographic Institution,LONG TERM ECOLOGICAL RESEARCH,Northeast U.S. Shelf,,NES LTER WHOI
+4b897473a3d94b82,Rutgers University New Brunswick,LONG TERM ECOLOGICAL RESEARCH,Northeast U.S. Shelf,,NES LTER Rutgers
+4b897473a3d94b82,Woods Hole Oceanographic Institution,LONG TERM ECOLOGICAL RESEARCH,NES-LTER,,NES LTER variant
+# LTER Network Office (UCSB / NCEAS)
+f3b529d1eda8e073,University of California-Santa Barbara,LONG TERM ECOLOGICAL RESEARCH,LTER Network Office,,LNO core
+f3b529d1eda8e073,University of California-Santa Barbara,LONG TERM ECOLOGICAL RESEARCH,LTER National,,LNO variant
+#
+# === Independent research institutes whose parent_org is themselves ===
+# Bigelow Laboratory for Ocean Sciences
+84d0739f9114da35,Bigelow Laboratory for Ocean Sciences,,,,
+# Marine Biological Laboratory (Woods Hole — but Univ of Chicago partner)
+6ad02ae32697c15e,Marine Biological Laboratory,,,,
+# Monterey Bay Aquarium Research Institute (MBARI)
+# (Note: a3df... is just the EDF Oceans entry above — replace with real MBARI id)
+#
+# === University-hosted marine labs that need awardee = host university
+#     PLUS title/program filter to scope to the lab's awards specifically.
+# Bodega Marine Laboratory (UC Davis)
+659db848c8224d61,University of California-Davis,,Bodega,,BML title match
+# Friday Harbor Laboratories (UW)
+21cd1a451847e669,University of Washington,,Friday Harbor,,FHL title match
+# Hatfield Marine Science Center (Oregon State)
+5b42961d12b531c3,Oregon State University,,Hatfield Marine,,HMSC title match
+# Hawaiʻi Institute of Marine Biology
+48921a4314f79831,University of Hawaii,,Hawaii Institute of Marine Biology,,HIMB title match
+# Hopkins Marine Station (Stanford) — PI's NSF awards are on Stanford, not Hopkins
+8b91f78cdc556120,Stanford University,,Hopkins Marine,,HMS title match
+# URI Graduate School of Oceanography
+099f35eb7143a89d,University of Rhode Island,,Graduate School of Oceanography,,URI-GSO title
+099f35eb7143a89d,University of Rhode Island,,Narragansett,,URI-GSO Bay Campus

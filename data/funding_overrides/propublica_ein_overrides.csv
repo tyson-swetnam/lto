@@ -1,0 +1,66 @@
+facility_id,ein,skip,notes
+# ProPublica Nonprofit Explorer EIN overrides for cod-kmap facilities.
+# Used by scripts/fetch_funding_990.py.
+#
+# `ein` pins the exact 9-digit EIN. `skip=true` means do NOT attempt
+# a 990 lookup (e.g., because the facility is funded via a state
+# agency that doesn't file a 990 — federal NEPs hosted by state
+# DEPs, county / municipal NEPs, etc.).
+#
+# === Independent 501(c)(3) research orgs ===
+# Mote Marine Laboratory (Sarasota FL) — verified
+f70c698fb5ee353a,590756643,,Mote Marine Lab
+# New England Aquarium (Boston MA)
+7ffaad0b0c5a6cdc,042103562,,New England Aquarium Corporation
+# Surfrider Foundation
+84fa48262b38b6c8,953941826,,Surfrider Foundation
+# Schmidt Ocean Institute — moved below to dedupe (single override per facility)
+# 57445202e95adced — see "Schmidt Ocean Institute" entry under Aquariums section
+# === Aquariums / parent foundations ===
+# Monterey Bay Aquarium → Monterey Bay Aquarium Foundation
+ca8eddbef5f313a1,942487469,,Monterey Bay Aquarium Foundation
+# === Oceans-program lines on bigger orgs (file under parent) ===
+# Environmental Defense Fund — Oceans Program is a line item inside EDF
+8ec1a3c5596cbc64,116107128,,Environmental Defense Fund Incorporated
+# The Nature Conservancy — Oceans Program is a line item inside TNC
+2ee0905d8a3648cf,530242652,,The Nature Conservancy
+# Schmidt Ocean Institute — verified via search
+57445202e95adced,264562328,,Schmidt Ocean Institute
+# === Foundations ===
+# David and Lucile Packard Foundation (CA)
+2b8c333e9c9d9a70,942278431,,David and Lucile Packard Foundation
+# Gordon and Betty Moore Foundation (CA)
+a24ed42e56a9687b,943397785,,Gordon E And Betty I Moore Foundation
+#
+# === EPA NEPs hosted by state agencies / regional planning orgs ===
+# These are federal Section 320 programs administered through host
+# agencies that don't file 990s under the NEP name. Their EPA
+# allocation is captured by USAspending; their state-match contribution
+# requires the agency-budget research phase. Skip 990 lookup.
+0d6b1e55d4c3c23d,,true,Albemarle-Pamlico NEP — hosted by NC DEQ (state)
+c19eea5e35c4ff35,,true,Barataria-Terrebonne NEP — hosted by Nicholls State Univ (state)
+2adc72ff42d9de08,,true,Barnegat Bay Partnership NEP — hosted by Ocean County College (state)
+c1b0708dda943534,,true,Buzzards Bay NEP — hosted by MA Office of Coastal Zone Management (state)
+1a8028552b3cd284,,true,Casco Bay NEP — hosted by U Southern Maine (state)
+402ccdf886fa609d,,true,Coastal Bend Bays & Estuaries NEP — TX state-funded
+ec5c32126ce47483,,true,Delaware Center for the Inland Bays NEP — DE state
+e1a7385483473434,,true,Galveston Bay NEP — hosted by Houston Adv. Research Center
+99abeaaed73bfb99,,true,Indian River Lagoon NEP — hosted by St Johns River WMD (state)
+0924c3fe89bb1392,,true,Long Island Sound Study NEP — hosted by NEIWPCC (interstate)
+a3df950de95bd5e8,,true,Lower Columbia Estuary Partnership NEP — OR state
+3cce246f72e42148,,true,Maryland Coastal Bays NEP — MD DNR (state)
+8ef9ffb2262d2832,,true,Massachusetts Bays NEP — MA Office of CZM (state)
+db36727508052028,,true,Mobile Bay NEP — AL state
+d9bad8026c38e336,,true,Morro Bay NEP — Morro Bay city / SLO county
+9d4583c180914ac0,,true,Narragansett Bay NEP — hosted by URI / RI DEM (state)
+6fa9e6e6a2bb24ad,,true,New York-New Jersey Harbor & Estuary NEP — hosted by NEIWPCC
+b18d4e304929d1f3,,true,Partnership for the Delaware Estuary NEP — separate 501c3 worth checking
+14fa1197ed4975e3,,true,Peconic Estuary Program NEP — Suffolk County NY
+6b49d19b5accaf76,,true,Piscataqua Region NEP — UNH (state)
+c8a214243eb16597,,true,Puget Sound Partnership NEP — WA state agency
+458e96ead560e429,,true,San Francisco Estuary Partnership NEP — ABAG/SFEI
+f858cc0d008257c3,,true,San Juan Bay NEP — DRNA Puerto Rico
+e588b74d29fe8c36,,true,Santa Monica Bay NEP — CA state
+8cb1dfe4421dcd93,,true,Sarasota Bay NEP — Sarasota County FL
+6aa3e3a88696247f,,true,Tampa Bay NEP — Tampa Bay Estuary Program (worth a 990 try)
+6d6ffba21e24b77d,,true,Tillamook Estuaries Partnership NEP — OR state
