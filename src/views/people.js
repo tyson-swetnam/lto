@@ -1,6 +1,6 @@
 // people.js — Researcher directory view (#/people and #/people/<id>).
 //
-// Shows every researcher in the cod-kmap dataset (~242) as a card
+// Shows every researcher in the lto dataset (~242) as a card
 // listing their affiliations, role(s), publication+citation+co-author
 // metrics, primary research area, and any external profile links
 // (ORCID, OpenAlex, homepage).
@@ -188,7 +188,7 @@ function cardHtml(p) {
       </div>
       <div>
         <h4>Research areas</h4>
-        <ul class="ppl-areas">${areas || '<li class="ppl-none">No publications mapped to a cod-kmap area.</li>'}</ul>
+        <ul class="ppl-areas">${areas || '<li class="ppl-none">No publications mapped to an lto area.</li>'}</ul>
       </div>
     </div>
     ${p.bio
@@ -256,7 +256,7 @@ async function renderDirectory(targetId) {
         <h1>Researcher directory</h1>
         <p class="ppl-summary">
           <strong>${fmtInt(_cachedPeople.length)}</strong> researchers
-          across the cod-kmap dataset.
+          across the lto dataset.
           ${rows.length !== _cachedPeople.length
              ? `Showing <strong>${fmtInt(rows.length)}</strong> after filter.` : ''}
           Click into the Network knowledge map to see who appears in

@@ -1745,7 +1745,7 @@ export function initNetworkView(container) {
       <header class="network-header">
         <div>
           <h2>Knowledge map</h2>
-          <p class="network-sub">Country-like map of cod-kmap. Each outer
+          <p class="network-sub">Country-like map of lto. Each outer
           polygon is one research area (parent-collapsed when &lt; 3 facilities);
           polygon area is proportional to facility count. Inside each area,
           dashed sub-circles are individual institutions sized by their

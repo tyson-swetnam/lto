@@ -93,9 +93,19 @@ export async function initFilters(container, state) {
   clearLink.addEventListener('click', (e) => {
     e.preventDefault();
     container.querySelectorAll('input[type=checkbox]').forEach((cb) => { cb.checked = false; });
+    // Numeric / boolean LTO filters reset back to their defaults too.
+    const ltMet = container.querySelector('#f-long-term-only');
+    if (ltMet) ltMet.checked = false;
+    const eMin = container.querySelector('#f-established-min');
+    const eMax = container.querySelector('#f-established-max');
+    if (eMin) eMin.value = '';
+    if (eMax) eMax.value = '';
     state.setFilters({
       types: new Set(), countries: new Set(),
       areas: new Set(), networks: new Set(),
+      spheres: new Set(), ecosystems: new Set(), lifeZones: new Set(),
+      longTermOnly: false,
+      establishedMin: null, establishedMax: null,
     });
   });
   container.appendChild(clearLink);
@@ -135,6 +145,79 @@ export async function initFilters(container, state) {
   );
   container.appendChild(countrySection);
 
+  // ── LTO six-sphere model: primary sphere, ecosystem type, life zone ──
+  //
+  // These are LTO-specific facets driven by the new vocab CSVs in
+  // public/vocab/. Each section is rendered with a stub body up front
+  // so the section is visible even if the CSV fetch is slow / fails;
+  // the async block below replaces stubBody with real labels once the
+  // CSV loads. Default-collapsed for life zones (Holdridge classes are
+  // long and narrow-audience), default-expanded for sphere + ecosystem.
+  const sphereSection = makeFacetSection(
+    'f-sphere', 'Primary sphere', '<div class="facet-loading">Loading…</div>', false,
+  );
+  container.appendChild(sphereSection);
+
+  const ecosystemSection = makeFacetSection(
+    'f-ecosystem', 'Ecosystem type', '<div class="facet-loading">Loading…</div>', true,
+  );
+  container.appendChild(ecosystemSection);
+
+  const lifeZoneSection = makeFacetSection(
+    'f-life-zone', 'Life zone (Holdridge)', '<div class="facet-loading">Loading…</div>', true,
+  );
+  container.appendChild(lifeZoneSection);
+
+  // ── Long-term threshold (Peters et al. 2013) ──
+  //
+  // A simple boolean toggle: when checked, the SQL WHERE clause adds
+  // `f.long_term_threshold_met = TRUE`, which is precomputed in the
+  // facilities table by the ingest pipeline (established <= today-10y
+  // AND record_length_years >= 10). Default off so users see the full
+  // catalog first.
+  const thresholdSection = makeFacetSection(
+    'f-threshold', 'Long-term threshold',
+    `<label><input type="checkbox" id="f-long-term-only" />
+       Show only facilities with &ge;10y record</label>`,
+    false,
+  );
+  container.appendChild(thresholdSection);
+
+  // ── Established year range ──
+  //
+  // Two numeric inputs filtering on facilities.established (an INTEGER
+  // year). Empty input = no bound. Validated lightly (we just coerce
+  // to a Number; non-numeric input clears that bound).
+  const yearSection = makeFacetSection(
+    'f-established', 'Established year',
+    `<div class="year-range">
+       <label>Min <input type="number" id="f-established-min" min="1700" max="2100" step="1" placeholder="e.g. 1980" /></label>
+       <label>Max <input type="number" id="f-established-max" min="1700" max="2100" step="1" placeholder="e.g. 2025" /></label>
+     </div>`,
+    true,
+  );
+  container.appendChild(yearSection);
+
+  // Wire numeric / boolean LTO inputs separately from the unified
+  // checkbox handler at the bottom of this function — they aren't
+  // checkboxes (the threshold one *is* but it has its own state key)
+  // and the change handler matches by data-facet attribute.
+  thresholdSection.querySelector('#f-long-term-only').addEventListener('change', (ev) => {
+    state.setFilters({ longTermOnly: !!ev.target.checked });
+  });
+  const onYearChange = () => {
+    const minEl = yearSection.querySelector('#f-established-min');
+    const maxEl = yearSection.querySelector('#f-established-max');
+    const min = minEl.value === '' ? null : Number(minEl.value);
+    const max = maxEl.value === '' ? null : Number(maxEl.value);
+    state.setFilters({
+      establishedMin: Number.isFinite(min) ? min : null,
+      establishedMax: Number.isFinite(max) ? max : null,
+    });
+  };
+  yearSection.querySelector('#f-established-min').addEventListener('change', onYearChange);
+  yearSection.querySelector('#f-established-max').addEventListener('change', onYearChange);
+
   // Async: load vocab CSVs, then insert research-area + network sections before type
   (async () => {
     try {
@@ -143,6 +226,43 @@ export async function initFilters(container, state) {
         fetchCSV(`${BASE}vocab/networks.csv`),
         fetchCSV(`${BASE}vocab/facility_types.csv`),
       ]);
+
+      // LTO vocab — sphere / ecosystem / life-zone CSVs. Loaded with
+      // Promise.allSettled so a missing CSV (e.g. on a deploy that
+      // hasn't synced public/vocab/ yet) leaves its filter section
+      // empty rather than wiping out the whole sidebar.
+      Promise.allSettled([
+        fetchCSV(`${BASE}vocab/spheres.csv`),
+        fetchCSV(`${BASE}vocab/ecosystem_types.csv`),
+        fetchCSV(`${BASE}vocab/life_zones.csv`),
+      ]).then(([sphRes, ecoRes, lzRes]) => {
+        const fillFacet = (section, facetKey, rows, emptyMsg) => {
+          const body = section.querySelector('.facet-body');
+          if (!body) return;
+          if (!Array.isArray(rows) || rows.length === 0) {
+            body.innerHTML = `<div class="facet-empty">${emptyMsg}</div>`;
+            return;
+          }
+          body.innerHTML = rows
+            .map((r) => checkbox(facetKey, r.slug, r.label || r.slug))
+            .join('');
+        };
+        fillFacet(
+          sphereSection, 'sphere',
+          sphRes.status === 'fulfilled' ? sphRes.value : null,
+          'Spheres vocab unavailable.'
+        );
+        fillFacet(
+          ecosystemSection, 'ecosystem',
+          ecoRes.status === 'fulfilled' ? ecoRes.value : null,
+          'Ecosystem-type vocab unavailable.'
+        );
+        fillFacet(
+          lifeZoneSection, 'life-zone',
+          lzRes.status === 'fulfilled' ? lzRes.value : null,
+          'Life-zone vocab unavailable.'
+        );
+      });
 
       // Update type labels now that we have the CSV. Filter the rows
       // against the in-use set above so "reserved" vocab entries
@@ -195,7 +315,11 @@ export async function initFilters(container, state) {
     const { facet, value } = input.dataset;
     if (!facet) return;
 
-    const keyMap = { type: 'types', country: 'countries', area: 'areas', network: 'networks' };
+    const keyMap = {
+      type: 'types', country: 'countries', area: 'areas', network: 'networks',
+      // LTO six-sphere model facets.
+      sphere: 'spheres', ecosystem: 'ecosystems', 'life-zone': 'lifeZones',
+    };
     const key = keyMap[facet];
     if (!key) return;
     const set = new Set(state.filters[key]);
@@ -232,6 +356,52 @@ export function applyFilters(filterState) {
       `WHERE nm.network_id IN (${slugs.map(() => '?').join(',')}))`
     );
     params.push(...slugs);
+  }
+  // LTO six-sphere facets. Each is a slug-IN subquery against the new
+  // crosswalk tables (facility_spheres, facility_ecosystems,
+  // facility_life_zones). Wrapped so an empty Set → no clause emitted.
+  if (filterState.spheres?.size) {
+    const slugs = Array.from(filterState.spheres);
+    clauses.push(
+      `f.facility_id IN (SELECT fs.facility_id FROM facility_spheres fs ` +
+      `WHERE fs.sphere_slug IN (${slugs.map(() => '?').join(',')}))`
+    );
+    params.push(...slugs);
+  }
+  if (filterState.ecosystems?.size) {
+    const slugs = Array.from(filterState.ecosystems);
+    clauses.push(
+      `f.facility_id IN (SELECT fe.facility_id FROM facility_ecosystems fe ` +
+      `WHERE fe.ecosystem_slug IN (${slugs.map(() => '?').join(',')}))`
+    );
+    params.push(...slugs);
+  }
+  if (filterState.lifeZones?.size) {
+    const slugs = Array.from(filterState.lifeZones);
+    clauses.push(
+      `f.facility_id IN (SELECT fl.facility_id FROM facility_life_zones fl ` +
+      `WHERE fl.life_zone_slug IN (${slugs.map(() => '?').join(',')}))`
+    );
+    params.push(...slugs);
+  }
+  // Long-term threshold (Peters et al. 2013): the boolean column is
+  // precomputed in facilities.parquet by the ingest pipeline.
+  if (filterState.longTermOnly) {
+    clauses.push(`f.long_term_threshold_met = TRUE`);
+  }
+  // Established-year bounds. Use IS NOT NULL + bound so that a facility
+  // with NULL `established` doesn't get accidentally swept in by a
+  // permissive bound (DuckDB returns NULL for `f.established >= ?`
+  // when established is NULL, which evaluates to false in WHERE — but
+  // we add the explicit IS NOT NULL for symmetry with the threshold
+  // clause and to make the intent obvious.
+  if (Number.isFinite(filterState.establishedMin)) {
+    clauses.push(`f.established IS NOT NULL AND f.established >= ?`);
+    params.push(filterState.establishedMin);
+  }
+  if (Number.isFinite(filterState.establishedMax)) {
+    clauses.push(`f.established IS NOT NULL AND f.established <= ?`);
+    params.push(filterState.establishedMax);
   }
   if (filterState.q) {
     clauses.push(`(lower(f.canonical_name) LIKE ? OR lower(f.acronym) LIKE ?)`);

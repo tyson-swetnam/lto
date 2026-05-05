@@ -289,9 +289,9 @@ export async function initDB() {
        LEFT JOIN facility_regions fr  ON fr.facility_id = f.facility_id
        LEFT JOIN regions r            ON r.region_id    = fr.region_id
        LEFT JOIN facility_spheres   fs ON fs.facility_id = f.facility_id
-       LEFT JOIN spheres            s  ON s.sphere_id    = fs.sphere_id
+       LEFT JOIN spheres            s  ON s.slug         = fs.sphere_slug
        LEFT JOIN facility_ecosystems fes ON fes.facility_id = f.facility_id
-       LEFT JOIN ecosystem_types    et ON et.ecosystem_id = fes.ecosystem_id
+       LEFT JOIN ecosystem_types    et ON et.slug        = fes.ecosystem_slug
        GROUP BY f.facility_id, f.canonical_name, f.acronym, f.facility_type,
                 f.country, f.hq_lat, f.hq_lng, f.url, f.parent_org,
                 f.established, f.record_length_years,
@@ -347,6 +347,12 @@ export async function query(filterState) {
   // NMS / NERR / NPS / NEP / NEON / EPA polygon). This lets the popup show
   // "Inside: <sanctuary>, <EPA region>, <NEON domain>" without a second
   // round-trip for each click.
+  // The `primary_sphere` correlated subquery resolves to NULL whenever
+  // the LTO parquet files are missing (the LEFT JOIN'd CREATE VIEW for
+  // facility_spheres simply didn't run). DuckDB-Wasm raises a binder
+  // error if facility_spheres doesn't exist as a view, though, so the
+  // SQL is wrapped in a try/catch outside the prepared statement —
+  // see filterFallback below for the fall-through path.
   const sql = `
     SELECT f.facility_id AS id,
            f.canonical_name AS name,
@@ -357,6 +363,13 @@ export async function query(filterState) {
            f.hq_lng AS lng,
            f.url,
            f.parent_org,
+           f.established,
+           f.record_length_years,
+           f.long_term_threshold_met,
+           f.data_portal_url,
+           (SELECT fs.sphere_slug FROM facility_spheres fs
+              WHERE fs.facility_id = f.facility_id AND fs.role = 'primary'
+              LIMIT 1)                AS primary_sphere,
            list(DISTINCT fu.name)        AS funders,
            list(DISTINCT ra.label)       AS areas,
            list(DISTINCT n.label)        AS networks,
@@ -373,10 +386,52 @@ export async function query(filterState) {
     LEFT JOIN regions r         ON r.region_id   = fr.region_id
     ${where}
     GROUP BY f.facility_id, f.canonical_name, f.acronym, f.facility_type,
-             f.country, f.hq_lat, f.hq_lng, f.url, f.parent_org
+             f.country, f.hq_lat, f.hq_lng, f.url, f.parent_org,
+             f.established, f.record_length_years,
+             f.long_term_threshold_met, f.data_portal_url
   `;
-  const prepared = await conn.prepare(sql);
-  const result = await prepared.query(...params);
+  // The LTO-extended SELECT references columns that exist in
+  // schema/schema.sql but might not have made it into facilities.parquet
+  // yet (Wave A added the schema, Wave C re-runs the export). If the
+  // parquet schema lags, retry against the original column set so the
+  // map keeps working.
+  let result;
+  try {
+    const prepared = await conn.prepare(sql);
+    result = await prepared.query(...params);
+  } catch (err) {
+    console.warn('[db] LTO-extended query failed, falling back to base columns:', err.message);
+    const baseSql = `
+      SELECT f.facility_id AS id,
+             f.canonical_name AS name,
+             f.acronym,
+             f.facility_type AS type,
+             f.country,
+             f.hq_lat AS lat,
+             f.hq_lng AS lng,
+             f.url,
+             f.parent_org,
+             list(DISTINCT fu.name)        AS funders,
+             list(DISTINCT ra.label)       AS areas,
+             list(DISTINCT n.label)        AS networks,
+             list(DISTINCT r.name)         AS regions,
+             list(DISTINCT r.kind)         AS region_kinds
+      FROM facilities f
+      LEFT JOIN funding_links fl  ON fl.facility_id = f.facility_id
+      LEFT JOIN funders fu        ON fu.funder_id  = fl.funder_id
+      LEFT JOIN area_links al     ON al.facility_id = f.facility_id
+      LEFT JOIN research_areas ra ON ra.area_id    = al.area_id
+      LEFT JOIN network_membership nm ON nm.facility_id = f.facility_id
+      LEFT JOIN networks n        ON n.network_id   = nm.network_id
+      LEFT JOIN facility_regions fr ON fr.facility_id = f.facility_id
+      LEFT JOIN regions r         ON r.region_id   = fr.region_id
+      ${where}
+      GROUP BY f.facility_id, f.canonical_name, f.acronym, f.facility_type,
+               f.country, f.hq_lat, f.hq_lng, f.url, f.parent_org
+    `;
+    const prepared = await conn.prepare(baseSql);
+    result = await prepared.query(...params);
+  }
 
   // Emit the same GeoJSON Feature shape loadFallback() returns, so the map
   // source always sees real Features (with a geometry). If we pass raw rows
@@ -398,12 +453,36 @@ function filterFallback(filterState) {
   if (!fallbackFeatures) return [];
   const types = filterState.types?.size ? filterState.types : null;
   const countries = filterState.countries?.size ? filterState.countries : null;
-  // areas/networks not available in GeoJSON; skip those filters in fallback mode
+  // areas/networks not available in GeoJSON; skip those filters in fallback mode.
+  // LTO sphere/ecosystem/life-zone facets *may* land in feature.properties
+  // once the GeoJSON exporter is updated; honor them when present.
+  const spheres = filterState.spheres?.size ? filterState.spheres : null;
+  const ecosystems = filterState.ecosystems?.size ? filterState.ecosystems : null;
+  const lifeZones = filterState.lifeZones?.size ? filterState.lifeZones : null;
+  const longTermOnly = !!filterState.longTermOnly;
+  const eMin = Number.isFinite(filterState.establishedMin) ? filterState.establishedMin : null;
+  const eMax = Number.isFinite(filterState.establishedMax) ? filterState.establishedMax : null;
   const q = (filterState.q || '').toLowerCase();
   return fallbackFeatures.filter((feat) => {
     const p = feat.properties;
     if (types && !types.has(p.type)) return false;
     if (countries && !countries.has(p.country)) return false;
+    if (spheres) {
+      const ps = p.primary_sphere;
+      const list = Array.isArray(p.spheres) ? p.spheres : (ps ? [ps] : []);
+      if (!list.some((s) => spheres.has(s))) return false;
+    }
+    if (ecosystems) {
+      const list = Array.isArray(p.ecosystem_types) ? p.ecosystem_types : [];
+      if (!list.some((s) => ecosystems.has(s))) return false;
+    }
+    if (lifeZones) {
+      const list = Array.isArray(p.life_zones) ? p.life_zones : [];
+      if (!list.some((s) => lifeZones.has(s))) return false;
+    }
+    if (longTermOnly && !p.long_term_threshold_met) return false;
+    if (eMin != null && (p.established == null || p.established < eMin)) return false;
+    if (eMax != null && (p.established == null || p.established > eMax)) return false;
     if (q && !(`${p.name ?? ''} ${p.acronym ?? ''}`.toLowerCase().includes(q))) return false;
     return true;
   });

@@ -5,7 +5,7 @@
 // funders, area_links, network_membership, facility_regions,
 // funding_links, region_area_links). Includes a handful of curated
 // queries the user can click to preview interesting slices of the
-// cod-kmap schema.
+// lto schema.
 
 import { getConn, whenReady, unwrapRow } from '../db.js';
 
@@ -202,7 +202,7 @@ LIMIT  500;`,
     id: 'person-research-areas',
     title: 'Person research areas (by publication topics)',
     description:
-      'Each researcher mapped to cod-kmap research areas via the OpenAlex topics ' +
+      'Each researcher mapped to lto research areas via the OpenAlex topics ' +
       'on their publications. `weight` is the average per-publication match score ' +
       '(0..1) and `evidence_count` is how many of their papers landed in that area. ' +
       'Populated by scripts/compute_person_areas.py.',

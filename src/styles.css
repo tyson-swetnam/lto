@@ -594,6 +594,54 @@ footer a:hover { color: var(--c-primary); }
 }
 .legend-chip-square { border-radius: 3px; }
 
+/* "Color by" toggle — sphere vs facility-type marker encoding. */
+.legend-color-mode {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: 6px;
+  font-size: 11px;
+  color: var(--c-text-soft);
+}
+.legend-color-mode label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+}
+.legend-color-mode input[type=radio] { accent-color: var(--c-primary); }
+
+/* LTO year-range filter inputs (Established min/max). */
+.year-range {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.year-range label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+}
+.year-range input[type=number] {
+  width: 80px;
+  padding: 3px 6px;
+  border: 1px solid var(--c-border);
+  border-radius: 3px;
+  font-size: 12px;
+  background: var(--c-surface);
+}
+
+/* Stub bodies for asynchronously-populated facet sections. */
+.facet-loading,
+.facet-empty {
+  font-size: 11.5px;
+  color: var(--c-muted);
+  padding: 4px 0;
+  font-style: italic;
+}
+
 /* ── Top-right toolbar (Fit/Nav/Scale) ──────────────────────────── */
 .fit-control a {
   display: block;

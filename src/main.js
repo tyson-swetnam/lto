@@ -19,7 +19,15 @@ import { initSqlView, renderSqlView } from './views/sql.js';
 import { initRouter, currentPath } from './router.js';
 
 const state = {
-  filters: { types: new Set(), countries: new Set(), areas: new Set(), networks: new Set(), q: '' },
+  filters: {
+    types: new Set(), countries: new Set(),
+    areas: new Set(), networks: new Set(),
+    // LTO six-sphere facets and threshold filters (see src/filters.js).
+    spheres: new Set(), ecosystems: new Set(), lifeZones: new Set(),
+    longTermOnly: false,
+    establishedMin: null, establishedMax: null,
+    q: '',
+  },
   lastFeatures: [],
   setFilters(update) {
     Object.assign(this.filters, update);
