@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>lto — U.S. Long-Term Observatories</title>
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" />
+    <link rel="stylesheet" href="./src/styles.css" />
+    <script type="importmap">
+    {
+      "imports": {
+        "maplibre-gl": "https://esm.sh/maplibre-gl@4.7.1",
+        "@duckdb/duckdb-wasm": "https://esm.sh/@duckdb/duckdb-wasm@1.29.0"
+      }
+    }
+    </script>
+  </head>
+  <body>
+    <header id="topbar">
+      <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Toggle filters"
+        aria-controls="sidebar" aria-expanded="false">
+        <span class="hamburger-icon" aria-hidden="true"></span>
+      </button>
+      <div class="brand">
+        lto
+        <span class="brand-sub">· U.S. Long-Term Observatories</span>
+      </div>
+      <nav class="tabs">
+        <a href="#/"        data-view="/"       >Map</a>
+        <a href="#/browse"  data-view="/browse" >Browse</a>
+        <a href="#/network" data-view="/network">Network</a>
+        <a href="#/people"  data-view="/people" >People</a>
+        <a href="#/sql"     data-view="/sql"    >SQL</a>
+        <a href="#/stats"   data-view="/stats"  >Stats</a>
+        <a href="#/docs"    data-view="/docs"   >Docs</a>
+      </nav>
+    </header>
+    <div id="app">
+      <aside id="sidebar">
+        <section id="search">
+          <div class="search-wrap">
+            <input id="q" type="search" placeholder="Search facilities…" autocomplete="off" />
+            <button id="q-clear" aria-label="Clear search" title="Clear">&#x2715;</button>
+          </div>
+        </section>
+        <div id="sidebar-scroll">
+          <section id="filters" class="sidebar-section">
+            <h3 class="sidebar-section-title">Filter facilities</h3>
+          </section>
+          <section id="overlays" class="sidebar-section"></section>
+        </div>
+        <section id="status" aria-live="polite">Loading data…</section>
+        <footer>
+          <a href="https://github.com/tyson-swetnam/lto" target="_blank" rel="noopener">Source on GitHub</a>
+        </footer>
+      </aside>
+      <main id="viewport">
+        <section id="view-map" class="view active">
+          <div id="map"></div>
+          <aside id="map-browse" class="map-browse" aria-label="Facilities in view">
+            <header class="map-browse-header">
+              <span class="map-browse-title">
+                Facilities in view
+                <span id="map-browse-count" class="map-browse-count">0</span>
+              </span>
+              <button type="button" id="map-browse-toggle"
+                class="map-browse-toggle" aria-expanded="true"
+                aria-controls="map-browse-body" title="Show/hide list">&#9660;</button>
+            </header>
+            <div id="map-browse-body" class="map-browse-body">
+              <div id="map-browse-list" class="map-browse-list"></div>
+            </div>
+          </aside>
+        </section>
+        <section id="view-browse"  class="view"><div id="browse"></div></section>
+        <section id="view-network" class="view"><div id="network"></div></section>
+        <section id="view-people"  class="view"><div id="people"></div></section>
+        <section id="view-sql"     class="view"><div id="sql"></div></section>
+        <section id="view-stats"   class="view"><div id="stats"></div></section>
+        <section id="view-docs"    class="view"><div id="docs"></div></section>
+      </main>
+      <div id="sidebar-backdrop" class="sidebar-backdrop" aria-hidden="true"></div>
+    </div>
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>

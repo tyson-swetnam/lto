@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Simple "knowledge map" mark: a teal circle with three gold nodes
+       connected by thin edges. Mirrors the site palette (var(--c-primary)
+       #0d6e6e + var(--c-accent) #d4a017) and works at 16px and 32px. -->
+  <circle cx="32" cy="32" r="30" fill="#0d6e6e"/>
+  <g stroke="#d4a017" stroke-width="2.2" stroke-linecap="round">
+    <line x1="20" y1="22" x2="44" y2="22"/>
+    <line x1="20" y1="22" x2="32" y2="46"/>
+    <line x1="44" y1="22" x2="32" y2="46"/>
+  </g>
+  <g fill="#d4a017">
+    <circle cx="20" cy="22" r="5"/>
+    <circle cx="44" cy="22" r="5"/>
+    <circle cx="32" cy="46" r="5"/>
+  </g>
+</svg>

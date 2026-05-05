@@ -1,0 +1,54 @@
+facility_acronym,facility_id,openalex_institution_id,notes
+# Manual overrides for cases where scripts/seed_people_from_openalex.py
+# cannot resolve a facility to its OpenAlex institution ID automatically.
+#
+# Typical reasons auto-resolution fails:
+#   - Homepage is a subdomain of a larger host (sbclter.msi.ucsb.edu)
+#   - Facility name is too generic ("Hawaiian Islands Sentinel Site")
+#   - Parent university has multiple labs under one institution record
+#   - OpenAlex simply hasn't crawled that small program
+#
+# Either key works as the lookup — facility_acronym (when unique) OR
+# facility_id (when acronym is ambiguous, e.g. all LTER sites share
+# acronym "LTER", and all NERRs share "NERR"). The
+# openalex_institution_id is the short form starting with "I"
+# (https://openalex.org/I123456789 → I123456789).
+#
+# Rows beginning with '#' are comments and skipped by the loader.
+# Blank lines are also ignored.
+#
+# ----------------------------------------------------------------------
+# Confirmed mappings from earlier seed runs. Copy lines below, remove
+# the leading '#', and rerun `seed_people_from_openalex.py
+# --force-refresh` to pick them up.
+# ----------------------------------------------------------------------
+#
+# LTER sites — most are hosted at a university or marine-lab parent.
+# Facility-id values are the sha1-based IDs from `facilities.facility_id`;
+# they're stable across rebuilds.
+#
+# ,a3250b6ee5b1e18e,I5023651,SBC LTER  -> University of California, Santa Barbara (verify ID)
+# ,b6ad40b6cd18f42e,I150209017,CCE LTER -> Scripps Institution of Oceanography
+# ,b93f51cc632277b0,I1338920048,PIE LTER -> Marine Biological Laboratory
+# ,8ae383aa534d8fe9,I1319452651,GCE LTER -> University of Georgia (verify ID)
+# ,b3c4acfee79eb573,I71614873,VCR LTER -> University of Virginia (verify ID)
+# ,50642bf3064308c8,I1265232110,NGA LTER -> University of Alaska Fairbanks (verify ID)
+# ,01ef51b8abf6f751,I114027177,BLE LTER -> University of Texas at Austin (verify ID)
+# ,1496a5fc3a668206,I145311948,FCE LTER -> Florida International University (verify ID)
+# ,d8e10a908168815c,I135310074,NTL LTER -> University of Wisconsin-Madison (verify ID)
+# ,4b897473a3d94b82,I161318765,NES LTER -> Woods Hole Oceanographic Institution / WHOI
+#
+# University-hosted marine labs that didn't auto-resolve:
+# BML,,I25066019,Bodega Marine Lab -> University of California, Davis (verify ID)
+# HMSC,,I57866904,Hatfield Marine Science Center -> Oregon State University (verify ID)
+# HMS,,I97018004,Hopkins Marine Station -> Stanford University
+# Mote,,I2800663845,Mote Marine Lab (may already be in OpenAlex under its own record)
+# URI-GSO,,I68503233,URI Graduate School of Oceanography -> University of Rhode Island (verify ID)
+# RSMAES,,I79576946,Rosenstiel School -> University of Miami (verify ID)
+#
+# Smithsonian-managed sites (roll up under SERC/STRI/NMNH):
+# SMSFP,,I128212801,Smithsonian Marine Station Fort Pierce -> Smithsonian Tropical
+#   (use I52218309 for SERC entries if preferred)
+#
+# === Add your own overrides below this line ===
+# facility_acronym,facility_id,openalex_institution_id,notes

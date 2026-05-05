@@ -1,0 +1,66 @@
+slug,label,aliases,level,url
+ioos,IOOS,U.S. Integrated Ocean Observing System|Integrated Ocean Observing System,us-national,https://ioos.us
+neracoos,NERACOOS,Northeastern Regional Association of Coastal Ocean Observing Systems,us-regional,https://neracoos.org
+maracoos,MARACOOS,Mid-Atlantic Regional Association Coastal Ocean Observing System,us-regional,https://maracoos.org
+secoora,SECOORA,Southeast Coastal Ocean Observing Regional Association,us-regional,https://secoora.org
+gcoos,GCOOS,Gulf of Mexico Coastal Ocean Observing System,us-regional,https://gcoos.org
+caricoos,CARICOOS,Caribbean Coastal Ocean Observing System,us-regional,https://caricoos.org
+sccoos,SCCOOS,Southern California Coastal Ocean Observing System,us-regional,https://sccoos.org
+cencoos,CeNCOOS,Central and Northern California Ocean Observing System,us-regional,https://cencoos.org
+nanoos,NANOOS,Northwest Association of Networked Ocean Observing Systems,us-regional,https://nanoos.org
+aoos,AOOS,Alaska Ocean Observing System,us-regional,https://aoos.org
+pacioos,PacIOOS,Pacific Islands Ocean Observing System,us-regional,https://pacioos.org
+ooi,OOI,Ocean Observatories Initiative,us-national,https://oceanobservatories.org
+lter,LTER,Long-Term Ecological Research Network,us-national,https://lternet.edu
+nerrs,NERRS,National Estuarine Research Reserve System,us-national,https://coast.noaa.gov/nerrs
+seagrant,Sea Grant,National Sea Grant College Program,us-national,https://seagrant.noaa.gov
+neon,NEON,National Ecological Observatory Network,us-national,https://www.neonscience.org
+onc,ONC,Ocean Networks Canada,canada-national,https://www.oceannetworks.ca
+goos,GOOS,Global Ocean Observing System,international,https://goosocean.org
+naml,NAML,National Association of Marine Laboratories,us-national,https://www.naml.org
+iocaribe,IOCARIBE,IOC Sub-Commission for the Caribbean and Adjacent Regions,international,https://iocaribe.ioc-unesco.org
+ltreb,LTREB,Long-term Research in Environmental Biology,us-national,https://www.nsf.gov/funding/opportunities/long-term-research-environmental-biology-ltreb
+nep,NEP,National Estuary Program,us-national,https://www.epa.gov/nep
+nms,NMS,National Marine Sanctuary System,us-national,https://sanctuaries.noaa.gov
+marinegeo,MarineGEO,Tennenbaum Marine Observatories Network / Marine Global Earth Observatory,international,https://marinegeo.si.edu
+sentinel-site,Sentinel Site,NOAA Sentinel Site Program,us-national,https://oceanservice.noaa.gov/sentinel-sites/
+lter-site,LTER Site,Long-Term Ecological Research member site,us-regional,https://lternet.edu/site/
+marine-monument,Marine National Monuments,U.S. Marine National Monument|USFWS Marine National Monuments,us-national,https://www.fws.gov/program/national-wildlife-refuge-system
+nps-coastal,NPS Coastal Units,National Park Service Coastal Units,us-national,https://www.nps.gov/
+epa-region,EPA Regions,U.S. EPA Administrative Regions,us-national,https://www.epa.gov/aboutepa/regional-and-geographic-offices
+nwrs,NWRS,National Wildlife Refuge System,us-national,https://www.fws.gov/program/national-wildlife-refuge-system
+nps-im,NPS-IM,NPS Inventory and Monitoring Program,us-national,https://www.nps.gov/im/
+usfs-rna-ef,USFS-RNA-EF,USFS Research Natural Area / Experimental Forest network,us-national,https://www.fs.usda.gov/research/rmrs/research-natural-areas
+nwps,NWPS,National Wilderness Preservation System,us-national,https://www.wilderness.net
+ramsar,RAMSAR,Ramsar Convention on Wetlands of International Importance,international,https://www.ramsar.org
+ltar,LTAR,USDA-ARS Long-Term Agroecosystem Research network,us-national,https://ltar.ars.usda.gov
+ars-lt-experiments,ARS-LTE,USDA-ARS long-term agricultural experiments,us-national,https://www.ars.usda.gov
+nadp,NADP,National Atmospheric Deposition Program,us-national,https://nadp.slh.wisc.edu
+ameriflux,AmeriFlux,AmeriFlux eddy-covariance flux network,us-national,https://ameriflux.lbl.gov
+arm,ARM,DOE Atmospheric Radiation Measurement user facility,us-national,https://www.arm.gov
+castnet,CASTNET,EPA Clean Air Status and Trends Network,us-national,https://www.epa.gov/castnet
+improve,IMPROVE,Interagency Monitoring of Protected Visual Environments,us-national,http://vista.cira.colostate.edu/improve/
+surfrad,SURFRAD,NOAA Surface Radiation Budget Network,us-national,https://gml.noaa.gov/grad/surfrad/
+aeronet,AERONET,NASA Aerosol Robotic Network,international,https://aeronet.gsfc.nasa.gov
+pandora,Pandora,Pandonia Global Network for atmospheric trace gases,international,https://www.pandonia-global-network.org
+tccon,TCCON,Total Carbon Column Observing Network,international,https://tccon-wiki.caltech.edu
+snotel,SNOTEL,NRCS Snow Telemetry / SNOLITE network,us-national,https://www.nrcs.usda.gov/wps/portal/wcc/home/
+usgs-benchmark-glaciers,USGS Benchmark Glaciers,USGS Benchmark Glacier Project,us-national,https://www.usgs.gov/programs/climate-research-and-development-program/science/usgs-benchmark-glacier-project
+crrel,CRREL,US Army Cold Regions Research and Engineering Laboratory,us-national,https://www.erdc.usace.army.mil/Locations/CRREL
+nwis,NWIS,USGS National Water Information System,us-national,https://waterdata.usgs.gov/nwis
+usgs-webb,USGS-WEBB,USGS Water Energy and Biogeochemical Budgets network,us-national,https://water.usgs.gov/webb/
+usgs-hbn,USGS-HBN,USGS Hydrologic Benchmark Network,us-national,https://water.usgs.gov/nasqan/progdocs/factsheets/hbnfact/hbnfactsheet.html
+gleon,GLEON,Global Lake Ecological Observatory Network,international,https://gleon.org
+mab-us,MAB-US,UNESCO Man and the Biosphere — US Biosphere Reserves,us-national,https://en.unesco.org/biosphere/eu-na
+noaa-gml,NOAA-GML,NOAA Global Monitoring Laboratory baseline observatory network,us-national,https://gml.noaa.gov
+climate-hubs,USDA Climate Hubs,USDA Regional Climate Hubs,us-national,https://www.climatehubs.usda.gov
+scan,SCAN,NRCS Soil Climate Analysis Network,us-national,https://www.nrcs.usda.gov/wps/portal/wcc/home/aboutScan/
+asos,ASOS,Automated Surface Observing System,us-national,https://www.weather.gov/asos
+gaw,WMO-GAW,WMO Global Atmosphere Watch,international,https://gaw.kishou.go.jp
+fluxnet,FLUXNET,Global eddy-covariance synthesis network,international,https://fluxnet.org
+ltrr,LTRR,Laboratory of Tree-Ring Research / ITRDB,us-national,https://ltrr.arizona.edu
+nadp-ntn,NADP-NTN,NADP National Trends Network,us-national,https://nadp.slh.wisc.edu/networks/national-trends-network/
+nadp-mdn,NADP-MDN,NADP Mercury Deposition Network,us-national,https://nadp.slh.wisc.edu/networks/mercury-deposition-network/
+nadp-airmon,NADP-AIRMoN,NADP Atmospheric Integrated Research Monitoring Network,us-national,https://nadp.slh.wisc.edu/networks/atmospheric-integrated-research-monitoring-network/
+nrs,UC-NRS,University of California Natural Reserve System,us-regional,https://ucnrs.org
+ofs,OFS,Organization of Biological Field Stations,us-national,https://www.obfs.org

@@ -1,0 +1,21 @@
+slug,label,holdridge_class
+warm-temperate-moist-forest,Warm temperate moist forest,temperate-moist
+cool-temperate-moist-forest,Cool temperate moist forest,temperate-moist
+warm-temperate-dry-forest,Warm temperate dry forest,temperate-dry
+warm-temperate-thorn-steppe,Warm temperate thorn steppe,temperate-dry
+cool-temperate-wet-forest,Cool temperate wet forest,temperate-wet
+warm-temperate-montane-moist-forest,Warm temperate montane moist forest,montane-moist
+warm-temperate-subalpine-wet-forest,Warm temperate subalpine wet forest,subalpine-wet
+cool-temperate-desert-scrub,Cool temperate desert scrub,desert
+cool-temperate-subalpine-wet-forest,Cool temperate subalpine wet forest,subalpine-wet
+cool-temperate-subalpine-rain-forest,Cool temperate subalpine rain forest,subalpine-rain
+warm-temperate-montane-wet-forest,Warm temperate montane wet forest,montane-wet
+warm-temperate-alpine-rain-tundra,Warm temperate alpine rain tundra,alpine-tundra
+cool-temperate-rain-forest,Cool temperate rain forest,temperate-rain
+warm-temperate-subalpine-rain-forest,Warm temperate subalpine rain forest,subalpine-rain
+subtropical-moist-forest,Subtropical moist forest,subtropical-moist
+subtropical-dry-forest,Subtropical dry forest,subtropical-dry
+subtropical-rain-forest,Subtropical rain forest,subtropical-rain
+boreal-moist-forest,Boreal moist forest,boreal
+boreal-wet-forest,Boreal wet forest,boreal
+polar-desert,Polar desert,polar

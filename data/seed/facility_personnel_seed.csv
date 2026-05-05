@@ -1,0 +1,275 @@
+facility_acronym,facility_name_like,person_name,role,title,is_key_personnel,orcid,openalex_id,email,homepage_url,source,source_url,confidence
+# Seed file for key personnel at top cod-kmap facilities.
+# Populated from public web sources (institutional pages, agency
+# press releases, NSF Award Search, BCO-DMO project metadata) on
+# 2026-04-24. Re-verify before publishing downstream — leadership
+# rotates.
+#
+# Columns:
+#   facility_acronym    exact match on facilities.acronym (preferred)
+#   facility_name_like  ILIKE %…% fallback when acronym is ambiguous
+#                       (all LTER sites share acronym "LTER")
+#   person_name         as shown on the institutional bio page
+#   role                Director | Lead PI | Dean | President & CEO | ...
+#   title               free-text position title
+#   is_key_personnel    true = shown in v_facility_key_personnel
+#   orcid,openalex_id   leave blank — enrich_people_openalex.py fills
+#   email, homepage_url when known from the institution's bio page
+#   source              'facility-webpage' | 'wikipedia' | 'press-release'
+#   source_url          direct URL for verification
+#   confidence          high | medium | low
+#
+# Large US marine research institutions ────────────────────────────────
+WHOI,,Peter de Menocal,President & Director,Eleventh President & Director,true,,,,https://www.whoi.edu/know-your-ocean/explorers/peter-de-menocal/,press-release,https://www.whoi.edu/press-room/news-release/woods-hole-oceanographic-institution-names-new-president-and-director/,high
+SIO,,Meenakshi Wadhwa,Director,"Director, Vice Chancellor for Marine Sciences, Dean of the School of Marine, Earth, and Atmospheric Sciences",true,,,,https://scripps.ucsd.edu/about/leadership,facility-webpage,https://today.ucsd.edu/story/meet-the-new-director-of-scripps-institution-of-oceanography,high
+RSMAES,,Roni Avissar,Dean,Dean of the Rosenstiel School of Marine Atmospheric and Earth Science,true,,,,https://www.earth.miami.edu/,facility-webpage,https://en.wikipedia.org/wiki/Rosenstiel_School_of_Marine,_Atmospheric,_and_Earth_Science,high
+VIMS,,Derek Aday,Dean & Director,Dean and Director of the Virginia Institute of Marine Science,true,,,,https://www.vims.edu/about/leadership_admin/dean/,facility-webpage,https://www.vims.edu/about/leadership_admin/dean/,high
+#
+# NOAA laboratories ────────────────────────────────────────────────────
+PMEL,,Michelle McClure,Director,Director of NOAA Pacific Marine Environmental Laboratory,true,,,,https://www.pmel.noaa.gov/about-pmel/organization,facility-webpage,https://www.pmel.noaa.gov/about-pmel/organization,high
+NCEI,,Deke Arndt,Director,Director of NOAA National Centers for Environmental Information,true,,,,https://www.ncei.noaa.gov/about-us,facility-webpage,https://www.ncei.noaa.gov/about-us,high
+#
+# University marine laboratories ───────────────────────────────────────
+BML,,Andrea C. Alfaro,Director,"Director of the UC Davis Coastal and Marine Sciences Institute (oversees Bodega Marine Laboratory)",true,,,,https://marinescience.ucdavis.edu/bml/about,press-release,https://research.ucdavis.edu/andrea-c-alfaro-appointed-director-of-the-uc-davis-coastal-and-marine-sciences-institute/,high
+FHL,,Megan Dethier,Director,Director of Friday Harbor Laboratories,true,,,,https://fhl.uw.edu/about/people/,facility-webpage,https://environment.uw.edu/faculty/megan-dethier/,high
+HMSC,,Bob Cowen,Director,"Director of Hatfield Marine Science Center; Associate Vice President for Marine Research & Operations",true,,,,https://hmsc.oregonstate.edu/,facility-webpage,https://hmsc.oregonstate.edu/,high
+SkIO,,Clark Alexander,Director,Director of the UGA Skidaway Institute of Oceanography,true,,,,https://www.skio.uga.edu/,facility-webpage,https://www.marsci.uga.edu/directory/skidaway-faculty,high
+#
+# Nonprofit / museum-research hybrids ──────────────────────────────────
+SERC,,William Monty Graham,Director,"Director of the Smithsonian Environmental Research Center (W. M. ""Monty"" Graham)",true,,,,https://serc.si.edu/about-us/staff,press-release,https://www.si.edu/newsdesk/releases/william-monty-graham-named-director-smithsonian-environmental-research-center,high
+Mote,,Michael P. Crosby,President & CEO,President & CEO of Mote Marine Laboratory & Aquarium,true,,,,https://mote.org/about/leadership/,facility-webpage,https://mote.org/about/leadership/,high
+#
+# LTER sites (share acronym "LTER" in DB — use facility_name_like) ─────
+,Santa Barbara Coastal LTER,Bob Miller,Lead PI,Lead Principal Investigator (UCSB Marine Science Institute),true,,,,https://sbclter.msi.ucsb.edu/about/people/,facility-webpage,https://sbclter.msi.ucsb.edu/,high
+,Plum Island LTER,Anne Giblin,Lead PI,"Lead Principal Investigator (MBL Ecosystems Center); Senior Scientist",true,,,,https://pie-lter.mbl.edu/people/anne-giblin/,facility-webpage,https://pie-lter.mbl.edu/people/anne-giblin/,high
+,Georgia Coast LTER,Merryl Alber,Lead PI,Lead Principal Investigator (UGA Department of Marine Sciences),true,,,,https://gce-lter.marsci.uga.edu/public/app/personnel_bios.asp?id=malber,facility-webpage,https://gce-lter.marsci.uga.edu/public/app/personnel_bios.asp?id=malber,high
+,Georgia Coast LTER,Steven Pennings,Co-Lead PI,Co-Lead Principal Investigator (University of Houston),true,,,,,facility-webpage,https://www.bco-dmo.org/project/550511,high
+,Virginia Coast LTER,Karen McGlathery,Lead PI,"Lead Investigator VCR LTER; Sherrell J. Aston Professor of Environmental Sciences; Director of UVA Environmental Institute",true,,,,https://www.vcrlter.virginia.edu/home2/?page_id=324,facility-webpage,https://www.vcrlter.virginia.edu/home2/?page_id=324,high
+,California Current LTER,Katherine Barbeau,Lead PI,Lead Principal Investigator (UCSD Scripps Institution of Oceanography),true,,,,https://ccelter.ucsd.edu/,facility-webpage,https://www.bco-dmo.org/project/2086,high
+,Florida Coast LTER,John Kominoski,Lead PI,Lead Principal Investigator (FIU Institute of Environment),true,,,,https://fcelter.fiu.edu/about/people/index.html,facility-webpage,https://news.fiu.edu/2025/fiu-gets-6.375-million-renewal-from-nsf-for-everglades-research,high
+,Beaufort Lagoon LTER,Ken Dunton,Lead PI,Lead Principal Investigator (UT Austin Marine Science Institute),true,,,,https://ble.lternet.edu/people.html,facility-webpage,https://ble.lternet.edu/about.html,high
+,Beaufort Lagoon LTER,James McClelland,Co-PI,Co-Principal Investigator,true,,,,https://ble.lternet.edu/people.html,facility-webpage,https://ble.lternet.edu/about.html,high
+,Northern Gulf of Alaska LTER,Russ Hopcroft,Lead PI,Lead Principal Investigator (University of Alaska Fairbanks),true,,,,https://nga.lternet.edu/about-us/personnel/,facility-webpage,https://nga.lternet.edu/about-us/personnel/,high
+,Northern Gulf of Alaska LTER,Seth Danielson,Co-PI,Co-Principal Investigator (University of Alaska Fairbanks),true,,,,https://nga.lternet.edu/about-us/personnel/,facility-webpage,https://nga.lternet.edu/about-us/personnel/,high
+#
+# === Second pass (2026-04-24): NOAA Fisheries Science Centers + other high-value facilities ===
+#
+# NOAA Fisheries Science Centers — Directors / Deputies where confirmable
+AFSC,,Robert Foy,Director,"Science and Research Director, Alaska Fisheries Science Center",true,,,,https://www.fisheries.noaa.gov/about/alaska-fisheries-science-center,press-release,https://www.fisheries.noaa.gov/feature-story/noaa-appoints-dr-robert-foy-new-alaska-fisheries-science-center-director,high
+NWFSC,,Jeremy Rusin,Director,"Science Director, Northwest Fisheries Science Center",true,,,,https://www.nwfsc.noaa.gov/about/director.cfm,facility-webpage,https://www.nwfsc.noaa.gov/about/directors_bio.cfm,high
+NEFSC,,Nicole Cabana,Deputy Director,"Deputy Director, Northeast Fisheries Science Center",true,,,,https://www.fisheries.noaa.gov/contact/contact-information-northeast-fisheries-science-center,facility-webpage,https://www.fisheries.noaa.gov/contact/contact-information-northeast-fisheries-science-center,medium
+SWFSC,,John Crofts,Deputy Director,"Deputy Director, Southwest Fisheries Science Center",true,,,,https://www.fisheries.noaa.gov/about/southwest-fisheries-science-center,facility-webpage,https://www.fisheries.noaa.gov/about/southwest-fisheries-science-center,medium
+PIFSC,,Frank Parrish,Division Director,"Ecosystem Sciences Division Director, PIFSC",false,,,,https://origin-apps-pifsc.fisheries.noaa.gov/organization_chart.php,facility-webpage,https://origin-apps-pifsc.fisheries.noaa.gov/organization_chart.php,medium
+PIFSC,,Christofer Boggs,Division Director,"Fisheries Research and Monitoring Division Director, PIFSC",false,,,,https://origin-apps-pifsc.fisheries.noaa.gov/organization_chart.php,facility-webpage,https://origin-apps-pifsc.fisheries.noaa.gov/organization_chart.php,medium
+#
+# Other major facilities
+HIMB,,Megan Donahue,Director,Director of the Hawaiʻi Institute of Marine Biology,true,,,,https://www.himb.hawaii.edu/who-we-are/about/,facility-webpage,https://www.himb.hawaii.edu/who-we-are/about/,high
+OFI,,Erin Bertrand,Acting Director,"Acting Scientific Director and CEO, Dalhousie Ocean Frontier Institute",true,,,,https://www.ofi.ca/about/team,press-release,https://www.dal.ca/news/2026/03/13/canada-foundation-innovation-funding-announcement-infrastructure-systems-climate-ocean-digital-water.html,medium
+#
+# === Third pass (2026-04-24): scraper wins + WebSearch for 0-hit facilities ===
+#
+# IOOS Regional Associations (from scraper review)
+AOOS,,Sheyna Wisdom,Executive Director,"Executive Director, Alaska Ocean Observing System",true,,,,https://aoos.org/,facility-webpage,https://aoos.org/,high
+CARICOOS,,Julio M. Morell,Executive Director,"Executive Director & Principal Investigator, CARICOOS",true,,,,https://caricoos.org/,facility-webpage,https://caricoos.org/,high
+CARICOOS,,Patricia Chardón-Maldonado,Deputy Director,"Deputy and Technical Director; Co-Principal Investigator",true,,,,https://caricoos.org/,facility-webpage,https://caricoos.org/,high
+MARACOOS,,Gerhard F. Kuska,Executive Director,"Executive Director, Mid-Atlantic Regional Association Coastal Ocean Observing System",true,,,,https://maracoos.org/,facility-webpage,https://maracoos.org/,high
+MARACOOS,,Mary Ford,Deputy Director,"Deputy Director, MARACOOS",true,,,,https://maracoos.org/,facility-webpage,https://maracoos.org/,high
+MARACOOS,,Mike Crowley,Technical Director,"Technical Director, MARACOOS",false,,,,https://maracoos.org/,facility-webpage,https://maracoos.org/,medium
+SCCOOS,,Clarissa Anderson,Director,"Director, Southern California Coastal Ocean Observing System; Director, CIMEAS",true,,,,https://sccoos.org/,facility-webpage,https://sccoos.org/,high
+SCCOOS,,Megan Medina,Deputy Director,"Deputy Director, SCCOOS",true,,,,https://sccoos.org/,facility-webpage,https://sccoos.org/,high
+SECOORA,,Debra Hernandez,Executive Director,"Executive Director, Southeast Coastal Ocean Observing Regional Association",true,,,,https://secoora.org/,facility-webpage,https://secoora.org/,high
+SECOORA,,Jennifer Dorton,Deputy Director,"Deputy Director, SECOORA",true,,,,https://secoora.org/,facility-webpage,https://secoora.org/,high
+CeNCOOS,,Alex Harper,Deputy Director,"Deputy Director, Central and Northern California Ocean Observing System",true,,,,https://cencoos.org/,facility-webpage,https://cencoos.org/,high
+PacIOOS,,Melissa Iwamoto,Executive Director,"Director, Pacific Islands Ocean Observing System",true,,,,https://www.pacioos.hawaii.edu/about/,facility-webpage,https://www.pacioos.hawaii.edu/about/,high
+NANOOS,,Jan Newton,Executive Director,"Executive Director, NANOOS; Senior Principal Oceanographer",true,,,,https://www.nanoos.org/about_nanoos/people.php,facility-webpage,https://www.nanoos.org/about_nanoos/people.php,high
+IOOS,,Krisa Arzayus,Acting Director,"Acting Director (Federal), U.S. IOOS Program Office",true,,,,https://ioos.noaa.gov/about/meet-the-ioos-program-office/,press-release,https://ioos.noaa.gov/about/meet-the-ioos-program-office/,high
+#
+# Major research institutes (from scraper + WebSearch)
+SOI,,Jyotika Virmani,Executive Director,"Executive Director, Schmidt Ocean Institute",true,,,,https://schmidtocean.org/person/jyotika-virmani/,facility-webpage,https://schmidtocean.org/,high
+OOI,,Deb Kelley,Director,"Regional Cabled Array Director, Ocean Observatories Initiative",true,,,,https://oceanobservatories.org/,press-release,https://oceanobservatories.org/,high
+HMS,,Fiorenza Micheli,Co-Director,"Co-Director, Hopkins Marine Station",true,,,,https://hopkinsmarinestation.stanford.edu/people,press-release,https://hopkinsmarinestation.stanford.edu/news/fiorenza-micheli-and-jeremy-goldbogen-appointed-co-directors-hopkins-marine-station,medium
+HMS,,Jeremy Goldbogen,Co-Director,"Co-Director, Hopkins Marine Station",true,,,,https://hopkinsmarinestation.stanford.edu/people,press-release,https://hopkinsmarinestation.stanford.edu/news/fiorenza-micheli-and-jeremy-goldbogen-appointed-co-directors-hopkins-marine-station,medium
+MI,,Paul Brett,Interim Director,"Interim Deputy Provost (Marine Institute) and Executive Director (Professional and Continuing Education), Memorial University",true,,,,https://www.mi.mun.ca/,press-release,https://gazette.mun.ca/campus-and-community/leadership-updates-2/,high
+SMSFP,,Valerie Paul,Director,"Director, Smithsonian Marine Station at Fort Pierce",true,,,,https://naturalhistory.si.edu/research/smithsonian-marine-station/staff,facility-webpage,https://naturalhistory.si.edu/research/smithsonian-marine-station,high
+UVI-CMES,,Tyler Smith,Interim Director,"Interim Director, Center for Marine and Environmental Studies, University of the Virgin Islands",true,,,,https://www.uvi.edu/research/center-for-marine-environmental-studies/,press-release,https://www.uvi.edu/news/2026/26_015_noaa_visits_uvi_center_for_marine_environmental_studies.html,high
+#
+# Latin American / Caribbean marine institutes
+IMARPE,,Jorge Manuel Paz Acosta,Executive President,"Executive President (e), Instituto del Mar del Perú",true,,,,https://www.gob.pe/imarpe,facility-webpage,https://www.transparencia.gob.pe/enlaces/pte_transparencia_enlaces.aspx?id_entidad=103,high
+INVEMAR,,Francisco Armando Arias Isaza,Director General,"Director General, INVEMAR; President of POGO 2024-2026",true,,,,https://www.invemar.org.co/,facility-webpage,https://portal.invemar.org.co/test/-/asset_publisher/9Bj14Jg23vnS/content/director-general-de-invemar-nuevo-presidente-del-partnership-of-observation-of-the-global-ocean-pogo,high
+UPRM-DMS,,Ernesto Otero,Director,"Director, UPR-Mayagüez Department of Marine Sciences",true,,,,https://www.uprm.edu/cima/faculty/,facility-webpage,https://www.uprm.edu/cima/,medium
+#
+# Other institutions
+GRC,,Troy A. Dexter,Executive Director,"Executive Director, Gerace Research Centre",true,,,,https://geraceresearchcentre.com/,facility-webpage,https://geraceresearchcentre.com/,high
+WFF,,David Pierce,Director,"Director, NASA Wallops Flight Facility",true,,,,https://www.nasa.gov/wallops,facility-webpage,https://www.nasa.gov/wallops,high
+BML,,Suzanne Olyarnik,Reserve Director,"Director, Bodega Marine Reserve",false,,,,https://marinescience.ucdavis.edu/bml/about,facility-webpage,https://marinescience.ucdavis.edu/bml/about,high
+ERDC-CHL,,Ty V. Wamsley,Director,"Director, USACE ERDC Coastal and Hydraulics Laboratory",true,,,,https://www.erdc.usace.army.mil/Locations/CHL/Leadership/,facility-webpage,https://www.erdc.usace.army.mil/About/Leadership/Bio-Article-View/Article/1756561/dr-ty-v-wamsley-ses/,medium
+#
+# === Round 4 batch 1 (2026-04-24): additional LTER sites + first NERR ===
+#
+# LTER sites — remaining Lead PIs
+,North Temperate Lakes LTER,Emily Stanley,Lead PI,"Lead Principal Investigator, NTL LTER (UW-Madison Center for Limnology)",true,,,,https://lter.limnology.wisc.edu/people,facility-webpage,https://lter.limnology.wisc.edu/,high
+,Northeast US Margin LTER,Heidi M. Sosik,Lead PI,"Lead Principal Investigator, NES LTER (Woods Hole Oceanographic Institution)",true,,,,https://nes-lter.whoi.edu/about/,facility-webpage,https://nes-lter.whoi.edu/,high
+#
+# NERR Reserves — Reserve Managers
+,Grand Bay NERR,Ayesha Gray,Reserve Manager,"Reserve Manager, Grand Bay National Estuarine Research Reserve (Mississippi DMR)",true,,,,https://grandbaynerr.org/,facility-webpage,https://dmr.ms.gov/grand-bay-nerr/,high
+,Great Bay NERR,Cory Riley,Reserve Manager,"Reserve Manager, Great Bay NERR (NH Fish and Game Dept)",true,,,,https://greatbay.org/,facility-webpage,https://www.wildlife.nh.gov/sites/g/files/ehbemt746/files/inline-images/great-bay-mgt-plan.pdf,high
+,Jacques Cousteau NERR,Mike De Luca,Executive Director,"Provides executive management & leadership for integrated programs including JC NERR (Rutgers)",true,,,,https://jcnerr.org/who-we-are/our-team/,facility-webpage,https://jcnerr.org/who-we-are/our-team/,high
+,Jacques Cousteau NERR,Andrea Habeck,Assistant Manager,"Assistant Manager, Jacques Cousteau NERR (Rutgers University)",false,,,,https://jcnerr.org/who-we-are/our-team/,facility-webpage,https://jcnerr.org/who-we-are/our-team/,high
+,Jobos Bay NERR,Aitza Pabón Valentin,Director,"Director, Jobos Bay NERR (Puerto Rico DRNA); 9+ years in role",true,,,apabon@drna.pr.gov,https://www.drna.pr.gov/jbnerr/,facility-webpage,https://www.drna.pr.gov/jbnerr/,high
+,Lake Superior NERR,Ralph Garono,Reserve Manager,"Reserve Manager, Lake Superior NERR (UW-Extension)",true,,,,https://lakesuperiornerr.org/,facility-webpage,https://www.superiortelegram.com/news/garono-has-big-plans-for-lake-superior-nerr,medium
+,Narragansett Bay NERR,Caitlin Chaffee,Reserve Manager,"Chief, Narragansett Bay NERR (RI DEM)",true,,,,http://nbnerr.org/about/,facility-webpage,https://www.nbep.org/steering-committee,high
+,Old Woman Creek NERR,Janice Kerns,Reserve Manager,"Reserve Manager, Old Woman Creek NERR (Ohio DNR)",true,,,,https://coast.noaa.gov/nerrs/reserves/old-woman-creek.html,facility-webpage,https://www.nerra.org/doing-more-with-less-in-ohio/,high
+,Padilla Bay NERR,Jude Apple,Reserve Manager,"Project/Reserve Manager, Padilla Bay NERR (WA Dept of Ecology)",true,,,japple@padillabay.gov,https://ecology.wa.gov/water-shorelines/shoreline-coastal-management/padilla-bay-reserve,facility-webpage,https://ecology.wa.gov/water-shorelines/shoreline-coastal-management/padilla-bay-reserve,medium
+,Sapelo Island NERR,Fred Hay,Reserve Manager,"Island Manager, Sapelo Island NERR (Georgia DNR)",true,,,,https://sapelonerr.org/about-us/reserve-staff/,facility-webpage,https://sapelonerr.org/about-us/staff/,high
+,South Slough NERR,Patricia Fox,Reserve Manager,"Reserve Manager, South Slough NERR (Oregon DSL)",true,,,Patricia.Fox@dsl.oregon.gov,https://www.oregon.gov/dsl/ss/pages/staff.aspx,facility-webpage,https://www.oregon.gov/dsl/ss/pages/staff.aspx,high
+,Tijuana River NERR,Chris Peregrin,Reserve Manager,"Manager, Tijuana River NERR (CA State Parks, Senior Environmental Scientist)",true,,,,https://tijuanaestuary.org/about/our-team/,facility-webpage,https://tijuanaestuary.org/about/our-team/,high
+,Waquoit Bay NERR,Tonna-Marie Rogers,Reserve Manager,"Reserve Manager, Waquoit Bay NERR (Massachusetts DCR)",true,,,,https://waquoitbayreserve.org/about/staff,facility-webpage,https://waquoitbayreserve.org/about/staff,high
+,Weeks Bay NERR,Angela Underwood,Reserve Manager,"Manager, Weeks Bay NERR (Alabama DCNR)",true,,,,https://www.outdooralabama.com/lands/weeks-bay-reserve,facility-webpage,https://www.nerra.org/reserve/weeks-bay/,medium
+,Wells NERR,Paul Dest,Executive Director,"Executive Director, Wells Reserve at Laudholm (Wells NERR Maine)",true,,,,https://wellsreserve.org/about-us/people/paul-dest,facility-webpage,https://wellsreserve.org/about-us/people/paul-dest,high
+#
+# NEP programs (EPA National Estuary Program)
+,Casco Bay Estuary Partnership NEP,Curtis Bohlen,Executive Director,"Executive Director, Casco Bay Estuary Partnership (USM Cutler Institute)",true,,,curtis.bohlen@maine.edu,https://www.cascobayestuary.org/about-us/staff/,facility-webpage,https://www.cascobayestuary.org/about-us/staff/,high
+,Long Island Sound Study NEP,Mark Tedesco,Director,"Director, EPA Long Island Sound Office (LIS Study)",true,,,,https://longislandsoundstudy.net/about/contact-us/core-program-staff-2/,facility-webpage,https://longislandsoundstudy.net/about/contact-us/core-program-staff-2/,high
+,Tampa Bay Estuary Program,Ed Sherwood,Executive Director,"Executive Director, Tampa Bay Estuary Program",true,,,,https://tbep.org/about-tbep/our-team/,facility-webpage,https://tbep.org/about-tbep/our-team/,high
+,Mobile Bay National Estuary Program,Jason Kudulis,Director,"Director, Mobile Bay National Estuary Program (effective Feb 1 2026)",true,,,,https://www.mobilebaynep.com/,press-release,https://yellowhammernews.com/mobile-bay-national-estuary-program-names-jason-kudulis-as-new-director/,high
+,San Francisco Estuary Partnership,Caitlin Sweeney,Director,"Director, San Francisco Estuary Partnership",true,,,,https://www.sfestuary.org/staff/,facility-webpage,https://www.sfestuary.org/staff/,high
+,Barataria-Terrebonne National Estuary Program,Michelle Felterman,Deputy Director,"Deputy Director, Barataria-Terrebonne National Estuary Program (BTNEP)",true,,,,https://btnep.org/,press-release,https://btnep.org/news-and-events/,medium
+,Barnegat Bay Partnership,Andrew McGowan,Director,"Director, Barnegat Bay Partnership (Ocean County College)",true,,,,https://barnegatbaypartnership.org/,facility-webpage,https://dep.nj.gov/newsrel/26_0016/,high
+,Buzzards Bay,Joe Costa,Executive Director,"Executive Director, Buzzards Bay National Estuary Program",true,,,,https://buzzardsbay.org/our-program/staff-profiles/,facility-webpage,https://buzzardsbay.org/our-program/contact-us/,high
+,Delaware Center for the Inland Bays,Christophe Tulou,Executive Director,"Executive Director, Delaware Center for the Inland Bays NEP",true,,,ctulou@inlandbays.org,https://inlandbays.org/staff/christophe-tulou-executive-director/,facility-webpage,https://inlandbays.org/staff/christophe-tulou-executive-director/,high
+,Galveston Bay Estuary Program,Lisa Marshall,Director,"Program Manager/Director, Galveston Bay Estuary Program (TCEQ)",true,,,,https://gbep.texas.gov/,facility-webpage,https://www.tceq.texas.gov/gis/gbep-implementation-tracking-viewer,high
+,Indian River Lagoon National Estuary Program,Duane De Freese,Executive Director,"Executive Director, IRL Council & Indian River Lagoon National Estuary Program",true,,,,https://onelagoon.org/,facility-webpage,https://onelagoon.org/,high
+,Lower Columbia Estuary Partnership,Elaine Placido,Executive Director,"Executive Director, Lower Columbia Estuary Partnership",true,,,,https://www.estuarypartnership.org/who-we-are/our-staff-board,facility-webpage,https://www.columbian.com/news/2026/feb/17/excellent-return-on-investment-clark-countys-state-legislators-urge-legislature-to-restore-funding-for-lower-columbia-estuary-partnership/,high
+,Maryland Coastal Bays Program,Kevin Smith,Executive Director,"Executive Director, Maryland Coastal Bays Program",true,,,,https://mdcoastalbays.org/,facility-webpage,https://www.facebook.com/coastalbays/,high
+,New York-New Jersey Harbor Estuary Program,Robert Pirani,Director,"Program Director, NY-NJ Harbor & Estuary Program (Hudson River Foundation)",true,,,,https://hudsonriver.org/estuary-program/,facility-webpage,https://hudsonriver.org/estuary-program/,medium
+,Morro Bay,Ann Kitajima,Executive Director,"Executive Director, Morro Bay National Estuary Program (since Jan 31 2026)",true,,,,https://www.mbnep.org/our-team/,press-release,https://www.mbnep.org/2026/03/02/executive-director-transition/,high
+,Partnership for the Delaware Estuary,Kathy Klein,Executive Director,"Executive Director, Partnership for the Delaware Estuary",true,,,,https://delawareestuary.org/about-pde/,facility-webpage,https://delawareestuary.org/about-pde/board-of-directors/,high
+,Puget Sound Partnership,Mindy Roberts,Executive Director,"Executive Director, Puget Sound Partnership (appointed March 2026 by Gov. Ferguson)",true,,,,https://psp.wa.gov/staff.php,press-release,https://governor.wa.gov/news/2026/governor-ferguson-appoints-mindy-roberts-serve-puget-sound-partnership-executive-director,high
+,Peconic Estuary,Joyce Novak,Executive Director,"Executive Director & Program Director, Peconic Estuary Partnership",true,,,,https://www.peconicestuary.org/,facility-webpage,https://neiwpcc.org/wp-content/uploads/2018/06/Novak-Bio.pdf,high
+,Piscataqua Region Estuaries Partnership,Kalle Matso,Director,"Director, Piscataqua Region Estuaries Partnership (UNH)",true,,,,https://prepestuaries.org/who-we-are/staff-contacts/,facility-webpage,https://prepestuaries.org/who-we-are/staff-contacts/,high
+,Santa Monica Bay,Tom Ford,Executive Director,"NEP Director & CEO, The Bay Foundation (Santa Monica Bay NEP)",true,,,,https://www.smbnep.org/who-we-are/,facility-webpage,https://www.santamonicabay.org/,high
+,Sarasota Bay Estuary Program,Ryan Gandy,Executive Director,"Executive Director, Sarasota Bay Estuary Program (since Nov 17 2025)",true,,,,https://sarasotabay.org/about-sbep/staff/,press-release,https://sarasotabay.org/about-sbep/staff/,high
+,Tillamook Estuaries Partnership,Kristi Foster,Executive Director,"Executive Director, Tillamook Estuaries Partnership",true,,,,https://www.tbnep.org/contacts-3/,facility-webpage,https://www.tillamookheadlightherald.com/news/tep-monitors-conserves-and-repairs-tillamook-s-waters/article_b9f0f4a4-6471-11ee-9ab8-cf78e1013d0c.html,high
+#
+# Marine National Sanctuaries — Superintendents
+,Florida Keys Marine Sanctuary,David Burke,Superintendent,"Acting Superintendent, Florida Keys National Marine Sanctuary",true,,,,https://floridakeys.noaa.gov/about/staff.html,facility-webpage,https://floridakeys.noaa.gov/about/staff.html,high
+,Monitor Marine Sanctuary,Paul Orlando,Superintendent,"Superintendent, Monitor & Mallows Bay-Potomac River National Marine Sanctuaries",true,,,Paul.Orlando@noaa.gov,https://monitor.noaa.gov/about/contact.html,facility-webpage,https://monitor.noaa.gov/about/contact.html,high
+,Mallows Bay-Potomac River Marine Sanctuary,Paul Orlando,Superintendent,"Superintendent, Mallows Bay-Potomac River & Monitor National Marine Sanctuaries",true,,,Paul.Orlando@noaa.gov,https://monitor.noaa.gov/about/contact.html,facility-webpage,https://monitor.noaa.gov/about/contact.html,high
+,Stellwagen Bank Marine Sanctuary,Peter DeCola,Superintendent,"Superintendent, Stellwagen Bank National Marine Sanctuary (since 2018)",true,,,Pete.Decola@noaa.gov,https://stellwagen.noaa.gov/about/staff.html,facility-webpage,https://sanctuaries.noaa.gov/news/sep18/peter-decola-stellwagen-bank-national-marine-sanctuary-superintendent.html,high
+#
+# NPS National Seashores — Superintendents
+,Cape Cod National Seashore,Jennifer Flynn,Superintendent,"Superintendent, Cape Cod National Seashore (since Nov 2023)",true,,,,https://www.nps.gov/caco/learn/management/staffandoffices.htm,press-release,https://www.nps.gov/caco/learn/news/jennifer-flynn-named-superintendent-of-cape-cod-national-seashore.htm,high
+,Cape Hatteras National Seashore,Dave Hallac,Superintendent,"Superintendent, Outer Banks Group (Cape Hatteras NS + Wright Brothers + Fort Raleigh)",true,,,,https://www.nps.gov/caha/learn/management/staff.htm,press-release,https://www.nps.gov/caha/learn/news/dave-hallac-selected-as-new-superintendent-for-outer-banks-group.htm,high
+,Point Reyes National Seashore,Anne Altman,Superintendent,"Superintendent, Point Reyes National Seashore (permanent appointment Sep 2024)",true,,,,https://www.nps.gov/pore/learn/management/staffandoffices.htm,press-release,https://www.nps.gov/pore/learn/news/newsreleases-20240912-anne-altman-selected-as-superintendent-of-point-reyes-national-seashore.htm,medium
+#
+# NOAA labs
+AOML,,Molly Baringer,Acting Director,"Acting Director, NOAA Atlantic Oceanographic and Meteorological Laboratory",true,,,,https://www.aoml.noaa.gov/about-aoml/,facility-webpage,https://www.aoml.noaa.gov/people/molly-baringer/,medium
+,Chesapeake Bay Virginia NERR,William Reay,Director,"Director, CBNERR-VA (Research Professor, Virginia Institute of Marine Science)",true,,,,https://www.vims.edu/cbnerr/about/people/reay_w.php,facility-webpage,https://www.vims.edu/cbnerr/about/people/reay_w.php,high
+#
+# USGS science centers
+WHCMSC,,Brita J. Jessen,Director,"Center Director, USGS Woods Hole Coastal and Marine Science Center",true,,,,https://www.usgs.gov/centers/whcmsc/about,facility-webpage,https://www.usgs.gov/programs/cmhrp/news/new-director-woods-hole-coastal-and-marine-science-center,high
+#
+# NERR reserves — additional wins
+,Elkhorn Slough NERR,Dave Feliz,Reserve Manager,"Reserve Manager, Elkhorn Slough NERR (CA Dept Fish and Wildlife)",true,,,,https://coast.noaa.gov/nerrs/reserves/elkhorn-slough.html,facility-webpage,https://coast.noaa.gov/data/czm/media/elkhorn-nerr.pdf,high
+,Elkhorn Slough NERR,Kerstin Wasson,Research Coordinator,"Research Coordinator, Elkhorn Slough NERR; Adjunct Faculty UC Santa Cruz",false,,,,https://wasson.eeb.ucsc.edu/people/kerstin-wasson/,facility-webpage,https://news.ucsc.edu/2018/05/kerstin-wasson-award.html,high
+,Kachemak Bay NERR,Katherine Schake,Reserve Manager,"Reserve Manager, Kachemak Bay NERR (UAA Alaska Center for Conservation Science) since 2023",true,,,,https://kachemakbayreserve.org/about/kachemak-bay-reserve/,facility-webpage,https://www.homernews.com/news/proposed-funding-cuts-threaten-research-reserve/,high
+,Rookery Bay NERR,Keith Laakkonen,Director,"Director, Rookery Bay Research Reserve (Florida DEP); Past President NERRA",true,,,,https://rookerybay.org/who-we-are/staff-directory/,facility-webpage,https://rookerybay.org/rookery-bay-news/rookery-bays-keith-laakkonen-selected-as-new-president-of-national-reserve-association/,high
+#
+# Canadian DFO stations + international
+,St. Andrews Biological,Thomas W. Sephton,Director,"Director, St. Andrews Biological Station (DFO Maritimes Region)",true,,,,https://www.mar.dfo-mpo.gc.ca/en/st-andrews-biological-station,facility-webpage,https://www.mar.dfo-mpo.gc.ca/en/st-andrews-biological-station,high
+IFOP,,Gonzalo Pereira Puchy,Executive Director,"Director Ejecutivo, Instituto de Fomento Pesquero (IFOP Chile)",true,,,,https://www.ifop.cl/en/quienes-somos/nuestra-organizacion/,facility-webpage,https://www.canal2linares.cl/2026/03/ifop-y-el-instituto-del-mar-de-flandes.html,high
+#
+# NOAA program offices (continued)
+NDBC,,William Burnett,Director,"Director, NOAA National Data Buoy Center (since Jan 2021)",true,,,,https://www.ndbc.noaa.gov/director.shtml,facility-webpage,https://www.weather.gov/news/ndbc-burnett-012121,high
+CO-OPS,,Marian Westley,Director,"Director, NOAA Center for Operational Oceanographic Products and Services",true,,,,https://tidesandcurrents.noaa.gov/director-coops.html,facility-webpage,https://tidesandcurrents.noaa.gov/director-coops.html,high
+OCM,,Jeffrey Payne,Director,"Senior Executive Service Director, NOAA Office for Coastal Management",true,,,,https://coast.noaa.gov/about/director/,facility-webpage,https://coast.noaa.gov/about/director/,high
+#
+# Research institutions + foundations
+ECOSUR,,Antonio Saldívar Moreno,Director General,"Director General, El Colegio de la Frontera Sur (term 2023-2026)",true,,,,https://www.ecosur.mx/organigrama/,press-release,https://www.ecosur.mx/asume-antonio-saldivar-moreno-la-direccion-general-del-colegio-de-la-frontera-sur/,high
+STRI,,Joshua Tewksbury,Director,"Director, Smithsonian Tropical Research Institute",true,,,,https://stri.si.edu/about-us,facility-webpage,https://stri.si.edu/story/stri-special-events-march-2026,high
+Packard,,Nancy Lindborg,President & CEO,"President & CEO, The David and Lucile Packard Foundation (since Aug 2020)",true,,,,https://www.packard.org/about/our-people/,press-release,https://www.alliancemagazine.org/blog/packard-foundation-announce-nancy-lindborg-as-president-and-ceo/,high
+Moore,,Aileen S. Lee,President,"President, Gordon and Betty Moore Foundation (effective Jan 1 2026)",true,,,,https://www.moore.org/people,press-release,https://www.businesswire.com/news/home/20251209300260/en/Aileen-S-Lee-Named-President-of-the-Gordon-and-Betty-Moore-Foundation,high
+MBL,,Nipam Patel,Director,"Director, Marine Biological Laboratory (since 2018)",true,,,,https://www.mbl.edu/about/leadership/nipam-patel-director,facility-webpage,https://www.mbl.edu/about/leadership/nipam-patel-director,high
+#
+# Marine Sanctuaries (more)
+,Gray's Reef Marine Sanctuary,Stan Rogers,Superintendent,"Superintendent, Gray's Reef National Marine Sanctuary (since 2019)",true,,,,https://graysreef.noaa.gov/about/staff.html,facility-webpage,https://graysreef.noaa.gov/about/staff.html,high
+#
+# Major nonprofits / aquariums / research labs
+,Surfrider,Chad Nelsen,CEO,"CEO, Surfrider Foundation (since 2014)",true,,,,https://www.surfrider.org/our-team/staff/chad-nelsen,facility-webpage,https://www.surfrider.org/our-team/staff/chad-nelsen,high
+,The Nature Conservancy,Lizzie McLeod,Global Ocean Director,"Global Ocean Director, The Nature Conservancy",true,,,,https://www.nature.org/en-us/about-us/who-we-are/our-people/lizzie-mcleod/,facility-webpage,https://www.nature.org/en-us/about-us/who-we-are/our-people/lizzie-mcleod/,high
+,Environmental Defense Fund,Eric Schwaab,Senior VP,"Senior Vice President, Oceans, Environmental Defense Fund",true,,,,https://www.edf.org/people/sustainable-fishing-experts,facility-webpage,https://www.seafoodsource.com/news/premium/environmental-defense-fund-picks-eric-schwaab-to-lead-oceans-program,high
+ONC,,Kate Moran,President & CEO,"President & CEO, Ocean Networks Canada (UVic, since 2012); Officer of the Order of Canada",true,,,,https://www.oceannetworks.ca/about-onc/our-people/leadership/,facility-webpage,https://www.oceannetworks.ca/news-and-stories/stories/onc-president-and-ceo-appointed-as-officer-of-the-order-of-canada/,high
+NEAq,,Vikki N. Spruill,President & CEO,"President & CEO, New England Aquarium",true,,,,https://www.neaq.org/about-us/leadership/,facility-webpage,https://www.neaq.org/person/vikki-n-spruill/,high
+,Bigelow Laboratory for Ocean Sciences,Deborah Bronk,President & CEO,"President & CEO, Bigelow Laboratory for Ocean Sciences (since Feb 2018)",true,,,,https://www.bigelow.org/about/people/,facility-webpage,https://www.bigelow.org/about/governance/,high
+DISL,,John Valentine,Executive Director,"Executive Director, Dauphin Island Sea Lab (since Jun 2011)",true,,,,https://www.disl.edu/who-we-are/,facility-webpage,https://www.disl.edu/about/,high
+#
+# EPA Regional Administrators (Trump admin appointments, 2025-)
+EPA-R1,,Mark Sanborn,Regional Administrator,"Regional Administrator, EPA New England (Region 1)",true,,,,https://www.epa.gov/aboutepa/about-administrator-epa-new-england-region-1,press-release,https://www.epa.gov/newsreleases/epa-announces-appointment-mark-sanborn-regional-administrator-new-england,high
+EPA-R2,,Michael Martucci,Regional Administrator,"Regional Administrator, EPA Region 2 (NY/NJ/PR/VI)",true,,,,https://www.epa.gov/aboutepa/about-administrator-epas-region-2-office-new-york,press-release,https://www.epa.gov/newsreleases/epa-announces-appointment-mike-martucci-region-2-administrator,high
+EPA-R3,,Amy Van Blarcom-Lackey,Regional Administrator,"Regional Administrator, EPA Mid-Atlantic (Region 3)",true,,,,https://www.epa.gov/aboutepa/epa-region-3-mid-atlantic,press-release,https://www.epa.gov/newsreleases/epa-announces-appointment-amy-van-blarcom-lackey-regional-administrator-mid-atlantic,high
+EPA-R4,,Kevin J. McOmber,Regional Administrator,"Regional Administrator, EPA Southeast (Region 4) (Feb 2025)",true,,,,https://www.epa.gov/aboutepa/about-administrator-epas-southeast-region-region-4,press-release,https://www.epa.gov/newsreleases/kevin-j-mcomber-appointed-lead-epas-southeast-region,high
+EPA-R5,,Anne M. Vogel,Regional Administrator,"Regional Administrator, EPA Region 5 Great Lakes (April 2025)",true,,,,https://www.epa.gov/aboutepa/about-administrator-epa-region-5-office-chicago,press-release,https://www.epa.gov/newsreleases/anne-vogel-appointed-epa-region-5-administrator,high
+EPA-R6,,Scott Mason IV,Regional Administrator,"Regional Administrator, EPA South Central (Region 6) (Jan 2025)",true,,,,https://www.epa.gov/aboutepa/regional-administrator-epas-south-central-region-region-6,press-release,https://www.epa.gov/newsreleases/president-trump-appoints-scott-mason-iv-epa-south-central-regional-administrator,high
+EPA-R9,,Josh F.W. Cook,Regional Administrator,"Regional Administrator, EPA Pacific Southwest (Region 9)",true,,,,https://www.epa.gov/aboutepa/epa-region-9-pacific-southwest,press-release,https://www.epa.gov/newsreleases/josh-fw-cook-appointed-epa-pacific-southwest-regional-administrator,medium
+EPA-R10,,Emma Pokon,Regional Administrator,"Regional Administrator, EPA Pacific Northwest (Region 10) (Feb 2025)",true,,,,https://www.epa.gov/aboutepa/about-administrator-epas-region-10,press-release,https://www.epa.gov/newsreleases/emma-pokon-appointed-epa-region-10-administrator,high
+EPA-R7,,Jim Macy,Regional Administrator,"Regional Administrator, EPA Region 7 (IA/KS/MO/NE) (Feb 2025)",true,,,,https://www.epa.gov/aboutepa/about-regional-administrator-epas-region-7-office-kansas-city,press-release,https://www.epa.gov/newsreleases/jim-macy-appointed-epa-region-7-administrator,high
+EPA-R8,,Cyrus M. Western,Regional Administrator,"Regional Administrator, EPA Mountains and Plains (Region 8) (Mar 2025)",true,,,,https://www.epa.gov/aboutepa/about-administrator-epas-mountains-and-plains-region-region-8,press-release,https://www.epa.gov/newsreleases/cyrus-m-western-appointed-epa-mountains-and-plains-regional-administrator,high
+ACESD,,Wayne Munns,Division Director,"Director, EPA Atlantic Coastal Environmental Sciences Division (ORD/CEMM)",true,,,,https://www.epa.gov/aboutepa/about-atlantic-coastal-environmental-sciences-division,facility-webpage,https://www.researchgate.net/profile/Wayne-Munns-Jr,high
+GLSC,,Kurt Newman,Director,"Director, USGS Great Lakes Science Center (since Aug 2024)",true,,,,https://www.usgs.gov/centers/great-lakes-science-center,facility-webpage,https://www.usgs.gov/staff-profiles/kurt-r-newman,high
+#
+# Additional Canadian marine science centres
+BMSC,,Sean Rogers,Director,"Director, Bamfield Marine Sciences Centre (since July 2018)",true,,,,https://bamfieldmsc.com/bmsc-overview/staff-directory/,facility-webpage,https://bamfieldmsc.com/bmsc-overview/staff-directory/,high
+,Huntsman Marine Science Centre,Chris Bridger,Executive Director,"Executive Director, Huntsman Marine Science Centre (New Brunswick)",true,,,,https://www.huntsmanmarine.ca/huntsmanoverview,facility-webpage,https://www.huntsmanmarine.ca,high
+IOS,,Andrew Thomson,Regional Director Science,"Regional Director Science, Institute of Ocean Sciences (DFO Pacific)",true,,,,https://www.pac.dfo-mpo.gc.ca/science/facilities-installations/ios-ism/peopleios-gensism-eng.html,facility-webpage,https://www.pac.dfo-mpo.gc.ca/science/facilities-installations/ios-ism/peopleios-gensism-eng.html,medium
+#
+# Galápagos / Latin America
+CDF,,Rakan A. Zahawi,Executive Director,"Executive Director, Charles Darwin Foundation (Galápagos); since March 2021",true,,,,https://www.darwinfoundation.org/en/about/our-people/management-team/,press-release,https://www.darwinfoundation.org/en/news/all-news-stories/the-charles-darwin-foundation-appoints-researcher-arturo-izurieta-valery-as-new-executive-director/,medium
+#
+# US state agencies (coastal management)
+FWC,,Roger Young,Executive Director,"Executive Director, Florida Fish and Wildlife Conservation Commission",true,,,,https://myfwc.com/contact/fwc-office/senior-staff/executive-director/,press-release,https://myfwc.com/news/all-news/director-young-com-523/,high
+CPRA,,Michael H. Hare,Executive Director,"Executive Director, Louisiana Coastal Protection and Restoration Authority (since July 2025)",true,,,,https://coastal.la.gov/executive-leadership-team/,press-release,https://gov.louisiana.gov/news/4882,high
+#
+# Sentinel sites
+,Chesapeake Bay Sentinel Site,Taryn Sudol,Coordinator,"Coordinator, Chesapeake Bay Sentinel Site Cooperative (Maryland Sea Grant)",true,,,sudol@mdsg.umd.edu,https://chesapeakebayssc.org/contact-us/,facility-webpage,https://chesapeakebayssc.org/contact-us/,high
+#
+# Additional Latin American / Caribbean
+,MarViva,Katherine Arroyo-Arce,Executive Director,"Executive Director, Fundación MarViva (since Jan 2024)",true,,,,https://marviva.net/en/team/,facility-webpage,https://www.linkedin.com/in/katherine-arroyo-arce-840b5376/,high
+,Fondation pour la Protection de la Biodiversité Marine,Jean Wiener,Executive Director,"Founder & Executive Director, FoProBiM Haiti; 2025 CBF BEACH Award",true,,,,https://www.foprobim.org/,facility-webpage,https://www.goldmanprize.org/blog/prize-winners-today-jean-wiener-champions-sustainable-development-and-marine-conservation-in-haiti/,high
+CICY-UCIA,,Manuel Luis Robert Díaz,Director General,"Director General, Centro de Investigación Científica de Yucatán",true,,,dirgen@cicy.mx,https://www.cicy.mx/quienes-somos,facility-webpage,https://www.cicy.mx/,medium
+#
+# Smithsonian MarineGEO (new Director 2026)
+,GCREW MarineGEO,Steve Canty,Director,"Director, Smithsonian MarineGEO network (succeeding Emmett Duffy in 2026)",true,,,,https://marinegeo.si.edu/about-us/who-we-are,press-release,https://sercblog.si.edu/celebrating-the-retirement-of-marinegeos-founding-director-emmett-duffy/,high
+,Gulf Coast MarineGEO,Steve Canty,Director,"Director, MarineGEO Network (covers Gulf Coast site)",true,,,,https://marinegeo.si.edu/,press-release,https://sercblog.si.edu/celebrating-the-retirement-of-marinegeos-founding-director-emmett-duffy/,high
+,Indian River Lagoon MarineGEO,Steve Canty,Director,"Director, MarineGEO Network",true,,,,https://marinegeo.si.edu/,press-release,https://sercblog.si.edu/celebrating-the-retirement-of-marinegeos-founding-director-emmett-duffy/,high
+,San Francisco Bay MarineGEO,Steve Canty,Director,"Director, MarineGEO Network",true,,,,https://marinegeo.si.edu/,press-release,https://sercblog.si.edu/celebrating-the-retirement-of-marinegeos-founding-director-emmett-duffy/,high
+#
+# Massachusetts CZM
+,Massachusetts Office of Coastal Zone Management,Alison Brizius,Director,"Assistant Secretary & Director, Massachusetts CZM (Healey-Driscoll admin)",true,,,,https://www.mass.gov/info-details/czm-staff-directory,press-release,https://www.mass.gov/news/healey-driscoll-administration-names-alison-brizius-new-coastal-zone-management-director,high
+#
+# More state agencies
+,Maryland Department of Natural Resources,Natalie Snider,Director,"Director, Chesapeake and Coastal Service, Maryland DNR",true,,,,https://dnr.maryland.gov/ccs/pages/aboutus.aspx,facility-webpage,https://www.jobapscloud.com/MD/sup/bulpreview.asp?R1=24&R2=005483&R3=0022,high
+,Florida Department of Environmental Protection,Alex Reed,Director,"Director, Office of Resilience and Coastal Protection, Florida DEP (since Nov 2019)",true,,,,https://floridadep.gov/rcp,facility-webpage,https://floridadep.gov/rcp,high
+,California Ocean Protection Council,Jenn Eckerle,Executive Director,"Executive Director, California Ocean Protection Council; Deputy Secretary for Oceans and Coastal Policy",true,,,,https://opc.ca.gov/leadership-and-staff/,facility-webpage,https://resources.ca.gov/About-Us/Who-We-Are/Deputy-Secretary-for-Oceans-and-Coastal-Policy-and-Director-of-the-Ocean-Protection-Council,high
+,Texas General Land Office,Dawn Buckingham,Commissioner,"Texas Land Commissioner (oversees GLO Coastal Management Program)",true,,,,https://www.glo.texas.gov/about-glo/about-the-commissioner,facility-webpage,https://www.glo.texas.gov/about-glo/about-the-commissioner,high
+,Chesapeake Bay Maryland NERR,Kyle Derby,Research Coordinator,"Research Coordinator, Chesapeake Bay NERR-MD (Maryland DNR)",false,,,kyle.derby@maryland.gov,https://dnr.maryland.gov/waters/cbnerr/Pages/default.aspx,facility-webpage,https://dnr.maryland.gov/waters/cbnerr/Pages/default.aspx,high
+#
+# Final international batch
+SHOA,,Carlos Zúñiga,Director,"Director, Servicio Hidrográfico y Oceanográfico de la Armada (Chile); VP IOC-UNESCO 2025-2027",true,,,,https://www.shoa.cl/,facility-webpage,https://www.chile.gob.cl/unesco/noticias/director-del-servicio-hidrografico-y-oceanografico-de-la-armada-shoa,high
+CESIMAR,,Augusto César Crespi Abril,Director,"Director, Centro para el Estudio de Sistemas Marinos (CESIMAR-CENPAT CONICET)",true,,,,https://cenpat.conicet.gov.ar/cesimar/,facility-webpage,https://bicyt.conicet.gov.ar/fichas/u/cesimar-cenpat,high
+,Instituto de Oceanografia da Universidade Federal,Osmar Olinto Möller Jr.,Director,"Director, Instituto de Oceanografia FURG",true,,,,https://www.furg.br/,facility-webpage,https://www.furg.br/noticias/noticias-arquivo/furg-28786,medium
+,University of Belize Environmental Research Institute,Jake Snaddon,Director,"Director, University of Belize Environmental Research Institute (UB-ERI)",true,,,,https://www.uberibz.org/about-us,facility-webpage,https://www.uberibz.org/about-us,high
+,UWI Discovery Bay Marine Laboratory,Dale Webber,Director,"Director, Centre for Marine Sciences (UWI Mona); oversees Discovery Bay Marine Lab",true,,,,https://www.mona.uwi.edu/cms/dbml.htm,facility-webpage,https://jamaica-gleaner.com/article/news/20260319/uwi-discovery-bay-lab-launches-marine-attraction,high
+ARAP,,Gerardo Irimia Arosemena,Administrator General,"Administrador General, Autoridad de los Recursos Acuáticos de Panamá (since Oct 2025)",true,,,,https://arap.gob.pa/,facility-webpage,https://vlex.com.pa/source/gaceta-oficial-panama-2011/issue/2025/10/20,high
+,Centro de Investigaciones de Biología Marina,Gladys Rosado Jiménez,Director,"Director, Centro de Investigaciones de Biología Marina (CIBIMA-UASD)",true,,,biologia@uasd.edu.do,https://uasd.edu.do/facultad-ciencias/institutos/investigacion-de-biologia-marina-cibima/,facility-webpage,https://uasd.edu.do/reconocido-internacionalmente-cibima-busca-insignia-en-biologia-marina/,medium
+#
+# Last round additions
+,Hakai Institute,Eric Peterson,Co-Director,"Co-founder & Co-director, Tula Foundation & Hakai Institute",true,,,,https://tula.org/about,facility-webpage,https://www.gg.ca/en/honours/recipients/146-975,high
+PIFSC,,Michael Seki,Director,"Director, NOAA Pacific Islands Fisheries Science Center",true,,,,https://www.fisheries.noaa.gov/about/pacific-islands-fisheries-science-center,facility-webpage,https://www.fisheries.noaa.gov/staff-directory/pacific-islands-fisheries-science-center-staff-directory,high
+,Centro de Investigaciones Marinas — Universidad,Julia Azanza Ricardo,Director,"Director, Centro de Investigaciones Marinas (CIM-UH Cuba)",true,,,,http://www.cim.uh.cu/,facility-webpage,https://www.citma.gob.cu/centro-de-investigaciones-marinas-a-toda-vela/,high
+INOCAR,,Juan Carlos Tapia Aldás,Executive Director,"Director Ejecutivo, Instituto Oceanográfico y Antártico de la Armada (Ecuador); CPNV-EMC",true,,,,https://www.inocar.mil.ec/web/index.php/institucion/estructura/autoridades,facility-webpage,https://vlex.ec/vid/acuerdos-034-designese-director-1033850057,high
+#
+# Additional USGS / MBARI / Monterey Bay Aquarium / IOCARIBE
+PCMSC,,Guy Gelfenbaum,Director,"Director, USGS Pacific Coastal and Marine Science Center (since Jan 2017)",true,,,,https://www.usgs.gov/centers/pcmsc/about,facility-webpage,https://www.usgs.gov/programs/cmhrp/news/new-director-pacific-coastal-and-marine-science-center,high
+,Monterey Bay Aquarium Research Institute,Antje Boetius,President & CEO,"President & CEO, Monterey Bay Aquarium Research Institute (MBARI)",true,,,,https://www.mbari.org/about/leadership-staff/,facility-webpage,https://en.wikipedia.org/wiki/Monterey_Bay_Aquarium_Research_Institute,high
+MBA,,Jenny Gray,CEO,"CEO, Monterey Bay Aquarium (effective May 2026, replacing Julie Packard)",true,,,,https://www.montereybayaquarium.org/about-us/our-mission-and-leadership,press-release,https://nationaltoday.com/us/ca/monterey/news/2026/02/26/monterey-bay-aquarium-names-new-ceo/,high
+MBA,,Julie Packard,Emeritus Director,"Founding Executive Director, Monterey Bay Aquarium (1984-May 2026); transitioning to Board of Trustees",false,,,,https://www.montereybayaquarium.org/newsroom/staff-bios/julie-packard,press-release,https://www.montereybayaquarium.org/newsroom/press-releases/julie-packard-announces-transition-to-board-of-trustees-leadership-role,high
