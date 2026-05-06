@@ -81,7 +81,12 @@ def main() -> int:
     ap.add_argument("--verbose", action="store_true")
     args = ap.parse_args()
 
-    files = sorted(RAW_DIR.glob("H-FUND-*/funding_events.json"))
+    # Pick up Wave-H first-pass + Loop-M (and any future *-FUND-*) extensions.
+    files = sorted(set(
+        list(RAW_DIR.glob("H-FUND-*/funding_events.json")) +
+        list(RAW_DIR.glob("M-FUND-*/funding_events.json")) +
+        list(RAW_DIR.glob("*/funding_events.json"))
+    ))
     print(f"[load_lto_funding] reading {len(files)} agent files")
 
     inserted_events = 0

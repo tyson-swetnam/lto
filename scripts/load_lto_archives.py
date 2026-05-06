@@ -254,7 +254,9 @@ def main() -> int:
     with duckdb.connect(str(args.db)) as conn:
         for fname, fn in HANDLERS.items():
             for d in sorted(set(
-                    list(RAW_DIR.glob("J-*")) + list(RAW_DIR.glob("K-*"))
+                    list(RAW_DIR.glob("J-*")) +
+                    list(RAW_DIR.glob("K-*")) +
+                    list(RAW_DIR.glob("M-*"))
             )):
                 agent = d.name
                 p = d / fname
