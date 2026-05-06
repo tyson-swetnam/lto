@@ -24,6 +24,7 @@ TABLES = [
     "facilities",
     "locations",
     "funders",
+    "funding_events",
     "funding_links",
     "research_areas",
     "area_links",
