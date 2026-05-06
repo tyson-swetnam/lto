@@ -110,78 +110,97 @@ export async function initFilters(container, state) {
   });
   container.appendChild(clearLink);
 
-  // ── Facility type (loaded synchronously from hardcoded slugs first, labels async) ──
+  // ── Filter sidebar ordering ──
   //
-  // Only types that currently have ≥1 facility in the dataset are rendered
-  // as filter checkboxes. The five "reserved" slugs in the vocab CSV
-  // (industry, local-gov, university-institute, vessel, virtual) stay in
-  // schema/vocab/facility_types.csv so future ingests can use them, but
-  // showing them as always-zero-match checkboxes just clutters the UI.
-  // The async block below cross-checks the CSV against this list, so
-  // dropping or re-enabling a slug is a single edit here.
-  const typeSlugs = [
-    'federal', 'state', 'university-marine-lab', 'nonprofit', 'foundation',
-    'network', 'international-federal', 'international-university',
-    'international-nonprofit', 'observatory',
-    // Coastal-terrestrial protected-area facility types (R11 ingest).
-    // These cover thousands of points (state parks, NWRs, etc.) so they
-    // need to be toggleable in the Facility-type filter.
-    'protected-area-federal', 'protected-area-state', 'protected-area-private',
-  ];
-  const typeSection = makeFacetSection(
-    'f-type', 'Facility type',
-    typeSlugs.map((s) => checkbox('type', s, s)).join(''),
-    true,
-  );
-  container.appendChild(typeSection);
-
-  // ── Country ──
-  const countrySection = makeFacetSection(
-    'f-country', 'Country / territory',
-    // Value stays the ISO alpha-2 code (matches facilities.country in the
-    // DB); label is the full country / territory name for readability.
-    COUNTRIES.map(([code, name]) => checkbox('country', code, name)).join(''),
-    true,
-  );
-  container.appendChild(countrySection);
-
-  // ── LTO six-sphere model: primary sphere, ecosystem type, life zone ──
+  // For an LTO catalog the most useful discovery facets are:
+  //   1. ≥10-year-record toggle (Peters et al. 2013 inclusion gate)
+  //   2. Primary sphere (atmosphere / cryosphere / terrestrial / agriculture
+  //      / ocean-estuarine / freshwater)
+  //   3. Network (LTER, NEON, USFS-EFR, LTAR, IOOS RAs, NERRS, AmeriFlux …)
+  //   — those three answer "show me LTERs in the cryosphere with ≥30 yr"
   //
-  // These are LTO-specific facets driven by the new vocab CSVs in
-  // public/vocab/. Each section is rendered with a stub body up front
-  // so the section is visible even if the CSV fetch is slow / fails;
-  // the async block below replaces stubBody with real labels once the
-  // CSV loads. Default-collapsed for life zones (Holdridge classes are
-  // long and narrow-audience), default-expanded for sphere + ecosystem.
-  const sphereSection = makeFacetSection(
-    'f-sphere', 'Primary sphere', '<div class="facet-loading">Loading…</div>', false,
-  );
-  container.appendChild(sphereSection);
-
-  const ecosystemSection = makeFacetSection(
-    'f-ecosystem', 'Ecosystem type', '<div class="facet-loading">Loading…</div>', true,
-  );
-  container.appendChild(ecosystemSection);
-
-  const lifeZoneSection = makeFacetSection(
-    'f-life-zone', 'Life zone (Holdridge)', '<div class="facet-loading">Loading…</div>', true,
-  );
-  container.appendChild(lifeZoneSection);
-
-  // ── Long-term threshold (Peters et al. 2013) ──
+  // Everything else (research area, ecosystem, life zone, country, type,
+  // established year range) is secondary and starts collapsed.
   //
-  // A simple boolean toggle: when checked, the SQL WHERE clause adds
-  // `f.long_term_threshold_met = TRUE`, which is precomputed in the
-  // facilities table by the ingest pipeline (established <= today-10y
-  // AND record_length_years >= 10). Default off so users see the full
-  // catalog first.
+  // Each LTO-specific facet is rendered with a stub body up front so the
+  // section is visible even if its CSV fetch is slow / fails; the async
+  // block at the bottom replaces stubBody with real labels.
+
+  // 1. Long-term threshold — primary inclusion gate.
   const thresholdSection = makeFacetSection(
     'f-threshold', 'Long-term threshold',
     `<label><input type="checkbox" id="f-long-term-only" />
        Show only facilities with &ge;10y record</label>`,
-    false,
+    true,  // expanded by default
   );
   container.appendChild(thresholdSection);
+
+  // 2. Primary sphere.
+  const sphereSection = makeFacetSection(
+    'f-sphere', 'Primary sphere', '<div class="facet-loading">Loading…</div>', true,
+  );
+  container.appendChild(sphereSection);
+
+  // 3. Network — loaded async into this placeholder. The previous code
+  // inserted the network section *before* type after the CSV fetch; now
+  // we reserve its slot up-front so the layout doesn't reflow.
+  const networkSection = makeFacetSection(
+    'f-network', 'Network', '<div class="facet-loading">Loading…</div>', true,
+  );
+  container.appendChild(networkSection);
+
+  // 4. Facility type. Hardcoded slug list curated for the LTO catalog —
+  // only types that currently have ≥1 facility are rendered. Reserved or
+  // never-instantiated slugs (industry, local-gov, university-institute,
+  // vessel, virtual, foundation, observatory, international-*,
+  // protected-area-state/private) stay in schema/vocab/facility_types.csv
+  // so future ingests can use them but don't clutter the UI as
+  // always-zero checkboxes.
+  const typeSlugs = [
+    'federal', 'state', 'nonprofit',
+    // LTO-specific observatory types — these dominate the dataset.
+    'experimental-forest-range', 'flux-tower', 'ltar-site',
+    'streamgage-network', 'glacier-monitoring', 'atmospheric-baseline',
+    'field-station', 'university-field-station', 'university-marine-lab',
+    'protected-area-federal', 'network',
+  ];
+  const typeSection = makeFacetSection(
+    'f-type', 'Facility type',
+    typeSlugs.map((s) => checkbox('type', s, s)).join(''),
+    false,  // collapsed
+  );
+  container.appendChild(typeSection);
+
+  // 5. Established year range (numeric inputs, populated below).
+  // Section appended later via the dedicated established block so the
+  // markup stays in one place. Placeholder kept here only for ordering.
+
+  // 6. Ecosystem type (LTO vocab, async).
+  const ecosystemSection = makeFacetSection(
+    'f-ecosystem', 'Ecosystem type', '<div class="facet-loading">Loading…</div>', false,
+  );
+  container.appendChild(ecosystemSection);
+
+  // 7. Research area — async placeholder. The CSV fetch fills this with
+  // the GCMD-aligned hierarchy.
+  const areaSection = makeFacetSection(
+    'f-area', 'Research area', '<div class="facet-loading">Loading…</div>', false,
+  );
+  container.appendChild(areaSection);
+
+  // 8. Life zone (Holdridge) — narrow-audience facet.
+  const lifeZoneSection = makeFacetSection(
+    'f-life-zone', 'Life zone (Holdridge)', '<div class="facet-loading">Loading…</div>', false,
+  );
+  container.appendChild(lifeZoneSection);
+
+  // 9. Country / territory — defaults to US + territories anyway, so collapsed.
+  const countrySection = makeFacetSection(
+    'f-country', 'Country / territory',
+    COUNTRIES.map(([code, name]) => checkbox('country', code, name)).join(''),
+    false,
+  );
+  container.appendChild(countrySection);
 
   // ── Established year range ──
   //
@@ -275,34 +294,28 @@ export async function initFilters(container, state) {
         .map((r) => checkbox('type', r.slug, r.label))
         .join('');
 
-      // Network section — show "ACRONYM — Full Name" so users can both
-      // pattern-match on the acronym they know (IOOS, NERRS…) and read
-      // the full organisation name. The schema stores the short form
-      // in `label` and the expanded form(s) in `aliases` (pipe-separated
-      // when a network goes by multiple names). Fall back to label
-      // alone if no alias is on file or if the alias is identical
-      // to the label (e.g. "Sea Grant" row whose alias is just "Sea
-      // Grant"). Escaping happens inside checkbox().
+      // Fill the pre-allocated Network section. Show "ACRONYM — Full Name"
+      // so users can both pattern-match on the acronym they know
+      // (IOOS, NERRS, LTER…) and read the full organisation name. The
+      // schema stores the short form in `label` and the expanded form(s)
+      // in `aliases` (pipe-separated). Fall back to label alone if the
+      // alias is missing or identical to the label.
       const netLabel = (r) => {
         const label = (r.label || '').trim();
         const alias = String(r.aliases || '').split('|')[0].trim();
         if (!alias || alias.toLowerCase() === label.toLowerCase()) return label;
         return `${label} — ${alias}`;
       };
-      const netSection = makeFacetSection(
-        'f-network', 'Network',
-        networkRows.map((r) => checkbox('network', r.slug, netLabel(r))).join(''),
-        true,
-      );
-      container.insertBefore(netSection, typeSection);
+      const netBody = networkSection.querySelector('.facet-body');
+      if (netBody) {
+        netBody.innerHTML = networkRows
+          .map((r) => checkbox('network', r.slug, netLabel(r)))
+          .join('');
+      }
 
-      // Research area section
-      const areaSection = makeFacetSection(
-        'f-area', 'Research area',
-        buildAreaTree(areaRows),
-        true,
-      );
-      container.insertBefore(areaSection, netSection);
+      // Fill the pre-allocated Research area section.
+      const areaBody = areaSection.querySelector('.facet-body');
+      if (areaBody) areaBody.innerHTML = buildAreaTree(areaRows);
     } catch (e) {
       console.warn('Could not load vocab CSVs for filters:', e);
     }
