@@ -256,7 +256,8 @@ def main() -> int:
             for d in sorted(set(
                     list(RAW_DIR.glob("J-*")) +
                     list(RAW_DIR.glob("K-*")) +
-                    list(RAW_DIR.glob("M-*"))
+                    list(RAW_DIR.glob("M-*")) +
+                    list(RAW_DIR.glob("O-*"))
             )):
                 agent = d.name
                 p = d / fname

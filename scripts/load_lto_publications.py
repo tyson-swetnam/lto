@@ -40,11 +40,12 @@ def main() -> int:
     ap.add_argument("--verbose", action="store_true")
     args = ap.parse_args()
 
-    # Pick up Wave-H first-pass + Wave-I loop + Wave-N loop pub agents.
+    # Pick up Wave-H first-pass + Wave-I loop + Wave-N loop + Wave-O loop pub agents.
     files = sorted(set(
         list(RAW_DIR.glob("H-PUB-*/publications.json"))
         + list(RAW_DIR.glob("I-*/publications.json"))
         + list(RAW_DIR.glob("N-PUB-*/publications.json"))
+        + list(RAW_DIR.glob("O-PUB-*/publications.json"))
     ))
     print(f"[load_lto_publications] reading {len(files)} agent files")
 
