@@ -2112,7 +2112,7 @@
 "url": "https://scripps.ucsd.edu/",
 "parent_org": "University of California San Diego",
 "established": 1903,
-"record_length_years": 123,
+"record_length_years": 110,
 "long_term_threshold_met": true,
 "primary_sphere": "ocean-estuarine"
 }
@@ -2249,8 +2249,8 @@
 "country": "US",
 "url": "https://marinescience.ucdavis.edu/bml",
 "parent_org": "University of California Davis",
-"established": 1965,
-"record_length_years": 61,
+"established": 1959,
+"record_length_years": 67,
 "long_term_threshold_met": true,
 "primary_sphere": "ocean-estuarine"
 }
@@ -2318,7 +2318,7 @@
 "country": "US",
 "url": "https://www.skio.uga.edu/",
 "parent_org": "University of Georgia",
-"established": 1967,
+"established": 1968,
 "record_length_years": 59,
 "long_term_threshold_met": true,
 "primary_sphere": "ocean-estuarine"
@@ -2365,7 +2365,7 @@
 "url": "https://www.vims.edu/",
 "parent_org": "College of William & Mary",
 "established": 1940,
-"record_length_years": 86,
+"record_length_years": 71,
 "long_term_threshold_met": true,
 "primary_sphere": "ocean-estuarine"
 }
@@ -9176,6 +9176,351 @@
 "record_length_years": 67,
 "long_term_threshold_met": true,
 "primary_sphere": "ocean-estuarine"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-110.9501,
+32.2319
+]
+},
+"properties": {
+"id": "61a9aa220ee432e7",
+"name": "Santa Rita Experimental Range",
+"acronym": "SRER-ER",
+"type": "experimental-forest-range",
+"country": "US",
+"url": "https://santarita.arizona.edu/",
+"parent_org": "University of Arizona / USDA-ARS Southwest Watershed Research Center (historic USFS)",
+"established": 1903,
+"record_length_years": 123,
+"long_term_threshold_met": true,
+"primary_sphere": "agriculture"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-106.7406,
+32.6178
+]
+},
+"properties": {
+"id": "3e98815b872eae15",
+"name": "Jornada Experimental Range (USDA-ARS historic)",
+"acronym": "JER-ER",
+"type": "experimental-forest-range",
+"country": "US",
+"url": "https://jornada.nmsu.edu/",
+"parent_org": "USDA Agricultural Research Service",
+"established": 1912,
+"record_length_years": 114,
+"long_term_threshold_met": true,
+"primary_sphere": "agriculture"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-110.9395,
+32.2811
+]
+},
+"properties": {
+"id": "c74c7d56771332b7",
+"name": "Walnut Gulch Experimental Watershed (USDA-ARS historic)",
+"acronym": "WGEW-ER",
+"type": "experimental-forest-range",
+"country": "US",
+"url": "https://www.tucson.ars.ag.gov/dap/",
+"parent_org": "USDA Agricultural Research Service Southwest Watershed Research Center",
+"established": 1953,
+"record_length_years": 73,
+"long_term_threshold_met": true,
+"primary_sphere": "agriculture"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-116.2035,
+43.6135
+]
+},
+"properties": {
+"id": "5d2a691e96528f5a",
+"name": "Reynolds Creek Experimental Watershed (USDA-ARS historic)",
+"acronym": "RCEW-ER",
+"type": "experimental-forest-range",
+"country": "US",
+"url": "https://www.ars.usda.gov/pacific-west-area/boise-id/northwest-watershed-research-center/",
+"parent_org": "USDA Agricultural Research Service Northwest Watershed Research Center",
+"established": 1962,
+"record_length_years": 64,
+"long_term_threshold_met": true,
+"primary_sphere": "agriculture"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-104.8869,
+41.1949
+]
+},
+"properties": {
+"id": "330af0daf3a6dea2",
+"name": "Central Plains Experimental Range (USDA-ARS historic)",
+"acronym": "CPER-ER",
+"type": "experimental-forest-range",
+"country": "US",
+"url": "https://www.ars.usda.gov/plains-area/cheyenne-wy/rangeland-resources-systems-research/",
+"parent_org": "USDA Agricultural Research Service Rangeland Resources and Systems Research Unit",
+"established": 1939,
+"record_length_years": 87,
+"long_term_threshold_met": true,
+"primary_sphere": "agriculture"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-105.8806,
+46.3936
+]
+},
+"properties": {
+"id": "783bfab4c758857f",
+"name": "Fort Keogh Livestock and Range Research Laboratory (USDA-ARS historic)",
+"acronym": "FKLRRL-ER",
+"type": "experimental-forest-range",
+"country": "US",
+"url": "https://www.ars.usda.gov/pacific-west-area/miles-city-mt/livestock-and-range-research-laboratory/",
+"parent_org": "USDA Agricultural Research Service",
+"established": 1924,
+"record_length_years": 102,
+"long_term_threshold_met": true,
+"primary_sphere": "agriculture"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-100.9536,
+46.7714
+]
+},
+"properties": {
+"id": "24cd3c19daa326ac",
+"name": "Northern Great Plains Research Laboratory (Mandan)",
+"acronym": "NGPRL",
+"type": "experimental-forest-range",
+"country": "US",
+"url": "https://www.ars.usda.gov/plains-area/mandan-nd/ngprl/",
+"parent_org": "USDA Agricultural Research Service",
+"established": 1912,
+"record_length_years": 114,
+"long_term_threshold_met": true,
+"primary_sphere": "agriculture"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-77.3656,
+38.9476
+]
+},
+"properties": {
+"id": "026a922e38c1c6a0",
+"name": "USGS Cooperative Water Program",
+"acronym": "USGS-CWP",
+"type": "federal",
+"country": "US",
+"url": "https://www.usgs.gov/mission-areas/water-resources/science/cooperative-matching-funds-program",
+"parent_org": "U.S. Geological Survey Water Mission Area",
+"established": 1894,
+"record_length_years": 132,
+"long_term_threshold_met": true,
+"primary_sphere": "freshwater"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-77.3656,
+38.9476
+]
+},
+"properties": {
+"id": "1c26e9481f81e529",
+"name": "USGS National Streamflow Information Program",
+"acronym": "NSIP",
+"type": "federal",
+"country": "US",
+"url": "https://water.usgs.gov/nsip/",
+"parent_org": "U.S. Geological Survey Water Mission Area",
+"established": 1999,
+"record_length_years": 27,
+"long_term_threshold_met": true,
+"primary_sphere": "freshwater"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-96.6286,
+43.7361
+]
+},
+"properties": {
+"id": "353361a587e66927",
+"name": "USGS National Land Imaging Program",
+"acronym": "NLIP",
+"type": "federal",
+"country": "US",
+"url": "https://www.usgs.gov/special-topics/national-land-imaging-program",
+"parent_org": "U.S. Geological Survey",
+"established": 2007,
+"record_length_years": 19,
+"long_term_threshold_met": true,
+"primary_sphere": "terrestrial"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-77.3656,
+38.9476
+]
+},
+"properties": {
+"id": "d4ddc27ae41148c3",
+"name": "USGS National Climate Adaptation Science Center",
+"acronym": "NCASC",
+"type": "federal",
+"country": "US",
+"url": "https://www.usgs.gov/programs/climate-adaptation-science-centers",
+"parent_org": "U.S. Geological Survey Ecosystems Mission Area",
+"established": 2008,
+"record_length_years": 18,
+"long_term_threshold_met": true,
+"primary_sphere": "terrestrial"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-72.5247,
+42.387
+]
+},
+"properties": {
+"id": "9937f684d17a99a3",
+"name": "USGS Northeast Climate Adaptation Science Center",
+"acronym": "NE-CASC",
+"type": "federal",
+"country": "US",
+"url": "https://necasc.umass.edu/",
+"parent_org": "U.S. Geological Survey",
+"established": 2012,
+"record_length_years": 14,
+"long_term_threshold_met": true,
+"primary_sphere": "terrestrial"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-147.8489,
+64.8585
+]
+},
+"properties": {
+"id": "a4246cc563eddd28",
+"name": "USGS Alaska Climate Adaptation Science Center",
+"acronym": "AK-CASC",
+"type": "federal",
+"country": "US",
+"url": "https://akcasc.org/",
+"parent_org": "U.S. Geological Survey",
+"established": 2010,
+"record_length_years": 16,
+"long_term_threshold_met": true,
+"primary_sphere": "cryosphere"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-77.3656,
+38.9476
+]
+},
+"properties": {
+"id": "78f12f42680bf472",
+"name": "USGS Hydrologic Benchmark Network",
+"acronym": "HBN",
+"type": "federal",
+"country": "US",
+"url": "https://water.usgs.gov/hbn/",
+"parent_org": "U.S. Geological Survey Water Mission Area",
+"established": 1963,
+"record_length_years": 63,
+"long_term_threshold_met": true,
+"primary_sphere": "freshwater"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-77.3656,
+38.9476
+]
+},
+"properties": {
+"id": "1b1e2428f00be9a4",
+"name": "USGS Water Resources Division (historical)",
+"acronym": "USGS-WRD",
+"type": "federal",
+"country": "US",
+"url": "https://www.usgs.gov/mission-areas/water-resources",
+"parent_org": "U.S. Geological Survey",
+"established": 1888,
+"record_length_years": 138,
+"long_term_threshold_met": true,
+"primary_sphere": "freshwater"
 }
 }
 ]
