@@ -1888,3 +1888,6 @@ footer a:hover { color: var(--c-primary); }
   .brw-grid { grid-template-columns: 1fr; }
   .brw-metrics { grid-template-columns: repeat(4, 1fr); row-gap: 8px; }
 }
+
+.ppl-metrics-caveat { font-size: .68rem; color: #94a3b8; padding: 4px 0 0; line-height: 1.4; }
+.ppl-metrics-caveat strong { color: #64748b; }

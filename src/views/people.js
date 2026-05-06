@@ -179,12 +179,16 @@ function cardHtml(p) {
         ? `<span class="ppl-pchip">${esc(p.primary_area_label)}</span>`
         : ''}
     </header>
-    <div class="ppl-metrics">
-      <span class="ppl-metric"><strong>${fmtInt(p.n_pubs)}</strong><br>pubs</span>
-      <span class="ppl-metric"><strong>${fmtInt(p.total_citations)}</strong><br>citations</span>
-      <span class="ppl-metric"><strong>${fmtInt(p.h_index)}</strong><br>h-index</span>
-      <span class="ppl-metric"><strong>${fmtInt(p.n_coauth)}</strong><br>co-authors</span>
+    <div class="ppl-metrics" title="Counts are computed from the LTO publication corpus only — i.e. the ~600 flagship papers manually curated across the 6 spheres. They are NOT career-wide h-index / citation totals; for that, follow the ORCID / OpenAlex / Google Scholar links above. The full per-author publication history will be backfilled by the CI-side OpenAlex enrichment script (see RUNBOOK.md step 2).">
+      <span class="ppl-metric"><strong>${fmtInt(p.n_pubs)}</strong><br>lto&nbsp;pubs</span>
+      <span class="ppl-metric"><strong>${fmtInt(p.total_citations)}</strong><br>lto&nbsp;cites</span>
+      <span class="ppl-metric"><strong>${fmtInt(p.h_index)}</strong><br>lto&nbsp;h-idx</span>
+      <span class="ppl-metric"><strong>${fmtInt(p.n_coauth)}</strong><br>lto&nbsp;co-authors</span>
       <span class="ppl-metric"><strong>${fmtUsd(p.facility_funding_usd)}</strong><br>funding base</span>
+    </div>
+    <div class="ppl-metrics-caveat">
+      <small>* counts reflect <strong>only the flagship papers in the LTO corpus</strong> (~600 across all sites);
+      not full-career stats. Open the ORCID/Scholar links for true career numbers.</small>
     </div>
     <div class="ppl-cols">
       <div>
