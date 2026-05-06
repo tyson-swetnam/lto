@@ -1,0 +1,10 @@
+slug,label,description
+public-read,Public read,"Anonymous HTTPS / object-storage GET; no authentication required."
+public-anon-egress,Public read (no egress charges),"Anonymous read with the data provider absorbing egress costs (NOAA Open Data, NASA Earthdata Cloud)."
+requester-pays,Requester pays,"Anonymous read enabled but the requester's AWS / GCS account pays egress (USGS Landsat 3DEP, NOAA NEXRAD, NEON archive bucket)."
+registered-users,Registered users only,"Free account / Earthdata Login required; programmatic access via token."
+license-required,License required,"Click-through license or DUA must be accepted; download requires acknowledgement."
+api-key,API-key required,"Per-user or per-project API key (NSF Award Search keyless, but USDA NASS Quick Stats requires)."
+embargoed,Embargoed,"Embargoed for a fixed period after collection (typical NEON 1–2 yr embargo, NCEI X-yr ocean obs embargo)."
+restricted,Restricted access,"Restricted to authenticated collaborators / consortium members."
+unknown,Access mode unknown,

@@ -24,6 +24,7 @@ TABLES = [
     "facilities",
     "locations",
     "funders",
+    "funding_events",
     "funding_links",
     "research_areas",
     "area_links",
@@ -48,9 +49,34 @@ TABLES = [
     "people",
     "facility_personnel",
     "publications",
+    "publication_topics",        # often empty until OpenAlex enrichment;
+                                 # ship anyway so DuckDB-Wasm can register
+                                 # the view without a fetch failure.
     "authorship",
     "person_areas",
     "collaborations",
+    # Derived tables — written by compute_primary_groups.py /
+    # compute_area_metrics.py / compute_lto_person_metrics.py. Listed
+    # here as a defensive backstop (the compute scripts also write to
+    # public/parquet/), but if a parquet is genuinely missing the COPY
+    # below will fail soft and the existing on-disk version stays.
+    "research_areas_active",
+    "facility_primary_groups",
+    "person_primary_groups",
+    "person_area_metrics",
+    "facility_area_funding",
+    "funder_area_funding",
+    "area_coverage_matrix",
+    # Wave J data-archive layer.
+    "archive_types",
+    "data_formats",
+    "data_licenses",
+    "access_modes",
+    "data_archives",
+    "facility_archives",
+    "data_products",
+    "api_endpoints",
+    "cloud_buckets",
 ]
 
 
@@ -58,12 +84,23 @@ def main() -> int:
     OUT_DB.mkdir(parents=True, exist_ok=True)
     OUT_WEB.mkdir(parents=True, exist_ok=True)
 
+    skipped: list[str] = []
     with duckdb.connect(str(DB_PATH), read_only=True) as conn:
         conn.execute("SET search_path = main;")
         for t in TABLES:
             db_path = OUT_DB / f"{t}.parquet"
-            conn.execute(f"COPY (SELECT * FROM {t}) TO '{db_path}' (FORMAT PARQUET)")
-            shutil.copyfile(db_path, OUT_WEB / f"{t}.parquet")
+            try:
+                conn.execute(f"COPY (SELECT * FROM {t}) TO '{db_path}' (FORMAT PARQUET)")
+                shutil.copyfile(db_path, OUT_WEB / f"{t}.parquet")
+            except duckdb.CatalogException:
+                # Table doesn't exist in this DB build (e.g. compute_*
+                # script hasn't run yet, or feature is OpenAlex-driven
+                # and never populated in this sandbox). Keep going so
+                # the rest of the export completes — and if a stale
+                # parquet from a previous run is still on disk in
+                # public/parquet/ it stays there for the deploy.
+                skipped.append(t)
+                continue
 
         # lightweight geojson — facility map points enriched with the
         # primary_sphere from facility_spheres so the LTO sphere-color

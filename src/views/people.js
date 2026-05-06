@@ -59,11 +59,16 @@ async function fetchPeople() {
   // arguments, no `COALESCE(x, [])` coercion games.
   const sql = `
     WITH per_pa AS (
+      -- person_area_metrics carries the person's TOTAL stats on every area row
+      -- (per scripts/compute_lto_person_metrics.py), so MAX rolls them up to
+      -- the per-person total without double-counting. composite_z is the
+      -- within-area z-score so SUM gives a meaningful "breadth × strength"
+      -- composite suitable for sorting researchers across areas.
       SELECT person_id,
-             SUM(n_publications)  AS n_pubs,
-             SUM(total_citations) AS total_citations,
+             MAX(n_publications)  AS n_pubs,
+             MAX(total_citations) AS total_citations,
              MAX(h_index)         AS h_index,
-             SUM(n_co_authors)    AS n_coauth,
+             MAX(n_co_authors)    AS n_coauth,
              SUM(composite_z)     AS composite_z
       FROM person_area_metrics
       GROUP BY person_id

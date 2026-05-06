@@ -1,0 +1,114 @@
+{
+  "nerr-reserves": {
+    "label": "NERR reserves",
+    "color": "#0d9488",
+    "category": "coastal"
+  },
+  "nep-programs": {
+    "label": "National Estuary Program",
+    "color": "#7c3aed",
+    "category": "coastal"
+  },
+  "marine-sanctuaries": {
+    "label": "Marine Sanctuaries",
+    "color": "#0369a1",
+    "category": "marine"
+  },
+  "marine-monuments": {
+    "label": "Marine Monuments",
+    "color": "#1e40af",
+    "category": "marine"
+  },
+  "nps-coastal": {
+    "label": "NPS Coastal Units (legacy curated)",
+    "color": "#16a34a",
+    "category": "marine"
+  },
+  "coastal-nps-units": {
+    "label": "NPS Coastal Units (LRD authoritative)",
+    "color": "#15803d",
+    "category": "coastal-terrestrial",
+    "source": "NPS Land Resources Division — nps_boundary FeatureServer/2 (services1.arcgis.com/fBc8EJBxQRMcHlei)",
+    "manager": "National Park Service",
+    "filter": "centroid in coastal state ∩ ≤60 km from Natural Earth 1:50m coastline",
+    "feature_count": 144
+  },
+  "coastal-fws-units": {
+    "label": "USFWS Refuges & Approved Boundaries (coastal)",
+    "color": "#a16207",
+    "category": "coastal-terrestrial",
+    "source": "USFWS — FWSApproved_Authoritative FeatureServer/0 (services.arcgis.com/QVENGdaPbd4LUkLV)",
+    "manager": "U.S. Fish and Wildlife Service",
+    "filter": "centroid in coastal state ∩ ≤60 km from coast; RSL_TYPE in (NWR, WMD, COORD, NM)",
+    "feature_count": 197,
+    "notes": "Alaska Maritime NWR and Chincoteague NWR are shown as convex-hull envelopes due to per-feature size; full geometry in network_synth_spatial_analysis/coastal_protected/fws_approved.geojson."
+  },
+  "coastal-usfs-special": {
+    "label": "USFS Research Natural Areas / Experimental Forests (coastal)",
+    "color": "#7c2d12",
+    "category": "coastal-terrestrial",
+    "source": "USFS — EDW_SpecialInterestManagementArea_01 MapServer/0 (apps.fs.usda.gov)",
+    "manager": "U.S. Forest Service",
+    "filter": "centroid in coastal state ∩ ≤60 km from coast; AREATYPE in (RESEARCH NATURAL AREA, EXPERIMENTAL FOREST, BOTANICAL AREA, NATURAL AREA, SCENIC AREA)",
+    "feature_count": 91
+  },
+  "coastal-wilderness": {
+    "label": "National Wilderness Preservation System (coastal)",
+    "color": "#365314",
+    "category": "coastal-terrestrial",
+    "source": "USFS-hosted Wilderness.net — EDW_Wilderness_02 MapServer/0",
+    "manager": "Multiple (USFS / NPS / USFWS / BLM)",
+    "filter": "centroid in coastal state ∩ ≤60 km from coast",
+    "feature_count": 67,
+    "notes": "16 input units required topology repair via shapely.make_valid before dissolve."
+  },
+  "coastal-state-protected": {
+    "label": "State parks, WMAs, preserves, aquatic preserves (coastal)",
+    "color": "#0e7490",
+    "category": "coastal-terrestrial",
+    "source": "USGS PAD-US v4.1 ManagerType FeatureServer/0 (services.arcgis.com/v01gqwM5QqNysAAi)",
+    "manager": "Per-feature (state agency varies)",
+    "filter": "Mang_Type='STAT' ∩ Des_Tp in (SP,SCA,SRMA,SREC,SHCA,SF,FORE,MPA,SW,WPA,SOTH,HCAE) ∩ coastal-state ∩ ≤25 km from coast ∩ ≥100 acres ∩ multi-word name",
+    "feature_count": 1816,
+    "notes": "Heavily filtered from 16,771 raw PAD-US state-managed parcels; named units only, ≥100 acres, within 25 km of coast."
+  },
+  "coastal-ngo-private": {
+    "label": "Land trust + NGO + private preserves (coastal)",
+    "color": "#a21caf",
+    "category": "coastal-terrestrial",
+    "source": "USGS PAD-US v4.1 ManagerType FeatureServer/0 (services.arcgis.com/v01gqwM5QqNysAAi)",
+    "manager": "Per-feature (TNC, Audubon, regional land trusts, private)",
+    "filter": "Mang_Type in (NGO,PVT) ∩ Des_Tp in (PCON,PPRK,PREC,LP,LCA,LREC,PHCA,PFOR,SCA,SP,SRMA,PAGR) ∩ coastal-state ∩ ≤25 km from coast ∩ ≥50 acres ∩ multi-word name",
+    "feature_count": 1003
+  },
+  "ramsar-us": {
+    "label": "Ramsar wetlands of international importance (US)",
+    "color": "#be185d",
+    "category": "coastal-terrestrial",
+    "source": "Wikipedia — List_of_Ramsar_sites_in_the_United_States (sourced from Ramsar Convention Sites Information Service)",
+    "manager": "Ramsar Convention (designated by U.S. State Department)",
+    "filter": "All 40 US Ramsar sites; 18 are in coastal states/territories",
+    "feature_count": 40,
+    "notes": "Point features (no polygon boundaries published in machine-readable form)."
+  },
+  "neon-sites": {
+    "label": "NEON field sites",
+    "color": "#b45309",
+    "category": "context",
+    "source": "NEON Field Sampling Boundaries — services1.arcgis.com/CMacGMvXwrlrpmOR (Battelle Ecology / NEON)",
+    "manager": "National Ecological Observatory Network (NSF)",
+    "filter": "All 61 published NEON site boundary polygons (Core + Gradient, terrestrial + aquatic).",
+    "feature_count": 61,
+    "notes": "Polygon features — actual NEON sampling footprints. 20 sites are in coastal states; the rest provide continental-scale context for any coastal-vs-inland comparison. Each site links through to neonscience.org/field-sites/<code>."
+  },
+  "neon-domains": {
+    "label": "NEON Ecological Domains",
+    "color": "#d4a017",
+    "category": "context"
+  },
+  "epa-regions": {
+    "label": "EPA Regions",
+    "color": "#64748b",
+    "category": "context"
+  }
+}

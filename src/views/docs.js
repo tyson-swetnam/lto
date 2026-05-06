@@ -56,13 +56,35 @@ function escHtml(s) {
     ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 }
 
+function rewriteHref(href) {
+  // Internal cross-doc link, e.g. './spheres.md' or 'spheres.md' → SPA hash route.
+  // Strip a leading './', drop any trailing '#anchor' if present (we let the
+  // browser handle it after the route resolves), then convert filename stem
+  // (underscores → dashes, lower-cased) to the same slug DOC_PAGES uses.
+  const m = String(href).match(/^\.?\/?([\w._-]+)\.md(#.*)?$/i);
+  if (m) {
+    const slug = m[1].toLowerCase().replace(/_/g, '-');
+    const anchor = m[2] || '';
+    return { href: `#/docs/${slug}${anchor}`, external: false };
+  }
+  // Bare in-page anchor.
+  if (String(href).startsWith('#')) return { href, external: false };
+  // Everything else is external.
+  return { href, external: true };
+}
+
 function inlinesMd(s) {
   return escHtml(s)
     .replace(/`([^`]+)`/g, '<code>$1</code>')
     .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
     .replace(/\*([^*]+)\*/g, '<em>$1</em>')
-    .replace(/\[([^\]]+)\]\(([^)]+)\)/g,
-             '<a href="$2" target="_blank" rel="noopener">$1</a>');
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_m, text, href) => {
+      const { href: out, external } = rewriteHref(href);
+      const attrs = external
+        ? ` href="${out}" target="_blank" rel="noopener"`
+        : ` href="${out}"`;
+      return `<a${attrs}>${text}</a>`;
+    });
 }
 
 function slugify(text) {
