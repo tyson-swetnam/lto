@@ -44,7 +44,8 @@ def load_files() -> tuple[list[dict], list[dict]]:
     for d in sorted(set(
             list(RAW_DIR.glob("R-PEOPLE-*/people.json")) +
             list(RAW_DIR.glob("K-*/people.json")) +
-            list(RAW_DIR.glob("J-*/people.json"))
+            list(RAW_DIR.glob("J-*/people.json")) +
+            list(RAW_DIR.glob("Q-ENRICH-*/additional_people.json"))
     )):
         try:
             doc = json.loads(d.read_text())
