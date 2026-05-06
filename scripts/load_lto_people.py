@@ -38,7 +38,14 @@ def person_id(name: str, orcid: str | None = None, email: str | None = None) -> 
 
 def load_files() -> tuple[list[dict], list[dict]]:
     people, affils = [], []
-    for d in sorted(RAW_DIR.glob("R-PEOPLE-*/people.json")):
+    # Pick up Wave-F first-pass + Wave-I loop + Wave-K fill agents,
+    # plus any future people emissions from the J-A archive agents
+    # (NMFS / USACE-NRL-NASA write people.json alongside their archives).
+    for d in sorted(set(
+            list(RAW_DIR.glob("R-PEOPLE-*/people.json")) +
+            list(RAW_DIR.glob("K-*/people.json")) +
+            list(RAW_DIR.glob("J-*/people.json"))
+    )):
         try:
             doc = json.loads(d.read_text())
         except json.JSONDecodeError as e:

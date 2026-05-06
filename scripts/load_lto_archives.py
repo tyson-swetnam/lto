@@ -253,7 +253,9 @@ def main() -> int:
     # filename outer, folder inner.
     with duckdb.connect(str(args.db)) as conn:
         for fname, fn in HANDLERS.items():
-            for d in sorted(RAW_DIR.glob("J-*")):
+            for d in sorted(set(
+                    list(RAW_DIR.glob("J-*")) + list(RAW_DIR.glob("K-*"))
+            )):
                 agent = d.name
                 p = d / fname
                 if not p.exists():
