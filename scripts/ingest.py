@@ -220,7 +220,8 @@ def load_vocab(conn: duckdb.DuckDBPyConnection) -> None:
     )
 
     # LTO vocab tables (load only if CSVs are present).
-    for tbl in ("spheres", "ecosystem_types", "life_zones"):
+    for tbl in ("spheres", "ecosystem_types", "life_zones",
+                "archive_types", "data_formats", "data_licenses", "access_modes"):
         csv_path = VOCAB_DIR / f"{tbl}.csv"
         if not csv_path.exists():
             continue

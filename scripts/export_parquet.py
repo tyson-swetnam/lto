@@ -51,6 +51,16 @@ TABLES = [
     "authorship",
     "person_areas",
     "collaborations",
+    # Wave J data-archive layer.
+    "archive_types",
+    "data_formats",
+    "data_licenses",
+    "access_modes",
+    "data_archives",
+    "facility_archives",
+    "data_products",
+    "api_endpoints",
+    "cloud_buckets",
 ]
 
 

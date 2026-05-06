@@ -10,3 +10,7 @@ bucket,Cloud-bucket archive,"Direct cloud-storage object archive (S3 / GCS / Azu
 api,API service,"REST / GraphQL API not backed by a single addressable repository."
 aggregator,Cross-archive aggregator,"Federation that wraps multiple archives (DataONE, GBIF, OBIS, GEOSS, NCEI)."
 package-manager,Package distribution,"Python / R / Conda package distributing software + reference data (CRAN, PyPI, Bioconductor)."
+synthesis-consortium,Synthesis consortium,"International / cross-archive synthesis aggregator (WGMS Fluctuations of Glaciers, GLIMS, RGI, FLUXNET2015) — adds value beyond a passthrough federation."
+knowledge-network,Knowledge network,"Region- or topic-focused knowledge hub linking many resources but holding minimal canonical data (USDA Climate Hubs, ESIP, SHRUB-Hub)."
+program,Agency program,"Program-level entity that publishes data via multiple downstream archives (USGS WEBB, USGS 3DEP, EPA NEP, NOAA Sea Grant)."
+service,Web service,"Single-purpose web service (StreamStats, NWIS WaterServices, NASS Quick Stats CropScape WMS) — not a repository in itself."

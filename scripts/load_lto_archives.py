@@ -237,10 +237,14 @@ def main() -> int:
     counts = {k: {"in": 0, "ok": 0, "skip": 0} for k in HANDLERS}
     warnings: list[str] = []
 
+    # Load order matters: archives.json must finish across ALL folders
+    # before any facility_archives / data_products / api_endpoints /
+    # cloud_buckets row tries to FK-reference an archive_id. Iterate by
+    # filename outer, folder inner.
     with duckdb.connect(str(args.db)) as conn:
-        for d in sorted(RAW_DIR.glob("J-*")):
-            agent = d.name
-            for fname, fn in HANDLERS.items():
+        for fname, fn in HANDLERS.items():
+            for d in sorted(RAW_DIR.glob("J-*")):
+                agent = d.name
                 p = d / fname
                 if not p.exists():
                     continue
