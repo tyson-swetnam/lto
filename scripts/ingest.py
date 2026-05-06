@@ -64,8 +64,16 @@ class Record:
 
 
 def load_raw_records() -> list[Record]:
+    # Skip the cod-kmap heritage non-US directories (R5 Canada, R6 Mexico/
+    # Central America, R7 South America, R8 Northern Caribbean) — their
+    # U.S. + territory + U.S.-funded Antarctic subset has already been
+    # extracted into R-AQ-OCEAN-CULL/facilities_ocean_us.json, so re-loading
+    # them here would just resurrect the non-US records the cull dropped.
+    SKIP_DIRS = {"R5", "R6", "R7", "R8"}
     records: list[Record] = []
     for agent_dir in sorted(RAW_DIR.glob("R*")):
+        if agent_dir.name in SKIP_DIRS:
+            continue
         agent = agent_dir.name
         for path in sorted(agent_dir.glob("facilities_*.json")):
             try:
