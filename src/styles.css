@@ -674,16 +674,18 @@ footer a:hover { color: var(--c-primary); }
  * through on every other tab (Network, Stats, Docs). */
 #view-browse { overflow: hidden; flex-direction: column; }
 #view-browse.active { display: flex; }
-/* The list-view module renders its content into the #browse container
- * (header + .browse-scroll). Without these rules #browse is a plain
- * block element and the inner .browse-scroll's `flex: 1` has no flex
- * parent — so the table grows taller than its container and the page
- * 'doesn't scroll'. Make #browse a flex column that fills #view-browse. */
+/* The card-based browse view (src/views/list.js) renders directly into
+ * #browse: a sticky `.brw-toolbar` followed by `.brw-grid`. Make #browse
+ * the scroll viewport so the cards scroll vertically while the toolbar
+ * stays pinned at the top via `position: sticky`. The previous layout
+ * (table-based, with an inner .browse-scroll wrapper) inherited
+ * overflow: hidden from #view-browse — without an internal scroller,
+ * 399 cards just rendered off-screen with no way to reach them. */
 #view-browse > #browse {
-  display: flex;
-  flex-direction: column;
   height: 100%;
   min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 .browse-scroll { min-height: 0; }   /* allow flex shrink below content height */
 .browse-header {
