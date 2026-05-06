@@ -101,7 +101,7 @@ def upsert_archive(conn, agent: str, a: dict) -> bool:
     aid = aid.strip().lower()
     conn.execute(
         """
-        INSERT OR REPLACE INTO data_archives
+        INSERT OR IGNORE INTO data_archives
             (archive_id, name, organization, archive_type, base_url, api_url,
              api_doc_url, api_type, license_slug, doi_prefix, notes)
         VALUES (?,?,?,?,?,?,?,?,?,?,?)
