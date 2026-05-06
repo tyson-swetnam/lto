@@ -42,13 +42,12 @@ def sha16(s: str) -> str:
 def resolve_facility(conn, name: str | None, acronym: str | None) -> str | None:
     if not (name or acronym):
         return None
-    if acronym:
-        row = conn.execute(
-            "SELECT facility_id FROM facilities WHERE upper(acronym) = upper(?) LIMIT 1",
-            [acronym],
-        ).fetchone()
-        if row:
-            return row[0]
+    # If both name and acronym are provided, try the most specific match first:
+    # exact name, then name+acronym join, then name ILIKE, then acronym alone.
+    # cod-kmap heritage data assigns generic acronyms (e.g. acronym="NERR" for
+    # all 30 reserves), so resolving by acronym alone can collapse 30 distinct
+    # facilities to a single row — we fall back to acronym only when no name
+    # is provided.
     if name:
         row = conn.execute(
             "SELECT facility_id FROM facilities WHERE lower(canonical_name) = lower(?) LIMIT 1",
@@ -74,6 +73,17 @@ def resolve_facility(conn, name: str | None, acronym: str | None) -> str | None:
         )
         if best:
             return nm_to_row[best[0]][0]
+    # No name provided — fall back to acronym alone. Only safe when the
+    # acronym is unique (skip obviously-generic ones).
+    GENERIC = {"NERR", "NEP", "NMS", "NWR", "LTER", "LTREB", "LTAR", "EFR",
+               "BR", "MAB", "NPS", "USGS", "USFS", "NWRS", "RNA"}
+    if acronym and acronym.upper() not in GENERIC:
+        row = conn.execute(
+            "SELECT facility_id FROM facilities WHERE upper(acronym) = upper(?) LIMIT 1",
+            [acronym],
+        ).fetchone()
+        if row:
+            return row[0]
     return None
 
 
