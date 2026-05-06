@@ -235,6 +235,123 @@ CREATE OR REPLACE TABLE spheres (
     description  VARCHAR
 );
 
+-------------------------------------------------------------------------------
+-- Wave J: data-archive layer
+-------------------------------------------------------------------------------
+-- Records the addressable data resources for every facility:
+--
+--   data_archives        — repository / data-portal / ERDDAP / THREDDS
+--   facility_archives    — many-to-many: which facility hosts data at which archive
+--   data_products        — one row per identifiable dataset (DOI / format / bbox)
+--   api_endpoints        — discoverable API URLs (REST / OPeNDAP / STAC / OAI-PMH)
+--   cloud_buckets        — S3 / GCS / Azure buckets (name + region + access mode)
+--
+-- Vocabularies seeded from schema/vocab/{archive_types,data_formats,data_licenses,access_modes}.csv.
+
+CREATE OR REPLACE TABLE archive_types (
+    slug        VARCHAR PRIMARY KEY,
+    label       VARCHAR NOT NULL,
+    description VARCHAR
+);
+
+CREATE OR REPLACE TABLE data_formats (
+    slug      VARCHAR PRIMARY KEY,
+    label     VARCHAR NOT NULL,
+    mime_type VARCHAR
+);
+
+CREATE OR REPLACE TABLE data_licenses (
+    slug  VARCHAR PRIMARY KEY,
+    label VARCHAR NOT NULL,
+    url   VARCHAR
+);
+
+CREATE OR REPLACE TABLE access_modes (
+    slug  VARCHAR PRIMARY KEY,
+    label VARCHAR NOT NULL,
+    description VARCHAR
+);
+
+CREATE OR REPLACE TABLE data_archives (
+    archive_id    VARCHAR PRIMARY KEY,                -- slug, e.g. 'edi', 'neon-data-portal'
+    name          VARCHAR NOT NULL,
+    organization  VARCHAR,                            -- operating org
+    archive_type  VARCHAR REFERENCES archive_types(slug),
+    base_url      VARCHAR,                            -- human-facing URL
+    api_url       VARCHAR,                            -- machine API root
+    api_doc_url   VARCHAR,                            -- OpenAPI / Swagger / docs page
+    api_type      VARCHAR,                            -- rest|opendap|thredds|stac|erddap|oai-pmh|netcdf-subset|custom
+    license_slug  VARCHAR REFERENCES data_licenses(slug),
+    doi_prefix    VARCHAR,                            -- e.g. '10.6073' for EDI
+    notes         VARCHAR,
+    created_at    TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE OR REPLACE TABLE facility_archives (
+    facility_id VARCHAR NOT NULL REFERENCES facilities(facility_id),
+    archive_id  VARCHAR NOT NULL REFERENCES data_archives(archive_id),
+    role        VARCHAR,                              -- primary|mirror|distribution
+    scope_url   VARCHAR,                              -- per-facility entry to the archive
+    scope_id    VARCHAR,                              -- archive-local scope identifier
+    sample_doi  VARCHAR,                              -- one example dataset DOI
+    notes       VARCHAR,
+    PRIMARY KEY (facility_id, archive_id)
+);
+
+CREATE OR REPLACE TABLE data_products (
+    product_id     VARCHAR PRIMARY KEY,               -- sha1(archive_id||identifier or doi)
+    archive_id     VARCHAR REFERENCES data_archives(archive_id),
+    facility_id    VARCHAR REFERENCES facilities(facility_id),
+    title          VARCHAR NOT NULL,
+    doi            VARCHAR,
+    identifier     VARCHAR,                           -- archive-local ID (EDI knb-lter-hbr.1.20, etc.)
+    url            VARCHAR,
+    format_slug    VARCHAR REFERENCES data_formats(slug),
+    license_slug   VARCHAR REFERENCES data_licenses(slug),
+    temporal_start DATE,
+    temporal_end   DATE,
+    bbox_min_lon   DOUBLE,
+    bbox_min_lat   DOUBLE,
+    bbox_max_lon   DOUBLE,
+    bbox_max_lat   DOUBLE,
+    variables_text VARCHAR,                           -- comma-sep variable summary
+    citation       VARCHAR,
+    cited_by_count INTEGER,                           -- if known via Crossref / DataCite
+    source         VARCHAR,                           -- which agent / API populated this
+    retrieved_at   DATE,
+    confidence     VARCHAR,                           -- high|medium|low
+    notes          VARCHAR,
+    created_at     TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE OR REPLACE TABLE api_endpoints (
+    endpoint_id     VARCHAR PRIMARY KEY,              -- sha1(archive_id||path_or_url)
+    archive_id      VARCHAR REFERENCES data_archives(archive_id),
+    facility_id     VARCHAR REFERENCES facilities(facility_id),
+    path_or_url     VARCHAR NOT NULL,                 -- relative path or full URL
+    method          VARCHAR DEFAULT 'GET',
+    purpose         VARCHAR,                          -- download|metadata|browse|auth|search
+    response_format VARCHAR,
+    schema_url      VARCHAR,                          -- OpenAPI / JSON-Schema / DCAT
+    example_call    VARCHAR,
+    notes           VARCHAR
+);
+
+CREATE OR REPLACE TABLE cloud_buckets (
+    bucket_id          VARCHAR PRIMARY KEY,           -- sha1(provider||bucket_name||region)
+    archive_id         VARCHAR REFERENCES data_archives(archive_id),
+    facility_id        VARCHAR REFERENCES facilities(facility_id),
+    provider           VARCHAR NOT NULL,              -- s3|gcs|azure|swift|other
+    bucket_name        VARCHAR NOT NULL,
+    region             VARCHAR,
+    access_mode        VARCHAR REFERENCES access_modes(slug),
+    documentation_url  VARCHAR,
+    sample_prefix      VARCHAR,                       -- one representative object key prefix
+    notes              VARCHAR
+);
+
+-------------------------------------------------------------------------------
+
 -- EcoTrends ecosystem types (Peters et al. 2013, table 1-2) plus
 -- WWF/Bailey-province extensions used by R-TER agents.
 CREATE OR REPLACE TABLE ecosystem_types (

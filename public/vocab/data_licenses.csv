@@ -1,0 +1,18 @@
+slug,label,url
+cc0,CC0 1.0 Universal (Public Domain Dedication),https://creativecommons.org/publicdomain/zero/1.0/
+cc-by-4.0,CC BY 4.0,https://creativecommons.org/licenses/by/4.0/
+cc-by-sa-4.0,CC BY-SA 4.0,https://creativecommons.org/licenses/by-sa/4.0/
+cc-by-nc-4.0,CC BY-NC 4.0,https://creativecommons.org/licenses/by-nc/4.0/
+cc-by-nc-sa-4.0,CC BY-NC-SA 4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/
+public-domain-us,U.S. federal public domain,https://www.usa.gov/government-works
+usgs-public,USGS public-domain (federal-employee work product),https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits
+noaa-public,NOAA open-data policy,https://www.noaa.gov/disclaimer
+nasa-public,NASA open-data policy,https://www.nasa.gov/about/highlights/HP_Privacy.html
+epa-public,EPA Open Government Plan,https://www.epa.gov/data
+usda-ars,USDA-ARS public access,https://data.nal.usda.gov/about-ag-data-commons
+edi-data-policy,EDI Data Policy,https://environmentaldatainitiative.org/about/data-policy/
+neon-data-policy,NEON Data Policy,https://www.neonscience.org/data-collection/data-policies-citation
+ameriflux-data-policy,AmeriFlux Data Policy,https://ameriflux.lbl.gov/data/data-policy/
+esa-data-policy,ESA Data Policy,https://esajournals.onlinelibrary.wiley.com/journal/19395582
+restricted,Restricted access,
+unknown,License unknown / not yet documented,

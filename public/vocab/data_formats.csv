@@ -1,0 +1,24 @@
+slug,label,mime_type
+netcdf,NetCDF,application/x-netcdf
+hdf5,HDF5,application/x-hdf5
+csv,CSV,text/csv
+tsv,TSV,text/tab-separated-values
+parquet,Parquet,application/x-parquet
+json,JSON,application/json
+geojson,GeoJSON,application/geo+json
+ndjson,NDJSON,application/x-ndjson
+geotiff,GeoTIFF,image/tiff
+shapefile,Shapefile,application/octet-stream
+geopackage,GeoPackage,application/geopackage+sqlite3
+zarr,Zarr,application/x-zarr
+sqlite,SQLite,application/x-sqlite3
+duckdb,DuckDB,application/x-duckdb
+xml,XML,application/xml
+xlsx,Excel xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+las,LAS / LAZ point cloud,application/octet-stream
+dem,Digital Elevation Model raster,image/tiff
+text-fixed,Fixed-width text,text/plain
+nexrad,NEXRAD radar data,application/octet-stream
+bufr,BUFR (WMO),application/x-bufr
+grib,GRIB / GRIB2,application/x-grib
+hdf-eos,HDF-EOS,application/x-hdf
