@@ -1,0 +1,811 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.33333333333333,
+          36.416666666666664
+        ]
+      },
+      "properties": {
+        "name": "Ash Meadows National Wildlife Refuge",
+        "state": "Nevada",
+        "kind": "ramsar-site",
+        "manager": "Ramsar Convention (designated by U.S. State Department)",
+        "area_acres": 23494.4,
+        "designated": "18 December 1986",
+        "description": null,
+        "source": "https://en.wikipedia.org/wiki/List_of_Ramsar_sites_in_the_United_States"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.68333333333334,
+          37.916666666666664
+        ]
+      },
+      "properties": {
+        "name": "Bolinas Lagoon",
+        "state": "California",
+        "kind": "ramsar-site",
+        "manager": "Ramsar Convention (designated by U.S. State Department)",
+        "area_acres": 1100.8,
+        "designated": "1 September 1998",
+        "description": "A tidal estuary located on the Pacific Flyway, the lagoon provides habitat for migratory birds as well as ducks, geese, and shorebirds.",
+        "source": "https://en.wikipedia.org/wiki/List_of_Ramsar_sites_in_the_United_States"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -91.18333333333334,
+          34.666666666666664
+        ]
+      },
+      "properties": {
+        "name": "Cache-Lower White Rivers",
+        "state": "Arkansas",
+        "kind": "ramsar-site",
+        "manager": "Ramsar Convention (designated by U.S. State Department)",
+        "area_acres": 201081.6,
+        "designated": "21 November 1989",
+        "description": null,
+        "source": "https://en.wikipedia.org/wiki/List_of_Ramsar_sites_in_the_United_States"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.13333333333334,
+          37.21666666666667
+        ]
+      },
+      "properties": {
+        "name": "Cache River-Cypress Creek Wetlands",
+        "state": "Illinois",
+        "kind": "ramsar-site",
+        "manager": "Ramsar Convention (designated by U.S. State Department)",
+        "area_acres": 60000.0,
+        "designated": "1 November 1994",
+        "description": null,
+        "source": "https://en.wikipedia.org/wiki/List_of_Ramsar_sites_in_the_United_States"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -94.13333333333334,
+          32.75
+        ]
+      },
+      "properties": {
+        "name": "Caddo Lake",
+        "state": "Texas ,  Louisiana",
+        "kind": "ramsar-site",
+        "manager": "Ramsar Convention (designated by U.S. State Department)",
+        "area_acres": 19712.0,
+        "designated": "23 October 1993",
+        "description": null,
+        "source": "https://en.wikipedia.org/wiki/List_of_Ramsar_sites_in_the_United_States"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -92.1,
+          31.5
+        ]
+      },
+      "properties": {
+        "name": "Catahoula Lake",
+        "state": "Louisiana",
+        "kind": "ramsar-site",
+        "manager": "Ramsar Convention (designated by U.S. State Department)",
+        "area_acres": 30016.0,
+        "designated": "18 June 1991",
+        "description": null,
+        "source": "https://en.wikipedia.org/wiki/List_of_Ramsar_sites_in_the_United_States"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.33333333333333,
+          38.0
+        ]
+      },
+      "properties": {
+        "name": "Chesapeake Bay Estuarine Complex",
+        "state": "Maryland ,  Virginia",
+        "kind": "ramsar-site",
+        "manager": "Ramsar Convention (designated by U.S. State Department)",
+        "area_acres": 108800.0,
+        "designated": "4 June 1987",
+        "description": null,
+        "source": "https://en.wikipedia.org/wiki/List_of_Ramsar_sites_in_the_United_States"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.66666666666667,
+          38.483333333333334
+        ]
+      },
+      "properties": {
+        "name": "Cheyenne Bottoms",
+        "state": "Kansas",
+        "kind": "ramsar-site",
+        "manager": "Ramsar Convention (designated by U.S. State Department)",
+        "area_acres": 27129.6,
+        "designated": "19 October 1988",
+        "description": null,
+        "source": "https://en.wikipedia.org/wiki/List_of_Ramsar_sites_in_the_United_States"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.81167,
+          42.41722
+        ]
+      },
+      "properties": {
+        "name": "Chiwaukee Illinois Beach Lake Plain",
+        "state": "Illinois   Wisconsin",
+        "kind": "ramsar-site",
+        "manager": "Ramsar Convention (designated by U.S. State Department)",
+        "area_acres": 3916.8,
+        "designated": "6 October 2015",
+        "description": "Bi-state, lake-coast lands, including Chiwaukee Prairie and Illinois Beach State Park",
+        "source": "https://en.wikipedia.org/wiki/List_of_Ramsar_sites_in_the_United_States"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.75944,
+          33.78944
+        ]
+      },
+      "properties": {
+        "name": "Congaree National Park",
+        "state": "South Carolina",
+        "kind": "ramsar-site",
+        "manager": "Ramsar Convention (designated by U.S. State Department)",
+        "area_acres": 26041.6,
+        "designated": "2 February 2012",
+        "description": null,
+        "source": "https://en.wikipedia.org/wiki/List_of_Ramsar_sites_in_the_United_States"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -72.3,
+          41.25
+        ]
+      },
+      "properties": {
+        "name": "Connecticut River Estuary and Tidal Wetlands Complex",
+        "state": "Connecticut",
+        "kind": "ramsar-site",
+        "manager": "Ramsar Convention (designated by U.S. State Department)",
+        "area_acres": 16019.2,
+        "designated": "14 October 1994",
+        "description": null,
+        "source": "https://en.wikipedia.org/wiki/List_of_Ramsar_sites_in_the_United_States"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.51666666666667,
+          26.4
+        ]
+      },
+      "properties": {
+        "name": "Corkscrew Swamp Sanctuary",
+        "state": "Florida",
+        "kind": "ramsar-site",
+        "manager": "Ramsar Convention (designated by U.S. State Department)",
+        "area_acres": 12998.4,
+        "designated": "23 March 2009",
+        "description": null,
+        "source": "https://en.wikipedia.org/wiki/List_of_Ramsar_sites_in_the_United_States"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.23333333333333,
+          39.18333333333333
+        ]
+      },
+      "properties": {
+        "name": "Delaware Bay Estuary",
+        "state": "Delaware ,  New Jersey",
+        "kind": "ramsar-site",
+        "manager": "Ramsar Convention (designated by U.S. State Department)",
+        "area_acres": 126649.6,
+        "designated": "20 May 1992",
+        "description": null,
+        "source": "https://en.wikipedia.org/wiki/List_of_Ramsar_sites_in_the_United_States"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.0,
+          45.22222
+        ]
+      },
+      "properties": {
+        "name": "Door Peninsula Coastal Wetlands",
+        "state": "Wisconsin",
+        "kind": "ramsar-site",
+        "manager": "Ramsar Convention (designated by U.S. State Department)",
+        "area_acres": 11443.2,
+        "designated": "6 October 2014",
+        "description": null,
+        "source": "https://en.wikipedia.org/wiki/List_of_Ramsar_sites_in_the_United_States"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.28333333333333,
+          39.6
+        ]
+      },
+      "properties": {
+        "name": "Edwin B. Forsythe National Wildlife Refuge",
+        "state": "New Jersey",
+        "kind": "ramsar-site",
+        "manager": "Ramsar Convention (designated by U.S. State Department)",
+        "area_acres": 32320.0,
+        "designated": "18 December 1986",
+        "description": null,
+        "source": "https://en.wikipedia.org/wiki/List_of_Ramsar_sites_in_the_United_States"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.7569,
+          36.8259
+        ]
+      },
+      "properties": {
+        "name": "Elkhorn Slough",
+        "state": "California",
+        "kind": "ramsar-site",
+        "manager": "Ramsar Convention (designated by U.S. State Department)",
+        "area_acres": 1792.0,
+        "designated": "25 June 2018",
+        "description": null,
+        "source": "https://en.wikipedia.org/wiki/List_of_Ramsar_sites_in_the_United_States"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.91666666666667,
+          25.55
+        ]
+      },
+      "properties": {
+        "name": "Everglades National Park",
+        "state": "Florida",
+        "kind": "ramsar-site",
+        "manager": "Ramsar Convention (designated by U.S. State Department)",
+        "area_acres": 1508569.6,
+        "designated": "4 June 1987",
+        "description": null,
+        "source": "https://en.wikipedia.org/wiki/List_of_Ramsar_sites_in_the_United_States"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.36666666666666,
+          33.25
+        ]
+      },
+      "properties": {
+        "name": "Francis Beidler Forest",
+        "state": "South Carolina",
+        "kind": "ramsar-site",
+        "manager": "Ramsar Convention (designated by U.S. State Department)",
+        "area_acres": 15910.4,
+        "designated": "30 May 2008",
+        "description": null,
+        "source": "https://en.wikipedia.org/wiki/List_of_Ramsar_sites_in_the_United_States"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -120.83333333333333,
+          37.166666666666664
+        ]
+      },
+      "properties": {
+        "name": "Grassland Ecological Area",
+        "state": "California",
+        "kind": "ramsar-site",
+        "manager": "Ramsar Convention (designated by U.S. State Department)",
+        "area_acres": 160000.0,
+        "designated": "2 February 2005",
+        "description": null,
+        "source": "https://en.wikipedia.org/wiki/List_of_Ramsar_sites_in_the_United_States"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.63333333333334,
+          43.5
+        ]
+      },
+      "properties": {
+        "name": "Horicon Marsh",
+        "state": "Wisconsin",
+        "kind": "ramsar-site",
+        "manager": "Ramsar Convention (designated by U.S. State Department)",
+        "area_acres": 31904.0,
+        "designated": "4 December 1990",
+        "description": null,
+        "source": "https://en.wikipedia.org/wiki/List_of_Ramsar_sites_in_the_United_States"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.18333333333334,
+          42.1
+        ]
+      },
+      "properties": {
+        "name": "Humbug Marsh",
+        "state": "Michigan",
+        "kind": "ramsar-site",
+        "manager": "Ramsar Convention (designated by U.S. State Department)",
+        "area_acres": 467.2,
+        "designated": "20 January 2010",
+        "description": null,
+        "source": "https://en.wikipedia.org/wiki/List_of_Ramsar_sites_in_the_United_States"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -162.68333333333334,
+          55.75
+        ]
+      },
+      "properties": {
+        "name": "Izembek Lagoon National Wildlife Refuge",
+        "state": "Alaska",
+        "kind": "ramsar-site",
+        "manager": "Ramsar Convention (designated by U.S. State Department)",
+        "area_acres": 416204.8,
+        "designated": "18 December 1986",
+        "description": null,
+        "source": "https://en.wikipedia.org/wiki/List_of_Ramsar_sites_in_the_United_States"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -90.68333333333334,
+          46.65
+        ]
+      },
+      "properties": {
+        "name": "Kakagon and Bad River Sloughs",
+        "state": "Wisconsin",
+        "kind": "ramsar-site",
+        "manager": "Ramsar Convention (designated by U.S. State Department)",
+        "area_acres": 10758.4,
+        "designated": "2 February 2012",
+        "description": null,
+        "source": "https://en.wikipedia.org/wiki/List_of_Ramsar_sites_in_the_United_States"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -157.75,
+          21.4
+        ]
+      },
+      "properties": {
+        "name": "Kawainui and Hamakua Marsh Complex",
+        "state": "Hawaii",
+        "kind": "ramsar-site",
+        "manager": "Ramsar Convention (designated by U.S. State Department)",
+        "area_acres": 1024.0,
+        "designated": "2 February 2005",
+        "description": null,
+        "source": "https://en.wikipedia.org/wiki/List_of_Ramsar_sites_in_the_United_States"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.78333333333333,
+          38.4
+        ]
+      },
+      "properties": {
+        "name": "Laguna de Santa Rosa Wetland Complex",
+        "state": "California",
+        "kind": "ramsar-site",
+        "manager": "Ramsar Convention (designated by U.S. State Department)",
+        "area_acres": 3891.2,
+        "designated": "16 April 2010",
+        "description": null,
+        "source": "https://en.wikipedia.org/wiki/List_of_Ramsar_sites_in_the_United_States"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -90.35,
+          43.15
+        ]
+      },
+      "properties": {
+        "name": "Lower Wisconsin Riverway",
+        "state": "Wisconsin",
+        "kind": "ramsar-site",
+        "manager": "Ramsar Convention (designated by U.S. State Department)",
+        "area_acres": 43520.0,
+        "designated": "14 February 2020",
+        "description": null,
+        "source": "https://en.wikipedia.org/wiki/List_of_Ramsar_sites_in_the_United_States"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.06666666666666,
+          43.083333333333336
+        ]
+      },
+      "properties": {
+        "name": "Niagara River Corridor",
+        "state": "New York",
+        "kind": "ramsar-site",
+        "manager": "Ramsar Convention (designated by U.S. State Department)",
+        "area_acres": 12967.0,
+        "designated": "3 October 2019",
+        "description": null,
+        "source": "https://en.wikipedia.org/wiki/List_of_Ramsar_sites_in_the_United_States"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.33333333333333,
+          30.8
+        ]
+      },
+      "properties": {
+        "name": "Okefenokee National Wildlife Refuge",
+        "state": "Georgia ,  Florida",
+        "kind": "ramsar-site",
+        "manager": "Ramsar Convention (designated by U.S. State Department)",
+        "area_acres": 401881.6,
+        "designated": "18 December 1986",
+        "description": null,
+        "source": "https://en.wikipedia.org/wiki/List_of_Ramsar_sites_in_the_United_States"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -162.1,
+          5.866666666666667
+        ]
+      },
+      "properties": {
+        "name": "Palmyra Atoll National Wildlife Refuge",
+        "state": "Line Islands",
+        "kind": "ramsar-site",
+        "manager": "Ramsar Convention (designated by U.S. State Department)",
+        "area_acres": 504409.6,
+        "designated": "1 April 2011",
+        "description": null,
+        "source": "https://en.wikipedia.org/wiki/List_of_Ramsar_sites_in_the_United_States"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.41666666666667,
+          27.8
+        ]
+      },
+      "properties": {
+        "name": "Pelican Island National Wildlife Refuge",
+        "state": "Florida",
+        "kind": "ramsar-site",
+        "manager": "Ramsar Convention (designated by U.S. State Department)",
+        "area_acres": 4716.8,
+        "designated": "14 March 1993",
+        "description": null,
+        "source": "https://en.wikipedia.org/wiki/List_of_Ramsar_sites_in_the_United_States"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.48333333333333,
+          38.083333333333336
+        ]
+      },
+      "properties": {
+        "name": "Quivira National Wildlife Refuge",
+        "state": "Kansas",
+        "kind": "ramsar-site",
+        "manager": "Ramsar Convention (designated by U.S. State Department)",
+        "area_acres": 22137.6,
+        "designated": "12 February 2002",
+        "description": "The refuge has 34 wetlands and includes two shallow lakes, Big Salt Marsh and Little Salt Marsh. More than half of the refuge is Tallgrass and Shortgrass prairies.",
+        "source": "https://en.wikipedia.org/wiki/List_of_Ramsar_sites_in_the_United_States"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.38333333333334,
+          33.45
+        ]
+      },
+      "properties": {
+        "name": "Roswell Artesian Wetlands",
+        "state": "New Mexico",
+        "kind": "ramsar-site",
+        "manager": "Ramsar Convention (designated by U.S. State Department)",
+        "area_acres": 2265.6,
+        "designated": "7 September 2010",
+        "description": null,
+        "source": "https://en.wikipedia.org/wiki/List_of_Ramsar_sites_in_the_United_States"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.38333333333334,
+          37.86666666666667
+        ]
+      },
+      "properties": {
+        "name": "San Francisco Bay and Estuary",
+        "state": "California",
+        "kind": "ramsar-site",
+        "manager": "Ramsar Convention (designated by U.S. State Department)",
+        "area_acres": 392185.6,
+        "designated": "2 February 2013",
+        "description": null,
+        "source": "https://en.wikipedia.org/wiki/List_of_Ramsar_sites_in_the_United_States"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.25,
+          45.75
+        ]
+      },
+      "properties": {
+        "name": "Sand Lake National Wildlife Refuge",
+        "state": "South Dakota",
+        "kind": "ramsar-site",
+        "manager": "Ramsar Convention (designated by U.S. State Department)",
+        "area_acres": 21760.0,
+        "designated": "3 August 1998",
+        "description": null,
+        "source": "https://en.wikipedia.org/wiki/List_of_Ramsar_sites_in_the_United_States"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.33806,
+          41.22222
+        ]
+      },
+      "properties": {
+        "name": "Sue and Wes Dixon Waterfowl Refuge at Hennepin and Hopper Lake",
+        "state": "Illinois",
+        "kind": "ramsar-site",
+        "manager": "Ramsar Convention (designated by U.S. State Department)",
+        "area_acres": 2758.4,
+        "designated": "2 February 2012",
+        "description": null,
+        "source": "https://en.wikipedia.org/wiki/List_of_Ramsar_sites_in_the_United_States"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -90.05278,
+          40.35611
+        ]
+      },
+      "properties": {
+        "name": "The Emiquon Complex",
+        "state": "Illinois",
+        "kind": "ramsar-site",
+        "manager": "Ramsar Convention (designated by U.S. State Department)",
+        "area_acres": 14156.8,
+        "designated": "2 February 2012",
+        "description": null,
+        "source": "https://en.wikipedia.org/wiki/List_of_Ramsar_sites_in_the_United_States"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.11666666666666,
+          32.55
+        ]
+      },
+      "properties": {
+        "name": "Tijuana River National Estuarine Research Reserve",
+        "state": "California",
+        "kind": "ramsar-site",
+        "manager": "Ramsar Convention (designated by U.S. State Department)",
+        "area_acres": 2521.6,
+        "designated": "2 February 2005",
+        "description": null,
+        "source": "https://en.wikipedia.org/wiki/List_of_Ramsar_sites_in_the_United_States"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.38333333333334,
+          38.15
+        ]
+      },
+      "properties": {
+        "name": "Tomales Bay",
+        "state": "California",
+        "kind": "ramsar-site",
+        "manager": "Ramsar Convention (designated by U.S. State Department)",
+        "area_acres": 7042.5,
+        "designated": "30 September 2002",
+        "description": null,
+        "source": "https://en.wikipedia.org/wiki/List_of_Ramsar_sites_in_the_United_States"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -91.16666666666667,
+          43.05
+        ]
+      },
+      "properties": {
+        "name": "Upper Mississippi River Floodplain Wetlands",
+        "state": "Minnesota ,  Wisconsin ,  Iowa ,  Illinois",
+        "kind": "ramsar-site",
+        "manager": "Ramsar Convention (designated by U.S. State Department)",
+        "area_acres": 302348.8,
+        "designated": "5 January 2010",
+        "description": null,
+        "source": "https://en.wikipedia.org/wiki/List_of_Ramsar_sites_in_the_United_States"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.01666666666667,
+          40.016666666666666
+        ]
+      },
+      "properties": {
+        "name": "Wilma H. Schiermeier Olentangy River Wetland Research Park",
+        "state": "Ohio",
+        "kind": "ramsar-site",
+        "manager": "Ramsar Convention (designated by U.S. State Department)",
+        "area_acres": 51.8,
+        "designated": "18 April 2008",
+        "description": null,
+        "source": "https://en.wikipedia.org/wiki/List_of_Ramsar_sites_in_the_United_States"
+      }
+    }
+  ],
+  "metadata": {
+    "source_url": "https://en.wikipedia.org/wiki/List_of_Ramsar_sites_in_the_United_States",
+    "retrieved_at": "2026-04-26",
+    "feature_count": 40,
+    "license": "Wikipedia content, CC BY-SA 4.0"
+  }
+}
