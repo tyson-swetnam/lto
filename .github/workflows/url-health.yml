@@ -1,0 +1,48 @@
+name: URL health check
+
+on:
+  schedule:
+    - cron: "0 7 * * 1"   # Mondays 07:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt requests
+      - name: Rebuild DB from committed parquet
+        run: python scripts/rebuild_db_from_parquet.py
+      - name: HTTP HEAD every URL
+        run: python scripts/check_url_health.py --concurrency 16 --timeout 8
+      - name: Apply pattern-based URL hygiene
+        run: python scripts/url_hygiene.py
+      - name: Re-export parquet
+        run: python scripts/export_parquet.py
+      - name: Open URL-health PR
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: url-health/${{ github.run_id }}
+          title: "chore(url-health): weekly verification"
+          commit-message: "chore(url-health): weekly verification"
+          body: |
+            Automated URL HEAD verification produced by
+            `scripts/check_url_health.py` + pattern-based hygiene from
+            `scripts/url_hygiene.py`. Review the
+            `data/seed/url_health_check.csv` and `url_hygiene_log.csv`
+            diffs before merging.
+          add-paths: |
+            data/seed/url_health_check.csv
+            data/seed/url_hygiene_log.csv
+            public/parquet/people.parquet
+            public/parquet/facilities.parquet
+            public/parquet/data_archives.parquet
+          labels: url-health
