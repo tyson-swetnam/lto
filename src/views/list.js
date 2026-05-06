@@ -16,7 +16,7 @@
 //   • Funding: top-3 funders + amounts
 //   • Links: facility URL, data portal URL
 
-import { getConn, query, unwrapRow } from '../db.js';
+import { getConn, query, unwrapRow, whenReady } from '../db.js';
 import { TYPE_COLORS } from '../map.js';
 
 let _container = null;
@@ -87,6 +87,10 @@ function featureIds(features) {
 
 async function fetchEnrichedFacilities(ids) {
   if (!ids.length) return [];
+  // Parent code may call renderList before DuckDB-Wasm finished
+  // initialising (see main.js renderAll → renderList during the very
+  // first paint). Wait for the connection so we don't throw.
+  await whenReady();
   const conn = getConn();
   if (!conn) throw new Error('DuckDB connection not ready');
 
