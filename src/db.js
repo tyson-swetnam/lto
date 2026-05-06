@@ -167,6 +167,15 @@ export async function initDB() {
     // so the rest of the app keeps working until the export runs.
     'spheres', 'ecosystem_types', 'life_zones',
     'facility_spheres', 'facility_ecosystems', 'facility_life_zones',
+    // Wave J data-archive layer — vocab + entity tables that record
+    // every facility's authoritative data archive(s), addressable
+    // datasets, API endpoints, and public cloud buckets. Drives the
+    // archive sections in the Browse cards (src/views/list.js).
+    'archive_types', 'data_formats', 'data_licenses', 'access_modes',
+    'data_archives', 'facility_archives', 'data_products',
+    'api_endpoints', 'cloud_buckets',
+    // Provenance audit table.
+    'provenance',
   ];
   for (const t of tables) {
     const url = `${PARQUET_BASE}${t}.parquet`;
