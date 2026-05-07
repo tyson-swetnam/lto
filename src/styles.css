@@ -1822,9 +1822,26 @@ footer a:hover { color: var(--c-primary); }
 }
 .brw-sphere-secondary { opacity: .7; }
 .brw-lt-badge {
-  font-size: .68rem; font-weight: 700; color: #92400e;
-  background: #fef3c7; padding: 2px 6px; border-radius: 4px;
+  font-size: .68rem; font-weight: 700;
+  padding: 2px 6px; border-radius: 4px;
+  letter-spacing: .02em;
+  /* Default (≥10y) — soft amber. Higher tiers override below. */
+  color: #92400e; background: #fef3c7;
 }
+/* Tier ramp: greens for short records, ambers for medium, oranges for
+   long, reds for centenary, purples for the historic outliers. */
+.brw-lt-10  { color: #166534; background: #dcfce7; }   /* light green   */
+.brw-lt-20  { color: #14532d; background: #bbf7d0; }   /* green         */
+.brw-lt-30  { color: #713f12; background: #fef9c3; }   /* yellow        */
+.brw-lt-40  { color: #854d0e; background: #fef08a; }   /* gold          */
+.brw-lt-50  { color: #92400e; background: #fed7aa; }   /* amber         */
+.brw-lt-75  { color: #9a3412; background: #fdba74; }   /* orange        */
+.brw-lt-100 { color: #fff;    background: #c2410c; }   /* deep orange   */
+.brw-lt-125 { color: #fff;    background: #9f1239; }   /* maroon        */
+.brw-lt-150 { color: #fff;    background: #7c2d12; }   /* mahogany      */
+.brw-lt-175 { color: #fff;    background: #581c87; }   /* purple        */
+.brw-lt-200 { color: #fff;    background: linear-gradient(135deg, #1e3a8a, #581c87); }   /* royal indigo */
+
 .brw-meta { font-size: .82rem; color: #64748b; line-height: 1.5; }
 .brw-meta .brw-type { font-weight: 600; }
 

@@ -316,6 +316,22 @@ function metricCell(value, label) {
   return `<span class="brw-metric"><strong>${value}</strong><br>${label}</span>`;
 }
 
+// Long-record tier badge. Picks the highest qualifying tier from
+// {10, 20, 30, 40, 50, 75, 100, 125, 150, 175, 200} and renders a
+// colour-coded chip. Years come from record_length_years if set,
+// else 2026 - established, else no badge.
+const RECORD_TIERS = [200, 175, 150, 125, 100, 75, 50, 40, 30, 20, 10];
+function recordTierBadge(f) {
+  const yrs = Number.isFinite(f.record_length_years)
+    ? f.record_length_years
+    : (Number.isFinite(f.established) ? 2026 - f.established : null);
+  if (yrs == null || yrs < 10) return '';
+  const tier = RECORD_TIERS.find((t) => yrs >= t);
+  return `<span class="brw-lt-badge brw-lt-${tier}" `
+       + `title="≥${tier}-year record (${yrs} years; Peters 2013 threshold)">`
+       + `≥${tier}y</span>`;
+}
+
 function cardHtml(f) {
   const typeColor = TYPE_COLORS?.[f.type] || '#64748b';
   const networks = (f.networks || []).slice(0, 8);
@@ -337,9 +353,7 @@ function cardHtml(f) {
     ...(f.secondary_spheres || []).map((s) => sphereChip(s).replace('brw-sphere-chip', 'brw-sphere-chip brw-sphere-secondary')),
   ].join('');
 
-  const recordBadge = f.long_term_threshold_met
-    ? `<span class="brw-lt-badge" title="≥10y record (Peters 2013)">≥10y</span>`
-    : '';
+  const recordBadge = recordTierBadge(f);
 
   // Metrics row
   const established = f.established ? `${f.established}` : '—';
