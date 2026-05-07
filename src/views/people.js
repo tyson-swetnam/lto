@@ -37,6 +37,15 @@ function fmtInt(n) {
   if (!n && n !== 0) return '—';
   return Math.round(n).toLocaleString();
 }
+// Metric display: show "n/a" when there's no signal (zero or null) so
+// the card doesn't read as a confident "this person has 0 publications"
+// when the truth is "we have no data on this person yet". Only the
+// per-person metric tiles use this; aggregate sums elsewhere keep
+// showing 0 because 0 is a meaningful answer in those contexts.
+function fmtMetric(n) {
+  if (n == null || n === 0) return 'n/a';
+  return Math.round(n).toLocaleString();
+}
 // DuckDB-Wasm 1.29 returns BIGINTs as JS bigints and LIST<STRUCT> values
 // as Arrow Vector objects (NOT plain JS arrays — Array.isArray() returns
 // false for them). The People view's affiliations / areas / urls lists
@@ -195,10 +204,10 @@ function cardHtml(p) {
         : ''}
     </header>
     <div class="ppl-metrics" title="Counts are computed from the LTO publication corpus only — i.e. the ~600 flagship papers manually curated across the 6 spheres. They are NOT career-wide h-index / citation totals; for that, follow the ORCID / OpenAlex / Google Scholar links above. The full per-author publication history will be backfilled by the CI-side OpenAlex enrichment script (see RUNBOOK.md step 2).">
-      <span class="ppl-metric"><strong>${fmtInt(p.n_pubs)}</strong><br>lto&nbsp;pubs</span>
-      <span class="ppl-metric"><strong>${fmtInt(p.total_citations)}</strong><br>lto&nbsp;cites</span>
-      <span class="ppl-metric"><strong>${fmtInt(p.h_index)}</strong><br>lto&nbsp;h-idx</span>
-      <span class="ppl-metric"><strong>${fmtInt(p.n_coauth)}</strong><br>lto&nbsp;co-authors</span>
+      <span class="ppl-metric"><strong>${fmtMetric(p.n_pubs)}</strong><br>lto&nbsp;pubs</span>
+      <span class="ppl-metric"><strong>${fmtMetric(p.total_citations)}</strong><br>lto&nbsp;cites</span>
+      <span class="ppl-metric"><strong>${fmtMetric(p.h_index)}</strong><br>lto&nbsp;h-idx</span>
+      <span class="ppl-metric"><strong>${fmtMetric(p.n_coauth)}</strong><br>lto&nbsp;co-authors</span>
       <span class="ppl-metric"><strong>${fmtUsd(p.facility_funding_usd)}</strong><br>funding base</span>
     </div>
     <div class="ppl-metrics-caveat">
