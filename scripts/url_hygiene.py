@@ -45,12 +45,38 @@ HOMEPAGE_PATTERNS = [
     (re.compile(r"^https?://[^/]+/about/staff/?$"), "null"),
     (re.compile(r"^https?://[^/]+/staff/profile/?$"), "null"),
     (re.compile(r"^https?://[^/]+/staff/?$"), "null"),
+    (re.compile(r"^https?://[^/]+/staff-profiles/?$"), "null"),
     (re.compile(r"^https?://[^/]+/about/?$"), "null"),
     (re.compile(r"^https?://[^/]+/about-us/staff/?$"), "null"),
     (re.compile(r"^https?://[^/]+/contact/?$"), "null"),
     (re.compile(r"^https?://[^/]+/contact-us/?$"), "null"),
+    (re.compile(r"^https?://[^/]+/contactus\.htm$"), "null"),
     (re.compile(r"^https?://[^/]+/leadership/?$"), "null"),
     (re.compile(r"^https?://[^/]+/About/Leadership/?$"), "null"),
+    # NPS unit /im/<network>/contact[us].htm and /<unit>/learn/nature/index.htm
+    # are facility-listing pages, not individual profiles. Null so the UI
+    # cascade falls back to facility URL.
+    (re.compile(r"^https?://www\.nps\.gov/im/[a-z]+/contact(?:us)?\.htm$"), "null"),
+    (re.compile(r"^https?://www\.nps\.gov/im/contactus\.htm$"), "null"),
+    (re.compile(r"^https?://www\.nps\.gov/[a-z]+/learn/nature/index\.htm$"), "null"),
+    # NGO/foundation generic team pages.
+    (re.compile(r"^https?://[^/]+/our-team/?$"), "null"),
+    (re.compile(r"^https?://[^/]+/our-people/?$"), "null"),
+    (re.compile(r"^https?://[^/]+/our-staff/?$"), "null"),
+    (re.compile(r"^https?://[^/]+/our-scientists/?$"), "null"),
+    # Generic listing pages where the URL ends at /people/ or /faculty/
+    # with no person slug. The UI cascade still gets the user to the
+    # facility, so nulling these is a strict improvement.
+    (re.compile(r"^https?://[^/]+/people/?$"), "null"),
+    (re.compile(r"^https?://[^/]+/faculty/?$"), "null"),
+    (re.compile(r"^https?://[^/]+/researchers/?$"), "null"),
+    (re.compile(r"^https?://[^/]+/scientists/?$"), "null"),
+    # ARS region/location/lab people listing without a final slug.
+    (re.compile(r"^https?://www\.ars\.usda\.gov/[a-z-]+/[a-z-]+/[a-z-]+/people/?$"),
+     "null"),
+    # USFS bare-region pages (www.fs.usda.gov/srs/ etc) that pretend to
+    # be a person but are the regional landing page.
+    (re.compile(r"^https?://www\.fs\.usda\.gov/[a-z]+/?$"), "null"),
     # Bare root with no path at all.
     (re.compile(r"^https?://[^/]+/?$"), "null"),
     # Specific known-dead URLs from cod-kmap heritage that 404 today.

@@ -158,6 +158,18 @@ def compute_person_area_metrics(conn) -> None:
     """)
 
     # 5. Combine + composite z-score (within-area normalisation).
+    # Pre-flight: if _person_area_pubs has no rows (e.g. publication_topics
+    # is empty because OpenAlex topics were never harvested), DO NOT
+    # clobber person_area_metrics — the LTO-native compute_lto_person_metrics.py
+    # populates the same table from authorship + publications and we
+    # don't want this script's empty result to overwrite it.
+    n_pap = conn.execute("SELECT count(*) FROM _person_area_pubs").fetchone()[0]
+    if n_pap == 0:
+        print("[person_area_metrics] _person_area_pubs is empty "
+              "(publication_topics not harvested?); SKIPPING write — "
+              "leaving existing person_area_metrics rows intact "
+              "(populated by compute_lto_person_metrics.py).")
+        return
     conn.execute("DROP TABLE IF EXISTS person_area_metrics")
     conn.execute("""
         CREATE TABLE person_area_metrics AS

@@ -271,48 +271,74 @@ async function renderDirectory(targetId) {
     }
   }
 
+  // First render builds the page chrome (header + input + select +
+  // grid). Subsequent renders only swap the grid + summary count.
+  // Otherwise re-rendering destroys the search input element on every
+  // keystroke, which kills focus + the cursor position and makes the
+  // search bar unusable on mobile.
+  if (!_container.querySelector('.ppl-grid')) {
+    _container.innerHTML = `
+      <div class="ppl-page">
+        <header class="ppl-header">
+          <h1>Researcher directory</h1>
+          <p class="ppl-summary"></p>
+          <div class="ppl-controls">
+            <input id="ppl-q" type="search" placeholder="Search name, affiliation, role…" value="${esc(_qFilter)}">
+            <label>Sort by:
+              <select id="ppl-sort">
+                <option value="composite">Composite (default)</option>
+                <option value="name">Name (A→Z)</option>
+                <option value="pubs">Publications</option>
+                <option value="citations">Citations</option>
+                <option value="coauthors">Co-authors</option>
+                <option value="funding">Funding base</option>
+              </select>
+            </label>
+          </div>
+        </header>
+        <div class="ppl-grid"></div>
+        <p class="ppl-status" style="text-align:center;color:#64748b;padding:14px">Done.</p>
+      </div>`;
+
+    // Debounce the search input. Without this, every keystroke triggers
+    // a full re-render of 600+ cards — on mobile that means the keyboard
+    // visibly stutters. 120ms is below the threshold of perceptible
+    // latency but coarse enough that fast typing only re-renders once
+    // per word.
+    const qInput = _container.querySelector('#ppl-q');
+    let qTimer = null;
+    qInput.addEventListener('input', (ev) => {
+      const v = ev.target.value;
+      clearTimeout(qTimer);
+      qTimer = setTimeout(() => {
+        _qFilter = v;
+        renderDirectory(targetId);
+      }, 120);
+    });
+    _container.querySelector('#ppl-sort').addEventListener('change', (ev) => {
+      _sort = ev.target.value;
+      renderDirectory(targetId);
+    });
+  }
+
+  // Sync sort dropdown to current state (in case it was set externally).
+  const sortSel = _container.querySelector('#ppl-sort');
+  if (sortSel && sortSel.value !== _sort) sortSel.value = _sort;
+
   const rows = applyFilterSort(_cachedPeople);
   const cards = rows.map(cardHtml).join('');
-
-  _container.innerHTML = `
-    <div class="ppl-page">
-      <header class="ppl-header">
-        <h1>Researcher directory</h1>
-        <p class="ppl-summary">
-          <strong>${fmtInt(_cachedPeople.length)}</strong> researchers
-          across the lto dataset.
-          ${rows.length !== _cachedPeople.length
-             ? `Showing <strong>${fmtInt(rows.length)}</strong> after filter.` : ''}
-          Click into the Network knowledge map to see who appears in
-          which research-area polygon, or use search/sort below to drill
-          in here.
-        </p>
-        <div class="ppl-controls">
-          <input id="ppl-q" type="search" placeholder="Search name, affiliation, role…" value="${esc(_qFilter)}">
-          <label>Sort by:
-            <select id="ppl-sort">
-              <option value="composite"${_sort === 'composite' ? ' selected' : ''}>Composite (default)</option>
-              <option value="name"${_sort === 'name' ? ' selected' : ''}>Name (A→Z)</option>
-              <option value="pubs"${_sort === 'pubs' ? ' selected' : ''}>Publications</option>
-              <option value="citations"${_sort === 'citations' ? ' selected' : ''}>Citations</option>
-              <option value="coauthors"${_sort === 'coauthors' ? ' selected' : ''}>Co-authors</option>
-              <option value="funding"${_sort === 'funding' ? ' selected' : ''}>Funding base</option>
-            </select>
-          </label>
-        </div>
-      </header>
-      <div class="ppl-grid">${cards}</div>
-      <p class="ppl-status" style="text-align:center;color:#64748b;padding:14px">Done.</p>
-    </div>`;
-
-  _container.querySelector('#ppl-q').addEventListener('input', (ev) => {
-    _qFilter = ev.target.value;
-    renderDirectory(targetId);  // re-render filtered list
-  });
-  _container.querySelector('#ppl-sort').addEventListener('change', (ev) => {
-    _sort = ev.target.value;
-    renderDirectory(targetId);
-  });
+  _container.querySelector('.ppl-grid').innerHTML = cards;
+  const summary = _container.querySelector('.ppl-summary');
+  if (summary) {
+    summary.innerHTML =
+      `<strong>${fmtInt(_cachedPeople.length)}</strong> researchers `
+      + `across the lto dataset.`
+      + (rows.length !== _cachedPeople.length
+          ? ` Showing <strong>${fmtInt(rows.length)}</strong> after filter.`
+          : '')
+      + ` Click into the Network knowledge map to see who appears in `
+      + `which research-area polygon, or use search/sort below to drill in here.`;
+  }
 
   if (targetId) {
     const el = _container.querySelector(`#ppl-${CSS.escape(targetId)}`);

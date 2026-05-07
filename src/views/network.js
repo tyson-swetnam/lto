@@ -92,11 +92,11 @@ const NODE_RADIUS = { facility: 4, person: 3 };
 // closely tracks sqrt(weight)² = weight, as the paper intends.
 const SUPERGRAPH_TICKS = 400;
 const SUBGRAPH_TICKS   = 120;
-const SUPER_PADDING    = 14;     // px gap between adjacent squares
-const PERIMETER_PAD    = 0.18;   // anchor ring at 1+pad of layout bbox half-width
+const SUPER_PADDING    = 6;      // px gap between adjacent squares (was 14 — tighter)
+const PERIMETER_PAD    = 0.12;   // anchor ring at 1+pad of layout bbox half-width
 const PERIMETER_NODES  = 18;     // outer anchors around the entire layout
-const SUPERNODE_SCALE  = 24;     // side = scale * sqrt(weight)
-const SUPERNODE_MIN    = 28;     // minimum side so 1-facility areas remain visible
+const SUPERNODE_SCALE  = 18;     // side = scale * sqrt(weight) (was 24 — tighter clusters)
+const SUPERNODE_MIN    = 32;     // minimum side so 1-facility areas remain visible
 const DECOR_GRID       = 5;      // 5×5 = 25 decoration anchors per area square
 const DECOR_JITTER     = 0.18;   // ±18% random jitter so cell boundaries aren't gridlike
 
@@ -327,10 +327,10 @@ async function layoutSupergraph(d3, sg, w, h) {
     .alphaDecay(0.04)
     .force('link', d3.forceLink(sg.edges)
       .id((d) => d.id)
-      .distance((d) => 30 + Math.sqrt(d.w) * 8)
-      .strength(0.4))
+      .distance((d) => 18 + Math.sqrt(d.w) * 5)
+      .strength(0.5))
     .force('charge', d3.forceManyBody()
-      .strength((d) => -120 - d.weight * 4))
+      .strength((d) => -80 - d.weight * 2.5))
     .force('collide', d3.forceCollide()
       .radius((d) => d.side * 0.71 + SUPER_PADDING)
       .strength(1)
@@ -1370,11 +1370,11 @@ async function render() {
       // size on the datum so onZoom() can rescale relative to it.
       const labelPeople = perNodes.filter((p) => labelledIds.has(p.id));
       const personBaseFont = (d) => {
-        // Tighter range (8–12 px) so label sizes don't visually
-        // compete with area names. Differentiation between top and
-        // mid-tier researchers comes from sqrt-importance scaling.
+        // Larger range (12–18 px). With the new zoom logic that grows
+        // labels when zooming in, these base sizes give readable names
+        // at fit-zoom and keep growing as the user pans in.
         const w = d.importance || 0;
-        return Math.max(8, Math.min(12, 8 + Math.sqrt(w) * 0.7));
+        return Math.max(12, Math.min(18, 11 + Math.sqrt(w) * 0.9));
       };
       _labelSel = root.append('g').attr('class', 'mvg-per-labels')
         .attr('text-anchor', 'middle')
@@ -1421,11 +1421,10 @@ async function render() {
           display, name: sp.name, acronym: sp.acronym,
           country: sp.country, f_type: sp.f_type, url: sp.url,
           n_people: sp.n_people || 0, area_id: sp.area_id,
-          // Tighter range than people (7–11 px). Acronyms are short
-          // so they sit comfortably inside small sub-polygons; full
-          // names get collision-culled until the user zooms in enough
-          // that they fit.
-          baseFont: Math.max(7, Math.min(11, 7 + Math.sqrt(sp.n_people || 0) * 0.7)),
+          // Larger range (10–15 px) — readable at fit-zoom alongside
+          // people labels (12–18). Sub-polygon collision still culls
+          // labels that don't fit; user can zoom in to reveal more.
+          baseFont: Math.max(10, Math.min(15, 9 + Math.sqrt(sp.n_people || 0) * 0.9)),
         };
       });
       _facLabelSel = root.append('g').attr('class', 'mvg-fac-labels')
@@ -1466,13 +1465,14 @@ async function render() {
         const lab = _layout.labels.get(a.id);
         return {
           id: a.id, name: lab.name, x: lab.x, y: lab.y,
-          // Tighter range (10–16 px) than before. The previous (11–22)
-          // scaled ALL labels up by 1/k when the user zoomed out at
-          // initial fit (k≈0.5), producing the giant 40+ px labels
-          // that overpowered the polygons. Combined with the onZoom()
-          // change that caps the counter-scale at 1.0, labels now
-          // stay legible without dominating the canvas.
-          baseFont: Math.max(10, Math.min(16, 8 + Math.sqrt(a.weight) * 1.2)),
+          // Larger base range (16–28 px). At initial fit (k≈0.5) the
+          // counter-scale clamps to 2.0 so screen size stays readable
+          // (16px svg × 2 / 0.5x svg-zoom ≈ 16px screen). When the
+          // user zooms IN (k>1) onZoom() pins scale=1, so labels grow
+          // proportionally with the rest of the graph — what the user
+          // expects. Older logic shrank labels at high zoom, making
+          // them stay tiny no matter how far in you went.
+          baseFont: Math.max(16, Math.min(28, 12 + Math.sqrt(a.weight) * 1.6)),
         };
       });
     _areaLabelSel = labelG.selectAll('text').data(areaLabData).enter().append('text')
@@ -1622,15 +1622,15 @@ function onPersonClick(d) {
 // world coords while polygons stay the same size.
 function onZoom(k) {
   _zoomK = k || 1;
-  // Cap the counter-scale at 1.0 — labels should NEVER grow above
-  // their base size when the user zooms out. The previous unbounded
-  // 1/k formula made a 22 px label balloon to 44 px at the initial
-  // fit zoom (k≈0.5), drowning the canvas. Below k=1 we leave fonts
-  // at base size; above k=1 we shrink them so they stay readable
-  // (constant screen size) as the user zooms in.
-  const labelScale = Math.min(1, 1 / Math.max(_zoomK, 0.5));
-  // Dot scale: similar logic — at k>=1 dots stay at base radius;
-  // when zoomed in they shrink so they don't bloat into giant blobs.
+  // When zoomed OUT (k<1), counter-scale labels by 1/k (capped at 2)
+  // so they stay readable at fit-zoom — otherwise the SVG-space font
+  // gets visually shrunk by k and is unreadable. When zoomed IN (k>=1)
+  // we pin scale=1 so labels GROW proportionally with the rest of the
+  // graph, matching user expectations ("zoom in to read better").
+  const labelScale = _zoomK >= 1 ? 1 : Math.min(2, 1 / _zoomK);
+  // Dot scale stays inverse — dots are visual markers and shouldn't
+  // balloon. Still capped at base radius when zoomed out, shrink when
+  // zoomed in so the markers don't crowd out the labels.
   const dotScale = Math.min(1, 1 / Math.max(_zoomK, 0.5));
   if (_dotPersonSel) {
     _dotPersonSel.attr('r', (d) => (d.__baseR || 2.0) * dotScale);
