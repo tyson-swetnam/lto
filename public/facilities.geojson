@@ -10166,6 +10166,75 @@
 "long_term_threshold_met": true,
 "primary_sphere": "terrestrial"
 }
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-89.5333,
+46.2333
+]
+},
+"properties": {
+"id": "ba142b5a41924843",
+"name": "University of Notre Dame Environmental Research Center",
+"acronym": "UNDERC-ERC",
+"type": "university-field-station",
+"country": "US",
+"url": "https://underc.nd.edu/",
+"parent_org": "University of Notre Dame",
+"established": 1934,
+"record_length_years": 92,
+"long_term_threshold_met": true,
+"primary_sphere": "terrestrial"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-105.5217,
+40.3772
+]
+},
+"properties": {
+"id": "b4f94112283a2cf0",
+"name": "Rocky Mountain National Park",
+"acronym": "ROMO-NPS",
+"type": "protected-area-federal",
+"country": "US",
+"url": "https://www.nps.gov/romo/",
+"parent_org": "National Park Service",
+"established": 1915,
+"record_length_years": 111,
+"long_term_threshold_met": true,
+"primary_sphere": "terrestrial"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-89.6651,
+46.0131
+]
+},
+"properties": {
+"id": "c77f265f303e27f7",
+"name": "University of Wisconsin\u2013Madison Trout Lake Station",
+"acronym": "UWTL-CFL",
+"type": "university-field-station",
+"country": "US",
+"url": "https://limnology.wisc.edu/research/trout-lake-station/",
+"parent_org": "University of Wisconsin\u2013Madison Center for Limnology",
+"established": 1925,
+"record_length_years": 101,
+"long_term_threshold_met": true,
+"primary_sphere": "freshwater"
+}
 }
 ]
 }
