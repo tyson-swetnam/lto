@@ -70,6 +70,29 @@ LOAD_ORDER = [
     "authorship",
     "person_areas",
     "collaborations",
+    # LTO six-sphere model — vocab + cross-walks. Loaded BEFORE archive
+    # tables in case ecosystem-classification metadata cross-references.
+    "spheres",
+    "ecosystem_types",
+    "life_zones",
+    "facility_spheres",
+    "facility_ecosystems",
+    "facility_life_zones",
+    # J-DATA archive layer — vocab parents first (archive_types,
+    # data_formats, data_licenses, access_modes), then entity rows
+    # that FK-reference them (data_archives, facility_archives,
+    # data_products, api_endpoints, cloud_buckets). Without these
+    # in the rebuild the load_lto_archives.py rerun trips
+    # ConstraintException because the vocab parent tables are empty.
+    "archive_types",
+    "data_formats",
+    "data_licenses",
+    "access_modes",
+    "data_archives",
+    "facility_archives",
+    "data_products",
+    "api_endpoints",
+    "cloud_buckets",
 ]
 
 

@@ -9522,6 +9522,650 @@
 "long_term_threshold_met": true,
 "primary_sphere": "freshwater"
 }
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-121.9519,
+45.8197
+]
+},
+"properties": {
+"id": "088693714db43c1d",
+"name": "Wind River Experimental Forest",
+"acronym": "WREF-EF",
+"type": "experimental-forest-range",
+"country": "US",
+"url": "https://research.fs.usda.gov/pnw/forestsandranges/locations/wref",
+"parent_org": "USDA Forest Service Pacific Northwest Research Station",
+"established": 1932,
+"record_length_years": 94,
+"long_term_threshold_met": true,
+"primary_sphere": "terrestrial"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-119.7322,
+37.1086
+]
+},
+"properties": {
+"id": "a7b7e13fcc767989",
+"name": "San Joaquin Experimental Range",
+"acronym": "SJER-ER",
+"type": "experimental-forest-range",
+"country": "US",
+"url": "https://research.fs.usda.gov/psw/forestsandranges/locations/sjer",
+"parent_org": "USDA Forest Service Pacific Southwest Research Station",
+"established": 1934,
+"record_length_years": 92,
+"long_term_threshold_met": true,
+"primary_sphere": "terrestrial"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-119.7233,
+36.8194
+]
+},
+"properties": {
+"id": "22fa57351fcba98a",
+"name": "Teakettle Experimental Forest",
+"acronym": "TEAK-EF",
+"type": "experimental-forest-range",
+"country": "US",
+"url": "https://research.fs.usda.gov/psw/forestsandranges/locations/teakettle",
+"parent_org": "USDA Forest Service Pacific Southwest Research Station",
+"established": 1938,
+"record_length_years": 88,
+"long_term_threshold_met": true,
+"primary_sphere": "terrestrial"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-119.7233,
+36.8194
+]
+},
+"properties": {
+"id": "53c5bb60afd13bc5",
+"name": "Kings River Experimental Watersheds",
+"acronym": "KREW-EW",
+"type": "experimental-forest-range",
+"country": "US",
+"url": "https://research.fs.usda.gov/psw/projects/krew",
+"parent_org": "USDA Forest Service Pacific Southwest Research Station",
+"established": 2002,
+"record_length_years": 24,
+"long_term_threshold_met": true,
+"primary_sphere": "freshwater"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-83.5008,
+35.6884
+]
+},
+"properties": {
+"id": "63ffcec39b42f791",
+"name": "Great Smoky Mountains National Park (Twin Creeks Science and Education Center)",
+"acronym": "GRSM-NP",
+"type": "protected-area-federal",
+"country": "US",
+"url": "https://www.nps.gov/grsm/",
+"parent_org": "U.S. National Park Service",
+"established": 1934,
+"record_length_years": 92,
+"long_term_threshold_met": true,
+"primary_sphere": "terrestrial"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-80.5239,
+37.3753
+]
+},
+"properties": {
+"id": "4de23dbb2d07376a",
+"name": "Mountain Lake Biological Station",
+"acronym": "MLBS-BS",
+"type": "university-field-station",
+"country": "US",
+"url": "https://mlbs.virginia.edu/",
+"parent_org": "University of Virginia",
+"established": 1930,
+"record_length_years": 96,
+"long_term_threshold_met": true,
+"primary_sphere": "terrestrial"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-78.0644,
+39.0623
+]
+},
+"properties": {
+"id": "ecc94919a0543d2b",
+"name": "Blandy Experimental Farm / State Arboretum of Virginia",
+"acronym": "BLAN-EF",
+"type": "university-field-station",
+"country": "US",
+"url": "https://blandy.virginia.edu/",
+"parent_org": "University of Virginia",
+"established": 1926,
+"record_length_years": 100,
+"long_term_threshold_met": true,
+"primary_sphere": "terrestrial"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-78.1696,
+38.8929
+]
+},
+"properties": {
+"id": "ca0d02e2340450db",
+"name": "Smithsonian Conservation Biology Institute",
+"acronym": "SCBI-NZP",
+"type": "federal",
+"country": "US",
+"url": "https://nationalzoo.si.edu/scbi",
+"parent_org": "Smithsonian Institution / National Zoo",
+"established": 1974,
+"record_length_years": 52,
+"long_term_threshold_met": true,
+"primary_sphere": "terrestrial"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-84.3104,
+35.9311
+]
+},
+"properties": {
+"id": "348bc8da215bc2fb",
+"name": "Oak Ridge National Environmental Research Park",
+"acronym": "ORNL-NERP",
+"type": "federal",
+"country": "US",
+"url": "https://www.ornl.gov/division/cssed/nerp",
+"parent_org": "U.S. Department of Energy / Oak Ridge National Laboratory",
+"established": 1980,
+"record_length_years": 46,
+"long_term_threshold_met": true,
+"primary_sphere": "terrestrial"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-84.3104,
+35.9311
+]
+},
+"properties": {
+"id": "a9d8c9b1238f55ee",
+"name": "Walker Branch Watershed Long-Term Hydrologic Station",
+"acronym": "WBW-LTHS",
+"type": "streamgage-network",
+"country": "US",
+"url": "https://walkerbranch.ornl.gov/",
+"parent_org": "Oak Ridge National Laboratory / U.S. Department of Energy",
+"established": 1967,
+"record_length_years": 59,
+"long_term_threshold_met": true,
+"primary_sphere": "freshwater"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-87.236,
+32.9389
+]
+},
+"properties": {
+"id": "876712c562877290",
+"name": "Talladega National Forest",
+"acronym": "TALL-NF",
+"type": "protected-area-federal",
+"country": "US",
+"url": "https://www.fs.usda.gov/alabama",
+"parent_org": "USDA Forest Service Southern Region",
+"established": 1936,
+"record_length_years": 90,
+"long_term_threshold_met": true,
+"primary_sphere": "terrestrial"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-87.5447,
+33.2117
+]
+},
+"properties": {
+"id": "2a7fff258a20a88b",
+"name": "Lower Tombigbee\u2013Alabama River Aquatic Resources Area",
+"acronym": "LTAR-AQRC",
+"type": "field-station",
+"country": "US",
+"url": "https://aquatic.ua.edu/",
+"parent_org": "University of Alabama Aquatic Resources Center / Mobile Bay National Estuary Program",
+"established": 1990,
+"record_length_years": 36,
+"long_term_threshold_met": true,
+"primary_sphere": "freshwater"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-84.4711,
+31.2125
+]
+},
+"properties": {
+"id": "0846a1eb1faa5161",
+"name": "Jones Center at Ichauway",
+"acronym": "JIE-CTR",
+"type": "field-station",
+"country": "US",
+"url": "https://www.jonesctr.org/",
+"parent_org": "Robert W. Woodruff Foundation",
+"established": 1991,
+"record_length_years": 35,
+"long_term_threshold_met": true,
+"primary_sphere": "terrestrial"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-81.9931,
+29.6889
+]
+},
+"properties": {
+"id": "6194234d37cd0794",
+"name": "Ordway-Swisher Biological Station",
+"acronym": "OSBS-BS",
+"type": "university-field-station",
+"country": "US",
+"url": "https://ordway-swisher.ufl.edu/",
+"parent_org": "University of Florida",
+"established": 1980,
+"record_length_years": 46,
+"long_term_threshold_met": true,
+"primary_sphere": "terrestrial"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-81.4361,
+28.1244
+]
+},
+"properties": {
+"id": "fd948907a55e5aa0",
+"name": "Disney Wilderness Preserve",
+"acronym": "DSNY-TNC",
+"type": "protected-area-private",
+"country": "US",
+"url": "https://www.nature.org/en-us/get-involved/how-to-help/places-we-protect/disney-wilderness-preserve/",
+"parent_org": "The Nature Conservancy",
+"established": 1992,
+"record_length_years": 34,
+"long_term_threshold_met": true,
+"primary_sphere": "terrestrial"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-110.5885,
+44.428
+]
+},
+"properties": {
+"id": "502e60e5b0c4af02",
+"name": "Yellowstone National Park \u2014 Long-Term Ecological Monitoring",
+"acronym": "YNP-LT",
+"type": "protected-area-federal",
+"country": "US",
+"url": "https://www.nps.gov/yell/learn/nature/index.htm",
+"parent_org": "U.S. National Park Service / Yellowstone Center for Resources",
+"established": 1872,
+"record_length_years": 154,
+"long_term_threshold_met": true,
+"primary_sphere": "terrestrial"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-109.5498,
+38.5733
+]
+},
+"properties": {
+"id": "01b78db5c9938c34",
+"name": "USGS Canyonlands Research Station (Moab)",
+"acronym": "USGS-CRS-MOAB",
+"type": "federal",
+"country": "US",
+"url": "https://www.usgs.gov/centers/sbsc/science/canyonlands-research-station",
+"parent_org": "U.S. Geological Survey Southwest Biological Science Center",
+"established": 1996,
+"record_length_years": 30,
+"long_term_threshold_met": true,
+"primary_sphere": "terrestrial"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-111.9281,
+33.4242
+]
+},
+"properties": {
+"id": "6bf46c6d33f5967b",
+"name": "Sycamore Creek Long-Term Stream-Ecology Site (ASU)",
+"acronym": "SYCA-LTER",
+"type": "university-field-station",
+"country": "US",
+"url": "https://sols.asu.edu/",
+"parent_org": "Arizona State University / Tonto National Forest",
+"established": 1981,
+"record_length_years": 45,
+"long_term_threshold_met": true,
+"primary_sphere": "freshwater"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-111.8421,
+40.766
+]
+},
+"properties": {
+"id": "221dc5acfd9e1938",
+"name": "iUTAH GAMUT Red Butte Creek Watershed Observatory",
+"acronym": "IUTAH-GAMUT-RB",
+"type": "university-field-station",
+"country": "US",
+"url": "https://iutahepscor.org/",
+"parent_org": "University of Utah / iUTAH (innovative Urban Transitions and Aridregion Hydro-sustainability)",
+"established": 2012,
+"record_length_years": 14,
+"long_term_threshold_met": true,
+"primary_sphere": "freshwater"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-66.869,
+17.97
+]
+},
+"properties": {
+"id": "def9781c74528786",
+"name": "Bosque Estatal de Gu\u00e1nica (Gu\u00e1nica State Forest)",
+"acronym": "GUAN-SF",
+"type": "protected-area-state",
+"country": "PR",
+"url": "https://www.drna.pr.gov/",
+"parent_org": "Puerto Rico Department of Natural and Environmental Resources / USDA International Institute of Tropical Forestry",
+"established": 1919,
+"record_length_years": 107,
+"long_term_threshold_met": true,
+"primary_sphere": "terrestrial"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-147.826,
+64.8584
+]
+},
+"properties": {
+"id": "7b551249dcfba4fa",
+"name": "USDA-ARS Subarctic Agricultural Research Unit (Fairbanks)",
+"acronym": "USDA-ARS-AK",
+"type": "experimental-forest-range",
+"country": "US",
+"url": "https://www.ars.usda.gov/pacific-west-area/fairbanks-alaska/subarctic-agricultural-research-unit/",
+"parent_org": "USDA Agricultural Research Service",
+"established": 1948,
+"record_length_years": 78,
+"long_term_threshold_met": true,
+"primary_sphere": "agriculture"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-148.9131,
+63.7295
+]
+},
+"properties": {
+"id": "2c7030c9ccb10319",
+"name": "Denali National Park Long-Term Ecological Monitoring (Central Alaska Network, NPS-IM)",
+"acronym": "DENALI-NPS-LTM",
+"type": "protected-area-federal",
+"country": "US",
+"url": "https://www.nps.gov/im/cakn/index.htm",
+"parent_org": "U.S. National Park Service / Central Alaska Network Inventory & Monitoring Program",
+"established": 2001,
+"record_length_years": 25,
+"long_term_threshold_met": true,
+"primary_sphere": "terrestrial"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-98.6722,
+46.8997
+]
+},
+"properties": {
+"id": "d501f5c20c88d880",
+"name": "Northern Prairie Wildlife Research Center",
+"acronym": "USFWS-NPWRC",
+"type": "federal",
+"country": "US",
+"url": "https://www.usgs.gov/centers/northern-prairie-wildlife-research-center",
+"parent_org": "U.S. Fish and Wildlife Service / U.S. Geological Survey",
+"established": 1965,
+"record_length_years": 61,
+"long_term_threshold_met": true,
+"primary_sphere": "terrestrial"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-99.1042,
+47.0967
+]
+},
+"properties": {
+"id": "edf86b727b023da0",
+"name": "Cottonwood Lake Study Area",
+"acronym": "CLSA-LTER-LIKE",
+"type": "field-station",
+"country": "US",
+"url": "https://www.usgs.gov/centers/northern-prairie-wildlife-research-center/science/cottonwood-lake-study-area",
+"parent_org": "U.S. Geological Survey Northern Prairie Wildlife Research Center",
+"established": 1967,
+"record_length_years": 59,
+"long_term_threshold_met": true,
+"primary_sphere": "freshwater"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-97.5856,
+33.2349
+]
+},
+"properties": {
+"id": "694f72e231a5b4d9",
+"name": "Lyndon B. Johnson National Grassland",
+"acronym": "LBJ-NG",
+"type": "protected-area-federal",
+"country": "US",
+"url": "https://www.fs.usda.gov/recarea/texas/recarea/?recid=30041",
+"parent_org": "USDA Forest Service",
+"established": 1960,
+"record_length_years": 66,
+"long_term_threshold_met": true,
+"primary_sphere": "terrestrial"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-98.0386,
+35.5481
+]
+},
+"properties": {
+"id": "b2959b33183bb2ad",
+"name": "USDA-ARS Grazinglands Research Laboratory (El Reno)",
+"acronym": "USDA-ARS-EL-RENO",
+"type": "experimental-forest-range",
+"country": "US",
+"url": "https://www.ars.usda.gov/plains-area/el-reno-ok/grazinglands-research-laboratory/",
+"parent_org": "USDA Agricultural Research Service",
+"established": 1948,
+"record_length_years": 78,
+"long_term_threshold_met": true,
+"primary_sphere": "agriculture"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-99.059,
+35.411
+]
+},
+"properties": {
+"id": "3ab1ad2750cf466d",
+"name": "Marvin Klemme Range Research Station",
+"acronym": "KLEMME-RRS",
+"type": "university-field-station",
+"country": "US",
+"url": "https://agresearch.okstate.edu/research-stations/marvin-klemme/index.html",
+"parent_org": "Oklahoma State University Division of Agricultural Sciences and Natural Resources",
+"established": 1956,
+"record_length_years": 70,
+"long_term_threshold_met": true,
+"primary_sphere": "agriculture"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-95.253,
+38.954
+]
+},
+"properties": {
+"id": "12b78a29f0d373e5",
+"name": "University of Kansas Field Station",
+"acronym": "KUFS-FS",
+"type": "university-field-station",
+"country": "US",
+"url": "https://biosurvey.ku.edu/field-station",
+"parent_org": "University of Kansas Kansas Biological Survey & Center for Ecological Research",
+"established": 1947,
+"record_length_years": 79,
+"long_term_threshold_met": true,
+"primary_sphere": "terrestrial"
+}
 }
 ]
 }
