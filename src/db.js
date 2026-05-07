@@ -115,31 +115,46 @@ export function whenReady() {
 }
 
 export async function initDB() {
-  const duckdb = await import('@duckdb/duckdb-wasm');
-  const bundles = duckdb.getJsDelivrBundles();
-  const bundle = await duckdb.selectBundle(bundles);
-  const workerUrl = URL.createObjectURL(
-    new Blob([`importScripts("${bundle.mainWorker}");`], { type: 'text/javascript' }),
-  );
-  const worker = new Worker(workerUrl);
-  // Silent logger — the default ConsoleLogger streams every query-plan,
-  // worker message, and parquet fetch event to the browser console at
-  // INFO level, which quickly buries real warnings under hundreds of
-  // {level:2, origin:4, …} entries per page load. Swap in a no-op logger
-  // that only surfaces ERROR level events if DuckDB ever reports one.
-  const logger = {
-    log: (entry) => {
-      if (entry && entry.level && entry.level <= 1) {
-        console.error('[duckdb]', entry);
-      }
-    },
-  };
-  db = new duckdb.AsyncDuckDB(logger, worker);
-  await db.instantiate(bundle.mainModule, bundle.pthreadWorker);
-  URL.revokeObjectURL(workerUrl);
-  const newConn = await db.connect();
+  // 30-second timeout backstop. On a slow mobile link the parquet
+  // metadata fetches that back every CREATE VIEW can stall; rather than
+  // leave every consumer of whenReady() hung forever, release the
+  // promise after 30s so views fall back to filterFallback() (the
+  // first-paint GeoJSON path).
+  const timeoutId = setTimeout(() => {
+    if (!ready && readyResolve) {
+      console.warn('[db] init timeout — releasing whenReady() so views can fall back');
+      const r = readyResolve;
+      readyResolve = null;
+      r(null);
+    }
+  }, 30000);
 
-  const tables = [
+  try {
+    const duckdb = await import('@duckdb/duckdb-wasm');
+    const bundles = duckdb.getJsDelivrBundles();
+    const bundle = await duckdb.selectBundle(bundles);
+    const workerUrl = URL.createObjectURL(
+      new Blob([`importScripts("${bundle.mainWorker}");`], { type: 'text/javascript' }),
+    );
+    const worker = new Worker(workerUrl);
+    // Silent logger — the default ConsoleLogger streams every query-plan,
+    // worker message, and parquet fetch event to the browser console at
+    // INFO level, which quickly buries real warnings under hundreds of
+    // {level:2, origin:4, …} entries per page load. Swap in a no-op logger
+    // that only surfaces ERROR level events if DuckDB ever reports one.
+    const logger = {
+      log: (entry) => {
+        if (entry && entry.level && entry.level <= 1) {
+          console.error('[duckdb]', entry);
+        }
+      },
+    };
+    db = new duckdb.AsyncDuckDB(logger, worker);
+    await db.instantiate(bundle.mainModule, bundle.pthreadWorker);
+    URL.revokeObjectURL(workerUrl);
+    const newConn = await db.connect();
+
+    const tables = [
     'facilities', 'facility_types', 'locations',
     'funders', 'funding_links', 'funding_events',
     'research_areas', 'area_links', 'networks', 'network_membership',
@@ -176,30 +191,44 @@ export async function initDB() {
     'api_endpoints', 'cloud_buckets',
     // Provenance audit table.
     'provenance',
-  ];
-  for (const t of tables) {
-    const url = `${PARQUET_BASE}${t}.parquet`;
-    try {
-      await newConn.query(`CREATE OR REPLACE VIEW ${t} AS SELECT * FROM read_parquet('${url}')`);
-    } catch (err) {
-      // Parquet file missing or unreadable. Common for LTO six-sphere
-      // tables (spheres, ecosystem_types, life_zones, facility_spheres,
-      // facility_ecosystems, facility_life_zones) before Wave C's
-      // export_parquet.py has run — keep going so the rest of the
-      // schema (facilities, funders, etc.) still registers and the app
-      // remains usable. Downstream views that LEFT JOIN through these
-      // tables will themselves fail to create and skip via their own
-      // try/catch in helperViews below.
-      console.warn(`[db] view create failed for ${t} (parquet missing?):`, err.message);
+    ];
+    // Register parquet views in parallel across N extra connections.
+    // CREATE OR REPLACE VIEW is global to the DuckDB instance, but each
+    // call serialises on its connection. Spinning up extra connections
+    // lets the worker overlap N parquet metadata fetches at once — on
+    // mobile (high RTT, low bandwidth) this cuts init from 30+ s of
+    // sequential `read_parquet` calls down to a few seconds.
+    const PARALLEL = 6;
+    const parConns = await Promise.all(
+    Array.from({ length: PARALLEL }, () => db.connect()),
+    );
+    await Promise.all(parConns.map(async (c, i) => {
+    for (let j = i; j < tables.length; j += PARALLEL) {
+      const t = tables[j];
+      const url = `${PARQUET_BASE}${t}.parquet`;
+      try {
+        await c.query(`CREATE OR REPLACE VIEW ${t} AS SELECT * FROM read_parquet('${url}')`);
+      } catch (err) {
+        // Parquet file missing or unreadable. Common for LTO six-sphere
+        // tables (spheres, ecosystem_types, life_zones, facility_spheres,
+        // facility_ecosystems, facility_life_zones) before Wave C's
+        // export_parquet.py has run — keep going so the rest of the
+        // schema (facilities, funders, etc.) still registers and the app
+        // remains usable. Downstream views that LEFT JOIN through these
+        // tables will themselves fail to create and skip via their own
+        // try/catch in helperViews below.
+        console.warn(`[db] view create failed for ${t} (parquet missing?):`, err.message);
+      }
     }
-  }
+    }));
+    await Promise.all(parConns.map((c) => c.close().catch(() => {})));
 
-  // Helper views the SQL tab + future visualisations rely on. These
-  // are defined in schema/schema.sql for the canonical DuckDB but
-  // they don't survive a parquet round-trip (you can't COPY a view to
-  // parquet without materialising it; we keep them computed). Recreate
-  // them in DuckDB-Wasm so the app's SQL canned queries work.
-  const helperViews = [
+    // Helper views the SQL tab + future visualisations rely on. These
+    // are defined in schema/schema.sql for the canonical DuckDB but
+    // they don't survive a parquet round-trip (you can't COPY a view to
+    // parquet without materialising it; we keep them computed). Recreate
+    // them in DuckDB-Wasm so the app's SQL canned queries work.
+    const helperViews = [
     `CREATE OR REPLACE VIEW v_facility_funding_by_year AS
        SELECT f.facility_id,
               f.canonical_name              AS facility,
@@ -330,19 +359,38 @@ export async function initDB() {
        LEFT JOIN publications       pub ON pub.publication_id = a.publication_id
        GROUP BY p.person_id, p.name, p.name_family, p.orcid, p.openalex_id,
                 p.email, p.homepage_url, p.research_interests, p.status`,
-  ];
-  for (const sql of helperViews) {
-    try { await newConn.query(sql); }
-    catch (err) { console.warn('[db] helper view create failed:', err.message); }
-  }
+    ];
+    for (const sql of helperViews) {
+      try { await newConn.query(sql); }
+      catch (err) { console.warn('[db] helper view create failed:', err.message); }
+    }
 
-  // Only now — after every view is live — publish the connection to the
-  // rest of the app and flip the readiness flag. This closes a race where
-  // early readers (e.g. the Network tab loaded before initDB finishes)
-  // would hit a connection with only the first few tables registered.
-  conn = newConn;
-  ready = true;
-  if (readyResolve) readyResolve(conn);
+    // Only now — after every view is live — publish the connection to the
+    // rest of the app and flip the readiness flag. This closes a race where
+    // early readers (e.g. the Network tab loaded before initDB finishes)
+    // would hit a connection with only the first few tables registered.
+    conn = newConn;
+    ready = true;
+    if (readyResolve) {
+      const r = readyResolve;
+      readyResolve = null;
+      r(conn);
+    }
+  } catch (err) {
+    // Init failed before we could publish the connection. Surface the
+    // error but always release whenReady() so consumers can fall back
+    // (filterFallback for the map; spinner-with-error for the other
+    // tabs) instead of hanging on an unresolved promise.
+    console.error('[db] init failed:', err);
+    if (readyResolve) {
+      const r = readyResolve;
+      readyResolve = null;
+      r(null);
+    }
+    throw err;
+  } finally {
+    clearTimeout(timeoutId);
+  }
 }
 
 export async function query(filterState) {
