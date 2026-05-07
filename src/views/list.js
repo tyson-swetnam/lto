@@ -18,6 +18,7 @@
 
 import { getConn, query, unwrapRow, whenReady } from '../db.js';
 import { TYPE_COLORS } from '../map.js';
+import { DATA_BASE } from '../config.js';
 
 let _container = null;
 let _features = [];
@@ -85,8 +86,39 @@ function featureIds(features) {
   return ids;
 }
 
+// Module-level cache of the full pre-computed browse-card array. We
+// fetch the static JSON once and filter in memory by id; subsequent
+// renders never hit the network again. Falls through to DuckDB only if
+// the cache file is missing.
+let _allCardsPromise = null;
+function loadAllCardsOnce() {
+  if (_allCardsPromise) return _allCardsPromise;
+  _allCardsPromise = fetch(`${DATA_BASE}cache/browse_cards.json`,
+    { cache: 'force-cache' })
+    .then((r) => r.ok ? r.json() : Promise.reject(new Error(`cache ${r.status}`)))
+    .catch((err) => {
+      // Reset so a future call can retry; don't let one failed fetch
+      // permanently disable the fast path.
+      _allCardsPromise = null;
+      throw err;
+    });
+  return _allCardsPromise;
+}
+
 async function fetchEnrichedFacilities(ids) {
   if (!ids.length) return [];
+
+  // Fast path: load the full pre-computed cards JSON once, then filter
+  // by the visible-id set in memory. The cache is the SAME data this
+  // function's DuckDB query produces, just materialised offline by
+  // scripts/export_view_caches.py. Mobile-friendly: one HTTP request,
+  // gzip ~150KB, parses in tens of ms.
+  try {
+    const all = await loadAllCardsOnce();
+    const want = new Set(ids);
+    return all.filter((c) => want.has(c.id));
+  } catch (_) { /* fall through to DuckDB */ }
+
   // Parent code may call renderList before DuckDB-Wasm finished
   // initialising (see main.js renderAll → renderList during the very
   // first paint). Wait for the connection so we don't throw.

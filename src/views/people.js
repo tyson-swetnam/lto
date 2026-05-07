@@ -15,6 +15,7 @@
 // facilities, facility_area_funding).
 
 import { getConn, whenReady, unwrapRow } from '../db.js';
+import { DATA_BASE } from '../config.js';
 
 let _container = null;
 let _renderedOnce = false;
@@ -48,6 +49,20 @@ function numify(o) {
 }
 
 async function fetchPeople() {
+  // Fast path: a pre-computed JSON cache built by
+  // scripts/export_view_caches.py. This is the SAME data the heavy
+  // DuckDB query below produces, so the cards render identically —
+  // just shipped pre-aggregated so the browser does fetch + JSON.parse
+  // instead of pulling 8 parquets, registering views, and running a
+  // multi-CTE aggregation. On mobile that's a 5-10x speedup.
+  try {
+    const res = await fetch(`${DATA_BASE}cache/people_cards.json`,
+      { cache: 'force-cache' });
+    if (res.ok) return await res.json();
+  } catch (_) { /* fall through to DuckDB */ }
+
+  // Fallback: query DuckDB directly. Used during local dev before the
+  // cache exists, or if the JSON 404s.
   await whenReady();
   const conn = getConn();
   if (!conn) throw new Error('DuckDB connection not ready');

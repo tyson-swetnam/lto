@@ -27,6 +27,8 @@ jobs:
         run: python scripts/url_hygiene.py
       - name: Re-export parquet
         run: python scripts/export_parquet.py
+      - name: Re-export view caches
+        run: python scripts/export_view_caches.py
       - name: Open URL-health PR
         uses: peter-evans/create-pull-request@v6
         with:
@@ -45,4 +47,5 @@ jobs:
             public/parquet/people.parquet
             public/parquet/facilities.parquet
             public/parquet/data_archives.parquet
+            public/cache/*.json
           labels: url-health
