@@ -399,16 +399,25 @@ function cardHtml(f) {
        </div>`
     : '';
 
-  // Personnel
+  // Personnel — link cascades through:
+  //   homepage (individual profile) → ORCID → facility data portal →
+  //   facility homepage. Mailto if email is the only signal. Plain
+  //   text if nothing's available. This guarantees every person card
+  //   has SOMETHING clickable that leads to authoritative info.
+  const facilityHomeUrl = f.url || f.data_portal_url || null;
   const personnelHtml = personnel.length
     ? `<div class="brw-section">
          <h4>Key personnel</h4>
          <ul class="brw-people">
            ${personnel.map((p) => {
-             const orcid = p.orcid
-               ? ` <a href="https://orcid.org/${esc(p.orcid)}" target="_blank" rel="noopener" title="ORCID">⚙</a>` : '';
-             const home = p.homepage
-               ? `<a href="${esc(p.homepage)}" target="_blank" rel="noopener">${esc(p.name)}</a>` : esc(p.name);
+             const orcidUrl = p.orcid ? `https://orcid.org/${p.orcid}` : null;
+             const primary = p.homepage || orcidUrl || facilityHomeUrl;
+             const label = esc(p.name);
+             const home = primary
+               ? `<a href="${esc(primary)}" target="_blank" rel="noopener">${label}</a>`
+               : label;
+             const orcid = (p.orcid && primary !== orcidUrl)
+               ? ` <a href="${esc(orcidUrl)}" target="_blank" rel="noopener" title="ORCID">⚙</a>` : '';
              return `<li>
                <strong>${esc(p.role || '')}</strong> ${home}${orcid}
                ${p.title ? `<br><small>${esc(p.title)}</small>` : ''}
