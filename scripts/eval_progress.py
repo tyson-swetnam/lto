@@ -10,7 +10,7 @@ Writes `agents/PROGRESS.md` — a structured gap report:
 Run idempotently after every wave / loop:
 
     python scripts/eval_progress.py
-    python scripts/eval_progress.py --db db/cod_kmap.duckdb
+    python scripts/eval_progress.py --db db/lto.duckdb
 
 The output file is git-tracked so future Claude sessions can read it
 on startup and pick up where the previous loop left off.
@@ -24,7 +24,7 @@ from pathlib import Path
 import duckdb
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "cod_kmap.duckdb"
+DEFAULT_DB = ROOT / "db" / "lto.duckdb"
 OUT = ROOT / "agents" / "PROGRESS.md"
 
 

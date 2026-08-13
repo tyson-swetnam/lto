@@ -19,7 +19,7 @@ records have already been removed.
 
 Usage::
     python scripts/cleanup_non_facilities.py
-    python scripts/cleanup_non_facilities.py --db db/cod_kmap.duckdb --dry-run
+    python scripts/cleanup_non_facilities.py --db db/lto.duckdb --dry-run
 """
 from __future__ import annotations
 
@@ -29,7 +29,7 @@ from pathlib import Path
 import duckdb
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "cod_kmap.duckdb"
+DEFAULT_DB = ROOT / "db" / "lto.duckdb"
 
 # Patterns / acronyms to drop. Each entry is a SQL WHERE clause fragment.
 # Add new patterns at the bottom as future loops surface more non-facility

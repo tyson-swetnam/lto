@@ -15,7 +15,7 @@ from pathlib import Path
 import duckdb
 
 ROOT = Path(__file__).resolve().parent.parent
-DB_PATH = ROOT / "db" / "cod_kmap.duckdb"
+DB_PATH = ROOT / "db" / "lto.duckdb"
 OUT_DB = ROOT / "db" / "parquet"
 OUT_WEB = ROOT / "public" / "parquet"
 GEOJSON_OUT = ROOT / "public" / "facilities.geojson"

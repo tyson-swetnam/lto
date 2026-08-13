@@ -14,7 +14,7 @@ Acceptance rules (ALL must hold):
 Logs every decision to data/seed/orcid_resolution_log.csv for audit.
 
 Usage::
-    python scripts/enrich_people_orcid.py --db db/cod_kmap.duckdb
+    python scripts/enrich_people_orcid.py --db db/lto.duckdb
     python scripts/enrich_people_orcid.py --batch 25
     python scripts/enrich_people_orcid.py --min-conf 0.80
     python scripts/enrich_people_orcid.py --dry-run
@@ -40,7 +40,7 @@ except ImportError:
     raise
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "cod_kmap.duckdb"
+DEFAULT_DB = ROOT / "db" / "lto.duckdb"
 LOG_CSV = ROOT / "data" / "seed" / "orcid_resolution_log.csv"
 
 API_SEARCH = "https://pub.orcid.org/v3.0/expanded-search/"

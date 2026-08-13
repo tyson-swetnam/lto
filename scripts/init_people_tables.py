@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Create / refresh the people-side tables + views in cod_kmap.duckdb.
+"""Create / refresh the people-side tables + views in lto.duckdb.
 
 Run this once (idempotent) before any of the enrichment scripts. It
 adds:
@@ -21,7 +21,7 @@ existing facilities / research_areas / etc. tables are untouched.
 Usage::
 
     python scripts/init_people_tables.py
-    python scripts/init_people_tables.py --db db/cod_kmap.duckdb
+    python scripts/init_people_tables.py --db db/lto.duckdb
     python scripts/init_people_tables.py --export-parquet
 
 The `--export-parquet` flag re-exports people/facility_personnel and
@@ -37,7 +37,7 @@ from pathlib import Path
 import duckdb
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "cod_kmap.duckdb"
+DEFAULT_DB = ROOT / "db" / "lto.duckdb"
 PARQUET_OUT = [ROOT / "db" / "parquet", ROOT / "public" / "parquet"]
 
 PEOPLE_TABLES_DDL = r"""

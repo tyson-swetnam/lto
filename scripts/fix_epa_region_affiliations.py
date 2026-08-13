@@ -53,7 +53,7 @@ from pathlib import Path
 import duckdb
 
 ROOT = Path(__file__).resolve().parent.parent
-DB_PATH = ROOT / "db" / "cod_kmap.duckdb"
+DB_PATH = ROOT / "db" / "lto.duckdb"
 EPA_JSON = ROOT / "data" / "raw" / "R1" / "facilities_epa_regional_offices.json"
 SEED_CSV = ROOT / "data" / "seed" / "facility_personnel_seed.csv"
 PARQUET_DB = ROOT / "db" / "parquet"

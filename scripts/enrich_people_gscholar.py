@@ -43,7 +43,7 @@ except ImportError:
     raise
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "cod_kmap.duckdb"
+DEFAULT_DB = ROOT / "db" / "lto.duckdb"
 PARQUET_OUT = [ROOT / "db" / "parquet", ROOT / "public" / "parquet"]
 
 OA_AUTHOR = "https://api.openalex.org/authors/{id}"

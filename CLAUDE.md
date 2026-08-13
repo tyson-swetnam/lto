@@ -11,7 +11,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 The browser fetches `public/parquet/*.parquet` over HTTP range requests via DuckDB-Wasm, with `public/facilities.geojson` as a first-paint fallback and `public/cache/*.json` as a fast path for two views (see gotchas).
 
-**The DuckDB file is still named `db/cod_kmap.duckdb`** — every script hardcodes that name. README.md's `db/lto.duckdb` is wrong; ignore it.
+**The DuckDB file is still named `db/lto.duckdb`** — every script hardcodes that name. README.md's `db/lto.duckdb` is wrong; ignore it.
 
 ## Common commands
 
@@ -20,11 +20,11 @@ The browser fetches `public/parquet/*.parquet` over HTTP range requests via Duck
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 
-python scripts/rebuild_db_from_parquet.py  # FIRST after any pull — recreate db/cod_kmap.duckdb from committed db/parquet/
-python scripts/ingest.py               # data/raw/R*/*.json → db/cod_kmap.duckdb
+python scripts/rebuild_db_from_parquet.py  # FIRST after any pull — recreate db/lto.duckdb from committed db/parquet/
+python scripts/ingest.py               # data/raw/R*/*.json → db/lto.duckdb
 python scripts/ingest.py --skip-geocode  # use .geocode_cache.json only
 python scripts/qa.py                   # data-quality gate (exits non-zero on failure)
-python scripts/export_parquet.py       # db/cod_kmap.duckdb → db/parquet/*, public/parquet/*, public/facilities.geojson
+python scripts/export_parquet.py       # db/lto.duckdb → db/parquet/*, public/parquet/*, public/facilities.geojson
 python scripts/export_view_caches.py   # → public/cache/{browse_cards,people_cards}.json
 python scripts/build_web_overlays.py   # network_synth_spatial_analysis/ → public/overlays/*.geojson + manifest.json
 
@@ -83,7 +83,7 @@ Subagents are organized in waves; each `agents/<ID>-*.md` declares scope, source
 Wave 1  D1 schema  + D3 vocabulary           → schema/, schema/vocab/
 Wave 2  R1..R8 regional research agents      → data/raw/R*/facilities_*.json
 Wave 3  R9 funding-flows, R10 COMPASS sites  → data/raw/R9/, data/raw/R10/
-Wave 4  D2 ingest pipeline                   → db/cod_kmap.duckdb, db/parquet/
+Wave 4  D2 ingest pipeline                   → db/lto.duckdb, db/parquet/
 Wave 5  F1..F4 frontend + deploy             → src/, public/, .github/workflows/deploy.yml
 Wave 6  verification + iteration
 ```

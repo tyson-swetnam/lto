@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Compute per-research-area dashboard metrics for the Stats view.
 
-Reads cod_kmap.duckdb and emits three parquets that drive the per-area
+Reads lto.duckdb and emits three parquets that drive the per-area
 dashboards in src/views/stats.js:
 
   1. person_area_metrics.parquet — composite researcher score per
@@ -34,7 +34,7 @@ Idempotent — overwrites every parquet on each run.
 
 Usage::
     python scripts/compute_area_metrics.py
-    python scripts/compute_area_metrics.py --db db/cod_kmap.duckdb
+    python scripts/compute_area_metrics.py --db db/lto.duckdb
 """
 from __future__ import annotations
 
@@ -45,7 +45,7 @@ from pathlib import Path
 import duckdb
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "cod_kmap.duckdb"
+DEFAULT_DB = ROOT / "db" / "lto.duckdb"
 PARQUET_OUT = [ROOT / "db" / "parquet", ROOT / "public" / "parquet"]
 
 

@@ -29,7 +29,7 @@ from pathlib import Path
 import duckdb
 
 ROOT = Path(__file__).resolve().parent.parent.parent
-DB_PATH = Path(os.environ.get("COD_KMAP_DB", str(ROOT / "db" / "cod_kmap.duckdb")))
+DB_PATH = Path(os.environ.get("COD_KMAP_DB", str(ROOT / "db" / "lto.duckdb")))
 OUT_DB = ROOT / "db" / "parquet"
 OUT_WEB = ROOT / "public" / "parquet"
 GEOJSON_OUT = ROOT / "public" / "facilities.geojson"

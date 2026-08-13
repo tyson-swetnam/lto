@@ -31,7 +31,7 @@ within-area z-scored across all people in that area.
 Usage::
 
     python scripts/compute_lto_person_metrics.py
-    python scripts/compute_lto_person_metrics.py --db db/cod_kmap.duckdb
+    python scripts/compute_lto_person_metrics.py --db db/lto.duckdb
 """
 from __future__ import annotations
 
@@ -41,7 +41,7 @@ from pathlib import Path
 import duckdb
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "cod_kmap.duckdb"
+DEFAULT_DB = ROOT / "db" / "lto.duckdb"
 PARQUET_DIRS = [ROOT / "db" / "parquet", ROOT / "public" / "parquet"]
 
 

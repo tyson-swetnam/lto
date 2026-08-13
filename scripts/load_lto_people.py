@@ -11,7 +11,7 @@ Idempotent: re-running just refreshes existing rows.
 Usage::
 
     python scripts/load_lto_people.py
-    python scripts/load_lto_people.py --db db/cod_kmap.duckdb
+    python scripts/load_lto_people.py --db db/lto.duckdb
 
 Companion to `load_facility_personnel.py` which loads from a hand-curated
 CSV — this one is for the agent-emitted JSON path.
@@ -27,7 +27,7 @@ from pathlib import Path
 import duckdb
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "cod_kmap.duckdb"
+DEFAULT_DB = ROOT / "db" / "lto.duckdb"
 RAW_DIR = ROOT / "data" / "raw"
 
 

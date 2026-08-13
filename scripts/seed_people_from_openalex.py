@@ -68,7 +68,7 @@ except ImportError:
 import duckdb
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "cod_kmap.duckdb"
+DEFAULT_DB = ROOT / "db" / "lto.duckdb"
 OVERRIDES = ROOT / "data" / "seed" / "openalex_institution_overrides.csv"
 PROGRESS = ROOT / "data" / "seed" / ".openalex_seed_progress.json"
 PARQUET_OUT = [ROOT / "db" / "parquet", ROOT / "public" / "parquet"]

@@ -33,7 +33,7 @@ Usage::
 
     python scripts/enrich_people_openalex.py --dry-run           # no writes
     python scripts/enrich_people_openalex.py --limit 10          # small batch
-    python scripts/enrich_people_openalex.py --db db/cod_kmap.duckdb
+    python scripts/enrich_people_openalex.py --db db/lto.duckdb
 
 Environment:
     OPENALEX_API_KEY=…                    # required
@@ -61,7 +61,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import openalex_auth  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "cod_kmap.duckdb"
+DEFAULT_DB = ROOT / "db" / "lto.duckdb"
 API = "https://api.openalex.org"
 UA = "lto/0.2 (+https://github.com/tyson-swetnam/lto)"
 

@@ -23,7 +23,7 @@ Idempotent: safe to re-run; if there are no duplicates, exits cleanly.
 Usage::
 
     python scripts/dedupe_people.py
-    python scripts/dedupe_people.py --db db/cod_kmap.duckdb --dry-run
+    python scripts/dedupe_people.py --db db/lto.duckdb --dry-run
 """
 from __future__ import annotations
 
@@ -34,7 +34,7 @@ from collections import defaultdict
 import duckdb
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "cod_kmap.duckdb"
+DEFAULT_DB = ROOT / "db" / "lto.duckdb"
 
 
 def main() -> int:

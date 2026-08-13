@@ -119,7 +119,7 @@ def bulk_upsert_topics(conn, all_rows: list[tuple]) -> int:
         return 0
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "cod_kmap.duckdb"
+DEFAULT_DB = ROOT / "db" / "lto.duckdb"
 API = "https://api.openalex.org"
 BATCH = 50
 RETRY = 3

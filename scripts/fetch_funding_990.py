@@ -58,7 +58,7 @@ except ImportError:
     raise
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "cod_kmap.duckdb"
+DEFAULT_DB = ROOT / "db" / "lto.duckdb"
 DEFAULT_OVERRIDES = ROOT / "data" / "funding_overrides" / "propublica_ein_overrides.csv"
 API_SEARCH = "https://projects.propublica.org/nonprofits/api/v2/search.json"
 API_ORG = "https://projects.propublica.org/nonprofits/api/v2/organizations/{ein}.json"

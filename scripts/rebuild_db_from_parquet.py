@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Rebuild db/cod_kmap.duckdb from the committed parquet files.
+"""Rebuild db/lto.duckdb from the committed parquet files.
 
 Why: DuckDB's on-disk storage format changes between releases (e.g. a
 file written by duckdb 1.5.x is not readable by 1.3.x, triggering::
@@ -15,7 +15,7 @@ have installed.
 Run from the repo root (idempotent)::
 
     python scripts/rebuild_db_from_parquet.py
-    python scripts/rebuild_db_from_parquet.py --db db/cod_kmap.duckdb
+    python scripts/rebuild_db_from_parquet.py --db db/lto.duckdb
     python scripts/rebuild_db_from_parquet.py --parquet db/parquet
 
 The script:
@@ -42,7 +42,7 @@ from pathlib import Path
 import duckdb
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "cod_kmap.duckdb"
+DEFAULT_DB = ROOT / "db" / "lto.duckdb"
 DEFAULT_PARQUET = ROOT / "db" / "parquet"
 SCHEMA = ROOT / "schema" / "schema.sql"
 

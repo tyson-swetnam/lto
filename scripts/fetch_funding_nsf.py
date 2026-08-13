@@ -66,7 +66,7 @@ except ImportError:
     raise
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "cod_kmap.duckdb"
+DEFAULT_DB = ROOT / "db" / "lto.duckdb"
 DEFAULT_OVERRIDES = ROOT / "data" / "funding_overrides" / "nsf_recipient_overrides.csv"
 API = "https://api.nsf.gov/services/v1/awards.json"
 PER_PAGE = 25  # NSF API caps at 25 per request

@@ -14,7 +14,7 @@ plus:
 Run from the repo root, idempotent::
 
     python scripts/migrate_funding_events.py
-    python scripts/migrate_funding_events.py --db db/cod_kmap.duckdb
+    python scripts/migrate_funding_events.py --db db/lto.duckdb
     python scripts/migrate_funding_events.py --export-parquet
 
 This script:
@@ -37,7 +37,7 @@ from pathlib import Path
 import duckdb
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "cod_kmap.duckdb"
+DEFAULT_DB = ROOT / "db" / "lto.duckdb"
 SCHEMA_SQL = ROOT / "schema" / "schema.sql"
 PARQUET_OUT = [ROOT / "db" / "parquet", ROOT / "public" / "parquet"]
 
@@ -228,7 +228,7 @@ def export_parquet(conn: duckdb.DuckDBPyConnection) -> None:
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--db", type=Path, default=DEFAULT_DB,
-                    help="Path to cod_kmap.duckdb (default: db/cod_kmap.duckdb)")
+                    help="Path to lto.duckdb (default: db/lto.duckdb)")
     ap.add_argument("--export-parquet", action="store_true",
                     help="Re-export the funding_events/funders/facilities/"
                          "funding_links parquet files under db/parquet/ "

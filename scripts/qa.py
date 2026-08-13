@@ -22,7 +22,7 @@ from pathlib import Path
 
 import duckdb
 
-DB_PATH = Path(__file__).resolve().parent.parent / "db" / "cod_kmap.duckdb"
+DB_PATH = Path(__file__).resolve().parent.parent / "db" / "lto.duckdb"
 
 # Territories that fall outside their country's main bounding box. Guam
 # and the Northern Marianas sit at ~+145 EAST longitude and Palmyra at
