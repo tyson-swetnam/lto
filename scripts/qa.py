@@ -98,6 +98,36 @@ EXPECTED_COLUMNS = {
     },
     "api_endpoints": {"endpoint_id", "archive_id", "path_or_url", "method"},
     "cloud_buckets": {"bucket_id", "archive_id", "provider", "bucket_name"},
+    # Unified person identity (KMAP alignment M3+).
+    "person_registry": {
+        "canonical_id", "display_name", "orcid", "openalex_id",
+        "is_site_personnel", "is_scholar", "person_id", "tier", "tier_rank",
+        "lto_works_count", "lto_share", "source_url", "confidence",
+    },
+    "person_identity_source": {
+        "canonical_id", "field", "value", "method", "confidence",
+    },
+    "registry_collaborations": {
+        "canonical_id_a", "canonical_id_b", "co_pub_count",
+        "first_year", "last_year",
+    },
+    "registry_facilities": {
+        "canonical_id", "facility_id", "method", "ror",
+    },
+    "person_validation": {
+        "validation_id", "canonical_id", "check_id", "verdict",
+        "method", "source_url", "retrieved_at", "confidence", "run_id",
+    },
+    "coauthor_edges": {
+        "edge_id", "canonical_id_a", "canonical_id_b", "co_pub_count",
+        "exemplar_work_id", "match_method", "source_url", "retrieved_at",
+        "confidence", "run_id",
+    },
+    "coauthor_candidates": {
+        "candidate_id", "display_name", "openalex_id",
+        "seen_with_canonical_id", "seen_on_work_id", "n_registry_coauthors",
+        "decision", "source_url", "retrieved_at", "confidence", "run_id",
+    },
 }
 
 
@@ -228,6 +258,67 @@ def check_archives(conn, failures: list[str]) -> None:
         ).fetchone()[0]
         assert_true(orphan == 0,
                     f"{orphan} data_products rows point at unknown archives", failures)
+
+
+def check_person_registry(conn, failures: list[str]) -> None:
+    """Registry identity invariants. No-ops while the registry is empty.
+
+    The non-negotiable this enforces: identity comes from persistent
+    identifiers, never from names. A row with neither an ORCID nor an
+    OpenAlex id cannot be re-resolved or de-duplicated later.
+    """
+    if table_rows(conn, "person_registry") <= 0:
+        return
+    no_id = conn.execute(
+        "SELECT COUNT(*) FROM person_registry WHERE orcid IS NULL AND openalex_id IS NULL"
+    ).fetchone()[0]
+    assert_true(no_id == 0,
+                f"{no_id} person_registry rows have neither orcid nor openalex_id", failures)
+
+    bad_key = conn.execute(
+        """SELECT COUNT(*) FROM person_registry
+           WHERE canonical_id NOT LIKE 'orcid:%' AND canonical_id NOT LIKE 'openalex:%'"""
+    ).fetchone()[0]
+    assert_true(bad_key == 0,
+                f"{bad_key} person_registry rows have a malformed canonical_id", failures)
+
+    bad_tier = conn.execute(
+        "SELECT COUNT(*) FROM person_registry WHERE tier NOT IN ('core', 'archive')"
+    ).fetchone()[0]
+    assert_true(bad_tier == 0,
+                f"{bad_tier} person_registry rows have an unknown tier", failures)
+
+    # An ORCID-keyed row must carry that ORCID; catches key/field drift.
+    key_drift = conn.execute(
+        """SELECT COUNT(*) FROM person_registry
+           WHERE canonical_id LIKE 'orcid:%'
+             AND canonical_id <> 'orcid:' || orcid"""
+    ).fetchone()[0]
+    assert_true(key_drift == 0,
+                f"{key_drift} person_registry rows whose canonical_id disagrees with orcid",
+                failures)
+
+
+def check_registry_edges(conn, failures: list[str]) -> None:
+    """Undirected-edge conventions on both registry edge tables."""
+    for table in ("registry_collaborations", "coauthor_edges"):
+        if table_rows(conn, table) <= 0:
+            continue
+        unordered = conn.execute(
+            f"SELECT COUNT(*) FROM {table} WHERE canonical_id_a >= canonical_id_b"
+        ).fetchone()[0]
+        assert_true(unordered == 0,
+                    f"{unordered} {table} rows violate canonical_id_a < canonical_id_b",
+                    failures)
+        dangling = conn.execute(
+            f"""SELECT COUNT(*) FROM {table} e
+                LEFT JOIN person_registry a ON a.canonical_id = e.canonical_id_a
+                LEFT JOIN person_registry b ON b.canonical_id = e.canonical_id_b
+                WHERE a.canonical_id IS NULL OR b.canonical_id IS NULL"""
+        ).fetchone()[0]
+        assert_true(dangling == 0,
+                    f"{dangling} {table} rows have an endpoint missing from person_registry",
+                    failures)
 
 
 def check_view_sql_types(failures: list[str]) -> None:
@@ -415,6 +506,8 @@ def main() -> int:
         check_spheres(conn, failures)
         check_life_zones(conn, failures)
         check_archives(conn, failures)
+        check_person_registry(conn, failures)
+        check_registry_edges(conn, failures)
 
     # Outside the DB block: these read source files, not the database,
     # and must run even on a checkout with no data.

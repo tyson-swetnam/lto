@@ -77,7 +77,36 @@ TABLES = [
     "data_products",
     "api_endpoints",
     "cloud_buckets",
+    # Unified person identity (KMAP alignment). Ship zero-row parquet until
+    # build_person_registry.py / the harvest populate them, so DuckDB-Wasm
+    # registration never 404s. Only tier='core' rows are exported for
+    # person_registry — see the WHERE override below.
+    "person_registry",
+    "person_identity_source",
+    "registry_collaborations",
+    "registry_facilities",
+    "person_validation",
+    "coauthor_edges",
+    "coauthor_candidates",
 ]
+
+# Tables that ship filtered. person_registry's archive tier can reach 100k+
+# rows after the OpenAlex harvest; the browser only ever renders the core
+# tier, so only core ships. The full population stays in db/parquet is NOT
+# true here — db/parquet gets the same filtered copy; the full population
+# lives only in the local DuckDB (gitignored), exactly like upstream.
+EXPORT_WHERE = {
+    "person_registry": "WHERE tier = 'core'",
+    # Edges/links only ship when both endpoints ship.
+    "registry_collaborations":
+        "WHERE canonical_id_a IN (SELECT canonical_id FROM person_registry WHERE tier='core')"
+        "  AND canonical_id_b IN (SELECT canonical_id FROM person_registry WHERE tier='core')",
+    "coauthor_edges":
+        "WHERE canonical_id_a IN (SELECT canonical_id FROM person_registry WHERE tier='core')"
+        "  AND canonical_id_b IN (SELECT canonical_id FROM person_registry WHERE tier='core')",
+    "registry_facilities":
+        "WHERE canonical_id IN (SELECT canonical_id FROM person_registry WHERE tier='core')",
+}
 
 
 def main() -> int:
@@ -89,8 +118,9 @@ def main() -> int:
         conn.execute("SET search_path = main;")
         for t in TABLES:
             db_path = OUT_DB / f"{t}.parquet"
+            where = EXPORT_WHERE.get(t, "")
             try:
-                conn.execute(f"COPY (SELECT * FROM {t}) TO '{db_path}' (FORMAT PARQUET)")
+                conn.execute(f"COPY (SELECT * FROM {t} {where}) TO '{db_path}' (FORMAT PARQUET)")
                 shutil.copyfile(db_path, OUT_WEB / f"{t}.parquet")
             except duckdb.CatalogException:
                 # Table doesn't exist in this DB build (e.g. compute_*

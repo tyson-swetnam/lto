@@ -241,6 +241,11 @@ export async function initDB() {
     'archive_types', 'data_formats', 'data_licenses', 'access_modes',
     'data_archives', 'facility_archives', 'data_products',
     'api_endpoints', 'cloud_buckets',
+    // Unified person identity (KMAP alignment M3+). Only the 'core' tier
+    // ships in person_registry.parquet; the full population stays local.
+    // These three are eager because the People / Network / Stats views
+    // will read them (M7/M8); the audit-side registry tables are lazy.
+    'person_registry', 'registry_facilities', 'registry_collaborations',
     ];
 
     // Tables NO rendering view reads — only the SQL tab's canned queries and
@@ -264,6 +269,12 @@ export async function initDB() {
       // Provenance audit table — one row per (record, source_url); large
       // and unread by any rendering view.
       'provenance',
+      // Registry audit layer: identifier provenance, validation verdicts,
+      // and the provenanced co-authorship evidence. Upstream these three
+      // were 15.51 MB combined after harvest — more than the whole first
+      // paint needed — and no rendering view reads them.
+      'person_identity_source', 'person_validation',
+      'coauthor_edges', 'coauthor_candidates',
     ];
     _pendingLazyTables = lazyTables;
     // Register parquet views in parallel across N extra connections.
@@ -440,6 +451,56 @@ export async function initDB() {
        LEFT JOIN publications       pub ON pub.publication_id = a.publication_id
        GROUP BY p.person_id, p.name, p.name_family, p.orcid, p.openalex_id,
                 p.email, p.homepage_url, p.research_interests, p.status`,
+
+    // Registry validation views — mirrored from schema/schema.sql (change
+    // one, change both). These bind the lazy person_validation /
+    // coauthor_edges tables, so they can only ever live in this deferred
+    // list. Upstream cod-kmap's schema.sql claims this mirroring but never
+    // shipped it; the port fixes that drift deliberately.
+    `CREATE OR REPLACE VIEW v_person_validation_latest AS
+       SELECT canonical_id, check_id, subject_id_type, subject_id_value,
+              verdict, http_status, evidence, mismatch_detail,
+              method, source_url, retrieved_at, confidence, run_id
+       FROM (
+           SELECT v.*,
+                  ROW_NUMBER() OVER (PARTITION BY canonical_id, check_id
+                                     ORDER BY retrieved_at DESC, run_id DESC) AS rn
+           FROM person_validation v
+       )
+       WHERE rn = 1`,
+
+    `CREATE OR REPLACE VIEW v_person_validation_summary AS
+       SELECT r.canonical_id,
+              r.display_name,
+              r.tier,
+              COUNT(*) FILTER (WHERE l.verdict = 'pass')           AS n_pass,
+              COUNT(*) FILTER (WHERE l.verdict = 'fail')           AS n_fail,
+              COUNT(*) FILTER (WHERE l.verdict = 'not_applicable') AS n_not_applicable,
+              COUNT(*) FILTER (WHERE l.verdict = 'unresolved')     AS n_unresolved,
+              CASE WHEN COUNT(*) FILTER (WHERE l.verdict IN ('pass', 'fail')) = 0 THEN NULL
+                   ELSE CAST(COUNT(*) FILTER (WHERE l.verdict = 'pass') AS DOUBLE)
+                        / COUNT(*) FILTER (WHERE l.verdict IN ('pass', 'fail'))
+              END                                                  AS pass_rate,
+              (r.orcid IS NOT NULL OR r.openalex_id IS NOT NULL
+               OR r.affiliation_ror IS NOT NULL)                   AS has_persistent_id,
+              (r.source_url IS NOT NULL AND r.source_url <> '')    AS has_source_url,
+              (r.confidence IN ('high', 'medium', 'low'))          AS has_valid_confidence
+       FROM person_registry r
+       LEFT JOIN v_person_validation_latest l ON l.canonical_id = r.canonical_id
+       GROUP BY r.canonical_id, r.display_name, r.tier, r.orcid, r.openalex_id,
+                r.affiliation_ror, r.source_url, r.confidence`,
+
+    `CREATE OR REPLACE VIEW v_coauthor_edges_enriched AS
+       SELECT e.edge_id,
+              e.canonical_id_a, ra.display_name AS name_a, ra.affiliation AS affiliation_a,
+              e.canonical_id_b, rb.display_name AS name_b, rb.affiliation AS affiliation_b,
+              e.co_pub_count, e.first_year, e.last_year, e.weight,
+              e.exemplar_work_id, e.exemplar_work_doi, e.exemplar_work_year,
+              e.match_method, e.shared_areas, e.shared_facilities, e.same_institution,
+              e.source_url, e.retrieved_at, e.confidence
+       FROM coauthor_edges e
+       JOIN person_registry ra ON ra.canonical_id = e.canonical_id_a
+       JOIN person_registry rb ON rb.canonical_id = e.canonical_id_b`,
     ];
     _pendingHelperViews = helperViews;
 
