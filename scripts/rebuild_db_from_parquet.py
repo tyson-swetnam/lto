@@ -67,6 +67,8 @@ LOAD_ORDER = [
     "people",
     "facility_personnel",
     "publications",
+    "publication_topics",   # was missing from this list — a rebuild would
+                            # have silently dropped harvested topic rows
     "authorship",
     "person_areas",
     "collaborations",
@@ -93,6 +95,32 @@ LOAD_ORDER = [
     "data_products",
     "api_endpoints",
     "cloud_buckets",
+    # Unified person identity (KMAP alignment). All soft-ref by design so
+    # they can load in any order; kept together at the end for clarity.
+    "person_registry",
+    "person_identity_source",
+    "registry_collaborations",
+    "registry_facilities",
+    "person_validation",
+    "coauthor_edges",
+    "coauthor_candidates",
+]
+
+# Parquet-only computed artifacts with no CREATE TABLE in schema.sql —
+# written by scripts/compute_primary_groups.py / compute_area_metrics.py /
+# compute_lto_person_metrics.py straight to parquet. Materialised here as
+# BASE TABLEs via CREATE TABLE AS so a rebuilt DB matches one where the
+# compute scripts actually ran. (Ported from cod-kmap; note their
+# compute_area_metrics.py learned to drop-by-actual-type because of this
+# — see that script's registration block.)
+DERIVED_TABLES = [
+    "facility_primary_groups",
+    "person_primary_groups",
+    "research_areas_active",
+    "person_area_metrics",
+    "facility_area_funding",
+    "funder_area_funding",
+    "area_coverage_matrix",
 ]
 
 
@@ -211,6 +239,24 @@ def main() -> int:
         dropped = total - cnt
         marker = f"  [DROPPED {dropped} fk-orphan rows]" if dropped else ""
         print(f"[load]   {table:<22} {cnt:>6} rows  <- {f.name}{marker}")
+
+    # Materialise the parquet-only derived tables. CREATE OR REPLACE TABLE
+    # (not VIEW): the compute scripts re-derive these wholesale, and a
+    # BASE TABLE keeps the DB self-contained if the parquet moves.
+    for table in DERIVED_TABLES:
+        f = args.parquet / f"{table}.parquet"
+        if not f.exists():
+            print(f"[skip]   {table:<22} (no {f.name})")
+            continue
+        try:
+            conn.execute(
+                f"CREATE OR REPLACE TABLE {table} AS "
+                f"SELECT * FROM read_parquet(?)", [str(f)]
+            )
+            cnt = conn.execute(f"SELECT COUNT(*) FROM {table}").fetchone()[0]
+            print(f"[derive] {table:<22} {cnt:>6} rows  <- {f.name}")
+        except duckdb.Error as e:
+            print(f"[error]  {table:<22} CREATE failed: {e}")
 
     # Summary.
     print("\n[summary]")
