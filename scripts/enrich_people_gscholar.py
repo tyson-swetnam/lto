@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Find Google Scholar profile IDs for people in cod-kmap.
+"""Find Google Scholar profile IDs for people in lto.
 
 Tiered approach (see docs/google_scholar_enrichment_plan.md):
 
@@ -51,14 +51,18 @@ ORCID_EID = "https://pub.orcid.org/v3.0/{orcid}/external-identifiers"
 
 
 def session(accept_json=True) -> requests.Session:
-    s = requests.Session()
-    s.headers["User-Agent"] = (
-        "cod-kmap/0.1 (github.com/tyson-swetnam/cod-kmap; "
-        "mailto:tswetnam@arizona.edu)"
-    )
-    if accept_json:
-        s.headers["Accept"] = "application/json"
-    return s
+    """One session for both hosts.
+
+    OpenAlex needs an API key; ORCID must not see it. The session from
+    scripts/openalex_auth.py attaches the key only to api.openalex.org
+    requests, so pub.orcid.org calls made through the same object stay
+    unauthenticated.
+    """
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    import openalex_auth
+
+    openalex_auth.require_api_key()
+    return openalex_auth.openalex_session(accept_json=accept_json)
 
 
 def parse_scholar_user_id(url_or_id: str | None) -> str | None:

@@ -1,5 +1,23 @@
-duckdb>=1.1.0
+duckdb>=1.3.0
 polars>=1.0.0
 rapidfuzz>=3.9
 geopy>=2.4
 pyyaml>=6.0
+requests>=2.31
+shapely>=2.0
+# NOTE: the JS parse check in scripts/qa.py shells out to
+# `node --experimental-vm-modules` and parses each src/**/*.js file AS
+# WRITTEN via vm.SourceTextModule, which reports the real message at the
+# real line. Node is not a Python dependency and not a build step:
+# nothing in src/ is compiled, bundled or transpiled, and the site still
+# loads plain ES modules from an importmap. qa.py skips the check with a
+# warning if node is absent. (quickjs was tried upstream and rejected —
+# no ES-module parser, so failures surfaced against a wrapper with no
+# usable line number.)
+
+# Optional: DuckLake support for the local data-history lake
+# (scripts/publish_to_mesa.py). The wheel bundles the extension binary,
+# so the lake works on machines that cannot reach extensions.duckdb.org.
+# Without these the publish falls back gracefully and the published
+# parquet is identical.
+#   pip install duckdb-extensions duckdb-extension-ducklake

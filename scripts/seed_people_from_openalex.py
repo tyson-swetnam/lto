@@ -77,15 +77,11 @@ API = "https://api.openalex.org"
 
 # ── HTTP ────────────────────────────────────────────────────────────
 def session() -> requests.Session:
-    email = os.environ.get("OPENALEX_EMAIL", "")
-    s = requests.Session()
-    s.headers["User-Agent"] = (
-        f"cod-kmap/0.1 (github.com/tyson-swetnam/cod-kmap; "
-        f"mailto:{email or 'unset'})"
-    )
-    if email:
-        s.params = {"mailto": email}
-    return s
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    import openalex_auth
+
+    openalex_auth.require_api_key()
+    return openalex_auth.openalex_session()
 
 
 def polite_get(sess: requests.Session, path: str, **params) -> dict:

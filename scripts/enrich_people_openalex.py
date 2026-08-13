@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Enrich rows in `people` with OpenAlex metadata.
 
-OpenAlex (openalex.org) is free and auth-less; setting OPENALEX_EMAIL
-in the environment moves you into the "polite pool" with higher rate
-limits — recommended. For each person we resolve to an OpenAlex
+OpenAlex (openalex.org) requires an API key on every request; set
+OPENALEX_API_KEY in the environment. (It used to be auth-less with an
+OPENALEX_EMAIL "polite pool"; that no longer applies, and mailto must
+not be sent alongside a key.) For each person we resolve to an OpenAlex
 Author record via (in priority order):
 
   1. Existing openalex_id on the row
@@ -35,7 +36,7 @@ Usage::
     python scripts/enrich_people_openalex.py --db db/cod_kmap.duckdb
 
 Environment:
-    OPENALEX_EMAIL=tswetnam@arizona.edu   # polite pool (recommended)
+    OPENALEX_API_KEY=…                    # required
 
 Dependencies:
     pip install requests
@@ -56,19 +57,25 @@ except ImportError:
 
 import duckdb
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import openalex_auth  # noqa: E402
+
 ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_DB = ROOT / "db" / "cod_kmap.duckdb"
 API = "https://api.openalex.org"
-UA = "cod-kmap/0.1 (github.com/tyson-swetnam/cod-kmap; mailto:{email})"
+UA = "lto/0.2 (+https://github.com/tyson-swetnam/lto)"
 
 
 def session() -> requests.Session:
-    email = os.environ.get("OPENALEX_EMAIL", "")
-    s = requests.Session()
-    s.headers["User-Agent"] = UA.format(email=email or "unset")
-    if email:
-        s.params = {"mailto": email}
-    return s
+    """Keyed OpenAlex session.
+
+    OpenAlex requires an API key on every request now, so the old
+    OPENALEX_EMAIL polite-pool convention no longer applies; the key
+    handling lives in scripts/openalex_auth.py and is shared with the
+    other five scripts that call the API.
+    """
+    openalex_auth.require_api_key()
+    return openalex_auth.openalex_session(user_agent=UA)
 
 
 def resolve_author(sess: requests.Session, person: dict) -> dict | None:
