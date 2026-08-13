@@ -58,3 +58,9 @@ db/*.duckdb.bak
 # one-shot commit drivers, not source. Keep on disk for reference; don't
 # track or push.
 COMMIT_*.sh
+
+# MESA publish staging + local DuckLake (publish_to_mesa.py); parquet stays canonical
+.mesa_publish/
+db/*.ducklake
+db/*.ducklake.wal
+db/ducklake_data/
