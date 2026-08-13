@@ -163,10 +163,13 @@ async function fetchData() {
     // well-funded researchers are visually larger.
     people: `
       WITH per_pa AS (
+        -- CAST: SUM(INTEGER) is HUGEINT in DuckDB, which duckdb-wasm
+        -- hands to JS as a BigInt — mixing it with plain numbers throws.
+        -- scripts/qa.py check_view_sql_types gates on exactly this.
         SELECT person_id,
-               SUM(n_publications)     AS n_pubs,
-               SUM(n_co_authors)       AS n_coauth,
-               SUM(total_citations)    AS total_citations
+               CAST(SUM(n_publications)  AS DOUBLE) AS n_pubs,
+               CAST(SUM(n_co_authors)    AS DOUBLE) AS n_coauth,
+               CAST(SUM(total_citations) AS DOUBLE) AS total_citations
         FROM person_area_metrics
         GROUP BY person_id
       ),
