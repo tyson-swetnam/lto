@@ -37,6 +37,14 @@ jobs:
           # rendered by src/views/docs.js. Without this stage step the
           # Docs tab returns HTTP 404 for every page.
           cp -R docs _site/docs
+          # Pages runs Jekyll over the artifact unless this file exists,
+          # and Jekyll REWRITES markdown that carries YAML front matter
+          # into .html while copying front-matter-less markdown verbatim.
+          # That is not hypothetical: 85 of the 86 generated OKF pages
+          # open with an okf_version block, so docs/okf/*.md all became
+          # .html and every Data Access page 404'd in the Docs tab while
+          # the hand-written docs beside them kept working.
+          touch _site/.nojekyll
 
       - uses: actions/upload-pages-artifact@v3
         with:

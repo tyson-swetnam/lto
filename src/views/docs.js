@@ -326,6 +326,49 @@ function mdToHtml(md) {
 }
 
 
+// Split a leading YAML front-matter block off the body. Every generated
+// OKF page carries one (type, title, description, tags, …); the
+// hand-written docs have none.
+//
+// It cannot simply be rendered: a key line followed by '---' is a setext
+// H2, so the page would open with a heading reading `type: Access
+// Method`. It cannot simply be dropped either — 83 of the 86 OKF pages
+// keep their TITLE only in the front matter and open with a lede
+// paragraph, so dropping it leaves an untitled page.
+//
+// Front matter is also why those pages 404'd on the live site: GitHub
+// Pages runs Jekyll over the deployed artifact, and Jekyll REWRITES
+// markdown carrying front matter to .html while copying front-matter-less
+// markdown verbatim. docs/okf/index.md became index.html and every fetch
+// here missed, which is why deploy.yml now stages a .nojekyll file.
+//
+// The parser handles the flat `key: value` subset these files use;
+// nested and list values are read as raw strings and ignored, since only
+// title/description are consumed.
+function splitFrontMatter(md) {
+  const m = /^﻿?---\r?\n([\s\S]*?)\r?\n---\r?\n?/.exec(md);
+  if (!m) return { meta: {}, body: md };
+  const meta = {};
+  for (const line of m[1].split(/\r?\n/)) {
+    const kv = /^([A-Za-z_][\w-]*)\s*:\s*(.*)$/.exec(line);
+    if (!kv) continue;
+    meta[kv[1]] = kv[2].trim().replace(/^["'](.*)["']$/, '$1');
+  }
+  return { meta, body: md.slice(m[0].length) };
+}
+
+
+// Front matter in, renderable markdown out. The title becomes the H1 the
+// page never had — so it reads like a page and lands in the TOC — but
+// only when the body doesn't already open with one, so a page that
+// titles itself is left alone.
+function withTitle(md) {
+  const { meta, body } = splitFrontMatter(md);
+  if (!meta.title || /^\s*#\s+/.test(body)) return body;
+  return `# ${meta.title}\n\n${body.replace(/^\s*\n/, '')}`;
+}
+
+
 // ── Fetch + cache markdown for a single page ───────────────────────
 async function loadDoc(page) {
   if (_docCache.has(page.slug)) return _docCache.get(page.slug);
@@ -337,7 +380,7 @@ async function loadDoc(page) {
       _docCache.set(page.slug, cached);
       return cached;
     }
-    const md = await r.text();
+    const md = withTitle(await r.text());
     const cached = mdToHtml(md);
     _docCache.set(page.slug, cached);
     return cached;
