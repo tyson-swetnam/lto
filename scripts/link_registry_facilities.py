@@ -176,10 +176,17 @@ def main() -> int:
                     help="treat this facility_type as a research organisation "
                          "for this run (repeatable; overrides the "
                          "conservative place-type skip)")
+    ap.add_argument("--link-only", action="store_true",
+                    help="skip pass 1 and run only the ROR equality join — "
+                         "no OpenAlex calls and no API key needed. Use after "
+                         "scripts/backfill_facility_ror.py has done the ROR "
+                         "resolution against ROR's own API.")
     args = ap.parse_args()
 
-    openalex_auth.require_api_key()
-    sess = openalex_auth.openalex_session()
+    sess = None
+    if not args.link_only:
+        openalex_auth.require_api_key()
+        sess = openalex_auth.openalex_session()
     conn = duckdb.connect(str(args.db))
     ensure_ror_column(conn)
     ensure_link_table(conn)
@@ -187,7 +194,7 @@ def main() -> int:
 
     research_types = RESEARCH_TYPES | set(args.include_type)
     types = ",".join(f"'{t}'" for t in sorted(research_types))
-    targets = conn.execute(f"""
+    targets = [] if args.link_only else conn.execute(f"""
         SELECT facility_id, canonical_name, acronym, facility_type
         FROM facilities
         WHERE facility_type IN ({types}) AND (ror IS NULL OR ror = '')
@@ -203,9 +210,13 @@ def main() -> int:
         GROUP BY 1 ORDER BY 2 DESC""").fetchall()
     skipped = sum(n for _, n in skipped_by_type)
     unclassified = [(t, n) for t, n in skipped_by_type if t not in PLACE_TYPES]
-    print(f"[ror] {len(targets)} research-organisation facility/ies to resolve "
-          f"({skipped:,} skipped by design)")
-    if unclassified:
+    if args.link_only:
+        print("[ror] pass 1 skipped (--link-only); facilities.ror is taken as "
+              "given — scripts/backfill_facility_ror.py owns it")
+    else:
+        print(f"[ror] {len(targets)} research-organisation facility/ies to resolve "
+              f"({skipped:,} skipped by design)")
+    if unclassified and not args.link_only:
         print(f"[ror] NOTE: skipped types not in PLACE_TYPES: "
               f"{unclassified} — if any of these name an organisation rather "
               f"than a place, add them to RESEARCH_TYPES (or run with "
@@ -222,8 +233,9 @@ def main() -> int:
         time.sleep(SLEEP)
         if i % 25 == 0:
             print(f"  [ror] {i}/{len(targets)}  {decisions}")
-    print(f"[ror] {decisions}")
-    print(f"[ror] resolved {len(found)} facility ROR(s)")
+    if targets:
+        print(f"[ror] {decisions}")
+        print(f"[ror] resolved {len(found)} facility ROR(s)")
 
     # A ROR identifies ONE organisation, so two facilities claiming the same
     # one means at least one is wrong. In upstream cod-kmap, "Monterey Bay
@@ -255,10 +267,17 @@ def main() -> int:
         conn.executemany("UPDATE facilities SET ror = ? WHERE facility_id = ?", found)
 
     # ── pass 2: equality join on ROR ───────────────────────────────────
+    # Rebuild only the rows this pass owns. It used to clear the whole
+    # table, which was safe while this script was the sole writer and
+    # became destructive the moment import_codkmap_registry.py started
+    # contributing edges it cannot re-derive (those come from upstream's
+    # own ROR join, against RORs LTO may not carry).
     if not args.dry_run:
-        conn.execute("DELETE FROM registry_facilities")
+        conn.execute("DELETE FROM registry_facilities WHERE method = 'ror-equality'")
+        # OR IGNORE: an imported edge already claims some (person, site)
+        # pairs, and its provenance is the more specific of the two.
         conn.execute("""
-            INSERT INTO registry_facilities
+            INSERT OR IGNORE INTO registry_facilities
                 (canonical_id, facility_id, method, ror,
                  source_url, retrieved_at, confidence)
             SELECT DISTINCT r.canonical_id, f.facility_id, 'ror-equality',

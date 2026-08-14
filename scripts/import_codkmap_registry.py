@@ -17,6 +17,12 @@ parquet join instead of a second OpenAlex harvest:
                            already in LTO's registry (LTO's row wins).
   3. registry_facilities   the researcher↔facility edges for imported +
                            existing identities at shared facilities.
+                           Tagged method='cod-kmap-import', NOT
+                           'ror-equality': link_registry_facilities.py
+                           rebuilds its own 'ror-equality' rows from
+                           scratch on every run and cannot re-derive
+                           these (they rest on upstream's ROR set), so
+                           the method column is what keeps them.
   4. registry_collaborations
                            co-publication edges whose BOTH endpoints now
                            exist in LTO's registry.
@@ -148,7 +154,7 @@ def main() -> int:
             INSERT INTO registry_facilities
                 (canonical_id, facility_id, method, ror, source_url,
                  retrieved_at, confidence)
-            SELECT rf.canonical_id, rf.facility_id, 'ror-equality',
+            SELECT rf.canonical_id, rf.facility_id, 'cod-kmap-import',
                    s.upstream_ror, '{UPSTREAM_URL}', '{today}', 'high'
             FROM {pq('registry_facilities')} rf
             JOIN _shared s USING (facility_id)

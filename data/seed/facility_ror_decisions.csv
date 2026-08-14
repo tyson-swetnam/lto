@@ -1,0 +1,243 @@
+facility_id,canonical_name,facility_type,country,ror,matched_name,decision,retrieved_at
+a90fce0f33af9666,ACE Basin NERR,federal,US,,,no-match,2026-08-14
+6b8f4ab20b0c821d,Adams Ranch SCAN Station #2001,federal,US,,Heritage Ranch,review-head-token-missing,2026-08-14
+debbe06b574422c2,Alaska Ocean Observing System,network,US,,NOAA Integrated Ocean Observing System,review-head-token-missing,2026-08-14
+0d6b1e55d4c3c23d,Albemarle-Pamlico National Estuary Partnership NEP,nonprofit,US,,Lower Columbia Estuary Partnership,review-head-token-missing,2026-08-14
+88a71bec0521cfdb,Apalachicola NERR,federal,US,,,no-match,2026-08-14
+998e60a6afe62d55,Archbold Biological Station,university-field-station,US,00m2ag473,Archbold Biological Station,acronym-match,2026-08-14
+31397c3268f282b0,Arctic LTER (Toolik Field Station),university-field-station,US,04pk7zz41,Arctic Long Term Ecological Research,acronym-match,2026-08-14
+6966c758bebef0f1,Atigun Pass SNOTEL,federal,US,,,no-match,2026-08-14
+37d40b3fb9fd1ed0,Atqasuk CALM and AmeriFlux Site,university-field-station,US,,Cultural Site Research and Management,review-head-token-missing,2026-08-14
+288ac52b707d703d,Baltimore Ecosystem Study LTER,university-field-station,US,,California Current Ecosystem Long Term Ecological Research,review-head-token-missing,2026-08-14
+c19eea5e35c4ff35,Barataria-Terrebonne National Estuary Program,nonprofit,US,,Tampa Bay Estuary Program,review-head-token-missing,2026-08-14
+2adc72ff42d9de08,Barnegat Bay Partnership NEP,nonprofit,US,,Bay Area Houston Economic Partnership,review-head-token-missing,2026-08-14
+f0adb115570b84eb,Barrow Permafrost Observatory (Utqiagvik),federal,US,,Barrow Neurological Institute,review-weak-1-token,2026-08-14
+07a6f90011ac0705,Beaufort Lagoon Ecosystems LTER,university-marine-lab,US,055a54548,Beaufort Lagoon Ecosystems Long Term Ecological Research Network,acronym-match,2026-08-14
+01ef51b8abf6f751,Beaufort Lagoon LTER,network,US,,Beaufort Lagoon Ecosystems Long Term Ecological Research Network,review-extra-token-ecosystems,2026-08-14
+ecc94919a0543d2b,Blandy Experimental Farm / State Arboretum of Virginia,university-field-station,US,,Commonwealth of Virginia,review-head-token-missing,2026-08-14
+8a4f2b5f9f76fb1d,Blandy Experimental Farm NEON Site,field-station,US,,,no-match,2026-08-14
+659db848c8224d61,Bodega Marine Laboratory,university-marine-lab,US,,NCCOS Hollings Marine Laboratory,review-head-token-missing,2026-08-14
+e26cfe5b1131c69e,Bonanza Creek LTER Caribou-Poker Creeks Permafrost Sites,university-field-station,US,01nysf027,Bonanza Creek Long Term Ecological Research,name-token-match,2026-08-14
+b38889c610495c68,Brooks Lake SNOTEL,federal,US,,Brooks Institute,review-weak-1-token,2026-08-14
+9e331afaa2ea7a45,Bushland #2 SCAN Station #2002,federal,US,,,no-match,2026-08-14
+c1b0708dda943534,Buzzards Bay National Estuary Program,nonprofit,US,,Tampa Bay Estuary Program,review-head-token-missing,2026-08-14
+20ccd0ab4b0dfc46,CASTNET Big Bend NP,federal,US,,Big Bend National Park,review-head-token-missing,2026-08-14
+39c749224b574218,California Current Ecosystem LTER,university-marine-lab,US,010dcp921,California Current Ecosystem Long Term Ecological Research,acronym-match,2026-08-14
+5da8e0cad0447427,Cape Cod National Seashore,federal,US,,Cape Cod Healthcare,review-extra-token-healthcare,2026-08-14
+4fc4a5777ced0680,Cape Hatteras National Seashore,federal,US,,Center for the Analysis of Politics and Enterprise,review-weak-1-token,2026-08-14
+4418839344b81009,Cape Lisburne Coast Guard / NSIDC Sea-Ice Observatory,federal,US,,United States Coast Guard,review-head-token-missing,2026-08-14
+1a8028552b3cd284,Casco Bay Estuary Partnership NEP,nonprofit,US,,Tampa Bay Estuary Program,review-head-token-missing,2026-08-14
+bb2539d13dcb2865,Cedar Creek Ecosystem Science Reserve LTER,university-field-station,US,03a976s92,Cedar Creek Ecosystem Science Reserve,acronym-match,2026-08-14
+f84b3487ac36c0b1,Central Arizona-Phoenix LTER,university-field-station,US,020zjmd13,Central Arizona–Phoenix Long Term Ecological Research,acronym-match,2026-08-14
+b4519c13bf6c6b9d,Chesapeake Bay Maryland NERR,federal,US,,Chesapeake Bay Foundation,review-org-form-foundation,2026-08-14
+fe150287423eeeb2,Chesapeake Bay Sentinel Site,federal,US,,Chesapeake Bay Foundation,review-parent-org,2026-08-14
+d2d962156f88888d,Chesapeake Bay Virginia NERR,federal,US,,Chesapeake Bay Foundation,review-org-form-foundation,2026-08-14
+402ccdf886fa609d,Coastal Bend Bays and Estuaries Program NEP,nonprofit,US,,Coastal Bend College,review-org-form-college,2026-08-14
+b8e52cf34fcab452,Cold Regions Research and Engineering Laboratory,federal,US,05wk0m864,Cold Regions Research and Engineering Laboratory,acronym-match,2026-08-14
+edf86b727b023da0,Cottonwood Lake Study Area,field-station,US,,Lake County,review-head-token-missing,2026-08-14
+99988c194cd66757,Crossroads SCAN Station #2003,federal,US,,CrossRoads Extremity Systems (United States),review-weak-1-token,2026-08-14
+df254973e6b80cf4,Cullars Rotation,university-field-station,US,,,no-match,2026-08-14
+f325c8b6799d34c9,Dakota Coteau Field Site NEON Site,field-station,US,,Slater Mill,review-head-token-missing,2026-08-14
+7921395351f74974,Dead Lake NEON Site,field-station,US,,,no-match,2026-08-14
+ec5c32126ce47483,Delaware Center for the Inland Bays NEP,nonprofit,US,,Delaware Youth Center,review-weak-1-token,2026-08-14
+9b4911f8fe1a9ebd,Delaware NERR,federal,US,,Delaware Technical Community College,review-extra-token-community-technical,2026-08-14
+85bf4933896fba60,Delta Junction NEON Site,field-station,US,,Delta Air Lines (United States),review-weak-1-token,2026-08-14
+aac8ba40aec1a15b,Disney Wilderness Preserve NEON Site,field-station,US,,Walt Disney (United States),review-weak-1-token,2026-08-14
+2cc453376bcf3bb2,EPA Atlantic Coastal Environmental Sciences Division,federal,US,,,no-match,2026-08-14
+bdb7de909d79f11c,EPA Great Lakes National Program Office,federal,US,,Great Lakes Aquarium,review-head-token-missing,2026-08-14
+a6afec3bc9f042dd,EPA National Lakes Assessment,federal,US,,National Center for Environmental Assessment (EPA),review-head-token-missing,2026-08-14
+2556705b356302b7,East River Watershed Long-Term Critical Zone Observatory (LTREB),federal,US,,Copper River Watershed Project,review-head-token-missing,2026-08-14
+449c081d421f2116,Elkhorn Slough NERR,federal,US,,Elkhorn Slough Foundation,review-org-form-foundation,2026-08-14
+1496a5fc3a668206,Florida Coast LTER,network,US,,Florida Gulf Coast University,review-extra-token-gulf,2026-08-14
+449b4b7b64e59122,Florida Coastal Everglades LTER,university-marine-lab,US,03davk141,Florida Coastal Everglades Long Term Ecological Research,acronym-match,2026-08-14
+cf68012de3b948de,Florida Keys Marine Sanctuary,federal,US,,Florida Keys Community College,review-extra-token-community,2026-08-14
+6d12d198b0dd92d5,GLEON Lake Sunapee,nonprofit,US,,Lake County,review-head-token-missing,2026-08-14
+e1a7385483473434,Galveston Bay Estuary Program NEP,nonprofit,US,,Tampa Bay Estuary Program,review-head-token-missing,2026-08-14
+8ae383aa534d8fe9,Georgia Coast LTER,network,US,,Virginia Coast Reserve Long Term Ecological Research,review-head-token-missing,2026-08-14
+c8f0ec54accbd4fd,Georgia Coastal Ecosystems LTER,university-marine-lab,US,017bfx208,Georgia Coastal Ecosystems Long Term Ecological Research,acronym-match,2026-08-14
+1ca0ee8b5874566d,Glacier Peak Snotel / Lyman Lake Snow Pillow,federal,US,,Lyman Museum,review-head-token-missing,2026-08-14
+c8a6589def6b6865,Goodwell #2 SCAN Station #2034,federal,US,,Scan Foundation,review-head-token-missing,2026-08-14
+099f35eb7143a89d,Graduate School of Oceanography,university-marine-lab,US,,Elmbridge University,review-weak-1-token,2026-08-14
+960fc51b86672cc2,Grand Bay NERR,federal,US,,Bay Clinic,review-head-token-missing,2026-08-14
+df62a44abf172c10,Gray's Reef Marine Sanctuary,federal,US,,Farallones Marine Sanctuary Association,review-head-token-missing,2026-08-14
+7ddbc5ef577648ee,Great Bay NERR,federal,US,,Great Bay Stewards,review-extra-token-stewards,2026-08-14
+219860013136e6f7,Great Smoky Mountains National Park — Twin Creeks NEON Site,field-station,US,00s2q3495,Great Smoky Mountains National Park,name-token-match,2026-08-14
+acfc1994d0e6cc5e,Guana Tolomato Matanza NERR,federal,US,,,no-match,2026-08-14
+cc181c7953452ffc,Gulf Coast MarineGEO,network,US,,Mid-America Christian University,review-extra-token-america-christian,2026-08-14
+09a1a090f953ad9f,Harvard Forest LTER,university-field-station,US,059cpzx98,Harvard Forest Long Term Ecological Research,acronym-match,2026-08-14
+5b42961d12b531c3,Hatfield Marine Science Center,university-marine-lab,US,,Virginia Aquarium & Marine Science Center,review-head-token-missing,2026-08-14
+885e59f7b4a660c3,Hawaiian Islands Sentinel Site,federal,US,,Hawaiian Islands Land Trust,review-extra-token-land,2026-08-14
+7f64827854c9c9ce,Hayden Pass SNOTEL,federal,US,,Jeffrey Thomas Hayden Foundation,review-weak-1-token,2026-08-14
+d2beef812eb53bc7,He'eia NERR,federal,US,,,no-match,2026-08-14
+09c3395ece6bc11f,Healy NEON Site,field-station,US,,Slater Mill,review-head-token-missing,2026-08-14
+3e9450eeb3d41500,Hubbard Brook Watershed 6,field-station,US,,Hubbard Brook Long Term Ecological Research; Hubbard Brook Research Foundation,ambiguous,2026-08-14
+f01f6bcc9502e905,Hudson River NERR,federal,US,,Hudson River Foundation,review-org-form-foundation,2026-08-14
+f2c12f6cc924f41c,IMPROVE Acadia NP,federal,US,,Acadia Hospital,review-head-token-missing,2026-08-14
+e3c3a9abcc148e9a,Imnavait Creek Tussock-Tundra Watershed,university-field-station,US,,,no-match,2026-08-14
+958fefd76c3e1ad2,Independence Mine SNOTEL,federal,US,,Independence University,review-weak-1-token,2026-08-14
+10086fa6647815a9,Indian River Lagoon MarineGEO,network,US,,Gila River Indian Community,review-extra-token-community-gila,2026-08-14
+99abeaaed73bfb99,Indian River Lagoon National Estuary Program,nonprofit,US,,Gila River Indian Community,review-extra-token-community-gila,2026-08-14
+682babf9e6b9ee22,Jacques Cousteau NERR,federal,US,,,no-match,2026-08-14
+062a60fa77fbac44,Jobos Bay NERR,federal,US,,Bay Clinic,review-head-token-missing,2026-08-14
+0846a1eb1faa5161,Jones Center at Ichauway,field-station,US,038rzwt76,The Jones Center at Ichauway,name-token-match,2026-08-14
+91e2d1b8c47d7016,Jones Center at Ichauway NEON Site,field-station,US,038rzwt76,The Jones Center at Ichauway,name-token-match,2026-08-14
+94690a2c94717f62,Jornada Experimental Range NEON Site,field-station,US,,Jornada Basin Long Term Ecological Research,review-weak-1-token,2026-08-14
+d3ae265dcba29674,Juneau Icefield Camp 10 (Camp Lake Linda),nonprofit,US,,Juneau Public Libraries,review-weak-1-token,2026-08-14
+575fa84330e60c4b,Kachemak Bay NERR,federal,US,,Bay Clinic,review-head-token-missing,2026-08-14
+5a18bae1d57059c3,Konza Prairie Biological Station LTER,university-field-station,US,,Konza Prairie Long Term Ecological Research,review-parent-org,2026-08-14
+35325c870700487f,Konza Prairie Biological Station — Agricultural NEON Site,field-station,US,,Konza Prairie Long Term Ecological Research,review-parent-org,2026-08-14
+0a41fe688a0131fd,Lajas Experimental Station NEON Site,field-station,PR,,,no-match,2026-08-14
+1ebdb6e51e3d1712,Lake Superior NERR,federal,US,,Great Lakes Aquarium,review-extra-token-aquarium-great,2026-08-14
+8099ea512105c1f2,Lenoir Landing NEON Site,field-station,US,,Lenoir Community College,review-weak-1-token,2026-08-14
+ca47109d352ad2d8,Little River SCAN Station #2009,federal,US,,Scan Foundation,review-head-token-missing,2026-08-14
+0924c3fe89bb1392,Long Island Sound Study NEP,nonprofit,US,,Long Island Association,review-weak-1-token,2026-08-14
+a3df950de95bd5e8,Lower Columbia Estuary Partnership NEP,nonprofit,US,05vkm7r79,Lower Columbia Estuary Partnership,name-token-match,2026-08-14
+f3b0aeaaad49f40f,Lower Teakettle NEON Site,field-station,US,,Lower Manhattan Hospital,review-weak-1-token,2026-08-14
+2a7fff258a20a88b,Lower Tombigbee–Alabama River Aquatic Resources Area,field-station,US,,Hawai'i Division of Aquatic Resources,review-head-token-missing,2026-08-14
+40b6e6ea4fbbe95d,Magruder Plots,university-field-station,US,,,no-match,2026-08-14
+f04cb9aa1708ed19,Mahantango Creek SCAN Station #2030,federal,US,,Scan Foundation,review-head-token-missing,2026-08-14
+b925359d8a98761d,Mallows Bay-Potomac River Marine Sanctuary,federal,US,,Potomac River Fisheries Commission,review-head-token-missing,2026-08-14
+96e8914dc5bde58c,Mammoth Cave SCAN Station #2031,federal,US,,Mammoth Hospital,review-weak-1-token,2026-08-14
+9fe52abe466eb473,Mammoth Pass SNOTEL,federal,US,,Mammoth Hospital,review-weak-1-token,2026-08-14
+3ab1ad2750cf466d,Marvin Klemme Range Research Station,university-field-station,US,,,no-match,2026-08-14
+0d0a93d5d40fc23e,Marvin Klemme Range Research Station NEON Site,field-station,US,,,no-match,2026-08-14
+3cce246f72e42148,Maryland Coastal Bays Program NEP,nonprofit,US,,U.S. Coastal Research Program,review-head-token-missing,2026-08-14
+8ef9ffb2262d2832,Massachusetts Bays National Estuary Program,nonprofit,US,,Tampa Bay Estuary Program,review-head-token-missing,2026-08-14
+d7848bb1d531d7d1,McMurdo Dry Valleys LTER,federal,AQ,04r3s7465,McMurdo Dry Valleys Long Term Ecological Research,acronym-match,2026-08-14
+d496b627e9b19adb,Mead UNL Carbon Sequestration / NEB Eddy-Flux Site,university-field-station,US,,,no-match,2026-08-14
+423b19ae442d5ee2,Mid-Atlantic Regional Association Coastal Ocean Observing System,network,US,,Southern California Coastal Ocean Observing System,review-head-token-missing,2026-08-14
+d0610f75079d17ae,Minneapolis-St Paul Urban LTER,university-field-station,US,,Minneapolis-St. Paul Long Term Ecological Research,review-extra-token-st.,2026-08-14
+0a25dd431ffe13d7,Mirror Lake Long-Term Monitoring,field-station,US,,,no-match,2026-08-14
+bf2c2c67551f218f,Mission Aransas NERR,federal,US,,Mission Hospital,review-weak-1-token,2026-08-14
+9fcf4b7ae4943c08,Moab NEON Site,field-station,US,,Slater Mill,review-head-token-missing,2026-08-14
+db36727508052028,Mobile Bay National Estuary Program,nonprofit,US,,Tampa Bay Estuary Program,review-head-token-missing,2026-08-14
+4cc7f52b5d75691c,Mojave Global Change Facility (LTREB),federal,US,,Global Environment Facility,review-head-token-missing,2026-08-14
+ccfca44c27995cea,Monitor Marine Sanctuary,federal,US,,Farallones Marine Sanctuary Association,review-head-token-missing,2026-08-14
+ca8eddbef5f313a1,Monterey Bay Aquarium,nonprofit,US,,Monterey Bay Aquarium Foundation,review-org-form-foundation,2026-08-14
+714c66db72565768,Moorea Coral Reef LTER,university-marine-lab,US,,Coral Reef Alliance,review-head-token-missing,2026-08-14
+d9bad8026c38e336,Morro Bay National Estuary Program,nonprofit,US,,Tampa Bay Estuary Program,review-head-token-missing,2026-08-14
+6fd843db3efb1f34,Morrow Plots Long-Term Experiment,university-field-station,US,,,no-match,2026-08-14
+f70c698fb5ee353a,Mote Marine Laboratory and Aquarium,nonprofit,US,,Mote Marine Laboratory; Virginia Aquarium & Marine Science Center,ambiguous,2026-08-14
+4de23dbb2d07376a,Mountain Lake Biological Station,university-field-station,US,,Rocky Mountain Biological Laboratory,review-extra-token-rocky,2026-08-14
+c6e0e1eea64feb52,Mountain Lake Biological Station NEON Site,field-station,US,,Archbold Biological Station,review-head-token-missing,2026-08-14
+819e01f29b243d50,NADP H.J. Andrews NTN site,federal,US,,Andrews Institute for Orthopaedics & Sports Medicine,review-head-token-missing,2026-08-14
+8f8d330f29b26e8b,NADP Hubbard Brook NTN site,federal,US,,Hubbard Brook Long Term Ecological Research,review-head-token-missing,2026-08-14
+840d073e4144b14f,NADP Konza Prairie NTN site,federal,US,,Konza Prairie Long Term Ecological Research,review-head-token-missing,2026-08-14
+7fd58ccc7effab1d,NASA Goddard Space Flight Center — Ocean Biology Processing Group,federal,US,,NASA Ocean Biology Processing Group,review-parent-org,2026-08-14
+631d1b1f92e90f44,NASA Wallops Flight Facility,federal,US,,Wallops Flight Facility,review-head-token-missing,2026-08-14
+a988f8632779ca2a,NOAA Great Lakes Environmental Research Laboratory,federal,US,01jeee804,NOAA Great Lakes Environmental Research Laboratory,acronym-match,2026-08-14
+c3649e50f58ab3c2,NPS-IM Greater Yellowstone Network,federal,US,,National Park Service,review-weak-1-token,2026-08-14
+427b0906a9107a87,NPS-IM Klamath Network,federal,US,,National Park Service,review-weak-1-token,2026-08-14
+66f1d62297060297,NPS-IM Northeast Temperate Network,federal,US,,National Park Service,review-weak-1-token,2026-08-14
+1da64df0fd7c426e,NPS-IM Sierra Nevada Network,federal,US,,Sierra Nevada College,review-head-token-missing,2026-08-14
+f3aa90613c5ce294,NPS-IM Sonoran Desert Network,federal,US,,International Sonoran Desert Alliance,review-head-token-missing,2026-08-14
+0c4536359e28438d,NSIDC Utqiagvik (Barrow) Sea-Ice Mass Balance Site,university-institute,US,,National Snow and Ice Data Center,review-head-token-missing,2026-08-14
+9d4583c180914ac0,Narragansett Bay Estuary Program NEP,nonprofit,US,,Tampa Bay Estuary Program,review-head-token-missing,2026-08-14
+dd32c151b310b8ae,Narragansett Bay NERR,federal,US,,Bay Institute,review-head-token-missing,2026-08-14
+48a4a144e3ad245f,National Estuarine Research Reserve System,network,US,,National Estuarine Research Reserve Association,review-org-form-association,2026-08-14
+6fa9e6e6a2bb24ad,New York-New Jersey Harbor Estuary Program NEP,nonprofit,US,,New York Harbor School; Port Authority of New York and New Jersey,ambiguous,2026-08-14
+5617ed506cffb7ed,Niwot Ridge LTER Cryosphere Instrumentation,university-field-station,US,02ep77d74,Niwot Ridge Long Term Ecological Research,name-token-match,2026-08-14
+8b261cc2b72e679e,Niwot SNOTEL,federal,US,,Niwot Ridge Long Term Ecological Research,review-weak-1-token,2026-08-14
+4ac94e4e5da49682,North Carolina NERR,federal,US,,North Carolina Exploring Cultural Heritage Online,review-extra-token-cultural-exploring,2026-08-14
+02a62062148246a9,North Carolina Sentinel Site,federal,US,,North Carolina Aquarium,review-extra-token-aquarium,2026-08-14
+46598db0265aaa38,North Inlet LTREB,network,US,,Cook Inlet Regional Citizens Advisory Council,review-head-token-missing,2026-08-14
+c42a82d1eef0f701,North Inlet-Winyah Bay NERR,federal,US,,North Bay Cancer Alliance,review-extra-token-cancer,2026-08-14
+ec2749fb7967266e,North Sterling NEON Site,field-station,US,,Sterling College - Vermont,review-head-token-missing,2026-08-14
+33d9cc3f89ec9a3a,Northeast U.S. Shelf LTER,university-marine-lab,US,04sj20m66,Northeast U.S. Shelf Long Term Ecological Research,acronym-match,2026-08-14
+4b897473a3d94b82,Northeast US Margin LTER,network,US,,Northeast U.S. Shelf Long Term Ecological Research,review-weak-1-token,2026-08-14
+7f83eaa9c683b075,Northern Great Plains Research Laboratory NEON Site,field-station,US,0474dxd36,Northern Great Plains Research Laboratory,name-token-match,2026-08-14
+024de417014c4567,Northern Gulf of Alaska LTER,university-marine-lab,US,01csn4944,Northern Gulf of Alaska Long Term Ecological Research,acronym-match,2026-08-14
+d501f5c20c88d880,Northern Prairie Wildlife Research Center,federal,US,0135q5q22,Northern Prairie Wildlife Research Center,name-token-match,2026-08-14
+c2777e772491be5e,Nunn #1 SCAN Station #2017,federal,US,,Scan Foundation,review-head-token-missing,2026-08-14
+348bc8da215bc2fb,Oak Ridge National Environmental Research Park,federal,US,,Oak Ridge National Laboratory; Oak Ridge Leadership Computing Facility; Ordela (United States); Oak Ridge Associated Universities; Spallation Neutron Source,ambiguous,2026-08-14
+f3dc8e9fd191fa82,Old Rotation,university-field-station,US,,Dallas Heritage Village,review-weak-1-token,2026-08-14
+f668c822976512fe,Old Woman Creek NERR,federal,US,,Dallas Heritage Village,review-weak-1-token,2026-08-14
+6194234d37cd0794,Ordway-Swisher Biological Station,university-field-station,US,,Archbold Biological Station,review-head-token-missing,2026-08-14
+347afc985afeade9,Padilla Bay NERR,federal,US,,Bay Clinic,review-head-token-missing,2026-08-14
+cfd1ef878db8842f,Palmer Station LTER,federal,AQ,,Palmer Long Term Ecological Research,review-parent-org,2026-08-14
+14ad40e8ba25b41a,Paradise SNOTEL (Mount Rainier),federal,US,,Paradise Valley Hospital,review-weak-1-token,2026-08-14
+b18d4e304929d1f3,Partnership for the Delaware Estuary NEP,nonprofit,US,,Lower Columbia Estuary Partnership,review-head-token-missing,2026-08-14
+a4d3f1420a979a34,Patuxent Research Refuge / Bird Banding Lab,federal,US,,Eastern Bird Banding Association,review-head-token-missing,2026-08-14
+14fa1197ed4975e3,Peconic Estuary Program NEP,nonprofit,US,,Tampa Bay Estuary Program,review-head-token-missing,2026-08-14
+6b49d19b5accaf76,Piscataqua Region Estuaries Partnership NEP,nonprofit,US,,Restore America's Estuaries,review-head-token-missing,2026-08-14
+bed592638b95b7e5,Plum Island Ecosystems LTER,university-marine-lab,US,052tfzs89,Plum Island Ecosystems Long Term Ecological Research,acronym-match,2026-08-14
+8a9f792df16585ec,Point Reyes National Seashore,federal,US,,Point Blue Conservation Science,review-extra-token-blue-conservation,2026-08-14
+d752f899a8130021,Powder Mill SCAN Station #2027,federal,US,,Scan Foundation,review-head-token-missing,2026-08-14
+c8a214243eb16597,Puget Sound Partnership NEP,nonprofit,US,,Puget Sound Partnership; University of Puget Sound; Puget Sound Restoration Fund; Bloodworks Northwest,ambiguous,2026-08-14
+9b7758a08f12bd51,Reynolds Creek SCAN Station #2037,federal,US,,Scan Foundation,review-head-token-missing,2026-08-14
+5cf69fb62a88c72d,Rocky Mountain Biological Laboratory,university-field-station,US,030tcms06,Rocky Mountain Biological Laboratory,acronym-match,2026-08-14
+e382a7de32a95cc9,Rocky Mountain National Park — CASTNET NEON Site,field-station,US,,Rocky Mountain Institute,review-parent-org,2026-08-14
+b989d5d297c3dec3,Rookery Bay NERR,federal,US,,Bay Institute,review-head-token-missing,2026-08-14
+7ccb227e00b48eb6,"Rosenstiel School of Marine, Atmospheric, and Earth Science",university-marine-lab,US,,NASA Earth Science,review-head-token-missing,2026-08-14
+0cc368787cd559c3,SERC GCREW LTREB,network,US,,,no-match,2026-08-14
+084d7f39d7bf0630,"SERC, GCREW MarineGEO",network,US,,,no-match,2026-08-14
+c54df27d3d5ff656,San Francisco Bay MarineGEO,network,US,,San Francisco Bay Conservation and Development Commission,review-extra-token-conservation,2026-08-14
+22defb4a3ee37d8a,San Francisco Bay NERR,federal,US,,San Francisco Bay Conservation and Development Commission,review-extra-token-conservation,2026-08-14
+458e96ead560e429,San Francisco Estuary Partnership NEP,nonprofit,US,,San Francisco Estuary Institute,review-org-form-institute,2026-08-14
+f858cc0d008257c3,San Juan Bay Estuary Program,nonprofit,US,,Tampa Bay Estuary Program,review-head-token-missing,2026-08-14
+2a944100a89af1e0,Sanborn Field,university-field-station,US,,,no-match,2026-08-14
+e588b74d29fe8c36,Santa Monica Bay National Estuary Program,nonprofit,US,,Tampa Bay Estuary Program,review-head-token-missing,2026-08-14
+0ac30d8999613919,Sapelo Island NERR,federal,US,,Island Institute,review-head-token-missing,2026-08-14
+8cb1dfe4421dcd93,Sarasota Bay Estuary Program NEP,nonprofit,US,,Tampa Bay Estuary Program,review-head-token-missing,2026-08-14
+2fe9d95c0e0a7970,Schofield Pass SNOTEL,federal,US,,,no-match,2026-08-14
+9ba7a35749487194,Senator Beck Basin Study Area (CSAS),nonprofit,US,,Historical Society of Western Pennsylvania,review-weak-1-token,2026-08-14
+be89811018d4119f,Sevilleta LTER,university-field-station,US,01qcacz92,Sevilleta Long Term Ecological Research,acronym-match,2026-08-14
+ca0d02e2340450db,Smithsonian Conservation Biology Institute,federal,US,04hnzva96,Smithsonian Conservation Biology Institute,name-token-match,2026-08-14
+fe678f45b43083ff,Smithsonian Marine Station at Fort Pierce,federal,US,00ga81413,Smithsonian Marine Station,name-token-match,2026-08-14
+9d9f2d2e39b4bdf7,Soaproot Saddle NEON Site,field-station,US,,,no-match,2026-08-14
+f16c0b7401a72b61,South Slough NERR,federal,US,,Elkhorn Slough Foundation,review-head-token-missing,2026-08-14
+451bf9392571f9f4,Southeast Coastal Ocean Observing Regional Association,network,US,,Northeastern Regional Association of Coastal and Ocean Observing Systems (United States),review-head-token-missing,2026-08-14
+5173db142db727f4,Swan's Island LTREB,network,US,,Island Institute,review-head-token-missing,2026-08-14
+6bf46c6d33f5967b,Sycamore Creek Long-Term Stream-Ecology Site (ASU),university-field-station,US,,Bonanza Creek Long Term Ecological Research,review-head-token-missing,2026-08-14
+6aa3e3a88696247f,Tampa Bay Estuary Program NEP,nonprofit,US,019zjrs07,Tampa Bay Estuary Program,name-token-match,2026-08-14
+b5ba4ac41401a0b9,Tijuana River NERR,federal,US,,,no-match,2026-08-14
+6d6ffba21e24b77d,Tillamook Estuaries Partnership NEP,nonprofit,US,,Restore America's Estuaries,review-head-token-missing,2026-08-14
+9031dc2565299778,Toolik Field Station,university-field-station,US,,,no-match,2026-08-14
+bee394d91ac8cc15,Toolik Field Station NEON Site,field-station,US,,,no-match,2026-08-14
+f2dfa30f0871b59d,Treehaven NEON Site,field-station,US,,Slater Mill,review-head-token-missing,2026-08-14
+146e9515733ddedd,Trinity Lake SNOTEL (Bonanza Creek vicinity),federal,US,,Trinity Health,review-weak-1-token,2026-08-14
+7df25b0304d189e5,U.S. Integrated Ocean Observing System Program Office,network,US,,NOAA Integrated Ocean Observing System,review-extra-token-administration-atmospheric,2026-08-14
+6fe0a0ddb26081bd,UC Bodega Marine Reserve,university-marine-lab,US,,,no-match,2026-08-14
+e91ffce7b94d8978,UC White Mountain Research Center,university-field-station,US,,White Clover Wellness and Research Center,review-weak-1-token,2026-08-14
+b4769ffb0e4ad961,UPR-Mayagüez Department of Marine Sciences,university-marine-lab,PR,,Mayagüez Medical Center,review-head-token-missing,2026-08-14
+18254d33b94ff086,"US Naval Research Laboratory, Stennis Space Center",federal,US,,Naval Meteorology and Oceanography Command,review-extra-token-command-meteorology,2026-08-14
+a0e7e3bd6cc7d170,USACE ERDC Coastal and Hydraulics Laboratory,federal,US,,Coastal and Hydraulics Laboratory,review-head-token-missing,2026-08-14
+5d3194ffda147bcd,USACE Field Research Facility,federal,US,,,no-match,2026-08-14
+86a7950bfb468980,USDA Caribbean Climate Hub,federal,PR,,,no-match,2026-08-14
+16094a3b3ff6d4d4,USDA Midwest Climate Hub,federal,US,,USDA California Climate Hub,review-extra-token-california,2026-08-14
+f5cd4ab745f61417,USDA Northeast Climate Hub,federal,US,,USDA California Climate Hub,review-extra-token-california,2026-08-14
+b1f7e808427c9d4e,USDA Northern Forests Climate Hub,federal,US,,USDA California Climate Hub,review-extra-token-california,2026-08-14
+9cdd35072d22f558,USDA Northern Plains Climate Hub,federal,US,,USDA California Climate Hub,review-extra-token-california,2026-08-14
+8aa0271cc640c781,USDA Northwest Climate Hub,federal,US,,USDA California Climate Hub,review-extra-token-california,2026-08-14
+73064357573f7339,USDA Pacific Islands Climate Hub,federal,US,,USDA California Climate Hub,review-extra-token-california,2026-08-14
+0b0be2c69fde28f4,USDA Southeast Climate Hub,federal,US,,USDA California Climate Hub,review-extra-token-california,2026-08-14
+ded7324eac793a0a,USDA Southern Plains Climate Hub,federal,US,,USDA California Climate Hub,review-extra-token-california,2026-08-14
+bac04166eed0e918,USDA Southwest Climate Hub,federal,US,,USDA California Climate Hub,review-extra-token-california,2026-08-14
+a4246cc563eddd28,USGS Alaska Climate Adaptation Science Center,federal,US,,Alaska Climate Adaptation Science Center,review-head-token-missing,2026-08-14
+01b78db5c9938c34,USGS Canyonlands Research Station (Moab),federal,US,,,no-match,2026-08-14
+026a922e38c1c6a0,USGS Cooperative Water Program,federal,US,,National Cooperative Geologic Mapping Program,review-extra-token-geologic-mapping,2026-08-14
+a9ecb42cfd223881,USGS Galbraith Lake Permafrost Borehole,federal,US,,California Water Science Center,review-weak-1-token,2026-08-14
+78f12f42680bf472,USGS Hydrologic Benchmark Network,federal,US,,Hydrologic Research Center,review-head-token-missing,2026-08-14
+d4ddc27ae41148c3,USGS National Climate Adaptation Science Center,federal,US,,Climate Adaptation Science Centers,review-extra-token-centers,2026-08-14
+353361a587e66927,USGS National Land Imaging Program,federal,US,,National Geospatial Program,review-weak-1-token,2026-08-14
+1c26e9481f81e529,USGS National Streamflow Information Program,federal,US,,National Minerals Information Center,review-extra-token-minerals,2026-08-14
+9937f684d17a99a3,USGS Northeast Climate Adaptation Science Center,federal,US,,Climate Adaptation Science Centers,review-extra-token-centers,2026-08-14
+772231b93822a636,USGS WEBB Loch Vale Watershed,field-station,US,,Webb Institute,review-head-token-missing,2026-08-14
+bbc97a5cdbf6b247,USGS WEBB Sleepers River Research Watershed,field-station,US,,Copper River Watershed Project,review-head-token-missing,2026-08-14
+ae0beda05f19885a,USGS WEBB Trout Lake,field-station,US,,Trout Unlimited,review-head-token-missing,2026-08-14
+1b1e2428f00be9a4,USGS Water Resources Division (historical),federal,US,,California Water Science Center,review-extra-token-california,2026-08-14
+12b78a29f0d373e5,University of Kansas Field Station,university-field-station,US,,University of Kansas,review-parent-org,2026-08-14
+04f90691c58f6420,University of Kansas Field Station NEON Site,field-station,US,,,no-match,2026-08-14
+8147036178a026cb,University of Michigan Biological Station,university-field-station,US,02hhndj92,University of Michigan Biological Station,acronym-match,2026-08-14
+ba142b5a41924843,University of Notre Dame Environmental Research Center,university-field-station,US,,University of Notre Dame,review-parent-org,2026-08-14
+84bcc3299702e49a,University of Notre Dame Environmental Research Center NEON Site,field-station,US,,University of Notre Dame,review-parent-org,2026-08-14
+c77f265f303e27f7,University of Wisconsin–Madison Trout Lake Station,university-field-station,US,,University of Wisconsin–Madison,review-parent-org,2026-08-14
+84f4cf9530192cd8,University of the Virgin Islands — Center for Marine and Environmental Studies,university-marine-lab,VI,,University of the Virgin Islands,review-parent-org,2026-08-14
+ee98ac1a90620cf5,Virginia Coast Reserve LTER,university-field-station,US,013zder45,Virginia Coast Reserve Long Term Ecological Research,acronym-match,2026-08-14
+3ef8f8206b3af64b,Walnut Gulch #1 SCAN Station #2026,federal,US,,Eugene O'Neill Theater Center,review-weak-1-token,2026-08-14
+8f8db306000bd353,Waquoit Bay NERR,federal,US,,Bay Clinic,review-head-token-missing,2026-08-14
+def52201a4873868,Weeks Bay NERR,federal,US,,Bay Clinic,review-head-token-missing,2026-08-14
+80edf691ec74a1ad,Wells NERR,federal,US,,Wells Fargo (United States),review-extra-token-(united-fargo,2026-08-14
+8b17ffd2b418fb60,West Falmouth Harbor LTREB,network,US,,Falmouth Hospital,review-head-token-missing,2026-08-14
+1cf190cb0f984185,Wind River Experimental Forest NEON Site,field-station,US,,Wind River Cancer Wellness Retreats and Programs,review-extra-token-cancer-programs,2026-08-14
+221dc5acfd9e1938,iUTAH GAMUT Red Butte Creek Watershed Observatory,university-field-station,US,,Butte College,review-head-token-missing,2026-08-14
