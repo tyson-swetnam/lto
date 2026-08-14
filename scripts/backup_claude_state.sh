@@ -36,11 +36,16 @@ compgen -G "$CLAUDE_PLANS/*.md" > /dev/null && cp "$CLAUDE_PLANS"/*.md "$STAGING
 
 # Incremental git bundle: only commits absent from every origin/* ref.
 # Fails ("Refusing to create empty bundle") when everything is pushed —
-# that's the good case, note it and move on.
+# that's the good case: remove the stale remote bundle explicitly.
+# (gocmd sync --delete would otherwise hit an INTERACTIVE "Remove?"
+# prompt for the extra remote object and spin forever in a headless
+# shell — that exact hang killed two backup runs on 2026-08-13.)
 BUNDLE_STATE="empty (all local commits are on origin)"
 if git -C "$REPO" bundle create "$STAGING/repo.bundle" \
      --branches --not --remotes=origin --quiet 2>/dev/null; then
   BUNDLE_STATE="$(git -C "$REPO" bundle list-heads "$STAGING/repo.bundle" | wc -l) ref(s)"
+else
+  gocmd rm -f "${DEST#i:}/repo.bundle" 2>/dev/null || true
 fi
 
 {
@@ -52,6 +57,8 @@ fi
   git -C "$REPO" log --oneline --branches --not --remotes=origin | sed 's/^/  /'
 } > "$STAGING/BACKUP_INFO.txt"
 
-gocmd sync "$STAGING" "$DEST" --no_root --delete --no_hash
+# --no: never prompt (headless). Extra remote files are handled above
+# (bundle) or tolerated — mirror hygiene must not cost interactivity.
+gocmd sync "$STAGING" "$DEST" --no_root --no_hash --no
 
 echo "[ok] claude state + repo bundle backed up to ${DEST#i:}"
