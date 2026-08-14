@@ -387,8 +387,17 @@ function cardHtml(f) {
          <ul class="brw-archives">
            ${archives.map((a) => {
              const label = a.name || a.archive_id;
-             const href = a.scope_url || a.base_url;
-             const link = href ? `<a href="${esc(href)}" target="_blank" rel="noopener">${esc(label)}</a>` : esc(label);
+             // Cross-link into the Data tab (#/data/<archive_id>) when the
+             // row carries archive_id — cache and fallback SQL both emit
+             // it. Rows from a stale cache without it keep the old
+             // external-link / plain-text rendering.
+             let link;
+             if (a.archive_id) {
+               link = `<a href="#/data/${esc(encodeURIComponent(a.archive_id))}">${esc(label)}</a>`;
+             } else {
+               const href = a.scope_url || a.base_url;
+               link = href ? `<a href="${esc(href)}" target="_blank" rel="noopener">${esc(label)}</a>` : esc(label);
+             }
              const doi = a.sample_doi
                ? ` · <a href="https://doi.org/${esc(a.sample_doi)}" target="_blank" rel="noopener">${esc(a.sample_doi)}</a>`
                : '';

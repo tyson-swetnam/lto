@@ -98,7 +98,12 @@ SELECT p.person_id  AS id,
        COALESCE(pa.composite_z, 0)         AS composite_z,
        COALESCE(pf.facility_funding_usd, 0) AS facility_funding_usd,
        paa.areas                           AS areas,
-       pa2.affiliations                    AS affiliations
+       pa2.affiliations                    AS affiliations,
+       pr.canonical_id                     AS canonical_id,
+       NULLIF(concat_ws(',',
+         CASE WHEN pr.is_site_personnel THEN 'site' END,
+         CASE WHEN pr.is_scholar THEN 'scholar' END), '') AS cohorts,
+       pr.tier                             AS tier
 FROM   people p
 LEFT JOIN person_primary_groups g  ON g.person_id  = p.person_id
 LEFT JOIN research_areas       ra  ON ra.area_id   = g.primary_area_id
@@ -106,6 +111,7 @@ LEFT JOIN per_pa               pa  ON pa.person_id = p.person_id
 LEFT JOIN per_pa_areas         paa ON paa.person_id = p.person_id
 LEFT JOIN per_fund             pf  ON pf.person_id = p.person_id
 LEFT JOIN per_aff              pa2 ON pa2.person_id = p.person_id
+LEFT JOIN person_registry      pr  ON pr.person_id = p.person_id
 """
 
 

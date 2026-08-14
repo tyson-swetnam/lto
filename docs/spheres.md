@@ -1,10 +1,15 @@
-# The six spheres
+# The seven spheres
 
 `lto` organises every facility under exactly one **primary sphere** and zero
 or more **secondary spheres**. The R-XREF reconciler resolves cross-sphere
 overlaps (e.g. Hubbard Brook is terrestrial-primary with atmosphere and
 freshwater secondaries; Niwot Ridge is terrestrial-primary with cryosphere
 and atmosphere secondaries).
+
+The model launched with six spheres; **Arid** was split out of Terrestrial
+in August 2026 so dryland research sites — a coherent research community
+with its own LTERs, NEON domains, and rangeland networks — stopped being
+invisible inside the largest sphere.
 
 ## Atmosphere
 
@@ -45,6 +50,25 @@ The largest sphere by record count: long-term ecology and forest research.
 - **Cross-sphere ties**: numerous EFRs are also LTERs; NEON sites overlap
   LTAR and LTER hosts; the R-XREF agent enforces a canonical primary so
   duplicate clusters merge to a single record on ingest.
+
+## Arid
+
+Arid, semi-arid, and desert systems: hot and cold deserts, dryland
+shrublands and grasslands.
+
+- **Anchor networks**: the desert LTERs, NEON Desert Southwest + Great
+  Basin domains, NPS Sonoran Desert I&M network, USGS Canyonlands.
+- **Landmark sites**: Jornada Basin LTER (NM), Sevilleta LTER (NM),
+  Santa Rita Experimental Range NEON (AZ), Onaqui NEON (UT), Great Basin
+  Experimental Range (UT), Mojave Global Change Facility (NV), Big Bend
+  Biosphere Reserve (TX).
+- **Cross-sphere ties**: the LTAR/ARS rangeland sites (Jornada
+  Experimental Range, Walnut Gulch, Reynolds Creek, Santa Rita ER) keep
+  **agriculture** as their primary sphere — ARS rangelands are part of
+  that sphere's charter — and carry arid as a secondary. Desert streams
+  (Sycamore Creek, Red Butte Creek) stay freshwater-primary the same
+  way. Central Arizona–Phoenix LTER stays terrestrial-primary (its
+  identity is urban ecology) with an arid secondary.
 
 ## Agriculture
 

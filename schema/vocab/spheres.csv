@@ -1,7 +1,8 @@
 slug,label,description
 atmosphere,Atmosphere,"Long-term observatories of the atmosphere: greenhouse gases, atmospheric chemistry, deposition, radiation, flux towers, and surface meteorology."
 cryosphere,Cryosphere,"Long-term observatories of snow, ice, glaciers, permafrost, and polar systems."
-terrestrial,Terrestrial / Ecological,"Long-term ecological observatories on land: forests, grasslands, shrublands, deserts, alpine, urban — covering the LTER, NEON, USFS EFR, NPS-IM, MAB, NWRS, RNAs, and LTREB networks."
+terrestrial,Terrestrial / Ecological,"Long-term ecological observatories on land: forests, grasslands, shrublands, alpine, urban — covering the LTER, NEON, USFS EFR, NPS-IM, MAB, NWRS, RNAs, and LTREB networks."
+arid,Arid,"Long-term observatories of arid, semi-arid, and desert systems: hot and cold deserts, dryland shrublands and grasslands — Jornada and Sevilleta LTERs, NEON desert domains, Great Basin and Canyonlands sites, Chihuahuan/Sonoran/Mojave networks."
 agriculture,Agriculture,"Long-term agroecosystem observatories: USDA-ARS LTAR, ARS rangelands, USDA Climate Hubs, SCAN, Cooperative Extension long-term experiments."
 ocean-estuarine,Aquatic — Ocean & Estuarine,"Long-term ocean and estuarine observatories: IOOS Regional Associations, OOI, NERRS, NMS, NEP, MarineGEO, NPS coastal, NAML labs."
 freshwater,Aquatic — Freshwater,"Long-term freshwater observatories: USGS NWIS / WEBB / Hydrologic Benchmark Network, GLEON, lake LTERs, watershed experiments, EPA NARS."

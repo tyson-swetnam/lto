@@ -725,9 +725,11 @@ lto:SphereScheme
     a               skos:ConceptScheme ;
     skos:prefLabel  "LTO spheres"@en ;
     dcterms:source  "schema/vocab/spheres.csv" ;
-    rdfs:comment    """The six-sphere model the whole catalogue is organized
+    rdfs:comment    """The seven-sphere model the whole catalogue is organized
         by. Every facility has exactly one primary sphere and any number of
-        secondary spheres (facility_spheres.role)."""@en .
+        secondary spheres (facility_spheres.role). Arid was split out of
+        Terrestrial in August 2026 so dryland research sites stopped being
+        invisible inside the largest sphere."""@en .
 
 lto:EcosystemTypeScheme
     a               skos:ConceptScheme ;
@@ -747,7 +749,7 @@ lto:LifeZoneScheme
 
 # --- Concepts, one per CSV row -------------------------------------------
 
-# -- Spheres (6) ----------------------------------------------------------
+# -- Spheres (7) ----------------------------------------------------------
 
 lto:atmosphere
     a               lto:Sphere , skos:Concept ;
@@ -773,8 +775,20 @@ lto:terrestrial
     skos:topConceptOf lto:SphereScheme ;
     skos:prefLabel  "Terrestrial / Ecological"@en ;
     skos:notation   "terrestrial" ;
-    skos:definition "Long-term ecological observatories on land: forests, grasslands, shrublands, deserts, alpine, urban — covering the LTER, NEON, USFS EFR, NPS-IM, MAB, NWRS, RNAs, and LTREB networks."@en ;
+    skos:definition "Long-term ecological observatories on land: forests, grasslands, shrublands, alpine, urban — covering the LTER, NEON, USFS EFR, NPS-IM, MAB, NWRS, RNAs, and LTREB networks."@en ;
     skos:exactMatch obo:ENVO_00000446 .
+
+lto:arid
+    a               lto:Sphere , skos:Concept ;
+    skos:inScheme   lto:SphereScheme ;
+    skos:topConceptOf lto:SphereScheme ;
+    skos:prefLabel  "Arid"@en ;
+    skos:notation   "arid" ;
+    skos:definition "Long-term observatories of arid, semi-arid, and desert systems: hot and cold deserts, dryland shrublands and grasslands — Jornada and Sevilleta LTERs, NEON desert domains, Great Basin and Canyonlands sites, Chihuahuan/Sonoran/Mojave networks."@en ;
+    # Same ENVO anchor as the arid-land ecosystem type: desert biome is the
+    # umbrella; semi-arid shrublands sit just outside strict desert, so
+    # close rather than exact (see data/vocab_crosswalk/envo_crosswalk.csv).
+    skos:closeMatch obo:ENVO_01000179 .
 
 lto:agriculture
     a               lto:Sphere , skos:Concept ;

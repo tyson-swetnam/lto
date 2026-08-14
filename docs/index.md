@@ -1,13 +1,13 @@
 # lto — U.S. Long-Term Observatories
 
 `lto` is an interactive map and database cataloguing United States long-term
-environmental observatories across six interlocking spheres. The site is a
+environmental observatories across seven interlocking spheres. The site is a
 static MapLibre + DuckDB-Wasm front-end backed by a Python ingest pipeline
 that loads research-agent JSON into DuckDB and exports Parquet + GeoJSON.
 It is forked and extended from
 [`tyson-swetnam/cod-kmap`](https://github.com/tyson-swetnam/cod-kmap) (MIT).
 
-## The six spheres
+## The seven spheres
 
 - **Atmosphere** — gas-flux, deposition, radiation, and trace-gas networks
   (NOAA-GML, NADP, AmeriFlux, ARM, CASTNET, IMPROVE, SURFRAD, TCCON).

@@ -1,5 +1,7 @@
 duckdb>=1.3.0
 polars>=1.0.0
+# MVG layout pipeline (scripts/mvg.py needs scipy; build_mvg_layout.py uses polars above)
+scipy>=1.11
 rapidfuzz>=3.9
 geopy>=2.4
 pyyaml>=6.0

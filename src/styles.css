@@ -1147,6 +1147,32 @@ footer a:hover { color: var(--c-primary); }
   color: var(--c-muted);
   max-width: 720px;
 }
+/* "How to read this map" — collapsed by default. The full explanation runs
+   to four paragraphs; inline it pushed the map below the fold. */
+.network-help-toggle {
+  margin-left: 6px;
+  font-size: 0.82rem;
+  color: var(--c-primary-d);
+  text-decoration: underline;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.network-help {
+  margin: 8px 0 0;
+  max-width: 760px;
+  padding: 10px 12px;
+  border: 1px solid var(--c-border);
+  border-radius: 6px;
+  background: var(--c-bg);
+}
+.network-help p {
+  margin: 0 0 7px;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: var(--c-muted);
+}
+.network-help p:last-child { margin-bottom: 0; }
+.network-help[hidden] { display: none; }
 .network-actions { display: flex; gap: 8px; }
 .network-actions .btn-ghost {
   background: #fff;
@@ -1206,10 +1232,107 @@ footer a:hover { color: var(--c-primary); }
   background:
     radial-gradient(circle at 50% 50%, #fff 0%, #f3f1ec 60%, #e8e4dc 100%);
 }
-/* Two-column shell: TOC on the left, map stage on the right */
+/* Scope note for the registry layer: states the tier boundary right
+ * next to the layer control so the map never implies it shows the whole
+ * person registry. Hidden until the layer is switched on. */
+.network-scope-note {
+  margin: 0;
+  padding: 6px 20px 8px;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: #7c2d12;
+  background: #fff7ed;
+  border-bottom: 1px solid #fed7aa;
+}
+.network-scope-note[hidden] { display: none; }
+
+/* Three-column shell: TOC on the left, map stage centre, and the
+ * focused site's researcher roster on the right. The roster column
+ * collapses to zero width when no site is selected, so the map keeps
+ * the full stage until the user asks for the panel. */
 .mvg-shell {
   flex: 1; min-height: 0;
-  display: grid; grid-template-columns: 220px 1fr; gap: 12px;
+  display: grid; grid-template-columns: 220px 1fr auto; gap: 12px;
+}
+.mvg-reg-panel {
+  width: 232px;
+  border: 1px solid var(--c-border);
+  border-radius: 6px;
+  background: #fffbeb;
+  padding: 8px;
+  display: flex; flex-direction: column; gap: 4px;
+  overflow: hidden;
+}
+.mvg-reg-panel[hidden] { display: none; }
+.mvg-reg-head {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 8px;
+}
+.mvg-reg-head h3 {
+  margin: 0; font-size: .82rem; color: #7c2d12;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.mvg-reg-head .btn-ghost {
+  background: #fff; border: 1px solid #fed7aa; color: #7c2d12;
+  padding: 3px 8px; border-radius: var(--radius-sm);
+  font-size: .72rem; cursor: pointer;
+}
+.mvg-reg-note {
+  margin: 0; font-size: .72rem; line-height: 1.4; color: #92400e;
+}
+/* Domain-placed cohort panel. A distinct dashed treatment because the
+ * claim it makes is weaker than a site roster's: these researchers are
+ * grouped by subject, not located anywhere. */
+.mvg-reg-note-domain {
+  border-left: 3px dashed #c2410c;
+  padding: 4px 0 4px 7px;
+  background: #fffbeb;
+}
+/* Protected-areas layer swatch: hollow + dashed, matching the aggregate
+ * chip on the map, so the legend reads as "context, not a data source". */
+.net-swatch-pa {
+  background: transparent !important;
+  border: 1.5px dashed #65803a;
+}
+/* Region cartogram labels and the aggregate chips are sized in real screen
+ * pixels by onZoom() (see LABEL_MIN_PX in network.js), so nothing here may
+ * set a font-size on them — a CSS font-size would win over the attribute
+ * for specificity-free presentation attributes and silently defeat the
+ * floor. Only non-sizing properties belong here. */
+.mvg-pa-chips text, .mvg-reg-labels text { user-select: none; }
+.mvg-reg-list {
+  list-style: none; margin: 4px 0 0; padding: 0;
+  flex: 1; min-height: 0; overflow-y: auto; font-size: .8rem;
+}
+.mvg-reg-list li { margin: 0; padding: 0; }
+/* Researchers past the plot cap: listed, but visibly not on the map. */
+.mvg-reg-list li.is-unplotted .mvg-reg-name { color: #a8a29e; }
+.mvg-reg-row {
+  display: grid; grid-template-columns: 1fr auto;
+  gap: 6px; align-items: center; width: 100%;
+  background: transparent; border: none;
+  padding: 3px 6px; border-radius: 4px;
+  font: inherit; color: #1e293b; cursor: pointer; text-align: left;
+}
+.mvg-reg-row:hover { background: #fef3c7; }
+.mvg-reg-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.mvg-reg-badge {
+  min-width: 18px; text-align: center;
+  font-size: .7rem; font-weight: 700;
+  color: #7c2d12; background: #fed7aa;
+  border-radius: 8px; padding: 1px 5px;
+}
+/* Harvested, genuinely zero co-authors. */
+.mvg-reg-badge.is-zero { color: #57534e; background: #e7e5e4; }
+/* Not harvested — an unknown, deliberately NOT rendered as a zero.
+ * With registry_collaborations shipping empty until the identity
+ * harvest lands, this is the state every roster row starts in. */
+.mvg-reg-badge.is-unknown {
+  color: #78716c; background: transparent;
+  border: 1px dashed #d6d3d1; font-weight: 500;
+}
+@media (max-width: 1100px) {
+  .mvg-reg-panel { width: 190px; }
 }
 .mvg-toc {
   border: 1px solid var(--c-border);
@@ -1246,6 +1369,9 @@ footer a:hover { color: var(--c-primary); }
 @media (max-width: 760px) {
   .mvg-shell { grid-template-columns: 1fr; }
   .mvg-toc { max-height: 200px; }
+  /* Single-column: the roster stacks under the map instead of squeezing
+   * the stage to nothing. */
+  .mvg-reg-panel { width: auto; max-height: 240px; }
 }
 .network-svg, .mvg-svg {
   width: 100%;
@@ -1256,6 +1382,13 @@ footer a:hover { color: var(--c-primary); }
 .network-svg:active, .mvg-svg:active { cursor: grabbing; }
 /* MVG / KMap polygon view: subtle styling so polygon fills don't fight node legibility. */
 .mvg-polys path { transition: fill-opacity 120ms ease; }
+/* Institution sub-polygons: same smoothing for the hover dim/bump that
+ * network.js drives via fill-opacity attributes. Colours, strokes and
+ * opacities stay d3 presentation attributes — CSS properties would win
+ * the cascade over them, so only transitions belong here. The same rule
+ * keeps .mvg-edge-reveal, .mvg-per-dot(-gap) and .mvg-registry groups
+ * attribute-styled with no CSS block at all. */
+.mvg-facpolys path { transition: fill-opacity 120ms ease, stroke-opacity 120ms ease; }
 .mvg-nodes circle { transition: r 100ms ease; }
 .mvg-nodes circle:hover { r: 6; }
 .mvg-edges line { stroke-linecap: round; }
@@ -2034,6 +2167,17 @@ footer a:hover { color: var(--c-primary); }
    so the badge row is scannable without reading every label. */
 .ds-ep-machine { border-width: 2px; font-weight: 500; }
 .ds-ep-note { margin: -4px 0 8px; font-size: .7rem; color: #94a3b8; }
+/* Endpoint health dots — weekly HEAD sweep verdicts (url_health.parquet).
+   green = ok/redirect, amber = client-error (often just HEAD-hostile
+   hosts), red = server-error/timeout; unchecked URLs render no dot. */
+.ds-health {
+  display: inline-block; width: 7px; height: 7px; border-radius: 50%;
+  flex: none; align-self: center; margin-left: 6px;
+  vertical-align: middle; cursor: help;
+}
+.ds-health-ok   { background: #16a34a; }
+.ds-health-warn { background: #d97706; }
+.ds-health-err  { background: #dc2626; }
 .ds-empty {
   margin: 0 0 8px; font-size: .76rem; color: #b45309; font-style: italic;
 }
@@ -2067,3 +2211,89 @@ footer a:hover { color: var(--c-primary); }
 @media (max-width: 600px) {
   .ds-grid { grid-template-columns: 1fr; }
 }
+
+/* ── People: cohort pills, pager, deep-link notice (M8) ─────────────
+ * Cohort model is lto's: is_site_personnel / is_scholar from
+ * person_registry (no is_team — that is a cod-kmap org-chart concept).
+ * The pill row hides entirely when no card carries cohort data (an old
+ * people_cards.json), so these rules must not assume it exists. */
+.ppl-cohorts { display: flex; gap: 6px; flex-wrap: wrap; margin: 4px 0 2px; }
+.ppl-cohort {
+  border: 1px solid var(--c-border); background: #fff; cursor: pointer;
+  border-radius: 999px; padding: 4px 12px; font-size: .82rem; color: #475569;
+}
+.ppl-cohort:hover { border-color: #94a3b8; }
+.ppl-cohort-on { background: #0369a1; border-color: #0369a1; color: #fff; }
+.ppl-cohort-n { font-variant-numeric: tabular-nums; opacity: .75; margin-left: 4px; }
+
+/* Pager under the card grid — 60 cards per page. */
+.ppl-pager {
+  display: flex; gap: 8px; align-items: center; justify-content: center;
+  flex-wrap: wrap; padding: 20px 0 8px;
+}
+.ppl-pager:empty { display: none; }
+.ppl-pager button {
+  border: 1px solid var(--c-border); background: #fff; cursor: pointer;
+  border-radius: var(--radius); padding: 5px 12px; font-size: .84rem; color: #334155;
+}
+.ppl-pager button:hover:not(:disabled) { border-color: #0369a1; color: #0369a1; }
+.ppl-pager button:disabled { opacity: .45; cursor: default; }
+.ppl-pageno { font-size: .82rem; color: #64748b; font-variant-numeric: tabular-nums; }
+
+/* Deep-link notice: #/people/<id> named nobody shipped to the browser.
+ * Worded as a coverage gap, not nonexistence — the registry currently
+ * ships the 116-identity core tier only. Dismissable. */
+.ppl-notice {
+  display: flex; align-items: flex-start; gap: 10px;
+  margin: 0 0 14px; padding: 10px 14px; font-size: .84rem; color: #92400e;
+  background: #fffbeb; border: 1px solid #fde68a;
+  border-radius: var(--radius); max-width: 920px;
+}
+.ppl-notice code { background: #fef3c7; padding: 1px 4px; border-radius: 3px; }
+.ppl-notice a { color: #b45309; }
+.ppl-notice-dismiss {
+  margin-left: auto; flex-shrink: 0;
+  border: none; background: transparent; cursor: pointer;
+  font-size: 1.05rem; line-height: 1; color: #b45309;
+  padding: 0 2px;
+}
+.ppl-notice-dismiss:hover { color: #7c2d12; }
+
+/* ── Data view: per-archive product browser (#/data/<id>/products) ──
+ * D2 of the KMAP alignment. Row look comes from .dash-table (the Stats
+ * dashboard tables) — only the chrome around it is new. */
+.ds-products-link { color: #0369a1; white-space: nowrap; }
+.ds-products-back { margin: 0 0 10px; font-size: .84rem; }
+.ds-products-back a { color: #0369a1; text-decoration: none; }
+.ds-products-back a:hover { text-decoration: underline; }
+.ds-products-scroll {
+  overflow-x: auto; background: #fff;
+  border: 1px solid var(--c-border); border-radius: 8px;
+  padding: 4px 8px 6px;
+}
+.ds-products-table { min-width: 820px; }
+.ds-products-table th[data-key] { cursor: pointer; user-select: none; white-space: nowrap; }
+.ds-products-table th[data-key]:hover { color: #0369a1; }
+.ds-products-arrow { font-size: .62rem; color: #0369a1; }
+.ds-products-table a { color: #0369a1; }
+/* Long NEON titles wrap inside their column instead of stretching it. */
+.ds-products-title { max-width: 480px; }
+.ds-products-span { white-space: nowrap; font-variant-numeric: tabular-nums; }
+.ds-products-src {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .72rem;
+}
+/* 'n/a' — untracked DOI, deliberately not rendered as a zero. */
+.ds-products-na { color: #94a3b8; cursor: help; }
+
+/* Simple prev/next pager; only appears past PROD_PAGE_SIZE rows. */
+.ds-products-pager {
+  display: flex; gap: 8px; align-items: center; justify-content: center;
+  flex-wrap: wrap; padding: 0 0 12px;
+}
+.ds-products-pager button {
+  border: 1px solid var(--c-border); background: #fff; cursor: pointer;
+  border-radius: var(--radius); padding: 5px 12px; font-size: .84rem; color: #334155;
+}
+.ds-products-pager button:hover:not(:disabled) { border-color: #0369a1; color: #0369a1; }
+.ds-products-pager button:disabled { opacity: .45; cursor: default; }
+.ds-products-pageno { font-size: .82rem; color: #64748b; font-variant-numeric: tabular-nums; }

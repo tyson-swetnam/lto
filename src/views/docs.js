@@ -36,6 +36,12 @@ const DOC_PAGES = [
   { title: 'Coverage',          path: 'docs/coverage.md' },
   { title: 'Loops & Agents',    path: 'docs/loops.md' },
   { title: 'Sources',           path: 'docs/sources.md' },
+  // OKF bundle root (Open Knowledge Format v0.2 — see
+  // github.com/GoogleCloudPlatform/knowledge-catalog). The bundle holds
+  // one generated concept doc per data archive plus curated access-method
+  // guides; only the index is a tab — the other ~85 pages render through
+  // the unlisted-slug fallback in renderActive().
+  { title: 'Data Access (OKF)', path: 'docs/okf/index.md' },
 ];
 
 // Compute slug once per page. Filename stem with underscores → dashes,
@@ -61,11 +67,28 @@ function rewriteHref(href) {
   // Strip a leading './', drop any trailing '#anchor' if present (we let the
   // browser handle it after the route resolves), then convert filename stem
   // (underscores → dashes, lower-cased) to the same slug DOC_PAGES uses.
-  const m = String(href).match(/^\.?\/?([\w._-]+)\.md(#.*)?$/i);
+  //
+  // Paths may contain '/' (the OKF bundle lives under docs/okf/). A leading
+  // '/' is docs-root-relative; anything else resolves against the ACTIVE
+  // doc's directory, so './access-erddap.md' inside 'okf/index' lands on
+  // 'okf/access-erddap'. '..' segments are resolved, never emitted.
+  const m = String(href).match(/^(\.?\.?\/?[\w./_-]+)\.md(#.*)?$/i);
   if (m) {
-    const slug = m[1].toLowerCase().replace(/_/g, '-');
+    let raw = m[1].toLowerCase().replace(/_/g, '-');
     const anchor = m[2] || '';
-    return { href: `#/docs/${slug}${anchor}`, external: false };
+    if (raw.startsWith('/')) {
+      raw = raw.slice(1);
+    } else {
+      const dir = (_activeSlug || '').includes('/')
+        ? _activeSlug.slice(0, _activeSlug.lastIndexOf('/') + 1) : '';
+      raw = dir + raw.replace(/^\.\//, '');
+    }
+    const parts = [];
+    for (const seg of raw.split('/')) {
+      if (seg === '..') parts.pop();
+      else if (seg !== '.' && seg !== '') parts.push(seg);
+    }
+    return { href: `#/docs/${parts.join('/')}${anchor}`, external: false };
   }
   // Bare in-page anchor.
   if (String(href).startsWith('#')) return { href, external: false };
@@ -370,12 +393,30 @@ function pageShellHtml(activeSlug) {
 
 async function renderActive(slug) {
   if (!_container) return;
-  const page = DOC_PAGES.find((p) => p.slug === slug) || DOC_PAGES[0];
+  // Unlisted-slug fallback: any '#/docs/<path>' whose slug isn't a tab
+  // still renders, fetched from 'docs/<slug>.md'. This is what lets the
+  // ~85 OKF bundle pages (one per data archive + the access guides) be
+  // deep-linkable without becoming 85 tabs. Slug charset is restricted
+  // so the fetch path can't escape docs/.
+  let page = DOC_PAGES.find((p) => p.slug === slug);
+  if (!page && slug && /^[\w][\w/-]*$/.test(slug) && !slug.includes('..')) {
+    const stem = slug.split('/').pop();
+    page = {
+      title: stem.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase()),
+      path: `docs/${slug}.md`,
+      slug,
+    };
+  }
+  if (!page) page = DOC_PAGES[0];
   _activeSlug = page.slug;
 
   // Update tab bar active state without a full re-render of the shell.
+  // An unlisted OKF page highlights the bundle's tab so the reader keeps
+  // their bearings.
+  const tabSlug = DOC_PAGES.some((p) => p.slug === page.slug) ? page.slug
+    : (page.slug.startsWith('okf/') ? 'okf/index' : page.slug);
   _container.querySelectorAll('.docs-tab').forEach((a) => {
-    const isActive = a.dataset.docSlug === page.slug;
+    const isActive = a.dataset.docSlug === tabSlug;
     a.classList.toggle('active', isActive);
     a.setAttribute('aria-selected', String(isActive));
   });
@@ -430,12 +471,14 @@ export function initDocsView(container) {
 
 export function renderDocsView(path) {
   if (!_container) return;
+  // Slugs may span several segments ('/docs/okf/access-erddap'), so join
+  // everything after '/docs/' — split('/')[2] silently truncated these.
+  const slug = (path || '').split('/').slice(2).join('/') || DOC_PAGES[0].slug;
   // Ensure the shell exists even if main.js routed straight to a
   // sub-path on first visit.
   if (!_container.dataset.docsReady) {
-    _container.innerHTML = pageShellHtml((path || '').split('/')[2] || DOC_PAGES[0].slug);
+    _container.innerHTML = pageShellHtml(slug);
     _container.dataset.docsReady = '1';
   }
-  const slug = (path || '').split('/')[2] || DOC_PAGES[0].slug;
   if (slug !== _activeSlug) renderActive(slug);
 }

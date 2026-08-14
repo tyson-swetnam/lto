@@ -44,6 +44,7 @@ jobs:
           add-paths: |
             data/seed/url_health_check.csv
             data/seed/url_hygiene_log.csv
+            public/parquet/url_health.parquet
             public/parquet/people.parquet
             public/parquet/facilities.parquet
             public/parquet/data_archives.parquet
