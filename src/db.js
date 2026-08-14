@@ -246,6 +246,9 @@ export async function initDB() {
     // These three are eager because the People / Network / Stats views
     // will read them (M7/M8); the audit-side registry tables are lazy.
     'person_registry', 'registry_facilities', 'registry_collaborations',
+    // Weekly URL-sweep verdicts (scripts/check_url_health.py) — datasets.js
+    // paints endpoint health dots from it, so eager, not lazy.
+    'url_health',
     ];
 
     // Tables NO rendering view reads — only the SQL tab's canned queries and

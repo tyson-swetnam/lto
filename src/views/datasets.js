@@ -123,6 +123,62 @@ function fmtInt(n) {
   return Math.round(n).toLocaleString();
 }
 
+// ── Endpoint health dots ─────────────────────────────────────────────
+//
+// url_health.parquet is the weekly HEAD sweep (scripts/check_url_health.py):
+// one row per distinct URL with a coarse status verdict. Fetched whole and
+// joined client-side — the table stays well under 500 rows, and a separate
+// try/catch query means an absent or zero-row parquet costs the dots, never
+// the catalogue (a SQL-level JOIN would fail the whole fetch if the
+// url_health view didn't register).
+//
+// Dot colours: ok/redirect green; client-error amber, not red — many hosts
+// 403/405 a scripted HEAD yet serve browsers fine; server-error/timeout red.
+// Unchecked and template-skipped URLs get no dot at all.
+let _health = null;   // Map url → {status, http_code, checked_at}; null until loaded
+
+const HEALTH_DOT = {
+  'ok'           : 'ok',
+  'redirect'     : 'ok',
+  'client-error' : 'warn',
+  'server-error' : 'err',
+  'timeout'      : 'err',
+};
+
+async function fetchHealth(conn) {
+  const map = new Map();
+  try {
+    // checked_at is VARCHAR today; the CAST guards against a future export
+    // typing it DATE (Arrow hands DATE to JS as epoch millis).
+    const res = await conn.query(`
+      SELECT url, status, http_code, CAST(checked_at AS VARCHAR) AS checked_at
+      FROM url_health`);
+    for (const row of res.toArray()) {
+      const r = unwrapRow(row.toJSON());
+      if (r.url) map.set(r.url, r);
+    }
+  } catch (e) {
+    // View missing (parquet 404'd at init) — degrade to no dots.
+    console.warn('[datasets] url_health unavailable, skipping health dots:', e.message);
+  }
+  return map;
+}
+
+function healthDot(url) {
+  const h = (_health && url) ? _health.get(url) : null;
+  const cls = h && HEALTH_DOT[h.status];
+  if (!cls) return '';
+  const bits = [
+    h.http_code != null ? `HTTP ${h.http_code}` : h.status,
+    h.checked_at ? `checked ${h.checked_at}` : null,
+  ];
+  if (h.status === 'client-error') {
+    bits.push('may be HEAD-hostile — some servers block automated checks but serve browsers fine');
+  }
+  return `<span class="ds-health ds-health-${cls}"
+    title="${esc(bits.filter(Boolean).join(' · '))}"></span>`;
+}
+
 async function fetchArchives() {
   await whenReady();
   const conn = getConn();
@@ -198,6 +254,7 @@ async function fetchArchives() {
     LEFT JOIN cbs   ON cbs.archive_id   = a.archive_id
     LEFT JOIN prods ON prods.archive_id = a.archive_id
     ORDER BY a.name`);
+  _health = await fetchHealth(conn);
   return res.toArray().map((row) => {
     const r = unwrapRow(row.toJSON());
     r.facilities = Array.isArray(r.facilities) ? r.facilities : [];
@@ -227,7 +284,7 @@ function accessBadges(row) {
     ].filter(Boolean).join(' — ');
     parts.push(`
       <span class="ds-ep${row.machine ? ' ds-ep-machine' : ''}" style="--ep:${color}">
-        <a class="ds-ep-link" href="${esc(row.api_url)}" target="_blank" rel="noopener"
+        ${healthDot(row.api_url)}<a class="ds-ep-link" href="${esc(row.api_url)}" target="_blank" rel="noopener"
            title="${esc(title)}">${esc(kind)}</a>
         <button class="ds-ep-copy" data-url="${esc(row.api_url)}"
                 title="Copy ${esc(row.api_url)}" aria-label="Copy API root URL">⧉</button>
@@ -251,7 +308,7 @@ function accessBadges(row) {
     ].filter(Boolean).join(' — ');
     parts.push(`
       <span class="ds-ep ds-ep-machine" style="--ep:${color}">
-        <a class="ds-ep-link" href="${esc(ep.url)}" target="_blank" rel="noopener"
+        ${healthDot(ep.url)}<a class="ds-ep-link" href="${esc(ep.url)}" target="_blank" rel="noopener"
            title="${esc(title)}">${esc(fmt)}</a>
         <button class="ds-ep-copy" data-url="${esc(ep.url)}"
                 title="Copy ${esc(ep.url)}" aria-label="Copy endpoint URL">⧉</button>
@@ -269,9 +326,11 @@ function accessBadges(row) {
       b.prefix ? `sample prefix: ${b.prefix}` : null,
     ].filter(Boolean).join(' — ');
     const label = `${esc(b.provider)}:${esc(b.name)}${locked ? ' 🔒' : ''}`;
+    // Health is keyed on documentation_url — the field the sweep checks;
+    // a constructed s3 landing URL never appears in url_health.
     parts.push(`
       <span class="ds-ep ds-ep-machine" style="--ep:${color}">
-        ${href
+        ${healthDot(b.docs)}${href
     ? `<a class="ds-ep-link" href="${esc(href)}" target="_blank" rel="noopener" title="${esc(title)}">${label}</a>`
     : `<span class="ds-ep-link" title="${esc(title)}">${label}</span>`}
         <button class="ds-ep-copy" data-url="${esc(b.prefix || b.name)}"
@@ -367,7 +426,7 @@ function productLine(row) {
 function cardHtml(row) {
   const footer = [];
   if (row.base_url) {
-    footer.push(`<a href="${esc(row.base_url)}" target="_blank" rel="noopener">Archive home</a>`);
+    footer.push(`<a href="${esc(row.base_url)}" target="_blank" rel="noopener">Archive home</a>${healthDot(row.base_url)}`);
   }
   if (row.api_doc_url) {
     footer.push(`<a href="${esc(row.api_doc_url)}" target="_blank" rel="noopener">API docs</a>`);

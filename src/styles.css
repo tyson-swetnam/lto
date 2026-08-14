@@ -2167,6 +2167,17 @@ footer a:hover { color: var(--c-primary); }
    so the badge row is scannable without reading every label. */
 .ds-ep-machine { border-width: 2px; font-weight: 500; }
 .ds-ep-note { margin: -4px 0 8px; font-size: .7rem; color: #94a3b8; }
+/* Endpoint health dots — weekly HEAD sweep verdicts (url_health.parquet).
+   green = ok/redirect, amber = client-error (often just HEAD-hostile
+   hosts), red = server-error/timeout; unchecked URLs render no dot. */
+.ds-health {
+  display: inline-block; width: 7px; height: 7px; border-radius: 50%;
+  flex: none; align-self: center; margin-left: 6px;
+  vertical-align: middle; cursor: help;
+}
+.ds-health-ok   { background: #16a34a; }
+.ds-health-warn { background: #d97706; }
+.ds-health-err  { background: #dc2626; }
 .ds-empty {
   margin: 0 0 8px; font-size: .76rem; color: #b45309; font-style: italic;
 }

@@ -67,6 +67,11 @@ TABLES = [
     "facility_area_funding",
     "funder_area_funding",
     "area_coverage_matrix",
+    # URL health sweep — written by scripts/check_url_health.py (CI), not
+    # by this export: the table never lives in db/lto.duckdb, so the COPY
+    # below fail-softs and the existing public parquet survives. Listed so
+    # publish_to_mesa.py's preflight counts it as expected, not stray.
+    "url_health",
     # MVG knowledge-map layout — written by scripts/build_mvg_layout.py
     # (parquet-only pipeline; listed here so preflights and rebuilds see
     # them, with the same fail-soft skip if the layout hasn't been built).
