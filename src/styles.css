@@ -67,7 +67,13 @@ body {
 .tabs {
   display: flex;
   gap: 2px;
+  /* Eight tabs no longer fit a phone-width topbar; scroll them
+     horizontally instead of wrapping into a second row. */
+  overflow-x: auto;
+  flex-wrap: nowrap;
+  scrollbar-width: none;
 }
+.tabs::-webkit-scrollbar { display: none; }
 .tabs a {
   color: rgba(255,255,255,.78);
   text-decoration: none;
@@ -1910,3 +1916,154 @@ footer a:hover { color: var(--c-primary); }
 
 .ppl-metrics-caveat { font-size: .68rem; color: #94a3b8; padding: 4px 0 0; line-height: 1.4; }
 .ppl-metrics-caveat strong { color: #64748b; }
+
+/* ── Data view (#/data) ─────────────────────────────────────────────
+ * LTO data-archive catalogue. Ported from cod-kmap's dataset view;
+ * badge colours come from an --ep custom property set by datasets.js
+ * per api_type / bucket provider. */
+.ds-page { padding: 22px clamp(16px, 3vw, 36px); max-width: 1400px; margin: 0 auto; }
+.ds-header h1 { margin: 0 0 6px; font-size: clamp(1.1rem, 1.6vw, 1.4rem); color: #0f172a; }
+.ds-summary { color: #1f2937; font-size: .96rem; margin: 4px 0 10px; max-width: 920px; }
+.ds-status { text-align: center; color: #64748b; padding: 14px; font-size: .85rem; }
+.ds-count-line { font-size: .82rem; color: #64748b; margin: 8px 0 14px; }
+.ds-controls {
+  display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center; margin: 10px 0 4px;
+}
+.ds-controls label { font-size: .85rem; color: #475569; }
+.ds-controls select {
+  margin-left: 6px; padding: 4px 6px;
+  border: 1px solid var(--c-border); border-radius: 4px;
+  font-size: .85rem; background: #fff;
+}
+.ds-controls input[type="search"] {
+  flex: 1 1 260px; min-width: 200px; padding: 6px 10px;
+  border: 1px solid var(--c-border); border-radius: 4px; font-size: .88rem;
+}
+
+/* Header fact list — catalogue totals broken into counted claims
+   rather than one run-on sentence. */
+.ds-facts {
+  margin: 0 0 10px; padding-left: 18px;
+  font-size: .84rem; color: #334155; line-height: 1.55;
+}
+.ds-facts li { margin: 0 0 3px; }
+.ds-facts em { color: #b45309; font-style: normal; }
+
+.ds-group { margin: 0 0 26px; }
+.ds-group > h2 {
+  margin: 0 0 10px; font-size: .95rem; color: #0f172a;
+  display: flex; align-items: center; gap: 8px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--c-border);
+}
+.ds-count {
+  font-size: .72rem; padding: 1px 8px; border-radius: 999px;
+  background: #f1f5f9; color: #475569; font-weight: 400;
+}
+.ds-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 14px;
+}
+.ds-card {
+  border: 1px solid var(--c-border); border-radius: 8px;
+  padding: 12px 14px 14px; background: #fff; scroll-margin-top: 14px;
+}
+.ds-card-active { border-color: #0ea5e9; box-shadow: 0 0 0 3px rgba(14,165,233,.25); }
+.ds-card-head {
+  display: flex; justify-content: space-between; align-items: baseline;
+  gap: 8px; margin-bottom: 2px;
+}
+.ds-card-head h3 { margin: 0; font-size: .98rem; color: #0f172a; }
+.ds-cat {
+  font-size: .66rem; padding: 2px 8px; border-radius: 999px;
+  background: #e0f2fe; color: #0369a1; white-space: nowrap;
+}
+.ds-provider { margin: 0 0 6px; font-size: .8rem; color: #475569; }
+.ds-desc { margin: 0 0 10px; font-size: .84rem; color: #1e293b; }
+
+/* Facility edges (facility_archives). The unlinked case is styled as a
+   deliberate statement, not a blank — an archive with no facility edge
+   must not read as unused. */
+.ds-producers {
+  margin: 0 0 8px; display: flex; flex-wrap: wrap;
+  align-items: center; gap: 4px 6px; font-size: .74rem;
+}
+.ds-label {
+  color: #64748b; text-transform: uppercase; letter-spacing: .04em;
+  font-size: .64rem;
+}
+.ds-prod {
+  display: inline-flex; align-items: stretch; overflow: hidden;
+  border: 1px solid #cbd5e1; border-radius: 4px; background: #f8fafc;
+  cursor: help;
+}
+.ds-prod-role {
+  padding: 2px 5px; background: #e2e8f0; color: #475569;
+  font-size: .64rem; text-transform: uppercase; letter-spacing: .03em;
+}
+.ds-prod-name { padding: 2px 7px; color: #0f172a; }
+/* Secondary/contributor edges get the dashed treatment so the primary
+   depositors are scannable at a glance. */
+.ds-prod-medium { border-style: dashed; border-color: #f59e0b; }
+.ds-prod-medium .ds-prod-role { background: #fef3c7; color: #92400e; }
+.ds-prod-low { border-style: dotted; border-color: #dc2626; }
+.ds-prod-more { padding: 2px 7px; color: #64748b; background: #f1f5f9; }
+.ds-producers-none .ds-unresolved {
+  color: #94a3b8; font-style: italic; cursor: help;
+}
+
+.ds-eps { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+.ds-ep {
+  display: inline-flex; align-items: stretch;
+  border: 1px solid color-mix(in srgb, var(--ep, #64748b) 40%, #fff);
+  border-radius: 4px; overflow: hidden; font-size: .72rem;
+  background: color-mix(in srgb, var(--ep, #64748b) 10%, #fff);
+}
+.ds-ep-link {
+  padding: 3px 7px; text-decoration: none;
+  color: color-mix(in srgb, var(--ep, #64748b) 82%, #000);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+.ds-ep-link:hover { background: color-mix(in srgb, var(--ep, #64748b) 22%, #fff); }
+.ds-ep-copy {
+  border: none; border-left: 1px solid color-mix(in srgb, var(--ep, #64748b) 30%, #fff);
+  background: transparent; cursor: pointer; padding: 3px 6px;
+  color: color-mix(in srgb, var(--ep, #64748b) 70%, #000); font-size: .74rem;
+}
+.ds-ep-copy:hover { background: color-mix(in srgb, var(--ep, #64748b) 22%, #fff); }
+/* A queryable service outranks a landing page; give it the heavier border
+   so the badge row is scannable without reading every label. */
+.ds-ep-machine { border-width: 2px; font-weight: 500; }
+.ds-ep-note { margin: -4px 0 8px; font-size: .7rem; color: #94a3b8; }
+.ds-empty {
+  margin: 0 0 8px; font-size: .76rem; color: #b45309; font-style: italic;
+}
+
+.ds-coverage {
+  display: flex; flex-wrap: wrap; gap: 4px 8px;
+  font-size: .74rem; color: #64748b; margin-bottom: 6px;
+}
+.ds-coverage span:not(:last-child)::after { content: ' ·'; color: #cbd5e1; }
+.ds-vars, .ds-license, .ds-note { margin: 4px 0 0; font-size: .76rem; color: #64748b; }
+.ds-vars strong { color: #475569; }
+.ds-note { font-style: italic; color: #94a3b8; }
+
+/* Record provenance — curator confidence, source tag, retrieval date. */
+.ds-prov {
+  margin: 8px 0 0; display: flex; flex-wrap: wrap; gap: 4px 8px;
+  font-size: .68rem; color: #94a3b8;
+}
+.ds-prov span:not(:last-child)::after { content: ' ·'; color: #cbd5e1; }
+.ds-conf { font-weight: 500; cursor: help; }
+.ds-conf-high   { color: #15803d; }
+.ds-conf-medium { color: #b45309; }
+.ds-conf-low    { color: #dc2626; }
+.ds-count-linked { background: #ecfdf5; color: #15803d; cursor: help; }
+.ds-links {
+  margin-top: 10px; padding-top: 8px;
+  border-top: 1px dashed #e2e8f0; font-size: .8rem; color: #475569;
+}
+.ds-links a { color: #0369a1; }
+
+@media (max-width: 600px) {
+  .ds-grid { grid-template-columns: 1fr; }
+}
