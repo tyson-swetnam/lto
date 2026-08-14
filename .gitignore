@@ -64,3 +64,6 @@ COMMIT_*.sh
 db/*.ducklake
 db/*.ducklake.wal
 db/ducklake_data/
+
+# Harvest checkpoint/resume state (harvest_lto_authors.py, harvest_runner.py)
+data/raw/*/_state/
