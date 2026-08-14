@@ -8,8 +8,9 @@
 // and copy-able.
 //
 // Routes:
-//   #/data               → filterable catalogue grouped by archive type
-//   #/data/<archive_id>  → that archive's card scrolled into view
+//   #/data                        → filterable catalogue grouped by archive type
+//   #/data/<archive_id>           → that archive's card scrolled into view
+//   #/data/<archive_id>/products  → sortable per-archive product table (D2)
 //
 // Data source (Wave J): data_archives + facility_archives (which
 // facilities deposit where, with a primary/secondary role) +
@@ -354,7 +355,13 @@ function productLine(row) {
       ? ` · most cited: <a href="${esc(href)}" target="_blank" rel="noopener">${esc(row.top_title)}</a>`
       : ` · e.g. ${esc(row.top_title)}`;
   }
-  return `<p class="ds-vars">${bits.join(' · ')}${top}</p>`;
+  // The count is a door, not a dead end — the products sub-route
+  // (renderProducts below) shows the full sortable table. Guarded by the
+  // n_products early-return above, so a zero-product archive gets no link.
+  const all = ` · <a class="ds-products-link"
+    href="#/data/${encodeURIComponent(row.archive_id)}/products">view all ${
+  fmtInt(row.n_products)} product${row.n_products === 1 ? '' : 's'}</a>`;
+  return `<p class="ds-vars">${bits.join(' · ')}${top}${all}</p>`;
 }
 
 function cardHtml(row) {
@@ -601,6 +608,294 @@ async function renderArchives(targetId) {
   }
 }
 
+// ── Products sub-view (#/data/<archive_id>/products) ─────────────────
+//
+// One archive, every addressable dataset it holds, as a sortable /
+// filterable table. Fetched on demand — the catalogue query above rolls
+// products up to counts only, so the first visit to an archive costs one
+// extra round trip; after that the rows are cached for the session.
+
+const PROD_PAGE_SIZE = 200; // below this, no pager — the whole table renders
+
+// Sort/filter state, module-level like the catalogue's, but scoped to
+// one archive at a time: switching archives resets it (a format filter
+// tuned for NEON is meaningless on the EDI table).
+const _prodCache = new Map();   // archive_id → plain product rows
+let _prodArchive = null;        // archive the state below belongs to
+let _prodSortKey = 'cited_by_count';
+let _prodSortDir = 'desc';
+let _prodFormat = 'all';
+let _prodLicense = 'all';
+let _prodQ = '';
+let _prodPage = 0;
+
+const PROD_COLS = [
+  { key: 'title',          label: 'Title' },
+  { key: 'format_slug',    label: 'Format' },
+  { key: 'license_slug',   label: 'License' },
+  { key: 'temporal_start', label: 'Coverage' },
+  { key: 'cited_by_count', label: 'Cited by', num: true },
+  { key: 'source',         label: 'Source' },
+  { key: 'confidence',     label: 'Confidence' },
+];
+
+// Confidence sorts by rank, not alphabetically — 'high' < 'low' <
+// 'medium' as strings would put medium last.
+const CONF_RANK = { high: 0, medium: 1, low: 2 };
+
+async function fetchProducts(archiveId) {
+  if (_prodCache.has(archiveId)) return _prodCache.get(archiveId);
+  await whenReady();
+  const conn = getConn();
+  if (!conn) throw new Error('DuckDB connection not ready');
+  // Prepared statement: archive_id comes off the URL hash, so it never
+  // gets interpolated into the SQL text. DATE columns are cast to
+  // VARCHAR at the SQL boundary — Arrow hands DATE to JS as epoch
+  // millis and the table only wants the ISO day. cited_by_count is
+  // INTEGER and never aggregated, so no HUGEINT reaches the browser.
+  const prepared = await conn.prepare(`
+    SELECT product_id, title, doi, url,
+           format_slug, license_slug,
+           CAST(temporal_start AS VARCHAR) AS temporal_start,
+           CAST(temporal_end   AS VARCHAR) AS temporal_end,
+           cited_by_count, source, confidence, variables_text
+    FROM data_products
+    WHERE archive_id = ?`);
+  const res = await prepared.query(archiveId);
+  const rows = res.toArray().map((row) => unwrapRow(row.toJSON()));
+  _prodCache.set(archiveId, rows);
+  return rows;
+}
+
+function applyProductFilter(rows) {
+  let out = rows;
+  if (_prodFormat !== 'all') out = out.filter((r) => (r.format_slug || '—') === _prodFormat);
+  if (_prodLicense !== 'all') out = out.filter((r) => (r.license_slug || '—') === _prodLicense);
+  const q = _prodQ.trim().toLowerCase();
+  if (q) {
+    // Variables are searchable on purpose: "which NEON products carry
+    // NEE?" is the question this table exists to answer.
+    out = out.filter((r) =>
+      `${r.title || ''} ${r.variables_text || ''}`.toLowerCase().includes(q));
+  }
+  return out;
+}
+
+function sortProducts(rows) {
+  const key = _prodSortKey;
+  const dir = _prodSortDir === 'asc' ? 1 : -1;
+  const val = (r) => (key === 'confidence' ? (CONF_RANK[r[key]] ?? null) : r[key]);
+  return [...rows].sort((a, b) => {
+    const av = val(a);
+    const bv = val(b);
+    // NULLs sort last in either direction — an untracked DOI must never
+    // outrank a cited product just because the sort flipped.
+    if (av == null && bv == null) return 0;
+    if (av == null) return 1;
+    if (bv == null) return -1;
+    const c = (typeof av === 'number' && typeof bv === 'number')
+      ? av - bv
+      : String(av).localeCompare(String(bv));
+    return c * dir || String(a.title).localeCompare(String(b.title));
+  });
+}
+
+function productRowHtml(r) {
+  // Title links the DOI when there is one (the citable, permanent
+  // address), else the landing URL. The catalogue currently has no row
+  // with neither, but a bare-text fallback keeps a future one visible.
+  const href = r.doi ? `https://doi.org/${r.doi}` : (r.url || null);
+  const title = href
+    ? `<a href="${esc(href)}" target="_blank" rel="noopener">${esc(r.title)}</a>`
+    : esc(r.title);
+  const span = (r.temporal_start || r.temporal_end)
+    ? `${esc(r.temporal_start || '…')} – ${esc(r.temporal_end || 'present')}`
+    : '—';
+  // 'n/a', never 0: NULL means OpenAlex does not track the DOI (or there
+  // is no DOI), which is unknown — a rendered 0 would read as "uncited".
+  const cites = r.cited_by_count == null
+    ? '<span class="ds-products-na" title="No citation count — DOI untracked by OpenAlex (unknown, not zero)">n/a</span>'
+    : fmtInt(r.cited_by_count);
+  const conf = r.confidence
+    ? `<span class="ds-conf ds-conf-${esc(r.confidence)}">${esc(r.confidence)}</span>`
+    : '—';
+  return `<tr>
+    <td class="ds-products-title"${r.variables_text ? ` title="${esc(r.variables_text)}"` : ''}>${title}</td>
+    <td>${esc(r.format_slug || '—')}</td>
+    <td>${esc(r.license_slug || '—')}</td>
+    <td class="ds-products-span">${span}</td>
+    <td class="num">${cites}</td>
+    <td class="ds-products-src">${esc(r.source || '—')}</td>
+    <td>${conf}</td>
+  </tr>`;
+}
+
+function productPagerHtml(nRows) {
+  // Below PROD_PAGE_SIZE the whole table renders and no pager appears;
+  // only an archive that outgrows it (none yet — NEON tops out at 146)
+  // gets the simple prev/next.
+  if (nRows <= PROD_PAGE_SIZE) return '';
+  const nPages = Math.ceil(nRows / PROD_PAGE_SIZE);
+  return `<div class="ds-products-pager">
+    <button data-page="${_prodPage - 1}"${_prodPage === 0 ? ' disabled' : ''}>‹ Prev</button>
+    <span class="ds-products-pageno">page ${_prodPage + 1} of ${nPages}</span>
+    <button data-page="${_prodPage + 1}"${_prodPage >= nPages - 1 ? ' disabled' : ''}>Next ›</button>
+  </div>`;
+}
+
+async function renderProducts(archiveId) {
+  if (!_container) return;
+  const status = _container.querySelector('.ds-status');
+  if (status) status.textContent = 'Loading…';
+
+  // The header needs the archive's name/org (and a deep link must work
+  // cold), so make sure the catalogue rows are in before looking it up.
+  if (!_cached) {
+    try {
+      _cached = await fetchArchives();
+    } catch (e) {
+      if (status) status.textContent = `Failed to load: ${e.message}`;
+      console.error(e);
+      return;
+    }
+  }
+  const arch = _cached.find((r) => r.archive_id === archiveId);
+  if (!arch) {
+    _container.innerHTML = `
+      <div class="ds-page">
+        <p class="ds-products-back"><a href="#/data">← All archives</a></p>
+        <p class="no-data">No archive <code>${esc(archiveId)}</code> in the
+          catalogue — the link may predate an archive_id rename.</p>
+      </div>`;
+    return;
+  }
+
+  if (_prodArchive !== archiveId) {
+    _prodArchive = archiveId;
+    _prodSortKey = 'cited_by_count';
+    _prodSortDir = 'desc';
+    _prodFormat = 'all';
+    _prodLicense = 'all';
+    _prodQ = '';
+    _prodPage = 0;
+  }
+
+  let rows;
+  try {
+    rows = await fetchProducts(archiveId);
+  } catch (e) {
+    if (status) status.textContent = `Failed to load products: ${e.message}`;
+    console.error(e);
+    return;
+  }
+
+  const filtered = sortProducts(applyProductFilter(rows));
+  // Clamp the page — a filter change can strand _prodPage past the end.
+  const maxPage = Math.max(0, Math.ceil(filtered.length / PROD_PAGE_SIZE) - 1);
+  if (_prodPage > maxPage) _prodPage = maxPage;
+  const shown = filtered.length > PROD_PAGE_SIZE
+    ? filtered.slice(_prodPage * PROD_PAGE_SIZE, (_prodPage + 1) * PROD_PAGE_SIZE)
+    : filtered;
+
+  const fmts = [...new Set(rows.map((r) => r.format_slug || '—'))].sort();
+  const lics = [...new Set(rows.map((r) => r.license_slug || '—'))].sort();
+
+  const ths = PROD_COLS.map((c) => {
+    const arrow = _prodSortKey === c.key
+      ? `<span class="ds-products-arrow">${_prodSortDir === 'asc' ? ' ▲' : ' ▼'}</span>`
+      : '';
+    return `<th data-key="${c.key}"${c.num ? ' class="num"' : ''}
+      title="Sort by ${esc(c.label.toLowerCase())}">${c.label}${arrow}</th>`;
+  }).join('');
+
+  _container.innerHTML = `
+    <div class="ds-page">
+      <p class="ds-products-back">
+        <a href="#/data/${encodeURIComponent(archiveId)}">← All archives</a>
+      </p>
+      <header class="ds-header">
+        <h1>${esc(arch.name)} — data products</h1>
+        ${arch.organization ? `<p class="ds-provider">${esc(arch.organization)}</p>` : ''}
+        <p class="ds-summary">
+          Every addressable dataset this archive holds for the catalogued
+          facilities. Click a title to open its DOI or landing page; click
+          a column header to sort; hover a title for its variables.
+          Citation counts come from OpenAlex where the DOI is tracked —
+          <em>n/a</em> means untracked, not uncited.
+        </p>
+        <div class="ds-controls">
+          <label>Format:
+            <select id="dsp-format">
+              <option value="all">All (${rows.length})</option>
+              ${fmts.map((f) => `<option value="${esc(f)}"${_prodFormat === f ? ' selected' : ''}>${
+    esc(f)} (${rows.filter((r) => (r.format_slug || '—') === f).length})</option>`).join('')}
+            </select>
+          </label>
+          <label>License:
+            <select id="dsp-license">
+              <option value="all">All</option>
+              ${lics.map((l) => `<option value="${esc(l)}"${_prodLicense === l ? ' selected' : ''}>${
+    esc(l)} (${rows.filter((r) => (r.license_slug || '—') === l).length})</option>`).join('')}
+            </select>
+          </label>
+          <input id="dsp-q" type="search"
+                 placeholder="Search title or variables…"
+                 value="${esc(_prodQ)}">
+        </div>
+        <p class="ds-count-line">Showing <strong>${fmtInt(shown.length)}</strong>
+          of <strong>${fmtInt(rows.length)}</strong> products.</p>
+      </header>
+      ${productPagerHtml(filtered.length)}
+      <div class="ds-products-scroll">
+        <table class="dash-table ds-products-table">
+          <thead><tr>${ths}</tr></thead>
+          <tbody>${shown.length
+    ? shown.map(productRowHtml).join('')
+    : `<tr><td colspan="${PROD_COLS.length}" class="no-data">No product matches these filters.</td></tr>`}</tbody>
+        </table>
+      </div>
+      <p class="ds-status">Done.</p>
+    </div>`;
+
+  _container.querySelector('#dsp-format').addEventListener('change', (ev) => {
+    _prodFormat = ev.target.value;
+    _prodPage = 0;
+    renderProducts(archiveId);
+  });
+  _container.querySelector('#dsp-license').addEventListener('change', (ev) => {
+    _prodLicense = ev.target.value;
+    _prodPage = 0;
+    renderProducts(archiveId);
+  });
+  _container.querySelector('#dsp-q').addEventListener('input', (ev) => {
+    _prodQ = ev.target.value;
+    _prodPage = 0;
+    const caret = ev.target.selectionStart;
+    // Same focus-restore dance as the catalogue search box above.
+    renderProducts(archiveId).then(() => restoreFocus('#dsp-q', caret));
+  });
+  for (const th of _container.querySelectorAll('.ds-products-table th[data-key]')) {
+    th.addEventListener('click', () => {
+      const key = th.dataset.key;
+      if (_prodSortKey === key) {
+        _prodSortDir = _prodSortDir === 'asc' ? 'desc' : 'asc';
+      } else {
+        _prodSortKey = key;
+        // Numbers start high-to-low, text starts A-to-Z.
+        _prodSortDir = key === 'cited_by_count' ? 'desc' : 'asc';
+      }
+      _prodPage = 0;
+      renderProducts(archiveId);
+    });
+  }
+  for (const btn of _container.querySelectorAll('.ds-products-pager button[data-page]')) {
+    btn.addEventListener('click', () => {
+      _prodPage = Number(btn.dataset.page);
+      renderProducts(archiveId);
+    });
+  }
+}
+
 export function initDatasetsView(container) {
   _container = container;
   _container.innerHTML = `
@@ -611,9 +906,13 @@ export function initDatasetsView(container) {
     </div>`;
 }
 
-export function renderDatasetsView(targetId) {
+export function renderDatasetsView(target) {
   if (!_container) return;
-  renderArchives(targetId).catch((e) => {
+  // `target` is the decoded tail of '#/data/...' (main.js passes it
+  // whole): a bare archive_id focuses that card in the catalogue;
+  // '<archive_id>/products' opens the per-archive product table instead.
+  const m = target && target.match(/^(.+)\/products$/);
+  (m ? renderProducts(m[1]) : renderArchives(target)).catch((e) => {
     console.error('[datasets] render failed', e);
     const s = _container.querySelector('.ds-status');
     if (s) s.textContent = `Render failed: ${e.message}`;
