@@ -275,6 +275,11 @@ export async function initDB() {
       // paint needed — and no rendering view reads them.
       'person_identity_source', 'person_validation',
       'coauthor_edges', 'coauthor_candidates',
+      // MVG layout tables (scripts/build_mvg_layout.py). The Network view
+      // computes its layout client-side; these precomputed tables exist
+      // for the SQL tab and for layout-metric reproducibility only.
+      'mvg_node_layout', 'mvg_area_polygons', 'mvg_layout_metrics',
+      'scholar_area_assignments',
     ];
     _pendingLazyTables = lazyTables;
     // Register parquet views in parallel across N extra connections.

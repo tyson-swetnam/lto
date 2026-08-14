@@ -121,6 +121,11 @@ DERIVED_TABLES = [
     "facility_area_funding",
     "funder_area_funding",
     "area_coverage_matrix",
+    # MVG knowledge-map layout (scripts/build_mvg_layout.py).
+    "mvg_node_layout",
+    "mvg_area_polygons",
+    "mvg_layout_metrics",
+    "scholar_area_assignments",
 ]
 
 

@@ -67,6 +67,13 @@ TABLES = [
     "facility_area_funding",
     "funder_area_funding",
     "area_coverage_matrix",
+    # MVG knowledge-map layout — written by scripts/build_mvg_layout.py
+    # (parquet-only pipeline; listed here so preflights and rebuilds see
+    # them, with the same fail-soft skip if the layout hasn't been built).
+    "mvg_node_layout",
+    "mvg_area_polygons",
+    "mvg_layout_metrics",
+    "scholar_area_assignments",
     # Wave J data-archive layer.
     "archive_types",
     "data_formats",
