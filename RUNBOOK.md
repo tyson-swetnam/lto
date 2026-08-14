@@ -102,7 +102,7 @@ python scripts/enrich_people_openalex.py --max-pubs 200
 # Inspect coverage.
 python -c "
 import duckdb
-c = duckdb.connect('db/cod_kmap.duckdb', read_only=True)
+c = duckdb.connect('db/lto.duckdb', read_only=True)
 print('with openalex:', c.execute('SELECT count(*) FROM people WHERE openalex_id IS NOT NULL').fetchone()[0])
 print('publications: ', c.execute('SELECT count(*) FROM publications').fetchone()[0])
 print('authorship:   ', c.execute('SELECT count(*) FROM authorship').fetchone()[0])

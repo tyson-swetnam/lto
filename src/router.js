@@ -37,11 +37,16 @@ function navigate(path) {
     a.classList.toggle('active', a.dataset.view === rootSeg);
   });
 
-  // Hide/show sidebar for views that don't need it.
-  const noSidebar = (rootSeg === '/docs' || rootSeg === '/stats'
-                  || rootSeg === '/network' || rootSeg === '/sql'
-                  || rootSeg === '/people');
-  document.body.classList.toggle('no-sidebar', noSidebar);
+  // Hide/show sidebar for views that don't need it. Keep in step with the
+  // `no-sidebar` class each route handler in main.js sets: this toggle
+  // runs on every navigation, so a view missing from this list gets the
+  // class stripped straight back off again. '/data' lands with the Data
+  // tab (M7 of the KMAP alignment) and is pre-listed so the route works
+  // the moment main.js registers it.
+  const NO_SIDEBAR = new Set([
+    '/docs', '/stats', '/network', '/sql', '/people', '/data',
+  ]);
+  document.body.classList.toggle('no-sidebar', NO_SIDEBAR.has(rootSeg));
 
   // Call route handler. Try exact match first; if the path has
   // sub-segments (e.g. '/people/<id>'), fall back to the top-level

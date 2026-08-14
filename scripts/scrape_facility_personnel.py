@@ -71,7 +71,7 @@ except ImportError:
 import duckdb
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "cod_kmap.duckdb"
+DEFAULT_DB = ROOT / "db" / "lto.duckdb"
 DEFAULT_OUT = ROOT / "data" / "seed" / "scraped_personnel_candidates.csv"
 PROGRESS = ROOT / "data" / "seed" / ".scrape_progress.json"
 

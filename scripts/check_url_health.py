@@ -47,7 +47,7 @@ except ImportError:
     requests = None
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "cod_kmap.duckdb"
+DEFAULT_DB = ROOT / "db" / "lto.duckdb"
 OUT = ROOT / "data" / "seed" / "url_health_check.csv"
 
 URL_SOURCES = [

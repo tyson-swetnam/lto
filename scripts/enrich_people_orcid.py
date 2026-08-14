@@ -8,13 +8,19 @@ for design rationale.
 Acceptance rules (ALL must hold):
   1. Family name matches exactly (case + diacritic-insensitive).
   2. Given names match the first one (handles "Sarah" vs "Sarah J.").
-  3. Candidate's employment list contains an organisation whose name
-     fuzzy-matches one of the person's facilities at >= --min-conf.
+  3. Candidate's employment list contains an organisation that shares at
+     least one DISTINCTIVE token with one of the person's facilities
+     (proper nouns and domain words — never "research", "university",
+     "national"), scoring >= --min-conf on that shared-token overlap.
+
+When the person has no facility on file, rule 3 cannot be applied and a
+match is accepted only if the name resolves to exactly one ORCID; two or
+more namesakes are logged `ambiguous-name-only` and left null.
 
 Logs every decision to data/seed/orcid_resolution_log.csv for audit.
 
 Usage::
-    python scripts/enrich_people_orcid.py --db db/cod_kmap.duckdb
+    python scripts/enrich_people_orcid.py --db db/lto.duckdb
     python scripts/enrich_people_orcid.py --batch 25
     python scripts/enrich_people_orcid.py --min-conf 0.80
     python scripts/enrich_people_orcid.py --dry-run
@@ -40,7 +46,7 @@ except ImportError:
     raise
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "cod_kmap.duckdb"
+DEFAULT_DB = ROOT / "db" / "lto.duckdb"
 LOG_CSV = ROOT / "data" / "seed" / "orcid_resolution_log.csv"
 
 API_SEARCH = "https://pub.orcid.org/v3.0/expanded-search/"
@@ -193,6 +199,37 @@ def normalize_facility_name(s: str) -> str:
     return ' '.join(toks)
 
 
+# Tokens that appear in so many organisation names that sharing one
+# carries no evidence of being the same place. "Research" alone matched
+# Electric Power Research Institute to a National Estuarine Research
+# Reserve; "university" matched Minnesota to the Virgin Islands.
+GENERIC_ORG_TOKENS = {
+    "national", "international", "state", "federal", "center", "centre",
+    "research", "science", "sciences", "scientific", "laboratory", "lab",
+    "laboratories", "university", "universidad", "universite", "college",
+    "school", "program", "programme", "project", "service", "services",
+    "agency", "office", "bureau", "division", "unit", "group", "society",
+    "association", "council", "committee", "commission", "authority",
+    "organization", "organisation", "corporation", "company", "trust",
+    "network", "consortium", "partnership", "alliance", "system",
+    "systems", "studies", "study", "environmental", "environment",
+    "natural", "resources", "management", "development", "technology",
+    "technologies", "engineering", "college", "academy", "museum",
+    "long", "term", "ecological", "estuarine",
+}
+
+
+def distinctive_tokens(s: str) -> set[str]:
+    """Tokens from a normalised org name that actually identify a place.
+
+    Drops the generic vocabulary above and anything shorter than three
+    characters, so what remains is proper nouns and domain-specific
+    words: 'apalachicola', 'smithsonian', 'oceanography', 'chesapeake'.
+    """
+    return {t for t in normalize_facility_name(s).split()
+            if len(t) >= 3 and t not in GENERIC_ORG_TOKENS}
+
+
 def token_overlap(a: str, b: str) -> float:
     """Jaccard-like similarity over token sets after normalisation. More
     forgiving than character-level SequenceMatcher when one string is
@@ -215,21 +252,49 @@ def best_facility_match(orgs: list[str], facilities: list[str],
                         min_conf: float) -> tuple[float, str, str]:
     """Returns (best_score, matched_org, matched_facility) or (-1,'','').
 
-    Combines two scores: character-level SequenceMatcher AND token
-    Jaccard. Either passing the threshold counts as a match — they
-    catch different patterns (SequenceMatcher rewards continuous
-    substrings, Jaccard rewards shared keywords)."""
+    A match REQUIRES at least one shared distinctive token — a proper
+    noun or domain word, not "research"/"university"/"national". Only
+    then is a similarity score computed, and the character-level
+    SequenceMatcher is used solely as a tie-breaker, never on its own.
+
+    The earlier version took max(SequenceMatcher, token_overlap) with no
+    distinctive-token requirement. Character similarity between two
+    normalised org names sits in the 0.51-0.67 band for unrelated
+    organisations just as often as for the same one, so against the 0.45
+    default it accepted, among others:
+
+        Electric Power Research Institute  -> NERR        (0.560)
+        Oklahoma Medical Research Fdn      -> LTER        (0.593)
+        European Medicines Agency  -> Institute of Ocean Sciences (0.513)
+        Appalachian State University       -> Apalachicola NERR (0.529)
+
+    Each of those attaches a stranger's entire publication record to a
+    coastal researcher — the failure mode wipe_bad_openalex_attributions.py
+    already had to clean up once.
+    """
     best = (-1.0, "", "")
     for org in orgs:
+        org_toks = distinctive_tokens(org)
+        if not org_toks:
+            continue
         for fac in facilities:
             for variant in [fac, *fac.split(" — ")]:
+                var_toks = distinctive_tokens(variant)
+                shared = org_toks & var_toks
+                if not shared:
+                    continue
+                # Recall-weighted over distinctive tokens only.
+                s_tok = len(shared) / max(min(len(org_toks),
+                                              len(var_toks)), 1)
                 s_seq = SequenceMatcher(
                     None,
                     normalize_facility_name(org),
                     normalize_facility_name(variant),
                 ).ratio()
-                s_tok = token_overlap(org, variant)
-                s = max(s_seq, s_tok)
+                # Character similarity can only refine a decision the
+                # distinctive tokens already support; it is averaged in
+                # at a low weight rather than allowed to carry a match.
+                s = 0.75 * s_tok + 0.25 * s_seq
                 if s > best[0]:
                     best = (s, org, variant)
     return best if best[0] >= min_conf else (-1.0, "", "")
@@ -246,6 +311,7 @@ def resolve_one(sess, person, min_conf):
 
     facilities = person.get("facilities") or []
     accepted = []
+    name_only: list[str] = []
     for c in candidates:
         cand_given = c.get("given-names") or ""
         cand_family = c.get("family-names") or ""
@@ -271,9 +337,27 @@ def resolve_one(sess, person, min_conf):
                 continue
             accepted.append((orcid, score, org, fac))
         else:
-            # No facility on file — accept on name match alone but mark
-            # confidence low, only when there's exactly one candidate.
-            accepted.append((orcid, 0.0, "", ""))
+            # No facility on file. The comment here used to promise
+            # "only when there's exactly one candidate", but the code
+            # appended every name-matching candidate and then took the
+            # first after a sort where all of them scored 0.0 — i.e. an
+            # arbitrary pick among namesakes. "David White" was accepted
+            # this way out of 25 ORCID candidates, and "Christine
+            # Angelini" out of 26. Collect them and enforce the promise
+            # after the loop, where the count is known.
+            name_only.append(orcid)
+
+    if not accepted and name_only:
+        # Distinct ORCIDs matching the same name with nothing to
+        # discriminate them: unresolvable, so leave it null.
+        uniq = sorted(set(name_only))
+        if len(uniq) == 1:
+            return uniq[0], {"decision": "accept-name-only",
+                             "candidates": len(candidates),
+                             "score": 0.0, "match_org": "",
+                             "match_facility": ""}
+        return None, {"decision": "ambiguous-name-only",
+                      "candidates": len(candidates)}
 
     if not accepted:
         return None, {"decision": "no-employment-match",
@@ -319,12 +403,26 @@ def main() -> int:
 
     # Build the work list — each person + the list of facility names
     # they're affiliated with (for employment-match).
+    #
+    # parent_org is a variant in its own right, and for LTO it is the one
+    # that usually matches: site personnel are employed by the OPERATOR of
+    # an observatory, not by the observatory. Alan K. Knapp's ORCID
+    # employment says "Colorado State University", which shares no
+    # distinctive token with "Konza Prairie Biological Station" — but does
+    # with Konza's parent_org. A dry run without this variant rejected
+    # 14/15 people as no-employment-match; upstream cod-kmap never hit
+    # this because coastal researchers work for the labs that employ them.
     rows = conn.execute(f"""
         WITH facs AS (
           SELECT fp.person_id,
-                 list(DISTINCT
-                   COALESCE(f.acronym || ' — ' || f.canonical_name,
-                            f.canonical_name)) AS facilities
+                 list_filter(
+                   flatten(list(DISTINCT [
+                     COALESCE(f.acronym || ' — ' || f.canonical_name,
+                              f.canonical_name),
+                     f.parent_org
+                   ])),
+                   x -> x IS NOT NULL AND x <> ''
+                 ) AS facilities
           FROM   facility_personnel fp
           JOIN   facilities         f  ON f.facility_id = fp.facility_id
           GROUP  BY fp.person_id

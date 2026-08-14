@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Targeted ingest of the four R11 coastal-terrestrial facility JSON
-files into ``db/cod_kmap.duckdb``. Mirrors what scripts/ingest.py does
+files into ``db/lto.duckdb``. Mirrors what scripts/ingest.py does
 for the R1..R10 agent JSON, but skips the schema rebuild + dedup steps
 because we know R11 records are non-conflicting (they passed
 ``crossvalidate.py`` with status=`new`).
@@ -44,7 +44,7 @@ ROOT = Path(__file__).resolve().parent.parent.parent
 # writable scratch directory when the original repo mount disallows
 # deleting DuckDB's .wal sidecar (e.g. inside Cowork sandboxes).
 import os as _os
-DB_PATH = Path(_os.environ.get("COD_KMAP_DB", str(ROOT / "db" / "cod_kmap.duckdb")))
+DB_PATH = Path(_os.environ.get("COD_KMAP_DB", str(ROOT / "db" / "lto.duckdb")))
 RAW_DIR = ROOT / "data" / "raw" / "R11_coastal_ecosystems"
 VOCAB_DIR = ROOT / "schema" / "vocab"
 OUT_DB = ROOT / "db" / "parquet"

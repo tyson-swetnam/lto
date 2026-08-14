@@ -26,7 +26,7 @@ from rapidfuzz import fuzz
 
 ROOT = Path(__file__).resolve().parent.parent.parent
 OUT = ROOT / "data" / "raw" / "R11_coastal_ecosystems" / "gap_report.md"
-DB = ROOT / "db" / "cod_kmap.duckdb"
+DB = ROOT / "db" / "lto.duckdb"
 
 NEW_LAYERS = [
     ("coastal-fws-units", "USFWS Refuges & Approved Boundaries"),

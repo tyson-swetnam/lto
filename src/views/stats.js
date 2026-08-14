@@ -147,6 +147,169 @@ async function fetchAll() {
              SUM(total_usd_nominal)            AS total_usd
       FROM   facility_area_funding
       GROUP  BY area_id`,
+
+    // ── Person-registry panel (ported from cod-kmap, two-cohort) ─────
+    registry_tiers: `SELECT tier,
+             COUNT(*)                             AS identities,
+             COUNT(orcid)                         AS with_orcid,
+             ROUND(AVG(h_index), 1)               AS avg_h_index,
+             COUNT(DISTINCT affiliation_country)  AS countries
+      FROM   person_registry
+      GROUP  BY tier`,
+
+    // Cohort composition. Flags are not mutually exclusive, so
+    // n_site + n_scholar can overshoot n_total by n_multi.
+    registry_cohorts: `SELECT
+             CAST(SUM(CASE WHEN is_site_personnel THEN 1 ELSE 0 END) AS DOUBLE) AS n_site,
+             CAST(SUM(CASE WHEN is_scholar        THEN 1 ELSE 0 END) AS DOUBLE) AS n_scholar,
+             CAST(SUM(CASE WHEN CAST(is_site_personnel AS INT)
+                         + CAST(is_scholar AS INT) > 1
+                      THEN 1 ELSE 0 END) AS DOUBLE)             AS n_multi,
+             CAST(COUNT(*) AS DOUBLE)                           AS n_total
+      FROM   person_registry`,
+
+    // The people the pre-registry schema could not represent: one human
+    // holding both cohort roles at once.
+    registry_multi: `SELECT display_name AS researcher,
+             CONCAT_WS(' + ',
+               CASE WHEN is_site_personnel THEN 'Site personnel' END,
+               CASE WHEN is_scholar        THEN 'Scholar'        END) AS cohorts,
+             affiliation,
+             affiliation_country AS country,
+             h_index
+      FROM   person_registry
+      WHERE  is_site_personnel AND is_scholar
+      ORDER  BY h_index DESC NULLS LAST, researcher`,
+
+    registry_identifiers: `SELECT 'ORCID' AS identifier, COUNT(orcid) AS populated, COUNT(*) AS n_rows FROM person_registry
+      UNION ALL SELECT 'OpenAlex author id', COUNT(openalex_id), COUNT(*) FROM person_registry
+      UNION ALL SELECT 'ROR affiliation',    COUNT(affiliation_ror), COUNT(*) FROM person_registry
+      UNION ALL SELECT 'Homepage URL',       COUNT(homepage_url), COUNT(*) FROM person_registry
+      UNION ALL SELECT 'Google Scholar id',  COUNT(google_scholar_id), COUNT(*) FROM person_registry`,
+
+    registry_countries: `SELECT COALESCE(affiliation_country, '(none)') AS country,
+             COUNT(*)                                          AS researchers,
+             CAST(SUM(CASE WHEN is_site_personnel THEN 1 ELSE 0 END) AS DOUBLE) AS site_personnel
+      FROM   person_registry
+      GROUP  BY country
+      ORDER  BY researchers DESC, country`,
+
+    registry_degree: `-- The co-authorship graph is built over identities that predate the
+      -- OpenAlex topic harvest (recoverable from provenance: an identity
+      -- with no 'openalex-topic-harvest' assertion was in scope for the
+      -- graph build). That distinction is what lets this chart separate a
+      -- measured zero from a node whose degree was never computed.
+      WITH eligible AS (
+        SELECT DISTINCT canonical_id
+        FROM   person_identity_source
+        WHERE  canonical_id NOT IN (
+                 SELECT canonical_id FROM person_identity_source
+                 WHERE  method = 'openalex-topic-harvest')
+      ),
+      deg AS (
+        SELECT pr.canonical_id,
+               pr.is_site_personnel,
+               el.canonical_id IS NOT NULL AS measured,
+               COUNT(e.canonical_id_a)     AS degree
+        FROM   person_registry pr
+        LEFT   JOIN eligible el ON el.canonical_id = pr.canonical_id
+        LEFT   JOIN registry_collaborations e
+               ON  e.canonical_id_a = pr.canonical_id
+               OR  e.canonical_id_b = pr.canonical_id
+        GROUP  BY pr.canonical_id, pr.is_site_personnel, measured
+      )
+      SELECT CASE WHEN NOT measured THEN 'not computed'
+                  WHEN degree = 0   THEN '0 (measured)'
+                  WHEN degree <= 5  THEN '1-5'
+                  WHEN degree <= 20 THEN '6-20'
+                  WHEN degree <= 50 THEN '21-50'
+                  ELSE '51+' END                        AS band,
+             COUNT(*)                                   AS researchers,
+             CAST(SUM(CASE WHEN is_site_personnel THEN 1 ELSE 0 END) AS DOUBLE) AS site_members
+      FROM   deg
+      GROUP  BY band
+      ORDER  BY CASE band WHEN 'not computed' THEN 9 WHEN '0 (measured)' THEN 0
+                          WHEN '1-5' THEN 1 WHEN '6-20' THEN 2
+                          WHEN '21-50' THEN 3 ELSE 4 END`,
+
+    // Denominators for the degree chart's caveat line.
+    registry_graph_scope: `WITH eligible AS (
+        SELECT DISTINCT canonical_id
+        FROM   person_identity_source
+        WHERE  canonical_id NOT IN (
+                 SELECT canonical_id FROM person_identity_source
+                 WHERE  method = 'openalex-topic-harvest')
+      ),
+      in_graph AS (
+        SELECT canonical_id_a AS canonical_id FROM registry_collaborations
+        UNION
+        SELECT canonical_id_b FROM registry_collaborations
+      )
+      SELECT (SELECT COUNT(*) FROM person_registry)                    AS n_rows,
+             (SELECT COUNT(*) FROM eligible el
+              WHERE el.canonical_id IN (SELECT canonical_id FROM person_registry))
+                                                                       AS n_eligible,
+             (SELECT COUNT(*) FROM in_graph)                           AS n_with_edges,
+             (SELECT COUNT(*) FROM registry_collaborations)            AS n_edges`,
+
+    registry_edge_census: `WITH labelled AS (
+        SELECT CASE WHEN a.is_site_personnel THEN 'Site personnel'
+                    ELSE 'Scholar' END AS role_a,
+               CASE WHEN b.is_site_personnel THEN 'Site personnel'
+                    ELSE 'Scholar' END AS role_b,
+               e.co_pub_count
+        FROM   registry_collaborations e
+        JOIN   person_registry a ON a.canonical_id = e.canonical_id_a
+        JOIN   person_registry b ON b.canonical_id = e.canonical_id_b
+      )
+      SELECT LEAST(role_a, role_b) || ' ↔ ' || GREATEST(role_a, role_b) AS edge_type,
+             COUNT(*)          AS edges,
+             CAST(SUM(co_pub_count) AS DOUBLE) AS co_pubs,
+             MAX(co_pub_count) AS strongest
+      FROM   labelled
+      GROUP  BY edge_type
+      ORDER  BY edges DESC`,
+
+    registry_top_edges: `SELECT a.display_name AS person_a,
+             CASE WHEN a.is_site_personnel THEN 'Site' ELSE 'Scholar' END AS cohort_a,
+             b.display_name AS person_b,
+             CASE WHEN b.is_site_personnel THEN 'Site' ELSE 'Scholar' END AS cohort_b,
+             e.co_pub_count AS co_pubs,
+             e.first_year, e.last_year
+      FROM   registry_collaborations e
+      JOIN   person_registry a ON a.canonical_id = e.canonical_id_a
+      JOIN   person_registry b ON b.canonical_id = e.canonical_id_b
+      ORDER  BY e.co_pub_count DESC
+      LIMIT  10`,
+
+    registry_sites: `SELECT f.canonical_name                AS site,
+             f.acronym,
+             f.country,
+             COUNT(DISTINCT rf.canonical_id) AS researchers,
+             ROUND(AVG(pr.h_index), 1)       AS avg_h_index
+      FROM   registry_facilities rf
+      JOIN   facilities      f  ON f.facility_id   = rf.facility_id
+      JOIN   person_registry pr ON pr.canonical_id = rf.canonical_id
+      GROUP  BY f.canonical_name, f.acronym, f.country
+      ORDER  BY researchers DESC, site`,
+
+    // ROR coverage on the facility side, split so places — flux towers,
+    // gauging stations, wilderness areas — are not counted as a coverage
+    // failure. Keep this type list in step with PLACE_TYPES in
+    // scripts/link_registry_facilities.py.
+    registry_ror_coverage: `SELECT CASE
+                  WHEN f.facility_type IN (
+                    'protected-area-federal', 'protected-area-state',
+                    'protected-area-private', 'experimental-forest-range',
+                    'ltar-site', 'flux-tower', 'glacier-monitoring',
+                    'atmospheric-baseline', 'streamgage-network', 'vessel')
+                  THEN 'place (a ROR will never apply)'
+                  WHEN f.ror IS NOT NULL THEN 'organisation, ROR resolved'
+                  ELSE 'organisation, ROR not yet attempted' END AS ror_status,
+             COUNT(*)                                            AS facilities
+      FROM   facilities f
+      GROUP  BY ror_status
+      ORDER  BY facilities DESC`,
   };
   const out = {};
   for (const [k, sql] of Object.entries(queries)) {
@@ -298,6 +461,266 @@ function gapCallouts(area, coverageRows, totalFacilities, peopleN) {
 }
 
 
+// ── Person-registry panel (ported from cod-kmap, two-cohort) ────────
+function barList(rows, labelKey, valueKey, opts = {}) {
+  if (!rows.length) return `<p class="no-data">No rows.</p>`;
+  const max = Math.max(...rows.map((r) => Number(r[valueKey]) || 0), 1);
+  const items = rows.map((r) => {
+    const v = Number(r[valueKey]) || 0;
+    const pct = Math.round(100 * v / max);
+    const muted = opts.mutedWhen && opts.mutedWhen(r);
+    return `<li class="cov-row"${muted ? ' style="opacity:.62"' : ''}>
+      <span class="cov-label">${esc(r[labelKey] ?? '—')}</span>
+      <span class="cov-bar" style="width:${pct}%${
+  muted ? ';background:#94a3b8' : ''}"></span>
+      <span class="cov-count">${fmtInt(v)}${
+  opts.suffix ? esc(opts.suffix(r)) : ''}</span>
+    </li>`;
+  }).join('');
+  return `<ul class="cov-list">${items}</ul>`;
+}
+
+// Cohort composition. The flags overlap, so the two cohort counts can sum
+// past the total; the card states the overlap rather than hiding it.
+function registryCohortCard(cohorts, tiers, multi) {
+  const c = cohorts[0] || {};
+  const shipped = tiers.reduce((s, t) => s + (Number(t.identities) || 0), 0);
+  const tierNames = tiers.map((t) => t.tier).sort();
+  const onlyCore = tierNames.length === 1 && tierNames[0] === 'core';
+
+  const multiRows = multi.slice(0, 12).map((r) => `<tr>
+    <td>${esc(r.researcher)}</td>
+    <td><small>${esc(r.cohorts)}</small></td>
+    <td><small>${esc(r.affiliation || '—')}</small></td>
+    <td class="num">${fmtInt(r.h_index)}</td>
+  </tr>`).join('');
+
+  return `<div class="dash-card">
+    <h4>Cohort composition</h4>
+    <p class="dash-sub">
+      ${onlyCore
+    ? `This page is served the registry's <code>core</code> tier:
+           <strong>${fmtInt(shipped)}</strong> identities. The archive
+           tier (the field-wide OpenAlex harvest) stays in the local
+           catalogue — everything below describes the shipped subset.`
+    : `Tiers in scope: ${esc(tierNames.join(', '))} —
+           <strong>${fmtInt(shipped)}</strong> identities.`}
+    </p>
+    ${barList([
+    { k: 'Site personnel', v: c.n_site },
+    { k: 'Scholar harvest', v: c.n_scholar },
+  ], 'k', 'v')}
+    <p class="dash-sub" style="margin-top:8px">
+      The two flags are independent, not a partition:
+      <strong>${fmtInt(c.n_multi)}</strong> people carry both, so the bars
+      can sum past the ${fmtInt(c.n_total)} rows in scope. Rows merge only
+      on ORCID or OpenAlex-id equality — never on name.
+    </p>
+    ${multi.length ? `<table class="dash-table">
+      <thead><tr><th>Researcher</th><th>Cohorts</th><th>Affiliation</th>
+        <th class="num">h-index</th></tr></thead>
+      <tbody>${multiRows}</tbody></table>` : ''}
+  </div>`;
+}
+
+function registryIdentifierCard(rows) {
+  const items = rows.map((r) => ({
+    identifier: r.identifier,
+    populated: r.populated,
+    pct: r.n_rows ? (100 * Number(r.populated) / Number(r.n_rows)) : 0,
+    n_rows: r.n_rows,
+  })).sort((a, b) => b.populated - a.populated);
+  const denom = items.length ? Number(items[0].n_rows) : 0;
+  return `<div class="dash-card">
+    <h4>Persistent-identifier coverage</h4>
+    <p class="dash-sub">
+      Of the <strong>${fmtInt(denom)}</strong> rows in scope. Every
+      registry row carries at least one of ORCID / OpenAlex id by
+      construction — people lacking both stay in <code>people</code>
+      until the enrichment scripts resolve one.
+    </p>
+    ${barList(items, 'identifier', 'populated',
+    { suffix: (r) => `  ${r.pct.toFixed(1)}%` })}
+    <p class="dash-sub" style="margin-top:8px">
+      Google Scholar ids are effectively absent: OpenAlex does not
+      populate <code>ids.scholar</code> for most authors, so that column
+      needs a different source or hand curation.
+    </p>
+  </div>`;
+}
+
+function registryCountryCard(rows) {
+  const total = rows.reduce((s, r) => s + (Number(r.researchers) || 0), 0);
+  const named = rows.filter((r) => r.country !== '(none)');
+  const top = rows.slice(0, 12);
+  return `<div class="dash-card">
+    <h4>Country distribution</h4>
+    <p class="dash-sub">
+      ${fmtInt(named.length)} countries across ${fmtInt(total)} identities
+      in scope.
+    </p>
+    ${barList(top, 'country', 'researchers',
+    { mutedWhen: (r) => r.country === '(none)' })}
+    <p class="dash-sub" style="margin-top:8px">
+      Affiliation country comes from the researcher's OpenAlex
+      institution, so a row reads <code>(none)</code> when no
+      ROR-bearing institution was attached — not when the person has no
+      country.
+    </p>
+  </div>`;
+}
+
+// Degree distribution. The 'not computed' band is the whole point of
+// this chart: it must never read as "these people publish alone".
+function registryDegreeCard(bands, scope) {
+  const s = scope[0] || {};
+  const uncomputed = bands.find((b) => b.band === 'not computed');
+  const measuredZero = bands.find((b) => b.band === '0 (measured)');
+  const measured = bands.filter((b) => b.band !== 'not computed');
+  const measuredTotal = measured.reduce((a, b) => a + (Number(b.researchers) || 0), 0);
+  return `<div class="dash-card">
+    <h4>Co-authorship degree distribution</h4>
+    <p class="dash-sub">
+      The graph holds <strong>${fmtInt(s.n_edges)}</strong> edges over
+      <strong>${fmtInt(s.n_with_edges)}</strong> nodes, built over the
+      <strong>${fmtInt(s.n_eligible)}</strong> identities that predate
+      the OpenAlex topic harvest — ${fmtInt(measuredTotal)} of the
+      ${fmtInt(s.n_rows)} rows in scope have a degree at all.
+    </p>
+    ${barList(bands, 'band', 'researchers', {
+    mutedWhen: (r) => r.band === 'not computed',
+    suffix: (r) => Number(r.site_members) > 0
+      ? `  (${fmtInt(r.site_members)} site)` : '',
+  })}
+    <aside class="gap-callout">
+      <header>Read this band correctly</header>
+      <ul>
+        <li><strong>${fmtInt(uncomputed ? uncomputed.researchers : 0)}</strong>
+          researchers sit in <em>not computed</em> (grey). No edge was
+          calculated for them — a measurement boundary, <strong>not</strong>
+          evidence that they have no collaborators.</li>
+        <li><strong>${fmtInt(measuredZero ? measuredZero.researchers : 0)}</strong>
+          researchers were in scope and came back with zero edges. Those
+          are real zeroes within this graph's coverage.</li>
+      </ul>
+    </aside>
+  </div>`;
+}
+
+function registryEdgeCensusCard(census, topEdges) {
+  const rows = census.map((r) => `<tr>
+    <td>${esc(r.edge_type)}</td>
+    <td class="num">${fmtInt(r.edges)}</td>
+    <td class="num">${fmtInt(r.co_pubs)}</td>
+    <td class="num">${fmtInt(r.strongest)}</td>
+  </tr>`).join('');
+  const edgeRows = topEdges.map((r) => `<tr>
+    <td>${esc(r.person_a)} <small>(${esc(r.cohort_a)})</small></td>
+    <td>${esc(r.person_b)} <small>(${esc(r.cohort_b)})</small></td>
+    <td class="num">${fmtInt(r.co_pubs)}</td>
+    <td class="num"><small>${r.first_year ? `${r.first_year}–${r.last_year}` : '—'}</small></td>
+  </tr>`).join('');
+  return `<div class="dash-card">
+    <h4>Cross-cohort edge census</h4>
+    <p class="dash-sub">
+      Each edge classified by the cohort pair at its ends. The old
+      <code>collaborations</code> table was keyed on
+      <code>people(person_id)</code> and structurally could not hold an
+      edge to a harvested-only researcher; this one can.
+      ${census.length ? '' : `<em>No edges yet — they land with the M5
+      works harvest (compute_registry_collaborations.py).</em>`}
+    </p>
+    ${census.length ? `<table class="dash-table">
+      <thead><tr><th>Edge type</th><th class="num">Edges</th>
+        <th class="num">Co-pubs</th><th class="num">Strongest</th></tr></thead>
+      <tbody>${rows}</tbody></table>` : ''}
+    ${topEdges.length ? `
+    <h5 style="margin:14px 0 4px;font-size:.78rem;color:#475569">Strongest edges</h5>
+    <table class="dash-table">
+      <thead><tr><th>Researcher</th><th>Researcher</th>
+        <th class="num">Co-pubs</th><th class="num">Span</th></tr></thead>
+      <tbody>${edgeRows}</tbody></table>` : ''}
+  </div>`;
+}
+
+function registrySiteCard(sites, rorCoverage) {
+  const nResearchers = sites.reduce((s, r) => s + (Number(r.researchers) || 0), 0);
+  const resolved = rorCoverage.find((r) => /resolved/.test(r.ror_status || ''));
+  const pending = rorCoverage.find((r) => /not yet/.test(r.ror_status || ''));
+  const places = rorCoverage.find((r) => /place/.test(r.ror_status || ''));
+  const rows = sites.slice(0, 12).map((r) => `<tr>
+    <td><strong>${esc(r.acronym || '')}</strong> ${esc(r.site || '')}</td>
+    <td>${esc(r.country || '')}</td>
+    <td class="num">${fmtInt(r.researchers)}</td>
+    <td class="num">${fmtZ(Number(r.avg_h_index))}</td>
+  </tr>`).join('');
+  return `<div class="dash-card">
+    <h4>Researchers resolved to sites</h4>
+    <p class="dash-sub">
+      <strong>${fmtInt(nResearchers)}</strong> researcher↔site links across
+      <strong>${fmtInt(sites.length)}</strong> sites, joined on ROR
+      equality alone — no name matching. Every count is a floor:
+      <strong>${fmtInt(resolved ? resolved.facilities : 0)}</strong>
+      organisations have a resolved ROR against
+      ${fmtInt(pending ? pending.facilities : 0)} not yet attempted
+      (the backfill is harvest step H10), and the researcher side is
+      limited to the tier in scope.
+    </p>
+    ${barList(rorCoverage, 'ror_status', 'facilities',
+    { mutedWhen: (r) => /place/.test(r.ror_status || '') })}
+    <p class="dash-sub" style="margin-top:8px">
+      The ${fmtInt(places ? places.facilities : 0)} place-type facilities
+      (grey) — flux towers, gauging stations, wilderness areas — are
+      excluded by design, not missing: a place is not an organisation and
+      will never hold a ROR; its operator might.
+    </p>
+    ${sites.length ? `<table class="dash-table">
+      <thead><tr><th>Site</th><th>Country</th>
+        <th class="num">Researchers</th><th class="num">Avg h-index</th></tr></thead>
+      <tbody>${rows}</tbody></table>` : ''}
+  </div>`;
+}
+
+function buildRegistryPanel(d) {
+  const s = d.registry_graph_scope[0] || {};
+  return `<section id="registry-panel" class="area-card">
+    <header class="area-card-header">
+      <div class="area-bar" style="background:#0f766e"></div>
+      <div class="area-title">
+        <h2>The people layer</h2>
+        <code class="area-slug">person_registry</code>
+      </div>
+      <div class="area-totals">
+        <span class="t-pill" style="background:#0f766e1a;border-color:#0f766e;color:#0f766e">
+          <strong>${fmtInt(s.n_rows)}</strong> identities in scope
+        </span>
+        <span class="t-pill"><strong>${fmtInt(s.n_edges)}</strong>
+          co-publication edges</span>
+        <span class="t-pill"><strong>${fmtInt(s.n_with_edges)}</strong>
+          nodes with an edge</span>
+      </div>
+    </header>
+    <p class="dash-help">
+      One row per human, keyed on a persistent identifier
+      (<code>canonical_id</code>), unifying facility site personnel with
+      the field-wide researcher harvest. Two rows merge only on ORCID or
+      OpenAlex-id equality; names never merge. Bibliometric columns come
+      from OpenAlex, so <strong>LTO-topic output volume is an upper
+      bound</strong>, not a paper count — OpenAlex lists a work under
+      every topic it carries, and summing across the LTO topic set counts
+      multi-topic papers more than once.
+    </p>
+    <div class="area-grid">
+      ${registryCohortCard(d.registry_cohorts, d.registry_tiers, d.registry_multi)}
+      ${registryIdentifierCard(d.registry_identifiers)}
+      ${registryCountryCard(d.registry_countries)}
+      ${registryDegreeCard(d.registry_degree, d.registry_graph_scope)}
+      ${registryEdgeCensusCard(d.registry_edge_census, d.registry_top_edges)}
+      ${registrySiteCard(d.registry_sites, d.registry_ror_coverage)}
+    </div>
+  </section>`;
+}
+
 // ── TOC + sections ─────────────────────────────────────────────────
 function buildToc(areas, color) {
   const rows = areas.map((a, i) => `
@@ -309,6 +732,15 @@ function buildToc(areas, color) {
       </a>
     </li>`).join('');
   return `<aside class="dash-toc">
+    <h3>People</h3>
+    <ol class="dash-toc-list">
+      <li>
+        <a href="#registry-panel">
+          <span class="toc-swatch" style="background:#0f766e"></span>
+          <span class="toc-label">The people layer</span>
+        </a>
+      </li>
+    </ol>
     <h3>Research areas</h3>
     <ol class="dash-toc-list">${rows}</ol>
     <p class="toc-foot">Click a polygon name to jump.</p>
@@ -409,6 +841,7 @@ async function renderDashboard() {
   };
   const colorFor = (i) => AREA_PALETTE[i % AREA_PALETTE.length];
 
+  const registryPanel = buildRegistryPanel(data);
   const sections = data.areas.map((a, i) => buildSection(a, i, ix, colorFor(i))).join('');
   const totalFacilities = data.areas.reduce((s, a) => s + (a.weight || 0), 0);
   const totalPeople = data.people_per_area.reduce((s, r) => s + (r.n_people || 0), 0);
@@ -418,7 +851,7 @@ async function renderDashboard() {
   _container.innerHTML = `
     <div class="dash-page">
       <header class="dash-header">
-        <h1>Coastal observatory knowledge map — research-area dashboards</h1>
+        <h1>U.S. long-term observatories — research-area dashboards</h1>
         <p class="dash-summary">
           <strong>${fmtInt(data.areas.length)}</strong> active research areas,
           <strong>${fmtInt(totalFacilities)}</strong> facilities (each tagged
@@ -439,7 +872,7 @@ async function renderDashboard() {
       </header>
       <div class="dash-layout">
         ${buildToc(data.areas, colorFor)}
-        <div class="dash-sections">${sections}</div>
+        <div class="dash-sections">${registryPanel}${sections}</div>
       </div>
       <p class="dash-status" style="text-align:center;color:#64748b">Done.</p>
     </div>`;

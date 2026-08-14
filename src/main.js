@@ -15,6 +15,7 @@ import { initStatsView, renderStats } from './views/stats.js';
 import { initDocsView, renderDocsView } from './views/docs.js';
 import { initNetworkView, renderNetworkView } from './views/network.js';
 import { initPeopleView, renderPeopleView } from './views/people.js';
+import { initDatasetsView, renderDatasetsView } from './views/datasets.js';
 import { initSqlView, renderSqlView } from './views/sql.js';
 import { initRouter, currentPath } from './router.js';
 
@@ -64,6 +65,7 @@ initListView(document.getElementById('browse'));
 initStatsView(document.getElementById('stats'));
 initNetworkView(document.getElementById('network'));
 initPeopleView(document.getElementById('people'));
+initDatasetsView(document.getElementById('data'));
 initSqlView(document.getElementById('sql'));
 
 // ── Debounced search + clear button ────────────────────────────────
@@ -206,6 +208,7 @@ const views = {
   '/browse':  document.getElementById('view-browse'),
   '/network': document.getElementById('view-network'),
   '/people':  document.getElementById('view-people'),
+  '/data':    document.getElementById('view-data'),
   '/sql':     document.getElementById('view-sql'),
   '/stats':   document.getElementById('view-stats'),
   '/docs':    document.getElementById('view-docs'),
@@ -247,6 +250,14 @@ initRouter({
     // /people/<person_id> jumps + highlights that researcher's card.
     const m = path.match(/^\/people\/(.+)$/);
     renderPeopleView(m ? decodeURIComponent(m[1]) : null);
+  },
+  '/data': (path) => {
+    showView('/data');
+    document.body.classList.add('no-sidebar');
+    setDrawer(false);
+    // /data/<archive_id> scrolls + highlights that archive's card.
+    const m = path.match(/^\/data\/(.+)$/);
+    renderDatasetsView(m ? decodeURIComponent(m[1]) : null);
   },
   '/sql': () => {
     showView('/sql');

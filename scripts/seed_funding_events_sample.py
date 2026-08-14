@@ -15,7 +15,7 @@ nicely with multi-year funding rows.
 Run from repo root (idempotent)::
 
     python scripts/seed_funding_events_sample.py
-    python scripts/seed_funding_events_sample.py --db db/cod_kmap.duckdb
+    python scripts/seed_funding_events_sample.py --db db/lto.duckdb
     python scripts/seed_funding_events_sample.py --export-parquet
 """
 from __future__ import annotations
@@ -28,7 +28,7 @@ from pathlib import Path
 import duckdb
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "cod_kmap.duckdb"
+DEFAULT_DB = ROOT / "db" / "lto.duckdb"
 PARQUET_OUT = [ROOT / "db" / "parquet", ROOT / "public" / "parquet"]
 
 

@@ -1,0 +1,342 @@
+@prefix lto:   <https://tyson-swetnam.github.io/lto/ns/lto#> .
+@prefix ex:    <https://tyson-swetnam.github.io/lto/id/> .
+@prefix exare:  <https://tyson-swetnam.github.io/lto/id/area/> .
+@prefix exass:  <https://tyson-swetnam.github.io/lto/id/assignment/> .
+@prefix excan:  <https://tyson-swetnam.github.io/lto/id/candidate/> .
+@prefix exedg:  <https://tyson-swetnam.github.io/lto/id/edge/> .
+@prefix exmem:  <https://tyson-swetnam.github.io/lto/id/membership/> .
+@prefix exorg:  <https://tyson-swetnam.github.io/lto/id/org/> .
+@prefix exper:  <https://tyson-swetnam.github.io/lto/id/person/> .
+@prefix exval:  <https://tyson-swetnam.github.io/lto/id/validation/> .
+@prefix exwor:  <https://tyson-swetnam.github.io/lto/id/work/> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf:  <http://xmlns.com/foaf/0.1/> .
+@prefix org:   <http://www.w3.org/ns/org#> .
+@prefix bibo:  <http://purl.org/ontology/bibo/> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+
+#############################################################################
+# Worked example for lto-shapes.ttl.
+#
+# Two halves, both deliberate:
+#   PART A — nodes that CONFORM. Everything a real registry row should look
+#            like, including the OpenAlex-only minimal-identity case.
+#   PART B — nodes that VIOLATE, one per non-negotiable, each annotated with
+#            the shape and message expected to fire.
+#
+# Run:  pyshacl -s lto-shapes.ttl -f human lto-example.ttl
+# Expect: non-conforming, with exactly the violations listed in PART B.
+# scripts/validate_shapes.py asserts that set, so a shape that stops working
+# fails loudly instead of silently passing everything.
+#
+# Note vs upstream cod-kmap: lto has no codp:-style local-identifier tier, so
+# upstream's A3 (local-identity person) is reworked into an OpenAlex-only
+# person and upstream's B4 (public id + local id double identity) is dropped
+# along with cod:LocalIdentityExclusivityShape.
+#############################################################################
+
+#############################################################################
+# PART A — conforming
+#############################################################################
+
+# Shared vocabulary and organization nodes.
+exare:forest-ecology
+    a            lto:ResearchArea , skos:Concept ;
+    skos:prefLabel "Forest ecology"@en .
+
+exorg:ror-03m2x1q45
+    a            org:Organization ;
+    rdfs:label   "Example Long-Term Observatory" ;
+    lto:rorId    "https://ror.org/03m2x1q45" .
+
+# --- A1: a fully-conforming registry person, public identifiers -------------
+exper:orcid-0000-0002-1825-0097
+    a                       lto:RegistryPerson , foaf:Person ;
+    foaf:name               "Josiah Carberry" ;
+    lto:canonicalId         "orcid:0000-0002-1825-0097" ;
+    lto:orcidId             "0000-0002-1825-0097" ;
+    lto:openAlexAuthorId    "A5023888391" ;
+    lto:rorId               "https://ror.org/03m2x1q45" ;
+    org:memberOf            exorg:ror-03m2x1q45 ;
+    lto:tier                "core" ;
+    lto:hasCohortMembership exmem:A1-scholar ;
+    lto:hasAreaAssignment   exass:A1-forest ;
+    lto:hasValidationResult exval:A1-orcid ;
+    lto:hasCoauthorEdge     exedg:A1-A2 ;
+    lto:coauthorOf          exper:orcid-0000-0003-1613-5981 ;
+    lto:sourceUrl           "https://api.openalex.org/authors/A5023888391"^^xsd:anyURI ;
+    lto:retrievedAt         "2026-08-13"^^xsd:date ;
+    lto:confidence          "high" .
+
+exmem:A1-scholar
+    a               lto:CohortMembership ;
+    lto:cohort      lto:ScholarCohort ;
+    lto:sourceUrl   "https://api.openalex.org/authors/A5023888391"^^xsd:anyURI ;
+    lto:retrievedAt "2026-08-13"^^xsd:date ;
+    lto:confidence  "high" .
+
+exass:A1-forest
+    a                 lto:AreaAssignment ;
+    lto:area          exare:forest-ecology ;
+    lto:isPrimaryArea true ;
+    lto:areaWeight    0.42 ;
+    lto:evidenceCount 37 ;
+    lto:sourceUrl     "https://api.openalex.org/authors/A5023888391"^^xsd:anyURI ;
+    lto:retrievedAt   "2026-08-13"^^xsd:date ;
+    lto:confidence    "high" .
+
+exval:A1-orcid
+    a                    lto:ValidationResult ;
+    lto:checkId          "orcid-resolves" ;
+    lto:validatedValue   "0000-0002-1825-0097" ;
+    lto:verdict          lto:Pass ;
+    lto:sourceUrl        "https://pub.orcid.org/v3.0/0000-0002-1825-0097/record"^^xsd:anyURI ;
+    lto:retrievedAt      "2026-08-13"^^xsd:date ;
+    lto:confidence       "high" ;
+    lto:validationRun    "val-2026-08-13" .
+
+# --- A2: second endpoint of the conforming edge -----------------------------
+exper:orcid-0000-0003-1613-5981
+    a                    lto:RegistryPerson , foaf:Person ;
+    foaf:name            "Alice Marina" ;
+    lto:canonicalId      "orcid:0000-0003-1613-5981" ;
+    lto:orcidId          "0000-0003-1613-5981" ;
+    lto:openAlexAuthorId "A5017898742" ;
+    lto:tier             "core" ;
+    lto:hasCoauthorEdge  exedg:A1-A2 ;
+    lto:coauthorOf       exper:orcid-0000-0002-1825-0097 ;
+    lto:sourceUrl        "https://api.openalex.org/authors/A5017898742"^^xsd:anyURI ;
+    lto:retrievedAt      "2026-08-13"^^xsd:date ;
+    lto:confidence       "high" .
+
+# --- A3: a registry person known only by an OpenAlex author id --------------
+# lto's minimal-identity case. There is no local-identifier tier here
+# (upstream cod-kmap's 95 codp:% rows have no counterpart): every registry row
+# carries a public ORCID or OpenAlex author id BY CONSTRUCTION, and
+# canonical_id is derived from whichever is present. An OpenAlex-only row
+# conforms; a row with neither identifier is always a defect (see B1). A shape
+# run that flagged this node would be wrong.
+exper:openalex-A5011122233
+    a                       lto:RegistryPerson , foaf:Person ;
+    foaf:name               "Site Technician (OpenAlex-only)" ;
+    lto:canonicalId         "openalex:A5011122233" ;
+    lto:openAlexAuthorId    "A5011122233" ;
+    lto:tier                "core" ;
+    lto:hasCohortMembership exmem:A3-site ;
+    lto:hasValidationResult exval:A3-openalex ;
+    lto:sourceUrl           "https://api.openalex.org/authors/A5011122233"^^xsd:anyURI ;
+    lto:retrievedAt         "2026-08-13"^^xsd:date ;
+    lto:confidence          "high" .
+
+# --- A7: a seed-derived person whose provenance is an internal repo file -----
+# Conforms with a WARNING, not a violation. 116 of the 116 core-tier rows
+# carry this 'lto:<seed_table>' form (measured 2026-08-13 — the registry is
+# entirely seeded from the `people` facility directory until the field-wide
+# OpenAlex harvest lands externally-cited rows); it names a committed,
+# diffable seed table rather than an external record. A shape run that
+# rejected this node would fail every seed-derived row in the catalogue.
+exper:orcid-0000-0002-3333-4444
+    a                    lto:RegistryPerson , foaf:Person ;
+    foaf:name            "Seeded Staff Scientist" ;
+    lto:canonicalId      "orcid:0000-0002-3333-4444" ;
+    lto:orcidId          "0000-0002-3333-4444" ;
+    lto:tier             "core" ;
+    lto:sourceUrl        "lto:people" ;
+    lto:retrievedAt      "2026-08-13"^^xsd:date ;
+    lto:confidence       "medium" .
+
+exmem:A3-site
+    a               lto:CohortMembership ;
+    lto:cohort      lto:SitePersonnelCohort ;
+    lto:sourceUrl   "https://api.openalex.org/authors/A5011122233"^^xsd:anyURI ;
+    lto:retrievedAt "2026-08-13"^^xsd:date ;
+    lto:confidence  "high" .
+
+# In lto an identity check always applies: every row carries at least one
+# public identifier by construction, so upstream's "orcid-resolves is
+# NotApplicable on a codp person" case does not exist here. The OpenAlex
+# author check on an OpenAlex-only person simply runs, and passes.
+exval:A3-openalex
+    a                  lto:ValidationResult ;
+    lto:checkId        "openalex-author-resolves" ;
+    lto:validatedValue "A5011122233" ;
+    lto:verdict        lto:Pass ;
+    lto:sourceUrl      "https://api.openalex.org/authors/A5011122233"^^xsd:anyURI ;
+    lto:retrievedAt    "2026-08-13"^^xsd:date ;
+    lto:confidence     "high" ;
+    lto:validationRun  "val-2026-08-13" .
+
+# --- A4: a conforming co-author edge with a full provenance path ------------
+exedg:A1-A2
+    a                      lto:CoauthorEdge ;
+    lto:edgeParticipant    exper:orcid-0000-0002-1825-0097 ,
+                           exper:orcid-0000-0003-1613-5981 ;
+    lto:coPublicationCount 3 ;
+    lto:exemplarWork       exwor:W2741809807 ;
+    lto:evidenceWork       exwor:W2741809807 , exwor:W3011223344 ;
+    lto:matchMethod        lto:OpenAlexAuthorIdEquality ;
+    lto:sourceUrl          "https://api.openalex.org/works?filter=author.id:A5023888391"^^xsd:anyURI ;
+    lto:retrievedAt        "2026-08-13"^^xsd:date ;
+    lto:confidence         "high" .
+
+exwor:W2741809807
+    a                   bibo:Document ;
+    lto:openAlexWorkId  "W2741809807" ;
+    lto:doi             "10.1029/2021jc017428" .
+
+exwor:W3011223344
+    a                   bibo:Document ;
+    lto:openAlexWorkId  "W3011223344" .
+
+# --- A5: a conforming candidate (pending, so no evidence note required) -----
+excan:openalex-A5099887766
+    a                    lto:CoauthorCandidate , foaf:Person ;
+    foaf:name            "Bo Nguyen" ;
+    lto:openAlexAuthorId "A5099887766" ;
+    lto:seenWith         exper:orcid-0000-0002-1825-0097 ;
+    lto:decision         "pending" ;
+    lto:sourceUrl        "https://api.openalex.org/works/W2741809807"^^xsd:anyURI ;
+    lto:retrievedAt      "2026-08-13"^^xsd:date ;
+    lto:confidence       "high" .
+
+# --- A6: a conforming REJECTED candidate — carries the reason ---------------
+excan:orcid-0000-0001-2345-6789
+    a                          lto:CoauthorCandidate , foaf:Person ;
+    foaf:name                  "Sam Rivers" ;
+    lto:orcidId                "0000-0001-2345-6789" ;
+    lto:seenWith               exper:orcid-0000-0002-1825-0097 ;
+    lto:decision               "rejected" ;
+    lto:disambiguationEvidence "Shares a surname with an existing registry row but ORCIDs differ; OpenAlex topics are clinical cardiology with no long-term-observatory output. Distinct person, out of scope." ;
+    lto:sourceUrl              "https://api.openalex.org/works/W2741809807"^^xsd:anyURI ;
+    lto:retrievedAt            "2026-08-13"^^xsd:date ;
+    lto:confidence             "high" .
+
+
+#############################################################################
+# PART B — deliberate violations, one per non-negotiable
+#############################################################################
+
+# --- B1: no persistent identifier at all ------------------------------------
+# EXPECT lto:RegistryPersonShape — "must carry at least one public persistent
+# identifier". A name and a URL is not an identity.
+exper:bad-no-identifier
+    a               lto:RegistryPerson , foaf:Person ;
+    foaf:name       "Anonymous Field Scientist" ;
+    lto:canonicalId "name:anonymous-field-scientist" ;
+    lto:sourceUrl   "https://example.org/directory/staff/42"^^xsd:anyURI ;
+    lto:retrievedAt "2026-08-13"^^xsd:date ;
+    lto:confidence  "medium" .
+
+# --- B2: no source_url, and a confidence outside the closed vocabulary ------
+# EXPECT two violations on lto:RegistryPersonShape: missing lto:sourceUrl,
+# and lto:confidence not in {high, medium, low}.
+exper:bad-no-source-url
+    a                    lto:RegistryPerson , foaf:Person ;
+    foaf:name            "Uncited Researcher" ;
+    lto:canonicalId      "orcid:0000-0002-9999-8888" ;
+    lto:orcidId          "0000-0002-9999-8888" ;
+    lto:retrievedAt      "2026-08-13"^^xsd:date ;
+    lto:confidence       "probably-fine" .
+
+# --- B3: malformed ORCID (a URL pasted into the bare-id slot) ---------------
+# EXPECT lto:RegistryPersonShape sh:pattern on lto:orcidId.
+exper:bad-orcid-syntax
+    a               lto:RegistryPerson , foaf:Person ;
+    foaf:name       "Url In The Id Field" ;
+    lto:canonicalId "orcid:0000-0002-1111-2222" ;
+    lto:orcidId     "https://orcid.org/0000-0002-1111-2222" ;
+    lto:sourceUrl   "https://orcid.org/0000-0002-1111-2222"^^xsd:anyURI ;
+    lto:retrievedAt "2026-08-13"^^xsd:date ;
+    lto:confidence  "high" .
+
+# --- B4: (dropped in lto) ---------------------------------------------------
+# Upstream cod-kmap places a B4 here: a half-finished promotion carrying both
+# a public identifier and a codp: local identity, caught by
+# cod:LocalIdentityExclusivityShape. lto has no local-identifier form —
+# every registry row carries a public ORCID or OpenAlex author id by
+# construction — so neither the defect nor the shape exists in this port.
+# The B numbering is kept aligned with upstream so the two example files can
+# be diffed side by side.
+
+# --- B5: co-author edge with NO provenance path back to a work --------------
+# EXPECT lto:CoauthorEdgeShape — "must cite at least one work". This is the
+# central co-authorship non-negotiable.
+exedg:bad-no-evidence
+    a                      lto:CoauthorEdge ;
+    lto:edgeParticipant    exper:orcid-0000-0002-1825-0097 ,
+                           exper:orcid-0000-0003-1613-5981 ;
+    lto:coPublicationCount 2 ;
+    lto:matchMethod        lto:OrcidEquality ;
+    lto:sourceUrl          "https://api.openalex.org/works?filter=author.id:A5023888391"^^xsd:anyURI ;
+    lto:retrievedAt        "2026-08-13"^^xsd:date ;
+    lto:confidence         "high" .
+
+# --- B6: edge whose evidence work is unidentified ---------------------------
+# EXPECT lto:EvidenceWorkShape — the path dead-ends at a work with no
+# lto:openAlexWorkId and no lto:doi, so the edge cannot be re-checked.
+exedg:bad-unidentified-evidence
+    a                      lto:CoauthorEdge ;
+    lto:edgeParticipant    exper:orcid-0000-0002-1825-0097 ,
+                           exper:orcid-0000-0003-1613-5981 ;
+    lto:coPublicationCount 1 ;
+    lto:evidenceWork       exwor:bad-untitled-preprint ;
+    lto:matchMethod        lto:OrcidEquality ;
+    lto:sourceUrl          "https://api.openalex.org/works?filter=author.id:A5023888391"^^xsd:anyURI ;
+    lto:retrievedAt        "2026-08-13"^^xsd:date ;
+    lto:confidence         "high" .
+
+exwor:bad-untitled-preprint
+    a           bibo:Document ;
+    rdfs:label  "A preprint someone typed in by hand" .
+
+# --- B7: candidate proposed on a bare name ----------------------------------
+# EXPECT lto:CoauthorCandidateShape — no ORCID, no OpenAlex author id. This is
+# the exact shape of the wrong-person incidents in upstream cod-kmap's history
+# (see the wipe_* scripts this project inherits its identity rules from).
+excan:bad-bare-name
+    a            lto:CoauthorCandidate , foaf:Person ;
+    foaf:name    "J. Smith" ;
+    lto:seenWith exper:orcid-0000-0002-1825-0097 ;
+    lto:decision "pending" ;
+    lto:sourceUrl "https://api.openalex.org/works/W2741809807"^^xsd:anyURI ;
+    lto:retrievedAt "2026-08-13"^^xsd:date ;
+    lto:confidence "low" .
+
+# --- B8: rejected candidate with no reason recorded -------------------------
+# EXPECT lto:CoauthorCandidateShape SPARQL constraint — a dropped person must
+# leave a reason behind.
+excan:bad-silent-rejection
+    a                    lto:CoauthorCandidate , foaf:Person ;
+    foaf:name            "Quietly Dropped" ;
+    lto:openAlexAuthorId "A5088776655" ;
+    lto:seenWith         exper:orcid-0000-0002-1825-0097 ;
+    lto:decision         "rejected" ;
+    lto:sourceUrl        "https://api.openalex.org/works/W2741809807"^^xsd:anyURI ;
+    lto:retrievedAt      "2026-08-13"^^xsd:date ;
+    lto:confidence       "medium" .
+
+# --- B9: lto:coauthorOf shortcut with no backing edge -----------------------
+# EXPECT lto:CoauthorShortcutShape — an unevidenced collaboration asserted
+# through the traversal property.
+exper:bad-shortcut-only
+    a               lto:RegistryPerson , foaf:Person ;
+    foaf:name       "Shortcut Only" ;
+    lto:canonicalId "orcid:0000-0002-5555-4444" ;
+    lto:orcidId     "0000-0002-5555-4444" ;
+    lto:coauthorOf  exper:orcid-0000-0002-1825-0097 ;
+    lto:sourceUrl   "https://api.openalex.org/authors/A5000000002"^^xsd:anyURI ;
+    lto:retrievedAt "2026-08-13"^^xsd:date ;
+    lto:confidence  "high" .
+
+# --- B10: a Fail verdict with no mismatch detail ---------------------------
+# EXPECT lto:ValidationResultShape SPARQL constraint.
+exval:bad-fail-no-detail
+    a                 lto:ValidationResult ;
+    lto:checkId       "openalex-author-resolves" ;
+    lto:verdict       lto:Fail ;
+    lto:sourceUrl     "https://api.openalex.org/authors/A5000000003"^^xsd:anyURI ;
+    lto:retrievedAt   "2026-08-13"^^xsd:date ;
+    lto:confidence    "high" ;
+    lto:validationRun "val-2026-08-13" .

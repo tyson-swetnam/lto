@@ -2,7 +2,7 @@
 
 Reads all research-agent JSON under data/raw/R*/, normalizes and deduplicates
 records, geocodes missing coordinates, loads everything into
-db/cod_kmap.duckdb per schema/schema.sql, and records provenance.
+db/lto.duckdb per schema/schema.sql, and records provenance.
 
 Usage:
     python scripts/ingest.py                # full rebuild
@@ -32,7 +32,7 @@ ROOT = Path(__file__).resolve().parent.parent
 RAW_DIR = ROOT / "data" / "raw"
 SCHEMA_SQL = ROOT / "schema" / "schema.sql"
 VOCAB_DIR = ROOT / "schema" / "vocab"
-DB_PATH = ROOT / "db" / "cod_kmap.duckdb"
+DB_PATH = ROOT / "db" / "lto.duckdb"
 
 
 def facility_id(name: str, acronym: str | None) -> str:

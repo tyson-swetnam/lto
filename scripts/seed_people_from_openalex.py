@@ -68,7 +68,7 @@ except ImportError:
 import duckdb
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "cod_kmap.duckdb"
+DEFAULT_DB = ROOT / "db" / "lto.duckdb"
 OVERRIDES = ROOT / "data" / "seed" / "openalex_institution_overrides.csv"
 PROGRESS = ROOT / "data" / "seed" / ".openalex_seed_progress.json"
 PARQUET_OUT = [ROOT / "db" / "parquet", ROOT / "public" / "parquet"]
@@ -77,15 +77,11 @@ API = "https://api.openalex.org"
 
 # ── HTTP ────────────────────────────────────────────────────────────
 def session() -> requests.Session:
-    email = os.environ.get("OPENALEX_EMAIL", "")
-    s = requests.Session()
-    s.headers["User-Agent"] = (
-        f"cod-kmap/0.1 (github.com/tyson-swetnam/cod-kmap; "
-        f"mailto:{email or 'unset'})"
-    )
-    if email:
-        s.params = {"mailto": email}
-    return s
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    import openalex_auth
+
+    openalex_auth.require_api_key()
+    return openalex_auth.openalex_session()
 
 
 def polite_get(sess: requests.Session, path: str, **params) -> dict:

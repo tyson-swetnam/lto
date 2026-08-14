@@ -70,7 +70,7 @@ except ImportError:
     raise
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "cod_kmap.duckdb"
+DEFAULT_DB = ROOT / "db" / "lto.duckdb"
 DEFAULT_OVERRIDES = ROOT / "data" / "funding_overrides" / "usaspending_recipient_overrides.csv"
 API_SEARCH = "https://api.usaspending.gov/api/v2/search/spending_by_award/"
 API_TRANSACTIONS = "https://api.usaspending.gov/api/v2/transactions/"

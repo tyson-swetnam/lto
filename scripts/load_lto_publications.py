@@ -12,7 +12,7 @@ upserts.
 Usage::
 
     python scripts/load_lto_publications.py
-    python scripts/load_lto_publications.py --db db/cod_kmap.duckdb --verbose
+    python scripts/load_lto_publications.py --db db/lto.duckdb --verbose
 """
 from __future__ import annotations
 
@@ -25,7 +25,7 @@ from pathlib import Path
 import duckdb
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "cod_kmap.duckdb"
+DEFAULT_DB = ROOT / "db" / "lto.duckdb"
 RAW_DIR = ROOT / "data" / "raw"
 
 

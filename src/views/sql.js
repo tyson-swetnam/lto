@@ -7,7 +7,7 @@
 // queries the user can click to preview interesting slices of the
 // lto schema.
 
-import { getConn, whenReady, unwrapRow } from '../db.js';
+import { getConn, whenReady, unwrapRow, ensureSqlTables } from '../db.js';
 
 // ── Canned queries ──────────────────────────────────────────────────
 //
@@ -303,6 +303,10 @@ async function run(sql) {
     await whenReady();
     const conn = getConn();
     if (!conn) throw new Error('DuckDB connection not ready');
+    // The console is the only surface allowed to read the lazy tables and
+    // helper views, so it is the one place that registers them. Memoised —
+    // every run after the first awaits an already-resolved promise.
+    await ensureSqlTables();
     const result = await conn.query(sql);
     const rows = resultToRows(result);
     const ms = (performance.now() - t0).toFixed(0);
@@ -354,9 +358,23 @@ export function initSqlView(container) {
           <ul class="sql-schema">
             <li>facilities · facility_types · locations</li>
             <li>networks · network_membership</li>
-            <li>research_areas · area_links</li>
+            <li>research_areas · area_links · research_areas_active</li>
             <li>regions · region_area_links · facility_regions</li>
-            <li>funders · funding_links</li>
+            <li>funders · funding_links · funding_events</li>
+            <li>spheres · facility_spheres</li>
+            <li>ecosystem_types · facility_ecosystems</li>
+            <li>life_zones · facility_life_zones</li>
+            <li>people · facility_personnel · person_areas</li>
+            <li>publications · authorship · publication_topics · collaborations</li>
+            <li>facility_primary_groups · person_primary_groups</li>
+            <li>person_area_metrics · facility_area_funding · funder_area_funding · area_coverage_matrix</li>
+            <li>data_archives · facility_archives · data_products</li>
+            <li>api_endpoints · cloud_buckets</li>
+            <li>archive_types · data_formats · data_licenses · access_modes</li>
+            <li>provenance</li>
+            <li class="sql-schema-views">v_facility_enriched · v_person_enriched ·
+                v_facility_key_personnel · v_funding_ledger ·
+                v_facility_funding_by_year · v_funder_funding_by_year</li>
           </ul>
         </aside>
         <section class="sql-main">

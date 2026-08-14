@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Compute per-research-area dashboard metrics for the Stats view.
 
-Reads cod_kmap.duckdb and emits three parquets that drive the per-area
+Reads lto.duckdb and emits three parquets that drive the per-area
 dashboards in src/views/stats.js:
 
   1. person_area_metrics.parquet — composite researcher score per
@@ -34,7 +34,7 @@ Idempotent — overwrites every parquet on each run.
 
 Usage::
     python scripts/compute_area_metrics.py
-    python scripts/compute_area_metrics.py --db db/cod_kmap.duckdb
+    python scripts/compute_area_metrics.py --db db/lto.duckdb
 """
 from __future__ import annotations
 
@@ -45,7 +45,7 @@ from pathlib import Path
 import duckdb
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "cod_kmap.duckdb"
+DEFAULT_DB = ROOT / "db" / "lto.duckdb"
 PARQUET_OUT = [ROOT / "db" / "parquet", ROOT / "public" / "parquet"]
 
 
@@ -370,19 +370,38 @@ def main() -> int:
         return 2
     conn = duckdb.connect(str(args.db))
 
-    # Register the new parquet-only tables as views so the SQL below
-    # can reference them by their canonical names. These were exported
-    # by scripts/compute_primary_groups.py but never CREATE TABLE'd
-    # back into the duckdb file.
+    # Make the parquet-only groupings from scripts/compute_primary_groups.py
+    # reachable by their canonical names.
+    #
+    # These used not to exist in the duckdb file at all, so a plain CREATE OR
+    # REPLACE VIEW was enough. scripts/rebuild_db_from_parquet.py now
+    # materialises them as BASE TABLEs, and DuckDB refuses to replace a table
+    # with a view ("Existing object X is of type Table, trying to replace with
+    # type View") — which crashed this script upstream on any database built
+    # the documented way. Drop whatever is there first, so the freshly
+    # exported parquet wins regardless of how the DB was assembled.
     pq = ROOT / "db" / "parquet"
     for t in ("facility_primary_groups", "person_primary_groups",
               "research_areas_active"):
         path = pq / f"{t}.parquet"
-        if path.exists():
+        if not path.exists():
+            continue
+        # DROP ... IF EXISTS still raises when the object exists with the
+        # *other* type, so drop by whatever type is actually there: a rebuilt
+        # DB has a BASE TABLE here, and a re-run of this script has a VIEW.
+        kind = conn.execute(
+            "SELECT table_type FROM information_schema.tables WHERE table_name = ?",
+            [t],
+        ).fetchone()
+        if kind:
             conn.execute(
-                f"CREATE OR REPLACE VIEW {t} AS "
-                f"SELECT * FROM read_parquet('{path}')"
-            )
+                f"DROP {'VIEW' if kind[0] == 'VIEW' else 'TABLE'} IF EXISTS {t}")
+        # CREATE VIEW cannot take a bound parameter ("Unexpected prepared
+        # parameter"), so the path is interpolated. It is derived from ROOT,
+        # not from user input.
+        conn.execute(
+            f"CREATE VIEW {t} AS SELECT * FROM read_parquet('{path}')"
+        )
 
     compute_person_area_metrics(conn)
     compute_facility_area_funding(conn)

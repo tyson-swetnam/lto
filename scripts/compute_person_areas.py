@@ -46,7 +46,7 @@ from collections import defaultdict
 import duckdb
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "cod_kmap.duckdb"
+DEFAULT_DB = ROOT / "db" / "lto.duckdb"
 DEFAULT_CROSSWALK = ROOT / "data" / "vocab_crosswalk" / "openalex_to_area.csv"
 
 CONFIDENCE_MULT = {"high": 1.0, "medium": 0.7, "low": 0.4}

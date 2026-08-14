@@ -4,7 +4,7 @@ facilities.
 
 Run as a standalone step (idempotent):
 
-    python scripts/populate_regions.py                # use default db/cod_kmap.duckdb
+    python scripts/populate_regions.py                # use default db/lto.duckdb
     python scripts/populate_regions.py --db <path>
 
 Or, automatically, at the end of `scripts/ingest.py`.
@@ -48,7 +48,7 @@ from shapely.strtree import STRtree
 
 ROOT = Path(__file__).resolve().parent.parent
 OVERLAYS = ROOT / 'public' / 'overlays'
-DEFAULT_DB = ROOT / 'db' / 'cod_kmap.duckdb'
+DEFAULT_DB = ROOT / 'db' / 'lto.duckdb'
 
 
 # ── Region kind -> seed research-area slugs ─────────────────────────

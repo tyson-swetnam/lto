@@ -30,7 +30,7 @@ from pathlib import Path
 import duckdb
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "cod_kmap.duckdb"
+DEFAULT_DB = ROOT / "db" / "lto.duckdb"
 LOG_PATH = ROOT / "data" / "seed" / "url_hygiene_log.csv"
 
 

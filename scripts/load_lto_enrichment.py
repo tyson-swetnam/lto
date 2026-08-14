@@ -21,7 +21,7 @@ gets folded into the right tables without duplicating dedupe logic.
 Usage::
 
     python scripts/load_lto_enrichment.py
-    python scripts/load_lto_enrichment.py --db db/cod_kmap.duckdb --verbose
+    python scripts/load_lto_enrichment.py --db db/lto.duckdb --verbose
 """
 from __future__ import annotations
 
@@ -34,7 +34,7 @@ from pathlib import Path
 import duckdb
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "cod_kmap.duckdb"
+DEFAULT_DB = ROOT / "db" / "lto.duckdb"
 RAW_DIR = ROOT / "data" / "raw"
 ENRICH_GLOB = "Q-ENRICH-*"
 

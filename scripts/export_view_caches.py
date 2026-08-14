@@ -18,7 +18,7 @@ go through the full DuckDB path.
 Usage::
 
     python scripts/export_view_caches.py
-    python scripts/export_view_caches.py --db db/cod_kmap.duckdb \
+    python scripts/export_view_caches.py --db db/lto.duckdb \
         --out public/cache
 """
 from __future__ import annotations
@@ -30,7 +30,7 @@ from pathlib import Path
 import duckdb
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "cod_kmap.duckdb"
+DEFAULT_DB = ROOT / "db" / "lto.duckdb"
 DEFAULT_OUT = ROOT / "public" / "cache"
 
 

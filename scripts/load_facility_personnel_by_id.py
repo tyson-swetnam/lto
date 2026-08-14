@@ -29,7 +29,7 @@ from pathlib import Path
 import duckdb
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "cod_kmap.duckdb"
+DEFAULT_DB = ROOT / "db" / "lto.duckdb"
 
 KEY_ROLE_DEFAULTS = {
     "Director", "Executive Director", "Deputy Director", "Associate Director",
