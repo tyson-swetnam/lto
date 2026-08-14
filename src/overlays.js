@@ -15,6 +15,7 @@
 import maplibregl from 'maplibre-gl';
 import { DATA_BASE } from './config.js';
 import { isMapAvailable } from './map.js';
+import { facetsNarrowing, overlayHiddenByFilters } from './overlay-facets.js';
 
 const MANIFEST_URL = `${DATA_BASE}overlays/manifest.json`;
 
@@ -45,38 +46,11 @@ const FACILITY_LAYERS = [
 
 // ── Filter-aware overlay hiding ─────────────────────────────────────
 //
-// Overlays are static context layers — they never pass through query()'s
-// WHERE clause. That produced a real bug: with the Arid sphere selected,
-// the facility POINTS filtered correctly but marine-sanctuary polygons
-// and the 61 default-on NEON site polygons stayed painted, reading as
-// unfiltered results. Two remedies, applied by syncOverlaysToFilters():
-//
-//   * SPHERE_TAGS maps an overlay to the sphere(s) its content belongs
-//     to. When the sphere facet is active and has no intersection with a
-//     layer's tags, the layer auto-hides.
-//   * RESULTS_DUPLICATING marks overlays whose features mirror rows of
-//     `facilities` (every NEON polygon is also a filterable point). These
-//     hide whenever ANY sphere/ecosystem/life-zone facet is active — the
-//     matching facilities remain visible as correctly-filtered points.
-//
-// A manual toggle while a facet is active is an override and wins until
-// the facets clear. Untagged layers (epa-regions, neon-domains — pure
-// admin context, default-off anyway) are never touched.
-const SPHERE_TAGS = {
-  'nerr-reserves':           ['ocean-estuarine'],
-  'nep-programs':            ['ocean-estuarine'],
-  'marine-sanctuaries':      ['ocean-estuarine'],
-  'marine-monuments':        ['ocean-estuarine'],
-  'nps-coastal':             ['ocean-estuarine'],
-  'coastal-fws-units':       ['ocean-estuarine'],
-  'coastal-nps-units':       ['ocean-estuarine'],
-  'coastal-usfs-special':    ['ocean-estuarine'],
-  'coastal-wilderness':      ['ocean-estuarine'],
-  'coastal-state-protected': ['ocean-estuarine'],
-  'coastal-ngo-private':     ['ocean-estuarine'],
-  'ramsar-us':               ['ocean-estuarine', 'freshwater'],
-};
-const RESULTS_DUPLICATING = new Set(['neon-sites']);
+// Which overlays a filter selection hides is decided in overlay-facets.js
+// (pure, testable without MapLibre); this file owns the effects. A manual
+// toggle while a facet is active is an override and wins until the facets
+// clear. Untagged layers (epa-regions, neon-domains — pure admin context)
+// are never touched.
 
 let _map = null;
 let _manifest = {};
@@ -373,13 +347,11 @@ export function activeOverlays() {
   }));
 }
 
-// Called by main.js on every filter refresh. See the SPHERE_TAGS comment
-// block for the rationale. Idempotent; cheap when nothing changes.
+// Called by main.js on every filter refresh. See overlay-facets.js for
+// the rationale and the tag tables. Idempotent; cheap when nothing changes.
 export function syncOverlaysToFilters(filters) {
   if (!_map || !Object.keys(_manifest).length) return;
-  const spheres = filters?.spheres || new Set();
-  const facetsActive = Boolean(
-    spheres.size || filters?.ecosystems?.size || filters?.lifeZones?.size);
+  const facetsActive = facetsNarrowing(filters);
 
   // Facets just cleared: overrides expire and auto-hidden layers return.
   if (!facetsActive && _facetsActive) _userOverride.clear();
@@ -387,12 +359,7 @@ export function syncOverlaysToFilters(filters) {
 
   let changed = false;
   for (const id of Object.keys(_manifest)) {
-    const tags = SPHERE_TAGS[id];
-    const wantHide = facetsActive && !_userOverride.has(id) && (
-      RESULTS_DUPLICATING.has(id)
-      || (tags != null && spheres.size > 0
-          && !tags.some((t) => spheres.has(t)))
-    );
+    const wantHide = !_userOverride.has(id) && overlayHiddenByFilters(id, filters);
     const row = document.querySelector(`input[data-overlay="${id}"]`)
       ?.closest('.overlay-row');
     if (wantHide && _active.has(id)) {
