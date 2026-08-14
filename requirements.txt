@@ -5,6 +5,14 @@ geopy>=2.4
 pyyaml>=6.0
 requests>=2.31
 shapely>=2.0
+# RDF validation layer: scripts/validate_registry.py --stage rdf/shacl and
+# scripts/validate_shapes.py (pyshacl pulls owlrl for the sameAs closure).
+rdflib>=7.0
+pyshacl>=0.25
+# Harvest checkpointing: scripts/harvest_runner.py + validate_registry.py
+# stream works/pairs shards as parquet via pandas/pyarrow.
+pandas>=2.0
+pyarrow>=15.0
 # NOTE: the JS parse check in scripts/qa.py shells out to
 # `node --experimental-vm-modules` and parses each src/**/*.js file AS
 # WRITTEN via vm.SourceTextModule, which reports the real message at the

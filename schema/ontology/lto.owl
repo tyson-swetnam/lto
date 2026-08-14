@@ -1,0 +1,1128 @@
+@prefix lto:     <https://tyson-swetnam.github.io/lto/ns/lto#> .
+@prefix ltoid:   <https://tyson-swetnam.github.io/lto/id/> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+@prefix org:     <http://www.w3.org/ns/org#> .
+@prefix bibo:    <http://purl.org/ontology/bibo/> .
+@prefix prov:    <http://www.w3.org/ns/prov#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix vann:    <http://purl.org/vocab/vann/> .
+@prefix obo:     <http://purl.obolibrary.org/obo/> .
+
+#############################################################################
+# LTO ontology — long-term observatory personnel, cohorts, areas, validation,
+# provenanced co-authorship, and the environmental scoping vocabularies
+# (spheres, ecosystem types, Holdridge life zones).
+#
+# Scope: this ontology covers WHO is in the LTO registry, WHAT cohorts and
+# research areas they belong to, WHETHER their identifiers have been
+# validated, WHICH work proves a co-authorship edge, and WHERE in
+# environmental space a catalogued facility sits. It deliberately does NOT
+# re-describe persons, organizations or publications — those come from FOAF,
+# ORG and BIBO respectively — and it does not re-describe environments:
+# the sphere / ecosystem / life-zone concepts are SKOS concepts crosswalked
+# to ENVO, not redefinitions of ENVO classes. A term is minted here only
+# when no established vocabulary carries it.
+#
+# The load-bearing design decision is the identity block: ORCID, OpenAlex
+# author, OpenAlex work, ROR and DOI properties are all declared
+# owl:InverseFunctionalProperty, so an OWL-RL reasoner derives owl:sameAs
+# between any two nodes that share one. That inference — not string
+# comparison — is the sanctioned way to decide that a co-author found on a
+# work is an existing registry person. lto:localIdentifier is pointedly NOT
+# inverse-functional (and unused in lto by construction); see its comment.
+#############################################################################
+
+<https://tyson-swetnam.github.io/lto/ns/lto>
+    a                     owl:Ontology ;
+    dcterms:title         "LTO Long-Term Observatory Ontology"@en ;
+    dcterms:description    """Vocabulary for the lto long-term-observatory
+        catalogue: registry persons and their persistent identifiers, cohort
+        membership, research-area assignment, identifier-validation verdicts,
+        co-authorship edges that carry a provenance path back to a published
+        work, and the catalogue's environmental scoping vocabularies (six
+        spheres, EcoTrends ecosystem types, Holdridge life zones) as SKOS
+        concept schemes crosswalked to ENVO. Reuses FOAF for persons, ORG for
+        organizations, BIBO for publications, PROV-O for provenance and SKOS
+        for the controlled vocabularies."""@en ;
+    dcterms:created       "2026-08-13"^^xsd:date ;
+    dcterms:source        <https://tyson-swetnam.github.io/cod-kmap/ns/cod> ;
+    owl:versionInfo       "0.1.0" ;
+    vann:preferredNamespacePrefix "lto" ;
+    vann:preferredNamespaceUri    "https://tyson-swetnam.github.io/lto/ns/lto#" ;
+    rdfs:seeAlso          <https://github.com/tyson-swetnam/lto> ;
+    rdfs:comment          """Forked from the cod-kmap COD ontology (MIT). The
+        identity block is inherited verbatim; the COD-specific domain classes
+        (org-chart cohort, local-id person population) are dropped or, where
+        the omission itself is load-bearing, kept documented."""@en ;
+    owl:imports           <http://xmlns.com/foaf/0.1/> ,
+                          <http://www.w3.org/ns/org#> ,
+                          <http://purl.org/ontology/bibo/> ,
+                          <http://www.w3.org/ns/prov#> ,
+                          <http://www.w3.org/2004/02/skos/core#> .
+
+#############################################################################
+# 1. Classes
+#############################################################################
+
+lto:RegistryPerson
+    a               owl:Class ;
+    rdfs:subClassOf foaf:Person ;
+    rdfs:label      "Registry person"@en ;
+    rdfs:comment    """A human with a row in the lto person_registry: one node
+        in the single identity space that the two human-facing layers
+        (facility site personnel, the field-wide scholar harvest) resolve
+        into. Membership in this class asserts only that the project holds a
+        curated, provenanced record of the person — it does not assert
+        employment by any catalogued observatory. Unlike the upstream COD
+        registry, every lto row DOES carry at least one public identifier
+        (ORCID or OpenAlex author id) by construction — see
+        lto:localIdentifier."""@en .
+
+lto:CoauthorCandidate
+    a               owl:Class ;
+    rdfs:subClassOf foaf:Person ;
+    rdfs:label      "Co-author candidate"@en ;
+    rdfs:comment    """A person observed as a co-author on a registry member's
+        work who is not (yet) a lto:RegistryPerson. A proposal under review,
+        not a personnel record: nothing about a candidate may be published as
+        an LTO roster entry until a curator promotes it. Disjoint from
+        lto:RegistryPerson so a reasoner flags a graph that asserts both, which
+        would mean a promotion was left half-finished."""@en ;
+    owl:disjointWith lto:RegistryPerson .
+
+lto:Cohort
+    a               owl:Class ;
+    rdfs:label      "Registry cohort"@en ;
+    rdfs:comment    """One of the populations a lto:RegistryPerson can belong
+        to. Enumerated and closed: the two cohorts correspond exactly to the
+        is_site_personnel / is_scholar flags on person_registry. A person may
+        belong to both at once — that overlap is the reason the registry
+        exists."""@en ;
+    owl:oneOf       ( lto:SitePersonnelCohort lto:ScholarCohort ) .
+
+lto:CohortMembership
+    a               owl:Class ;
+    rdfs:label      "Cohort membership"@en ;
+    rdfs:comment    """A reified membership of one lto:RegistryPerson in one
+        lto:Cohort. Reified rather than expressed as two boolean properties
+        so that the membership itself can carry provenance: which source
+        asserted it, when it was retrieved, and with what confidence. A direct
+        boolean cannot be cited."""@en .
+
+lto:ResearchArea
+    a               owl:Class ;
+    rdfs:subClassOf skos:Concept ;
+    rdfs:label      "LTO research area"@en ;
+    rdfs:comment    """A term in the project's controlled research-area
+        vocabulary (schema/vocab/research_areas.csv, 91 areas in a two-level
+        parent/child hierarchy). A skos:Concept subclass so the existing
+        hierarchy maps onto skos:broader without inventing a parallel
+        parent property, and so an OpenAlex topic or GCMD keyword can be tied
+        in with skos:closeMatch / skos:exactMatch (the vocabulary file
+        already carries a gcmd_uri column for exactly that)."""@en .
+
+lto:Sphere
+    a               owl:Class ;
+    rdfs:subClassOf skos:Concept ;
+    rdfs:label      "LTO sphere"@en ;
+    rdfs:comment    """One of the six top-level spheres the whole catalogue is
+        organized by — atmosphere, cryosphere, terrestrial, agriculture,
+        ocean-estuarine, freshwater (schema/vocab/spheres.csv; the spheres
+        table). A skos:Concept subclass, like lto:ResearchArea, so the ENVO
+        crosswalk lands on skos:exactMatch / skos:closeMatch / skos:broadMatch
+        rather than a parallel minted mapping property. The six members are
+        enumerated in lto:SphereScheme (section 8)."""@en .
+
+lto:EcosystemType
+    a               owl:Class ;
+    rdfs:subClassOf skos:Concept ;
+    rdfs:label      "Ecosystem type"@en ;
+    rdfs:comment    """An EcoTrends ecosystem type (Peters et al. 2013, table
+        1-2) with WWF-biome and LTAR extensions
+        (schema/vocab/ecosystem_types.csv, 14 types; the ecosystem_types
+        table). Flat — no parent/child hierarchy — with each concept carrying
+        its originating classification system in dcterms:source. Members are
+        enumerated in lto:EcosystemTypeScheme (section 8)."""@en .
+
+lto:LifeZone
+    a               owl:Class ;
+    rdfs:subClassOf skos:Concept ;
+    rdfs:label      "Holdridge life zone"@en ;
+    rdfs:comment    """A Holdridge life zone as used in the Lugo et al. 2006
+        experimental-forest coverage analysis (schema/vocab/life_zones.csv,
+        20 zones; the life_zones table). Each concept carries its coarse
+        Holdridge grouping as lto:holdridgeClass. Members are enumerated in
+        lto:LifeZoneScheme (section 8)."""@en .
+
+lto:AreaAssignment
+    a               owl:Class ;
+    rdfs:label      "Research-area assignment"@en ;
+    rdfs:comment    """A reified assignment of a lto:RegistryPerson to a
+        lto:ResearchArea, carrying the weight and the evidence count that
+        produced it (typically the share of the person's works on that topic).
+        Reified because the assignment is derived and revisable, so it needs
+        its own provenance and confidence; a bare person-to-area triple would
+        lose the reason it was drawn."""@en .
+
+lto:ValidationResult
+    a               owl:Class ;
+    rdfs:label      "Identifier validation result"@en ;
+    rdfs:comment    """The outcome of running one named check against one
+        identifier of one lto:RegistryPerson at one point in time. One node per
+        (person, check, sweep), so re-validation appends rather than
+        overwrites and two sweeps can be diffed. Mirrors a row of the
+        person_validation table."""@en .
+
+lto:Verdict
+    a               owl:Class ;
+    rdfs:label      "Validation verdict"@en ;
+    rdfs:comment    """The closed set of outcomes a lto:ValidationResult can
+        carry. lto:NotApplicable and lto:Unresolved exist so that "this row
+        has no such identifier to check by construction" and "the resolver
+        could not be reached" are never recorded as lto:Fail — collapsing
+        either into a failure creates pressure to invent an identifier, which
+        is the error the upstream project had to undo three times. Note that
+        in lto the not-applicable case is per-check only (an openalex-keyed
+        row has no ORCID for 'orcid-resolves'); a row with no checkable
+        public identifier at all cannot occur — see lto:NotApplicable."""@en ;
+    owl:oneOf       ( lto:Pass lto:Fail lto:NotApplicable lto:Unresolved ) .
+
+lto:CoauthorEdge
+    a               owl:Class ;
+    rdfs:label      "Co-authorship edge"@en ;
+    rdfs:comment    """A reified, provenanced co-authorship relation between two
+        lto:RegistryPerson nodes. Reified because an edge is only admissible
+        when it can name the published work that proves it and the
+        identifier-equality rule that matched the endpoints; a plain symmetric
+        triple cannot carry either. Every instance must have at least one
+        lto:evidenceWork — enforced by lto-shapes.ttl."""@en .
+
+lto:MatchMethod
+    a               owl:Class ;
+    rdfs:label      "Identity match method"@en ;
+    rdfs:comment    """The closed set of rules by which two person records may
+        be judged the same or two authors judged co-authors. All three are
+        identifier-based. There is deliberately no name-similarity member: name
+        matching is what attached cardiologists to marine laboratories in the
+        upstream catalogue's history, and adding such a member here would
+        license it again."""@en ;
+    owl:oneOf       ( lto:OrcidEquality lto:OpenAlexAuthorIdEquality lto:SameAsClosure ) .
+
+lto:Facility
+    a               owl:Class ;
+    rdfs:label      "Catalogued facility"@en ;
+    rdfs:comment    """A catalogued long-term observatory site: field station,
+        experimental forest or range, LTER / LTAR / NEON site, flux tower,
+        marine laboratory, observatory, vessel, mooring array,
+        glacier-monitoring site, or protected area. NOT a subclass of
+        org:Organization, because most of the catalogue's entries are places
+        rather than legal organizations — a state park will never hold a ROR.
+        The subset that ARE research organizations also bear lto:rorId and
+        should be typed org:Organization in the same graph."""@en .
+
+lto:Award
+    a               owl:Class ;
+    rdfs:label      "Funding award"@en ;
+    rdfs:comment    """A grant, contract or cooperative agreement supporting a
+        person or facility, identified by the funder's own award number. Minted
+        rather than reused because BIBO and ORG have no award concept and the
+        catalogue needs to distinguish an award from the funding organization
+        that issued it (which is an org:Organization)."""@en .
+
+#############################################################################
+# 2. Identity properties — the owl:InverseFunctionalProperty block
+#############################################################################
+# Each property below is functional (a node has at most one such identifier)
+# AND inverse-functional (an identifier belongs to at most one node). The
+# inverse-functional half is the mechanism the co-author matching relies on:
+# under OWL-RL, two nodes sharing a value on any of these are inferred
+# owl:sameAs, which merges a candidate co-author into the registry person
+# without any name comparison anywhere in the pipeline.
+
+lto:canonicalId
+    a               owl:DatatypeProperty , owl:FunctionalProperty , owl:InverseFunctionalProperty ;
+    rdfs:domain     foaf:Person ;
+    rdfs:range      xsd:string ;
+    rdfs:label      "canonical registry identifier"@en ;
+    rdfs:comment    """The person_registry primary key: 'orcid:0000-…' when an
+        ORCID is known, else 'openalex:A…'. There is no third form — lto mints
+        no local person identifiers, because every registry row carries at
+        least one public identifier by construction (qa.py enforces it).
+        Inverse-functional because it is the registry's own primary key — two
+        nodes carrying the same canonical_id are the same person by
+        construction."""@en .
+
+lto:orcidId
+    a               owl:DatatypeProperty , owl:FunctionalProperty , owl:InverseFunctionalProperty ;
+    rdfs:domain     foaf:Person ;
+    rdfs:range      xsd:string ;
+    rdfs:label      "ORCID iD"@en ;
+    rdfs:comment    """A researcher's ORCID iD in bare 16-digit form
+        (0000-0002-1825-0097). The project's most authoritative person
+        identifier: ORCID is registry-issued and self-asserted by the
+        researcher, so it outranks any aggregator-derived id. Inverse-functional
+        — an ORCID identifies exactly one human, so two nodes sharing one are
+        owl:sameAs."""@en .
+
+lto:openAlexAuthorId
+    a               owl:DatatypeProperty , owl:FunctionalProperty , owl:InverseFunctionalProperty ;
+    rdfs:domain     foaf:Person ;
+    rdfs:range      xsd:string ;
+    rdfs:label      "OpenAlex author id"@en ;
+    rdfs:comment    """An OpenAlex author identifier ('A5023888391'). An
+        aggregator identifier and therefore ranked below lto:orcidId when the
+        two disagree, but still inverse-functional: OpenAlex author records are
+        the unit at which authorship is disambiguated upstream, so sharing one
+        licenses owl:sameAs. Note the practical caveat that OpenAlex
+        occasionally merges or splits author records; a validation sweep
+        (lto:ValidationResult) is how the project detects that."""@en .
+
+lto:rorId
+    a               owl:DatatypeProperty , owl:FunctionalProperty , owl:InverseFunctionalProperty ;
+    rdfs:range      xsd:string ;
+    rdfs:label      "ROR id"@en ;
+    rdfs:comment    """A Research Organization Registry identifier
+        ('https://ror.org/03m2x1q45' or the bare '03m2x1q45'). Applies to an
+        org:Organization and to the subset of lto:Facility instances that are
+        research organizations; it is the join that links a researcher's
+        affiliation to a catalogued site. Inverse-functional, which is what
+        makes the affiliation-to-facility link an inference rather than a string
+        match on institution names."""@en .
+
+lto:openAlexWorkId
+    a               owl:DatatypeProperty , owl:FunctionalProperty , owl:InverseFunctionalProperty ;
+    rdfs:domain     bibo:Document ;
+    rdfs:range      xsd:string ;
+    rdfs:label      "OpenAlex work id"@en ;
+    rdfs:comment    """An OpenAlex Work identifier ('W2741809807'). Declared
+        inverse-functional so that two graph nodes describing the same paper —
+        one reached through each endpoint of a co-authorship edge — collapse to
+        one work under OWL-RL, which is what makes an edge's evidence count
+        correct rather than double-counted."""@en .
+
+lto:doi
+    a                  owl:DatatypeProperty , owl:FunctionalProperty , owl:InverseFunctionalProperty ;
+    rdfs:subPropertyOf bibo:doi ;
+    rdfs:domain        bibo:Document ;
+    rdfs:range         xsd:string ;
+    rdfs:label         "DOI"@en ;
+    rdfs:comment       """A DOI in bare lowercase form ('10.1029/2021jc017428').
+        A subproperty of bibo:doi rather than a redefinition: BIBO does not
+        declare bibo:doi inverse-functional, and silently strengthening another
+        vocabulary's term would change the semantics of every graph that
+        imports BIBO. Narrowing it under an LTO term keeps the strengthening
+        local and explicit."""@en .
+
+lto:localIdentifier
+    a               owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain     lto:RegistryPerson ;
+    rdfs:range      xsd:string ;
+    rdfs:label      "project-internal local identifier"@en ;
+    rdfs:comment    """The escape-hatch identity the upstream COD registry used
+        for its 95 rows of project-internal people with no public identifier by
+        construction — programme staff, agency contacts and administrators who
+        are not publishing researchers. lto mints NO such identifiers:
+        person_registry requires at least one of ORCID / OpenAlex author id on
+        every row (qa.py enforces it), so lto:canonicalId is always 'orcid:…'
+        or 'openalex:…' and this property has no instances in an LTO graph by
+        construction. The property is kept, with its rationale, so the identity
+        block's one deliberate omission stays documented rather than being
+        silently re-invented the next time someone needs to record a
+        non-publishing person.
+
+        Deliberately NOT owl:InverseFunctionalProperty, unlike every other
+        identity property here. The value is a sha1 digest of
+        name|orcid|email, so two distinct people who share a name and have
+        neither ORCID nor email on file collide. Declaring it
+        inverse-functional would make an OWL-RL reasoner assert owl:sameAs
+        between them — a same-name merge, arriving through inference instead of
+        through a string comparison, but with the same wrong result. It is
+        functional (one such id per person) and nothing more."""@en .
+
+#############################################################################
+# 3. Cohort, area and affiliation properties
+#############################################################################
+
+lto:hasCohortMembership
+    a               owl:ObjectProperty ;
+    rdfs:domain     lto:RegistryPerson ;
+    rdfs:range      lto:CohortMembership ;
+    rdfs:label      "has cohort membership"@en ;
+    rdfs:comment    "Links a registry person to one reified, provenanced membership record."@en .
+
+lto:cohort
+    a               owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:domain     lto:CohortMembership ;
+    rdfs:range      lto:Cohort ;
+    rdfs:label      "cohort"@en ;
+    rdfs:comment    "The cohort a lto:CohortMembership places its subject in. Exactly one per membership."@en .
+
+lto:hasAreaAssignment
+    a               owl:ObjectProperty ;
+    rdfs:domain     lto:RegistryPerson ;
+    rdfs:range      lto:AreaAssignment ;
+    rdfs:label      "has research-area assignment"@en ;
+    rdfs:comment    "Links a registry person to one reified research-area assignment."@en .
+
+lto:area
+    a               owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:domain     lto:AreaAssignment ;
+    rdfs:range      lto:ResearchArea ;
+    rdfs:label      "research area"@en ;
+    rdfs:comment    "The controlled-vocabulary area an assignment points at. Exactly one per assignment."@en .
+
+lto:isPrimaryArea
+    a               owl:DatatypeProperty ;
+    rdfs:domain     lto:AreaAssignment ;
+    rdfs:range      xsd:boolean ;
+    rdfs:label      "is primary area"@en ;
+    rdfs:comment    """True on the single assignment used as the person's primary
+        group in the knowledge-map layout (person_primary_groups). At most one
+        assignment per person should carry it; lto-shapes.ttl does not enforce
+        that, because the layout tolerates an unassigned person but not a
+        wrongly-merged one."""@en .
+
+lto:areaWeight
+    a               owl:DatatypeProperty ;
+    rdfs:domain     lto:AreaAssignment ;
+    rdfs:range      xsd:double ;
+    rdfs:label      "area weight"@en ;
+    rdfs:comment    "Strength of the assignment, normally the share of the person's works on that topic (0..1)."@en .
+
+lto:evidenceCount
+    a               owl:DatatypeProperty ;
+    rdfs:range      xsd:nonNegativeInteger ;
+    rdfs:label      "evidence count"@en ;
+    rdfs:comment    "How many underlying records (usually publications) support a derived assertion."@en .
+
+lto:stewards
+    a               owl:ObjectProperty ;
+    rdfs:domain     lto:RegistryPerson ;
+    rdfs:range      lto:Facility ;
+    rdfs:label      "stewards facility"@en ;
+    rdfs:comment    """Links a registry person to a catalogued facility they
+        staff, direct or steward. Distinct from org:memberOf (reused, not
+        minted, for person-to-organization employment) because a lto:Facility
+        is frequently a place rather than an organization and cannot be the
+        object of org:memberOf."""@en .
+
+lto:fundedBy
+    a               owl:ObjectProperty ;
+    rdfs:range      lto:Award ;
+    rdfs:label      "funded by award"@en ;
+    rdfs:comment    "Links a person or facility to a lto:Award supporting them. The issuing agency is reached from the award via dcterms:publisher (an org:Organization)."@en .
+
+lto:awardIdentifier
+    a               owl:DatatypeProperty ;
+    rdfs:domain     lto:Award ;
+    rdfs:range      xsd:string ;
+    rdfs:label      "award identifier"@en ;
+    rdfs:comment    """The funder's own award number ('2608717', 'NA21NOS4780123').
+        Pointedly NOT inverse-functional: award numbering is scoped to the
+        issuing agency, so the same string can name different awards from
+        different funders and a global uniqueness claim would be false."""@en .
+
+#############################################################################
+# 4. Validation properties
+#############################################################################
+
+lto:hasValidationResult
+    a               owl:ObjectProperty ;
+    rdfs:domain     lto:RegistryPerson ;
+    rdfs:range      lto:ValidationResult ;
+    rdfs:label      "has validation result"@en ;
+    rdfs:comment    "Links a registry person to one identifier-check outcome."@en .
+
+lto:verdict
+    a               owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:domain     lto:ValidationResult ;
+    rdfs:range      lto:Verdict ;
+    rdfs:label      "verdict"@en ;
+    rdfs:comment    "The outcome of the check. Exactly one per result."@en .
+
+lto:checkId
+    a               owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain     lto:ValidationResult ;
+    rdfs:range      xsd:string ;
+    rdfs:label      "check id"@en ;
+    rdfs:comment    """Which check was run: 'orcid-resolves',
+        'openalex-author-resolves', 'ror-resolves', 'source-url-citable',
+        'name-agreement', 'affiliation-agreement', 'cohort-flag-agreement'.
+        Matches person_validation.check_id."""@en .
+
+lto:validatedValue
+    a               owl:DatatypeProperty ;
+    rdfs:domain     lto:ValidationResult ;
+    rdfs:range      xsd:string ;
+    rdfs:label      "validated identifier value"@en ;
+    rdfs:comment    "The literal identifier the check was run against, copied in so a verdict is readable without re-joining to a possibly re-harvested person node."@en .
+
+lto:mismatchDetail
+    a               owl:DatatypeProperty ;
+    rdfs:domain     lto:ValidationResult ;
+    rdfs:range      xsd:string ;
+    rdfs:label      "mismatch detail"@en ;
+    rdfs:comment    "What disagreed. Populated only when lto:verdict is lto:Fail."@en .
+
+lto:validationRun
+    a               owl:DatatypeProperty ;
+    rdfs:range      xsd:string ;
+    rdfs:label      "validation run id"@en ;
+    rdfs:comment    "Groups all results from one sweep, so two sweeps of the same person are both retained and diffable."@en .
+
+#############################################################################
+# 5. Co-authorship properties
+#############################################################################
+
+lto:coauthorOf
+    a               owl:ObjectProperty , owl:SymmetricProperty ;
+    rdfs:domain     foaf:Person ;
+    rdfs:range      foaf:Person ;
+    rdfs:label      "co-author of"@en ;
+    rdfs:comment    """Convenience shortcut asserting that two people share a
+        published work. Symmetric. This is the traversal property for graph
+        queries; it carries NO provenance, so it must never be the only
+        assertion of an edge. Every lto:coauthorOf pair in an LTO graph is
+        expected to be accompanied by a lto:CoauthorEdge that names the
+        evidence — lto-shapes.ttl enforces the edge, not the shortcut."""@en .
+
+lto:hasCoauthorEdge
+    a               owl:ObjectProperty ;
+    rdfs:domain     lto:RegistryPerson ;
+    rdfs:range      lto:CoauthorEdge ;
+    rdfs:label      "has co-author edge"@en ;
+    rdfs:comment    "Links a registry person to a reified co-authorship edge they participate in."@en ;
+    owl:inverseOf   lto:edgeParticipant .
+
+lto:edgeParticipant
+    a               owl:ObjectProperty ;
+    rdfs:domain     lto:CoauthorEdge ;
+    rdfs:range      foaf:Person ;
+    rdfs:label      "edge participant"@en ;
+    rdfs:comment    """One of the two endpoints of a lto:CoauthorEdge. Exactly
+        two per edge (enforced in lto-shapes.ttl). Range is foaf:Person rather
+        than lto:RegistryPerson so that a candidate-to-registry edge can be
+        staged in the same graph before promotion."""@en .
+
+lto:evidenceWork
+    a               owl:ObjectProperty ;
+    rdfs:domain     lto:CoauthorEdge ;
+    rdfs:range      bibo:Document ;
+    rdfs:label      "evidence work"@en ;
+    rdfs:comment    """A published work that both endpoints of the edge are
+        credited on. This is the provenance path the project requires of every
+        co-authorship edge: at least one such triple must exist, and the work
+        it points at must itself be identified (lto:openAlexWorkId or
+        lto:doi), so any edge can be re-checked in a single request."""@en .
+
+lto:exemplarWork
+    a                  owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:subPropertyOf lto:evidenceWork ;
+    rdfs:domain        lto:CoauthorEdge ;
+    rdfs:range         bibo:Document ;
+    rdfs:label         "exemplar work"@en ;
+    rdfs:comment       """The single work nominated as the canonical proof of
+        the edge, for display and for spot-checking. A subproperty of
+        lto:evidenceWork, so asserting it satisfies the evidence requirement
+        automatically."""@en .
+
+lto:coPublicationCount
+    a               owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain     lto:CoauthorEdge ;
+    rdfs:range      xsd:nonNegativeInteger ;
+    rdfs:label      "co-publication count"@en ;
+    rdfs:comment    "Number of works both endpoints are credited on. Must be at least 1 for the edge to exist."@en .
+
+lto:matchMethod
+    a               owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:range      lto:MatchMethod ;
+    rdfs:label      "match method"@en ;
+    rdfs:comment    """The rule by which two records were judged to denote the
+        same person, or two authors judged co-authors. Applies to a
+        lto:CoauthorEdge and to a lto:CoauthorCandidate's proposed identity.
+        Restricted to the three identifier-based members of
+        lto:MatchMethod."""@en .
+
+lto:seenWith
+    a               owl:ObjectProperty ;
+    rdfs:domain     lto:CoauthorCandidate ;
+    rdfs:range      lto:RegistryPerson ;
+    rdfs:label      "seen with registry person"@en ;
+    rdfs:comment    "The registry person whose publication record surfaced this candidate."@en .
+
+lto:decision
+    a               owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain     lto:CoauthorCandidate ;
+    rdfs:range      xsd:string ;
+    rdfs:label      "curation decision"@en ;
+    rdfs:comment    "Review state of a candidate: 'pending', 'accepted', 'rejected' or 'deferred'."@en .
+
+lto:disambiguationEvidence
+    a               owl:DatatypeProperty ;
+    rdfs:range      xsd:string ;
+    rdfs:label      "disambiguation evidence"@en ;
+    rdfs:comment    """Free text recording how a name ambiguity was resolved —
+        'name matches a registry row but ORCIDs differ, distinct people', 'two
+        OpenAlex authors share this ORCID, upstream merge pending'. Required on
+        any candidate that was rejected or deferred, so a dropped person leaves
+        a reason behind rather than vanishing."""@en .
+
+#############################################################################
+# 6. Provenance properties
+#############################################################################
+# PROV-O supplies the activity/agent framing (prov:wasGeneratedBy,
+# prov:wasAttributedTo) and is imported for it. These three terms are minted
+# because the project requires them as directly-attached, machine-checkable
+# literals on every assertion — the shape of the requirement that
+# lto-shapes.ttl gates and that scripts/qa.py already gates in SQL.
+
+lto:sourceUrl
+    a               owl:DatatypeProperty ;
+    rdfs:range      xsd:anyURI ;
+    rdfs:label      "source URL"@en ;
+    rdfs:comment    """The exact citable URL an assertion came from — the API
+        query or record page, not the service homepage. Required on every
+        person, edge, candidate and validation node in an LTO graph. A literal
+        rather than an object property so a shape can require its presence on
+        the node itself without dereferencing anything; use
+        prov:wasDerivedFrom alongside it when the source is also modelled as a
+        resource."""@en .
+
+lto:retrievedAt
+    a               owl:DatatypeProperty ;
+    rdfs:range      xsd:date ;
+    rdfs:label      "retrieved at"@en ;
+    rdfs:comment    """The date the assertion was fetched from lto:sourceUrl.
+        Parallel to prov:generatedAtTime but typed xsd:date to match the
+        catalogue's retrieved_at columns; subproperty status is not asserted
+        because prov:generatedAtTime ranges over xsd:dateTime."""@en .
+
+lto:confidence
+    a               owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:range      xsd:string ;
+    rdfs:label      "confidence"@en ;
+    rdfs:comment    """Curator confidence in the assertion: exactly one of
+        'high', 'medium' or 'low'. A literal from a closed list rather than an
+        object property, so the value maps 1:1 to the confidence column in
+        person_registry / coauthor_edges / person_validation and one SHACL
+        sh:in constraint gates the same vocabulary that scripts/qa.py gates in
+        SQL."""@en .
+
+lto:tier
+    a               owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain     lto:RegistryPerson ;
+    rdfs:range      xsd:string ;
+    rdfs:label      "registry tier"@en ;
+    rdfs:comment    """'core' or 'archive'. The core tier is the subset published
+        to the browser (public/parquet); the archive tier stays in the local
+        catalogue. A publication-channel fact, not a quality judgement."""@en .
+
+#############################################################################
+# 7. Named individuals
+#############################################################################
+
+lto:SitePersonnelCohort a lto:Cohort ; rdfs:label "Facility site personnel"@en ;
+    rdfs:comment "Staffs a catalogued facility (person_registry.is_site_personnel)."@en .
+lto:ScholarCohort       a lto:Cohort ; rdfs:label "Field-wide scholar harvest"@en ;
+    rdfs:comment "In the field-wide researcher harvest (person_registry.is_scholar)."@en .
+
+lto:Pass          a lto:Verdict ; rdfs:label "pass"@en ;
+    rdfs:comment "The identifier resolved and the resolved record agrees with the registry row."@en .
+lto:Fail          a lto:Verdict ; rdfs:label "fail"@en ;
+    rdfs:comment "The identifier resolved to nothing, or to a demonstrably different person."@en .
+lto:NotApplicable a lto:Verdict ; rdfs:label "not applicable"@en ;
+    rdfs:comment """No such identifier exists for this row by construction —
+        an openalex-keyed row has no ORCID for 'orcid-resolves' to check, and
+        a row with no affiliation ROR gives 'ror-resolves' nothing to resolve.
+        Per-check only: because every lto row carries at least one public
+        identifier, a person with NO checkable identifier at all cannot occur
+        (the upstream local-id-only case this verdict was first minted for).
+        Not a defect and never to be reported as one."""@en .
+lto:Unresolved    a lto:Verdict ; rdfs:label "unresolved"@en ;
+    rdfs:comment """The check could not be completed: API error, rate limit, or
+        blocked network. Distinct from lto:Fail because the identifier has not
+        been shown to be wrong."""@en .
+
+lto:OrcidEquality              a lto:MatchMethod ; rdfs:label "ORCID equality"@en ;
+    rdfs:comment "Matched because both records carry the same lto:orcidId."@en .
+lto:OpenAlexAuthorIdEquality   a lto:MatchMethod ; rdfs:label "OpenAlex author id equality"@en ;
+    rdfs:comment "Matched because both records carry the same lto:openAlexAuthorId."@en .
+lto:SameAsClosure              a lto:MatchMethod ; rdfs:label "owl:sameAs closure"@en ;
+    rdfs:comment """Matched by OWL-RL inference over the inverse-functional
+        identity properties in this ontology — for example two nodes linked
+        transitively through a shared ROR-bearing affiliation and a shared
+        ORCID. The reasoner, not a string comparison, produced the
+        merge."""@en .
+
+#############################################################################
+# 8. Environmental scoping — spheres, ecosystem types, Holdridge life zones
+#############################################################################
+# The LTO replacement for the upstream catalogue's coastal-only framing:
+# three SKOS concept schemes that place every facility in environmental
+# space. One skos:Concept per CSV row — skos:prefLabel from `label`,
+# skos:notation from `slug` (the slug is the join key the DuckDB tables use:
+# facility_spheres, facility_ecosystems, facility_life_zones) — with the
+# ENVO crosswalk (data/vocab_crosswalk/envo_crosswalk.csv) mapped
+# match_type exact → skos:exactMatch, close → skos:closeMatch,
+# broad → skos:broadMatch. The concepts REFERENCE ENVO classes; they do not
+# redefine them, and ENVO is not imported. If the CSVs change, regenerate
+# the concept block below to match — the crosswalk file is the source of
+# truth for every ENVO mapping.
+
+lto:hasSphere
+    a               owl:ObjectProperty ;
+    rdfs:domain     lto:Facility ;
+    rdfs:range      lto:Sphere ;
+    rdfs:label      "has sphere"@en ;
+    rdfs:comment    """Places a facility in one of the six spheres (a
+        facility_spheres row). Minted because no reused vocabulary carries
+        "environmental setting of an observing site": dcterms:subject asserts
+        what a document is about, not where a place sits."""@en .
+
+lto:primarySphere
+    a                  owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:subPropertyOf lto:hasSphere ;
+    rdfs:domain        lto:Facility ;
+    rdfs:range         lto:Sphere ;
+    rdfs:label         "primary sphere"@en ;
+    rdfs:comment       """The single sphere a facility is filed under
+        (facility_spheres.role = 'primary'). Functional — exactly one per
+        facility. Secondary spheres are plain lto:hasSphere triples, e.g.
+        Hubbard Brook is primary terrestrial plus secondary atmosphere and
+        freshwater."""@en .
+
+lto:ecosystemType
+    a               owl:ObjectProperty ;
+    rdfs:domain     lto:Facility ;
+    rdfs:range      lto:EcosystemType ;
+    rdfs:label      "ecosystem type"@en ;
+    rdfs:comment    "An ecosystem type the facility observes (a facility_ecosystems row). Any number per facility."@en .
+
+lto:lifeZone
+    a               owl:ObjectProperty ;
+    rdfs:domain     lto:Facility ;
+    rdfs:range      lto:LifeZone ;
+    rdfs:label      "Holdridge life zone"@en ;
+    rdfs:comment    "A Holdridge life zone the facility sits in (a facility_life_zones row). Any number per facility."@en .
+
+lto:holdridgeClass
+    a               owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain     lto:LifeZone ;
+    rdfs:range      xsd:string ;
+    rdfs:label      "Holdridge class"@en ;
+    rdfs:comment    """The coarse Holdridge grouping of a life zone
+        ('temperate-moist', 'subalpine-rain', 'polar', …), from
+        life_zones.holdridge_class. A literal rather than a broader concept
+        because the grouping is an axis of the zone, not a term the catalogue
+        assigns to facilities directly."""@en .
+
+lto:SphereScheme
+    a               skos:ConceptScheme ;
+    skos:prefLabel  "LTO spheres"@en ;
+    dcterms:source  "schema/vocab/spheres.csv" ;
+    rdfs:comment    """The six-sphere model the whole catalogue is organized
+        by. Every facility has exactly one primary sphere and any number of
+        secondary spheres (facility_spheres.role)."""@en .
+
+lto:EcosystemTypeScheme
+    a               skos:ConceptScheme ;
+    skos:prefLabel  "LTO ecosystem types"@en ;
+    dcterms:source  "schema/vocab/ecosystem_types.csv" ;
+    rdfs:comment    """EcoTrends ecosystem types (Peters et al. 2013, table
+        1-2) plus WWF-biome and LTAR extensions. Each concept records its
+        originating classification system in dcterms:source."""@en .
+
+lto:LifeZoneScheme
+    a               skos:ConceptScheme ;
+    skos:prefLabel  "LTO Holdridge life zones"@en ;
+    dcterms:source  "schema/vocab/life_zones.csv" ;
+    rdfs:comment    """Holdridge life zones used in the Lugo et al. 2006 /
+        experimental-forest coverage analysis. Each concept carries its coarse
+        grouping as lto:holdridgeClass."""@en .
+
+# --- Concepts, one per CSV row -------------------------------------------
+
+# -- Spheres (6) ----------------------------------------------------------
+
+lto:atmosphere
+    a               lto:Sphere , skos:Concept ;
+    skos:inScheme   lto:SphereScheme ;
+    skos:topConceptOf lto:SphereScheme ;
+    skos:prefLabel  "Atmosphere"@en ;
+    skos:notation   "atmosphere" ;
+    skos:definition "Long-term observatories of the atmosphere: greenhouse gases, atmospheric chemistry, deposition, radiation, flux towers, and surface meteorology."@en ;
+    skos:exactMatch obo:ENVO_01000267 .
+
+lto:cryosphere
+    a               lto:Sphere , skos:Concept ;
+    skos:inScheme   lto:SphereScheme ;
+    skos:topConceptOf lto:SphereScheme ;
+    skos:prefLabel  "Cryosphere"@en ;
+    skos:notation   "cryosphere" ;
+    skos:definition "Long-term observatories of snow, ice, glaciers, permafrost, and polar systems."@en ;
+    skos:exactMatch obo:ENVO_03000143 .
+
+lto:terrestrial
+    a               lto:Sphere , skos:Concept ;
+    skos:inScheme   lto:SphereScheme ;
+    skos:topConceptOf lto:SphereScheme ;
+    skos:prefLabel  "Terrestrial / Ecological"@en ;
+    skos:notation   "terrestrial" ;
+    skos:definition "Long-term ecological observatories on land: forests, grasslands, shrublands, deserts, alpine, urban — covering the LTER, NEON, USFS EFR, NPS-IM, MAB, NWRS, RNAs, and LTREB networks."@en ;
+    skos:exactMatch obo:ENVO_00000446 .
+
+lto:agriculture
+    a               lto:Sphere , skos:Concept ;
+    skos:inScheme   lto:SphereScheme ;
+    skos:topConceptOf lto:SphereScheme ;
+    skos:prefLabel  "Agriculture"@en ;
+    skos:notation   "agriculture" ;
+    skos:definition "Long-term agroecosystem observatories: USDA-ARS LTAR, ARS rangelands, USDA Climate Hubs, SCAN, Cooperative Extension long-term experiments."@en ;
+    skos:closeMatch obo:ENVO_01000245 .
+
+lto:ocean-estuarine
+    a               lto:Sphere , skos:Concept ;
+    skos:inScheme   lto:SphereScheme ;
+    skos:topConceptOf lto:SphereScheme ;
+    skos:prefLabel  "Aquatic — Ocean & Estuarine"@en ;
+    skos:notation   "ocean-estuarine" ;
+    skos:definition "Long-term ocean and estuarine observatories: IOOS Regional Associations, OOI, NERRS, NMS, NEP, MarineGEO, NPS coastal, NAML labs."@en ;
+    skos:closeMatch obo:ENVO_00000447 .
+
+lto:freshwater
+    a               lto:Sphere , skos:Concept ;
+    skos:inScheme   lto:SphereScheme ;
+    skos:topConceptOf lto:SphereScheme ;
+    skos:prefLabel  "Aquatic — Freshwater"@en ;
+    skos:notation   "freshwater" ;
+    skos:definition "Long-term freshwater observatories: USGS NWIS / WEBB / Hydrologic Benchmark Network, GLEON, lake LTERs, watershed experiments, EPA NARS."@en ;
+    skos:exactMatch obo:ENVO_00000873 .
+
+# -- Ecosystem types (14) -------------------------------------------------
+
+lto:arctic-alpine
+    a               lto:EcosystemType , skos:Concept ;
+    skos:inScheme   lto:EcosystemTypeScheme ;
+    skos:topConceptOf lto:EcosystemTypeScheme ;
+    skos:prefLabel  "Arctic and alpine"@en ;
+    skos:notation   "arctic-alpine" ;
+    skos:definition "Tundra and alpine systems including Antarctic terrestrial dry-valley sites."@en ;
+    dcterms:source  "EcoTrends" ;
+    skos:closeMatch obo:ENVO_01000180 .
+
+lto:arid-land
+    a               lto:EcosystemType , skos:Concept ;
+    skos:inScheme   lto:EcosystemTypeScheme ;
+    skos:topConceptOf lto:EcosystemTypeScheme ;
+    skos:prefLabel  "Arid land"@en ;
+    skos:notation   "arid-land" ;
+    skos:definition "Hot and cold deserts, semi-arid shrublands."@en ;
+    dcterms:source  "EcoTrends" ;
+    skos:closeMatch obo:ENVO_01000179 .
+
+lto:coastal
+    a               lto:EcosystemType , skos:Concept ;
+    skos:inScheme   lto:EcosystemTypeScheme ;
+    skos:topConceptOf lto:EcosystemTypeScheme ;
+    skos:prefLabel  "Coastal"@en ;
+    skos:notation   "coastal" ;
+    skos:definition "Coastal and estuarine systems including coral-reef and kelp-forest sites."@en ;
+    dcterms:source  "EcoTrends" ;
+    skos:broadMatch obo:ENVO_00000447 .
+
+lto:eastern-forest
+    a               lto:EcosystemType , skos:Concept ;
+    skos:inScheme   lto:EcosystemTypeScheme ;
+    skos:topConceptOf lto:EcosystemTypeScheme ;
+    skos:prefLabel  "Eastern forest"@en ;
+    skos:notation   "eastern-forest" ;
+    skos:definition "Mixed deciduous and pine forests east of the Mississippi."@en ;
+    dcterms:source  "EcoTrends" ;
+    skos:closeMatch obo:ENVO_01000212 .
+
+lto:western-forest
+    a               lto:EcosystemType , skos:Concept ;
+    skos:inScheme   lto:EcosystemTypeScheme ;
+    skos:topConceptOf lto:EcosystemTypeScheme ;
+    skos:prefLabel  "Western forest"@en ;
+    skos:notation   "western-forest" ;
+    skos:definition "Conifer-dominated forests west of the Mississippi, including Pacific Northwest old-growth."@en ;
+    dcterms:source  "EcoTrends" ;
+    skos:closeMatch obo:ENVO_01000211 .
+
+lto:grassland-savanna
+    a               lto:EcosystemType , skos:Concept ;
+    skos:inScheme   lto:EcosystemTypeScheme ;
+    skos:topConceptOf lto:EcosystemTypeScheme ;
+    skos:prefLabel  "Temperate grassland and savanna"@en ;
+    skos:notation   "grassland-savanna" ;
+    skos:definition "Tallgrass, mixedgrass, and shortgrass prairie; oak savanna."@en ;
+    dcterms:source  "EcoTrends" ;
+    skos:closeMatch obo:ENVO_01000193 .
+
+lto:urban
+    a               lto:EcosystemType , skos:Concept ;
+    skos:inScheme   lto:EcosystemTypeScheme ;
+    skos:topConceptOf lto:EcosystemTypeScheme ;
+    skos:prefLabel  "Urban"@en ;
+    skos:notation   "urban" ;
+    skos:definition "Urban ecosystems with associated suburban and exurban gradient."@en ;
+    dcterms:source  "EcoTrends" ;
+    skos:exactMatch obo:ENVO_01000249 .
+
+lto:boreal-forest
+    a               lto:EcosystemType , skos:Concept ;
+    skos:inScheme   lto:EcosystemTypeScheme ;
+    skos:topConceptOf lto:EcosystemTypeScheme ;
+    skos:prefLabel  "Boreal forest"@en ;
+    skos:notation   "boreal-forest" ;
+    skos:definition "Taiga / boreal coniferous forest, primarily Alaska."@en ;
+    dcterms:source  "WWF biome" ;
+    skos:exactMatch obo:ENVO_01000250 .
+
+lto:tropical-moist-forest
+    a               lto:EcosystemType , skos:Concept ;
+    skos:inScheme   lto:EcosystemTypeScheme ;
+    skos:topConceptOf lto:EcosystemTypeScheme ;
+    skos:prefLabel  "Tropical / subtropical moist forest"@en ;
+    skos:notation   "tropical-moist-forest" ;
+    skos:definition "Caribbean and Pacific-island moist forest (e.g. Luquillo)."@en ;
+    dcterms:source  "WWF biome" ;
+    skos:closeMatch obo:ENVO_01000228 .
+
+lto:freshwater-lake
+    a               lto:EcosystemType , skos:Concept ;
+    skos:inScheme   lto:EcosystemTypeScheme ;
+    skos:topConceptOf lto:EcosystemTypeScheme ;
+    skos:prefLabel  "Freshwater lake"@en ;
+    skos:notation   "freshwater-lake" ;
+    skos:definition "Inland temperate and subarctic lakes."@en ;
+    dcterms:source  "EcoTrends" ;
+    skos:exactMatch obo:ENVO_01000252 .
+
+lto:freshwater-stream
+    a               lto:EcosystemType , skos:Concept ;
+    skos:inScheme   lto:EcosystemTypeScheme ;
+    skos:topConceptOf lto:EcosystemTypeScheme ;
+    skos:prefLabel  "Freshwater stream / watershed"@en ;
+    skos:notation   "freshwater-stream" ;
+    skos:definition "Headwater catchments and gauged watersheds."@en ;
+    dcterms:source  "EcoTrends" ;
+    skos:closeMatch obo:ENVO_01000253 .
+
+lto:wetland
+    a               lto:EcosystemType , skos:Concept ;
+    skos:inScheme   lto:EcosystemTypeScheme ;
+    skos:topConceptOf lto:EcosystemTypeScheme ;
+    skos:prefLabel  "Wetland"@en ;
+    skos:notation   "wetland" ;
+    skos:definition "Inland and coastal wetlands."@en ;
+    dcterms:source  "WWF biome" ;
+    skos:exactMatch obo:ENVO_01001209 .
+
+lto:agroecosystem
+    a               lto:EcosystemType , skos:Concept ;
+    skos:inScheme   lto:EcosystemTypeScheme ;
+    skos:topConceptOf lto:EcosystemTypeScheme ;
+    skos:prefLabel  "Agroecosystem"@en ;
+    skos:notation   "agroecosystem" ;
+    skos:definition "Cropping or rangeland systems under long-term agricultural management."@en ;
+    dcterms:source  "LTAR" ;
+    skos:broadMatch obo:ENVO_01000219 .
+
+lto:glacier-icefield
+    a               lto:EcosystemType , skos:Concept ;
+    skos:inScheme   lto:EcosystemTypeScheme ;
+    skos:topConceptOf lto:EcosystemTypeScheme ;
+    skos:prefLabel  "Glacier / icefield"@en ;
+    skos:notation   "glacier-icefield" ;
+    skos:definition "Glaciers, icefields, and ice sheets monitored as discrete systems."@en ;
+    dcterms:source  "custom" ;
+    skos:closeMatch obo:ENVO_00000133 .
+
+# -- Holdridge life zones (20) --------------------------------------------
+
+lto:warm-temperate-moist-forest
+    a               lto:LifeZone , skos:Concept ;
+    skos:inScheme   lto:LifeZoneScheme ;
+    skos:topConceptOf lto:LifeZoneScheme ;
+    skos:prefLabel  "Warm temperate moist forest"@en ;
+    skos:notation   "warm-temperate-moist-forest" ;
+    lto:holdridgeClass "temperate-moist" ;
+    skos:closeMatch obo:ENVO_01000202 .
+
+lto:cool-temperate-moist-forest
+    a               lto:LifeZone , skos:Concept ;
+    skos:inScheme   lto:LifeZoneScheme ;
+    skos:topConceptOf lto:LifeZoneScheme ;
+    skos:prefLabel  "Cool temperate moist forest"@en ;
+    skos:notation   "cool-temperate-moist-forest" ;
+    lto:holdridgeClass "temperate-moist" ;
+    skos:closeMatch obo:ENVO_01000212 .
+
+lto:warm-temperate-dry-forest
+    a               lto:LifeZone , skos:Concept ;
+    skos:inScheme   lto:LifeZoneScheme ;
+    skos:topConceptOf lto:LifeZoneScheme ;
+    skos:prefLabel  "Warm temperate dry forest"@en ;
+    skos:notation   "warm-temperate-dry-forest" ;
+    lto:holdridgeClass "temperate-dry" ;
+    skos:closeMatch obo:ENVO_01000395 .
+
+lto:warm-temperate-thorn-steppe
+    a               lto:LifeZone , skos:Concept ;
+    skos:inScheme   lto:LifeZoneScheme ;
+    skos:topConceptOf lto:LifeZoneScheme ;
+    skos:prefLabel  "Warm temperate thorn steppe"@en ;
+    skos:notation   "warm-temperate-thorn-steppe" ;
+    lto:holdridgeClass "temperate-dry" ;
+    skos:closeMatch obo:ENVO_01000215 .
+
+lto:cool-temperate-wet-forest
+    a               lto:LifeZone , skos:Concept ;
+    skos:inScheme   lto:LifeZoneScheme ;
+    skos:topConceptOf lto:LifeZoneScheme ;
+    skos:prefLabel  "Cool temperate wet forest"@en ;
+    skos:notation   "cool-temperate-wet-forest" ;
+    lto:holdridgeClass "temperate-wet" ;
+    skos:closeMatch obo:ENVO_01000211 .
+
+lto:warm-temperate-montane-moist-forest
+    a               lto:LifeZone , skos:Concept ;
+    skos:inScheme   lto:LifeZoneScheme ;
+    skos:topConceptOf lto:LifeZoneScheme ;
+    skos:prefLabel  "Warm temperate montane moist forest"@en ;
+    skos:notation   "warm-temperate-montane-moist-forest" ;
+    lto:holdridgeClass "montane-moist" ;
+    skos:broadMatch obo:ENVO_01001836 .
+
+lto:warm-temperate-subalpine-wet-forest
+    a               lto:LifeZone , skos:Concept ;
+    skos:inScheme   lto:LifeZoneScheme ;
+    skos:topConceptOf lto:LifeZoneScheme ;
+    skos:prefLabel  "Warm temperate subalpine wet forest"@en ;
+    skos:notation   "warm-temperate-subalpine-wet-forest" ;
+    lto:holdridgeClass "subalpine-wet" ;
+    skos:broadMatch obo:ENVO_01001837 .
+
+lto:cool-temperate-desert-scrub
+    a               lto:LifeZone , skos:Concept ;
+    skos:inScheme   lto:LifeZoneScheme ;
+    skos:topConceptOf lto:LifeZoneScheme ;
+    skos:prefLabel  "Cool temperate desert scrub"@en ;
+    skos:notation   "cool-temperate-desert-scrub" ;
+    lto:holdridgeClass "desert" ;
+    skos:closeMatch obo:ENVO_01000242 .
+
+lto:cool-temperate-subalpine-wet-forest
+    a               lto:LifeZone , skos:Concept ;
+    skos:inScheme   lto:LifeZoneScheme ;
+    skos:topConceptOf lto:LifeZoneScheme ;
+    skos:prefLabel  "Cool temperate subalpine wet forest"@en ;
+    skos:notation   "cool-temperate-subalpine-wet-forest" ;
+    lto:holdridgeClass "subalpine-wet" ;
+    skos:broadMatch obo:ENVO_01001837 .
+
+lto:cool-temperate-subalpine-rain-forest
+    a               lto:LifeZone , skos:Concept ;
+    skos:inScheme   lto:LifeZoneScheme ;
+    skos:topConceptOf lto:LifeZoneScheme ;
+    skos:prefLabel  "Cool temperate subalpine rain forest"@en ;
+    skos:notation   "cool-temperate-subalpine-rain-forest" ;
+    lto:holdridgeClass "subalpine-rain" ;
+    skos:broadMatch obo:ENVO_01001837 .
+
+lto:warm-temperate-montane-wet-forest
+    a               lto:LifeZone , skos:Concept ;
+    skos:inScheme   lto:LifeZoneScheme ;
+    skos:topConceptOf lto:LifeZoneScheme ;
+    skos:prefLabel  "Warm temperate montane wet forest"@en ;
+    skos:notation   "warm-temperate-montane-wet-forest" ;
+    lto:holdridgeClass "montane-wet" ;
+    skos:broadMatch obo:ENVO_01001836 .
+
+lto:warm-temperate-alpine-rain-tundra
+    a               lto:LifeZone , skos:Concept ;
+    skos:inScheme   lto:LifeZoneScheme ;
+    skos:topConceptOf lto:LifeZoneScheme ;
+    skos:prefLabel  "Warm temperate alpine rain tundra"@en ;
+    skos:notation   "warm-temperate-alpine-rain-tundra" ;
+    lto:holdridgeClass "alpine-tundra" ;
+    skos:closeMatch obo:ENVO_01001505 .
+
+lto:cool-temperate-rain-forest
+    a               lto:LifeZone , skos:Concept ;
+    skos:inScheme   lto:LifeZoneScheme ;
+    skos:topConceptOf lto:LifeZoneScheme ;
+    skos:prefLabel  "Cool temperate rain forest"@en ;
+    skos:notation   "cool-temperate-rain-forest" ;
+    lto:holdridgeClass "temperate-rain" ;
+    skos:closeMatch obo:ENVO_01000211 .
+
+lto:warm-temperate-subalpine-rain-forest
+    a               lto:LifeZone , skos:Concept ;
+    skos:inScheme   lto:LifeZoneScheme ;
+    skos:topConceptOf lto:LifeZoneScheme ;
+    skos:prefLabel  "Warm temperate subalpine rain forest"@en ;
+    skos:notation   "warm-temperate-subalpine-rain-forest" ;
+    lto:holdridgeClass "subalpine-rain" ;
+    skos:broadMatch obo:ENVO_01001837 .
+
+lto:subtropical-moist-forest
+    a               lto:LifeZone , skos:Concept ;
+    skos:inScheme   lto:LifeZoneScheme ;
+    skos:topConceptOf lto:LifeZoneScheme ;
+    skos:prefLabel  "Subtropical moist forest"@en ;
+    skos:notation   "subtropical-moist-forest" ;
+    lto:holdridgeClass "subtropical-moist" ;
+    skos:closeMatch obo:ENVO_01000226 .
+
+lto:subtropical-dry-forest
+    a               lto:LifeZone , skos:Concept ;
+    skos:inScheme   lto:LifeZoneScheme ;
+    skos:topConceptOf lto:LifeZoneScheme ;
+    skos:prefLabel  "Subtropical dry forest"@en ;
+    skos:notation   "subtropical-dry-forest" ;
+    lto:holdridgeClass "subtropical-dry" ;
+    skos:closeMatch obo:ENVO_01000225 .
+
+lto:subtropical-rain-forest
+    a               lto:LifeZone , skos:Concept ;
+    skos:inScheme   lto:LifeZoneScheme ;
+    skos:topConceptOf lto:LifeZoneScheme ;
+    skos:prefLabel  "Subtropical rain forest"@en ;
+    skos:notation   "subtropical-rain-forest" ;
+    lto:holdridgeClass "subtropical-rain" ;
+    skos:broadMatch obo:ENVO_01000226 .
+
+lto:boreal-moist-forest
+    a               lto:LifeZone , skos:Concept ;
+    skos:inScheme   lto:LifeZoneScheme ;
+    skos:topConceptOf lto:LifeZoneScheme ;
+    skos:prefLabel  "Boreal moist forest"@en ;
+    skos:notation   "boreal-moist-forest" ;
+    lto:holdridgeClass "boreal" ;
+    skos:broadMatch obo:ENVO_01000250 .
+
+lto:boreal-wet-forest
+    a               lto:LifeZone , skos:Concept ;
+    skos:inScheme   lto:LifeZoneScheme ;
+    skos:topConceptOf lto:LifeZoneScheme ;
+    skos:prefLabel  "Boreal wet forest"@en ;
+    skos:notation   "boreal-wet-forest" ;
+    lto:holdridgeClass "boreal" ;
+    skos:broadMatch obo:ENVO_01000250 .
+
+lto:polar-desert
+    a               lto:LifeZone , skos:Concept ;
+    skos:inScheme   lto:LifeZoneScheme ;
+    skos:topConceptOf lto:LifeZoneScheme ;
+    skos:prefLabel  "Polar desert"@en ;
+    skos:notation   "polar-desert" ;
+    lto:holdridgeClass "polar" ;
+    skos:exactMatch obo:ENVO_01000186 .

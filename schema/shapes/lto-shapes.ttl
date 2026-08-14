@@ -1,0 +1,553 @@
+@prefix lto:   <https://tyson-swetnam.github.io/lto/ns/lto#> .
+@prefix sh:    <http://www.w3.org/ns/shacl#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf:  <http://xmlns.com/foaf/0.1/> .
+@prefix bibo:  <http://purl.org/ontology/bibo/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+#############################################################################
+# lto-shapes.ttl — the project non-negotiables, as machine-checkable SHACL.
+#
+# Runs STANDALONE against a data graph:
+#
+#     pyshacl -s schema/shapes/lto-shapes.ttl -f human data.ttl
+#     # or, in Python:
+#     conforms, results_graph, text = pyshacl.validate(
+#         data_graph, shacl_graph="schema/shapes/lto-shapes.ttl",
+#         inference="none", advanced=True)
+#
+# No owl:imports resolution, no reasoner and no network access are required:
+# every shape targets by rdf:type or by sh:targetObjectsOf, so the data graph's
+# own type triples are sufficient. Pass inference='rdfs' or 'owlrl' only when
+# you additionally want the owl:sameAs closure from lto.owl applied first.
+#
+# Severity policy: anything that would let a wrong or uncitable personnel
+# record into the catalogue is sh:Violation (blocks an ingest). Things that are
+# merely thin — a source_url pointing at a site root rather than a record, a
+# missing exemplar work when other evidence exists — are sh:Warning, so they
+# surface in the report without blocking a legitimate load.
+#
+# These shapes encode the same invariants scripts/qa.py checks in SQL. qa.py
+# remains the correctness gate for the DuckDB/parquet catalogue; these shapes
+# are the gate for anything arriving as RDF, and the two must not drift.
+#############################################################################
+
+<https://tyson-swetnam.github.io/lto/ns/lto-shapes>
+    a               owl:Ontology ;
+    dcterms:title   "LTO registry SHACL shapes"@en ;
+    rdfs:comment    """Validates: (1) every person node carries at least one
+        persistent identifier, a citable source_url and a confidence in
+        {high,medium,low}; (2) every co-authorship edge has a provenance path
+        back to an identified work; (3) no identity match is made by name
+        alone."""@en ;
+    owl:versionInfo "0.1.0" ;
+    # Prefix declarations for the sh:sparql constraints below. SHACL-SPARQL
+    # does not inherit the Turtle @prefix directives, so every prefix used in a
+    # sh:select must be declared here and referenced via sh:prefixes.
+    sh:declare [ sh:prefix "lto"  ; sh:namespace "https://tyson-swetnam.github.io/lto/ns/lto#"^^xsd:anyURI ] ;
+    sh:declare [ sh:prefix "foaf" ; sh:namespace "http://xmlns.com/foaf/0.1/"^^xsd:anyURI ] ;
+    sh:declare [ sh:prefix "rdf"  ; sh:namespace "http://www.w3.org/1999/02/22-rdf-syntax-ns#"^^xsd:anyURI ] ;
+    sh:declare [ sh:prefix "xsd"  ; sh:namespace "http://www.w3.org/2001/XMLSchema#"^^xsd:anyURI ] .
+
+#############################################################################
+# 1. Person nodes — the three non-negotiables
+#############################################################################
+
+lto:RegistryPersonShape
+    a                 sh:NodeShape ;
+    sh:targetClass    lto:RegistryPerson ;
+    rdfs:label        "Registry person shape"@en ;
+    rdfs:comment      """A registry person must be re-resolvable, citable and
+        rated. These are the project's three hard requirements; each is a
+        separate constraint below so a report names exactly which one failed."""@en ;
+
+    # --- (a) at least one persistent identifier -----------------------------
+    # sh:or over the two admissible identity properties. Unlike upstream
+    # cod-kmap there is no local-identifier escape hatch here: every lto
+    # registry row carries a public ORCID or OpenAlex author id BY
+    # CONSTRUCTION — canonical_id is derived from whichever is present
+    # ('orcid:…' else 'openalex:A…') — so a person with neither is always a
+    # defect, never a documented internal-identity case. lto:rorId does not
+    # count either: it identifies the affiliation, not the person, and it is
+    # not inverse-functional in lto.owl, so it never merges two people.
+    sh:or (
+        [ sh:path lto:orcidId          ; sh:minCount 1 ]
+        [ sh:path lto:openAlexAuthorId ; sh:minCount 1 ]
+    ) ;
+    sh:message        "A person node must carry at least one public persistent identifier (lto:orcidId or lto:openAlexAuthorId)." ;
+    sh:severity       sh:Violation ;
+
+    # --- (b) a citable source_url ------------------------------------------
+    # Two admissible forms, and the second one is not a loophole:
+    #
+    #   1. an absolute http(s) URL — an external, publicly citable record;
+    #   2. 'lto:<seed_table>' — the internal provenance form written by
+    #      scripts/build_person_registry.py for rows seeded from the `people`
+    #      facility directory, a committed layer that never touches data/raw.
+    #      Measured against the real core tier on 2026-08-13: 116 of 116 rows
+    #      carry this form ('lto:people') — the registry is entirely
+    #      seed-derived until the field-wide OpenAlex harvest lands
+    #      externally-cited rows. It IS a provenance path — it names the
+    #      committed seed table the row came from, which is in the repository
+    #      and diffable — it is just not an external citation. Rejecting it
+    #      outright would fail every seed-derived row and would push someone
+    #      to paste in a plausible-looking institutional URL that nobody
+    #      verified, which is worse provenance than an honest internal
+    #      pointer.
+    #
+    # lto:InternalProvenanceShape below raises a Warning on form 2, so the count
+    # stays visible in every report and can be driven down deliberately.
+    sh:property [
+        sh:path        lto:sourceUrl ;
+        sh:name        "source URL" ;
+        sh:minCount    1 ;
+        sh:maxCount    1 ;
+        sh:nodeKind    sh:IRIOrLiteral ;
+        sh:pattern     "^(https?://[^\\s]+|lto:[a-z_]+)$" ;
+        sh:message     "Every person node needs exactly one lto:sourceUrl: an absolute http(s) URL, or 'lto:<seed_table>' for a row seeded from a committed repo file." ;
+        sh:severity    sh:Violation ;
+    ] ;
+
+    # --- (c) a confidence rating from the closed vocabulary ----------------
+    sh:property [
+        sh:path        lto:confidence ;
+        sh:name        "confidence" ;
+        sh:minCount    1 ;
+        sh:maxCount    1 ;
+        sh:datatype    xsd:string ;
+        sh:in          ( "high" "medium" "low" ) ;
+        sh:message     "lto:confidence is required and must be exactly one of \"high\", \"medium\", \"low\"." ;
+        sh:severity    sh:Violation ;
+    ] ;
+
+    # --- retrieval date ----------------------------------------------------
+    sh:property [
+        sh:path        lto:retrievedAt ;
+        sh:name        "retrieved at" ;
+        sh:minCount    1 ;
+        sh:maxCount    1 ;
+        sh:datatype    xsd:date ;
+        sh:message     "lto:retrievedAt (xsd:date) is required: a source_url without a retrieval date is not reproducible provenance." ;
+        sh:severity    sh:Violation ;
+    ] ;
+
+    # --- identifier syntax, when present -----------------------------------
+    # Bare 16-digit ORCID with the ISO 7064 mod-11-2 check character (X allowed
+    # in the last position). Catches transposition and a pasted https://orcid.org/ prefix.
+    sh:property [
+        sh:path        lto:orcidId ;
+        sh:name        "ORCID iD" ;
+        sh:maxCount    1 ;
+        sh:pattern     "^[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{3}[0-9X]$" ;
+        sh:message     "lto:orcidId must be a bare 16-digit ORCID (0000-0002-1825-0097), not a URL." ;
+        sh:severity    sh:Violation ;
+    ] ;
+    sh:property [
+        sh:path        lto:openAlexAuthorId ;
+        sh:name        "OpenAlex author id" ;
+        sh:maxCount    1 ;
+        sh:pattern     "^A[0-9]+$" ;
+        sh:message     "lto:openAlexAuthorId must be a bare OpenAlex author id (A5023888391), not a URL." ;
+        sh:severity    sh:Violation ;
+    ] ;
+    sh:property [
+        sh:path        lto:rorId ;
+        sh:name        "ROR id" ;
+        sh:maxCount    1 ;
+        sh:pattern     "^(https://ror\\.org/)?0[0-9a-hjkmnp-z]{6}[0-9]{2}$" ;
+        sh:message     "lto:rorId must be a ROR identifier (03m2x1q45 or https://ror.org/03m2x1q45)." ;
+        sh:severity    sh:Violation ;
+    ] ;
+    sh:property [
+        sh:path        lto:tier ;
+        sh:maxCount    1 ;
+        sh:in          ( "core" "archive" ) ;
+        sh:message     "lto:tier must be \"core\" or \"archive\"." ;
+        sh:severity    sh:Violation ;
+    ] .
+
+# A source_url that points at a site root rather than a record is technically
+# citable but not much use to a reviewer. Warning, not violation: some
+# legitimate institutional sources really are a landing page.
+lto:SourceUrlSpecificityShape
+    a                  sh:NodeShape ;
+    sh:targetObjectsOf lto:sourceUrl ;
+    rdfs:label         "Source URL specificity"@en ;
+    rdfs:comment       "Prefers a source_url with a path or query over a bare domain root."@en ;
+    sh:pattern         "^https?://[^/]+/.+" ;
+    sh:message         "lto:sourceUrl points at a site root; prefer the URL of the specific record." ;
+    sh:severity        sh:Warning .
+
+# The internal 'lto:<seed_table>' provenance form is accepted (see the
+# comment on lto:RegistryPersonShape) but reported, so the seed-derived
+# population stays countable rather than becoming invisible. Warning, not
+# violation: these rows have real, diffable provenance in the repository, just
+# not an external citation. Measured 116 of 116 core rows on 2026-08-13.
+lto:InternalProvenanceShape
+    a                  sh:NodeShape ;
+    sh:targetObjectsOf lto:sourceUrl ;
+    rdfs:label         "Internal seed provenance"@en ;
+    rdfs:comment       """Flags a source_url that resolves to a committed seed
+        file rather than an external record, so the count of
+        internally-provenanced rows is visible in every validation report."""@en ;
+    sh:not [ sh:pattern "^lto:" ] ;
+    sh:message         "lto:sourceUrl is internal seed provenance ('lto:<seed_table>'), not an external citation. Acceptable, but an external source_url is preferred where one exists." ;
+    sh:severity        sh:Warning .
+
+# NOTE: upstream cod-kmap defines cod:LocalIdentityExclusivityShape here — a
+# guard against a person carrying both a public identifier and a codp: local
+# identity. lto has no local-identifier form at all (every row carries a
+# public ORCID or OpenAlex author id by construction), so the half-finished-
+# promotion defect cannot be expressed and the shape is intentionally absent.
+
+#############################################################################
+# 2. Co-author edges — a provenance path back to a work
+#############################################################################
+
+lto:CoauthorEdgeShape
+    a                 sh:NodeShape ;
+    sh:targetClass    lto:CoauthorEdge ;
+    rdfs:label        "Co-author edge shape"@en ;
+    rdfs:comment      """An edge is admissible only if it names the work that
+        proves it and the identifier-equality rule that matched its endpoints.
+        This is the shape that makes "every co-author edge needs a provenance
+        path back to a work" checkable."""@en ;
+
+    sh:property [
+        sh:path        lto:edgeParticipant ;
+        sh:name        "edge participant" ;
+        sh:minCount    2 ;
+        sh:maxCount    2 ;
+        sh:class       foaf:Person ;
+        sh:message     "A co-author edge must have exactly two lto:edgeParticipant endpoints, each a foaf:Person." ;
+        sh:severity    sh:Violation ;
+    ] ;
+
+    # THE provenance requirement. lto:exemplarWork is a subproperty of
+    # lto:evidenceWork in lto.owl, but these shapes run without a reasoner, so
+    # the constraint is written over an sh:or of both paths rather than relying
+    # on subproperty entailment.
+    sh:or (
+        [ sh:path lto:evidenceWork ; sh:minCount 1 ]
+        [ sh:path lto:exemplarWork ; sh:minCount 1 ]
+    ) ;
+    sh:message        "A co-author edge must cite at least one work (lto:evidenceWork or lto:exemplarWork) that both endpoints are credited on — an edge with no provenance path to a work is not admissible." ;
+    sh:severity       sh:Violation ;
+
+    sh:property [
+        sh:path        lto:coPublicationCount ;
+        sh:name        "co-publication count" ;
+        sh:minCount    1 ;
+        sh:maxCount    1 ;
+        # Bounded, not datatype-pinned. sh:datatype xsd:nonNegativeInteger
+        # would reject the plain Turtle literal `3` (which parses as
+        # xsd:integer) and every integer arriving from a parquet round-trip as
+        # xsd:int / xsd:long — a false positive on correct data. SHACL numeric
+        # comparison spans the numeric datatypes, so the bound is the real
+        # constraint and sh:nodeKind keeps out IRIs and blank nodes.
+        sh:nodeKind    sh:Literal ;
+        sh:minInclusive 1 ;
+        sh:message     "lto:coPublicationCount is required and must be >= 1." ;
+        sh:severity    sh:Violation ;
+    ] ;
+
+    # Identifier-based match methods only. lto.owl closes lto:MatchMethod with
+    # owl:oneOf; this restates it as sh:in so it is caught without a reasoner.
+    # There is no name-similarity member and none may be added.
+    sh:property [
+        sh:path        lto:matchMethod ;
+        sh:name        "match method" ;
+        sh:minCount    1 ;
+        sh:maxCount    1 ;
+        sh:in          ( lto:OrcidEquality lto:OpenAlexAuthorIdEquality lto:SameAsClosure ) ;
+        sh:message     "lto:matchMethod must be one of lto:OrcidEquality, lto:OpenAlexAuthorIdEquality, lto:SameAsClosure. Name similarity is never an admissible match method." ;
+        sh:severity    sh:Violation ;
+    ] ;
+
+    sh:property [
+        sh:path        lto:sourceUrl ;
+        sh:minCount    1 ;
+        sh:pattern     "^https?://[^\\s]+$" ;
+        sh:message     "A co-author edge needs a citable lto:sourceUrl (the works query that produced it)." ;
+        sh:severity    sh:Violation ;
+    ] ;
+    sh:property [
+        sh:path        lto:retrievedAt ;
+        sh:minCount    1 ;
+        sh:datatype    xsd:date ;
+        sh:message     "A co-author edge needs lto:retrievedAt (xsd:date)." ;
+        sh:severity    sh:Violation ;
+    ] ;
+    sh:property [
+        sh:path        lto:confidence ;
+        sh:minCount    1 ;
+        sh:maxCount    1 ;
+        sh:in          ( "high" "medium" "low" ) ;
+        sh:message     "A co-author edge needs lto:confidence in {high, medium, low}." ;
+        sh:severity    sh:Violation ;
+    ] ;
+    sh:property [
+        sh:path        lto:exemplarWork ;
+        sh:maxCount    1 ;
+        sh:message     "At most one lto:exemplarWork per edge (it is functional in lto.owl)." ;
+        sh:severity    sh:Violation ;
+    ] .
+
+# The cited work must itself be identified, or the "provenance path back to a
+# work" dead-ends at an unresolvable node. Targets the OBJECTS of the evidence
+# properties, so it applies whether or not the work carries an rdf:type.
+lto:EvidenceWorkShape
+    a                  sh:NodeShape ;
+    sh:targetObjectsOf lto:evidenceWork ;
+    rdfs:label         "Evidence work shape"@en ;
+    rdfs:comment       """A work cited as edge evidence must carry a persistent
+        identifier, so a reviewer can fetch it in one request and confirm both
+        endpoints are on the author list."""@en ;
+    sh:or (
+        [ sh:path lto:openAlexWorkId ; sh:minCount 1 ]
+        [ sh:path lto:doi            ; sh:minCount 1 ]
+    ) ;
+    sh:message         "A work cited as co-authorship evidence must carry lto:openAlexWorkId or lto:doi — an unidentified work is not a provenance path." ;
+    sh:severity        sh:Violation .
+
+lto:ExemplarWorkShape
+    a                  sh:NodeShape ;
+    sh:targetObjectsOf lto:exemplarWork ;
+    rdfs:label         "Exemplar work shape"@en ;
+    rdfs:comment       "Same identifier requirement as lto:EvidenceWorkShape, applied to the nominated exemplar."@en ;
+    sh:or (
+        [ sh:path lto:openAlexWorkId ; sh:minCount 1 ]
+        [ sh:path lto:doi            ; sh:minCount 1 ]
+    ) ;
+    sh:message         "An lto:exemplarWork must carry lto:openAlexWorkId or lto:doi." ;
+    sh:severity        sh:Violation .
+
+# lto:coauthorOf is the traversal shortcut and carries no provenance. Asserting
+# it without a backing lto:CoauthorEdge reintroduces unevidenced edges by the
+# back door.
+lto:CoauthorShortcutShape
+    a                 sh:NodeShape ;
+    sh:targetSubjectsOf lto:coauthorOf ;
+    rdfs:label        "Co-author shortcut needs a backing edge"@en ;
+    rdfs:comment      """Every lto:coauthorOf assertion must be accompanied by a
+        lto:CoauthorEdge naming both endpoints, so the shortcut can never be the
+        only record of a collaboration."""@en ;
+    sh:sparql [
+        sh:message    "lto:coauthorOf asserted with no backing lto:CoauthorEdge naming both people — the shortcut carries no provenance and must not stand alone." ;
+        sh:severity   sh:Violation ;
+        sh:prefixes   <https://tyson-swetnam.github.io/lto/ns/lto-shapes> ;
+        sh:select     """
+            SELECT $this ?other WHERE {
+                $this lto:coauthorOf ?other .
+                FILTER NOT EXISTS {
+                    ?edge a lto:CoauthorEdge ;
+                          lto:edgeParticipant $this , ?other .
+                }
+            }
+        """ ;
+    ] .
+
+#############################################################################
+# 3. Co-author candidates — no bare-name proposals
+#############################################################################
+
+lto:CoauthorCandidateShape
+    a                 sh:NodeShape ;
+    sh:targetClass    lto:CoauthorCandidate ;
+    rdfs:label        "Co-author candidate shape"@en ;
+    rdfs:comment      """A candidate must arrive with a PUBLIC persistent
+        identifier — a candidate is by definition a publishing researcher
+        reached through a work, and a named-but-unidentified candidate is
+        exactly what an eager resolver later attaches to the wrong person."""@en ;
+    sh:or (
+        [ sh:path lto:orcidId          ; sh:minCount 1 ]
+        [ sh:path lto:openAlexAuthorId ; sh:minCount 1 ]
+    ) ;
+    sh:message        "A co-author candidate must carry lto:orcidId or lto:openAlexAuthorId. A bare name is not an admissible proposal." ;
+    sh:severity       sh:Violation ;
+
+    sh:property [
+        sh:path        lto:seenWith ;
+        sh:minCount    1 ;
+        sh:class       lto:RegistryPerson ;
+        sh:message     "A candidate must record which registry person surfaced them (lto:seenWith)." ;
+        sh:severity    sh:Violation ;
+    ] ;
+    sh:property [
+        sh:path        lto:decision ;
+        sh:minCount    1 ;
+        sh:maxCount    1 ;
+        sh:in          ( "pending" "accepted" "rejected" "deferred" ) ;
+        sh:message     "lto:decision must be one of pending, accepted, rejected, deferred." ;
+        sh:severity    sh:Violation ;
+    ] ;
+    sh:property [
+        sh:path        lto:sourceUrl ;
+        sh:minCount    1 ;
+        sh:pattern     "^https?://[^\\s]+$" ;
+        sh:message     "A candidate needs a citable lto:sourceUrl." ;
+        sh:severity    sh:Violation ;
+    ] ;
+    sh:property [
+        sh:path        lto:confidence ;
+        sh:minCount    1 ;
+        sh:in          ( "high" "medium" "low" ) ;
+        sh:message     "A candidate needs lto:confidence in {high, medium, low} (confidence in the IDENTITY, not in the decision to admit them)." ;
+        sh:severity    sh:Violation ;
+    ] ;
+
+    # A rejection or deferral must say why, so a dropped person leaves a reason
+    # behind and the same candidate is not re-proposed next sweep.
+    sh:sparql [
+        sh:message    "A candidate with decision 'rejected' or 'deferred' must carry lto:disambiguationEvidence explaining why." ;
+        sh:severity   sh:Violation ;
+        sh:prefixes   <https://tyson-swetnam.github.io/lto/ns/lto-shapes> ;
+        sh:select     """
+            SELECT $this WHERE {
+                $this lto:decision ?d .
+                FILTER (?d IN ("rejected", "deferred"))
+                FILTER NOT EXISTS { $this lto:disambiguationEvidence ?e }
+            }
+        """ ;
+    ] .
+
+#############################################################################
+# 4. Validation results
+#############################################################################
+
+lto:ValidationResultShape
+    a                 sh:NodeShape ;
+    sh:targetClass    lto:ValidationResult ;
+    rdfs:label        "Validation result shape"@en ;
+    rdfs:comment      """A verdict is only useful if it names the check, the
+        value checked, and the query that produced it."""@en ;
+    sh:property [
+        sh:path        lto:verdict ;
+        sh:minCount    1 ;
+        sh:maxCount    1 ;
+        sh:in          ( lto:Pass lto:Fail lto:NotApplicable lto:Unresolved ) ;
+        sh:message     "lto:verdict must be one of lto:Pass, lto:Fail, lto:NotApplicable, lto:Unresolved." ;
+        sh:severity    sh:Violation ;
+    ] ;
+    sh:property [
+        sh:path        lto:checkId ;
+        sh:minCount    1 ;
+        sh:maxCount    1 ;
+        sh:datatype    xsd:string ;
+        sh:message     "lto:checkId is required." ;
+        sh:severity    sh:Violation ;
+    ] ;
+    sh:property [
+        sh:path        lto:sourceUrl ;
+        sh:minCount    1 ;
+        sh:pattern     "^https?://[^\\s]+$" ;
+        sh:message     "A validation result must record the exact URL queried." ;
+        sh:severity    sh:Violation ;
+    ] ;
+    sh:property [
+        sh:path        lto:retrievedAt ;
+        sh:minCount    1 ;
+        sh:datatype    xsd:date ;
+        sh:message     "A validation result needs lto:retrievedAt (xsd:date)." ;
+        sh:severity    sh:Violation ;
+    ] ;
+    sh:property [
+        sh:path        lto:confidence ;
+        sh:minCount    1 ;
+        sh:in          ( "high" "medium" "low" ) ;
+        sh:message     "A validation result needs lto:confidence in {high, medium, low}." ;
+        sh:severity    sh:Violation ;
+    ] ;
+    # A failure with no detail is unactionable.
+    sh:sparql [
+        sh:message    "An lto:Fail verdict must carry lto:mismatchDetail saying what disagreed." ;
+        sh:severity   sh:Violation ;
+        sh:prefixes   <https://tyson-swetnam.github.io/lto/ns/lto-shapes> ;
+        sh:select     """
+            SELECT $this WHERE {
+                $this lto:verdict lto:Fail .
+                FILTER NOT EXISTS { $this lto:mismatchDetail ?m }
+            }
+        """ ;
+    ] .
+
+#############################################################################
+# 5. Area assignments
+#############################################################################
+
+lto:AreaAssignmentShape
+    a                 sh:NodeShape ;
+    sh:targetClass    lto:AreaAssignment ;
+    rdfs:label        "Research-area assignment shape"@en ;
+    rdfs:comment      "A derived, revisable assertion, so it carries its own provenance and confidence."@en ;
+    sh:property [
+        sh:path        lto:area ;
+        sh:minCount    1 ;
+        sh:maxCount    1 ;
+        sh:class       lto:ResearchArea ;
+        sh:message     "An area assignment must point at exactly one lto:ResearchArea from the controlled vocabulary." ;
+        sh:severity    sh:Violation ;
+    ] ;
+    sh:property [
+        sh:path        lto:areaWeight ;
+        sh:maxCount    1 ;
+        # Bounded rather than datatype-pinned, same reason as
+        # lto:coPublicationCount above: a plain Turtle `0.42` is xsd:decimal,
+        # not xsd:double, and pinning the datatype would flag conforming data.
+        sh:nodeKind    sh:Literal ;
+        sh:minInclusive 0.0 ;
+        sh:maxInclusive 1.0 ;
+        sh:message     "lto:areaWeight must be a share in [0, 1]." ;
+        sh:severity    sh:Violation ;
+    ] ;
+    sh:property [
+        sh:path        lto:sourceUrl ;
+        sh:minCount    1 ;
+        sh:message     "An area assignment must record where it came from." ;
+        sh:severity    sh:Violation ;
+    ] ;
+    sh:property [
+        sh:path        lto:confidence ;
+        sh:minCount    1 ;
+        sh:in          ( "high" "medium" "low" ) ;
+        sh:message     "An area assignment needs lto:confidence in {high, medium, low}." ;
+        sh:severity    sh:Violation ;
+    ] .
+
+#############################################################################
+# 6. Cohort membership
+#############################################################################
+
+lto:CohortMembershipShape
+    a                 sh:NodeShape ;
+    sh:targetClass    lto:CohortMembership ;
+    rdfs:label        "Cohort membership shape"@en ;
+    rdfs:comment      """Reified precisely so the membership can be cited; the
+        shape enforces that it actually is. Two cohorts in lto — site personnel
+        (person_registry.is_site_personnel) and the field-wide scholar harvest
+        (is_scholar); upstream cod-kmap's TeamCohort has no counterpart here
+        because lto has no project-team seed layer."""@en ;
+    sh:property [
+        sh:path        lto:cohort ;
+        sh:minCount    1 ;
+        sh:maxCount    1 ;
+        sh:in          ( lto:SitePersonnelCohort lto:ScholarCohort ) ;
+        sh:message     "lto:cohort must be exactly one of lto:SitePersonnelCohort, lto:ScholarCohort." ;
+        sh:severity    sh:Violation ;
+    ] ;
+    sh:property [
+        sh:path        lto:sourceUrl ;
+        sh:minCount    1 ;
+        sh:message     "A cohort membership must record the source that asserted it." ;
+        sh:severity    sh:Violation ;
+    ] ;
+    sh:property [
+        sh:path        lto:confidence ;
+        sh:minCount    1 ;
+        sh:in          ( "high" "medium" "low" ) ;
+        sh:message     "A cohort membership needs lto:confidence in {high, medium, low}." ;
+        sh:severity    sh:Violation ;
+    ] .
