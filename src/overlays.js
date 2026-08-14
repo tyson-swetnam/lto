@@ -15,6 +15,7 @@
 import maplibregl from 'maplibre-gl';
 import { DATA_BASE } from './config.js';
 import { isMapAvailable } from './map.js';
+import { facetsNarrowing, overlayHiddenByFilters } from './overlay-facets.js';
 
 const MANIFEST_URL = `${DATA_BASE}overlays/manifest.json`;
 
@@ -43,10 +44,24 @@ const FACILITY_LAYERS = [
   'facility-points-hover',
 ];
 
+// ── Filter-aware overlay hiding ─────────────────────────────────────
+//
+// Which overlays a filter selection hides is decided in overlay-facets.js
+// (pure, testable without MapLibre); this file owns the effects. A manual
+// toggle while a facet is active is an override and wins until the facets
+// clear. Untagged layers (epa-regions, neon-domains — pure admin context)
+// are never touched.
+
 let _map = null;
 let _manifest = {};
 let _active = new Set();
 let _onChange = () => {};
+// Overlays auto-hidden by the current facet state (still "on" from the
+// user's point of view — restored the moment the facets clear).
+const _filterHidden = new Set();
+// Overlays the user toggled while facets were active — their choice wins.
+const _userOverride = new Set();
+let _facetsActive = false;
 
 // Track which overlays have had their data fetched so we don't refetch.
 const _loaded = new Set();
@@ -128,6 +143,11 @@ export async function initOverlays(map, container, onChange) {
     if (!(cb instanceof HTMLInputElement)) return;
     const id = cb.dataset.overlay;
     if (!id) return;
+    // A manual toggle while facets are active overrides the auto-hide
+    // for this layer until the facets clear.
+    if (_facetsActive) _userOverride.add(id);
+    _filterHidden.delete(id);
+    cb.closest('.overlay-row')?.classList.remove('overlay-row-filtered');
     if (cb.checked) {
       await showOverlay(id);
     } else {
@@ -325,6 +345,38 @@ export function activeOverlays() {
     label: _manifest[id]?.label || id,
     color: _manifest[id]?.color || '#64748b',
   }));
+}
+
+// Called by main.js on every filter refresh. See overlay-facets.js for
+// the rationale and the tag tables. Idempotent; cheap when nothing changes.
+export function syncOverlaysToFilters(filters) {
+  if (!_map || !Object.keys(_manifest).length) return;
+  const facetsActive = facetsNarrowing(filters);
+
+  // Facets just cleared: overrides expire and auto-hidden layers return.
+  if (!facetsActive && _facetsActive) _userOverride.clear();
+  _facetsActive = facetsActive;
+
+  let changed = false;
+  for (const id of Object.keys(_manifest)) {
+    const wantHide = !_userOverride.has(id) && overlayHiddenByFilters(id, filters);
+    const row = document.querySelector(`input[data-overlay="${id}"]`)
+      ?.closest('.overlay-row');
+    if (wantHide && _active.has(id)) {
+      hideOverlay(id);
+      _filterHidden.add(id);
+      row?.classList.add('overlay-row-filtered');
+      changed = true;
+    } else if (!wantHide && _filterHidden.has(id)) {
+      _filterHidden.delete(id);
+      row?.classList.remove('overlay-row-filtered');
+      // showOverlay is async (first show fetches); fire-and-forget is
+      // fine — the data is already loaded for anything we auto-hid.
+      showOverlay(id);
+      changed = true;
+    }
+  }
+  if (changed) _onChange();
 }
 
 function overlayPopup(id, p) {

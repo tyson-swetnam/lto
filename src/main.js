@@ -8,7 +8,7 @@ import {
   TYPE_COLORS,
 } from './map.js';
 import { initFilters } from './filters.js';
-import { initOverlays, activeOverlays } from './overlays.js';
+import { initOverlays, activeOverlays, syncOverlaysToFilters } from './overlays.js';
 import { initDB, loadFallback, query } from './db.js';
 import { initListView, renderList } from './views/list.js';
 import { initStatsView, renderStats } from './views/stats.js';
@@ -186,6 +186,12 @@ async function refresh() {
     // active view isn't the map) so a tab-switch back to Map is instant
     // and reflects the current filters.
     renderFacilities(features);
+
+    // Keep the static context overlays honest: sphere-tagged layers hide
+    // when the sphere facet excludes them, and results-duplicating layers
+    // (NEON site polygons) hide under any sphere/ecosystem/life-zone
+    // facet so only correctly-filtered facility points remain.
+    syncOverlaysToFilters(state.filters);
 
     // Keep the "browse" / "stats" tabs in sync with filters too.
     renderList(features);

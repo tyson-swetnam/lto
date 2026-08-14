@@ -136,8 +136,12 @@ export async function initFilters(container, state) {
   container.appendChild(thresholdSection);
 
   // 2. Primary sphere.
+  // Titled "Sphere", not "Primary sphere": the WHERE clause deliberately
+  // matches ANY facility_spheres role, so selecting Arid also surfaces
+  // the LTAR/ARS rangeland sites that carry arid as a secondary sphere
+  // (user-directed behavior — agriculture keeps their primary).
   const sphereSection = makeFacetSection(
-    'f-sphere', 'Primary sphere', '<div class="facet-loading">Loading…</div>', true,
+    'f-sphere', 'Sphere', '<div class="facet-loading">Loading…</div>', true,
   );
   container.appendChild(sphereSection);
 
