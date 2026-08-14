@@ -403,12 +403,26 @@ def main() -> int:
 
     # Build the work list — each person + the list of facility names
     # they're affiliated with (for employment-match).
+    #
+    # parent_org is a variant in its own right, and for LTO it is the one
+    # that usually matches: site personnel are employed by the OPERATOR of
+    # an observatory, not by the observatory. Alan K. Knapp's ORCID
+    # employment says "Colorado State University", which shares no
+    # distinctive token with "Konza Prairie Biological Station" — but does
+    # with Konza's parent_org. A dry run without this variant rejected
+    # 14/15 people as no-employment-match; upstream cod-kmap never hit
+    # this because coastal researchers work for the labs that employ them.
     rows = conn.execute(f"""
         WITH facs AS (
           SELECT fp.person_id,
-                 list(DISTINCT
-                   COALESCE(f.acronym || ' — ' || f.canonical_name,
-                            f.canonical_name)) AS facilities
+                 list_filter(
+                   flatten(list(DISTINCT [
+                     COALESCE(f.acronym || ' — ' || f.canonical_name,
+                              f.canonical_name),
+                     f.parent_org
+                   ])),
+                   x -> x IS NOT NULL AND x <> ''
+                 ) AS facilities
           FROM   facility_personnel fp
           JOIN   facilities         f  ON f.facility_id = fp.facility_id
           GROUP  BY fp.person_id
