@@ -1,12 +1,15 @@
 # lto — Long-Term Observatories of the United States
 
 An interactive map and database cataloguing U.S. long-term environmental observatories
-across six interlocking spheres:
+across seven interlocking spheres:
 
 - **Atmosphere** — NOAA GML / Mauna Loa, NADP, AmeriFlux, ARM, CASTNET, IMPROVE, SURFRAD …
 - **Cryosphere** — USGS Benchmark Glaciers, SNOTEL, CRREL, Toolik, McMurdo Dry Valleys, Juneau Icefield …
 - **Terrestrial / Ecological** — NSF LTER, NEON (81 sites), USFS Experimental Forests & Ranges (77),
   NPS Inventory & Monitoring, MAB Biosphere Reserves, NWRS, USFS RNAs, LTREB …
+- **Arid** — Jornada Basin and Sevilleta LTERs, NEON desert domains,
+  Great Basin Experimental Range, Mojave Global Change Facility,
+  NPS Sonoran Desert Network …
 - **Agriculture** — USDA-ARS Long-Term Agroecosystem Research (LTAR), ARS Rangelands,
   USDA Climate Hubs, SCAN, KBS-AG …
 - **Aquatic — Ocean & Estuarine** — IOOS Regional Associations, OOI, NERRS (29),

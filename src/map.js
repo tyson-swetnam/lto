@@ -12,6 +12,7 @@ export const SPHERE_COLORS = {
   'atmosphere':       '#5DADE2', // sky blue
   'cryosphere':       '#AED6F1', // ice blue
   'terrestrial':      '#52BE80', // forest green
+  'arid':             '#CA8A5B', // desert sand/terracotta
   'agriculture':      '#F4D03F', // wheat yellow
   'ocean-estuarine':  '#1F618D', // deep ocean blue
   'freshwater':       '#48C9B0', // freshwater teal
