@@ -6285,29 +6285,6 @@
 "geometry": {
 "type": "Point",
 "coordinates": [
--111.5,
-39.34
-]
-},
-"properties": {
-"id": "f440750fc002e532",
-"name": "Great Basin Experimental Range",
-"acronym": "GBR",
-"type": "experimental-forest-range",
-"country": "US",
-"url": "https://www.fs.usda.gov/rmrs/experimental-forests-ranges/great-basin-experimental-range",
-"parent_org": "USDA Forest Service Rocky Mountain Research Station",
-"established": 1912,
-"record_length_years": 114,
-"long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
-}
-},
-{
-"type": "Feature",
-"geometry": {
-"type": "Point",
-"coordinates": [
 -68.74,
 45.2
 ]
@@ -6699,29 +6676,6 @@
 "geometry": {
 "type": "Point",
 "coordinates": [
--106.74,
-32.62
-]
-},
-"properties": {
-"id": "635f591cbec25914",
-"name": "Jornada Basin LTER",
-"acronym": "JRN",
-"type": "experimental-forest-range",
-"country": "US",
-"url": "https://lter.jornada.nmsu.edu/",
-"parent_org": "New Mexico State University / USDA-ARS Jornada Experimental Range",
-"established": 1912,
-"record_length_years": 114,
-"long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
-}
-},
-{
-"type": "Feature",
-"geometry": {
-"type": "Point",
-"coordinates": [
 -96.585,
 39.193
 ]
@@ -6860,29 +6814,6 @@
 "geometry": {
 "type": "Point",
 "coordinates": [
--106.6198,
-35.0844
-]
-},
-"properties": {
-"id": "be89811018d4119f",
-"name": "Sevilleta LTER",
-"acronym": "SEV",
-"type": "university-field-station",
-"country": "US",
-"url": "https://sev.lternet.edu/",
-"parent_org": "University of New Mexico / USFWS Sevilleta National Wildlife Refuge",
-"established": 1988,
-"record_length_years": 38,
-"long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
-}
-},
-{
-"type": "Feature",
-"geometry": {
-"type": "Point",
-"coordinates": [
 -78.508,
 38.0335
 ]
@@ -6899,29 +6830,6 @@
 "record_length_years": 39,
 "long_term_threshold_met": true,
 "primary_sphere": "ocean-estuarine"
-}
-},
-{
-"type": "Feature",
-"geometry": {
-"type": "Point",
-"coordinates": [
--115.951,
-36.823
-]
-},
-"properties": {
-"id": "4cc7f52b5d75691c",
-"name": "Mojave Global Change Facility (LTREB)",
-"acronym": "MGCF",
-"type": "federal",
-"country": "US",
-"url": "https://www.usgs.gov/centers/werc/science/mojave-global-change-facility",
-"parent_org": "USGS Western Ecological Research Center / University of Nevada, Las Vegas",
-"established": 2001,
-"record_length_years": 25,
-"long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
 }
 },
 {
@@ -8194,52 +8102,6 @@
 "geometry": {
 "type": "Point",
 "coordinates": [
--106.8425,
-32.5907
-]
-},
-"properties": {
-"id": "94690a2c94717f62",
-"name": "Jornada Experimental Range NEON Site",
-"acronym": "JORN",
-"type": "field-station",
-"country": "US",
-"url": "https://www.neonscience.org/field-sites/jorn",
-"parent_org": "Battelle / National Ecological Observatory Network",
-"established": 2017,
-"record_length_years": 9,
-"long_term_threshold_met": false,
-"primary_sphere": "terrestrial"
-}
-},
-{
-"type": "Feature",
-"geometry": {
-"type": "Point",
-"coordinates": [
--110.8355,
-31.9107
-]
-},
-"properties": {
-"id": "ba14031ce27e1f5f",
-"name": "Santa Rita Experimental Range NEON Site",
-"acronym": "SRER",
-"type": "flux-tower",
-"country": "US",
-"url": "https://www.neonscience.org/field-sites/srer",
-"parent_org": "Battelle / National Ecological Observatory Network",
-"established": 2018,
-"record_length_years": 8,
-"long_term_threshold_met": false,
-"primary_sphere": "terrestrial"
-}
-},
-{
-"type": "Feature",
-"geometry": {
-"type": "Point",
-"coordinates": [
 -111.5081,
 33.751
 ]
@@ -8256,29 +8118,6 @@
 "record_length_years": 8,
 "long_term_threshold_met": false,
 "primary_sphere": "freshwater"
-}
-},
-{
-"type": "Feature",
-"geometry": {
-"type": "Point",
-"coordinates": [
--112.4524,
-40.1776
-]
-},
-"properties": {
-"id": "671c4cab3a1580d0",
-"name": "Onaqui NEON Site",
-"acronym": "ONAQ",
-"type": "flux-tower",
-"country": "US",
-"url": "https://www.neonscience.org/field-sites/onaq",
-"parent_org": "Battelle / National Ecological Observatory Network",
-"established": 2017,
-"record_length_years": 9,
-"long_term_threshold_met": false,
-"primary_sphere": "terrestrial"
 }
 },
 {
@@ -8723,29 +8562,6 @@
 "geometry": {
 "type": "Point",
 "coordinates": [
--103.2502,
-29.2498
-]
-},
-"properties": {
-"id": "abeeac6c6f195705",
-"name": "Big Bend Biosphere Reserve",
-"acronym": "BIBE-BR",
-"type": "protected-area-federal",
-"country": "US",
-"url": "https://www.nps.gov/bibe/",
-"parent_org": "National Park Service",
-"established": 1976,
-"record_length_years": 50,
-"long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
-}
-},
-{
-"type": "Feature",
-"geometry": {
-"type": "Point",
-"coordinates": [
 -123.5,
 47.97
 ]
@@ -8941,29 +8757,6 @@
 "type": "federal",
 "country": "US",
 "url": "https://www.nps.gov/im/klmn/",
-"parent_org": "National Park Service Inventory and Monitoring Program",
-"established": 2003,
-"record_length_years": 23,
-"long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
-}
-},
-{
-"type": "Feature",
-"geometry": {
-"type": "Point",
-"coordinates": [
--110.92,
-32.22
-]
-},
-"properties": {
-"id": "f3aa90613c5ce294",
-"name": "NPS-IM Sonoran Desert Network",
-"acronym": "SODN",
-"type": "federal",
-"country": "US",
-"url": "https://www.nps.gov/im/sodn/",
 "parent_org": "National Park Service Inventory and Monitoring Program",
 "established": 2003,
 "record_length_years": 23,
@@ -9896,29 +9689,6 @@
 "geometry": {
 "type": "Point",
 "coordinates": [
--109.5498,
-38.5733
-]
-},
-"properties": {
-"id": "01b78db5c9938c34",
-"name": "USGS Canyonlands Research Station (Moab)",
-"acronym": "USGS-CRS-MOAB",
-"type": "federal",
-"country": "US",
-"url": "https://www.usgs.gov/centers/sbsc/science/canyonlands-research-station",
-"parent_org": "U.S. Geological Survey Southwest Biological Science Center",
-"established": 1996,
-"record_length_years": 30,
-"long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
-}
-},
-{
-"type": "Feature",
-"geometry": {
-"type": "Point",
-"coordinates": [
 -111.9281,
 33.4242
 ]
@@ -10234,6 +10004,236 @@
 "record_length_years": 101,
 "long_term_threshold_met": true,
 "primary_sphere": "freshwater"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-111.5,
+39.34
+]
+},
+"properties": {
+"id": "f440750fc002e532",
+"name": "Great Basin Experimental Range",
+"acronym": "GBR",
+"type": "experimental-forest-range",
+"country": "US",
+"url": "https://www.fs.usda.gov/rmrs/experimental-forests-ranges/great-basin-experimental-range",
+"parent_org": "USDA Forest Service Rocky Mountain Research Station",
+"established": 1912,
+"record_length_years": 114,
+"long_term_threshold_met": true,
+"primary_sphere": "arid"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-106.74,
+32.62
+]
+},
+"properties": {
+"id": "635f591cbec25914",
+"name": "Jornada Basin LTER",
+"acronym": "JRN",
+"type": "experimental-forest-range",
+"country": "US",
+"url": "https://lter.jornada.nmsu.edu/",
+"parent_org": "New Mexico State University / USDA-ARS Jornada Experimental Range",
+"established": 1912,
+"record_length_years": 114,
+"long_term_threshold_met": true,
+"primary_sphere": "arid"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-106.6198,
+35.0844
+]
+},
+"properties": {
+"id": "be89811018d4119f",
+"name": "Sevilleta LTER",
+"acronym": "SEV",
+"type": "university-field-station",
+"country": "US",
+"url": "https://sev.lternet.edu/",
+"parent_org": "University of New Mexico / USFWS Sevilleta National Wildlife Refuge",
+"established": 1988,
+"record_length_years": 38,
+"long_term_threshold_met": true,
+"primary_sphere": "arid"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-115.951,
+36.823
+]
+},
+"properties": {
+"id": "4cc7f52b5d75691c",
+"name": "Mojave Global Change Facility (LTREB)",
+"acronym": "MGCF",
+"type": "federal",
+"country": "US",
+"url": "https://www.usgs.gov/centers/werc/science/mojave-global-change-facility",
+"parent_org": "USGS Western Ecological Research Center / University of Nevada, Las Vegas",
+"established": 2001,
+"record_length_years": 25,
+"long_term_threshold_met": true,
+"primary_sphere": "arid"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-106.8425,
+32.5907
+]
+},
+"properties": {
+"id": "94690a2c94717f62",
+"name": "Jornada Experimental Range NEON Site",
+"acronym": "JORN",
+"type": "field-station",
+"country": "US",
+"url": "https://www.neonscience.org/field-sites/jorn",
+"parent_org": "Battelle / National Ecological Observatory Network",
+"established": 2017,
+"record_length_years": 9,
+"long_term_threshold_met": false,
+"primary_sphere": "arid"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-110.8355,
+31.9107
+]
+},
+"properties": {
+"id": "ba14031ce27e1f5f",
+"name": "Santa Rita Experimental Range NEON Site",
+"acronym": "SRER",
+"type": "flux-tower",
+"country": "US",
+"url": "https://www.neonscience.org/field-sites/srer",
+"parent_org": "Battelle / National Ecological Observatory Network",
+"established": 2018,
+"record_length_years": 8,
+"long_term_threshold_met": false,
+"primary_sphere": "arid"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-112.4524,
+40.1776
+]
+},
+"properties": {
+"id": "671c4cab3a1580d0",
+"name": "Onaqui NEON Site",
+"acronym": "ONAQ",
+"type": "flux-tower",
+"country": "US",
+"url": "https://www.neonscience.org/field-sites/onaq",
+"parent_org": "Battelle / National Ecological Observatory Network",
+"established": 2017,
+"record_length_years": 9,
+"long_term_threshold_met": false,
+"primary_sphere": "arid"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-103.2502,
+29.2498
+]
+},
+"properties": {
+"id": "abeeac6c6f195705",
+"name": "Big Bend Biosphere Reserve",
+"acronym": "BIBE-BR",
+"type": "protected-area-federal",
+"country": "US",
+"url": "https://www.nps.gov/bibe/",
+"parent_org": "National Park Service",
+"established": 1976,
+"record_length_years": 50,
+"long_term_threshold_met": true,
+"primary_sphere": "arid"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-110.92,
+32.22
+]
+},
+"properties": {
+"id": "f3aa90613c5ce294",
+"name": "NPS-IM Sonoran Desert Network",
+"acronym": "SODN",
+"type": "federal",
+"country": "US",
+"url": "https://www.nps.gov/im/sodn/",
+"parent_org": "National Park Service Inventory and Monitoring Program",
+"established": 2003,
+"record_length_years": 23,
+"long_term_threshold_met": true,
+"primary_sphere": "arid"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-109.5498,
+38.5733
+]
+},
+"properties": {
+"id": "01b78db5c9938c34",
+"name": "USGS Canyonlands Research Station (Moab)",
+"acronym": "USGS-CRS-MOAB",
+"type": "federal",
+"country": "US",
+"url": "https://www.usgs.gov/centers/sbsc/science/canyonlands-research-station",
+"parent_org": "U.S. Geological Survey Southwest Biological Science Center",
+"established": 1996,
+"record_length_years": 30,
+"long_term_threshold_met": true,
+"primary_sphere": "arid"
 }
 }
 ]
