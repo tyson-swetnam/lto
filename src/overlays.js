@@ -43,10 +43,51 @@ const FACILITY_LAYERS = [
   'facility-points-hover',
 ];
 
+// ── Filter-aware overlay hiding ─────────────────────────────────────
+//
+// Overlays are static context layers — they never pass through query()'s
+// WHERE clause. That produced a real bug: with the Arid sphere selected,
+// the facility POINTS filtered correctly but marine-sanctuary polygons
+// and the 61 default-on NEON site polygons stayed painted, reading as
+// unfiltered results. Two remedies, applied by syncOverlaysToFilters():
+//
+//   * SPHERE_TAGS maps an overlay to the sphere(s) its content belongs
+//     to. When the sphere facet is active and has no intersection with a
+//     layer's tags, the layer auto-hides.
+//   * RESULTS_DUPLICATING marks overlays whose features mirror rows of
+//     `facilities` (every NEON polygon is also a filterable point). These
+//     hide whenever ANY sphere/ecosystem/life-zone facet is active — the
+//     matching facilities remain visible as correctly-filtered points.
+//
+// A manual toggle while a facet is active is an override and wins until
+// the facets clear. Untagged layers (epa-regions, neon-domains — pure
+// admin context, default-off anyway) are never touched.
+const SPHERE_TAGS = {
+  'nerr-reserves':           ['ocean-estuarine'],
+  'nep-programs':            ['ocean-estuarine'],
+  'marine-sanctuaries':      ['ocean-estuarine'],
+  'marine-monuments':        ['ocean-estuarine'],
+  'nps-coastal':             ['ocean-estuarine'],
+  'coastal-fws-units':       ['ocean-estuarine'],
+  'coastal-nps-units':       ['ocean-estuarine'],
+  'coastal-usfs-special':    ['ocean-estuarine'],
+  'coastal-wilderness':      ['ocean-estuarine'],
+  'coastal-state-protected': ['ocean-estuarine'],
+  'coastal-ngo-private':     ['ocean-estuarine'],
+  'ramsar-us':               ['ocean-estuarine', 'freshwater'],
+};
+const RESULTS_DUPLICATING = new Set(['neon-sites']);
+
 let _map = null;
 let _manifest = {};
 let _active = new Set();
 let _onChange = () => {};
+// Overlays auto-hidden by the current facet state (still "on" from the
+// user's point of view — restored the moment the facets clear).
+const _filterHidden = new Set();
+// Overlays the user toggled while facets were active — their choice wins.
+const _userOverride = new Set();
+let _facetsActive = false;
 
 // Track which overlays have had their data fetched so we don't refetch.
 const _loaded = new Set();
@@ -128,6 +169,11 @@ export async function initOverlays(map, container, onChange) {
     if (!(cb instanceof HTMLInputElement)) return;
     const id = cb.dataset.overlay;
     if (!id) return;
+    // A manual toggle while facets are active overrides the auto-hide
+    // for this layer until the facets clear.
+    if (_facetsActive) _userOverride.add(id);
+    _filterHidden.delete(id);
+    cb.closest('.overlay-row')?.classList.remove('overlay-row-filtered');
     if (cb.checked) {
       await showOverlay(id);
     } else {
@@ -325,6 +371,45 @@ export function activeOverlays() {
     label: _manifest[id]?.label || id,
     color: _manifest[id]?.color || '#64748b',
   }));
+}
+
+// Called by main.js on every filter refresh. See the SPHERE_TAGS comment
+// block for the rationale. Idempotent; cheap when nothing changes.
+export function syncOverlaysToFilters(filters) {
+  if (!_map || !Object.keys(_manifest).length) return;
+  const spheres = filters?.spheres || new Set();
+  const facetsActive = Boolean(
+    spheres.size || filters?.ecosystems?.size || filters?.lifeZones?.size);
+
+  // Facets just cleared: overrides expire and auto-hidden layers return.
+  if (!facetsActive && _facetsActive) _userOverride.clear();
+  _facetsActive = facetsActive;
+
+  let changed = false;
+  for (const id of Object.keys(_manifest)) {
+    const tags = SPHERE_TAGS[id];
+    const wantHide = facetsActive && !_userOverride.has(id) && (
+      RESULTS_DUPLICATING.has(id)
+      || (tags != null && spheres.size > 0
+          && !tags.some((t) => spheres.has(t)))
+    );
+    const row = document.querySelector(`input[data-overlay="${id}"]`)
+      ?.closest('.overlay-row');
+    if (wantHide && _active.has(id)) {
+      hideOverlay(id);
+      _filterHidden.add(id);
+      row?.classList.add('overlay-row-filtered');
+      changed = true;
+    } else if (!wantHide && _filterHidden.has(id)) {
+      _filterHidden.delete(id);
+      row?.classList.remove('overlay-row-filtered');
+      // showOverlay is async (first show fetches); fire-and-forget is
+      // fine — the data is already loaded for anything we auto-hid.
+      showOverlay(id);
+      changed = true;
+    }
+  }
+  if (changed) _onChange();
 }
 
 function overlayPopup(id, p) {

@@ -2297,3 +2297,13 @@ footer a:hover { color: var(--c-primary); }
 .ds-products-pager button:hover:not(:disabled) { border-color: #0369a1; color: #0369a1; }
 .ds-products-pager button:disabled { opacity: .45; cursor: default; }
 .ds-products-pageno { font-size: .82rem; color: #64748b; font-variant-numeric: tabular-nums; }
+
+/* ── Filter-aware overlays (see syncOverlaysToFilters) ──────────────
+ * A sphere/ecosystem/life-zone facet can auto-hide context overlays
+ * whose content it excludes; the row stays in the panel, muted, and a
+ * click overrides the auto-hide for the session. */
+.overlay-row-filtered { opacity: .45; }
+.overlay-row-filtered .overlay-label::after {
+  content: ' · hidden by filter';
+  font-size: .68rem; font-style: italic; color: var(--c-muted);
+}
