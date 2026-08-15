@@ -4,7 +4,7 @@ title: "USGS Bird Banding Laboratory"
 description: "U.S. Geological Survey, Eastern Ecological Science Center (Patuxent) — repository holding long-term observatory records."
 resource: "https://www.pwrc.usgs.gov/bbl/"
 tags: [repository, usgs-public]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-14T03:20:10Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
 status: stable
 ---
 

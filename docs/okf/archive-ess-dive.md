@@ -4,7 +4,7 @@ title: "ESS-DIVE — Environmental System Science Data Infrastructure for a Virt
 description: "Lawrence Berkeley National Laboratory / U.S. DOE Office of Biological and Environmental Research (BER) — repository holding long-term observatory records."
 resource: "https://ess-dive.lbl.gov/"
 tags: [repository, rest, cc-by-4.0]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-14T03:20:10Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
 status: stable
 ---
 
@@ -23,7 +23,7 @@ Primary repository for DOE BER Earth and Environmental Systems Sciences (terrest
 |---|---|---|---|---|
 | landing | GET | text/html | <https://data.ess-dive.lbl.gov/datasets/doi:{doi}> | https://data.ess-dive.lbl.gov/datasets/doi:10.15485/1577260 |
 | metadata | GET | application/json | <https://api.ess-dive.lbl.gov/packages/{doi}> | curl https://api.ess-dive.lbl.gov/packages/doi%3A10.15485%2F1577260 |
-| search | GET | application/json | <https://api.ess-dive.lbl.gov/packages> | curl 'https://api.ess-dive.lbl.gov/packages?text=NGEE-Arctic&rowStart=0&pageSize=25' |
+| search | GET | application/json | <https://api.ess-dive.lbl.gov/packages> | curl 'https://api.ess-dive.lbl.gov/packages?text=NGEE-Arctic&rowStart=1&pageSize=25' |
 
 # Depositing facilities
 

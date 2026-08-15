@@ -4,7 +4,7 @@ title: "NOAA InPort Metadata Catalog"
 description: "NOAA / National Marine Fisheries Service — data-portal holding long-term observatory records."
 resource: "https://www.fisheries.noaa.gov/inport/"
 tags: [data-portal, rest, noaa-public]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-14T03:20:10Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
 status: stable
 ---
 
@@ -13,16 +13,14 @@ Agency-wide ISO-19115 metadata catalog covering NMFS science centers, regional o
 # Access
 
 - Archive home: <https://www.fisheries.noaa.gov/inport/>
-- API root (`rest`): <https://www.fisheries.noaa.gov/inport/api/v1> — see the [rest guide](./access-rest.md)
-- API documentation: <https://www.fisheries.noaa.gov/inport/help/api>
+- API root (`rest`): <https://www.fisheries.noaa.gov/inport/> — see the [rest guide](./access-rest.md)
+- API documentation: <https://www.fisheries.noaa.gov/inport/help/accessing-metadata>
 
 # Documented calls
 
 | Purpose | Method | Format | URL | Example |
 |---|---|---|---|---|
-| metadata | GET | application/json | <https://www.fisheries.noaa.gov/inport/api/v1/item/{catalog_item_id}> | curl https://www.fisheries.noaa.gov/inport/api/v1/item/22561 |
-| metadata | GET | application/json | <https://www.fisheries.noaa.gov/inport/api/v1/organization/{organization_id}> | curl https://www.fisheries.noaa.gov/inport/api/v1/organization/9 |
-| search | GET | application/json | <https://www.fisheries.noaa.gov/inport/api/v1/item?keyword={term}&page={n}> | curl 'https://www.fisheries.noaa.gov/inport/api/v1/item?keyword=bottom+trawl&page=1' |
+| metadata | GET | application/xml | <https://www.fisheries.noaa.gov/inport/item/{catalog_item_id}/inport-xml> | curl 'https://www.fisheries.noaa.gov/inport/item/22561/inport-xml' |
 
 # Depositing facilities
 

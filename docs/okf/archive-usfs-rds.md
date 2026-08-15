@@ -4,7 +4,7 @@ title: "USFS Research Data Archive"
 description: "USDA Forest Service / Rocky Mountain Research Station — repository holding long-term observatory records."
 resource: "https://www.fs.usda.gov/rds/archive/"
 tags: [repository, rest, public-domain-us]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-14T03:20:10Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
 status: stable
 ---
 
@@ -23,7 +23,7 @@ USFS RDS issues citable DOIs of form 10.2737/RDS-YYYY-NNNN for forest-research d
 |---|---|---|---|---|
 | doi-resolution | GET | text/html | <https://doi.org/10.2737/{RDS-id}> | curl -L https://doi.org/10.2737/RDS-2017-0023 |
 | landing-page | GET | text/html | <https://www.fs.usda.gov/rds/archive/Catalog/{RDS-id}> | curl https://www.fs.usda.gov/rds/archive/Catalog/RDS-2017-0023 |
-| metadata | GET | application/json | <https://www.fs.usda.gov/rds/archive/api/{RDS-id}> | curl 'https://www.fs.usda.gov/rds/archive/api/RDS-2017-0023' |
+| metadata | GET | application/xml | <https://www.fs.usda.gov/rds/archive/products/{RDS-id}/_metadata_{RDS-id}.xml> | curl 'https://www.fs.usda.gov/rds/archive/products/RDS-2017-0023/_metadata_RDS-2017-0023.xml' |
 | search | GET | text/html | <https://www.fs.usda.gov/rds/archive/Catalog?searchTerm={query}> | curl 'https://www.fs.usda.gov/rds/archive/Catalog?searchTerm=Hubbard+Brook' |
 
 # Depositing facilities

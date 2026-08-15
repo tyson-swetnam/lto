@@ -50,11 +50,18 @@ Inspect structure without a client: append `.dds` (structure), `.das`
 Server-side subsetting to a clean file when you don't want a DAP client:
 
 ```bash
-curl -o out.nc '<base>/thredds/ncss/<path>/<file>.nc?var=temp&north=37&south=31&west=-107&east=-106&time_start=2024-06-01T00%3A00%3A00Z&time_end=2024-06-30T23%3A59%3A59Z'
+# TDS 5 (most servers now): the NCSS mount is split by data shape —
+# /thredds/ncss/grid/ for gridded, /thredds/ncss/point/ for stations.
+curl -o out.nc '<base>/thredds/ncss/grid/<path>/<file>.nc?var=temp&north=37&south=31&west=-107&east=-106&time_start=2024-06-01T00%3A00%3A00Z&time_end=2024-06-30T23%3A59%3A59Z'
+# TDS 4 (e.g. OOI) still uses the bare /thredds/ncss/ prefix. The
+# catalog.xml names which: look for <service serviceType="NetcdfSubset"
+# base="/thredds/ncss/grid/"> (or /point/, or /ncss/).
 ```
 
-`?dataset.html` on any NCSS URL renders a form that builds the query
-for you — build it there once, then script it.
+Appending the path segment `/dataset.html` to an NCSS dataset URL
+renders a form that builds the query for you — build it there once,
+then script it. (It is a path segment, not `?dataset.html` — the query
+form returns 400.)
 
 # Whole files
 

@@ -4,7 +4,7 @@ title: "KNB — Knowledge Network for Biocomplexity"
 description: "NCEAS (UC Santa Barbara) / DataONE — repository holding long-term observatory records."
 resource: "https://knb.ecoinformatics.org/"
 tags: [repository, dataone, cc0]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-14T03:20:10Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
 status: stable
 ---
 
@@ -21,6 +21,6 @@ International ecology/biocomplexity repository run by NCEAS; the original DataON
 
 | Purpose | Method | Format | URL | Example |
 |---|---|---|---|---|
-| data-download | GET | application/octet-stream | <https://knb.ecoinformatics.org/knb/d1/mn/v2/object/{pid}> | curl -L 'https://knb.ecoinformatics.org/knb/d1/mn/v2/object/doi%3A10.5063%2FF1XW4H1F' |
+| data-download | GET | application/octet-stream | <https://knb.ecoinformatics.org/knb/d1/mn/v2/object/{pid}> | curl -o data.csv 'https://knb.ecoinformatics.org/knb/d1/mn/v2/object/doi%3A10.5063%2FAA%2Fnrs.541.1' |
 | landing | GET | text/html | <https://knb.ecoinformatics.org/view/{pid}> | https://knb.ecoinformatics.org/view/doi:10.5063/F1XW4H1F |
 | search | GET | application/xml | <https://knb.ecoinformatics.org/knb/d1/mn/v2/query/solr/?q={query}&fl=identifier,title,origin,pubDate&rows=100> | curl 'https://knb.ecoinformatics.org/knb/d1/mn/v2/query/solr/?q=title%3Aforest&rows=20&fl=identifier,title' |

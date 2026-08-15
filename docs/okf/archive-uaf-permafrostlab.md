@@ -4,7 +4,7 @@ title: "Permafrost Laboratory at University of Alaska Fairbanks"
 description: "Geophysical Institute Permafrost Lab, UAF (Romanovsky group) — lab-archive holding long-term observatory records."
 resource: "https://www.permafrost.gi.alaska.edu/"
 tags: [lab-archive, file-download, cc-by-4.0]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-14T03:20:10Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
 status: stable
 ---
 

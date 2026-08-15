@@ -4,7 +4,7 @@ title: "NERRS Centralized Data Management Office"
 description: "NOAA Office for Coastal Management / University of South Carolina, Baruch Marine Field Lab — observatory-network holding long-term observatory records."
 resource: "https://cdmo.baruch.sc.edu/"
 tags: [observatory-network, soap, nerrs-data-policy]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-14T03:20:10Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
 status: stable
 ---
 
@@ -20,8 +20,7 @@ Operates the System-Wide Monitoring Program (SWMP) for all 30 NERR reserves. Per
 
 | Purpose | Method | Format | URL | Example |
 |---|---|---|---|---|
-| data-download | GET | application/zip | <https://cdmo.baruch.sc.edu/aqs/zips/{station}{year}.zip> | curl -O https://cdmo.baruch.sc.edu/aqs/zips/grbgbwq2023.zip |
-| data-download | POST | application/xml | <https://cdmo.baruch.sc.edu/webservices2/requests.cfc> | curl -X POST -d 'method=exportAllParamsXMLNew&Station_Code=grbgbwq&Min_Date=2023-01-01&Max_Date=2023-12-31' https://cdmo.baruch.sc.edu/webservices2/requests.cfc |
+| data-download | POST | application/xml | <https://cdmo.baruch.sc.edu/webservices2/requests.cfc> | curl 'https://cdmo.baruch.sc.edu/webservices2/requests.cfc?wsdl'  # then SOAP exportAllParamsDateRangeXMLNew(tbl, mindate, maxdate, fieldlist); requires prior IP registration |
 
 # Depositing facilities
 

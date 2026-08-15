@@ -524,16 +524,30 @@ def stage_match(con, run_id: str) -> None:
 
 
 def _write_conforming(con, df: pd.DataFrame, table: str) -> None:
-    """Project df onto the committed table schema, then write parquet.
+    """Project df onto the committed table schema and load it into the DB.
 
     Column order and membership come from the DB, so a schema change surfaces
     here as a KeyError rather than as a silently mis-ordered INSERT.
+
+    This used to write db/parquet/<table>.parquet and stop, leaving the DB
+    table empty. That lost every edge: export_parquet.py owns the same file
+    and rewrites it from the DB, so the next export replaced 495,803 real
+    coauthor_edges with a 592-byte empty file, and qa.py's edge invariants
+    skipped the table for having no rows. The DB is the source of truth here
+    and export_parquet.py is the only writer of parquet — this loads the DB
+    and lets that script ship the core-tier slice.
     """
     cols = [r[0] for r in con.execute(f"DESCRIBE {table}").fetchall()]
     missing = [c for c in cols if c not in df.columns]
     if missing:
         raise KeyError(f"{table}: pipeline produced no value for {missing}")
-    df[cols].to_parquet(f"{PARQUET_DIR}/{table}.parquet", index=False)
+    payload = df[cols]
+    con.register("_conforming_df", payload)
+    con.execute(f"DELETE FROM {table}")
+    con.execute(f"INSERT INTO {table} SELECT * FROM _conforming_df")
+    con.unregister("_conforming_df")
+    n = con.execute(f"SELECT COUNT(*) FROM {table}").fetchone()[0]
+    print(f"[match] {table}: {n:,} row(s) loaded", flush=True)
 
 
 # --------------------------------------------------------------------------- #

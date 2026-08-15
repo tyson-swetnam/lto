@@ -4,7 +4,7 @@ title: "PacIOOS ERDDAP"
 description: "Pacific Islands Ocean Observing System — erddap holding long-term observatory records."
 resource: "http://oos.soest.hawaii.edu/erddap/"
 tags: [erddap, erddap, noaa-public]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-14T03:20:10Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
 status: stable
 ---
 

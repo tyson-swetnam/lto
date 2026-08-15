@@ -4,7 +4,7 @@ title: "NOAA CoastWatch / OceanWatch"
 description: "NOAA / NESDIS / STAR — repository holding long-term observatory records."
 resource: "https://coastwatch.noaa.gov/"
 tags: [repository, erddap, noaa-public]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-14T03:20:10Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
 status: stable
 ---
 
@@ -20,8 +20,8 @@ Satellite-derived ocean products (SST, ocean color, altimetry, winds, sea ice). 
 
 | Purpose | Method | Format | URL | Example |
 |---|---|---|---|---|
-| data-download | GET | text/csv | <https://coastwatch.noaa.gov/erddap/tabledap/{datasetID}.csv?{vars}&time>={start}&time<={end}> | curl 'https://coastwatch.noaa.gov/erddap/tabledap/<datasetID>.csv?time,latitude,longitude,sst&time>=2024-01-01&time<=2024-02-01' |
 | data-download | GET | application/x-netcdf | <https://coastwatch.noaa.gov/erddap/griddap/{datasetID}.nc?{var}[({t0}):({t1})][({lat0}):({lat1})][({lon0}):({lon1})]> | curl -O 'https://coastwatch.noaa.gov/erddap/griddap/<datasetID>.nc?<var>[(2024-01-01):(2024-01-07)][(20):(50)][(-130):(-65)]' |
+| data-download | GET | text/csv | <https://coastwatch.noaa.gov/erddap/tabledap/{datasetID}.csv?{vars}&time>={start}&time<={end}> | curl 'https://coastwatch.noaa.gov/erddap/tabledap/<datasetID>.csv?time,latitude,longitude,sst&time>=2024-01-01&time<=2024-02-01' |
 
 # Cloud buckets
 

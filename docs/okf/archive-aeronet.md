@@ -4,7 +4,7 @@ title: "AERONET (AErosol RObotic NETwork)"
 description: "NASA Goddard Space Flight Center — data-portal holding long-term observatory records."
 resource: "https://aeronet.gsfc.nasa.gov/"
 tags: [data-portal, rest, nasa-public]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-14T03:20:10Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
 status: stable
 ---
 
@@ -20,7 +20,7 @@ AERONET federation of ~600 ground-based sun/sky photometers; CIMEL retrievals at
 
 | Purpose | Method | Format | URL | Example |
 |---|---|---|---|---|
-| data-download | GET | text/csv | <https://aeronet.gsfc.nasa.gov/cgi-bin/print_web_data_v3?site={SITE}&year={YYYY}&month={MM}&day={DD}&year2={YYYY2}&month2={MM2}&day2={DD2}&AOD15=1&AVG=10> | curl 'https://aeronet.gsfc.nasa.gov/cgi-bin/print_web_data_v3?site=GSFC&year=2024&month=1&day=1&year2=2024&month2=12&day2=31&AOD15=1&AVG=10' |
+| data-download | GET | text/csv | <https://aeronet.gsfc.nasa.gov/cgi-bin/print_web_data_v3?site={SITE}&year={YYYY}&month={MM}&day={DD}&year2={YYYY2}&month2={MM2}&day2={DD2}&AOD15=1&AVG=10&if_no_html=1> | curl 'https://aeronet.gsfc.nasa.gov/cgi-bin/print_web_data_v3?site=GSFC&year=2024&month=1&day=1&year2=2024&month2=12&day2=31&AOD15=1&AVG=10&if_no_html=1' |
 
 # Depositing facilities
 

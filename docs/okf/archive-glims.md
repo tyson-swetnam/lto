@@ -4,7 +4,7 @@ title: "Global Land Ice Measurements from Space"
 description: "GLIMS / NSIDC — repository holding long-term observatory records."
 resource: "https://www.glims.org/"
 tags: [repository, wms, cc-by-4.0]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-14T03:20:10Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
 status: stable
 ---
 
@@ -13,15 +13,15 @@ Global glacier outlines + Randolph Glacier Inventory (RGI) ancillary database. S
 # Access
 
 - Archive home: <https://www.glims.org/>
-- API root (`wms`): <https://www.glims.org/glimsview/> — see the [wms guide](./access-rest.md)
-- API documentation: <https://www.glims.org/MapsAndDocs/>
+- API root (`wms`): <https://www.glims.org/geoserver/> — see the [wms guide](./access-rest.md)
+- API documentation: <https://www.glims.org/glacierdata/>
 - DOIs minted here start with `10.7265`
 
 # Documented calls
 
 | Purpose | Method | Format | URL | Example |
 |---|---|---|---|---|
-| wms | GET | image/png | <https://www.glims.org/glimsview/wms> | curl 'https://www.glims.org/glimsview/wms?service=WMS&request=GetMap&layers=glaciers&bbox=-180,-90,180,90&width=512&height=256&srs=EPSG:4326&format=image/png' |
+| wms | GET | image/png | <https://www.glims.org/geoserver/wms> | curl -o glims.png 'https://www.glims.org/geoserver/wms?service=WMS&version=1.1.1&request=GetMap&layers=GLIMS:GLIMS_GLACIERS_GROUP&bbox=-180,-90,180,90&width=512&height=256&srs=EPSG:4326&format=image/png' |
 
 # Data products
 

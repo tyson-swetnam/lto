@@ -4,7 +4,7 @@ title: "NOAA National Centers for Environmental Information"
 description: "NOAA / NESDIS — repository holding long-term observatory records."
 resource: "https://www.ncei.noaa.gov/"
 tags: [repository, rest, noaa-public]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-14T03:20:10Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
 status: stable
 ---
 
@@ -22,9 +22,8 @@ Authoritative archive for NOAA atmosphere/ocean/cryosphere/coastal data. Holds l
 | Purpose | Method | Format | URL | Example |
 |---|---|---|---|---|
 | data-download | GET | text/csv | <https://www.ncei.noaa.gov/access/services/data/v1?dataset={dataset}&dataTypes={vars}&stations={station}&startDate={start}&endDate={end}&format=csv> | curl 'https://www.ncei.noaa.gov/access/services/data/v1?dataset=global-summary-of-the-day&stations=72509014739&startDate=2024-01-01&endDate=2024-12-31&format=csv' |
-| data-download | GET | application/zip | <https://cdmo.baruch.sc.edu/aqs/zips/{reserve}{year}.zip> | curl -O https://cdmo.baruch.sc.edu/aqs/zips/wel2023.zip |
-| metadata | GET | application/xml | <https://www.ncei.noaa.gov/access/metadata/landing-page/bin/iso?id={collection_id}> | curl 'https://www.ncei.noaa.gov/access/metadata/landing-page/bin/iso?id=gov.noaa.nodc:0192984' |
-| search | GET | application/json | <https://www.ncei.noaa.gov/access/services/search/v1/data?dataset={dataset}&bbox={N},{W},{S},{E}&startDate={start}&endDate={end}&format=json> | curl 'https://www.ncei.noaa.gov/access/services/search/v1/data?dataset=global-marine&bbox=45,-71,40,-65&startDate=2023-01-01&endDate=2023-12-31&format=json' |
+| metadata | GET | application/xml | <https://www.ncei.noaa.gov/access/metadata/landing-page/bin/iso?id={collection_id};view=xml;responseType=text/xml> | curl 'https://www.ncei.noaa.gov/access/metadata/landing-page/bin/iso?id=gov.noaa.nodc:0192984;view=xml;responseType=text/xml' |
+| search | GET | application/json | <https://www.ncei.noaa.gov/access/services/search/v1/data?dataset={dataset}&bbox={N},{W},{S},{E}&startDate={start}&endDate={end}> | curl 'https://www.ncei.noaa.gov/access/services/search/v1/data?dataset=global-marine&bbox=45,-71,40,-65&startDate=2023-01-01&endDate=2023-12-31' |
 
 # Cloud buckets
 

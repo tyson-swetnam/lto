@@ -4,7 +4,7 @@ title: "DOE ARM Data Discovery (Atmospheric Radiation Measurement)"
 description: "U.S. Department of Energy / Office of Science / BER — data-portal holding long-term observatory records."
 resource: "https://adc.arm.gov/"
 tags: [data-portal, rest, unknown]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-14T03:20:10Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
 status: stable
 ---
 

@@ -4,7 +4,7 @@ title: "NSIDC Distributed Active Archive Center"
 description: "National Snow and Ice Data Center / NASA Earthdata / CIRES, University of Colorado Boulder — repository holding long-term observatory records."
 resource: "https://nsidc.org/data"
 tags: [repository, rest, nasa-public]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-14T03:20:10Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
 status: stable
 ---
 
@@ -14,16 +14,15 @@ NASA DAAC for snow, ice, cryosphere, and climate. Hosts MODIS, SMAP, ICESat/ICES
 
 - Archive home: <https://nsidc.org/data>
 - API root (`rest`): <https://nsidc.org/api/> — see the [rest guide](./access-rest.md)
-- API documentation: <https://nsidc.org/data/user-resources/help-center/programmatic-data-access-guide>
+- API documentation: <https://nsidc.org/data/user-resources/help-center/nasa-earthdata-cloud-data-access-guide>
 - DOIs minted here start with `10.5067`
 
 # Documented calls
 
 | Purpose | Method | Format | URL | Example |
 |---|---|---|---|---|
-| data-download | GET | application/x-hdf5 | <https://n5eil01u.ecs.nsidc.org/{dataset_path}/> | curl -b ~/.urs_cookies -c ~/.urs_cookies https://n5eil01u.ecs.nsidc.org/SAN/SMAP/SPL3SMP.008/2024.01.01/SMAP_L3_SM_P_20240101_R18290_001.h5 |
-| data-download | GET | application/zip | <https://n5eil02u.ecs.nsidc.org/egi/request> | curl -b ~/.urs_cookies -c ~/.urs_cookies 'https://n5eil02u.ecs.nsidc.org/egi/request?short_name=ATL06&version=006&time=2020-01-01,2020-01-31&bbox=-148,69,-145,71' |
-| metadata | GET | application/json | <https://nsidc.org/api/dataset-metadata/v1/dataset/{dataset_id}> | curl https://nsidc.org/api/dataset-metadata/v1/dataset/NSIDC-0051 |
+| data-download | GET | application/x-hdf5 | <https://data.nsidc.earthdatacloud.nasa.gov/{cloud_path}> | curl -n -L -O 'https://data.nsidc.earthdatacloud.nasa.gov/nsidc-cumulus-prod-protected/SMAP/SPL3SMP/009/2024/01/SMAP_L3_SM_P_20240101_R19240_001.h5'  # Earthdata Login; URL discovered via CMR |
+| metadata | GET | application/xml | <https://nsidc.org/api/dataset/metadata/v2/oai?verb=GetRecord&metadataPrefix=dif&identifier={dataset_id}> | curl 'https://nsidc.org/api/dataset/metadata/v2/oai?verb=GetRecord&metadataPrefix=dif&identifier=NSIDC-0051.002' |
 
 # Cloud buckets
 

@@ -4,7 +4,7 @@ title: "NRCS Air & Water Database (SCAN / SNOTEL / SNOLITE / CSAS)"
 description: "USDA Natural Resources Conservation Service — observatory-network holding long-term observatory records."
 resource: "https://wcc.sc.egov.usda.gov/"
 tags: [observatory-network, soap, public-domain-us]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-14T03:20:10Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
 status: stable
 ---
 
@@ -14,15 +14,15 @@ SOAP/WSDL Air-and-Water-Database web service exposes Soil Climate Analysis Netwo
 
 - Archive home: <https://wcc.sc.egov.usda.gov/>
 - API root (`soap`): <https://wcc.sc.egov.usda.gov/awdbWebService/services> — see the [soap guide](./access-rest.md)
-- API documentation: <https://wcc.sc.egov.usda.gov/web_service/AWDB_Web_Service_Reference.htm>
+- API documentation: <https://wcc.sc.egov.usda.gov/awdbRestApi/swagger-ui/index.html>
 
 # Documented calls
 
 | Purpose | Method | Format | URL | Example |
 |---|---|---|---|---|
-| data-download | GET | text/csv | <https://wcc.sc.egov.usda.gov/reportGenerator/view_csv/customMultiTimeSeriesGroupByStationReport/{interval}/{station-triplet}/{vars}> | curl 'https://wcc.sc.egov.usda.gov/reportGenerator/view_csv/customMultiTimeSeriesGroupByStationReport/hourly/2017:CO:SCAN%7Cid=%22%22%7Cname/-167,0/SMS,STO,TOBS,PREC' |
+| data-download | GET | text/csv | <https://wcc.sc.egov.usda.gov/reportGenerator/view_csv/customMultiTimeSeriesGroupByStationReport/{interval}/{station-triplet}/{vars-with-::value-suffix}> | curl 'https://wcc.sc.egov.usda.gov/reportGenerator/view_csv/customMultiTimeSeriesGroupByStationReport/hourly/2017:CO:SCAN%7Cid=%22%22%7Cname/-167,0/SMS::value,STO::value,TOBS::value,PREC::value' |
 | landing-page | GET | text/html | <https://wcc.sc.egov.usda.gov/nwcc/site?sitenum={station-id}> | curl 'https://wcc.sc.egov.usda.gov/nwcc/site?sitenum=2037' |
-| listing | GET | application/json | <https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/stations> | curl 'https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/stations?networkCds=SCAN&returnReservoirMetadata=false' |
+| listing | GET | application/json | <https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/stations?stationTriplets=*:*:{network}&returnReservoirMetadata=false> | curl 'https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/stations?stationTriplets=*:*:SCAN&returnReservoirMetadata=false' |
 | service-description | GET | application/xml | <https://wcc.sc.egov.usda.gov/awdbWebService/services?WSDL> | curl 'https://wcc.sc.egov.usda.gov/awdbWebService/services?WSDL' |
 
 # Depositing facilities

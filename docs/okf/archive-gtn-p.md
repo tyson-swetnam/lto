@@ -4,7 +4,7 @@ title: "Global Terrestrial Network for Permafrost"
 description: "GTN-P / IPA / Arctic Portal — repository holding long-term observatory records."
 resource: "https://gtnp.arcticportal.org/"
 tags: [repository, file-download, cc-by-4.0]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-14T03:20:10Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
 status: stable
 ---
 

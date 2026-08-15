@@ -4,7 +4,7 @@ title: "Ocean Biodiversity Information System"
 description: "IOC-UNESCO / IODE — aggregator holding long-term observatory records."
 resource: "https://obis.org/"
 tags: [aggregator, rest, cc0]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-14T03:20:10Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
 status: stable
 ---
 
@@ -20,8 +20,7 @@ Global aggregator of marine species occurrence records (Darwin Core), >120M reco
 
 | Purpose | Method | Format | URL | Example |
 |---|---|---|---|---|
-| data-download | GET | application/zip | <https://obis.org/dataset/{uuid}/download> | curl -O https://obis.org/dataset/<uuid>/download |
-| metadata | GET | application/json | <https://api.obis.org/v3/dataset/{dataset_id}> | curl https://api.obis.org/v3/dataset/2 |
+| metadata | GET | application/json | <https://api.obis.org/v3/dataset/{dataset_id}> | curl https://api.obis.org/v3/dataset/5422689c-d83d-44e8-87f4-a4b0a5117181 |
 | search | GET | application/json | <https://api.obis.org/v3/occurrence> | curl 'https://api.obis.org/v3/occurrence?scientificname=Dermochelys%20coriacea&size=10' |
 
 # Depositing facilities

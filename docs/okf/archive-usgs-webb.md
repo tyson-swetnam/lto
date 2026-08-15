@@ -4,7 +4,7 @@ title: "USGS Water, Energy, and Biogeochemical Budgets"
 description: "U.S. Geological Survey, Water Mission Area — program holding long-term observatory records."
 resource: "https://water.usgs.gov/webb/"
 tags: [program, usgs-public]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-14T03:20:10Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
 status: stable
 ---
 

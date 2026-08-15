@@ -4,7 +4,7 @@ title: "NPS IRMA Datastore"
 description: "U.S. National Park Service / Integrated Resource Management Applications — data-portal holding long-term observatory records."
 resource: "https://irma.nps.gov/DataStore/"
 tags: [data-portal, rest, public-domain-us]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-14T03:20:10Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
 status: stable
 ---
 
@@ -13,19 +13,18 @@ NPS IRMA (Integrated Resource Management Applications) Data Store; canonical NPS
 # Access
 
 - Archive home: <https://irma.nps.gov/DataStore/>
-- API root (`rest`): <https://irmaservices.nps.gov/datastore/v6/rest/> — see the [rest guide](./access-rest.md)
-- API documentation: <https://irmaservices.nps.gov/datastore/v6/rest/help>
+- API root (`rest`): <https://irmaservices.nps.gov/datastore/v7/rest/QuickSearch?q={query}> — see the [rest guide](./access-rest.md)
+- API documentation: <https://www.nps.gov/subjects/science/datastore.htm>
 
 # Documented calls
 
 | Purpose | Method | Format | URL | Example |
 |---|---|---|---|---|
-| data-download | GET | application/octet-stream | <https://irmaservices.nps.gov/datastore/v6/rest/DownloadFile/{digital_file_id}> | curl -O 'https://irmaservices.nps.gov/datastore/v6/rest/DownloadFile/123456' |
+| data-download | GET | application/octet-stream | <https://irma.nps.gov/DataStore/DownloadFile/{digital_file_id}> | curl -O 'https://irma.nps.gov/DataStore/DownloadFile/753819' |
+| metadata | GET | application/json | <https://irmaservices.nps.gov/datastore/v7/rest/Profile?q={reference_id}> | curl 'https://irmaservices.nps.gov/datastore/v7/rest/Profile?q=2316688' |
 | metadata | GET | text/html | <https://irma.nps.gov/DataStore/Reference/Profile/{reference_id}> | curl 'https://irma.nps.gov/DataStore/Reference/Profile/2270195' |
-| metadata | GET | application/json | <https://irmaservices.nps.gov/datastore/v6/rest/Reference/{reference_id}> | curl 'https://irmaservices.nps.gov/datastore/v6/rest/Reference/2300000' |
-| search | GET | text/html | <https://irma.nps.gov/DataStore/Search/Quick/{unit_code_or_keyword}> | curl 'https://irma.nps.gov/DataStore/Search/Quick/CACO' |
+| search | GET | application/json | <https://irmaservices.nps.gov/datastore/v7/rest/QuickSearch?q={query}&top={n}> | curl 'https://irmaservices.nps.gov/datastore/v7/rest/QuickSearch?q=CACO&top=5' |
 | search | GET | text/html | <https://irma.nps.gov/DataStore/Search/Quick?SearchType=Q&Query={unit_code}> | curl 'https://irma.nps.gov/DataStore/Search/Quick?SearchType=Q&Query=CACO' |
-| search | GET | application/json | <https://irmaservices.nps.gov/datastore/v6/rest/AdvancedSearch/Composite> | curl 'https://irmaservices.nps.gov/datastore/v6/rest/AdvancedSearch/Composite?units=CACO&top=50' |
 
 # Depositing facilities
 

@@ -4,7 +4,7 @@ title: "USGS Landsat Archive (EROS Center)"
 description: "U.S. Geological Survey, Earth Resources Observation and Science Center — repository holding long-term observatory records."
 resource: "https://earthexplorer.usgs.gov/"
 tags: [repository, rest, usgs-public]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-14T03:20:10Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
 status: stable
 ---
 

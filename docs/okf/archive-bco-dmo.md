@@ -4,7 +4,7 @@ title: "Biological and Chemical Oceanography Data Management Office"
 description: "Woods Hole Oceanographic Institution / NSF OCE — repository holding long-term observatory records."
 resource: "https://www.bco-dmo.org/"
 tags: [repository, rest, cc0]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-14T03:20:10Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
 status: stable
 ---
 
@@ -13,7 +13,7 @@ NSF-funded NSF/OCE biological + chemical oceanography data office hosted at WHOI
 # Access
 
 - Archive home: <https://www.bco-dmo.org/>
-- API root (`rest`): <https://www.bco-dmo.org/api/v1> — see the [rest guide](./access-rest.md)
+- API root (`rest`): <https://www.bco-dmo.org/api> — see the [rest guide](./access-rest.md)
 - API documentation: <https://www.bco-dmo.org/api>
 - DOIs minted here start with `10.26008`
 
@@ -21,9 +21,9 @@ NSF-funded NSF/OCE biological + chemical oceanography data office hosted at WHOI
 
 | Purpose | Method | Format | URL | Example |
 |---|---|---|---|---|
-| data-download | GET | text/csv | <https://www.bco-dmo.org/dataset/{dataset_id}/data/download> | curl -O https://www.bco-dmo.org/dataset/3358/data/download |
-| listing | GET | application/json | <https://www.bco-dmo.org/api/v1/project/{project_id}> | curl https://www.bco-dmo.org/api/v1/project/2031 |
-| metadata | GET | application/json | <https://www.bco-dmo.org/api/v1/dataset/{dataset_id}> | curl https://www.bco-dmo.org/api/v1/dataset/3358 |
+| data-download | GET | text/csv | <https://datadocs.bco-dmo.org/file/{fileToken}/{filename}> | curl -O 'https://datadocs.bco-dmo.org/file/R88Xyz5SRprxzJ/Bottle_Data.csv'  # fileToken from the dataset landing page |
+| listing | GET | application/json | <https://www.bco-dmo.org/api/project/{project_id}> | curl 'https://www.bco-dmo.org/api/project/2031' |
+| metadata | GET | application/json | <https://www.bco-dmo.org/api/dataset/{dataset_id}> | curl 'https://www.bco-dmo.org/api/dataset/3358' |
 
 # Depositing facilities
 

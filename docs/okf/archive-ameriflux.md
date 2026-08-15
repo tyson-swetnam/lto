@@ -4,7 +4,7 @@ title: "AmeriFlux Network Data Archive"
 description: "Lawrence Berkeley National Laboratory (DOE BER) — repository holding long-term observatory records."
 resource: "https://ameriflux.lbl.gov/"
 tags: [repository, rest, ameriflux-data-policy]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-14T03:20:10Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
 status: stable
 ---
 

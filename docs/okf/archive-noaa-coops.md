@@ -4,7 +4,7 @@ title: "NOAA Center for Operational Oceanographic Products and Services Data Por
 description: "NOAA / National Ocean Service — data-portal holding long-term observatory records."
 resource: "https://tidesandcurrents.noaa.gov/"
 tags: [data-portal, rest, noaa-public]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-14T03:20:10Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
 status: stable
 ---
 
@@ -20,8 +20,8 @@ CO-OPS operates the National Water Level Observation Network (NWLON), PORTS, and
 
 | Purpose | Method | Format | URL | Example |
 |---|---|---|---|---|
-| data-download | GET | application/json | <https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?product={product}&station={id}&begin_date={YYYYMMDD}&end_date={YYYYMMDD}&datum={datum}&units={units}&time_zone={tz}&format={format}> | curl 'https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?product=water_level&station=8518750&begin_date=20240101&end_date=20240107&datum=MLLW&units=metric&time_zone=gmt&format=json&application=lto' |
 | data-download | GET | application/json | <https://api.tidesandcurrents.noaa.gov/dpapi/prod/webapi/htf/htf_annual.json?station={id}&year={YYYY}> | curl 'https://api.tidesandcurrents.noaa.gov/dpapi/prod/webapi/htf/htf_annual.json?station=8518750&year=2023' |
+| data-download | GET | application/json | <https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?product={product}&station={id}&begin_date={YYYYMMDD}&end_date={YYYYMMDD}&datum={datum}&units={units}&time_zone={tz}&format={format}> | curl 'https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?product=water_level&station=8518750&begin_date=20240101&end_date=20240107&datum=MLLW&units=metric&time_zone=gmt&format=json&application=lto' |
 | metadata | GET | application/json | <https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations.json?type={type}> | curl 'https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations.json?type=waterlevels' |
 
 # Depositing facilities
