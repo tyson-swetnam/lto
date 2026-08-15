@@ -4,7 +4,7 @@ title: "SECOORA ERDDAP"
 description: "Southeast Coastal Ocean Observing Regional Association — erddap holding long-term observatory records."
 resource: "http://erddap.secoora.org/"
 tags: [erddap, erddap, noaa-public]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-14T03:20:10Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
 status: stable
 ---
 
@@ -20,8 +20,8 @@ SE U.S. RA ERDDAP; NC/SC/GA/FL coastal observations, gliders, HF radar, model ou
 
 | Purpose | Method | Format | URL | Example |
 |---|---|---|---|---|
-| data-download | GET | text/csv | <http://erddap.secoora.org/erddap/tabledap/{datasetID}.csv?{vars}&time>={start}&time<={end}> | curl 'http://erddap.secoora.org/erddap/tabledap/<datasetID>.csv?time,latitude,longitude,sea_water_temperature&time>=2024-01-01&time<=2024-02-01' |
 | data-download | GET | application/x-netcdf | <http://erddap.secoora.org/erddap/griddap/{datasetID}.nc?{var}[({t0}):({t1})][({lat0}):({lat1})][({lon0}):({lon1})]> | curl -O 'http://erddap.secoora.org/erddap/griddap/<datasetID>.nc?<var>[(2024-01-01):(2024-01-07)][(24):(36)][(-82):(-75)]' |
+| data-download | GET | text/csv | <http://erddap.secoora.org/erddap/tabledap/{datasetID}.csv?{vars}&time>={start}&time<={end}> | curl 'http://erddap.secoora.org/erddap/tabledap/<datasetID>.csv?time,latitude,longitude,sea_water_temperature&time>=2024-01-01&time<=2024-02-01' |
 
 # Depositing facilities
 

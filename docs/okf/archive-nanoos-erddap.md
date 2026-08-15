@@ -4,7 +4,7 @@ title: "NANOOS ERDDAP"
 description: "Northwest Association of Networked Ocean Observing Systems — erddap holding long-term observatory records."
 resource: "https://data.nanoos.org/erddap/"
 tags: [erddap, erddap, noaa-public]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-14T03:20:10Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
 status: stable
 ---
 
@@ -20,8 +20,8 @@ Pacific Northwest RA ERDDAP; OR/WA shelf moorings, gliders, NVS sensor network. 
 
 | Purpose | Method | Format | URL | Example |
 |---|---|---|---|---|
-| data-download | GET | text/csv | <https://data.nanoos.org/erddap/tabledap/{datasetID}.csv?{vars}&time>={start}&time<={end}> | curl 'https://data.nanoos.org/erddap/tabledap/<datasetID>.csv?time,latitude,longitude,sea_water_temperature&time>=2024-01-01&time<=2024-02-01' |
-| data-download | GET | application/x-netcdf | <https://data.nanoos.org/erddap/griddap/{datasetID}.nc?{var}[({t0}):({t1})][({lat0}):({lat1})][({lon0}):({lon1})]> | curl -O 'https://data.nanoos.org/erddap/griddap/<datasetID>.nc?<var>[(2024-01-01):(2024-01-07)][(42):(49)][(-127):(-122)]' |
+| data-download | GET | text/csv | <https://data.nanoos.org/erddap/tabledap/{datasetID}.csv?{vars}&time>={start}&time<={end}> | curl 'https://data.nanoos.org/erddap/tabledap/backyardbuoys_quileute_center.csv?time,latitude,longitude&time%3E=2024-09-01&time%3C=2024-09-02' |
+| data-download | GET | application/x-netcdf | <https://data.nanoos.org/erddap/griddap/{datasetID}.nc?{var}[({t0}):({t1})][({lat0}):({lat1})][({lon0}):({lon1})]> | curl -g -o out.nc 'https://data.nanoos.org/erddap/griddap/orca_hydro_pointwells.nc?sea_water_temperature%5B(2024-01-01):(2024-01-03)%5D%5B(0):(10)%5D' |
 
 # Depositing facilities
 

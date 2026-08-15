@@ -4,7 +4,7 @@ title: "IMPROVE Aerosol Network Archive"
 description: "NPS / U.S. EPA / CIRA Colorado State University — data-portal holding long-term observatory records."
 resource: "http://vista.cira.colostate.edu/improve/"
 tags: [data-portal, rest, epa-public]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-14T03:20:10Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
 status: stable
 ---
 
@@ -14,7 +14,7 @@ IMPROVE (Interagency Monitoring of Protected Visual Environments) speciated aero
 
 - Archive home: <http://vista.cira.colostate.edu/improve/>
 - API root (`rest`): <https://views.cira.colostate.edu/fed/DataWizard/> — see the [rest guide](./access-rest.md)
-- API documentation: <http://vista.cira.colostate.edu/Improve/data-page/>
+- API documentation: <https://vista.cira.colostate.edu/Improve/improve-data/>
 
 # Documented calls
 

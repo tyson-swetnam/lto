@@ -2,9 +2,9 @@
 type: Data Archive
 title: "EPA National Estuary Program Data"
 description: "U.S. Environmental Protection Agency / Office of Water — program holding long-term observatory records."
-resource: "https://www.epa.gov/nep/state-nep-program-information"
+resource: "https://www.epa.gov/nep/local-estuary-programs"
 tags: [program, rest, epa-public]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-14T03:20:10Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
 status: stable
 ---
 
@@ -12,7 +12,7 @@ status: stable
 
 # Access
 
-- Archive home: <https://www.epa.gov/nep/state-nep-program-information>
+- Archive home: <https://www.epa.gov/nep/local-estuary-programs>
 - API root (`rest`): <https://www.epa.gov/waterdata/water-quality-data-wqx> — see the [rest guide](./access-rest.md)
 - API documentation: <https://www.waterqualitydata.us/webservices_documentation/>
 

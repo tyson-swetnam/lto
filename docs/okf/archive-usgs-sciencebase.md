@@ -4,7 +4,7 @@ title: "USGS ScienceBase Catalog"
 description: "U.S. Geological Survey, Core Science Systems — repository holding long-term observatory records."
 resource: "https://www.sciencebase.gov/catalog/"
 tags: [repository, rest, usgs-public]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-14T03:20:10Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
 status: stable
 ---
 
@@ -21,7 +21,7 @@ Cross-USGS data and metadata catalog; mints 10.5066/* DOIs for Data Releases. It
 
 | Purpose | Method | Format | URL | Example |
 |---|---|---|---|---|
-| metadata | GET | application/json | <https://www.sciencebase.gov/catalog/item/{itemId}?format=json> | curl 'https://www.sciencebase.gov/catalog/item/5fb7c8c5d34e30b9123abc12?format=json' |
+| metadata | GET | application/json | <https://www.sciencebase.gov/catalog/item/{itemId}?format=json> | curl 'https://www.sciencebase.gov/catalog/item/52b1dfa8e4b0d9b325230cd9?format=json' |
 | search | GET | application/json | <https://www.sciencebase.gov/catalog/items?q={query}&format=json&max=100> | curl 'https://www.sciencebase.gov/catalog/items?q=wolverine+glacier&format=json&max=10' |
 
 # Depositing facilities

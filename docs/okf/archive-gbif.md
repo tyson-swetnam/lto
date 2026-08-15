@@ -4,7 +4,7 @@ title: "Global Biodiversity Information Facility"
 description: "GBIF Secretariat (Copenhagen) — aggregator holding long-term observatory records."
 resource: "https://www.gbif.org/"
 tags: [aggregator, rest, cc-by-4.0]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-14T03:20:10Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
 status: stable
 ---
 
@@ -22,7 +22,7 @@ Intergovernmental biodiversity data network. Occurrence + checklist + sampling-e
 | Purpose | Method | Format | URL | Example |
 |---|---|---|---|---|
 | data-download | POST | application/json | <https://api.gbif.org/v1/occurrence/download/request> | curl -u user:pass -H 'Content-Type:application/json' -d @predicate.json https://api.gbif.org/v1/occurrence/download/request |
-| metadata | GET | application/json | <https://api.gbif.org/v1/dataset/{uuid}> | curl https://api.gbif.org/v1/dataset/8a17a44a-0c54-4c6d-86cf-2b2a8d8a5b9b |
+| metadata | GET | application/json | <https://api.gbif.org/v1/dataset/{uuid}> | curl https://api.gbif.org/v1/dataset/7175660d-a6a4-4ecd-91fd-d3d86515c5c3 |
 | search | GET | application/json | <https://api.gbif.org/v1/occurrence/search> | curl 'https://api.gbif.org/v1/occurrence/search?taxonKey=2476674&limit=20' |
 
 # Depositing facilities

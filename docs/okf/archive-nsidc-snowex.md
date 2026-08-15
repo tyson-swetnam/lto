@@ -4,7 +4,7 @@ title: "NASA SnowEx Mission Archive"
 description: "NSIDC DAAC (NASA Terrestrial Hydrology) — product-suite holding long-term observatory records."
 resource: "https://nsidc.org/data/snowex"
 tags: [product-suite, https-listing, nasa-public]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-14T03:20:10Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
 status: stable
 ---
 
@@ -13,8 +13,8 @@ NASA SnowEx (2017-present) airborne + in-situ SWE / snow-depth / pit / Lidar pro
 # Access
 
 - Archive home: <https://nsidc.org/data/snowex>
-- API root (`https-listing`): <https://n5eil01u.ecs.nsidc.org/SNOWEX/>
-- API documentation: <https://nsidc.org/data/user-resources/help-center/programmatic-data-access-guide>
+- API root (`https-listing`): <https://cmr.earthdata.nasa.gov/search/granules.json?short_name=SNEX17_SnowPits>
+- API documentation: <https://nsidc.org/data/user-resources/help-center/nasa-earthdata-cloud-data-access-guide>
 - DOIs minted here start with `10.5067`
 
 # Depositing facilities

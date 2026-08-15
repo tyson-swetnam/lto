@@ -4,7 +4,7 @@ title: "NASA Earthdata Search / Common Metadata Repository"
 description: "NASA Earth Science Data Systems — federation holding long-term observatory records."
 resource: "https://search.earthdata.nasa.gov/"
 tags: [federation, rest, nasa-public]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-14T03:20:10Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
 status: stable
 ---
 
@@ -22,8 +22,8 @@ Cross-DAAC search & catalog (CMR). Federates NSIDC, ASF, GES DISC, LP DAAC, OB.D
 | Purpose | Method | Format | URL | Example |
 |---|---|---|---|---|
 | auth | GET | text/html | <https://urs.earthdata.nasa.gov/oauth/authorize> | OAuth2 authorize endpoint; for service-to-service use NASA Earthdata Login app credentials. |
-| search | GET | application/json | <https://cmr.earthdata.nasa.gov/search/granules.json> | curl 'https://cmr.earthdata.nasa.gov/search/granules.json?short_name=ATL06&version=006&temporal=2024-01-01T00:00:00Z,2024-01-31T23:59:59Z&bounding_box=-180,60,180,90&page_size=100' |
-| search | GET | application/json | <https://cmr.earthdata.nasa.gov/search/collections.json> | curl 'https://cmr.earthdata.nasa.gov/search/collections.json?keyword=sea+ice&data_center=NSIDC_ECS&page_size=50' |
+| search | GET | application/json | <https://cmr.earthdata.nasa.gov/search/collections.json> | curl 'https://cmr.earthdata.nasa.gov/search/collections.json?keyword=sea+ice&data_center=NSIDC_CPRD&page_size=50' |
+| search | GET | application/json | <https://cmr.earthdata.nasa.gov/search/granules.json> | curl 'https://cmr.earthdata.nasa.gov/search/granules.json?short_name=ATL06&version=007&temporal=2024-01-01T00:00:00Z,2024-01-31T23:59:59Z&bounding_box=-180,60,180,90&page_size=100' |
 
 # Cloud buckets
 

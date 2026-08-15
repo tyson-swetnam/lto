@@ -4,7 +4,7 @@ title: "ORNL DAAC — Oak Ridge National Laboratory Distributed Active Archive C
 description: "Oak Ridge National Laboratory / NASA Earth Science Data and Information System (ESDIS) — repository holding long-term observatory records."
 resource: "https://daac.ornl.gov/"
 tags: [repository, rest, nasa-public]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-14T03:20:10Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
 status: stable
 ---
 

@@ -4,7 +4,7 @@ title: "USGS 3D Elevation Program"
 description: "U.S. Geological Survey, National Geospatial Program — program holding long-term observatory records."
 resource: "https://www.usgs.gov/3d-elevation-program"
 tags: [program, rest, usgs-public]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-14T03:20:10Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
 status: stable
 ---
 
@@ -13,14 +13,14 @@ National lidar/IfSAR collection; 1m DEM (3DEP Elevation Source Data), Lidar Poin
 # Access
 
 - Archive home: <https://www.usgs.gov/3d-elevation-program>
-- API root (`rest`): <https://apps.nationalmap.gov/tnmaccess/> — see the [rest guide](./access-rest.md)
+- API root (`rest`): <https://tnmaccess.nationalmap.gov/api/v1/> — see the [rest guide](./access-rest.md)
 - API documentation: <https://apps.nationalmap.gov/tnmaccess/#/product>
 
 # Documented calls
 
 | Purpose | Method | Format | URL | Example |
 |---|---|---|---|---|
-| search | GET | application/json | <https://apps.nationalmap.gov/tnmaccess/api/products?bbox={west},{south},{east},{north}&datasets=Lidar Point Cloud (LPC)&outputFormat=JSON> | curl 'https://apps.nationalmap.gov/tnmaccess/api/products?bbox=-72.1,44.4,-72.0,44.5&datasets=Lidar%20Point%20Cloud%20(LPC)&outputFormat=JSON' |
+| search | GET | application/json | <https://tnmaccess.nationalmap.gov/api/v1/products?bbox={west},{south},{east},{north}&datasets=Lidar Point Cloud (LPC)&outputFormat=JSON> | curl 'https://tnmaccess.nationalmap.gov/api/v1/products?bbox=-72.1,44.4,-72.0,44.5&datasets=Lidar%20Point%20Cloud%20(LPC)&outputFormat=JSON' |
 
 # Cloud buckets
 

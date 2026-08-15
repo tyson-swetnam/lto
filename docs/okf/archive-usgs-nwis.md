@@ -4,7 +4,7 @@ title: "USGS National Water Information System"
 description: "U.S. Geological Survey, Water Mission Area — repository holding long-term observatory records."
 resource: "https://waterdata.usgs.gov/"
 tags: [repository, rest, usgs-public]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-14T03:20:10Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
 status: stable
 ---
 
@@ -20,10 +20,10 @@ National Water Information System; serves discharge, stage, water-quality, groun
 
 | Purpose | Method | Format | URL | Example |
 |---|---|---|---|---|
-| data-download | GET | text/tab-separated-values | <https://waterservices.usgs.gov/nwis/stat/?sites={site_no}&statReportType=daily&parameterCd={params}&format=rdb> | curl 'https://waterservices.usgs.gov/nwis/stat/?sites=09380000&statReportType=daily&parameterCd=00060&format=rdb' |
-| data-download | GET | text/tab-separated-values | <https://waterservices.usgs.gov/nwis/gwlevels/?sites={site_no}&format=rdb> | curl 'https://waterservices.usgs.gov/nwis/gwlevels/?stateCd=ak&format=rdb' |
-| data-download | GET | application/json | <https://waterservices.usgs.gov/nwis/iv/?sites={site_no}&parameterCd={params}&startDT={start}&endDT={end}&format=json> | curl 'https://waterservices.usgs.gov/nwis/iv/?sites=01400500&parameterCd=00060,00065&period=P7D&format=json' |
 | data-download | GET | text/tab-separated-values | <https://waterservices.usgs.gov/nwis/dv/?sites={site_no}&parameterCd={params}&startDT={start}&endDT={end}&format=rdb> | curl 'https://waterservices.usgs.gov/nwis/dv/?sites=09380000&parameterCd=00060&startDT=1921-10-01&format=rdb' |
+| data-download | GET | application/json | <https://waterservices.usgs.gov/nwis/iv/?sites={site_no}&parameterCd={params}&startDT={start}&endDT={end}&format=json> | curl 'https://waterservices.usgs.gov/nwis/iv/?sites=01400500&parameterCd=00060,00065&period=P7D&format=json' |
+| data-download | GET | text/tab-separated-values | <https://waterservices.usgs.gov/nwis/stat/?sites={site_no}&statReportType=daily&parameterCd={params}&format=rdb> | curl 'https://waterservices.usgs.gov/nwis/stat/?sites=09380000&statReportType=daily&parameterCd=00060&format=rdb' |
+| data-download | GET | text/tab-separated-values | <https://api.waterdata.usgs.gov/ogcapi/v0/collections/field-measurements/items?monitoring_location_id={site_no}&f=json> | curl 'https://api.waterdata.usgs.gov/ogcapi/v0/collections/field-measurements/items?state_name=Alaska&parameter_code=72019&limit=2&f=json' |
 | metadata | GET | text/tab-separated-values | <https://waterservices.usgs.gov/nwis/site/?sites={site_no}&siteOutput=expanded&format=rdb> | curl 'https://waterservices.usgs.gov/nwis/site/?sites=11447650&siteOutput=expanded&format=rdb' |
 
 # Depositing facilities

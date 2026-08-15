@@ -4,7 +4,7 @@ title: "Rolling Deck to Repository (R2R)"
 description: "Lamont-Doherty Earth Observatory / NSF UNOLS — repository holding long-term observatory records."
 resource: "https://www.rvdata.us/"
 tags: [repository, rest, cc-by-4.0]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-14T03:20:10Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
 status: stable
 ---
 

@@ -4,7 +4,7 @@ title: "USDA NASS Quick Stats"
 description: "USDA National Agricultural Statistics Service — repository holding long-term observatory records."
 resource: "https://quickstats.nass.usda.gov/"
 tags: [repository, rest, usda-ars]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-14T03:20:10Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
 status: stable
 ---
 
@@ -21,8 +21,8 @@ REST API gating county/state/national agricultural statistics from Census of Ag 
 | Purpose | Method | Format | URL | Example |
 |---|---|---|---|---|
 | data-download | GET | text/csv | <https://quickstats.nass.usda.gov/api/api_GET/?key={api-key}&{filters}&format=CSV> | curl 'https://quickstats.nass.usda.gov/api/api_GET/?key=YOUR_KEY&commodity_desc=CORN&year=2022&format=CSV' |
-| metadata | GET | application/json | <https://quickstats.nass.usda.gov/api/get_param_values/?key={api-key}&param={param}> | curl 'https://quickstats.nass.usda.gov/api/get_param_values/?key=YOUR_KEY&param=commodity_desc' |
 | metadata | GET | application/json | <https://quickstats.nass.usda.gov/api/get_counts/?key={api-key}&{filters}> | curl 'https://quickstats.nass.usda.gov/api/get_counts/?key=YOUR_KEY&commodity_desc=CORN&year=2022' |
+| metadata | GET | application/json | <https://quickstats.nass.usda.gov/api/get_param_values/?key={api-key}&param={param}> | curl 'https://quickstats.nass.usda.gov/api/get_param_values/?key=YOUR_KEY&param=commodity_desc' |
 
 # Data products
 

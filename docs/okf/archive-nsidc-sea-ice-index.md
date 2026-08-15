@@ -4,7 +4,7 @@ title: "NSIDC Sea Ice Index (G02135)"
 description: "National Snow and Ice Data Center — product-suite holding long-term observatory records."
 resource: "https://nsidc.org/data/g02135/"
 tags: [product-suite, https-listing, nasa-public]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-14T03:20:10Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
 status: stable
 ---
 
@@ -14,14 +14,14 @@ Daily and monthly Arctic & Antarctic sea-ice extent and concentration; CSV time 
 
 - Archive home: <https://nsidc.org/data/g02135/>
 - API root (`https-listing`): <https://noaadata.apps.nsidc.org/NOAA/G02135/>
-- API documentation: <https://nsidc.org/data/g02135/versions/3/documentation>
+- API documentation: <https://nsidc.org/data/g02135/versions/4>
 - DOIs minted here start with `10.7265`
 
 # Documented calls
 
 | Purpose | Method | Format | URL | Example |
 |---|---|---|---|---|
-| data-download | GET | text/csv | <https://noaadata.apps.nsidc.org/NOAA/G02135/{hemisphere}/daily/data/{filename}.csv> | curl -O https://noaadata.apps.nsidc.org/NOAA/G02135/north/daily/data/N_seaice_extent_daily_v3.0.csv |
+| data-download | GET | text/csv | <https://noaadata.apps.nsidc.org/NOAA/G02135/{hemisphere}/daily/data/{filename}.csv> | curl -O 'https://noaadata.apps.nsidc.org/NOAA/G02135/north/daily/data/N_seaice_extent_daily_v4.0.csv' |
 
 # Cloud buckets
 

@@ -4,7 +4,7 @@ title: "Juneau Icefield Research Program Data Archive"
 description: "Foundation for Glacier and Environmental Research / JIRP — lab-archive holding long-term observatory records."
 resource: "https://juneauicefield.org/"
 tags: [lab-archive, cc-by-4.0]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-14T03:20:10Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
 status: stable
 ---
 

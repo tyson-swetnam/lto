@@ -4,7 +4,7 @@ title: "NASA Ocean Biology Distributed Active Archive Center (OB.DAAC) / OceanCo
 description: "NASA / GSFC Ocean Biology Processing Group — data-portal holding long-term observatory records."
 resource: "https://oceancolor.gsfc.nasa.gov/"
 tags: [data-portal, rest, nasa-public]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-14T03:20:10Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
 status: stable
 ---
 
@@ -21,8 +21,8 @@ OBPG produces ocean-color L1/L2/L3 products from CZCS, OCTS, SeaWiFS, MODIS Aqua
 
 | Purpose | Method | Format | URL | Example |
 |---|---|---|---|---|
-| data-download | GET | application/x-netcdf | <https://oceandata.sci.gsfc.nasa.gov/ob/getfile/{filename}> | wget --user={EDL_USER} --password={EDL_PASS} 'https://oceandata.sci.gsfc.nasa.gov/ob/getfile/AQUA_MODIS.20240101.L3m.DAY.CHL.chlor_a.4km.nc' |
-| search | GET | text/plain | <https://oceandata.sci.gsfc.nasa.gov/api/file_search/?sensor={sensor}&dtype={level}&sdate={start}&edate={end}&search={pattern}> | curl -b ~/.urs_cookies -c ~/.urs_cookies -L -n 'https://oceandata.sci.gsfc.nasa.gov/api/file_search/?sensor=aqua&dtype=L3m&sdate=2024-01-01&edate=2024-01-31&search=*CHL*' |
+| data-download | GET | application/x-netcdf | <https://oceandata.sci.gsfc.nasa.gov/getfile/{filename}> | wget --user={EDL_USER} --password={EDL_PASS} 'https://oceandata.sci.gsfc.nasa.gov/getfile/AQUA_MODIS.20240101.L3m.DAY.CHL.chlor_a.4km.nc' |
+| search | POST | text/plain | <https://oceandata.sci.gsfc.nasa.gov/file_search> | curl -X POST -d 'sensor_id=7&dtid=1043&sdate=2024-01-01&edate=2024-01-05&period=DAY&results_as_file=1&addurl=1' https://oceandata.sci.gsfc.nasa.gov/file_search |
 
 # Cloud buckets
 

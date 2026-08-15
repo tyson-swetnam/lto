@@ -4,7 +4,7 @@ title: "Environmental Data Initiative Repository"
 description: "Environmental Data Initiative (EDI) / NSF — repository holding long-term observatory records."
 resource: "https://portal.edirepository.org/"
 tags: [repository, rest, edi-data-policy]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-14T03:20:10Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
 status: stable
 ---
 

@@ -4,7 +4,7 @@ title: "NOAA National Marine Sanctuaries Data"
 description: "NOAA Office of National Marine Sanctuaries — program holding long-term observatory records."
 resource: "https://sanctuaries.noaa.gov/science/data.html"
 tags: [program, noaa-public]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-14T03:20:10Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
 status: stable
 ---
 

@@ -4,7 +4,7 @@ title: "National Atmospheric Deposition Program"
 description: "NADP / Wisconsin State Laboratory of Hygiene — data-portal holding long-term observatory records."
 resource: "https://nadp.slh.wisc.edu/"
 tags: [data-portal, rest, cc0]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-14T03:20:10Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
 status: stable
 ---
 
@@ -13,15 +13,15 @@ NADP runs five subnetworks: NTN (precipitation chemistry, 1978-), AIRMoN (daily 
 # Access
 
 - Archive home: <https://nadp.slh.wisc.edu/>
-- API root (`rest`): <https://nadp.slh.wisc.edu/cgi-bin/> — see the [rest guide](./access-rest.md)
+- API root (`rest`): <https://api.slh.wisc.edu/nadp/nadpApiMain.php> — see the [rest guide](./access-rest.md)
 - API documentation: <https://nadp.slh.wisc.edu/data/>
 
 # Documented calls
 
 | Purpose | Method | Format | URL | Example |
 |---|---|---|---|---|
-| data-download | GET | text/csv | <https://nadp.slh.wisc.edu/datalib/{net}/{net}-{SITE_ID}-w.csv> | curl https://nadp.slh.wisc.edu/datalib/ntn/ntn-NH02-w.csv |
-| metadata | GET | text/html | <https://nadp.slh.wisc.edu/sites/siteDetails.aspx?net={NET}&id={SITE_ID}> | https://nadp.slh.wisc.edu/sites/siteDetails.aspx?net=NTN&id=NH02 |
+| data-download | POST | text/csv | <https://api.slh.wisc.edu/nadp/nadpApiMain.php> | curl -X POST -d 'pageId=ntnWeekly&siteId=NH02&startYr=2020&endYr=2020&PWD=<nadpVariables.nadpAPIPassword from page source>' https://api.slh.wisc.edu/nadp/nadpApiMain.php |
+| metadata | GET | application/json | <https://api.slh.wisc.edu/nadp/nadpApiMain.php?net={NET}&siteId={SITE_ID}&pageId=siteInfo> | curl 'https://api.slh.wisc.edu/nadp/nadpApiMain.php?net=NTN&siteId=NH02&pageId=siteInfo' |
 
 # Depositing facilities
 

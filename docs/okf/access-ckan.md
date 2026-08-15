@@ -31,18 +31,33 @@ for pkg in r.json()["result"]["results"]:
 Facet counts (`facet.field=["organization","res_format"]`) make CKAN
 portals easy to inventory before downloading anything.
 
+> **This catalogue currently has no live CKAN portal.** Both archives
+> that used one (Ag Data Commons, and LTAR through it) migrated to
+> Figshare in the `data.nal.usda.gov` shutdown — their pages now
+> document the Figshare v2 API (`POST
+> https://api.figshare.com/v2/articles/search`). The grammar above is
+> kept because it is correct for any CKAN you meet elsewhere (verified
+> against a live external CKAN), and archives do move.
+
 # OAI-PMH providers
 
 OAI-PMH serves *metadata records*, not data files — use it to harvest
 an archive's inventory, then follow identifiers to the data:
 
 ```bash
-curl '<base>/oai?verb=Identify'
-curl '<base>/oai?verb=ListMetadataFormats'
-curl '<base>/oai?verb=ListRecords&metadataPrefix=oai_dc&from=2024-01-01'
+# The OAI base path depends on the repository software. DSpace 7+
+# (e.g. WHOAS) serves it under /server/ — the old /oai and /oai/request
+# forms return the Angular UI with a 404:
+curl '<base>/server/oai/request?verb=Identify'
+curl '<base>/server/oai/request?verb=ListMetadataFormats'
+curl '<base>/server/oai/request?verb=ListRecords&metadataPrefix=oai_dc&from=2024-01-01'
 # Continue with the resumptionToken from each response:
-curl '<base>/oai?verb=ListRecords&resumptionToken=<token>'
+curl '<base>/server/oai/request?verb=ListRecords&resumptionToken=<token>'
 ```
+
+Verified against WHOAS (darchive.mblwhoilibrary.org): `Identify` names
+the repository, `ListRecords` pages 100 records with a
+`resumptionToken` carrying `completeListSize`.
 
 Records usually carry a DOI or landing-page URL in `dc:identifier`;
 resolve those like any [DOI link](./access-dataone.md).

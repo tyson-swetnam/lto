@@ -4,7 +4,7 @@ title: "USACE FRF Coastal Field Data Collection (CFDC) / FRF Data Portal"
 description: "US Army Corps of Engineers / ERDC-CHL Field Research Facility — data-portal holding long-term observatory records."
 resource: "https://frfdataportal.erdc.dren.mil/"
 tags: [data-portal, thredds, public-domain-us]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-14T03:20:10Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
 status: stable
 ---
 
@@ -21,7 +21,7 @@ FRF (Duck, NC) waves, currents, met, bathymetry, lidar, beach profiles since 197
 | Purpose | Method | Format | URL | Example |
 |---|---|---|---|---|
 | catalog | GET | application/xml | <https://chldata.erdc.dren.mil/thredds/catalog/frf/{collection}/catalog.xml> | curl 'https://chldata.erdc.dren.mil/thredds/catalog/frf/oceanography/waves/8m-array/catalog.xml' |
-| data-download | GET | application/x-netcdf | <https://chldata.erdc.dren.mil/thredds/dodsC/frf/{collection}/{file}.nc> | curl 'https://chldata.erdc.dren.mil/thredds/dodsC/frf/oceanography/waves/8m-array/2024/FRF-ocean_waves_8m-array_202401.nc.dap.nc4' |
+| data-download | GET | application/x-netcdf | <https://chldata.erdc.dren.mil/thredds/fileServer/frf/{collection}/{file}.nc> | curl -O 'https://chldata.erdc.dren.mil/thredds/fileServer/frf/oceanography/waves/8m-array/2024/FRF-ocean_waves_8m-array_202408.nc' |
 
 # Depositing facilities
 

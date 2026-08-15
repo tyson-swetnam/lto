@@ -2,9 +2,9 @@
 type: Data Archive
 title: "NERACOOS ERDDAP"
 description: "Northeastern Regional Association of Coastal Ocean Observing Systems — erddap holding long-term observatory records."
-resource: "http://www.neracoos.org/erddap/"
+resource: "https://data.neracoos.org/erddap/"
 tags: [erddap, erddap, noaa-public]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-14T03:20:10Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
 status: stable
 ---
 
@@ -12,16 +12,15 @@ Gulf of Maine + NE shelf RA ERDDAP; UMaine/UNH/WHOI moorings (A01-N01, etc.), mo
 
 # Access
 
-- Archive home: <http://www.neracoos.org/erddap/>
-- API root (`erddap`): <http://www.neracoos.org/erddap/> — see the [erddap guide](./access-erddap.md)
-- API documentation: <http://www.neracoos.org/erddap/index.html>
+- Archive home: <https://data.neracoos.org/erddap/>
+- API root (`erddap`): <https://data.neracoos.org/erddap/> — see the [erddap guide](./access-erddap.md)
+- API documentation: <https://data.neracoos.org/erddap/index.html>
 
 # Documented calls
 
 | Purpose | Method | Format | URL | Example |
 |---|---|---|---|---|
-| data-download | GET | application/x-netcdf | <http://www.neracoos.org/erddap/griddap/{datasetID}.nc?{var}[({t0}):({t1})][({lat0}):({lat1})][({lon0}):({lon1})]> | curl -O 'http://www.neracoos.org/erddap/griddap/<datasetID>.nc?<var>[(2024-01-01):(2024-01-07)][(40):(45)][(-71):(-65)]' |
-| data-download | GET | text/csv | <http://www.neracoos.org/erddap/tabledap/{datasetID}.csv?{vars}&time>={start}&time<={end}> | curl 'http://www.neracoos.org/erddap/tabledap/<datasetID>.csv?time,latitude,longitude,sea_water_temperature&time>=2024-01-01&time<=2024-02-01' |
+| data-download | GET | text/csv | <https://data.neracoos.org/erddap/tabledap/{datasetID}.csv?{vars}&time%3E={start}&time%3C={end}> | curl 'https://data.neracoos.org/erddap/tabledap/A01_ocean_001m.csv?time,latitude,longitude,temperature&time%3E=2024-01-01&time%3C=2024-01-02' |
 
 # Depositing facilities
 

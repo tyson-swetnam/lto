@@ -4,7 +4,7 @@ title: "NOAA Global Monitoring Laboratory"
 description: "NOAA Office of Oceanic and Atmospheric Research — data-portal holding long-term observatory records."
 resource: "https://gml.noaa.gov/"
 tags: [data-portal, ftp, noaa-public]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-14T03:20:10Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
 status: stable
 ---
 
@@ -21,8 +21,8 @@ NOAA GML hosts atmospheric baseline (CCGG, HATS, Ozone+Water Vapor, GRAD/SURFRAD
 
 | Purpose | Method | Format | URL | Example |
 |---|---|---|---|---|
-| data-download | GET | text/csv | <https://gml.noaa.gov/aftp/data/> | curl https://gml.noaa.gov/aftp/data/trace_gases/co2/in-situ/surface/mlo/co2_mlo_surface-insitu_1_ccgg_MonthlyData.txt |
 | data-download | GET | text/plain | <https://gml.noaa.gov/aftp/data/radiation/surfrad/{Site_State}/{YYYY}/{site}{YYDOY}.dat> | curl https://gml.noaa.gov/aftp/data/radiation/surfrad/Bondville_IL/2024/bon24001.dat |
+| data-download | GET | text/csv | <https://gml.noaa.gov/aftp/data/> | curl -O 'https://gml.noaa.gov/aftp/data/trace_gases/co2/in-situ/surface/txt/co2_mlo_surface-insitu_1_ccgg_MonthlyData.txt' |
 
 # Depositing facilities
 

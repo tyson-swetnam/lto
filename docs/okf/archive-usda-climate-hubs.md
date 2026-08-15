@@ -4,7 +4,7 @@ title: "USDA Climate Hubs"
 description: "USDA / cross-agency (ARS, FS, NRCS, NIFA) — knowledge-network holding long-term observatory records."
 resource: "https://www.climatehubs.usda.gov/"
 tags: [knowledge-network, usda-ars]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-14T03:20:10Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
 status: stable
 ---
 

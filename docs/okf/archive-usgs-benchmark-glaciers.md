@@ -2,9 +2,9 @@
 type: Data Archive
 title: "USGS Benchmark Glacier Project Data Releases"
 description: "USGS Alaska Science Center — program holding long-term observatory records."
-resource: "https://www.usgs.gov/centers/alaska-science-center/science/usgs-benchmark-glacier-project"
+resource: "https://www.usgs.gov/data/usgs-benchmark-glacier-mass-balance-and-project-data"
 tags: [program, rest, usgs-public]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-14T03:20:10Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
 status: stable
 ---
 
@@ -12,7 +12,7 @@ Five long-term reference glaciers (Wolverine, Gulkana, South Cascade, Sperry, Le
 
 # Access
 
-- Archive home: <https://www.usgs.gov/centers/alaska-science-center/science/usgs-benchmark-glacier-project>
+- Archive home: <https://www.usgs.gov/data/usgs-benchmark-glacier-mass-balance-and-project-data>
 - API root (`rest`): <https://www.sciencebase.gov/catalog/items> — see the [rest guide](./access-rest.md)
 - API documentation: <https://www.sciencebase.gov/catalog/jsonapi>
 - DOIs minted here start with `10.5066`

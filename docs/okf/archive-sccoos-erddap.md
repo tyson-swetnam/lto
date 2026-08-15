@@ -4,7 +4,7 @@ title: "SCCOOS ERDDAP"
 description: "Southern California Coastal Ocean Observing System — erddap holding long-term observatory records."
 resource: "http://erddap.sccoos.org/erddap/"
 tags: [erddap, erddap, noaa-public]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-14T03:20:10Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
 status: stable
 ---
 

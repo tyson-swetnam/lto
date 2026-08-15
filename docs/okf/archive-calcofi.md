@@ -4,7 +4,7 @@ title: "CalCOFI Data Archive"
 description: "California Cooperative Oceanic Fisheries Investigations / SIO / NMFS-SWFSC / CDFW — program holding long-term observatory records."
 resource: "https://calcofi.org/data/"
 tags: [program, http-files, cc-by-4.0]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-14T03:20:10Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
 status: stable
 ---
 
@@ -20,7 +20,7 @@ Quarterly CalCOFI cruise hydrographic, biological, and ichthyoplankton data 1949
 
 | Purpose | Method | Format | URL | Example |
 |---|---|---|---|---|
-| data-download | GET | text/csv | <https://calcofi.org/data/oceanographic-data/bottle-database/> | curl -O https://calcofi.org/downloads/database/CalCOFI_Database_194903-202001_csv_22Sep2021.zip |
+| data-download | GET | application/zip | <https://calcofi.org/data/oceanographic-data/bottle-database/> | curl -O 'https://calcofi.org/downloads/database/CalCOFI_Database_194903-202105_csv_16October2023.zip' |
 
 # Depositing facilities
 

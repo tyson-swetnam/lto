@@ -2,9 +2,9 @@
 type: Data Archive
 title: "USDA Ag Data Commons"
 description: "USDA Agricultural Research Service / National Agricultural Library — repository holding long-term observatory records."
-resource: "https://data.nal.usda.gov/"
+resource: "https://agdatacommons.nal.usda.gov/"
 tags: [repository, ckan, usda-ars]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-14T03:20:10Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
 status: stable
 ---
 
@@ -12,19 +12,17 @@ CKAN-based federal repository for USDA-funded research data. DOIs minted under 1
 
 # Access
 
-- Archive home: <https://data.nal.usda.gov/>
-- API root (`ckan`): <https://data.nal.usda.gov/api/3/> — see the [ckan guide](./access-ckan.md)
-- API documentation: <https://data.nal.usda.gov/about-ag-data-commons-api>
+- Archive home: <https://agdatacommons.nal.usda.gov/>
+- API root (`ckan`): <https://api.figshare.com/v2> — see the [ckan guide](./access-ckan.md)
+- API documentation: <https://docs.figshare.com/>
 - DOIs minted here start with `10.15482`
 
 # Documented calls
 
 | Purpose | Method | Format | URL | Example |
 |---|---|---|---|---|
-| listing | GET | application/json | <https://data.nal.usda.gov/api/3/action/organization_list> | curl 'https://data.nal.usda.gov/api/3/action/organization_list?all_fields=true&limit=200' |
-| listing | GET | application/json | <https://data.nal.usda.gov/api/3/action/group_list> | curl 'https://data.nal.usda.gov/api/3/action/group_list?all_fields=true' |
-| metadata | GET | application/json | <https://data.nal.usda.gov/api/3/action/package_show?id={dataset-id}> | curl 'https://data.nal.usda.gov/api/3/action/package_show?id=walnut-gulch-experimental-watershed' |
-| search | GET | application/json | <https://data.nal.usda.gov/api/3/action/package_search?q={query}&rows={rows}> | curl 'https://data.nal.usda.gov/api/3/action/package_search?q=walnut+gulch&rows=20' |
+| metadata | GET | application/json | <https://api.figshare.com/v2/articles/{article_id}> | curl 'https://api.figshare.com/v2/articles/24663366' |
+| search | POST | application/json | <https://api.figshare.com/v2/articles/search> | curl -X POST -H 'Content-Type: application/json' -d '{"search_for":"Walnut Gulch Experimental Watershed","page_size":2}' https://api.figshare.com/v2/articles/search |
 
 # Depositing facilities
 

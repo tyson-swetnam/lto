@@ -9,7 +9,7 @@ status: stable
 
 ERDDAP serves gridded data (**griddap**) and tabular data (**tabledap**)
 through a URL grammar that doubles as a query language: the file
-extension picks the format, the query string subsets the data. Twelve
+extension picks the format, the query string subsets the data. Fourteen
 archives in this catalogue are ERDDAP servers ([index](./index.md)).
 
 # Discover datasets
@@ -18,8 +18,19 @@ Every ERDDAP lists its datasets as data:
 
 ```
 <base>/erddap/tabledap/allDatasets.csv?datasetID,title,dataStructure
-<base>/erddap/search/index.csv?searchFor=temperature
+curl -L '<base>/erddap/search/index.csv?searchFor=temperature'
+# search/ 302-redirects to a paged URL — without -L, curl returns an
+# empty body with the redirect status.
 ```
+
+Two grammar traps measured on this catalogue's servers: percent-encode
+the time operators (`time%3E=`, `time%3C=`) — the Axiom-hosted ERDDAPs
+(AOOS, CeNCOOS, NANOOS) sit behind Tomcat, which rejects raw `>`/`<`
+in query strings with a 400/500 — and pass `-g` to curl for griddap
+URLs, or it treats the `[...]` selectors as glob ranges and errors
+before sending anything. Variable names differ per server (`
+sea_water_temperature` vs `sea_surface_temperature` vs `temperature`):
+read `info/<datasetID>/index.csv` first rather than assuming.
 
 # tabledap (in-situ / tabular)
 

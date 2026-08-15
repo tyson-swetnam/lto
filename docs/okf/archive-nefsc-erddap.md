@@ -4,7 +4,7 @@ title: "NEFSC ERDDAP"
 description: "NOAA / Northeast Fisheries Science Center — erddap holding long-term observatory records."
 resource: "https://comet.nefsc.noaa.gov/erddap/"
 tags: [erddap, erddap, noaa-public]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-14T03:20:10Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
 status: stable
 ---
 
@@ -20,5 +20,5 @@ ERDDAP server hosting NEFSC oceanographic and ecosystem-monitoring time series (
 
 | Purpose | Method | Format | URL | Example |
 |---|---|---|---|---|
-| data-access | GET | text/csv | <https://comet.nefsc.noaa.gov/erddap/tabledap/{datasetID}.{fileType}?{query}> | curl 'https://comet.nefsc.noaa.gov/erddap/tabledap/ecomon_v3_8.csv?cruise_id,time,latitude,longitude' |
+| data-access | GET | text/csv | <https://comet.nefsc.noaa.gov/erddap/tabledap/{datasetID}.{fileType}?{query}> | curl 'https://comet.nefsc.noaa.gov/erddap/tabledap/ocdbs_v_erddap1.csv?cruise_id&distinct()' |
 | metadata | GET | application/json | <https://comet.nefsc.noaa.gov/erddap/info/index.{fileType}> | curl 'https://comet.nefsc.noaa.gov/erddap/info/index.json' |

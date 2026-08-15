@@ -1,0 +1,5 @@
+# Belt-and-braces: Pages must never run Jekyll over this site. The real
+# guard is Pages build_type=workflow (deploy.yml artifact); this file
+# protects against anyone flipping the setting back to branch builds,
+# which convert every front-mattered docs/okf/*.md into .html and 404
+# the Docs tab (the 2026-08-14 outage).

@@ -4,7 +4,7 @@ title: "Total Carbon Column Observing Network (TCCON) Data Archive"
 description: "Caltech (lead) / NASA / DOE / international partners — repository holding long-term observatory records."
 resource: "https://tccondata.org/"
 tags: [repository, rest, cc-by-4.0]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-14T03:20:10Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
 status: stable
 ---
 

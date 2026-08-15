@@ -4,7 +4,7 @@ title: "USACE ERDC Coastal and Hydraulics Laboratory Data Server"
 description: "US Army Corps of Engineers / Engineer Research and Development Center — lab-archive holding long-term observatory records."
 resource: "https://chl.erdc.dren.mil/"
 tags: [lab-archive, thredds, public-domain-us]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-14T03:20:10Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
 status: stable
 ---
 

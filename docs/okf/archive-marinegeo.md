@@ -2,9 +2,9 @@
 type: Data Archive
 title: "MarineGEO — Smithsonian Tennenbaum Marine Observatories Network"
 description: "Smithsonian Environmental Research Center / Smithsonian Institution — observatory-network holding long-term observatory records."
-resource: "https://marinegeo.github.io/"
+resource: "https://marinegeo.si.edu/"
 tags: [observatory-network, github, cc-by-4.0]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-14T03:20:10Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
 status: stable
 ---
 
@@ -12,15 +12,15 @@ Smithsonian-led global coastal biodiversity network with partner sites (SERC Che
 
 # Access
 
-- Archive home: <https://marinegeo.github.io/>
-- API root (`github`): <https://github.com/MarineGEO/marinegeo-database>
-- API documentation: <https://marinegeo.github.io/protocols/>
+- Archive home: <https://marinegeo.si.edu/>
+- API root (`github`): <https://github.com/MarineGEO/protocols>
+- API documentation: <https://marinegeo.si.edu/>
 
 # Documented calls
 
 | Purpose | Method | Format | URL | Example |
 |---|---|---|---|---|
-| listing | GET | text/markdown | <https://github.com/MarineGEO/marinegeo-database> | curl https://raw.githubusercontent.com/MarineGEO/marinegeo-database/master/README.md |
+| listing | GET | text/markdown | <https://raw.githubusercontent.com/MarineGEO/protocols/master/README.md> | curl https://raw.githubusercontent.com/MarineGEO/protocols/master/README.md |
 
 # Depositing facilities
 

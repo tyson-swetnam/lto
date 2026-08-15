@@ -4,7 +4,7 @@ title: "Ocean Observatories Initiative Data Explorer"
 description: "NSF / Consortium for Ocean Leadership / WHOI / OSU / UW — observatory-network holding long-term observatory records."
 resource: "https://dataexplorer.oceanobservatories.org/"
 tags: [observatory-network, erddap, cc-by-4.0]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-14T03:20:10Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
 status: stable
 ---
 

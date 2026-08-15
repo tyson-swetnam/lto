@@ -4,7 +4,7 @@ title: "U.S. IOOS Data Management and Cyberinfrastructure (DMAC) ERDDAP"
 description: "NOAA / U.S. IOOS Program Office — erddap holding long-term observatory records."
 resource: "https://erddap.ioos.us/erddap/"
 tags: [erddap, erddap, noaa-public]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-14T03:20:10Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
 status: stable
 ---
 
@@ -20,8 +20,8 @@ Cross-RA federation ERDDAP harvested by IOOS Catalog. Aggregates RA-hosted datas
 
 | Purpose | Method | Format | URL | Example |
 |---|---|---|---|---|
-| data-download | GET | text/csv | <https://erddap.ioos.us/erddap/tabledap/{datasetID}.csv?{vars}&time>={start}&time<={end}> | curl 'https://erddap.ioos.us/erddap/tabledap/edu_rutgers_marine_ru32-20231012T1554.csv?time,latitude,longitude,depth,sea_water_temperature&time>=2023-10-12&time<=2023-10-20' |
-| data-download | GET | application/x-netcdf | <https://erddap.ioos.us/erddap/griddap/{datasetID}.nc?{var}[({t0}):({t1})][({z0}):({z1})][({lat0}):({lat1})][({lon0}):({lon1})]> | curl -O 'https://erddap.ioos.us/erddap/griddap/jplMURSST41.nc?analysed_sst[(2024-01-01):(2024-01-07)][(34):(45)][(-76):(-65)]' |
+| data-download | GET | application/x-netcdf | <https://coastwatch.pfeg.noaa.gov/erddap/griddap/{datasetID}.nc?{var}[({t0}):({t1})][({lat0}):({lat1})][({lon0}):({lon1})]> | curl -g -O 'https://coastwatch.pfeg.noaa.gov/erddap/griddap/jplMURSST41.nc?analysed_sst[(2024-01-01T09:00:00Z):1:(2024-01-02T09:00:00Z)][(32):(33)][(-120):(-119)]' |
+| data-download | GET | text/csv | <https://gliders.ioos.us/erddap/tabledap/{datasetID}.csv?{vars}&time%3E={start}&time%3C={end}> | curl 'https://gliders.ioos.us/erddap/tabledap/ru32-20190102T1317.csv?time,latitude,longitude,depth,temperature&time%3E=2019-01-02&time%3C=2019-01-04' |
 | listing | GET | application/json | <https://erddap.ioos.us/erddap/info/index.json?page=1&itemsPerPage=10000> | curl 'https://erddap.ioos.us/erddap/info/index.json?page=1&itemsPerPage=10000' |
 
 # Depositing facilities
