@@ -1694,8 +1694,58 @@ footer a:hover { color: var(--c-primary); }
 .prj-retrieved { color: #94a3b8; font-size: .78rem; margin-left: 8px; }
 .prj-children { margin-top: 12px; display: flex; flex-direction: column; gap: 10px; }
 .prj-children .prj-card { background: var(--c-bg); }
+/* Science groups: one <details> per network, sites listed beneath. */
+.prj-scopes { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0 12px; }
+.prj-scope {
+  font: inherit; font-size: .84rem; padding: 4px 12px; cursor: pointer;
+  border: 1px solid var(--c-border-d); border-radius: 999px;
+  background: #fff; color: var(--c-text-soft);
+}
+.prj-scope:hover { border-color: var(--c-primary); color: var(--c-primary); }
+.prj-scope.active { background: var(--c-primary); border-color: var(--c-primary); color: #fff; }
+.prj-groups { display: flex; flex-direction: column; gap: 12px; }
+.prj-group {
+  border: 1px solid var(--c-border); border-radius: 8px; background: #fff;
+  padding: 0 16px; scroll-margin-top: 14px;
+}
+.prj-group[open] { padding-bottom: 14px; }
+.prj-group > summary {
+  cursor: pointer; padding: 12px 0; list-style-position: outside;
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 10px;
+}
+.prj-group-label { font-weight: 700; font-size: 1.02rem; color: #0f172a; }
+.prj-group-name { color: var(--c-text-soft); font-size: .92rem; }
+.prj-level {
+  font-size: .7rem; padding: 1px 8px; border-radius: 999px;
+  background: #e0f2fe; color: #0369a1; white-space: nowrap;
+}
+.prj-group-count { margin-left: auto; font-size: .82rem; color: #64748b; white-space: nowrap; }
+.prj-group-link { margin: 0 0 8px; font-size: .82rem; }
+.prj-group-link a { color: #0369a1; }
+.prj-subhead {
+  margin: 12px 0 8px; font-size: .74rem; text-transform: uppercase;
+  letter-spacing: .05em; color: #64748b;
+}
+.prj-sites {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 6px 18px;
+}
+.prj-site { padding: 6px 0; border-top: 1px solid var(--c-bg-alt); min-width: 0; }
+.prj-site-main { display: flex; flex-direction: column; gap: 1px; }
+.prj-site-name { font-size: .9rem; color: #0f172a; }
+.prj-site-name a { color: #0369a1; text-decoration: none; }
+.prj-site-name a:hover { text-decoration: underline; }
+.prj-site-name small { color: #64748b; }
+.prj-site-meta { font-size: .78rem; color: #64748b; text-transform: capitalize; }
+.prj-site-locs { margin-top: 3px; display: flex; flex-wrap: wrap; gap: 3px 5px; }
+.prj-site-locs span {
+  font-size: .74rem; padding: 0 7px; border-radius: 4px;
+  background: var(--c-bg-alt); color: var(--c-text-soft);
+}
 @media (max-width: 600px) {
   .prj-team { grid-template-columns: 1fr; }
+  .prj-group-count { margin-left: 0; }
+  .prj-sites { grid-template-columns: 1fr; }
 }
 
 .ppl-page { padding: 22px clamp(16px, 3vw, 36px); max-width: 1400px; margin: 0 auto; }

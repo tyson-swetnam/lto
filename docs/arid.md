@@ -33,9 +33,12 @@ hand-reviewed seed that cites one. Nothing is recalled from memory.
   Resources Hub (the Bosque Ecosystem Monitoring Program, the Center for
   Water and the Environment, the Museum of Southwestern Biology, and others).
   Sevilleta LTER was already catalogued and is linked, not duplicated.
-- **Projects** have their own tab. A project is a body of work, not a
-  place, so it is not a facility. Twelve are recorded: ARID's six listed
-  projects, the four cores of CHANGES, and two CHANGES field efforts.
+- **Projects** sit on the Projects tab, inside ARID's group. A project is
+  a body of work, not a place, so it is not a facility. Twelve are
+  recorded: ARID's six listed projects, the four cores of CHANGES, and two
+  CHANGES field efforts. The same tab lists every other network and
+  program in the catalogue as a science group, with the member sites the
+  chosen scope lets through and each site's named locations.
 - **People** — the 26-member leadership team, four staff, and each
   project's named team — carry the *ARID* pill on the People tab.
 
