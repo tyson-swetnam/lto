@@ -463,6 +463,12 @@ def main() -> int:
     with duckdb.connect(str(DB_PATH)) as conn:
         conn.execute("SET search_path = main;")
 
+        # An empty facilities table is never a valid catalogue. Without this
+        # every check below passes vacuously and export_parquet.py would then
+        # overwrite the committed parquet with zero rows.
+        n_fac = conn.execute("SELECT COUNT(*) FROM facilities").fetchone()[0]
+        assert_true(n_fac > 0, "facilities is empty — refusing to pass an empty catalogue", failures)
+
         null_type = conn.execute(
             "SELECT COUNT(*) FROM facilities WHERE facility_type IS NULL OR country IS NULL"
         ).fetchone()[0]
