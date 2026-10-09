@@ -1,0 +1,72 @@
+[
+  {
+    "path_or_url": "https://arizonawaterobservatory-api.rtd.asu.edu/openapi",
+    "purpose": "metadata",
+    "response_format": "json",
+    "example_call": "curl -s 'https://arizonawaterobservatory-api.rtd.asu.edu/openapi?f=json'",
+    "notes": "OpenAPI 3.0 description of every path. ?f=html for the Swagger UI.",
+    "archive_id": "arizona-water-observatory",
+    "method": "GET",
+    "schema_url": "https://arizonawaterobservatory-api.rtd.asu.edu/openapi?f=json"
+  },
+  {
+    "path_or_url": "https://arizonawaterobservatory-api.rtd.asu.edu/collections",
+    "purpose": "metadata",
+    "response_format": "json",
+    "example_call": "curl -s 'https://arizonawaterobservatory-api.rtd.asu.edu/collections?f=json'",
+    "notes": "Every collection with its extent, parameters and source links. This is the document the catalogue is built from.",
+    "archive_id": "arizona-water-observatory",
+    "method": "GET",
+    "schema_url": "https://arizonawaterobservatory-api.rtd.asu.edu/openapi?f=json"
+  },
+  {
+    "path_or_url": "https://arizonawaterobservatory-api.rtd.asu.edu/collections/{collectionId}/queryables",
+    "purpose": "metadata",
+    "response_format": "json",
+    "example_call": "curl -s 'https://arizonawaterobservatory-api.rtd.asu.edu/collections/National_Water_Model_Channel_Routing_Output/queryables?f=json'",
+    "notes": "Filterable properties of a feature collection (JSON Schema).",
+    "archive_id": "arizona-water-observatory",
+    "method": "GET",
+    "schema_url": "https://arizonawaterobservatory-api.rtd.asu.edu/openapi?f=json"
+  },
+  {
+    "path_or_url": "https://arizonawaterobservatory-api.rtd.asu.edu/collections/{collectionId}/items",
+    "purpose": "download",
+    "response_format": "geojson",
+    "example_call": "curl -s 'https://arizonawaterobservatory-api.rtd.asu.edu/collections/National_Water_Model_Channel_Routing_Output/items?f=json&limit=10'",
+    "notes": "OGC API Features. Supports limit, offset, bbox, datetime and property filters; responses can be large where geometries are detailed.",
+    "archive_id": "arizona-water-observatory",
+    "method": "GET",
+    "schema_url": "https://arizonawaterobservatory-api.rtd.asu.edu/openapi?f=json"
+  },
+  {
+    "path_or_url": "https://arizonawaterobservatory-api.rtd.asu.edu/collections/{collectionId}/locations",
+    "purpose": "search",
+    "response_format": "geojson",
+    "example_call": "curl -s 'https://arizonawaterobservatory-api.rtd.asu.edu/collections/National_Water_Model_Channel_Routing_Output/locations?f=json'",
+    "notes": "OGC API EDR: the stations or sites a collection has data for. Append /{locId} with datetime and parameter-name for one location's series; f=csv is offered too.",
+    "archive_id": "arizona-water-observatory",
+    "method": "GET",
+    "schema_url": "https://arizonawaterobservatory-api.rtd.asu.edu/openapi?f=json"
+  },
+  {
+    "path_or_url": "https://arizonawaterobservatory-api.rtd.asu.edu/collections/{collectionId}/cube",
+    "purpose": "download",
+    "response_format": "json",
+    "example_call": "curl -s 'https://arizonawaterobservatory-api.rtd.asu.edu/collections/National_Water_Model_Channel_Routing_Output/cube?f=json&bbox=-112.5,33.2,-111.5,33.8&datetime=2023-01-01/2023-01-31'",
+    "notes": "OGC API EDR cube query: everything inside a bbox and time window, as CoverageJSON. /area takes a WKT polygon instead of a bbox.",
+    "archive_id": "arizona-water-observatory",
+    "method": "GET",
+    "schema_url": "https://arizonawaterobservatory-api.rtd.asu.edu/openapi?f=json"
+  },
+  {
+    "path_or_url": "https://arizonawaterobservatory-api.rtd.asu.edu/processes",
+    "purpose": "metadata",
+    "response_format": "json",
+    "example_call": "curl -s 'https://arizonawaterobservatory-api.rtd.asu.edu/processes?f=json'",
+    "notes": "OGC API Processes offered by the server.",
+    "archive_id": "arizona-water-observatory",
+    "method": "GET",
+    "schema_url": "https://arizonawaterobservatory-api.rtd.asu.edu/openapi?f=json"
+  }
+]

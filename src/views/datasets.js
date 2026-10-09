@@ -63,6 +63,8 @@ const API_COLORS = {
   dataone         : '#1d4ed8',
   ckan            : '#7c3aed',
   wms             : '#9333ea',
+  'ogc-wms-wfs'   : '#9333ea',
+  'ogc-api'       : '#0891b2',
   'oai-pmh'       : '#a21caf',
   soap            : '#b45309',
   graphql         : '#c026d3',
@@ -80,6 +82,9 @@ const API_COLORS = {
 const MACHINE_APIS = new Set([
   'rest', 'erddap', 'thredds', 'dataone', 'ckan', 'wms', 'oai-pmh',
   'soap', 'graphql', 'ftp',
+  // OGC services: per-layer WMS/WFS (EnviroData-NM) and OGC API
+  // Features / EDR (Arizona Water Observatory).
+  'ogc-wms-wfs', 'ogc-api',
 ]);
 
 // cloud_buckets.provider → badge color (S3 amber like upstream's s3).
@@ -782,7 +787,20 @@ function topCategory(r) {
   return r.category ? String(r.category).split(' / ')[0] : '—';
 }
 
-function productRowHtml(r, cols) {
+// How to link one product's machine endpoint, by the archive's api_type.
+// A bare WMS endpoint answers nothing useful without a request, so that
+// one links its capabilities document.
+function serviceLink(r, apiType) {
+  if (!r.api_url) return '—';
+  const [label, href] = apiType === 'ogc-wms-wfs'
+    ? ['WMS', `${r.api_url}?service=WMS&request=GetCapabilities`]
+    : apiType === 'ogc-api'
+      ? ['OGC API', `${r.api_url}?f=json`]
+      : ['API', r.api_url];
+  return `<a href="${esc(href)}" target="_blank" rel="noopener" title="${esc(r.api_url)}">${label}</a>`;
+}
+
+function productRowHtml(r, cols, apiType) {
   // Title links the DOI when there is one (the citable, permanent
   // address), else the landing URL. The catalogue currently has no row
   // with neither, but a bare-text fallback keeps a future one visible.
@@ -812,9 +830,7 @@ function productRowHtml(r, cols) {
     license_slug: `<td>${esc(r.license_slug || '—')}</td>`,
     temporal_start: `<td class="ds-products-span">${span}</td>`,
     cited_by_count: `<td class="num">${cites}</td>`,
-    api_url: `<td>${r.api_url
-      ? `<a href="${esc(r.api_url)}?service=WMS&amp;request=GetCapabilities" target="_blank" rel="noopener" title="${esc(r.api_url)}">WMS</a>`
-      : '—'}</td>`,
+    api_url: `<td>${serviceLink(r, apiType)}</td>`,
     source: `<td class="ds-products-src">${esc(r.source || '—')}</td>`,
     confidence: `<td>${conf}</td>`,
   };
@@ -916,10 +932,10 @@ async function renderProducts(archiveId) {
         ${arch.organization ? `<p class="ds-provider">${esc(arch.organization)}</p>` : ''}
         <p class="ds-summary">
           ${hasCategory
-    ? `Every layer this portal publishes. The catalogue holds metadata and
-          links only: a title opens the portal's own download where it offers
-          one, and <em>WMS</em> opens the layer's map service. Hover a title
-          for its fields; click a column header to sort.`
+    ? `Everything this source publishes. The catalogue holds metadata and
+          links only: a title opens the source's own page or download, and
+          the <em>Service</em> link opens that record's machine endpoint.
+          Hover a title for its fields; click a column header to sort.`
     : `Every addressable dataset this archive holds for the catalogued
           facilities. Click a title to open its DOI or landing page; click
           a column header to sort; hover a title for its variables.
@@ -960,7 +976,7 @@ async function renderProducts(archiveId) {
         <table class="dash-table ds-products-table">
           <thead><tr>${ths}</tr></thead>
           <tbody>${shown.length
-    ? shown.map((r) => productRowHtml(r, cols)).join('')
+    ? shown.map((r) => productRowHtml(r, cols, arch.api_type)).join('')
     : `<tr><td colspan="${cols.length}" class="no-data">No product matches these filters.</td></tr>`}</tbody>
         </table>
       </div>

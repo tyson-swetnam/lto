@@ -33,6 +33,8 @@ db/parquet/*.parquet
 !data/raw/R-ARID/*.json
 !data/raw/J-ENVIRODATA/
 !data/raw/J-ENVIRODATA/*.json
+!data/raw/J-AZWATER/
+!data/raw/J-AZWATER/*.json
 
 # Large raster deliverables — too big for GitHub without LFS.
 # Use `git add -f path.img` only after `git lfs install` has been run.

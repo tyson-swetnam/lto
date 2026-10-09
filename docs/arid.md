@@ -71,6 +71,30 @@ The portal's catalogue endpoint is not documented and may change;
 `scripts/fetch_envirodata_nm.py` fails loudly rather than writing an empty
 index if it does.
 
+## Arizona Water Observatory
+
+The drylands lens reaches into Arizona, and so does the data index. The
+[Arizona Water Observatory](https://arizonawaterobservatory.asu.edu) (AWO),
+hosted at Arizona State University with the Internet of Water, publishes
+state, federal and ASU-derived water datasets through one
+[OGC API](https://arizonawaterobservatory-api.rtd.asu.edu/openapi?f=html).
+Its 26 collections are catalogued the same way as EnviroData-NM: as
+pointers, with no data copied.
+
+- Each record links the collection's page and its API endpoint, and carries
+  the spatial and temporal extent, the parameter list, which query types
+  it answers (features, EDR time series, grids, maps), and the upstream
+  agency service it fronts.
+- Arizona-specific collections include the Department of Water Resources
+  groundwater site inventory, groundwater basins, Active Management Areas
+  and irrigation districts, the Central Arizona Project canal, and
+  GRACE-derived groundwater storage change for the Lower Colorado basin.
+- Several collections are regional or national in extent (SNOTEL, the
+  National Water Model, Reclamation's RISE, PRISM); each record's bounding
+  box says which.
+- **Find them** on the Data tab under *Arizona Water Observatory*, or in
+  SQL: `SELECT * FROM data_products WHERE archive_id = 'arizona-water-observatory'`.
+
 ## Refreshing the layer
 
 ```bash
@@ -79,8 +103,9 @@ python scripts/fetch_arid_site.py          # arid.unm.edu → data/raw/R-ARID/
 python scripts/load_arid.py
 python scripts/backfill_facility_state.py
 python scripts/fetch_envirodata_nm.py      # ~5 min, one request per second
+python scripts/fetch_az_water_observatory.py   # two requests
 python scripts/load_lto_archives.py
 python scripts/qa.py && python scripts/export_parquet.py && python scripts/export_view_caches.py
 ```
 
-Agent specs: `agents/R-ARID.md` and `agents/J-ENVIRODATA.md`.
+Agent specs: `agents/R-ARID.md`, `agents/J-ENVIRODATA.md` and `agents/J-AZWATER.md`.

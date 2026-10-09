@@ -28,6 +28,8 @@ drylands** and carries a layer for the University of New Mexico's
 plus an index of every layer in [EnviroData-NM](https://envirodata-nm.unm.edu), the
 state's environmental data portal. The EnviroData-NM records are pointers: metadata
 and links back to the portal's own download and OGC endpoints, with no data copied.
+The [Arizona Water Observatory](https://arizonawaterobservatory.asu.edu)'s OGC API
+collections are indexed the same way.
 Switch the **Scope** filter to *All U.S.* for the whole catalogue. See
 [`docs/arid.md`](docs/arid.md).
 

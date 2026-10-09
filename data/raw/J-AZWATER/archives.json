@@ -1,0 +1,15 @@
+[
+  {
+    "archive_id": "arizona-water-observatory",
+    "name": "Arizona Water Observatory (AWO)",
+    "organization": "Arizona State University, with the Internet of Water (Center for Geospatial Solutions, Lincoln Institute of Land Policy)",
+    "archive_type": "aggregator",
+    "base_url": "https://arizonawaterobservatory.asu.edu/",
+    "api_url": "https://arizonawaterobservatory-api.rtd.asu.edu",
+    "api_doc_url": "https://arizonawaterobservatory-api.rtd.asu.edu/openapi?f=html",
+    "api_type": "ogc-api",
+    "license_slug": "unknown",
+    "doi_prefix": null,
+    "notes": "The Arizona Water Observatory (AWO) provides water quality and water supply information for Arizona's water resources. A pygeoapi deployment serving OGC API Features, Environmental Data Retrieval (EDR), Maps and Processes; most collections front another agency's service (NOAA, USGS, USDA, USBR, USACE, NASA, Arizona Department of Water Resources), named in each record's notes. Source code: https://github.com/cgs-earth/ArizonaWaterObservatory. The API document declares the MIT License, which covers the software; each upstream dataset keeps its own terms, so the records here carry license 'unknown'. This catalogue holds metadata and links only."
+  }
+]

@@ -70,6 +70,22 @@ GROUP  BY 1
 ORDER  BY layers DESC;`,
   },
   {
+    id: 'az-water-collections',
+    title: 'Arizona Water Observatory collections',
+    description:
+      'The OGC API collections of the Arizona Water Observatory, with the ' +
+      'kind of access each offers and its time span where the API states one.',
+    sql: `-- Arizona Water Observatory: one row per API collection
+SELECT title,
+       category,
+       CAST(temporal_start AS VARCHAR) AS from_date,
+       CAST(temporal_end   AS VARCHAR) AS to_date,
+       api_url
+FROM   data_products
+WHERE  archive_id = 'arizona-water-observatory'
+ORDER  BY category, title;`,
+  },
+  {
     id: 'facilities-by-type',
     title: 'Facilities by type',
     description:

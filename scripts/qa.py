@@ -308,29 +308,42 @@ def check_projects(conn, failures: list[str]) -> None:
                     failures)
 
 
+# Archives catalogued as pointers: metadata plus links back to the source's
+# own endpoints, never a copy of its data. archive_id → the prefix every
+# product url and api_url must start with.
+POINTER_ARCHIVES = {
+    "envirodata-nm": "https://envirodata-nm.unm.edu/",
+    "arizona-water-observatory": "https://arizonawaterobservatory-api.rtd.asu.edu/",
+}
+
+
 def check_portal_products(conn, failures: list[str]) -> None:
-    """EnviroData-NM records are pointers: each must point somewhere."""
-    n = conn.execute(
-        "SELECT COUNT(*) FROM data_products WHERE archive_id = 'envirodata-nm'"
-    ).fetchone()[0] if table_rows(conn, "data_products") > 0 else 0
-    if n == 0:
+    """Pointer records must point somewhere, on the source's own host."""
+    if table_rows(conn, "data_products") <= 0:
         return
-    bad = conn.execute(
-        """SELECT COUNT(*) FROM data_products
-           WHERE archive_id = 'envirodata-nm'
-             AND (url IS NULL OR api_url IS NULL OR category IS NULL
-                  OR url NOT LIKE 'https://envirodata-nm.unm.edu/%'
-                  OR api_url NOT LIKE 'https://envirodata-nm.unm.edu/ogc/%')"""
-    ).fetchone()[0]
-    assert_true(bad == 0,
-                f"{bad} EnviroData-NM products lack a portal url, api_url or category",
-                failures)
-    dup = conn.execute(
-        """SELECT COUNT(*) FROM (
-             SELECT identifier FROM data_products WHERE archive_id = 'envirodata-nm'
-             GROUP BY identifier HAVING COUNT(*) > 1)"""
-    ).fetchone()[0]
-    assert_true(dup == 0, f"{dup} EnviroData-NM layer identifiers are duplicated", failures)
+    for archive_id, prefix in POINTER_ARCHIVES.items():
+        n = conn.execute(
+            "SELECT COUNT(*) FROM data_products WHERE archive_id = ?", [archive_id]
+        ).fetchone()[0]
+        if n == 0:
+            continue
+        bad = conn.execute(
+            """SELECT COUNT(*) FROM data_products
+               WHERE archive_id = ?
+                 AND (url IS NULL OR api_url IS NULL OR category IS NULL
+                      OR NOT starts_with(url, ?) OR NOT starts_with(api_url, ?))""",
+            [archive_id, prefix, prefix],
+        ).fetchone()[0]
+        assert_true(bad == 0,
+                    f"{bad} {archive_id} products lack a source url, api_url or category",
+                    failures)
+        dup = conn.execute(
+            """SELECT COUNT(*) FROM (
+                 SELECT identifier FROM data_products WHERE archive_id = ?
+                 GROUP BY identifier HAVING COUNT(*) > 1)""",
+            [archive_id],
+        ).fetchone()[0]
+        assert_true(dup == 0, f"{dup} {archive_id} identifiers are duplicated", failures)
 
 
 def check_life_zones(conn, failures: list[str]) -> None:
