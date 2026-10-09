@@ -54,6 +54,8 @@ There is no test framework. `qa.py` is the only correctness gate; add new invari
 
 - **`export_parquet.py` fails soft on missing tables.** A `CatalogException` is swallowed and the table is skipped, leaving whatever stale parquet is already in `public/parquet/`. A "successful" export can therefore ship old data for a table a `compute_*` script hasn't produced yet — check the `[ok] exported …` line against the skip list.
 
+- **The OpenAlex topic crosswalk must be copied from data, never typed.** `data/vocab_crosswalk/openalex_to_area.csv` maps OpenAlex topic/concept ids to `research_areas`; `compute_area_metrics.py` uses it for every per-area number. Its first version had recalled ids ("Kelp" carried the id of "Global warming") and filed dryland ecologists under marine debris. Take id and name together from `publication_topics`; `qa.py` fails on an id whose label disagrees with the data or an unknown area. People-card totals (pubs, citations, h-index) come from `authorship`, not from this table.
+
 - **`COMMIT_*.sh` are one-shot driver scripts**, gitignored, not source. Don't read them as documentation of current state — they are historical commit drivers.
 
 - **The national raw inputs are not in the repo.** `data/raw/**/*.json` is gitignored, so the 445 original facilities cannot be re-ingested from source; `public/parquet/` is their only copy. Running `ingest.py` on a clean checkout builds an empty schema, which `qa.py` now rejects. The ARID wave is the exception: `data/raw/R-ARID/` and `data/raw/J-ENVIRODATA/` are committed.

@@ -346,6 +346,48 @@ def check_portal_products(conn, failures: list[str]) -> None:
         assert_true(dup == 0, f"{dup} {archive_id} identifiers are duplicated", failures)
 
 
+def check_topic_crosswalk(conn, failures: list[str]) -> None:
+    """The OpenAlex → research-area crosswalk must name real things.
+
+    Its ids were once typed from memory: "Kelp" carried the id of "Global
+    warming", "Ecosystem" the id of the general concept "Ecology", and
+    15,000 unrelated papers were filed under marine ecosystems as a
+    result. Two checks stop that recurring: every id that occurs in
+    publication_topics must carry OpenAlex's own name for it, and every
+    area must exist in the vocabulary.
+    """
+    import csv as _csv                                    # noqa: PLC0415
+    import re as _re                                      # noqa: PLC0415
+    root = Path(__file__).resolve().parent.parent
+    path = root / "data" / "vocab_crosswalk" / "openalex_to_area.csv"
+    areas_csv = root / "schema" / "vocab" / "research_areas.csv"
+    if not path.exists() or not areas_csv.exists():
+        return
+    with areas_csv.open(newline="") as fh:
+        areas = {r["slug"] for r in _csv.DictReader(fh)}
+    with path.open(newline="") as fh:
+        rows = [r for r in _csv.reader(fh)
+                if r and not r[0].startswith("#") and r[0] != "openalex_id"]
+
+    def norm(s: str) -> str:
+        return _re.sub(r"[^a-z0-9]+", " ", s.lower()).strip()
+
+    bad_area = sorted({r[2] for r in rows if len(r) < 3 or r[2] not in areas})
+    assert_true(not bad_area,
+                f"topic crosswalk maps to unknown research areas: {bad_area[:8]}", failures)
+
+    if table_rows(conn, "publication_topics") <= 0:
+        return
+    real = dict(conn.execute(
+        "SELECT concept_id, any_value(concept_name) FROM publication_topics GROUP BY 1"
+    ).fetchall())
+    wrong = sorted({f"{r[0]} is '{real[r[0]]}', not '{r[1]}'" for r in rows
+                    if r[0] in real and norm(real[r[0]]) != norm(r[1])})
+    assert_true(not wrong,
+                f"{len(wrong)} topic-crosswalk ids carry the wrong label: {wrong[:5]}",
+                failures)
+
+
 def check_life_zones(conn, failures: list[str]) -> None:
     """Holdridge life-zone layer invariants (ecosystem facet checked too)."""
     if table_rows(conn, "facility_life_zones") > 0:
@@ -658,6 +700,7 @@ def main() -> int:
         check_states(conn, failures)
         check_projects(conn, failures)
         check_portal_products(conn, failures)
+        check_topic_crosswalk(conn, failures)
         check_person_registry(conn, failures)
         check_registry_edges(conn, failures)
 
