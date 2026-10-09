@@ -20,12 +20,12 @@ The browser fetches `public/parquet/*.parquet` over HTTP range requests via Duck
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 
-python scripts/rebuild_db_from_parquet.py  # FIRST after any pull — recreate db/lto.duckdb from committed db/parquet/
+python scripts/rebuild_db_from_parquet.py  # FIRST after any pull — recreate db/lto.duckdb from committed public/parquet/
 python scripts/ingest.py               # data/raw/R*/*.json → db/lto.duckdb
 python scripts/ingest.py --skip-geocode  # use .geocode_cache.json only
 python scripts/qa.py                   # data-quality gate (exits non-zero on failure)
 python scripts/export_parquet.py       # db/lto.duckdb → db/parquet/*, public/parquet/*, public/facilities.geojson
-python scripts/export_view_caches.py   # → public/cache/{browse_cards,people_cards}.json
+python scripts/export_view_caches.py   # → public/cache/{browse_cards,people_cards,project_cards}.json
 python scripts/build_web_overlays.py   # network_synth_spatial_analysis/ → public/overlays/*.geojson + manifest.json
 
 # Web UI
@@ -34,15 +34,15 @@ python -m http.server 5173             # then open http://localhost:5173/
 
 The canonical post-edit sequence is: mutate the DB → `qa.py` → `export_parquet.py` → `export_view_caches.py`. Skipping the last step leaves the Browse and People tabs showing stale data.
 
-There is no test framework. `qa.py` is the only correctness gate; add new invariants there rather than introducing pytest. It asserts: no null `facility_type`/`country`, every `facility_type` resolves against the vocab table, every facility has a `provenance` row, and every geocoded facility falls inside its country's bbox (`BBOX_BY_COUNTRY`).
+There is no test framework. `qa.py` is the only correctness gate; add new invariants there rather than introducing pytest. Its JS parse check needs `node` on PATH and is skipped without it (`pip install nodejs-wheel-binaries` provides one). It asserts: no null `facility_type`/`country`, every `facility_type` resolves against the vocab table, every facility has a `provenance` row, and every geocoded facility falls inside its country's bbox (`BBOX_BY_COUNTRY`).
 
 `RUNBOOK.md` is the operator guide for the external-API enrichment passes (ORCID → OpenAlex → NSF/USAspending/990 → recompute derived tables). Follow it rather than re-deriving the order; those scripts need real network access and `OPENALEX_MAILTO` set.
 
 ## Critical gotchas
 
-- **DuckDB on-disk format is not portable across versions** (e.g. 1.5.x writes a file 1.3.x cannot read). The `.duckdb` file is gitignored; the canonical committed artifact is `db/parquet/*.parquet`. After pulling, run `scripts/rebuild_db_from_parquet.py` before doing anything that opens the DB. See that script for the full rationale.
+- **DuckDB on-disk format is not portable across versions** (e.g. 1.5.x writes a file 1.3.x cannot read). The `.duckdb` file and `db/parquet/` are both gitignored; the canonical committed artifact is `public/parquet/*.parquet`. After pulling, run `scripts/rebuild_db_from_parquet.py` before doing anything that opens the DB (it reads `db/parquet/` if a local export has filled it, else `public/parquet/`). See that script for the full rationale.
 
-- **Two views bypass DuckDB entirely.** `src/views/list.js` and `src/views/people.js` fetch `public/cache/browse_cards.json` / `people_cards.json` first and only fall through to DuckDB-Wasm if the fetch 404s. That JSON is materialised offline by `scripts/export_view_caches.py` from the same SQL. Consequence: **changing the SQL in those view files, or the underlying data, has no visible effect until you re-run `export_view_caches.py` and commit the JSON.** Keep the cache SQL and the in-file fallback SQL in sync — they must produce identical row shapes.
+- **Three views bypass DuckDB entirely.** `src/views/list.js`, `src/views/people.js` and `src/views/projects.js` fetch `public/cache/browse_cards.json` / `people_cards.json` / `project_cards.json` first and only fall through to DuckDB-Wasm if the fetch 404s. That JSON is materialised offline by `scripts/export_view_caches.py` from the same SQL. Consequence: **changing the SQL in those view files, or the underlying data, has no visible effect until you re-run `export_view_caches.py` and commit the JSON.** Keep the cache SQL and the in-file fallback SQL in sync — they must produce identical row shapes.
 
 - **Views don't survive parquet export.** `schema/schema.sql` defines helper views (`v_facility_map`, `v_facility_enriched`, `v_region_enriched`, `v_facility_funding_by_year`, `v_funder_funding_by_year`, `v_funding_ledger`, `v_facility_key_personnel`, `v_person_enriched`, `v_person_areas_enriched`, …) — the subset the frontend needs is re-created in the browser by `src/db.js` after registering parquet tables. Add new views in **both** places or the SQL tab will lose them.
 
@@ -54,7 +54,25 @@ There is no test framework. `qa.py` is the only correctness gate; add new invari
 
 - **`export_parquet.py` fails soft on missing tables.** A `CatalogException` is swallowed and the table is skipped, leaving whatever stale parquet is already in `public/parquet/`. A "successful" export can therefore ship old data for a table a `compute_*` script hasn't produced yet — check the `[ok] exported …` line against the skip list.
 
+- **The OpenAlex topic crosswalk must be copied from data, never typed.** `data/vocab_crosswalk/openalex_to_area.csv` maps OpenAlex topic/concept ids to `research_areas`; `compute_area_metrics.py` uses it for every per-area number. Its first version had recalled ids ("Kelp" carried the id of "Global warming") and filed dryland ecologists under marine debris. Take id and name together from `publication_topics`; `qa.py` fails on an id whose label disagrees with the data or an unknown area. People-card totals (pubs, citations, h-index) come from `authorship`, not from this table.
+
 - **`COMMIT_*.sh` are one-shot driver scripts**, gitignored, not source. Don't read them as documentation of current state — they are historical commit drivers.
+
+- **The national raw inputs are not in the repo.** `data/raw/**/*.json` is gitignored, so the 445 original facilities cannot be re-ingested from source; `public/parquet/` is their only copy. Running `ingest.py` on a clean checkout builds an empty schema, which `qa.py` now rejects. The ARID wave is the exception: `data/raw/R-ARID/` and `data/raw/J-ENVIRODATA/` are committed.
+
+- **DuckDB blocks updates to foreign-key columns of a referenced row.** `UPDATE facilities SET facility_type = …` on a facility that personnel rows point at fails ("still referenced by a foreign key"). Loaders insert-if-absent and update only plain columns; the project tables use soft references for the same reason.
+
+- **`facilities.state` is derived.** Any loader that adds facilities must be followed by `scripts/backfill_facility_state.py`, or the new rows drop out of the New Mexico and drylands lenses. `qa.py` fails on a US facility with coordinates and no state.
+
+## Regional focus: ARID and New Mexico
+
+The catalogue is national, but the site opens on New Mexico and the Southwest drylands and carries a layer for UNM's ARID Institute and for EnviroData-NM. `docs/arid.md` is the human-facing writeup.
+
+- **Scope lens** — `SCOPES` in `src/filters.js` (ARID / New Mexico / Southwest drylands (default) / All U.S.). Each lens is defined twice, as SQL and as a test over GeoJSON-fallback properties (`state`, `has_arid_sphere`, `in_arid_network`, written by `export_parquet.py`); keep the two in step. Nothing is deleted to make the narrower views.
+- **ARID layer** — `fetch_arid_site.py` → `data/raw/R-ARID/arid_site.json` (what each page says, as written); curated identity and projects in `data/seed/arid_{people,projects,partner_centers}.csv`; `load_arid.py` writes facilities (network `arid-unm`), people, `projects`, `project_personnel`, `project_facilities`. A name the people seed does not know stops the load on purpose.
+- **EnviroData-NM** — `fetch_envirodata_nm.py` → `data/raw/J-ENVIRODATA/*.json` → `load_lto_archives.py`. One `data_archives` row and one `data_products` row per portal layer. **Metadata and links only; never copy features** — the portal's terms forbid redistribution. Its catalogue endpoint is undocumented.
+- **Arizona Water Observatory** — `fetch_az_water_observatory.py` → `data/raw/J-AZWATER/*.json` → `load_lto_archives.py`. One archive (`arizona-water-observatory`) and one product per OGC API collection, built from the API's `/collections` document alone. Pointers only, like EnviroData-NM; `POINTER_ARCHIVES` in `qa.py` holds the host each archive's links must stay on.
+- Everything in this layer is fetched or cites a fetched page. Do not fill it from model recall.
 
 ## Domain model
 
@@ -95,12 +113,12 @@ When network access is unavailable, the working pattern is the parallel-subagent
 ## Frontend layout
 
 - `index.html` — importmap pulls `maplibre-gl` + `@duckdb/duckdb-wasm` from esm.sh; loads `src/main.js` as a module.
-- `src/main.js` — bootstraps map, filters, overlays, hash-router, then the 7 routes (`/`, `/browse`, `/network`, `/people`, `/sql`, `/stats`, `/docs`). Sub-routes like `/people/<id>` and `/docs/<slug>` dispatch on the first path segment.
+- `src/main.js` — bootstraps map, filters, overlays, hash-router, then the 9 routes (`/`, `/browse`, `/network`, `/projects`, `/people`, `/data`, `/sql`, `/stats`, `/docs`). Sub-routes like `/people/<id>`, `/projects/<id>`, `/data/<archive_id>/products` and `/docs/<slug>` dispatch on the first path segment.
 - `src/db.js` — DuckDB-Wasm init, parquet view registration, helper views, `query()` (returns GeoJSON Features), and the Arrow→JS unwrap helpers. Each `CREATE OR REPLACE VIEW` is individually try/caught so one missing parquet doesn't break the rest.
 - `src/config.js` — `DATA_BASE` resolves all data fetches relative to `index.html`; never hardcode `/public/` paths in views.
 - `src/map.js` — `TYPE_COLORS` is the single source of truth for facility-type colours (must match polygon overlay colours in `public/overlays/manifest.json`). The legend also supports colour-by-sphere.
 - `src/overlays.js` — lazy-loads polygon layers via `public/overlays/manifest.json`. `DEFAULT_OFF` controls first-paint visibility (heavy / cluttering layers default off).
-- `src/views/{list,stats,docs,network,people,sql}.js` — one per top-tab (`list.js` backs `/browse`). `/docs` reads markdown from `docs/` at runtime.
+- `src/views/{list,stats,docs,network,projects,people,datasets,sql}.js` — one per top-tab (`list.js` backs `/browse`, `datasets.js` backs `/data`). `/docs` reads markdown from `docs/` at runtime.
 
 The site degrades in three tiers: GeoJSON fallback → JSON view caches → full DuckDB-Wasm. Changes must not assume DuckDB is ready; `renderList` can be called before `initDB()` resolves.
 

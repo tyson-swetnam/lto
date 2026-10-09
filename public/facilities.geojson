@@ -21,7 +21,10 @@
 "established": 1912,
 "record_length_years": 113,
 "long_term_threshold_met": true,
-"primary_sphere": "agriculture"
+"primary_sphere": "agriculture",
+"state": "NM",
+"has_arid_sphere": true,
+"in_arid_network": false
 }
 },
 {
@@ -44,7 +47,10 @@
 "established": 1953,
 "record_length_years": 72,
 "long_term_threshold_met": true,
-"primary_sphere": "agriculture"
+"primary_sphere": "agriculture",
+"state": "AZ",
+"has_arid_sphere": true,
+"in_arid_network": false
 }
 },
 {
@@ -67,7 +73,10 @@
 "established": 1962,
 "record_length_years": 63,
 "long_term_threshold_met": true,
-"primary_sphere": "agriculture"
+"primary_sphere": "agriculture",
+"state": "ID",
+"has_arid_sphere": true,
+"in_arid_network": false
 }
 },
 {
@@ -90,7 +99,10 @@
 "established": 1939,
 "record_length_years": 86,
 "long_term_threshold_met": true,
-"primary_sphere": "agriculture"
+"primary_sphere": "agriculture",
+"state": "CO",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -113,7 +125,10 @@
 "established": 2014,
 "record_length_years": 11,
 "long_term_threshold_met": true,
-"primary_sphere": "agriculture"
+"primary_sphere": "agriculture",
+"state": "NV",
+"has_arid_sphere": true,
+"in_arid_network": false
 }
 },
 {
@@ -136,7 +151,10 @@
 "established": 2012,
 "record_length_years": 13,
 "long_term_threshold_met": true,
-"primary_sphere": "agriculture"
+"primary_sphere": "agriculture",
+"state": "IA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -159,7 +177,10 @@
 "established": 2013,
 "record_length_years": 12,
 "long_term_threshold_met": true,
-"primary_sphere": "agriculture"
+"primary_sphere": "agriculture",
+"state": "PA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -182,7 +203,10 @@
 "established": 2012,
 "record_length_years": 13,
 "long_term_threshold_met": true,
-"primary_sphere": "agriculture"
+"primary_sphere": "agriculture",
+"state": "MD",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -205,7 +229,10 @@
 "established": 2014,
 "record_length_years": 11,
 "long_term_threshold_met": true,
-"primary_sphere": "agriculture"
+"primary_sphere": "agriculture",
+"state": "IN",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -228,7 +255,10 @@
 "established": 2012,
 "record_length_years": 13,
 "long_term_threshold_met": true,
-"primary_sphere": "agriculture"
+"primary_sphere": "agriculture",
+"state": "MO",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -251,7 +281,10 @@
 "established": 2012,
 "record_length_years": 13,
 "long_term_threshold_met": true,
-"primary_sphere": "agriculture"
+"primary_sphere": "agriculture",
+"state": "TX",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -274,7 +307,10 @@
 "established": 2012,
 "record_length_years": 13,
 "long_term_threshold_met": true,
-"primary_sphere": "agriculture"
+"primary_sphere": "agriculture",
+"state": "OK",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -297,7 +333,10 @@
 "established": 2014,
 "record_length_years": 11,
 "long_term_threshold_met": true,
-"primary_sphere": "agriculture"
+"primary_sphere": "agriculture",
+"state": "MS",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -320,7 +359,10 @@
 "established": 2012,
 "record_length_years": 13,
 "long_term_threshold_met": true,
-"primary_sphere": "agriculture"
+"primary_sphere": "agriculture",
+"state": "GA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -343,7 +385,10 @@
 "established": 2012,
 "record_length_years": 13,
 "long_term_threshold_met": true,
-"primary_sphere": "agriculture"
+"primary_sphere": "agriculture",
+"state": "ND",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -366,7 +411,10 @@
 "established": 2014,
 "record_length_years": 11,
 "long_term_threshold_met": true,
-"primary_sphere": "agriculture"
+"primary_sphere": "agriculture",
+"state": "NE",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -389,7 +437,10 @@
 "established": 1998,
 "record_length_years": 27,
 "long_term_threshold_met": true,
-"primary_sphere": "agriculture"
+"primary_sphere": "agriculture",
+"state": "WA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -412,7 +463,10 @@
 "established": 1988,
 "record_length_years": 37,
 "long_term_threshold_met": true,
-"primary_sphere": "agriculture"
+"primary_sphere": "agriculture",
+"state": "MI",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -435,7 +489,10 @@
 "established": 2018,
 "record_length_years": 7,
 "long_term_threshold_met": false,
-"primary_sphere": "agriculture"
+"primary_sphere": "agriculture",
+"state": "FL",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -458,7 +515,10 @@
 "established": 1924,
 "record_length_years": 101,
 "long_term_threshold_met": true,
-"primary_sphere": "agriculture"
+"primary_sphere": "agriculture",
+"state": "MT",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -481,7 +541,10 @@
 "established": 1911,
 "record_length_years": 114,
 "long_term_threshold_met": true,
-"primary_sphere": "agriculture"
+"primary_sphere": "agriculture",
+"state": "OR",
+"has_arid_sphere": true,
+"in_arid_network": false
 }
 },
 {
@@ -504,7 +567,10 @@
 "established": 1915,
 "record_length_years": 110,
 "long_term_threshold_met": true,
-"primary_sphere": "agriculture"
+"primary_sphere": "agriculture",
+"state": "ID",
+"has_arid_sphere": true,
+"in_arid_network": false
 }
 },
 {
@@ -527,7 +593,10 @@
 "established": 2014,
 "record_length_years": 11,
 "long_term_threshold_met": true,
-"primary_sphere": "agriculture"
+"primary_sphere": "agriculture",
+"state": "MD",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -550,7 +619,10 @@
 "established": 2014,
 "record_length_years": 11,
 "long_term_threshold_met": true,
-"primary_sphere": "agriculture"
+"primary_sphere": "agriculture",
+"state": "WI",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -573,7 +645,10 @@
 "established": 2014,
 "record_length_years": 11,
 "long_term_threshold_met": true,
-"primary_sphere": "agriculture"
+"primary_sphere": "agriculture",
+"state": "IA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -596,7 +671,10 @@
 "established": 2014,
 "record_length_years": 11,
 "long_term_threshold_met": true,
-"primary_sphere": "agriculture"
+"primary_sphere": "agriculture",
+"state": "NC",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -619,7 +697,10 @@
 "established": 2014,
 "record_length_years": 11,
 "long_term_threshold_met": true,
-"primary_sphere": "agriculture"
+"primary_sphere": "agriculture",
+"state": "OK",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -642,7 +723,10 @@
 "established": 2014,
 "record_length_years": 11,
 "long_term_threshold_met": true,
-"primary_sphere": "agriculture"
+"primary_sphere": "agriculture",
+"state": "CO",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -665,7 +749,10 @@
 "established": 2014,
 "record_length_years": 11,
 "long_term_threshold_met": true,
-"primary_sphere": "agriculture"
+"primary_sphere": "agriculture",
+"state": "OR",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -688,7 +775,10 @@
 "established": 2014,
 "record_length_years": 11,
 "long_term_threshold_met": true,
-"primary_sphere": "agriculture"
+"primary_sphere": "agriculture",
+"state": "HI",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -711,7 +801,10 @@
 "established": 2015,
 "record_length_years": 10,
 "long_term_threshold_met": true,
-"primary_sphere": "agriculture"
+"primary_sphere": "agriculture",
+"state": "PR",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -734,7 +827,10 @@
 "established": 2014,
 "record_length_years": 11,
 "long_term_threshold_met": true,
-"primary_sphere": "agriculture"
+"primary_sphere": "agriculture",
+"state": "NM",
+"has_arid_sphere": true,
+"in_arid_network": false
 }
 },
 {
@@ -757,7 +853,10 @@
 "established": 1876,
 "record_length_years": 149,
 "long_term_threshold_met": true,
-"primary_sphere": "agriculture"
+"primary_sphere": "agriculture",
+"state": "IL",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -780,7 +879,10 @@
 "established": 1888,
 "record_length_years": 137,
 "long_term_threshold_met": true,
-"primary_sphere": "agriculture"
+"primary_sphere": "agriculture",
+"state": "MO",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -803,7 +905,10 @@
 "established": 1892,
 "record_length_years": 133,
 "long_term_threshold_met": true,
-"primary_sphere": "agriculture"
+"primary_sphere": "agriculture",
+"state": "OK",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -826,7 +931,10 @@
 "established": 2001,
 "record_length_years": 24,
 "long_term_threshold_met": true,
-"primary_sphere": "agriculture"
+"primary_sphere": "agriculture",
+"state": "NE",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -849,7 +957,10 @@
 "established": 1896,
 "record_length_years": 129,
 "long_term_threshold_met": true,
-"primary_sphere": "agriculture"
+"primary_sphere": "agriculture",
+"state": "AL",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -872,7 +983,10 @@
 "established": 1911,
 "record_length_years": 114,
 "long_term_threshold_met": true,
-"primary_sphere": "agriculture"
+"primary_sphere": "agriculture",
+"state": "AL",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -895,7 +1009,10 @@
 "established": 1991,
 "record_length_years": 34,
 "long_term_threshold_met": true,
-"primary_sphere": "agriculture"
+"primary_sphere": "agriculture",
+"state": "NM",
+"has_arid_sphere": true,
+"in_arid_network": false
 }
 },
 {
@@ -918,7 +1035,10 @@
 "established": 1991,
 "record_length_years": 34,
 "long_term_threshold_met": true,
-"primary_sphere": "agriculture"
+"primary_sphere": "agriculture",
+"state": "TX",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -941,7 +1061,10 @@
 "established": 1991,
 "record_length_years": 34,
 "long_term_threshold_met": true,
-"primary_sphere": "agriculture"
+"primary_sphere": "agriculture",
+"state": "NM",
+"has_arid_sphere": true,
+"in_arid_network": false
 }
 },
 {
@@ -964,7 +1087,10 @@
 "established": 1992,
 "record_length_years": 33,
 "long_term_threshold_met": true,
-"primary_sphere": "agriculture"
+"primary_sphere": "agriculture",
+"state": "GA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -987,7 +1113,10 @@
 "established": 1995,
 "record_length_years": 30,
 "long_term_threshold_met": true,
-"primary_sphere": "agriculture"
+"primary_sphere": "agriculture",
+"state": "AZ",
+"has_arid_sphere": true,
+"in_arid_network": false
 }
 },
 {
@@ -1010,7 +1139,10 @@
 "established": 1995,
 "record_length_years": 30,
 "long_term_threshold_met": true,
-"primary_sphere": "agriculture"
+"primary_sphere": "agriculture",
+"state": "PA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -1033,7 +1165,10 @@
 "established": 1996,
 "record_length_years": 29,
 "long_term_threshold_met": true,
-"primary_sphere": "agriculture"
+"primary_sphere": "agriculture",
+"state": "KY",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -1056,7 +1191,10 @@
 "established": 1996,
 "record_length_years": 29,
 "long_term_threshold_met": true,
-"primary_sphere": "agriculture"
+"primary_sphere": "agriculture",
+"state": "OK",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -1079,7 +1217,10 @@
 "established": 1996,
 "record_length_years": 29,
 "long_term_threshold_met": true,
-"primary_sphere": "agriculture"
+"primary_sphere": "agriculture",
+"state": "ID",
+"has_arid_sphere": true,
+"in_arid_network": false
 }
 },
 {
@@ -1102,7 +1243,10 @@
 "established": 1995,
 "record_length_years": 30,
 "long_term_threshold_met": true,
-"primary_sphere": "agriculture"
+"primary_sphere": "agriculture",
+"state": "CO",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -1125,7 +1269,10 @@
 "established": 1995,
 "record_length_years": 30,
 "long_term_threshold_met": true,
-"primary_sphere": "agriculture"
+"primary_sphere": "agriculture",
+"state": "MD",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -1148,7 +1295,10 @@
 "established": 1959,
 "record_length_years": 67,
 "long_term_threshold_met": true,
-"primary_sphere": "freshwater"
+"primary_sphere": "freshwater",
+"state": "VT",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -1171,7 +1321,10 @@
 "established": 1983,
 "record_length_years": 43,
 "long_term_threshold_met": true,
-"primary_sphere": "freshwater"
+"primary_sphere": "freshwater",
+"state": "CO",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -1194,7 +1347,10 @@
 "established": 1981,
 "record_length_years": 45,
 "long_term_threshold_met": true,
-"primary_sphere": "freshwater"
+"primary_sphere": "freshwater",
+"state": "WI",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -1217,7 +1373,10 @@
 "established": 1903,
 "record_length_years": 123,
 "long_term_threshold_met": true,
-"primary_sphere": "freshwater"
+"primary_sphere": "freshwater",
+"state": "NJ",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -1240,7 +1399,10 @@
 "established": 1890,
 "record_length_years": 136,
 "long_term_threshold_met": true,
-"primary_sphere": "freshwater"
+"primary_sphere": "freshwater",
+"state": "MT",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -1263,7 +1425,10 @@
 "established": 1923,
 "record_length_years": 103,
 "long_term_threshold_met": true,
-"primary_sphere": "freshwater"
+"primary_sphere": "freshwater",
+"state": "CA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -1286,7 +1451,10 @@
 "established": 1921,
 "record_length_years": 105,
 "long_term_threshold_met": true,
-"primary_sphere": "freshwater"
+"primary_sphere": "freshwater",
+"state": "AZ",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -1309,7 +1477,10 @@
 "established": 1909,
 "record_length_years": 117,
 "long_term_threshold_met": true,
-"primary_sphere": "freshwater"
+"primary_sphere": "freshwater",
+"state": "OR",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -1332,7 +1503,10 @@
 "established": 1963,
 "record_length_years": 63,
 "long_term_threshold_met": true,
-"primary_sphere": "freshwater"
+"primary_sphere": "freshwater",
+"state": "NH",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -1355,7 +1529,10 @@
 "established": 1981,
 "record_length_years": 45,
 "long_term_threshold_met": true,
-"primary_sphere": "freshwater"
+"primary_sphere": "freshwater",
+"state": "NH",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -1378,7 +1555,10 @@
 "established": 1974,
 "record_length_years": 52,
 "long_term_threshold_met": true,
-"primary_sphere": "freshwater"
+"primary_sphere": "freshwater",
+"state": "MI",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -1401,7 +1581,10 @@
 "established": 1973,
 "record_length_years": 53,
 "long_term_threshold_met": true,
-"primary_sphere": "freshwater"
+"primary_sphere": "freshwater",
+"state": "IL",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -1424,7 +1607,10 @@
 "established": 2007,
 "record_length_years": 19,
 "long_term_threshold_met": true,
-"primary_sphere": "freshwater"
+"primary_sphere": "freshwater",
+"state": "DC",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -1447,7 +1633,10 @@
 "established": 2007,
 "record_length_years": 19,
 "long_term_threshold_met": true,
-"primary_sphere": "freshwater"
+"primary_sphere": "freshwater",
+"state": "NH",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -1470,7 +1659,10 @@
 "established": 1973,
 "record_length_years": 53,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "WA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -1493,7 +1685,10 @@
 "established": 1967,
 "record_length_years": 59,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "FL",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -1516,7 +1711,10 @@
 "established": 1999,
 "record_length_years": 27,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "MD",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -1539,7 +1737,10 @@
 "established": 1931,
 "record_length_years": 95,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "WA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -1562,7 +1763,10 @@
 "established": 1901,
 "record_length_years": 125,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "FL",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -1585,7 +1789,10 @@
 "established": 1962,
 "record_length_years": 64,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "WA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -1608,7 +1815,10 @@
 "established": 1871,
 "record_length_years": 155,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "MA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -1631,7 +1841,10 @@
 "established": 1970,
 "record_length_years": 56,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "MS",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -1654,7 +1867,10 @@
 "established": 2014,
 "record_length_years": 12,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "SC",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -1677,7 +1893,10 @@
 "established": 1962,
 "record_length_years": 64,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "MA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -1700,7 +1919,10 @@
 "established": 1989,
 "record_length_years": 37,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "FL",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -1723,7 +1945,10 @@
 "established": 1989,
 "record_length_years": 37,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "CA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -1746,7 +1971,10 @@
 "established": 1927,
 "record_length_years": 99,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "MI",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -1769,7 +1997,10 @@
 "established": 1966,
 "record_length_years": 60,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "RI",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -1792,7 +2023,10 @@
 "established": 1977,
 "record_length_years": 49,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "NC",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -1815,7 +2049,10 @@
 "established": 1929,
 "record_length_years": 97,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "MS",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -1838,7 +2075,10 @@
 "established": 1977,
 "record_length_years": 49,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "MS",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -1861,7 +2101,10 @@
 "established": 1945,
 "record_length_years": 81,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "VA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -1884,7 +2127,10 @@
 "established": 1996,
 "record_length_years": 30,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "MD",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -1907,7 +2153,10 @@
 "established": 1965,
 "record_length_years": 61,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "MD",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -1930,7 +2179,10 @@
 "established": 1969,
 "record_length_years": 57,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "FL",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -1953,7 +2205,10 @@
 "established": 1961,
 "record_length_years": 65,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "MA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -1976,7 +2231,10 @@
 "established": 1962,
 "record_length_years": 64,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "CA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -1999,7 +2257,10 @@
 "established": 1970,
 "record_length_years": 56,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "HI",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -2022,7 +2283,10 @@
 "established": 1960,
 "record_length_years": 66,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "CA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -2045,7 +2309,10 @@
 "established": 2015,
 "record_length_years": 11,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "NC",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -2068,7 +2335,10 @@
 "established": 1900,
 "record_length_years": 126,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "MD",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -2091,7 +2361,10 @@
 "established": 1953,
 "record_length_years": 73,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "NC",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -2114,7 +2387,10 @@
 "established": 1903,
 "record_length_years": 110,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "CA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -2137,7 +2413,10 @@
 "established": 1930,
 "record_length_years": 96,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "MA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -2160,7 +2439,10 @@
 "established": 1987,
 "record_length_years": 39,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "CA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -2183,7 +2465,10 @@
 "established": 1888,
 "record_length_years": 138,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "MA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -2206,7 +2491,10 @@
 "established": 1947,
 "record_length_years": 79,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "HI",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -2229,7 +2517,10 @@
 "established": 1904,
 "record_length_years": 122,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "WA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -2252,7 +2543,10 @@
 "established": 1959,
 "record_length_years": 67,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "CA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -2275,7 +2569,10 @@
 "established": 1892,
 "record_length_years": 134,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "CA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -2298,7 +2595,10 @@
 "established": 1965,
 "record_length_years": 61,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "OR",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -2321,7 +2621,10 @@
 "established": 1968,
 "record_length_years": 59,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "GA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -2344,7 +2647,10 @@
 "established": 1971,
 "record_length_years": 55,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "AL",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -2367,7 +2673,10 @@
 "established": 1940,
 "record_length_years": 71,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "VA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -2390,7 +2699,10 @@
 "established": 1943,
 "record_length_years": 83,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "FL",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -2413,7 +2725,10 @@
 "established": 1961,
 "record_length_years": 65,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "RI",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -2436,7 +2751,10 @@
 "established": 1974,
 "record_length_years": 52,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "ME",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -2459,7 +2777,10 @@
 "established": 2007,
 "record_length_years": 19,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "MD",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -2482,7 +2803,10 @@
 "established": 2001,
 "record_length_years": 25,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "ME",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -2505,7 +2829,10 @@
 "established": 2005,
 "record_length_years": 21,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "DE",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -2528,7 +2855,10 @@
 "established": 2007,
 "record_length_years": 19,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "AL",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -2551,7 +2881,10 @@
 "established": 2005,
 "record_length_years": 21,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "TX",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -2574,7 +2907,10 @@
 "established": 2007,
 "record_length_years": 19,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "PR",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -2597,7 +2933,10 @@
 "established": 2003,
 "record_length_years": 23,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "CA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -2620,7 +2959,10 @@
 "established": 2003,
 "record_length_years": 23,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "CA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -2643,7 +2985,10 @@
 "established": 2003,
 "record_length_years": 23,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "WA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -2666,7 +3011,10 @@
 "established": 2003,
 "record_length_years": 23,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "AK",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -2689,7 +3037,10 @@
 "established": 2007,
 "record_length_years": 19,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "HI",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -2712,7 +3063,10 @@
 "established": 2009,
 "record_length_years": 17,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "MA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -2735,7 +3089,10 @@
 "established": 1972,
 "record_length_years": 54,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "MD",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -2758,7 +3115,10 @@
 "established": 1966,
 "record_length_years": 60,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "MD",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -2781,7 +3141,10 @@
 "established": 1955,
 "record_length_years": 71,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "FL",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -2804,7 +3167,10 @@
 "established": 1984,
 "record_length_years": 42,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "CA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -2827,7 +3193,10 @@
 "established": 1962,
 "record_length_years": 64,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "PR",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -2850,7 +3219,10 @@
 "established": 1997,
 "record_length_years": 29,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "VI",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -2873,7 +3245,10 @@
 "established": null,
 "record_length_years": null,
 "long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "WI",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -2896,7 +3271,10 @@
 "established": null,
 "record_length_years": null,
 "long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "MA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -2919,7 +3297,10 @@
 "established": null,
 "record_length_years": null,
 "long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "MA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -2942,7 +3323,10 @@
 "established": null,
 "record_length_years": null,
 "long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "VA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -2965,7 +3349,10 @@
 "established": null,
 "record_length_years": null,
 "long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "GA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -2988,7 +3375,10 @@
 "established": null,
 "record_length_years": null,
 "long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "FL",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -3011,7 +3401,10 @@
 "established": 2000,
 "record_length_years": null,
 "long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "CA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -3034,7 +3427,10 @@
 "established": null,
 "record_length_years": null,
 "long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "CA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -3057,7 +3453,10 @@
 "established": null,
 "record_length_years": null,
 "long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "AK",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -3080,7 +3479,10 @@
 "established": null,
 "record_length_years": null,
 "long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "AK",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -3103,7 +3505,10 @@
 "established": null,
 "record_length_years": null,
 "long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "MD",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -3126,7 +3531,10 @@
 "established": null,
 "record_length_years": null,
 "long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "FL",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -3149,7 +3557,10 @@
 "established": null,
 "record_length_years": null,
 "long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "CA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -3172,7 +3583,10 @@
 "established": null,
 "record_length_years": null,
 "long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "TX",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -3195,7 +3609,10 @@
 "established": null,
 "record_length_years": null,
 "long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "ME",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -3218,7 +3635,10 @@
 "established": null,
 "record_length_years": null,
 "long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "MA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -3241,7 +3661,10 @@
 "established": null,
 "record_length_years": null,
 "long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "SC",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -3264,7 +3687,10 @@
 "established": null,
 "record_length_years": null,
 "long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "MD",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -3287,7 +3713,10 @@
 "established": 1990,
 "record_length_years": 36,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "ME",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -3310,7 +3739,10 @@
 "established": 1995,
 "record_length_years": 31,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "NH",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -3333,7 +3765,10 @@
 "established": 1990,
 "record_length_years": 36,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "MA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -3356,7 +3791,10 @@
 "established": 1987,
 "record_length_years": 39,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "MA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -3379,7 +3817,10 @@
 "established": 1987,
 "record_length_years": 39,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "RI",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -3402,7 +3843,10 @@
 "established": 1987,
 "record_length_years": 39,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "NY",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -3425,7 +3869,10 @@
 "established": 1993,
 "record_length_years": 33,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "NY",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -3448,7 +3895,10 @@
 "established": null,
 "record_length_years": null,
 "long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "NY",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -3471,7 +3921,10 @@
 "established": 1995,
 "record_length_years": 31,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "NJ",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -3494,7 +3947,10 @@
 "established": 1988,
 "record_length_years": 38,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "DE",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -3517,7 +3973,10 @@
 "established": 1988,
 "record_length_years": 38,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "DE",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -3540,7 +3999,10 @@
 "established": 1995,
 "record_length_years": 31,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "MD",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -3563,7 +4025,10 @@
 "established": 1987,
 "record_length_years": 39,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "NC",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -3586,7 +4051,10 @@
 "established": 1990,
 "record_length_years": 36,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "FL",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -3609,7 +4077,10 @@
 "established": 1992,
 "record_length_years": 34,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "PR",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -3632,7 +4103,10 @@
 "established": 1988,
 "record_length_years": 38,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "FL",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -3655,7 +4129,10 @@
 "established": 1990,
 "record_length_years": 36,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "FL",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -3678,7 +4155,10 @@
 "established": 1995,
 "record_length_years": 31,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "AL",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -3701,7 +4181,10 @@
 "established": 1990,
 "record_length_years": 36,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "LA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -3724,7 +4207,10 @@
 "established": 1988,
 "record_length_years": 38,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "TX",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -3747,7 +4233,10 @@
 "established": 1992,
 "record_length_years": 34,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "TX",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -3770,7 +4259,10 @@
 "established": 1988,
 "record_length_years": 38,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "CA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -3793,7 +4285,10 @@
 "established": 1995,
 "record_length_years": 31,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "CA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -3816,7 +4311,10 @@
 "established": null,
 "record_length_years": null,
 "long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "CA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -3839,7 +4337,10 @@
 "established": 1994,
 "record_length_years": 32,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "OR",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -3862,7 +4363,10 @@
 "established": 1995,
 "record_length_years": 31,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "OR",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -3885,7 +4389,10 @@
 "established": 1987,
 "record_length_years": 39,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "WA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -3908,7 +4415,10 @@
 "established": null,
 "record_length_years": null,
 "long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "TX",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -3931,7 +4441,10 @@
 "established": null,
 "record_length_years": null,
 "long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "ME",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -3954,7 +4467,10 @@
 "established": null,
 "record_length_years": null,
 "long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "NH",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -3977,7 +4493,10 @@
 "established": null,
 "record_length_years": null,
 "long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "MA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -4000,7 +4519,10 @@
 "established": null,
 "record_length_years": null,
 "long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "RI",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -4023,7 +4545,10 @@
 "established": null,
 "record_length_years": null,
 "long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "NJ",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -4046,7 +4571,10 @@
 "established": null,
 "record_length_years": null,
 "long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "NY",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -4069,7 +4597,10 @@
 "established": null,
 "record_length_years": null,
 "long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "DE",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -4092,7 +4623,10 @@
 "established": null,
 "record_length_years": null,
 "long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "VA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -4115,7 +4649,10 @@
 "established": null,
 "record_length_years": null,
 "long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "MD",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -4138,7 +4675,10 @@
 "established": null,
 "record_length_years": null,
 "long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "NC",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -4161,7 +4701,10 @@
 "established": null,
 "record_length_years": null,
 "long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "SC",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -4184,7 +4727,10 @@
 "established": null,
 "record_length_years": null,
 "long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "SC",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -4207,7 +4753,10 @@
 "established": null,
 "record_length_years": null,
 "long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "GA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -4230,7 +4779,10 @@
 "established": null,
 "record_length_years": null,
 "long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "FL",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -4253,7 +4805,10 @@
 "established": null,
 "record_length_years": null,
 "long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "OH",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -4276,7 +4831,10 @@
 "established": null,
 "record_length_years": null,
 "long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "WI",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -4299,7 +4857,10 @@
 "established": null,
 "record_length_years": null,
 "long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "PR",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -4322,7 +4883,10 @@
 "established": null,
 "record_length_years": null,
 "long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "FL",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -4345,7 +4909,10 @@
 "established": null,
 "record_length_years": null,
 "long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "FL",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -4368,7 +4935,10 @@
 "established": null,
 "record_length_years": null,
 "long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "AL",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -4391,7 +4961,10 @@
 "established": null,
 "record_length_years": null,
 "long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "MS",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -4414,7 +4987,10 @@
 "established": null,
 "record_length_years": null,
 "long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "AK",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -4437,7 +5013,10 @@
 "established": null,
 "record_length_years": null,
 "long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "WA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -4460,7 +5039,10 @@
 "established": null,
 "record_length_years": null,
 "long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "OR",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -4483,7 +5065,10 @@
 "established": null,
 "record_length_years": null,
 "long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "CA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -4506,7 +5091,10 @@
 "established": null,
 "record_length_years": null,
 "long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "CA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -4529,7 +5117,10 @@
 "established": null,
 "record_length_years": null,
 "long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "HI",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -4552,7 +5143,10 @@
 "established": null,
 "record_length_years": null,
 "long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "VA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -4575,7 +5169,10 @@
 "established": null,
 "record_length_years": null,
 "long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "HI",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -4598,7 +5195,10 @@
 "established": null,
 "record_length_years": null,
 "long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "NC",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -4621,7 +5221,10 @@
 "established": null,
 "record_length_years": null,
 "long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "CA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -4644,7 +5247,10 @@
 "established": null,
 "record_length_years": null,
 "long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "MA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -4667,7 +5273,10 @@
 "established": null,
 "record_length_years": null,
 "long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "MD",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -4690,7 +5299,10 @@
 "established": null,
 "record_length_years": null,
 "long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "NC",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -4713,7 +5325,10 @@
 "established": null,
 "record_length_years": null,
 "long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "GA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -4736,7 +5351,10 @@
 "established": null,
 "record_length_years": null,
 "long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "FL",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -4759,7 +5377,10 @@
 "established": 1956,
 "record_length_years": 70,
 "long_term_threshold_met": true,
-"primary_sphere": "atmosphere"
+"primary_sphere": "atmosphere",
+"state": "HI",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -4782,7 +5403,10 @@
 "established": 1973,
 "record_length_years": 53,
 "long_term_threshold_met": true,
-"primary_sphere": "atmosphere"
+"primary_sphere": "atmosphere",
+"state": "AK",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -4805,7 +5429,10 @@
 "established": 1957,
 "record_length_years": 69,
 "long_term_threshold_met": true,
-"primary_sphere": "atmosphere"
+"primary_sphere": "atmosphere",
+"state": null,
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -4828,7 +5455,10 @@
 "established": 1974,
 "record_length_years": 52,
 "long_term_threshold_met": true,
-"primary_sphere": "atmosphere"
+"primary_sphere": "atmosphere",
+"state": "AS",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -4851,7 +5481,10 @@
 "established": 2002,
 "record_length_years": 24,
 "long_term_threshold_met": true,
-"primary_sphere": "atmosphere"
+"primary_sphere": "atmosphere",
+"state": "CA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -4874,7 +5507,10 @@
 "established": 1996,
 "record_length_years": 30,
 "long_term_threshold_met": true,
-"primary_sphere": "atmosphere"
+"primary_sphere": "atmosphere",
+"state": "WI",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -4897,7 +5533,10 @@
 "established": 1989,
 "record_length_years": 37,
 "long_term_threshold_met": true,
-"primary_sphere": "atmosphere"
+"primary_sphere": "atmosphere",
+"state": "MA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -4920,7 +5559,10 @@
 "established": 1996,
 "record_length_years": 30,
 "long_term_threshold_met": true,
-"primary_sphere": "atmosphere"
+"primary_sphere": "atmosphere",
+"state": "ME",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -4943,7 +5585,10 @@
 "established": 1998,
 "record_length_years": 28,
 "long_term_threshold_met": true,
-"primary_sphere": "atmosphere"
+"primary_sphere": "atmosphere",
+"state": "CO",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -4966,7 +5611,10 @@
 "established": 1996,
 "record_length_years": 30,
 "long_term_threshold_met": true,
-"primary_sphere": "atmosphere"
+"primary_sphere": "atmosphere",
+"state": "IL",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -4989,7 +5637,10 @@
 "established": 1992,
 "record_length_years": 34,
 "long_term_threshold_met": true,
-"primary_sphere": "atmosphere"
+"primary_sphere": "atmosphere",
+"state": "OK",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -5012,7 +5663,10 @@
 "established": 1997,
 "record_length_years": 29,
 "long_term_threshold_met": true,
-"primary_sphere": "atmosphere"
+"primary_sphere": "atmosphere",
+"state": "AK",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -5035,7 +5689,10 @@
 "established": 1995,
 "record_length_years": 31,
 "long_term_threshold_met": true,
-"primary_sphere": "atmosphere"
+"primary_sphere": "atmosphere",
+"state": "IL",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -5058,7 +5715,10 @@
 "established": 2008,
 "record_length_years": 18,
 "long_term_threshold_met": true,
-"primary_sphere": "atmosphere"
+"primary_sphere": "atmosphere",
+"state": "OK",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -5081,7 +5741,10 @@
 "established": 1978,
 "record_length_years": 48,
 "long_term_threshold_met": true,
-"primary_sphere": "atmosphere"
+"primary_sphere": "atmosphere",
+"state": "NH",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -5104,7 +5767,10 @@
 "established": 1980,
 "record_length_years": 46,
 "long_term_threshold_met": true,
-"primary_sphere": "atmosphere"
+"primary_sphere": "atmosphere",
+"state": "OR",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -5127,7 +5793,10 @@
 "established": 1982,
 "record_length_years": 44,
 "long_term_threshold_met": true,
-"primary_sphere": "atmosphere"
+"primary_sphere": "atmosphere",
+"state": "KS",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -5150,7 +5819,10 @@
 "established": 1998,
 "record_length_years": 28,
 "long_term_threshold_met": true,
-"primary_sphere": "atmosphere"
+"primary_sphere": "atmosphere",
+"state": "IN",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -5173,7 +5845,10 @@
 "established": 2002,
 "record_length_years": 24,
 "long_term_threshold_met": true,
-"primary_sphere": "atmosphere"
+"primary_sphere": "atmosphere",
+"state": "OR",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -5196,7 +5871,10 @@
 "established": 2000,
 "record_length_years": 26,
 "long_term_threshold_met": true,
-"primary_sphere": "atmosphere"
+"primary_sphere": "atmosphere",
+"state": "CA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -5219,7 +5897,10 @@
 "established": 1988,
 "record_length_years": 38,
 "long_term_threshold_met": true,
-"primary_sphere": "atmosphere"
+"primary_sphere": "atmosphere",
+"state": "TX",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -5242,7 +5923,10 @@
 "established": 1988,
 "record_length_years": 38,
 "long_term_threshold_met": true,
-"primary_sphere": "atmosphere"
+"primary_sphere": "atmosphere",
+"state": "ME",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -5265,7 +5949,10 @@
 "established": 1993,
 "record_length_years": 33,
 "long_term_threshold_met": true,
-"primary_sphere": "atmosphere"
+"primary_sphere": "atmosphere",
+"state": "MD",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -5288,7 +5975,10 @@
 "established": 1966,
 "record_length_years": 60,
 "long_term_threshold_met": true,
-"primary_sphere": "cryosphere"
+"primary_sphere": "cryosphere",
+"state": "AK",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -5311,7 +6001,10 @@
 "established": 1966,
 "record_length_years": 60,
 "long_term_threshold_met": true,
-"primary_sphere": "cryosphere"
+"primary_sphere": "cryosphere",
+"state": "AK",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -5334,7 +6027,10 @@
 "established": 1958,
 "record_length_years": 68,
 "long_term_threshold_met": true,
-"primary_sphere": "cryosphere"
+"primary_sphere": "cryosphere",
+"state": "WA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -5357,7 +6053,10 @@
 "established": 2005,
 "record_length_years": 21,
 "long_term_threshold_met": true,
-"primary_sphere": "cryosphere"
+"primary_sphere": "cryosphere",
+"state": "MT",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -5380,7 +6079,10 @@
 "established": 1953,
 "record_length_years": 73,
 "long_term_threshold_met": true,
-"primary_sphere": "cryosphere"
+"primary_sphere": "cryosphere",
+"state": "AK",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -5403,7 +6105,10 @@
 "established": 1975,
 "record_length_years": 51,
 "long_term_threshold_met": true,
-"primary_sphere": "cryosphere"
+"primary_sphere": "cryosphere",
+"state": "AK",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -5426,7 +6131,10 @@
 "established": 1993,
 "record_length_years": 33,
 "long_term_threshold_met": true,
-"primary_sphere": "cryosphere"
+"primary_sphere": "cryosphere",
+"state": null,
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -5449,7 +6157,10 @@
 "established": 1990,
 "record_length_years": 36,
 "long_term_threshold_met": true,
-"primary_sphere": "cryosphere"
+"primary_sphere": "cryosphere",
+"state": null,
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -5472,7 +6183,10 @@
 "established": 1961,
 "record_length_years": 65,
 "long_term_threshold_met": true,
-"primary_sphere": "cryosphere"
+"primary_sphere": "cryosphere",
+"state": "NH",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -5495,7 +6209,10 @@
 "established": 1952,
 "record_length_years": 74,
 "long_term_threshold_met": true,
-"primary_sphere": "cryosphere"
+"primary_sphere": "cryosphere",
+"state": "CO",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -5518,7 +6235,10 @@
 "established": 1985,
 "record_length_years": 41,
 "long_term_threshold_met": true,
-"primary_sphere": "cryosphere"
+"primary_sphere": "cryosphere",
+"state": "AK",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -5541,7 +6261,10 @@
 "established": 1979,
 "record_length_years": 47,
 "long_term_threshold_met": true,
-"primary_sphere": "cryosphere"
+"primary_sphere": "cryosphere",
+"state": "CO",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -5564,7 +6287,10 @@
 "established": 1979,
 "record_length_years": 47,
 "long_term_threshold_met": true,
-"primary_sphere": "cryosphere"
+"primary_sphere": "cryosphere",
+"state": "CO",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -5587,7 +6313,10 @@
 "established": 1981,
 "record_length_years": 45,
 "long_term_threshold_met": true,
-"primary_sphere": "cryosphere"
+"primary_sphere": "cryosphere",
+"state": "WA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -5610,7 +6339,10 @@
 "established": 1980,
 "record_length_years": 46,
 "long_term_threshold_met": true,
-"primary_sphere": "cryosphere"
+"primary_sphere": "cryosphere",
+"state": "WA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -5633,7 +6365,10 @@
 "established": 1961,
 "record_length_years": 65,
 "long_term_threshold_met": true,
-"primary_sphere": "cryosphere"
+"primary_sphere": "cryosphere",
+"state": "WY",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -5656,7 +6391,10 @@
 "established": 1928,
 "record_length_years": 98,
 "long_term_threshold_met": true,
-"primary_sphere": "cryosphere"
+"primary_sphere": "cryosphere",
+"state": "CA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -5679,7 +6417,10 @@
 "established": 1979,
 "record_length_years": 47,
 "long_term_threshold_met": true,
-"primary_sphere": "cryosphere"
+"primary_sphere": "cryosphere",
+"state": "WY",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -5702,7 +6443,10 @@
 "established": 1981,
 "record_length_years": 45,
 "long_term_threshold_met": true,
-"primary_sphere": "cryosphere"
+"primary_sphere": "cryosphere",
+"state": "AK",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -5725,7 +6469,10 @@
 "established": 1982,
 "record_length_years": 44,
 "long_term_threshold_met": true,
-"primary_sphere": "cryosphere"
+"primary_sphere": "cryosphere",
+"state": "AK",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -5748,7 +6495,10 @@
 "established": 1962,
 "record_length_years": 64,
 "long_term_threshold_met": true,
-"primary_sphere": "cryosphere"
+"primary_sphere": "cryosphere",
+"state": "AK",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -5771,7 +6521,10 @@
 "established": 1995,
 "record_length_years": 31,
 "long_term_threshold_met": true,
-"primary_sphere": "cryosphere"
+"primary_sphere": "cryosphere",
+"state": "AK",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -5794,7 +6547,10 @@
 "established": 1979,
 "record_length_years": 47,
 "long_term_threshold_met": true,
-"primary_sphere": "cryosphere"
+"primary_sphere": "cryosphere",
+"state": "AK",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -5817,7 +6573,10 @@
 "established": 2000,
 "record_length_years": 26,
 "long_term_threshold_met": true,
-"primary_sphere": "cryosphere"
+"primary_sphere": "cryosphere",
+"state": "AK",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -5840,7 +6599,10 @@
 "established": 1948,
 "record_length_years": 78,
 "long_term_threshold_met": true,
-"primary_sphere": "cryosphere"
+"primary_sphere": "cryosphere",
+"state": "AK",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -5863,7 +6625,10 @@
 "established": 1937,
 "record_length_years": 89,
 "long_term_threshold_met": true,
-"primary_sphere": "cryosphere"
+"primary_sphere": "cryosphere",
+"state": "CO",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -5886,7 +6651,10 @@
 "established": 2003,
 "record_length_years": 23,
 "long_term_threshold_met": true,
-"primary_sphere": "cryosphere"
+"primary_sphere": "cryosphere",
+"state": "CO",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -5909,7 +6677,10 @@
 "established": 1969,
 "record_length_years": 57,
 "long_term_threshold_met": true,
-"primary_sphere": "cryosphere"
+"primary_sphere": "cryosphere",
+"state": "AK",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -5932,7 +6703,10 @@
 "established": 1979,
 "record_length_years": 47,
 "long_term_threshold_met": true,
-"primary_sphere": "cryosphere"
+"primary_sphere": "cryosphere",
+"state": "WA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -5955,7 +6729,10 @@
 "established": 1983,
 "record_length_years": 43,
 "long_term_threshold_met": true,
-"primary_sphere": "cryosphere"
+"primary_sphere": "cryosphere",
+"state": "AK",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -5978,7 +6755,10 @@
 "established": 1948,
 "record_length_years": 78,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "OR",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -6001,7 +6781,10 @@
 "established": 1934,
 "record_length_years": 92,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "NC",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -6024,7 +6807,10 @@
 "established": 1939,
 "record_length_years": 87,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "PR",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -6047,7 +6833,10 @@
 "established": 1934,
 "record_length_years": 92,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "WV",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -6070,7 +6859,10 @@
 "established": 1925,
 "record_length_years": 101,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "NC",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -6093,7 +6885,10 @@
 "established": 2018,
 "record_length_years": 92,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "WA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -6116,7 +6911,10 @@
 "established": 1962,
 "record_length_years": 64,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "CA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -6139,7 +6937,10 @@
 "established": 1947,
 "record_length_years": 92,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "SC",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -6162,7 +6963,10 @@
 "established": 1990,
 "record_length_years": 36,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "WY",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -6185,7 +6989,10 @@
 "established": 1962,
 "record_length_years": 64,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "MN",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -6208,7 +7015,10 @@
 "established": 1911,
 "record_length_years": 115,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "ID",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -6231,7 +7041,10 @@
 "established": 1937,
 "record_length_years": 89,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "SC",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -6254,7 +7067,10 @@
 "established": 1932,
 "record_length_years": 94,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "NJ",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -6277,7 +7093,10 @@
 "established": 1934,
 "record_length_years": 92,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "CA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -6300,7 +7119,10 @@
 "established": 1989,
 "record_length_years": 37,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "ME",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -6323,7 +7145,10 @@
 "established": 1933,
 "record_length_years": 93,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "CA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -6346,7 +7171,10 @@
 "established": 1931,
 "record_length_years": 95,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "NH",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -6369,7 +7197,10 @@
 "established": 1950,
 "record_length_years": 76,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "ME",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -6392,7 +7223,10 @@
 "established": 1951,
 "record_length_years": 75,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "CA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -6415,7 +7249,10 @@
 "established": 1936,
 "record_length_years": 65,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "CO",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -6438,7 +7275,10 @@
 "established": 1990,
 "record_length_years": 36,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "WI",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -6461,7 +7301,10 @@
 "established": 1939,
 "record_length_years": 87,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "PR",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -6484,7 +7327,10 @@
 "established": 1987,
 "record_length_years": 39,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "AK",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -6507,7 +7353,10 @@
 "established": 1997,
 "record_length_years": 29,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "MD",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -6530,7 +7379,10 @@
 "established": 2017,
 "record_length_years": 9,
 "long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "TX",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -6553,7 +7405,10 @@
 "established": 2004,
 "record_length_years": 22,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "CA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -6576,7 +7431,10 @@
 "established": 1942,
 "record_length_years": 84,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "MN",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -6599,7 +7457,10 @@
 "established": 1997,
 "record_length_years": 29,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "AZ",
+"has_arid_sphere": true,
+"in_arid_network": false
 }
 },
 {
@@ -6622,7 +7483,10 @@
 "established": 2000,
 "record_length_years": 26,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "FL",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -6645,7 +7509,10 @@
 "established": 2000,
 "record_length_years": 26,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "GA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -6668,7 +7535,10 @@
 "established": 1907,
 "record_length_years": 119,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "MA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -6691,7 +7561,10 @@
 "established": 1971,
 "record_length_years": 55,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "KS",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -6714,7 +7587,10 @@
 "established": 2004,
 "record_length_years": 22,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "CA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -6737,7 +7613,10 @@
 "established": 2021,
 "record_length_years": 5,
 "long_term_threshold_met": false,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "MN",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -6760,7 +7639,10 @@
 "established": 2017,
 "record_length_years": 9,
 "long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "MA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -6783,7 +7665,10 @@
 "established": 2017,
 "record_length_years": 9,
 "long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "AK",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -6806,7 +7691,10 @@
 "established": 1998,
 "record_length_years": 28,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "MA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -6829,7 +7717,10 @@
 "established": 1987,
 "record_length_years": 39,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "VA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -6852,7 +7743,10 @@
 "established": 2014,
 "record_length_years": 12,
 "long_term_threshold_met": true,
-"primary_sphere": "freshwater"
+"primary_sphere": "freshwater",
+"state": "CO",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -6875,7 +7769,10 @@
 "established": 2016,
 "record_length_years": 10,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "MA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -6898,7 +7795,10 @@
 "established": 2017,
 "record_length_years": 9,
 "long_term_threshold_met": false,
-"primary_sphere": "freshwater"
+"primary_sphere": "freshwater",
+"state": "MA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -6921,7 +7821,10 @@
 "established": 2018,
 "record_length_years": 8,
 "long_term_threshold_met": false,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "VA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -6944,7 +7847,10 @@
 "established": 2015,
 "record_length_years": 11,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "VA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -6967,7 +7873,10 @@
 "established": 2018,
 "record_length_years": 8,
 "long_term_threshold_met": false,
-"primary_sphere": "freshwater"
+"primary_sphere": "freshwater",
+"state": "VA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -6990,7 +7899,10 @@
 "established": 2018,
 "record_length_years": 8,
 "long_term_threshold_met": false,
-"primary_sphere": "freshwater"
+"primary_sphere": "freshwater",
+"state": "VA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -7013,7 +7925,10 @@
 "established": 2017,
 "record_length_years": 9,
 "long_term_threshold_met": false,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "FL",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -7036,7 +7951,10 @@
 "established": 2017,
 "record_length_years": 9,
 "long_term_threshold_met": false,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "GA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -7059,7 +7977,10 @@
 "established": 2016,
 "record_length_years": 10,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "FL",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -7082,7 +8003,10 @@
 "established": 2017,
 "record_length_years": 9,
 "long_term_threshold_met": false,
-"primary_sphere": "freshwater"
+"primary_sphere": "freshwater",
+"state": "FL",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -7105,7 +8029,10 @@
 "established": 2017,
 "record_length_years": 9,
 "long_term_threshold_met": false,
-"primary_sphere": "freshwater"
+"primary_sphere": "freshwater",
+"state": "GA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -7128,7 +8055,10 @@
 "established": 2017,
 "record_length_years": 9,
 "long_term_threshold_met": false,
-"primary_sphere": "freshwater"
+"primary_sphere": "freshwater",
+"state": "FL",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -7151,7 +8081,10 @@
 "established": 2016,
 "record_length_years": 10,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "PR",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -7174,7 +8107,10 @@
 "established": 2016,
 "record_length_years": 10,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "PR",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -7197,7 +8133,10 @@
 "established": 2016,
 "record_length_years": 10,
 "long_term_threshold_met": true,
-"primary_sphere": "freshwater"
+"primary_sphere": "freshwater",
+"state": "PR",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -7220,7 +8159,10 @@
 "established": 2016,
 "record_length_years": 10,
 "long_term_threshold_met": true,
-"primary_sphere": "freshwater"
+"primary_sphere": "freshwater",
+"state": "PR",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -7243,7 +8185,10 @@
 "established": 2017,
 "record_length_years": 9,
 "long_term_threshold_met": false,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "WI",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -7266,7 +8211,10 @@
 "established": 2017,
 "record_length_years": 9,
 "long_term_threshold_met": false,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "WI",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -7289,7 +8237,10 @@
 "established": 2017,
 "record_length_years": 9,
 "long_term_threshold_met": false,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "MI",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -7312,7 +8263,10 @@
 "established": 2017,
 "record_length_years": 9,
 "long_term_threshold_met": false,
-"primary_sphere": "freshwater"
+"primary_sphere": "freshwater",
+"state": "WI",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -7335,7 +8289,10 @@
 "established": 2017,
 "record_length_years": 9,
 "long_term_threshold_met": false,
-"primary_sphere": "freshwater"
+"primary_sphere": "freshwater",
+"state": "WI",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -7358,7 +8315,10 @@
 "established": 2018,
 "record_length_years": 8,
 "long_term_threshold_met": false,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "KS",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -7381,7 +8341,10 @@
 "established": 2018,
 "record_length_years": 8,
 "long_term_threshold_met": false,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "KS",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -7404,7 +8367,10 @@
 "established": 2018,
 "record_length_years": 8,
 "long_term_threshold_met": false,
-"primary_sphere": "freshwater"
+"primary_sphere": "freshwater",
+"state": "KS",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -7427,7 +8393,10 @@
 "established": 2018,
 "record_length_years": 8,
 "long_term_threshold_met": false,
-"primary_sphere": "freshwater"
+"primary_sphere": "freshwater",
+"state": "KS",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -7450,7 +8419,10 @@
 "established": 2017,
 "record_length_years": 9,
 "long_term_threshold_met": false,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "TN",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -7473,7 +8445,10 @@
 "established": 2017,
 "record_length_years": 9,
 "long_term_threshold_met": false,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "VA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -7496,7 +8471,10 @@
 "established": 2017,
 "record_length_years": 9,
 "long_term_threshold_met": false,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "TN",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -7519,7 +8497,10 @@
 "established": 2017,
 "record_length_years": 9,
 "long_term_threshold_met": false,
-"primary_sphere": "freshwater"
+"primary_sphere": "freshwater",
+"state": "TN",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -7542,7 +8523,10 @@
 "established": 2017,
 "record_length_years": 9,
 "long_term_threshold_met": false,
-"primary_sphere": "freshwater"
+"primary_sphere": "freshwater",
+"state": "TN",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -7565,7 +8549,10 @@
 "established": 2017,
 "record_length_years": 9,
 "long_term_threshold_met": false,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "AL",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -7588,7 +8575,10 @@
 "established": 2017,
 "record_length_years": 9,
 "long_term_threshold_met": false,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "AL",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -7611,7 +8601,10 @@
 "established": 2017,
 "record_length_years": 9,
 "long_term_threshold_met": false,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "AL",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -7634,7 +8627,10 @@
 "established": 2017,
 "record_length_years": 9,
 "long_term_threshold_met": false,
-"primary_sphere": "freshwater"
+"primary_sphere": "freshwater",
+"state": "AL",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -7657,7 +8653,10 @@
 "established": 2017,
 "record_length_years": 9,
 "long_term_threshold_met": false,
-"primary_sphere": "freshwater"
+"primary_sphere": "freshwater",
+"state": "AL",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -7680,7 +8679,10 @@
 "established": 2017,
 "record_length_years": 9,
 "long_term_threshold_met": false,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "ND",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -7703,7 +8705,10 @@
 "established": 2017,
 "record_length_years": 9,
 "long_term_threshold_met": false,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "ND",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -7726,7 +8731,10 @@
 "established": 2017,
 "record_length_years": 9,
 "long_term_threshold_met": false,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "ND",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -7749,7 +8757,10 @@
 "established": 2017,
 "record_length_years": 9,
 "long_term_threshold_met": false,
-"primary_sphere": "freshwater"
+"primary_sphere": "freshwater",
+"state": "ND",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -7772,7 +8783,10 @@
 "established": 2017,
 "record_length_years": 9,
 "long_term_threshold_met": false,
-"primary_sphere": "freshwater"
+"primary_sphere": "freshwater",
+"state": "ND",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -7795,7 +8809,10 @@
 "established": 2016,
 "record_length_years": 10,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "CO",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -7818,7 +8835,10 @@
 "established": 2017,
 "record_length_years": 9,
 "long_term_threshold_met": false,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "CO",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -7841,7 +8861,10 @@
 "established": 2017,
 "record_length_years": 9,
 "long_term_threshold_met": false,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "CO",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -7864,7 +8887,10 @@
 "established": 2017,
 "record_length_years": 9,
 "long_term_threshold_met": false,
-"primary_sphere": "freshwater"
+"primary_sphere": "freshwater",
+"state": "CO",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -7887,7 +8913,10 @@
 "established": 2017,
 "record_length_years": 9,
 "long_term_threshold_met": false,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "TX",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -7910,7 +8939,10 @@
 "established": 2017,
 "record_length_years": 9,
 "long_term_threshold_met": false,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "OK",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -7933,7 +8965,10 @@
 "established": 2017,
 "record_length_years": 9,
 "long_term_threshold_met": false,
-"primary_sphere": "freshwater"
+"primary_sphere": "freshwater",
+"state": "OK",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -7956,7 +8991,10 @@
 "established": 2017,
 "record_length_years": 9,
 "long_term_threshold_met": false,
-"primary_sphere": "freshwater"
+"primary_sphere": "freshwater",
+"state": "TX",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -7979,7 +9017,10 @@
 "established": 2018,
 "record_length_years": 8,
 "long_term_threshold_met": false,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "WY",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -8002,7 +9043,10 @@
 "established": 2018,
 "record_length_years": 8,
 "long_term_threshold_met": false,
-"primary_sphere": "freshwater"
+"primary_sphere": "freshwater",
+"state": "WY",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -8025,7 +9069,10 @@
 "established": 2017,
 "record_length_years": 9,
 "long_term_threshold_met": false,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "UT",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -8048,7 +9095,10 @@
 "established": 2017,
 "record_length_years": 9,
 "long_term_threshold_met": false,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "CO",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -8071,7 +9121,10 @@
 "established": 2017,
 "record_length_years": 9,
 "long_term_threshold_met": false,
-"primary_sphere": "freshwater"
+"primary_sphere": "freshwater",
+"state": "CO",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -8094,7 +9147,10 @@
 "established": 2017,
 "record_length_years": 9,
 "long_term_threshold_met": false,
-"primary_sphere": "freshwater"
+"primary_sphere": "freshwater",
+"state": "CO",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -8117,7 +9173,10 @@
 "established": 2018,
 "record_length_years": 8,
 "long_term_threshold_met": false,
-"primary_sphere": "freshwater"
+"primary_sphere": "freshwater",
+"state": "AZ",
+"has_arid_sphere": true,
+"in_arid_network": false
 }
 },
 {
@@ -8140,7 +9199,10 @@
 "established": 2017,
 "record_length_years": 9,
 "long_term_threshold_met": false,
-"primary_sphere": "freshwater"
+"primary_sphere": "freshwater",
+"state": "UT",
+"has_arid_sphere": true,
+"in_arid_network": false
 }
 },
 {
@@ -8163,7 +9225,10 @@
 "established": 2017,
 "record_length_years": 9,
 "long_term_threshold_met": false,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "WA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -8186,7 +9251,10 @@
 "established": 2018,
 "record_length_years": 8,
 "long_term_threshold_met": false,
-"primary_sphere": "freshwater"
+"primary_sphere": "freshwater",
+"state": "WA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -8209,7 +9277,10 @@
 "established": 2017,
 "record_length_years": 9,
 "long_term_threshold_met": false,
-"primary_sphere": "freshwater"
+"primary_sphere": "freshwater",
+"state": "OR",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -8232,7 +9303,10 @@
 "established": 2018,
 "record_length_years": 8,
 "long_term_threshold_met": false,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "CA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -8255,7 +9329,10 @@
 "established": 2018,
 "record_length_years": 8,
 "long_term_threshold_met": false,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "CA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -8278,7 +9355,10 @@
 "established": 2018,
 "record_length_years": 8,
 "long_term_threshold_met": false,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "CA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -8301,7 +9381,10 @@
 "established": 2018,
 "record_length_years": 8,
 "long_term_threshold_met": false,
-"primary_sphere": "freshwater"
+"primary_sphere": "freshwater",
+"state": "CA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -8324,7 +9407,10 @@
 "established": 2018,
 "record_length_years": 8,
 "long_term_threshold_met": false,
-"primary_sphere": "freshwater"
+"primary_sphere": "freshwater",
+"state": "CA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -8347,7 +9433,10 @@
 "established": 2017,
 "record_length_years": 9,
 "long_term_threshold_met": false,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "AK",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -8370,7 +9459,10 @@
 "established": 2017,
 "record_length_years": 9,
 "long_term_threshold_met": false,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "AK",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -8393,7 +9485,10 @@
 "established": 2017,
 "record_length_years": 9,
 "long_term_threshold_met": false,
-"primary_sphere": "freshwater"
+"primary_sphere": "freshwater",
+"state": "AK",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -8416,7 +9511,10 @@
 "established": 2017,
 "record_length_years": 9,
 "long_term_threshold_met": false,
-"primary_sphere": "freshwater"
+"primary_sphere": "freshwater",
+"state": "AK",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -8439,7 +9537,10 @@
 "established": 2017,
 "record_length_years": 9,
 "long_term_threshold_met": false,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "AK",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -8462,7 +9563,10 @@
 "established": 2017,
 "record_length_years": 9,
 "long_term_threshold_met": false,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "AK",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -8485,7 +9589,10 @@
 "established": 2017,
 "record_length_years": 9,
 "long_term_threshold_met": false,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "AK",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -8508,7 +9615,10 @@
 "established": 2017,
 "record_length_years": 9,
 "long_term_threshold_met": false,
-"primary_sphere": "freshwater"
+"primary_sphere": "freshwater",
+"state": "AK",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -8531,7 +9641,10 @@
 "established": 2019,
 "record_length_years": 7,
 "long_term_threshold_met": false,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "HI",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -8554,7 +9667,10 @@
 "established": 1976,
 "record_length_years": 50,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "CA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -8577,7 +9693,10 @@
 "established": 1976,
 "record_length_years": 50,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "WA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -8600,7 +9719,10 @@
 "established": 1976,
 "record_length_years": 50,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "WY",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -8623,7 +9745,10 @@
 "established": 1976,
 "record_length_years": 50,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "MT",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -8646,7 +9771,10 @@
 "established": 1976,
 "record_length_years": 50,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "FL",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -8669,7 +9797,10 @@
 "established": 1980,
 "record_length_years": 46,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "HI",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -8692,7 +9823,10 @@
 "established": 1976,
 "record_length_years": 50,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "AK",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -8715,7 +9849,10 @@
 "established": 2003,
 "record_length_years": 23,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "MT",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -8738,7 +9875,10 @@
 "established": 2003,
 "record_length_years": 23,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "CA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -8761,7 +9901,10 @@
 "established": 2003,
 "record_length_years": 23,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "OR",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -8784,7 +9927,10 @@
 "established": 2003,
 "record_length_years": 23,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "ME",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -8807,7 +9953,10 @@
 "established": 1936,
 "record_length_years": 90,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "MD",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -8830,7 +9979,10 @@
 "established": 1937,
 "record_length_years": 89,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "TX",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -8853,7 +10005,10 @@
 "established": 1985,
 "record_length_years": 41,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "HI",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -8876,7 +10031,10 @@
 "established": 1928,
 "record_length_years": 98,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "CO",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -8899,7 +10057,10 @@
 "established": 1941,
 "record_length_years": 85,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "FL",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -8922,7 +10083,10 @@
 "established": 1909,
 "record_length_years": 117,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "MI",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -8945,7 +10109,10 @@
 "established": 1950,
 "record_length_years": 76,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "CA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -8968,7 +10135,10 @@
 "established": 1959,
 "record_length_years": 67,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine"
+"primary_sphere": "ocean-estuarine",
+"state": "CA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -8991,7 +10161,10 @@
 "established": 1903,
 "record_length_years": 123,
 "long_term_threshold_met": true,
-"primary_sphere": "agriculture"
+"primary_sphere": "agriculture",
+"state": "AZ",
+"has_arid_sphere": true,
+"in_arid_network": false
 }
 },
 {
@@ -9014,7 +10187,10 @@
 "established": 1912,
 "record_length_years": 114,
 "long_term_threshold_met": true,
-"primary_sphere": "agriculture"
+"primary_sphere": "agriculture",
+"state": "NM",
+"has_arid_sphere": true,
+"in_arid_network": false
 }
 },
 {
@@ -9037,7 +10213,10 @@
 "established": 1953,
 "record_length_years": 73,
 "long_term_threshold_met": true,
-"primary_sphere": "agriculture"
+"primary_sphere": "agriculture",
+"state": "AZ",
+"has_arid_sphere": true,
+"in_arid_network": false
 }
 },
 {
@@ -9060,7 +10239,10 @@
 "established": 1962,
 "record_length_years": 64,
 "long_term_threshold_met": true,
-"primary_sphere": "agriculture"
+"primary_sphere": "agriculture",
+"state": "ID",
+"has_arid_sphere": true,
+"in_arid_network": false
 }
 },
 {
@@ -9083,7 +10265,10 @@
 "established": 1939,
 "record_length_years": 87,
 "long_term_threshold_met": true,
-"primary_sphere": "agriculture"
+"primary_sphere": "agriculture",
+"state": "WY",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -9106,7 +10291,10 @@
 "established": 1924,
 "record_length_years": 102,
 "long_term_threshold_met": true,
-"primary_sphere": "agriculture"
+"primary_sphere": "agriculture",
+"state": "MT",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -9129,7 +10317,10 @@
 "established": 1912,
 "record_length_years": 114,
 "long_term_threshold_met": true,
-"primary_sphere": "agriculture"
+"primary_sphere": "agriculture",
+"state": "ND",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -9152,7 +10343,10 @@
 "established": 1894,
 "record_length_years": 132,
 "long_term_threshold_met": true,
-"primary_sphere": "freshwater"
+"primary_sphere": "freshwater",
+"state": "VA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -9175,7 +10369,10 @@
 "established": 1999,
 "record_length_years": 27,
 "long_term_threshold_met": true,
-"primary_sphere": "freshwater"
+"primary_sphere": "freshwater",
+"state": "VA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -9198,7 +10395,10 @@
 "established": 2007,
 "record_length_years": 19,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "SD",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -9221,7 +10421,10 @@
 "established": 2008,
 "record_length_years": 18,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "VA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -9244,7 +10447,10 @@
 "established": 2012,
 "record_length_years": 14,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "MA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -9267,7 +10473,10 @@
 "established": 2010,
 "record_length_years": 16,
 "long_term_threshold_met": true,
-"primary_sphere": "cryosphere"
+"primary_sphere": "cryosphere",
+"state": "AK",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -9290,7 +10499,10 @@
 "established": 1963,
 "record_length_years": 63,
 "long_term_threshold_met": true,
-"primary_sphere": "freshwater"
+"primary_sphere": "freshwater",
+"state": "VA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -9313,7 +10525,10 @@
 "established": 1888,
 "record_length_years": 138,
 "long_term_threshold_met": true,
-"primary_sphere": "freshwater"
+"primary_sphere": "freshwater",
+"state": "VA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -9336,7 +10551,10 @@
 "established": 1932,
 "record_length_years": 94,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "WA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -9359,7 +10577,10 @@
 "established": 1934,
 "record_length_years": 92,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "CA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -9382,7 +10603,10 @@
 "established": 1938,
 "record_length_years": 88,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "CA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -9405,7 +10629,10 @@
 "established": 2002,
 "record_length_years": 24,
 "long_term_threshold_met": true,
-"primary_sphere": "freshwater"
+"primary_sphere": "freshwater",
+"state": "CA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -9428,7 +10655,10 @@
 "established": 1934,
 "record_length_years": 92,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "TN",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -9451,7 +10681,10 @@
 "established": 1930,
 "record_length_years": 96,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "VA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -9474,7 +10707,10 @@
 "established": 1926,
 "record_length_years": 100,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "VA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -9497,7 +10733,10 @@
 "established": 1974,
 "record_length_years": 52,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "VA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -9520,7 +10759,10 @@
 "established": 1980,
 "record_length_years": 46,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "TN",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -9543,7 +10785,10 @@
 "established": 1967,
 "record_length_years": 59,
 "long_term_threshold_met": true,
-"primary_sphere": "freshwater"
+"primary_sphere": "freshwater",
+"state": "TN",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -9566,7 +10811,10 @@
 "established": 1936,
 "record_length_years": 90,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "AL",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -9589,7 +10837,10 @@
 "established": 1990,
 "record_length_years": 36,
 "long_term_threshold_met": true,
-"primary_sphere": "freshwater"
+"primary_sphere": "freshwater",
+"state": "AL",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -9612,7 +10863,10 @@
 "established": 1991,
 "record_length_years": 35,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "GA",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -9635,7 +10889,10 @@
 "established": 1980,
 "record_length_years": 46,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "FL",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -9658,7 +10915,10 @@
 "established": 1992,
 "record_length_years": 34,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "FL",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -9681,7 +10941,10 @@
 "established": 1872,
 "record_length_years": 154,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "WY",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -9704,7 +10967,10 @@
 "established": 1981,
 "record_length_years": 45,
 "long_term_threshold_met": true,
-"primary_sphere": "freshwater"
+"primary_sphere": "freshwater",
+"state": "AZ",
+"has_arid_sphere": true,
+"in_arid_network": false
 }
 },
 {
@@ -9727,7 +10993,10 @@
 "established": 2012,
 "record_length_years": 14,
 "long_term_threshold_met": true,
-"primary_sphere": "freshwater"
+"primary_sphere": "freshwater",
+"state": "UT",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -9750,7 +11019,10 @@
 "established": 1919,
 "record_length_years": 107,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "PR",
+"has_arid_sphere": true,
+"in_arid_network": false
 }
 },
 {
@@ -9773,7 +11045,10 @@
 "established": 1948,
 "record_length_years": 78,
 "long_term_threshold_met": true,
-"primary_sphere": "agriculture"
+"primary_sphere": "agriculture",
+"state": "AK",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -9796,7 +11071,10 @@
 "established": 2001,
 "record_length_years": 25,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "AK",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -9819,7 +11097,10 @@
 "established": 1965,
 "record_length_years": 61,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "ND",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -9842,7 +11123,10 @@
 "established": 1967,
 "record_length_years": 59,
 "long_term_threshold_met": true,
-"primary_sphere": "freshwater"
+"primary_sphere": "freshwater",
+"state": "ND",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -9865,7 +11149,10 @@
 "established": 1960,
 "record_length_years": 66,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "TX",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -9888,7 +11175,10 @@
 "established": 1948,
 "record_length_years": 78,
 "long_term_threshold_met": true,
-"primary_sphere": "agriculture"
+"primary_sphere": "agriculture",
+"state": "OK",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -9911,7 +11201,10 @@
 "established": 1956,
 "record_length_years": 70,
 "long_term_threshold_met": true,
-"primary_sphere": "agriculture"
+"primary_sphere": "agriculture",
+"state": "OK",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -9934,7 +11227,10 @@
 "established": 1947,
 "record_length_years": 79,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "KS",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -9957,7 +11253,10 @@
 "established": 1934,
 "record_length_years": 92,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "MI",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -9980,7 +11279,10 @@
 "established": 1915,
 "record_length_years": 111,
 "long_term_threshold_met": true,
-"primary_sphere": "terrestrial"
+"primary_sphere": "terrestrial",
+"state": "CO",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -10003,7 +11305,10 @@
 "established": 1925,
 "record_length_years": 101,
 "long_term_threshold_met": true,
-"primary_sphere": "freshwater"
+"primary_sphere": "freshwater",
+"state": "WI",
+"has_arid_sphere": false,
+"in_arid_network": false
 }
 },
 {
@@ -10026,7 +11331,10 @@
 "established": 1912,
 "record_length_years": 114,
 "long_term_threshold_met": true,
-"primary_sphere": "arid"
+"primary_sphere": "arid",
+"state": "UT",
+"has_arid_sphere": true,
+"in_arid_network": false
 }
 },
 {
@@ -10049,7 +11357,10 @@
 "established": 1912,
 "record_length_years": 114,
 "long_term_threshold_met": true,
-"primary_sphere": "arid"
+"primary_sphere": "arid",
+"state": "NM",
+"has_arid_sphere": true,
+"in_arid_network": false
 }
 },
 {
@@ -10072,7 +11383,10 @@
 "established": 1988,
 "record_length_years": 38,
 "long_term_threshold_met": true,
-"primary_sphere": "arid"
+"primary_sphere": "arid",
+"state": "NM",
+"has_arid_sphere": true,
+"in_arid_network": true
 }
 },
 {
@@ -10095,7 +11409,10 @@
 "established": 2001,
 "record_length_years": 25,
 "long_term_threshold_met": true,
-"primary_sphere": "arid"
+"primary_sphere": "arid",
+"state": "NV",
+"has_arid_sphere": true,
+"in_arid_network": false
 }
 },
 {
@@ -10118,7 +11435,10 @@
 "established": 2017,
 "record_length_years": 9,
 "long_term_threshold_met": false,
-"primary_sphere": "arid"
+"primary_sphere": "arid",
+"state": "NM",
+"has_arid_sphere": true,
+"in_arid_network": false
 }
 },
 {
@@ -10141,7 +11461,10 @@
 "established": 2018,
 "record_length_years": 8,
 "long_term_threshold_met": false,
-"primary_sphere": "arid"
+"primary_sphere": "arid",
+"state": "AZ",
+"has_arid_sphere": true,
+"in_arid_network": false
 }
 },
 {
@@ -10164,7 +11487,10 @@
 "established": 2017,
 "record_length_years": 9,
 "long_term_threshold_met": false,
-"primary_sphere": "arid"
+"primary_sphere": "arid",
+"state": "UT",
+"has_arid_sphere": true,
+"in_arid_network": false
 }
 },
 {
@@ -10187,7 +11513,10 @@
 "established": 1976,
 "record_length_years": 50,
 "long_term_threshold_met": true,
-"primary_sphere": "arid"
+"primary_sphere": "arid",
+"state": "TX",
+"has_arid_sphere": true,
+"in_arid_network": false
 }
 },
 {
@@ -10210,7 +11539,10 @@
 "established": 2003,
 "record_length_years": 23,
 "long_term_threshold_met": true,
-"primary_sphere": "arid"
+"primary_sphere": "arid",
+"state": "AZ",
+"has_arid_sphere": true,
+"in_arid_network": false
 }
 },
 {
@@ -10233,7 +11565,296 @@
 "established": 1996,
 "record_length_years": 30,
 "long_term_threshold_met": true,
-"primary_sphere": "arid"
+"primary_sphere": "arid",
+"state": "UT",
+"has_arid_sphere": true,
+"in_arid_network": false
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-106.62021,
+35.08663
+]
+},
+"properties": {
+"id": "8b615e3993ca3439",
+"name": "Accelerating Resilience Innovations in Drylands (ARID Institute)",
+"acronym": "ARID",
+"type": "university-institute",
+"country": "US",
+"url": "https://arid.unm.edu/",
+"parent_org": "University of New Mexico",
+"established": 2023,
+"record_length_years": null,
+"long_term_threshold_met": null,
+"primary_sphere": "arid",
+"state": "NM",
+"has_arid_sphere": true,
+"in_arid_network": true
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-106.62021,
+35.08663
+]
+},
+"properties": {
+"id": "f902cea5ea327c3d",
+"name": "Bosque Ecosystem Monitoring Program",
+"acronym": "BEMP",
+"type": "university-institute",
+"country": "US",
+"url": "https://bemp.org/",
+"parent_org": "University of New Mexico",
+"established": null,
+"record_length_years": null,
+"long_term_threshold_met": null,
+"primary_sphere": "terrestrial",
+"state": "NM",
+"has_arid_sphere": false,
+"in_arid_network": true
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-106.62021,
+35.08663
+]
+},
+"properties": {
+"id": "158899c90de6138b",
+"name": "Center for Water and the Environment",
+"acronym": "CWE",
+"type": "university-institute",
+"country": "US",
+"url": "https://cwe.unm.edu/",
+"parent_org": "University of New Mexico",
+"established": null,
+"record_length_years": null,
+"long_term_threshold_met": null,
+"primary_sphere": "freshwater",
+"state": "NM",
+"has_arid_sphere": false,
+"in_arid_network": true
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-106.62185,
+35.08319
+]
+},
+"properties": {
+"id": "3aad99b4ad03a7fe",
+"name": "Museum of Southwestern Biology",
+"acronym": "MSB",
+"type": "university-institute",
+"country": "US",
+"url": "http://www.msb.unm.edu/",
+"parent_org": "University of New Mexico",
+"established": null,
+"record_length_years": null,
+"long_term_threshold_met": null,
+"primary_sphere": "terrestrial",
+"state": "NM",
+"has_arid_sphere": false,
+"in_arid_network": true
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-106.62021,
+35.08663
+]
+},
+"properties": {
+"id": "7924e081e8ad8d68",
+"name": "Water Resources Program",
+"acronym": "WRP",
+"type": "university-institute",
+"country": "US",
+"url": "https://wrp.unm.edu/",
+"parent_org": "University of New Mexico",
+"established": null,
+"record_length_years": null,
+"long_term_threshold_met": null,
+"primary_sphere": "freshwater",
+"state": "NM",
+"has_arid_sphere": false,
+"in_arid_network": true
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-106.61867,
+35.09339
+]
+},
+"properties": {
+"id": "c60b7b86dd2bc6ae",
+"name": "Utton Transboundary Resources Center",
+"acronym": null,
+"type": "university-institute",
+"country": "US",
+"url": "https://uttoncenter.unm.edu/",
+"parent_org": "University of New Mexico School of Law",
+"established": null,
+"record_length_years": null,
+"long_term_threshold_met": null,
+"primary_sphere": null,
+"state": "NM",
+"has_arid_sphere": false,
+"in_arid_network": true
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-106.61709,
+35.08999
+]
+},
+"properties": {
+"id": "2d8e236b944fefb5",
+"name": "METALS Superfund Research Program",
+"acronym": "METALS",
+"type": "university-institute",
+"country": "US",
+"url": "https://hsc.unm.edu/pharmacy/research/areas/metals/",
+"parent_org": "University of New Mexico College of Pharmacy",
+"established": null,
+"record_length_years": null,
+"long_term_threshold_met": null,
+"primary_sphere": null,
+"state": "NM",
+"has_arid_sphere": false,
+"in_arid_network": true
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-106.62021,
+35.08663
+]
+},
+"properties": {
+"id": "45f7cd7960086931",
+"name": "Sustainability Studies Program",
+"acronym": "SUST",
+"type": "university-institute",
+"country": "US",
+"url": "https://sust.unm.edu/",
+"parent_org": "University of New Mexico",
+"established": null,
+"record_length_years": null,
+"long_term_threshold_met": null,
+"primary_sphere": null,
+"state": "NM",
+"has_arid_sphere": false,
+"in_arid_network": true
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-106.62582,
+35.08327
+]
+},
+"properties": {
+"id": "440242ab387a8692",
+"name": "Southwest Environmental Finance Center",
+"acronym": "SWEFC",
+"type": "university-institute",
+"country": "US",
+"url": "https://swefc.unm.edu/home/",
+"parent_org": "University of New Mexico Department of Civil, Construction and Environmental Engineering",
+"established": null,
+"record_length_years": null,
+"long_term_threshold_met": null,
+"primary_sphere": null,
+"state": "NM",
+"has_arid_sphere": false,
+"in_arid_network": true
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-106.61709,
+35.08999
+]
+},
+"properties": {
+"id": "8678c2ba3cde5ecc",
+"name": "Center for Health Equity: Planetary Health and Preparedness",
+"acronym": null,
+"type": "university-institute",
+"country": "US",
+"url": "https://hsc.unm.edu/nursing/research/center/",
+"parent_org": "University of New Mexico College of Nursing",
+"established": null,
+"record_length_years": null,
+"long_term_threshold_met": null,
+"primary_sphere": null,
+"state": "NM",
+"has_arid_sphere": false,
+"in_arid_network": true
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-106.62021,
+35.08663
+]
+},
+"properties": {
+"id": "3836c01b23513f95",
+"name": "Public Policy Program (Master of Public Policy)",
+"acronym": "MPP",
+"type": "university-institute",
+"country": "US",
+"url": "https://mpp.unm.edu/index.html",
+"parent_org": "University of New Mexico",
+"established": null,
+"record_length_years": null,
+"long_term_threshold_met": null,
+"primary_sphere": null,
+"state": "NM",
+"has_arid_sphere": false,
+"in_arid_network": true
 }
 }
 ]

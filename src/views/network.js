@@ -3815,10 +3815,10 @@ export function initNetworkView(container) {
             organisations, plus a bonus for each site whose data lives in an
             authoritative archive, plus its addressable data products, plus
             the researchers anchored there. It is <em>not</em> the raw
-            catalogue count: 158 of the 445 catalogued facilities are
+            catalogue count: roughly a third of the catalogued facilities are
             place-type monitoring installations (protected areas, flux
             towers, streamgage networks, experimental forests), and a raw
-            count ranks coverage rather than observatory capacity. The 18
+            count ranks coverage rather than observatory capacity. The
             protected areas stay catalogued behind the off-by-default
             <em>Protected areas</em> layer, drawn as one aggregate chip per
             region.</p>

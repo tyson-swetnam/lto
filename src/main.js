@@ -6,8 +6,9 @@ import {
   onViewportChange,
   featuresInView,
   TYPE_COLORS,
+  renderProjects,
 } from './map.js';
-import { initFilters } from './filters.js';
+import { initFilters, DEFAULT_SCOPE } from './filters.js';
 import { initOverlays, activeOverlays, syncOverlaysToFilters } from './overlays.js';
 import { initDB, loadFallback, query } from './db.js';
 import { initListView, renderList } from './views/list.js';
@@ -17,6 +18,7 @@ import { initNetworkView, renderNetworkView } from './views/network.js';
 import { initPeopleView, renderPeopleView } from './views/people.js';
 import { initDatasetsView, renderDatasetsView } from './views/datasets.js';
 import { initSqlView, renderSqlView } from './views/sql.js';
+import { initProjectsView, renderProjectsView, loadProjectCards } from './views/projects.js';
 import { initRouter, currentPath } from './router.js';
 
 const state = {
@@ -28,6 +30,9 @@ const state = {
     longTermOnly: false,
     establishedMin: null, establishedMax: null,
     q: '',
+    // Scope lens (src/filters.js SCOPES). The site opens on New Mexico
+    // and the Southwest drylands; "All U.S." lifts it.
+    scope: DEFAULT_SCOPE,
   },
   lastFeatures: [],
   setFilters(update) {
@@ -66,6 +71,7 @@ initStatsView(document.getElementById('stats'));
 initNetworkView(document.getElementById('network'));
 initPeopleView(document.getElementById('people'));
 initDatasetsView(document.getElementById('data'));
+initProjectsView(document.getElementById('projects'));
 initSqlView(document.getElementById('sql'));
 
 // ── Debounced search + clear button ────────────────────────────────
@@ -136,13 +142,13 @@ function renderMapBrowse(features) {
       <td class="col-name"><span class="map-browse-swatch" style="background:${color}"></span>${nameCell}</td>
       <td class="col-acronym">${escHtml(p.acronym ?? '')}</td>
       <td class="col-type">${escHtml((p.type ?? '').replace(/-/g, ' '))}</td>
-      <td class="col-country">${escHtml(p.country ?? '')}</td>
+      <td class="col-country">${escHtml(p.state ?? p.country ?? '')}</td>
     </tr>`;
   }).join('');
 
   mapBrowseListEl.innerHTML = `<table class="map-browse-table">
     <thead><tr>
-      <th>Name</th><th>Acronym</th><th>Type</th><th>Country</th>
+      <th>Name</th><th>Acronym</th><th>Type</th><th>State</th>
     </tr></thead>
     <tbody>${rows}</tbody>
   </table>`;
@@ -214,6 +220,7 @@ const views = {
   '/browse':  document.getElementById('view-browse'),
   '/network': document.getElementById('view-network'),
   '/people':  document.getElementById('view-people'),
+  '/projects': document.getElementById('view-projects'),
   '/data':    document.getElementById('view-data'),
   '/sql':     document.getElementById('view-sql'),
   '/stats':   document.getElementById('view-stats'),
@@ -257,6 +264,14 @@ initRouter({
     const m = path.match(/^\/people\/(.+)$/);
     renderPeopleView(m ? decodeURIComponent(m[1]) : null);
   },
+  '/projects': (path) => {
+    showView('/projects');
+    document.body.classList.add('no-sidebar');
+    setDrawer(false);
+    // /projects/<project_id> scrolls + highlights that project's card.
+    const m = path.match(/^\/projects\/(.+)$/);
+    renderProjectsView(m ? decodeURIComponent(m[1]) : null);
+  },
   '/data': (path) => {
     showView('/data');
     document.body.classList.add('no-sidebar');
@@ -293,7 +308,11 @@ initRouter({
 // ── Bootstrap ───────────────────────────────────────────────────────
 (async () => {
   try {
-    const fallback = await loadFallback();
+    await loadFallback();
+    // query() answers from the GeoJSON until DuckDB is up, and applies the
+    // scope lens either way — so first paint already shows the default
+    // lens rather than flashing the whole national catalogue.
+    const fallback = await query(state.filters);
     state.lastFeatures = fallback;
     renderFacilities(fallback);
     renderList(fallback);
@@ -309,6 +328,22 @@ initRouter({
     console.warn('DuckDB-Wasm unavailable, staying on GeoJSON fallback.', e);
   }
 })();
+
+// ── ARID project rings on the map ───────────────────────────────────
+// Independent of the facility query: the same cards the Projects tab
+// reads, reduced to the few whose source names a place.
+loadProjectCards().then((cards) => {
+  renderProjects(cards
+    .filter((p) => p.lat != null && p.lng != null)
+    .map((p) => ({
+      type: 'Feature',
+      geometry: { type: 'Point', coordinates: [p.lng, p.lat] },
+      properties: {
+        id: p.id, name: p.name,
+        extent_label: p.extent_label, location_precision: p.location_precision,
+      },
+    })));
+}).catch((e) => console.warn('Project markers unavailable:', e));
 
 // ── Legend collapses on small screens ───────────────────────────────
 if (window.matchMedia('(max-width: 900px)').matches) {

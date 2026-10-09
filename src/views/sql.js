@@ -18,11 +18,79 @@ import { getConn, whenReady, unwrapRow, ensureSqlTables } from '../db.js';
 // the query is active.
 const EXAMPLES = [
   {
+    id: 'nm-facilities',
+    title: 'New Mexico facilities',
+    description:
+      'Every catalogued facility in New Mexico with its primary sphere and ' +
+      'networks. facilities.state is derived from the HQ point.',
+    sql: `-- Facilities in New Mexico
+SELECT f.canonical_name                 AS facility,
+       f.facility_type                  AS type,
+       fs.sphere_slug                   AS primary_sphere,
+       string_agg(DISTINCT n.label, ', ' ORDER BY n.label) AS networks
+FROM   facilities f
+LEFT   JOIN facility_spheres   fs ON fs.facility_id = f.facility_id AND fs.role = 'primary'
+LEFT   JOIN network_membership nm ON nm.facility_id = f.facility_id
+LEFT   JOIN networks           n  ON n.network_id   = nm.network_id
+WHERE  f.state = 'NM'
+GROUP  BY f.canonical_name, f.facility_type, fs.sphere_slug
+ORDER  BY facility;`,
+  },
+  {
+    id: 'arid-projects',
+    title: 'ARID projects and their teams',
+    description:
+      'Projects listed by UNM\u2019s ARID Institute, with sub-projects under ' +
+      'their parent and the size of each named team.',
+    sql: `-- ARID projects, parents first, with team size
+SELECT COALESCE(par.name || ' → ', '') || p.name AS project,
+       p.extent_label                            AS "where",
+       p.location_precision                      AS precision,
+       CAST(COUNT(DISTINCT pp.person_id) AS INTEGER) AS team
+FROM   projects p
+LEFT   JOIN projects          par ON par.project_id = p.parent_project_id
+LEFT   JOIN project_personnel pp  ON pp.project_id  = p.project_id
+GROUP  BY par.name, p.name, p.extent_label, p.location_precision
+ORDER  BY COALESCE(par.name, p.name), par.name IS NOT NULL, p.name;`,
+  },
+  {
+    id: 'envirodata-layers',
+    title: 'EnviroData-NM layers by category',
+    description:
+      'The New Mexico environmental data portal\u2019s layers, counted by ' +
+      'category. Each row in data_products points at the portal\u2019s own ' +
+      'download or WMS endpoint; no data is copied here.',
+    sql: `-- EnviroData-NM layers per top-level category
+SELECT split_part(category, ' / ', 1)                     AS category,
+       CAST(COUNT(*) AS INTEGER)                          AS layers,
+       CAST(COUNT(*) FILTER (WHERE format_slug = 'geojson') AS INTEGER) AS downloadable
+FROM   data_products
+WHERE  archive_id = 'envirodata-nm'
+GROUP  BY 1
+ORDER  BY layers DESC;`,
+  },
+  {
+    id: 'az-water-collections',
+    title: 'Arizona Water Observatory collections',
+    description:
+      'The OGC API collections of the Arizona Water Observatory, with the ' +
+      'kind of access each offers and its time span where the API states one.',
+    sql: `-- Arizona Water Observatory: one row per API collection
+SELECT title,
+       category,
+       CAST(temporal_start AS VARCHAR) AS from_date,
+       CAST(temporal_end   AS VARCHAR) AS to_date,
+       api_url
+FROM   data_products
+WHERE  archive_id = 'arizona-water-observatory'
+ORDER  BY category, title;`,
+  },
+  {
     id: 'facilities-by-type',
     title: 'Facilities by type',
     description:
-      'How the 210 facilities break down across the 10 active facility types. ' +
-      'Matches the map legend.',
+      'How the catalogued facilities break down across the active facility ' +
+      'types. Matches the map legend.',
     sql: `-- Facilities grouped by facility_type
 SELECT ft.label            AS facility_type,
        COUNT(f.facility_id) AS n
@@ -64,8 +132,8 @@ LIMIT  25;`,
     id: 'facilities-per-country',
     title: 'Facilities by country',
     description:
-      'Geographic distribution of the coastal-observatory dataset. ' +
-      'US-heavy by design — NOAA, EPA, university marine labs.',
+      'Geographic distribution of the catalogue: the United States, its ' +
+      'territories, and U.S.-funded Antarctic stations.',
     sql: `-- Countries ranked by facility count
 SELECT f.country                 AS iso_2,
        COUNT(*)                  AS facilities

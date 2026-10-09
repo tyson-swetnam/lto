@@ -41,6 +41,16 @@ export const TYPE_COLORS = {
   'protected-area-federal': '#a16207',  // amber (matches coastal-fws-units)
   'protected-area-state':   '#0e7490',  // teal  (matches coastal-state-protected)
   'protected-area-private': '#a21caf',  // magenta (matches coastal-ngo-private)
+  // LTO observatory types. These hold most of the catalogue but had no
+  // entry, so every one of them painted slate in type mode.
+  'field-station':             '#65a30d',
+  'university-field-station':  '#4d7c0f',
+  'experimental-forest-range': '#166534',
+  'ltar-site':                 '#ca8a04',
+  'flux-tower':                '#0891b2',
+  'streamgage-network':        '#1d4ed8',
+  'glacier-monitoring':        '#7dd3fc',
+  'atmospheric-baseline':      '#6366f1',
 };
 
 function typeColorExpr() {
@@ -173,6 +183,9 @@ function makeStubMap() {
   return stub;
 }
 
+// New Mexico with its dryland neighbours in frame.
+const HOME_BOUNDS = [[-115.5, 30.8], [-101.5, 38.2]];
+
 const COASTLINE_URL =
   'https://raw.githubusercontent.com/martynafford/natural-earth-geojson/master/50m/physical/ne_50m_coastline.json';
 
@@ -187,8 +200,11 @@ export function initMap(container) {
   map = new maplibregl.Map({
     container,
     style: 'https://tiles.openfreemap.org/styles/positron',
-    center: [-85, 32],
-    zoom: 3,
+    // Opens on the Southwest drylands, matching the default scope lens
+    // (src/filters.js). No maxBounds: "All U.S." is one click away and
+    // the catalogue reaches Alaska, the Pacific and Antarctica.
+    bounds: HOME_BOUNDS,
+    fitBoundsOptions: { padding: 20 },
     attributionControl: false,
   });
 
@@ -280,6 +296,36 @@ export function initMap(container) {
       map.setFilter('facility-points-hover', ['==', ['get', 'id'], '']);
     });
 
+    // ARID projects that their source ties to a place. Drawn as hollow
+    // rings so they read as "work happening around here", not as a
+    // facility: most carry only county- or city-level precision.
+    map.addSource('projects', {
+      type: 'geojson',
+      data: { type: 'FeatureCollection', features: _projectFeatures },
+    });
+    map.addLayer({
+      id: 'project-points',
+      type: 'circle',
+      source: 'projects',
+      paint: {
+        'circle-radius': 9,
+        'circle-color': 'rgba(212, 160, 23, 0.18)',
+        'circle-stroke-width': 2.5,
+        'circle-stroke-color': PROJECT_COLOR,
+      },
+    });
+    map.on('click', 'project-points', (e) => {
+      // A facility dot under the ring wins the click; its handler ran too.
+      if (map.queryRenderedFeatures(e.point, { layers: ['facility-points'] }).length) return;
+      const feat = e.features[0];
+      new maplibregl.Popup({ maxWidth: '320px' })
+        .setLngLat(feat.geometry.coordinates.slice())
+        .setHTML(projectPopupHtml(feat.properties))
+        .addTo(map);
+    });
+    map.on('mouseenter', 'project-points', () => { map.getCanvas().style.cursor = 'pointer'; });
+    map.on('mouseleave', 'project-points', () => { map.getCanvas().style.cursor = ''; });
+
     // Fire a custom 'facilities:sourceready' event so the rest of the app
     // can know the source exists and start painting/list-syncing.
     map.fire('facilities:sourceready');
@@ -363,6 +409,35 @@ export function renderFacilities(features) {
   }
 }
 
+const PROJECT_COLOR = '#d4a017';
+let _projectFeatures = [];
+
+const PRECISION_LABELS = {
+  site: 'site location',
+  county: 'county centroid — approximate',
+  city: 'city centroid — approximate',
+};
+
+/** Paint the ARID project rings. Safe to call before the map has loaded. */
+export function renderProjects(features) {
+  _projectFeatures = features;
+  if (_stubMode) return;
+  map?.getSource('projects')?.setData({ type: 'FeatureCollection', features });
+}
+
+function projectPopupHtml(p) {
+  const precision = PRECISION_LABELS[p.location_precision] || p.location_precision;
+  return `<div class="popup">
+    <div class="popup-name"><a href="#/projects/${encodeURIComponent(p.id)}">${esc(p.name)}</a></div>
+    <div class="popup-meta">
+      <span class="type-badge" style="background:${PROJECT_COLOR}">ARID project</span>
+    </div>
+    ${p.extent_label ? `<div class="popup-row"><em>Where:</em> ${esc(p.extent_label)}</div>` : ''}
+    ${precision ? `<div class="popup-row"><em>Point:</em> ${esc(precision)}</div>` : ''}
+    <a class="popup-source" href="#/projects/${encodeURIComponent(p.id)}">Project details</a>
+  </div>`;
+}
+
 function popupHtml(p) {
   const color = TYPE_COLORS[p.type] || '#64748b';
   const nameHtml = p.url
@@ -381,7 +456,7 @@ function popupHtml(p) {
     <div class="popup-name">${nameHtml}${p.acronym ? ` <span class="popup-acr">(${esc(p.acronym)})</span>` : ''}</div>
     <div class="popup-meta">
       <span class="type-badge" style="background:${color}">${esc(p.type || 'unknown')}</span>
-      ${p.country ? `<span class="popup-country">${esc(p.country)}</span>` : ''}
+      ${(p.state || p.country) ? `<span class="popup-country">${esc(p.state || p.country)}</span>` : ''}
     </div>
     ${p.parent_org ? `<div class="popup-row"><em>Org:</em> ${esc(p.parent_org)}</div>` : ''}
     ${areas ? `<div class="popup-row"><em>Research:</em> ${areas}</div>` : ''}
@@ -440,6 +515,10 @@ function makeLegendControl() {
               <label><input type="radio" name="color-mode" value="type" /> By facility type</label>
             </div>
             <div class="legend-types" id="legend-types">Loading…</div>
+            <div class="legend-row" title="Hollow rings mark ARID projects whose source names a place; most are county or city centroids, not sites.">
+              <span class="legend-chip" style="background:rgba(212,160,23,.18);box-shadow:inset 0 0 0 2px #d4a017"></span>
+              <span>ARID project (approximate)</span>
+            </div>
           </div>
           <div class="legend-section legend-overlays" id="legend-overlays" hidden>
             <div class="legend-section-label">Overlays</div>
@@ -490,9 +569,12 @@ function makeLegendControl() {
       // don't see always-empty chips. Keep this in sync with the
       // `typeSlugs` list in src/filters.js.
       const SHOWN_TYPES = new Set([
-        'federal', 'state', 'university-marine-lab', 'nonprofit', 'foundation',
-        'network', 'international-federal', 'international-university',
-        'international-nonprofit', 'observatory',
+        'federal', 'state', 'nonprofit',
+        'experimental-forest-range', 'flux-tower', 'ltar-site',
+        'streamgage-network', 'glacier-monitoring', 'atmospheric-baseline',
+        'field-station', 'university-field-station', 'university-marine-lab',
+        'university-institute',
+        'protected-area-federal', 'network',
       ]);
 
       // Cache the type-chip HTML once (it depends only on the vocab

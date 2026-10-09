@@ -29,7 +29,8 @@ const BASE = new URL('./', document.baseURI).href;
 // UI. The first entry is the default tab when no slug is in the URL.
 const DOC_PAGES = [
   { title: 'Overview',          path: 'docs/index.md' },
-  { title: 'Six Spheres',       path: 'docs/spheres.md' },
+  { title: 'ARID & New Mexico', path: 'docs/arid.md' },
+  { title: 'Spheres',           path: 'docs/spheres.md' },
   { title: 'Networks',          path: 'docs/networks.md' },
   { title: 'Data Model',        path: 'docs/data-model.md' },
   { title: 'Methods',           path: 'docs/methods.md' },

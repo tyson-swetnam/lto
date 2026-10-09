@@ -28,6 +28,12 @@ const MANIFEST_URL = `${DATA_BASE}overlays/manifest.json`;
 // (b) heavy overlap with the existing nps-coastal/nerr-reserves layers
 // would clutter the default view. Users opt in from the sidebar.
 const DEFAULT_OFF = new Set([
+  // The site opens on New Mexico and the Southwest (see HOME_BOUNDS in
+  // map.js), where these five have no features at all: loading them on
+  // first paint fetched ~660 KB to draw nothing. One click turns them on
+  // for anyone looking at the coasts.
+  'nerr-reserves', 'nep-programs', 'marine-sanctuaries', 'marine-monuments',
+  'nps-coastal',
   'epa-regions', 'neon-domains',
   'coastal-fws-units', 'coastal-nps-units',
   'coastal-usfs-special', 'coastal-wilderness',
@@ -40,6 +46,7 @@ const DEFAULT_OFF = new Set([
 // remain visible. Kept in sync with map.js. (Clustering was removed in
 // favour of plain per-feature circles; see the explanatory comment there.)
 const FACILITY_LAYERS = [
+  'project-points',
   'facility-points',
   'facility-points-hover',
 ];
@@ -93,6 +100,7 @@ export async function initOverlays(map, container, onChange) {
   }
 
   const CATEGORY_LABELS = {
+    'new-mexico': 'New Mexico',
     coastal: 'Coastal boundaries',
     'coastal-terrestrial': 'Coastal terrestrial protected areas',
     marine:  'Marine protected areas',
@@ -115,7 +123,7 @@ export async function initOverlays(map, container, onChange) {
   });
 
   const body = sec.querySelector('.overlay-body');
-  const orderedCats = ['coastal', 'coastal-terrestrial', 'marine', 'context'];
+  const orderedCats = ['new-mexico', 'context', 'coastal', 'coastal-terrestrial', 'marine'];
   for (const cat of orderedCats) {
     if (!byCat[cat]) continue;
     const group = document.createElement('div');
@@ -245,7 +253,9 @@ async function ensureLoaded(id) {
       type: 'fill',
       source: `ov-${id}`,
       layout: { visibility: 'none' },
-      paint: { 'fill-color': meta.color, 'fill-opacity': 0.16 },
+      // A state-sized outline would tint everything inside it at the
+      // default opacity, so the manifest can ask for a lighter fill.
+      paint: { 'fill-color': meta.color, 'fill-opacity': meta.fill_opacity ?? 0.16 },
     }, beforeLayer);
 
     _map.addLayer({
@@ -255,21 +265,25 @@ async function ensureLoaded(id) {
       layout: { visibility: 'none' },
       paint: {
         'line-color': meta.color,
-        'line-width': 1.25,
+        'line-width': meta.line_width ?? 1.25,
         'line-opacity': 0.75,
       },
     }, beforeLayer);
 
-    _map.on('click', `ov-${id}-fill`, (e) => {
-      const f = e.features?.[0];
-      if (!f) return;
-      new maplibregl.Popup({ maxWidth: '280px' })
-        .setLngLat([e.lngLat.lng, e.lngLat.lat])
-        .setHTML(overlayPopup(id, f.properties || {}))
-        .addTo(_map);
-    });
-    _map.on('mouseenter', `ov-${id}-fill`, () => { _map.getCanvas().style.cursor = 'pointer'; });
-    _map.on('mouseleave', `ov-${id}-fill`, () => { _map.getCanvas().style.cursor = ''; });
+    // A backdrop outline (the state boundary) covers the whole view, so a
+    // popup on every click inside it would bury the facilities' own.
+    if (meta.interactive !== false) {
+      _map.on('click', `ov-${id}-fill`, (e) => {
+        const f = e.features?.[0];
+        if (!f) return;
+        new maplibregl.Popup({ maxWidth: '280px' })
+          .setLngLat([e.lngLat.lng, e.lngLat.lat])
+          .setHTML(overlayPopup(id, f.properties || {}))
+          .addTo(_map);
+      });
+      _map.on('mouseenter', `ov-${id}-fill`, () => { _map.getCanvas().style.cursor = 'pointer'; });
+      _map.on('mouseleave', `ov-${id}-fill`, () => { _map.getCanvas().style.cursor = ''; });
+    }
   } else {
     // Point layer — circle marker with a coloured fill + white halo so
     // the points are visible regardless of basemap.

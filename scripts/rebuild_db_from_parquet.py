@@ -18,6 +18,9 @@ Run from the repo root (idempotent)::
     python scripts/rebuild_db_from_parquet.py --db db/lto.duckdb
     python scripts/rebuild_db_from_parquet.py --parquet db/parquet
 
+With no --parquet, db/parquet/ is used when it holds parquet files and
+public/parquet/ (the committed copy) otherwise.
+
 The script:
   1. Deletes any existing .duckdb + .wal at the target path.
   2. Creates a fresh DB.
@@ -43,7 +46,10 @@ import duckdb
 
 ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_DB = ROOT / "db" / "lto.duckdb"
+# db/parquet/ is gitignored, so a fresh clone only has the copy the site
+# serves. Fall back to that rather than failing on a missing directory.
 DEFAULT_PARQUET = ROOT / "db" / "parquet"
+FALLBACK_PARQUET = ROOT / "public" / "parquet"
 SCHEMA = ROOT / "schema" / "schema.sql"
 
 # Ordered so foreign-key-dependent rows load after their targets.
@@ -95,6 +101,10 @@ LOAD_ORDER = [
     "data_products",
     "api_endpoints",
     "cloud_buckets",
+    # ARID wave. Soft references, so order is for readability only.
+    "projects",
+    "project_personnel",
+    "project_facilities",
     # Unified person identity (KMAP alignment). All soft-ref by design so
     # they can load in any order; kept together at the end for clarity.
     "person_registry",
@@ -132,8 +142,11 @@ DERIVED_TABLES = [
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--db", type=Path, default=DEFAULT_DB)
-    ap.add_argument("--parquet", type=Path, default=DEFAULT_PARQUET)
+    ap.add_argument("--parquet", type=Path, default=None)
     args = ap.parse_args()
+    if args.parquet is None:
+        has_local = DEFAULT_PARQUET.is_dir() and any(DEFAULT_PARQUET.glob("*.parquet"))
+        args.parquet = DEFAULT_PARQUET if has_local else FALLBACK_PARQUET
 
     if not args.parquet.is_dir():
         print(f"[error] parquet dir not found: {args.parquet}", file=sys.stderr)

@@ -1,0 +1,62 @@
+[
+  {
+    "path_or_url": "https://envirodata-nm.unm.edu/explore/api/layers",
+    "purpose": "metadata",
+    "response_format": "json",
+    "example_call": "curl -s https://envirodata-nm.unm.edu/explore/api/layers",
+    "notes": "Full catalogue: groups, layers, descriptions, upstream services. Undocumented; found by inspection.",
+    "archive_id": "envirodata-nm",
+    "method": "GET",
+    "schema_url": null
+  },
+  {
+    "path_or_url": "https://envirodata-nm.unm.edu/ogc/layers",
+    "purpose": "metadata",
+    "response_format": "json",
+    "example_call": "curl -s https://envirodata-nm.unm.edu/ogc/layers",
+    "notes": "Layer names with geometry type and WMS / WFS URLs. Undocumented.",
+    "archive_id": "envirodata-nm",
+    "method": "GET",
+    "schema_url": null
+  },
+  {
+    "path_or_url": "https://envirodata-nm.unm.edu/ogc/wms/{layer}",
+    "purpose": "browse",
+    "response_format": "image/png",
+    "example_call": "curl -s 'https://envirodata-nm.unm.edu/ogc/wms/air_facilities_major_title_v?service=WMS&request=GetCapabilities'",
+    "notes": "OGC WMS 1.3.0, one service per layer. {layer} is the product identifier.",
+    "archive_id": "envirodata-nm",
+    "method": "GET",
+    "schema_url": null
+  },
+  {
+    "path_or_url": "https://envirodata-nm.unm.edu/ogc/wfs/{layer}",
+    "purpose": "metadata",
+    "response_format": "xml",
+    "example_call": "curl -s 'https://envirodata-nm.unm.edu/ogc/wfs/air_facilities_major_title_v?service=WFS&version=1.1.0&request=GetCapabilities'",
+    "notes": "OGC WFS 1.1.0, one service per layer. GML output; outputFormat=application/json is rejected.",
+    "archive_id": "envirodata-nm",
+    "method": "GET",
+    "schema_url": null
+  },
+  {
+    "path_or_url": "https://envirodata-nm.unm.edu/ogc/attributes/{layer}",
+    "purpose": "search",
+    "response_format": "json",
+    "example_call": "curl -s 'https://envirodata-nm.unm.edu/ogc/attributes/air_facilities_major_title_v?limit=5&offset=0'",
+    "notes": "Paged attribute rows (limit, offset) with total_count and column aliases; no geometry. limit=0 returns the schema only.",
+    "archive_id": "envirodata-nm",
+    "method": "GET",
+    "schema_url": null
+  },
+  {
+    "path_or_url": "https://envirodata-nm.unm.edu/data/download/layer/{id}",
+    "purpose": "download",
+    "response_format": "geojson",
+    "example_call": "curl -sO 'https://envirodata-nm.unm.edu/data/download/layer/37?format=geojson'",
+    "notes": "Whole-layer download; format = geojson | gpkg | kml | shp. {id} is the portal's numeric layer id (in each product's url). Returns 403 for layers whose download the portal has disabled.",
+    "archive_id": "envirodata-nm",
+    "method": "GET",
+    "schema_url": null
+  }
+]

@@ -43,6 +43,8 @@ const COHORTS = {
   site    : { label: 'Site personnel',  test: (p) => hasCohort(p, 'site') },
   scholar : { label: 'Scholar harvest', test: (p) => hasCohort(p, 'scholar') },
   both    : { label: 'Both',            test: (p) => hasCohort(p, 'site') && hasCohort(p, 'scholar') },
+  // ARID Institute leadership, staff and project teams (scripts/load_arid.py).
+  arid    : { label: 'ARID',            test: (p) => hasCohort(p, 'arid') },
 };
 
 let _container = null;
@@ -124,29 +126,55 @@ async function fetchPeople() {
   // arguments, no `COALESCE(x, [])` coercion games.
   const sql = `
     WITH per_pa AS (
-      -- person_area_metrics carries the person's TOTAL stats on every area row
-      -- (per scripts/compute_lto_person_metrics.py), so MAX rolls them up to
-      -- the per-person total without double-counting. composite_z is the
-      -- within-area z-score so SUM gives a meaningful "breadth × strength"
-      -- composite suitable for sorting researchers across areas.
+      -- Only the ranking score comes from the per-area table. The counts
+      -- below are the person's own totals, so they do not depend on which
+      -- of their papers the topic crosswalk happens to map to an area.
       SELECT person_id,
-             MAX(n_publications)  AS n_pubs,
-             MAX(total_citations) AS total_citations,
-             MAX(h_index)         AS h_index,
-             MAX(n_co_authors)    AS n_coauth,
              SUM(composite_z)     AS composite_z
       FROM person_area_metrics
       GROUP BY person_id
     ),
+    pub_ranked AS (
+      SELECT a.person_id,
+             COALESCE(p.cited_by_count, 0) AS c,
+             row_number() OVER (PARTITION BY a.person_id
+                                ORDER BY COALESCE(p.cited_by_count, 0) DESC) AS rn
+      FROM authorship a
+      JOIN publications p ON p.publication_id = a.publication_id
+    ),
+    per_tot AS (
+      -- h-index: citations are ranked descending, so the papers with
+      -- c >= rank form a prefix and their count is h.
+      SELECT person_id,
+             CAST(count(*) AS INTEGER)                      AS n_pubs,
+             CAST(sum(c) AS DOUBLE)                         AS total_citations,
+             CAST(count(*) FILTER (WHERE c >= rn) AS INTEGER) AS h_index
+      FROM pub_ranked
+      GROUP BY person_id
+    ),
+    per_co AS (
+      SELECT person_id, CAST(count(DISTINCT other_id) AS INTEGER) AS n_coauth
+      FROM (
+        SELECT person_a_id AS person_id, person_b_id AS other_id FROM collaborations
+        UNION ALL
+        SELECT person_b_id AS person_id, person_a_id AS other_id FROM collaborations
+      ) pairs
+      GROUP BY person_id
+    ),
     per_pa_areas AS (
+      -- A person's areas, the ones they publish in most first. (This used to
+      -- order by composite_z, a within-area z-score, which put a small area
+      -- where someone has four papers ahead of the field they work in.)
+      -- Capped at 12: the card shows six, and the full list ran to dozens.
       SELECT pam.person_id,
-             list(struct_pack(
+             list_slice(list(struct_pack(
                area_id   := pam.area_id,
                area      := ra.label,
                n_pubs    := pam.n_publications,
                citations := pam.total_citations,
                h         := pam.h_index
-             ) ORDER BY pam.composite_z DESC) AS areas
+             ) ORDER BY pam.n_publications DESC, pam.composite_z DESC, pam.area_id),
+             1, 12) AS areas
       FROM person_area_metrics pam
       LEFT JOIN research_areas ra ON ra.area_id = pam.area_id
       GROUP BY pam.person_id
@@ -159,20 +187,47 @@ async function fetchPeople() {
       GROUP BY fp.person_id
     ),
     per_aff AS (
-      SELECT fp.person_id,
+      -- Facility roles plus project roles (ARID wave): someone who is only on
+      -- a project team would otherwise show a card with no affiliation.
+      SELECT a.person_id,
              list(struct_pack(
-               role        := fp.role,
-               title       := fp.title,
-               facility    := COALESCE(f.acronym || ' — ' || f.canonical_name,
-                                       f.canonical_name),
-               facility_id := f.facility_id,
-               url         := f.url,
-               country     := f.country,
-               is_key      := fp.is_key_personnel
-             ) ORDER BY fp.is_key_personnel DESC, fp.role) AS affiliations
+               role        := a.role,
+               title       := a.title,
+               facility    := a.facility,
+               facility_id := a.facility_id,
+               url         := a.url,
+               country     := a.country,
+               is_key      := a.is_key
+             ) ORDER BY a.is_key DESC, a.role, a.facility) AS affiliations
+      FROM (
+        SELECT fp.person_id, fp.role, fp.title,
+               COALESCE(f.acronym || ' — ' || f.canonical_name,
+                        f.canonical_name)  AS facility,
+               f.facility_id, f.url, f.country,
+               fp.is_key_personnel         AS is_key
+        FROM facility_personnel fp
+        JOIN facilities f ON f.facility_id = fp.facility_id
+        UNION ALL
+        SELECT pp.person_id, pp.role, pp.title,
+               'Project: ' || COALESCE(pj.acronym, pj.name) AS facility,
+               CAST(NULL AS VARCHAR)       AS facility_id,
+               pj.url,
+               CAST(NULL AS VARCHAR)       AS country,
+               FALSE                       AS is_key
+        FROM project_personnel pp
+        JOIN projects pj ON pj.project_id = pp.project_id
+      ) a
+      GROUP BY a.person_id
+    ),
+    arid_people AS (
+      -- On the ARID Institute itself (the network's host) or on one of its
+      -- project teams. Partner-center staff are not swept in.
+      SELECT fp.person_id
       FROM facility_personnel fp
-      JOIN facilities f ON f.facility_id = fp.facility_id
-      GROUP BY fp.person_id
+      JOIN network_membership nm ON nm.facility_id = fp.facility_id
+      WHERE nm.network_id = 'arid-unm' AND nm.role = 'host'
+      UNION
+      SELECT pp.person_id FROM project_personnel pp
     )
     SELECT p.person_id  AS id,
            p.name,
@@ -184,10 +239,10 @@ async function fetchPeople() {
            p.bio,
            g.primary_area_id,
            ra.label                            AS primary_area_label,
-           COALESCE(pa.n_pubs, 0)              AS n_pubs,
-           COALESCE(pa.total_citations, 0)     AS total_citations,
-           COALESCE(pa.h_index, 0)             AS h_index,
-           COALESCE(pa.n_coauth, 0)            AS n_coauth,
+           COALESCE(pt.n_pubs, 0)              AS n_pubs,
+           COALESCE(pt.total_citations, 0)     AS total_citations,
+           COALESCE(pt.h_index, 0)             AS h_index,
+           COALESCE(pc.n_coauth, 0)            AS n_coauth,
            COALESCE(pa.composite_z, 0)         AS composite_z,
            COALESCE(pf.facility_funding_usd, 0) AS facility_funding_usd,
            paa.areas                           AS areas,
@@ -195,16 +250,20 @@ async function fetchPeople() {
            pr.canonical_id                     AS canonical_id,
            NULLIF(concat_ws(',',
              CASE WHEN pr.is_site_personnel THEN 'site' END,
-             CASE WHEN pr.is_scholar THEN 'scholar' END), '') AS cohorts,
+             CASE WHEN pr.is_scholar THEN 'scholar' END,
+             CASE WHEN ap.person_id IS NOT NULL THEN 'arid' END), '') AS cohorts,
            pr.tier                             AS tier
     FROM   people p
     LEFT JOIN person_primary_groups g  ON g.person_id  = p.person_id
     LEFT JOIN research_areas       ra  ON ra.area_id   = g.primary_area_id
     LEFT JOIN per_pa               pa  ON pa.person_id = p.person_id
+    LEFT JOIN per_tot              pt  ON pt.person_id = p.person_id
+    LEFT JOIN per_co               pc  ON pc.person_id = p.person_id
     LEFT JOIN per_pa_areas         paa ON paa.person_id = p.person_id
     LEFT JOIN per_fund             pf  ON pf.person_id = p.person_id
     LEFT JOIN per_aff              pa2 ON pa2.person_id = p.person_id
     LEFT JOIN person_registry      pr  ON pr.person_id = p.person_id
+    LEFT JOIN arid_people          ap  ON ap.person_id = p.person_id
   `;
   const r = await conn.query(sql);
   return r.toArray().map((row) => numify(row.toJSON()));

@@ -26,6 +26,16 @@ db/parquet/*.parquet
 !data/raw/synthesis-networks/
 !data/raw/synthesis-networks/**
 
+# Exception: the ARID / EnviroData-NM wave commits its fetched inputs so the
+# layer can be re-ingested from a clean clone (the national raw JSON never
+# was, and cannot be). Metadata and links only; fetch caches stay ignored.
+!data/raw/R-ARID/
+!data/raw/R-ARID/*.json
+!data/raw/J-ENVIRODATA/
+!data/raw/J-ENVIRODATA/*.json
+!data/raw/J-AZWATER/
+!data/raw/J-AZWATER/*.json
+
 # Large raster deliverables — too big for GitHub without LFS.
 # Use `git add -f path.img` only after `git lfs install` has been run.
 *.img

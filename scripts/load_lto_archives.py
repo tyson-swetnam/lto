@@ -2,7 +2,9 @@
 """Load Wave-J data-archive JSON outputs into the LTO database.
 
 Reads every `data/raw/J-*/<artifact>.json` produced by the Wave-J
-research agents (per `agents/J-DATA.md`) and upserts into:
+research agents (per `agents/J-DATA.md`) — and by fetch scripts that
+write the same shapes, such as `scripts/fetch_envirodata_nm.py` — and
+upserts into:
 
   data_archives        ←  archives.json
   facility_archives    ←  facility_archives.json
@@ -159,8 +161,9 @@ def upsert_product(conn, agent: str, p: dict) -> bool:
              temporal_start, temporal_end,
              bbox_min_lon, bbox_min_lat, bbox_max_lon, bbox_max_lat,
              variables_text, citation, cited_by_count,
-             source, retrieved_at, confidence, notes)
-        VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+             source, retrieved_at, confidence, notes,
+             description, category, api_url)
+        VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
         """,
         [
             pid, aid, fac_id, title, doi, p.get("identifier"), p.get("url"),
@@ -174,6 +177,7 @@ def upsert_product(conn, agent: str, p: dict) -> bool:
             p.get("retrieved_at") or "2026-05-05",
             p.get("confidence") or "medium",
             p.get("notes"),
+            p.get("description"), p.get("category"), p.get("api_url"),
         ],
     )
     return True
@@ -229,6 +233,27 @@ def upsert_bucket(conn, agent: str, b: dict) -> bool:
     return True
 
 
+VOCAB_DIR = ROOT / "schema" / "vocab"
+VOCAB_TABLES = ("archive_types", "data_formats", "data_licenses", "access_modes")
+
+
+def sync_vocab(conn) -> None:
+    """Add vocab rows the CSVs have gained since the DB's parquet was written.
+
+    A database rebuilt from parquet carries the vocab as it was at the
+    last export, so a slug added to schema/vocab/ for a new agent would
+    otherwise fail the foreign key on its first load.
+    """
+    for table in VOCAB_TABLES:
+        csv_path = VOCAB_DIR / f"{table}.csv"
+        if csv_path.exists():
+            conn.execute(
+                f"INSERT OR IGNORE INTO {table} "
+                f"SELECT * FROM read_csv_auto(?, header=True, all_varchar=True)",
+                [str(csv_path)],
+            )
+
+
 HANDLERS = {
     "archives.json": upsert_archive,
     "facility_archives.json": upsert_facility_archive,
@@ -252,6 +277,7 @@ def main() -> int:
     # cloud_buckets row tries to FK-reference an archive_id. Iterate by
     # filename outer, folder inner.
     with duckdb.connect(str(args.db)) as conn:
+        sync_vocab(conn)
         for fname, fn in HANDLERS.items():
             for d in sorted(set(
                     list(RAW_DIR.glob("J-*")) +

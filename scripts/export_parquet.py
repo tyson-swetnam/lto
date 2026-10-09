@@ -89,6 +89,10 @@ TABLES = [
     "data_products",
     "api_endpoints",
     "cloud_buckets",
+    # ARID wave — projects, their teams, and the facilities they involve.
+    "projects",
+    "project_personnel",
+    "project_facilities",
     # Unified person identity (KMAP alignment). Ship zero-row parquet until
     # build_person_registry.py / the harvest populate them, so DuckDB-Wasm
     # registration never 404s. Only tier='core' rows are exported for
@@ -148,10 +152,18 @@ def main() -> int:
         # primary_sphere from facility_spheres so the LTO sphere-color
         # legend works without DuckDB-Wasm having to load every parquet.
         rows = conn.execute(
+            # state / has_arid_sphere / in_arid_network feed the scope lens
+            # (src/filters.js) so it also works in this fallback tier,
+            # before DuckDB-Wasm is up.
             """SELECT v.id, v.name, v.acronym, v.type, v.country, v.lat, v.lng,
                       v.url, v.parent_org, f.established,
                       f.record_length_years, f.long_term_threshold_met,
-                      fs.sphere_slug AS primary_sphere
+                      fs.sphere_slug AS primary_sphere,
+                      f.state,
+                      EXISTS (SELECT 1 FROM facility_spheres a
+                              WHERE a.facility_id = v.id AND a.sphere_slug = 'arid'),
+                      EXISTS (SELECT 1 FROM network_membership m
+                              WHERE m.facility_id = v.id AND m.network_id = 'arid-unm')
                FROM v_facility_map v
                JOIN facilities f ON f.facility_id = v.id
                LEFT JOIN facility_spheres fs
@@ -160,7 +172,8 @@ def main() -> int:
 
     features = []
     for r in rows:
-        fid, name, acronym, ftype, country, lat, lng, url, parent, established, rly, ltm, primary_sphere = r
+        (fid, name, acronym, ftype, country, lat, lng, url, parent, established,
+         rly, ltm, primary_sphere, state, has_arid_sphere, in_arid_network) = r
         features.append({
             "type": "Feature",
             "geometry": {"type": "Point", "coordinates": [lng, lat]},
@@ -176,6 +189,9 @@ def main() -> int:
                 "record_length_years": rly,
                 "long_term_threshold_met": ltm,
                 "primary_sphere": primary_sphere,
+                "state": state,
+                "has_arid_sphere": has_arid_sphere,
+                "in_arid_network": in_arid_network,
             },
         })
 
@@ -183,7 +199,12 @@ def main() -> int:
         json.dumps({"type": "FeatureCollection", "features": features}, indent=0)
     )
 
-    print(f"[ok] exported {len(TABLES)} parquet tables and {len(features)} features to GeoJSON")
+    print(f"[ok] exported {len(TABLES) - len(skipped)} of {len(TABLES)} parquet tables "
+          f"and {len(features)} features to GeoJSON")
+    if skipped:
+        # Not an error (see the except above), but say so: a skipped table
+        # keeps whatever parquet was already on disk.
+        print(f"[skip] not in this database, existing parquet left as is: {', '.join(skipped)}")
     return 0
 
 

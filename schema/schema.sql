@@ -64,6 +64,13 @@ CREATE OR REPLACE TABLE facilities (
     long_term_threshold_met BOOLEAN,                 -- TRUE when established <= today-10y AND record_length_years >= 10 (per Peters et al. 2013)
     data_portal_url         VARCHAR,                 -- canonical data portal / DOI landing page (EDI, NCEI, NWIS, etc.)
     -- ------------------------------------------------------------------------
+    -- USPS code of the state or territory the HQ point falls in ('NM', 'PR').
+    -- Derived, never hand-typed: scripts/backfill_facility_state.py sets it
+    -- by point-in-polygon against Census state boundaries and logs each
+    -- decision to data/seed/facility_state.csv. Null outside the US (and for
+    -- facilities with no coordinates). Drives the New Mexico / Southwest
+    -- drylands scope lens in the frontend.
+    state           VARCHAR,
     created_at      TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -328,6 +335,11 @@ CREATE OR REPLACE TABLE data_products (
     retrieved_at   DATE,
     confidence     VARCHAR,                           -- high|medium|low
     notes          VARCHAR,
+    -- Portal-style archives (EnviroData-NM) publish layers, not DOIs. These
+    -- three carry what such a record needs and stay null for everything else.
+    description    VARCHAR,                           -- the archive's own abstract, as plain text
+    category       VARCHAR,                           -- the archive's own grouping, ' / '-joined path
+    api_url        VARCHAR,                           -- machine endpoint for this one product (OGC WMS, REST)
     created_at     TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -398,6 +410,63 @@ CREATE OR REPLACE TABLE facility_life_zones (
 );
 
 -------------------------------------------------------------------------------
+-- Projects (ARID wave)
+-------------------------------------------------------------------------------
+--
+-- A project is a funded or organised body of work, not a place: most have
+-- a lead organisation and a team but no site, so they cannot be facility
+-- rows (the map drops anything without coordinates, and a statewide study
+-- pinned to a campus would be a false point). `lead_facility_id` names the
+-- organisation that lists the project — ARID for this wave.
+--
+-- The three tables use soft references (no REFERENCES clause) on purpose:
+-- DuckDB rejects an UPDATE or REPLACE of a parent row that an FK child
+-- points at, which would make the idempotent loader (scripts/load_arid.py)
+-- fail on its second run. scripts/qa.py checks for orphans instead.
+
+CREATE OR REPLACE TABLE projects (
+    project_id          VARCHAR PRIMARY KEY,          -- slug, e.g. 'arid-for-nm'
+    name                VARCHAR NOT NULL,
+    acronym             VARCHAR,
+    parent_project_id   VARCHAR,                      -- sub-project of (CHANGES cores, field efforts)
+    lead_facility_id    VARCHAR,                      -- facilities.facility_id of the listing organisation
+    description         VARCHAR,
+    url                 VARCHAR,                      -- the project's page on the listing organisation's site
+    external_url        VARCHAR,                      -- the project's own site, when it has one
+    funding_text        VARCHAR,                      -- funder / award as the source words it; not parsed
+    extent_label        VARCHAR,                      -- where the work happens, as the source words it
+    lat                 DOUBLE,                       -- null unless the source names a place
+    lng                 DOUBLE,
+    location_precision  VARCHAR,                      -- site | county | city | statewide | regional | none
+    source_url          VARCHAR NOT NULL,
+    retrieved_at        DATE,
+    confidence          VARCHAR,                      -- high|medium|low
+    notes               VARCHAR,
+    created_at          TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE OR REPLACE TABLE project_personnel (
+    project_id          VARCHAR NOT NULL,             -- projects.project_id
+    person_id           VARCHAR NOT NULL,             -- people.person_id
+    role                VARCHAR NOT NULL,             -- lead-PI | PI | co-PI | leader | co-leader | team | program-manager
+    title               VARCHAR,                      -- as written on the source page
+    source_url          VARCHAR,
+    retrieved_at        DATE,
+    confidence          VARCHAR,
+    notes               VARCHAR,
+    PRIMARY KEY (project_id, person_id, role)
+);
+
+CREATE OR REPLACE TABLE project_facilities (
+    project_id          VARCHAR NOT NULL,             -- projects.project_id
+    facility_id         VARCHAR NOT NULL,             -- facilities.facility_id
+    relation            VARCHAR NOT NULL,             -- host | partner | site
+    source_url          VARCHAR,
+    notes               VARCHAR,
+    PRIMARY KEY (project_id, facility_id, relation)
+);
+
+-------------------------------------------------------------------------------
 -- Helper views for the web UI (F3 consumes these)
 -------------------------------------------------------------------------------
 
@@ -409,6 +478,7 @@ SELECT
     f.facility_type         AS type,
     f.country               AS country,
     f.region                AS region,
+    f.state                 AS state,
     f.hq_lat                AS lat,
     f.hq_lng                AS lng,
     f.url                   AS url,

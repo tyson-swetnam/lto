@@ -22,3 +22,4 @@ nexrad,NEXRAD radar data,application/octet-stream
 bufr,BUFR (WMO),application/x-bufr
 grib,GRIB / GRIB2,application/x-grib
 hdf-eos,HDF-EOS,application/x-hdf
+ogc-wms,OGC Web Map Service,application/vnd.ogc.wms_xml

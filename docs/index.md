@@ -7,6 +7,14 @@ that loads research-agent JSON into DuckDB and exports Parquet + GeoJSON.
 It is forked and extended from
 [`tyson-swetnam/cod-kmap`](https://github.com/tyson-swetnam/cod-kmap) (MIT).
 
+## New Mexico and ARID focus
+
+The site opens on New Mexico and the Southwest drylands. It carries a layer
+for UNM's ARID Institute — its partner centers, projects and people — and an
+index of every layer in EnviroData-NM, the state's environmental data portal.
+The national catalogue is all still here: switch the **Scope** filter to
+*All U.S.* See [ARID & New Mexico](./arid.md).
+
 ## The seven spheres
 
 - **Atmosphere** — gas-flux, deposition, radiation, and trace-gas networks
@@ -26,11 +34,12 @@ It is forked and extended from
 
 The default filter on the map and list views is the **Peters et al. 2013
 ≥10-year continuous-record threshold** (USDA ARS Tech. Bulletin 1931).
-Facilities below that threshold are kept in the database but hidden by
-default; you can toggle them on in the filter panel.
+Facilities below that threshold are kept in the database and shown; tick
+**Show only facilities with ≥10y record** in the filter panel to hide them.
 
 ## Read next
 
+- [arid](./arid.md) — the ARID Institute layer, the scope lens, and EnviroData-NM.
 - [spheres](./spheres.md) — anchor networks and landmark sites per sphere.
 - [networks](./networks.md) — full controlled-vocabulary inventory.
 - [coverage](./coverage.md) — current record counts and landmark-coverage gaps.

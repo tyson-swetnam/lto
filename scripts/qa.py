@@ -17,6 +17,7 @@ incident documented in its docstring.
 
 from __future__ import annotations
 
+import json
 import sys
 from pathlib import Path
 
@@ -95,9 +96,18 @@ EXPECTED_COLUMNS = {
     "data_products": {
         "product_id", "archive_id", "facility_id", "title", "doi", "url",
         "format_slug", "license_slug", "source", "confidence",
+        "description", "category", "api_url",
     },
     "api_endpoints": {"endpoint_id", "archive_id", "path_or_url", "method"},
     "cloud_buckets": {"bucket_id", "archive_id", "provider", "bucket_name"},
+    # ARID wave.
+    "projects": {
+        "project_id", "name", "parent_project_id", "lead_facility_id",
+        "url", "extent_label", "lat", "lng", "location_precision",
+        "source_url", "retrieved_at", "confidence",
+    },
+    "project_personnel": {"project_id", "person_id", "role", "source_url"},
+    "project_facilities": {"project_id", "facility_id", "relation"},
     # Unified person identity (KMAP alignment M3+).
     "person_registry": {
         "canonical_id", "display_name", "orcid", "openalex_id",
@@ -201,6 +211,181 @@ def check_spheres(conn, failures: list[str]) -> None:
     ).fetchone()[0]
     assert_true(orphan == 0,
                 f"{orphan} facility_spheres rows point at unknown facilities", failures)
+
+
+def check_states(conn, failures: list[str]) -> None:
+    """Once any facility carries a state, every locatable US one must.
+
+    The state column is derived (scripts/backfill_facility_state.py), so a
+    gap means a loader added facilities and the backfill was not re-run —
+    and those facilities would silently drop out of the New Mexico and
+    drylands lenses.
+    """
+    if conn.execute("SELECT COUNT(*) FROM facilities WHERE state IS NOT NULL").fetchone()[0] == 0:
+        return
+    missing = conn.execute(
+        """SELECT COUNT(*) FROM facilities
+           WHERE country = 'US' AND hq_lat IS NOT NULL AND hq_lng IS NOT NULL
+             AND state IS NULL"""
+    ).fetchone()[0]
+    assert_true(missing == 0,
+                f"{missing} US facilities with coordinates have no state — "
+                "run scripts/backfill_facility_state.py", failures)
+
+
+PROJECT_PRECISIONS = {"site", "county", "city", "statewide", "regional", "none"}
+
+
+def check_projects(conn, failures: list[str]) -> None:
+    """ARID wave: projects and their soft-referenced link tables."""
+    if table_rows(conn, "projects") <= 0:
+        return
+    no_source = conn.execute(
+        "SELECT COUNT(*) FROM projects WHERE source_url IS NULL OR source_url = ''"
+    ).fetchone()[0]
+    assert_true(no_source == 0, f"{no_source} projects without a source_url", failures)
+
+    bad_parent = conn.execute(
+        """SELECT COUNT(*) FROM projects p
+           WHERE p.parent_project_id IS NOT NULL
+             AND p.parent_project_id NOT IN (SELECT project_id FROM projects)"""
+    ).fetchone()[0]
+    assert_true(bad_parent == 0, f"{bad_parent} projects point at an unknown parent", failures)
+
+    bad_lead = conn.execute(
+        """SELECT COUNT(*) FROM projects p
+           WHERE p.lead_facility_id IS NULL
+              OR p.lead_facility_id NOT IN (SELECT facility_id FROM facilities)"""
+    ).fetchone()[0]
+    assert_true(bad_lead == 0, f"{bad_lead} projects without a known lead facility", failures)
+
+    precisions = {r[0] for r in conn.execute(
+        "SELECT DISTINCT location_precision FROM projects").fetchall()}
+    unknown = sorted(str(p) for p in precisions - PROJECT_PRECISIONS)
+    assert_true(not unknown, f"projects use unknown location_precision: {unknown}", failures)
+
+    # A point claims a place. A project the source only describes as
+    # statewide or regional must not have one, and a placed project must.
+    half = conn.execute(
+        "SELECT COUNT(*) FROM projects WHERE (lat IS NULL) <> (lng IS NULL)").fetchone()[0]
+    assert_true(half == 0, f"{half} projects with only one of lat/lng", failures)
+    misplaced = conn.execute(
+        """SELECT COUNT(*) FROM projects
+           WHERE (lat IS NOT NULL AND location_precision IN ('statewide','regional','none'))
+              OR (lat IS NULL AND location_precision IN ('site','county','city'))"""
+    ).fetchone()[0]
+    assert_true(misplaced == 0,
+                f"{misplaced} projects whose coordinates disagree with location_precision",
+                failures)
+
+    for table, col, parent, pcol in (
+        ("project_personnel", "project_id", "projects", "project_id"),
+        ("project_personnel", "person_id", "people", "person_id"),
+        ("project_facilities", "project_id", "projects", "project_id"),
+        ("project_facilities", "facility_id", "facilities", "facility_id"),
+    ):
+        if table_rows(conn, table) <= 0:
+            continue
+        orphan = conn.execute(
+            f"SELECT COUNT(*) FROM {table} t "
+            f"WHERE t.{col} NOT IN (SELECT {pcol} FROM {parent})"
+        ).fetchone()[0]
+        assert_true(orphan == 0,
+                    f"{orphan} {table} rows point at an unknown {parent}.{pcol}", failures)
+
+    # The leadership roster must match what the scraper last read. A gap
+    # here means load_arid.py dropped someone the site lists.
+    site_file = Path(__file__).resolve().parent.parent / "data" / "raw" / "R-ARID" / "arid_site.json"
+    if site_file.exists():
+        expected = len(json.loads(site_file.read_text())["leadership"]["people"])
+        got = conn.execute(
+            """SELECT COUNT(*) FROM facility_personnel fp
+               JOIN facilities f USING (facility_id)
+               WHERE f.acronym = 'ARID' AND fp.role = 'leadership-team'"""
+        ).fetchone()[0]
+        assert_true(got == expected,
+                    f"ARID leadership team has {got} rows; arid_site.json lists {expected}",
+                    failures)
+
+
+# Archives catalogued as pointers: metadata plus links back to the source's
+# own endpoints, never a copy of its data. archive_id → the prefix every
+# product url and api_url must start with.
+POINTER_ARCHIVES = {
+    "envirodata-nm": "https://envirodata-nm.unm.edu/",
+    "arizona-water-observatory": "https://arizonawaterobservatory-api.rtd.asu.edu/",
+}
+
+
+def check_portal_products(conn, failures: list[str]) -> None:
+    """Pointer records must point somewhere, on the source's own host."""
+    if table_rows(conn, "data_products") <= 0:
+        return
+    for archive_id, prefix in POINTER_ARCHIVES.items():
+        n = conn.execute(
+            "SELECT COUNT(*) FROM data_products WHERE archive_id = ?", [archive_id]
+        ).fetchone()[0]
+        if n == 0:
+            continue
+        bad = conn.execute(
+            """SELECT COUNT(*) FROM data_products
+               WHERE archive_id = ?
+                 AND (url IS NULL OR api_url IS NULL OR category IS NULL
+                      OR NOT starts_with(url, ?) OR NOT starts_with(api_url, ?))""",
+            [archive_id, prefix, prefix],
+        ).fetchone()[0]
+        assert_true(bad == 0,
+                    f"{bad} {archive_id} products lack a source url, api_url or category",
+                    failures)
+        dup = conn.execute(
+            """SELECT COUNT(*) FROM (
+                 SELECT identifier FROM data_products WHERE archive_id = ?
+                 GROUP BY identifier HAVING COUNT(*) > 1)""",
+            [archive_id],
+        ).fetchone()[0]
+        assert_true(dup == 0, f"{dup} {archive_id} identifiers are duplicated", failures)
+
+
+def check_topic_crosswalk(conn, failures: list[str]) -> None:
+    """The OpenAlex → research-area crosswalk must name real things.
+
+    Its ids were once typed from memory: "Kelp" carried the id of "Global
+    warming", "Ecosystem" the id of the general concept "Ecology", and
+    15,000 unrelated papers were filed under marine ecosystems as a
+    result. Two checks stop that recurring: every id that occurs in
+    publication_topics must carry OpenAlex's own name for it, and every
+    area must exist in the vocabulary.
+    """
+    import csv as _csv                                    # noqa: PLC0415
+    import re as _re                                      # noqa: PLC0415
+    root = Path(__file__).resolve().parent.parent
+    path = root / "data" / "vocab_crosswalk" / "openalex_to_area.csv"
+    areas_csv = root / "schema" / "vocab" / "research_areas.csv"
+    if not path.exists() or not areas_csv.exists():
+        return
+    with areas_csv.open(newline="") as fh:
+        areas = {r["slug"] for r in _csv.DictReader(fh)}
+    with path.open(newline="") as fh:
+        rows = [r for r in _csv.reader(fh)
+                if r and not r[0].startswith("#") and r[0] != "openalex_id"]
+
+    def norm(s: str) -> str:
+        return _re.sub(r"[^a-z0-9]+", " ", s.lower()).strip()
+
+    bad_area = sorted({r[2] for r in rows if len(r) < 3 or r[2] not in areas})
+    assert_true(not bad_area,
+                f"topic crosswalk maps to unknown research areas: {bad_area[:8]}", failures)
+
+    if table_rows(conn, "publication_topics") <= 0:
+        return
+    real = dict(conn.execute(
+        "SELECT concept_id, any_value(concept_name) FROM publication_topics GROUP BY 1"
+    ).fetchall())
+    wrong = sorted({f"{r[0]} is '{real[r[0]]}', not '{r[1]}'" for r in rows
+                    if r[0] in real and norm(real[r[0]]) != norm(r[1])})
+    assert_true(not wrong,
+                f"{len(wrong)} topic-crosswalk ids carry the wrong label: {wrong[:5]}",
+                failures)
 
 
 def check_life_zones(conn, failures: list[str]) -> None:
@@ -463,6 +648,12 @@ def main() -> int:
     with duckdb.connect(str(DB_PATH)) as conn:
         conn.execute("SET search_path = main;")
 
+        # An empty facilities table is never a valid catalogue. Without this
+        # every check below passes vacuously and export_parquet.py would then
+        # overwrite the committed parquet with zero rows.
+        n_fac = conn.execute("SELECT COUNT(*) FROM facilities").fetchone()[0]
+        assert_true(n_fac > 0, "facilities is empty — refusing to pass an empty catalogue", failures)
+
         null_type = conn.execute(
             "SELECT COUNT(*) FROM facilities WHERE facility_type IS NULL OR country IS NULL"
         ).fetchone()[0]
@@ -506,6 +697,10 @@ def main() -> int:
         check_spheres(conn, failures)
         check_life_zones(conn, failures)
         check_archives(conn, failures)
+        check_states(conn, failures)
+        check_projects(conn, failures)
+        check_portal_products(conn, failures)
+        check_topic_crosswalk(conn, failures)
         check_person_registry(conn, failures)
         check_registry_edges(conn, failures)
 

@@ -1,4 +1,15 @@
 {
+  "nm-boundary": {
+    "label": "New Mexico state boundary",
+    "color": "#0d6e6e",
+    "category": "new-mexico",
+    "fill_opacity": 0.03,
+    "line_width": 2,
+    "interactive": false,
+    "source": "U.S. Census Bureau TIGERweb, States layer (generalised to ~200 m)",
+    "feature_count": 1,
+    "notes": "Written by scripts/backfill_facility_state.py --nm-outline from the same boundaries that set facilities.state."
+  },
   "nerr-reserves": {
     "label": "NERR reserves",
     "color": "#0d9488",

@@ -246,7 +246,15 @@ def insert_records(conn: duckdb.DuckDBPyConnection, records: list[Record]) -> No
     for r in records:
         d = r.raw
         conn.execute(
-            """INSERT OR REPLACE INTO main.facilities VALUES
+            # Named columns, not positional: the table has gained columns
+            # (ror, state) that raw records don't carry, and a positional
+            # VALUES list breaks every time one is added.
+            """INSERT OR REPLACE INTO main.facilities
+               (facility_id, canonical_name, acronym, parent_org, facility_type,
+                country, region, hq_address, hq_lat, hq_lng, url, contact,
+                established, record_length_years, long_term_threshold_met,
+                data_portal_url, created_at)
+               VALUES
                (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)""",
             [
                 r.fid,

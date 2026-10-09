@@ -57,6 +57,26 @@ def export(conn, table: str, name: str) -> None:
         print(f"[parquet] {out}")
 
 
+def sync_research_areas(conn) -> None:
+    """Add research areas the vocab CSV has gained since the DB was built.
+
+    A database rebuilt from parquet carries research_areas as of the last
+    export, so an area added to schema/vocab/research_areas.csv (and used
+    by the crosswalk) would otherwise produce metrics rows with no label.
+    """
+    csv_path = ROOT / "schema" / "vocab" / "research_areas.csv"
+    before = conn.execute("SELECT COUNT(*) FROM research_areas").fetchone()[0]
+    conn.execute(f"""
+        INSERT INTO research_areas (area_id, label, gcmd_uri, parent_id)
+        SELECT slug, label, NULLIF(gcmd_uri, ''), NULLIF(parent_slug, '')
+        FROM read_csv_auto('{csv_path}', header=true, all_varchar=true)
+        WHERE slug NOT IN (SELECT area_id FROM research_areas)
+    """)
+    added = conn.execute("SELECT COUNT(*) FROM research_areas").fetchone()[0] - before
+    if added:
+        print(f"[research_areas] added {added} area(s) from the vocab CSV")
+
+
 def compute_person_area_metrics(conn) -> None:
     """Build per (area, person) composite score table.
 
@@ -83,9 +103,11 @@ def compute_person_area_metrics(conn) -> None:
                  ELSE 0.4
                END AS conf_mult
         FROM read_csv_auto('{cw_csv}', ignore_errors=true, header=true,
-                           skip=0)
+                           skip=0, all_varchar=true)
         WHERE openalex_id IS NOT NULL AND area_id IS NOT NULL
           AND length(openalex_id) > 0 AND length(area_id) > 0
+          AND openalex_id NOT LIKE '#%'
+          AND area_id IN (SELECT area_id FROM research_areas)
     """)
     n_cw = conn.execute("SELECT COUNT(*) FROM _crosswalk").fetchone()[0]
     print(f"  crosswalk rows loaded: {n_cw}")
@@ -403,6 +425,7 @@ def main() -> int:
             f"CREATE VIEW {t} AS SELECT * FROM read_parquet('{path}')"
         )
 
+    sync_research_areas(conn)
     compute_person_area_metrics(conn)
     compute_facility_area_funding(conn)
     compute_coverage_matrix(conn)

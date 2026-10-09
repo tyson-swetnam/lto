@@ -42,6 +42,7 @@ const SPHERE_LABELS = {
   'atmosphere':       'Atmosphere',
   'cryosphere':       'Cryosphere',
   'terrestrial':      'Terrestrial',
+  'arid':             'Arid / Dryland',
   'agriculture':      'Agriculture',
   'ocean-estuarine':  'Ocean / Estuarine',
   'freshwater':       'Freshwater',
@@ -51,6 +52,7 @@ const SPHERE_COLORS = {
   'atmosphere':       '#5DADE2',
   'cryosphere':       '#AED6F1',
   'terrestrial':      '#52BE80',
+  'arid':             '#CA8A5B',
   'agriculture':      '#F4D03F',
   'ocean-estuarine':  '#1F618D',
   'freshwater':       '#48C9B0',
@@ -143,6 +145,7 @@ async function fetchEnrichedFacilities(ids) {
              f.acronym,
              f.facility_type      AS type,
              f.country,
+             f.state,
              f.region,
              f.hq_lat             AS lat,
              f.hq_lng             AS lng,
@@ -471,7 +474,7 @@ function cardHtml(f) {
       <div class="brw-meta">
         ${f.parent_org ? `<small><strong>Parent:</strong> ${esc(f.parent_org)}</small>` : ''}
         ${f.region ? `<small> · ${esc(f.region)}</small>` : ''}
-        ${f.country ? `<small> · ${esc(f.country)}</small>` : ''}
+        ${(f.state || f.country) ? `<small> · ${esc(f.state || f.country)}</small>` : ''}
         ${f.type ? `<small class="brw-type" style="color:${typeColor}"> · ${esc(f.type)}</small>` : ''}
       </div>
       ${metricsRow}
