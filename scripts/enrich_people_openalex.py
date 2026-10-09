@@ -33,6 +33,7 @@ Usage::
 
     python scripts/enrich_people_openalex.py --dry-run           # no writes
     python scripts/enrich_people_openalex.py --limit 10          # small batch
+    python scripts/enrich_people_openalex.py --people-csv data/seed/arid_people.csv
     python scripts/enrich_people_openalex.py --db db/lto.duckdb
 
 Environment:
@@ -207,7 +208,16 @@ def upsert_publication_topics(conn, pub_id: str, work: dict) -> int:
     return written
 
 
+# OpenAlex work types that are not publications. "libguides" are library
+# research-guide web pages; OpenAlex attaches them to whichever author
+# shares the librarian's name (167 of them landed on one nursing
+# professor's record), so they are never written.
+SKIP_WORK_TYPES = {"libguides"}
+
+
 def upsert_publication(conn, work: dict) -> str | None:
+    if work.get("type") in SKIP_WORK_TYPES:
+        return None
     oa = work.get("id", "")
     doi = (work.get("doi") or "").replace("https://doi.org/", "").strip() or None
     pub_id = (oa.split("/")[-1] if oa else (doi or ""))
@@ -328,6 +338,10 @@ def main() -> int:
     ap.add_argument("--max-pubs", type=int, default=100,
                     help="Max publications per person")
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--people-csv", type=Path, default=None,
+                    help="Only process people whose name is in this CSV's `name` "
+                         "column (e.g. data/seed/arid_people.csv). Without it every "
+                         "person is re-fetched, which refreshes the whole catalogue.")
     args = ap.parse_args()
 
     if not args.db.exists():
@@ -347,6 +361,11 @@ def main() -> int:
         {"person_id": r[0], "name": r[1], "orcid": r[2], "openalex_id": r[3]}
         for r in rows
     ]
+    if args.people_csv:
+        import csv                                        # noqa: PLC0415
+        with args.people_csv.open(newline="") as fh:
+            wanted = {(r.get("name") or "").strip().lower() for r in csv.DictReader(fh)}
+        people = [p for p in people if p["name"].strip().lower() in wanted]
     if args.limit:
         people = people[: args.limit]
     print(f"[enrich] processing {len(people)} people"
