@@ -1,0 +1,439 @@
+{
+  "source": "https://arid.unm.edu/",
+  "retrieved_at": "2026-10-09",
+  "leadership": {
+    "source_url": "https://arid.unm.edu/leadership-team.html",
+    "people": [
+      {
+        "name_as_written": "Anne Kinsinger",
+        "title": "Director",
+        "url": null,
+        "photo_url": "https://arid.unm.edu/anne-arid-website.png"
+      },
+      {
+        "name_as_written": "Marcy Litvak",
+        "title": "Professor of Biology",
+        "url": "https://www.litvaklab.org/",
+        "photo_url": "https://arid.unm.edu/assets/img/headshots/marcy-litvak.jpg"
+      },
+      {
+        "name_as_written": "Jennifer Rudgers",
+        "title": "Distinguished Professor of Biology",
+        "url": "https://rudgerslab.weebly.com/",
+        "photo_url": "https://arid.unm.edu/assets/img/headshots/jennifer_rudgers_field.jpg"
+      },
+      {
+        "name_as_written": "Becky Bixby",
+        "title": "Director, UNM Water Resources Program",
+        "url": "https://bbixby.weebly.com/",
+        "photo_url": "https://arid.unm.edu/assets/img/headshots/becky-bixby.jpg"
+      },
+      {
+        "name_as_written": "Jose Cerrato",
+        "title": "Professor and Regents' Lecturer of Civil, Construction and Environmental Engineering",
+        "url": "https://eh2o.unm.edu/",
+        "photo_url": "https://arid.unm.edu/assets/img/headshots/jose_cerrato.jpg"
+      },
+      {
+        "name_as_written": "Laura Crossey",
+        "title": "Distinguished Professor, Earth & Planetary Sciences",
+        "url": "https://lcrossey.com",
+        "photo_url": "https://arid.unm.edu/assets/img/headshots/crossey.jpg"
+      },
+      {
+        "name_as_written": "Thomas De Pree",
+        "title": "Postdoctoral Fellow, Health Sciences Center and Instructor of Environmental Science",
+        "url": "https://thomasdepree.com/",
+        "photo_url": "https://arid.unm.edu/images/depree-square.jpg"
+      },
+      {
+        "name_as_written": "Jessica Rowland",
+        "title": "Associate Director, Sustainability Studies Program",
+        "url": "https://abqstew.com/",
+        "photo_url": "https://arid.unm.edu/images/rowland-headshot.jpg"
+      },
+      {
+        "name_as_written": "Kim Eichhorst",
+        "title": "Biology Research Lecturer and BEMP Science Director",
+        "url": "https://sevlter.unm.edu/bemp/",
+        "photo_url": "https://arid.unm.edu/assets/img/headshots/eichhorst.jpg"
+      },
+      {
+        "name_as_written": "Emily Jones",
+        "title": "Professor and Regents' Lecturer of Anthropology",
+        "url": "https://anthropology.unm.edu/people/faculty/profile/emily-jones.html",
+        "photo_url": "https://arid.unm.edu/assets/img/headshots/emily-in-zooarch-lab-square.jpg"
+      },
+      {
+        "name_as_written": "Sang Han",
+        "title": "Regents Professor of Chemical & Biological Engineering and Electrical & Computer Engineering",
+        "url": "https://scholar.google.com/citations?user=wSJ6cxcAAAAJ&hl=en",
+        "photo_url": "https://arid.unm.edu/assets/img/headshots/han.jpg"
+      },
+      {
+        "name_as_written": "Andreas Hernandez",
+        "title": "Director of Sustainability Studies Program",
+        "url": "https://sust.unm.edu/about/faculty/andreas-hernandez.html",
+        "photo_url": "https://arid.unm.edu/assets/img/andreas-hernandez-headshot-square.jpeg"
+      },
+      {
+        "name_as_written": "Heather Himmelberger",
+        "title": "Director Southwest Environmental Finance Center",
+        "url": "https://swefc.unm.edu/home/about-us/staff/heather-himmelberger-p-e/",
+        "photo_url": "https://arid.unm.edu/assets/img/headshots/heather-himmelberger-head-shot.jpg"
+      },
+      {
+        "name_as_written": "Debbie Lee",
+        "title": "Program Operations Director, ARID Institute",
+        "url": null,
+        "photo_url": "https://arid.unm.edu/assets/img/headshots/debbie.jpg"
+      },
+      {
+        "name_as_written": "Sebastian Medina",
+        "title": "Assistant Professor of Pharmaceutical Sciences",
+        "url": "https://hsc.unm.edu/directory/medina-sebastian.html",
+        "photo_url": "https://arid.unm.edu/images/sebastian-medina1.png"
+      },
+      {
+        "name_as_written": "Melinda Morgan",
+        "title": "Professor, Geography and Environmental Studies, W.K Kellogg Chair in Sustainable Environmental & Food Systems",
+        "url": "https://geography.unm.edu/people/faculty/faculty-profiles/melinda-morgan.html",
+        "photo_url": "https://arid.unm.edu/assets/img/headshots/melinda-morgan.jpg"
+      },
+      {
+        "name_as_written": "Anjali Mulchandani",
+        "title": "Assistant Professor of Civil, Construction and Environmental Engineering",
+        "url": "https://civil.unm.edu/faculty-staff/faculty-profiles/anjali-mulchandani.html",
+        "photo_url": "https://arid.unm.edu/assets/img/headshots/anjali-mulchandani.jpg"
+      },
+      {
+        "name_as_written": "Claudia Pratesi",
+        "title": "Assistant Professor, College of Population Health",
+        "url": "https://hsc.unm.edu/directory/pratesi-claudia.html",
+        "photo_url": "https://arid.unm.edu/assets/img/headshots/pratesi.jpg"
+      },
+      {
+        "name_as_written": "Michael Rocca",
+        "title": "Associate Professor, Political Science",
+        "url": "https://polisci.unm.edu/people/faculty/profile/michael-s.-rocca.html",
+        "photo_url": "https://arid.unm.edu/assets/img/headshots/roccasquare.jpg"
+      },
+      {
+        "name_as_written": "Heidi Honegger Rogers",
+        "title": "HSC Director of Interprofessional Education Clinician Educator Associate Professor College of Nursing",
+        "url": "https://hsc.unm.edu/directory/rogers-heidi-honegger.html",
+        "photo_url": "https://arid.unm.edu/images/roger_heidi-4216-2233-x-3127.jpg"
+      },
+      {
+        "name_as_written": "Andy Schuler",
+        "title": "Professor of Civil, Construction and Environmental Engineering",
+        "url": "https://www.unm.edu/~schuler/",
+        "photo_url": "https://arid.unm.edu/assets/img/headshots/andrew-schuler.jpg"
+      },
+      {
+        "name_as_written": "Caroline Scruggs",
+        "title": "Associate Professor, Natural Resources and Environmental Planning",
+        "url": "https://saap.unm.edu/people/faculty/caroline-scruggs/index.html",
+        "photo_url": "https://arid.unm.edu/assets/img/caroline-cropped.jpg"
+      },
+      {
+        "name_as_written": "Samuel Truett",
+        "title": "Associate Professor of History and Director, Center for the Southwest",
+        "url": "https://history.unm.edu/people/faculty/profile/samuel-truett.html",
+        "photo_url": "https://arid.unm.edu/assets/img/headshots/sam-square.jpg"
+      },
+      {
+        "name_as_written": "Thomas Turner",
+        "title": "Curator of Fishes in the Museum of Southwestern Biology and Associate Dean for Research in the College of Arts and Sciences",
+        "url": "https://www.tacl.online/",
+        "photo_url": "https://arid.unm.edu/images/turner.jpg"
+      },
+      {
+        "name_as_written": "Jingjing Wang",
+        "title": "Associate Professor of Economics",
+        "url": "https://sites.google.com/view/jingjingwang",
+        "photo_url": "https://arid.unm.edu/assets/img/headshots/wang_jingjing.jpg"
+      },
+      {
+        "name_as_written": "Alex Webster",
+        "title": "Assistant Professor of Biology",
+        "url": "https://alexjwebster.weebly.com/",
+        "photo_url": "https://arid.unm.edu/assets/img/headshots/alex-webster.jpg"
+      }
+    ]
+  },
+  "staff": {
+    "source_url": "https://arid.unm.edu/contact.html",
+    "people": [
+      {
+        "name_as_written": "Anne Kinsinger",
+        "title": "Director",
+        "organisation": "University of New Mexico"
+      },
+      {
+        "name_as_written": "Debbie Lee",
+        "title": "Program Operations Director",
+        "organisation": "University of New Mexico"
+      },
+      {
+        "name_as_written": "Yvonne Munoz",
+        "title": "Administrative Assistant 3",
+        "organisation": "University of New Mexico"
+      },
+      {
+        "name_as_written": "Mikayla Ranspot",
+        "title": "Professional Intern",
+        "organisation": "University of New Mexico"
+      }
+    ]
+  },
+  "for_nm": {
+    "source_url": "https://arid.unm.edu/projects/for-nm.html",
+    "people": [
+      {
+        "name_as_written": "Marcy Litvak",
+        "affiliation": "Professor, UNM",
+        "role_text": "Head Principal Investigator, Co-Lead of RG2",
+        "url": "https://www.litvaklab.org/"
+      },
+      {
+        "name_as_written": "Niall Hanan",
+        "affiliation": "Professor, NMSU",
+        "role_text": "Co-PI, Co-Lead of RG1",
+        "url": "https://pes.nmsu.edu/faculty-staff/environmental/niall-hanan.html"
+      },
+      {
+        "name_as_written": "Stephanie Bestelmeyer",
+        "affiliation": "Executive Director, Asombro Institute",
+        "role_text": "Co-PI, Lead of Education Team",
+        "url": "https://asombro.org/who-we-are/"
+      },
+      {
+        "name_as_written": "Kathy Whiteman",
+        "affiliation": "Professor, WNMU",
+        "role_text": "Co-PI, Lead of Workforce Development Team",
+        "url": null
+      },
+      {
+        "name_as_written": "Alex Webster",
+        "affiliation": "Assistant Professor, UNM",
+        "role_text": "Co-PI, Co-Lead of RG2",
+        "url": "https://websterlab.weebly.com/"
+      },
+      {
+        "name_as_written": "Susan Boufous",
+        "affiliation": "Assistant Professor, NMSU",
+        "role_text": "Co-Lead of RG4",
+        "url": "https://aeab.nmsu.edu/extension/extension-economics-faculty/sawssan-boufous.html"
+      },
+      {
+        "name_as_written": "Rae Devan",
+        "affiliation": "Research Assistant Professor, UNM",
+        "role_text": "Co-Lead of RG3",
+        "url": null
+      },
+      {
+        "name_as_written": "Kim Eichorst",
+        "affiliation": "Research Lecturer III, UNM, BEMP science Director",
+        "role_text": "Member of Education team",
+        "url": "https://biology.unm.edu/people/staff/profile/eichorst_kim.html"
+      },
+      {
+        "name_as_written": "Magda Garbowski",
+        "affiliation": "Assistant Professor, NMSU",
+        "role_text": "Co-Lead of RG3, member of RG2",
+        "url": "https://functionalrestoration.nmsu.edu/index.html"
+      },
+      {
+        "name_as_written": "Hatim Geli",
+        "affiliation": "Associate Professor, NMSU",
+        "role_text": "Co-Lead of RG1, member of RG4",
+        "url": "https://hydrologylab.nmsu.edu/"
+      },
+      {
+        "name_as_written": "Melinda Morgan",
+        "affiliation": "Regents Professor, UNM",
+        "role_text": "Lead of RG4",
+        "url": "https://geography.unm.edu/people/faculty/faculty-profiles/melinda-morgan.html"
+      },
+      {
+        "name_as_written": "Eva Sticker",
+        "affiliation": "Research Assistant Professor, UNM",
+        "role_text": "Co-Lead of RG3",
+        "url": "https://biology.unm.edu/people/faculty/profile/stricker_eva.html"
+      },
+      {
+        "name_as_written": "Dan Krofcheck",
+        "affiliation": "Adjunct Assistant Professor, UNM, Research Scientist-Sandia National Labs",
+        "role_text": "Member of RG1",
+        "url": "https://biology.unm.edu/people/faculty/profile/krofcheck_dan-j.html"
+      },
+      {
+        "name_as_written": "Jake White",
+        "affiliation": "UNM",
+        "role_text": "Program Manager, FOR-NM project",
+        "url": null
+      },
+      {
+        "name_as_written": "Debbie Lee",
+        "affiliation": "UNM",
+        "role_text": "Senior Program Manager, ARID institute",
+        "url": null
+      }
+    ]
+  },
+  "changes": {
+    "source_url": "https://arid.unm.edu/projects/changes/index.html",
+    "sub_projects": [
+      {
+        "title": "Extreme Weather, Natural Disasters and Impacts on Health Systems",
+        "leaders": [
+          "Roberta Lavin",
+          "Xi Gong"
+        ],
+        "co_leaders": [
+          "Mary Pat Couig",
+          "Peter Fawcett"
+        ]
+      },
+      {
+        "title": "Linking Wildfire Smoke to Cancer",
+        "leaders": [
+          "Shuguang Leng",
+          "Charles Wiggins"
+        ],
+        "co_leaders": [
+          "Peng Mao",
+          "Xi Gong",
+          "Huining Kang"
+        ]
+      },
+      {
+        "title": "The Community Engagement Core (CEC)",
+        "leaders": [
+          "Tamar Ginossar"
+        ],
+        "co_leaders": []
+      },
+      {
+        "title": "The Data Core (DC)",
+        "leaders": [
+          "Su Zhang",
+          "Yiliang Zhu"
+        ],
+        "co_leaders": [
+          "Christopher Lippitt",
+          "Orrin Myers"
+        ]
+      }
+    ]
+  },
+  "changes_cec_team": {
+    "source_url": "https://arid.unm.edu/projects/changes/community-engagement-core/team.html",
+    "people": [
+      {
+        "name_as_written": "Tamar Ginossar",
+        "role_text": "CEC Team Lead"
+      },
+      {
+        "name_as_written": "Thomas A. De Pree",
+        "role_text": null
+      },
+      {
+        "name_as_written": "Kerstin Kalke",
+        "role_text": null
+      },
+      {
+        "name_as_written": "Mikayla Ranspot",
+        "role_text": null
+      }
+    ]
+  },
+  "pi_lines": [
+    {
+      "source_url": "https://arid.unm.edu/projects/decentralized-water-and-wastewater-systems-in-rural-areas.html",
+      "title": "Decentralized Water and Wastewater Systems in Rural Areas",
+      "pi_text": "PIs: Andy Schuler and Heather Himmelberger",
+      "pis": [
+        "Andy Schuler",
+        "Heather Himmelberger"
+      ]
+    },
+    {
+      "source_url": "https://arid.unm.edu/projects/the-intermountain-west-transformation-network.html",
+      "title": "The Intermountain West Transformation Network",
+      "pi_text": "PIs: Melinda Morgan and additional team members",
+      "pis": [
+        "Melinda Morgan"
+      ]
+    },
+    {
+      "source_url": "https://arid.unm.edu/projects/public-perceptions-of-potable-water-reuse.html",
+      "title": "Public Perceptions of Potable Water Reuse",
+      "pi_text": "PI: Caroline Scruggs",
+      "pis": [
+        "Caroline Scruggs"
+      ]
+    },
+    {
+      "source_url": "https://arid.unm.edu/projects/sevilleta-long-term-ecological-research-program.html",
+      "title": "Sevilleta Long-Term Ecological Research Program",
+      "pi_text": "PIs: Jennifer Rudgers, Marcy Litvak, Seth Newsome, Kim Eichhorst",
+      "pis": [
+        "Jennifer Rudgers",
+        "Marcy Litvak",
+        "Seth Newsome",
+        "Kim Eichhorst"
+      ]
+    }
+  ],
+  "resources_at_unm": {
+    "source_url": "https://arid.unm.edu/contact1.html",
+    "links": [
+      {
+        "label": "Bosque Ecosystem Monitoring Program",
+        "url": "https://bemp.org/"
+      },
+      {
+        "label": "Center for Water and the Environment",
+        "url": "https://cwe.unm.edu/"
+      },
+      {
+        "label": "Center for Health Equity: Planetary Health and Preparedness",
+        "url": "https://hsc.unm.edu/nursing/research/center/"
+      },
+      {
+        "label": "METALS Superfund Research Program",
+        "url": "https://hsc.unm.edu/pharmacy/research/areas/metals/"
+      },
+      {
+        "label": "Museum of Southwestern Biology",
+        "url": "http://www.msb.unm.edu/"
+      },
+      {
+        "label": "Public Policy Program",
+        "url": "https://mpp.unm.edu/index.html"
+      },
+      {
+        "label": "Sevilleta Long-Term Ecological Research Program",
+        "url": "https://sevlter.unm.edu/"
+      },
+      {
+        "label": "Southwest Environmental Finance Center",
+        "url": "https://swefc.unm.edu/home/"
+      },
+      {
+        "label": "Sustainability Studies Program",
+        "url": "https://sust.unm.edu/"
+      },
+      {
+        "label": "Utton Transboundary Research Center",
+        "url": "https://uttoncenter.unm.edu/"
+      },
+      {
+        "label": "Water Resources Program",
+        "url": "https://wrp.unm.edu/"
+      }
+    ]
+  }
+}

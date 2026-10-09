@@ -17,6 +17,7 @@ incident documented in its docstring.
 
 from __future__ import annotations
 
+import json
 import sys
 from pathlib import Path
 
@@ -95,9 +96,18 @@ EXPECTED_COLUMNS = {
     "data_products": {
         "product_id", "archive_id", "facility_id", "title", "doi", "url",
         "format_slug", "license_slug", "source", "confidence",
+        "description", "category", "api_url",
     },
     "api_endpoints": {"endpoint_id", "archive_id", "path_or_url", "method"},
     "cloud_buckets": {"bucket_id", "archive_id", "provider", "bucket_name"},
+    # ARID wave.
+    "projects": {
+        "project_id", "name", "parent_project_id", "lead_facility_id",
+        "url", "extent_label", "lat", "lng", "location_precision",
+        "source_url", "retrieved_at", "confidence",
+    },
+    "project_personnel": {"project_id", "person_id", "role", "source_url"},
+    "project_facilities": {"project_id", "facility_id", "relation"},
     # Unified person identity (KMAP alignment M3+).
     "person_registry": {
         "canonical_id", "display_name", "orcid", "openalex_id",
@@ -201,6 +211,126 @@ def check_spheres(conn, failures: list[str]) -> None:
     ).fetchone()[0]
     assert_true(orphan == 0,
                 f"{orphan} facility_spheres rows point at unknown facilities", failures)
+
+
+def check_states(conn, failures: list[str]) -> None:
+    """Once any facility carries a state, every locatable US one must.
+
+    The state column is derived (scripts/backfill_facility_state.py), so a
+    gap means a loader added facilities and the backfill was not re-run —
+    and those facilities would silently drop out of the New Mexico and
+    drylands lenses.
+    """
+    if conn.execute("SELECT COUNT(*) FROM facilities WHERE state IS NOT NULL").fetchone()[0] == 0:
+        return
+    missing = conn.execute(
+        """SELECT COUNT(*) FROM facilities
+           WHERE country = 'US' AND hq_lat IS NOT NULL AND hq_lng IS NOT NULL
+             AND state IS NULL"""
+    ).fetchone()[0]
+    assert_true(missing == 0,
+                f"{missing} US facilities with coordinates have no state — "
+                "run scripts/backfill_facility_state.py", failures)
+
+
+PROJECT_PRECISIONS = {"site", "county", "city", "statewide", "regional", "none"}
+
+
+def check_projects(conn, failures: list[str]) -> None:
+    """ARID wave: projects and their soft-referenced link tables."""
+    if table_rows(conn, "projects") <= 0:
+        return
+    no_source = conn.execute(
+        "SELECT COUNT(*) FROM projects WHERE source_url IS NULL OR source_url = ''"
+    ).fetchone()[0]
+    assert_true(no_source == 0, f"{no_source} projects without a source_url", failures)
+
+    bad_parent = conn.execute(
+        """SELECT COUNT(*) FROM projects p
+           WHERE p.parent_project_id IS NOT NULL
+             AND p.parent_project_id NOT IN (SELECT project_id FROM projects)"""
+    ).fetchone()[0]
+    assert_true(bad_parent == 0, f"{bad_parent} projects point at an unknown parent", failures)
+
+    bad_lead = conn.execute(
+        """SELECT COUNT(*) FROM projects p
+           WHERE p.lead_facility_id IS NULL
+              OR p.lead_facility_id NOT IN (SELECT facility_id FROM facilities)"""
+    ).fetchone()[0]
+    assert_true(bad_lead == 0, f"{bad_lead} projects without a known lead facility", failures)
+
+    precisions = {r[0] for r in conn.execute(
+        "SELECT DISTINCT location_precision FROM projects").fetchall()}
+    unknown = sorted(str(p) for p in precisions - PROJECT_PRECISIONS)
+    assert_true(not unknown, f"projects use unknown location_precision: {unknown}", failures)
+
+    # A point claims a place. A project the source only describes as
+    # statewide or regional must not have one, and a placed project must.
+    half = conn.execute(
+        "SELECT COUNT(*) FROM projects WHERE (lat IS NULL) <> (lng IS NULL)").fetchone()[0]
+    assert_true(half == 0, f"{half} projects with only one of lat/lng", failures)
+    misplaced = conn.execute(
+        """SELECT COUNT(*) FROM projects
+           WHERE (lat IS NOT NULL AND location_precision IN ('statewide','regional','none'))
+              OR (lat IS NULL AND location_precision IN ('site','county','city'))"""
+    ).fetchone()[0]
+    assert_true(misplaced == 0,
+                f"{misplaced} projects whose coordinates disagree with location_precision",
+                failures)
+
+    for table, col, parent, pcol in (
+        ("project_personnel", "project_id", "projects", "project_id"),
+        ("project_personnel", "person_id", "people", "person_id"),
+        ("project_facilities", "project_id", "projects", "project_id"),
+        ("project_facilities", "facility_id", "facilities", "facility_id"),
+    ):
+        if table_rows(conn, table) <= 0:
+            continue
+        orphan = conn.execute(
+            f"SELECT COUNT(*) FROM {table} t "
+            f"WHERE t.{col} NOT IN (SELECT {pcol} FROM {parent})"
+        ).fetchone()[0]
+        assert_true(orphan == 0,
+                    f"{orphan} {table} rows point at an unknown {parent}.{pcol}", failures)
+
+    # The leadership roster must match what the scraper last read. A gap
+    # here means load_arid.py dropped someone the site lists.
+    site_file = Path(__file__).resolve().parent.parent / "data" / "raw" / "R-ARID" / "arid_site.json"
+    if site_file.exists():
+        expected = len(json.loads(site_file.read_text())["leadership"]["people"])
+        got = conn.execute(
+            """SELECT COUNT(*) FROM facility_personnel fp
+               JOIN facilities f USING (facility_id)
+               WHERE f.acronym = 'ARID' AND fp.role = 'leadership-team'"""
+        ).fetchone()[0]
+        assert_true(got == expected,
+                    f"ARID leadership team has {got} rows; arid_site.json lists {expected}",
+                    failures)
+
+
+def check_portal_products(conn, failures: list[str]) -> None:
+    """EnviroData-NM records are pointers: each must point somewhere."""
+    n = conn.execute(
+        "SELECT COUNT(*) FROM data_products WHERE archive_id = 'envirodata-nm'"
+    ).fetchone()[0] if table_rows(conn, "data_products") > 0 else 0
+    if n == 0:
+        return
+    bad = conn.execute(
+        """SELECT COUNT(*) FROM data_products
+           WHERE archive_id = 'envirodata-nm'
+             AND (url IS NULL OR api_url IS NULL OR category IS NULL
+                  OR url NOT LIKE 'https://envirodata-nm.unm.edu/%'
+                  OR api_url NOT LIKE 'https://envirodata-nm.unm.edu/ogc/%')"""
+    ).fetchone()[0]
+    assert_true(bad == 0,
+                f"{bad} EnviroData-NM products lack a portal url, api_url or category",
+                failures)
+    dup = conn.execute(
+        """SELECT COUNT(*) FROM (
+             SELECT identifier FROM data_products WHERE archive_id = 'envirodata-nm'
+             GROUP BY identifier HAVING COUNT(*) > 1)"""
+    ).fetchone()[0]
+    assert_true(dup == 0, f"{dup} EnviroData-NM layer identifiers are duplicated", failures)
 
 
 def check_life_zones(conn, failures: list[str]) -> None:
@@ -512,6 +642,9 @@ def main() -> int:
         check_spheres(conn, failures)
         check_life_zones(conn, failures)
         check_archives(conn, failures)
+        check_states(conn, failures)
+        check_projects(conn, failures)
+        check_portal_products(conn, failures)
         check_person_registry(conn, failures)
         check_registry_edges(conn, failures)
 

@@ -1,0 +1,16 @@
+[
+  {
+    "facility_canonical_name": "Museum of Southwestern Biology",
+    "archive_id": "envirodata-nm",
+    "role": "primary",
+    "scope_url": "https://envirodata-nm.unm.edu/cms/about/",
+    "notes": "Natural Heritage New Mexico, which runs the portal, is a division of the Museum of Southwestern Biology (portal About page)."
+  },
+  {
+    "facility_canonical_name": "ARID Institute — Accelerating Resilience Innovations in Drylands",
+    "archive_id": "envirodata-nm",
+    "role": "supporting",
+    "scope_url": "https://envirodata-nm.unm.edu/explore/",
+    "notes": "This catalogue layer is an ARID-supported effort in support of EnviroData-NM (statement of the lto project owner, an ARID member, 2026-10-09). Neither website documents the relationship."
+  }
+]

@@ -6,6 +6,8 @@ rapidfuzz>=3.9
 geopy>=2.4
 pyyaml>=6.0
 requests>=2.31
+# HTML parsing for scripts/fetch_arid_site.py.
+beautifulsoup4>=4.12
 shapely>=2.0
 # RDF validation layer: scripts/validate_registry.py --stage rdf/shacl and
 # scripts/validate_shapes.py (pyshacl pulls owlrl for the sameAs closure).

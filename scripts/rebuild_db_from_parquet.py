@@ -101,6 +101,10 @@ LOAD_ORDER = [
     "data_products",
     "api_endpoints",
     "cloud_buckets",
+    # ARID wave. Soft references, so order is for readability only.
+    "projects",
+    "project_personnel",
+    "project_facilities",
     # Unified person identity (KMAP alignment). All soft-ref by design so
     # they can load in any order; kept together at the end for clarity.
     "person_registry",

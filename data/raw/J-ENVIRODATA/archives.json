@@ -1,0 +1,15 @@
+[
+  {
+    "archive_id": "envirodata-nm",
+    "name": "EnviroData-NM — New Mexico Environmental Data Portal",
+    "organization": "Natural Heritage New Mexico, Museum of Southwestern Biology, University of New Mexico",
+    "archive_type": "data-portal",
+    "base_url": "https://envirodata-nm.unm.edu/explore/",
+    "api_url": "https://envirodata-nm.unm.edu/ogc/",
+    "api_doc_url": "https://envirodata-nm.unm.edu/ogc/",
+    "api_type": "ogc-wms-wfs",
+    "license_slug": "envirodata-nm-terms",
+    "doi_prefix": null,
+    "notes": "Housed and maintained by Natural Heritage New Mexico under the 2021 Environmental Database Act (HB51); contributing agencies include NM Game & Fish, NM Environment Department, State Land Office, NM Department of Health and EMNRD. This catalogue holds metadata and links only: the portal's terms (https://envirodata-nm.unm.edu/terms) do not permit redistributing the data, so every record points at the portal's own download or OGC endpoint."
+  }
+]

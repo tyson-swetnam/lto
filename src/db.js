@@ -241,6 +241,10 @@ export async function initDB() {
     'archive_types', 'data_formats', 'data_licenses', 'access_modes',
     'data_archives', 'facility_archives', 'data_products',
     'api_endpoints', 'cloud_buckets',
+    // ARID wave — projects, their teams and the facilities they involve.
+    // Read by src/views/projects.js (cache-miss path) and the project
+    // marker layer, so eager.
+    'projects', 'project_personnel', 'project_facilities',
     // Unified person identity (KMAP alignment M3+). Only the 'core' tier
     // ships in person_registry.parquet; the full population stays local.
     // These three are eager because the People / Network / Stats views
