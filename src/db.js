@@ -245,6 +245,9 @@ export async function initDB() {
     // Read by src/views/projects.js (cache-miss path) and the project
     // marker layer, so eager.
     'projects', 'project_personnel', 'project_facilities',
+    // Named locations per facility. Was SQL-tab only (lazy) until the
+    // Projects tab's cache-miss path began listing them under each site.
+    'locations',
     // Unified person identity (KMAP alignment M3+). Only the 'core' tier
     // ships in person_registry.parquet; the full population stays local.
     // These three are eager because the People / Network / Stats views
@@ -272,7 +275,7 @@ export async function initDB() {
     // eager. Conversely, when a view LEARNS to read one of these, move it
     // back out.
     const lazyTables = [
-      'locations', 'region_area_links', 'person_areas', 'publication_topics',
+      'region_area_links', 'person_areas', 'publication_topics',
       // Provenance audit table — one row per (record, source_url); large
       // and unread by any rendering view.
       'provenance',

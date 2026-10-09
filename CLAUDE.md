@@ -25,7 +25,7 @@ python scripts/ingest.py               # data/raw/R*/*.json → db/lto.duckdb
 python scripts/ingest.py --skip-geocode  # use .geocode_cache.json only
 python scripts/qa.py                   # data-quality gate (exits non-zero on failure)
 python scripts/export_parquet.py       # db/lto.duckdb → db/parquet/*, public/parquet/*, public/facilities.geojson
-python scripts/export_view_caches.py   # → public/cache/{browse_cards,people_cards,project_cards}.json
+python scripts/export_view_caches.py   # → public/cache/{browse_cards,people_cards,project_cards,site_groups}.json
 python scripts/build_web_overlays.py   # network_synth_spatial_analysis/ → public/overlays/*.geojson + manifest.json
 
 # Web UI
@@ -42,7 +42,7 @@ There is no test framework. `qa.py` is the only correctness gate; add new invari
 
 - **DuckDB on-disk format is not portable across versions** (e.g. 1.5.x writes a file 1.3.x cannot read). The `.duckdb` file and `db/parquet/` are both gitignored; the canonical committed artifact is `public/parquet/*.parquet`. After pulling, run `scripts/rebuild_db_from_parquet.py` before doing anything that opens the DB (it reads `db/parquet/` if a local export has filled it, else `public/parquet/`). See that script for the full rationale.
 
-- **Three views bypass DuckDB entirely.** `src/views/list.js`, `src/views/people.js` and `src/views/projects.js` fetch `public/cache/browse_cards.json` / `people_cards.json` / `project_cards.json` first and only fall through to DuckDB-Wasm if the fetch 404s. That JSON is materialised offline by `scripts/export_view_caches.py` from the same SQL. Consequence: **changing the SQL in those view files, or the underlying data, has no visible effect until you re-run `export_view_caches.py` and commit the JSON.** Keep the cache SQL and the in-file fallback SQL in sync — they must produce identical row shapes.
+- **Three views bypass DuckDB entirely.** `src/views/list.js`, `src/views/people.js` and `src/views/projects.js` fetch `public/cache/browse_cards.json` / `people_cards.json` / `project_cards.json` (plus `site_groups.json` for the Projects tab's network groups) first and only fall through to DuckDB-Wasm if the fetch 404s. That JSON is materialised offline by `scripts/export_view_caches.py` from the same SQL. Consequence: **changing the SQL in those view files, or the underlying data, has no visible effect until you re-run `export_view_caches.py` and commit the JSON.** Keep the cache SQL and the in-file fallback SQL in sync — they must produce identical row shapes.
 
 - **Views don't survive parquet export.** `schema/schema.sql` defines helper views (`v_facility_map`, `v_facility_enriched`, `v_region_enriched`, `v_facility_funding_by_year`, `v_funder_funding_by_year`, `v_funding_ledger`, `v_facility_key_personnel`, `v_person_enriched`, `v_person_areas_enriched`, …) — the subset the frontend needs is re-created in the browser by `src/db.js` after registering parquet tables. Add new views in **both** places or the SQL tab will lose them.
 

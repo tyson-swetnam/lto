@@ -364,6 +364,57 @@ ORDER BY pr.name
 """
 
 
+# Site-group SQL. Mirrors SITES_SQL in src/views/projects.js: one row per
+# facility with its networks and named locations, which the Projects tab
+# groups by network client-side.
+SITES_SQL = """
+WITH nets AS (
+  SELECT facility_id, list(network_id ORDER BY network_id) AS networks
+  FROM network_membership
+  GROUP BY facility_id
+),
+locs AS (
+  SELECT facility_id,
+         list(struct_pack(
+           label := label,
+           role  := role,
+           lat   := lat,
+           lng   := lng
+         ) ORDER BY role, label) AS locations
+  FROM locations
+  GROUP BY facility_id
+),
+prim AS (
+  SELECT facility_id, min(sphere_slug) AS primary_sphere
+  FROM facility_spheres
+  WHERE role = 'primary'
+  GROUP BY facility_id
+),
+arid AS (
+  SELECT DISTINCT facility_id FROM facility_spheres WHERE sphere_slug = 'arid'
+)
+SELECT f.facility_id                 AS id,
+       f.canonical_name              AS name,
+       f.acronym,
+       f.facility_type               AS type,
+       f.state,
+       f.country,
+       f.hq_lat                      AS lat,
+       f.hq_lng                      AS lng,
+       f.url,
+       p.primary_sphere,
+       (a.facility_id IS NOT NULL)   AS has_arid_sphere,
+       n.networks,
+       l.locations
+FROM facilities f
+LEFT JOIN nets n ON n.facility_id = f.facility_id
+LEFT JOIN locs l ON l.facility_id = f.facility_id
+LEFT JOIN prim p ON p.facility_id = f.facility_id
+LEFT JOIN arid a ON a.facility_id = f.facility_id
+ORDER BY f.canonical_name
+"""
+
+
 def to_jsonable(v):
     """Recursively convert DuckDB results to plain JSON-friendly Python.
 
@@ -424,6 +475,10 @@ def main() -> int:
         n_proj = export_query(conn, PROJECTS_SQL, args.out / "project_cards.json")
         print(f"[cache] wrote {n_proj:4d} rows → {args.out / 'project_cards.json'}"
               f"  ({(args.out / 'project_cards.json').stat().st_size // 1024} KB)")
+
+        n_sites = export_query(conn, SITES_SQL, args.out / "site_groups.json")
+        print(f"[cache] wrote {n_sites:4d} rows → {args.out / 'site_groups.json'}"
+              f"  ({(args.out / 'site_groups.json').stat().st_size // 1024} KB)")
     return 0
 
 
