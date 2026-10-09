@@ -43,6 +43,8 @@ const COHORTS = {
   site    : { label: 'Site personnel',  test: (p) => hasCohort(p, 'site') },
   scholar : { label: 'Scholar harvest', test: (p) => hasCohort(p, 'scholar') },
   both    : { label: 'Both',            test: (p) => hasCohort(p, 'site') && hasCohort(p, 'scholar') },
+  // ARID Institute leadership, staff and project teams (scripts/load_arid.py).
+  arid    : { label: 'ARID',            test: (p) => hasCohort(p, 'arid') },
 };
 
 let _container = null;
@@ -159,20 +161,47 @@ async function fetchPeople() {
       GROUP BY fp.person_id
     ),
     per_aff AS (
-      SELECT fp.person_id,
+      -- Facility roles plus project roles (ARID wave): someone who is only on
+      -- a project team would otherwise show a card with no affiliation.
+      SELECT a.person_id,
              list(struct_pack(
-               role        := fp.role,
-               title       := fp.title,
-               facility    := COALESCE(f.acronym || ' — ' || f.canonical_name,
-                                       f.canonical_name),
-               facility_id := f.facility_id,
-               url         := f.url,
-               country     := f.country,
-               is_key      := fp.is_key_personnel
-             ) ORDER BY fp.is_key_personnel DESC, fp.role) AS affiliations
+               role        := a.role,
+               title       := a.title,
+               facility    := a.facility,
+               facility_id := a.facility_id,
+               url         := a.url,
+               country     := a.country,
+               is_key      := a.is_key
+             ) ORDER BY a.is_key DESC, a.role, a.facility) AS affiliations
+      FROM (
+        SELECT fp.person_id, fp.role, fp.title,
+               COALESCE(f.acronym || ' — ' || f.canonical_name,
+                        f.canonical_name)  AS facility,
+               f.facility_id, f.url, f.country,
+               fp.is_key_personnel         AS is_key
+        FROM facility_personnel fp
+        JOIN facilities f ON f.facility_id = fp.facility_id
+        UNION ALL
+        SELECT pp.person_id, pp.role, pp.title,
+               'Project: ' || COALESCE(pj.acronym, pj.name) AS facility,
+               CAST(NULL AS VARCHAR)       AS facility_id,
+               pj.url,
+               CAST(NULL AS VARCHAR)       AS country,
+               FALSE                       AS is_key
+        FROM project_personnel pp
+        JOIN projects pj ON pj.project_id = pp.project_id
+      ) a
+      GROUP BY a.person_id
+    ),
+    arid_people AS (
+      -- On the ARID Institute itself (the network's host) or on one of its
+      -- project teams. Partner-center staff are not swept in.
+      SELECT fp.person_id
       FROM facility_personnel fp
-      JOIN facilities f ON f.facility_id = fp.facility_id
-      GROUP BY fp.person_id
+      JOIN network_membership nm ON nm.facility_id = fp.facility_id
+      WHERE nm.network_id = 'arid-unm' AND nm.role = 'host'
+      UNION
+      SELECT pp.person_id FROM project_personnel pp
     )
     SELECT p.person_id  AS id,
            p.name,
@@ -195,7 +224,8 @@ async function fetchPeople() {
            pr.canonical_id                     AS canonical_id,
            NULLIF(concat_ws(',',
              CASE WHEN pr.is_site_personnel THEN 'site' END,
-             CASE WHEN pr.is_scholar THEN 'scholar' END), '') AS cohorts,
+             CASE WHEN pr.is_scholar THEN 'scholar' END,
+             CASE WHEN ap.person_id IS NOT NULL THEN 'arid' END), '') AS cohorts,
            pr.tier                             AS tier
     FROM   people p
     LEFT JOIN person_primary_groups g  ON g.person_id  = p.person_id
@@ -205,6 +235,7 @@ async function fetchPeople() {
     LEFT JOIN per_fund             pf  ON pf.person_id = p.person_id
     LEFT JOIN per_aff              pa2 ON pa2.person_id = p.person_id
     LEFT JOIN person_registry      pr  ON pr.person_id = p.person_id
+    LEFT JOIN arid_people          ap  ON ap.person_id = p.person_id
   `;
   const r = await conn.query(sql);
   return r.toArray().map((row) => numify(row.toJSON()));

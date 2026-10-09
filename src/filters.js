@@ -38,6 +38,54 @@ const COUNTRIES = [
   ['TC', 'Turks and Caicos Islands'],
 ];
 
+// ── Scope lens ───────────────────────────────────────────────────────
+//
+// The catalogue is national, but the site opens on New Mexico and its
+// dryland neighbours: that is where the ARID Institute (UNM) works and
+// what this deployment is for. The lens is a single-choice facet that
+// narrows every facility query; "All U.S." removes it. Nothing is
+// deleted from the data to make the narrower views.
+//
+// Each lens is defined twice, and the two must agree: `sql` for the
+// DuckDB path and `test` for the GeoJSON-fallback path (which sees only
+// the properties scripts/export_parquet.py writes: state, lng,
+// has_arid_sphere, in_arid_network).
+export const DEFAULT_SCOPE = 'drylands';
+const DRYLAND_STATES = ['NM', 'AZ', 'UT', 'CO', 'NV'];
+export const SCOPES = {
+  arid: {
+    label: 'ARID Institute &amp; partners',
+    hint: 'UNM\u2019s ARID Institute and the centers and sites it lists',
+    sql: `f.facility_id IN (SELECT nm.facility_id FROM network_membership nm
+                            WHERE nm.network_id = 'arid-unm')`,
+    test: (p) => !!p.in_arid_network,
+  },
+  nm: {
+    label: 'New Mexico',
+    hint: 'Every catalogued facility in the state',
+    sql: `f.state = 'NM'`,
+    test: (p) => p.state === 'NM',
+  },
+  drylands: {
+    label: 'Southwest drylands',
+    hint: 'NM, AZ, UT, CO, NV, west Texas, and arid-sphere sites elsewhere',
+    // West Texas = west of the 100th meridian, the conventional dry line.
+    sql: `(f.state IN (${DRYLAND_STATES.map((s) => `'${s}'`).join(',')})
+           OR (f.state = 'TX' AND f.hq_lng < -100)
+           OR f.facility_id IN (SELECT fs.facility_id FROM facility_spheres fs
+                                WHERE fs.sphere_slug = 'arid'))`,
+    test: (p) => DRYLAND_STATES.includes(p.state)
+      || (p.state === 'TX' && Number(p.lng ?? p._lng) < -100)
+      || !!p.has_arid_sphere,
+  },
+  all: {
+    label: 'All U.S.',
+    hint: 'The whole national catalogue',
+    sql: null,
+    test: () => true,
+  },
+};
+
 /** Build a collapsible facet section element. */
 function makeFacetSection(id, title, bodyHtml, collapsed = false) {
   const sec = document.createElement('div');
@@ -110,6 +158,22 @@ export async function initFilters(container, state) {
   });
   container.appendChild(clearLink);
 
+  // 0. Scope lens — single choice, always open, never cleared by
+  // "Clear all filters" (it is a lens over the catalogue, not a filter
+  // someone forgot they set).
+  const scopeSection = makeFacetSection(
+    'f-scope', 'Scope',
+    Object.entries(SCOPES).map(([key, s]) =>
+      `<label title="${s.hint}"><input type="radio" name="f-scope" value="${key}"${
+        key === (state.filters.scope || DEFAULT_SCOPE) ? ' checked' : ''} /> ${s.label}</label>`
+    ).join(''),
+    false,
+  );
+  container.appendChild(scopeSection);
+  scopeSection.addEventListener('change', (ev) => {
+    if (ev.target?.name === 'f-scope') state.setFilters({ scope: ev.target.value });
+  });
+
   // ── Filter sidebar ordering ──
   //
   // For an LTO catalog the most useful discovery facets are:
@@ -166,6 +230,7 @@ export async function initFilters(container, state) {
     'experimental-forest-range', 'flux-tower', 'ltar-site',
     'streamgage-network', 'glacier-monitoring', 'atmospheric-baseline',
     'field-station', 'university-field-station', 'university-marine-lab',
+    'university-institute',
     'protected-area-federal', 'network',
   ];
   const typeSection = makeFacetSection(
@@ -349,6 +414,9 @@ export async function initFilters(container, state) {
 export function applyFilters(filterState) {
   const clauses = [];
   const params = [];
+
+  const scope = SCOPES[filterState.scope];
+  if (scope?.sql) clauses.push(scope.sql);
 
   if (filterState.types?.size) {
     clauses.push(`f.facility_type IN (${Array.from(filterState.types).map(() => '?').join(',')})`);

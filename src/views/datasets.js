@@ -685,8 +685,23 @@ let _prodSortKey = 'cited_by_count';
 let _prodSortDir = 'desc';
 let _prodFormat = 'all';
 let _prodLicense = 'all';
+let _prodCategory = 'all';
 let _prodQ = '';
 let _prodPage = 0;
+
+// Portal-style archives (EnviroData-NM) publish map layers rather than
+// DOI-bearing datasets: their rows carry a category path and a per-layer
+// service endpoint instead of citations and a temporal span. The two
+// extra columns appear only for an archive that has them.
+const PROD_COL_CATEGORY = { key: 'category', label: 'Category' };
+const PROD_COL_API = { key: 'api_url', label: 'Service', nosort: true };
+
+function productCols(rows) {
+  const cols = [...PROD_COLS];
+  if (rows.some((r) => r.category)) cols.splice(1, 0, PROD_COL_CATEGORY);
+  if (rows.some((r) => r.api_url)) cols.splice(cols.length - 2, 0, PROD_COL_API);
+  return cols;
+}
 
 const PROD_COLS = [
   { key: 'title',          label: 'Title' },
@@ -717,7 +732,8 @@ async function fetchProducts(archiveId) {
            format_slug, license_slug,
            CAST(temporal_start AS VARCHAR) AS temporal_start,
            CAST(temporal_end   AS VARCHAR) AS temporal_end,
-           cited_by_count, source, confidence, variables_text
+           cited_by_count, source, confidence, variables_text,
+           description, category, api_url
     FROM data_products
     WHERE archive_id = ?`);
   const res = await prepared.query(archiveId);
@@ -730,12 +746,14 @@ function applyProductFilter(rows) {
   let out = rows;
   if (_prodFormat !== 'all') out = out.filter((r) => (r.format_slug || '—') === _prodFormat);
   if (_prodLicense !== 'all') out = out.filter((r) => (r.license_slug || '—') === _prodLicense);
+  if (_prodCategory !== 'all') out = out.filter((r) => topCategory(r) === _prodCategory);
   const q = _prodQ.trim().toLowerCase();
   if (q) {
     // Variables are searchable on purpose: "which NEON products carry
     // NEE?" is the question this table exists to answer.
     out = out.filter((r) =>
-      `${r.title || ''} ${r.variables_text || ''}`.toLowerCase().includes(q));
+      `${r.title || ''} ${r.variables_text || ''} ${r.category || ''} ${r.description || ''}`
+        .toLowerCase().includes(q));
   }
   return out;
 }
@@ -759,7 +777,12 @@ function sortProducts(rows) {
   });
 }
 
-function productRowHtml(r) {
+// First segment of a ' / '-joined category path.
+function topCategory(r) {
+  return r.category ? String(r.category).split(' / ')[0] : '—';
+}
+
+function productRowHtml(r, cols) {
   // Title links the DOI when there is one (the citable, permanent
   // address), else the landing URL. The catalogue currently has no row
   // with neither, but a bare-text fallback keeps a future one visible.
@@ -778,15 +801,24 @@ function productRowHtml(r) {
   const conf = r.confidence
     ? `<span class="ds-conf ds-conf-${esc(r.confidence)}">${esc(r.confidence)}</span>`
     : '—';
-  return `<tr>
-    <td class="ds-products-title"${r.variables_text ? ` title="${esc(r.variables_text)}"` : ''}>${title}</td>
-    <td>${esc(r.format_slug || '—')}</td>
-    <td>${esc(r.license_slug || '—')}</td>
-    <td class="ds-products-span">${span}</td>
-    <td class="num">${cites}</td>
-    <td class="ds-products-src">${esc(r.source || '—')}</td>
-    <td>${conf}</td>
-  </tr>`;
+  const desc = r.description
+    ? `<div class="ds-products-desc">${esc(r.description.length > 220
+      ? `${r.description.slice(0, 220).replace(/\s+\S*$/, '')} …` : r.description)}</div>`
+    : '';
+  const cells = {
+    title: `<td class="ds-products-title"${r.variables_text ? ` title="${esc(r.variables_text)}"` : ''}>${title}${desc}</td>`,
+    category: `<td class="ds-products-cat">${esc(r.category || '—')}</td>`,
+    format_slug: `<td>${esc(r.format_slug || '—')}</td>`,
+    license_slug: `<td>${esc(r.license_slug || '—')}</td>`,
+    temporal_start: `<td class="ds-products-span">${span}</td>`,
+    cited_by_count: `<td class="num">${cites}</td>`,
+    api_url: `<td>${r.api_url
+      ? `<a href="${esc(r.api_url)}?service=WMS&amp;request=GetCapabilities" target="_blank" rel="noopener" title="${esc(r.api_url)}">WMS</a>`
+      : '—'}</td>`,
+    source: `<td class="ds-products-src">${esc(r.source || '—')}</td>`,
+    confidence: `<td>${conf}</td>`,
+  };
+  return `<tr>${cols.map((c) => cells[c.key]).join('')}</tr>`;
 }
 
 function productPagerHtml(nRows) {
@@ -829,16 +861,6 @@ async function renderProducts(archiveId) {
     return;
   }
 
-  if (_prodArchive !== archiveId) {
-    _prodArchive = archiveId;
-    _prodSortKey = 'cited_by_count';
-    _prodSortDir = 'desc';
-    _prodFormat = 'all';
-    _prodLicense = 'all';
-    _prodQ = '';
-    _prodPage = 0;
-  }
-
   let rows;
   try {
     rows = await fetchProducts(archiveId);
@@ -846,6 +868,21 @@ async function renderProducts(archiveId) {
     if (status) status.textContent = `Failed to load products: ${e.message}`;
     console.error(e);
     return;
+  }
+  const cols = productCols(rows);
+  const hasCategory = cols.includes(PROD_COL_CATEGORY);
+
+  if (_prodArchive !== archiveId) {
+    _prodArchive = archiveId;
+    // A categorised archive reads best in its own order; the rest open
+    // on the most-cited products.
+    _prodSortKey = hasCategory ? 'category' : 'cited_by_count';
+    _prodSortDir = hasCategory ? 'asc' : 'desc';
+    _prodFormat = 'all';
+    _prodLicense = 'all';
+    _prodCategory = 'all';
+    _prodQ = '';
+    _prodPage = 0;
   }
 
   const filtered = sortProducts(applyProductFilter(rows));
@@ -858,8 +895,10 @@ async function renderProducts(archiveId) {
 
   const fmts = [...new Set(rows.map((r) => r.format_slug || '—'))].sort();
   const lics = [...new Set(rows.map((r) => r.license_slug || '—'))].sort();
+  const cats = hasCategory ? [...new Set(rows.map(topCategory))].sort() : [];
 
-  const ths = PROD_COLS.map((c) => {
+  const ths = cols.map((c) => {
+    if (c.nosort) return `<th>${c.label}</th>`;
     const arrow = _prodSortKey === c.key
       ? `<span class="ds-products-arrow">${_prodSortDir === 'asc' ? ' ▲' : ' ▼'}</span>`
       : '';
@@ -876,13 +915,25 @@ async function renderProducts(archiveId) {
         <h1>${esc(arch.name)} — data products</h1>
         ${arch.organization ? `<p class="ds-provider">${esc(arch.organization)}</p>` : ''}
         <p class="ds-summary">
-          Every addressable dataset this archive holds for the catalogued
+          ${hasCategory
+    ? `Every layer this portal publishes. The catalogue holds metadata and
+          links only: a title opens the portal's own download where it offers
+          one, and <em>WMS</em> opens the layer's map service. Hover a title
+          for its fields; click a column header to sort.`
+    : `Every addressable dataset this archive holds for the catalogued
           facilities. Click a title to open its DOI or landing page; click
           a column header to sort; hover a title for its variables.
           Citation counts come from OpenAlex where the DOI is tracked —
-          <em>n/a</em> means untracked, not uncited.
+          <em>n/a</em> means untracked, not uncited.`}
         </p>
         <div class="ds-controls">
+          ${hasCategory ? `<label>Category:
+            <select id="dsp-category">
+              <option value="all">All</option>
+              ${cats.map((c) => `<option value="${esc(c)}"${_prodCategory === c ? ' selected' : ''}>${
+    esc(c)} (${rows.filter((r) => topCategory(r) === c).length})</option>`).join('')}
+            </select>
+          </label>` : ''}
           <label>Format:
             <select id="dsp-format">
               <option value="all">All (${rows.length})</option>
@@ -898,7 +949,7 @@ async function renderProducts(archiveId) {
             </select>
           </label>
           <input id="dsp-q" type="search"
-                 placeholder="Search title or variables…"
+                 placeholder="${hasCategory ? 'Search title, category, description or fields…' : 'Search title or variables…'}"
                  value="${esc(_prodQ)}">
         </div>
         <p class="ds-count-line">Showing <strong>${fmtInt(shown.length)}</strong>
@@ -909,8 +960,8 @@ async function renderProducts(archiveId) {
         <table class="dash-table ds-products-table">
           <thead><tr>${ths}</tr></thead>
           <tbody>${shown.length
-    ? shown.map(productRowHtml).join('')
-    : `<tr><td colspan="${PROD_COLS.length}" class="no-data">No product matches these filters.</td></tr>`}</tbody>
+    ? shown.map((r) => productRowHtml(r, cols)).join('')
+    : `<tr><td colspan="${cols.length}" class="no-data">No product matches these filters.</td></tr>`}</tbody>
         </table>
       </div>
       <p class="ds-status">Done.</p>
@@ -918,6 +969,11 @@ async function renderProducts(archiveId) {
 
   _container.querySelector('#dsp-format').addEventListener('change', (ev) => {
     _prodFormat = ev.target.value;
+    _prodPage = 0;
+    renderProducts(archiveId);
+  });
+  _container.querySelector('#dsp-category')?.addEventListener('change', (ev) => {
+    _prodCategory = ev.target.value;
     _prodPage = 0;
     renderProducts(archiveId);
   });

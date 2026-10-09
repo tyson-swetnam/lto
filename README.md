@@ -20,6 +20,17 @@ across seven interlocking spheres:
 The site uses the long-term threshold from Peters et al. 2013 (≥10 years of record)
 as the default inclusion gate.
 
+## New Mexico and ARID focus
+
+The catalogue is national, but the site opens on **New Mexico and the Southwest
+drylands** and carries a layer for the University of New Mexico's
+[ARID Institute](https://arid.unm.edu) — its partner centers, projects and people —
+plus an index of every layer in [EnviroData-NM](https://envirodata-nm.unm.edu), the
+state's environmental data portal. The EnviroData-NM records are pointers: metadata
+and links back to the portal's own download and OGC endpoints, with no data copied.
+Switch the **Scope** filter to *All U.S.* for the whole catalogue. See
+[`docs/arid.md`](docs/arid.md).
+
 ## Repository layout
 
 This repo is a **two-stack** project (forked-and-adapted from

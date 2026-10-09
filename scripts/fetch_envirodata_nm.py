@@ -297,7 +297,7 @@ def main() -> int:
          "notes": "Natural Heritage New Mexico, which runs the portal, is a division of "
                   "the Museum of Southwestern Biology (portal About page)."},
         {"facility_canonical_name":
-             "ARID Institute — Accelerating Resilience Innovations in Drylands",
+             "Accelerating Resilience Innovations in Drylands (ARID Institute)",
          "archive_id": ARCHIVE_ID, "role": "supporting", "scope_url": f"{BASE}/explore/",
          "notes": "This catalogue layer is an ARID-supported effort in support of "
                   "EnviroData-NM (statement of the lto project owner, an ARID member, "

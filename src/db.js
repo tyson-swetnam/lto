@@ -1,4 +1,4 @@
-import { applyFilters } from './filters.js';
+import { applyFilters, SCOPES } from './filters.js';
 import { DATA_BASE } from './config.js';
 
 let db = null;        // duckdb.AsyncDuckDB instance
@@ -567,6 +567,7 @@ export async function query(filterState) {
            f.acronym,
            f.facility_type AS type,
            f.country,
+           f.state,
            f.hq_lat AS lat,
            f.hq_lng AS lng,
            f.url,
@@ -594,7 +595,7 @@ export async function query(filterState) {
     LEFT JOIN regions r         ON r.region_id   = fr.region_id
     ${where}
     GROUP BY f.facility_id, f.canonical_name, f.acronym, f.facility_type,
-             f.country, f.hq_lat, f.hq_lng, f.url, f.parent_org,
+             f.country, f.state, f.hq_lat, f.hq_lng, f.url, f.parent_org,
              f.established, f.record_length_years,
              f.long_term_threshold_met, f.data_portal_url
   `;
@@ -659,6 +660,7 @@ export async function query(filterState) {
 
 function filterFallback(filterState) {
   if (!fallbackFeatures) return [];
+  const scope = SCOPES[filterState.scope];
   const types = filterState.types?.size ? filterState.types : null;
   const countries = filterState.countries?.size ? filterState.countries : null;
   // areas/networks not available in GeoJSON; skip those filters in fallback mode.
@@ -673,6 +675,7 @@ function filterFallback(filterState) {
   const q = (filterState.q || '').toLowerCase();
   return fallbackFeatures.filter((feat) => {
     const p = feat.properties;
+    if (scope && !scope.test({ ...p, lng: feat.geometry?.coordinates?.[0] })) return false;
     if (types && !types.has(p.type)) return false;
     if (countries && !countries.has(p.country)) return false;
     if (spheres) {
