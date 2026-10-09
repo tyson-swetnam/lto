@@ -8,7 +8,9 @@ Inputs
                                         Resources Hub, as facility rows
   data/seed/arid_projects.csv           projects and sub-projects
   data/seed/arid_people.csv             one row per real person, with the
-                                        spellings the site uses for them
+                                        spellings the site uses for them,
+                                        and each ORCID with the basis on
+                                        which it was accepted
 
 Writes (idempotent — re-running replaces this script's own rows only)
   networks             the `arid-unm` vocab row
@@ -213,6 +215,9 @@ def load_people(conn, site: dict, arid_fid: str) -> dict[str, str]:
             made += 1
         given, family = split_name(name)
         e = extra.get(name, {})
+        # The seed's homepage is a fallback for people the ARID site names
+        # without linking anywhere.
+        homepage = e.get("homepage_url") or p.get("homepage_url") or None
         conn.execute(
             """INSERT INTO people (person_id, name, name_family, name_given, orcid,
                                    openalex_id, google_scholar_id, homepage_url,
@@ -227,7 +232,7 @@ def load_people(conn, site: dict, arid_fid: str) -> dict[str, str]:
                    notes             = COALESCE(excluded.notes, people.notes),
                    updated_at        = now()""",
             [pid, name, family, given, p["orcid"] or None, p["openalex_id"] or None,
-             p["google_scholar_id"] or None, e.get("homepage_url"), e.get("photo_url"),
+             p["google_scholar_id"] or None, homepage, e.get("photo_url"),
              p["notes"] or None],
         )
         lookup[name.lower()] = pid

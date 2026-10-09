@@ -72,8 +72,11 @@ from a fetched page or from a hand-reviewed seed that cites one.
 - A center whose own page gives no street address is placed at the UNM
   campus point and its `hq_address` says "campus-level".
 - ORCID / OpenAlex ids are added to `arid_people.csv` only after the
-  strict resolver (`enrich_people_orcid.py`) or a human confirms them. A
-  wrong id is worse than a missing one.
+  strict resolver (`enrich_people_orcid.py`) or a human confirms them, and
+  `orcid_basis` records which: name plus employer on the ORCID record, a
+  sole name match whose employer was then checked by hand, or a sole name
+  match whose works were compared with the person's UNM profile. A wrong
+  id is worse than a missing one.
 
 ## Known landmarks
 
