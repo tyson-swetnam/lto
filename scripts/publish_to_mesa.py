@@ -24,17 +24,40 @@ What a publish is
 3.  **Stage** — copies parquet/, facilities.geojson, public/cache/*.json,
     schema/vocab/* (+ data/vocab_crosswalk/*.csv if present), docs/*.md
     into ``.mesa_publish/`` and writes ``MANIFEST.json`` (per-file sha256 +
-    bytes, git commit, branch, UTC timestamp, table count, lake snapshot).
-    The staging dir contains no ``.git`` by construction — the CSI/FUSE
-    mount must never see git metadata.
+    bytes, git commit, branch, UTC timestamp, table count, lake snapshot)
+    and ``TABLES.json`` (per table: description, kind, generating script,
+    row count, columns — from ``schema/table_descriptions.csv`` and the
+    parquet itself). The staging dir contains no ``.git`` by construction
+    — the CSI/FUSE mount must never see git metadata.
 4.  **Upload** — ``gocmd sync .mesa_publish i:/iplant/home/tswetnam/lto
     --no_root`` (differential: unchanged files are skipped, so re-runs are
     idempotent). ``--freeze`` additionally uploads a frozen copy to
     ``snapshots/<YYYYMMDD>-<shortsha>/``.
-5.  **Stamp** — prints the ``lto.publish.*`` AVU set for the collection
-    root. A Python script cannot call MCP tools; the operator (usually
-    Claude) applies them with one batched ``ds_add_avus`` call, which the
-    MESA server mirrors into ``.mesa/ducklake/`` as the publish history.
+5.  **Stamp** — writes ``.mesa_publish_avus.json``: the ``lto.publish.*``
+    set for the collection root and an ``lto.table.*`` set for every
+    parquet file. A Python script cannot call MCP tools; the operator
+    (usually Claude) applies each set with one batched ``ds_add_avus``
+    call, which mesa-mcp mirrors into ``.mesa/ducklake/`` as one snapshot.
+
+AVU rules this script follows
+-----------------------------
+* **iRODS adds, it never replaces.** Writing a new ``lto.publish.commit``
+  leaves the old one in place. Before stamping, delete the previous
+  ``lto.publish.*`` values from the root (``ds_delete_avu``), or they
+  pile up; six publishes once left six sets.
+* **Table AVUs hold only what does not change between publishes** —
+  name, description, kind, generator, column names. Re-applying an
+  unchanged value is a no-op. Row counts and checksums change on every
+  publish, so they live in ``TABLES.json`` and ``MANIFEST.json`` instead
+  of becoming stale duplicate AVUs. When a description or column list
+  does change, delete the old value on that file first.
+* **Keep AVU values short.** Writes with values near 900 characters lost
+  their server response through mesa-mcp (the write landed, the DuckLake
+  mirror did not). Column lists are capped at ``AVU_VALUE_MAX``.
+* **History needs the catalog.** mesa-mcp mirrors AVU writes only for a
+  project registered in its DuckLake catalog. That catalog is a local
+  file per machine (``~/.mesa/ducklake/catalog.duckdb``): on a new
+  machine run ``mesa_ducklake_init_project`` once (idempotent) first.
 
 Usage::
 
@@ -64,6 +87,9 @@ DOCS_DIR = ROOT / "docs"
 LAKE_CATALOG = ROOT / "db" / "lto_lake.ducklake"
 LAKE_DATA = ROOT / "db" / "ducklake_data"
 IRODS_DEST = "i:/iplant/home/tswetnam/lto"
+TABLE_DESCRIPTIONS = ROOT / "schema" / "table_descriptions.csv"
+AVU_PLAN = ROOT / ".mesa_publish_avus.json"
+AVU_VALUE_MAX = 400
 
 
 def sh(*args: str) -> str:
@@ -83,6 +109,72 @@ def export_tables_list() -> list[str]:
     raise RuntimeError("TABLES list not found in scripts/export_parquet.py")
 
 
+def table_descriptions() -> dict[str, dict]:
+    import csv
+
+    with TABLE_DESCRIPTIONS.open(newline="") as fh:
+        return {r["table"]: r for r in csv.DictReader(fh)}
+
+
+def table_catalog(tables: list[str]) -> dict[str, dict]:
+    """Per-table facts for TABLES.json: curated text + what the parquet says."""
+    import duckdb
+
+    desc = table_descriptions()
+    conn = duckdb.connect()
+    out = {}
+    for t in tables:
+        f = PARQUET_DIR / f"{t}.parquet"
+        cols = [r[0] for r in conn.execute(
+            f"DESCRIBE SELECT * FROM read_parquet('{f}')").fetchall()]
+        rows = conn.execute(f"SELECT COUNT(*) FROM read_parquet('{f}')").fetchone()[0]
+        out[t] = {
+            "description": desc[t]["description"],
+            "kind": desc[t]["kind"],
+            "generator": desc[t]["generator"],
+            "rows": rows,
+            "columns": cols,
+        }
+    return out
+
+
+def capped(value: str) -> str:
+    if len(value) <= AVU_VALUE_MAX:
+        return value
+    return value[:AVU_VALUE_MAX].rsplit(",", 1)[0] + ", …"
+
+
+def avu_plan(manifest: dict, catalog: dict[str, dict], manifest_sha: str) -> dict:
+    """What the operator applies with ds_add_avus, one call per target."""
+    root = IRODS_DEST[2:]
+    plan = {
+        "note": "Apply each target with ONE ds_add_avus call. Delete the root's "
+                "previous lto.publish.* values first; see this script's docstring.",
+        "root": {
+            "target": root,
+            "avus": [
+                {"attribute": "lto.publish.commit", "value": manifest["git_commit"]},
+                {"attribute": "lto.publish.timestamp", "value": manifest["timestamp_utc"]},
+                {"attribute": "lto.publish.manifest_sha256", "value": manifest_sha},
+                {"attribute": "lto.publish.tables", "value": str(manifest["table_count"])},
+            ],
+        },
+        "tables": [],
+    }
+    for t, info in catalog.items():
+        plan["tables"].append({
+            "target": f"{root}/parquet/{t}.parquet",
+            "avus": [
+                {"attribute": "lto.table.name", "value": t},
+                {"attribute": "lto.table.description", "value": info["description"]},
+                {"attribute": "lto.table.kind", "value": info["kind"]},
+                {"attribute": "lto.table.generator", "value": info["generator"]},
+                {"attribute": "lto.table.columns", "value": capped(", ".join(info["columns"]))},
+            ],
+        })
+    return plan
+
+
 def preflight() -> list[str]:
     tables = export_tables_list()
     on_disk = {p.stem for p in PARQUET_DIR.glob("*.parquet")}
@@ -96,6 +188,14 @@ def preflight() -> list[str]:
     for f in [GEOJSON, CACHE_DIR / "browse_cards.json", CACHE_DIR / "people_cards.json"]:
         if not f.exists():
             problems.append(f"missing publishable: {f.relative_to(ROOT)}")
+    described = set(table_descriptions())
+    undescribed = sorted(set(tables) - described)
+    if undescribed:
+        problems.append(f"tables with no row in {TABLE_DESCRIPTIONS.relative_to(ROOT)}: "
+                        f"{undescribed}")
+    orphaned = sorted(described - set(tables))
+    if orphaned:
+        problems.append(f"{TABLE_DESCRIPTIONS.name} describes tables not in TABLES: {orphaned}")
     if problems:
         for p in problems:
             print(f"[preflight] FAIL {p}", file=sys.stderr)
@@ -135,7 +235,8 @@ def build_local_lake(tables: list[str]) -> str | None:
         return None
 
 
-def stage(tables: list[str], staging: Path, lake_snapshot: str | None) -> dict:
+def stage(tables: list[str], staging: Path, lake_snapshot: str | None,
+          catalog: dict[str, dict]) -> dict:
     if staging.exists():
         shutil.rmtree(staging)
     (staging / "parquet").mkdir(parents=True)
@@ -157,6 +258,7 @@ def stage(tables: list[str], staging: Path, lake_snapshot: str | None) -> dict:
             shutil.copyfile(f, staging / "vocab" / f.name)
     for f in DOCS_DIR.glob("*.md"):
         shutil.copyfile(f, staging / "docs" / f.name)
+    (staging / "TABLES.json").write_text(json.dumps(catalog, indent=2) + "\n")
 
     files = sorted(p for p in staging.rglob("*") if p.is_file())
     manifest = {
@@ -180,6 +282,12 @@ def stage(tables: list[str], staging: Path, lake_snapshot: str | None) -> dict:
 
 
 def upload(staging: Path, freeze: bool, manifest: dict) -> None:
+    if shutil.which("gocmd") is None:
+        raise SystemExit(
+            "[upload] gocmd is not installed. mesa-mcp cannot upload files itself "
+            "(ds_upload_file only returns instructions), so install GoCommands "
+            "(https://github.com/cyverse/gocommands), run `gocmd init` once, and "
+            f"re-run. Staged files are in {staging}.")
     subprocess.run(
         ["gocmd", "sync", str(staging), IRODS_DEST, "--no_root", "--no_hash"],
         check=True,
@@ -206,26 +314,26 @@ def main() -> int:
     args = ap.parse_args()
 
     tables = preflight()
+    catalog = table_catalog(tables)
     lake_snapshot = None if args.skip_lake else build_local_lake(tables)
-    manifest = stage(tables, args.staging, lake_snapshot)
-
-    if args.dry_run:
-        print("[dry-run] skipping upload + stamp")
-        return 0
-
-    upload(args.staging, args.freeze, manifest)
+    manifest = stage(tables, args.staging, lake_snapshot, catalog)
 
     manifest_sha = hashlib.sha256(
         (args.staging / "MANIFEST.json").read_bytes()
     ).hexdigest()
-    print("\n[stamp] apply these AVUs to /iplant/home/tswetnam/lto with ONE "
-          "batched ds_add_avus call (one call = one .mesa/ducklake snapshot):")
-    print(json.dumps({
-        "lto.publish.commit": manifest["git_commit"],
-        "lto.publish.timestamp": manifest["timestamp_utc"],
-        "lto.publish.manifest_sha256": manifest_sha,
-        "lto.publish.tables": str(manifest["table_count"]),
-    }, indent=2))
+    AVU_PLAN.write_text(json.dumps(avu_plan(manifest, catalog, manifest_sha), indent=2) + "\n")
+    print(f"[stamp] AVU plan for the root and {len(catalog)} tables → "
+          f"{AVU_PLAN.relative_to(ROOT)}")
+
+    if args.dry_run:
+        print("[dry-run] skipping upload; the AVU plan above is for inspection only")
+        return 0
+
+    upload(args.staging, args.freeze, manifest)
+
+    print("\n[stamp] now apply the AVU plan through mesa-mcp: delete the root's "
+          "previous lto.publish.* values, then one ds_add_avus call per target "
+          "(one call = one .mesa/ducklake snapshot).")
     return 0
 
 
