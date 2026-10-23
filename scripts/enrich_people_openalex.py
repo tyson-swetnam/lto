@@ -15,7 +15,8 @@ Author record via (in priority order):
 For each match we then fetch up to N publications, co-authors, and
 concepts (research topics), writing into:
 
-  * people.openalex_id / research_interests     (update)
+  * people.openalex_id                           (update)
+  * people.research_interests                   (FILL-ONLY, see below)
   * publications                                (upsert by doi/openalex_id)
   * authorship                                  (link person ↔ pub)
   * person_areas                                (weighted links to
@@ -26,6 +27,16 @@ concepts (research topics), writing into:
                                                  openalex_to_area.csv
                                                  when present, else we
                                                  just skip topic writes)
+
+research_interests is fill-only. It is written only when the stored
+value is empty, or is itself an earlier OpenAlex-generated list (see
+ri_overwritable). A value with a non-OpenAlex research_interests_source_url
+or a hand-written value is never touched. The 2026-10-23 run overwrote 122
+curated values (e.g. "scaling of watershed rainfall-runoff response; …")
+with generic x_concepts ("Hydrology (agriculture), Environmental science,
+Geology, …"); this rule exists so that cannot recur. When it writes, the
+value is the author's top-5 OpenAlex topics by count (x_concepts only as a
+fallback) and research_interests_source_url is the author's OpenAlex URL.
 
 Adapted from the UNM knowledge-map enrichment pipeline pattern.
 
@@ -77,14 +88,106 @@ def session() -> requests.Session:
     return openalex_auth.openalex_session(user_agent=UA)
 
 
+# (person_id, openalex_id) pairs a review found to be the wrong person, or
+# a person merged with others. The roster lives in
+# wipe_misattributed_identifiers.py (BAD_BY_ID); an author on it is never
+# attached to that person again, whichever route resolved it.
+from wipe_misattributed_identifiers import bad_openalex_pairs  # noqa: E402
+
+BAD_PAIRS = bad_openalex_pairs()
+
+
+def _is_bad(person: dict, author: dict) -> bool:
+    short = (author.get("id") or "").rstrip("/").split("/")[-1].upper()
+    if (person["person_id"], short) in BAD_PAIRS:
+        print(f"    [blocked] {person.get('name')}: {short} is on the "
+              "misattribution roster (wipe_misattributed_identifiers.py)")
+        return True
+    return False
+
+
+# --- research_interests: fill-only -------------------------------------
+#
+# Earlier runs stored ", ".join(x_concepts[:5]) with NO source URL, so a
+# previous OpenAlex value cannot be told apart by provenance alone. It is
+# recognised by shape instead: no source URL, an openalex_id on the row
+# (this script always set both together; the wipe scripts NULL both), and
+# 1-5 ", "-separated terms that are each, case-sensitively, an OpenAlex
+# concept display name. Against lake snapshot 1 (before the 2026-10-23
+# run) that matches 68 rows, all generic concept lists, and none of the
+# 27 hand-written source-less values on rows with an openalex_id
+# ("ichthyoplankton, SEAMAP, larval fish ecology Gulf of Mexico", …):
+# curated keywords are lower-case phrases, concept names are
+# capitalised. New writes carry the author's OpenAlex URL as their
+# source, so from now on provenance alone identifies them.
+OPENALEX_HOSTS = {"openalex.org", "api.openalex.org"}
+# OpenAlex's 19 level-0 concepts: x_concepts always leads with these, so
+# they are recognised even if publication_topics holds no concept rows.
+LEVEL0_CONCEPTS = {
+    "Art", "Biology", "Business", "Chemistry", "Computer science", "Economics",
+    "Engineering", "Environmental science", "Geography", "Geology", "History",
+    "Materials science", "Mathematics", "Medicine", "Philosophy", "Physics",
+    "Political science", "Psychology", "Sociology",
+}
+
+
+def is_openalex_url(url: str | None) -> bool:
+    from urllib.parse import urlparse                  # noqa: PLC0415
+    host = (urlparse((url or "").strip()).hostname or "").lower()
+    return host in OPENALEX_HOSTS
+
+
+def load_concept_vocab(conn) -> set[str]:
+    """Every OpenAlex concept display name the lake has seen."""
+    rows = conn.execute(
+        "SELECT DISTINCT concept_name FROM publication_topics "
+        "WHERE kind = 'concept' AND concept_name IS NOT NULL").fetchall()
+    return LEVEL0_CONCEPTS | {r[0] for r in rows}
+
+
+def looks_like_concept_list(value: str, vocab: set[str]) -> bool:
+    terms = value.split(", ")
+    return 1 <= len(terms) <= 5 and all(t in vocab for t in terms)
+
+
+def ri_overwritable(person: dict, vocab: set[str]) -> tuple[bool, str]:
+    """May this run write research_interests for `person`? (ok, reason)."""
+    value = (person.get("research_interests") or "").strip()
+    src = (person.get("research_interests_source_url") or "").strip()
+    if not value:
+        return True, "empty"
+    if src:
+        if is_openalex_url(src):
+            return True, "previous OpenAlex value (source URL)"
+        return False, f"curated (source {src})"
+    if (person.get("openalex_id") or "").strip() and looks_like_concept_list(value, vocab):
+        return True, "previous OpenAlex concept list (no source URL)"
+    return False, "curated (no source URL, not an OpenAlex concept list)"
+
+
+def interests_from_author(author: dict) -> str | None:
+    """Top-5 OpenAlex topics by count; legacy x_concepts only if the author
+    record has no topics. x_concepts are level-0/1 concepts ("Biology,
+    Environmental science, Geography") and say little about a person.
+    Topics are joined with '; ' because a topic name may contain a comma."""
+    topics = [t for t in (author.get("topics") or []) if t.get("display_name")]
+    if topics:
+        topics.sort(key=lambda t: -(t.get("count") or 0))  # stable on ties
+        return "; ".join(t["display_name"] for t in topics[:5])
+    names = [c.get("display_name") for c in (author.get("x_concepts") or [])[:5]
+             if c.get("display_name")]
+    return ", ".join(names) or None
+
+
 def resolve_author(sess: requests.Session, person: dict) -> dict | None:
     """Try openalex_id → ORCID → name+institution. Returns the author JSON
-    or None."""
+    or None. An author on the misattribution roster for this person is
+    never returned."""
     oa_id = (person.get("openalex_id") or "").strip()
     if oa_id:
         r = sess.get(f"{API}/authors/{oa_id}")
         if r.ok:
-            return r.json()
+            return None if _is_bad(person, r.json()) else r.json()
 
     orcid = (person.get("orcid") or "").strip()
     if orcid:
@@ -93,7 +196,7 @@ def resolve_author(sess: requests.Session, person: dict) -> dict | None:
         if r.ok:
             hits = r.json().get("results", [])
             if hits:
-                return hits[0]
+                return None if _is_bad(person, hits[0]) else hits[0]
 
     # Name-only resolution is DELIBERATELY DISABLED. It used to fall back
     # to /authors?search=<name>&per_page=1, which returns the OpenAlex
@@ -161,8 +264,13 @@ def _short_concept_id(raw: str) -> str | None:
 # lake write. Lookups read the lake and the stage together, so a paper
 # staged for one author is reused, not re-inserted, for a co-author.
 STAGE_DDL = [
+    # ri_before / ri_src_before: the values ri_overwritable() judged. The
+    # write only lands if the row still holds them at commit time, so an
+    # edit made while this run was talking to the API is not overwritten.
     "CREATE OR REPLACE TEMP TABLE _stage_people "
-    "(person_id VARCHAR, openalex_id VARCHAR, research_interests VARCHAR)",
+    "(person_id VARCHAR, openalex_id VARCHAR, research_interests VARCHAR, "
+    "research_interests_source_url VARCHAR, ri_before VARCHAR, "
+    "ri_src_before VARCHAR)",
     # Only the columns staged below: merge_upsert inserts every column the
     # stage shares with the target, so a staged created_at (NULL) would
     # override the column's DEFAULT CURRENT_TIMESTAMP.
@@ -190,15 +298,26 @@ def write_stage(conn) -> dict:
     ON CONFLICT DO NOTHING (authorship, publication_topics) becomes an
     insert-only MERGE where the first staged row wins, as before.
     """
-    # Same expressions as the old per-person UPDATE.
-    conn.execute("""
+    # research_interests is fill-only: a staged value is non-NULL only when
+    # ri_overwritable() allowed it, and it lands only if the row still holds
+    # the value that was judged.
+    ri_ok = ("NULLIF(s.research_interests, '') IS NOT NULL "
+             "AND people.research_interests IS NOT DISTINCT FROM s.ri_before "
+             "AND people.research_interests_source_url IS NOT DISTINCT FROM s.ri_src_before")
+    n_ri = lto_db.scalar(conn, f"SELECT count(*) FROM people JOIN _stage_people s "
+                               f"ON people.person_id = s.person_id WHERE {ri_ok}")
+    conn.execute(f"""
         UPDATE people SET openalex_id = s.openalex_id,
-               research_interests = COALESCE(NULLIF(s.research_interests, ''),
-                                             people.research_interests),
+               research_interests = CASE WHEN {ri_ok} THEN s.research_interests
+                                         ELSE people.research_interests END,
+               research_interests_source_url =
+                   CASE WHEN {ri_ok} THEN s.research_interests_source_url
+                        ELSE people.research_interests_source_url END,
                updated_at = now()
         FROM   _stage_people s WHERE people.person_id = s.person_id
     """)
-    out = {"people": lto_db.scalar(conn, "SELECT count(*) FROM _stage_people")}
+    out = {"people": lto_db.scalar(conn, "SELECT count(*) FROM _stage_people"),
+           "research_interests": n_ri}
     out["publications"] = lto_db.merge_upsert(
         conn, "publications", ["publication_id"], "_stage_publications",
         insert_only=True)
@@ -334,20 +453,28 @@ def upsert_publication(conn, work: dict) -> str | None:
 
 
 def enrich_person(conn, sess: requests.Session, person: dict,
-                  max_pubs: int, dry: bool) -> dict:
+                  max_pubs: int, dry: bool, vocab: set[str] | None = None) -> dict:
     result = {"person_id": person["person_id"], "works_found": 0, "upserted": 0}
     author = resolve_author(sess, person)
     if not author:
         return result
     author_oa = author["id"]
     author_oa_short = author_oa.split("/")[-1]
-    interests = ", ".join(
-        (c.get("display_name") or "") for c in (author.get("x_concepts") or [])[:5]
-    )
+    interests = interests_from_author(author)
+    ri_ok, why = ri_overwritable(person, vocab or LEVEL0_CONCEPTS)
+    result["research_interests"] = "fill" if (ri_ok and interests) else "keep"
+    if interests and ri_ok:
+        print(f"    [interests] fill ({why}): {interests}")
+    elif interests:
+        print(f"    [interests] keep, {why}")
+    staged_ri = interests if ri_ok else None
     if not dry:
         conn.execute(
-            "INSERT INTO _stage_people VALUES (?, ?, ?)",
-            [person["person_id"], author_oa_short, interests],
+            "INSERT INTO _stage_people VALUES (?, ?, ?, ?, ?, ?)",
+            [person["person_id"], author_oa_short, staged_ri,
+             f"https://openalex.org/{author_oa_short}" if staged_ri else None,
+             person.get("research_interests"),
+             person.get("research_interests_source_url")],
         )
 
     works = fetch_works(sess, author_oa, max_pubs)
@@ -406,12 +533,15 @@ def main() -> int:
     # versions than .fetchdf() (pandas bridge varies) and avoids a
     # hard pandas dependency on the user's machine.
     rows = conn.execute(
-        "SELECT person_id, name, orcid, openalex_id FROM people ORDER BY name"
+        "SELECT person_id, name, orcid, openalex_id, research_interests, "
+        "research_interests_source_url FROM people ORDER BY name"
     ).fetchall()
     people = [
-        {"person_id": r[0], "name": r[1], "orcid": r[2], "openalex_id": r[3]}
+        {"person_id": r[0], "name": r[1], "orcid": r[2], "openalex_id": r[3],
+         "research_interests": r[4], "research_interests_source_url": r[5]}
         for r in rows
     ]
+    vocab = load_concept_vocab(conn)
     if args.people_csv:
         import csv                                        # noqa: PLC0415
         with args.people_csv.open(newline="") as fh:
@@ -422,11 +552,13 @@ def main() -> int:
     print(f"[enrich] processing {len(people)} people"
           f"{'  (dry-run)' if args.dry_run else ''}")
 
-    totals = {"works_found": 0, "upserted": 0, "topics": 0, "skipped": 0}
+    totals = {"works_found": 0, "upserted": 0, "topics": 0, "skipped": 0,
+              "ri_fill": 0}
     try:
         for i, p in enumerate(people, 1):
             try:
-                r = enrich_person(conn, sess, p, args.max_pubs, args.dry_run)
+                r = enrich_person(conn, sess, p, args.max_pubs, args.dry_run, vocab)
+                totals["ri_fill"] += r.get("research_interests") == "fill"
                 totals["works_found"] += r["works_found"]
                 totals["upserted"] += r["upserted"]
                 totals["topics"] += r.get("topics_written", 0)
@@ -443,7 +575,8 @@ def main() -> int:
 
     print(f"[done] works_found={totals['works_found']}  "
           f"upserted={totals['upserted']}  topics={totals['topics']}  "
-          f"skipped={totals['skipped']}")
+          f"skipped={totals['skipped']}  "
+          f"research_interests_fill={totals['ri_fill']}")
     if not args.dry_run:
         with lto_db.transaction(
                 conn, f"enrich_people_openalex: {len(people)} people, "
@@ -451,6 +584,7 @@ def main() -> int:
                       + (f", from {args.people_csv.name}" if args.people_csv else "")):
             out = write_stage(conn)
         print(f"[lake] people={out['people']}  "
+              f"research_interests={out['research_interests']}  "
               + "  ".join(f"{t}={out[t]}" for t in
                           ("publications", "authorship", "publication_topics"))
               + "  (run export_parquet.py to publish)")
