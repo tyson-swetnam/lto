@@ -160,6 +160,9 @@ def avu_plan(manifest: dict, catalog: dict[str, dict], manifest_sha: str) -> dic
         },
         "tables": [],
     }
+    if manifest.get("lake"):
+        plan["root"]["avus"].append({"attribute": "lto.publish.lake_snapshot",
+                                     "value": str(manifest["lake"]["snapshot_id"])})
     for t, info in catalog.items():
         plan["tables"].append({
             "target": f"{root}/parquet/{t}.parquet",
@@ -231,9 +234,7 @@ def lake_snapshot(catalog: Path | None, data: Path | None) -> dict:
     return snap
 
 
-def stage(tables: list[str], staging: Path, lake: dict | None) -> dict:
-
-def stage(tables: list[str], staging: Path, lake_snapshot: str | None,
+def stage(tables: list[str], staging: Path, lake: dict | None,
           catalog: dict[str, dict]) -> dict:
     if staging.exists():
         shutil.rmtree(staging)
@@ -330,10 +331,8 @@ def main() -> int:
                   "[lake] build it (scripts/rebuild_lake_from_parquet.py) or pass "
                   "--skip-lake to publish without lake provenance.", file=sys.stderr)
             return 1
-    manifest = stage(tables, args.staging, lake)
     catalog = table_catalog(tables)
-    lake_snapshot = None if args.skip_lake else build_local_lake(tables)
-    manifest = stage(tables, args.staging, lake_snapshot, catalog)
+    manifest = stage(tables, args.staging, lake, catalog)
 
     manifest_sha = hashlib.sha256(
         (args.staging / "MANIFEST.json").read_bytes()
@@ -348,19 +347,6 @@ def main() -> int:
 
     upload(args.staging, args.freeze, manifest)
 
-    manifest_sha = hashlib.sha256(
-        (args.staging / "MANIFEST.json").read_bytes()
-    ).hexdigest()
-    print("\n[stamp] apply these AVUs to /iplant/home/tswetnam/lto with ONE "
-          "batched ds_add_avus call (one call = one .mesa/ducklake snapshot):")
-    print(json.dumps({
-        "lto.publish.commit": manifest["git_commit"],
-        "lto.publish.timestamp": manifest["timestamp_utc"],
-        "lto.publish.manifest_sha256": manifest_sha,
-        "lto.publish.tables": str(manifest["table_count"]),
-        **({"lto.publish.lake_snapshot": str(manifest["lake"]["snapshot_id"])}
-           if manifest.get("lake") else {}),
-    }, indent=2))
     print("\n[stamp] now apply the AVU plan through mesa-mcp: delete the root's "
           "previous lto.publish.* values, then one ds_add_avus call per target "
           "(one call = one .mesa/ducklake snapshot).")
