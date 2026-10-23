@@ -22,7 +22,7 @@ facility_acronym,facility_name_like,person_name,role,title,is_key_personnel,orci
 # Large US marine research institutions ────────────────────────────────
 WHOI,,Peter de Menocal,President & Director,Eleventh President & Director,true,,,,https://www.whoi.edu/know-your-ocean/explorers/peter-de-menocal/,press-release,https://www.whoi.edu/press-room/news-release/woods-hole-oceanographic-institution-names-new-president-and-director/,high
 SIO,,Meenakshi Wadhwa,Director,"Director, Vice Chancellor for Marine Sciences, Dean of the School of Marine, Earth, and Atmospheric Sciences",true,,,,https://scripps.ucsd.edu/about/leadership,facility-webpage,https://today.ucsd.edu/story/meet-the-new-director-of-scripps-institution-of-oceanography,high
-RSMAES,,Roni Avissar,Dean,Dean of the Rosenstiel School of Marine Atmospheric and Earth Science,true,,,,https://www.earth.miami.edu/,facility-webpage,https://en.wikipedia.org/wiki/Rosenstiel_School_of_Marine,_Atmospheric,_and_Earth_Science,high
+RSMAES,,Roni Avissar,Dean,Dean of the Rosenstiel School of Marine Atmospheric and Earth Science,true,,,,https://www.earth.miami.edu/,facility-webpage,"https://en.wikipedia.org/wiki/Rosenstiel_School_of_Marine,_Atmospheric,_and_Earth_Science",high
 VIMS,,Derek Aday,Dean & Director,Dean and Director of the Virginia Institute of Marine Science,true,,,,https://www.vims.edu/about/leadership_admin/dean/,facility-webpage,https://www.vims.edu/about/leadership_admin/dean/,high
 #
 # NOAA laboratories ────────────────────────────────────────────────────

@@ -1,0 +1,401 @@
+{
+ "batch_id": "R-PEOPLE2-LTAR-ARS-02",
+ "retrieved_at": "2026-10-22",
+ "verified_by": "adversarial-verifier 2026-10-22",
+ "facilities": [
+  {
+   "facility_id": "ded7324eac793a0a",
+   "pages_fetched": [
+    {
+     "url": "https://www.climatehubs.usda.gov/hubs/southern-plains",
+     "status": 200
+    },
+    {
+     "url": "https://www.climatehubs.usda.gov/hubs/southern-plains/about",
+     "status": 200
+    },
+    {
+     "url": "https://www.climatehubs.usda.gov/hubs/southern-plains/staff",
+     "status": 404
+    },
+    {
+     "url": "https://www.climatehubs.usda.gov/hubs/southern-plains/about/staff",
+     "status": 404
+    },
+    {
+     "url": "https://www.climatehubs.usda.gov/hubs/southern-plains/our-team",
+     "status": 404
+    },
+    {
+     "url": "https://www.climatehubs.usda.gov/hubs/southern-plains/people",
+     "status": 404
+    },
+    {
+     "url": "https://www.climatehubs.usda.gov/about/all_staff/14",
+     "status": 200
+    },
+    {
+     "url": "https://www.climatehubs.usda.gov/hubs/southern-plains/people/andres-cibils",
+     "status": 200
+    },
+    {
+     "url": "https://www.climatehubs.usda.gov/hubs/southern-plains/people/susan-eisenhour",
+     "status": 200
+    },
+    {
+     "url": "https://www.climatehubs.usda.gov/hubs/southern-plains/people/alex-krichels",
+     "status": 200
+    },
+    {
+     "url": "https://www.climatehubs.usda.gov/hubs/southern-plains/people/jean-l-steiner",
+     "status": 200
+    },
+    {
+     "url": "https://www.climatehubs.usda.gov/hubs/southern-plains/people/mati-mohammadi",
+     "status": 200
+    },
+    {
+     "url": "https://www.climatehubs.usda.gov/hubs/southern-plains/people/xavier-jaime",
+     "status": 200
+    },
+    {
+     "url": "https://www.climatehubs.usda.gov/hubs/southern-plains/partners",
+     "status": 200
+    },
+    {
+     "url": "https://www.climatehubs.usda.gov/hubs/southern-plains/news",
+     "status": 200
+    },
+    {
+     "url": "https://climatehubs.usda.gov/sites/default/files/Southern%20Plains%20Climate%20Hub%20Newsletter-Sep.-Oct.%202023.pdf",
+     "status": 200
+    },
+    {
+     "url": "https://www.climatehubs.usda.gov/content/southern-plains-vulnerability-assessment",
+     "status": 200
+    },
+    {
+     "url": "https://southernclimate.org/wp-content/uploads/SCIPP_Monitor_September_2016.pdf",
+     "status": 200
+    },
+    {
+     "url": "https://scisoc.confex.com/scisoc/2016am/webprogram/Handout/Paper104060/brown%20tri-societies%20Nov2016.pdf",
+     "status": 200
+    },
+    {
+     "url": "https://okepscor.org/sites/default/files/u6/Adaptation_to_Climate_Variability_the_Role_of_the_USDA_Southern_Plains_Climate_Hub-Presenter_Jean.Stein_.pdf",
+     "status": 404
+    },
+    {
+     "url": "https://snr.unl.edu/aboutus/who/people/faculty-member.aspx?pid=10",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-4733-6463/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-6922-6476/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0003-3779-8717/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0003-0848-7434/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0003-0787-2242/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-7924-5232/employments",
+     "status": 200
+    }
+   ],
+   "notes": "Hosted by USDA ARS Grazinglands Research Laboratory, El Reno OK. Current regional staff list (all_staff/14): Cibils (Director), Eisenhour (Coordinator), Krichels (Agency Co-Lead, USFS), Mohammadi and Jaime (Fellows), Steiner (Professional Staff). Cibils' ORCID gives Director start 2022. CONFLICT: Krichels' ORCID record ends his USFS RMRS employment in 2026 and lists a 2026 University of Georgia assistant professorship, so the hub page's FS Co-Lead listing may be out of date (confidence low). Leadership history: 2016 poster timeline names an interim director (2014), an acting director (2015) and a new director (2016) without names; the vulnerability assessment page names Jean Steiner as Acting Lead and Jeanne Schneider as formerly Lead; a 2016 SCIPP partner newsletter names David Brown as Director. Existing row Clay Pope: the Sep/Oct 2023 hub newsletter says he left after ~10 years of outreach work (since 2014) to join The Nature Conservancy; no named successor for outreach, so current_holder_key left null. Existing row James R. Brandle: not named on any Southern Plains Hub page fetched; his UNL profile URL now returns 'person not found'. VERIFIER 2026-10-22: all 10 affiliation/verification sources re-fetched (HTTP 200) and evidence confirmed; all_staff/14 h1 reads 'All Southern Plains Hub Staff'. Krichels kept at low confidence: hub page still lists him as FS Co-Lead but his ORCID shows RMRS employment ended 2026 and a 2026 University of Georgia post. David Brown's middle initial removed (not on source). Clay Pope role 'coordinator' is a mapping of his outreach-consultant work, so medium. Brandle UNL page re-fetched: 200 but reports 'not found'."
+  }
+ ],
+ "people": [
+  {
+   "key": "andres-cibils",
+   "name": "Andrés Cibils",
+   "name_given": "Andrés",
+   "name_family": "Cibils",
+   "orcid": "0000-0002-4733-6463",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-4733-6463/employments",
+   "homepage_url": "https://www.climatehubs.usda.gov/hubs/southern-plains/people/andres-cibils",
+   "bio": "Rangeland scientist who directs the USDA Southern Plains Climate Hub, based at the ARS Grazinglands Research Laboratory in El Reno, Oklahoma. Earlier he was a USDA-NIFA National Program Leader for climate change and a range science professor at New Mexico State University, studying heritage Criollo cattle and precision ranching on arid rangelands.",
+   "bio_source_url": "https://www.climatehubs.usda.gov/hubs/southern-plains/people/andres-cibils",
+   "research_interests": "resilient rangeland-based livestock systems; rangeland ecology; climate-smart agriculture",
+   "research_interests_source_url": "https://www.climatehubs.usda.gov/hubs/southern-plains/people/andres-cibils",
+   "existing_person_id": null
+  },
+  {
+   "key": "susan-eisenhour",
+   "name": "Susan Eisenhour",
+   "name_given": "Susan",
+   "name_family": "Eisenhour",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.climatehubs.usda.gov/hubs/southern-plains/people/susan-eisenhour",
+   "bio": "Program Specialist and coordinator of the USDA Southern Plains Climate Hub at ARS in El Reno, Oklahoma, previously a program support assistant at the host Grazinglands Research Laboratory. She coordinates Hub partnerships and its K-12 education work with STEM partners, drawing on experience in project coordination, grant management and workshop organization.",
+   "bio_source_url": "https://www.climatehubs.usda.gov/hubs/southern-plains/people/susan-eisenhour",
+   "research_interests": "K-12 outreach; community engagement",
+   "research_interests_source_url": "https://www.climatehubs.usda.gov/hubs/southern-plains/people/susan-eisenhour",
+   "existing_person_id": null
+  },
+  {
+   "key": "alex-krichels",
+   "name": "Alex Krichels",
+   "name_given": "Alexander",
+   "name_family": "Krichels",
+   "orcid": "0000-0002-6922-6476",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-6922-6476/employments",
+   "homepage_url": "https://www.climatehubs.usda.gov/hubs/southern-plains/people/alex-krichels",
+   "bio": "Dryland ecosystem ecologist named Forest Service co-lead of the Hub while a research ecologist in the USFS Rocky Mountain Research Station dryland ecosystems program in Albuquerque. Trained at the University of Illinois, with a UC Riverside postdoc, he studies how drought, fire and nitrogen deposition alter dryland carbon and nitrogen cycling.",
+   "bio_source_url": "https://www.climatehubs.usda.gov/hubs/southern-plains/people/alex-krichels",
+   "research_interests": "dryland ecosystems; carbon and nitrogen cycling; drought, wildfire and nitrogen deposition disturbance",
+   "research_interests_source_url": "https://www.climatehubs.usda.gov/hubs/southern-plains/people/alex-krichels",
+   "existing_person_id": null
+  },
+  {
+   "key": "jean-steiner",
+   "name": "Jean L. Steiner",
+   "name_given": "Jean",
+   "name_family": "Steiner",
+   "orcid": "0000-0003-3779-8717",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0003-3779-8717/employments",
+   "homepage_url": "https://www.climatehubs.usda.gov/hubs/southern-plains/people/jean-l-steiner",
+   "bio": "Agroclimatologist with a Kansas State University PhD who spent most of her career as a USDA-ARS researcher, ending as head of the ARS Grazinglands Research Laboratory at El Reno, Oklahoma. Now a KSU adjunct professor and senior research partnerships coordinator, she studies how climate affects water and agricultural ecosystems.",
+   "bio_source_url": "https://www.climatehubs.usda.gov/hubs/southern-plains/people/jean-l-steiner",
+   "research_interests": "water resources and climate impacts in agroecosystems; evapotranspiration; crop residue management; watershed management; integrated agroecosystems",
+   "research_interests_source_url": "https://www.climatehubs.usda.gov/hubs/southern-plains/people/jean-l-steiner",
+   "existing_person_id": null
+  },
+  {
+   "key": "mati-mohammadi",
+   "name": "Mati Mohammadi",
+   "name_given": "Mati",
+   "name_family": "Mohammadi",
+   "orcid": "0000-0003-0848-7434",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0003-0848-7434/employments",
+   "homepage_url": "https://www.climatehubs.usda.gov/hubs/southern-plains/people/mati-mohammadi",
+   "bio": "Agricultural economist and postdoctoral researcher at Texas A&M University-Kingsville serving as a Southern Plains Climate Hub fellow. With a Purdue PhD, she is building system dynamics models of climate vulnerability for regional beef and wheat production and supply chains.",
+   "bio_source_url": "https://www.climatehubs.usda.gov/hubs/southern-plains/people/mati-mohammadi",
+   "research_interests": "agricultural economics; system dynamics modeling; beef and wheat supply chains under climate change",
+   "research_interests_source_url": "https://www.climatehubs.usda.gov/hubs/southern-plains/people/mati-mohammadi",
+   "existing_person_id": null
+  },
+  {
+   "key": "xavier-jaime",
+   "name": "Xavier A. Jaime",
+   "name_given": "Xavier",
+   "name_family": "Jaime",
+   "orcid": "0000-0003-0787-2242",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0003-0787-2242/employments",
+   "homepage_url": "https://www.climatehubs.usda.gov/hubs/southern-plains/people/xavier-jaime",
+   "bio": "Ecologist and Texas A&M University postdoctoral associate working as a Southern Plains Climate Hub fellow, synthesizing evidence on NRCS conservation practices and greenhouse gas mitigation and modeling agrivoltaics suitability on rangelands. His doctoral work used remote sensing to study fire effects in Texas mesquite-oak savannas.",
+   "bio_source_url": "https://www.climatehubs.usda.gov/hubs/southern-plains/people/xavier-jaime",
+   "research_interests": "rangeland and fire ecology; remote sensing; conservation practices; agrivoltaics",
+   "research_interests_source_url": "https://www.climatehubs.usda.gov/hubs/southern-plains/people/xavier-jaime",
+   "existing_person_id": null
+  },
+  {
+   "key": "jeanne-schneider",
+   "name": "Jeanne M. Schneider",
+   "name_given": "Jeanne",
+   "name_family": "Schneider",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null,
+   "existing_person_id": null
+  },
+  {
+   "key": "david-brown",
+   "name": "David Brown",
+   "name_given": "David",
+   "name_family": "Brown",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null,
+   "existing_person_id": null
+  },
+  {
+   "key": "clay-pope",
+   "existing_person_id": "273f6ad65aaabb08",
+   "name": "Clay Pope",
+   "name_given": "Clay",
+   "name_family": "Pope",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Outreach consultant who carried out climate literacy outreach for the USDA Southern Plains Climate Hub from its 2014 founding until 2023 under NRCS-ARS agreements, through blogs, a podcast and regional events, before moving to partnership outreach and policy work with The Nature Conservancy in Oklahoma.",
+   "bio_source_url": "https://climatehubs.usda.gov/sites/default/files/Southern%20Plains%20Climate%20Hub%20Newsletter-Sep.-Oct.%202023.pdf",
+   "research_interests": null,
+   "research_interests_source_url": null
+  }
+ ],
+ "affiliations": [
+  {
+   "facility_id": "ded7324eac793a0a",
+   "person_key": "andres-cibils",
+   "role": "director",
+   "title": "Director, Southern Plains Climate Hub",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.climatehubs.usda.gov/about/all_staff/14",
+   "evidence": "Andrés Cibils Director",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "ded7324eac793a0a",
+   "person_key": "susan-eisenhour",
+   "role": "coordinator",
+   "title": "Program Specialist/Climate Hub Coordinator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.climatehubs.usda.gov/hubs/southern-plains/people/susan-eisenhour",
+   "evidence": "Mrs. Eisenhour is the Southern Plains Climate Hub Coordinator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "ded7324eac793a0a",
+   "person_key": "alex-krichels",
+   "role": "leadership-team",
+   "title": "FS Co-Lead (Agency Co-Lead), Research Ecologist, USFS RMRS",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.climatehubs.usda.gov/hubs/southern-plains/people/alex-krichels",
+   "evidence": "Title/Position FS Co-Lead Research Ecologist Affiliation Forest Service (FS)",
+   "confidence": "low"
+  },
+  {
+   "facility_id": "ded7324eac793a0a",
+   "person_key": "jean-steiner",
+   "role": "scientist",
+   "title": "Professional Staff (Senior Research Partnerships Coordinator, Kansas State University)",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.climatehubs.usda.gov/about/all_staff/14",
+   "evidence": "Jean L. Steiner Professional Staff",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "ded7324eac793a0a",
+   "person_key": "jean-steiner",
+   "role": "former-director",
+   "title": "Acting Lead, Southern Plains Climate Hub (also Laboratory Director, ARS Grazinglands Research Laboratory)",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.climatehubs.usda.gov/content/southern-plains-vulnerability-assessment",
+   "evidence": "Jean L. Steiner, Laboratory Director and Acting Lead, Southern Plains Climate Hub",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "ded7324eac793a0a",
+   "person_key": "mati-mohammadi",
+   "role": "scientist",
+   "title": "Climate Hub Fellow, Texas A&M University-Kingsville",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.climatehubs.usda.gov/hubs/southern-plains/people/mati-mohammadi",
+   "evidence": "Title/Position Climate Hub Fellow Texas A&M University-Kingsville",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "ded7324eac793a0a",
+   "person_key": "xavier-jaime",
+   "role": "scientist",
+   "title": "Climate Hub Fellow, Texas A&M University-College Station",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.climatehubs.usda.gov/hubs/southern-plains/people/xavier-jaime",
+   "evidence": "Title/Position Climate Hub Fellow Texas A&M University-College Station",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "ded7324eac793a0a",
+   "person_key": "jeanne-schneider",
+   "role": "former-director",
+   "title": "Lead, Southern Plains Climate Hub (former)",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.climatehubs.usda.gov/content/southern-plains-vulnerability-assessment",
+   "evidence": "Jeanne M. Schneider, Consultant, Weather Sense LLC, formerly Lead, Southern Plains Climate Hub",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "ded7324eac793a0a",
+   "person_key": "david-brown",
+   "role": "former-director",
+   "title": "Director, USDA Southern Plains Climate Hub",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://southernclimate.org/wp-content/uploads/SCIPP_Monitor_September_2016.pdf",
+   "evidence": "David Brown, Director of the USDA Southern Plains Climate Hub",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "ded7324eac793a0a",
+   "person_key": "clay-pope",
+   "role": "coordinator",
+   "title": "Outreach consultant (NRCS-ARS outreach agreement)",
+   "is_key_personnel": false,
+   "is_current": false,
+   "start_year": 2014,
+   "end_year": 2023,
+   "source_url": "https://climatehubs.usda.gov/sites/default/files/Southern%20Plains%20Climate%20Hub%20Newsletter-Sep.-Oct.%202023.pdf",
+   "evidence": "After almost 10 years with the Southern Plains Climate Hub, Clay Pope will be leaving us",
+   "confidence": "medium"
+  }
+ ],
+ "verifications": [
+  {
+   "facility_id": "ded7324eac793a0a",
+   "person_id": "273f6ad65aaabb08",
+   "existing_role": "co-PI",
+   "status": "stale",
+   "current_holder_key": null,
+   "source_url": "https://climatehubs.usda.gov/sites/default/files/Southern%20Plains%20Climate%20Hub%20Newsletter-Sep.-Oct.%202023.pdf",
+   "evidence": "After almost 10 years with the Southern Plains Climate Hub, Clay Pope will be leaving us"
+  },
+  {
+   "facility_id": "ded7324eac793a0a",
+   "person_id": "eff5fa6bbe87e56e",
+   "existing_role": "co-PI",
+   "status": "not-found",
+   "current_holder_key": null,
+   "source_url": "https://www.climatehubs.usda.gov/about/all_staff/14",
+   "evidence": "Andrés Cibils Director Susan Eisenhour Coordinator Alex Krichels Agency Co-Lead"
+  }
+ ]
+}

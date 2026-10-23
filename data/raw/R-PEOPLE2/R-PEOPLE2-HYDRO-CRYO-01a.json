@@ -1,0 +1,419 @@
+{
+ "batch_id": "R-PEOPLE2-HYDRO-CRYO-01a",
+ "retrieved_at": "2026-10-22",
+ "verified_by": "adversarial-verifier 2026-10-22",
+ "facilities": [
+  {
+   "facility_id": "51c32701dfecabd8",
+   "pages_fetched": [
+    {
+     "url": "https://juneauicefield.org/lemon-creek-glacier",
+     "status": 404
+    },
+    {
+     "url": "https://juneauicefield.org/about",
+     "status": 200
+    },
+    {
+     "url": "https://juneauicefield.org/about/staff",
+     "status": 200
+    },
+    {
+     "url": "https://juneauicefield.org/history",
+     "status": 200
+    },
+    {
+     "url": "https://juneauicefield.org/faculty",
+     "status": 200
+    },
+    {
+     "url": "https://juneauicefield.org/research-teams",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/programs/ecosystems-land-change-science-program/science/lemon-creek-glacier",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/programs/ecosystems-land-change-science-program/science/glaciers-and-landscape-change",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/staff-profiles/louis-sass",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/staff-profiles/christopher-mcneil",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/staff-profiles/caitlyn-florentine",
+     "status": 200
+    },
+    {
+     "url": "https://nichols.edu/faculty/mauri-pelto/",
+     "status": 200
+    }
+   ],
+   "notes": "Facility URL https://juneauicefield.org/lemon-creek-glacier returns 404; suggest replacing with the USGS Lemon Creek Glacier page. USGS page: mass balance measurements began 1953 under the direction of JIRP; today it is a USGS Benchmark Glacier with USGS Alaska Science Center contacts (McNeil, Sass, Frederick) plus Florentine (NRMSC). Sass's USGS profile says he leads the Alaska portion of the Benchmark Glacier Project. The JIRP history page names Maynard Miller (with William Field) as JIRP's founder, but no fetched page names a founding PI for Lemon Creek itself, so no founding-PI row was added. Current JIRP staff (Director of Operations Annie Boucher Krumdieck, Program Manager Tahi Wiggins) are not tied to Lemon Creek on any fetched page and were not added. Mauri Pelto co-authored the USGS Taku/Lemon Creek reanalysis, but no fetched page gives him a current Lemon Creek role."
+  },
+  {
+   "facility_id": "73f6c5479cd6dc9e",
+   "pages_fetched": [
+    {
+     "url": "https://www.usgs.gov/programs/climate-research-and-development-program/science/south-cascade-glacier",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/staff-profiles/caitlyn-florentine",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/programs/ecosystems-land-change-science-program/science/2025-usgs-benchmark-glaciers-executive",
+     "status": 200
+    },
+    {
+     "url": "https://glaciers.us/glaciers.research.pdx.edu/south-cascade-glacier.html",
+     "status": 200
+    },
+    {
+     "url": "https://pubs.usgs.gov/of/1998/of98-031/intro.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.pdx.edu/profile/andrew-fountain",
+     "status": 200
+    },
+    {
+     "url": "http://glaciers.pdx.edu/",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/programs/climate-research-and-development-program/science/usgs-benchmark-glacier-project",
+     "status": 403
+    }
+   ],
+   "notes": "The USGS South Cascade page lists Caitlyn Florentine (USGS Northern Rocky Mountain Science Center) as its only contact. The Portland State glacier-group history page (glaciers.us mirror of glaciers.research.pdx.edu) says Mark F. Meier started the USGS study (work began in 1957) and supervised it for 30 years. It also says Andrew Fountain joined the project in the late 1970s, so he is not the founding PI: his existing founding-PI row is corrected to a past scientist role. USGS OFR 98-031 confirms that Meier led the USGS Tacoma glaciology group, which ran mass-balance work on South Cascade, and that he retired from USGS in 1985."
+  },
+  {
+   "facility_id": "6966c758bebef0f1",
+   "pages_fetched": [
+    {
+     "url": "https://wcc.sc.egov.usda.gov/nwcc/site?sitenum=957",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/nwcc/sitenotes?sitenum=957",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/stations?stationNames=Atigun*",
+     "status": 200
+    },
+    {
+     "url": "https://nrcs-prod.azureedge.us/sites/default/files/2026-04/April_2026_WSOR.pdf",
+     "status": 200
+    },
+    {
+     "url": "https://nrcs-prod.azureedge.us/sites/default/files/2025-04/April_2025_WSOR_0.pdf",
+     "status": 200
+    },
+    {
+     "url": "https://www.nrcs.usda.gov/alaska/snow-survey",
+     "status": 0
+    }
+   ],
+   "notes": "An automated SNOTEL station (957:AK:SNTL, data collection office AK, reporting since 1981-10-01) with no site PI. Personnel are the NRCS Alaska Snow Survey staff (Palmer, AK) named as publishers of the April 1, 2026 Alaska Water Supply Outlook Report, which lists Atigun Pass SNOTEL in its data tables. nrcs.usda.gov did not respond from this host (HTTP/2 stream errors and timeouts). Verifier: Lauren Austin (Data Collection Officer) dropped, nothing ties her to this station; Fisher downgraded to low confidence."
+  },
+  {
+   "facility_id": "b38889c610495c68",
+   "pages_fetched": [
+    {
+     "url": "https://wcc.sc.egov.usda.gov/nwcc/site?sitenum=352",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/stations?stationTriplets=*:WY:*&activeOnly=false",
+     "status": 200
+    },
+    {
+     "url": "https://www.nrcs.usda.gov/wyoming/snow-survey",
+     "status": 0
+    }
+   ],
+   "notes": "DATA ISSUE: facility URL sitenum=352 resolves to Blewett Pass SNOTEL (Chelan County, WA), not Brooks Lake, WY. The NRCS AWDB station API lists no Wyoming station named 'Brooks Lake'; the closest is Brooklyn Lake (367:WY:SNTL, Albany County, since 1962), which may be a different site. Check the facility's identity and coordinates. No personnel added: NWCC site pages name no people and nrcs.usda.gov (Wyoming snow survey staff) could not be reached."
+  },
+  {
+   "facility_id": "1ca0ee8b5874566d",
+   "pages_fetched": [
+    {
+     "url": "https://wcc.sc.egov.usda.gov/nwcc/site?sitenum=685",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/stations?stationNames=Lyman*",
+     "status": 200
+    },
+    {
+     "url": "https://www.nrcs.usda.gov/washington/snow-survey",
+     "status": 0
+    }
+   ],
+   "notes": "DATA ISSUE: facility URL sitenum=685 resolves to Patterson Hollow #1, CO (discontinued 1996). The AWDB station API shows Lyman Lake is 606:WA:SNTL (Chelan County, 5990 ft, begun 1978-10-01, data collection office OR); the correct URL is likely https://wcc.sc.egov.usda.gov/nwcc/site?sitenum=606. No personnel added: NWCC pages name no people and nrcs.usda.gov (Washington/Oregon snow survey staff) could not be reached."
+  },
+  {
+   "facility_id": "c8a6589def6b6865",
+   "pages_fetched": [
+    {
+     "url": "https://wcc.sc.egov.usda.gov/nwcc/site?sitenum=2034",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/stations?stationTriplets=*:OK:*&activeOnly=false",
+     "status": 200
+    },
+    {
+     "url": "https://www.nrcs.usda.gov/resources/data-and-reports/soil-climate-analysis-network",
+     "status": 0
+    }
+   ],
+   "notes": "DATA ISSUE: facility URL sitenum=2034 resolves to the Tunica SCAN site (Tunica County, MS), not Goodwell, OK. The AWDB station API returned no Oklahoma station named Goodwell. Check the facility's identity and station number. No personnel added: SCAN station pages name no people and nrcs.usda.gov could not be reached."
+  }
+ ],
+ "people": [
+  {
+   "key": "louis-sass",
+   "existing_person_id": null,
+   "name": "Louis Sass, III",
+   "name_given": "Louis",
+   "name_family": "Sass",
+   "orcid": "0000-0003-4677-029X",
+   "orcid_source_url": "https://www.usgs.gov/staff-profiles/louis-sass",
+   "homepage_url": "https://www.usgs.gov/staff-profiles/louis-sass",
+   "bio": "Physical scientist with the USGS Alaska Science Center since 2012, leading the Alaska component of the USGS Benchmark Glacier Project, which tracks seasonal mass change on five U.S. glaciers. He focuses on accurate measurement of glacier change, the physical drivers and feedbacks behind it, and how glaciers shape streamflow. M.S., Alaska Pacific University.",
+   "bio_source_url": "https://www.usgs.gov/staff-profiles/louis-sass",
+   "research_interests": "glacier mass balance; physical processes and feedbacks of glacier mass balance; glacier influences on streamflow",
+   "research_interests_source_url": "https://www.usgs.gov/staff-profiles/louis-sass"
+  },
+  {
+   "key": "christopher-mcneil",
+   "existing_person_id": null,
+   "name": "Christopher McNeil",
+   "name_given": "Christopher",
+   "name_family": "McNeil",
+   "orcid": "0000-0003-4170-0428",
+   "orcid_source_url": "https://www.usgs.gov/staff-profiles/christopher-mcneil",
+   "homepage_url": "https://www.usgs.gov/staff-profiles/christopher-mcneil",
+   "bio": "Geophysicist at the USGS Alaska Science Center in Anchorage. Studies how glacier extent, volume and mass change across basins and mountain ranges, and what those changes mean for ecosystems and sea level. His work includes reanalysis of the long USGS benchmark glacier records, combining field data with aerial and satellite imagery.",
+   "bio_source_url": "https://www.usgs.gov/staff-profiles/christopher-mcneil",
+   "research_interests": "glaciology; geodesy; climatology; remote sensing of glacier change; glacier mass balance reanalysis",
+   "research_interests_source_url": "https://www.usgs.gov/staff-profiles/christopher-mcneil"
+  },
+  {
+   "key": "caitlyn-florentine",
+   "existing_person_id": null,
+   "name": "Caitlyn Florentine",
+   "name_given": "Caitlyn",
+   "name_family": "Florentine",
+   "orcid": "0000-0002-7028-0963",
+   "orcid_source_url": "https://www.usgs.gov/staff-profiles/caitlyn-florentine",
+   "homepage_url": "https://www.usgs.gov/staff-profiles/caitlyn-florentine",
+   "bio": "Research physical scientist at the USGS Northern Rocky Mountain Science Center in Bozeman, Montana. A quantitative glaciologist, she studies glacier flow physics and glacier–climate links using field data, remote sensing and simple numerical models, and works with the USGS Glaciers and Climate Project. Ph.D. in geosciences, University of Montana (2018).",
+   "bio_source_url": "https://www.usgs.gov/staff-profiles/caitlyn-florentine",
+   "research_interests": "quantitative glaciology; glacier flow physics; glacier-climate relationships; avalanche science; alpine and Arctic geomorphology, ecology and hydrology",
+   "research_interests_source_url": "https://www.usgs.gov/staff-profiles/caitlyn-florentine"
+  },
+  {
+   "key": "zanden-frederick",
+   "existing_person_id": null,
+   "name": "Zanden Frederick",
+   "name_given": "Zanden",
+   "name_family": "Frederick",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "mark-meier",
+   "existing_person_id": "f37256ce98e8dee3",
+   "name": "Mark F. Meier",
+   "name_given": "Mark",
+   "name_family": "Meier",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "USGS glaciologist hired in the mid-1950s who built the Water Resources Division's glaciology group in Tacoma, Washington. Under his leadership the group began long-term glacier monitoring, including mass-balance measurements on South Cascade Glacier. He retired from the USGS in 1985.",
+   "bio_source_url": "https://pubs.usgs.gov/of/1998/of98-031/intro.htm",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "andrew-fountain",
+   "existing_person_id": "aeba46d2f5fbc845",
+   "name": "Andrew G. Fountain",
+   "name_given": "Andrew",
+   "name_family": "Fountain",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.pdx.edu/profile/andrew-fountain",
+   "bio": "Professor Emeritus of Geology at Portland State University. His career has centred on the study of ice, chiefly glaciers, and he remains active in ice research in retirement.",
+   "bio_source_url": "https://www.pdx.edu/profile/andrew-fountain",
+   "research_interests": "glaciers; snow and ice",
+   "research_interests_source_url": "https://www.pdx.edu/profile/andrew-fountain"
+  },
+  {
+   "key": "daniel-fisher",
+   "existing_person_id": null,
+   "name": "Daniel Fisher",
+   "name_given": "Daniel",
+   "name_family": "Fisher",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Snow Survey Program Manager on the USDA Natural Resources Conservation Service Snow, Water and Climate staff in Palmer, Alaska. The group issues the Alaska Water Supply Outlook Reports, which combine manual snow courses and automated SNOTEL stations; the report also lists him as a hydrologist at the NRCS Snow Survey Office.",
+   "bio_source_url": "https://nrcs-prod.azureedge.us/sites/default/files/2026-04/April_2026_WSOR.pdf",
+   "research_interests": null,
+   "research_interests_source_url": null
+  }
+ ],
+ "affiliations": [
+  {
+   "facility_id": "51c32701dfecabd8",
+   "person_key": "louis-sass",
+   "role": "lead-PI",
+   "title": "Physical Scientist; project lead, Alaska portion of USGS Benchmark Glacier Project",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.usgs.gov/staff-profiles/louis-sass",
+   "evidence": "Now I am the project lead for the Alaska portion of the Benchmark Glacier Project",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "51c32701dfecabd8",
+   "person_key": "christopher-mcneil",
+   "role": "scientist",
+   "title": "Geophysicist, USGS Alaska Science Center",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.usgs.gov/programs/ecosystems-land-change-science-program/science/lemon-creek-glacier",
+   "evidence": "Contacts Christopher McNeil Geophysicist Alaska Science Center",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "51c32701dfecabd8",
+   "person_key": "caitlyn-florentine",
+   "role": "scientist",
+   "title": "Research Physical Scientist, USGS Northern Rocky Mountain Science Center",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.usgs.gov/programs/ecosystems-land-change-science-program/science/lemon-creek-glacier",
+   "evidence": "Caitlyn Florentine, Ph.D. Research Physical Scientist Northern Rocky Mountain Science Center",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "51c32701dfecabd8",
+   "person_key": "zanden-frederick",
+   "role": "technical-staff",
+   "title": "Physical Science Technician, USGS Alaska Science Center",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.usgs.gov/programs/ecosystems-land-change-science-program/science/lemon-creek-glacier",
+   "evidence": "Zanden Frederick Physical Science Technician Alaska Science Center",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "73f6c5479cd6dc9e",
+   "person_key": "caitlyn-florentine",
+   "role": "scientist",
+   "title": "Research Physical Scientist, USGS Northern Rocky Mountain Science Center",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.usgs.gov/programs/climate-research-and-development-program/science/south-cascade-glacier",
+   "evidence": "Contacts Caitlyn Florentine, Ph.D. Research Physical Scientist Northern Rocky Mountain Science Center",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "73f6c5479cd6dc9e",
+   "person_key": "mark-meier",
+   "role": "founding-PI",
+   "title": "USGS glaciologist; initiated and supervised the South Cascade Glacier program",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": 1957,
+   "end_year": null,
+   "source_url": "https://glaciers.us/glaciers.research.pdx.edu/south-cascade-glacier.html",
+   "evidence": "Dr. Mark F. Meier initiated the study and supervised the research program on the glacier for the next 30 years.",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "73f6c5479cd6dc9e",
+   "person_key": "andrew-fountain",
+   "role": "scientist",
+   "title": "USGS South Cascade Glacier project staff (joined late 1970s)",
+   "is_key_personnel": false,
+   "is_current": false,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://glaciers.us/glaciers.research.pdx.edu/south-cascade-glacier.html",
+   "evidence": "In the late 1970s, Suzanne Brown, Carolyn Driedger, Andrew Fountain, and Cindy Heliker joined the project.",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "6966c758bebef0f1",
+   "person_key": "daniel-fisher",
+   "role": "manager",
+   "title": "Snow Survey Program Manager, NRCS Alaska",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://nrcs-prod.azureedge.us/sites/default/files/2026-04/April_2026_WSOR.pdf",
+   "evidence": "Published by: Daniel Fisher, Snow Survey Program Manager",
+   "confidence": "low",
+   "notes": "Indirect: report names Fisher as statewide NRCS Alaska Snow Survey Program Manager and lists Atigun Pass SNOTEL in its data tables; no page names a station-level manager."
+  }
+ ],
+ "verifications": [
+  {
+   "facility_id": "51c32701dfecabd8",
+   "person_id": "e40e75f4e126ed1b",
+   "existing_role": "faculty",
+   "status": "unverifiable",
+   "current_holder_key": null,
+   "source_url": "https://nichols.edu/faculty/mauri-pelto/",
+   "evidence": "Since 1983, he has also served as the Director of the North Cascade Glacier Climate Project"
+  },
+  {
+   "facility_id": "73f6c5479cd6dc9e",
+   "person_id": "aeba46d2f5fbc845",
+   "existing_role": "founding-PI",
+   "status": "stale",
+   "current_holder_key": "mark-meier",
+   "source_url": "https://glaciers.us/glaciers.research.pdx.edu/south-cascade-glacier.html",
+   "evidence": "In the late 1970s, Suzanne Brown, Carolyn Driedger, Andrew Fountain, and Cindy Heliker joined the project."
+  },
+  {
+   "facility_id": "73f6c5479cd6dc9e",
+   "person_id": "f37256ce98e8dee3",
+   "existing_role": "founding-PI",
+   "status": "confirmed",
+   "current_holder_key": null,
+   "source_url": "https://glaciers.us/glaciers.research.pdx.edu/south-cascade-glacier.html",
+   "evidence": "Dr. Mark F. Meier initiated the study and supervised the research program on the glacier for the next 30 years."
+  }
+ ]
+}

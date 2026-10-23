@@ -1,0 +1,962 @@
+{
+ "batch_id": "R-PEOPLE2-ARID-NM-01a",
+ "retrieved_at": "2026-10-22",
+ "verified_by": "adversarial-verifier 2026-10-22",
+ "facilities": [
+  {
+   "facility_id": "be89811018d4119f",
+   "pages_fetched": [
+    {
+     "url": "https://lternet.edu/site/sevilleta-lter/",
+     "status": 200
+    },
+    {
+     "url": "https://sevlter.unm.edu/",
+     "status": 200
+    },
+    {
+     "url": "https://sevlter.unm.edu/people/",
+     "status": 200
+    },
+    {
+     "url": "https://sevlter.unm.edu/about-sev-lter/",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/directory/?user=5225",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/directory/?user=7103",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/directory/?user=16210",
+     "status": 200
+    },
+    {
+     "url": "https://biology.unm.edu/people/faculty/faculty.html",
+     "status": 200
+    },
+    {
+     "url": "https://biology.unm.edu/people/faculty/profile/rudgers_jennifer-a.html",
+     "status": 200
+    },
+    {
+     "url": "https://biology.unm.edu/people/faculty/profile/litvak_marcy-e.html",
+     "status": 200
+    },
+    {
+     "url": "https://biology.unm.edu/people/faculty/profile/newsome_seth.html",
+     "status": 200
+    },
+    {
+     "url": "https://biology.unm.edu/people/faculty/profile/pockman_william-t.html",
+     "status": 200
+    },
+    {
+     "url": "https://biology.unm.edu/people/faculty/profile/collins_scott.html",
+     "status": 200
+    },
+    {
+     "url": "https://bemp.org/our-staff/board/",
+     "status": 200
+    },
+    {
+     "url": "https://sev.lternet.edu/people",
+     "status": 0
+    },
+    {
+     "url": "https://sevlter.unm.edu/people/directory",
+     "status": 404
+    },
+    {
+     "url": "https://biology.unm.edu/people/faculty/profile/scott-collins.html",
+     "status": 404
+    },
+    {
+     "url": "https://biology.unm.edu/people/faculty/profile/william-pockman.html",
+     "status": 404
+    }
+   ],
+   "notes": "Site moved to sevlter.unm.edu; sev.lternet.edu unreachable. Current Management Team: Rudgers (Director/lead PI), Litvak, Newsome, Yiqi Luo (NAU), Alex J. Webster (PIs); Luo and Webster not added (4-person cap). Collins and Pockman not on current management team; Pockman is Director, UNM Sevilleta Field Station per his UNM profile. Existing homepage_url values for Collins and Pockman (biology.unm.edu/.../scott-collins.html, william-pockman.html) now 404; new profile URLs given in people rows. Lead-PI start year not stated on any fetched page. Verifier: Rudgers bio trimmed to the interests her profile lists."
+  },
+  {
+   "facility_id": "635f591cbec25914",
+   "pages_fetched": [
+    {
+     "url": "https://lternet.edu/site/jornada-basin-lter/",
+     "status": 200
+    },
+    {
+     "url": "https://lter.jornada.nmsu.edu/",
+     "status": 200
+    },
+    {
+     "url": "https://lter.jornada.nmsu.edu/people/",
+     "status": 200
+    },
+    {
+     "url": "https://lter.jornada.nmsu.edu/about-history/",
+     "status": 200
+    },
+    {
+     "url": "https://lter.jornada.nmsu.edu/featured-post-history/",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/directory/?user=2662",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/directory/?user=7052",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/directory/?user=6947",
+     "status": 200
+    },
+    {
+     "url": "https://pes.nmsu.edu/faculty-staff/environmental/niall-hanan.html",
+     "status": 200
+    },
+    {
+     "url": "https://jornada.nmsu.edu/people/brandon-bestelmeyer",
+     "status": 200
+    },
+    {
+     "url": "https://jornada.nmsu.edu/people/debra-peters",
+     "status": 200
+    },
+    {
+     "url": "https://jornada.nmsu.edu/people/greg-maurer",
+     "status": 200
+    },
+    {
+     "url": "https://jornada.nmsu.edu/people/conrad-nelson",
+     "status": 200
+    },
+    {
+     "url": "https://lter.jornada.nmsu.edu/information-management/",
+     "status": 200
+    },
+    {
+     "url": "https://www.ars.usda.gov/pacific-west-area/las-cruces-nm/range-management-research/people/debra-peters/",
+     "status": 404
+    },
+    {
+     "url": "https://www.ars.usda.gov/pacific-west-area/las-cruces-nm/range-management-research/people/brandon-bestelmeyer/",
+     "status": 404
+    }
+   ],
+   "notes": "Lead PI now Niall Hanan (NMSU). Debra Peters is listed only under Collaborators on the JRN-LTER people page. Existing ARS homepage URLs for Peters and Bestelmeyer return 404; jornada.nmsu.edu profiles used instead. History page dates the LTER to 1982 but names no founding PI. lternet directory entry for Greg Maurer lists his site as Sevilleta LTER (stale there); the lternet JRN site page and JRN people page name him as JRN Information Manager."
+  },
+  {
+   "facility_id": "f902cea5ea327c3d",
+   "pages_fetched": [
+    {
+     "url": "https://bemp.org/",
+     "status": 200
+    },
+    {
+     "url": "https://bemp.org/our-staff/",
+     "status": 200
+    },
+    {
+     "url": "https://bemp.org/about-bemp-science/",
+     "status": 200
+    },
+    {
+     "url": "https://bemp.org/our-staff/board/",
+     "status": 200
+    }
+   ],
+   "notes": "BEMP is a UNM program co-run with Sevilleta LTER education partner. Ara Winter (data manager) is the same person as the Sevilleta LTER information manager; Kim Eichhorst is also Sevilleta LTER education contact. BEMP also has a Board of Directors (not recorded). Founding year not stated on fetched pages. Verifier: Leister bio rewritten; the staff page does not say he leads arthropod monitoring."
+  },
+  {
+   "facility_id": "8678c2ba3cde5ecc",
+   "pages_fetched": [
+    {
+     "url": "https://hsc.unm.edu/nursing/research/center/",
+     "status": 200
+    },
+    {
+     "url": "https://hsc.unm.edu/directory/lavin-roberta-proffitt.html",
+     "status": 200
+    },
+    {
+     "url": "https://hsc.unm.edu/directory/rogers-heidi-honegger.html",
+     "status": 200
+    },
+    {
+     "url": "https://hsc.unm.edu/directory/couig-marypat.html",
+     "status": 200
+    }
+   ],
+   "notes": "Center page lists Lavin as Center Director and Rogers as Deputy Director. Lavin's own HSC bio paragraph still says 'Professor and Deputy Director' while her personal statement says Director; Couig's HSC bio says she is Director of the Center. The center page was taken as current; Couig recorded as former director at low confidence. Other affiliated faculty (Dunn, Hamidi, Irvin, Dyer, Lesser, Montoya-Barthelemy, Ruyak, Starkey, etc.) not added. Verifier: dropped Couig 'former-director' row - her HSC page states in the present tense that she is Director, so no fetched page shows the role as former; the center page lists her as Affiliated Faculty (kept, medium, since her directory header says Associate Professor Emeritus)."
+  },
+  {
+   "facility_id": "158899c90de6138b",
+   "pages_fetched": [
+    {
+     "url": "https://cwe.unm.edu/",
+     "status": 200
+    },
+    {
+     "url": "https://cwe.unm.edu/people/index.html",
+     "status": 200
+    },
+    {
+     "url": "https://cwe.unm.edu/about/index.html",
+     "status": 200
+    },
+    {
+     "url": "https://cwe.unm.edu/people/andrew-schuler.html",
+     "status": 200
+    },
+    {
+     "url": "https://cwe.unm.edu/people/ricardo-gonzalez-pinzon.html",
+     "status": 200
+    },
+    {
+     "url": "https://cwe.unm.edu/people/anjali-mulchandani.html",
+     "status": 200
+    },
+    {
+     "url": "https://cwe.unm.edu/people/katelin-fisher.html",
+     "status": 200
+    },
+    {
+     "url": "https://gonzaric.people.unm.edu/",
+     "status": 0
+    }
+   ],
+   "notes": "CONFLICT: the CWE people page and Schuler's profile list Andrew Schuler as 'Director of CWE', while the Director's Welcome page is signed by Ricardo González-Pinzón as 'Interim Director'. Both recorded; González-Pinzón likely current (interim). No ORCID found for González-Pinzón by strict match. Verifier: conflict re-confirmed 2026-10-22 (people page: Schuler 'Director of CWE'; welcome page signed by González-Pinzón, 'Interim Director'). Schuler homepage replaced: www.unm.edu/~schuler/ is a stale page calling him Associate Professor; CWE profile used."
+  },
+  {
+   "facility_id": "94690a2c94717f62",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/jorn",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/abraham-karam",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/impact/observatory-blog/getting-know-neon-domains-desert-southwest",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/field-sites/domains/d14",
+     "status": 404
+    }
+   ],
+   "notes": "NEON field-site page names site host 'Jornada Experimental Range' (USDA-ARS with NMSU) and the D14 support facility in Tucson, AZ, but no staff. Domain manager taken from the NEON staff page for Abraham Karam ('Manager, D14: Desert Southwest'), which has no date; found via web search, so confidence medium. ORCID 0000-0002-3471-5245 matches the name but has no employment record, so not used."
+  }
+ ],
+ "people": [
+  {
+   "key": "rudgers-jennifer",
+   "existing_person_id": null,
+   "name": "Jennifer A. Rudgers",
+   "name_given": "Jennifer",
+   "name_family": "Rudgers",
+   "orcid": "0000-0001-7094-4857",
+   "orcid_source_url": "https://lternet.edu/directory/?user=5225",
+   "homepage_url": "https://biology.unm.edu/people/faculty/profile/rudgers_jennifer-a.html",
+   "bio": "Distinguished Professor of Biology at the University of New Mexico and Director of the Sevilleta LTER, where she is lead PI. Her listed research interests are climate change, environmental variability and plant-microbe symbioses.",
+   "bio_source_url": "https://biology.unm.edu/people/faculty/profile/rudgers_jennifer-a.html",
+   "research_interests": "Climate change; environmental variability; plant-microbe symbiosis",
+   "research_interests_source_url": "https://biology.unm.edu/people/faculty/profile/rudgers_jennifer-a.html"
+  },
+  {
+   "key": "litvak-marcy",
+   "existing_person_id": null,
+   "name": "Marcy E. Litvak",
+   "name_given": "Marcy",
+   "name_family": "Litvak",
+   "orcid": "0000-0002-4255-2263",
+   "orcid_source_url": "https://biology.unm.edu/people/faculty/profile/litvak_marcy-e.html",
+   "homepage_url": "https://www.litvaklab.org/",
+   "bio": "Professor of Biology at the University of New Mexico and a PI on the Sevilleta LTER management team. She studies ecosystem and plant physiological ecology, focusing on how climate variability, disturbance and land use alter carbon, water and energy exchange between dryland ecosystems and the atmosphere.",
+   "bio_source_url": "https://biology.unm.edu/people/faculty/profile/litvak_marcy-e.html",
+   "research_interests": "Ecosystem physiology and ecology; plant physiological ecology; effects of climate variability, disturbance and land use on carbon, water and energy exchange",
+   "research_interests_source_url": "https://biology.unm.edu/people/faculty/profile/litvak_marcy-e.html"
+  },
+  {
+   "key": "newsome-seth",
+   "existing_person_id": null,
+   "name": "Seth Newsome",
+   "name_given": "Seth",
+   "name_family": "Newsome",
+   "orcid": "0000-0002-4534-1242",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-4534-1242/employments",
+   "homepage_url": "https://sethnewsome.org/",
+   "bio": "Professor of Biology and Co-Director of the UNM Center for Stable Isotopes, and a PI on the Sevilleta LTER management team. He develops isotopic methods to trace animal diet, amino acid synthesis and habitat use, and studies how human exploitation and disturbance change animal ecology.",
+   "bio_source_url": "https://biology.unm.edu/people/faculty/profile/newsome_seth.html",
+   "research_interests": "Diet variation among individuals, populations and species; amino acid acquisition and synthesis in animals; isotopic methods for resource and habitat use; anthropogenic effects on animal ecology",
+   "research_interests_source_url": "https://biology.unm.edu/people/faculty/profile/newsome_seth.html"
+  },
+  {
+   "key": "winter-ara",
+   "existing_person_id": null,
+   "name": "Ara Winter",
+   "name_given": "Ara",
+   "name_family": "Winter",
+   "orcid": "0000-0002-9968-5999",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-9968-5999/employments",
+   "homepage_url": null,
+   "bio": "Data manager in UNM Biology who serves as information manager for the Sevilleta LTER and data manager for the Bosque Ecosystem Monitoring Program, combining data analysis across spatial and temporal scales with field work in New Mexico.",
+   "bio_source_url": "https://bemp.org/our-staff/",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "bermudez-april",
+   "existing_person_id": null,
+   "name": "April Bermudez",
+   "name_given": "April",
+   "name_family": "Bermudez",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "eichhorst-kim",
+   "existing_person_id": null,
+   "name": "Kim Eichhorst",
+   "name_given": "Kim",
+   "name_family": "Eichhorst",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Program Director (science and research) of the Bosque Ecosystem Monitoring Program and Research Associate Professor at UNM. She has worked on Middle Rio Grande bosque ecology since 1995, including herbivore, cottonwood and pollution interactions, and leads education and outreach for the Sevilleta LTER.",
+   "bio_source_url": "https://bemp.org/our-staff/",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "pockman-william",
+   "existing_person_id": "29c2ed03c667e8dd",
+   "name": "William T. Pockman",
+   "name_given": "William",
+   "name_family": "Pockman",
+   "orcid": "0000-0002-3286-0457",
+   "orcid_source_url": "https://biology.unm.edu/people/faculty/profile/pockman_william-t.html",
+   "homepage_url": "https://biology.unm.edu/people/faculty/profile/pockman_william-t.html",
+   "bio": "Professor of Biology at the University of New Mexico and Director of the UNM Sevilleta Field Station. He studies the whole-plant physiological ecology of desert vegetation, including xylem cavitation, hydraulic conductance, the evolution of drought tolerance, and plant and community responses to climate change.",
+   "bio_source_url": "https://biology.unm.edu/people/faculty/profile/pockman_william-t.html",
+   "research_interests": "Whole-plant physiological ecology of desert vegetation; xylem cavitation and hydraulic conductance; evolution of drought tolerance; plant competition and invasion; plant and community response to climate change",
+   "research_interests_source_url": "https://biology.unm.edu/people/faculty/profile/pockman_william-t.html"
+  },
+  {
+   "key": "collins-scott",
+   "existing_person_id": "1eb3771506b20c11",
+   "name": "Scott L. Collins",
+   "name_given": "Scott",
+   "name_family": "Collins",
+   "orcid": "0000-0002-0193-2892",
+   "orcid_source_url": "https://biology.unm.edu/people/faculty/profile/collins_scott.html",
+   "homepage_url": "https://biology.unm.edu/people/faculty/profile/collins_scott.html",
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "hanan-niall",
+   "existing_person_id": null,
+   "name": "Niall Hanan",
+   "name_given": "Niall",
+   "name_family": "Hanan",
+   "orcid": "0000-0002-9130-5306",
+   "orcid_source_url": "https://lternet.edu/directory/?user=2662",
+   "homepage_url": "https://pes.nmsu.edu/faculty-staff/environmental/niall-hanan.html",
+   "bio": "Professor of Dryland Ecology in Plant and Environmental Sciences at New Mexico State University since 2017 and lead PI of the Jornada Basin LTER. A community and ecosystem ecologist, he studies grassland, shrubland and savanna dynamics from field plots to continental-scale remote sensing and modeling. Previously at South Dakota State and Colorado State.",
+   "bio_source_url": "https://pes.nmsu.edu/faculty-staff/environmental/niall-hanan.html",
+   "research_interests": "Ecological and biogeochemical dynamics of tropical and temperate grasslands and savannas; dryland ecology; remote sensing and modeling across scales",
+   "research_interests_source_url": "https://pes.nmsu.edu/faculty-staff/environmental/niall-hanan.html"
+  },
+  {
+   "key": "bestelmeyer-brandon",
+   "existing_person_id": "2913826f740ac38b",
+   "name": "Brandon T. Bestelmeyer",
+   "name_given": "Brandon",
+   "name_family": "Bestelmeyer",
+   "orcid": "0000-0001-5060-9955",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0001-5060-9955/employments",
+   "homepage_url": "https://jornada.nmsu.edu/people/brandon-bestelmeyer",
+   "bio": "Research Leader of the USDA-ARS Range Management Research Unit at Las Cruces since 2016 and co-PI of the Jornada Basin LTER. He studies dryland ecosystem dynamics and alternative ecosystem states, linking them to management tools such as ecological site classifications, assessment and monitoring, and restoration evaluation.",
+   "bio_source_url": "https://jornada.nmsu.edu/people/brandon-bestelmeyer",
+   "research_interests": "Causes and management implications of dryland ecosystem dynamics; alternative ecosystem states; ecological sites; assessment and monitoring; restoration",
+   "research_interests_source_url": "https://jornada.nmsu.edu/people/brandon-bestelmeyer"
+  },
+  {
+   "key": "maurer-gregory",
+   "existing_person_id": null,
+   "name": "Gregory E. Maurer",
+   "name_given": "Gregory",
+   "name_family": "Maurer",
+   "orcid": "0000-0002-3007-8058",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-3007-8058/employments",
+   "homepage_url": "https://jornada.nmsu.edu/people/greg-maurer",
+   "bio": "Data scientist and information manager for the Jornada Basin LTER at New Mexico State University since 2019, after postdoctoral appointments at UC Berkeley and the University of New Mexico.",
+   "bio_source_url": "https://pub.orcid.org/v3.0/0000-0002-3007-8058/employments",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "nelson-conrad",
+   "existing_person_id": null,
+   "name": "Conrad Nelson",
+   "name_given": "Conrad",
+   "name_family": "Nelson",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://jornada.nmsu.edu/people/conrad-nelson",
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "getkin-kayleigh",
+   "existing_person_id": null,
+   "name": "Kayleigh Getkin",
+   "name_given": "Kayleigh",
+   "name_family": "Getkin",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "peters-debra",
+   "existing_person_id": "0f915091e0560264",
+   "name": "Debra P.C. Peters",
+   "name_given": "Debra",
+   "name_family": "Peters",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://jornada.nmsu.edu/people/debra-peters",
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "leister-matthew",
+   "existing_person_id": null,
+   "name": "Matthew Leister",
+   "name_given": "Matthew",
+   "name_family": "Leister",
+   "orcid": "0009-0005-8266-1156",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0009-0005-8266-1156/employments",
+   "homepage_url": null,
+   "bio": "Science Director of the Bosque Ecosystem Monitoring Program and a research lecturer at the University of New Mexico. An arthropod specialist, he has collected specimens for museum collections worldwide and described species new to science.",
+   "bio_source_url": "https://bemp.org/our-staff/",
+   "research_interests": "Arthropods",
+   "research_interests_source_url": "https://bemp.org/our-staff/"
+  },
+  {
+   "key": "crawford-cliff",
+   "existing_person_id": null,
+   "name": "Cliff Crawford",
+   "name_given": "Cliff",
+   "name_family": "Crawford",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "lavin-roberta",
+   "existing_person_id": null,
+   "name": "Roberta P. Lavin",
+   "name_given": "Roberta",
+   "name_family": "Lavin",
+   "orcid": "0000-0001-6106-8066",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0001-6106-8066/employments",
+   "homepage_url": "https://hsc.unm.edu/directory/lavin-roberta-proffitt.html",
+   "bio": "Professor and Regents' Professor in the UNM College of Nursing and Director of its Center for Health Equity: Planetary Health and Preparedness. After a USPHS career that included HHS emergency-preparedness leadership, she researches climate-associated disasters, social determinants of health and nursing preparedness.",
+   "bio_source_url": "https://hsc.unm.edu/directory/lavin-roberta-proffitt.html",
+   "research_interests": "Disaster preparedness and management; environmental and public health; health policy; climate-associated disasters; social determinants of health",
+   "research_interests_source_url": "https://hsc.unm.edu/directory/lavin-roberta-proffitt.html"
+  },
+  {
+   "key": "rogers-heidi",
+   "existing_person_id": null,
+   "name": "Heidi Honegger Rogers",
+   "name_given": "Heidi",
+   "name_family": "Rogers",
+   "orcid": "0000-0002-1133-1847",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-1133-1847/employments",
+   "homepage_url": "https://hsc.unm.edu/directory/rogers-heidi-honegger.html",
+   "bio": "Associate Professor and clinician educator in the UNM College of Nursing, family nurse practitioner, and deputy director of the Center for Health Equity: Planetary Health and Preparedness. Her scholarship addresses climate change and health, planetary health education, equity and nature connection; she directed UNM HSC interprofessional education 2018-2024.",
+   "bio_source_url": "https://hsc.unm.edu/directory/rogers-heidi-honegger.html",
+   "research_interests": "Climate change and health; planetary health; health equity and justice; nature connection; interprofessional education",
+   "research_interests_source_url": "https://hsc.unm.edu/directory/rogers-heidi-honegger.html"
+  },
+  {
+   "key": "couig-marypat",
+   "existing_person_id": null,
+   "name": "Mary Pat Couig",
+   "name_given": "Mary Pat",
+   "name_family": "Couig",
+   "orcid": "0000-0001-7786-8092",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0001-7786-8092/employments",
+   "homepage_url": "https://hsc.unm.edu/directory/couig-marypat.html",
+   "bio": "UNM College of Nursing faculty member (Associate Professor on the research faculty, listed as emeritus) holding the Carter/Fleck Endowed Professorship. A retired USPHS Rear Admiral who served as Chief Nurse Officer and Assistant Surgeon General, then a VA nurse executive, she works on emergency preparedness and health policy.",
+   "bio_source_url": "https://hsc.unm.edu/directory/couig-marypat.html",
+   "research_interests": "Disaster preparedness and management; health care policy; international/global health; public health",
+   "research_interests_source_url": "https://hsc.unm.edu/directory/couig-marypat.html"
+  },
+  {
+   "key": "gonzalez-pinzon-ricardo",
+   "existing_person_id": null,
+   "name": "Ricardo González-Pinzón",
+   "name_given": "Ricardo",
+   "name_family": "González-Pinzón",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://cwe.unm.edu/people/ricardo-gonzalez-pinzon.html",
+   "bio": "Professor of Civil, Construction and Environmental Engineering at UNM and Interim Director of the Center for Water and the Environment. His Ecohydrology Research Lab studies how solute transport, metabolism and nutrient processing interact in streams and groundwater, combining hydrology, hydraulics, ecology, chemistry and modeling.",
+   "bio_source_url": "https://cwe.unm.edu/people/ricardo-gonzalez-pinzon.html",
+   "research_interests": "Hydrologic transport; stream ecology and smart tracers; groundwater-surface water interactions; mathematical and computational modeling",
+   "research_interests_source_url": "https://cwe.unm.edu/people/ricardo-gonzalez-pinzon.html"
+  },
+  {
+   "key": "schuler-andrew",
+   "existing_person_id": null,
+   "name": "Andrew Schuler",
+   "name_given": "Andrew",
+   "name_family": "Schuler",
+   "orcid": "0000-0002-9267-1973",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-9267-1973/employments",
+   "homepage_url": "https://cwe.unm.edu/people/andrew-schuler.html",
+   "bio": "Professor of Civil, Construction and Environmental Engineering at UNM, listed as Director of the Center for Water and the Environment. An environmental engineer, he studies biological treatment of wastewater contaminants, including nutrient and trace organic removal with biofilms, microbial fuel cells and agent-based models of microbial populations.",
+   "bio_source_url": "https://cwe.unm.edu/people/andrew-schuler.html",
+   "research_interests": "Energy recovery from wastewater; biofilms for contaminant removal; nutrient and trace organic pollutants; microbial storage products and solids separation; agent-based modeling; molecular methods for microbial populations",
+   "research_interests_source_url": "https://cwe.unm.edu/people/andrew-schuler.html"
+  },
+  {
+   "key": "mulchandani-anjali",
+   "existing_person_id": null,
+   "name": "Anjali Mulchandani",
+   "name_given": "Anjali",
+   "name_family": "Mulchandani",
+   "orcid": "0000-0001-6529-8336",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0001-6529-8336/employments",
+   "homepage_url": "https://civil.unm.edu/faculty-staff/faculty-profiles/anjali-mulchandani.html",
+   "bio": "Assistant Professor of Civil, Construction and Environmental Engineering and Associate Director of UNM's Center for Water and the Environment, heading a water and resource sustainability research group. She designs and evaluates novel water treatment and resource recovery technologies, notably atmospheric water harvesting.",
+   "bio_source_url": "https://cwe.unm.edu/people/anjali-mulchandani.html",
+   "research_interests": "Water-energy nexus; water, waste and energy resource sustainability; environmental nanotechnology; atmospheric water harvesting",
+   "research_interests_source_url": "https://cwe.unm.edu/people/anjali-mulchandani.html"
+  },
+  {
+   "key": "fisher-katelin",
+   "existing_person_id": null,
+   "name": "Katelin Fisher",
+   "name_given": "Katelin",
+   "name_family": "Fisher",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://cwe.unm.edu/people/katelin-fisher.html",
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "karam-abraham",
+   "existing_person_id": null,
+   "name": "Abraham Karam",
+   "name_given": "Abraham",
+   "name_family": "Karam",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.neonscience.org/person/abraham-karam",
+   "bio": "Manager of NEON's Domain 14 (Desert Southwest) in the Field Science group. Trained in aquatic biology, he previously worked on native fish conservation, including razorback sucker and bonytail projects on the lower Colorado River, and earlier worked in NEON Domains 10/13.",
+   "bio_source_url": "https://www.neonscience.org/person/abraham-karam",
+   "research_interests": null,
+   "research_interests_source_url": null
+  }
+ ],
+ "affiliations": [
+  {
+   "facility_id": "be89811018d4119f",
+   "person_key": "rudgers-jennifer",
+   "role": "lead-PI",
+   "title": "Lead Principal Investigator; Director, Sevilleta LTER",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/sevilleta-lter/",
+   "evidence": "Site Contacts Lead Principal Investigator: Jennifer Rudgers",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "be89811018d4119f",
+   "person_key": "litvak-marcy",
+   "role": "co-PI",
+   "title": "PI, Sevilleta LTER Management Team",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://sevlter.unm.edu/people/",
+   "evidence": "Management Team ... Marcy Litvak, PI Dept Biology Univ New Mexico",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "be89811018d4119f",
+   "person_key": "newsome-seth",
+   "role": "co-PI",
+   "title": "PI, Sevilleta LTER Management Team",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://sevlter.unm.edu/people/",
+   "evidence": "Management Team ... Seth Newsome, PI Dept Biology Univ New Mexico",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "be89811018d4119f",
+   "person_key": "bermudez-april",
+   "role": "manager",
+   "title": "SEV LTER Program Manager; Research/Site Coordinator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://sevlter.unm.edu/people/",
+   "evidence": "April Bermudez SEV LTER Program Manager Dept Biology Univ New Mexico",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "be89811018d4119f",
+   "person_key": "winter-ara",
+   "role": "information-manager",
+   "title": "Information Manager",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/sevilleta-lter/",
+   "evidence": "Information Manager: Ara Winter",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "be89811018d4119f",
+   "person_key": "eichhorst-kim",
+   "role": "education-coordinator",
+   "title": "Education and Outreach Director",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/sevilleta-lter/",
+   "evidence": "Education Contact: Kim Eichhorst",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "be89811018d4119f",
+   "person_key": "pockman-william",
+   "role": "director",
+   "title": "Director, UNM Sevilleta Field Station",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://biology.unm.edu/people/faculty/profile/pockman_william-t.html",
+   "evidence": "William T. Pockman Professor Director, UNM Sevilleta Field Station",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "635f591cbec25914",
+   "person_key": "hanan-niall",
+   "role": "lead-PI",
+   "title": "Lead Principal Investigator, Jornada Basin LTER",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/jornada-basin-lter/",
+   "evidence": "Site Contacts Lead Principal Investigator: Niall Hanan",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "635f591cbec25914",
+   "person_key": "bestelmeyer-brandon",
+   "role": "co-PI",
+   "title": "Co-PI, Jornada Basin LTER; Research Leader, USDA-ARS Jornada Experimental Range",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://jornada.nmsu.edu/people/brandon-bestelmeyer",
+   "evidence": "Research Leader Co-PI, Jornada Basin LTER",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "635f591cbec25914",
+   "person_key": "maurer-gregory",
+   "role": "information-manager",
+   "title": "Information Manager/Data Scientist",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/jornada-basin-lter/",
+   "evidence": "Information Manager: Greg Maurer",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "635f591cbec25914",
+   "person_key": "nelson-conrad",
+   "role": "site-manager",
+   "title": "Research Site Manager, JRN & JER",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lter.jornada.nmsu.edu/people/",
+   "evidence": "Research site manager ... Conrad Nelson Research Site Manager, JRN & JER",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "635f591cbec25914",
+   "person_key": "getkin-kayleigh",
+   "role": "manager",
+   "title": "Program manager; Administrative Contact",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lter.jornada.nmsu.edu/people/",
+   "evidence": "Project manager Kayleigh Getkin Program manager",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "635f591cbec25914",
+   "person_key": "peters-debra",
+   "role": "scientist",
+   "title": "Ecologist, USDA-ARS Jornada Experimental Range (collaborator)",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lter.jornada.nmsu.edu/people/",
+   "evidence": "Collaborators ... Debra Peters Ecologist, USDA-ARS, Jornada Experimental Range",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "f902cea5ea327c3d",
+   "person_key": "eichhorst-kim",
+   "role": "director",
+   "title": "Program Director (Science and Research Director)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://bemp.org/our-staff/",
+   "evidence": "Kim Eichhorst PhD Program Director",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "f902cea5ea327c3d",
+   "person_key": "leister-matthew",
+   "role": "leadership-team",
+   "title": "Science Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://bemp.org/our-staff/",
+   "evidence": "Matthew Leister Science Director",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "f902cea5ea327c3d",
+   "person_key": "winter-ara",
+   "role": "data-manager",
+   "title": "Data Manager",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://bemp.org/our-staff/",
+   "evidence": "Ara Winter, Ph.D. is the Data Manager for BEMP.",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "f902cea5ea327c3d",
+   "person_key": "crawford-cliff",
+   "role": "founding-PI",
+   "title": "Co-founder",
+   "is_key_personnel": false,
+   "is_current": false,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://bemp.org/our-staff/",
+   "evidence": "working with Dr. Cliff Crawford (BEMP’s co-founder)",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "8678c2ba3cde5ecc",
+   "person_key": "lavin-roberta",
+   "role": "director",
+   "title": "Center Director; Professor and Regents’ Professor",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://hsc.unm.edu/nursing/research/center/",
+   "evidence": "Center Staff Center Director Roberta P. Lavin, PhD, FNP, FAAN",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "8678c2ba3cde5ecc",
+   "person_key": "rogers-heidi",
+   "role": "deputy-director",
+   "title": "Center Deputy Director; Associate Professor",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://hsc.unm.edu/nursing/research/center/",
+   "evidence": "Center Deputy Director Heidi Honegger Rogers, DNP, FNP-C, APHN-BC, FNAP",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "8678c2ba3cde5ecc",
+   "person_key": "couig-marypat",
+   "role": "faculty",
+   "title": "Associate Professor and Senior Fellow for Planetary Health",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://hsc.unm.edu/nursing/research/center/",
+   "evidence": "Mary Pat Couig, PhD, MPH, RN, FAAN Associate Professor and Senior Fellow for Planetary Health",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "158899c90de6138b",
+   "person_key": "gonzalez-pinzon-ricardo",
+   "role": "director",
+   "title": "Interim Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://cwe.unm.edu/about/index.html",
+   "evidence": "Ricardo González-Pinzón Interim Director Center for Water and the Environment",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "158899c90de6138b",
+   "person_key": "schuler-andrew",
+   "role": "director",
+   "title": "Director of CWE, Professor",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://cwe.unm.edu/people/index.html",
+   "evidence": "Andrew Schuler Director of CWE, Professor",
+   "confidence": "low"
+  },
+  {
+   "facility_id": "158899c90de6138b",
+   "person_key": "mulchandani-anjali",
+   "role": "associate-director",
+   "title": "Associate Director of CWE, Assistant Professor",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://cwe.unm.edu/people/index.html",
+   "evidence": "Anjali Mulchandani Associate Director of CWE, Assistant Professor",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "158899c90de6138b",
+   "person_key": "fisher-katelin",
+   "role": "technical-staff",
+   "title": "Environmental Laboratory Manager",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://cwe.unm.edu/people/index.html",
+   "evidence": "Katelin Fisher Environmental Laboratory Manager",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "94690a2c94717f62",
+   "person_key": "karam-abraham",
+   "role": "domain-manager",
+   "title": "Manager, D14: Desert Southwest",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/person/abraham-karam",
+   "evidence": "Abraham Karam Manager, D14: Desert Southwest New Mexico Field Science",
+   "confidence": "medium"
+  }
+ ],
+ "verifications": [
+  {
+   "facility_id": "be89811018d4119f",
+   "person_id": "1eb3771506b20c11",
+   "existing_role": "lead-PI",
+   "status": "stale",
+   "current_holder_key": "rudgers-jennifer",
+   "source_url": "https://lternet.edu/site/sevilleta-lter/",
+   "evidence": "Lead Principal Investigator: Jennifer Rudgers"
+  },
+  {
+   "facility_id": "be89811018d4119f",
+   "person_id": "29c2ed03c667e8dd",
+   "existing_role": "co-PI",
+   "status": "not-found",
+   "current_holder_key": null,
+   "source_url": "https://sevlter.unm.edu/people/",
+   "evidence": "Management Team Jennifer Rudgers, Director (PIs listed: Litvak, Newsome, Luo, Webster; Pockman absent)"
+  },
+  {
+   "facility_id": "635f591cbec25914",
+   "person_id": "0f915091e0560264",
+   "existing_role": "lead-PI",
+   "status": "stale",
+   "current_holder_key": "hanan-niall",
+   "source_url": "https://lternet.edu/site/jornada-basin-lter/",
+   "evidence": "Lead Principal Investigator: Niall Hanan"
+  },
+  {
+   "facility_id": "635f591cbec25914",
+   "person_id": "2913826f740ac38b",
+   "existing_role": "co-PI",
+   "status": "confirmed",
+   "current_holder_key": null,
+   "source_url": "https://jornada.nmsu.edu/people/brandon-bestelmeyer",
+   "evidence": "Research Leader Co-PI, Jornada Basin LTER"
+  }
+ ]
+}

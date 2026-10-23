@@ -1,0 +1,353 @@
+{
+ "batch_id": "R-PEOPLE2-NEON-04b",
+ "retrieved_at": "2026-10-22",
+ "verified_by": "adversarial-verifier 2026-10-22",
+ "facilities": [
+  {
+   "facility_id": "400dc6489947b445",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/ornl",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=1",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=2",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/bill-martin",
+     "status": 200
+    },
+    {
+     "url": "https://ameriflux.lbl.gov/sites/siteinfo/US-xRN",
+     "status": 200
+    }
+   ],
+   "notes": "NEON Domain D07 (Appalachians & Cumberland Plateau); field operations office in Oak Ridge, TN. Site host: Oak Ridge National Laboratory (Environmental Sciences Division, https://www.ornl.gov/division/esd); land is the DOE Oak Ridge Reservation, jointly managed by DOE and Tennessee Wildlife Resources Agency. Colocated: Walker Branch (WALK) aquatic site, Walker Branch Watershed, NADP, CZEN, AmeriFlux. NEON tower is AmeriFlux US-xRN, whose PI is listed institutionally as 'National Ecological Observatory Network' (NEON Program, Battelle) with network-wide flux contacts, so no site-specific PI was added. Bill Martin's NEON profile has no ORCID and no ORCID record tied to NEON was found."
+  },
+  {
+   "facility_id": "d9397e8252cd8036",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/oksr",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=1",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=2",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/chris-baird",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0009-0003-9818-0205/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0009-0003-9818-0205/employments",
+     "status": 200
+    }
+   ],
+   "notes": "NEON Domain D18 (Tundra); D18/D19 share the Fairbanks, AK support facility. Site host: BLM Alaska (Fairbanks District / Central Yukon Field Office); access also coordinated with University of Alaska Toolik Field Station, whose teams study the creek under the Arctic LTER. Colocated: TOOL terrestrial site; North Slope Science Initiative; Toolik Field Station. Toolik/Arctic LTER leadership belongs to those facility records."
+  },
+  {
+   "facility_id": "1f319727bf002cbf",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/pose",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=1",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=2",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/ty-lindberg",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-1043-0587/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-1043-0587/employments",
+     "status": 200
+    }
+   ],
+   "notes": "NEON Domain D02 (Mid-Atlantic); support facility in Front Royal, VA on SCBI grounds. Site host: Smithsonian's National Zoo and Conservation Biology Institute. Colocated: SCBI terrestrial site; ForestGEO. Ty Lindberg's ORCID record 0000-0002-1043-0587 has a matching name but lists no employment, so it was not attached under the strict rule."
+  },
+  {
+   "facility_id": "9a2c24665ad5ae1b",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/prla",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=1",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=2",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/andrea-anteau",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0001-5939-3206/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0001-5939-3206/employments",
+     "status": 200
+    }
+   ],
+   "notes": "NEON Domain D09 (Northern Plains); field operations office in Jamestown, ND. Site host: North Dakota Department of Trust Lands (land leased for grazing/haying). Colocated: Dakota Coteau Field School (DCFS) terrestrial site; Chase Lake NWR; Woodworth NADP. Host agency staff not named on the NEON page."
+  },
+  {
+   "facility_id": "c188a32db6d27473",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/prpo",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=1",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=2",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/andrea-anteau",
+     "status": 200
+    }
+   ],
+   "notes": "NEON Domain D09 (Northern Plains); field operations office in Jamestown, ND. Site host: Chase Lake National Wildlife Refuge (USFWS; site page also notes USGS management). Colocated: Woodworth (WOOD) terrestrial site; Chase Lake NWR; Woodworth NADP. Refuge staff not named on the NEON page."
+  },
+  {
+   "facility_id": "574cf369e9673297",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/prin",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=1",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=2",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/joe-buck",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0009-0001-9656-7305/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0009-0001-9656-7305/employments",
+     "status": 200
+    }
+   ],
+   "notes": "NEON Domain D11 (Southern Plains); field operations office in Denton, TX. Site host: Caddo-LBJ National Grasslands (USDA Forest Service); site page asks researchers not to contact the host and to coordinate through the NEON Domain 11 Manager. Colocated: CLBJ terrestrial site. Joe Buck's NEON profile has no biography; his ORCID record lists 'Domain Manager' at NEON from 2025."
+  }
+ ],
+ "people": [
+  {
+   "key": "bill-martin",
+   "existing_person_id": null,
+   "name": "Bill Martin",
+   "name_given": "Bill",
+   "name_family": "Martin",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.neonscience.org/person/bill-martin",
+   "bio": "NEON field operations manager for Domain 07 (Appalachians and Cumberland Plateau), based in Tennessee. Earlier career at the Pantex facility in Amarillo, Texas: environmental and ecological baseline sampling technician from 1993 to 1997, then, from 2007, operations manager overseeing remediation systems in its Environmental Projects program before joining NEON.",
+   "bio_source_url": "https://www.neonscience.org/person/bill-martin",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "chris-baird",
+   "existing_person_id": null,
+   "name": "Chris Baird",
+   "name_given": "Chris",
+   "name_family": "Baird",
+   "orcid": "0009-0003-9818-0205",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0009-0003-9818-0205/employments",
+   "homepage_url": "https://www.neonscience.org/person/chris-baird",
+   "bio": "Manages NEON field operations in Domain 18 (Tundra) and Domain 19 (Taiga), both run from the Fairbanks, Alaska domain facility. Previously worked for state, federal and private research organizations in the U.S. and Canada, with research centred on seabirds and arctic ecology. Holds a B.S. from the University of British Columbia and a 2013 M.S. in biology from Queen's University.",
+   "bio_source_url": "https://www.neonscience.org/person/chris-baird",
+   "research_interests": "seabird ecology; arctic ecology",
+   "research_interests_source_url": "https://www.neonscience.org/person/chris-baird"
+  },
+  {
+   "key": "ty-lindberg",
+   "existing_person_id": null,
+   "name": "Ty Lindberg",
+   "name_given": "Ty",
+   "name_family": "Lindberg",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.neonscience.org/person/ty-lindberg",
+   "bio": "Field operations manager for NEON Domain 02 (Mid-Atlantic) in Front Royal, Virginia, responsible for three eddy-flux towers with soil arrays, two instrumented streams and sampling at five locations. Before NEON he was a researcher and laboratory manager in Duke University's Nicholas School, studying selenium transport and cumulative effects of mountaintop-removal coal mining on Appalachian watersheds. M.S. zoology, NC State.",
+   "bio_source_url": "https://www.neonscience.org/person/ty-lindberg",
+   "research_interests": "water quality effects of surface coal mining; selenium fate and transport in aquatic ecosystems; population genetics; quantitative fisheries management",
+   "research_interests_source_url": "https://www.neonscience.org/person/ty-lindberg"
+  },
+  {
+   "key": "andrea-anteau",
+   "existing_person_id": null,
+   "name": "Andrea Anteau",
+   "name_given": "Andrea",
+   "name_family": "Anteau",
+   "orcid": "0000-0001-5939-3206",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0001-5939-3206/employments",
+   "homepage_url": "https://www.neonscience.org/person/andrea-anteau",
+   "bio": "Field operations manager for NEON Domain 09 (Northern Plains) in North Dakota. Close to two decades in ecological research and science teaching, including marine plankton, Alaskan wildlife and estuary marshes, Louisiana and Central American coastal wetland biogeochemistry, New Mexico desert soil microbes, and North Dakota wetland and amphibian ecology. Holds a University of New Mexico master's in ecology.",
+   "bio_source_url": "https://www.neonscience.org/person/andrea-anteau",
+   "research_interests": "wetland and amphibian ecology; coastal wetland ecology and biogeochemistry; desert soil microbial ecology; estuarine marsh ecology",
+   "research_interests_source_url": "https://www.neonscience.org/person/andrea-anteau"
+  },
+  {
+   "key": "joe-buck",
+   "existing_person_id": null,
+   "name": "Joe Buck",
+   "name_given": "Joe",
+   "name_family": "Buck",
+   "orcid": "0009-0001-9656-7305",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0009-0001-9656-7305/employments",
+   "homepage_url": "https://www.neonscience.org/person/joe-buck",
+   "bio": "Domain Manager at the National Ecological Observatory Network since 2025, according to his ORCID employment record, which also lists a manager position at Battelle Memorial Institute.",
+   "bio_source_url": "https://pub.orcid.org/v3.0/0009-0001-9656-7305/employments",
+   "research_interests": null,
+   "research_interests_source_url": null
+  }
+ ],
+ "affiliations": [
+  {
+   "facility_id": "400dc6489947b445",
+   "person_key": "bill-martin",
+   "role": "domain-manager",
+   "title": "NEON Domain Manager, D07: Appalachians and Cumberland Plateau",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/person/bill-martin",
+   "evidence": "Bill Martin Manager, D07: Appalachians and Cumberland Plateau",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "d9397e8252cd8036",
+   "person_key": "chris-baird",
+   "role": "domain-manager",
+   "title": "NEON Domain Manager, D19: Taiga; D18: Tundra",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/person/chris-baird",
+   "evidence": "Chris Baird Manager, D19: Taiga; D18: Tundra",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "1f319727bf002cbf",
+   "person_key": "ty-lindberg",
+   "role": "domain-manager",
+   "title": "NEON Domain Manager, D02: Mid-Atlantic",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/person/ty-lindberg",
+   "evidence": "Ty Lindberg Manager, D02: Mid-Atlantic",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "9a2c24665ad5ae1b",
+   "person_key": "andrea-anteau",
+   "role": "domain-manager",
+   "title": "NEON Domain Manager, D09: Northern Plains",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/person/andrea-anteau",
+   "evidence": "Andrea Anteau Manager, D09: Northern Plains",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "c188a32db6d27473",
+   "person_key": "andrea-anteau",
+   "role": "domain-manager",
+   "title": "NEON Domain Manager, D09: Northern Plains",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/person/andrea-anteau",
+   "evidence": "Andrea Anteau Manager, D09: Northern Plains",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "574cf369e9673297",
+   "person_key": "joe-buck",
+   "role": "domain-manager",
+   "title": "NEON Domain Manager, D11: Southern Plains",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/person/joe-buck",
+   "evidence": "Joe Buck Manager, D11: Southern Plains",
+   "confidence": "high"
+  }
+ ],
+ "verifications": [],
+ "verification_notes": "All 5 NEON profile pages, 6 field-site pages, staff directory pages 0-1 and 4 ORCID records re-fetched 2026-10-22 (HTTP 200). Each profile shows 'Manager, Dxx' and is listed in the current staff directory; each site page places the site in that domain (ORNL D07, OKSR D18, POSE D02, PRLA/PRPO D09, PRIN D11). Confidence medium where the person-to-site link rests on domain membership; PRIN high because its site page directs coordination through the 'NEON Domain 11 Manager'. ORCIDs kept: Baird (record name Christopher Baird, NEON Field Operations Manager), Anteau (NEON Field Science Manager 2014-), Buck (NEON Domain Manager 2025-). Lindberg ORCID left null (no employment). Buck bio rewritten to drop the inferred 'employed through Battelle' claim; 'science education' removed from Anteau research_interests (teaching, not research)."
+}

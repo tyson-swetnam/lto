@@ -1,0 +1,853 @@
+{
+ "batch_id": "R-PEOPLE2-LTAR-ARS-01b",
+ "retrieved_at": "2026-10-22",
+ "verified_by": "adversarial-verifier 2026-10-22",
+ "facilities": [
+  {
+   "facility_id": "c76e48bd8b801228",
+   "pages_fetched": [
+    {
+     "url": "https://ltar.ars.usda.gov/sites/platte-river-high-plains-aquifer/",
+     "status": 404
+    },
+    {
+     "url": "https://agronomy.unl.edu/ltar",
+     "status": 404
+    },
+    {
+     "url": "https://ltar.ars.usda.gov/sites/prhpa/",
+     "status": 200
+    },
+    {
+     "url": "https://prhpa.unl.edu/",
+     "status": 200
+    },
+    {
+     "url": "https://prhpa.unl.edu/meet-team/",
+     "status": 200
+    },
+    {
+     "url": "https://agronomy.unl.edu/jin/",
+     "status": 200
+    },
+    {
+     "url": "https://agronomy.unl.edu/schmer/",
+     "status": 200
+    },
+    {
+     "url": "https://snr.unl.edu/aboutus/who/people/faculty-member.aspx?pid=4",
+     "status": 200
+    },
+    {
+     "url": "https://snr.unl.edu/aboutus/who/people/faculty-member.aspx?pid=187",
+     "status": 200
+    },
+    {
+     "url": "https://snr.unl.edu/aboutus/who/people/faculty-member.aspx?pid=383",
+     "status": 200
+    },
+    {
+     "url": "https://statistics.unl.edu/david-marx",
+     "status": 404
+    },
+    {
+     "url": "https://animalscience.unl.edu/faculty-staff/galen-e-erickson",
+     "status": 404
+    }
+   ],
+   "notes": "Facility url (agronomy.unl.edu/ltar) and old LTAR path are 404; current pages are ltar.ars.usda.gov/sites/prhpa/ (last modified Nov 19, 2025) and prhpa.unl.edu. Leaders: Jin & Schmer (ARS), Awada (UNL). David Marx not named on either current page (his listed homepage is 404). Suyker's existing homepage_url (SNR pid=383) is not his profile; correct is pid=187. Awada's SNR profile says she co-leads PR-HPA LTAR. prhpa.unl.edu/meet-team lists ~50 more UNL/ARS participants (not added). Awada, Erickson ORCID candidates have no employment on record, so left null. VERIFIER: re-fetched ltar.ars.usda.gov/sites/prhpa/ (200). Suyker, Erickson, Woodbury, Wienhold are listed under 'Who Operates and Manages this LTAR Site?' -> role corrected co-PI -> manager. Jin 'adjunct' claim removed (not on profile). Marx and pid=383 absence confirmed."
+  },
+  {
+   "facility_id": "df254973e6b80cf4",
+   "pages_fetched": [
+    {
+     "url": "https://agriculture.auburn.edu/research/cullars-rotation/",
+     "status": 200
+    },
+    {
+     "url": "https://agriculture.auburn.edu/cses/cullars-rotation.php",
+     "status": 200
+    },
+    {
+     "url": "https://agriculture.auburn.edu/cses/cses-directory.php",
+     "status": 200
+    },
+    {
+     "url": "https://agriculture.auburn.edu/cses/old-rotation.php",
+     "status": 200
+    },
+    {
+     "url": "https://www.planthealthexchange.org/cotton/Documents/GROW-COT-01-24-438.pdf",
+     "status": 200
+    },
+    {
+     "url": "https://encyclopediaofalabama.org/article/cullars-rotation/",
+     "status": 200
+    },
+    {
+     "url": "https://agriculture.auburn.edu/?p=64496",
+     "status": 200
+    }
+   ],
+   "notes": "Facility url redirects to the college homepage; real page is agriculture.auburn.edu/cses/cullars-rotation.php, which names only managing bodies (Auburn CSES, Alabama Agricultural Experiment Station, USDA-ARS National Soil Dynamics Lab), no person. Audrey Gamble added at low confidence from her Jan 2024 Cullars Rotation presentation. A search snippet of the Auburn feature '150 Years: Living History' (?p=64496) says Gamble began overseeing Cullars and the Old Rotation in 2017 after Charles Mitchell retired, but that URL served the college homepage when fetched, so the oversight role is unverified. VERIFIER: Gamble row kept at low confidence (2024 presentation PDF names her with Cullars Rotation results); is_key_personnel set false; no page states a formal role on the experiment. Bio trimmed to the directory page."
+  },
+  {
+   "facility_id": "40b6e6ea4fbbe95d",
+   "pages_fetched": [
+    {
+     "url": "https://www.dasnr.okstate.edu/magruder-plots/",
+     "status": 0
+    },
+    {
+     "url": "https://agresearch.okstate.edu/magruder-plots",
+     "status": 403
+    },
+    {
+     "url": "https://nue.okstate.edu/Magruder.htm",
+     "status": 0
+    },
+    {
+     "url": "https://news.okstate.edu/articles/agriculture/2017/osus-historic-magruder-plots-centerpiece-of-may-19-wheat-field-day",
+     "status": 403
+    },
+    {
+     "url": "https://extension.okstate.edu/programs/precision-ag-and-soil-fertility/site-files/information/docs/magruder-plots-winter-wheat-research.pdf",
+     "status": 403
+    },
+    {
+     "url": "https://www.oklahomafarmreport.com/2022/08/24/osus-magruder-wheat-plots-established-in-1892-still-relevant-today/",
+     "status": 200
+    },
+    {
+     "url": "https://npgallery.nps.gov/GetAsset/520d0525-905e-45ab-895e-be049703caa6",
+     "status": 200
+    },
+    {
+     "url": "https://experts.okstate.edu/b.arnall",
+     "status": 200
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Magruder_Plots",
+     "status": 200
+    }
+   ],
+   "notes": "All official OSU Magruder pages blocked (403) or timed out; facility url host dasnr.okstate.edu unreachable (consider agresearch.okstate.edu/magruder-plots). No current manager could be verified on an official page. Brian Arnall added at low confidence from a 2022 Oklahoma Farm Report interview about the plots (role on the plots not stated). Founder A. C. Magruder (1892) from the NPS National Register nomination. VERIFIER: Brian Arnall dropped - the 2022 Oklahoma Farm Report piece only interviews him about the plots and states no role on them; OSU Magruder pages still 403 today. Magruder founder row confirmed in NPS nomination PDF."
+  },
+  {
+   "facility_id": "6fd843db3efb1f34",
+   "pages_fetched": [
+    {
+     "url": "https://aces.illinois.edu/research/morrow-plots",
+     "status": 404
+    },
+    {
+     "url": "https://morrow.aces.illinois.edu/",
+     "status": 200
+    },
+    {
+     "url": "https://morrow.aces.illinois.edu/history/",
+     "status": 200
+    },
+    {
+     "url": "https://morrow.aces.illinois.edu/aces-marks-150-years-of-the-morrow-plots-our-nations-oldest-research-field/",
+     "status": 200
+    },
+    {
+     "url": "https://morrow.aces.illinois.edu/bayer-gift-launches-morrow-plots-revitalization-for-150th-anniversary/",
+     "status": 200
+    },
+    {
+     "url": "https://sib.illinois.edu/directory/profile/margenot",
+     "status": 200
+    },
+    {
+     "url": "https://asc.illinois.edu/directory/andrew-margenot/",
+     "status": 200
+    },
+    {
+     "url": "https://cropsciences.illinois.edu/directory/profile/fbelow",
+     "status": 404
+    },
+    {
+     "url": "https://ace.illinois.edu/directory/jwcoppes",
+     "status": 200
+    }
+   ],
+   "notes": "Facility url is 404; the official site is now https://morrow.aces.illinois.edu/. Director is Andrew Margenot (title given as Professor on homepage/SIB, associate professor in the 150-year article and ASC profile). Existing Below and Coppess rows are not mentioned on any Morrow page; Below's profile URL is 404 and Coppess's ACE profile is an agricultural-policy page with no Morrow link; both rows look unsupported. Founding: Manly Miles began the experiment (1876); stewardship then passed to George E. Morrow (not added). VERIFIER: Margenot director confirmed on morrow.aces.illinois.edu; Margenot bio no longer cites Morrow (bio_source_url ASC page does not mention it). Adam Davis downgraded to medium (department head). Below/Coppess absence confirmed on Morrow home and history pages."
+  },
+  {
+   "facility_id": "b1f7e808427c9d4e",
+   "pages_fetched": [
+    {
+     "url": "https://www.climatehubs.usda.gov/hubs/northern-forests",
+     "status": 200
+    },
+    {
+     "url": "https://www.climatehubs.usda.gov/hubs/northern-forests/about",
+     "status": 200
+    },
+    {
+     "url": "https://www.climatehubs.usda.gov/about/all_staff/27",
+     "status": 200
+    },
+    {
+     "url": "https://www.climatehubs.usda.gov/hubs/northern-forests/people/maria-janowiak",
+     "status": 200
+    },
+    {
+     "url": "https://www.climatehubs.usda.gov/hubs/northern-forests/people/patricia-danielle-shannon",
+     "status": 200
+    }
+   ],
+   "notes": "About page labels Janowiak 'Director ... (acting)'; staff list and her profile give Director without 'acting'. Stephen Handler appears as Deputy Director only on the about page (not in the staff list), so medium confidence. Hub is housed with the Northern Institute of Applied Climate Science (USFS Northern Research Station). Fellows not added. VERIFIER: staff list all_staff/27 is the Northern Forests Hub list; Handler only on about page (medium kept)."
+  },
+  {
+   "facility_id": "8aa0271cc640c781",
+   "pages_fetched": [
+    {
+     "url": "https://www.climatehubs.usda.gov/hubs/northwest",
+     "status": 200
+    },
+    {
+     "url": "https://www.climatehubs.usda.gov/hubs/northwest/about",
+     "status": 200
+    },
+    {
+     "url": "https://www.climatehubs.usda.gov/about/all_staff/12",
+     "status": 200
+    },
+    {
+     "url": "https://www.climatehubs.usda.gov/hubs/northwest/people/jessica-halofsky",
+     "status": 200
+    },
+    {
+     "url": "https://www.climatehubs.usda.gov/hubs/northwest/people/holly-r-prendeville",
+     "status": 200
+    },
+    {
+     "url": "https://www.climatehubs.usda.gov/hubs/northwest/people/dave-l-peterson",
+     "status": 200
+    }
+   ],
+   "notes": "Headquartered at USFS PNW Research Station, Olympia WA. Existing David L. Peterson row confirmed as affiliated but his listed role is 'Collaborating Scientist' (emeritus), not co-PI; a corrected affiliation (scientist) is given with existing_person_id. Halofsky ORCID candidate 0000-0002-1502-4895 has no employment on the record, so left null. Fellows not added. VERIFIER: staff list all_staff/12 is the Northwest Hub list. Halofsky bio corrected (still a UW scientist since 2008, not 'previously')."
+  }
+ ],
+ "people": [
+  {
+   "key": "virginia-jin",
+   "existing_person_id": null,
+   "name": "Virginia Jin",
+   "name_given": "Virginia",
+   "name_family": "Jin",
+   "orcid": "0000-0003-4146-8497",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0003-4146-8497/employments",
+   "homepage_url": "https://agronomy.unl.edu/jin/",
+   "bio": "USDA-ARS research soil scientist based with the Department of Agronomy and Horticulture at the University of Nebraska-Lincoln. Trained in biology, forest resources and plant biology (Ph.D., University of Georgia); studies how tillage, fertilizer, irrigation and residue management shape soil carbon, microbial processes and greenhouse gas emissions.",
+   "bio_source_url": "https://agronomy.unl.edu/jin/",
+   "research_interests": "soil microbial ecology; carbon and nutrient cycling in agroecosystems; management effects on soil carbon storage and greenhouse gas emissions; agricultural mitigation of climate change",
+   "research_interests_source_url": "https://agronomy.unl.edu/jin/"
+  },
+  {
+   "key": "marty-schmer",
+   "existing_person_id": null,
+   "name": "Marty R. Schmer",
+   "name_given": "Marty",
+   "name_family": "Schmer",
+   "orcid": "0000-0002-3721-6177",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-3721-6177/employments",
+   "homepage_url": "https://agronomy.unl.edu/schmer/",
+   "bio": "Research agronomist with USDA-ARS in Lincoln, Nebraska, holding an adjunct assistant professorship in UNL's Department of Agronomy and Horticulture. Research covers sustainable and site-specific cropping systems, cellulosic bioenergy feedstocks and life-cycle assessment.",
+   "bio_source_url": "https://agronomy.unl.edu/schmer/",
+   "research_interests": "site-specific crop management; sustainable cropping systems; cellulosic biofuels; life-cycle analysis",
+   "research_interests_source_url": "https://agronomy.unl.edu/schmer/"
+  },
+  {
+   "key": "tala-awada",
+   "existing_person_id": null,
+   "name": "Tala Awada",
+   "name_given": "Tala",
+   "name_family": "Awada",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://snr.unl.edu/aboutus/who/people/faculty-member.aspx?pid=4",
+   "bio": "Professor of plant ecophysiology in UNL's School of Natural Resources and associate dean in the Institute of Agriculture and Natural Resources' Agricultural Research Division (listed as its interim dean and director). Co-leads the Platte River-High Plains Aquifer LTAR site; studies resilience of cropland, grassland and forest systems to climate and management.",
+   "bio_source_url": "https://snr.unl.edu/aboutus/who/people/faculty-member.aspx?pid=4",
+   "research_interests": "agroecosystem, grassland and forest sustainability and resilience; climate variability; land management effects",
+   "research_interests_source_url": "https://snr.unl.edu/aboutus/who/people/faculty-member.aspx?pid=4"
+  },
+  {
+   "key": "andrew-suyker",
+   "existing_person_id": "5b96eb6f0c4efa57",
+   "name": "Andrew E. Suyker",
+   "name_given": "Andrew",
+   "name_family": "Suyker",
+   "orcid": "0000-0002-4394-1607",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-4394-1607/employments",
+   "homepage_url": "https://snr.unl.edu/aboutus/who/people/faculty-member.aspx?pid=187",
+   "bio": "Micrometeorologist and research professor (associate professor rank) in UNL's School of Natural Resources. Measures carbon dioxide, water vapor and energy exchange at three cropland research sites near Mead, Nebraska, and supplies those flux records to a national archive and to other researchers.",
+   "bio_source_url": "https://snr.unl.edu/aboutus/who/people/faculty-member.aspx?pid=187",
+   "research_interests": "CO2 and water vapor exchange in agricultural and natural ecosystems; variability of net ecosystem exchange and evapotranspiration in irrigated and rainfed maize-soybean systems",
+   "research_interests_source_url": "https://snr.unl.edu/aboutus/who/people/faculty-member.aspx?pid=187"
+  },
+  {
+   "key": "galen-erickson",
+   "existing_person_id": null,
+   "name": "Galen Erickson",
+   "name_given": "Galen",
+   "name_family": "Erickson",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "bryan-woodbury",
+   "existing_person_id": null,
+   "name": "Bryan Woodbury",
+   "name_given": "Bryan",
+   "name_family": "Woodbury",
+   "orcid": "0000-0001-5882-6698",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0001-5882-6698/employments",
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "brian-wienhold",
+   "existing_person_id": null,
+   "name": "Brian Wienhold",
+   "name_given": "Brian",
+   "name_family": "Wienhold",
+   "orcid": "0000-0003-3066-6965",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0003-3066-6965/employments",
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "audrey-gamble",
+   "existing_person_id": null,
+   "name": "Audrey Gamble",
+   "name_given": "Audrey",
+   "name_family": "Gamble",
+   "orcid": "0000-0001-9874-745X",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0001-9874-745X/employments",
+   "homepage_url": null,
+   "bio": "Associate professor in Auburn University's Department of Crop, Soil and Environmental Sciences, specializing in soil fertility and soil conservation.",
+   "bio_source_url": "https://agriculture.auburn.edu/cses/cses-directory.php",
+   "research_interests": "soil fertility; soil conservation",
+   "research_interests_source_url": "https://agriculture.auburn.edu/cses/cses-directory.php"
+  },
+  {
+   "key": "ac-magruder",
+   "existing_person_id": null,
+   "name": "A. C. Magruder",
+   "name_given": "A. C.",
+   "name_family": "Magruder",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "andrew-margenot",
+   "existing_person_id": null,
+   "name": "Andrew J. Margenot",
+   "name_given": "Andrew",
+   "name_family": "Margenot",
+   "orcid": "0000-0003-0185-8650",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0003-0185-8650/employments",
+   "homepage_url": "https://sib.illinois.edu/directory/profile/margenot",
+   "bio": "Soil scientist and faculty member in Crop Sciences at the University of Illinois Urbana-Champaign, where he is associate director of the Agroecosystem Sustainability Center and a senior associate editor of Geoderma. Earned his doctorate and held a postdoc at UC Davis before joining Illinois in 2017.",
+   "bio_source_url": "https://asc.illinois.edu/directory/andrew-margenot/",
+   "research_interests": "soil science; FTIR spectroscopy; soil fertility in East Africa; urban agriculture; phosphorus; soil organic matter and enzymes",
+   "research_interests_source_url": "https://asc.illinois.edu/directory/andrew-margenot/"
+  },
+  {
+   "key": "adam-davis",
+   "existing_person_id": null,
+   "name": "Adam Davis",
+   "name_given": "Adam",
+   "name_family": "Davis",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "manly-miles",
+   "existing_person_id": null,
+   "name": "Manly Miles",
+   "name_given": "Manly",
+   "name_family": "Miles",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "maria-janowiak",
+   "existing_person_id": null,
+   "name": "Maria Janowiak",
+   "name_given": "Maria",
+   "name_family": "Janowiak",
+   "orcid": "0000-0003-1283-8778",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0003-1283-8778/employments",
+   "homepage_url": "https://www.climatehubs.usda.gov/hubs/northern-forests/people/maria-janowiak",
+   "bio": "Director of both the USDA Northern Forests Climate Hub and NIACS (Northern Institute of Applied Climate Science), partnerships led by the Forest Service Northern Research Station. Helps forest managers in the Midwest and Northeast adapt to climate change through vulnerability assessments, decision tools and the Adaptive Silviculture for Climate Change trials.",
+   "bio_source_url": "https://www.climatehubs.usda.gov/hubs/northern-forests/people/maria-janowiak",
+   "research_interests": "forests; carbon; climate adaptation planning and implementation",
+   "research_interests_source_url": "https://www.climatehubs.usda.gov/hubs/northern-forests/people/maria-janowiak"
+  },
+  {
+   "key": "stephen-handler",
+   "existing_person_id": null,
+   "name": "Stephen Handler",
+   "name_given": "Stephen",
+   "name_family": "Handler",
+   "orcid": "0000-0002-9618-1330",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-9618-1330/employments",
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "danielle-shannon",
+   "existing_person_id": null,
+   "name": "(Patricia) Danielle Shannon",
+   "name_given": "Patricia Danielle",
+   "name_family": "Shannon",
+   "orcid": "0000-0003-4215-3569",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0003-4215-3569/employments",
+   "homepage_url": "https://www.climatehubs.usda.gov/hubs/northern-forests/people/patricia-danielle-shannon",
+   "bio": "Serves as Northern Forests Climate Hub coordinator (USDA) and is research staff at Michigan Technological University and NIACS. Provides climate adaptation support to land managers in the Midwest and Northeast, with emphasis on forest hydrology, wetlands and forested watersheds.",
+   "bio_source_url": "https://www.climatehubs.usda.gov/hubs/northern-forests/people/patricia-danielle-shannon",
+   "research_interests": "forest and water resources management; climate adaptation; science communication and outreach",
+   "research_interests_source_url": "https://www.climatehubs.usda.gov/hubs/northern-forests/people/patricia-danielle-shannon"
+  },
+  {
+   "key": "bethany-munoz-delgado",
+   "existing_person_id": null,
+   "name": "Bethany Muñoz Delgado",
+   "name_given": "Bethany",
+   "name_family": "Muñoz Delgado",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "peter-obrien",
+   "existing_person_id": null,
+   "name": "Peter O'Brien",
+   "name_given": "Peter",
+   "name_family": "O'Brien",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "jessica-halofsky",
+   "existing_person_id": null,
+   "name": "Jessica Halofsky",
+   "name_given": "Jessica",
+   "name_family": "Halofsky",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.climatehubs.usda.gov/hubs/northwest/people/jessica-halofsky",
+   "bio": "Ecologist who directs the USDA Northwest Climate Hub and the Western Wildland Environmental Threat Assessment Center (USFS Pacific Northwest Research Station); a University of Washington scientist since 2008. Has co-led many regional climate vulnerability and adaptation assessments in the western U.S.",
+   "bio_source_url": "https://www.climatehubs.usda.gov/hubs/northwest/people/jessica-halofsky",
+   "research_interests": "climate change impacts and adaptation; vegetation dynamics; fire and disturbance ecology",
+   "research_interests_source_url": "https://www.climatehubs.usda.gov/hubs/northwest/people/jessica-halofsky"
+  },
+  {
+   "key": "holly-prendeville",
+   "existing_person_id": null,
+   "name": "Holly R. Prendeville",
+   "name_given": "Holly",
+   "name_family": "Prendeville",
+   "orcid": "0000-0002-5683-5125",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-5683-5125/employments",
+   "homepage_url": "https://www.climatehubs.usda.gov/hubs/northwest/people/holly-r-prendeville",
+   "bio": "Coordinator of the USDA Northwest Climate Hub since 2016 and of the Western Wildland Environmental Threat Assessment Center. Earlier worked as a Forest Service research geneticist testing bluebunch wheatgrass seed zones for restoration; Ph.D. in ecology, evolution and behavior from UNL.",
+   "bio_source_url": "https://www.climatehubs.usda.gov/hubs/northwest/people/holly-r-prendeville",
+   "research_interests": "restoration with native plant materials; genetics; plant evolutionary ecology",
+   "research_interests_source_url": "https://www.climatehubs.usda.gov/hubs/northwest/people/holly-r-prendeville"
+  },
+  {
+   "key": "cory-owens",
+   "existing_person_id": null,
+   "name": "Cory Owens",
+   "name_given": "Cory",
+   "name_family": "Owens",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "dave-peterson",
+   "existing_person_id": "61123101eb07ed03",
+   "name": "David L. Peterson",
+   "name_given": "David",
+   "name_family": "Peterson",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.climatehubs.usda.gov/hubs/northwest/people/dave-l-peterson",
+   "bio": "Emeritus senior research scientist, Forest Service PNW Research Station, who also holds a University of Washington forest biology professorship. Long research record in fire science and climate change in the western U.S.; was a co-lead of the Fourth National Climate Assessment's forests chapter.",
+   "bio_source_url": "https://www.climatehubs.usda.gov/hubs/northwest/people/dave-l-peterson",
+   "research_interests": "fire science; climate change assessment and adaptation on western federal lands",
+   "research_interests_source_url": "https://www.climatehubs.usda.gov/hubs/northwest/people/dave-l-peterson"
+  }
+ ],
+ "affiliations": [
+  {
+   "facility_id": "c76e48bd8b801228",
+   "person_key": "virginia-jin",
+   "role": "lead-PI",
+   "title": "Site co-leader (USDA-ARS)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ltar.ars.usda.gov/sites/prhpa/",
+   "evidence": "Leader(s) Virginia Jin and Marty Schmer (ARS), Tala Awada (UNL)",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "c76e48bd8b801228",
+   "person_key": "marty-schmer",
+   "role": "lead-PI",
+   "title": "Site co-leader (USDA-ARS)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ltar.ars.usda.gov/sites/prhpa/",
+   "evidence": "Leader(s) Virginia Jin and Marty Schmer (ARS), Tala Awada (UNL)",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "c76e48bd8b801228",
+   "person_key": "tala-awada",
+   "role": "lead-PI",
+   "title": "Site co-leader (UNL)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ltar.ars.usda.gov/sites/prhpa/",
+   "evidence": "Leader(s) Virginia Jin and Marty Schmer (ARS), Tala Awada (UNL)",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "c76e48bd8b801228",
+   "person_key": "andrew-suyker",
+   "role": "manager",
+   "title": "Micrometeorologist (UNL); listed as a site operator/manager",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ltar.ars.usda.gov/sites/prhpa/",
+   "evidence": "Who Operates and Manages this LTAR Site? Andrew Suyker (UNL), Galen Erickson (UNL), Tala Awada (UNL)",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "c76e48bd8b801228",
+   "person_key": "galen-erickson",
+   "role": "manager",
+   "title": "Professor of Animal Science (UNL); listed as a site operator/manager",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ltar.ars.usda.gov/sites/prhpa/",
+   "evidence": "Who Operates and Manages this LTAR Site? Andrew Suyker (UNL), Galen Erickson (UNL)",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "c76e48bd8b801228",
+   "person_key": "bryan-woodbury",
+   "role": "manager",
+   "title": "Site operator/manager (USDA-ARS MARC, Clay Center)",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ltar.ars.usda.gov/sites/prhpa/",
+   "evidence": "Bryan Woodbury (USDA-ARS-MARC, Clay Center) and Brian Wienhold (USDA-ARS-Lincoln)",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "c76e48bd8b801228",
+   "person_key": "brian-wienhold",
+   "role": "manager",
+   "title": "Site operator/manager (USDA-ARS Lincoln)",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ltar.ars.usda.gov/sites/prhpa/",
+   "evidence": "Bryan Woodbury (USDA-ARS-MARC, Clay Center) and Brian Wienhold (USDA-ARS-Lincoln)",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "df254973e6b80cf4",
+   "person_key": "audrey-gamble",
+   "role": "scientist",
+   "title": "Associate Professor, Crop, Soil and Environmental Sciences (presenter of Cullars Rotation results)",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.planthealthexchange.org/cotton/Documents/GROW-COT-01-24-438.pdf",
+   "evidence": "Audrey Gamble Department of Crop, Soil and Environmental Sciences Auburn University The Cullars Rotation",
+   "confidence": "low"
+  },
+  {
+   "facility_id": "40b6e6ea4fbbe95d",
+   "person_key": "ac-magruder",
+   "role": "founding-PI",
+   "title": "First professor of agriculture, Oklahoma A & M",
+   "is_key_personnel": false,
+   "is_current": false,
+   "start_year": 1892,
+   "end_year": null,
+   "source_url": "https://npgallery.nps.gov/GetAsset/520d0525-905e-45ab-895e-be049703caa6",
+   "evidence": "Originally planted in the fall of 1892 by A. C. Magruder, first professor of agriculture",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "6fd843db3efb1f34",
+   "person_key": "andrew-margenot",
+   "role": "director",
+   "title": "Director of the Morrow Plots and Alma Mater Plots; Professor of Crop Sciences",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://morrow.aces.illinois.edu/",
+   "evidence": "Andrew Margenot Professor of Crop Sciences Director of the Morrow Plots and Alma Mater Plots",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "6fd843db3efb1f34",
+   "person_key": "adam-davis",
+   "role": "leadership-team",
+   "title": "Head, Department of Crop Sciences (department overseeing the Morrow Plots)",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://morrow.aces.illinois.edu/bayer-gift-launches-morrow-plots-revitalization-for-150th-anniversary/",
+   "evidence": "under the leadership of department head Adam Davis and Andrew Margenot",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "6fd843db3efb1f34",
+   "person_key": "manly-miles",
+   "role": "founding-PI",
+   "title": "Professor of agriculture (hired 1875); began the experiment",
+   "is_key_personnel": false,
+   "is_current": false,
+   "start_year": 1876,
+   "end_year": null,
+   "source_url": "https://morrow.aces.illinois.edu/history/",
+   "evidence": "Manly Miles, hired as a professor of agriculture in 1875, soon began a long-term corn experiment",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "b1f7e808427c9d4e",
+   "person_key": "maria-janowiak",
+   "role": "director",
+   "title": "Director, USDA Northern Forests Climate Hub",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.climatehubs.usda.gov/about/all_staff/27",
+   "evidence": "Maria Janowiak Regional Hub, Director",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "b1f7e808427c9d4e",
+   "person_key": "stephen-handler",
+   "role": "deputy-director",
+   "title": "Deputy Director, USDA Northern Forests Climate Hub",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.climatehubs.usda.gov/hubs/northern-forests/about",
+   "evidence": "Deputy Director, USDA Northern Forests Climate Hub , Stephen Handler, USDA Forest Service",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "b1f7e808427c9d4e",
+   "person_key": "danielle-shannon",
+   "role": "coordinator",
+   "title": "Coordinator, USDA Northern Forests Climate Hub",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.climatehubs.usda.gov/about/all_staff/27",
+   "evidence": "(Patricia) Danielle Shannon Coordinator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "b1f7e808427c9d4e",
+   "person_key": "bethany-munoz-delgado",
+   "role": "leadership-team",
+   "title": "Agency Co-Lead",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.climatehubs.usda.gov/about/all_staff/27",
+   "evidence": "Bethany Muñoz Delgado Agency Co-Lead",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "b1f7e808427c9d4e",
+   "person_key": "peter-obrien",
+   "role": "leadership-team",
+   "title": "Agency Co-Lead",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.climatehubs.usda.gov/about/all_staff/27",
+   "evidence": "Peter O'Brien Agency Co-Lead",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "8aa0271cc640c781",
+   "person_key": "jessica-halofsky",
+   "role": "director",
+   "title": "Director, USDA Northwest Climate Hub",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.climatehubs.usda.gov/about/all_staff/12",
+   "evidence": "Jessica Halofsky Director",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "8aa0271cc640c781",
+   "person_key": "holly-prendeville",
+   "role": "coordinator",
+   "title": "Coordinator, USDA Northwest Climate Hub",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2016,
+   "end_year": null,
+   "source_url": "https://www.climatehubs.usda.gov/about/all_staff/12",
+   "evidence": "Holly R. Prendeville Coordinator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "8aa0271cc640c781",
+   "person_key": "cory-owens",
+   "role": "leadership-team",
+   "title": "Agency Co-Lead",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.climatehubs.usda.gov/about/all_staff/12",
+   "evidence": "Cory Owens Agency Co-Lead",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "8aa0271cc640c781",
+   "person_key": "dave-peterson",
+   "role": "scientist",
+   "title": "Collaborating Scientist (USFS PNW Research Station, emeritus)",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.climatehubs.usda.gov/about/all_staff/12",
+   "evidence": "Dave L Peterson Collaborating Scientist",
+   "confidence": "high"
+  }
+ ],
+ "verifications": [
+  {
+   "facility_id": "c76e48bd8b801228",
+   "person_id": "dfaacb694749fb42",
+   "existing_role": "co-PI",
+   "status": "not-found",
+   "current_holder_key": null,
+   "source_url": "https://ltar.ars.usda.gov/sites/prhpa/",
+   "evidence": null
+  },
+  {
+   "facility_id": "c76e48bd8b801228",
+   "person_id": "5b96eb6f0c4efa57",
+   "existing_role": "co-PI",
+   "status": "confirmed",
+   "current_holder_key": null,
+   "source_url": "https://ltar.ars.usda.gov/sites/prhpa/",
+   "evidence": "Who Operates and Manages this LTAR Site? Andrew Suyker (UNL)"
+  },
+  {
+   "facility_id": "6fd843db3efb1f34",
+   "person_id": "5fb976591e85e9aa",
+   "existing_role": "emeritus",
+   "status": "not-found",
+   "current_holder_key": null,
+   "source_url": "https://morrow.aces.illinois.edu/",
+   "evidence": null
+  },
+  {
+   "facility_id": "6fd843db3efb1f34",
+   "person_id": "bbf49085f718c480",
+   "existing_role": "co-PI",
+   "status": "not-found",
+   "current_holder_key": null,
+   "source_url": "https://morrow.aces.illinois.edu/",
+   "evidence": null
+  },
+  {
+   "facility_id": "8aa0271cc640c781",
+   "person_id": "61123101eb07ed03",
+   "existing_role": "co-PI",
+   "status": "confirmed",
+   "current_holder_key": null,
+   "source_url": "https://www.climatehubs.usda.gov/about/all_staff/12",
+   "evidence": "Dave L Peterson Collaborating Scientist"
+  }
+ ]
+}

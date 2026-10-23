@@ -1,0 +1,1240 @@
+{
+ "batch_id": "R-PEOPLE2-OCEAN-COASTAL-01a",
+ "retrieved_at": "2026-10-22",
+ "verified_by": "adversarial-verifier 2026-10-22",
+ "facilities": [
+  {
+   "facility_id": "92c3a14e84367d13",
+   "pages_fetched": [
+    {
+     "url": "https://www.ncei.noaa.gov/about-us/leadership",
+     "status": 404
+    },
+    {
+     "url": "https://www.ncei.noaa.gov/about-us",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0001-7698-6740/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0001-7698-6740/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-6052-7117/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-6052-7117/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0001-8267-9894/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0001-8267-9894/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-1639-6850/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-1639-6850/employments",
+     "status": 200
+    }
+   ],
+   "notes": "Leadership Team section of the NCEI About page names the Director (Deke Arndt, since 2023), Deputy Director and division chiefs; /about-us/leadership itself 404s. No individual NCEI profile pages found, so bios come from the About page. NCEI formed in 2015 by merger; no founding-director page fetched. ORCIDs accepted for Arndt, Casey (NCEI employment) and Privette (NOAA employment only, name match); Grissom's ORCID record lists no employment so it was rejected. Verifier 2026-10-22: re-fetched every source_url, homepage_url, bio_source_url (all 200) and ORCID record."
+  },
+  {
+   "facility_id": "3f6a9d8c60eeed6d",
+   "pages_fetched": [
+    {
+     "url": "https://www.ndbc.noaa.gov/",
+     "status": 200
+    },
+    {
+     "url": "https://www.ndbc.noaa.gov/about.shtml",
+     "status": 200
+    },
+    {
+     "url": "https://www.ndbc.noaa.gov/ndbc-history.shtml",
+     "status": 200
+    },
+    {
+     "url": "https://www.ndbc.noaa.gov/leadership/director.shtml",
+     "status": 200
+    },
+    {
+     "url": "https://www.ndbc.noaa.gov/leadership/mrdiv.shtml",
+     "status": 200
+    },
+    {
+     "url": "https://www.ndbc.noaa.gov/leadership/osdiv.shtml",
+     "status": 200
+    },
+    {
+     "url": "https://www.ndbc.noaa.gov/leadership/",
+     "status": 403
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-9521-5172/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-9521-5172/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-1536-9033/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-1536-9033/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-9067-0635/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-9067-0635/employments",
+     "status": 200
+    },
+    {
+     "url": "https://www.weather.gov/news/ndbc-burnett-012121",
+     "status": 200
+    },
+    {
+     "url": "https://www.ndbc.noaa.gov/leadership/deputy.shtml",
+     "status": 404
+    },
+    {
+     "url": "https://www.ndbc.noaa.gov/leadership/mccdiv.shtml",
+     "status": 404
+    },
+    {
+     "url": "https://www.ndbc.noaa.gov/leadership/mcdiv.shtml",
+     "status": 404
+    },
+    {
+     "url": "https://www.ndbc.noaa.gov/leadership/sddiv.shtml",
+     "status": 404
+    },
+    {
+     "url": "https://www.ndbc.noaa.gov/leadership/dmdiv.shtml",
+     "status": 404
+    },
+    {
+     "url": "https://www.ndbc.noaa.gov/leadership/chiefsci.shtml",
+     "status": 404
+    }
+   ],
+   "notes": "NDBC leadership pages exist per person (leadership/director.shtml, osdiv.shtml, mrdiv.shtml); the leadership/ index is 403 and guessed pages for other divisions 404, so other division chiefs (e.g. Mission Control) were not found. Burnett start year 2022 from the NWS announcement (weather.gov/news/ndbc-burnett-012121). Karen Grissom's former NDBC lead-scientist role comes from the NCEI About page. Three ORCID records named William Burnett have no employment, so none was accepted. Site is a NOAA NWS facility at Stennis Space Center, MS. Verifier 2026-10-22: re-fetched every source_url, homepage_url, bio_source_url (all 200) and ORCID record. Dropped Grissom former-NDBC row (evidence is on the NCEI page, not an NDBC page)."
+  },
+  {
+   "facility_id": "debbe06b574422c2",
+   "pages_fetched": [
+    {
+     "url": "https://aoos.org/about/staff/",
+     "status": 404
+    },
+    {
+     "url": "https://aoos.org/about/our-team/",
+     "status": 200
+    },
+    {
+     "url": "https://aoos.org/our-team/sheyna-bio/",
+     "status": 200
+    },
+    {
+     "url": "https://aoos.org/our-team/molly-bio/",
+     "status": 200
+    },
+    {
+     "url": "https://aoos.org/our-team/carol-bio/",
+     "status": 200
+    },
+    {
+     "url": "https://aoos.org/our-team/darcy-bio/",
+     "status": 200
+    },
+    {
+     "url": "https://aoos.org/our-team/thomas-bio/",
+     "status": 200
+    },
+    {
+     "url": "https://aoos.org/our-team/lisa-bio/",
+     "status": 200
+    },
+    {
+     "url": "https://aoos.org/our-team/taylor-borgfeldt/",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0001-9052-8826/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0001-9052-8826/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-1718-469X/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-1718-469X/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-6793-3898/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-6793-3898/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0003-3850-5189/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0003-3850-5189/employments",
+     "status": 200
+    }
+   ],
+   "notes": "Staff list moved to aoos.org/about/our-team/ (old /about/staff/ URL is 404). Sheyna Wisdom is current Executive Director; her ORCID record (Alaska Ocean Observing System, Executive Director, 2021-) agrees with Molly McCammon's bio, which says she moved to Senior Advisor in January 2021 after being founding executive director from 2003. The existing McCammon row's end_date 2022-12-31 is therefore wrong (should be 2021). Lisa Sheffield Guy (Scientific Program Manager) was left out to keep within the cap. McCammon and Borgfeldt ORCID records have no employment, so they were not accepted. Verifier 2026-10-22: re-fetched every source_url, homepage_url, bio_source_url (all 200) and ORCID record."
+  },
+  {
+   "facility_id": "c987433cec4502fa",
+   "pages_fetched": [
+    {
+     "url": "https://www.disl.edu/about/",
+     "status": 200
+    },
+    {
+     "url": "https://www.disl.edu/who-we-are/",
+     "status": 200
+    },
+    {
+     "url": "https://www.disl.edu/",
+     "status": 200
+    },
+    {
+     "url": "https://www.disl.edu/who-we-are/jvalentine/",
+     "status": 200
+    },
+    {
+     "url": "https://disl.edu/about/our-history",
+     "status": 200
+    },
+    {
+     "url": "https://www.disl.edu/who-we-are/lsmee/",
+     "status": 200
+    },
+    {
+     "url": "https://www.disl.edu/who-we-are/bdzwonkowski/",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-2333-2185/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-2333-2185/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0003-1909-9672/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0003-1909-9672/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0001-9112-2254/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0001-9112-2254/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-6026-8784/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-6026-8784/employments",
+     "status": 200
+    }
+   ],
+   "notes": "Who We Are page lists the executive director and faculty; history page (disl.edu/about/our-history) names C. Everett Brett as first MESC Director (1971), George Crozier as Executive Director from 1977, and John Valentine as Executive Director from 2011. DISL is administered by the Marine Environmental Sciences Consortium (MESC). The three John Valentine ORCID records have no employment, so none was accepted. Dzwonkowski's ORCID record (University of South Alabama, Marine Sciences) was accepted. Verifier 2026-10-22: re-fetched every source_url, homepage_url, bio_source_url (all 200) and ORCID record."
+  },
+  {
+   "facility_id": "5b42961d12b531c3",
+   "pages_fetched": [
+    {
+     "url": "https://hmsc.oregonstate.edu/",
+     "status": 200
+    },
+    {
+     "url": "https://hmsc.oregonstate.edu/staff",
+     "status": 200
+    },
+    {
+     "url": "https://hmsc.oregonstate.edu/about",
+     "status": 200
+    },
+    {
+     "url": "https://hmsc.oregonstate.edu/about/hatfields-history",
+     "status": 200
+    },
+    {
+     "url": "https://hmsc.oregonstate.edu/staff/staff-directory",
+     "status": 200
+    },
+    {
+     "url": "https://hmsc.oregonstate.edu/directory/lisa-t-ballance",
+     "status": 404
+    },
+    {
+     "url": "https://hmsc.oregonstate.edu/alphabetical-directory-all-osu-state-federal-staff",
+     "status": 200
+    },
+    {
+     "url": "https://hmsc.oregonstate.edu/directory/belinda-batten",
+     "status": 200
+    },
+    {
+     "url": "https://hmsc.oregonstate.edu/directory/cinamon-moffett-0",
+     "status": 200
+    },
+    {
+     "url": "https://hmsc.oregonstate.edu/directory/ethan-roth",
+     "status": 200
+    },
+    {
+     "url": "https://engineering.oregonstate.edu/people/belinda-batten",
+     "status": 200
+    },
+    {
+     "url": "https://lincolnchronicle.org/cowan-retiring-as-head-of-hatfield-marine-science-center-ballance-to-become-interim-director",
+     "status": 403
+    },
+    {
+     "url": "https://blogs.oregonstate.edu/hmschistory/2015/07/28/osus-hatfield-marine-science-center-to-turn-50-years-of-age",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0009-0003-7264-0787/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0009-0003-7264-0787/employments",
+     "status": 200
+    }
+   ],
+   "notes": "HMSC staff directory and Belinda Batten's directory page list her as Interim HMSC Executive Director, but her OSU College of Engineering profile names other current roles (Senior Advisor to the Provost; Acting Executive Director, Huang Complex) and does not mention HMSC, so confidence is medium. Search results said Robert Cowen (long-time director) retired in 2025 and Lisa Ballance served as interim director, but the Lincoln Chronicle article returned 403 and Ballance's HMSC profile URL 404s, so neither is recorded. No founding director is named on the fetched history page. Batten's ORCID record has no employment and was not accepted. Verifier 2026-10-22: re-fetched every source_url, homepage_url, bio_source_url (all 200) and ORCID record. HMSC /directory (200) still lists Batten as Interim Executive Director; Batten bio rewritten to match its source (engineering profile)."
+  },
+  {
+   "facility_id": "d0c73a05032034a7",
+   "pages_fetched": [
+    {
+     "url": "https://tidesandcurrents.noaa.gov/about.html",
+     "status": 404
+    },
+    {
+     "url": "https://tidesandcurrents.noaa.gov/about_us.html",
+     "status": 200
+    },
+    {
+     "url": "https://tidesandcurrents.noaa.gov/director-coops.html",
+     "status": 200
+    },
+    {
+     "url": "https://tidesandcurrents.noaa.gov/pub.html",
+     "status": 200
+    },
+    {
+     "url": "https://tidesandcurrents.noaa.gov/assets/images/aboutusimages/co-ops_orgChart2026.webp",
+     "status": 200
+    },
+    {
+     "url": "https://hazards.colorado.edu/workshop/2026/speaker/william-sweet",
+     "status": 200
+    },
+    {
+     "url": "https://tidesandcurrents.noaa.gov/publications/HighTideFloodingOutlook_2026.pdf",
+     "status": 404
+    },
+    {
+     "url": "https://tidesandcurrents.noaa.gov/publications/",
+     "status": 403
+    },
+    {
+     "url": "https://tidesandcurrents.noaa.gov/HighTideFlooding_AnnualOutlook.html",
+     "status": 404
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-0149-8336/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-0149-8336/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0009-0005-4381-5650/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0009-0005-4381-5650/employments",
+     "status": 200
+    },
+    {
+     "url": "https://oceanservice.noaa.gov/news/may26/el-nino-flooding.html",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0009-0008-7195-2945/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0009-0008-7195-2945/employments",
+     "status": 200
+    }
+   ],
+   "notes": "Director Marian Westley comes from about_us.html and director-coops.html. All other roles come from the 2026 CO-OPS org chart image embedded on about_us.html; its text was read off the image. Audra Luscher is now Chief of the Coastal Hazards Branch (also acting Stakeholder Services chief). The existing 'Coastal Inundation Program Manager' title and 'faculty' role are outdated. The Engineering Division is led by Scott Mowery; 'Bob Heitsenrether' is acting Chief of the Systems Support & Evaluation Branch, and matching him to the existing Robert Heitsenrether is a nickname inference (ORCID: NOAA NOS, Scientist). A May 2026 NOS article calls William Sweet a NOAA oceanographer and high tide flooding expert but does not name his unit; his ORCID shows NOAA NOS, so CO-OPS membership is only medium confidence. Verifier 2026-10-22: re-fetched every source_url, homepage_url, bio_source_url (all 200) and ORCID record. Org-chart roles re-read from the 2026 org chart image (200). Sweet CO-OPS row dropped and his verification set to unverifiable: the May 2026 NOS article does not name his office."
+  }
+ ],
+ "people": [
+  {
+   "key": "deke-arndt",
+   "existing_person_id": null,
+   "name": "Deke Arndt",
+   "name_given": "Deke",
+   "name_family": "Arndt",
+   "orcid": "0000-0001-7698-6740",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0001-7698-6740/employments",
+   "homepage_url": null,
+   "bio": "Director of NOAA's National Centers for Environmental Information since January 2023. For three years before that he headed NCEI's CSSD, and earlier led its monitoring section. He began his career in 1996 at the Oklahoma Climatological Survey, has been a co-lead editor of the AMS annual climate-state report, and co-led the USGCRP interagency indicators group.",
+   "bio_source_url": "https://www.ncei.noaa.gov/about-us",
+   "research_interests": "climate monitoring; climate indicators; State of the Climate reporting",
+   "research_interests_source_url": "https://www.ncei.noaa.gov/about-us"
+  },
+  {
+   "key": "joe-pica",
+   "existing_person_id": null,
+   "name": "Joe Pica",
+   "name_given": "Joe",
+   "name_family": "Pica",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Deputy Director of NCEI since 2018. He earlier ran the NWS Office of Observations and was commanding officer of two NOAA vessels, the Ronald H. Brown and the Okeanos Explorer. He also served as NGDC deputy director before that center merged into NCEI.",
+   "bio_source_url": "https://www.ncei.noaa.gov/about-us",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "ken-casey",
+   "existing_person_id": null,
+   "name": "Ken Casey",
+   "name_given": "Ken",
+   "name_family": "Casey",
+   "orcid": "0000-0002-6052-7117",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-6052-7117/employments",
+   "homepage_url": null,
+   "bio": "Chief of NCEI's Data Stewardship Division since December 2024. He holds an oceanography PhD (URI). After arriving at NCEI in 2001 he created and ran its satellite oceanography group. He has served as ESIP president.",
+   "bio_source_url": "https://www.ncei.noaa.gov/about-us",
+   "research_interests": "satellite oceanography; environmental data stewardship",
+   "research_interests_source_url": "https://www.ncei.noaa.gov/about-us"
+  },
+  {
+   "key": "karen-grissom",
+   "existing_person_id": null,
+   "name": "Karen Grissom",
+   "name_given": "Karen",
+   "name_family": "Grissom",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Acting chief of the Coasts, Oceans and Geophysics Science Division at NCEI. She was formerly lead scientist and operations manager at NOAA's National Data Buoy Center, where she helped modernize in situ ocean observing. Earlier she fielded emerging technology for NOAA's NOS and was a Florida state hydrogeologist.",
+   "bio_source_url": "https://www.ncei.noaa.gov/about-us",
+   "research_interests": "in situ ocean observing systems",
+   "research_interests_source_url": "https://www.ncei.noaa.gov/about-us"
+  },
+  {
+   "key": "jeff-privette",
+   "existing_person_id": null,
+   "name": "Jeff Privette",
+   "name_given": "Jeff",
+   "name_family": "Privette",
+   "orcid": "0000-0001-8267-9894",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0001-8267-9894/employments",
+   "homepage_url": null,
+   "bio": "Head of NCEI's CSSD since 2024. He came to NOAA in 2006 to run the then-new Climate Data Record program. Before that he was at NASA, where he led MODIS and VIIRS land validation and served as deputy project scientist for Suomi-NPP. He chairs the CEOS-CGMS joint climate working group.",
+   "bio_source_url": "https://www.ncei.noaa.gov/about-us",
+   "research_interests": "satellite climate data records; land product validation",
+   "research_interests_source_url": "https://www.ncei.noaa.gov/about-us"
+  },
+  {
+   "key": "william-burnett",
+   "existing_person_id": null,
+   "name": "William Burnett",
+   "name_given": "William",
+   "name_family": "Burnett",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.ndbc.noaa.gov/leadership/director.shtml",
+   "bio": "Director of NOAA's National Data Buoy Center since January 2022. He earlier spent eight years at NDBC as Mission Control Center branch chief and later was technical director for the Navy's meteorology and oceanography command (CNMOC). His graduate degrees (M.S., Ph.D.) in marine science are from Southern Mississippi.",
+   "bio_source_url": "https://www.weather.gov/news/ndbc-burnett-012121",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "brett-taft",
+   "existing_person_id": null,
+   "name": "Brett Taft",
+   "name_given": "Brett",
+   "name_family": "Taft",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.ndbc.noaa.gov/leadership/osdiv.shtml",
+   "bio": "Chief of NDBC's Observational Systems Division, which handles engineering and field operations for the center's moored buoys and coastal platforms. He first joined NDBC in 1994 as a U.S. Coast Guard officer. He has led major projects, including the service life extension of the DART tsunami buoy system.",
+   "bio_source_url": "https://www.ndbc.noaa.gov/leadership/osdiv.shtml",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "amanda-hansen",
+   "existing_person_id": null,
+   "name": "Amanda M. Hansen",
+   "name_given": "Amanda",
+   "name_family": "Hansen",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.ndbc.noaa.gov/leadership/mrdiv.shtml",
+   "bio": "Marine Readiness Division Chief at NDBC, responsible for strategic planning, contracts, finances, facilities and compliance. She was previously deputy comptroller at CNMOC and, for ten years before that, comptroller and resources director at NAVOCEANO.",
+   "bio_source_url": "https://www.ndbc.noaa.gov/leadership/mrdiv.shtml",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "sheyna-wisdom",
+   "existing_person_id": null,
+   "name": "Sheyna Wisdom",
+   "name_given": "Sheyna",
+   "name_family": "Wisdom",
+   "orcid": "0000-0002-1718-469X",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-1718-469X/employments",
+   "homepage_url": "https://aoos.org/our-team/sheyna-bio/",
+   "bio": "Executive Director of the Alaska Ocean Observing System. She sets its strategy, runs its operations, and leads its ocean sound and environmental compliance work. Before AOOS she spent about twenty years as an environmental consultant specializing in noise analysis and marine mammal biology. She holds an M.S. in marine science from the University of San Diego.",
+   "bio_source_url": "https://aoos.org/our-team/sheyna-bio/",
+   "research_interests": "ocean sound and underwater noise; marine mammals; environmental compliance",
+   "research_interests_source_url": "https://aoos.org/our-team/sheyna-bio/"
+  },
+  {
+   "key": "molly-mccammon",
+   "existing_person_id": "10e66d4c9e9adf27",
+   "name": "Molly McCammon",
+   "name_given": "Molly",
+   "name_family": "McCammon",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://aoos.org/our-team/molly-bio/",
+   "bio": "Founding executive director of AOOS from 2003 to 2021, and now its Senior Advisor. She previously led the Exxon Valdez Oil Spill Trustee Council for ten years. She serves on the IOOS Federal Advisory Committee and co-chairs a NOAA Science Advisory Board working group on ecosystem sciences.",
+   "bio_source_url": "https://aoos.org/our-team/molly-bio/",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "carol-janzen",
+   "existing_person_id": null,
+   "name": "Carol Janzen",
+   "name_given": "Carol",
+   "name_family": "Janzen",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://aoos.org/our-team/carol-bio/",
+   "bio": "Director of Operations & Development at AOOS. She joined in 2015 as Director of Operations and now covers marine operations, data management and asset inventory. A physical oceanographer (Ph.D.), she has run observational research in estuarine, shelf and offshore waters for more than thirty years, working in consulting, government, academia and industry.",
+   "bio_source_url": "https://aoos.org/our-team/carol-bio/",
+   "research_interests": "marine monitoring; ocean sensor technology; observational physical oceanography",
+   "research_interests_source_url": "https://aoos.org/our-team/carol-bio/"
+  },
+  {
+   "key": "darcy-dugan",
+   "existing_person_id": null,
+   "name": "Darcy Dugan",
+   "name_given": "Darcy",
+   "name_family": "Dugan",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://aoos.org/our-team/darcy-bio/",
+   "bio": "Scientific Program Manager at AOOS, where she has worked since 2009. She led the 2016 launch of the Alaska Ocean Acidification Network and now directs it. She also covers marine carbon dioxide removal and the Alaska Marine Policy Forum. She holds a master's in environmental science from Yale.",
+   "bio_source_url": "https://aoos.org/our-team/darcy-bio/",
+   "research_interests": "ocean acidification; marine carbon dioxide removal; coastal vulnerability in western Alaska",
+   "research_interests_source_url": "https://aoos.org/our-team/darcy-bio/"
+  },
+  {
+   "key": "thomas-farrugia",
+   "existing_person_id": null,
+   "name": "Thomas Farrugia",
+   "name_given": "Thomas",
+   "name_family": "Farrugia",
+   "orcid": "0000-0001-9052-8826",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0001-9052-8826/employments",
+   "homepage_url": "https://aoos.org/our-team/thomas-bio/",
+   "bio": "Scientific Program Manager at AOOS. He joined in 2020 as the first full-time coordinator of the Alaska Harmful Algal Bloom Network. He also builds the Northeast Pacific Acoustic Telemetry network and supports AOOS data management. He holds a fisheries Ph.D. from UAF and was formerly a stock assessment scientist for the Falkland Islands.",
+   "bio_source_url": "https://aoos.org/our-team/thomas-bio/",
+   "research_interests": "harmful algal blooms; acoustic telemetry of marine animals; fisheries",
+   "research_interests_source_url": "https://aoos.org/our-team/thomas-bio/"
+  },
+  {
+   "key": "taylor-borgfeldt",
+   "existing_person_id": null,
+   "name": "Taylor Borgfeldt",
+   "name_given": "Taylor",
+   "name_family": "Borgfeldt",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://aoos.org/our-team/taylor-borgfeldt/",
+   "bio": "Data & Products Manager at AOOS since 2025. She oversees AOOS data products and the Coastal Hazards portfolio, and leads Alaska Water Level Watch. She holds a geophysics master's from the University of Texas. She previously worked in environmental consulting, air quality and site remediation, with an emphasis on data quality assurance.",
+   "bio_source_url": "https://aoos.org/our-team/taylor-borgfeldt/",
+   "research_interests": "coastal hazards; water level observing; data standards and quality assurance",
+   "research_interests_source_url": "https://aoos.org/our-team/taylor-borgfeldt/"
+  },
+  {
+   "key": "john-valentine",
+   "existing_person_id": null,
+   "name": "John F. Valentine",
+   "name_given": "John",
+   "name_family": "Valentine",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.disl.edu/who-we-are/jvalentine/",
+   "bio": "Executive Director of the Dauphin Island Sea Lab and the Marine Environmental Sciences Consortium since 2011. He is also a Senior Marine Scientist III and a University of South Alabama professor. He formerly chaired DISL University Programs and directs Alabama's RESTORE Act Center of Excellence. His research covers food-web energy flow and grazing in seagrass habitats.",
+   "bio_source_url": "https://www.disl.edu/who-we-are/jvalentine/",
+   "research_interests": "energy flow among trophic levels across marine habitats; grazing in seagrass beds; human perturbation of submerged vegetated habitats",
+   "research_interests_source_url": "https://www.disl.edu/who-we-are/jvalentine/"
+  },
+  {
+   "key": "lee-smee",
+   "existing_person_id": null,
+   "name": "Lee Smee",
+   "name_given": "Lee",
+   "name_family": "Smee",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.disl.edu/who-we-are/lsmee/",
+   "bio": "Chairs University Programs at DISL, where he is a Senior Marine Scientist III, and is a professor in the University of South Alabama's Stokes School of Marine and Environmental Sciences. A chemical and food-web ecologist, he currently concentrates on restoring oyster reefs in the Gulf of Mexico.",
+   "bio_source_url": "https://www.disl.edu/who-we-are/lsmee/",
+   "research_interests": "oyster reef ecology; mangrove encroachment; pesticide effects on blue crabs; seagrass community biogeography",
+   "research_interests_source_url": "https://www.disl.edu/who-we-are/lsmee/"
+  },
+  {
+   "key": "brian-dzwonkowski",
+   "existing_person_id": null,
+   "name": "Brian Dzwonkowski",
+   "name_given": "Brian",
+   "name_family": "Dzwonkowski",
+   "orcid": "0000-0002-2333-2185",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-2333-2185/employments",
+   "homepage_url": "https://www.disl.edu/who-we-are/bdzwonkowski/",
+   "bio": "Senior Marine Scientist III at DISL and a marine sciences professor at South Alabama, where he joined the faculty in 2014. A coastal physical oceanographer with a Ph.D. from the University of Delaware, he studies how tides, winds and river discharge shape estuarine circulation and stratification, and how those conditions affect ecosystems.",
+   "bio_source_url": "https://www.disl.edu/who-we-are/bdzwonkowski/",
+   "research_interests": "coastal and estuarine circulation; stratification; marine heatwaves and hurricanes; hypoxia and harmful algal blooms",
+   "research_interests_source_url": "https://www.disl.edu/who-we-are/bdzwonkowski/"
+  },
+  {
+   "key": "c-everett-brett",
+   "existing_person_id": null,
+   "name": "C. Everett Brett",
+   "name_given": "C. Everett",
+   "name_family": "Brett",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "george-crozier",
+   "existing_person_id": null,
+   "name": "George Crozier",
+   "name_given": "George",
+   "name_family": "Crozier",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "belinda-batten",
+   "existing_person_id": null,
+   "name": "Belinda A. Batten",
+   "name_given": "Belinda",
+   "name_family": "Batten",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://hmsc.oregonstate.edu/directory/belinda-batten",
+   "bio": "Professor of mechanical engineering at Oregon State University and Senior Advisor to the Provost, now acting executive director of OSU's Huang Complex. Earlier she was interim provost, executive associate dean of engineering, and director of NNMREC (now Pacific Marine Energy Center), leading the DOE award that became PacWave. She studies control of distributed systems and wave energy converters.",
+   "bio_source_url": "https://engineering.oregonstate.edu/people/belinda-batten",
+   "research_interests": "modeling and control of distributed parameter systems; reduced-order controllers; wave energy converter dynamics and control",
+   "research_interests_source_url": "https://engineering.oregonstate.edu/people/belinda-batten"
+  },
+  {
+   "key": "cinamon-moffett",
+   "existing_person_id": null,
+   "name": "Cinamon Moffett",
+   "name_given": "Cinamon",
+   "name_family": "Moffett",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://hmsc.oregonstate.edu/directory/cinamon-moffett-0",
+   "bio": "Associate Director for Research, Marine Support at Hatfield, and part of its leadership team since 2016. She manages research space and equipment, oversees safety compliance for lab, field and animal work, and coordinates the Hatfield research community. She also co-chairs the center's emergency team and leads its tsunami resilience efforts.",
+   "bio_source_url": "https://hmsc.oregonstate.edu/directory/cinamon-moffett-0",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "ethan-roth",
+   "existing_person_id": null,
+   "name": "Ethan Roth",
+   "name_given": "Ethan",
+   "name_family": "Roth",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://hmsc.oregonstate.edu/directory/ethan-roth",
+   "bio": "Oregon State University's Director of Marine Operations, based at Hatfield. His remit covers OSU's research ships and small boats, oceanographic technicians, scientific diving, and shore facilities. His background is in engineering and applied ocean science, and he has managed federally funded science support programs.",
+   "bio_source_url": "https://hmsc.oregonstate.edu/directory/ethan-roth",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "marian-westley",
+   "existing_person_id": null,
+   "name": "Marian Westley",
+   "name_given": "Marian",
+   "name_family": "Westley",
+   "orcid": "0009-0008-7195-2945",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0009-0008-7195-2945/employments",
+   "homepage_url": "https://tidesandcurrents.noaa.gov/director-coops.html",
+   "bio": "Director of NOAA's CO-OPS, which runs the national tide, water level and current observing operation. She joined CO-OPS as deputy director in 2017. Her earlier NOAA assignments include the Climate Program Office and serving as NOAA liaison to the Defense Department's SERDP.",
+   "bio_source_url": "https://tidesandcurrents.noaa.gov/director-coops.html",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "katie-collins-garrett",
+   "existing_person_id": null,
+   "name": "Katie Collins Garrett",
+   "name_given": "Katie",
+   "name_family": "Collins Garrett",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "pat-burke",
+   "existing_person_id": null,
+   "name": "Pat Burke",
+   "name_given": "Pat",
+   "name_family": "Burke",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "scott-mowery",
+   "existing_person_id": null,
+   "name": "Scott Mowery",
+   "name_given": "Scott",
+   "name_family": "Mowery",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "audra-luscher",
+   "existing_person_id": "8b90261a1a25f495",
+   "name": "Audra Luscher",
+   "name_given": "Audra",
+   "name_family": "Luscher",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "robert-heitsenrether",
+   "existing_person_id": "00dc1f8dee64d571",
+   "name": "Robert Heitsenrether",
+   "name_given": "Robert",
+   "name_family": "Heitsenrether",
+   "orcid": "0009-0005-4381-5650",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0009-0005-4381-5650/employments",
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "william-sweet",
+   "existing_person_id": "26027a7a13f3ccb6",
+   "name": "William Sweet",
+   "name_given": "William",
+   "name_family": "Sweet",
+   "orcid": "0000-0002-0149-8336",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-0149-8336/employments",
+   "homepage_url": null,
+   "bio": "NOAA oceanographer who works on high tide flooding and comments publicly on how sea level rise and El Niño together drive more frequent coastal flooding.",
+   "bio_source_url": "https://oceanservice.noaa.gov/news/may26/el-nino-flooding.html",
+   "research_interests": "high tide flooding; sea level rise; El Niño coastal flooding impacts",
+   "research_interests_source_url": "https://oceanservice.noaa.gov/news/may26/el-nino-flooding.html"
+  }
+ ],
+ "affiliations": [
+  {
+   "facility_id": "92c3a14e84367d13",
+   "person_key": "deke-arndt",
+   "role": "director",
+   "title": "Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2023,
+   "end_year": null,
+   "source_url": "https://www.ncei.noaa.gov/about-us",
+   "evidence": "Deke Arndt became NCEI's Director on January 30, 2023",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "92c3a14e84367d13",
+   "person_key": "joe-pica",
+   "role": "deputy-director",
+   "title": "Deputy Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2018,
+   "end_year": null,
+   "source_url": "https://www.ncei.noaa.gov/about-us",
+   "evidence": "Joe Pica assumed the role of NCEI Deputy Director in 2018",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "92c3a14e84367d13",
+   "person_key": "ken-casey",
+   "role": "leadership-team",
+   "title": "Chief, Data Stewardship Division",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2024,
+   "end_year": null,
+   "source_url": "https://www.ncei.noaa.gov/about-us",
+   "evidence": "Ken Casey began serving as the Chief of the Data Stewardship Division (DSD) on December 29, 2024.",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "92c3a14e84367d13",
+   "person_key": "karen-grissom",
+   "role": "leadership-team",
+   "title": "Acting Chief, Coasts, Oceans, and Geophysics Science Division",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.ncei.noaa.gov/about-us",
+   "evidence": "Karen Grissom is the acting Division Chief of NCEI’s Coasts, Oceans and Geophysics Science Division.",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "92c3a14e84367d13",
+   "person_key": "jeff-privette",
+   "role": "leadership-team",
+   "title": "Chief, Climate Science and Services Division",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2024,
+   "end_year": null,
+   "source_url": "https://www.ncei.noaa.gov/about-us",
+   "evidence": "Jeff Privette became Chief of NCEI's Climate Science and Services Division (CSSD) in 2024",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "3f6a9d8c60eeed6d",
+   "person_key": "william-burnett",
+   "role": "director",
+   "title": "Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2022,
+   "end_year": null,
+   "source_url": "https://www.ndbc.noaa.gov/leadership/director.shtml",
+   "evidence": "Dr. William Burnett is the Director of the National Data Buoy Center",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "3f6a9d8c60eeed6d",
+   "person_key": "brett-taft",
+   "role": "leadership-team",
+   "title": "Observational Systems Division Chief",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.ndbc.noaa.gov/leadership/osdiv.shtml",
+   "evidence": "Mr. Brett Taft is the Observational Systems Division Chief of the National Data Buoy Center (NDBC)",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "3f6a9d8c60eeed6d",
+   "person_key": "amanda-hansen",
+   "role": "leadership-team",
+   "title": "Marine Readiness Division Chief",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.ndbc.noaa.gov/leadership/mrdiv.shtml",
+   "evidence": "Ms. Hansen is the Marine Readiness Division Chief at the National Data Buoy Center (NDBC)",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "debbe06b574422c2",
+   "person_key": "sheyna-wisdom",
+   "role": "executive-officer",
+   "title": "Executive Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://aoos.org/our-team/sheyna-bio/",
+   "evidence": "Sheyna is the Executive Director of AOOS and is based in Anchorage.",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "debbe06b574422c2",
+   "person_key": "molly-mccammon",
+   "role": "executive-officer",
+   "title": "Founding Executive Director",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": 2003,
+   "end_year": 2021,
+   "source_url": "https://aoos.org/our-team/molly-bio/",
+   "evidence": "Senior Advisor for the Alaska Ocean Observing System (AOOS), after serving as its founding executive director since 2003",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "debbe06b574422c2",
+   "person_key": "molly-mccammon",
+   "role": "leadership-team",
+   "title": "Senior Advisor",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": 2021,
+   "end_year": null,
+   "source_url": "https://aoos.org/our-team/molly-bio/",
+   "evidence": "Molly McCammon transitioned in January 2021 to the role of Senior Advisor",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "debbe06b574422c2",
+   "person_key": "carol-janzen",
+   "role": "leadership-team",
+   "title": "Director of Operations & Development",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2015,
+   "end_year": null,
+   "source_url": "https://aoos.org/our-team/carol-bio/",
+   "evidence": "Carol started at the Alaska Ocean Observing System in June 2015 as Director of Operations.",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "debbe06b574422c2",
+   "person_key": "darcy-dugan",
+   "role": "manager",
+   "title": "Scientific Program Manager (Alaska Ocean Acidification Network)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://aoos.org/our-team/darcy-bio/",
+   "evidence": "Darcy Dugan Scientific Program Manager Alaska Ocean Acidification Network",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "debbe06b574422c2",
+   "person_key": "thomas-farrugia",
+   "role": "manager",
+   "title": "Scientific Program Manager (Alaska Harmful Algal Bloom Network)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2020,
+   "end_year": null,
+   "source_url": "https://aoos.org/our-team/thomas-bio/",
+   "evidence": "Thomas Farrugia Scientific Program Manager Alaska Harmful Algal Bloom Network",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "debbe06b574422c2",
+   "person_key": "taylor-borgfeldt",
+   "role": "data-manager",
+   "title": "Data & Products Manager",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2025,
+   "end_year": null,
+   "source_url": "https://aoos.org/our-team/taylor-borgfeldt/",
+   "evidence": "Taylor Borgfeldt joined AOOS in 2025 and serves as the Data & Products Manager",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "c987433cec4502fa",
+   "person_key": "john-valentine",
+   "role": "director",
+   "title": "Executive Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2011,
+   "end_year": null,
+   "source_url": "https://www.disl.edu/who-we-are/jvalentine/",
+   "evidence": "John F. Valentine, Ph.D. Executive Director, Dauphin Island Sea Lab",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "c987433cec4502fa",
+   "person_key": "lee-smee",
+   "role": "leadership-team",
+   "title": "University Programs Chair",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.disl.edu/who-we-are/lsmee/",
+   "evidence": "Dr. Lee Smee is Chair of University Programs and a Senior Marine Scientist III at the Dauphin Island Sea Lab",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "c987433cec4502fa",
+   "person_key": "brian-dzwonkowski",
+   "role": "scientist",
+   "title": "Senior Marine Scientist III",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.disl.edu/who-we-are/",
+   "evidence": "Brian Dzwonkowski, Ph.D. Senior Marine Scientist III, Dauphin Island Sea Lab",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "c987433cec4502fa",
+   "person_key": "c-everett-brett",
+   "role": "former-director",
+   "title": "First Director, Marine Environmental Sciences Consortium",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": 1971,
+   "end_year": null,
+   "source_url": "https://disl.edu/about/our-history",
+   "evidence": "1971 MESC created by Alabama Legislature, Dr. C. Everett Brett named the first Director",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "c987433cec4502fa",
+   "person_key": "george-crozier",
+   "role": "former-director",
+   "title": "Executive Director, Marine Environmental Sciences Consortium",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": 1977,
+   "end_year": null,
+   "source_url": "https://disl.edu/about/our-history",
+   "evidence": "1977 Dr. George Crozier named Executive Director of the MESC.",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "5b42961d12b531c3",
+   "person_key": "belinda-batten",
+   "role": "director",
+   "title": "Interim Hatfield Marine Science Center Executive Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://hmsc.oregonstate.edu/directory/belinda-batten",
+   "evidence": "Belinda A. Batten Interim Hatfield Marine Science Center Executive Director",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "5b42961d12b531c3",
+   "person_key": "cinamon-moffett",
+   "role": "associate-director",
+   "title": "Associate Director for Research, Marine Support",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2016,
+   "end_year": null,
+   "source_url": "https://hmsc.oregonstate.edu/directory/cinamon-moffett-0",
+   "evidence": "Cinamon Moffett serves as the Associate Director for Research, Marine Support at the OSU Hatfield Marine Science Center.",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "5b42961d12b531c3",
+   "person_key": "ethan-roth",
+   "role": "leadership-team",
+   "title": "OSU Director of Marine Operations",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://hmsc.oregonstate.edu/directory/ethan-roth",
+   "evidence": "Ethan Roth is the Director of Marine Operations at Oregon State University, based at the OSU Hatfield Marine Science Center.",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "d0c73a05032034a7",
+   "person_key": "marian-westley",
+   "role": "director",
+   "title": "Director, Center for Operational Oceanographic Products and Services",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://tidesandcurrents.noaa.gov/director-coops.html",
+   "evidence": "Marian Westley, Ph.D., is the Director of the Center for Operational Oceanographic Products and Services (CO-OPS)",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "d0c73a05032034a7",
+   "person_key": "katie-collins-garrett",
+   "role": "deputy-director",
+   "title": "Deputy Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://tidesandcurrents.noaa.gov/assets/images/aboutusimages/co-ops_orgChart2026.webp",
+   "evidence": "Deputy Director Katie Collins Garrett",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "d0c73a05032034a7",
+   "person_key": "pat-burke",
+   "role": "leadership-team",
+   "title": "Chief, Oceanographic Division",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://tidesandcurrents.noaa.gov/assets/images/aboutusimages/co-ops_orgChart2026.webp",
+   "evidence": "Oceanographic Division Pat Burke, Chief",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "d0c73a05032034a7",
+   "person_key": "scott-mowery",
+   "role": "leadership-team",
+   "title": "Chief, Engineering Division",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://tidesandcurrents.noaa.gov/assets/images/aboutusimages/co-ops_orgChart2026.webp",
+   "evidence": "Engineering Division Scott Mowery, Chief",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "d0c73a05032034a7",
+   "person_key": "audra-luscher",
+   "role": "manager",
+   "title": "Chief, Coastal Hazards Branch",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://tidesandcurrents.noaa.gov/assets/images/aboutusimages/co-ops_orgChart2026.webp",
+   "evidence": "Coastal Hazards Branch Audra Luscher, Chief",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "d0c73a05032034a7",
+   "person_key": "robert-heitsenrether",
+   "role": "manager",
+   "title": "Chief (Acting), Systems Support & Evaluation Branch",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://tidesandcurrents.noaa.gov/assets/images/aboutusimages/co-ops_orgChart2026.webp",
+   "evidence": "Systems Support & Evaluation Branch Bob Heitsenrether, Chief (Acting)",
+   "confidence": "medium"
+  }
+ ],
+ "verifications": [
+  {
+   "facility_id": "debbe06b574422c2",
+   "person_id": "10e66d4c9e9adf27",
+   "existing_role": "executive-officer",
+   "status": "stale",
+   "current_holder_key": "sheyna-wisdom",
+   "source_url": "https://aoos.org/our-team/molly-bio/",
+   "evidence": "Molly McCammon transitioned in January 2021 to the role of Senior Advisor"
+  },
+  {
+   "facility_id": "d0c73a05032034a7",
+   "person_id": "8b90261a1a25f495",
+   "existing_role": "faculty",
+   "status": "confirmed",
+   "current_holder_key": null,
+   "source_url": "https://tidesandcurrents.noaa.gov/assets/images/aboutusimages/co-ops_orgChart2026.webp",
+   "evidence": "Coastal Hazards Branch Audra Luscher, Chief"
+  },
+  {
+   "facility_id": "d0c73a05032034a7",
+   "person_id": "26027a7a13f3ccb6",
+   "existing_role": "faculty",
+   "status": "unverifiable",
+   "current_holder_key": null,
+   "source_url": "https://oceanservice.noaa.gov/news/may26/el-nino-flooding.html",
+   "evidence": null
+  },
+  {
+   "facility_id": "d0c73a05032034a7",
+   "person_id": "00dc1f8dee64d571",
+   "existing_role": "faculty",
+   "status": "stale",
+   "current_holder_key": "scott-mowery",
+   "source_url": "https://tidesandcurrents.noaa.gov/assets/images/aboutusimages/co-ops_orgChart2026.webp",
+   "evidence": "Engineering Division Scott Mowery, Chief"
+  }
+ ]
+}

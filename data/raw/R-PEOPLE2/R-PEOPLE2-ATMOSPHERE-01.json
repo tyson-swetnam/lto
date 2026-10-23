@@ -1,0 +1,914 @@
+{
+ "batch_id": "R-PEOPLE2-ATMOSPHERE-01",
+ "retrieved_at": "2026-10-22",
+ "verified_by": "adversarial-verifier 2026-10-22",
+ "facilities": [
+  {
+   "facility_id": "cf34f3708423a759",
+   "pages_fetched": [
+    {
+     "url": "https://gml.noaa.gov/grad/surfrad/",
+     "status": 200
+    },
+    {
+     "url": "https://gml.noaa.gov/grad/surfrad/bondvill.html",
+     "status": 200
+    },
+    {
+     "url": "https://gml.noaa.gov/grad/surfrad/overview.html",
+     "status": 200
+    },
+    {
+     "url": "https://gml.noaa.gov/grad/surfrad/sitepage.html",
+     "status": 200
+    },
+    {
+     "url": "https://gml.noaa.gov/grad/surfrad/people.html",
+     "status": 404
+    },
+    {
+     "url": "https://gml.noaa.gov/grad/staff.html",
+     "status": 404
+    },
+    {
+     "url": "https://gml.noaa.gov/about/orgchart.html",
+     "status": 200
+    },
+    {
+     "url": "https://gml.noaa.gov/about/stafflist.html",
+     "status": 200
+    },
+    {
+     "url": "https://gml.noaa.gov/about/contacts.html",
+     "status": 200
+    },
+    {
+     "url": "https://gml.noaa.gov/grad/",
+     "status": 200
+    },
+    {
+     "url": "https://gml.noaa.gov/grad/info.html",
+     "status": 200
+    },
+    {
+     "url": "https://gml.noaa.gov/staff/Kathy.O.Lantz",
+     "status": 200
+    },
+    {
+     "url": "https://gml.noaa.gov/staff/John.A.Augustine",
+     "status": 200
+    },
+    {
+     "url": "https://gml.noaa.gov/staff/Gary.Hodges",
+     "status": 404
+    },
+    {
+     "url": "https://www.ncei.noaa.gov/access/metadata/landing-page/bin/iso?id=gov.noaa.ncdc%3AC00540",
+     "status": 200
+    },
+    {
+     "url": "https://www.re3data.org/repository/r3d100011781",
+     "status": 200
+    },
+    {
+     "url": "https://gml.noaa.gov/news/2025/Observations-from-GMLs-surface-radiation-measurements-improve-NOAAs-operational-weather-forecast-models.html",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-6645-7404/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-6645-7404/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0001-9515-160X/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0001-9515-160X/employments",
+     "status": 200
+    }
+   ],
+   "notes": "No SURFRAD page names a station-level PI or manager for Bondville. The overview page says the Bondville site is managed by the Illinois State Water Survey (no person named). SURFRAD is run by GML's GRAD division: GML org chart lists Division Lead Kathy Lantz and Deputy Division Lead John Augustine, while the GML staff list shows Augustine as 'Visiting Scientist'. NCEI dataset record and re3data name Augustine as SURFRAD point of contact. Network established 1993; Bondville installed 1994 (overview page). Lantz ORCID 0000-0001-9515-160X not used: record lists no employment."
+  },
+  {
+   "facility_id": "c26df9328bd0cdeb",
+   "pages_fetched": [
+    {
+     "url": "https://aeronet.gsfc.nasa.gov",
+     "status": 200
+    },
+    {
+     "url": "https://aeronet.gsfc.nasa.gov/new_web/contacts.html",
+     "status": 200
+    },
+    {
+     "url": "https://aeronet.gsfc.nasa.gov/new_web/people.html",
+     "status": 404
+    },
+    {
+     "url": "https://aeronet.gsfc.nasa.gov/new_web/system_descriptions.html",
+     "status": 200
+    },
+    {
+     "url": "https://aeronet.gsfc.nasa.gov/cgi-bin/print_web_data_v3?site=GSFC",
+     "status": 200
+    },
+    {
+     "url": "https://aeronet.gsfc.nasa.gov/cgi-bin/data_display_aod_v3?site=GSFC&nachal=0&level=3&place_code=10",
+     "status": 200
+    },
+    {
+     "url": "https://science.gsfc.nasa.gov/sed/bio/pawan.gupta",
+     "status": 200
+    },
+    {
+     "url": "https://science.gsfc.nasa.gov/sed/bio/brent.n.holben",
+     "status": 200
+    },
+    {
+     "url": "https://science.gsfc.nasa.gov/sed/bio/thomas.f.eck",
+     "status": 200
+    },
+    {
+     "url": "https://science.gsfc.nasa.gov/sed/bio/alexander.smirnov-1",
+     "status": 200
+    },
+    {
+     "url": "https://science.gsfc.nasa.gov/sed/bio/aliaksandr.sinyuk-1",
+     "status": 200
+    },
+    {
+     "url": "https://science.gsfc.nasa.gov/sed/bio/joel.schafer",
+     "status": 200
+    },
+    {
+     "url": "https://science.gsfc.nasa.gov/sed/bio/thomas.hanisco",
+     "status": 200
+    },
+    {
+     "url": "https://science.gsfc.nasa.gov/sed/bio/thomas.f.hanisco",
+     "status": 404
+    },
+    {
+     "url": "https://pandora.gsfc.nasa.gov/",
+     "status": 200
+    },
+    {
+     "url": "https://pandora.gsfc.nasa.gov/About/",
+     "status": 200
+    },
+    {
+     "url": "https://pandora.gsfc.nasa.gov/About/html/team.html",
+     "status": 200
+    },
+    {
+     "url": "https://www.pandonia-global-network.org/",
+     "status": 200
+    },
+    {
+     "url": "https://www.pandonia-global-network.org/home/about/pgn-organization/",
+     "status": 200
+    },
+    {
+     "url": "https://www.pandonia-global-network.org/home/about/history/",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0001-9434-1308/person",
+     "status": 404
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0001-9434-8507/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0001-9434-8507/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0001-9801-1610/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0001-9801-1610/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-1251-9809/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0001-7905-3954/employments",
+     "status": 200
+    }
+   ],
+   "notes": "AERONET leadership has changed: the AERONET staff page (last updated March 31, 2026) lists Pawan Gupta as AERONET Principal Investigator and Brent Holben as 'AERONET Emeritus'; Gupta is also the listed PI of the GSFC site itself (site record start 14-MAY-1993). David M. Giles does not appear on the current AERONET staff page. Pandora: team page lists Thomas Hanisco as PI and Alexander Cede as Pandora cofounder (LuftBlick/NASA GSFC); the PGN organization chart is an image, so Cede's PGN role could not be read. The existing ORCID on Hanisco (0000-0001-9434-1308) returns 404 at pub.orcid.org; the matching record is 0000-0001-9434-8507 (NASA, dept 614, same as his GSFC profile). Hanisco's existing homepage URL (thomas.f.hanisco) now 404s; current profile is /sed/bio/thomas.hanisco. ORCID records found for Holben and Cede list no employment, so they are not used."
+  },
+  {
+   "facility_id": "9fc643c167a5b47e",
+   "pages_fetched": [
+    {
+     "url": "https://www.nps.gov/glac/learn/management/index.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/glac/learn/management/international-designations.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/glac/learn/news/newsreleases.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/glac/learn/news/glacier-national-park-announces-2026-summer-operations.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.kxlf.com/new-glacier-national-park-superintendent-named",
+     "status": 200
+    },
+    {
+     "url": "https://glacier.org/?p=55015",
+     "status": 403
+    },
+    {
+     "url": "https://www.nps.gov/glac/learn/scienceresearch.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/glac/contacts.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/glac/learn/nature/climate-change.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/rlc/crown/index.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/rlc/crown/contactus.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/rlc/crown/research.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/rlc/crown/staff.htm",
+     "status": 404
+    },
+    {
+     "url": "https://missoulian.com/news/state-regional/article_5fec0e3e-b2ef-420d-8bad-61c722fca500.html",
+     "status": 200
+    },
+    {
+     "url": "https://magazine.byu.edu/article/glacier-national-park-rangers/",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/im/romn/index.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/im/romn/contactus.htm",
+     "status": 200
+    }
+   ],
+   "notes": "Glacier NP was designated a UNESCO biosphere reserve in 1976 (international-designations page). The park management page (last updated Sept 7, 2023) still names Superintendent Jeff Mow; that is stale: an NPS release dated Feb 18, 2026 quotes Superintendent Dave Roemer, and KXLF reports Roemer succeeded Mow, who retired. The Glacier science page (last updated 2019) names Tara Carolin as CCRLC director; Missoulian reports she has since retired, so her role is recorded as former. The CCRLC contact page (May 2026) names Jami Belt. A CESU research coordinator (Brendan Moynahan) is named on the 2019 page but is not park staff and was not added. The ROMN I&M pages fetched do not mention Glacier, so ROMN staff were not attached."
+  },
+  {
+   "facility_id": "f2c12f6cc924f41c",
+   "pages_fetched": [
+    {
+     "url": "http://vista.cira.colostate.edu/improve/",
+     "status": 200
+    },
+    {
+     "url": "https://vista.cira.colostate.edu/Improve/improve-contacts/",
+     "status": 200
+    },
+    {
+     "url": "https://vista.cira.colostate.edu/Improve/overview/",
+     "status": 200
+    },
+    {
+     "url": "https://improvevisibility.org/docs/Overview/IMPROVE%20Charter/IMPROVE-Charter_1_2025.pdf",
+     "status": 200
+    },
+    {
+     "url": "https://www.cira.colostate.edu/projects/improve/",
+     "status": 200
+    },
+    {
+     "url": "https://www.cira.colostate.edu/science-stories/happy-40th-birthday-to-improve-program-research-protecting-visibility-across-the-united-states",
+     "status": 200
+    },
+    {
+     "url": "https://www.cira.colostate.edu/staff/hand-jenny/",
+     "status": 200
+    },
+    {
+     "url": "https://www.cira.colostate.edu/staff/schichtel-bret/",
+     "status": 200
+    },
+    {
+     "url": "https://www.cira.colostate.edu/staff/malm-william/",
+     "status": 200
+    },
+    {
+     "url": "https://atmos.colostate.edu/people/jeffrey-collett/",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/articles/000/historyofscience_visibility.htm",
+     "status": 200
+    },
+    {
+     "url": "https://airquality.ucdavis.edu/improve",
+     "status": 403
+    },
+    {
+     "url": "https://airquality.ucdavis.edu/people",
+     "status": 403
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-4644-2459/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-4644-2459/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-5512-8082/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-5512-8082/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0001-9180-508X/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0001-8678-9820/employments",
+     "status": 200
+    }
+   ],
+   "notes": "No page names a site operator for ACAD1 specifically; people are IMPROVE network-level. The IMPROVE contacts page lists the Steering Committee (NPS Bret Schichtel, Chair; EPA Melinda Beaver, Vice Chair; Jenny Hand, affiliate and data-analysis chair). A CIRA April 2025 story calls Jenny Hand the project's lead scientist and says IMPROVE began in 1985. The IMPROVE charter says UC Davis manages network operations (UC Davis AQRC pages returned 403). The existing source URL for Malm (cira.colostate.edu/projects/improve/) now resolves to an unrelated CIRA project page; Malm's CIRA staff profile describes him as a CIRA research scientist and retired NPS visibility program coordinator but does not call him IMPROVE's founder. Collett appears on no fetched IMPROVE page; atmos.colostate.edu/people/jeffrey-collett/ now shows a 2025 award news item without IMPROVE mention."
+  }
+ ],
+ "people": [
+  {
+   "key": "kathy-lantz",
+   "existing_person_id": null,
+   "name": "Kathy Lantz",
+   "name_given": "Kathy",
+   "name_family": "Lantz",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://gml.noaa.gov/staff/Kathy.O.Lantz",
+   "bio": "Atmospheric scientist who heads NOAA GML's Global Radiation, Aerosols, and Cloud Division in Boulder. Her research spans radiative transfer, aerosols, the surface radiation budget and UV, with a recent emphasis on solar-energy forecasting and GOES-R validation; she built mobile SURFRAD systems and expanded instrumentation at the fixed SURFRAD stations.",
+   "bio_source_url": "https://gml.noaa.gov/staff/Kathy.O.Lantz",
+   "research_interests": "radiative transfer; aerosol optical properties; surface radiation budget; UV radiation; solar renewable energy forecasting; satellite product validation",
+   "research_interests_source_url": "https://gml.noaa.gov/staff/Kathy.O.Lantz"
+  },
+  {
+   "key": "john-augustine",
+   "existing_person_id": null,
+   "name": "John Augustine",
+   "name_given": "John",
+   "name_family": "Augustine",
+   "orcid": "0000-0002-6645-7404",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-6645-7404/employments",
+   "homepage_url": "https://gml.noaa.gov/staff/John.A.Augustine",
+   "bio": "Meteorologist in NOAA's Boulder research laboratories since 1977 who first studied satellite rainfall estimation and mesoscale convective systems, then built and ran SURFRAD, NOAA's national network for surface radiation budget and aerosol measurements. NOAA named him its 2006 Research Employee of the Year for that network.",
+   "bio_source_url": "https://gml.noaa.gov/staff/John.A.Augustine",
+   "research_interests": "surface radiation budget measurement; aerosol extinction measurement; mesoscale meteorology; satellite rainfall estimation",
+   "research_interests_source_url": "https://gml.noaa.gov/staff/John.A.Augustine"
+  },
+  {
+   "key": "pawan-gupta",
+   "existing_person_id": null,
+   "name": "Pawan Gupta",
+   "name_given": "Pawan",
+   "name_family": "Gupta",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://science.gsfc.nasa.gov/sed/bio/pawan.gupta",
+   "bio": "NASA Goddard research scientist in the Biospheric Sciences Laboratory and current Principal Investigator of AERONET. He also directs an air-quality research group that combines satellite, model and ground data, led NASA ARSET's air-quality training team from 2012 to 2023, and works on aerosol remote sensing, machine learning and data fusion.",
+   "bio_source_url": "https://science.gsfc.nasa.gov/sed/bio/pawan.gupta",
+   "research_interests": "atmospheric aerosols; satellite remote sensing of aerosols and clouds; satellite remote sensing of air quality; climate change; Earth radiation budget; multi-sensor data fusion",
+   "research_interests_source_url": "https://science.gsfc.nasa.gov/sed/bio/pawan.gupta"
+  },
+  {
+   "key": "brent-holben",
+   "existing_person_id": "ea83d14586071609",
+   "name": "Brent N. Holben",
+   "name_given": "Brent",
+   "name_family": "Holben",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://science.gsfc.nasa.gov/sed/bio/brent.n.holben",
+   "bio": "Remote-sensing scientist at NASA Goddard (employed through UMBC) with a career in satellite and ground-based sensing of land cover and aerosols. He guided AERONET for over two decades as it grew into a federated network of more than 500 sites and an openly accessible, near-real-time aerosol database.",
+   "bio_source_url": "https://science.gsfc.nasa.gov/sed/bio/brent.n.holben",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "thomas-eck",
+   "existing_person_id": null,
+   "name": "Thomas F. Eck",
+   "name_given": "Thomas",
+   "name_family": "Eck",
+   "orcid": "0000-0001-9801-1610",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0001-9801-1610/employments",
+   "homepage_url": "https://science.gsfc.nasa.gov/sed/bio/thomas.f.eck",
+   "bio": "Senior scientist with UMBC's GESTAR II at NASA Goddard who has worked within AERONET since 1992 on calibration, deployment and analysis. His studies address aerosol optical properties, notably biomass-burning and fossil-fuel aerosols, fine/coarse mode mixtures, cloud processing of aerosols, and aerosol attenuation of solar flux.",
+   "bio_source_url": "https://science.gsfc.nasa.gov/sed/bio/thomas.f.eck",
+   "research_interests": "ground-based remote sensing of atmospheric aerosol optical properties",
+   "research_interests_source_url": "https://science.gsfc.nasa.gov/sed/bio/thomas.f.eck"
+  },
+  {
+   "key": "alexander-smirnov",
+   "existing_person_id": null,
+   "name": "Alexander Smirnov",
+   "name_given": "Alexander",
+   "name_family": "Smirnov",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://science.gsfc.nasa.gov/sed/bio/alexander.smirnov-1",
+   "bio": "Chief Research Science Advisor at Science Systems and Applications, Inc., based at NASA Goddard, whose current projects are AERONET and its Maritime Aerosol Network.",
+   "bio_source_url": "https://science.gsfc.nasa.gov/sed/bio/alexander.smirnov-1",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "aliaksandr-sinyuk",
+   "existing_person_id": null,
+   "name": "Aliaksandr Sinyuk",
+   "name_given": "Aliaksandr",
+   "name_family": "Sinyuk",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://science.gsfc.nasa.gov/sed/bio/aliaksandr.sinyuk-1",
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "joel-schafer",
+   "existing_person_id": null,
+   "name": "Joel S. Schafer",
+   "name_given": "Joel",
+   "name_family": "Schafer",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://science.gsfc.nasa.gov/sed/bio/joel.schafer",
+   "bio": "Senior support scientist with Science Systems and Applications, Inc. at NASA Goddard whose listed current project is AERONET.",
+   "bio_source_url": "https://science.gsfc.nasa.gov/sed/bio/joel.schafer",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "thomas-hanisco",
+   "existing_person_id": "fded4627f88f555c",
+   "name": "Thomas F. Hanisco",
+   "name_given": "Thomas",
+   "name_family": "Hanisco",
+   "orcid": "0000-0001-9434-8507",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0001-9434-8507/employments",
+   "homepage_url": "https://science.gsfc.nasa.gov/sed/bio/thomas.hanisco",
+   "bio": "Research physical scientist in NASA Goddard's Atmospheric Chemistry and Dynamics branch who leads the Pandora Project and the GCAS Lab. He develops instruments for measuring atmospheric composition from ground, aircraft, balloon and satellite platforms, focusing on optical and laser spectroscopy of trace gases.",
+   "bio_source_url": "https://science.gsfc.nasa.gov/sed/bio/thomas.hanisco",
+   "research_interests": "atmospheric composition; in situ and remote spectroscopic measurement of trace gases; atmospheric measurement instrumentation",
+   "research_interests_source_url": "https://science.gsfc.nasa.gov/sed/bio/thomas.hanisco"
+  },
+  {
+   "key": "alexander-cede",
+   "existing_person_id": "ad69fe663d0dd867",
+   "name": "Alexander Cede",
+   "name_given": "Alexander",
+   "name_family": "Cede",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "dave-roemer",
+   "existing_person_id": null,
+   "name": "Dave Roemer",
+   "name_given": "Dave",
+   "name_family": "Roemer",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Superintendent of Glacier National Park. He previously headed the science and resource-management program for the Redwood parks and held a comparable post at Big Thicket National Preserve, after earlier biologist positions at Bryce Canyon and Carlsbad Caverns.",
+   "bio_source_url": "https://www.kxlf.com/new-glacier-national-park-superintendent-named",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "jeff-mow",
+   "existing_person_id": null,
+   "name": "Jeff Mow",
+   "name_given": "Jeff",
+   "name_family": "Mow",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "jami-belt",
+   "existing_person_id": null,
+   "name": "Jami Belt",
+   "name_given": "Jami",
+   "name_family": "Belt",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "tara-carolin",
+   "existing_person_id": null,
+   "name": "Tara Carolin",
+   "name_given": "Tara",
+   "name_family": "Carolin",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "jenny-hand",
+   "existing_person_id": null,
+   "name": "Jenny Hand",
+   "name_given": "Jenny",
+   "name_family": "Hand",
+   "orcid": "0000-0002-4644-2459",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-4644-2459/employments",
+   "homepage_url": "https://www.cira.colostate.edu/staff/hand-jenny/",
+   "bio": "Senior Research Scientist and CIRA Fellow at Colorado State University who has worked full time with the National Park Service air-quality group since 2003 and is PI of the NPS/CIRA cooperative agreement. She studies aerosol physical, optical and hygroscopic properties, haze in protected areas, and long-term aerosol trends in IMPROVE and CSN data.",
+   "bio_source_url": "https://www.cira.colostate.edu/staff/hand-jenny/",
+   "research_interests": "atmospheric aerosols; mineral dust; visibility; trends; urban excess",
+   "research_interests_source_url": "https://www.cira.colostate.edu/staff/hand-jenny/"
+  },
+  {
+   "key": "bret-schichtel",
+   "existing_person_id": null,
+   "name": "Bret Schichtel",
+   "name_given": "Bret",
+   "name_family": "Schichtel",
+   "orcid": "0000-0002-5512-8082",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-5512-8082/employments",
+   "homepage_url": "https://www.cira.colostate.edu/staff/schichtel-bret/",
+   "bio": "Federal research physical scientist housed at Colorado State University's Cooperative Institute for Research in the Atmosphere in Fort Collins.",
+   "bio_source_url": "https://www.cira.colostate.edu/staff/schichtel-bret/",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "melinda-beaver",
+   "existing_person_id": null,
+   "name": "Melinda Beaver",
+   "name_given": "Melinda",
+   "name_family": "Beaver",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "william-malm",
+   "existing_person_id": "a7a27beeed6c5b69",
+   "name": "William C. Malm",
+   "name_given": "William",
+   "name_family": "Malm",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.cira.colostate.edu/staff/malm-william/",
+   "bio": "Research scientist at CSU's CIRA and retired National Park Service research physicist who coordinated the NPS visibility and particulate research and monitoring program. He took some of the earliest visibility measurements in the park system at Grand Canyon in 1972 and has been honored by EPA and A&WMA for visibility research.",
+   "bio_source_url": "https://www.cira.colostate.edu/staff/malm-william/",
+   "research_interests": "visibility; atmospheric aerosol effects on visibility; air quality instrumentation",
+   "research_interests_source_url": "https://www.cira.colostate.edu/staff/malm-william/"
+  }
+ ],
+ "affiliations": [
+  {
+   "facility_id": "cf34f3708423a759",
+   "person_key": "kathy-lantz",
+   "role": "leadership-team",
+   "title": "Division Chief, GML Global Radiation, Aerosols, and Clouds Division (operates SURFRAD)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://gml.noaa.gov/staff/Kathy.O.Lantz",
+   "evidence": "Kathy Lantz Division Chief, Global Radiation, Aerosols, and Clouds",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "cf34f3708423a759",
+   "person_key": "john-augustine",
+   "role": "scientist",
+   "title": "Visiting Scientist, GML GRAD; SURFRAD dataset point of contact (NCEI)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.ncei.noaa.gov/access/metadata/landing-page/bin/iso?id=gov.noaa.ncdc%3AC00540",
+   "evidence": "Dataset Point of Contact John Augustine Meteorologist DOC/NOAA/ESRL/GMD",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "cf34f3708423a759",
+   "person_key": "john-augustine",
+   "role": "founding-PI",
+   "title": "Developer and long-time operator of the SURFRAD network",
+   "is_key_personnel": false,
+   "is_current": false,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://gml.noaa.gov/staff/John.A.Augustine",
+   "evidence": "he has developed and has operated NOAA's national surface radiation budget measurement network",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "c26df9328bd0cdeb",
+   "person_key": "pawan-gupta",
+   "role": "lead-PI",
+   "title": "AERONET Principal Investigator; PI of the GSFC AERONET site",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://aeronet.gsfc.nasa.gov/cgi-bin/data_display_aod_v3?site=GSFC&nachal=0&level=3&place_code=10",
+   "evidence": "The latest principal investigator(s) and co-investigator(s) of the 'GSFC' site: Pawan_Gupta",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "c26df9328bd0cdeb",
+   "person_key": "brent-holben",
+   "role": "emeritus",
+   "title": "AERONET Emeritus",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://aeronet.gsfc.nasa.gov/new_web/contacts.html",
+   "evidence": "Brent Holben AERONET Emeritus",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "c26df9328bd0cdeb",
+   "person_key": "thomas-eck",
+   "role": "scientist",
+   "title": "Project Scientist, Aerosol Optical Depth",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://aeronet.gsfc.nasa.gov/new_web/contacts.html",
+   "evidence": "Tom Eck Project Scientist, Aerosol Optical Depth",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "c26df9328bd0cdeb",
+   "person_key": "alexander-smirnov",
+   "role": "scientist",
+   "title": "Project Scientist, Maritime Aerosol Network",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://aeronet.gsfc.nasa.gov/new_web/contacts.html",
+   "evidence": "Alexander Smirnov Project Scientist, Maritime Aerosol Network",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "c26df9328bd0cdeb",
+   "person_key": "aliaksandr-sinyuk",
+   "role": "scientist",
+   "title": "Project Scientist, Aerosol Inversions",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://aeronet.gsfc.nasa.gov/new_web/contacts.html",
+   "evidence": "Aliaksandr Sinyuk Project Scientist, Aerosol Inversions",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "c26df9328bd0cdeb",
+   "person_key": "joel-schafer",
+   "role": "scientist",
+   "title": "Project Scientist, Solar Flux",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://aeronet.gsfc.nasa.gov/new_web/contacts.html",
+   "evidence": "Joel Schafer Project Scientist, Solar Flux",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "c26df9328bd0cdeb",
+   "person_key": "alexander-cede",
+   "role": "founding-PI",
+   "title": "Pandora Cofounder (LuftBlick/NASA GSFC)",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://pandora.gsfc.nasa.gov/About/html/team.html",
+   "evidence": "Alexander Cede Pandora Cofounder Luftblick/NASA GSFC",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "9fc643c167a5b47e",
+   "person_key": "dave-roemer",
+   "role": "superintendent",
+   "title": "Superintendent, Glacier National Park",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.nps.gov/glac/learn/news/glacier-national-park-announces-2026-summer-operations.htm",
+   "evidence": "said Glacier National Park Superintendent, Dave Roemer",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "9fc643c167a5b47e",
+   "person_key": "jeff-mow",
+   "role": "superintendent",
+   "title": "Former Superintendent, Glacier National Park",
+   "is_key_personnel": false,
+   "is_current": false,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.kxlf.com/new-glacier-national-park-superintendent-named",
+   "evidence": "He succeeds Jeff Mow who retired in December after more than eight years leading Glacier National Park",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "9fc643c167a5b47e",
+   "person_key": "jami-belt",
+   "role": "coordinator",
+   "title": "Biologist, Citizen Science Program Manager & Sustainability Coordinator, Crown of the Continent Research Learning Center",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.nps.gov/rlc/crown/contactus.htm",
+   "evidence": "Jami Belt | email Biologist, Citizen Science Program Manager, & Sustainability Coordinator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "9fc643c167a5b47e",
+   "person_key": "tara-carolin",
+   "role": "former-director",
+   "title": "Former Director, Crown of the Continent Research Learning Center",
+   "is_key_personnel": false,
+   "is_current": false,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://missoulian.com/news/state-regional/article_5fec0e3e-b2ef-420d-8bad-61c722fca500.html",
+   "evidence": "Tara Carolin retired last month after 33 years with the National Park Service, including 16 years as director",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "f2c12f6cc924f41c",
+   "person_key": "jenny-hand",
+   "role": "scientist",
+   "title": "Lead scientist, IMPROVE (CIRA/CSU); Chair, IMPROVE Data Analysis/Reporting Subcommittee",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.cira.colostate.edu/science-stories/happy-40th-birthday-to-improve-program-research-protecting-visibility-across-the-united-states",
+   "evidence": "CIRA researcher Jenny Hand , lead scientist on the project",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "f2c12f6cc924f41c",
+   "person_key": "bret-schichtel",
+   "role": "leadership-team",
+   "title": "Chair, IMPROVE Steering Committee (NPS)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://vista.cira.colostate.edu/Improve/improve-contacts/",
+   "evidence": "NPS. Bret Schichtel (Chair)",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "f2c12f6cc924f41c",
+   "person_key": "melinda-beaver",
+   "role": "leadership-team",
+   "title": "Vice Chair, IMPROVE Steering Committee; Chair, Network Operations Subcommittee (EPA)",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://vista.cira.colostate.edu/Improve/improve-contacts/",
+   "evidence": "EPA. Melinda Beaver (Vice Chair; Chair of Network Operations Subcommittee)",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "c26df9328bd0cdeb",
+   "person_key": "thomas-hanisco",
+   "role": "lead-PI",
+   "title": "Principal Investigator, NASA Pandora Project (NASA GSFC)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://pandora.gsfc.nasa.gov/About/html/team.html",
+   "evidence": "Pandora Staff Thomas Hanisco Principal Investigator NASA GSFC",
+   "confidence": "medium"
+  }
+ ],
+ "verifications": [
+  {
+   "facility_id": "c26df9328bd0cdeb",
+   "person_id": "ea83d14586071609",
+   "existing_role": "founding-PI",
+   "status": "confirmed",
+   "current_holder_key": null,
+   "source_url": "https://science.gsfc.nasa.gov/sed/bio/brent.n.holben",
+   "evidence": "In the process of developing the network and characterizing the great variety of aerosol types"
+  },
+  {
+   "facility_id": "c26df9328bd0cdeb",
+   "person_id": "2338840c74caad8d",
+   "existing_role": "co-PI",
+   "status": "not-found",
+   "current_holder_key": null,
+   "source_url": "https://aeronet.gsfc.nasa.gov/new_web/contacts.html",
+   "evidence": null
+  },
+  {
+   "facility_id": "c26df9328bd0cdeb",
+   "person_id": "ad69fe663d0dd867",
+   "existing_role": "co-PI",
+   "status": "unverifiable",
+   "current_holder_key": null,
+   "source_url": "https://pandora.gsfc.nasa.gov/About/html/team.html",
+   "evidence": "Alexander Cede Pandora Cofounder Luftblick/NASA GSFC"
+  },
+  {
+   "facility_id": "c26df9328bd0cdeb",
+   "person_id": "fded4627f88f555c",
+   "existing_role": "co-PI",
+   "status": "stale",
+   "current_holder_key": "thomas-hanisco",
+   "source_url": "https://pandora.gsfc.nasa.gov/About/html/team.html",
+   "evidence": "Pandora Staff Thomas Hanisco Principal Investigator NASA GSFC"
+  },
+  {
+   "facility_id": "f2c12f6cc924f41c",
+   "person_id": "a7a27beeed6c5b69",
+   "existing_role": "founding-PI",
+   "status": "unverifiable",
+   "current_holder_key": null,
+   "source_url": "https://www.cira.colostate.edu/staff/malm-william/",
+   "evidence": "program coordinator for the visibility/particulate research and monitoring program"
+  },
+  {
+   "facility_id": "f2c12f6cc924f41c",
+   "person_id": "e41a1d39ade9d873",
+   "existing_role": "co-PI",
+   "status": "not-found",
+   "current_holder_key": null,
+   "source_url": "https://vista.cira.colostate.edu/Improve/improve-contacts/",
+   "evidence": null
+  }
+ ],
+ "verification_notes": "All 22 cited URLs and 5 ORCID records (person + employments) re-fetched 2026-10-22 with HTTP 200 (NCEI landing page via WebFetch after curl timeouts); 0000-0001-9434-1308 confirmed 404. Every evidence snippet found on its source page; all 12 bios checked: <=60 words, no 8-word verbatim run. Pawan Gupta lead-PI re-sourced to the GSFC site's own AERONET page, which names him as the site's PI. Hanisco verification changed confirmed->stale (current holder: himself): the existing row says co-PI, but the Pandora team page lists him as Principal Investigator, so a lead-PI affiliation was added (medium: Pandora project-level, not GSFC-site-specific). Confidence lowered high->medium for AERONET project staff (Holben, Eck, Smirnov, Sinyuk, Schafer) and IMPROVE network leadership (Hand, Schichtel, Beaver): the sources describe the network, not this site. Holben founding-PI kept confirmed (founding-PI is historical); his current status is the separate emeritus row. Sinyuk's GSFC profile spells the name 'Siniuk' (same office/phone code as the AERONET contact list). Eck ORCID accepted: the record lists USRA Senior Scientist from 2011, and his GSFC profile also lists USRA from May 2011. Tara Carolin evidence is the teaser for a Missoulian article (Oct 24, 2025) whose body is paywalled. Giles absent from the AERONET staff page and Collett absent from the IMPROVE contacts page, both re-checked."
+}

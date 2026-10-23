@@ -1,0 +1,350 @@
+{
+ "batch_id": "R-PEOPLE2-NEON-04a",
+ "retrieved_at": "2026-10-22",
+ "verified_by": "adversarial-verifier 2026-10-22",
+ "facilities": [
+  {
+   "facility_id": "ff8b187e3f21122a",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/tomb",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=1",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=2",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/beth-fugate",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0009-0003-4822-8987/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0009-0003-4822-8987/employments",
+     "status": 200
+    }
+   ],
+   "notes": "NEON Domain D08 (Ozarks Complex); aquatic site; domain support facility in Tuscaloosa, AL. Site hosts listed on NEON page: a private landowner and the U.S. Army Corps of Engineers (river managed by USACE); adjacent Choctaw National Wildlife Refuge (USFWS, https://www.fws.gov/refuge/choctaw/). Colocated with NEON terrestrial site LENO. No host-agency staff named on the NEON page. Verifier: person page names the D08 domain but not this site; site-to-domain link taken from the NEON field-site page (re-fetched 200), so affiliation confidence set to medium."
+  },
+  {
+   "facility_id": "87060897fb64eb4c",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/mart",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=1",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=2",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/ben-vierra",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-6647-0369/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-6647-0369/employments",
+     "status": 200
+    }
+   ],
+   "notes": "NEON Domain D16 (Pacific Northwest); aquatic site; domain support facility in Vancouver, WA. Site hosts: Gifford Pinchot National Forest and USDA Forest Service Pacific Northwest Research Station. Colocated research: Wind River Experimental Forest; near NEON terrestrial site WREF. Host staff not named on the NEON page (it defers contacts to the Domain Manager)."
+  },
+  {
+   "facility_id": "328d7e3da3dc3e9a",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/mayf",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=1",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=2",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/beth-fugate",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0009-0003-4822-8987/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0009-0003-4822-8987/employments",
+     "status": 200
+    }
+   ],
+   "notes": "NEON Domain D08 (Ozarks Complex); aquatic site; domain support facility in Tuscaloosa, AL. Site host: Talladega National Forest (USDA Forest Service). Colocated with NEON terrestrial site TALL. Host staff not named on the NEON page (site access coordinated via the NEON Domain Manager). Verifier: person page names the D08 domain but not this site; site-to-domain link taken from the NEON field-site page (re-fetched 200), so affiliation confidence set to medium."
+  },
+  {
+   "facility_id": "90ef380a78f0b7cd",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/mcdi",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=1",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=2",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/becky-miller",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-2030-2618/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-2030-2618/employments",
+     "status": 200
+    }
+   ],
+   "notes": "NEON Domain D06 (Prairie Peninsula); aquatic site in the Urban Prairie Research Area; domain support facility in Manhattan, KS. Site host: Konza Prairie Biological Station (Kansas State University), with KSU Charitable Real Estate Foundation and The Nature Conservancy named as land managers. Konza Prairie LTER/KPBS leadership belongs to those facility records; none added here. Verifier: person page names the D06 domain but not this site; site-to-domain link taken from the NEON field-site page (re-fetched 200), so affiliation confidence set to medium."
+  },
+  {
+   "facility_id": "3deb65e6a51a3a8d",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/mcra",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=1",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=2",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/ben-vierra",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-6647-0369/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-6647-0369/employments",
+     "status": 200
+    }
+   ],
+   "notes": "NEON Domain D16 (Pacific Northwest); aquatic site within H.J. Andrews Experimental Forest; domain support facility in Vancouver, WA. Site hosts: USDA Forest Service Pacific Northwest Research Station and Willamette National Forest (site URL andrewsforest.oregonstate.edu). Colocated research: Andrews Forest LTER, Oregon State University, NADP; Andrews LTER contacts belong to the LTER facility record."
+  },
+  {
+   "facility_id": "7f83eaa9c683b075",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/nogp",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=1",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=2",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/andrea-anteau",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0001-5939-3206/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0001-5939-3206/employments",
+     "status": 200
+    }
+   ],
+   "notes": "NEON Domain D09 (Northern Plains); terrestrial site with flux tower; domain support facility in Jamestown, ND. Site host: USDA-ARS Northern Great Plains Research Laboratory, Mandan, ND (https://www.ars.usda.gov/plains-area/mandan-nd/ngprl/). Colocated research: Northern Plains LTAR, CZEN, AmeriFlux; ARS/LTAR leadership belongs to those facility records. Verifier: person page names the D09 domain but not this site; site-to-domain link taken from the NEON field-site page (re-fetched 200), so affiliation confidence set to medium."
+  }
+ ],
+ "people": [
+  {
+   "key": "beth-fugate",
+   "existing_person_id": null,
+   "name": "Beth Fugate",
+   "name_given": "Beth",
+   "name_family": "Fugate",
+   "orcid": "0009-0003-4822-8987",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0009-0003-4822-8987/employments",
+   "homepage_url": "https://www.neonscience.org/person/beth-fugate",
+   "bio": "Since 2023, has managed field operations in NEON's Ozarks Complex domain (D08), based in Tuscaloosa, Alabama, overseeing the domain's six Alabama field sites and its field science team. Previously a toxicologist, a Florida DEP environmental specialist in coastal habitat restoration, and manager of the Northwest Florida Aquatic Preserves. B.S. in marine biology, University of West Alabama.",
+   "bio_source_url": "https://www.neonscience.org/person/beth-fugate",
+   "research_interests": "coastal habitat restoration and monitoring; aquatic preserve management; toxicology; marine biology",
+   "research_interests_source_url": "https://www.neonscience.org/person/beth-fugate"
+  },
+  {
+   "key": "ben-vierra",
+   "existing_person_id": null,
+   "name": "Ben Vierra",
+   "name_given": "Ben",
+   "name_family": "Vierra",
+   "orcid": "0000-0002-6647-0369",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-6647-0369/employments",
+   "homepage_url": "https://www.neonscience.org/person/ben-vierra",
+   "bio": "Manager of NEON's Pacific Northwest domain (D16) since 2016, running staff and infrastructure at Wind River, Martha Creek, Abby Road and McRae Creek from a Vancouver, WA office. Joined NEON in 2013 as a Domain 01 field ecologist. Background in forest ecology and forestry; B.S. Willamette University, M.S. North Carolina State University; ESA-certified Ecologist.",
+   "bio_source_url": "https://www.neonscience.org/person/ben-vierra",
+   "research_interests": "forest ecology; forestry",
+   "research_interests_source_url": "https://www.neonscience.org/person/ben-vierra"
+  },
+  {
+   "key": "becky-miller",
+   "existing_person_id": null,
+   "name": "Becky Miller",
+   "name_given": "Becky",
+   "name_family": "Miller",
+   "orcid": "0000-0002-2030-2618",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-2030-2618/employments",
+   "homepage_url": "https://www.neonscience.org/person/becky-miller",
+   "bio": "Field Science Manager for NEON Domain 06 (Prairie Peninsula) in Kansas, with NEON since January 2017. Earlier spent many years as a Kansas State University project manager working on infectious diseases of livestock and biosecurity for the food-animal industry. B.S. in animal science, Kansas State University.",
+   "bio_source_url": "https://www.neonscience.org/person/becky-miller",
+   "research_interests": "infectious disease of foreign and domestic livestock; mitigation of bio-terrorism threats to the food animal industry; project management",
+   "research_interests_source_url": "https://www.neonscience.org/person/becky-miller"
+  },
+  {
+   "key": "andrea-anteau",
+   "existing_person_id": null,
+   "name": "Andrea Anteau",
+   "name_given": "Andrea",
+   "name_family": "Anteau",
+   "orcid": "0000-0001-5939-3206",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0001-5939-3206/employments",
+   "homepage_url": "https://www.neonscience.org/person/andrea-anteau",
+   "bio": "Field operations manager for NEON's Northern Plains domain (D09) in North Dakota. Ecologist and science educator with roughly two decades of experience spanning marine plankton, Alaskan estuary and wildlife ecology, coastal wetland biogeochemistry, desert soil microbes, and prairie wetland and amphibian ecology. M.S. in ecology, University of New Mexico.",
+   "bio_source_url": "https://www.neonscience.org/person/andrea-anteau",
+   "research_interests": "wetland and amphibian ecology; coastal wetland ecology and biogeochemistry; desert soil microbial ecology; estuary marsh ecology; science education",
+   "research_interests_source_url": "https://www.neonscience.org/person/andrea-anteau"
+  }
+ ],
+ "affiliations": [
+  {
+   "facility_id": "ff8b187e3f21122a",
+   "person_key": "beth-fugate",
+   "role": "domain-manager",
+   "title": "NEON Domain Manager, D08: Ozarks",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2023,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/person/beth-fugate",
+   "evidence": "Beth Fugate Manager, D08: Ozarks",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "87060897fb64eb4c",
+   "person_key": "ben-vierra",
+   "role": "domain-manager",
+   "title": "NEON Domain Manager, D16: Pacific Northwest",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2016,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/person/ben-vierra",
+   "evidence": "Ben Vierra Manager, D16: Pacific Northwest",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "328d7e3da3dc3e9a",
+   "person_key": "beth-fugate",
+   "role": "domain-manager",
+   "title": "NEON Domain Manager, D08: Ozarks",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2023,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/person/beth-fugate",
+   "evidence": "Beth Fugate Manager, D08: Ozarks",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "90ef380a78f0b7cd",
+   "person_key": "becky-miller",
+   "role": "domain-manager",
+   "title": "NEON Domain Manager, D06: Prairie Peninsula",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/person/becky-miller",
+   "evidence": "Becky Miller Manager, D06: Prairie Peninsula",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "3deb65e6a51a3a8d",
+   "person_key": "ben-vierra",
+   "role": "domain-manager",
+   "title": "NEON Domain Manager, D16: Pacific Northwest",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2016,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/person/ben-vierra",
+   "evidence": "Ben Vierra Manager, D16: Pacific Northwest",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "7f83eaa9c683b075",
+   "person_key": "andrea-anteau",
+   "role": "domain-manager",
+   "title": "NEON Domain Manager, D09: Northern Plains",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/person/andrea-anteau",
+   "evidence": "Andrea Anteau Manager, D09: Northern Plains",
+   "confidence": "medium"
+  }
+ ],
+ "verifications": []
+}

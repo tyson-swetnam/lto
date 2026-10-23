@@ -1,0 +1,1028 @@
+{
+ "batch_id": "R-PEOPLE2-NERR-01a",
+ "retrieved_at": "2026-10-22",
+ "verified_by": "adversarial-verifier 2026-10-22",
+ "facilities": [
+  {
+   "facility_id": "bf2c2c67551f218f",
+   "pages_fetched": [
+    {
+     "url": "https://www.missionaransas.org/about/staff/",
+     "status": 404
+    },
+    {
+     "url": "https://www.missionaransas.org/",
+     "status": 200
+    },
+    {
+     "url": "https://www.missionaransas.org/our-team/",
+     "status": 200
+    },
+    {
+     "url": "https://www.missionaransas.org/about-us/",
+     "status": 200
+    },
+    {
+     "url": "https://utmsi.utexas.edu/event/public-lecture-series-simon-brandl-port-aransas/",
+     "status": 200
+    },
+    {
+     "url": "https://www.portaransas.org/turningthetide/speakers/katie-swanson/",
+     "status": 404
+    },
+    {
+     "url": "https://utmsi.utexas.edu/component/cobalt/item/1957-congdon-victoria",
+     "status": 404
+    }
+   ],
+   "notes": "Reserve is run by UT Marine Science Institute. Current team page lists Katie Swanson (Manager) and Dr. Victoria Congdon (Research Coordinator); Jace Tunnell is no longer listed. 26 of the 27 existing rows are managers/staff of OTHER reserves misattached by the acronym-collision bug (their source_url hosts identify the real reserve: acebasin.org, vims.edu/cbnerr, dnrec Delaware, Elkhorn Slough, Grand Bay, He'eia, Jacques Cousteau, Jobos Bay, Kachemak Bay, Narragansett Bay, North Carolina, Old Woman Creek, Padilla Bay, Rookery Bay, San Francisco Bay, Sapelo Island, Tijuana River, Waquoit Bay, Weeks Bay, Wells, GTM, Hudson River, Maryland CB, Apalachicola, South Slough); none appear on the Mission-Aransas team page, so they are marked not-found here and should be MOVED to their reserves after re-verification, not deleted. Of those, the ones in this batch: William Reay re-verified as current CBNERR-VA Director (linked via existing_person_id); Cheryl Brown (ACE Basin), Robert Wood (CBNERR-MD) and Donna Lee Roberts (Apalachicola) are not named on those reserves' current pages (current managers: Julie Binz, Chris Snow, Kim Miller). No official history page naming a founding manager was found."
+  },
+  {
+   "facility_id": "71923b1b17ed7d00",
+   "pages_fetched": [
+    {
+     "url": "https://coast.noaa.gov/",
+     "status": 200
+    },
+    {
+     "url": "https://coast.noaa.gov/nerrs/",
+     "status": 200
+    },
+    {
+     "url": "https://coast.noaa.gov/about/",
+     "status": 200
+    },
+    {
+     "url": "https://coast.noaa.gov/about/organization.html",
+     "status": 404
+    },
+    {
+     "url": "https://coast.noaa.gov/about/organization/",
+     "status": 200
+    },
+    {
+     "url": "https://coast.noaa.gov/about/director/",
+     "status": 200
+    },
+    {
+     "url": "https://coast.noaa.gov/about/deputy-director/",
+     "status": 200
+    },
+    {
+     "url": "https://cdn.ioos.noaa.gov/media/2026/01/Speaker-Bios.pdf",
+     "status": 200
+    }
+   ],
+   "notes": "coast.noaa.gov/about/organization lists Keelin Kuipers as Director (Acting) and Kimberly Texeira as Deputy Director (Acting); Joelle Gore is chief of the Stewardship Division (the same page says the Estuarine Research Reserve System is administered in that division). Jeff Payne is named Director in a January 2026 NOAA IOOS speaker-bio PDF; the current org page names Kuipers as acting, so Payne is recorded as former-director with no end_year. Verifier: is_current=false for Payne is inferred from the current org and director pages (Kuipers acting director, formerly deputy); the PDF itself states him as director in Jan 2026, so confidence stays medium."
+  },
+  {
+   "facility_id": "a90fce0f33af9666",
+   "pages_fetched": [
+    {
+     "url": "https://acebasin.org/about-us/staff/",
+     "status": 0
+    },
+    {
+     "url": "https://acebasin.org/",
+     "status": 0
+    },
+    {
+     "url": "https://www.dnr.sc.gov/marine/NERR/",
+     "status": 200
+    },
+    {
+     "url": "https://www.dnr.sc.gov/marine/NERR/staff.html",
+     "status": 200
+    },
+    {
+     "url": "https://www.dnr.sc.gov/marine/NERR/about.html",
+     "status": 200
+    },
+    {
+     "url": "https://dnr.sc.gov/marine/mrri/environ/ACEBasin.html",
+     "status": 200
+    }
+   ],
+   "notes": "acebasin.org (cited by the DB) did not resolve (curl 000). Staff from SC DNR's ACE Basin NERR staff page (HTTP last-modified 2025-04-08, footer copyright 2019), hence medium confidence. SCDNR MRRI page names Dr. Denise Sanger as program leader of the reserve's research. Reserve managed by SC DNR with NOAA; designated 1992. Verifier: Sanger bio rewritten to what the MRRI page states (program leader); the 'Research Coordinator' title comes from the staff page and is kept on the affiliation only."
+  },
+  {
+   "facility_id": "88a71bec0521cfdb",
+   "pages_fetched": [
+    {
+     "url": "https://www.apalachicolareserve.com/",
+     "status": 200
+    },
+    {
+     "url": "https://www.apalachicolareserve.com/anerr/",
+     "status": 200
+    },
+    {
+     "url": "https://www.apalachicolareserve.com/research/",
+     "status": 200
+    },
+    {
+     "url": "https://floridaaquaticpreserves.org/managed-areas/national-estuarine-research-reserves-nerrs/apalachicola-national-estuarine-research",
+     "status": 200
+    },
+    {
+     "url": "https://floridaaquaticpreserves.org/news/message-manager-7",
+     "status": 200
+    },
+    {
+     "url": "https://marinelab.fsu.edu/people/staff/",
+     "status": 200
+    },
+    {
+     "url": "https://floridaaquaticpreserves.org/managed-areas/national-estuarine-research-reserves-nerrs/apalachicola-national-estuarine-research",
+     "status": 200
+    }
+   ],
+   "notes": "Reserve is administered by Florida DEP Office of Resilience and Coastal Protection; apalachicolareserve.com has no staff page. Kim Miller signs the reserve's 'Message From The Manager' on the DEP site (undated; medium confidence). Research staff are FSU Coastal & Marine Lab employees on detail to ANERR; FSU staff page (last updated 2026-10-21) lists Zoe Cross (ANERR Research Coordinator) and Rebekah Pagliaro (Research Coordinator - GIS). Pagliaro's FSU email suggests a former surname Keller; not recorded. Verifier: the DEP managed-area page (floridaaquaticpreserves.org/managed-areas/.../apalachicola-national-estuarine-research, 200) carries the same 'Message From The Manager' and lists Kim Miller as the reserve contact; still undated, so medium."
+  },
+  {
+   "facility_id": "b4519c13bf6c6b9d",
+   "pages_fetched": [
+    {
+     "url": "https://dnr.maryland.gov/waters/cbnerr/Pages/default.aspx",
+     "status": 200
+    },
+    {
+     "url": "https://dnr.maryland.gov/waters/cbnerr/Pages/aboutus.aspx",
+     "status": 200
+    },
+    {
+     "url": "https://dnr.maryland.gov/waters/cbnerr/Pages/contactus.aspx",
+     "status": 200
+    }
+   ],
+   "notes": "Maryland DNR CBNERR 'Our Staff' contact page (undated) lists Chris Snow as Reserve Manager, Kyle Derby as Research Coordinator and Becky Swerida as Stewardship Coordinator; component manager for Jug Bay Wetlands Sanctuary also listed. No bios found on DNR pages. Verifier: Delgado manages the Jug Bay component (listed on the reserve staff page), not the reserve as a whole; confidence lowered to medium."
+  },
+  {
+   "facility_id": "d2d962156f88888d",
+   "pages_fetched": [
+    {
+     "url": "https://www.vims.edu/cbnerr/about/staff/",
+     "status": 404
+    },
+    {
+     "url": "https://www.vims.edu/cbnerr/",
+     "status": 200
+    },
+    {
+     "url": "https://www.vims.edu/cbnerr/about/",
+     "status": 200
+    },
+    {
+     "url": "https://www.vims.edu/cbnerr/about/people/",
+     "status": 200
+    },
+    {
+     "url": "https://www.vims.edu/cbnerr/about/people/reay_w.php",
+     "status": 200
+    },
+    {
+     "url": "https://www.vims.edu/cbnerr/about/people/parrish_d.php",
+     "status": 200
+    },
+    {
+     "url": "https://www.vims.edu/cbnerr/about/people/pianca_c.php",
+     "status": 200
+    },
+    {
+     "url": "https://www.vims.edu/cbnerr/about/people/lerberg_s.php",
+     "status": 200
+    }
+   ],
+   "notes": "Reserve is a unit of the Virginia Institute of Marine Science. VIMS staff directory lists Dr. William G. Reay (CBNERR-VA Director), David Parrish (Associate Director & Research Coordinator), Dr. Cassia Pianca (Data Manager; her profile title is Environmental Data Center Web Application Developer) and Scott Lerberg (Stewardship Coordinator). Parrish's ORCID is linked on his VIMS profile. Two ORCID records named William Reay carry no employment and were not used."
+  }
+ ],
+ "people": [
+  {
+   "key": "katie-swanson",
+   "existing_person_id": null,
+   "name": "Katie Swanson",
+   "name_given": "Katie",
+   "name_family": "Swanson",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "victoria-congdon",
+   "existing_person_id": null,
+   "name": "Victoria Congdon",
+   "name_given": "Victoria",
+   "name_family": "Congdon",
+   "orcid": "0000-0001-7174-2077",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0001-7174-2077/employments",
+   "homepage_url": null,
+   "bio": "Research Coordinator for the Mission-Aransas NERR in Port Aransas, Texas; her work centers on coastal plant ecology, plant reproduction and restoration, including the ecology and protection of seagrass meadows.",
+   "bio_source_url": "https://utmsi.utexas.edu/event/public-lecture-series-simon-brandl-port-aransas/",
+   "research_interests": "coastal plant ecology; plant reproduction; restoration; seagrass meadows",
+   "research_interests_source_url": "https://utmsi.utexas.edu/event/public-lecture-series-simon-brandl-port-aransas/"
+  },
+  {
+   "key": "lindsay-scheef",
+   "existing_person_id": null,
+   "name": "Lindsay Scheef",
+   "name_given": "Lindsay",
+   "name_family": "Scheef",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "keelin-kuipers",
+   "existing_person_id": null,
+   "name": "Keelin Kuipers",
+   "name_given": "Keelin",
+   "name_family": "Kuipers",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://coast.noaa.gov/about/director/",
+   "bio": "Acting director of NOAA's Office for Coastal Management, previously its deputy director. Joined NOAA in 1999 supporting state coastal zone and nonpoint pollution programs; later managed the NOAA Coastal Storms Program and led resilience work for NOAA's coastal goal. Earlier worked on science policy at NSF.",
+   "bio_source_url": "https://coast.noaa.gov/about/director/",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "kimberly-texeira",
+   "existing_person_id": null,
+   "name": "Kimberly Texeira",
+   "name_given": "Kimberly",
+   "name_family": "Texeira",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://coast.noaa.gov/about/deputy-director/",
+   "bio": "Acting deputy director of NOAA's Office for Coastal Management, formerly chief of its Policy, Planning, and Communications Division. At NOAA since 1999, with roles in coastal mapping at the Coastal Services Center, National Ocean Service budget and strategic planning, and IOOS policy development.",
+   "bio_source_url": "https://coast.noaa.gov/about/deputy-director/",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "joelle-gore",
+   "existing_person_id": null,
+   "name": "Joelle Gore",
+   "name_given": "Joelle",
+   "name_family": "Gore",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "jeff-payne",
+   "existing_person_id": null,
+   "name": "Jeff Payne",
+   "name_given": "Jeff",
+   "name_family": "Payne",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "NOAA executive described in January 2026 as Director of the Office for Coastal Management and acting director of NOAA's IOOS office; long-time deputy director of the Coastal Services Center; trained in geophysical oceanography (PhD, Texas A&M).",
+   "bio_source_url": "https://cdn.ioos.noaa.gov/media/2026/01/Speaker-Bios.pdf",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "julie-binz",
+   "existing_person_id": null,
+   "name": "Julie Binz",
+   "name_given": "Julie",
+   "name_family": "Binz",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "denise-sanger",
+   "existing_person_id": null,
+   "name": "Denise Sanger",
+   "name_given": "Denise",
+   "name_family": "Sanger",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Scientist with the South Carolina Department of Natural Resources' Marine Resources Research Institute, listed as program leader for the ACE Basin NERR research sector, which runs the reserve's long-term environmental monitoring.",
+   "bio_source_url": "https://dnr.sc.gov/marine/mrri/environ/ACEBasin.html",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "jessica-kinsella",
+   "existing_person_id": null,
+   "name": "Jessica Kinsella",
+   "name_given": "Jessica",
+   "name_family": "Kinsella",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "kim-miller",
+   "existing_person_id": null,
+   "name": "Kim Miller",
+   "name_given": "Kim",
+   "name_family": "Miller",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "zoe-cross",
+   "existing_person_id": null,
+   "name": "Zoe Cross",
+   "name_given": "Zoe",
+   "name_family": "Cross",
+   "orcid": "0009-0002-7171-6076",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0009-0002-7171-6076/employments",
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "rebekah-pagliaro",
+   "existing_person_id": null,
+   "name": "Rebekah Pagliaro",
+   "name_given": "Rebekah",
+   "name_family": "Pagliaro",
+   "orcid": "0009-0000-7347-2744",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0009-0000-7347-2744/employments",
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "chris-snow",
+   "existing_person_id": null,
+   "name": "Chris Snow",
+   "name_given": "Chris",
+   "name_family": "Snow",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "kyle-derby",
+   "existing_person_id": null,
+   "name": "Kyle Derby",
+   "name_given": "Kyle",
+   "name_family": "Derby",
+   "orcid": "0009-0006-4131-7399",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0009-0006-4131-7399/employments",
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "becky-swerida",
+   "existing_person_id": null,
+   "name": "Becky Swerida",
+   "name_given": "Becky",
+   "name_family": "Swerida",
+   "orcid": "0009-0006-2727-7618",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0009-0006-2727-7618/employments",
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "patricia-delgado",
+   "existing_person_id": null,
+   "name": "Patricia Delgado",
+   "name_given": "Patricia",
+   "name_family": "Delgado",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "william-reay",
+   "existing_person_id": "5df97c3113302e64",
+   "name": "William G. Reay",
+   "name_given": "William",
+   "name_family": "Reay",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.vims.edu/cbnerr/about/people/reay_w.php",
+   "bio": "Director of the Chesapeake Bay NERR in Virginia and research faculty in Coastal & Ocean Processes at the Virginia Institute of Marine Science; a former president of the reserve system's national association. Works on watershed hydrology, nutrient dynamics, wetland response to climate change, and shallow-water monitoring and sentinel-site programs.",
+   "bio_source_url": "https://www.vims.edu/cbnerr/about/people/reay_w.php",
+   "research_interests": "watershed hydrology; groundwater-surface water interactions; nutrient dynamics; wetland and ecotone response to climate change; shallow-water monitoring",
+   "research_interests_source_url": "https://www.vims.edu/cbnerr/about/people/reay_w.php"
+  },
+  {
+   "key": "david-parrish",
+   "existing_person_id": null,
+   "name": "David Parrish",
+   "name_given": "David",
+   "name_family": "Parrish",
+   "orcid": "0000-0002-5970-784X",
+   "orcid_source_url": "https://www.vims.edu/cbnerr/about/people/parrish_d.php",
+   "homepage_url": "https://www.vims.edu/cbnerr/about/people/parrish_d.php",
+   "bio": "Associate Director and Research Coordinator of the Chesapeake Bay NERR in Virginia at VIMS. Supports the reserve's water quality monitoring program and studies shallow-water and estuarine water quality, using spatial and statistical analysis, remote sensing and web applications to inform management.",
+   "bio_source_url": "https://www.vims.edu/cbnerr/about/people/parrish_d.php",
+   "research_interests": "shallow-water and estuarine water quality; spatial and statistical analysis of monitoring data; remote sensing; science-to-management web applications",
+   "research_interests_source_url": "https://www.vims.edu/cbnerr/about/people/parrish_d.php"
+  },
+  {
+   "key": "cassia-pianca",
+   "existing_person_id": null,
+   "name": "Cassia Pianca",
+   "name_given": "Cassia",
+   "name_family": "Pianca",
+   "orcid": "0000-0002-0916-0874",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-0916-0874/employments",
+   "homepage_url": "https://www.vims.edu/cbnerr/about/people/pianca_c.php",
+   "bio": "Data manager and Environmental Data Center web application developer for the Chesapeake Bay NERR in Virginia at VIMS; oceanographer with a PhD from the University of Sao Paulo working on coastal geomorphology and estuarine processes.",
+   "bio_source_url": "https://www.vims.edu/cbnerr/about/people/pianca_c.php",
+   "research_interests": "coastal geomorphology; tidal inlets; estuarine processes; sediment transport; remote sensing; climate change and extreme events",
+   "research_interests_source_url": "https://www.vims.edu/cbnerr/about/people/pianca_c.php"
+  },
+  {
+   "key": "scott-lerberg",
+   "existing_person_id": null,
+   "name": "Scott Lerberg",
+   "name_given": "Scott",
+   "name_family": "Lerberg",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.vims.edu/cbnerr/about/people/lerberg_s.php",
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  }
+ ],
+ "affiliations": [
+  {
+   "facility_id": "bf2c2c67551f218f",
+   "person_key": "katie-swanson",
+   "role": "manager",
+   "title": "Manager",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.missionaransas.org/our-team/",
+   "evidence": "Our Team Administration Katie Swanson Manager",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "bf2c2c67551f218f",
+   "person_key": "victoria-congdon",
+   "role": "research-coordinator",
+   "title": "Research Coordinator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.missionaransas.org/our-team/",
+   "evidence": "Research Dr. Victoria Congdon Research Coordinator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "bf2c2c67551f218f",
+   "person_key": "lindsay-scheef",
+   "role": "scientist",
+   "title": "Research Associate",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.missionaransas.org/our-team/",
+   "evidence": "Dr. Lindsay Scheef Research Associate",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "71923b1b17ed7d00",
+   "person_key": "keelin-kuipers",
+   "role": "director",
+   "title": "Director (Acting)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://coast.noaa.gov/about/organization/",
+   "evidence": "Office Leadership Keelin Kuipers , Director (Acting)",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "71923b1b17ed7d00",
+   "person_key": "kimberly-texeira",
+   "role": "deputy-director",
+   "title": "Deputy Director (Acting)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://coast.noaa.gov/about/organization/",
+   "evidence": "Kimberly Texeira , Deputy Director (Acting)",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "71923b1b17ed7d00",
+   "person_key": "joelle-gore",
+   "role": "leadership-team",
+   "title": "Chief, Stewardship Division",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://coast.noaa.gov/about/organization/",
+   "evidence": "Division Chiefs ... Joelle Gore , Stewardship Division",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "71923b1b17ed7d00",
+   "person_key": "jeff-payne",
+   "role": "former-director",
+   "title": "Director",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://cdn.ioos.noaa.gov/media/2026/01/Speaker-Bios.pdf",
+   "evidence": "Dr. Jeff Payne is the Director of the NOAA Office for Coastal Management",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "a90fce0f33af9666",
+   "person_key": "julie-binz",
+   "role": "manager",
+   "title": "Manager",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.dnr.sc.gov/marine/NERR/staff.html",
+   "evidence": "Julie Binz Manager",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "a90fce0f33af9666",
+   "person_key": "denise-sanger",
+   "role": "research-coordinator",
+   "title": "Research Coordinator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.dnr.sc.gov/marine/NERR/staff.html",
+   "evidence": "Denise Sanger Research Coordinator",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "a90fce0f33af9666",
+   "person_key": "jessica-kinsella",
+   "role": "stewardship-coordinator",
+   "title": "Stewardship Coordinator",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.dnr.sc.gov/marine/NERR/staff.html",
+   "evidence": "Jessica Kinsella Stewardship Coordinator",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "88a71bec0521cfdb",
+   "person_key": "kim-miller",
+   "role": "manager",
+   "title": "Reserve Manager",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://floridaaquaticpreserves.org/news/message-manager-7",
+   "evidence": "Message From The Manager Apalachicola NERR ... Sincerely, Kim Miller",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "88a71bec0521cfdb",
+   "person_key": "zoe-cross",
+   "role": "research-coordinator",
+   "title": "ANERR Research Coordinator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://marinelab.fsu.edu/people/staff/",
+   "evidence": "Zoe Cross ANERR Research Coordinator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "88a71bec0521cfdb",
+   "person_key": "rebekah-pagliaro",
+   "role": "research-coordinator",
+   "title": "ANERR Research Coordinator - GIS",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://marinelab.fsu.edu/people/staff/",
+   "evidence": "Rebekah Pagliaro ANERR Research Coordinator - GIS",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "b4519c13bf6c6b9d",
+   "person_key": "chris-snow",
+   "role": "manager",
+   "title": "Reserve Manager",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://dnr.maryland.gov/waters/cbnerr/Pages/contactus.aspx",
+   "evidence": "Reserve Manager: Chris Snow",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "b4519c13bf6c6b9d",
+   "person_key": "kyle-derby",
+   "role": "research-coordinator",
+   "title": "Research Coordinator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://dnr.maryland.gov/waters/cbnerr/Pages/contactus.aspx",
+   "evidence": "Research Coordinator: Kyle Derby",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "b4519c13bf6c6b9d",
+   "person_key": "becky-swerida",
+   "role": "stewardship-coordinator",
+   "title": "Stewardship Coordinator",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://dnr.maryland.gov/waters/cbnerr/Pages/contactus.aspx",
+   "evidence": "Stewardship Coordinator: Becky Swerida",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "b4519c13bf6c6b9d",
+   "person_key": "patricia-delgado",
+   "role": "manager",
+   "title": "Jug Bay Wetlands Sanctuary Manager",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://dnr.maryland.gov/waters/cbnerr/Pages/contactus.aspx",
+   "evidence": "Jug Bay Wetlands Sanctuary Manager: Dr. Patricia Delgado",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "d2d962156f88888d",
+   "person_key": "william-reay",
+   "role": "director",
+   "title": "CBNERR-VA Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.vims.edu/cbnerr/about/people/index.php",
+   "evidence": "Dr. William G. Reay , CBNERR-VA Director",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "d2d962156f88888d",
+   "person_key": "david-parrish",
+   "role": "associate-director",
+   "title": "Associate Director & Research Coordinator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.vims.edu/cbnerr/about/people/index.php",
+   "evidence": "David Parrish , Associate Director & Research Coordinator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "d2d962156f88888d",
+   "person_key": "david-parrish",
+   "role": "research-coordinator",
+   "title": "Associate Director & Research Coordinator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.vims.edu/cbnerr/about/people/index.php",
+   "evidence": "David Parrish , Associate Director & Research Coordinator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "d2d962156f88888d",
+   "person_key": "cassia-pianca",
+   "role": "data-manager",
+   "title": "Data Manager",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.vims.edu/cbnerr/about/people/index.php",
+   "evidence": "Dr. Cassia Pianca , Data Manager",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "d2d962156f88888d",
+   "person_key": "scott-lerberg",
+   "role": "stewardship-coordinator",
+   "title": "Stewardship Coordinator",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.vims.edu/cbnerr/about/people/index.php",
+   "evidence": "Scott Lerberg , Stewardship Coordinator",
+   "confidence": "high"
+  }
+ ],
+ "verifications": [
+  {
+   "facility_id": "bf2c2c67551f218f",
+   "person_id": "445c074471c9ce80",
+   "existing_role": "manager",
+   "status": "not-found",
+   "current_holder_key": null,
+   "source_url": "https://www.missionaransas.org/our-team/",
+   "evidence": "Our Team Administration Katie Swanson Manager"
+  },
+  {
+   "facility_id": "bf2c2c67551f218f",
+   "person_id": "5df97c3113302e64",
+   "existing_role": "manager",
+   "status": "not-found",
+   "current_holder_key": null,
+   "source_url": "https://www.missionaransas.org/our-team/",
+   "evidence": "Our Team Administration Katie Swanson Manager"
+  },
+  {
+   "facility_id": "bf2c2c67551f218f",
+   "person_id": "109c4e071d496173",
+   "existing_role": "manager",
+   "status": "not-found",
+   "current_holder_key": null,
+   "source_url": "https://www.missionaransas.org/our-team/",
+   "evidence": "Our Team Administration Katie Swanson Manager"
+  },
+  {
+   "facility_id": "bf2c2c67551f218f",
+   "person_id": "5b719947c145e31b",
+   "existing_role": "manager",
+   "status": "not-found",
+   "current_holder_key": null,
+   "source_url": "https://www.missionaransas.org/our-team/",
+   "evidence": "Our Team Administration Katie Swanson Manager"
+  },
+  {
+   "facility_id": "bf2c2c67551f218f",
+   "person_id": "e6f7a86fd90b5242",
+   "existing_role": "manager",
+   "status": "not-found",
+   "current_holder_key": null,
+   "source_url": "https://www.missionaransas.org/our-team/",
+   "evidence": "Our Team Administration Katie Swanson Manager"
+  },
+  {
+   "facility_id": "bf2c2c67551f218f",
+   "person_id": "2f838bd0c383af76",
+   "existing_role": "manager",
+   "status": "not-found",
+   "current_holder_key": null,
+   "source_url": "https://www.missionaransas.org/our-team/",
+   "evidence": "Our Team Administration Katie Swanson Manager"
+  },
+  {
+   "facility_id": "bf2c2c67551f218f",
+   "person_id": "a1b41acbebfba3ac",
+   "existing_role": "manager",
+   "status": "not-found",
+   "current_holder_key": null,
+   "source_url": "https://www.missionaransas.org/our-team/",
+   "evidence": "Our Team Administration Katie Swanson Manager"
+  },
+  {
+   "facility_id": "bf2c2c67551f218f",
+   "person_id": "4dd524ca01a8f50f",
+   "existing_role": "manager",
+   "status": "not-found",
+   "current_holder_key": null,
+   "source_url": "https://www.missionaransas.org/our-team/",
+   "evidence": "Our Team Administration Katie Swanson Manager"
+  },
+  {
+   "facility_id": "bf2c2c67551f218f",
+   "person_id": "b836c01b3ce1085c",
+   "existing_role": "manager",
+   "status": "not-found",
+   "current_holder_key": null,
+   "source_url": "https://www.missionaransas.org/our-team/",
+   "evidence": "Our Team Administration Katie Swanson Manager"
+  },
+  {
+   "facility_id": "bf2c2c67551f218f",
+   "person_id": "c34a1c5f933f1380",
+   "existing_role": "manager",
+   "status": "stale",
+   "current_holder_key": "katie-swanson",
+   "source_url": "https://www.missionaransas.org/our-team/",
+   "evidence": "Our Team Administration Katie Swanson Manager"
+  },
+  {
+   "facility_id": "bf2c2c67551f218f",
+   "person_id": "c3b93845ce50b80a",
+   "existing_role": "manager",
+   "status": "not-found",
+   "current_holder_key": null,
+   "source_url": "https://www.missionaransas.org/our-team/",
+   "evidence": "Our Team Administration Katie Swanson Manager"
+  },
+  {
+   "facility_id": "bf2c2c67551f218f",
+   "person_id": "f7dab42f56acda0e",
+   "existing_role": "manager",
+   "status": "not-found",
+   "current_holder_key": null,
+   "source_url": "https://www.missionaransas.org/our-team/",
+   "evidence": "Our Team Administration Katie Swanson Manager"
+  },
+  {
+   "facility_id": "bf2c2c67551f218f",
+   "person_id": "766d181a805aecfc",
+   "existing_role": "manager",
+   "status": "not-found",
+   "current_holder_key": null,
+   "source_url": "https://www.missionaransas.org/our-team/",
+   "evidence": "Our Team Administration Katie Swanson Manager"
+  },
+  {
+   "facility_id": "bf2c2c67551f218f",
+   "person_id": "234d5914488a8ee1",
+   "existing_role": "manager",
+   "status": "not-found",
+   "current_holder_key": null,
+   "source_url": "https://www.missionaransas.org/our-team/",
+   "evidence": "Our Team Administration Katie Swanson Manager"
+  },
+  {
+   "facility_id": "bf2c2c67551f218f",
+   "person_id": "9bb2966b8154ec72",
+   "existing_role": "manager",
+   "status": "not-found",
+   "current_holder_key": null,
+   "source_url": "https://www.missionaransas.org/our-team/",
+   "evidence": "Our Team Administration Katie Swanson Manager"
+  },
+  {
+   "facility_id": "bf2c2c67551f218f",
+   "person_id": "97b189ca5b4a308a",
+   "existing_role": "manager",
+   "status": "not-found",
+   "current_holder_key": null,
+   "source_url": "https://www.missionaransas.org/our-team/",
+   "evidence": "Our Team Administration Katie Swanson Manager"
+  },
+  {
+   "facility_id": "bf2c2c67551f218f",
+   "person_id": "8e856d667615d3d1",
+   "existing_role": "manager",
+   "status": "not-found",
+   "current_holder_key": null,
+   "source_url": "https://www.missionaransas.org/our-team/",
+   "evidence": "Our Team Administration Katie Swanson Manager"
+  },
+  {
+   "facility_id": "bf2c2c67551f218f",
+   "person_id": "265381c267ce6b78",
+   "existing_role": "site-manager",
+   "status": "not-found",
+   "current_holder_key": null,
+   "source_url": "https://www.missionaransas.org/our-team/",
+   "evidence": "Research Dr. Victoria Congdon Research Coordinator"
+  },
+  {
+   "facility_id": "bf2c2c67551f218f",
+   "person_id": "b45f8af5a4ea7fee",
+   "existing_role": "manager",
+   "status": "not-found",
+   "current_holder_key": null,
+   "source_url": "https://www.missionaransas.org/our-team/",
+   "evidence": "Our Team Administration Katie Swanson Manager"
+  },
+  {
+   "facility_id": "bf2c2c67551f218f",
+   "person_id": "1bb81c605c7e1595",
+   "existing_role": "manager",
+   "status": "not-found",
+   "current_holder_key": null,
+   "source_url": "https://www.missionaransas.org/our-team/",
+   "evidence": "Our Team Administration Katie Swanson Manager"
+  },
+  {
+   "facility_id": "bf2c2c67551f218f",
+   "person_id": "fe36471335cd04e1",
+   "existing_role": "manager",
+   "status": "not-found",
+   "current_holder_key": null,
+   "source_url": "https://www.missionaransas.org/our-team/",
+   "evidence": "Our Team Administration Katie Swanson Manager"
+  },
+  {
+   "facility_id": "bf2c2c67551f218f",
+   "person_id": "de4cb4cd8ed655fc",
+   "existing_role": "manager",
+   "status": "not-found",
+   "current_holder_key": null,
+   "source_url": "https://www.missionaransas.org/our-team/",
+   "evidence": "Our Team Administration Katie Swanson Manager"
+  },
+  {
+   "facility_id": "bf2c2c67551f218f",
+   "person_id": "c3a636cd082f8708",
+   "existing_role": "site-manager",
+   "status": "not-found",
+   "current_holder_key": null,
+   "source_url": "https://www.missionaransas.org/our-team/",
+   "evidence": "Research Dr. Victoria Congdon Research Coordinator"
+  },
+  {
+   "facility_id": "bf2c2c67551f218f",
+   "person_id": "820647e48e2e96f8",
+   "existing_role": "manager",
+   "status": "not-found",
+   "current_holder_key": null,
+   "source_url": "https://www.missionaransas.org/our-team/",
+   "evidence": "Our Team Administration Katie Swanson Manager"
+  },
+  {
+   "facility_id": "bf2c2c67551f218f",
+   "person_id": "a6992a44fab919e2",
+   "existing_role": "manager",
+   "status": "not-found",
+   "current_holder_key": null,
+   "source_url": "https://www.missionaransas.org/our-team/",
+   "evidence": "Our Team Administration Katie Swanson Manager"
+  },
+  {
+   "facility_id": "bf2c2c67551f218f",
+   "person_id": "a238905e79159c89",
+   "existing_role": "manager",
+   "status": "not-found",
+   "current_holder_key": null,
+   "source_url": "https://www.missionaransas.org/our-team/",
+   "evidence": "Our Team Administration Katie Swanson Manager"
+  },
+  {
+   "facility_id": "bf2c2c67551f218f",
+   "person_id": "b881885093dca319",
+   "existing_role": "manager",
+   "status": "not-found",
+   "current_holder_key": null,
+   "source_url": "https://www.missionaransas.org/our-team/",
+   "evidence": "Our Team Administration Katie Swanson Manager"
+  }
+ ]
+}

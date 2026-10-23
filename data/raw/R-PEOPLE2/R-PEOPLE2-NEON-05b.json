@@ -1,0 +1,342 @@
+{
+ "batch_id": "R-PEOPLE2-NEON-05b",
+ "retrieved_at": "2026-10-22",
+ "verified_by": "adversarial-verifier 2026-10-22",
+ "facilities": [
+  {
+   "facility_id": "2288d34487e5eff9",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/took",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=1",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=2",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/domains/tundra",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/chris-baird",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0009-0003-9818-0205/employments",
+     "status": 200
+    }
+   ],
+   "notes": "NEON Domain D18 (Tundra); D18/D19 field operations office in Fairbanks, AK. Site host: BLM Alaska. Colocated: Toolik Field Station (University of Alaska), Arctic LTER, North Slope Science Initiative, NADP, NOAA U.S. Climate Reference Network. Host-station staff not named on the NEON page; Toolik Field Station / Arctic LTER leadership belongs to those facility records."
+  },
+  {
+   "facility_id": "f2dfa30f0871b59d",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/tree",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=1",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=2",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/domains/great-lakes",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/ashley-spink-0",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-5484-7763/employments",
+     "status": 200
+    }
+   ],
+   "notes": "NEON Domain D05 (Great Lakes); field operations office in Land O Lakes, WI. Site host: University of Wisconsin Stevens Point (Treehaven). Colocated: UW Stevens Point, AmeriFlux. The NEON staff directory lists no 'Manager, D05' entry; the D05 lead is taken from Ashley Spink's NEON profile (Field Operations Manager, Great Lakes D05, since 2025). Treehaven staff not named on the NEON page."
+  },
+  {
+   "facility_id": "84bcc3299702e49a",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/unde",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=1",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=2",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/domains/great-lakes",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/ashley-spink-0",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-5484-7763/employments",
+     "status": 200
+    }
+   ],
+   "notes": "NEON Domain D05 (Great Lakes); field operations office in Land O Lakes, WI. Site host: University of Notre Dame (UNDERC). Colocated: University of Notre Dame Environmental Research Center, AmeriFlux. D05 lead from Ashley Spink's NEON profile (no 'Manager, D05' entry in the staff directory). UNDERC staff not named on the NEON page."
+  },
+  {
+   "facility_id": "60a71d9c93a2e73c",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/bigc",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=1",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=2",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/domains/pacific-southwest",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/catie-halvorsen-0",
+     "status": 200
+    }
+   ],
+   "notes": "NEON Domain D17 (Pacific Southwest); field operations office in Fresno, CA. Site host: Sierra National Forest (USFS). Colocated: Southern Sierra CZO; colocated NEON site Soaproot Saddle. The NEON staff directory lists no 'Manager, D17' entry; the D17 lead is taken from Catie Halvorsen's NEON profile (Field Operations Manager, Domain 17, since 2024). A 2020 NEON blog naming a different D17 field manager was seen only in search results and not used."
+  },
+  {
+   "facility_id": "60b207be7ae33ad2",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/barr",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=1",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=2",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/domains/tundra",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/chris-baird",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0009-0003-9818-0205/employments",
+     "status": 200
+    }
+   ],
+   "notes": "NEON Domain D18 (Tundra); D18/D19 field operations office in Fairbanks, AK. Site host: Ukpeagvik Inupiat Corporation. Colocated: Barrow Arctic Research Center, Barrow Environmental Observatory, Beaufort Lagoon Ecosystems LTER (formerly Barrow LTER), Critical Zone Exploration Network, AmeriFlux, NOAA ESRL, North Slope Science Initiative. Host staff not named on the NEON page."
+  },
+  {
+   "facility_id": "9da42bebc8bd9817",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/walk",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=1",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=2",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/domains/appalachians-cumberland-plateau",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/bill-martin",
+     "status": 200
+    }
+   ],
+   "notes": "NEON Domain D07 (Appalachians and Cumberland Plateau); field operations office in Oak Ridge, TN. Site host: Oak Ridge National Laboratory (Environmental Sciences Division). Colocated: ORNL Walker Branch Watershed, NADP; colocated NEON site Oak Ridge (ORNL). ORNL Walker Branch investigators not named on the NEON page."
+  }
+ ],
+ "people": [
+  {
+   "key": "chris-baird",
+   "existing_person_id": null,
+   "name": "Chris Baird",
+   "name_given": "Chris",
+   "name_family": "Baird",
+   "orcid": "0009-0003-9818-0205",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0009-0003-9818-0205/employments",
+   "homepage_url": "https://www.neonscience.org/person/chris-baird",
+   "bio": "Field operations manager for NEON's Tundra (D18) and Taiga (D19) domains, both supported from the Fairbanks, Alaska domain facility. Biologist with a UBC B.S. (2007) and a Queen's University biology M.S. (2013); before NEON operations work his research focused on seabird and Arctic ecology, with fieldwork spanning Patagonia, the Arctic, the Great Lakes and the Pacific Northwest.",
+   "bio_source_url": "https://www.neonscience.org/person/chris-baird",
+   "research_interests": "seabird ecology; arctic ecology",
+   "research_interests_source_url": "https://www.neonscience.org/person/chris-baird"
+  },
+  {
+   "key": "ashley-spink",
+   "existing_person_id": null,
+   "name": "Ashley Spink",
+   "name_given": "Ashley",
+   "name_family": "Spink",
+   "orcid": "0000-0002-5484-7763",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-5484-7763/employments",
+   "homepage_url": "https://www.neonscience.org/person/ashley-spink-0",
+   "bio": "Field operations manager for NEON's Great Lakes domain (D05) since 2025, based in Land O' Lakes, Wisconsin. Joined NEON in 2014 as a field technician leading small mammal, soil and invertebrate protocols. Holds a wildlife ecology B.S. (UW-Stevens Point) and an environmental science and policy M.S. (UW-Green Bay); earlier wildlife field work with agencies and universities.",
+   "bio_source_url": "https://www.neonscience.org/person/ashley-spink-0",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "catie-halvorsen",
+   "existing_person_id": null,
+   "name": "Catie Halvorsen",
+   "name_given": "Catie",
+   "name_family": "Halvorsen",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.neonscience.org/person/catie-halvorsen-0",
+   "bio": "Field operations manager for NEON's Pacific Southwest domain (D17) since 2024, after starting at NEON as an aquatic field technician and then field ecologist. Environmental engineering graduate of Cal Poly San Luis Obispo; earlier work included elephant seal population monitoring and U.S. Forest Service hydrology, engineering and aquatic projects.",
+   "bio_source_url": "https://www.neonscience.org/person/catie-halvorsen-0",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "bill-martin",
+   "existing_person_id": null,
+   "name": "Bill Martin",
+   "name_given": "Bill",
+   "name_family": "Martin",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.neonscience.org/person/bill-martin",
+   "bio": "NEON domain manager for the Appalachians and Cumberland Plateau (D07). Before NEON he worked at the Pantex facility in Amarillo, Texas, first as an environmental and ecological sampling technician (1993-1997) and, from 2007, as operations manager for its environmental remediation systems.",
+   "bio_source_url": "https://www.neonscience.org/person/bill-martin",
+   "research_interests": null,
+   "research_interests_source_url": null
+  }
+ ],
+ "affiliations": [
+  {
+   "facility_id": "2288d34487e5eff9",
+   "person_key": "chris-baird",
+   "role": "domain-manager",
+   "title": "NEON Domain Manager, D19: Taiga; D18: Tundra",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/person/chris-baird",
+   "evidence": "Christopher is the Field Operations Manager for two NEON Domains: D18 (Arctic Tundra) and D19",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "f2dfa30f0871b59d",
+   "person_key": "ashley-spink",
+   "role": "domain-manager",
+   "title": "NEON Field Operations Manager, D05: Great Lakes",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2025,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/person/ashley-spink-0",
+   "evidence": "Ashley moved to the role of Field Operations Manager for the Great Lakes (D05) domain",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "84bcc3299702e49a",
+   "person_key": "ashley-spink",
+   "role": "domain-manager",
+   "title": "NEON Field Operations Manager, D05: Great Lakes",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2025,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/person/ashley-spink-0",
+   "evidence": "Ashley moved to the role of Field Operations Manager for the Great Lakes (D05) domain",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "60a71d9c93a2e73c",
+   "person_key": "catie-halvorsen",
+   "role": "domain-manager",
+   "title": "NEON Field Operations Manager, D17: Pacific Southwest",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2024,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/person/catie-halvorsen-0",
+   "evidence": "her current role as Field Operations Manager for Domain 17, the Pacific Southwest, in 2024",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "60b207be7ae33ad2",
+   "person_key": "chris-baird",
+   "role": "domain-manager",
+   "title": "NEON Domain Manager, D19: Taiga; D18: Tundra",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/person/chris-baird",
+   "evidence": "Christopher is the Field Operations Manager for two NEON Domains: D18 (Arctic Tundra) and D19",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "9da42bebc8bd9817",
+   "person_key": "bill-martin",
+   "role": "domain-manager",
+   "title": "NEON Domain Manager, D07: Appalachians and Cumberland Plateau",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/about/staff?page=1",
+   "evidence": "Bill Martin Manager, D07: Appalachians and Cumberland Plateau",
+   "confidence": "high"
+  }
+ ],
+ "verifications": []
+}

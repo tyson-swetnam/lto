@@ -1,0 +1,652 @@
+{
+ "batch_id": "R-PEOPLE2-DRYLANDS-SW-02b",
+ "retrieved_at": "2026-10-22",
+ "verified_by": "adversarial-verifier 2026-10-22",
+ "facilities": [
+  {
+   "facility_id": "abeeac6c6f195705",
+   "pages_fetched": [
+    {
+     "url": "https://www.nps.gov/bibe/learn/management/index.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/bibe/learn/management/superintendent.htm",
+     "status": 404
+    },
+    {
+     "url": "https://www.nps.gov/bibe/contacts.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/bibe/learn/news/index.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/bibe/learn/management/superintendents-compendium.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/bibe/learn/management/statistics.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/bibe/learn/news/new-superintendent-for-big-bend-np.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/bibe/learn/news/krumenaker-named-superintendent-of-big-bend-national-park.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/bibe/learn/news/el-paso-zoo-to-partner-with-big-bend-national-park-on-wildlife-conservation.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/bibe/learn/scienceresearch.htm",
+     "status": 200
+    }
+   ],
+   "notes": "Biosphere reserve record is anchored on Big Bend National Park (NPS). Park statistics page (updated 2026-01-01) lists Superintendent Rick Gupman; the 2026 Superintendent's Compendium (approved 1/1/26) signs him as acting Superintendent and Steve Cape as acting Deputy Superintendent, so both are recorded at medium confidence. Prior superintendents from park news releases: Anjna O'Connor (selected May 2024; departure date not stated) and Bob Krumenaker (named 2018, retired by May 2024). No current named chief of Science & Resource Management found (2018 release naming David Larson as Resource Management Chief is too old; not added). No MAB/biosphere-reserve-specific contact page found."
+  },
+  {
+   "facility_id": "f3aa90613c5ce294",
+   "pages_fetched": [
+    {
+     "url": "https://www.nps.gov/im/sodn/index.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/im/sodn/contact.htm",
+     "status": 404
+    },
+    {
+     "url": "https://www.nps.gov/im/sodn/staff.htm",
+     "status": 404
+    },
+    {
+     "url": "https://www.nps.gov/im/sodn/contactus.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/im/sodn/siteindex.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/im/sodn/who-we-are.htm",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0009-0007-1330-2058/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0009-0007-1330-2058/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0001-7554-7586/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0001-7554-7586/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0009-0004-7265-5919/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0009-0004-7265-5919/employments",
+     "status": 200
+    }
+   ],
+   "notes": "Staff from the SODN Contact Us page (updated 2026-08-19) and Who We Are page (updated 2025-09-17), Tucson AZ office. Network Program Manager Andy Hubbard also directs the Desert Research Learning Center. Recorded key scientific staff: vegetation ecologist, quantitative ecologist, data manager, hydrologist; field technicians/crew leads and the science writer not added. ORCID 0000-0001-7554-7586 (Cheryl McIntyre) has no employment on record, so it was not attached."
+  },
+  {
+   "facility_id": "9e331afaa2ea7a45",
+   "pages_fetched": [
+    {
+     "url": "https://wcc.sc.egov.usda.gov/nwcc/site?sitenum=2002",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/stations?stationNames=Bushland*&networkCds=SCAN&returnStationElements=false&activeOnly=false",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/stations?stationNames=*Bushland*&activeOnly=false",
+     "status": 200
+    }
+   ],
+   "notes": "No personnel found: NRCS SCAN site pages name no PI or operator contact (only a generic NRCS 'Questions about this site' link). DATA ISSUE: sitenum=2002 resolves to 'Crescent Lake #1' (Sherburne County, Minnesota), not Bushland #2. The NRCS AWDB station API lists only 'Bushland #1' (2006:TX:SCAN, Randall County TX, operator NRCS, since 1993-10-01) and no 'Bushland #2'; facility URL/record should be reviewed."
+  },
+  {
+   "facility_id": "c2777e772491be5e",
+   "pages_fetched": [
+    {
+     "url": "https://wcc.sc.egov.usda.gov/nwcc/site?sitenum=2017",
+     "status": 200
+    }
+   ],
+   "notes": "No personnel found: the NRCS SCAN site page for Nunn #1 (2017, Weld County CO, reporting since 1993-10-20) names no PI, cooperator or site contact; NRCS operates SCAN stations without published named leads."
+  },
+  {
+   "facility_id": "9b7758a08f12bd51",
+   "pages_fetched": [
+    {
+     "url": "https://wcc.sc.egov.usda.gov/nwcc/site?sitenum=2037",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/stations?stationNames=Reynolds*&networkCds=SCAN&returnStationElements=false&activeOnly=false",
+     "status": 200
+    }
+   ],
+   "notes": "No personnel found (SCAN pages name no people). DATA ISSUE: sitenum=2037 resolves to 'Pee Dee' (Darlington County, South Carolina), not Reynolds Creek ID. AWDB station search for 'Reynolds*' returned no Idaho SCAN station; the Reynolds Creek station in AWDB is SNOTEL 2029:ID:SNTL (Owyhee County, since 1999-08-31). Facility identity/URL should be reviewed."
+  },
+  {
+   "facility_id": "9ba7a35749487194",
+   "pages_fetched": [
+    {
+     "url": "https://www.snowstudies.org/",
+     "status": 200
+    },
+    {
+     "url": "https://snowstudies.org/board-staff/",
+     "status": 200
+    },
+    {
+     "url": "https://snowstudies.org/history/",
+     "status": 200
+    },
+    {
+     "url": "https://snowstudies.org/interdisciplinary-research/",
+     "status": 200
+    },
+    {
+     "url": "https://snowstudies.org/jeff-deems",
+     "status": 200
+    },
+    {
+     "url": "https://snowstudies.org/david-kanzer/",
+     "status": 200
+    },
+    {
+     "url": "https://snowstudies.org/wp-content/uploads/2024/11/Ella-Bump-Bio_newhireCSAS.pdf",
+     "status": 200
+    },
+    {
+     "url": "https://www.thewaterreport.com/author-bio/derry-jeff/",
+     "status": 200
+    },
+    {
+     "url": "https://nsidc.org/about/people/jeffrey-deems",
+     "status": 404
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0009-0005-6584-9579/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0009-0005-6584-9579/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-7254-6702/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-7254-6702/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-3265-8670/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-3265-8670/employments",
+     "status": 200
+    }
+   ],
+   "notes": "CSAS (Silverton CO) operates the Senator Beck Basin Study Area. Board & Staff page lists Executive Director Jeff Derry and Researcher Ella Bump; board president Dave Kanzer and long-time board scientist Jeff Deems added as leadership-team. History page: CSAS incorporated 2003-01-31 by Chris George and Chris Landry; original board Don Bachman, Chris George, Arthur (Boots) Ferguson. Landry listed as former Executive Director. ORCID 0000-0002-7254-6702 (Ella Bump) has no employment on record; not attached. Deems bio left null: CSAS board page text dates from ~2010."
+  }
+ ],
+ "people": [
+  {
+   "key": "rick-gupman",
+   "existing_person_id": null,
+   "name": "Rick Gupman",
+   "name_given": "Rick",
+   "name_family": "Gupman",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "steve-cape",
+   "existing_person_id": null,
+   "name": "Steve Cape",
+   "name_given": "Steve",
+   "name_family": "Cape",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "anjna-oconnor",
+   "existing_person_id": null,
+   "name": "Anjna O'Connor",
+   "name_given": "Anjna",
+   "name_family": "O'Connor",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Selected in 2024 to lead Big Bend National Park after a career with the US Army Corps of Engineers, where she worked as a supervisory program manager overseeing border infrastructure construction and earlier managed recreation, environmental compliance and natural resource programs at Corps campgrounds in central Texas.",
+   "bio_source_url": "https://www.nps.gov/bibe/learn/news/new-superintendent-for-big-bend-np.htm",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "bob-krumenaker",
+   "existing_person_id": null,
+   "name": "Robert (Bob) Krumenaker",
+   "name_given": "Robert",
+   "name_family": "Krumenaker",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Career National Park Service manager with a natural resource management background, named Big Bend superintendent in 2018 after leading Apostle Islands National Lakeshore from 2002; earlier held resource and leadership posts in NPS headquarters, two regional offices and several parks. Trained in forest science at Yale.",
+   "bio_source_url": "https://www.nps.gov/bibe/learn/news/krumenaker-named-superintendent-of-big-bend-national-park.htm",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "andy-hubbard",
+   "existing_person_id": null,
+   "name": "Andy Hubbard",
+   "name_given": "Andy",
+   "name_family": "Hubbard",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Has managed the NPS Sonoran Desert Inventory & Monitoring Network since joining in 2001 and directs the Desert Research Learning Center in Tucson; leads the network's wildlife and springs protocols. PhD in rangeland ecology and management, Texas A&M. Received the 2010 national I&M award as the program's top network manager.",
+   "bio_source_url": "https://www.nps.gov/im/sodn/who-we-are.htm",
+   "research_interests": "plant-animal interactions; plant ecophysiology (roots); disturbance ecology",
+   "research_interests_source_url": "https://www.nps.gov/im/sodn/who-we-are.htm"
+  },
+  {
+   "key": "sarah-studd",
+   "existing_person_id": null,
+   "name": "Sarah Studd",
+   "name_given": "Sarah",
+   "name_family": "Studd",
+   "orcid": "0009-0007-1330-2058",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0009-0007-1330-2058/employments",
+   "homepage_url": null,
+   "bio": "Vegetation ecologist with the NPS Sonoran Desert Network, responsible for developing and running its vegetation monitoring protocols and leading vegetation mapping and classification inventories. Previously studied invasive plants at park units as a research assistant with the Sonoran Institute. Holds a University of Arizona master's in natural resource management and ecology.",
+   "bio_source_url": "https://www.nps.gov/im/sodn/who-we-are.htm",
+   "research_interests": "plant community ecology; restoration; fire ecology and succession; invasive plant population dynamics; vegetation mapping and cartography",
+   "research_interests_source_url": "https://www.nps.gov/im/sodn/who-we-are.htm"
+  },
+  {
+   "key": "cheryl-mcintyre",
+   "existing_person_id": null,
+   "name": "Cheryl McIntyre",
+   "name_given": "Cheryl",
+   "name_family": "McIntyre",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Quantitative ecologist providing data analysis across monitoring protocols for the NPS Southwest Network Collaboration, including the Sonoran Desert Network. Worked with SODN and other I&M networks as an ecologist at the Sonoran Institute from 2004 to 2011. PhD in natural resources from the University of Arizona.",
+   "bio_source_url": "https://www.nps.gov/im/sodn/who-we-are.htm",
+   "research_interests": "biological soil crusts; plant-soil-water interactions",
+   "research_interests_source_url": "https://www.nps.gov/im/sodn/who-we-are.htm"
+  },
+  {
+   "key": "helen-thomas",
+   "existing_person_id": null,
+   "name": "Helen Thomas",
+   "name_given": "Helen",
+   "name_family": "Thomas",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Data manager for the NPS Sonoran Desert Network, overseeing its data management applications and leading data management for the Southwest Network Collaboration. Earlier served for over ten years as data manager of the Northern Colorado Plateau Network. PhD in information technology from Georgia Tech.",
+   "bio_source_url": "https://www.nps.gov/im/sodn/who-we-are.htm",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "kara-raymond",
+   "existing_person_id": null,
+   "name": "Kara Raymond",
+   "name_given": "Kara",
+   "name_family": "Raymond",
+   "orcid": "0009-0004-7265-5919",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0009-0004-7265-5919/employments",
+   "homepage_url": null,
+   "bio": "Hydrologist with the NPS Southern Arizona Office since 2017, supporting parks and three Inventory & Monitoring networks including the Sonoran Desert Network with climate, groundwater and stream data collection and analysis. Worked 2010-2014 as a hydrologic technician for the Sonoran Desert and Southern Plains I&M networks. MS in water resources science, University of Minnesota.",
+   "bio_source_url": "https://www.nps.gov/im/sodn/who-we-are.htm",
+   "research_interests": "climate change adaptation; biocrust restoration; earthen architecture preservation",
+   "research_interests_source_url": "https://www.nps.gov/im/sodn/who-we-are.htm"
+  },
+  {
+   "key": "jeff-derry",
+   "existing_person_id": null,
+   "name": "Jeff Derry",
+   "name_given": "Jeff",
+   "name_family": "Derry",
+   "orcid": "0009-0005-6584-9579",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0009-0005-6584-9579/employments",
+   "homepage_url": null,
+   "bio": "Has worked since 2015 at the Center for Snow and Avalanche Studies, based in Silverton, Colorado. Trained in watershed science with a snow hydrology focus at Colorado State University; spent a decade as a polar field camp manager and science technician in Antarctica and Greenland and five years in applied Arctic research in Alaska.",
+   "bio_source_url": "https://www.thewaterreport.com/author-bio/derry-jeff/",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "ella-bump",
+   "existing_person_id": null,
+   "name": "Ella Bump",
+   "name_given": "Ella",
+   "name_family": "Bump",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Researcher at the Center for Snow and Avalanche Studies, hired in late 2024 after as-needed dust-on-snow monitoring and data work there since 2021. Pursued an MS in watershed science (snow hydrology) at Colorado State University, reconstructing snow water equivalent from tree rings, and later worked as an NPS hydrology assistant with the Southern Plains Network.",
+   "bio_source_url": "https://snowstudies.org/wp-content/uploads/2024/11/Ella-Bump-Bio_newhireCSAS.pdf",
+   "research_interests": "snow hydrology; dendrochronology-based snow water equivalent reconstruction; dust-on-snow monitoring",
+   "research_interests_source_url": "https://snowstudies.org/wp-content/uploads/2024/11/Ella-Bump-Bio_newhireCSAS.pdf"
+  },
+  {
+   "key": "dave-kanzer",
+   "existing_person_id": null,
+   "name": "Dave Kanzer",
+   "name_given": "David",
+   "name_family": "Kanzer",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Member of the CSAS board of directors; serves as the Colorado River District's deputy chief engineer, working on Colorado River water quality, supply planning and irrigation efficiency projects for over two decades. Registered professional engineer with geological engineering degrees from the Colorado School of Mines.",
+   "bio_source_url": "https://snowstudies.org/david-kanzer/",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "jeff-deems",
+   "existing_person_id": null,
+   "name": "Jeffrey S. Deems",
+   "name_given": "Jeffrey",
+   "name_family": "Deems",
+   "orcid": "0000-0002-3265-8670",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-3265-8670/employments",
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "chris-landry",
+   "existing_person_id": null,
+   "name": "Chris Landry",
+   "name_given": "Chris",
+   "name_family": "Landry",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "chris-george",
+   "existing_person_id": null,
+   "name": "Chris George",
+   "name_given": "Chris",
+   "name_family": "George",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "don-bachman",
+   "existing_person_id": null,
+   "name": "Don Bachman",
+   "name_given": "Don",
+   "name_family": "Bachman",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  }
+ ],
+ "affiliations": [
+  {
+   "facility_id": "abeeac6c6f195705",
+   "person_key": "rick-gupman",
+   "role": "superintendent",
+   "title": "Superintendent (acting per 2026 Superintendent's Compendium)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.nps.gov/bibe/learn/management/statistics.htm",
+   "evidence": "Staffing National Park Service Superintendent: Rick Gupman",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "abeeac6c6f195705",
+   "person_key": "steve-cape",
+   "role": "deputy-director",
+   "title": "Acting Deputy Superintendent",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.nps.gov/bibe/learn/management/superintendents-compendium.htm",
+   "evidence": "Approved 1/1/26 by Steve Cape, acting Deputy Superintendent",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "abeeac6c6f195705",
+   "person_key": "anjna-oconnor",
+   "role": "former-director",
+   "title": "Superintendent",
+   "is_key_personnel": false,
+   "is_current": false,
+   "start_year": 2024,
+   "end_year": null,
+   "source_url": "https://www.nps.gov/bibe/learn/news/new-superintendent-for-big-bend-np.htm",
+   "evidence": "The National Park Service (NPS) has selected Anjna O’Connor as superintendent of Big Bend National Park.",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "abeeac6c6f195705",
+   "person_key": "bob-krumenaker",
+   "role": "former-director",
+   "title": "Superintendent",
+   "is_key_personnel": false,
+   "is_current": false,
+   "start_year": 2018,
+   "end_year": 2024,
+   "source_url": "https://www.nps.gov/bibe/learn/news/krumenaker-named-superintendent-of-big-bend-national-park.htm",
+   "evidence": "Robert “Bob” Krumenaker ... has been named superintendent of Big Bend National Park",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "f3aa90613c5ce294",
+   "person_key": "andy-hubbard",
+   "role": "manager",
+   "title": "Network Program Manager and Desert Research Learning Center Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2001,
+   "end_year": null,
+   "source_url": "https://www.nps.gov/im/sodn/contactus.htm",
+   "evidence": "Program Manager and Desert Research Learning Center Director: Andy Hubbard",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "f3aa90613c5ce294",
+   "person_key": "sarah-studd",
+   "role": "scientist",
+   "title": "Vegetation Ecologist",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.nps.gov/im/sodn/contactus.htm",
+   "evidence": "Vegetation Ecologist: Sarah Studd",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "f3aa90613c5ce294",
+   "person_key": "cheryl-mcintyre",
+   "role": "scientist",
+   "title": "Quantitative Ecologist",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.nps.gov/im/sodn/contactus.htm",
+   "evidence": "Quantitative Ecologist: Cheryl McIntyre",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "f3aa90613c5ce294",
+   "person_key": "helen-thomas",
+   "role": "data-manager",
+   "title": "Data Manager",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.nps.gov/im/sodn/contactus.htm",
+   "evidence": "Data Manager: Helen Thomas",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "f3aa90613c5ce294",
+   "person_key": "kara-raymond",
+   "role": "scientist",
+   "title": "Hydrologist",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.nps.gov/im/sodn/contactus.htm",
+   "evidence": "Hydrologist: Kara Raymond",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "9ba7a35749487194",
+   "person_key": "jeff-derry",
+   "role": "director",
+   "title": "Executive Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2015,
+   "end_year": null,
+   "source_url": "https://snowstudies.org/board-staff/",
+   "evidence": "Staff: Jeff Derry Executive Director",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "9ba7a35749487194",
+   "person_key": "ella-bump",
+   "role": "scientist",
+   "title": "Researcher",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://snowstudies.org/board-staff/",
+   "evidence": "Ella Bump ... Researcher",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "9ba7a35749487194",
+   "person_key": "dave-kanzer",
+   "role": "leadership-team",
+   "title": "Board of Directors, President",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://snowstudies.org/board-staff/",
+   "evidence": "Board of Directors: ... Dave Kanzer – President",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "9ba7a35749487194",
+   "person_key": "jeff-deems",
+   "role": "leadership-team",
+   "title": "Board of Directors member",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://snowstudies.org/board-staff/",
+   "evidence": "Board of Directors: ... Jeff Deems",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "9ba7a35749487194",
+   "person_key": "chris-landry",
+   "role": "former-director",
+   "title": "Former Executive Director; co-incorporator of CSAS (2003)",
+   "is_key_personnel": false,
+   "is_current": false,
+   "start_year": 2003,
+   "end_year": null,
+   "source_url": "https://snowstudies.org/board-staff/",
+   "evidence": "Past Board Members: ... Chris Landry (former Executive Director)",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "9ba7a35749487194",
+   "person_key": "chris-george",
+   "role": "leadership-team",
+   "title": "Founding board member and co-incorporator",
+   "is_key_personnel": false,
+   "is_current": false,
+   "start_year": 2003,
+   "end_year": null,
+   "source_url": "https://snowstudies.org/history/",
+   "evidence": "The Incorporators were Chris George and Chris Landry",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "9ba7a35749487194",
+   "person_key": "don-bachman",
+   "role": "leadership-team",
+   "title": "Founding board member; former CSAS President",
+   "is_key_personnel": false,
+   "is_current": false,
+   "start_year": 2003,
+   "end_year": null,
+   "source_url": "https://snowstudies.org/history/",
+   "evidence": "the original Board of Directors were Don Bachman, Chris George, and Arthur (Boots) Ferguson",
+   "confidence": "high"
+  }
+ ],
+ "verifications": []
+}

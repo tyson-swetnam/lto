@@ -1,0 +1,595 @@
+{
+ "batch_id": "R-PEOPLE2-NEP-02",
+ "retrieved_at": "2026-10-22",
+ "verified_by": "adversarial-verifier 2026-10-22",
+ "facilities": [
+  {
+   "facility_id": "f858cc0d008257c3",
+   "pages_fetched": [
+    {
+     "url": "https://estuario.org/",
+     "status": 200
+    },
+    {
+     "url": "https://estuario.org/que-es-la-corporacion-del-estuario/",
+     "status": 200
+    },
+    {
+     "url": "https://estuario.org/corporacion-para-la-conservacion-del-estuario/",
+     "status": 200
+    },
+    {
+     "url": "https://estuario.org/comites-asesores/",
+     "status": 200
+    },
+    {
+     "url": "https://estuario.org/conferencia-de-manejo-del-estuario/",
+     "status": 200
+    },
+    {
+     "url": "https://estuario.org/en/brenda-torres-barreto/",
+     "status": 200
+    },
+    {
+     "url": "https://estuario.org/brenda-torres-barreto/",
+     "status": 200
+    },
+    {
+     "url": "https://estuario.org/en/dr-jorge-bauza-ortega-2/",
+     "status": 200
+    },
+    {
+     "url": "https://www.epa.gov/nep/san-juan-bay-estuary-program",
+     "status": 404
+    }
+   ],
+   "notes": "Official site estuario.org (Corporacion para la Conservacion del Estuario de la Bahia de San Juan, 501c3, est. 2005; NEP designation Oct 1992). Facility url is null in DB; suggest https://estuario.org/. STAC chair listed as Ariel E. Lugo (advisory, not staff; not added). History page calls Torres Barreto the executive director at 2005 incorporation but her bio says she returned to PR in late 2016, so no start_year set. ORCID 0000-0003-0539-5905 (Jorge Bauza-Ortega) exists but record shows no employment/education, so not attached per strict rule."
+  },
+  {
+   "facility_id": "8cb1dfe4421dcd93",
+   "pages_fetched": [
+    {
+     "url": "https://sarasotabay.org/",
+     "status": 200
+    },
+    {
+     "url": "https://sarasotabay.org/about-sbep/staff/",
+     "status": 200
+    },
+    {
+     "url": "https://sarasotabay.org/about-sbep/",
+     "status": 200
+    },
+    {
+     "url": "https://sarasotabay.org/about-sbep/management-conference/technical/",
+     "status": 200
+    },
+    {
+     "url": "https://www.epa.gov/nep/sarasota-bay-estuary-program",
+     "status": 404
+    }
+   ],
+   "notes": "Official site sarasotabay.org; partnership dates from 1989. Gandy is also listed as organizer of the Technical Advisory Committee. ORCID records 0000-0002-9576-506X (Ryan Gandy) and 0000-0001-6331-8217 (Nicole Iadevaia) exist but list no employments, so not attached."
+  },
+  {
+   "facility_id": "6d6ffba21e24b77d",
+   "pages_fetched": [
+    {
+     "url": "https://www.tbnep.org/",
+     "status": 200
+    },
+    {
+     "url": "https://www.tbnep.org/staff/",
+     "status": 200
+    },
+    {
+     "url": "https://www.tbnep.org/about-us/",
+     "status": 200
+    },
+    {
+     "url": "https://www.tbnep.org/news/announcing-your-new-executive-director/",
+     "status": 200
+    },
+    {
+     "url": "https://www.epa.gov/nep/tillamook-estuaries-partnership",
+     "status": 404
+    }
+   ],
+   "notes": "Official site tbnep.org. Program began 1994 as Tillamook County Performance Partnership; became nonprofit TEP in 2002. Leadership change posted 2026-10-14: Kristi Foster retired after 10 years as ED; Allyson (Ally) Gardner is new ED. ORCID candidates not attached (records show education only, no employment): Colin Jones 0000-0002-2612-2837 (Willamette BA, URI PhD, consistent with staff bio) and Flynn DeLany 0000-0001-9212-5932 (Stony Brook BS/MS, consistent) - lead may wish to review. Verifier 2026-10-22: Colin Jones start_year nulled (he joined TEP in 2021 on the Habitat Assessment and Monitoring team; start of the director title is not dated). Foster's ED title is implied by the 2026-10-14 succession post, not stated outright, so confidence stays medium."
+  },
+  {
+   "facility_id": "6fa9e6e6a2bb24ad",
+   "pages_fetched": [
+    {
+     "url": "https://www.hudsonriver.org/estuary",
+     "status": 403
+    },
+    {
+     "url": "https://www.hudsonriver.org/estuary-program",
+     "status": 200
+    },
+    {
+     "url": "https://hudsonriver.org/about-us/",
+     "status": 200
+    },
+    {
+     "url": "https://hudsonriver.org/team/isabelle/",
+     "status": 200
+    },
+    {
+     "url": "https://www.nybg.org/event/plants-can-help-make-the-ny-nj-harbor-estuary-fishable-and-swimmable/",
+     "status": 200
+    },
+    {
+     "url": "https://www.epa.gov/nep/new-york-new-jersey-harbor-estuary-program",
+     "status": 404
+    }
+   ],
+   "notes": "HEP is hosted by the Hudson River Foundation (hudsonriver.org/estuary-program); established 1987. hudsonriver.org returns 403 to curl with the research UA; estuary-program and about-us pages were read via WebFetch (status shown as 200 = content retrieved). HRF President Jonathan G. Kramer not added (HRF, not HEP staff). No fetched bio for Pedra Nobre or Stinnette; Pirani bio from NYBG event page (2023 lecture listing). ORCID 0000-0002-0645-2388 (Robert Pirani) has no employment data, not attached. Verifier 2026-10-22: hudsonriver.org/about-us/ and /estuary-program return 403 to the research UA but 200 to a standard browser UA; Pirani, Pedra Nobre and Stinnette re-confirmed on about-us."
+  }
+ ],
+ "people": [
+  {
+   "key": "brenda-torres-barreto",
+   "existing_person_id": null,
+   "name": "Brenda Torres Barreto",
+   "name_given": "Brenda",
+   "name_family": "Torres Barreto",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://estuario.org/en/brenda-torres-barreto/",
+   "bio": "Leads the San Juan Bay Estuary program in Puerto Rico as executive director. Holds a B.S. in environmental sciences (University of Puerto Rico) and an M.S. in environmental management (Yale). Earlier posts: New York State environmental advisor, head of Puerto Rico's federal affairs office in New York, California Audubon chapter director, and U.S. Forest Service policy analyst.",
+   "bio_source_url": "https://estuario.org/en/brenda-torres-barreto/",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "jorge-bauza-ortega",
+   "existing_person_id": null,
+   "name": "Jorge Bauzá Ortega",
+   "name_given": "Jorge",
+   "name_family": "Bauzá Ortega",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://estuario.org/en/dr-jorge-bauza-ortega-2/",
+   "bio": "Scientific director at the San Juan Bay Estuary in Puerto Rico, in charge of its water-quality programs. Holds biology, chemical oceanography and marine sciences degrees from UPR Mayagüez; formerly held faculty posts at UPR. Recognized with a 2008 USEPA Environmental Quality Award for mangrove restoration in Condado Lagoon.",
+   "bio_source_url": "https://estuario.org/en/dr-jorge-bauza-ortega-2/",
+   "research_interests": "water quality monitoring and data analysis; restoration and rehabilitation of coastal ecosystems (mangroves, artificial reefs); aquatic and ecological sciences",
+   "research_interests_source_url": "https://estuario.org/en/dr-jorge-bauza-ortega-2/"
+  },
+  {
+   "key": "maricela-perryman",
+   "existing_person_id": null,
+   "name": "Maricela Perryman",
+   "name_given": "Maricela",
+   "name_family": "Perryman",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "sahid-rosado-lausell",
+   "existing_person_id": null,
+   "name": "Sahid Rosado Lausell",
+   "name_given": "Sahid",
+   "name_family": "Rosado Lausell",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "agustin-carbo",
+   "existing_person_id": null,
+   "name": "Agustín Carbó",
+   "name_given": "Agustín",
+   "name_family": "Carbó",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "ryan-gandy",
+   "existing_person_id": null,
+   "name": "Ryan Gandy",
+   "name_given": "Ryan",
+   "name_family": "Gandy",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Executive Director of the Sarasota Bay Estuary Program. Trained in wildlife and fisheries science (Ph.D.) and mariculture (M.S.) at Texas A&M; worked roughly 15 years at the Florida Fish and Wildlife Conservation Commission in research scientist and research administration posts working on monitoring, fisheries advice, citizen science and shellfish restoration.",
+   "bio_source_url": "https://sarasotabay.org/about-sbep/staff/",
+   "research_interests": "fisheries science; research and monitoring programs; shellfish restoration; citizen science",
+   "research_interests_source_url": "https://sarasotabay.org/about-sbep/staff/"
+  },
+  {
+   "key": "nicole-iadevaia",
+   "existing_person_id": null,
+   "name": "Nicole Iadevaia",
+   "name_given": "Nicole",
+   "name_family": "Iadevaia",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Science and Restoration Manager at the Sarasota Bay Estuary Program, directing its restoration projects and science programs. Background includes alpine lake and stream monitoring at the University of Colorado, water-quality and fisheries monitoring at the Florida Fish and Wildlife Research Institute, and project management for Sarasota County and another Florida NEP.",
+   "bio_source_url": "https://sarasotabay.org/about-sbep/staff/",
+   "research_interests": "estuarine restoration; stormwater; seagrass; water quality; science communication",
+   "research_interests_source_url": "https://sarasotabay.org/about-sbep/staff/"
+  },
+  {
+   "key": "heather-moody",
+   "existing_person_id": null,
+   "name": "Heather Moody",
+   "name_given": "Heather",
+   "name_family": "Moody",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Operations Manager of the Sarasota Bay Estuary Program, overseeing finances, organizational operations, project management and funder coordination. Earlier career spans environmental education, water conservation with a Georgia utility and the South Florida Water Management District, and nature-preserve management for Palm Beach County.",
+   "bio_source_url": "https://sarasotabay.org/about-sbep/staff/",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "allyson-gardner",
+   "existing_person_id": null,
+   "name": "Allyson Gardner",
+   "name_given": "Allyson",
+   "name_family": "Gardner",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Executive Director of the Tillamook Estuaries Partnership in Oregon. Holds bachelor's degrees in environmental studies and anthropology from Warren Wilson College, with experience in grant writing, government contracts and nonprofit funding models.",
+   "bio_source_url": "https://www.tbnep.org/staff/",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "claudine-rehn",
+   "existing_person_id": null,
+   "name": "Claudine Rehn",
+   "name_given": "Claudine",
+   "name_family": "Rehn",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Deputy Director of the Tillamook Estuaries Partnership. Has a business administration degree from Cal Poly San Luis Obispo and a background managing and writing grants for nonprofit organizations.",
+   "bio_source_url": "https://www.tbnep.org/staff/",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "colin-jones",
+   "existing_person_id": null,
+   "name": "Colin Jones",
+   "name_given": "Colin",
+   "name_family": "Jones",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Restoration & Monitoring Director at the Tillamook Estuaries Partnership, which he joined in 2021 on its habitat assessment and monitoring team. Earned a chemistry B.A. at Willamette University and an oceanography Ph.D. at the University of Rhode Island, studying marine biogeochemistry and climate records preserved in marine microfossils.",
+   "bio_source_url": "https://www.tbnep.org/staff/",
+   "research_interests": "marine biogeochemistry; paleoclimate records in marine microfossils; estuarine habitat assessment and monitoring",
+   "research_interests_source_url": "https://www.tbnep.org/staff/"
+  },
+  {
+   "key": "flynn-delany",
+   "existing_person_id": null,
+   "name": "Flynn DeLany",
+   "name_given": "Flynn",
+   "name_family": "DeLany",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Field & Data Scientist at the Tillamook Estuaries Partnership since 2023, supporting monitoring work. Holds B.S. and M.S. degrees in marine sciences from Stony Brook University, where graduate research examined eelgrass and oyster restoration and their effects on resident communities in Long Island estuaries.",
+   "bio_source_url": "https://www.tbnep.org/staff/",
+   "research_interests": "eelgrass and oyster restoration; estuarine community structure; monitoring",
+   "research_interests_source_url": "https://www.tbnep.org/staff/"
+  },
+  {
+   "key": "york-johnson",
+   "existing_person_id": null,
+   "name": "York Johnson",
+   "name_given": "York",
+   "name_family": "Johnson",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Serves as the partnership's water-quality lead through his position as North Coast Basin Coordinator with the Oregon Department of Environmental Quality. Works on implementing North Coast TMDLs, restoration for water quality, and status-and-trends assessment of coastal pollutants.",
+   "bio_source_url": "https://www.tbnep.org/staff/",
+   "research_interests": "water quality; TMDL implementation and effectiveness; pollutant status and trends",
+   "research_interests_source_url": "https://www.tbnep.org/staff/"
+  },
+  {
+   "key": "kristi-foster",
+   "existing_person_id": null,
+   "name": "Kristi Foster",
+   "name_given": "Kristi",
+   "name_family": "Foster",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "robert-pirani",
+   "existing_person_id": null,
+   "name": "Robert Pirani",
+   "name_given": "Robert",
+   "name_family": "Pirani",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Program director of the NY-NJ Harbor & Estuary Program, which the Hudson River Foundation administers; he came to the Foundation in 2014. Before that he headed energy and environment work at Regional Plan Association and directed the Governors Island Alliance. Trained in regional planning (master's, Cornell).",
+   "bio_source_url": "https://www.nybg.org/event/plants-can-help-make-the-ny-nj-harbor-estuary-fishable-and-swimmable/",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "rosana-pedra-nobre",
+   "existing_person_id": null,
+   "name": "Rosana Pedra Nobre",
+   "name_given": "Rosana",
+   "name_family": "Pedra Nobre",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "isabelle-stinnette",
+   "existing_person_id": null,
+   "name": "Isabelle Stinnette",
+   "name_given": "Isabelle",
+   "name_family": "Stinnette",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  }
+ ],
+ "affiliations": [
+  {
+   "facility_id": "f858cc0d008257c3",
+   "person_key": "brenda-torres-barreto",
+   "role": "director",
+   "title": "Directora ejecutiva (Executive Director)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://estuario.org/que-es-la-corporacion-del-estuario/",
+   "evidence": "Brenda Torres Barreto – Directora ejecutiva",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "f858cc0d008257c3",
+   "person_key": "jorge-bauza-ortega",
+   "role": "scientist",
+   "title": "Director científico (Scientific Director)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://estuario.org/que-es-la-corporacion-del-estuario/",
+   "evidence": "Jorge Bauzá Ortega – Director científico",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "f858cc0d008257c3",
+   "person_key": "maricela-perryman",
+   "role": "manager",
+   "title": "Gerente sénior de programa (Senior Program Manager)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://estuario.org/que-es-la-corporacion-del-estuario/",
+   "evidence": "Maricela Perryman – Gerente sénior de programa",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "f858cc0d008257c3",
+   "person_key": "sahid-rosado-lausell",
+   "role": "education-coordinator",
+   "title": "Gerente de educación y ciencia ciudadana",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://estuario.org/que-es-la-corporacion-del-estuario/",
+   "evidence": "Sahid Rosado Lausell – Gerente de educación y ciencia ciudadana",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "f858cc0d008257c3",
+   "person_key": "agustin-carbo",
+   "role": "former-director",
+   "title": "Director ejecutivo (2000-2002)",
+   "is_key_personnel": false,
+   "is_current": false,
+   "start_year": 2000,
+   "end_year": 2002,
+   "source_url": "https://estuario.org/corporacion-para-la-conservacion-del-estuario/",
+   "evidence": "el director ejecutivo entre 2000-2002, Agustín Carbó",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "8cb1dfe4421dcd93",
+   "person_key": "ryan-gandy",
+   "role": "director",
+   "title": "Executive Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://sarasotabay.org/about-sbep/staff/",
+   "evidence": "Ryan Gandy, Ph.D. Executive Director",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "8cb1dfe4421dcd93",
+   "person_key": "nicole-iadevaia",
+   "role": "manager",
+   "title": "Science and Restoration Manager",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://sarasotabay.org/about-sbep/staff/",
+   "evidence": "Nicole Iadevaia Science and Restoration Manager",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "8cb1dfe4421dcd93",
+   "person_key": "heather-moody",
+   "role": "manager",
+   "title": "Operations Manager",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://sarasotabay.org/about-sbep/staff/",
+   "evidence": "Heather Moody Operations Manager",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "6d6ffba21e24b77d",
+   "person_key": "allyson-gardner",
+   "role": "director",
+   "title": "Executive Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.tbnep.org/staff/",
+   "evidence": "Ally Gardner Executive Director",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "6d6ffba21e24b77d",
+   "person_key": "claudine-rehn",
+   "role": "deputy-director",
+   "title": "Deputy Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.tbnep.org/staff/",
+   "evidence": "Claudine Rehn is the Deputy Director for the Tillamook Estuaries Partnership.",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "6d6ffba21e24b77d",
+   "person_key": "colin-jones",
+   "role": "associate-director",
+   "title": "Restoration & Monitoring Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.tbnep.org/staff/",
+   "evidence": "Colin Jones Restoration & Monitoring Director",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "6d6ffba21e24b77d",
+   "person_key": "flynn-delany",
+   "role": "scientist",
+   "title": "Field & Data Scientist",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": 2023,
+   "end_year": null,
+   "source_url": "https://www.tbnep.org/staff/",
+   "evidence": "Flynn DeLany Field & Data Scientist",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "6d6ffba21e24b77d",
+   "person_key": "york-johnson",
+   "role": "manager",
+   "title": "Water Quality Manager",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.tbnep.org/staff/",
+   "evidence": "York Johnson is the Water Quality Manager for the Tillamook Estuaries Partnership.",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "6d6ffba21e24b77d",
+   "person_key": "kristi-foster",
+   "role": "former-director",
+   "title": "Executive Director (predecessor of Allyson Gardner; retired 2026)",
+   "is_key_personnel": false,
+   "is_current": false,
+   "start_year": null,
+   "end_year": 2026,
+   "source_url": "https://www.tbnep.org/news/announcing-your-new-executive-director/",
+   "evidence": "congratulate Kristi Foster on her retirement and thrilled to announce that Allyson Gardner will be",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "6fa9e6e6a2bb24ad",
+   "person_key": "robert-pirani",
+   "role": "director",
+   "title": "Senior Director for Engagement and Policy/Program Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://hudsonriver.org/about-us/",
+   "evidence": "Robert Pirani Senior Director for Engagement and Policy/Program Director NY-NJ Harbor & Estuary Program",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "6fa9e6e6a2bb24ad",
+   "person_key": "rosana-pedra-nobre",
+   "role": "associate-director",
+   "title": "Assistant Director; Water Quality Manager",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://hudsonriver.org/about-us/",
+   "evidence": "Rosana Pedra Nobre Assistant Director Water Quality Manager NY-NJ Harbor & Estuary Program",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "6fa9e6e6a2bb24ad",
+   "person_key": "isabelle-stinnette",
+   "role": "scientist",
+   "title": "Senior Scientist for Ecological Restoration",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://hudsonriver.org/about-us/",
+   "evidence": "Isabelle Stinnette Senior Scientist for Ecological Restoration NY-NJ Harbor & Estuary Program",
+   "confidence": "high"
+  }
+ ],
+ "verifications": []
+}

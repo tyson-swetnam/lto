@@ -1,0 +1,404 @@
+{
+ "batch_id": "R-PEOPLE2-NEON-02b",
+ "retrieved_at": "2026-10-22",
+ "verified_by": "adversarial-verifier 2026-10-22",
+ "facilities": [
+  {
+   "facility_id": "4e7b0e4627ac44d6",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/cram",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=1",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=2",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=3",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/ashley-spink",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/impact/observatory-blog/behind-scenes-domain-05-great-lakes-domain",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/impact/observatory-blog/getting-know-neon-domains-great-lakes",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/contact-us/field-offices",
+     "status": 200
+    },
+    {
+     "url": "https://underc.nd.edu/",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-5484-7763/employments",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/peter-weishampel",
+     "status": 403
+    }
+   ],
+   "notes": "NEON Domain D05 (Great Lakes) core aquatic site; Domain 05 support facility in Land O Lakes, WI. Site host: University of Notre Dame Environmental Research Center (UNDERC), which the NEON page says manages and hosts the site. NEON's Sept 30, 2026 D05 blog names Nathan Swenson as UNDERC Gillen Director and Michael Cramer as UNDERC Assistant Director (host-station staff, not attached as NEON-site affiliations). Colocated: UNDERC, GLEON. The staff directory lists no 'Manager, D05' title; Ashley Spink is listed as Field Operations Manager and the D05 blog confirms she has held the D05 role since 2025. An older search hit for Peter Weishampel as D05 manager now returns 403 (profile unpublished), so he was not recorded."
+  },
+  {
+   "facility_id": "f325c8b6799d34c9",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/dcfs",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=1",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=2",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=3",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/andrea-anteau",
+     "status": 200
+    },
+    {
+     "url": "https://ameriflux.lbl.gov/sites/siteinfo/US-xDC",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0001-5939-3206/employments",
+     "status": 200
+    }
+   ],
+   "notes": "NEON Domain D09 (Northern Plains) terrestrial site; Domain 09 support facility in Jamestown, ND. Site host: North Dakota Department of Trust Lands (no named site staff on the NEON page). Colocated: Prairie Lake NEON (PRLA), Chase Lake National Wildlife Refuge, NADP Woodworth, AmeriFlux US-xDC (PI listed as the NEON program, not a person)."
+  },
+  {
+   "facility_id": "7921395351f74974",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/dela",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=1",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=2",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=3",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/beth-fugate",
+     "status": 200
+    },
+    {
+     "url": "https://ameriflux.lbl.gov/sites/siteinfo/US-xDL",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0009-0003-4822-8987/employments",
+     "status": 200
+    }
+   ],
+   "notes": "NEON Domain D08 (Ozarks Complex) gradient terrestrial site, now DECOMMISSIONED: NEON page says instrument data collection ended Oct 6, 2025 and observational sampling ended Dec 2025 (AOP flights continue); research support services are no longer offered. Site host: U.S. Army Corps of Engineers. D08 support facility in Tuscaloosa, AL. Beth Fugate became D08 manager in 2023, so her tie to DELA is recorded as ended 2025 (inferred from the decommissioning, medium confidence). Colocated: Black Warrior River NEON (BLWA), CZEN, AmeriFlux US-xDL (PI listed as NEON program)."
+  },
+  {
+   "facility_id": "85bf4933896fba60",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/deju",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=1",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=2",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=3",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/chris-baird",
+     "status": 200
+    },
+    {
+     "url": "https://ameriflux.lbl.gov/sites/siteinfo/US-xDJ",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0009-0003-9818-0205/employments",
+     "status": 200
+    }
+   ],
+   "notes": "NEON Domain D19 (Taiga) terrestrial site; D18/D19 share one support facility in Fairbanks, AK. Site host: BLM Alaska (Eastern Interior / Central Yukon field offices; no named staff on the NEON page). Colocated: North Slope Science Initiative, CZEN, AmeriFlux US-xDJ (PI listed as NEON program)."
+  },
+  {
+   "facility_id": "aac8ba40aec1a15b",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/dsny",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=1",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=2",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=3",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/guy-fausnaught",
+     "status": 200
+    },
+    {
+     "url": "https://ameriflux.lbl.gov/sites/siteinfo/US-xDS",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0009-0002-5765-0314/employments",
+     "status": 200
+    }
+   ],
+   "notes": "NEON Domain D03 (Southeast) terrestrial site; D03 support facility in Gainesville, FL. Site host: The Nature Conservancy Florida (Disney Wilderness Preserve); preserve staff not named on the NEON page and no TNC staff page was fetched. Colocated: AmeriFlux US-xDS (PI listed as NEON program), CZEN."
+  },
+  {
+   "facility_id": "5b65db8911254b45",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/flnt",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=1",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=2",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=3",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/guy-fausnaught",
+     "status": 200
+    },
+    {
+     "url": "https://www.jonesctr.org/",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0009-0002-5765-0314/employments",
+     "status": 200
+    }
+   ],
+   "notes": "NEON Domain D03 (Southeast) aquatic site on the Flint River within the Jones Ecological Research Center at Ichauway (Baker County, GA); site host The Jones Center at Ichauway. Jones Center homepage lists Kier D. Klepzig as Director and Jeffery B. Cannon as Deputy Director for Research (host-center staff, not attached as NEON-site affiliations). Colocated: JERC NEON terrestrial site, NOAA USCRN."
+  }
+ ],
+ "people": [
+  {
+   "key": "ashley-spink",
+   "existing_person_id": null,
+   "name": "Ashley Spink",
+   "name_given": "Ashley",
+   "name_family": "Spink",
+   "orcid": "0000-0002-5484-7763",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-5484-7763/employments",
+   "homepage_url": "https://www.neonscience.org/person/ashley-spink",
+   "bio": "Field operations manager for NEON's Great Lakes Domain (D05) since 2025, coordinating field teams, daily operations and site-host relationships for sites in northern Wisconsin and Michigan's Upper Peninsula. She began with NEON in D05 in 2014 and spent close to 11 years as a domain field ecologist before taking the manager post.",
+   "bio_source_url": "https://www.neonscience.org/impact/observatory-blog/behind-scenes-domain-05-great-lakes-domain",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "andrea-anteau",
+   "existing_person_id": null,
+   "name": "Andrea Anteau",
+   "name_given": "Andrea",
+   "name_family": "Anteau",
+   "orcid": "0000-0001-5939-3206",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0001-5939-3206/employments",
+   "homepage_url": "https://www.neonscience.org/person/andrea-anteau",
+   "bio": "Field operations manager for NEON's Northern Plains Domain (D09) in North Dakota. An ecologist and science educator with roughly two decades of research and teaching, including work on marine plankton, Alaskan wildlife and estuaries, coastal wetland biogeochemistry, desert soil microbes, and prairie wetland and amphibian ecology. M.S. in ecology, University of New Mexico.",
+   "bio_source_url": "https://www.neonscience.org/person/andrea-anteau",
+   "research_interests": "wetland ecology and biogeochemistry; amphibian ecology; desert soil microbial ecology; estuary marsh ecology; science education",
+   "research_interests_source_url": "https://www.neonscience.org/person/andrea-anteau"
+  },
+  {
+   "key": "beth-fugate",
+   "existing_person_id": null,
+   "name": "Beth Fugate",
+   "name_given": "Beth",
+   "name_family": "Fugate",
+   "orcid": "0009-0003-4822-8987",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0009-0003-4822-8987/employments",
+   "homepage_url": "https://www.neonscience.org/person/beth-fugate",
+   "bio": "Since 2023 she has managed NEON field operations in Domain 08 (Ozarks Complex) from Tuscaloosa, Alabama, running the domain's Alabama field sites and its field science team. Earlier a toxicologist, then a Florida DEP environmental specialist in coastal habitat restoration and manager of the Northwest Florida Aquatic Preserves. B.S. in marine biology, University of West Alabama.",
+   "bio_source_url": "https://www.neonscience.org/person/beth-fugate",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "chris-baird",
+   "existing_person_id": null,
+   "name": "Chris Baird",
+   "name_given": "Christopher",
+   "name_family": "Baird",
+   "orcid": "0009-0003-9818-0205",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0009-0003-9818-0205/employments",
+   "homepage_url": "https://www.neonscience.org/person/chris-baird",
+   "bio": "Manages NEON field operations for both Alaska domains, D18 (Tundra) and D19 (Taiga), from the Fairbanks domain facility. Came to NEON after posts with state, federal and private research organizations in the U.S. and Canada; B.S. from UBC (2007) and M.S. in biology from Queen's University (2013), with earlier research on seabirds and Arctic ecology.",
+   "bio_source_url": "https://www.neonscience.org/person/chris-baird",
+   "research_interests": "seabird ecology; arctic ecology (prior research focus)",
+   "research_interests_source_url": "https://www.neonscience.org/person/chris-baird"
+  },
+  {
+   "key": "guy-fausnaught",
+   "existing_person_id": null,
+   "name": "Guy Fausnaught",
+   "name_given": "Guy",
+   "name_family": "Fausnaught",
+   "orcid": "0009-0002-5765-0314",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0009-0002-5765-0314/employments",
+   "homepage_url": "https://www.neonscience.org/person/guy-fausnaught",
+   "bio": "Field operations manager for NEON Domain 03 in Gainesville, Florida, responsible for instrument upkeep, field sampling and lab work at three aquatic and three terrestrial sites across Florida and Georgia. A Battelle employee since 2005, first on chemical-weapon demilitarization monitoring, he moved to NEON in 2017. B.S. in biology, Jacksonville State University.",
+   "bio_source_url": "https://www.neonscience.org/person/guy-fausnaught",
+   "research_interests": null,
+   "research_interests_source_url": null
+  }
+ ],
+ "affiliations": [
+  {
+   "facility_id": "4e7b0e4627ac44d6",
+   "person_key": "ashley-spink",
+   "role": "domain-manager",
+   "title": "NEON Field Operations Manager, D05: Great Lakes",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2025,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/impact/observatory-blog/behind-scenes-domain-05-great-lakes-domain",
+   "evidence": "Ashley Spink, Field Operations Manager for Domain 05",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "f325c8b6799d34c9",
+   "person_key": "andrea-anteau",
+   "role": "domain-manager",
+   "title": "NEON Field Operations Manager, D09: Northern Plains",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/person/andrea-anteau",
+   "evidence": "Andrea Anteau Manager, D09: Northern Plains D09 Northern Plains Field Science",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "7921395351f74974",
+   "person_key": "beth-fugate",
+   "role": "domain-manager",
+   "title": "NEON Field Operations Manager, D08: Ozarks Complex (DELA decommissioned 2025)",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": 2023,
+   "end_year": 2025,
+   "source_url": "https://www.neonscience.org/person/beth-fugate",
+   "evidence": "Beth Fugate Manager, D08: Ozarks Domain 08 Field Science",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "85bf4933896fba60",
+   "person_key": "chris-baird",
+   "role": "domain-manager",
+   "title": "NEON Field Operations Manager, D19: Taiga; D18: Tundra",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/person/chris-baird",
+   "evidence": "Chris Baird Manager, D19: Taiga; D18: Tundra Alaska Field Science",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "aac8ba40aec1a15b",
+   "person_key": "guy-fausnaught",
+   "role": "domain-manager",
+   "title": "NEON Field Operations Manager, D03: Southeast",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/person/guy-fausnaught",
+   "evidence": "Guy Fausnaught Manager, D03: Southeast Florida Field Science",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "5b65db8911254b45",
+   "person_key": "guy-fausnaught",
+   "role": "domain-manager",
+   "title": "NEON Field Operations Manager, D03: Southeast",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/person/guy-fausnaught",
+   "evidence": "Guy Fausnaught Manager, D03: Southeast Florida Field Science",
+   "confidence": "medium"
+  }
+ ],
+ "verifications": []
+}

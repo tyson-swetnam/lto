@@ -1,0 +1,331 @@
+{
+ "batch_id": "R-PEOPLE2-DRYLANDS-SW-02a",
+ "retrieved_at": "2026-10-22",
+ "verified_by": "adversarial-verifier 2026-10-22",
+ "facilities": [
+  {
+   "facility_id": "6ac91b6b17e1d399",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/como",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=1",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=2",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/lauren-hostert",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-8085-4297/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-8085-4297/employments",
+     "status": 200
+    }
+   ],
+   "notes": "NEON Domain D13 (Southern Rockies & Colorado Plateau), core aquatic site; supported from the D10/13 domain support facility in Boulder, CO. Site host: University of Colorado Boulder (Mountain Research Station, https://www.colorado.edu/mrs/). Colocated: Niwot Ridge NEON, Boulder Creek CZO, Niwot Ridge Southeast, NADP, University of Colorado, NOAA GML. Host-station staff not named on the NEON page; not added. VERIFIER 2026-10-22: person page names the domain, not the site; COMO page places site in D13 and lists the Domain 10/13 Support Facility (Boulder). Domain-level link is indirect, so confidence downgraded from high."
+  },
+  {
+   "facility_id": "9fcf4b7ae4943c08",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/moab",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=1",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=2",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/lauren-hostert",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-8085-4297/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-8085-4297/employments",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/amy-jacobs",
+     "status": 200
+    }
+   ],
+   "notes": "NEON Domain D13 (Southern Rockies & Colorado Plateau), gradient terrestrial site. Site page says MOAB is managed out of the D15 Support Facility in Salt Lake City, UT, so both the D13 domain manager (Lauren Hostert) and the D15 field operations manager (Amy Jacobs, medium confidence) are recorded. Site host: BLM Moab Field Office (https://www.blm.gov/office/moab-field-office). Colocated: CZEN, AmeriFlux. VERIFIER 2026-10-22: person page names the domain, not the site; MOAB page places site in D13 but says 'MOAB is managed out of the D15 Support Facility in Salt Lake City, UT'; Hostert (D13 manager) kept at low confidence, Jacobs (D15 field ops manager) at medium. Domain-level link is indirect, so confidence downgraded from high."
+  },
+  {
+   "facility_id": "ec2749fb7967266e",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/ster",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=1",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=2",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/lauren-hostert",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-8085-4297/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-8085-4297/employments",
+     "status": 200
+    }
+   ],
+   "notes": "NEON Domain D10 (Central Plains), terrestrial site; supported from the D10/13 domain support facility in Boulder, CO. Site host: private landowner (access limited; no host URL given). Colocated: AmeriFlux, CZEN. No host-side personnel named. VERIFIER 2026-10-22: person page names the domain, not the site; STER page places site in D10 and lists the Domain 10/13 Support Facility. Domain-level link is indirect, so confidence downgraded from high."
+  },
+  {
+   "facility_id": "5d6f7aa386e6bc14",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/redb",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=1",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=2",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/amy-jacobs",
+     "status": 200
+    }
+   ],
+   "notes": "NEON Domain D15 (Great Basin), aquatic site; supported from the D15 support facility in South Salt Lake City, UT. Site hosts: Salt Lake City Public Utilities Watershed (https://www.slc.gov/utilities/watershed/) and Uinta-Wasatch-Cache National Forest. Colocated: University of Utah Red Butte Canyon Research Natural Area. Host-side staff not named on the NEON page; not added. VERIFIER 2026-10-22: person page names the domain, not the site; REDB page places site in D15 and lists the Domain 15 Support Facility. Domain-level link is indirect, so confidence downgraded from high."
+  },
+  {
+   "facility_id": "e382a7de32a95cc9",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/rmnp",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=1",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=2",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/lauren-hostert",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-8085-4297/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-8085-4297/employments",
+     "status": 200
+    }
+   ],
+   "notes": "NEON Domain D10 (Central Plains) site physically located in D13 (Colorado); supported from the D10/13 support facility in Boulder, CO. Site hosts: Rocky Mountain National Park (https://www.nps.gov/rlc/continentaldivide/research) and Arapaho and Roosevelt National Forests & Pawnee National Grassland. Colocated: UNESCO Rocky Mountain Biosphere Reserve, Rocky Mountain NP CASTNET, AmeriFlux. Host-agency staff not named; not added. VERIFIER 2026-10-22: person page names the domain, not the site; RMNP page places site in D10 and lists the Domain 10/13 Support Facility. Domain-level link is indirect, so confidence downgraded from high."
+  },
+  {
+   "facility_id": "a117f1d707ec8e0e",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/wlou",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=1",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=2",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/lauren-hostert",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-8085-4297/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-8085-4297/employments",
+     "status": 200
+    }
+   ],
+   "notes": "NEON Domain D13 (Southern Rockies & Colorado Plateau), aquatic site; supported from the D10/13 support facility in Boulder, CO. Site host: Fraser Experimental Forest (USDA Forest Service, Arapaho-Roosevelt NF). Colocated: Fraser Experimental Forest, CZEN. Fraser EF scientist-in-charge not named on the NEON page; not added. VERIFIER 2026-10-22: person page names the domain, not the site; WLOU page places site in D13 and lists the Domain 10/13 Support Facility. Domain-level link is indirect, so confidence downgraded from high."
+  }
+ ],
+ "people": [
+  {
+   "key": "lauren-hostert",
+   "existing_person_id": null,
+   "name": "Lauren Hostert",
+   "name_given": "Lauren",
+   "name_family": "Hostert",
+   "orcid": "0000-0002-8085-4297",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-8085-4297/employments",
+   "homepage_url": "https://www.neonscience.org/person/lauren-hostert",
+   "bio": "Manager in the Field Science group of the National Ecological Observatory Network since 2022. Stream ecologist; previously an assistant scientist at the Illinois Natural History Survey (University of Illinois Urbana-Champaign) and, from 2014 to 2018, a senior field ecologist with NEON Domain 11 field operations.",
+   "bio_source_url": "https://pub.orcid.org/v3.0/0000-0002-8085-4297/employments",
+   "research_interests": "stream ecology; macroinvertebrates; fish",
+   "research_interests_source_url": "https://pub.orcid.org/v3.0/0000-0002-8085-4297/person"
+  },
+  {
+   "key": "amy-jacobs",
+   "existing_person_id": null,
+   "name": "Amy Jacobs",
+   "name_given": "Amy",
+   "name_family": "Jacobs",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.neonscience.org/person/amy-jacobs",
+   "bio": "Leads NEON field operations in Salt Lake City, overseeing the Great Basin (D15) and Northern Rockies (D12) domains. Earlier career in oceanographic research on how environmental stressors affect marine bacterioplankton; later managed a Florida state program restoring coastal estuarine habitats. Holds a master's degree in biology (University of West Florida).",
+   "bio_source_url": "https://www.neonscience.org/person/amy-jacobs",
+   "research_interests": "marine bacterioplankton responses to environmental stressors; coastal estuarine habitat restoration",
+   "research_interests_source_url": "https://www.neonscience.org/person/amy-jacobs"
+  }
+ ],
+ "affiliations": [
+  {
+   "facility_id": "6ac91b6b17e1d399",
+   "person_key": "lauren-hostert",
+   "role": "domain-manager",
+   "title": "NEON Domain Manager, D10: Central Plains; D13: Southern Rockies and Colorado Plateau",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/person/lauren-hostert",
+   "evidence": "Lauren Hostert Manager, D10: Central Plains; D13: Southern Rockies and Colorado Plateau",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "9fcf4b7ae4943c08",
+   "person_key": "lauren-hostert",
+   "role": "domain-manager",
+   "title": "NEON Domain Manager, D10: Central Plains; D13: Southern Rockies and Colorado Plateau",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/person/lauren-hostert",
+   "evidence": "Lauren Hostert Manager, D10: Central Plains; D13: Southern Rockies and Colorado Plateau",
+   "confidence": "low"
+  },
+  {
+   "facility_id": "9fcf4b7ae4943c08",
+   "person_key": "amy-jacobs",
+   "role": "manager",
+   "title": "NEON Field Operations Manager, D12: Northern Rockies; D15: Great Basin (MOAB is managed out of the D15 Support Facility)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/person/amy-jacobs",
+   "evidence": "Amy Jacobs is the Field Operations Manager for Domains 15 (Great Basin) and 12 (Northern Rockies)",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "ec2749fb7967266e",
+   "person_key": "lauren-hostert",
+   "role": "domain-manager",
+   "title": "NEON Domain Manager, D10: Central Plains; D13: Southern Rockies and Colorado Plateau",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/person/lauren-hostert",
+   "evidence": "Lauren Hostert Manager, D10: Central Plains; D13: Southern Rockies and Colorado Plateau",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "5d6f7aa386e6bc14",
+   "person_key": "amy-jacobs",
+   "role": "domain-manager",
+   "title": "NEON Domain Manager, D12: Northern Rockies; D15: Great Basin",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/person/amy-jacobs",
+   "evidence": "Amy Jacobs Manager, D12: Northern Rockies; D15: Great Basin",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "e382a7de32a95cc9",
+   "person_key": "lauren-hostert",
+   "role": "domain-manager",
+   "title": "NEON Domain Manager, D10: Central Plains; D13: Southern Rockies and Colorado Plateau",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/person/lauren-hostert",
+   "evidence": "Lauren Hostert Manager, D10: Central Plains; D13: Southern Rockies and Colorado Plateau",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "a117f1d707ec8e0e",
+   "person_key": "lauren-hostert",
+   "role": "domain-manager",
+   "title": "NEON Domain Manager, D10: Central Plains; D13: Southern Rockies and Colorado Plateau",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/person/lauren-hostert",
+   "evidence": "Lauren Hostert Manager, D10: Central Plains; D13: Southern Rockies and Colorado Plateau",
+   "confidence": "medium"
+  }
+ ],
+ "verifications": []
+}

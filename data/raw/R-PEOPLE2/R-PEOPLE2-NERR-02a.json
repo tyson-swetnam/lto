@@ -1,0 +1,917 @@
+{
+ "batch_id": "R-PEOPLE2-NERR-02a",
+ "retrieved_at": "2026-10-22",
+ "verified_by": "adversarial-verifier 2026-10-22",
+ "facilities": [
+  {
+   "facility_id": "f01f6bcc9502e905",
+   "pages_fetched": [
+    {
+     "url": "https://coast.noaa.gov/nerrs/reserves/hudson-river.html",
+     "status": 200
+    },
+    {
+     "url": "https://hrnerr.org/",
+     "status": 403
+    },
+    {
+     "url": "https://hrnerr.org/staff/",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0001-8314-0102/employments",
+     "status": 200
+    }
+   ],
+   "notes": "Lead agency NY State DEC. hrnerr.org returns 403 to curl; staff page read via WebFetch (200). Staff page carries names and titles only, no bios or date. ORCID for Fernald from ORCID record (employment: Hudson River NERR). Verifier: staff page 403 to curl but 200 via WebFetch on 2026-10-22; all five names and titles confirmed. Fernald ORCID record: name matches, employment Hudson River NERR (role listed there as Research Coordinator, an earlier post)."
+  },
+  {
+   "facility_id": "682babf9e6b9ee22",
+   "pages_fetched": [
+    {
+     "url": "https://coast.noaa.gov/nerrs/reserves/jacques-cousteau.html",
+     "status": 200
+    },
+    {
+     "url": "https://jcnerr.org/",
+     "status": 200
+    },
+    {
+     "url": "https://jcnerr.org/who-we-are/our-team/",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0003-2095-8286/employments",
+     "status": 200
+    }
+   ],
+   "notes": "Managed by Rutgers Institute of Marine and Coastal Sciences. Bios paraphrased from the team page. Verifier: Habeck role changed from manager to deputy-director because she is Assistant Manager and De Luca is the Reserve Manager."
+  },
+  {
+   "facility_id": "062a60fa77fbac44",
+   "pages_fetched": [
+    {
+     "url": "https://coast.noaa.gov/nerrs/reserves/jobos-bay.html",
+     "status": 200
+    },
+    {
+     "url": "https://www.drna.pr.gov/jbnerr",
+     "status": 200
+    },
+    {
+     "url": "https://www.drna.pr.gov/jbnerr/investigacionymonitoreo/",
+     "status": 200
+    },
+    {
+     "url": "https://www.drna.pr.gov/jbnerr/ambiental/",
+     "status": 200
+    },
+    {
+     "url": "https://www.drna.pr.gov/jbnerr/adiestramiento-costero/",
+     "status": 200
+    },
+    {
+     "url": "https://www.drna.pr.gov/jbnerr/educacion/",
+     "status": 200
+    },
+    {
+     "url": "https://aafaf.pr.gov/aafafinthenews/fema-funds-study-of-puerto-ricos-ecosystem-through-allocations-to-dner",
+     "status": 200
+    },
+    {
+     "url": "https://www.fondriest.com/news/?p=30957",
+     "status": 200
+    },
+    {
+     "url": "https://fema.gov/fr/print/pdf/node/675062",
+     "status": 403
+    }
+   ],
+   "notes": "Managed by Puerto Rico DRNA. The DRNA reserve site has no staff page. Director from a March 2024 FEMA release republished by AAFAF; Research Coordinator from a 2019 Fondriest article. Both medium confidence: no current official roster. Milton Muñoz is named only as the Stewardship (Programa Ambiental) contact, title not stated. Verifier: Pabón-Valentín kept at medium (dated 18 March 2024 article). Dieppa downgraded to low: the only naming source is dated 14 January 2019, and the current DRNA page gives a contact address but no name or title. Milton Muñoz dropped: the DRNA page names him only as the contact for the Stewardship Program and gives no title or role."
+  },
+  {
+   "facility_id": "575fa84330e60c4b",
+   "pages_fetched": [
+    {
+     "url": "https://coast.noaa.gov/nerrs/reserves/kachemak-bay.html",
+     "status": 200
+    },
+    {
+     "url": "https://accs.uaa.alaska.edu/kbnerr/",
+     "status": 200
+    },
+    {
+     "url": "https://kachemakbayreserve.org/staff/",
+     "status": 403
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-0076-8509/employments",
+     "status": 200
+    }
+   ],
+   "notes": "Administered by University of Alaska Anchorage (Alaska Center for Conservation Science page hosts the reserve staff list)."
+  },
+  {
+   "facility_id": "1ebdb6e51e3d1712",
+   "pages_fetched": [
+    {
+     "url": "https://coast.noaa.gov/nerrs/reserves/lake-superior.html",
+     "status": 200
+    },
+    {
+     "url": "https://lakesuperiornerr.org/",
+     "status": 403
+    },
+    {
+     "url": "https://lakesuperiornerr.org/about/staff/",
+     "status": 403
+    },
+    {
+     "url": "https://naturalresources.extension.wisc.edu/about-us/people/",
+     "status": 200
+    },
+    {
+     "url": "https://naturalresources.extension.wisc.edu/lake-superior-reserve-team-honored-with-2025-national-excellence-in-extension-award",
+     "status": 200
+    },
+    {
+     "url": "https://uwsuper.edu/about/news/lake-superior-reserve-team-honored-with-2025-national-excellence-in-extension-award/",
+     "status": 200
+    },
+    {
+     "url": "https://catalog.uwsuper.edu/graduate/academic-areas/research/",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0009-0004-2246-7696/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-5879-0696/employments",
+     "status": 200
+    }
+   ],
+   "notes": "Program of UW-Madison Division of Extension, housed at UW-Superior. Reserve's own site blocks automated fetches (403); current roster from the Extension Natural Resources Institute people page. The undated UW-Superior catalog lists an older roster (Erika Washburn Reserve Manager, Shon Schooler Research Coordinator), recorded as former. Molly Wick ORCID 0000-0002-5879-0696 not used: its latest employment is Wisconsin DNR, not the Reserve. Verifier: Washburn and Schooler dropped. The UW-Superior catalog (2026-2028 edition, undated text) lists them without marking them as former. Recording them as former was inferred from the current Extension roster, and no fetched page gives their dates or end of tenure. Erickson bio rewritten: the award page shows her pictured at the ceremony but does not say she accepted the award."
+  },
+  {
+   "facility_id": "dd32c151b310b8ae",
+   "pages_fetched": [
+    {
+     "url": "https://coast.noaa.gov/nerrs/reserves/narragansett-bay.html",
+     "status": 200
+    },
+    {
+     "url": "https://www.nbnerr.org/",
+     "status": 200
+    },
+    {
+     "url": "https://nbnerr.org/_our-team_/",
+     "status": 200
+    },
+    {
+     "url": "https://nbnerr.org/research-and-monitoring/research-and-monitoring-staff/",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-9998-3881/employments",
+     "status": 200
+    }
+   ],
+   "notes": "Managed by Rhode Island DEM; reserve HQ on Prudence Island. Caitlin Chaffee has an ORCID record (0009-0009-0469-4170) with no employment listed, so not linked."
+  }
+ ],
+ "people": [
+  {
+   "key": "sarah-fernald",
+   "existing_person_id": null,
+   "name": "Sarah H. Fernald",
+   "name_given": "Sarah",
+   "name_family": "Fernald",
+   "orcid": "0000-0001-8314-0102",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0001-8314-0102/employments",
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "chris-mitchell-hrnerr",
+   "existing_person_id": null,
+   "name": "Chris Mitchell",
+   "name_given": "Chris",
+   "name_family": "Mitchell",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "brian-degasperis",
+   "existing_person_id": null,
+   "name": "Brian DeGasperis",
+   "name_given": "Brian",
+   "name_family": "DeGasperis",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "chris-bowser",
+   "existing_person_id": null,
+   "name": "Chris Bowser",
+   "name_given": "Chris",
+   "name_family": "Bowser",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "brittney-flaten",
+   "existing_person_id": null,
+   "name": "Brittney Flaten",
+   "name_given": "Brittney",
+   "name_family": "Flaten",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "michael-deluca",
+   "existing_person_id": null,
+   "name": "Michael De Luca",
+   "name_given": "Michael",
+   "name_family": "De Luca",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Reserve Manager of the Jacques Cousteau NERR at Rutgers, where he leads integrated research, education and outreach programs spanning the reserve plus Rutgers' aquaculture and coastal exploration centers. He has served as president of NERRA and of the National Association of Marine Laboratories, and leads Rutgers aquaculture development work.",
+   "bio_source_url": "https://jcnerr.org/who-we-are/our-team/",
+   "research_interests": "Coastal management and marine protected areas; coastal resilience after extreme events; environmental sensing networks; shellfish aquaculture (surf clam, bay scallop, ribbed mussel).",
+   "research_interests_source_url": "https://jcnerr.org/who-we-are/our-team/"
+  },
+  {
+   "key": "thomas-grothues",
+   "existing_person_id": null,
+   "name": "Thomas Grothues",
+   "name_given": "Thomas",
+   "name_family": "Grothues",
+   "orcid": "0000-0003-2095-8286",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0003-2095-8286/employments",
+   "homepage_url": null,
+   "bio": "Research Coordinator of the Jacques Cousteau NERR and Research Associate Professor in Rutgers' Department of Marine and Coastal Sciences, advising graduate students in oceanography and ecology. His work examines what controls fish abundance and distribution and develops autonomous underwater vehicle and sonar methods for tracking and imaging fishes.",
+   "bio_source_url": "https://jcnerr.org/who-we-are/our-team/",
+   "research_interests": "Fish distribution and abundance in relation to currents, climate and habitat; autonomous underwater vehicles for fish tracking; sonar image classification.",
+   "research_interests_source_url": "https://jcnerr.org/who-we-are/our-team/"
+  },
+  {
+   "key": "andrea-habeck",
+   "existing_person_id": null,
+   "name": "Andrea Habeck",
+   "name_given": "Andrea",
+   "name_family": "Habeck",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Assistant Manager (formerly GIS and Stewardship Coordinator) of the Jacques Cousteau NERR. A GIS and remote-sensing specialist, she runs the reserve's long-term habitat-change monitoring, notably salt marsh and beach-dune elevation relative to sea-level rise, much of it done with NPS and USFWS inventory partners.",
+   "bio_source_url": "https://jcnerr.org/who-we-are/our-team/",
+   "research_interests": "Habitat change monitoring; marsh and dune elevation and sea-level rise; GIS, remote sensing and survey-grade GPS.",
+   "research_interests_source_url": "https://jcnerr.org/who-we-are/our-team/"
+  },
+  {
+   "key": "gregg-sakowicz",
+   "existing_person_id": null,
+   "name": "Gregg Sakowicz",
+   "name_given": "Gregg",
+   "name_family": "Sakowicz",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Assistant Research Coordinator and field researcher at the Jacques Cousteau NERR, in his current post since 2003 after starting as a graduate research fellow. He coordinates the reserve's System-Wide Monitoring Program and works on marsh vegetation surveys, Sentinel Site work, and submerged aquatic vegetation studies.",
+   "bio_source_url": "https://jcnerr.org/who-we-are/our-team/",
+   "research_interests": "Water quality, weather and nutrient monitoring (SWMP); submerged aquatic vegetation; coastal acidification monitoring; eDNA surveys.",
+   "research_interests_source_url": "https://jcnerr.org/who-we-are/our-team/"
+  },
+  {
+   "key": "kaitlin-gannon",
+   "existing_person_id": null,
+   "name": "Kaitlin Gannon",
+   "name_given": "Kaitlin",
+   "name_family": "Gannon",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Education Coordinator at the Jacques Cousteau NERR since 2016, running science education and outreach for students, educators and the community; she chairs the NERRS Conservation Action Education workgroup.",
+   "bio_source_url": "https://jcnerr.org/who-we-are/our-team/",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "aitza-pabon-valentin",
+   "existing_person_id": null,
+   "name": "Aitza E. Pabón-Valentín",
+   "name_given": "Aitza E.",
+   "name_family": "Pabón-Valentín",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Director of Puerto Rico's Jobos Bay NERR, run by the Department of Natural and Environmental Resources. In a 2024 FEMA funding story she outlined the reserve's tracking of vegetation shifts, endemic species and climate effects, including monthly sentinel-station data showing mangroves moving inland as sea level rises.",
+   "bio_source_url": "https://aafaf.pr.gov/aafafinthenews/fema-funds-study-of-puerto-ricos-ecosystem-through-allocations-to-dner",
+   "research_interests": "Sentinel-site monitoring of mangrove migration and sea-level rise; vegetation change; endemic species.",
+   "research_interests_source_url": "https://aafaf.pr.gov/aafafinthenews/fema-funds-study-of-puerto-ricos-ecosystem-through-allocations-to-dner"
+  },
+  {
+   "key": "angel-dieppa",
+   "existing_person_id": null,
+   "name": "Angel Dieppa",
+   "name_given": "Angel",
+   "name_family": "Dieppa",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Research Coordinator at Jobos Bay NERR (as of 2019, after about 13 years at the reserve), overseeing System-Wide Monitoring Program water-quality and nutrient sampling, Sentinel Site elevation work, and drone-based habitat change tracking.",
+   "bio_source_url": "https://www.fondriest.com/news/?p=30957",
+   "research_interests": "Estuarine water quality monitoring; surface elevation tables in mangroves; hurricane impacts; UAV habitat mapping.",
+   "research_interests_source_url": "https://www.fondriest.com/news/?p=30957"
+  },
+  {
+   "key": "katherine-schake",
+   "existing_person_id": null,
+   "name": "Katherine Schake",
+   "name_given": "Katherine",
+   "name_family": "Schake",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Reserve Manager of the Kachemak Bay NERR (University of Alaska Anchorage) since 2023. Her prior Alaska career spans naturalist guiding, coordinating statewide salmon data synthesis and invasive species partnerships, and geospatial project management; she trained in environmental science and remote sensing.",
+   "bio_source_url": "https://accs.uaa.alaska.edu/kbnerr/",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "lauren-sutton",
+   "existing_person_id": null,
+   "name": "Lauren Sutton",
+   "name_given": "Lauren",
+   "name_family": "Sutton",
+   "orcid": "0000-0002-0076-8509",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-0076-8509/employments",
+   "homepage_url": null,
+   "bio": "Research Coordinator at the Kachemak Bay NERR. A marine biologist with a PhD from the University of Alaska Fairbanks, her doctoral work addressed Alaskan Arctic epibenthic community diversity under climate change; she now uses long-term monitoring data to study Kachemak Bay communities.",
+   "bio_source_url": "https://accs.uaa.alaska.edu/kbnerr/",
+   "research_interests": "Long-term environmental monitoring; benthic and epibenthic community diversity; climate effects on Kachemak Bay biological communities.",
+   "research_interests_source_url": "https://accs.uaa.alaska.edu/kbnerr/"
+  },
+  {
+   "key": "syverine-bentz",
+   "existing_person_id": null,
+   "name": "Syverine Bentz",
+   "name_given": "Syverine",
+   "name_family": "Bentz",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Coastal Training Program Coordinator at the Kachemak Bay NERR, delivering workshops and technical assistance. Her Montana State geology and earth sciences training centered on sediments and spatial analysis.",
+   "bio_source_url": "https://accs.uaa.alaska.edu/kbnerr/",
+   "research_interests": "Landscape change; coastal processes; ecosystem services.",
+   "research_interests_source_url": "https://accs.uaa.alaska.edu/kbnerr/"
+  },
+  {
+   "key": "ingrid-harrald",
+   "existing_person_id": null,
+   "name": "Ingrid Harrald",
+   "name_given": "Ingrid",
+   "name_family": "Harrald",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Education Coordinator at the Kachemak Bay NERR since January 2022, with a background in seabird field research and science education in Alaska.",
+   "bio_source_url": "https://accs.uaa.alaska.edu/kbnerr/",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "chris-guo",
+   "existing_person_id": null,
+   "name": "Chris Guo",
+   "name_given": "Chris",
+   "name_family": "Guo",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "SWMP Coordinator at the Kachemak Bay NERR, maintaining the reserve's continuous long-term weather, water quality and nutrient records across Kachemak Bay.",
+   "bio_source_url": "https://accs.uaa.alaska.edu/kbnerr/",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "deanna-erickson",
+   "existing_person_id": null,
+   "name": "Deanna Erickson",
+   "name_given": "Deanna",
+   "name_family": "Erickson",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Reserve Director of the Lake Superior NERR, which UW-Madison Division of Extension operates from the UW-Superior campus. In 2025 the reserve team she leads won a national team award for Extension work from the APLU.",
+   "bio_source_url": "https://naturalresources.extension.wisc.edu/lake-superior-reserve-team-honored-with-2025-national-excellence-in-extension-award",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "molly-wick",
+   "existing_person_id": null,
+   "name": "Molly Wick",
+   "name_given": "Molly",
+   "name_family": "Wick",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "hannah-nicklay",
+   "existing_person_id": null,
+   "name": "Hannah Nicklay",
+   "name_given": "Hannah",
+   "name_family": "Nicklay",
+   "orcid": "0009-0004-2246-7696",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0009-0004-2246-7696/employments",
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "kirsten-rhude",
+   "existing_person_id": null,
+   "name": "Kirsten Rhude",
+   "name_given": "Kirsten",
+   "name_family": "Rhude",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "karina-heim",
+   "existing_person_id": null,
+   "name": "Karina Heim",
+   "name_given": "Karina",
+   "name_family": "Heim",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "caitlin-chaffee",
+   "existing_person_id": null,
+   "name": "Caitlin Chaffee",
+   "name_given": "Caitlin",
+   "name_family": "Chaffee",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "kenneth-raposa",
+   "existing_person_id": null,
+   "name": "Kenneth Raposa",
+   "name_given": "Kenneth",
+   "name_family": "Raposa",
+   "orcid": "0000-0002-9998-3881",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-9998-3881/employments",
+   "homepage_url": null,
+   "bio": "Research Coordinator of the Narragansett Bay NERR since 2002, after starting there as a postdoctoral researcher in 2000; he earned his PhD at the University of Rhode Island Graduate School of Oceanography. He leads salt marsh research and coordinates visiting researchers at the reserve.",
+   "bio_source_url": "https://nbnerr.org/research-and-monitoring/research-and-monitoring-staff/",
+   "research_interests": "Salt marsh response to sea-level rise; marsh crab impacts; marsh resilience and adaptation projects such as thin-layer sediment placement; tidal restoration.",
+   "research_interests_source_url": "https://nbnerr.org/research-and-monitoring/research-and-monitoring-staff/"
+  },
+  {
+   "key": "daisy-durant",
+   "existing_person_id": null,
+   "name": "Daisy Durant",
+   "name_given": "Daisy",
+   "name_family": "Durant",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "SWMP Coordinator at the Narragansett Bay NERR since January 2023, having joined as a marine research specialist in 2008. A marine benthic ecologist, she runs the abiotic monitoring program and is characterizing the benthic infauna around Prudence Island.",
+   "bio_source_url": "https://nbnerr.org/research-and-monitoring/research-and-monitoring-staff/",
+   "research_interests": "Water quality, nutrient and meteorological monitoring; benthic infauna ecology.",
+   "research_interests_source_url": "https://nbnerr.org/research-and-monitoring/research-and-monitoring-staff/"
+  },
+  {
+   "key": "jon-mitchell",
+   "existing_person_id": null,
+   "name": "Jon Mitchell",
+   "name_given": "Jon",
+   "name_family": "Mitchell",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "maureen-dewire",
+   "existing_person_id": null,
+   "name": "Maureen Dewire",
+   "name_given": "Maureen",
+   "name_family": "Dewire",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  }
+ ],
+ "affiliations": [
+  {
+   "facility_id": "f01f6bcc9502e905",
+   "person_key": "sarah-fernald",
+   "role": "manager",
+   "title": "Reserve Manager",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://hrnerr.org/staff/",
+   "evidence": "SARAH H. FERNALD Reserve Manager",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "f01f6bcc9502e905",
+   "person_key": "chris-mitchell-hrnerr",
+   "role": "research-coordinator",
+   "title": "Research Coordinator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://hrnerr.org/staff/",
+   "evidence": "CHRIS MITCHELL Research Coordinator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "f01f6bcc9502e905",
+   "person_key": "brian-degasperis",
+   "role": "stewardship-coordinator",
+   "title": "Stewardship Coordinator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://hrnerr.org/staff/",
+   "evidence": "BRIAN DEGASPERIS Stewardship Coordinator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "f01f6bcc9502e905",
+   "person_key": "chris-bowser",
+   "role": "education-coordinator",
+   "title": "Education Coordinator",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://hrnerr.org/staff/",
+   "evidence": "CHRIS BOWSER Education Coordinator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "f01f6bcc9502e905",
+   "person_key": "brittney-flaten",
+   "role": "coordinator",
+   "title": "HRECOS Coordinator",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://hrnerr.org/staff/",
+   "evidence": "BRITTNEY FLATEN HRECOS Coordinator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "682babf9e6b9ee22",
+   "person_key": "michael-deluca",
+   "role": "manager",
+   "title": "Reserve Manager",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://jcnerr.org/who-we-are/our-team/",
+   "evidence": "Michael De Luca Reserve Manager",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "682babf9e6b9ee22",
+   "person_key": "thomas-grothues",
+   "role": "research-coordinator",
+   "title": "Research Coordinator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://jcnerr.org/who-we-are/our-team/",
+   "evidence": "Thomas Grothues Research Coordinator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "682babf9e6b9ee22",
+   "person_key": "andrea-habeck",
+   "role": "deputy-director",
+   "title": "Assistant Manager",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://jcnerr.org/who-we-are/our-team/",
+   "evidence": "Andrea Habeck Assistant Manager",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "682babf9e6b9ee22",
+   "person_key": "gregg-sakowicz",
+   "role": "scientist",
+   "title": "Assistant Research Coordinator & Field Researcher",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2003,
+   "end_year": null,
+   "source_url": "https://jcnerr.org/who-we-are/our-team/",
+   "evidence": "Gregg Sakowicz Assistant Research Coordinator & Field Researcher",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "682babf9e6b9ee22",
+   "person_key": "kaitlin-gannon",
+   "role": "education-coordinator",
+   "title": "Education Coordinator",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": 2016,
+   "end_year": null,
+   "source_url": "https://jcnerr.org/who-we-are/our-team/",
+   "evidence": "Kaitlin Gannon Education Coordinator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "062a60fa77fbac44",
+   "person_key": "aitza-pabon-valentin",
+   "role": "director",
+   "title": "Director, Jobos Bay National Estuarine Research Reserve",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://aafaf.pr.gov/aafafinthenews/fema-funds-study-of-puerto-ricos-ecosystem-through-allocations-to-dner",
+   "evidence": "Aitza E. Pabón-Valentín, director of Jobos Bay National Reserve and Estuarine Research",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "062a60fa77fbac44",
+   "person_key": "angel-dieppa",
+   "role": "research-coordinator",
+   "title": "Research Coordinator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.fondriest.com/news/?p=30957",
+   "evidence": "says Angel Dieppa, Research Coordinator at Jobos Bay NERR.",
+   "confidence": "low"
+  },
+  {
+   "facility_id": "575fa84330e60c4b",
+   "person_key": "katherine-schake",
+   "role": "manager",
+   "title": "Reserve Manager",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2023,
+   "end_year": null,
+   "source_url": "https://accs.uaa.alaska.edu/kbnerr/",
+   "evidence": "Katherine Schake Manager ... joined the Kachemak Bay NERR team as Reserve Manager in 2023",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "575fa84330e60c4b",
+   "person_key": "lauren-sutton",
+   "role": "research-coordinator",
+   "title": "Research Coordinator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://accs.uaa.alaska.edu/kbnerr/",
+   "evidence": "Lauren Sutton, PhD Research Coordinator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "575fa84330e60c4b",
+   "person_key": "syverine-bentz",
+   "role": "coordinator",
+   "title": "Coastal Training Program Coordinator",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://accs.uaa.alaska.edu/kbnerr/",
+   "evidence": "Syverine Bentz, M.S. Coastal Training Program Coordinator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "575fa84330e60c4b",
+   "person_key": "ingrid-harrald",
+   "role": "education-coordinator",
+   "title": "Education Coordinator",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": 2022,
+   "end_year": null,
+   "source_url": "https://accs.uaa.alaska.edu/kbnerr/",
+   "evidence": "Ingrid Harrald, M.S. Education Coordinator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "575fa84330e60c4b",
+   "person_key": "chris-guo",
+   "role": "coordinator",
+   "title": "SWMP Coordinator",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://accs.uaa.alaska.edu/kbnerr/",
+   "evidence": "Chris Guo, B.S. SWMP Coordinator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "1ebdb6e51e3d1712",
+   "person_key": "deanna-erickson",
+   "role": "director",
+   "title": "Reserve Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://naturalresources.extension.wisc.edu/about-us/people/",
+   "evidence": "Deanna Erickson Lake Superior National Estuarine Research Reserve Director",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "1ebdb6e51e3d1712",
+   "person_key": "molly-wick",
+   "role": "research-coordinator",
+   "title": "Research Coordinator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://naturalresources.extension.wisc.edu/about-us/people/",
+   "evidence": "Molly Wick Research Coordinator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "1ebdb6e51e3d1712",
+   "person_key": "hannah-nicklay",
+   "role": "coordinator",
+   "title": "Monitoring Coordinator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://naturalresources.extension.wisc.edu/about-us/people/",
+   "evidence": "Hannah Nicklay Monitoring Coordinator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "1ebdb6e51e3d1712",
+   "person_key": "kirsten-rhude",
+   "role": "stewardship-coordinator",
+   "title": "Stewardship Coordinator",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://naturalresources.extension.wisc.edu/about-us/people/",
+   "evidence": "Kirsten Rhude Stewardship Coordinator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "1ebdb6e51e3d1712",
+   "person_key": "karina-heim",
+   "role": "coordinator",
+   "title": "Coastal Training Program Coordinator",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://naturalresources.extension.wisc.edu/about-us/people/",
+   "evidence": "Karina Heim Coastal Training Program Coordinator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "dd32c151b310b8ae",
+   "person_key": "caitlin-chaffee",
+   "role": "manager",
+   "title": "Reserve Manager",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://nbnerr.org/_our-team_/",
+   "evidence": "Caitlin Chaffee Reserve Manager",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "dd32c151b310b8ae",
+   "person_key": "kenneth-raposa",
+   "role": "research-coordinator",
+   "title": "Research Coordinator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2002,
+   "end_year": null,
+   "source_url": "https://nbnerr.org/research-and-monitoring/research-and-monitoring-staff/",
+   "evidence": "Kenneth Raposa, Ph.D. Research Coordinator ... has served as its Research Coordinator since 2002",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "dd32c151b310b8ae",
+   "person_key": "daisy-durant",
+   "role": "coordinator",
+   "title": "SWMP Coordinator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2023,
+   "end_year": null,
+   "source_url": "https://nbnerr.org/research-and-monitoring/research-and-monitoring-staff/",
+   "evidence": "Daisy Durant, Ph.D. SWMP Coordinator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "dd32c151b310b8ae",
+   "person_key": "jon-mitchell",
+   "role": "stewardship-coordinator",
+   "title": "Stewardship Coordinator",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://nbnerr.org/_our-team_/",
+   "evidence": "Jon Mitchell Stewardship Coordinator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "dd32c151b310b8ae",
+   "person_key": "maureen-dewire",
+   "role": "education-coordinator",
+   "title": "Education Coordinator",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://nbnerr.org/_our-team_/",
+   "evidence": "Maureen Dewire Education Coordinator",
+   "confidence": "high"
+  }
+ ],
+ "verifications": []
+}

@@ -1,0 +1,418 @@
+{
+ "batch_id": "R-PEOPLE2-OCEAN-COASTAL-02",
+ "retrieved_at": "2026-10-22",
+ "verified_by": "adversarial-verifier 2026-10-22",
+ "facilities": [
+  {
+   "facility_id": "10086fa6647815a9",
+   "pages_fetched": [
+    {
+     "url": "https://marinegeo.si.edu/sites/indian-river-lagoon",
+     "status": 403
+    },
+    {
+     "url": "https://marinegeo.si.edu/sites",
+     "status": 403
+    },
+    {
+     "url": "https://marinegeo.si.edu/",
+     "status": 403
+    },
+    {
+     "url": "https://naturalhistory.si.edu/research/smithsonian-marine-station",
+     "status": 403
+    },
+    {
+     "url": "https://github.com/MarineGEO",
+     "status": 200
+    }
+   ],
+   "notes": "All Smithsonian hosts (marinegeo.si.edu, naturalhistory.si.edu, sms.si.edu) returned 403 (Cloudflare challenge) to curl and WebFetch; MarineGEO GitHub org names no people. Web search budget exhausted. No personnel recorded."
+  },
+  {
+   "facility_id": "c54df27d3d5ff656",
+   "pages_fetched": [
+    {
+     "url": "https://marinegeo.si.edu/sites/san-francisco-bay",
+     "status": 403
+    },
+    {
+     "url": "https://marinegeo.si.edu/sites/san-francisco-bay-ca-usa",
+     "status": 403
+    },
+    {
+     "url": "https://serc.si.edu/",
+     "status": 403
+    },
+    {
+     "url": "https://serc.si.edu/labs/marine-invasions-research",
+     "status": 403
+    },
+    {
+     "url": "https://eoscenter.sfsu.edu/",
+     "status": 200
+    }
+   ],
+   "notes": "marinegeo.si.edu and serc.si.edu returned 403 (Cloudflare). SF State EOS Center (Tiburon) page links the SERC Invasions Lab but names no MarineGEO lead. Web search budget exhausted. No personnel recorded."
+  },
+  {
+   "facility_id": "6fe0a0ddb26081bd",
+   "pages_fetched": [
+    {
+     "url": "https://bml.ucdavis.edu/",
+     "status": 403
+    },
+    {
+     "url": "https://marinescience.ucdavis.edu/bml-directory",
+     "status": 403
+    },
+    {
+     "url": "https://ucnrs.org/reserves/bodega-marine-reserve/",
+     "status": 200
+    },
+    {
+     "url": "https://ucnature.org/?p=19971",
+     "status": 200
+    },
+    {
+     "url": "https://research.ucdavis.edu/andrea-c-alfaro-appointed-director-of-the-uc-davis-coastal-and-marine-sciences-institute/",
+     "status": 200
+    },
+    {
+     "url": "https://research.ucdavis.edu/?p=77290",
+     "status": 200
+    },
+    {
+     "url": "https://www.pressdemocrat.com/2006/12/08/cadet-hand-jr/",
+     "status": 200
+    },
+    {
+     "url": "https://campusdirectory.ucsc.edu/cd_detail?uid=raimondi",
+     "status": 200
+    },
+    {
+     "url": "https://eeb.ucsc.edu/faculty/raimondi.html",
+     "status": 404
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0003-0543-7212/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0003-4273-4443/employments",
+     "status": 200
+    }
+   ],
+   "notes": "UC NRS page (2026) lists Personnel 'Director, research coordinator, and reserve steward' and Suzanne Olyarnik as contact; reserve director title from UC Nature article (2020-06-17), so medium confidence. Bodega Marine Laboratory sits on reserve lands; its director (Alfaro, from 2026-01-01) leads the lab/CMSI rather than the reserve proper. Research coordinator and steward unnamed on fetched pages; bml.ucdavis.edu and marinescience.ucdavis.edu blocked (403). Verifier: Olyarnik's director title rests on the 2020 UC Nature article; the 2026 UC NRS page confirms only that she is the reserve contact, so confidence stays medium. The facility record's url is bml.ucdavis.edu, so BML directors are attached to this facility."
+  },
+  {
+   "facility_id": "857ab02255cf1f50",
+   "pages_fetched": [
+    {
+     "url": "https://www.fisheries.noaa.gov/about/southwest-fisheries-science-center",
+     "status": 200
+    },
+    {
+     "url": "https://www.fisheries.noaa.gov/about/southwest-fisheries-science-center-leadership",
+     "status": 404
+    },
+    {
+     "url": "https://www.fisheries.noaa.gov/contact/kristen-koch",
+     "status": 200
+    },
+    {
+     "url": "https://www.fisheries.noaa.gov/contact/john-crofts",
+     "status": 200
+    },
+    {
+     "url": "https://www.fisheries.noaa.gov/contact/ryan-rykaczewski-phd",
+     "status": 200
+    },
+    {
+     "url": "https://www.fisheries.noaa.gov/contact/john-field-phd",
+     "status": 200
+    },
+    {
+     "url": "https://www.fisheries.noaa.gov/contact/david-w-weller-phd",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0001-6558-4164/employments",
+     "status": 200
+    }
+   ],
+   "notes": "Leadership and management team from the NOAA Fisheries SWFSC about page. Division directors recorded as associate-director. Also listed but not added: Heidi Taylor, Kate Achilles, Annie Yau (Fisheries Resources Division Director), Kara Koehrn, Robin LeRoux, Rod Miller, Heather Nicholas. Rykaczewski ORCID 0000-0001-8893-872X has no public employment, so not used. Verifier: re-fetched the about page and the five contact pages 2026-10-22 (all 200); names and titles confirmed. Koch's bio was rewritten to rely only on her contact page."
+  }
+ ],
+ "people": [
+  {
+   "key": "kristen-koch",
+   "existing_person_id": null,
+   "name": "Kristen Koch",
+   "name_given": "Kristen",
+   "name_family": "Koch",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.fisheries.noaa.gov/contact/kristen-koch",
+   "bio": "Director of NOAA Fisheries' Southwest Fisheries Science Center. Before taking the post she was the Center's deputy science and research director for eight years, serving three times as acting director, and earlier held NOAA headquarters roles including deputy director of the Ecosystems Goal Team and programming director in NOAA's Office of Oceanic and Atmospheric Research.",
+   "bio_source_url": "https://www.fisheries.noaa.gov/contact/kristen-koch",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "john-crofts",
+   "existing_person_id": null,
+   "name": "John A. Crofts",
+   "name_given": "John A.",
+   "name_family": "Crofts",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.fisheries.noaa.gov/contact/john-crofts",
+   "bio": "Serves as deputy director at NOAA's Southwest Fisheries Science Center. A NOAA Corps officer from 2001, he was previously the Center's chief of staff and commanded NOAA Ship Reuben Lasker in its first operational period, running surveys off California and in Alaska; earlier he was a fish biologist in Florida.",
+   "bio_source_url": "https://www.fisheries.noaa.gov/about/southwest-fisheries-science-center",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "ryan-rykaczewski",
+   "existing_person_id": null,
+   "name": "Ryan Rykaczewski",
+   "name_given": "Ryan",
+   "name_family": "Rykaczewski",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.fisheries.noaa.gov/contact/ryan-rykaczewski-phd",
+   "bio": "Heads the Ecosystem Science Division at NOAA's Southwest Fisheries Science Center. His work asks how natural and human-caused climate variability alters fishery and ecosystem productivity, via nutrients, oxygen, carbonate chemistry and plankton community structure, mainly in North Pacific pelagic systems.",
+   "bio_source_url": "https://www.fisheries.noaa.gov/contact/ryan-rykaczewski-phd",
+   "research_interests": "pelagic ecology; fisheries oceanography; climate change",
+   "research_interests_source_url": "https://www.fisheries.noaa.gov/contact/ryan-rykaczewski-phd"
+  },
+  {
+   "key": "john-field",
+   "existing_person_id": null,
+   "name": "John Field",
+   "name_given": "John",
+   "name_family": "Field",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.fisheries.noaa.gov/contact/john-field-phd",
+   "bio": "Heads the Fisheries Ecology Division (Santa Cruz) of NOAA's Southwest Fisheries Science Center; his listed specialty is fisheries and ecosystem oceanography.",
+   "bio_source_url": "https://www.fisheries.noaa.gov/contact/john-field-phd",
+   "research_interests": "fisheries and ecosystem oceanography",
+   "research_interests_source_url": "https://www.fisheries.noaa.gov/contact/john-field-phd"
+  },
+  {
+   "key": "david-weller",
+   "existing_person_id": null,
+   "name": "David W. Weller",
+   "name_given": "David W.",
+   "name_family": "Weller",
+   "orcid": "0000-0001-6558-4164",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0001-6558-4164/employments",
+   "homepage_url": "https://www.fisheries.noaa.gov/contact/david-w-weller-phd",
+   "bio": "Heads the Marine Mammal and Turtle Division of NOAA's Southwest Fisheries Science Center, which studies conservation and recovery of marine mammals and sea turtles with emphasis on the eastern Pacific.",
+   "bio_source_url": "https://www.fisheries.noaa.gov/about/southwest-fisheries-science-center",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "andrea-alfaro",
+   "existing_person_id": null,
+   "name": "Andrea C. Alfaro",
+   "name_given": "Andrea C.",
+   "name_family": "Alfaro",
+   "orcid": "0000-0003-0543-7212",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0003-0543-7212/employments",
+   "homepage_url": null,
+   "bio": "Since January 2026 she has led UC Davis's Coastal and Marine Sciences Institute (CMSI), including Bodega Marine Laboratory, and holds a professorship in animal science. She came from Auckland University of Technology, where she was professor of marine ecology and aquaculture. Her research spans aquatic animal disease, physiology, host-microbe interactions and climate resilience of farmed fish and shellfish.",
+   "bio_source_url": "https://research.ucdavis.edu/andrea-c-alfaro-appointed-director-of-the-uc-davis-coastal-and-marine-sciences-institute/",
+   "research_interests": "aquatic diseases; animal physiology; host-microbe interactions; climate resilience; nutritional efficiency in fish and shellfish; aquaculture",
+   "research_interests_source_url": "https://research.ucdavis.edu/andrea-c-alfaro-appointed-director-of-the-uc-davis-coastal-and-marine-sciences-institute/"
+  },
+  {
+   "key": "john-largier",
+   "existing_person_id": null,
+   "name": "John Largier",
+   "name_given": "John",
+   "name_family": "Largier",
+   "orcid": "0000-0003-4273-4443",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0003-4273-4443/employments",
+   "homepage_url": null,
+   "bio": "UC Davis environmental science and policy professor who directed Bodega Marine Laboratory from April 2022 until Andrea Alfaro took over responsibility for the laboratory, effective January 2026.",
+   "bio_source_url": "https://research.ucdavis.edu/andrea-c-alfaro-appointed-director-of-the-uc-davis-coastal-and-marine-sciences-institute/",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "suzanne-olyarnik",
+   "existing_person_id": null,
+   "name": "Suzanne Olyarnik",
+   "name_given": "Suzanne",
+   "name_family": "Olyarnik",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Identified in a 2020 UC Nature article as director of the Bodega Marine Reserve (UC Davis, UC Natural Reserve System); the article credits her with pursuing state bond funds that paid for fence, roof and dive-locker repairs at the reserve between 2014 and 2016.",
+   "bio_source_url": "https://ucnature.org/?p=19971",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "cadet-hand",
+   "existing_person_id": null,
+   "name": "Cadet H. Hand Jr.",
+   "name_given": "Cadet H.",
+   "name_family": "Hand",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "UC Berkeley zoologist and specialist in jellyfish and sea anemones who started a Bodega Bay field station in the 1950s and became founding director of Bodega Marine Laboratory in 1961, leading it until James Clegg succeeded him in 1986.",
+   "bio_source_url": "https://www.pressdemocrat.com/2006/12/08/cadet-hand-jr/",
+   "research_interests": "jellyfish; sea anemones; local marine biology",
+   "research_interests_source_url": "https://www.pressdemocrat.com/2006/12/08/cadet-hand-jr/"
+  }
+ ],
+ "affiliations": [
+  {
+   "facility_id": "857ab02255cf1f50",
+   "person_key": "kristen-koch",
+   "role": "director",
+   "title": "Director, Southwest Fisheries Science Center",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.fisheries.noaa.gov/contact/kristen-koch",
+   "evidence": "Kristen Koch Director Southwest Fisheries Science Center",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "857ab02255cf1f50",
+   "person_key": "john-crofts",
+   "role": "deputy-director",
+   "title": "Deputy Director, Southwest Fisheries Science Center",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.fisheries.noaa.gov/about/southwest-fisheries-science-center",
+   "evidence": "John Crofts is Deputy Director of the Southwest Fisheries Science Center.",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "857ab02255cf1f50",
+   "person_key": "ryan-rykaczewski",
+   "role": "associate-director",
+   "title": "Ecosystem Science Division Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.fisheries.noaa.gov/about/southwest-fisheries-science-center",
+   "evidence": "Ryan Rykaczewski, PhD Ecosystem Science Division Director",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "857ab02255cf1f50",
+   "person_key": "john-field",
+   "role": "associate-director",
+   "title": "Fisheries Ecology Division Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.fisheries.noaa.gov/about/southwest-fisheries-science-center",
+   "evidence": "John Field, Ph.D. Fisheries Ecology Division Director",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "857ab02255cf1f50",
+   "person_key": "david-weller",
+   "role": "associate-director",
+   "title": "Marine Mammal and Turtle Division Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.fisheries.noaa.gov/about/southwest-fisheries-science-center",
+   "evidence": "David W. Weller, Ph.D. Marine Mammal and Turtle Division Director",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "6fe0a0ddb26081bd",
+   "person_key": "suzanne-olyarnik",
+   "role": "director",
+   "title": "Reserve Director, Bodega Marine Reserve",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ucnature.org/?p=19971",
+   "evidence": "says Suzanne Olyarnik, reserve director",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "6fe0a0ddb26081bd",
+   "person_key": "andrea-alfaro",
+   "role": "director",
+   "title": "Director, UC Davis Coastal and Marine Sciences Institute / Bodega Marine Laboratory",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2026,
+   "end_year": null,
+   "source_url": "https://research.ucdavis.edu/andrea-c-alfaro-appointed-director-of-the-uc-davis-coastal-and-marine-sciences-institute/",
+   "evidence": "Alfaro also assumes responsibility for the Bodega Marine Laboratory (BML), the core research and educational facility of CMSI",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "6fe0a0ddb26081bd",
+   "person_key": "john-largier",
+   "role": "former-director",
+   "title": "Director, Bodega Marine Laboratory (2022-2025)",
+   "is_key_personnel": false,
+   "is_current": false,
+   "start_year": 2022,
+   "end_year": 2025,
+   "source_url": "https://research.ucdavis.edu/andrea-c-alfaro-appointed-director-of-the-uc-davis-coastal-and-marine-sciences-institute/",
+   "evidence": "John Largier, a professor in the Department of Environmental Science and Policy and director of BML since April of 2022",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "6fe0a0ddb26081bd",
+   "person_key": "john-largier",
+   "role": "faculty",
+   "title": "Professor, Environmental Science and Policy (Bodega Marine Laboratory)",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": 2004,
+   "end_year": null,
+   "source_url": "https://pub.orcid.org/v3.0/0000-0003-4273-4443/employments",
+   "evidence": "Bodega Marine Laboratory & Dept Environmental Science and Policy",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "6fe0a0ddb26081bd",
+   "person_key": "cadet-hand",
+   "role": "founding-PI",
+   "title": "Founding Director, Bodega Marine Laboratory",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": 1961,
+   "end_year": 1986,
+   "source_url": "https://www.pressdemocrat.com/2006/12/08/cadet-hand-jr/",
+   "evidence": "In 1961, Hand was the founding director of the Bodega Marine Lab",
+   "confidence": "medium"
+  }
+ ],
+ "verifications": [
+  {
+   "facility_id": "6fe0a0ddb26081bd",
+   "person_id": "bb2f8436b7f970d6",
+   "existing_role": "faculty",
+   "status": "not-found",
+   "current_holder_key": null,
+   "source_url": "https://ucnrs.org/reserves/bodega-marine-reserve/",
+   "evidence": null
+  }
+ ]
+}

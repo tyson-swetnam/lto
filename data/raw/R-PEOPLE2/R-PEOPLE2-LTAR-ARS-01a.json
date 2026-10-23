@@ -1,0 +1,1061 @@
+{
+ "batch_id": "R-PEOPLE2-LTAR-ARS-01a",
+ "retrieved_at": "2026-10-22",
+ "verified_by": "adversarial-verifier 2026-10-22",
+ "facilities": [
+  {
+   "facility_id": "e0c0478a89902693",
+   "pages_fetched": [
+    {
+     "url": "https://ltar.ars.usda.gov/sites/cmrb/",
+     "status": 200
+    },
+    {
+     "url": "https://ltar.ars.usda.gov/contact/",
+     "status": 200
+    },
+    {
+     "url": "https://ltar.ars.usda.gov/resources/people/",
+     "status": 200
+    },
+    {
+     "url": "https://www.ars.usda.gov/midwest-area/columbia-mo/cropping-systems-and-water-quality-research/",
+     "status": 200
+    },
+    {
+     "url": "https://www.ars.usda.gov/midwest-area/columbia-mo/cropping-systems-and-water-quality-research/people/kenneth-sudduth/",
+     "status": 200
+    },
+    {
+     "url": "https://www.ars.usda.gov/midwest-area/columbia-mo/cropping-systems-and-water-quality-research/people/claire-baffaut/",
+     "status": 200
+    },
+    {
+     "url": "https://www.ars.usda.gov/midwest-area/columbia-mo/cropping-systems-and-water-quality-research/people/adam-schreiner-mcgraw/",
+     "status": 200
+    },
+    {
+     "url": "https://www.ars.usda.gov/midwest-area/columbia-mo/cropping-systems-and-water-quality-research/people/lori-abendroth/",
+     "status": 200
+    },
+    {
+     "url": "https://www.ars.usda.gov/midwest-area/columbia-mo/cropping-systems-and-water-quality-research/people/kristen-veum/",
+     "status": 404
+    },
+    {
+     "url": "https://www.ars.usda.gov/midwest-area/columbia-mo/cropping-systems-and-water-quality-research/people/newell-kitchen/",
+     "status": 404
+    }
+   ],
+   "notes": "Operated by USDA-ARS Cropping Systems and Water Quality Research Unit (Columbia, MO). LTAR contact page (modified Apr 13 2026) names Adam Schreiner-McGraw as site lead; the site page (modified Nov 19 2025) still lists Claire Baffaut as Lead, and the LTAR people directory (Jul 2023) describes her as retired, so she is recorded as former lead. ARS person-id directory pages are currently not resolving (\"website update in progress\"); no profiles found for Veum or Kitchen."
+  },
+  {
+   "facility_id": "5e4bb7d8bb451165",
+   "pages_fetched": [
+    {
+     "url": "https://ltar.ars.usda.gov/sites/gacp/",
+     "status": 200
+    },
+    {
+     "url": "https://ltar.ars.usda.gov/contact/",
+     "status": 200
+    },
+    {
+     "url": "https://ltar.ars.usda.gov/resources/people/",
+     "status": 200
+    },
+    {
+     "url": "https://tifton.caes.uga.edu/people/usda-partners.html",
+     "status": 200
+    },
+    {
+     "url": "https://geog.ufl.edu/2020/11/17/geographical-applications-in-agro-ecological-research-for-the-us-from-point-to-region-and-measure-to-model/",
+     "status": 200
+    },
+    {
+     "url": "https://www.ars.usda.gov/southeast-area/tifton-ga/southeast-watershed-research/",
+     "status": 200
+    },
+    {
+     "url": "https://www.ars.usda.gov/southeast-area/tifton-ga/southeast-watershed-research/people/alisa-coffin/",
+     "status": 404
+    }
+   ],
+   "notes": "Three USDA-ARS Tifton units contribute (SEWRL primary). Site lead Alisa Coffin per LTAR contact page. ARS staff profile pages for SEWRL scientists return 404 and the ARS staff list is empty during the ARS website update, so bios for Bosch/Pisani rely on the LTAR people directory (Jul 2023); none for Endale/Olson. ORCID iDs verified via pub.orcid.org employments (name + USDA-ARS employment)."
+  },
+  {
+   "facility_id": "c48616d33f3858df",
+   "pages_fetched": [
+    {
+     "url": "https://ltar.ars.usda.gov/sites/lmrb/",
+     "status": 200
+    },
+    {
+     "url": "https://ltar.ars.usda.gov/contact/",
+     "status": 200
+    },
+    {
+     "url": "https://www.ars.usda.gov/southeast-area/oxford-ms/national-sedimentation-laboratory/",
+     "status": 200
+    },
+    {
+     "url": "https://www.ars.usda.gov/southeast-area/oxford-ms/national-sedimentation-laboratory/people/martin-locke/",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/staff-profiles/james-r-rigby",
+     "status": 200
+    },
+    {
+     "url": "https://www.ars.usda.gov/southeast-area/oxford-ms/national-sedimentation-laboratory/water-quality-and-ecology-research/docs/lmrb-ltar/",
+     "status": 200
+    },
+    {
+     "url": "https://www.ars.usda.gov/southeast-area/oxford-ms/national-sedimentation-laboratory/docs/brief-history/",
+     "status": 200
+    },
+    {
+     "url": "https://ltar.ars.usda.gov/sites/lmrb/",
+     "status": 200
+    }
+   ],
+   "notes": "Coordinated by the USDA-ARS National Sedimentation Laboratory, Oxford MS (participating ARS locations: Stoneville, Houma, Jonesboro, Portageville). LTAR site page still lists J.R. Rigby as a leader, but his USGS profile shows he has moved to USGS, so he is recorded as former. No founding director named on the NSL history page."
+  },
+  {
+   "facility_id": "24cd3c19daa326ac",
+   "pages_fetched": [
+    {
+     "url": "https://ltar.ars.usda.gov/sites/np/",
+     "status": 200
+    },
+    {
+     "url": "https://ltar.ars.usda.gov/contact/",
+     "status": 200
+    },
+    {
+     "url": "https://www.ars.usda.gov/plains-area/mandan-nd/ngprl/",
+     "status": 200
+    },
+    {
+     "url": "https://www.ars.usda.gov/plains-area/mandan-nd/ngprl/docs/research-scientists/",
+     "status": 200
+    },
+    {
+     "url": "https://www.ars.usda.gov/plains-area/mandan-nd/ngprl/people/david-archer/",
+     "status": 200
+    },
+    {
+     "url": "https://www.ars.usda.gov/plains-area/mandan-nd/ngprl/people/mark-liebig/",
+     "status": 200
+    },
+    {
+     "url": "https://www.ars.usda.gov/plains-area/mandan-nd/ngprl/people/david-toledo/",
+     "status": 200
+    },
+    {
+     "url": "https://www.ars.usda.gov/plains-area/mandan-nd/ngprl/people/john-hendrickson/",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-4816-7040/employments",
+     "status": 200
+    },
+    {
+     "url": "https://www.ars.usda.gov/people-locations/person/?person-id=38707",
+     "status": 200
+    }
+   ],
+   "notes": "This facility is the Northern Plains (NP) LTAR site at the USDA-ARS Northern Great Plains Research Laboratory, Mandan ND. LTAR contact page lists Mark Liebig and David Toledo as site co-leads. LTAR site page lists David Archer as RL, but his ORCID record ends the Research Leader role in 2025 while the NGPRL scientists page (modified 9/22/2026) still lists him as a scientist; the current NGPRL Research Leader could not be found on a fetched page. ARS person-id page returned \"person you selected is invalid\"."
+  },
+  {
+   "facility_id": "e9c76e4040d836f4",
+   "pages_fetched": [
+    {
+     "url": "https://ltar.ars.usda.gov/sites/ucb/",
+     "status": 200
+    },
+    {
+     "url": "https://ltar.ars.usda.gov/contact/",
+     "status": 200
+    },
+    {
+     "url": "https://www.ars.usda.gov/northeast-area/up-pa/pswmru/",
+     "status": 200
+    },
+    {
+     "url": "https://www.ars.usda.gov/northeast-area/up-pa/pswmru/people/curtis-dell/",
+     "status": 200
+    },
+    {
+     "url": "https://www.ars.usda.gov/northeast-area/up-pa/pswmru/people/kathy-soder/",
+     "status": 200
+    },
+    {
+     "url": "https://www.ars.usda.gov/northeast-area/up-pa/pswmru/people/tamie-veith/",
+     "status": 200
+    },
+    {
+     "url": "https://www.psu.edu/news/administration/story/penn-state-alumna-named-lead-department-ecosystem-science-and-management",
+     "status": 200
+    },
+    {
+     "url": "https://www.ars.usda.gov/northeast-area/up-pa/pswmru/people/carrie-laboski/",
+     "status": 404
+    },
+    {
+     "url": "https://www.ars.usda.gov/northeast-area/up-pa/pswmru/people/ray-bryant/",
+     "status": 404
+    },
+    {
+     "url": "https://www.ars.usda.gov/northeast-area/up-pa/pswmru/people/peter-kleinman/",
+     "status": 404
+    }
+   ],
+   "notes": "Operated by USDA-ARS Pasture Systems and Watershed Management Research Unit (PSWMRU), University Park PA, with Penn State partners. LTAR site page (Nov 2025) still names Carrie Laboski as Site Lead, but Penn State news (Oct 2025) reports she became Penn State ESM department head effective Nov 3 and the LTAR contact page (Apr 2026) lists Curt Dell as site lead. Current PSWMRU Research Leader not found on a fetched page."
+  },
+  {
+   "facility_id": "21c354cce32aa829",
+   "pages_fetched": [
+    {
+     "url": "https://ltar.ars.usda.gov/sites/abs-uf/",
+     "status": 200
+    },
+    {
+     "url": "https://ltar.ars.usda.gov/contact/",
+     "status": 200
+    },
+    {
+     "url": "https://ltar.ars.usda.gov/resources/people/",
+     "status": 200
+    },
+    {
+     "url": "https://www.archbold-station.org/buck-island-ranch/",
+     "status": 200
+    },
+    {
+     "url": "https://www.archbold-station.org/people/",
+     "status": 200
+    },
+    {
+     "url": "https://www.archbold-station.org/people/hillary-swain/",
+     "status": 200
+    },
+    {
+     "url": "https://www.archbold-station.org/people/amartya-saha/",
+     "status": 200
+    },
+    {
+     "url": "https://www.archbold-station.org/people/jowen/",
+     "status": 200
+    },
+    {
+     "url": "https://www.archbold-station.org/news-and-media/science-director-announcement/",
+     "status": 200
+    },
+    {
+     "url": "https://www.archbold-station.org/news-and-media/ed-announcement/",
+     "status": 200
+    },
+    {
+     "url": "https://rcrec-ona.ifas.ufl.edu/about/directory/faculty/maria-silveira/",
+     "status": 200
+    },
+    {
+     "url": "https://artofrange.extension.wsu.edu/episodes/aor-177-betsey-boughton-on-ranch-relevant-ecological-research-at-archbold-biological-station/",
+     "status": 200
+    },
+    {
+     "url": "https://www.archbold-station.org/people/elizabeth-boughton/",
+     "status": 404
+    }
+   ],
+   "notes": "Archbold manages Archbold Biological Station, Buck Island Ranch and the Archbold Reserve; fourth component is UF/IFAS Range Cattle REC (Ona). Site lead/PI Betsey Boughton (also Archbold Director of Science since Jan 2026). Hilary Swain retired as Archbold Executive Director in 2025; Jen Owen succeeded her (Nov 2025). Archbold people directory is JS-rendered; no Boughton profile page found."
+  }
+ ],
+ "people": [
+  {
+   "key": "adam-schreiner-mcgraw",
+   "existing_person_id": null,
+   "name": "Adam Schreiner-McGraw",
+   "name_given": "Adam",
+   "name_family": "Schreiner-McGraw",
+   "orcid": "0000-0003-3424-9202",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0003-3424-9202/employments",
+   "homepage_url": "https://www.ars.usda.gov/midwest-area/columbia-mo/cropping-systems-and-water-quality-research/people/adam-schreiner-mcgraw/",
+   "bio": "Research hydrologist with USDA-ARS in Columbia, Missouri, whose primary assignment is the Central Mississippi River Basin LTAR site. An ecohydrologist, he examines how cropping systems shape evapotranspiration, soil water and groundwater in the Corn Belt, and how these agroecosystems cope with drought and very wet periods.",
+   "bio_source_url": "https://www.ars.usda.gov/midwest-area/columbia-mo/cropping-systems-and-water-quality-research/people/adam-schreiner-mcgraw/",
+   "research_interests": "ecohydrology; within-field evapotranspiration variability and claypan depth; groundwater, soil moisture and crop yield; agroecosystem resilience to precipitation variability; hydrologic effects of land-use change",
+   "research_interests_source_url": "https://www.ars.usda.gov/midwest-area/columbia-mo/cropping-systems-and-water-quality-research/people/adam-schreiner-mcgraw/"
+  },
+  {
+   "key": "kenneth-sudduth",
+   "existing_person_id": null,
+   "name": "Kenneth Sudduth",
+   "name_given": "Kenneth",
+   "name_family": "Sudduth",
+   "orcid": "0000-0002-2558-0668",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-2558-0668/employments",
+   "homepage_url": "https://www.ars.usda.gov/midwest-area/columbia-mo/cropping-systems-and-water-quality-research/people/kenneth-sudduth/",
+   "bio": "Agricultural engineer with USDA-ARS in Columbia, Missouri for more than 30 years; since 2021 he has headed the research unit that operates the CMRB site. His work centers on precision agriculture: soil and crop sensors, apparent electrical conductivity mapping, yield-data cleaning software and decision-support tools. Led the International Society of Precision Agriculture as its president in 2014-2016.",
+   "bio_source_url": "https://www.ars.usda.gov/midwest-area/columbia-mo/cropping-systems-and-water-quality-research/people/kenneth-sudduth/",
+   "research_interests": "precision agriculture; proximal soil and crop sensing; soil apparent electrical conductivity; soil carbon mapping with AI; yield mapping; decision support tools",
+   "research_interests_source_url": "https://www.ars.usda.gov/midwest-area/columbia-mo/cropping-systems-and-water-quality-research/people/kenneth-sudduth/"
+  },
+  {
+   "key": "claire-baffaut",
+   "existing_person_id": null,
+   "name": "Claire Baffaut",
+   "name_given": "Claire",
+   "name_family": "Baffaut",
+   "orcid": "0000-0001-7840-1953",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0001-7840-1953/employments",
+   "homepage_url": "https://www.ars.usda.gov/midwest-area/columbia-mo/cropping-systems-and-water-quality-research/people/claire-baffaut/",
+   "bio": "Hydrologist with USDA-ARS in Columbia, Missouri from 2007 (the LTAR people directory lists her as retired), trained in hydraulics engineering in Grenoble with a Purdue PhD. Earlier helped develop the WEPP erosion model and led FAPRI watershed studies at the University of Missouri. Her work evaluated how farming practices alter runoff and water quality from fields to watersheds.",
+   "bio_source_url": "https://www.ars.usda.gov/midwest-area/columbia-mo/cropping-systems-and-water-quality-research/people/claire-baffaut/",
+   "research_interests": "agricultural effects on water quantity and quality; field and watershed hydrologic modeling; erosion modeling (WEPP)",
+   "research_interests_source_url": "https://www.ars.usda.gov/midwest-area/columbia-mo/cropping-systems-and-water-quality-research/people/claire-baffaut/"
+  },
+  {
+   "key": "lori-abendroth",
+   "existing_person_id": null,
+   "name": "Lori Abendroth",
+   "name_given": "Lori",
+   "name_family": "Abendroth",
+   "orcid": "0000-0002-0176-7815",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-0176-7815/employments",
+   "homepage_url": "https://www.ars.usda.gov/midwest-area/columbia-mo/cropping-systems-and-water-quality-research/people/lori-abendroth/",
+   "bio": "Research agronomist with USDA-ARS in Columbia, Missouri since 2021, after managerial, research and teaching roles at Iowa State University (PhD 2019). She studies productivity, sustainability and environmental footprint of Midwest cropping systems, with emphasis on climate adaptation, and runs research in the Columbia LTAR experiment.",
+   "bio_source_url": "https://www.ars.usda.gov/midwest-area/columbia-mo/cropping-systems-and-water-quality-research/people/lori-abendroth/",
+   "research_interests": "cropping system productivity and footprint; climate adaptation in Midwest agriculture; cropping intensity and diversity; corn hybrid maturity",
+   "research_interests_source_url": "https://www.ars.usda.gov/midwest-area/columbia-mo/cropping-systems-and-water-quality-research/people/lori-abendroth/"
+  },
+  {
+   "key": "newell-kitchen",
+   "existing_person_id": null,
+   "name": "Newell Kitchen",
+   "name_given": "Newell",
+   "name_family": "Kitchen",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "kristen-veum",
+   "existing_person_id": null,
+   "name": "Kristen Veum",
+   "name_given": "Kristen",
+   "name_family": "Veum",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "alisa-coffin",
+   "existing_person_id": null,
+   "name": "Alisa Coffin",
+   "name_given": "Alisa",
+   "name_family": "Coffin",
+   "orcid": "0000-0003-1608-1776",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0003-1608-1776/employments",
+   "homepage_url": null,
+   "bio": "Tifton, Georgia-based USDA-ARS scientist with the Southeast Watershed Research Laboratory (described in 2020 as a research ecologist) with an adjunct University of Georgia appointment. Holds degrees in environmental studies (Rutgers), landscape architecture (Harvard GSD) and geography (PhD, Florida); applies remote sensing and spatial analysis to agroecosystems.",
+   "bio_source_url": "https://geog.ufl.edu/2020/11/17/geographical-applications-in-agro-ecological-research-for-the-us-from-point-to-region-and-measure-to-model/",
+   "research_interests": "remote sensing and spatial analysis of agroecosystems; agroecosystem service tradeoffs and synergies across scales",
+   "research_interests_source_url": "https://geog.ufl.edu/2020/11/17/geographical-applications-in-agro-ecological-research-for-the-us-from-point-to-region-and-measure-to-model/"
+  },
+  {
+   "key": "david-bosch",
+   "existing_person_id": null,
+   "name": "David Bosch",
+   "name_given": "David",
+   "name_family": "Bosch",
+   "orcid": "0000-0001-9021-8705",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0001-9021-8705/employments",
+   "homepage_url": null,
+   "bio": "Research hydrologist on the Gulf Atlantic Coastal Plain LTAR team; his directory-listed interests span hydrology, climatology, watersheds, water quality and conservation.",
+   "bio_source_url": "https://ltar.ars.usda.gov/resources/people/",
+   "research_interests": "hydrology; climatology; watersheds; water quality; conservation",
+   "research_interests_source_url": "https://ltar.ars.usda.gov/resources/people/"
+  },
+  {
+   "key": "oliva-pisani",
+   "existing_person_id": null,
+   "name": "Oliva Pisani",
+   "name_given": "Oliva",
+   "name_family": "Pisani",
+   "orcid": "0000-0003-1692-9589",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0003-1692-9589/employments",
+   "homepage_url": null,
+   "bio": "Research chemist on the Gulf Atlantic Coastal Plain LTAR team, with interests in water quality, dissolved organic matter and soils.",
+   "bio_source_url": "https://ltar.ars.usda.gov/resources/people/",
+   "research_interests": "water quality; dissolved organic matter; soil",
+   "research_interests_source_url": "https://ltar.ars.usda.gov/resources/people/"
+  },
+  {
+   "key": "dinku-endale",
+   "existing_person_id": null,
+   "name": "Dinku Endale",
+   "name_given": "Dinku",
+   "name_family": "Endale",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "dawn-olson",
+   "existing_person_id": null,
+   "name": "Dawn Olson",
+   "name_given": "Dawn",
+   "name_family": "Olson",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "martin-locke",
+   "existing_person_id": null,
+   "name": "Martin Locke",
+   "name_given": "Martin",
+   "name_family": "Locke",
+   "orcid": "0000-0001-7145-530X",
+   "orcid_source_url": "https://www.ars.usda.gov/southeast-area/oxford-ms/national-sedimentation-laboratory/people/martin-locke/",
+   "homepage_url": "https://www.ars.usda.gov/southeast-area/oxford-ms/national-sedimentation-laboratory/people/martin-locke/",
+   "bio": "Directs the USDA-ARS National Sedimentation Laboratory in Oxford, Mississippi, and coordinates the Oxford ARS location. A soil scientist (PhD Texas A&M, 1986) with a long ARS career, he has built a program evaluating conservation management practices for their influence on agrochemical fate and on protecting soil and water resources.",
+   "bio_source_url": "https://www.ars.usda.gov/southeast-area/oxford-ms/national-sedimentation-laboratory/people/martin-locke/",
+   "research_interests": "conservation management practices; fate of agrochemicals; soil and water resource protection",
+   "research_interests_source_url": "https://www.ars.usda.gov/southeast-area/oxford-ms/national-sedimentation-laboratory/people/martin-locke/"
+  },
+  {
+   "key": "jr-rigby",
+   "existing_person_id": null,
+   "name": "J. R. Rigby",
+   "name_given": "James",
+   "name_family": "Rigby",
+   "orcid": "0000-0002-5611-6307",
+   "orcid_source_url": "https://www.usgs.gov/staff-profiles/james-r-rigby",
+   "homepage_url": "https://www.usgs.gov/staff-profiles/james-r-rigby",
+   "bio": "Associate Center Director and research hydrologist at the USGS Lower Mississippi-Gulf Water Science Center, heading its Hydrologic Transport and Response Branch. Before USGS he was an ARS hydrologist at the National Sedimentation Laboratory, whose research addressed groundwater supply, managed recharge of aquifers, watershed hydrology and sediment movement.",
+   "bio_source_url": "https://www.usgs.gov/staff-profiles/james-r-rigby",
+   "research_interests": "groundwater availability; managed aquifer recharge; watershed hydrology; sediment transport",
+   "research_interests_source_url": "https://www.usgs.gov/staff-profiles/james-r-rigby"
+  },
+  {
+   "key": "mark-liebig",
+   "existing_person_id": null,
+   "name": "Mark Liebig",
+   "name_given": "Mark",
+   "name_family": "Liebig",
+   "orcid": "0000-0002-2716-3665",
+   "orcid_source_url": "https://www.ars.usda.gov/plains-area/mandan-nd/ngprl/people/mark-liebig/",
+   "homepage_url": "https://www.ars.usda.gov/plains-area/mandan-nd/ngprl/people/mark-liebig/",
+   "bio": "Research soil scientist with USDA-ARS at Mandan, North Dakota since 1999 and adjunct faculty in soil science at North Dakota State University. He quantifies how cropland and grazing-land management, including fire, alter soil properties and processes in the Great Plains, and co-chaired the LTAR Croplands Common Experiment from 2015 to 2025.",
+   "bio_source_url": "https://www.ars.usda.gov/plains-area/mandan-nd/ngprl/people/mark-liebig/",
+   "research_interests": "management effects on soil properties in rainfed cropping systems; soil dynamics under grazing and fire; visual soil assessment; LTAR croplands common experiment",
+   "research_interests_source_url": "https://www.ars.usda.gov/plains-area/mandan-nd/ngprl/people/mark-liebig/"
+  },
+  {
+   "key": "david-toledo",
+   "existing_person_id": null,
+   "name": "David Toledo",
+   "name_given": "David",
+   "name_family": "Toledo",
+   "orcid": "0000-0001-5162-4428",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0001-5162-4428/employments",
+   "homepage_url": "https://www.ars.usda.gov/plains-area/mandan-nd/ngprl/people/david-toledo/",
+   "bio": "Rangeland scientist at the ARS laboratory in Mandan, North Dakota (NGPRL) since 2013 and earlier a rangeland specialist at the Jornada Experimental Range (PhD Texas A&M). His work develops tools for monitoring ecosystem function and change, tests drought and land-use effects on agroecosystems, and examines social dimensions of resource management.",
+   "bio_source_url": "https://www.ars.usda.gov/plains-area/mandan-nd/ngprl/people/david-toledo/",
+   "research_interests": "ecosystem monitoring and assessment tools; drought and land-use effects on agroecosystem function; human dimensions of natural resource management",
+   "research_interests_source_url": "https://www.ars.usda.gov/plains-area/mandan-nd/ngprl/people/david-toledo/"
+  },
+  {
+   "key": "david-archer",
+   "existing_person_id": null,
+   "name": "David Archer",
+   "name_given": "David",
+   "name_family": "Archer",
+   "orcid": "0000-0002-4816-7040",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-4816-7040/employments",
+   "homepage_url": "https://www.ars.usda.gov/plains-area/mandan-nd/ngprl/people/david-archer/",
+   "bio": "Agricultural economist at the USDA-ARS Northern Great Plains Research Laboratory since 2007, after seven years with ARS in Morris, Minnesota and earlier NRCS posts (PhD agricultural economics, Iowa State). He analyzes the economics of integrated crop-livestock systems, including risk management, simulation modeling, decision aids and bioenergy.",
+   "bio_source_url": "https://www.ars.usda.gov/plains-area/mandan-nd/ngprl/people/david-archer/",
+   "research_interests": "agricultural systems economics; risk management; simulation modeling; decision aid development; bioenergy economics",
+   "research_interests_source_url": "https://www.ars.usda.gov/plains-area/mandan-nd/ngprl/people/david-archer/"
+  },
+  {
+   "key": "john-hendrickson",
+   "existing_person_id": null,
+   "name": "John Hendrickson",
+   "name_given": "John",
+   "name_family": "Hendrickson",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.ars.usda.gov/plains-area/mandan-nd/ngprl/people/john-hendrickson/",
+   "bio": "Rangeland scientist at the ARS laboratory in Mandan, North Dakota (NGPRL) since 1999. Before Mandan he worked for ARS in Dubois, Idaho on grazing effects on plant communities, rangeland carbon sequestration and weed control with grazing. PhD in rangeland ecology and management from Texas A&M (1996).",
+   "bio_source_url": "https://www.ars.usda.gov/plains-area/mandan-nd/ngprl/people/john-hendrickson/",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "curtis-dell",
+   "existing_person_id": null,
+   "name": "Curtis Dell",
+   "name_given": "Curtis",
+   "name_family": "Dell",
+   "orcid": "0000-0003-4462-6198",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0003-4462-6198/employments",
+   "homepage_url": "https://www.ars.usda.gov/northeast-area/up-pa/pswmru/people/curtis-dell/",
+   "bio": "Soil scientist with the ARS pasture and watershed research unit (PSWMRU) in University Park, Pennsylvania since 2001 (PhD soil microbiology, Kansas State). He studies soil microbial processes, organic matter dynamics and nitrogen cycling, particularly how manure additions influence carbon storage, organic matter quality and soil physical properties.",
+   "bio_source_url": "https://www.ars.usda.gov/northeast-area/up-pa/pswmru/people/curtis-dell/",
+   "research_interests": "soil organic matter dynamics; nitrogen cycling; manure effects on carbon sequestration and soil physical properties",
+   "research_interests_source_url": "https://www.ars.usda.gov/northeast-area/up-pa/pswmru/people/curtis-dell/"
+  },
+  {
+   "key": "carrie-laboski",
+   "existing_person_id": null,
+   "name": "Carrie Laboski",
+   "name_given": "Carrie",
+   "name_family": "Laboski",
+   "orcid": "0000-0003-2050-767X",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0003-2050-767X/employments",
+   "homepage_url": null,
+   "bio": "Soil fertility scientist who took over as Penn State ecosystem science and management department head in November 2025, after serving as ARS research leader of the University Park pasture and watershed unit. Earlier an extension soil scientist at UW-Madison and Michigan State; served as SSSA president in 2023.",
+   "bio_source_url": "https://www.psu.edu/news/administration/story/penn-state-alumna-named-lead-department-ecosystem-science-and-management",
+   "research_interests": "nutrient biogeochemistry; nutrient management of fertilizer and manure; soil fertility; soil and plant diagnostic tests",
+   "research_interests_source_url": "https://www.psu.edu/news/administration/story/penn-state-alumna-named-lead-department-ecosystem-science-and-management"
+  },
+  {
+   "key": "ray-bryant",
+   "existing_person_id": null,
+   "name": "Ray Bryant",
+   "name_given": "Ray",
+   "name_family": "Bryant",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "kathy-soder",
+   "existing_person_id": null,
+   "name": "Kathy Soder",
+   "name_given": "Kathy",
+   "name_family": "Soder",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.ars.usda.gov/northeast-area/up-pa/pswmru/people/kathy-soder/",
+   "bio": "Animal scientist with the ARS pasture and watershed research unit (PSWMRU) since 1998 and adjunct professor in dairy and animal science at Penn State. She investigates how pasture species diversity influences ruminant grazing behavior, intake and productivity, and develops supplementation and management approaches for grazing dairy herds.",
+   "bio_source_url": "https://www.ars.usda.gov/northeast-area/up-pa/pswmru/people/kathy-soder/",
+   "research_interests": "plant diversity and ruminant grazing behavior; forage intake; grazing dairy management and supplementation",
+   "research_interests_source_url": "https://www.ars.usda.gov/northeast-area/up-pa/pswmru/people/kathy-soder/"
+  },
+  {
+   "key": "tamie-veith",
+   "existing_person_id": null,
+   "name": "Tamie Veith",
+   "name_given": "Tamie",
+   "name_family": "Veith",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.ars.usda.gov/northeast-area/up-pa/pswmru/people/tamie-veith/",
+   "bio": "Agricultural engineer with the ARS pasture and watershed research unit (PSWMRU) in University Park since 2002 (PhD biological systems engineering, Virginia Tech). Her work addresses cost-effective selection and siting of conservation practices, farm and watershed water-quality modeling, and multi-objective optimization.",
+   "bio_source_url": "https://www.ars.usda.gov/northeast-area/up-pa/pswmru/people/tamie-veith/",
+   "research_interests": "cost-effective BMP selection and placement; farm and watershed water-quality modeling; multi-objective optimization",
+   "research_interests_source_url": "https://www.ars.usda.gov/northeast-area/up-pa/pswmru/people/tamie-veith/"
+  },
+  {
+   "key": "betsey-boughton",
+   "existing_person_id": null,
+   "name": "Elizabeth (Betsey) Boughton",
+   "name_given": "Elizabeth",
+   "name_family": "Boughton",
+   "orcid": "0000-0003-0932-280X",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0003-0932-280X/employments",
+   "homepage_url": null,
+   "bio": "Named Director of Science at Archbold Biological Station in January 2026 while continuing to direct its Agroecology Program at Buck Island Ranch, a program she has led for about 15 years and for which she has secured over $13.7 million in grants.",
+   "bio_source_url": "https://www.archbold-station.org/news-and-media/science-director-announcement/",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "hilary-swain",
+   "existing_person_id": null,
+   "name": "Hilary Swain",
+   "name_given": "Hilary",
+   "name_family": "Swain",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.archbold-station.org/people/hillary-swain/",
+   "bio": "Led Archbold Biological Station as its executive director for three decades (1995-2025) and is now Executive Director Emerita. Oversaw the station and Buck Island Ranch, held leadership roles in the USDA LTAR and GLEON networks, and pursues conservation biology, agroecology and limnology, including Lake Annie and Florida Wildlife Corridor work.",
+   "bio_source_url": "https://www.archbold-station.org/people/hillary-swain/",
+   "research_interests": "conservation biology; agroecology; limnology (Lake Annie); large landscape conservation; Florida Wildlife Corridor",
+   "research_interests_source_url": "https://www.archbold-station.org/people/hillary-swain/"
+  },
+  {
+   "key": "jen-owen",
+   "existing_person_id": null,
+   "name": "Jen Owen",
+   "name_given": "Jennifer",
+   "name_family": "Owen",
+   "orcid": "0000-0003-1383-4816",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0003-1383-4816/employments",
+   "homepage_url": "https://www.archbold-station.org/people/jowen/",
+   "bio": "Executive Director and CEO of Archbold Biological Station since 2025. Previously associate professor and associate chair in Fisheries and Wildlife at Michigan State University, where she directed the Michigan State Bird Observatory. An avian ecologist studying effects of habitat degradation and food supply on bird health, immune function and behavior.",
+   "bio_source_url": "https://www.archbold-station.org/people/jowen/",
+   "research_interests": "avian health and immune function; habitat degradation; migratory birds and zoonotic pathogens",
+   "research_interests_source_url": "https://www.archbold-station.org/people/jowen/"
+  },
+  {
+   "key": "maria-silveira",
+   "existing_person_id": null,
+   "name": "Maria Lucia Silveira",
+   "name_given": "Maria Lucia",
+   "name_family": "Silveira",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://rcrec-ona.ifas.ufl.edu/about/directory/faculty/maria-silveira/",
+   "bio": "Professor and soil scientist at the UF/IFAS Range Cattle Research and Education Center in Ona, Florida, with a 60% research and 40% extension appointment (PhD, University of Sao Paulo). Her program covers nutrient cycling, phosphorus mitigation, water quality, and soil carbon and greenhouse gas dynamics in subtropical grazing lands.",
+   "bio_source_url": "https://rcrec-ona.ifas.ufl.edu/about/directory/faculty/maria-silveira/",
+   "research_interests": "nutrient cycling in grasslands; phosphorus transport mitigation; water quality; soil carbon sequestration in grazing lands",
+   "research_interests_source_url": "https://rcrec-ona.ifas.ufl.edu/about/directory/faculty/maria-silveira/"
+  },
+  {
+   "key": "amartya-saha",
+   "existing_person_id": null,
+   "name": "Amartya Saha",
+   "name_given": "Amartya",
+   "name_family": "Saha",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.archbold-station.org/people/amartya-saha/",
+   "bio": "Ecohydrologist and instrumentation specialist at Archbold Biological Station. Leads the technical side of Northern Everglades projects that retain water and nutrients on the landscape, participant in LTAR water quantity and quality groups, and responsible for environmental monitoring instruments across Archbold and partner ranch properties.",
+   "bio_source_url": "https://www.archbold-station.org/people/amartya-saha/",
+   "research_interests": "ecohydrology; evapotranspiration measurement; nutrient cycling on ranchlands; groundwater; watershed management",
+   "research_interests_source_url": "https://www.archbold-station.org/people/amartya-saha/"
+  }
+ ],
+ "affiliations": [
+  {
+   "facility_id": "e0c0478a89902693",
+   "person_key": "adam-schreiner-mcgraw",
+   "role": "lead-PI",
+   "title": "LTAR Site Lead, Central Mississippi River Basin",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ltar.ars.usda.gov/contact/",
+   "evidence": "LTAR Network Site Leads ... Central Mississippi River Basin CMRB Adam Schreiner-McGraw",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "e0c0478a89902693",
+   "person_key": "kenneth-sudduth",
+   "role": "leadership-team",
+   "title": "Research Leader, USDA-ARS Cropping Systems and Water Quality Research Unit (operates CMRB)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2021,
+   "end_year": null,
+   "source_url": "https://www.ars.usda.gov/midwest-area/columbia-mo/cropping-systems-and-water-quality-research/people/kenneth-sudduth/",
+   "evidence": "has been Research Leader of the Cropping Systems and Water Quality Research Unit since early 2021",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "e0c0478a89902693",
+   "person_key": "claire-baffaut",
+   "role": "lead-PI",
+   "title": "Former CMRB LTAR Site Lead (research hydrologist)",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ltar.ars.usda.gov/sites/cmrb/",
+   "evidence": "Ken Sudduth (RL), Claire Baffaut (Lead), Lori Abendroth, Newell Kitchen, Adam Schreiner-McGraw, Kristen Veum",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "e0c0478a89902693",
+   "person_key": "lori-abendroth",
+   "role": "leadership-team",
+   "title": "CMRB LTAR leadership team; Research Agronomist, USDA-ARS",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ltar.ars.usda.gov/sites/cmrb/",
+   "evidence": "Ken Sudduth (RL), Claire Baffaut (Lead), Lori Abendroth, Newell Kitchen, Adam Schreiner-McGraw, Kristen Veum",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "e0c0478a89902693",
+   "person_key": "newell-kitchen",
+   "role": "leadership-team",
+   "title": "CMRB LTAR leadership team",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ltar.ars.usda.gov/sites/cmrb/",
+   "evidence": "Ken Sudduth (RL), Claire Baffaut (Lead), Lori Abendroth, Newell Kitchen, Adam Schreiner-McGraw, Kristen Veum",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "e0c0478a89902693",
+   "person_key": "kristen-veum",
+   "role": "leadership-team",
+   "title": "CMRB LTAR leadership team",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ltar.ars.usda.gov/sites/cmrb/",
+   "evidence": "Ken Sudduth (RL), Claire Baffaut (Lead), Lori Abendroth, Newell Kitchen, Adam Schreiner-McGraw, Kristen Veum",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "5e4bb7d8bb451165",
+   "person_key": "alisa-coffin",
+   "role": "lead-PI",
+   "title": "LTAR Site Lead, Gulf Atlantic Coastal Plain",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ltar.ars.usda.gov/contact/",
+   "evidence": "Gulf Atlantic Coastal Plain GACP Alisa Coffin",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "5e4bb7d8bb451165",
+   "person_key": "david-bosch",
+   "role": "leadership-team",
+   "title": "GACP LTAR leadership team; Research Hydrologist, USDA-ARS SEWRL",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ltar.ars.usda.gov/sites/gacp/",
+   "evidence": "Alisa Coffin (Site Lead), David Bosch, Dinku Endale, Oliva Pisani, William Anderson, and Dawn Olson",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "5e4bb7d8bb451165",
+   "person_key": "oliva-pisani",
+   "role": "leadership-team",
+   "title": "GACP LTAR leadership team; Research Chemist, USDA-ARS SEWRL",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ltar.ars.usda.gov/sites/gacp/",
+   "evidence": "Alisa Coffin (Site Lead), David Bosch, Dinku Endale, Oliva Pisani, William Anderson, and Dawn Olson",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "5e4bb7d8bb451165",
+   "person_key": "dinku-endale",
+   "role": "leadership-team",
+   "title": "GACP LTAR leadership team (USDA-ARS SEWRL, Tifton)",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ltar.ars.usda.gov/sites/gacp/",
+   "evidence": "Alisa Coffin (Site Lead), David Bosch, Dinku Endale, Oliva Pisani, William Anderson, and Dawn Olson",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "5e4bb7d8bb451165",
+   "person_key": "dawn-olson",
+   "role": "leadership-team",
+   "title": "GACP LTAR leadership team (USDA-ARS SEWRL, Tifton)",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ltar.ars.usda.gov/sites/gacp/",
+   "evidence": "Alisa Coffin (Site Lead), David Bosch, Dinku Endale, Oliva Pisani, William Anderson, and Dawn Olson",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "c48616d33f3858df",
+   "person_key": "martin-locke",
+   "role": "lead-PI",
+   "title": "LTAR Site Lead, Lower Mississippi River Basin",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ltar.ars.usda.gov/contact/",
+   "evidence": "Lower Mississippi River Basin LMRB Martin Locke",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "c48616d33f3858df",
+   "person_key": "martin-locke",
+   "role": "director",
+   "title": "Laboratory Director, USDA-ARS National Sedimentation Laboratory (coordinates LMRB LTAR)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.ars.usda.gov/southeast-area/oxford-ms/national-sedimentation-laboratory/people/martin-locke/",
+   "evidence": "Dr. Locke is Director of the USDA-ARS National Sedimentation Laboratory",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "c48616d33f3858df",
+   "person_key": "jr-rigby",
+   "role": "leadership-team",
+   "title": "Former LMRB LTAR leadership team (research hydrologist, USDA-ARS NSL); now USGS",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ltar.ars.usda.gov/sites/lmrb/",
+   "evidence": "Martin Locke (RL), J.R. Rigby",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "24cd3c19daa326ac",
+   "person_key": "mark-liebig",
+   "role": "lead-PI",
+   "title": "LTAR Site Lead (co-lead), Northern Plains",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ltar.ars.usda.gov/contact/",
+   "evidence": "Northern Plains NP Mark Liebig David Toledo",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "24cd3c19daa326ac",
+   "person_key": "david-toledo",
+   "role": "lead-PI",
+   "title": "LTAR Site Lead (co-lead), Northern Plains",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ltar.ars.usda.gov/contact/",
+   "evidence": "Northern Plains NP Mark Liebig David Toledo",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "24cd3c19daa326ac",
+   "person_key": "david-archer",
+   "role": "scientist",
+   "title": "Research Agricultural Scientist, USDA-ARS NGPRL",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.ars.usda.gov/plains-area/mandan-nd/ngprl/docs/research-scientists/",
+   "evidence": "ARS-USDA Scientists David Archer Research Agricultural Scientist",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "24cd3c19daa326ac",
+   "person_key": "david-archer",
+   "role": "leadership-team",
+   "title": "Research Leader, Northern Great Plains Research Laboratory (2017-2025)",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": 2017,
+   "end_year": 2025,
+   "source_url": "https://pub.orcid.org/v3.0/0000-0002-4816-7040/employments",
+   "evidence": "Northern Great Plains Research Laboratory ... Research Leader (Agricultural Economist)",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "24cd3c19daa326ac",
+   "person_key": "john-hendrickson",
+   "role": "leadership-team",
+   "title": "NP LTAR leadership team; Rangeland Scientist, USDA-ARS NGPRL",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ltar.ars.usda.gov/sites/np/",
+   "evidence": "David Archer (RL), Igathi Cannayen (NDSU), Jennifer Carter, Jonathan Halvorson, John Hendrickson",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "e9c76e4040d836f4",
+   "person_key": "curtis-dell",
+   "role": "lead-PI",
+   "title": "LTAR Site Lead, Upper Chesapeake Bay",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ltar.ars.usda.gov/contact/",
+   "evidence": "Upper Chesapeake Bay UCB Curt Dell",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "e9c76e4040d836f4",
+   "person_key": "curtis-dell",
+   "role": "co-PI",
+   "title": "Croplands Lead, UCB LTAR",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ltar.ars.usda.gov/sites/ucb/",
+   "evidence": "Curt Dell (Croplands Lead)",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "e9c76e4040d836f4",
+   "person_key": "carrie-laboski",
+   "role": "lead-PI",
+   "title": "Former UCB LTAR Site Lead; former Research Leader, USDA-ARS PSWMRU",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": null,
+   "end_year": 2025,
+   "source_url": "https://ltar.ars.usda.gov/sites/ucb/",
+   "evidence": "Carrie Laboski (Site Lead)",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "e9c76e4040d836f4",
+   "person_key": "ray-bryant",
+   "role": "coordinator",
+   "title": "Site Coordinator, UCB LTAR",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ltar.ars.usda.gov/sites/ucb/",
+   "evidence": "Ray Bryant (site coordinator)",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "e9c76e4040d836f4",
+   "person_key": "kathy-soder",
+   "role": "co-PI",
+   "title": "Grazinglands Lead, UCB LTAR",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ltar.ars.usda.gov/sites/ucb/",
+   "evidence": "Kathy Soder (Grazinglands Lead)",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "e9c76e4040d836f4",
+   "person_key": "tamie-veith",
+   "role": "leadership-team",
+   "title": "UCB LTAR lead investigator",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ltar.ars.usda.gov/sites/ucb/",
+   "evidence": "Lead investigators: Ray Bryant (site coordinator), Kathy Soder (Grazinglands Lead), Curt Dell (Croplands Lead), Tamie Veith",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "21c354cce32aa829",
+   "person_key": "betsey-boughton",
+   "role": "lead-PI",
+   "title": "LTAR Site Lead and PI, Archbold-University of Florida",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ltar.ars.usda.gov/contact/",
+   "evidence": "Archbold-University of Florida ABS-UF Elizabeth Boughton",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "21c354cce32aa829",
+   "person_key": "betsey-boughton",
+   "role": "director",
+   "title": "Director of Science (from Jan 2026) and Agroecology Program Director, Archbold Biological Station",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2026,
+   "end_year": null,
+   "source_url": "https://www.archbold-station.org/news-and-media/science-director-announcement/",
+   "evidence": "Dr. Betsey Boughton Named Director of Science",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "21c354cce32aa829",
+   "person_key": "hilary-swain",
+   "role": "former-director",
+   "title": "Executive Director, Archbold Biological Station (1995-2025); ABS-UF LTAR lead investigator",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": 1995,
+   "end_year": 2025,
+   "source_url": "https://www.archbold-station.org/people/hillary-swain/",
+   "evidence": "Executive Director of Archbold Biological Station from 1995 to 2025.",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "21c354cce32aa829",
+   "person_key": "jen-owen",
+   "role": "executive-officer",
+   "title": "Executive Director and CEO, Archbold Biological Station (organization managing the ABS-UF LTAR sites)",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": 2025,
+   "end_year": null,
+   "source_url": "https://www.archbold-station.org/people/jowen/",
+   "evidence": "Jen Owen joined Archbold as Executive Director & CEO in 2025.",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "21c354cce32aa829",
+   "person_key": "maria-silveira",
+   "role": "co-PI",
+   "title": "Lead investigator (University of Florida), ABS-UF LTAR",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ltar.ars.usda.gov/sites/abs-uf/",
+   "evidence": "Lead investigators: Archbold Biological Station—Hilary Swain, Elizabeth Boughton and University of Florida—Maria Silveira.",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "21c354cce32aa829",
+   "person_key": "amartya-saha",
+   "role": "scientist",
+   "title": "Ecohydrologist/Instrumentation Specialist, Archbold Biological Station",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.archbold-station.org/people/amartya-saha/",
+   "evidence": "member of the USDA Long-term Agroecological Research water quantity/quality research groups",
+   "confidence": "high"
+  }
+ ],
+ "verifications": []
+}

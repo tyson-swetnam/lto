@@ -1,0 +1,247 @@
+{
+ "batch_id": "R-PEOPLE2-HYDRO-CRYO-01b",
+ "retrieved_at": "2026-10-22",
+ "verified_by": "adversarial-verifier 2026-10-22",
+ "facilities": [
+  {
+   "facility_id": "7f64827854c9c9ce",
+   "pages_fetched": [
+    {
+     "url": "https://wcc.sc.egov.usda.gov/nwcc/site?sitenum=522",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/stations?stationTriplets=*:WY:SNTL&returnStationElements=false&activeOnly=false",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/stations?stationTriplets=*:*:SNTL&returnStationElements=false&activeOnly=false",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/nwcc/site?sitenum=1102",
+     "status": 200
+    },
+    {
+     "url": "https://nrcs-prod.azureedge.us/colorado/colorado-snow-survey/contact-colorado-snow-survey",
+     "status": 200
+    },
+    {
+     "url": "https://nrcs-prod.azureedge.us/contact/state-office-contacts/colorado-state-and-area-office-contacts",
+     "status": 200
+    },
+    {
+     "url": "https://www.nrcs.usda.gov/colorado/colorado-snow-survey/contact-colorado-snow-survey",
+     "status": 0
+    }
+   ],
+   "notes": "FACILITY RECORD LIKELY WRONG. The stored URL (sitenum=522) resolves to Hickerson Park SNOTEL, Daggett Co., Utah, not Hayden Pass. The NRCS AWDB station list has no Hayden Pass SNOTEL in Wyoming; the only one is 1102:CO:SNTL, Saguache Co., Colorado (38.293, -105.850), reporting since 2007-08-28. The DB location (44.67, -110.43, Park Co., WY, est. 1979) matches neither. SNOTEL stations have no on-site staff; they are run by the NRCS state snow survey office. Brian Domonkos (Colorado Snow Survey Supervisor) is attached at low confidence because he oversees the only real Hayden Pass station. Drop that link if the facility is re-pointed to a Wyoming station. www.nrcs.usda.gov timed out; its azureedge mirror served the same pages. VERIFIER 2026-10-22: re-fetched sitenum=522 (Hickerson Park, Daggett Co., UT) and 1102 (Hayden Pass, Saguache Co., CO, reporting since 2007-08-28). Facility identity is broken (WY coordinates, UT URL, CO namesake), so no person can be tied to it; Brian Domonkos link DROPPED (CO statewide contact page never names this station)."
+  },
+  {
+   "facility_id": "958fefd76c3e1ad2",
+   "pages_fetched": [
+    {
+     "url": "https://wcc.sc.egov.usda.gov/nwcc/site?sitenum=1091",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/stations?stationTriplets=*:AK:SNTL&returnStationElements=false&activeOnly=false",
+     "status": 200
+    },
+    {
+     "url": "https://nrcs-prod.azureedge.us/contact/state-office-contacts/alaska-state-office",
+     "status": 200
+    },
+    {
+     "url": "https://nrcs-prod.azureedge.us/sites/default/files/2026-05/April_2026_WSOR.pdf",
+     "status": 200
+    },
+    {
+     "url": "https://www.nrcs.usda.gov/contact/state-office-contacts/alaska-state-office",
+     "status": 0
+    }
+   ],
+   "notes": "The station page confirms Independence Mine SNOTEL 1091, Matanuska-Susitna Co., AK, reporting since 1997-10-01; the DB's established=1982 may refer to an earlier snow course. A separate 'Old Independence Mine' (1315:AK:SNTL) ran 1997-2021. The station has no named site staff. It is run by the NRCS Alaska Snow Survey (Palmer), whose April 2026 Water Supply Outlook Report covers Independence Mine SNOTEL and lists the staff below. The Alaska state office contacts page names Daniel Fisher as Alaska Snow Survey Program Manager. VERIFIER 2026-10-22: re-fetched sitenum=1091 (Independence Mine, Matanuska-Susitna, since 1997-10-01) and April 2026 WSOR (lists Independence Mine SNOTEL; published by the Snow, Water and Climate Staff, Palmer). Kept Daniel Fisher as program manager at medium confidence (program-level, not station-level). DROPPED DeMarco, Austin, Vorderbruggen: statewide staff list, nothing ties them to this station."
+  },
+  {
+   "facility_id": "ca47109d352ad2d8",
+   "pages_fetched": [
+    {
+     "url": "https://wcc.sc.egov.usda.gov/nwcc/site?sitenum=2009",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/stations?stationTriplets=*:GA:SCAN&returnStationElements=false&activeOnly=false",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/nwcc/site?sitenum=2027",
+     "status": 200
+    },
+    {
+     "url": "https://ltar.ars.usda.gov/sites/gacp",
+     "status": 200
+    },
+    {
+     "url": "https://www.ars.usda.gov/southeast-area/tifton-ga/southeast-watershed-research/",
+     "status": 200
+    },
+    {
+     "url": "https://www.ars.usda.gov/southeast-area/tifton-ga/southeast-watershed-research/people/",
+     "status": 404
+    },
+    {
+     "url": "https://www.ars.usda.gov/people-locations/people-list/?modeCode=60-48-05-00",
+     "status": 200
+    },
+    {
+     "url": "https://nrcs-prod.azureedge.us/resources/data-and-reports/soil-climate-analysis-network",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0003-1608-1776/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0003-1608-1776/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0001-9021-8705/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0001-9021-8705/employments",
+     "status": 200
+    }
+   ],
+   "notes": "WRONG SITE NUMBER. sitenum=2009 is Wakulla #1 SCAN, Leon Co., Florida. The real Little River SCAN station is 2027:GA:SCAN, Tift Co. (31.5, -83.55), reporting from 1999-05-19 and DISCONTINUED 2025-12-10 per its NWCC page; the DB's established=1992 is unconfirmed. SCAN is administered nationally by the NWCC, and no SCAN page names station staff. The station sat in the USDA-ARS Little River Experimental Watershed; the GACP LTAR page lists SCAN among the networks it shares data with and names the site leaders. Coffin and Bosch are attached as host-site leaders, not SCAN operators, and the ARS people list loads dynamically (no names in HTML). VERIFIER 2026-10-22: re-fetched sitenum=2009 (Wakulla #1, Leon Co., FL) and 2027 (Little River, Tift Co., GA, 1999-05-19 to discontinued 2025-12-10). DROPPED Coffin and Bosch: the GACP LTAR page is about the LTAR site and only lists SCAN as a data-sharing network; it does not name them for the NRCS SCAN station. Both are already carried for the GACP LTAR facility in R-PEOPLE2-LTAR-ARS-01a."
+  },
+  {
+   "facility_id": "f04cb9aa1708ed19",
+   "pages_fetched": [
+    {
+     "url": "https://wcc.sc.egov.usda.gov/nwcc/site?sitenum=2030",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/stations?stationTriplets=*:PA:SCAN&returnStationElements=false&activeOnly=false",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/nwcc/site?sitenum=2028",
+     "status": 200
+    },
+    {
+     "url": "https://ltar.ars.usda.gov/sites/ucb",
+     "status": 200
+    },
+    {
+     "url": "https://www.ars.usda.gov/northeast-area/up-pa/pswmru/",
+     "status": 200
+    },
+    {
+     "url": "https://www.ars.usda.gov/northeast-area/up-pa/pswmru/people/",
+     "status": 404
+    },
+    {
+     "url": "https://www.ars.usda.gov/people-locations/people-list/?modeCode=80-70-05-00",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0003-2050-767X/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0003-2050-767X/employments",
+     "status": 200
+    }
+   ],
+   "notes": "WRONG SITE NUMBER. sitenum=2030 is UAPB-Lonoke Farm SCAN, Arkansas. The real Mahantango Creek SCAN station is 2028:PA:SCAN ('Mahantango Ck', Northumberland Co., 40.673, -76.667), active and reporting since 1999-04-27. The UCB LTAR page says NRCS has run a SCAN site at the USDA-ARS Klingerstown Field Station since 1999. That page (modified Nov 19, 2025) names Carrie Laboski as UCB Site Lead and Ray Bryant as site coordinator. Laboski's ORCID record, however, ends her ARS PSWMRU Research Leader role in 2025 and lists her as Penn State Ecosystem Science and Management Department Head from 2025, so her LTAR listing may be stale. Both are host-site leaders, not SCAN operators. The Bryant ORCID search hits had no employment, so no ORCID was assigned. VERIFIER 2026-10-22: re-fetched sitenum=2030 (UAPB-Lonoke Farm, AR) and 2028 (Mahantango Ck, Northumberland Co., PA, since 1999-04-27). UCB LTAR page says 'USDA-NRCS has operated a SCAN site at the Klingerstown Field Station since 1999' but names no SCAN personnel. DROPPED Laboski (LTAR lead, not SCAN; ORCID shows she left ARS in 2025) and Bryant (LTAR site coordinator, not SCAN). Both are carried for UCB LTAR in R-PEOPLE2-LTAR-ARS-01a."
+  },
+  {
+   "facility_id": "96e8914dc5bde58c",
+   "pages_fetched": [
+    {
+     "url": "https://wcc.sc.egov.usda.gov/nwcc/site?sitenum=2031",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/stations?stationTriplets=*:KY:SCAN&returnStationElements=false&activeOnly=false",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/nwcc/site?sitenum=2079",
+     "status": 200
+    },
+    {
+     "url": "https://nrcs-prod.azureedge.us/resources/data-and-reports/soil-climate-analysis-network",
+     "status": 200
+    }
+   ],
+   "notes": "WRONG SITE NUMBER. sitenum=2031 is Ames SCAN, Boone Co., Iowa. The real Mammoth Cave SCAN station is 2079:KY:SCAN, Hart Co. (37.186, -86.041), reporting since 2003-08-28; the DB's established=1996 is unconfirmed. SCAN is administered by the NRCS National Water and Climate Center, and no fetched page names a station operator, host-park contact or NWCC SCAN manager. Web search budget was exhausted before Mammoth Cave NP pages could be found. No people added. VERIFIER 2026-10-22: re-fetched sitenum=2031 (Ames, Boone Co., IA) and 2079 (Mammoth Cave, Hart Co., KY, since 2003-08-28). No people."
+  },
+  {
+   "facility_id": "9fe52abe466eb473",
+   "pages_fetched": [
+    {
+     "url": "https://wcc.sc.egov.usda.gov/nwcc/site?sitenum=614",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/stations?stationTriplets=*:CA:SNTL&returnStationElements=false&activeOnly=false",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/stations?stationTriplets=*:*:SNTL&returnStationElements=false&activeOnly=false",
+     "status": 200
+    },
+    {
+     "url": "https://cdec.water.ca.gov/dynamicapp/staMeta?station_id=MHP",
+     "status": 200
+    },
+    {
+     "url": "https://cdec.water.ca.gov/snow/",
+     "status": 200
+    },
+    {
+     "url": "https://water.ca.gov/Programs/Flood-Management/Flood-Data/Snow-Surveys",
+     "status": 403
+    }
+   ],
+   "notes": "NOT A SNOTEL STATION. sitenum=614 is Marion Forks SNOTEL, Linn Co., Oregon, and AWDB lists no 'Mammoth Pass' SNOTEL anywhere. The DB coordinates (37.6117, -119.0317) match CDEC station MHP 'MAMMOTH PASS (USBR)': Mono Co., 9300 ft, Operator US Bureau of Reclamation, Maintenance CA Dept of Water Resources/DFM-Hydro-SMN. The facility should be re-attributed to USBR/CA DWR (California Cooperative Snow Surveys) and its URL changed to the CDEC page. The CDEC snow page names only Frank Gehrke as program chief, in old dated news items, so he is not used as a current holder. No people added. VERIFIER 2026-10-22: re-fetched sitenum=614 (Marion Forks, Linn Co., OR) and CDEC staMeta MHP ('MAMMOTH PASS (USBR)', Mono Co., 9300 ft, Operator US Bureau of Reclamation, Maintenance CA DWR/DFM-Hydro-SMN). No people."
+  }
+ ],
+ "people": [
+  {
+   "key": "daniel-fisher-nrcs-ak",
+   "existing_person_id": null,
+   "name": "Daniel Fisher",
+   "name_given": "Daniel",
+   "name_family": "Fisher",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Snow Survey Program Manager for the USDA Natural Resources Conservation Service in Alaska, working from the Palmer snow survey office and heading the Snow, Water and Climate staff that publish the state's water supply outlook reports.",
+   "bio_source_url": "https://nrcs-prod.azureedge.us/sites/default/files/2026-05/April_2026_WSOR.pdf",
+   "research_interests": null,
+   "research_interests_source_url": null
+  }
+ ],
+ "affiliations": [
+  {
+   "facility_id": "958fefd76c3e1ad2",
+   "person_key": "daniel-fisher-nrcs-ak",
+   "role": "manager",
+   "title": "Snow Survey Program Manager, NRCS Alaska Snow, Water and Climate Staff (Palmer); program operates Independence Mine SNOTEL",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://nrcs-prod.azureedge.us/sites/default/files/2026-05/April_2026_WSOR.pdf",
+   "evidence": "Daniel Fisher, Snow Survey Program Manager",
+   "confidence": "medium"
+  }
+ ],
+ "verifications": []
+}

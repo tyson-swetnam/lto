@@ -1,0 +1,597 @@
+{
+ "batch_id": "R-PEOPLE2-NEON-06",
+ "retrieved_at": "2026-10-22",
+ "verified_by": "adversarial-verifier 2026-10-22",
+ "facilities": [
+  {
+   "facility_id": "be8b6d44ff832f25",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/wood",
+     "status": 200
+    },
+    {
+     "url": "https://ameriflux.lbl.gov/sites/siteinfo/US-xWD",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=0",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=1",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=2",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=3",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=4",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=5",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/andrea-anteau",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/adam-young",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/chris-florian",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/david-durden",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/cove-sturtevant",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0003-4217-0684/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0003-4217-0684/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0001-9572-8325/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0001-9572-8325/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-0341-3228/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-0341-3228/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0001-5939-3206/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0001-5939-3206/employments",
+     "status": 200
+    }
+   ],
+   "notes": "NEON Domain D09 (Northern Plains) terrestrial site; D09 support facility in Jamestown, ND. Site host: Chase Lake National Wildlife Refuge (USFWS, https://www.fws.gov/refuge/chase_lake/); no host staff named on the NEON page. Colocated: Prairie Pothole (PRPO) aquatic site, NADP, CZEN, AmeriFlux US-xWD. AmeriFlux lists the PI as the NEON program (an institution, not a person); the four named flux/data contacts are NEON-HQ staff shared across NEON towers, so they are attached at medium confidence and not as key personnel."
+  },
+  {
+   "facility_id": "c2767c8d8393da9c",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/yell",
+     "status": 200
+    },
+    {
+     "url": "https://ameriflux.lbl.gov/sites/siteinfo/US-xYE",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=0",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=1",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=2",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=3",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=4",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=5",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/amy-jacobs",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/adam-young",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/chris-florian",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/david-durden",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/cove-sturtevant",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0003-4217-0684/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0003-4217-0684/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0001-9572-8325/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0001-9572-8325/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-0341-3228/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-0341-3228/employments",
+     "status": 200
+    }
+   ],
+   "notes": "NEON Domain D12 (Northern Rockies) terrestrial site; D12 support facility in Bozeman, MT. Site host: Yellowstone National Park (NPS); research permits through IRMA. Park leadership is recorded on the colocated Yellowstone Biosphere Reserve facility, not repeated here. Colocated: Blacktail Deer Creek (BLDE) aquatic site, NADP Tower Falls, CZEN, AmeriFlux US-xYE. AmeriFlux PI is the NEON program itself; flux/data contacts are NEON-HQ staff. Several ORCID records named Amy Jacobs exist, none tied to NEON, so no ORCID assigned."
+  },
+  {
+   "facility_id": "f2a5e9e3d2aa52cf",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/clbj",
+     "status": 200
+    },
+    {
+     "url": "https://ameriflux.lbl.gov/sites/siteinfo/US-xCL",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=0",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=1",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=2",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=3",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=4",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=5",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/joe-buck",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/adam-young",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/chris-florian",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/david-durden",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/cove-sturtevant",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0003-4217-0684/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0003-4217-0684/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0001-9572-8325/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0001-9572-8325/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-0341-3228/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-0341-3228/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0009-0001-9656-7305/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0009-0001-9656-7305/employments",
+     "status": 200
+    },
+    {
+     "url": "https://www.fs.usda.gov/detail/texas/about-forest/districts/?cid=fswdev3_008440",
+     "status": 200
+    },
+    {
+     "url": "https://www.fs.usda.gov/r08/texas/offices",
+     "status": 200
+    },
+    {
+     "url": "https://www.fs.usda.gov/r08/texas/offices/caddo-lyndon-b-johnson-national-grasslands",
+     "status": 200
+    },
+    {
+     "url": "https://www.fs.usda.gov/r08/texas/about-area/districts",
+     "status": 404
+    },
+    {
+     "url": "https://www.fs.usda.gov/r08/texas/contact-us",
+     "status": 200
+    }
+   ],
+   "notes": "NEON Domain D11 (Southern Plains) terrestrial site; D11 support facility in Denton, TX. Site host: Caddo-LBJ National Grasslands (USFS, Decatur, TX ranger district); NEON page asks researchers not to contact the host and to coordinate through the D11 manager. Colocated: Pringle Creek (PRIN) aquatic site, CZEN, AmeriFlux US-xCL. Joe Buck's ORCID employment record shows NEON Domain Manager from 2025. The USFS district pages fetched name no staff, so the existing recall-sourced 'Bob Wells' row could not be found; a web search also turned up nothing linking that name to the grassland."
+  }
+ ],
+ "people": [
+  {
+   "key": "andrea-anteau",
+   "existing_person_id": null,
+   "name": "Andrea Anteau",
+   "name_given": "Andrea",
+   "name_family": "Anteau",
+   "orcid": "0000-0001-5939-3206",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0001-5939-3206/employments",
+   "homepage_url": "https://www.neonscience.org/person/andrea-anteau",
+   "bio": "Field operations manager for NEON's Northern Plains domain (D09). Ecologist and educator with about two decades in ecological research, including wetland and amphibian ecology in North Dakota and desert soil microbial work in New Mexico; holds an ecology M.S. from the University of New Mexico.",
+   "bio_source_url": "https://www.neonscience.org/person/andrea-anteau",
+   "research_interests": "wetland ecology; amphibian ecology; coastal wetland biogeochemistry; desert soil microbial ecology; science education",
+   "research_interests_source_url": "https://www.neonscience.org/person/andrea-anteau"
+  },
+  {
+   "key": "amy-jacobs",
+   "existing_person_id": null,
+   "name": "Amy Jacobs",
+   "name_given": "Amy",
+   "name_family": "Jacobs",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.neonscience.org/person/amy-jacobs",
+   "bio": "NEON field operations manager for the Northern Rockies (D12) and Great Basin (D15) domains, based in Salt Lake City. Earlier work covered marine bacterioplankton responses to environmental stress and leading a Florida state program restoring oyster, seagrass, salt-marsh and dune habitats. M.S. in Biology, University of West Florida.",
+   "bio_source_url": "https://www.neonscience.org/person/amy-jacobs",
+   "research_interests": "marine microbial ecology; coastal and estuarine habitat restoration",
+   "research_interests_source_url": "https://www.neonscience.org/person/amy-jacobs"
+  },
+  {
+   "key": "joe-buck",
+   "existing_person_id": null,
+   "name": "Joe Buck",
+   "name_given": "Joe",
+   "name_family": "Buck",
+   "orcid": "0009-0001-9656-7305",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0009-0001-9656-7305/employments",
+   "homepage_url": "https://www.neonscience.org/person/joe-buck",
+   "bio": "Manager of the NEON Domain 11 (Southern Plains) field office within NEON Field Science.",
+   "bio_source_url": "https://www.neonscience.org/person/joe-buck",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "david-durden",
+   "existing_person_id": null,
+   "name": "David Durden",
+   "name_given": "David",
+   "name_family": "Durden",
+   "orcid": "0000-0001-9572-8325",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0001-9572-8325/employments",
+   "homepage_url": "https://www.neonscience.org/person/david-durden",
+   "bio": "Senior research scientist in NEON's surface-atmosphere exchange data science group, designing the eddy-covariance processing pipeline and maintaining the eddy4R software. Joined NEON in 2012 as its first tower technician (Domains 10/13); graduate work at the University of Georgia on nocturnal boundary-layer effects on flux estimates.",
+   "bio_source_url": "https://www.neonscience.org/person/david-durden",
+   "research_interests": "eddy-covariance flux processing; nighttime boundary-layer phenomena (low-level jets, gravity waves); UAS for scaling surface-atmosphere exchange data",
+   "research_interests_source_url": "https://www.neonscience.org/person/david-durden"
+  },
+  {
+   "key": "chris-florian",
+   "existing_person_id": null,
+   "name": "Christopher Florian",
+   "name_given": "Christopher",
+   "name_family": "Florian",
+   "orcid": "0000-0003-4217-0684",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0003-4217-0684/employments",
+   "homepage_url": "https://www.neonscience.org/person/chris-florian",
+   "bio": "Terrestrial Instrument Science Lead within NEON's headquarters science staff.",
+   "bio_source_url": "https://www.neonscience.org/person/chris-florian",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "adam-young",
+   "existing_person_id": null,
+   "name": "Adam Young",
+   "name_given": "Adam",
+   "name_family": "Young",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.neonscience.org/person/adam-young",
+   "bio": "Environmental Scientist II in the surface-atmosphere exchange group of NEON's headquarters science staff.",
+   "bio_source_url": "https://www.neonscience.org/person/adam-young",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "cove-sturtevant",
+   "existing_person_id": null,
+   "name": "Cove Sturtevant",
+   "name_given": "Cove",
+   "name_family": "Sturtevant",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.neonscience.org/person/cove-sturtevant",
+   "bio": "Research scientist and QA/QC lead for NEON's instrumented systems, overseeing data-quality monitoring and control algorithms for terrestrial instrument data. Background spans biometeorology, ecology and aerospace engineering; doctorate in ecology earned at San Diego State.",
+   "bio_source_url": "https://www.neonscience.org/person/cove-sturtevant",
+   "research_interests": "biophysical controls on ecosystem-atmosphere greenhouse gas exchange; effects of environmental change and land management",
+   "research_interests_source_url": "https://www.neonscience.org/person/cove-sturtevant"
+  }
+ ],
+ "affiliations": [
+  {
+   "facility_id": "be8b6d44ff832f25",
+   "person_key": "andrea-anteau",
+   "role": "domain-manager",
+   "title": "NEON Manager, D09: Northern Plains (domain field operations manager)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/person/andrea-anteau",
+   "evidence": "Andrea Anteau is the field operations manager for the Northern Plains - Domain 09.",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "c2767c8d8393da9c",
+   "person_key": "amy-jacobs",
+   "role": "domain-manager",
+   "title": "NEON Manager, D12: Northern Rockies; D15: Great Basin (field operations manager)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/person/amy-jacobs",
+   "evidence": "Amy Jacobs is the Field Operations Manager for Domains 15 (Great Basin) and 12 (Northern Rockies)",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "f2a5e9e3d2aa52cf",
+   "person_key": "joe-buck",
+   "role": "domain-manager",
+   "title": "NEON Manager, D11: Southern Plains (Domain 11 Field Office)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/person/joe-buck",
+   "evidence": "Joe Buck Manager, D11: Southern Plains Domain 11 Field Office Field Science",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "be8b6d44ff832f25",
+   "person_key": "david-durden",
+   "role": "scientist",
+   "title": "AmeriFlux flux contact (US-xWD); Research Scientist, Surface-Atmosphere Exchange - Data Science, NEON",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ameriflux.lbl.gov/sites/siteinfo/US-xWD",
+   "evidence": "FluxContact: David Durden",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "be8b6d44ff832f25",
+   "person_key": "chris-florian",
+   "role": "scientist",
+   "title": "AmeriFlux flux contact (US-xWD); Terrestrial Instrument Science Lead, NEON",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ameriflux.lbl.gov/sites/siteinfo/US-xWD",
+   "evidence": "FluxContact: Christopher Florian",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "be8b6d44ff832f25",
+   "person_key": "adam-young",
+   "role": "technical-staff",
+   "title": "AmeriFlux flux contact (US-xWD); Environmental Scientist II, Surface-Atmosphere Exchange, NEON",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ameriflux.lbl.gov/sites/siteinfo/US-xWD",
+   "evidence": "FluxContact: Adam Young",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "be8b6d44ff832f25",
+   "person_key": "cove-sturtevant",
+   "role": "data-manager",
+   "title": "AmeriFlux data manager (US-xWD); Research Scientist, Instrumented Systems - QA/QC Lead, NEON",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ameriflux.lbl.gov/sites/siteinfo/US-xWD",
+   "evidence": "DataManager: Cove Sturtevant",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "c2767c8d8393da9c",
+   "person_key": "david-durden",
+   "role": "scientist",
+   "title": "AmeriFlux flux contact (US-xYE); Research Scientist, Surface-Atmosphere Exchange - Data Science, NEON",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ameriflux.lbl.gov/sites/siteinfo/US-xYE",
+   "evidence": "FluxContact: David Durden",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "c2767c8d8393da9c",
+   "person_key": "chris-florian",
+   "role": "scientist",
+   "title": "AmeriFlux flux contact (US-xYE); Terrestrial Instrument Science Lead, NEON",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ameriflux.lbl.gov/sites/siteinfo/US-xYE",
+   "evidence": "FluxContact: Christopher Florian",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "c2767c8d8393da9c",
+   "person_key": "adam-young",
+   "role": "technical-staff",
+   "title": "AmeriFlux flux contact (US-xYE); Environmental Scientist II, Surface-Atmosphere Exchange, NEON",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ameriflux.lbl.gov/sites/siteinfo/US-xYE",
+   "evidence": "FluxContact: Adam Young",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "c2767c8d8393da9c",
+   "person_key": "cove-sturtevant",
+   "role": "data-manager",
+   "title": "AmeriFlux data manager (US-xYE); Research Scientist, Instrumented Systems - QA/QC Lead, NEON",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ameriflux.lbl.gov/sites/siteinfo/US-xYE",
+   "evidence": "DataManager: Cove Sturtevant",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "f2a5e9e3d2aa52cf",
+   "person_key": "david-durden",
+   "role": "scientist",
+   "title": "AmeriFlux flux contact (US-xCL); Research Scientist, Surface-Atmosphere Exchange - Data Science, NEON",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ameriflux.lbl.gov/sites/siteinfo/US-xCL",
+   "evidence": "FluxContact: David Durden",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "f2a5e9e3d2aa52cf",
+   "person_key": "chris-florian",
+   "role": "scientist",
+   "title": "AmeriFlux flux contact (US-xCL); Terrestrial Instrument Science Lead, NEON",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ameriflux.lbl.gov/sites/siteinfo/US-xCL",
+   "evidence": "FluxContact: Christopher Florian",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "f2a5e9e3d2aa52cf",
+   "person_key": "adam-young",
+   "role": "technical-staff",
+   "title": "AmeriFlux flux contact (US-xCL); Environmental Scientist II, Surface-Atmosphere Exchange, NEON",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ameriflux.lbl.gov/sites/siteinfo/US-xCL",
+   "evidence": "FluxContact: Adam Young",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "f2a5e9e3d2aa52cf",
+   "person_key": "cove-sturtevant",
+   "role": "data-manager",
+   "title": "AmeriFlux data manager (US-xCL); Research Scientist, Instrumented Systems - QA/QC Lead, NEON",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ameriflux.lbl.gov/sites/siteinfo/US-xCL",
+   "evidence": "DataManager: Cove Sturtevant",
+   "confidence": "medium"
+  }
+ ],
+ "verifications": [
+  {
+   "facility_id": "f2a5e9e3d2aa52cf",
+   "person_id": "3da3ce9c04654670",
+   "existing_role": "land-manager",
+   "status": "not-found",
+   "current_holder_key": null,
+   "source_url": "https://www.fs.usda.gov/r08/texas/offices/caddo-lyndon-b-johnson-national-grasslands",
+   "evidence": null
+  }
+ ]
+}

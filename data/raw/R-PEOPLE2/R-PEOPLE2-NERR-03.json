@@ -1,0 +1,1022 @@
+{
+ "batch_id": "R-PEOPLE2-NERR-03",
+ "retrieved_at": "2026-10-22",
+ "verified_by": "adversarial-verifier 2026-10-22",
+ "facilities": [
+  {
+   "facility_id": "0ac30d8999613919",
+   "pages_fetched": [
+    {
+     "url": "https://sapelonerr.org/about-us/staff/",
+     "status": 404
+    },
+    {
+     "url": "https://sapelonerr.org/",
+     "status": 200
+    },
+    {
+     "url": "https://sapelonerr.org/about-us/",
+     "status": 200
+    },
+    {
+     "url": "https://sapelonerr.org/contact-us/",
+     "status": 200
+    },
+    {
+     "url": "https://sapelonerr.org/research/",
+     "status": 200
+    },
+    {
+     "url": "https://sapelonerr.org/research/swmp/",
+     "status": 200
+    },
+    {
+     "url": "https://sapelonerr.org/about-sapelo-island/",
+     "status": 200
+    },
+    {
+     "url": "https://sapelonerr.org/welcome-ethan-bourque-research-coordinator/",
+     "status": 200
+    },
+    {
+     "url": "https://coast.noaa.gov/nerrs/reserves/sapelo-island.html",
+     "status": 200
+    }
+   ],
+   "notes": "Staff from 'Meet Our Team' on sapelonerr.org/about-us (GA DNR Coastal Resources Division reserve). No founding manager named on fetched history pages. ORCID not confirmable for anyone (no record with matching employment)."
+  },
+  {
+   "facility_id": "f16c0b7401a72b61",
+   "pages_fetched": [
+    {
+     "url": "https://www.oregon.gov/dsl/ss/pages/staff.aspx",
+     "status": 200
+    },
+    {
+     "url": "https://www.oregon.gov/dsl/ss/pages/about.aspx",
+     "status": 200
+    },
+    {
+     "url": "https://www.oregon.gov/dsl/ss/Pages/science-research.aspx",
+     "status": 200
+    },
+    {
+     "url": "https://www.oregon.gov/dsl/ss/Pages/Science-Resources.aspx",
+     "status": 200
+    },
+    {
+     "url": "https://www.oregon.gov/dsl/ss/Documents/SSMC_174th.pdf",
+     "status": 200
+    },
+    {
+     "url": "https://sos.oregon.gov/blue-book/Pages/state/executive/state-lands-subdivisions.aspx",
+     "status": 404
+    },
+    {
+     "url": "https://coast.noaa.gov/nerrs/reserves/south-slough.html",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0003-4779-5640/employments",
+     "status": 200
+    }
+   ],
+   "notes": "Oregon DSL staff directory page renders its list client-side (no names in HTML). Roles taken from the South Slough Reserve Management Commission 174th meeting packet (July 8, 2026) and the Science Resources page. Operations manager Rebecca Muse also named on about.aspx (not added). Deborah Rudd moved into Training and Engagement Coordinator role 5/1/26."
+  },
+  {
+   "facility_id": "b5ba4ac41401a0b9",
+   "pages_fetched": [
+    {
+     "url": "https://trnerr.org/about/staff/",
+     "status": 404
+    },
+    {
+     "url": "https://tijuanaestuary.org/",
+     "status": 200
+    },
+    {
+     "url": "https://tijuanaestuary.org/about/our-team/",
+     "status": 200
+    },
+    {
+     "url": "https://coast.noaa.gov/nerrs/reserves/tijuana-river.html",
+     "status": 200
+    }
+   ],
+   "notes": "trnerr.org redirects to tijuanaestuary.org. Reserve is co-managed by CA State Parks and USFWS (Sally Brown, Refuge Manager, San Diego Bay and Tijuana Slough NWRs, also listed on team page, not added). Research program run via Tijuana Estuary Foundation. Kellie Uyeda listed as Adjunct Researcher (not added)."
+  },
+  {
+   "facility_id": "8f8db306000bd353",
+   "pages_fetched": [
+    {
+     "url": "https://waquoitbayreserve.org/about/staff",
+     "status": 200
+    },
+    {
+     "url": "https://waquoitbayreserve.org/about/history",
+     "status": 200
+    },
+    {
+     "url": "https://waquoitbayreserve.org/research-monitoring",
+     "status": 200
+    },
+    {
+     "url": "https://waquoitbayreserve.org/research-monitoring/ask-our-researchers/",
+     "status": 404
+    },
+    {
+     "url": "https://coast.noaa.gov/nerrs/reserves/waquoit-bay.html",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-5258-738X/employments",
+     "status": 200
+    }
+   ],
+   "notes": "Staff page lists the Massachusetts DCR reserve team. History page names no founding manager. No individual profile pages found, so no bios."
+  },
+  {
+   "facility_id": "def52201a4873868",
+   "pages_fetched": [
+    {
+     "url": "https://weeksbay.org/",
+     "status": 200
+    },
+    {
+     "url": "https://outdooralabama.com/weeks-bay-reserve",
+     "status": 200
+    },
+    {
+     "url": "https://outdooralabama.com/lands/weeks-bay-reserve",
+     "status": 200
+    },
+    {
+     "url": "https://www.outdooralabama.com/weeks-bay-reserve/weeks-bay-research",
+     "status": 200
+    },
+    {
+     "url": "https://coast.noaa.gov/nerrs/reserves/weeks-bay.html",
+     "status": 200
+    }
+   ],
+   "notes": "weeksbay.org now redirects to South Alabama Land Trust (former Weeks Bay Foundation), not the reserve. Staff list from Alabama DCNR outdooralabama.com reserve page; no Research Coordinator is listed there (only a Research and Monitoring Technician), so that role is unfilled/unknown. No profile pages for bios."
+  },
+  {
+   "facility_id": "80edf691ec74a1ad",
+   "pages_fetched": [
+    {
+     "url": "https://www.wellsreserve.org/about/staff",
+     "status": 404
+    },
+    {
+     "url": "https://wellsreserve.org/",
+     "status": 200
+    },
+    {
+     "url": "https://wellsreserve.org/about-us/people",
+     "status": 200
+    },
+    {
+     "url": "https://wellsreserve.org/about-us/people/jennifer-seavey",
+     "status": 200
+    },
+    {
+     "url": "https://wellsreserve.org/about-us/people/jason-goldstein",
+     "status": 200
+    },
+    {
+     "url": "https://wellsreserve.org/about-us/people/jacob-aman",
+     "status": 200
+    },
+    {
+     "url": "https://wellsreserve.org/about-us/people/jessica-brunacini",
+     "status": 200
+    },
+    {
+     "url": "https://wellsreserve.org/about-us/people/paul-dest",
+     "status": 200
+    },
+    {
+     "url": "https://coast.noaa.gov/nerrs/reserves/wells.html",
+     "status": 200
+    }
+   ],
+   "notes": "Wells Reserve Management Authority / Laudholm Trust. Paul Dest listed as Director Emeritus; his profile describes his Executive Director tenure from 2001. Nik Charov (President, Laudholm Trust and Wells Reserve Management Authority) and Ben Gutzler (Research Scientist) also listed, not added."
+  }
+ ],
+ "people": [
+  {
+   "key": "rachel-guy",
+   "existing_person_id": null,
+   "name": "Rachel Guy",
+   "name_given": "Rachel",
+   "name_family": "Guy",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "ethan-bourque",
+   "existing_person_id": null,
+   "name": "Ethan Bourque",
+   "name_given": "Ethan",
+   "name_family": "Bourque",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Research Coordinator at Sapelo Island NERR. Earlier worked in the Apalachicola NERR research program from 2014, first as SWMP water-quality technician and from 2018 as nutrient/meteorological technician, maintaining monitoring stations and telemetry and computing net ecosystem metabolism from SWMP data. Bachelor's graduate of Roger Williams University (environmental science, history).",
+   "bio_source_url": "https://sapelonerr.org/welcome-ethan-bourque-research-coordinator/",
+   "research_interests": "estuarine long-term trends from SWMP monitoring; net ecosystem metabolism; estuarine acidification; mangrove range expansion; estuarine gas advection; nekton communities and nursery function; drone imagery of marsh, mangrove and oyster reef change",
+   "research_interests_source_url": "https://sapelonerr.org/welcome-ethan-bourque-research-coordinator/"
+  },
+  {
+   "key": "colby-peffer",
+   "existing_person_id": null,
+   "name": "Colby Peffer",
+   "name_given": "Colby",
+   "name_family": "Peffer",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "adam-mackinnon",
+   "existing_person_id": null,
+   "name": "Adam Mackinnon",
+   "name_given": "Adam",
+   "name_family": "Mackinnon",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "brittany-dodge",
+   "existing_person_id": null,
+   "name": "Brittany Dodge",
+   "name_given": "Brittany",
+   "name_family": "Dodge",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "patricia-fox",
+   "existing_person_id": null,
+   "name": "Patricia Fox",
+   "name_given": "Patricia",
+   "name_family": "Fox",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "shon-schooler",
+   "existing_person_id": null,
+   "name": "Shon Schooler",
+   "name_given": "Shon",
+   "name_family": "Schooler",
+   "orcid": "0000-0003-4779-5640",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0003-4779-5640/employments",
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": "change in South Slough estuary fish communities over 40 years; impacts of invasive 5-spine (green) crabs on native clams",
+   "research_interests_source_url": "https://www.oregon.gov/dsl/ss/Documents/SSMC_174th.pdf"
+  },
+  {
+   "key": "alice-yeates",
+   "existing_person_id": null,
+   "name": "Alice Yeates",
+   "name_given": "Alice",
+   "name_family": "Yeates",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "deborah-rudd",
+   "existing_person_id": null,
+   "name": "Deborah Rudd",
+   "name_given": "Deborah",
+   "name_family": "Rudd",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "jaime-belanger",
+   "existing_person_id": null,
+   "name": "Jaime Belanger",
+   "name_given": "Jaime",
+   "name_family": "Belanger",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "chris-peregrin",
+   "existing_person_id": null,
+   "name": "Chris Peregrin",
+   "name_given": "Chris",
+   "name_family": "Peregrin",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Senior Environmental Scientist with California State Parks who manages the Tijuana River NERR together with two nearby State Parks units (Border Field, Silver Strand). Began in fisheries work in the Sacramento-San Joaquin system, joined State Parks in San Diego in 2000, and has worked at the estuary since 2007 on pollution, restoration and access. B.S., UC Davis.",
+   "bio_source_url": "https://tijuanaestuary.org/about/our-team/",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "jeff-crooks",
+   "existing_person_id": null,
+   "name": "Jeff Crooks",
+   "name_given": "Jeff",
+   "name_family": "Crooks",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Research lead for the Tijuana River NERR through the Tijuana Estuary Foundation since 2002. Chairs the NERRS System-Wide Monitoring Program Oversight Committee and holds adjunct posts at San Diego State, Scripps and University of San Diego. Ph.D. in Oceanography from Scripps; former postdoc at the Smithsonian Environmental Research Center.",
+   "bio_source_url": "https://tijuanaestuary.org/about/our-team/",
+   "research_interests": "science-based adaptive management and restoration of urban coastal ecosystems under multiple stressors; biological invasions as drivers and consequences of environmental change",
+   "research_interests_source_url": "https://tijuanaestuary.org/about/our-team/"
+  },
+  {
+   "key": "kristen-goodrich",
+   "existing_person_id": null,
+   "name": "Kristen Goodrich",
+   "name_given": "Kristen",
+   "name_family": "Goodrich",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Interdisciplinary social scientist who has directed the Tijuana River NERR Training & Engagement Program since 2009, working on the human dimensions of coastal management in the U.S.-Mexico border region. Ph.D. in Social Ecology (UC Irvine); M.A. in Marine Affairs & Policy (University of Miami).",
+   "bio_source_url": "https://tijuanaestuary.org/about/our-team/",
+   "research_interests": "human dimensions of coastal management; cross-border collaboration and boundary spanning in climate adaptation; psychosocial resilience",
+   "research_interests_source_url": "https://tijuanaestuary.org/about/our-team/"
+  },
+  {
+   "key": "lorena-warner-lara",
+   "existing_person_id": null,
+   "name": "Lorena Warner-Lara",
+   "name_given": "Lorena",
+   "name_family": "Warner-Lara",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "California State Parks Environmental Scientist serving as Assistant Reserve Manager at Tijuana River NERR and State Parks liaison to the Tijuana Estuary Foundation board. At the reserve since 1999, having earlier worked there in bilingual education and as a research assistant. Degree in Environmental Studies from UC Santa Cruz.",
+   "bio_source_url": "https://tijuanaestuary.org/about/our-team/",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "michelle-shaffer",
+   "existing_person_id": null,
+   "name": "Michelle Shaffer",
+   "name_given": "Michelle",
+   "name_family": "Shaffer",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Restoration Coordinator at Tijuana River NERR for the Tijuana Estuary Foundation. Over a decade of work on ecological restoration, food-web models and resilience of ecosystems; 2025 Sea Grant Knauss Marine Policy Fellow. Ph.D. in Integrative and Conservation Biology, University of Central Florida.",
+   "bio_source_url": "https://tijuanaestuary.org/about/our-team/",
+   "research_interests": "restoration ecology; food web modeling; ecosystem resilience",
+   "research_interests_source_url": "https://tijuanaestuary.org/about/our-team/"
+  },
+  {
+   "key": "tonna-marie-rogers",
+   "existing_person_id": null,
+   "name": "Tonna-Marie Rogers",
+   "name_given": "Tonna-Marie",
+   "name_family": "Rogers",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "megan-tyrrell",
+   "existing_person_id": null,
+   "name": "Megan Tyrrell",
+   "name_given": "Megan",
+   "name_family": "Tyrrell",
+   "orcid": "0000-0002-5258-738X",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-5258-738X/employments",
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "ryan-clark",
+   "existing_person_id": null,
+   "name": "Ryan Clark",
+   "name_given": "Ryan",
+   "name_family": "Clark",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "kristen-weir",
+   "existing_person_id": null,
+   "name": "Kristen Weir",
+   "name_given": "Kristen",
+   "name_family": "Weir",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "sonia-ahrabi-nejad",
+   "existing_person_id": null,
+   "name": "Sonia Ahrabi-Nejad",
+   "name_given": "Sonia",
+   "name_family": "Ahrabi-Nejad",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "angela-underwood",
+   "existing_person_id": null,
+   "name": "Angela Underwood",
+   "name_given": "Angela",
+   "name_family": "Underwood",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "eric-brunden",
+   "existing_person_id": null,
+   "name": "Eric Brunden",
+   "name_given": "Eric",
+   "name_family": "Brunden",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "johanna-gertsch",
+   "existing_person_id": null,
+   "name": "Johanna Gertsch",
+   "name_given": "Johanna",
+   "name_family": "Gertsch",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "kathy-hicks",
+   "existing_person_id": null,
+   "name": "Kathy Hicks",
+   "name_given": "Kathy",
+   "name_family": "Hicks",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "ashley-griffin",
+   "existing_person_id": null,
+   "name": "Ashley Griffin",
+   "name_given": "Ashley",
+   "name_family": "Griffin",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "jennifer-seavey",
+   "existing_person_id": null,
+   "name": "Jennifer Seavey",
+   "name_given": "Jennifer",
+   "name_family": "Seavey",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://wellsreserve.org/about-us/people/jennifer-seavey",
+   "bio": "Executive Director of the Wells Reserve. Previously Chief Programs Officer at the Island Institute and, for nearly ten years, executive director of the Cornell/UNH Shoals Marine Laboratory; co-founded the Northeast Coastal Stations Alliance. Ph.D. in Natural Resource Conservation, UMass Amherst; M.S. in Wildlife Science, University of Washington.",
+   "bio_source_url": "https://wellsreserve.org/about-us/people/jennifer-seavey",
+   "research_interests": "marine science and conservation; coastal climate resilience; community-centered coastal science",
+   "research_interests_source_url": "https://wellsreserve.org/about-us/people/jennifer-seavey"
+  },
+  {
+   "key": "jason-goldstein",
+   "existing_person_id": null,
+   "name": "Jason Goldstein",
+   "name_given": "Jason",
+   "name_family": "Goldstein",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://wellsreserve.org/about-us/people/jason-goldstein",
+   "bio": "Leads the research program at the Wells Reserve; also teaches as an assistant professor at York County CC and holds UNH affiliate faculty status in marine science and ocean engineering. UNH Ph.D.; former Great Bay Reserve graduate research fellow and Fulbright postdoctoral fellow at the University of Haifa.",
+   "bio_source_url": "https://wellsreserve.org/about-us/people/jason-goldstein",
+   "research_interests": "American lobster movement, larval transport and thermal behavior; European green crab in estuaries; tidal wetland porewater methane",
+   "research_interests_source_url": "https://wellsreserve.org/about-us/people/jason-goldstein"
+  },
+  {
+   "key": "jacob-aman",
+   "existing_person_id": null,
+   "name": "Jacob Aman",
+   "name_given": "Jacob",
+   "name_family": "Aman",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://wellsreserve.org/about-us/people/jacob-aman",
+   "bio": "Works across the Wells Reserve research and stewardship programs on coastal fisheries and habitat conservation: stream-barrier and tidal-restriction removal, habitat condition monitoring, GIS and geospatial survey support, community climate-resilience technical assistance, and volunteer water-quality monitoring. undergraduate degree in Human Ecology (UMass Amherst); graduate certificate in applied GIS (University of Southern Maine).",
+   "bio_source_url": "https://wellsreserve.org/about-us/people/jacob-aman",
+   "research_interests": "coastal fisheries and habitat conservation; aquatic connectivity restoration; geospatial surveying; watershed water quality",
+   "research_interests_source_url": "https://wellsreserve.org/about-us/people/jacob-aman"
+  },
+  {
+   "key": "jessica-brunacini",
+   "existing_person_id": null,
+   "name": "Jessica Brunacini",
+   "name_given": "Jessica",
+   "name_family": "Brunacini",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://wellsreserve.org/about-us/people/jessica-brunacini",
+   "bio": "Coastal resilience scholar-practitioner who became Director of the Wells Reserve Coastal Training Program in June 2024 after serving as the reserve's inaugural Margaret A. Davidson Graduate Fellow (2020-2022). Earlier was assistant director of Columbia University's PoLAR climate change education partnership. Ph.D., Michigan State University.",
+   "bio_source_url": "https://wellsreserve.org/about-us/people/jessica-brunacini",
+   "research_interests": "community climate adaptation and managed retreat; place attachment and risk perception (Photovoice); climate change education",
+   "research_interests_source_url": "https://wellsreserve.org/about-us/people/jessica-brunacini"
+  },
+  {
+   "key": "paul-dest",
+   "existing_person_id": null,
+   "name": "Paul Dest",
+   "name_given": "Paul",
+   "name_family": "Dest",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://wellsreserve.org/about-us/people/paul-dest",
+   "bio": "Longtime Executive Director of the Wells Reserve (from January 2001), now listed as Director Emeritus. Before that, a senior planner in Maine State Planning Office coastal and land conservation programs, and earlier with New Hampshire Fish and Game public affairs; long served on the executive committee of the national estuarine reserve association.",
+   "bio_source_url": "https://wellsreserve.org/about-us/people/paul-dest",
+   "research_interests": null,
+   "research_interests_source_url": null
+  }
+ ],
+ "affiliations": [
+  {
+   "facility_id": "0ac30d8999613919",
+   "person_key": "rachel-guy",
+   "role": "manager",
+   "title": "Reserve Manager",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://sapelonerr.org/about-us/",
+   "evidence": "Rachel Guy Reserve Manager",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "0ac30d8999613919",
+   "person_key": "ethan-bourque",
+   "role": "research-coordinator",
+   "title": "Research Coordinator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://sapelonerr.org/welcome-ethan-bourque-research-coordinator/",
+   "evidence": "As Research Coordinator for the Sapelo Island National Estuarine Research Reserve, Ethan is focused",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "0ac30d8999613919",
+   "person_key": "colby-peffer",
+   "role": "stewardship-coordinator",
+   "title": "Stewardship Coordinator",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://sapelonerr.org/about-us/",
+   "evidence": "Colby Peffer Stewardship Coordinator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "0ac30d8999613919",
+   "person_key": "adam-mackinnon",
+   "role": "education-coordinator",
+   "title": "Education Coordinator",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://sapelonerr.org/about-us/",
+   "evidence": "Adam Mackinnon Education Coordinator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "0ac30d8999613919",
+   "person_key": "brittany-dodge",
+   "role": "coordinator",
+   "title": "Collaboration & Training Coordinator",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://sapelonerr.org/about-us/",
+   "evidence": "Brittany Dodge Collaboration & Training Coordinator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "f16c0b7401a72b61",
+   "person_key": "patricia-fox",
+   "role": "manager",
+   "title": "Reserve Manager",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.oregon.gov/dsl/ss/Documents/SSMC_174th.pdf",
+   "evidence": "please email Patricia Fox, South Slough Reserve Manager",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "f16c0b7401a72b61",
+   "person_key": "shon-schooler",
+   "role": "research-coordinator",
+   "title": "Lead Scientist and Research Coordinator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.oregon.gov/dsl/ss/Pages/Science-Resources.aspx",
+   "evidence": "Shon Schooler Lead Scientist and Research Coordinator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "f16c0b7401a72b61",
+   "person_key": "alice-yeates",
+   "role": "stewardship-coordinator",
+   "title": "Stewardship Coordinator",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.oregon.gov/dsl/ss/Documents/SSMC_174th.pdf",
+   "evidence": "Alice Yeates, Stewardship Coordinator, presented this plan outline",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "f16c0b7401a72b61",
+   "person_key": "deborah-rudd",
+   "role": "coordinator",
+   "title": "Training and Engagement Coordinator",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": 2026,
+   "end_year": null,
+   "source_url": "https://www.oregon.gov/dsl/ss/Documents/SSMC_174th.pdf",
+   "evidence": "In May Deborah, the Public Involvement Coordinator, took on a new role as the Training and Engagement Coordinator.",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "f16c0b7401a72b61",
+   "person_key": "jaime-belanger",
+   "role": "education-coordinator",
+   "title": "Education Coordinator",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.oregon.gov/dsl/ss/Documents/SSMC_174th.pdf",
+   "evidence": "Education (presented by Jaime Belanger, Education Coordinator)",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "b5ba4ac41401a0b9",
+   "person_key": "chris-peregrin",
+   "role": "manager",
+   "title": "Reserve Manager - Tijuana Estuary Sector (CA State Parks)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://tijuanaestuary.org/about/our-team/",
+   "evidence": "Chris Peregrin is the Manager for the Tijuana River National Estuarine Research Reserve",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "b5ba4ac41401a0b9",
+   "person_key": "jeff-crooks",
+   "role": "research-coordinator",
+   "title": "Research Coordinator (Tijuana Estuary Foundation)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2002,
+   "end_year": null,
+   "source_url": "https://tijuanaestuary.org/about/our-team/",
+   "evidence": "Dr. Jeff Crooks has served as TRNERR’s Research Director since 2002 for the Tijuana Estuary Foundation.",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "b5ba4ac41401a0b9",
+   "person_key": "kristen-goodrich",
+   "role": "coordinator",
+   "title": "Training & Engagement Program Director",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": 2009,
+   "end_year": null,
+   "source_url": "https://tijuanaestuary.org/about/our-team/",
+   "evidence": "Dr. Kristen Goodrich is the director of the Reserve’s Training and Engagement Program",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "b5ba4ac41401a0b9",
+   "person_key": "lorena-warner-lara",
+   "role": "deputy-director",
+   "title": "Environmental Scientist; Assistant Reserve Manager (CA State Parks)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://tijuanaestuary.org/about/our-team/",
+   "evidence": "Lorena Warner-Lara is an Environmental Scientist for California State Parks and serves as the Assistant Reserve Manager.",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "b5ba4ac41401a0b9",
+   "person_key": "michelle-shaffer",
+   "role": "coordinator",
+   "title": "Restoration Coordinator (Tijuana Estuary Foundation)",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://tijuanaestuary.org/about/our-team/",
+   "evidence": "Dr. Michelle Shaffer is TRNERR’s Restoration Coordinator for the Tijuana Estuary Foundation.",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "8f8db306000bd353",
+   "person_key": "tonna-marie-rogers",
+   "role": "manager",
+   "title": "Reserve Manager",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://waquoitbayreserve.org/about/staff",
+   "evidence": "Tonna-Marie Rogers Reserve Manager",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "8f8db306000bd353",
+   "person_key": "megan-tyrrell",
+   "role": "research-coordinator",
+   "title": "Research Coordinator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://waquoitbayreserve.org/about/staff",
+   "evidence": "Megan Tyrrell, Ph.D. Research Coordinator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "8f8db306000bd353",
+   "person_key": "ryan-clark",
+   "role": "stewardship-coordinator",
+   "title": "Stewardship Coordinator",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://waquoitbayreserve.org/about/staff",
+   "evidence": "Ryan Clark Stewardship Coordinator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "8f8db306000bd353",
+   "person_key": "kristen-weir",
+   "role": "coordinator",
+   "title": "Coastal Training Program Coordinator",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://waquoitbayreserve.org/about/staff",
+   "evidence": "Kristen Weir, Ph.D. Coastal Training Program Coordinator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "8f8db306000bd353",
+   "person_key": "sonia-ahrabi-nejad",
+   "role": "education-coordinator",
+   "title": "Education Coordinator",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://waquoitbayreserve.org/about/staff",
+   "evidence": "Sonia Ahrabi-Nejad Education Coordinator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "def52201a4873868",
+   "person_key": "angela-underwood",
+   "role": "manager",
+   "title": "Manager",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://outdooralabama.com/weeks-bay-reserve",
+   "evidence": "Angela Underwood, Manager",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "def52201a4873868",
+   "person_key": "eric-brunden",
+   "role": "stewardship-coordinator",
+   "title": "Stewardship Coordinator",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://outdooralabama.com/weeks-bay-reserve",
+   "evidence": "Eric Brunden, Stewardship Coordinator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "def52201a4873868",
+   "person_key": "johanna-gertsch",
+   "role": "coordinator",
+   "title": "CTP Coordinator",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://outdooralabama.com/weeks-bay-reserve",
+   "evidence": "Johanna Gertsch, CTP Coordinator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "def52201a4873868",
+   "person_key": "kathy-hicks",
+   "role": "education-coordinator",
+   "title": "Education Coordinator",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://outdooralabama.com/weeks-bay-reserve",
+   "evidence": "Kathy Hicks, Education Coordinator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "def52201a4873868",
+   "person_key": "ashley-griffin",
+   "role": "technical-staff",
+   "title": "Research and Monitoring Technician",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://outdooralabama.com/weeks-bay-reserve",
+   "evidence": "Ashley Griffin, Research and Monitoring Technician",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "80edf691ec74a1ad",
+   "person_key": "jennifer-seavey",
+   "role": "director",
+   "title": "Wells Reserve Executive Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2026,
+   "end_year": null,
+   "source_url": "https://wellsreserve.org/about-us/people",
+   "evidence": "Jennifer Seavey Wells Reserve Executive Director",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "80edf691ec74a1ad",
+   "person_key": "jason-goldstein",
+   "role": "research-coordinator",
+   "title": "Research Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2016,
+   "end_year": null,
+   "source_url": "https://wellsreserve.org/about-us/people",
+   "evidence": "Jason Goldstein Research Director",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "80edf691ec74a1ad",
+   "person_key": "jacob-aman",
+   "role": "stewardship-coordinator",
+   "title": "Stewardship Director",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": 2008,
+   "end_year": null,
+   "source_url": "https://wellsreserve.org/about-us/people",
+   "evidence": "Jacob Aman Stewardship Director",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "80edf691ec74a1ad",
+   "person_key": "jessica-brunacini",
+   "role": "coordinator",
+   "title": "Training & Engagement Director",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": 2024,
+   "end_year": null,
+   "source_url": "https://wellsreserve.org/about-us/people",
+   "evidence": "Jessica Brunacini Training & Engagement Director",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "80edf691ec74a1ad",
+   "person_key": "paul-dest",
+   "role": "former-director",
+   "title": "Director Emeritus (former Executive Director)",
+   "is_key_personnel": false,
+   "is_current": false,
+   "start_year": 2001,
+   "end_year": null,
+   "source_url": "https://wellsreserve.org/about-us/people",
+   "evidence": "Paul Dest Director Emeritus",
+   "confidence": "medium"
+  }
+ ],
+ "verifications": []
+}

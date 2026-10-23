@@ -1,0 +1,1568 @@
+{
+ "batch_id": "R-PEOPLE2-LTER-01b",
+ "retrieved_at": "2026-10-22",
+ "verified_by": "adversarial-verifier 2026-10-22",
+ "facilities": [
+  {
+   "facility_id": "5a18bae1d57059c3",
+   "pages_fetched": [
+    {
+     "url": "https://lternet.edu/site/konza-prairie-lter/",
+     "status": 200
+    },
+    {
+     "url": "https://lter.konza.ksu.edu/people/",
+     "status": 200
+    },
+    {
+     "url": "https://lter.konza.ksu.edu/about/",
+     "status": 200
+    },
+    {
+     "url": "https://kpbs.konza.k-state.edu/",
+     "status": 200
+    },
+    {
+     "url": "https://kpbs.konza.k-state.edu/people.html",
+     "status": 404
+    },
+    {
+     "url": "https://kpbs.konza.k-state.edu/staff.html",
+     "status": 404
+    },
+    {
+     "url": "https://kpbs.konza.k-state.edu/history.html",
+     "status": 404
+    },
+    {
+     "url": "https://lter.konza.ksu.edu/history",
+     "status": 404
+    },
+    {
+     "url": "https://lternet.edu/directory/?user=2107",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/directory/?user=3326",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/directory/?user=1110",
+     "status": 200
+    },
+    {
+     "url": "https://api.nsf.gov/services/v1/awards/2025849.json",
+     "status": 200
+    },
+    {
+     "url": "https://www.k-state.edu/biology/about/people/faculty/nippert/",
+     "status": 200
+    },
+    {
+     "url": "https://www.k-state.edu/biology/about/people/faculty/blair/",
+     "status": 200
+    },
+    {
+     "url": "https://eps.jhu.edu/directory/meghan-avolio/",
+     "status": 403
+    },
+    {
+     "url": "https://sustainability.colostate.edu/people/alan-knapp/",
+     "status": 200
+    },
+    {
+     "url": "https://smithlab.colostate.edu/",
+     "status": 200
+    },
+    {
+     "url": "https://www.k-state.edu/biology/about/people/faculty/gone/briggs/",
+     "status": 200
+    },
+    {
+     "url": "https://www.k-state.edu/biology/old/people/faculty/gone/briggs/briggscv.pdf",
+     "status": 404
+    }
+   ],
+   "notes": "Lead PI is now Jesse Nippert (lternet.edu site contacts and KNZ people page), with Meghan Avolio (Johns Hopkins) as co-lead PI. Melinda Smith is no longer lead PI but is co-PI on the current NSF award DEB-2025849 (2020-2027; other co-PIs Sara Baer, Lydia Zeglin). Alan Knapp is now listed as an Investigator. KNZ people page names John Blair as KPBS Director (his K-State page says University Distinguished Professor Emeritus). Existing Briggs source (kpbs people.html) now 404; his only K-State page sits under a 'gone' (former faculty) path and still says Director, so Briggs is recorded as former director (medium) and his 'emeritus' status could not be confirmed. Other site contacts: Jennifer Rhodes (Administrative Contact/Program Coordinator), Jill Haukos (Education). No official page naming the 1981 founding PI was found."
+  },
+  {
+   "facility_id": "d7848bb1d531d7d1",
+   "pages_fetched": [
+    {
+     "url": "https://lternet.edu/site/mcmurdo-dry-valleys-lter/",
+     "status": 200
+    },
+    {
+     "url": "https://mcm.lternet.edu/",
+     "status": 200
+    },
+    {
+     "url": "https://mcm.lternet.edu/team/",
+     "status": 200
+    },
+    {
+     "url": "https://mcm.lternet.edu/wp-json/wp/v2/uw_staff?per_page=100&uw_staff_type=6,14,16",
+     "status": 200
+    },
+    {
+     "url": "https://mcm.lternet.edu/overview/",
+     "status": 200
+    },
+    {
+     "url": "https://mcm.lternet.edu/proposals/",
+     "status": 200
+    },
+    {
+     "url": "https://www.mcmlter.org/mcmurdo-lter-personnel",
+     "status": 403
+    },
+    {
+     "url": "https://www.mcmlter.org/",
+     "status": 403
+    },
+    {
+     "url": "https://mcm.lternet.edu/people",
+     "status": 404
+    },
+    {
+     "url": "https://lternet.edu/directory/?user=2523",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/directory/?user=5272",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/directory/?user=16228",
+     "status": 200
+    },
+    {
+     "url": "https://api.nsf.gov/services/v1/awards/9211773.json",
+     "status": 200
+    },
+    {
+     "url": "https://api.nsf.gov/services/v1/awards/9813061.json",
+     "status": 200
+    },
+    {
+     "url": "https://api.nsf.gov/services/v1/awards/9810219.json",
+     "status": 200
+    },
+    {
+     "url": "https://api.nsf.gov/services/v1/awards/0096250.json",
+     "status": 200
+    },
+    {
+     "url": "https://api.nsf.gov/services/v1/awards/0423595.json",
+     "status": 200
+    },
+    {
+     "url": "https://api.nsf.gov/services/v1/awards/0832755.json",
+     "status": 200
+    },
+    {
+     "url": "https://api.nsf.gov/services/v1/awards/1041742.json",
+     "status": 200
+    },
+    {
+     "url": "https://api.nsf.gov/services/v1/awards/1115245.json",
+     "status": 200
+    },
+    {
+     "url": "https://api.nsf.gov/services/v1/awards/1637708.json",
+     "status": 200
+    },
+    {
+     "url": "https://api.nsf.gov/services/v1/awards/2224760.json",
+     "status": 200
+    },
+    {
+     "url": "https://www.colorado.edu/envs/michael-gooseff",
+     "status": 200
+    },
+    {
+     "url": "http://goosefflab.weebly.com/",
+     "status": 200
+    },
+    {
+     "url": "https://www.wildmicrobiome.org/",
+     "status": 200
+    },
+    {
+     "url": "https://mcm.lternet.edu/staff/doran-peter/",
+     "status": 200
+    }
+   ],
+   "notes": "Lead PI is Michael Gooseff (CU Boulder), per lternet.edu, the MCM team listing and NSF OPP-2224760 (MCM6, 2023-2029; co-PIs Byron Adams, Cristina Takacs-Vesbach, Rachael Morgan-Kiss, Melisa Diaz). The MCM team page (rendered via its WordPress REST API) lists Gooseff as Lead PI; Adams, Barrett, Diaz, Doran, Dugan, Mackey, Morgan-Kiss, Salvatore, Takacs-Vesbach and Zeglin as PIs; Mark Gahler and Sam Blackburn (UW-Madison) as Information Managers; Jade Lawrence as Project Manager. Fountain, Lyons, McKnight, Priscu, Howkins, Virginia and Wall are listed as Investigator Emeriti. NSF records give the lead-PI succession: Wharton (original award OPP-9211773, 1993-1999), Lyons (1998-2006), Fountain (2005-2010), McKnight (2010-2011), Gooseff (2011-). The NSF API lists no co-PIs on the 1993 award, so McKnight's and Priscu's 'founding-PI' rows are left unverifiable rather than refuted. The lternet.edu directory profiles for Gahler (lists NTL) and Blackburn (lists MCM) disagree on site, but the MCM site's own listing names both as MCM Information Managers. The old mcmlter.org personnel page returns 403."
+  },
+  {
+   "facility_id": "ee98ac1a90620cf5",
+   "pages_fetched": [
+    {
+     "url": "https://lternet.edu/site/virginia-coast-reserve-lter/",
+     "status": 200
+    },
+    {
+     "url": "https://www.vcrlter.virginia.edu/home2/?page_id=324",
+     "status": 200
+    },
+    {
+     "url": "https://www.vcrlter.virginia.edu/home2/?page_id=11",
+     "status": 200
+    },
+    {
+     "url": "https://www.vcrlter.virginia.edu/home2/?page_id=297",
+     "status": 200
+    },
+    {
+     "url": "https://www.vcrlter.virginia.edu/data/personnel/personnelList.php?QSITE=VCR",
+     "status": 200
+    },
+    {
+     "url": "https://www.vcrlter.virginia.edu/data/personnel/listsite1.php?QSITE=VCR&LETTER=All",
+     "status": 200
+    },
+    {
+     "url": "https://www.vcrlter.virginia.edu/data/personnel/person.php?QID=mcastorani",
+     "status": 200
+    },
+    {
+     "url": "https://www.vcrlter.virginia.edu/data/personnel/person.php?QID=kmcglathery",
+     "status": 200
+    },
+    {
+     "url": "https://www.vcrlter.virginia.edu/data/personnel/person.php?QID=lblum",
+     "status": 200
+    },
+    {
+     "url": "https://www.vcrlter.virginia.edu/data/personnel/person.php?QID=jporter",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/directory/?user=5291",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/directory/?user=1120",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/directory/?user=16233",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/directory/?user=6356",
+     "status": 200
+    },
+    {
+     "url": "https://api.nsf.gov/services/v1/awards/2425178.json",
+     "status": 200
+    },
+    {
+     "url": "https://castorani.evsc.virginia.edu/",
+     "status": 200
+    },
+    {
+     "url": "https://evsc.as.virginia.edu/people/profile/kjm4k",
+     "status": 404
+    }
+   ],
+   "notes": "Lead PI is now Max Castorani (lternet.edu; PI of NSF award 2425178, 2025-2031). Karen McGlathery is a current co-PI on that award, along with Matthew Reidenbach. Linda Blum appears in the INACTIVE section of the VCR personnel directory. Information managers: John Porter and Connor White. Research/site coordinator: Cora Baird. Administrative contact: Donna Fauber. The existing source page_id=11 now shows the conceptual framework, not people. McGlathery's existing homepage (evsc profile kjm4k) returns 404. No official page naming the founding PI was found."
+  },
+  {
+   "facility_id": "e26cfe5b1131c69e",
+   "pages_fetched": [
+    {
+     "url": "https://lternet.edu/site/bonanza-creek-lter/",
+     "status": 200
+    },
+    {
+     "url": "https://www.lter.uaf.edu/",
+     "status": 0
+    },
+    {
+     "url": "https://www.lter.uaf.edu/people/personnel",
+     "status": 0
+    },
+    {
+     "url": "https://lternet.edu/directory/?user=1778",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/directory/?user=2340",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/directory/?user=2626",
+     "status": 200
+    },
+    {
+     "url": "https://api.nsf.gov/services/v1/awards.json?keyword=%22Bonanza%20Creek%22&printFields=id,title,pdPIName,coPDPI,startDate,expDate,awardeeName&rpp=50",
+     "status": 200
+    },
+    {
+     "url": "https://api.nsf.gov/services/v1/awards/2224776.json",
+     "status": 200
+    },
+    {
+     "url": "https://macklab.nau.edu/",
+     "status": 200
+    }
+   ],
+   "notes": "This facility is the Caribou-Poker Creeks Research Watershed permafrost component of Bonanza Creek LTER. All people are attributed at the BNZ LTER level because no page dedicated to CPCRW could be fetched: the BNZ site (www.lter.uaf.edu) timed out or refused connections on 2026-10-22. Lead PI Michelle Mack is named on lternet.edu site contacts, on her NAU lab page, and as PI of NSF award 2224776 (2023-2029; co-PIs Jeremy Jones, Christa Mulder, Mary Beth Leigh, Todd Brinkman). Her lternet.edu directory profile title says 'Co-Principal Investigator', which conflicts. Research/site coordinator: Jamie Hollingsworth. Information manager: Jason Downing. Teresa N. Hollingsworth is a former co-PI on the NSF award and is not assumed to be the same person as Jamie Hollingsworth. Founding history from 1987 was not available because the NSF API only returned awards from 1992 onward (the earliest, 9211769, has PI F. Stuart Chapin)."
+  },
+  {
+   "facility_id": "a3250b6ee5b1e18e",
+   "pages_fetched": [
+    {
+     "url": "https://lternet.edu/site/santa-barbara-coastal-lter/",
+     "status": 200
+    },
+    {
+     "url": "https://sbclter.msi.ucsb.edu/about/people/",
+     "status": 200
+    },
+    {
+     "url": "https://sbclter.msi.ucsb.edu/about/people/rmiller/",
+     "status": 200
+    },
+    {
+     "url": "https://sbclter.msi.ucsb.edu/about/people/dreed/",
+     "status": 200
+    },
+    {
+     "url": "https://sbclter.msi.ucsb.edu/about/people/lkui/",
+     "status": 200
+    },
+    {
+     "url": "https://sbclter.msi.ucsb.edu/about/people/jdugan/",
+     "status": 200
+    },
+    {
+     "url": "https://sbclter.msi.ucsb.edu/about/people/astier/",
+     "status": 200
+    },
+    {
+     "url": "https://sbclter.msi.ucsb.edu/about/people/ghofmann/",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/directory/?user=3038",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/directory/?user=1546",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/directory/?user=5774",
+     "status": 200
+    },
+    {
+     "url": "https://api.nsf.gov/services/v1/awards/9982105.json",
+     "status": 200
+    },
+    {
+     "url": "https://api.nsf.gov/services/v1/awards/1831937.json",
+     "status": 200
+    },
+    {
+     "url": "https://msi.ucsb.edu/people/research-scientists/robert-miller",
+     "status": 404
+    },
+    {
+     "url": "https://msi.ucsb.edu/people/principal-investigators/daniel-reed",
+     "status": 404
+    }
+   ],
+   "notes": "Robert (Bob) Miller has been lead PI since 2019, when he took over from Dan Reed. Reed led SBC from its start in 2000 (first award OCE-9982105) and is now a Project Co-Investigator. Other current co-investigators: Gretchen Hofmann, Alyson Santoro and Adrian Stier. Jenny Dugan handles project coordination and Li Kui is information manager. The MSI profile URLs stored as homepages for Reed and Miller now return 404, so SBC LTER profile pages are used instead."
+  },
+  {
+   "facility_id": "ae0beda05f19885a",
+   "pages_fetched": [
+    {
+     "url": "https://www.usgs.gov/centers/upper-midwest-water-science-center/science/water-energy-and-biogeochemical-budgets-webb",
+     "status": 200
+    },
+    {
+     "url": "https://pubs.usgs.gov/fs/fs-161-99/",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/staff-profiles/randall-j-hunt",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/staff-profiles/krista-a-hood",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/site/north-temperate-lakes-lter/",
+     "status": 200
+    },
+    {
+     "url": "https://lter.limnology.wisc.edu/",
+     "status": 200
+    }
+   ],
+   "notes": "The USGS WEBB Trout Lake project page lists two contacts: Randall J. Hunt (Scientist Emeritus, Research Hydrologist) and Krista A. Hood (Hydrologist), both at the USGS Upper Midwest Water Science Center. No project chief or lead role is named, so both are recorded as scientist (medium). The 1999 USGS fact sheet FS-161-99 (authors John F. Walker and Thomas D. Bullen) names only an unnamed 'WEBB Site Coordinator'. The facility URL points to North Temperate Lakes LTER, a separate program whose current leads are Emily Stanley (lead PI) and Grace Wilkinson (co-lead PI) per lternet.edu. They are not attributed to this USGS facility."
+  }
+ ],
+ "people": [
+  {
+   "key": "nippert-jesse",
+   "existing_person_id": null,
+   "name": "Jesse Nippert",
+   "name_given": "Jesse",
+   "name_family": "Nippert",
+   "orcid": "0000-0002-7939-342X",
+   "orcid_source_url": "https://lternet.edu/directory/?user=2107",
+   "homepage_url": "https://www.k-state.edu/biology/about/people/faculty/nippert/",
+   "bio": "University Distinguished Professor of biology at Kansas State University. His lab works on plant physiological ecology in grasslands: how tallgrass prairie species respond to changing soil moisture and microclimate, what drives woody encroachment at Konza Prairie, and the physiology behind grass-tree coexistence in U.S. grasslands and South African savannas.",
+   "bio_source_url": "https://www.k-state.edu/biology/about/people/faculty/nippert/",
+   "research_interests": "Grassland ecophysiology; grass/tree ecological dynamics; ecosystem responses to global change; stable isotope ecology",
+   "research_interests_source_url": "https://www.k-state.edu/biology/about/people/faculty/nippert/"
+  },
+  {
+   "key": "avolio-meghan",
+   "existing_person_id": null,
+   "name": "Meghan Avolio",
+   "name_given": "Meghan",
+   "name_family": "Avolio",
+   "orcid": "0000-0002-2649-9159",
+   "orcid_source_url": "https://lternet.edu/directory/?user=3326",
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "blair-john",
+   "existing_person_id": null,
+   "name": "John Blair",
+   "name_given": "John",
+   "name_family": "Blair",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.k-state.edu/biology/about/people/faculty/blair/",
+   "bio": "Ecosystem ecologist at Kansas State University, now University Distinguished Professor Emeritus, with a 1987 Ph.D. from the University of Georgia. His work covers grassland biogeochemistry and global change, soil ecology including decomposition and nutrient cycling, disturbance and climate effects on ecosystem processes, restoration, and soil invertebrates.",
+   "bio_source_url": "https://www.k-state.edu/biology/about/people/faculty/blair/",
+   "research_interests": "Ecosystem ecology and terrestrial biogeochemistry; grasslands and global change; soil ecology and nutrient cycling; disturbance effects on ecosystem processes; restoration ecology; soil invertebrate ecology",
+   "research_interests_source_url": "https://www.k-state.edu/biology/about/people/faculty/blair/"
+  },
+  {
+   "key": "xia-yang",
+   "existing_person_id": null,
+   "name": "Yang Xia",
+   "name_given": "Yang",
+   "name_family": "Xia",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "smith-melinda",
+   "existing_person_id": "d7a9966fec318ef3",
+   "name": "Melinda D. Smith",
+   "name_given": "Melinda",
+   "name_family": "Smith",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://smithlab.colostate.edu/",
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "knapp-alan",
+   "existing_person_id": "087bd097c4996ea9",
+   "name": "Alan K. Knapp",
+   "name_given": "Alan",
+   "name_family": "Knapp",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://sustainability.colostate.edu/people/alan-knapp/",
+   "bio": "Professor of Biology and CSU University Distinguished Professor at Colorado State University. Originally trained in plant physiological ecology (leaf gas exchange, plant water relations, energy balance), he has paired that work with large-scale ecosystem science through a two-decade association with the NSF LTER program at Konza Prairie.",
+   "bio_source_url": "https://sustainability.colostate.edu/people/alan-knapp/",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "briggs-john",
+   "existing_person_id": "de6ac79c96ac4f71",
+   "name": "John M. Briggs",
+   "name_given": "John",
+   "name_family": "Briggs",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "gooseff-michael",
+   "existing_person_id": null,
+   "name": "Michael Gooseff",
+   "name_given": "Michael",
+   "name_family": "Gooseff",
+   "orcid": "0000-0003-4322-8315",
+   "orcid_source_url": "https://lternet.edu/directory/?user=2523",
+   "homepage_url": "https://www.colorado.edu/envs/michael-gooseff",
+   "bio": "Professor at the University of Colorado Boulder who leads the McMurdo Dry Valleys LTER as its lead PI. He investigates exchange between streams and groundwater, hyporheic processes and their restoration, and how a changing climate affects polar and temperate streams.",
+   "bio_source_url": "https://mcm.lternet.edu/wp-json/wp/v2/uw_staff?per_page=100&uw_staff_type=6,14,16",
+   "research_interests": "Stream-groundwater interactions; hyporheic exchange; stream/hyporheic restoration; climate change in polar and temperate regions",
+   "research_interests_source_url": "https://mcm.lternet.edu/wp-json/wp/v2/uw_staff?per_page=100&uw_staff_type=6,14,16"
+  },
+  {
+   "key": "wharton-robert",
+   "existing_person_id": null,
+   "name": "Robert A. Wharton",
+   "name_given": "Robert",
+   "name_family": "Wharton",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "gahler-mark",
+   "existing_person_id": null,
+   "name": "Mark Gahler",
+   "name_given": "Mark",
+   "name_family": "Gahler",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "blackburn-sam",
+   "existing_person_id": null,
+   "name": "Sam Blackburn",
+   "name_given": "Sam",
+   "name_family": "Blackburn",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "takacs-vesbach-cristina",
+   "existing_person_id": null,
+   "name": "Cristina D. Takacs-Vesbach",
+   "name_given": "Cristina",
+   "name_family": "Takacs-Vesbach",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.wildmicrobiome.org/",
+   "bio": "Microbial ecologist at the University of New Mexico and McMurdo Dry Valleys LTER co-PI. Her lab asks what controls how diverse and productive microbial communities are in nature, and uses extreme habitats as natural laboratories for basic questions in ecology and evolution.",
+   "bio_source_url": "https://www.wildmicrobiome.org/",
+   "research_interests": "Microbial diversity and productivity; microbial ecology and evolution in extreme environments",
+   "research_interests_source_url": "https://www.wildmicrobiome.org/"
+  },
+  {
+   "key": "doran-peter",
+   "existing_person_id": "73f14c7389432d8c",
+   "name": "Peter T. Doran",
+   "name_given": "Peter",
+   "name_family": "Doran",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "fountain-andrew",
+   "existing_person_id": "aeba46d2f5fbc845",
+   "name": "Andrew G. Fountain",
+   "name_given": "Andrew",
+   "name_family": "Fountain",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "mcknight-diane",
+   "existing_person_id": "7636b67be6a536db",
+   "name": "Diane M. McKnight",
+   "name_given": "Diane",
+   "name_family": "McKnight",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "lyons-w-berry",
+   "existing_person_id": "fb22bc8e165ce844",
+   "name": "W. Berry Lyons",
+   "name_given": "W. Berry",
+   "name_family": "Lyons",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "priscu-john",
+   "existing_person_id": "f79f77e7d0053af0",
+   "name": "John C. Priscu",
+   "name_given": "John",
+   "name_family": "Priscu",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "castorani-max",
+   "existing_person_id": null,
+   "name": "Max C. N. Castorani",
+   "name_given": "Max",
+   "name_family": "Castorani",
+   "orcid": "0000-0002-7372-9359",
+   "orcid_source_url": "https://www.vcrlter.virginia.edu/data/personnel/person.php?QID=mcastorani",
+   "homepage_url": "https://castorani.evsc.virginia.edu/",
+   "bio": "Coastal ecologist in the University of Virginia's Department of Environmental Sciences. His lab asks what drives the abundance, spread and stability of coastal species and ecosystems at multiple spatial and temporal scales, including disturbance and restoration, biodiversity-stability links and connectivity, combining long-term observations, field experiments and models within large NSF programs.",
+   "bio_source_url": "https://castorani.evsc.virginia.edu/",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "reidenbach-matthew",
+   "existing_person_id": null,
+   "name": "Matthew A. Reidenbach",
+   "name_given": "Matthew",
+   "name_family": "Reidenbach",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "porter-john",
+   "existing_person_id": null,
+   "name": "John H. Porter",
+   "name_given": "John",
+   "name_family": "Porter",
+   "orcid": "0000-0003-3118-5784",
+   "orcid_source_url": "https://www.vcrlter.virginia.edu/data/personnel/person.php?QID=jporter",
+   "homepage_url": null,
+   "bio": "Research Associate Professor in the University of Virginia's Department of Environmental Sciences and an information manager for the Virginia Coast Reserve LTER, whose specialties span ecological data management, GIS and remote sensing, and ecology at population, community and landscape scales.",
+   "bio_source_url": "https://www.vcrlter.virginia.edu/data/personnel/person.php?QID=jporter",
+   "research_interests": "Data management; population, community and landscape ecology; remote sensing; GIS",
+   "research_interests_source_url": "https://www.vcrlter.virginia.edu/data/personnel/person.php?QID=jporter"
+  },
+  {
+   "key": "white-connor",
+   "existing_person_id": null,
+   "name": "Connor White",
+   "name_given": "Connor",
+   "name_family": "White",
+   "orcid": "0000-0001-8260-290X",
+   "orcid_source_url": "https://lternet.edu/directory/?user=16233",
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "baird-cora",
+   "existing_person_id": null,
+   "name": "Cora Baird",
+   "name_given": "Cora",
+   "name_family": "Baird",
+   "orcid": "0000-0001-8348-8379",
+   "orcid_source_url": "https://lternet.edu/directory/?user=6356",
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "mack-michelle",
+   "existing_person_id": null,
+   "name": "Michelle C. Mack",
+   "name_given": "Michelle",
+   "name_family": "Mack",
+   "orcid": "0000-0003-1279-4242",
+   "orcid_source_url": "https://lternet.edu/directory/?user=1778",
+   "homepage_url": "https://macklab.nau.edu/",
+   "bio": "Ecosystem ecologist whose lab at Northern Arizona University studies what controls ecosystem structure and function in places ranging from tropical wet forest to arctic tundra, drawing on plant form, function and community ecology, with emphasis on ecosystems altered by climate change and disturbance such as boreal wildfire. Lead PI of the Bonanza Creek LTER.",
+   "bio_source_url": "https://macklab.nau.edu/",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "hollingsworth-jamie",
+   "existing_person_id": null,
+   "name": "Jamie Hollingsworth",
+   "name_given": "Jamie",
+   "name_family": "Hollingsworth",
+   "orcid": "0000-0002-4588-9419",
+   "orcid_source_url": "https://lternet.edu/directory/?user=2340",
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "downing-jason",
+   "existing_person_id": null,
+   "name": "Jason Downing",
+   "name_given": "Jason",
+   "name_family": "Downing",
+   "orcid": "0000-0002-0358-537X",
+   "orcid_source_url": "https://lternet.edu/directory/?user=2626",
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "jones-jeremy",
+   "existing_person_id": null,
+   "name": "Jeremy B. Jones",
+   "name_given": "Jeremy",
+   "name_family": "Jones",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "mulder-christa",
+   "existing_person_id": null,
+   "name": "Christa Mulder",
+   "name_given": "Christa",
+   "name_family": "Mulder",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "miller-robert",
+   "existing_person_id": "d574f93e9f92a588",
+   "name": "Robert J. Miller",
+   "name_given": "Robert",
+   "name_family": "Miller",
+   "orcid": "0000-0002-8350-3759",
+   "orcid_source_url": "https://lternet.edu/directory/?user=3038",
+   "homepage_url": "https://sbclter.msi.ucsb.edu/about/people/rmiller/",
+   "bio": "Research Biologist at UC Santa Barbara's Marine Science Institute and lead PI of the Santa Barbara Coastal LTER since 2019. He works on marine community ecology and benthic food webs, interactions among kelp forest species, and connections between kelp forests and pelagic, beach and deep-sea systems, mostly through scuba-based comparative and experimental field studies.",
+   "bio_source_url": "https://sbclter.msi.ucsb.edu/about/people/rmiller/",
+   "research_interests": "Marine ecology",
+   "research_interests_source_url": "https://sbclter.msi.ucsb.edu/about/people/rmiller/"
+  },
+  {
+   "key": "reed-daniel",
+   "existing_person_id": "5d8c0fd7ccaa79fd",
+   "name": "Daniel C. Reed",
+   "name_given": "Daniel",
+   "name_family": "Reed",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://sbclter.msi.ucsb.edu/about/people/dreed/",
+   "bio": "Research Biologist at UC Santa Barbara's Marine Science Institute who designs and maintains the Santa Barbara Coastal LTER's long-term kelp forest studies, including community surveys, giant kelp production, biomass and stoichiometry, and a long-term kelp-loss experiment, and joins process studies on productivity, flow, wave disturbance and kelp connectivity.",
+   "bio_source_url": "https://sbclter.msi.ucsb.edu/about/people/dreed/",
+   "research_interests": "Reef ecology; dispersal and connectivity; primary production of marine macrophytes",
+   "research_interests_source_url": "https://sbclter.msi.ucsb.edu/about/people/dreed/"
+  },
+  {
+   "key": "hofmann-gretchen",
+   "existing_person_id": null,
+   "name": "Gretchen Hofmann",
+   "name_given": "Gretchen",
+   "name_family": "Hofmann",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://sbclter.msi.ucsb.edu/about/people/ghofmann/",
+   "bio": "Professor in UC Santa Barbara's Department of Ecology, Evolution and Marine Biology. An ecophysiologist, she studies how ocean warming, acidification and environmental variability alter the physiology, development, range and survival of marine invertebrates, with local work on purple sea urchin and red abalone larvae in Santa Barbara kelp forests.",
+   "bio_source_url": "https://sbclter.msi.ucsb.edu/about/people/ghofmann/",
+   "research_interests": "Ecological physiology of marine invertebrates",
+   "research_interests_source_url": "https://sbclter.msi.ucsb.edu/about/people/ghofmann/"
+  },
+  {
+   "key": "stier-adrian",
+   "existing_person_id": null,
+   "name": "Adrian Stier",
+   "name_given": "Adrian",
+   "name_family": "Stier",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://sbclter.msi.ucsb.edu/about/people/astier/",
+   "bio": "Faculty member in UC Santa Barbara's Department of Ecology, Evolution and Marine Biology (listed as Assistant Professor on his SBC LTER profile) who studies how kelp forest ecosystems withstand and recover from disturbance and which ecological and environmental processes control their resilience under global change.",
+   "bio_source_url": "https://sbclter.msi.ucsb.edu/about/people/astier/",
+   "research_interests": "Community assembly; biodiversity; food webs; fishing; global change biology",
+   "research_interests_source_url": "https://sbclter.msi.ucsb.edu/about/people/astier/"
+  },
+  {
+   "key": "dugan-jenifer",
+   "existing_person_id": null,
+   "name": "Jenifer Dugan",
+   "name_given": "Jenifer",
+   "name_family": "Dugan",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://sbclter.msi.ucsb.edu/about/people/jdugan/",
+   "bio": "Research Biologist at UC Santa Barbara's Marine Science Institute. Her Santa Barbara Coastal LTER research examines how kelp-derived organic material washed onto sandy beaches is processed and used, leads core monitoring of beach kelp wrack, and examines responses of beach consumers and nutrient remineralization to that subsidy.",
+   "bio_source_url": "https://sbclter.msi.ucsb.edu/about/people/jdugan/",
+   "research_interests": "Coastal ecology; food webs; sandy beaches",
+   "research_interests_source_url": "https://sbclter.msi.ucsb.edu/about/people/jdugan/"
+  },
+  {
+   "key": "kui-li",
+   "existing_person_id": null,
+   "name": "Li Kui",
+   "name_given": "Li",
+   "name_family": "Kui",
+   "orcid": "0000-0002-5894-4907",
+   "orcid_source_url": "https://lternet.edu/directory/?user=5774",
+   "homepage_url": "https://sbclter.msi.ucsb.edu/about/people/lkui/",
+   "bio": "Project Scientist at UC Santa Barbara's Marine Science Institute serving as information manager for the Santa Barbara Coastal LTER, responsible for data quality control, data publication and statistical design for research projects.",
+   "bio_source_url": "https://sbclter.msi.ucsb.edu/about/people/lkui/",
+   "research_interests": "Data management; statistical analysis; marine ecology; riparian ecology",
+   "research_interests_source_url": "https://sbclter.msi.ucsb.edu/about/people/lkui/"
+  },
+  {
+   "key": "hunt-randall",
+   "existing_person_id": null,
+   "name": "Randall J. Hunt",
+   "name_given": "Randall",
+   "name_family": "Hunt",
+   "orcid": "0000-0001-6465-9304",
+   "orcid_source_url": "https://www.usgs.gov/staff-profiles/randall-j-hunt",
+   "homepage_url": "https://www.usgs.gov/staff-profiles/randall-j-hunt",
+   "bio": "Scientist Emeritus and Research Hydrologist at the USGS Upper Midwest Water Science Center (with USGS since 1990) and adjunct professor of geoscience at UW-Madison. He studies groundwater-surface water exchange in wetlands, streams and lakes with numerical models, isotopes and tracers, aiming at better model forecasts and uncertainty for decisions. Former center Chief Science Officer (2018-2021).",
+   "bio_source_url": "https://www.usgs.gov/staff-profiles/randall-j-hunt",
+   "research_interests": "Groundwater-surface water interaction; numerical modeling and parameter estimation; ion and isotope chemistry and tracers; ecohydrology; model forecast uncertainty",
+   "research_interests_source_url": "https://www.usgs.gov/staff-profiles/randall-j-hunt"
+  },
+  {
+   "key": "hood-krista",
+   "existing_person_id": null,
+   "name": "Krista A. Hood",
+   "name_given": "Krista",
+   "name_family": "Hood",
+   "orcid": "0000-0001-9735-8321",
+   "orcid_source_url": "https://www.usgs.gov/staff-profiles/krista-a-hood",
+   "homepage_url": "https://www.usgs.gov/staff-profiles/krista-a-hood",
+   "bio": "Hydrologist at the USGS Upper Midwest Water Science Center, with the USGS since 1999. Her work centers on water quality, particularly groundwater quality and continuous high-frequency monitoring, along with database management, HEC-RAS modeling and statistical analysis of soil and water chemistry. Holds an M.S. in soil science from UW-Madison.",
+   "bio_source_url": "https://www.usgs.gov/staff-profiles/krista-a-hood",
+   "research_interests": "High-frequency water quality data collection; groundwater quality; urban water quality; long-term water quality trends; soil formation and geomorphology",
+   "research_interests_source_url": "https://www.usgs.gov/staff-profiles/krista-a-hood"
+  },
+  {
+   "key": "mcglathery-karen",
+   "existing_person_id": "8cfeea24cc6af614",
+   "name": "Karen J. McGlathery",
+   "name_given": "Karen",
+   "name_family": "McGlathery",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": "Coastal marine ecology; ecophysiology of aquatic plants",
+   "research_interests_source_url": "https://www.vcrlter.virginia.edu/data/personnel/person.php?QID=kmcglathery"
+  }
+ ],
+ "affiliations": [
+  {
+   "facility_id": "5a18bae1d57059c3",
+   "person_key": "nippert-jesse",
+   "role": "lead-PI",
+   "title": "Lead Principal Investigator, Konza Prairie LTER; University Distinguished Professor, Kansas State University",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/konza-prairie-lter/",
+   "evidence": "Lead Principal Investigator: Jesse Nippert",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "5a18bae1d57059c3",
+   "person_key": "avolio-meghan",
+   "role": "co-PI",
+   "title": "Co-Lead Principal Investigator, Konza Prairie LTER (Johns Hopkins University)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lter.konza.ksu.edu/people/",
+   "evidence": "Meghan Avolio Co-Lead Principal Investigator Johns Hopkins University",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "5a18bae1d57059c3",
+   "person_key": "blair-john",
+   "role": "director",
+   "title": "KPBS Director (Konza Prairie Biological Station), Kansas State University",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lter.konza.ksu.edu/people/",
+   "evidence": "John Blair KPBS Director Kansas State University",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "5a18bae1d57059c3",
+   "person_key": "xia-yang",
+   "role": "information-manager",
+   "title": "Information Manager, Konza Prairie LTER (Kansas State University)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lter.konza.ksu.edu/people/",
+   "evidence": "Yang Xia Information Manager Kansas State University",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "5a18bae1d57059c3",
+   "person_key": "smith-melinda",
+   "role": "co-PI",
+   "title": "Co-PI, NSF DEB-2025849 (Konza LTER: Manipulating drivers to assess grassland resilience); Investigator, Colorado State University",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2020,
+   "end_year": null,
+   "source_url": "https://api.nsf.gov/services/v1/awards/2025849.json",
+   "evidence": "LTER: Manipulating drivers to assess grassland resilience ... coPDPI: Melinda D Smith",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "5a18bae1d57059c3",
+   "person_key": "knapp-alan",
+   "role": "scientist",
+   "title": "Investigator, Konza Prairie LTER (Colorado State University)",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lter.konza.ksu.edu/people/",
+   "evidence": "Alan Knapp Investigator Colorado State University",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "5a18bae1d57059c3",
+   "person_key": "briggs-john",
+   "role": "former-director",
+   "title": "Director, Konza Prairie Biological Station (former)",
+   "is_key_personnel": false,
+   "is_current": false,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.k-state.edu/biology/about/people/faculty/gone/briggs/",
+   "evidence": "John M. Briggs, Professor Director, Konza Prairie Biological Station",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "d7848bb1d531d7d1",
+   "person_key": "gooseff-michael",
+   "role": "lead-PI",
+   "title": "Lead Principal Investigator, McMurdo Dry Valleys LTER; Professor, University of Colorado Boulder",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/mcmurdo-dry-valleys-lter/",
+   "evidence": "Lead Principal Investigator: Michael Gooseff",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "d7848bb1d531d7d1",
+   "person_key": "wharton-robert",
+   "role": "founding-PI",
+   "title": "PI, original MCM LTER award OPP-9211773 (MCM1, 1993-1999), Desert Research Institute",
+   "is_key_personnel": false,
+   "is_current": false,
+   "start_year": 1993,
+   "end_year": 1999,
+   "source_url": "https://api.nsf.gov/services/v1/awards/9211773.json",
+   "evidence": "\"title\":\"McMurdo Dry Valleys: A Cold Desert Ecosystem\" ... \"pdPIName\":\"Robert A Wharton\"",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "d7848bb1d531d7d1",
+   "person_key": "gahler-mark",
+   "role": "information-manager",
+   "title": "Information Manager (System Engineer, University of Wisconsin-Madison)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://mcm.lternet.edu/wp-json/wp/v2/uw_staff?per_page=100&uw_staff_type=6,14,16",
+   "evidence": "Gahler, Mark ... System Engineer ... Information Manager ... University of Wisconsin–Madison",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "d7848bb1d531d7d1",
+   "person_key": "blackburn-sam",
+   "role": "information-manager",
+   "title": "Information Manager (Data Scientist, University of Wisconsin-Madison)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://mcm.lternet.edu/wp-json/wp/v2/uw_staff?per_page=100&uw_staff_type=6,14,16",
+   "evidence": "Blackburn, Sam ... Data Scientist ... Information Manager ... University of Wisconsin-Madison",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "d7848bb1d531d7d1",
+   "person_key": "takacs-vesbach-cristina",
+   "role": "co-PI",
+   "title": "Co-PI, NSF OPP-2224760 (MCM6); Chair, Biology Department, University of New Mexico",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2023,
+   "end_year": null,
+   "source_url": "https://api.nsf.gov/services/v1/awards/2224760.json",
+   "evidence": "LTER: MCM6 ... coPDPI: ... Cristina D Takacs-Vesbach",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "d7848bb1d531d7d1",
+   "person_key": "doran-peter",
+   "role": "co-PI",
+   "title": "Principal Investigator (Physical Limnology and Meteorology team); Professor, Louisiana State University",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://mcm.lternet.edu/wp-json/wp/v2/uw_staff?per_page=100&uw_staff_type=6,14,16",
+   "evidence": "Doran, Peter ... Professor ... Principal Investigator ... Louisiana State University",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "d7848bb1d531d7d1",
+   "person_key": "fountain-andrew",
+   "role": "lead-PI",
+   "title": "Lead PI, MCM LTER awards OPP-0423595 and OPP-0832755 (MCM3)",
+   "is_key_personnel": false,
+   "is_current": false,
+   "start_year": 2005,
+   "end_year": 2010,
+   "source_url": "https://api.nsf.gov/services/v1/awards/0423595.json",
+   "evidence": "\"pdPIName\":\"Andrew G Fountain\" (OPP-0423595, 2005-2008; OPP-0832755, 2008-2010)",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "d7848bb1d531d7d1",
+   "person_key": "fountain-andrew",
+   "role": "emeritus",
+   "title": "Investigator Emeritus, Portland State University",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://mcm.lternet.edu/team/",
+   "evidence": "Investigator Emeriti ... Andrew G. Fountain, Portland State University",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "d7848bb1d531d7d1",
+   "person_key": "mcknight-diane",
+   "role": "lead-PI",
+   "title": "Lead PI, MCM LTER award OPP-1041742 (MCM3, 2010-2011)",
+   "is_key_personnel": false,
+   "is_current": false,
+   "start_year": 2010,
+   "end_year": 2011,
+   "source_url": "https://api.nsf.gov/services/v1/awards/1041742.json",
+   "evidence": "\"pdPIName\":\"Diane M McKnight\"",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "d7848bb1d531d7d1",
+   "person_key": "mcknight-diane",
+   "role": "emeritus",
+   "title": "Investigator Emeritus, University of Colorado Boulder",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://mcm.lternet.edu/team/",
+   "evidence": "Investigator Emeriti ... Diane M. McKnight, University of Colorado Boulder",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "d7848bb1d531d7d1",
+   "person_key": "lyons-w-berry",
+   "role": "lead-PI",
+   "title": "Lead PI, MCM LTER awards OPP-9813061, OPP-9810219, OPP-0096250 (MCM1-MCM2)",
+   "is_key_personnel": false,
+   "is_current": false,
+   "start_year": 1998,
+   "end_year": 2006,
+   "source_url": "https://api.nsf.gov/services/v1/awards/0096250.json",
+   "evidence": "\"pdPIName\":\"W. Berry Lyons\" (OPP-0096250, 2000-2006; OPP-9813061 from 1998)",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "d7848bb1d531d7d1",
+   "person_key": "lyons-w-berry",
+   "role": "emeritus",
+   "title": "Investigator Emeritus, The Ohio State University",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://mcm.lternet.edu/team/",
+   "evidence": "Investigator Emeriti ... W. Berry Lyons, The Ohio State University",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "d7848bb1d531d7d1",
+   "person_key": "priscu-john",
+   "role": "emeritus",
+   "title": "Investigator Emeritus, Montana State University",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://mcm.lternet.edu/team/",
+   "evidence": "Investigator Emeriti ... John C. Priscu, Montana State University",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "ee98ac1a90620cf5",
+   "person_key": "castorani-max",
+   "role": "lead-PI",
+   "title": "Lead Principal Investigator, Virginia Coast Reserve LTER; PI, NSF award 2425178",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2025,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/virginia-coast-reserve-lter/",
+   "evidence": "Lead Principal Investigator: Max Castorani",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "ee98ac1a90620cf5",
+   "person_key": "mcglathery-karen",
+   "role": "co-PI",
+   "title": "Co-PI, NSF award 2425178 (VCR LTER, 2025-2031); Professor, University of Virginia",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2025,
+   "end_year": null,
+   "source_url": "https://api.nsf.gov/services/v1/awards/2425178.json",
+   "evidence": "LTER: Environmental drivers and ecosystem state change ... coPDPI: Karen J McGlathery",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "ee98ac1a90620cf5",
+   "person_key": "reidenbach-matthew",
+   "role": "co-PI",
+   "title": "Co-PI, NSF award 2425178 (VCR LTER)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2025,
+   "end_year": null,
+   "source_url": "https://api.nsf.gov/services/v1/awards/2425178.json",
+   "evidence": "coPDPI: ... Matthew A Reidenbach",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "ee98ac1a90620cf5",
+   "person_key": "porter-john",
+   "role": "information-manager",
+   "title": "Information Manager, Virginia Coast Reserve LTER; Research Associate Professor, University of Virginia",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/virginia-coast-reserve-lter/",
+   "evidence": "Information Manager: John Porter",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "ee98ac1a90620cf5",
+   "person_key": "white-connor",
+   "role": "information-manager",
+   "title": "Information Manager, Virginia Coast Reserve LTER",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/virginia-coast-reserve-lter/",
+   "evidence": "Information Manager: Connor White",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "ee98ac1a90620cf5",
+   "person_key": "baird-cora",
+   "role": "research-coordinator",
+   "title": "Research/Site Coordinator, Virginia Coast Reserve LTER",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/virginia-coast-reserve-lter/",
+   "evidence": "Research/Site Coordinator: Cora Baird",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "e26cfe5b1131c69e",
+   "person_key": "mack-michelle",
+   "role": "lead-PI",
+   "title": "Lead Principal Investigator, Bonanza Creek LTER; PI, NSF award 2224776",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2023,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/bonanza-creek-lter/",
+   "evidence": "Lead Principal Investigator: Michelle Mack",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "e26cfe5b1131c69e",
+   "person_key": "hollingsworth-jamie",
+   "role": "research-coordinator",
+   "title": "Research/Site Coordinator, Bonanza Creek LTER",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/bonanza-creek-lter/",
+   "evidence": "Research/Site Coordinator: Jamie Hollingsworth",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "e26cfe5b1131c69e",
+   "person_key": "downing-jason",
+   "role": "information-manager",
+   "title": "Information Manager, Bonanza Creek LTER",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/bonanza-creek-lter/",
+   "evidence": "Information Manager: Jason Downing",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "e26cfe5b1131c69e",
+   "person_key": "jones-jeremy",
+   "role": "co-PI",
+   "title": "Co-PI, NSF award 2224776 (Bonanza Creek LTER, 2023-2029)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2023,
+   "end_year": null,
+   "source_url": "https://api.nsf.gov/services/v1/awards/2224776.json",
+   "evidence": "LTER: Changing Disturbances, Ecological Legacies ... coPDPI: Jeremy B Jones",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "e26cfe5b1131c69e",
+   "person_key": "mulder-christa",
+   "role": "co-PI",
+   "title": "Co-PI, NSF award 2224776 (Bonanza Creek LTER, 2023-2029)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2023,
+   "end_year": null,
+   "source_url": "https://api.nsf.gov/services/v1/awards/2224776.json",
+   "evidence": "LTER: Changing Disturbances, Ecological Legacies ... coPDPI: ... Christa Mulder",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "a3250b6ee5b1e18e",
+   "person_key": "miller-robert",
+   "role": "lead-PI",
+   "title": "Project Lead Investigator, Santa Barbara Coastal LTER; Research Biologist, UCSB Marine Science Institute",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2019,
+   "end_year": null,
+   "source_url": "https://sbclter.msi.ucsb.edu/about/people/rmiller/",
+   "evidence": "In 2019 I assumed the role of Lead PI of SBC-LTER from Dan Reed",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "a3250b6ee5b1e18e",
+   "person_key": "reed-daniel",
+   "role": "founding-PI",
+   "title": "Lead PI of SBC LTER from its inception in 2000 until 2019",
+   "is_key_personnel": false,
+   "is_current": false,
+   "start_year": 2000,
+   "end_year": 2019,
+   "source_url": "https://sbclter.msi.ucsb.edu/about/people/rmiller/",
+   "evidence": "Lead PI of SBC-LTER from Dan Reed, who led the project from its inception in 2000",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "a3250b6ee5b1e18e",
+   "person_key": "reed-daniel",
+   "role": "co-PI",
+   "title": "Project Co-Investigator, Santa Barbara Coastal LTER; Research Biologist, UCSB MSI",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://sbclter.msi.ucsb.edu/about/people/",
+   "evidence": "Project Co-Investigators ... Dan Reed Kelp Forest Ecology",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "a3250b6ee5b1e18e",
+   "person_key": "hofmann-gretchen",
+   "role": "co-PI",
+   "title": "Project Co-Investigator, Santa Barbara Coastal LTER; Professor, UCSB EEMB",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://sbclter.msi.ucsb.edu/about/people/",
+   "evidence": "Project Co-Investigators ... Gretchen Hofmann Eco-physiology",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "a3250b6ee5b1e18e",
+   "person_key": "stier-adrian",
+   "role": "co-PI",
+   "title": "Project Co-Investigator, Santa Barbara Coastal LTER; UCSB EEMB",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://sbclter.msi.ucsb.edu/about/people/",
+   "evidence": "Adrian Stier Ecosystem biodiversity and resilience",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "a3250b6ee5b1e18e",
+   "person_key": "dugan-jenifer",
+   "role": "research-coordinator",
+   "title": "Project Coordination, Santa Barbara Coastal LTER; Research Biologist, UCSB MSI",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/santa-barbara-coastal-lter/",
+   "evidence": "Research/Site Coordinator: Jenifer Dugan",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "a3250b6ee5b1e18e",
+   "person_key": "kui-li",
+   "role": "information-manager",
+   "title": "Information Manager, Santa Barbara Coastal LTER; Project Scientist, UCSB MSI",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/santa-barbara-coastal-lter/",
+   "evidence": "Information Manager: Li Kui",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "ae0beda05f19885a",
+   "person_key": "hunt-randall",
+   "role": "scientist",
+   "title": "Contact, WEBB Trout Lake; Scientist Emeritus, Research Hydrologist, USGS Upper Midwest Water Science Center",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.usgs.gov/centers/upper-midwest-water-science-center/science/water-energy-and-biogeochemical-budgets-webb",
+   "evidence": "Contacts Randall J Hunt, Ph.D. Scientist Emeritus, Research Hydrologist Upper Midwest Water Science Center",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "ae0beda05f19885a",
+   "person_key": "hood-krista",
+   "role": "scientist",
+   "title": "Contact, WEBB Trout Lake; Hydrologist, USGS Upper Midwest Water Science Center",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.usgs.gov/centers/upper-midwest-water-science-center/science/water-energy-and-biogeochemical-budgets-webb",
+   "evidence": "Krista A Hood Hydrologist Upper Midwest Water Science Center",
+   "confidence": "medium"
+  }
+ ],
+ "verifications": [
+  {
+   "facility_id": "5a18bae1d57059c3",
+   "person_id": "087bd097c4996ea9",
+   "existing_role": "co-PI",
+   "status": "stale",
+   "current_holder_key": null,
+   "source_url": "https://lter.konza.ksu.edu/people/",
+   "evidence": "Alan Knapp Investigator Colorado State University"
+  },
+  {
+   "facility_id": "5a18bae1d57059c3",
+   "person_id": "d7a9966fec318ef3",
+   "existing_role": "lead-PI",
+   "status": "stale",
+   "current_holder_key": "nippert-jesse",
+   "source_url": "https://lternet.edu/site/konza-prairie-lter/",
+   "evidence": "Lead Principal Investigator: Jesse Nippert"
+  },
+  {
+   "facility_id": "5a18bae1d57059c3",
+   "person_id": "de6ac79c96ac4f71",
+   "existing_role": "emeritus",
+   "status": "unverifiable",
+   "current_holder_key": null,
+   "source_url": "https://www.k-state.edu/biology/about/people/faculty/gone/briggs/",
+   "evidence": "John M. Briggs, Professor Director, Konza Prairie Biological Station"
+  },
+  {
+   "facility_id": "d7848bb1d531d7d1",
+   "person_id": "aeba46d2f5fbc845",
+   "existing_role": "co-PI",
+   "status": "stale",
+   "current_holder_key": null,
+   "source_url": "https://mcm.lternet.edu/team/",
+   "evidence": "Investigator Emeriti ... Andrew G. Fountain, Portland State University"
+  },
+  {
+   "facility_id": "d7848bb1d531d7d1",
+   "person_id": "7636b67be6a536db",
+   "existing_role": "founding-PI",
+   "status": "unverifiable",
+   "current_holder_key": null,
+   "source_url": "https://api.nsf.gov/services/v1/awards/9211773.json",
+   "evidence": "\"title\":\"McMurdo Dry Valleys: A Cold Desert Ecosystem\" ... \"pdPIName\":\"Robert A Wharton\""
+  },
+  {
+   "facility_id": "d7848bb1d531d7d1",
+   "person_id": "fb22bc8e165ce844",
+   "existing_role": "lead-PI",
+   "status": "stale",
+   "current_holder_key": "gooseff-michael",
+   "source_url": "https://lternet.edu/site/mcmurdo-dry-valleys-lter/",
+   "evidence": "Lead Principal Investigator: Michael Gooseff"
+  },
+  {
+   "facility_id": "d7848bb1d531d7d1",
+   "person_id": "73f14c7389432d8c",
+   "existing_role": "lead-PI",
+   "status": "stale",
+   "current_holder_key": "gooseff-michael",
+   "source_url": "https://lternet.edu/site/mcmurdo-dry-valleys-lter/",
+   "evidence": "Lead Principal Investigator: Michael Gooseff"
+  },
+  {
+   "facility_id": "d7848bb1d531d7d1",
+   "person_id": "f79f77e7d0053af0",
+   "existing_role": "founding-PI",
+   "status": "unverifiable",
+   "current_holder_key": null,
+   "source_url": "https://api.nsf.gov/services/v1/awards/9211773.json",
+   "evidence": "\"pdPIName\":\"Robert A Wharton\""
+  },
+  {
+   "facility_id": "d7848bb1d531d7d1",
+   "person_id": "7636b67be6a536db",
+   "existing_role": "co-PI",
+   "status": "stale",
+   "current_holder_key": null,
+   "source_url": "https://mcm.lternet.edu/team/",
+   "evidence": "Investigator Emeriti ... Diane M. McKnight, University of Colorado Boulder"
+  },
+  {
+   "facility_id": "d7848bb1d531d7d1",
+   "person_id": "fb22bc8e165ce844",
+   "existing_role": "co-PI",
+   "status": "stale",
+   "current_holder_key": null,
+   "source_url": "https://mcm.lternet.edu/team/",
+   "evidence": "Investigator Emeriti ... W. Berry Lyons, The Ohio State University"
+  },
+  {
+   "facility_id": "ee98ac1a90620cf5",
+   "person_id": "8cfeea24cc6af614",
+   "existing_role": "lead-PI",
+   "status": "stale",
+   "current_holder_key": "castorani-max",
+   "source_url": "https://lternet.edu/site/virginia-coast-reserve-lter/",
+   "evidence": "Lead Principal Investigator: Max Castorani"
+  },
+  {
+   "facility_id": "ee98ac1a90620cf5",
+   "person_id": "1131fef9a148368a",
+   "existing_role": "co-PI",
+   "status": "stale",
+   "current_holder_key": null,
+   "source_url": "https://www.vcrlter.virginia.edu/data/personnel/person.php?QID=lblum",
+   "evidence": "Dr. Linda K. Blum ... LTER Affiliation: Affiliated1 ... Inactive : This information may not be current"
+  },
+  {
+   "facility_id": "a3250b6ee5b1e18e",
+   "person_id": "5d8c0fd7ccaa79fd",
+   "existing_role": "lead-PI",
+   "status": "stale",
+   "current_holder_key": "miller-robert",
+   "source_url": "https://sbclter.msi.ucsb.edu/about/people/rmiller/",
+   "evidence": "In 2019 I assumed the role of Lead PI of SBC-LTER from Dan Reed"
+  },
+  {
+   "facility_id": "a3250b6ee5b1e18e",
+   "person_id": "d574f93e9f92a588",
+   "existing_role": "co-PI",
+   "status": "stale",
+   "current_holder_key": "miller-robert",
+   "source_url": "https://lternet.edu/site/santa-barbara-coastal-lter/",
+   "evidence": "Lead Principal Investigator: Robert Miller"
+  }
+ ],
+ "verification_notes": "All 49 cited URLs and 14 ORCID records re-fetched 2026-10-22 (HTTP 200); NSF awards 0832755, 9813061, 9810219 also fetched to confirm Fountain 2005-2010 and Lyons 1998-2006 lead-PI spans. Bonanza Creek affiliations downgraded to medium: sources describe BNZ LTER as a whole, not the Caribou-Poker Creeks component this facility record names (it is the only BNZ LTER facility in the catalogue). Wharton founding-PI downgraded to medium (founding inferred from the first MCM LTER award record). Doran co-PI downgraded to medium (MCM lists him as one of several Principal Investigators under a Lead PI). Five bios edited to remove claims not on the bio source page."
+}

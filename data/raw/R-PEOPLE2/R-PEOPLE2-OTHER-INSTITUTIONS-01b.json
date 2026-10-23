@@ -1,0 +1,987 @@
+{
+ "batch_id": "R-PEOPLE2-OTHER-INSTITUTIONS-01b",
+ "retrieved_at": "2026-10-22",
+ "verified_by": "adversarial-verifier 2026-10-22",
+ "facilities": [
+  {
+   "facility_id": "c9c6536a9b20e89c",
+   "pages_fetched": [
+    {
+     "url": "https://www.usgs.gov/centers/spcmsc",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/centers/spcmsc/about",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/centers/spcmsc/connect",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/centers/spcmsc/connect?node_staff_org_primary_title=Supervisory&node_title=&node_email=&node_phone=",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/centers/spcmsc/connect?node_staff_org_primary_title=Deputy&node_title=&node_email=&node_phone=",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/centers/spcmsc/history-st-petersburg-coastal-and-marine-science-center",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/staff-profiles/nathaniel-plant",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/staff-profiles/kara-doran",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/centers/spcmsc/science-center-staff",
+     "status": 404
+    }
+   ],
+   "notes": "Leadership from the center's Connect page (Center Director Nathaniel Plant; administrative officer omitted). Directory filter for 'Supervisory' returned only Kara Doran; no deputy director listed. The center history page (established late 1980s, building dedicated June 1989) names no founding center chief, so no founding-director row. ORCIDs taken from the staff-orcid field on each USGS profile page."
+  },
+  {
+   "facility_id": "a4246cc563eddd28",
+   "pages_fetched": [
+    {
+     "url": "https://akcasc.org/",
+     "status": 200
+    },
+    {
+     "url": "https://akcasc.org/about-us/",
+     "status": 200
+    },
+    {
+     "url": "https://akcasc.org/contact/",
+     "status": 200
+    },
+    {
+     "url": "https://akcasc.org/directory-entries/stephen-gray/",
+     "status": 200
+    },
+    {
+     "url": "https://akcasc.org/directory/timm/",
+     "status": 200
+    },
+    {
+     "url": "https://akcasc.org/directory/rupp/",
+     "status": 200
+    },
+    {
+     "url": "https://akcasc.org/directory/lemons/",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/programs/climate-adaptation-science-centers/alaska-casc",
+     "status": 200
+    },
+    {
+     "url": "https://akcasc.org/our-team/",
+     "status": 404
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-0959-3418/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-0959-3418/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0001-8552-3908/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0001-8552-3908/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-3712-7326/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-3712-7326/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-5970-282X/employments",
+     "status": 200
+    }
+   ],
+   "notes": "AK CASC is a University of Alaska / USGS partnership hosted by UAF's International Arctic Research Center. 'Our Team' (akcasc.org/contact/) lists Directors: Kristin Timm (University Director), T. Scott Rupp (Institutional PI), Stephen Gray (USGS Regional Administrator) and Patrick Lemons (USGS Deputy Regional Administrator); the USGS AK CASC page lists the same four. Rupp also recorded as former University Director/Co-Director (15 years, years not given). Management team (Hahn, Fellman, Bidlack) listed without titles, so omitted. ORCID for Patrick Lemons candidate had no employments, so left null. Center established 2010; no founding director named."
+  },
+  {
+   "facility_id": "fab411b2258d63a5",
+   "pages_fetched": [
+    {
+     "url": "https://www.usgs.gov/centers/great-lakes-science-center",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/centers/great-lakes-science-center/connect",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/centers/great-lakes-science-center/connect?node_staff_org_primary_title=Deputy&node_title=&node_email=&node_phone=",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/centers/great-lakes-science-center/connect?node_staff_org_primary_title=Supervisory&node_title=&node_email=&node_phone=",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/centers/great-lakes-science-center/connect?node_staff_org_primary_title=Chief&node_title=&node_email=&node_phone=",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/staff-profiles/kurt-r-newman",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/staff-profiles/richard-t-kraus",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/staff-profiles/ralph-grundel",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/centers/great-lakes-science-center/about",
+     "status": 404
+    },
+    {
+     "url": "https://www.usgs.gov/centers/great-lakes-science-center/science-center-staff",
+     "status": 404
+    }
+   ],
+   "notes": "Center Director Kurt Newman (since 08/2024; Deepwater Science Branch Chief 2009-2024) and Deputy Center Director Richard Kraus from the GLSC Connect page and directory. Ralph Grundel added as Chief, Restoration and Conservation Sciences Branch (since 2019). Other supervisors in the directory (Nicholas Johnson, Gregory Kennedy, Brian Lantry, Timothy O'Brien; Station Chief Daniel Yule) not added to stay within the per-facility cap. ORCIDs from the staff-orcid field on USGS profiles."
+  },
+  {
+   "facility_id": "9937f684d17a99a3",
+   "pages_fetched": [
+    {
+     "url": "https://necasc.umass.edu/",
+     "status": 200
+    },
+    {
+     "url": "https://necasc.umass.edu/about",
+     "status": 200
+    },
+    {
+     "url": "https://necasc.umass.edu/about/our-team",
+     "status": 200
+    },
+    {
+     "url": "https://necasc.umass.edu/people/carrie-brown-lima-1",
+     "status": 200
+    },
+    {
+     "url": "https://necasc.umass.edu/people/bethany-bradley",
+     "status": 200
+    },
+    {
+     "url": "https://necasc.umass.edu/people/jon-woodruff",
+     "status": 200
+    },
+    {
+     "url": "https://necasc.umass.edu/people/emily-fusco",
+     "status": 200
+    },
+    {
+     "url": "https://necasc.umass.edu/people/ashley-fortune-isham",
+     "status": 200
+    },
+    {
+     "url": "https://necasc.umass.edu/people/toni-lyn-morelli",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/staff-profiles/carrie-brown-lima",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/staff-profiles/toni-lyn-morelli",
+     "status": 200
+    },
+    {
+     "url": "https://people.umass.edu/bethanyb/people.html",
+     "status": 200
+    },
+    {
+     "url": "https://blogs.umass.edu/woodruff/",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0003-4912-4971/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0003-4912-4971/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0001-5865-5294/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0001-5865-5294/employments",
+     "status": 200
+    }
+   ],
+   "notes": "Hosted by UMass Amherst. 'NE CASC Directors and Administrators': Carrie Brown-Lima (USGS Regional Administrator; USGS profile says this post was formerly titled Center Director), Bethany Bradley and Jon Woodruff (University Co-Directors), Emily Fusco (Deputy University Director). Staff: Ashley Fortune Isham (Research Coordinator, USGS, since Aug 2022) and Toni Lyn Morelli (USGS Research Ecologist). Academic Leadership consortium members (Baranes, D'Amato, Guzman, Hopkins, Lerman, McIntyre, Nislow, Smith) not added. ORCID candidates for Woodruff, Fusco and Brown-Lima had no employment records, so left null. No founding director named on fetched pages."
+  },
+  {
+   "facility_id": "afb21dfd91a94e19",
+   "pages_fetched": [
+    {
+     "url": "https://www.usgs.gov/centers/whcmsc",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/centers/whcmsc/connect",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/staff-profiles/brita-j-jessen",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/staff-profiles/jane-f-denny",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0009-0004-6127-6024/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0009-0004-6127-6024/employments",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/centers/whcmsc/science-center-staff",
+     "status": 404
+    }
+   ],
+   "notes": "Center Director Brita Jessen and Deputy Center Director Jane Denny from the WHCMSC Connect page and USGS profiles (administrative officer omitted). Jessen's ORCID comes from her ORCID record (employment: USGS Woods Hole Coastal & Marine Science Center, Center Director); Denny's ORCID is on her USGS profile."
+  },
+  {
+   "facility_id": "5da8e0cad0447427",
+   "pages_fetched": [
+    {
+     "url": "https://www.nps.gov/caco/",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/caco/contacts.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/caco/learn/index.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/caco/learn/management/index.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/caco/learn/management/staffandoffices.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/caco/learn/management/advisory-commission.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/caco/learn/scienceresearch.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/caco/learn/nature/nrms.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/caco/learn/nature/arlc.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/caco/learn/nature/cape-cod-ecosystem-monitoring.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/caco/learn/news/chiefnaturalresource.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/caco/learn/nature/sophia-e-fox.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/caco/learn/nature/stephen-m-smith.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/caco/learn/nature/nrms-staff.htm",
+     "status": 404
+    },
+    {
+     "url": "https://www.nps.gov/caco/learn/management/superintendent.htm",
+     "status": 404
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-0847-9832/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-0400-3474/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-9085-4717/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0001-9145-1226/employments",
+     "status": 200
+    }
+   ],
+   "notes": "Superintendent Jennifer Flynn and Deputy Superintendent Leslie Reynolds from 'Our Staff & Offices' (updated Aug 19, 2026); no profile pages, so no bios. Science staff from the Natural Resource Management and Science Division page (which also serves as Atlantic Research and Learning Center staff): Geoff Sanders (Chief, since 2019 per archived NPS news release), Sophia Fox (Aquatic Ecologist), Stephen Smith (Plant Ecologist, since 2002). Also listed but not added: Kelly Medeiros (Natural Resource Specialist), Scott Rasmussen (GIS Specialist), Kyrsten Boswell (Herring River Ecologist). Existing rows Megan Tyrrell and Mark Adams are absent from the current NRMS staff list; both names appear only as co-authors in Stephen Smith's publication list. ORCID candidates for Fox and Sanders had no employments, so left null. Web search budget was exhausted, so no further pages could be located for Flynn, Reynolds, Tyrrell or Adams."
+  }
+ ],
+ "people": [
+  {
+   "key": "nathaniel-plant",
+   "existing_person_id": null,
+   "name": "Nathaniel Plant",
+   "name_given": "Nathaniel",
+   "name_family": "Plant",
+   "orcid": "0000-0002-5703-5672",
+   "orcid_source_url": "https://www.usgs.gov/staff-profiles/nathaniel-plant",
+   "homepage_url": "https://www.usgs.gov/staff-profiles/nathaniel-plant",
+   "bio": "Oceanographer and marine geologist who directs the USGS coastal and marine science center in St. Petersburg, Florida (SPCMSC), acting from October 2018 and permanent from April 2019. His earlier USGS research applied coastal science to management, such as assessing storm-driven and long-term shoreline erosion and identifying future nesting habitat for an endangered shorebird. PhD, Oregon State University (1998).",
+   "bio_source_url": "https://www.usgs.gov/staff-profiles/nathaniel-plant",
+   "research_interests": "coastal hazards from storms and sea-level rise; coastal erosion; sediment availability and distribution; coastal ecosystem response to extreme events",
+   "research_interests_source_url": "https://www.usgs.gov/staff-profiles/nathaniel-plant"
+  },
+  {
+   "key": "kara-doran",
+   "existing_person_id": null,
+   "name": "Kara Doran",
+   "name_given": "Kara",
+   "name_family": "Doran",
+   "orcid": "0000-0001-8050-5727",
+   "orcid_source_url": "https://www.usgs.gov/staff-profiles/kara-doran",
+   "homepage_url": "https://www.usgs.gov/staff-profiles/kara-doran",
+   "bio": "Supervisory physical scientist and oceanographer at the USGS St. Petersburg center (SPCMSC) who forecasts storm effects on sandy coasts. A long-time contributor to the USGS national storm-induced coastal change hazards assessment, she produces real-time water level and coastal change forecasts and has been the Storm Team's coastal change hazards liaison since 2018.",
+   "bio_source_url": "https://www.usgs.gov/staff-profiles/kara-doran",
+   "research_interests": "storm impacts on sandy coastlines; total water level and geomorphic change forecasting; lidar-based coastal change analysis; coastal change hazards",
+   "research_interests_source_url": "https://www.usgs.gov/staff-profiles/kara-doran"
+  },
+  {
+   "key": "stephen-gray",
+   "existing_person_id": null,
+   "name": "Stephen Gray",
+   "name_given": "Stephen",
+   "name_family": "Gray",
+   "orcid": "0000-0002-0959-3418",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-0959-3418/employments",
+   "homepage_url": "https://akcasc.org/directory-entries/stephen-gray/",
+   "bio": "Climatologist serving as USGS director (regional administrator) of the Alaska CASC. He formerly directed the Water Resources Data System at the University of Wyoming and worked as a climatologist for the State of Wyoming; his research has examined drought, snowpack variability and climate change impacts on natural resource management in the western United States.",
+   "bio_source_url": "https://akcasc.org/directory-entries/stephen-gray/",
+   "research_interests": "drought; climate variability and change; mountain snowpack variability; climate impacts on western U.S. natural resource management",
+   "research_interests_source_url": "https://akcasc.org/directory-entries/stephen-gray/"
+  },
+  {
+   "key": "kristin-timm",
+   "existing_person_id": null,
+   "name": "Kristin Timm",
+   "name_given": "Kristin",
+   "name_family": "Timm",
+   "orcid": "0000-0001-8552-3908",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0001-8552-3908/employments",
+   "homepage_url": "https://akcasc.org/directory/timm/",
+   "bio": "University Director of the Alaska CASC and a UAF research assistant professor. Her research treats science communication as central to producing actionable climate science, studying the people, relationships and institutions that connect science with policy, management and communities. PhD in communication, George Mason University.",
+   "bio_source_url": "https://akcasc.org/directory/timm/",
+   "research_interests": "science communication; actionable climate science; science-society interface; climate adaptation in Alaska",
+   "research_interests_source_url": "https://akcasc.org/directory/timm/"
+  },
+  {
+   "key": "scott-rupp",
+   "existing_person_id": null,
+   "name": "T. Scott Rupp",
+   "name_given": "T. Scott",
+   "name_family": "Rupp",
+   "orcid": "0000-0002-3712-7326",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-3712-7326/employments",
+   "homepage_url": "https://akcasc.org/directory/rupp/",
+   "bio": "Ecosystem modeler and interim director of UAF's International Arctic Research Center, and institutional principal investigator for the Alaska CASC, which he co-directed or directed on the university side for 15 years. He co-founded Scenarios Network for Alaska + Arctic Planning and led it for 19 years, modeling how subarctic and arctic ecosystems respond to climate and disturbance.",
+   "bio_source_url": "https://akcasc.org/directory/rupp/",
+   "research_interests": "ecosystem modeling; climate change impacts; subarctic and arctic ecosystem response to climate and disturbance regimes",
+   "research_interests_source_url": "https://akcasc.org/directory/rupp/"
+  },
+  {
+   "key": "patrick-lemons",
+   "existing_person_id": null,
+   "name": "Patrick Lemons",
+   "name_given": "Patrick",
+   "name_family": "Lemons",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://akcasc.org/directory/lemons/",
+   "bio": "Assistant Regional Administrator and Deputy Director of the Alaska CASC. He previously headed the U.S. Fish and Wildlife Service Marine Mammals Management program in Alaska, led the U.S. delegation to the Polar Range States Agreement, and earlier worked as a walrus and sea otter population ecologist. PhD, University of Nevada, Reno.",
+   "bio_source_url": "https://akcasc.org/directory/lemons/",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "kurt-newman",
+   "existing_person_id": null,
+   "name": "Kurt R. Newman",
+   "name_given": "Kurt",
+   "name_family": "Newman",
+   "orcid": "0000-0003-0059-6046",
+   "orcid_source_url": "https://www.usgs.gov/staff-profiles/kurt-r-newman",
+   "homepage_url": "https://www.usgs.gov/staff-profiles/kurt-r-newman",
+   "bio": "Fisheries scientist who has directed the USGS Great Lakes Science Center in Ann Arbor since August 2024. He previously led the center's Deepwater Science Branch (2009-2024), covering prey fish assessment, invasive species control and native fish restoration, after leadership roles in Michigan DNR's Fisheries Division. PhD in fisheries and wildlife, Michigan State University.",
+   "bio_source_url": "https://www.usgs.gov/staff-profiles/kurt-r-newman",
+   "research_interests": "fish population dynamics; aquatic ecosystem structure and function; fisheries management; aquatic invasive species; habitat and native fish restoration",
+   "research_interests_source_url": "https://www.usgs.gov/staff-profiles/kurt-r-newman"
+  },
+  {
+   "key": "richard-kraus",
+   "existing_person_id": null,
+   "name": "Richard T. Kraus",
+   "name_given": "Richard",
+   "name_family": "Kraus",
+   "orcid": "0000-0003-4494-1841",
+   "orcid_source_url": "https://www.usgs.gov/staff-profiles/richard-t-kraus",
+   "homepage_url": "https://www.usgs.gov/staff-profiles/richard-t-kraus",
+   "bio": "Research fishery biologist at the Lake Erie Biological Station in Huron, Ohio, and Deputy Center Director of the USGS Great Lakes Science Center. He studies how fish migration and habitat use shape population dynamics and species interactions, working with U.S. and Canadian agencies on shared fisheries. Formerly an assistant professor at George Mason University.",
+   "bio_source_url": "https://www.usgs.gov/staff-profiles/richard-t-kraus",
+   "research_interests": "fish migration; habitat use and selection; hypoxia; Lake Erie; otolith microchemistry; predator-prey interactions",
+   "research_interests_source_url": "https://www.usgs.gov/staff-profiles/richard-t-kraus"
+  },
+  {
+   "key": "ralph-grundel",
+   "existing_person_id": null,
+   "name": "Ralph Grundel",
+   "name_given": "Ralph",
+   "name_family": "Grundel",
+   "orcid": "0000-0002-2949-7087",
+   "orcid_source_url": "https://www.usgs.gov/staff-profiles/ralph-grundel",
+   "homepage_url": "https://www.usgs.gov/staff-profiles/ralph-grundel",
+   "bio": "USGS research ecologist who has led the Great Lakes Science Center's Restoration and Conservation Sciences Branch since 2019, based at the Lake Michigan Ecological Research Station in Indiana Dunes National Park. His team works on pollinator and savanna conservation, landscape connectivity, extinction risk for listed species, and climate effects on species.",
+   "bio_source_url": "https://www.usgs.gov/staff-profiles/ralph-grundel",
+   "research_interests": "pollinators; savanna restoration; landscape connectivity; endangered species such as the Karner blue butterfly and eastern massasauga; climate change effects",
+   "research_interests_source_url": "https://www.usgs.gov/staff-profiles/ralph-grundel"
+  },
+  {
+   "key": "carrie-brown-lima",
+   "existing_person_id": null,
+   "name": "Carrie Brown-Lima",
+   "name_given": "Carrie",
+   "name_family": "Brown-Lima",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.usgs.gov/staff-profiles/carrie-brown-lima",
+   "bio": "USGS Regional Administrator for the Northeast CASC, a post formerly titled Center Director. She previously directed Cornell's New York Invasive Species Research Institute for nine years, co-founded the Northeast RISCC Management Network, and earlier led conservation programs in Brazil and Latin America. MS in natural resources, Cornell.",
+   "bio_source_url": "https://www.usgs.gov/staff-profiles/carrie-brown-lima",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "bethany-bradley",
+   "existing_person_id": null,
+   "name": "Bethany Bradley",
+   "name_given": "Bethany",
+   "name_family": "Bradley",
+   "orcid": "0000-0003-4912-4971",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0003-4912-4971/employments",
+   "homepage_url": "https://people.umass.edu/bethanyb/people.html",
+   "bio": "Professor of biogeography and spatial ecology at UMass Amherst and university co-director and principal investigator of the Northeast CASC. She uses species distributions to study invasion ecology, climate change ecology and conservation, and co-founded the Northeast Regional Invasive Species & Climate Change Network. PhD in geological science, Brown University.",
+   "bio_source_url": "https://necasc.umass.edu/people/bethany-bradley",
+   "research_interests": "invasion ecology; climate change ecology; biogeography and spatial ecology; biological conservation; management-driven translational science",
+   "research_interests_source_url": "https://necasc.umass.edu/people/bethany-bradley"
+  },
+  {
+   "key": "jon-woodruff",
+   "existing_person_id": null,
+   "name": "Jon Woodruff",
+   "name_given": "Jon",
+   "name_family": "Woodruff",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://necasc.umass.edu/people/jon-woodruff",
+   "bio": "Professor at UMass Amherst, university co-director and principal investigator of the Northeast CASC. He studies sediment transport and routing in rivers and estuaries and the geomorphic marks extreme floods leave on fluvial and coastal systems. PhD from the MIT/WHOI Joint Program (2009).",
+   "bio_source_url": "https://necasc.umass.edu/people/jon-woodruff",
+   "research_interests": "sediment transport in rivers and estuaries; source-to-sink sediment routing; sedimentary signatures and geomorphic impacts of extreme flooding",
+   "research_interests_source_url": "https://necasc.umass.edu/people/jon-woodruff"
+  },
+  {
+   "key": "emily-fusco",
+   "existing_person_id": null,
+   "name": "Emily Fusco",
+   "name_given": "Emily",
+   "name_family": "Fusco",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://necasc.umass.edu/people/emily-fusco",
+   "bio": "Research assistant professor at UMass Amherst and Deputy University Director of the Northeast CASC, working in global change science and adaptation. Earlier, at the University of Washington's Climate Impacts Group, she held a research scientist post and coordinated the Northwest RISCC network; she also held an ORISE climate fellowship with the USDA Forest Service.",
+   "bio_source_url": "https://necasc.umass.edu/people/emily-fusco",
+   "research_interests": "global change science and adaptation; climate vulnerability assessment; invasive species and climate change",
+   "research_interests_source_url": "https://necasc.umass.edu/people/emily-fusco"
+  },
+  {
+   "key": "ashley-fortune-isham",
+   "existing_person_id": null,
+   "name": "Ashley Fortune Isham",
+   "name_given": "Ashley",
+   "name_family": "Fortune Isham",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://necasc.umass.edu/people/ashley-fortune-isham",
+   "bio": "USGS research coordinator for the Northeast Climate Adaptation Science Center since August 2022. Before that she spent about a decade at the U.S. Fish & Wildlife Service National Conservation Training Center as a training technician, training specialist and general biologist.",
+   "bio_source_url": "https://necasc.umass.edu/people/ashley-fortune-isham",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "toni-lyn-morelli",
+   "existing_person_id": null,
+   "name": "Toni Lyn Morelli",
+   "name_given": "Toni Lyn",
+   "name_family": "Morelli",
+   "orcid": "0000-0001-5865-5294",
+   "orcid_source_url": "https://www.usgs.gov/staff-profiles/toni-lyn-morelli",
+   "homepage_url": "https://www.usgs.gov/staff-profiles/toni-lyn-morelli",
+   "bio": "USGS research ecologist with the Northeast CASC, based at UMass Amherst. She combines geospatial analysis, species distribution and occupancy models, and population and landscape genetics to support conservation under climate and land-use change, including climate refugia and change in northeastern boreal communities. Formerly a U.S. Forest Service research ecologist.",
+   "bio_source_url": "https://necasc.umass.edu/people/toni-lyn-morelli",
+   "research_interests": "climate refugia; landscape and species conservation; climate adaptation; translational ecology; mammal vulnerability; decision analysis",
+   "research_interests_source_url": "https://necasc.umass.edu/people/toni-lyn-morelli"
+  },
+  {
+   "key": "brita-jessen",
+   "existing_person_id": null,
+   "name": "Brita J. Jessen",
+   "name_given": "Brita",
+   "name_family": "Jessen",
+   "orcid": "0009-0004-6127-6024",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0009-0004-6127-6024/employments",
+   "homepage_url": "https://www.usgs.gov/staff-profiles/brita-j-jessen",
+   "bio": "Center Director at WHCMSC, the USGS coastal and marine research center in Woods Hole. She earlier built interdisciplinary research partnerships for the S.C. Sea Grant Consortium and served as research director at Rookery Bay National Estuarine Research Reserve, working on blue carbon, tidal forested wetlands, coastal restoration and hurricane resilience. PhD, University of Rhode Island oceanography.",
+   "bio_source_url": "https://www.usgs.gov/staff-profiles/brita-j-jessen",
+   "research_interests": "coastal ecosystems; coastal restoration; collaborative science and co-production; blue carbon",
+   "research_interests_source_url": "https://www.usgs.gov/staff-profiles/brita-j-jessen"
+  },
+  {
+   "key": "jane-denny",
+   "existing_person_id": null,
+   "name": "Jane F. Denny",
+   "name_given": "Jane",
+   "name_family": "Denny",
+   "orcid": "0000-0002-3472-618X",
+   "orcid_source_url": "https://www.usgs.gov/staff-profiles/jane-f-denny",
+   "homepage_url": "https://www.usgs.gov/staff-profiles/jane-f-denny",
+   "bio": "Deputy Center Director at the USGS Woods Hole center (WHCMSC) and a supervisory geologist in its Seafloor Mapping group, with expertise in seafloor mapping, geophysical data, morphology, natural hazards and sediment transport.",
+   "bio_source_url": "https://www.usgs.gov/staff-profiles/jane-f-denny",
+   "research_interests": "seafloor mapping; geophysical data; morphology; natural hazards; sediment transport",
+   "research_interests_source_url": "https://www.usgs.gov/staff-profiles/jane-f-denny"
+  },
+  {
+   "key": "jennifer-flynn",
+   "existing_person_id": null,
+   "name": "Jennifer Flynn",
+   "name_given": "Jennifer",
+   "name_family": "Flynn",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "leslie-reynolds",
+   "existing_person_id": null,
+   "name": "Leslie Reynolds",
+   "name_given": "Leslie",
+   "name_family": "Reynolds",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "geoff-sanders",
+   "existing_person_id": null,
+   "name": "Geoff Sanders",
+   "name_given": "Geoff",
+   "name_family": "Sanders",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Division chief for natural resources and science at Cape Cod National Seashore since 2019. A field ecologist with more than 20 years in coastal, forest and grassland ecology, he previously managed the National Park Service National Capital Region Inventory and Monitoring Network. Degrees from the University of Scranton and Johns Hopkins University.",
+   "bio_source_url": "https://www.nps.gov/caco/learn/news/chiefnaturalresource.htm",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "sophia-fox",
+   "existing_person_id": null,
+   "name": "Sophia Fox",
+   "name_given": "Sophia",
+   "name_family": "Fox",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.nps.gov/caco/learn/nature/sophia-e-fox.htm",
+   "bio": "Aquatic ecologist at Cape Cod National Seashore who designs and runs monitoring and research in the park's kettle ponds and estuaries, focusing on how water quality responds to human use and climate change. Her research also covers land-water coupling, macrophyte dynamics and stable-isotope tracing of nutrients and food webs. PhD, Boston University Marine Program.",
+   "bio_source_url": "https://www.nps.gov/caco/learn/nature/sophia-e-fox.htm",
+   "research_interests": "freshwater kettle pond and estuarine water quality; terrestrial-aquatic coupling; macrophyte community dynamics; stable isotope studies of nutrient sources and food webs",
+   "research_interests_source_url": "https://www.nps.gov/caco/learn/nature/sophia-e-fox.htm"
+  },
+  {
+   "key": "stephen-m-smith",
+   "existing_person_id": null,
+   "name": "Stephen M. Smith",
+   "name_given": "Stephen",
+   "name_family": "Smith",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.nps.gov/caco/learn/nature/stephen-m-smith.htm",
+   "bio": "Plant ecologist at Cape Cod National Seashore since 2002, trained in plant physiology and community ecology, after five years on Everglades restoration. He tracks vegetation change across the seashore's forests, heathlands, dunes, ponds and marshes, emphasizing salt marsh response to tidal restoration and marsh dieback, and oversees exotic and rare plant management.",
+   "bio_source_url": "https://www.nps.gov/caco/learn/nature/stephen-m-smith.htm",
+   "research_interests": "plant community dynamics; salt marsh structure and function; tidal restoration; salt marsh dieback; exotic and rare plant management",
+   "research_interests_source_url": "https://www.nps.gov/caco/learn/nature/stephen-m-smith.htm"
+  }
+ ],
+ "affiliations": [
+  {
+   "facility_id": "c9c6536a9b20e89c",
+   "person_key": "nathaniel-plant",
+   "role": "director",
+   "title": "Center Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2018,
+   "end_year": null,
+   "source_url": "https://www.usgs.gov/staff-profiles/nathaniel-plant",
+   "evidence": "I am the Center Director for the Saint Petersburg Coastal and Marine Science Center",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "c9c6536a9b20e89c",
+   "person_key": "kara-doran",
+   "role": "scientist",
+   "title": "Supervisory Physical Scientist",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.usgs.gov/staff-profiles/kara-doran",
+   "evidence": "Kara Doran Supervisory Physical Scientist St. Petersburg Coastal and Marine Science Center",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "a4246cc563eddd28",
+   "person_key": "stephen-gray",
+   "role": "director",
+   "title": "USGS Regional Administrator (USGS Director)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://akcasc.org/directory-entries/stephen-gray/",
+   "evidence": "Dr. Stephen Gray is the USGS Director of the Alaska Climate Adaptation Science Center",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "a4246cc563eddd28",
+   "person_key": "kristin-timm",
+   "role": "director",
+   "title": "University Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://akcasc.org/directory/timm/",
+   "evidence": "Dr. Kristin Timm is University Director of the Alaska Climate Adaptation Science Center (AK CASC)",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "a4246cc563eddd28",
+   "person_key": "scott-rupp",
+   "role": "lead-PI",
+   "title": "Institutional Principal Investigator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://akcasc.org/contact/",
+   "evidence": "T. Scott Rupp Institutional Principal Investigator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "a4246cc563eddd28",
+   "person_key": "scott-rupp",
+   "role": "former-director",
+   "title": "University Director/Co-Director (15 years)",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://akcasc.org/directory/rupp/",
+   "evidence": "Dr. Rupp also served for 15 years as the University Director/Co-Director for the Alaska Climate Adaptation Science Center.",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "a4246cc563eddd28",
+   "person_key": "patrick-lemons",
+   "role": "deputy-director",
+   "title": "Assistant Regional Administrator / Deputy Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://akcasc.org/directory/lemons/",
+   "evidence": "Dr. Patrick Lemons is the Assistant Regional Administrator/Deputy Director, of the Alaska Climate Adaptation Science Center.",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "fab411b2258d63a5",
+   "person_key": "kurt-newman",
+   "role": "director",
+   "title": "Center Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2024,
+   "end_year": null,
+   "source_url": "https://www.usgs.gov/staff-profiles/kurt-r-newman",
+   "evidence": "Kurt Newman is the Director of the Great Lakes Science Center and is stationed in Ann Arbor, MI.",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "fab411b2258d63a5",
+   "person_key": "richard-kraus",
+   "role": "deputy-director",
+   "title": "Deputy Center Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.usgs.gov/staff-profiles/richard-t-kraus",
+   "evidence": "Richard T Kraus, PhD Deputy Center Director Great Lakes Science Center",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "fab411b2258d63a5",
+   "person_key": "ralph-grundel",
+   "role": "scientist",
+   "title": "Branch Chief, Restoration and Conservation Sciences Branch; Research Ecologist",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2019,
+   "end_year": null,
+   "source_url": "https://www.usgs.gov/staff-profiles/ralph-grundel",
+   "evidence": "2019- present Chief, Restoration and Conservation Sciences Branch, USGS Great Lakes Science Center.",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "9937f684d17a99a3",
+   "person_key": "carrie-brown-lima",
+   "role": "director",
+   "title": "Regional Administrator (formerly Center Director)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.usgs.gov/staff-profiles/carrie-brown-lima",
+   "evidence": "Carrie Brown-Lima is the Regional Administrator of the Northeast Climate Adaptation Science Center (NE CASC)",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "9937f684d17a99a3",
+   "person_key": "bethany-bradley",
+   "role": "director",
+   "title": "University Co-Director; Principal Investigator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://necasc.umass.edu/people/bethany-bradley",
+   "evidence": "Bethany Bradley NE CASC Principal Investigator University Co-Director Professor UMass Amherst",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "9937f684d17a99a3",
+   "person_key": "jon-woodruff",
+   "role": "director",
+   "title": "University Co-Director; Principal Investigator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://necasc.umass.edu/people/jon-woodruff",
+   "evidence": "Jon Woodruff NE CASC Principal Investigator University Co-Director Professor UMass Amherst",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "9937f684d17a99a3",
+   "person_key": "emily-fusco",
+   "role": "deputy-director",
+   "title": "Deputy University Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://necasc.umass.edu/people/emily-fusco",
+   "evidence": "Emily Fusco Deputy University Director Research Assistant Professor UMass Amherst",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "9937f684d17a99a3",
+   "person_key": "ashley-fortune-isham",
+   "role": "research-coordinator",
+   "title": "Research Coordinator (USGS)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2022,
+   "end_year": null,
+   "source_url": "https://necasc.umass.edu/people/ashley-fortune-isham",
+   "evidence": "August 2022-Present: Research Coordinator, Northeast Climate Adaptation Science Center",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "9937f684d17a99a3",
+   "person_key": "toni-lyn-morelli",
+   "role": "scientist",
+   "title": "Research Ecologist (USGS)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://necasc.umass.edu/people/toni-lyn-morelli",
+   "evidence": "In her role as USGS Research Ecologist for NE CASC, Toni Lyn uses geospatial analysis",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "afb21dfd91a94e19",
+   "person_key": "brita-jessen",
+   "role": "director",
+   "title": "Center Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.usgs.gov/staff-profiles/brita-j-jessen",
+   "evidence": "Dr. Jessen is the Center Director for the Woods Hole Coastal and Marine Science Center.",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "afb21dfd91a94e19",
+   "person_key": "jane-denny",
+   "role": "deputy-director",
+   "title": "Deputy Center Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.usgs.gov/staff-profiles/jane-f-denny",
+   "evidence": "Jane Denny is the Deputy Center Director for the Woods Hole Coastal and Marine Science Center",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "5da8e0cad0447427",
+   "person_key": "jennifer-flynn",
+   "role": "superintendent",
+   "title": "Superintendent",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.nps.gov/caco/learn/management/staffandoffices.htm",
+   "evidence": "Jennifer Flynn, Superintendent",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "5da8e0cad0447427",
+   "person_key": "leslie-reynolds",
+   "role": "deputy-director",
+   "title": "Deputy Superintendent",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.nps.gov/caco/learn/management/staffandoffices.htm",
+   "evidence": "Leslie Reynolds, Deputy Superintendent",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "5da8e0cad0447427",
+   "person_key": "geoff-sanders",
+   "role": "manager",
+   "title": "Chief of Natural Resource Management and Science",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2019,
+   "end_year": null,
+   "source_url": "https://www.nps.gov/caco/learn/nature/nrms.htm",
+   "evidence": "Geoff Sanders - Chief of Natural Resources Management and Science",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "5da8e0cad0447427",
+   "person_key": "sophia-fox",
+   "role": "scientist",
+   "title": "Aquatic Ecologist",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.nps.gov/caco/learn/nature/nrms.htm",
+   "evidence": "Sophia Fox, Ph.D. - Aquatic Ecologist",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "5da8e0cad0447427",
+   "person_key": "stephen-m-smith",
+   "role": "scientist",
+   "title": "Plant Ecologist",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2002,
+   "end_year": null,
+   "source_url": "https://www.nps.gov/caco/learn/nature/stephen-m-smith.htm",
+   "evidence": "Stephen Smith is a Plant Ecologist at the Cape Cod National Seashore",
+   "confidence": "high"
+  }
+ ],
+ "verifications": [
+  {
+   "facility_id": "5da8e0cad0447427",
+   "person_id": "620bddf1cfade2a8",
+   "existing_role": "faculty",
+   "status": "not-found",
+   "current_holder_key": null,
+   "source_url": "https://www.nps.gov/caco/learn/nature/nrms.htm",
+   "evidence": "Division of Natural Resource Management and Science Staff"
+  },
+  {
+   "facility_id": "5da8e0cad0447427",
+   "person_id": "e96219c06ce1efcb",
+   "existing_role": "information-manager",
+   "status": "not-found",
+   "current_holder_key": null,
+   "source_url": "https://www.nps.gov/caco/learn/nature/nrms.htm",
+   "evidence": "Scott Rasmussen - GIS Specialist"
+  }
+ ],
+ "verification_notes": "All 29 cited pages re-fetched 2026-10-22 (HTTP 200); all 25 evidence snippets found verbatim; 12 ORCIDs confirmed (8 shown on USGS profiles, 5 via pub.orcid.org person+employments name and employer match). Corrections: Gray bio (page says a climatologist for the State of Wyoming, not state climatologist); Brown-Lima bio (page gives nine years at NYISRI, not 2014-2023); Woodruff bio dropped unsupported lab-head claim and homepage moved to NE CASC profile (lab site text does not name him); Denny bio 'morphology' per expertise list; Morelli orcid_source_url set to USGS profile showing the iD. Sanders start_year 2019 rests on the 2019-09-17 NPS news release, not the NRMS staff page. Verifications: Tyrrell and Adams are absent from the current NRMS staff list (not-found confirmed)."
+}

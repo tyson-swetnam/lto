@@ -1,0 +1,859 @@
+{
+ "batch_id": "R-PEOPLE2-LTREB-01",
+ "retrieved_at": "2026-10-22",
+ "verified_by": "adversarial-verifier 2026-10-22",
+ "facilities": [
+  {
+   "facility_id": "f0adb115570b84eb",
+   "pages_fetched": [
+    {
+     "url": "https://www2.gwu.edu/~calm/",
+     "status": 200
+    },
+    {
+     "url": "https://www2.gwu.edu/~calm/about/admins.html",
+     "status": 200
+    },
+    {
+     "url": "https://www2.gwu.edu/~calm/about/participants.html",
+     "status": 200
+    },
+    {
+     "url": "https://www2.gwu.edu/~calm/data/north.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www2.gwu.edu/~calm/data/north_files/sheet001.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www2.gwu.edu/~calm/data/webforms/u1_f.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www2.gwu.edu/~calm/data/webforms/u2_f.htm",
+     "status": 200
+    },
+    {
+     "url": "https://api.nsf.gov/services/v1/awards/2412865.json?printFields=id,title,pdPIName,coPDPI,awardeeName,startDate,expDate",
+     "status": 200
+    },
+    {
+     "url": "https://api.nsf.gov/services/v1/awards.json?pdPIName=Shiklomanov&printFields=id,title,awardeeName,startDate,expDate,pdPIName,coPDPI,abstractText&rpp=50",
+     "status": 200
+    },
+    {
+     "url": "https://geography.columbian.gwu.edu/nikolay-shiklomanov",
+     "status": 200
+    },
+    {
+     "url": "https://geography.columbian.gwu.edu/dmitry-streletskiy",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-8609-0240/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-8609-0240/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0003-2563-2664/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0003-2563-2664/employments",
+     "status": 200
+    }
+   ],
+   "notes": "Facility matches CALM North-America sites U1 'Barrow' (1 km grid, thaw depth since 1995) and U2 'Barrow, CRREL Plots' (thaw depth 1962-1966, 1968, 1970, 1991-present), which explains established=1962. Both CALM site forms name N. I. Shiklomanov (GWU) as responsible for data submission; CALM is run from GWU under NSF OPP-2412865 (CALM VI, 2025-2028) with collaborative awards to U. Montana, Northern Michigan U. and UAF. The facility's parent_org 'U.S. Geological Survey' is not supported by any fetched page (CALM is GWU/NSF; a USGS scientist, Gary Clow, appears only in CALM's generic participant list) - parent_org should be reviewed. No founding person is named for the 1962 CRREL plots on any fetched page. VERIFIER: Shiklomanov and Streletskiy rows downgraded to medium - the CALM U2 form shows data-submission responsibility only, and NSF 2412865 is network-wide (northern Alaska transects) without naming Barrow; CALM admins page (https://www2.gwu.edu/~calm/about/admins.html) lists both as CALM Program Administrators. Streletskiy's bio clause on co-administering CALM removed because it is not on his bio_source_url."
+  },
+  {
+   "facility_id": "46598db0265aaa38",
+   "pages_fetched": [
+    {
+     "url": "https://api.nsf.gov/services/v1/awards/2348767.json?printFields=id,title,pdPIName,coPDPI,awardeeName,startDate,expDate",
+     "status": 200
+    },
+    {
+     "url": "https://api.nsf.gov/services/v1/awards.json?keyword=%22North+Inlet%22&printFields=id,title,awardeeName,startDate,expDate,pdPIName,coPDPI&rpp=50",
+     "status": 200
+    },
+    {
+     "url": "https://research.cas.sc.edu/morris/",
+     "status": 200
+    },
+    {
+     "url": "https://research.cas.sc.edu/morris/cv.html",
+     "status": 200
+    },
+    {
+     "url": "https://www.mbl.edu/news/new-faculty-spotlight-nick-peng-university-south-carolina",
+     "status": 200
+    },
+    {
+     "url": "https://sc.edu/study/colleges_schools/artsandsciences/earth_ocean_and_environment/our_people/directory/peng_nick.php",
+     "status": 404
+    },
+    {
+     "url": "https://sc.edu/study/colleges_schools/artsandsciences/baruch_institute/research_education/research_spotlight/index.php",
+     "status": 404
+    },
+    {
+     "url": "https://baruch.sc.edu/",
+     "status": 0
+    },
+    {
+     "url": "https://northinlet.sc.edu/events/then-now-future-w-dr-james-morris",
+     "status": 0
+    }
+   ],
+   "notes": "No standalone LTREB web page found; the facility is NSF LTREB 'Long Term Studies of Salt Marsh Primary Production' (award 2348767, 2024-2029, University of South Carolina; abstract: plots in North Inlet monitored since 1984). Earlier LTREB awards on the same title from the NSF API: 9306855 (1993-1998, PI J.T. Morris), 9816157 (1999-2005, PI Madilyn Fletcher), 1052636 (2011-2017, PI Morris), 1654853 (2017-2024, PI Morris); no official history page names a founding PI, so none is recorded. No ORCID could be tied to Morris or Peng (several same-name ORCID records, none listing USC employment). The North Inlet-Winyah Bay NERR is a separate facility and was not researched here."
+  },
+  {
+   "facility_id": "0cc368787cd559c3",
+   "pages_fetched": [
+    {
+     "url": "https://serc.si.edu/gcrew",
+     "status": 403
+    },
+    {
+     "url": "https://serc.si.edu/research/projects/global-change-research-wetland",
+     "status": 403
+    },
+    {
+     "url": "https://serc.si.edu/gcrew/CO2",
+     "status": 403
+    },
+    {
+     "url": "https://serc.si.edu/node/22156",
+     "status": 403
+    },
+    {
+     "url": "https://api.nsf.gov/services/v1/awards/2530657.json?printFields=id,title,pdPIName,coPDPI,awardeeName,startDate,expDate",
+     "status": 200
+    },
+    {
+     "url": "https://api.nsf.gov/services/v1/awards.json?keyword=%22Global+Change+Research+Wetland%22&printFields=id,title,awardeeName,startDate,expDate,pdPIName,coPDPI&rpp=50+LTREB",
+     "status": 200
+    },
+    {
+     "url": "https://sercblog.si.edu/korean-scientists-launch-new-pulse-heating-climate-experiment-inspired-by-smithsonian/",
+     "status": 200
+    },
+    {
+     "url": "https://sercblog.si.edu/high-co2-spurs-wetlands-to-absorb-more-carbon/",
+     "status": 200
+    },
+    {
+     "url": "https://sercblog.si.edu/plants-climate-change-and-the-importance-of-being-curious-an-interview-with-a-bert-drake/",
+     "status": 200
+    },
+    {
+     "url": "https://sercblog.si.edu/summer-marshfest-gets-all-hands-on-deck",
+     "status": 200
+    },
+    {
+     "url": "https://www.brynmawr.edu/inside/people/thomas-mozdzer",
+     "status": 200
+    },
+    {
+     "url": "https://www1.villanova.edu/university/liberal-arts-sciences/programs/biology.html",
+     "status": 200
+    },
+    {
+     "url": "https://www1.villanova.edu/university/liberal-arts-sciences/programs/biology/faculty/langley.html",
+     "status": 404
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-2018-7883/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-2018-7883/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0003-0423-6478/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0003-0423-6478/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-1053-0967/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-1053-0967/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-0461-7388/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-0461-7388/employments",
+     "status": 200
+    }
+   ],
+   "notes": "serc.si.edu returned 403 (Smithsonian 'temporarily unavailable' error page) for every request today, so SERC's own GCReW and staff pages could not be used; roles come from the NSF API record for LTREB Renewal award 2530657 (2026-2031, Smithsonian Institution) and SERC's own blog (sercblog.si.edu), including a 29 July 2026 post naming 'GCReW director Patrick Megonigal'. Founding: SERC blog states Bert Drake created the wetland's CO2 experiment in 1987. No ORCID could be tied to Adam Langley (four same-name records with no employment). VERIFIER: NSF lists the PI as 'Jonathan A Langley'; identified with Adam Langley via the award abstract (Villanova courses), Villanova biology page ('Graduate Program Director: Adam Langley, PhD') and his lab site jadamlangley.wordpress.com ('Adam Langley, Biology, Villanova University'). Megonigal's 'GCReW director' appears in a narrative about 2015 within a July 2026 post, so downgraded to medium; NSF 2530657 also lists him (James P Megonigal) as co-PI. Roy Rich re-roled technical-staff -> scientist (he is PI of the Technology in Ecology Lab). Mozdzer bio trimmed to what the Bryn Mawr page states."
+  },
+  {
+   "facility_id": "5173db142db727f4",
+   "pages_fetched": [
+    {
+     "url": "https://csun.edu/~sd51881/ltreb_SI.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.csun.edu/~sd51881/overview.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.csun.edu/~sd51881/ltrebcontact.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.csun.edu/~sd51881/people.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.csun.edu/~sd51881/",
+     "status": 200
+    },
+    {
+     "url": "https://www.csun.edu/~sd51881/collaborators.htm",
+     "status": 404
+    },
+    {
+     "url": "https://www.bio.upenn.edu/people/peter-petraitis",
+     "status": 200
+    },
+    {
+     "url": "https://catalog.csun.edu/academics/biol/faculty/dudgeon-steven-r/",
+     "status": 200
+    },
+    {
+     "url": "https://catalog.csun.edu/academics/biol/faculty/kubler-janet-e/",
+     "status": 404
+    },
+    {
+     "url": "https://www.csun.edu/biology/steve-dudgeon",
+     "status": 404
+    },
+    {
+     "url": "https://www.csun.edu/biology/janet-kubler",
+     "status": 404
+    },
+    {
+     "url": "https://api.nsf.gov/services/v1/awards/1020480.json?printFields=id,title,pdPIName,coPDPI,awardeeName,startDate,expDate",
+     "status": 200
+    },
+    {
+     "url": "https://api.nsf.gov/services/v1/awards/1555641.json?printFields=id,title,pdPIName,coPDPI,awardeeName,startDate,expDate",
+     "status": 200
+    },
+    {
+     "url": "https://api.nsf.gov/services/v1/awards.json?pdPIName=Petraitis&printFields=id,title,awardeeName,startDate,expDate,pdPIName,coPDPI,abstractText&rpp=50",
+     "status": 200
+    },
+    {
+     "url": "https://api.nsf.gov/services/v1/awards.json?pdPIName=Dudgeon&printFields=id,title,awardeeName,startDate,expDate,pdPIName,coPDPI,abstractText&rpp=50",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-7616-7638/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-7616-7638/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-8637-4307/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-8637-4307/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-9782-836X/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-9782-836X/employments",
+     "status": 200
+    }
+   ],
+   "notes": "Project site 'LTREB Swans Island' (csun.edu/~sd51881) was last updated 19 August 2015; it names Steve Dudgeon (CSUN) and Peter Petraitis (UPenn) as PIs and states the experimental clearings were created in winter 1996-97 at 12 sites on Swans Island, Maine. NSF API LTREB awards: 0314980 (2003-2009, PI Petraitis), 1020480 (2010-2016, PI Petraitis, co-PI Dudgeon), 1555641 'LTREB Renewal' (2016-04/2023, PI Janet E. Kubler, CSUN; co-PI Petraitis). No NSF award after April 2023 was found, so whether the project is still active is unconfirmed; current-PI rows are low confidence. Petraitis's ORCID employment lists him as Emeritus Professor at Penn, while his Penn department page still says Professor of Biology. Erika Rhile (Cheverus High School teacher, listed as research scientist on the 2015 site) was not added. VERIFIER: Petraitis/Dudgeon lead-PI rows set is_current=false - the only source is a contact page last updated 19 August 2015, NSF API shows no Swan's Island award after 1555641 (ended 2023-04-30), and Petraitis's ORCID lists him as Emeritus Professor. Founding-PI rows downgraded to medium because award 1020480's abstract says Gulf of Maine, not Swan's Island; the tie is via the shared LTREB title and Petraitis's Penn page (clearings 'in 1996 at 12 sites on Swan's Island, Maine')."
+  },
+  {
+   "facility_id": "8b17ffd2b418fb60",
+   "pages_fetched": [
+    {
+     "url": "https://mbl.edu/news/20-year-study-nitrogen-pollution-west-falmouth-harbor-receives-renewal-funding",
+     "status": 200
+    },
+    {
+     "url": "https://api.nsf.gov/services/v1/awards/2311106.json?printFields=id,title,pdPIName,coPDPI,awardeeName,startDate,expDate",
+     "status": 200
+    },
+    {
+     "url": "https://api.nsf.gov/services/v1/awards.json?keyword=%22West+Falmouth%22&printFields=id,title,awardeeName,startDate,expDate,pdPIName,coPDPI&rpp=50",
+     "status": 200
+    },
+    {
+     "url": "https://ecologyandevolution.cornell.edu/robert-warren-howarth",
+     "status": 200
+    },
+    {
+     "url": "https://ecologyandevolution.cornell.edu/roxanne-marino",
+     "status": 200
+    },
+    {
+     "url": "https://cals.cornell.edu/roxanne-marino",
+     "status": 404
+    },
+    {
+     "url": "https://cals.cornell.edu/melanie-hayn",
+     "status": 200
+    },
+    {
+     "url": "https://www.mbl.edu/research/faculty-directory/Mirta%20Teichberg",
+     "status": 200
+    },
+    {
+     "url": "https://www.mbl.edu/research/faculty-directory/Ketil%20Koop-Jakobsen",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0001-9531-4288/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0001-9531-4288/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0003-1493-4472/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0003-1493-4472/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0003-1586-738X/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0003-1586-738X/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-1540-6594/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-1540-6594/employments",
+     "status": 200
+    }
+   ],
+   "notes": "LTREB on nitrogen pollution and seagrass recovery in West Falmouth Harbor, a Cornell-MBL Ecosystems Center collaboration. Current award: NSF 2311106 'LTREB Renewal' (2023-2028, Marine Biological Laboratory; PI Robert W. Howarth, co-PIs Mirta Teichberg and Ketil Koop-Jakobsen); previous award 1654845 (2017-2024, Cornell; PI Howarth, co-PI Roxanne Marino). The abstract says the measurements have run since 2005; no founding PI is named on an official history page. Melanie Hayn (named key personnel in the 2023 MBL news item) is listed by Cornell CALS as a PhD student, so she was not added. Teichberg's ORCID 0000-0003-1586-738X has no employment entries and her MBL profile says 'ORCID ID: N/A', so it was not recorded."
+  }
+ ],
+ "people": [
+  {
+   "key": "nikolay-shiklomanov",
+   "existing_person_id": null,
+   "name": "Nikolay Shiklomanov",
+   "name_given": "Nikolay",
+   "name_family": "Shiklomanov",
+   "orcid": "0000-0002-8609-0240",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-8609-0240/employments",
+   "homepage_url": "https://geography.columbian.gwu.edu/nikolay-shiklomanov",
+   "bio": "Professor of Geography at George Washington University. Studies how permafrost interacts with natural and human systems, including long-term permafrost monitoring at high latitudes, permafrost process research, and effects on Arctic infrastructure and society; he has worked in the field across Arctic North America and Eurasia since the early 1990s.",
+   "bio_source_url": "https://geography.columbian.gwu.edu/nikolay-shiklomanov",
+   "research_interests": "permafrost and active-layer monitoring; Arctic climatic variability and change; geomorphology; history of Arctic research; socio-economic issues of Arctic development",
+   "research_interests_source_url": "https://geography.columbian.gwu.edu/nikolay-shiklomanov"
+  },
+  {
+   "key": "dmitry-streletskiy",
+   "existing_person_id": null,
+   "name": "Dmitry Streletskiy",
+   "name_given": "Dmitry",
+   "name_family": "Streletskiy",
+   "orcid": "0000-0003-2563-2664",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0003-2563-2664/employments",
+   "homepage_url": "https://geography.columbian.gwu.edu/dmitry-streletskiy",
+   "bio": "Professor of Geography and International Affairs at George Washington University researching the effects of climate change on Arctic ecosystems, people and sustainability. He is a past president of the U.S. Permafrost Association and chairs the Global Terrestrial Network for Permafrost.",
+   "bio_source_url": "https://geography.columbian.gwu.edu/dmitry-streletskiy",
+   "research_interests": "Arctic environment; climatic variability and change; permafrost, geomorphology and glaciology; spatial statistics and GIS; geography of Russia",
+   "research_interests_source_url": "https://geography.columbian.gwu.edu/dmitry-streletskiy"
+  },
+  {
+   "key": "james-t-morris",
+   "existing_person_id": null,
+   "name": "James T. Morris",
+   "name_given": "James T.",
+   "name_family": "Morris",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://research.cas.sc.edu/morris/",
+   "bio": "Estuarine ecologist and Distinguished Research Professor at USC's Baruch Institute for Marine and Coastal Sciences, which he led as director from 2006 to 2016. Works in systems ecology, biogeochemistry and modeling; created the Marsh Equilibrium Model and has long run NSF-funded sea-level and marsh studies at North Inlet.",
+   "bio_source_url": "https://research.cas.sc.edu/morris/",
+   "research_interests": "wetland biogeochemistry and ecology; systems ecology; biogeomorphology; plant physiological ecology; numerical and theoretical modeling",
+   "research_interests_source_url": "https://research.cas.sc.edu/morris/"
+  },
+  {
+   "key": "xuefeng-peng",
+   "existing_person_id": null,
+   "name": "Xuefeng (Nick) Peng",
+   "name_given": "Xuefeng",
+   "name_family": "Peng",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Marine microbial ecologist on the faculty of the University of South Carolina's School of the Earth, Ocean and Environment. Earned his Ph.D. at Princeton and was a postdoctoral researcher at UC Santa Barbara; his work examines how marine microorganisms interact with one another.",
+   "bio_source_url": "https://www.mbl.edu/news/new-faculty-spotlight-nick-peng-university-south-carolina",
+   "research_interests": "interactions among marine microorganisms; microbial identity and function in the environment",
+   "research_interests_source_url": "https://www.mbl.edu/news/new-faculty-spotlight-nick-peng-university-south-carolina"
+  },
+  {
+   "key": "adam-langley",
+   "existing_person_id": null,
+   "name": "Adam Langley",
+   "name_given": "Adam",
+   "name_family": "Langley",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://jadamlangley.wordpress.com/",
+   "bio": "Villanova University biologist who leads the Global Change Ecology Lab, examining how ecosystems react to rising CO2, nutrient pollution and warming, and whether those reactions damp or amplify the changes.",
+   "bio_source_url": "https://jadamlangley.wordpress.com/",
+   "research_interests": "ecosystem responses and feedbacks to global change; rising CO2; nutrient pollution; climatic warming",
+   "research_interests_source_url": "https://jadamlangley.wordpress.com/"
+  },
+  {
+   "key": "patrick-megonigal",
+   "existing_person_id": null,
+   "name": "Patrick Megonigal",
+   "name_given": "Patrick",
+   "name_family": "Megonigal",
+   "orcid": "0000-0002-2018-7883",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-2018-7883/employments",
+   "homepage_url": null,
+   "bio": "Associate Director of Research at the Smithsonian Environmental Research Center (SERC) in Edgewater, Maryland.",
+   "bio_source_url": "https://pub.orcid.org/v3.0/0000-0002-2018-7883/employments",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "genevieve-noyce",
+   "existing_person_id": null,
+   "name": "Genevieve Noyce",
+   "name_given": "Genevieve",
+   "name_family": "Noyce",
+   "orcid": "0000-0003-0423-6478",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0003-0423-6478/employments",
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "thomas-mozdzer",
+   "existing_person_id": null,
+   "name": "Thomas Mozdzer",
+   "name_given": "Thomas",
+   "name_family": "Mozdzer",
+   "orcid": "0000-0002-1053-0967",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-1053-0967/employments",
+   "homepage_url": "https://www.brynmawr.edu/inside/people/thomas-mozdzer",
+   "bio": "Professor of Biology at Bryn Mawr College.",
+   "bio_source_url": "https://www.brynmawr.edu/inside/people/thomas-mozdzer",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "roy-rich",
+   "existing_person_id": null,
+   "name": "Roy Rich",
+   "name_given": "Roy",
+   "name_family": "Rich",
+   "orcid": "0000-0002-0461-7388",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-0461-7388/employments",
+   "homepage_url": null,
+   "bio": "Ecologist who became an environmental engineer; heads SERC's Technology in Ecology Lab, whose team designs and operates the warming and elevated-CO2 hardware behind the GCReW experiments and has helped build similar climate experiments abroad.",
+   "bio_source_url": "https://sercblog.si.edu/korean-scientists-launch-new-pulse-heating-climate-experiment-inspired-by-smithsonian/",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "bert-drake",
+   "existing_person_id": null,
+   "name": "Bert Drake",
+   "name_given": "Bert",
+   "name_family": "Drake",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Plant physiologist at the Smithsonian Environmental Research Center for close to forty years; started the Kirkpatrick Marsh elevated-CO2 open-top-chamber experiment in 1987 and retired in early 2010, continuing as an emeritus scientist.",
+   "bio_source_url": "https://sercblog.si.edu/plants-climate-change-and-the-importance-of-being-curious-an-interview-with-a-bert-drake/",
+   "research_interests": "plant responses to rising atmospheric CO2; wetland carbon exchange",
+   "research_interests_source_url": "https://sercblog.si.edu/plants-climate-change-and-the-importance-of-being-curious-an-interview-with-a-bert-drake/"
+  },
+  {
+   "key": "peter-petraitis",
+   "existing_person_id": null,
+   "name": "Peter S. Petraitis",
+   "name_given": "Peter S.",
+   "name_family": "Petraitis",
+   "orcid": "0000-0002-7616-7638",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-7616-7638/employments",
+   "homepage_url": "https://www.bio.upenn.edu/people/peter-petraitis",
+   "bio": "University of Pennsylvania biologist and community ecologist. His New England work asks whether rockweed stands and mussel-barnacle beds on sheltered Gulf of Maine shores are alternative stable states, using clearing experiments begun on Swan's Island in 1996; he has also helped design long-term monitoring protocols.",
+   "bio_source_url": "https://www.bio.upenn.edu/people/peter-petraitis",
+   "research_interests": "rocky intertidal community ecology; alternative stable states; long-term ecological monitoring; ecological experimental design and statistics",
+   "research_interests_source_url": "https://www.bio.upenn.edu/people/peter-petraitis"
+  },
+  {
+   "key": "steven-dudgeon",
+   "existing_person_id": null,
+   "name": "Steven R. Dudgeon",
+   "name_given": "Steven R.",
+   "name_family": "Dudgeon",
+   "orcid": "0000-0002-8637-4307",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-8637-4307/employments",
+   "homepage_url": "https://catalog.csun.edu/academics/biol/faculty/dudgeon-steven-r/",
+   "bio": "Professor of Biology at California State University, Northridge, on the faculty since 1999; holds a Ph.D. from the University of Maine (1992).",
+   "bio_source_url": "https://catalog.csun.edu/academics/biol/faculty/dudgeon-steven-r/",
+   "research_interests": "community ecology (how communities originate and persist); evolutionary ecology; life-history evolution in organisms with complex life cycles",
+   "research_interests_source_url": "https://www.csun.edu/~sd51881/people.htm"
+  },
+  {
+   "key": "janet-kubler",
+   "existing_person_id": null,
+   "name": "Janet E. Kubler",
+   "name_given": "Janet E.",
+   "name_family": "Kubler",
+   "orcid": "0000-0002-9782-836X",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-9782-836X/employments",
+   "homepage_url": null,
+   "bio": "Senior research scientist and lecturer at California State University, Northridge; visiting scientist at the University of Connecticut from 2017 to 2022.",
+   "bio_source_url": "https://pub.orcid.org/v3.0/0000-0002-9782-836X/employments",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "robert-howarth",
+   "existing_person_id": null,
+   "name": "Robert W. Howarth",
+   "name_given": "Robert W.",
+   "name_family": "Howarth",
+   "orcid": "0000-0001-9531-4288",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0001-9531-4288/employments",
+   "homepage_url": "https://ecologyandevolution.cornell.edu/robert-warren-howarth",
+   "bio": "Holds Cornell University's David R. Atkinson professorship in ecology and environmental biology. An ecosystem scientist and biogeochemist whose work spans aquatic ecology, oceanography and Earth-system science; trained at MIT and the Woods Hole Oceanographic Institution.",
+   "bio_source_url": "https://ecologyandevolution.cornell.edu/robert-warren-howarth",
+   "research_interests": "biogeochemistry; ecosystem science; aquatic ecology; oceanography; earth systems science; Marcellus shale",
+   "research_interests_source_url": "https://ecologyandevolution.cornell.edu/robert-warren-howarth"
+  },
+  {
+   "key": "mirta-teichberg",
+   "existing_person_id": null,
+   "name": "Mirta Teichberg",
+   "name_given": "Mirta",
+   "name_family": "Teichberg",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.mbl.edu/research/faculty-directory/Mirta%20Teichberg",
+   "bio": "Associate Scientist in the MBL Ecosystems Center and director of the MBL Semester in Environmental Science. Studies how seagrasses and other aquatic plants respond to stressors such as land-derived nutrients and warming, combining field gradients, experiments and plant-trait methods in temperate estuaries and tropical seagrass and reef systems.",
+   "bio_source_url": "https://www.mbl.edu/research/faculty-directory/Mirta%20Teichberg",
+   "research_interests": "seagrass and macrophyte ecology; nutrient and temperature stress; plant functional traits; nature-based solutions and restoration",
+   "research_interests_source_url": "https://www.mbl.edu/research/faculty-directory/Mirta%20Teichberg"
+  },
+  {
+   "key": "ketil-koop-jakobsen",
+   "existing_person_id": null,
+   "name": "Ketil Koop-Jakobsen",
+   "name_given": "Ketil",
+   "name_family": "Koop-Jakobsen",
+   "orcid": "0000-0002-1540-6594",
+   "orcid_source_url": "https://www.mbl.edu/research/faculty-directory/Ketil%20Koop-Jakobsen",
+   "homepage_url": "https://www.mbl.edu/research/faculty-directory/Ketil%20Koop-Jakobsen",
+   "bio": "Assistant Scientist in the MBL Ecosystems Center. Studies small-scale chemical gradients that plants, burrowing fauna and microbes create in wetland and coastal sediments, using optode imaging and microsensors, and their consequences for nutrient turnover, carbon storage and greenhouse-gas emissions.",
+   "bio_source_url": "https://www.mbl.edu/research/faculty-directory/Ketil%20Koop-Jakobsen",
+   "research_interests": "sediment biogeochemistry; rhizosphere oxygenation; salt marsh plant-sediment interactions; greenhouse gas emissions",
+   "research_interests_source_url": "https://www.mbl.edu/research/faculty-directory/Ketil%20Koop-Jakobsen"
+  },
+  {
+   "key": "roxanne-marino",
+   "existing_person_id": null,
+   "name": "Roxanne Marino",
+   "name_given": "Roxanne",
+   "name_family": "Marino",
+   "orcid": "0000-0003-1493-4472",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0003-1493-4472/employments",
+   "homepage_url": "https://ecologyandevolution.cornell.edu/roxanne-marino",
+   "bio": "Research Professor in Cornell University's Department of Ecology and Evolutionary Biology; an ecosystem scientist and biogeochemist focused on nitrogen in aquatic systems and estuaries. Earned her Ph.D. at Cornell in 2001.",
+   "bio_source_url": "https://ecologyandevolution.cornell.edu/roxanne-marino",
+   "research_interests": "ecosystem science; biogeochemistry; aquatic ecology; nitrogen; estuaries",
+   "research_interests_source_url": "https://ecologyandevolution.cornell.edu/roxanne-marino"
+  }
+ ],
+ "affiliations": [
+  {
+   "facility_id": "f0adb115570b84eb",
+   "person_key": "nikolay-shiklomanov",
+   "role": "lead-PI",
+   "title": "CALM program PI; responsible for data submission, CALM sites U1/U2 Barrow",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www2.gwu.edu/~calm/data/webforms/u2_f.htm",
+   "evidence": "Responsible for data submission N. I. Shiklomanov",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "f0adb115570b84eb",
+   "person_key": "dmitry-streletskiy",
+   "role": "co-PI",
+   "title": "CALM Program Administrator; co-PI, NSF CALM VI (OPP-2412865)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2025,
+   "end_year": null,
+   "source_url": "https://api.nsf.gov/services/v1/awards/2412865.json?printFields=id,title,pdPIName,coPDPI,awardeeName,startDate,expDate",
+   "evidence": "\"coPDPI\":[\"Dmitry A Streletskiy",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "46598db0265aaa38",
+   "person_key": "james-t-morris",
+   "role": "lead-PI",
+   "title": "PI, NSF LTREB: Long Term Studies of Salt Marsh Primary Production (2024-2029)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://api.nsf.gov/services/v1/awards/2348767.json?printFields=id,title,pdPIName,coPDPI,awardeeName,startDate,expDate",
+   "evidence": "\"pdPIName\":\"James T Morris\"",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "46598db0265aaa38",
+   "person_key": "xuefeng-peng",
+   "role": "co-PI",
+   "title": "Co-PI, NSF LTREB award 2348767",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2024,
+   "end_year": null,
+   "source_url": "https://api.nsf.gov/services/v1/awards/2348767.json?printFields=id,title,pdPIName,coPDPI,awardeeName,startDate,expDate",
+   "evidence": "\"coPDPI\":[\"Xuefeng Peng",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "0cc368787cd559c3",
+   "person_key": "adam-langley",
+   "role": "lead-PI",
+   "title": "PI, NSF LTREB Renewal: Long-term Experimental Manipulation of a Tidal Marsh (2026-2031)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2026,
+   "end_year": null,
+   "source_url": "https://api.nsf.gov/services/v1/awards/2530657.json?printFields=id,title,pdPIName,coPDPI,awardeeName,startDate,expDate",
+   "evidence": "\"pdPIName\":\"Jonathan A Langley\"",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "0cc368787cd559c3",
+   "person_key": "patrick-megonigal",
+   "role": "director",
+   "title": "GCReW director; co-PI, NSF LTREB award 2530657",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://sercblog.si.edu/korean-scientists-launch-new-pulse-heating-climate-experiment-inspired-by-smithsonian/",
+   "evidence": "Back in 2015, GCReW director Patrick Megonigal had tried twice and failed to get a grant",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "0cc368787cd559c3",
+   "person_key": "thomas-mozdzer",
+   "role": "co-PI",
+   "title": "Co-PI, NSF LTREB award 2530657",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2026,
+   "end_year": null,
+   "source_url": "https://api.nsf.gov/services/v1/awards/2530657.json?printFields=id,title,pdPIName,coPDPI,awardeeName,startDate,expDate",
+   "evidence": "\"Thomas J Mozdzer",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "0cc368787cd559c3",
+   "person_key": "genevieve-noyce",
+   "role": "co-PI",
+   "title": "Co-PI, NSF LTREB award 2530657",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2026,
+   "end_year": null,
+   "source_url": "https://api.nsf.gov/services/v1/awards/2530657.json?printFields=id,title,pdPIName,coPDPI,awardeeName,startDate,expDate",
+   "evidence": "\"Genevieve L Noyce",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "0cc368787cd559c3",
+   "person_key": "roy-rich",
+   "role": "scientist",
+   "title": "Principal investigator, SERC Technology in Ecology Lab, which designs and manages GCReW experimental infrastructure",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://sercblog.si.edu/korean-scientists-launch-new-pulse-heating-climate-experiment-inspired-by-smithsonian/",
+   "evidence": "Now the mechanics of GCReW are entirely designed and managed by Rich's lab",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "0cc368787cd559c3",
+   "person_key": "bert-drake",
+   "role": "founding-PI",
+   "title": "Founder of the 1987 elevated-CO2 marsh experiment",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": 1987,
+   "end_year": null,
+   "source_url": "https://sercblog.si.edu/high-co2-spurs-wetlands-to-absorb-more-carbon/",
+   "evidence": "Drake created the Smithsonian's Global Change Ecological Research Wetland in 1987, on a marsh in Edgewater, Md.",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "5173db142db727f4",
+   "person_key": "peter-petraitis",
+   "role": "founding-PI",
+   "title": "Co-founder of the Swans Island alternative-states experiment (clearings made 1996-97)",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": 1996,
+   "end_year": null,
+   "source_url": "https://api.nsf.gov/services/v1/awards/1020480.json?printFields=id,title,pdPIName,coPDPI,awardeeName,startDate,expDate",
+   "evidence": "Petraitis and Dudgeon are testing this theory using large experimental clearings they created in 1996-1997",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "5173db142db727f4",
+   "person_key": "steven-dudgeon",
+   "role": "founding-PI",
+   "title": "Co-founder of the Swans Island alternative-states experiment (clearings made 1996-97)",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": 1996,
+   "end_year": null,
+   "source_url": "https://api.nsf.gov/services/v1/awards/1020480.json?printFields=id,title,pdPIName,coPDPI,awardeeName,startDate,expDate",
+   "evidence": "Petraitis and Dudgeon are testing this theory using large experimental clearings they created in 1996-1997",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "5173db142db727f4",
+   "person_key": "peter-petraitis",
+   "role": "lead-PI",
+   "title": "PI, LTREB Swans Island (as listed on project site last updated 19 August 2015)",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.csun.edu/~sd51881/ltrebcontact.htm",
+   "evidence": "Dr. Peter Petraitis PI Professor of Biology University of Pennsylvania",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "5173db142db727f4",
+   "person_key": "steven-dudgeon",
+   "role": "lead-PI",
+   "title": "PI, LTREB Swans Island (as listed on project site last updated 19 August 2015)",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.csun.edu/~sd51881/ltrebcontact.htm",
+   "evidence": "Dr. Steve Dudgeon PI Professor of Biology California State University",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "5173db142db727f4",
+   "person_key": "janet-kubler",
+   "role": "lead-PI",
+   "title": "PI, NSF LTREB Renewal: Experimental tests of alternative states on rocky intertidal shores (2016-2023)",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": 2016,
+   "end_year": 2023,
+   "source_url": "https://api.nsf.gov/services/v1/awards/1555641.json?printFields=id,title,pdPIName,coPDPI,awardeeName,startDate,expDate",
+   "evidence": "\"pdPIName\":\"Janet E Kubler\"",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "8b17ffd2b418fb60",
+   "person_key": "robert-howarth",
+   "role": "lead-PI",
+   "title": "Project director; PI, NSF LTREB Renewal award 2311106 (2023-2028)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://mbl.edu/news/20-year-study-nitrogen-pollution-west-falmouth-harbor-receives-renewal-funding",
+   "evidence": "Bob Howarth , a professor at Cornell and adjunct scientist at the MBL, is the project director.",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "8b17ffd2b418fb60",
+   "person_key": "mirta-teichberg",
+   "role": "co-PI",
+   "title": "Co-PI, NSF LTREB Renewal award 2311106",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2023,
+   "end_year": null,
+   "source_url": "https://api.nsf.gov/services/v1/awards/2311106.json?printFields=id,title,pdPIName,coPDPI,awardeeName,startDate,expDate",
+   "evidence": "\"coPDPI\":[\"Mirta C Teichberg",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "8b17ffd2b418fb60",
+   "person_key": "ketil-koop-jakobsen",
+   "role": "co-PI",
+   "title": "Co-PI, NSF LTREB Renewal award 2311106",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2023,
+   "end_year": null,
+   "source_url": "https://api.nsf.gov/services/v1/awards/2311106.json?printFields=id,title,pdPIName,coPDPI,awardeeName,startDate,expDate",
+   "evidence": "\"Ketil Koop-Jakobsen",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "8b17ffd2b418fb60",
+   "person_key": "roxanne-marino",
+   "role": "scientist",
+   "title": "Key personnel (Cornell); co-PI on prior LTREB award 1654845 (2017-2024)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://mbl.edu/news/20-year-study-nitrogen-pollution-west-falmouth-harbor-receives-renewal-funding",
+   "evidence": "Key personnel are Mirta Teichberg and Ketil Koop-Jakobsen at the MBL, and Roxanne Marino and Melanie Hayn at Cornell.",
+   "confidence": "high"
+  }
+ ],
+ "verifications": []
+}

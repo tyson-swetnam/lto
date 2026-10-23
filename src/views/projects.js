@@ -57,7 +57,7 @@ const PROJECTS_SQL = `
                         WHEN 'co-leader' THEN 4
                         WHEN 'manager'   THEN 6
                         ELSE 5
-                      END, p.name_family, p.name) AS team
+                      END, p.name_family, p.name, p.person_id, pp.role) AS team
     FROM project_personnel pp
     JOIN people p ON p.person_id = pp.person_id
     GROUP BY pp.project_id
@@ -69,7 +69,7 @@ const PROJECTS_SQL = `
              name        := f.canonical_name,
              acronym     := f.acronym,
              relation    := pf.relation
-           ) ORDER BY f.canonical_name) AS facilities
+           ) ORDER BY f.canonical_name, f.facility_id, pf.relation) AS facilities
     FROM project_facilities pf
     JOIN facilities f ON f.facility_id = pf.facility_id
     GROUP BY pf.project_id
@@ -101,7 +101,7 @@ const PROJECTS_SQL = `
   LEFT JOIN facilities lf ON lf.facility_id = pr.lead_facility_id
   LEFT JOIN team t        ON t.project_id   = pr.project_id
   LEFT JOIN sites s       ON s.project_id   = pr.project_id
-  ORDER BY pr.name`;
+  ORDER BY pr.name, pr.project_id`;
 
 const SITES_SQL = `
   WITH nets AS (
@@ -116,7 +116,7 @@ const SITES_SQL = `
              role  := role,
              lat   := lat,
              lng   := lng
-           ) ORDER BY role, label) AS locations
+           ) ORDER BY role, label, lat, lng) AS locations
     FROM locations
     GROUP BY facility_id
   ),
@@ -147,7 +147,7 @@ const SITES_SQL = `
   LEFT JOIN locs l ON l.facility_id = f.facility_id
   LEFT JOIN prim p ON p.facility_id = f.facility_id
   LEFT JOIN arid a ON a.facility_id = f.facility_id
-  ORDER BY f.canonical_name`;
+  ORDER BY f.canonical_name, f.facility_id`;
 
 const ROLE_LABELS = {
   'lead-PI': 'Lead PI',

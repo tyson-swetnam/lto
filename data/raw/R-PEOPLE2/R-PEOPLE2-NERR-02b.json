@@ -1,0 +1,961 @@
+{
+ "batch_id": "R-PEOPLE2-NERR-02b",
+ "retrieved_at": "2026-10-22",
+ "verified_by": "adversarial-verifier 2026-10-22",
+ "facilities": [
+  {
+   "facility_id": "4ac94e4e5da49682",
+   "pages_fetched": [
+    {
+     "url": "https://coast.noaa.gov/nerrs/reserves/north-carolina.html",
+     "status": 200
+    },
+    {
+     "url": "https://www.deq.nc.gov/about/divisions/coastal-management/nc-coastal-reserve",
+     "status": 200
+    },
+    {
+     "url": "https://deq.nc.gov/about/divisions/coastal-management/nc-coastal-reserve/about-reserve/contact-us",
+     "status": 200
+    },
+    {
+     "url": "https://deq.nc.gov/about/divisions/coastal-management/nc-coastal-reserve/research",
+     "status": 200
+    },
+    {
+     "url": "https://deq.nc.gov/about/divisions/coastal-management/nc-coastal-reserve-and-national-estuarine-research-reserve/about/history",
+     "status": 404
+    }
+   ],
+   "notes": "Managed as the N.C. Coastal Reserve and NERR by NC DEQ Division of Coastal Management; headquarters Beaufort. The reserve's lead position is titled 'Program Manager'. Site managers also exist for central (Ben Wunderly), southern (Elizabeth Pinnix), and northern (Sophie Johnson) sites per the contact page; not added. History page 404, so no founding manager recorded."
+  },
+  {
+   "facility_id": "c42a82d1eef0f701",
+   "pages_fetched": [
+    {
+     "url": "https://coast.noaa.gov/nerrs/reserves/north-inlet-winyah-bay.html",
+     "status": 200
+    },
+    {
+     "url": "https://www.northinlet.sc.edu/",
+     "status": 0
+    },
+    {
+     "url": "https://northinlet.sc.edu/",
+     "status": 500
+    },
+    {
+     "url": "https://sc.edu/study/colleges_schools/artsandsciences/baruch_institute/faculty-staff/",
+     "status": 200
+    },
+    {
+     "url": "https://sc.edu/study/colleges_schools/artsandsciences/baruch_institute/faculty-staff/smith_erik.php",
+     "status": 200
+    },
+    {
+     "url": "https://sc.edu/study/colleges_schools/artsandsciences/baruch_institute/faculty-staff/pfirrmann_bruce.php",
+     "status": 200
+    }
+   ],
+   "notes": "Reserve operated by the University of South Carolina Belle W. Baruch Institute (Baruch Marine Field Laboratory, Georgetown SC). Reserve website northinlet.sc.edu failed (connection error / HTTP 500); staff taken from the Baruch Institute directory. Pfirrmann's profile says he became Research Coordinator in 2026."
+  },
+  {
+   "facility_id": "f668c822976512fe",
+   "pages_fetched": [
+    {
+     "url": "https://coast.noaa.gov/nerrs/reserves/old-woman-creek.html",
+     "status": 200
+    },
+    {
+     "url": "https://ohiodnr.gov/discover-and-learn/safety-conservation/about-ODNR/coastal-management/owc-nerr",
+     "status": 200
+    },
+    {
+     "url": "https://ohiodnr.gov/discover-and-learn/safety-conservation/about-odnr/coastal-management/division-of-coastal-management/staff-directory",
+     "status": 200
+    },
+    {
+     "url": "https://ohiodnr.gov/discover-and-learn/safety-conservation/about-odnr/coastal-management/owc-nerr/research-resources-owc",
+     "status": 200
+    },
+    {
+     "url": "https://ohioseagrant.osu.edu/news/calendar/2026/06/11/1pgwm/research-seminar",
+     "status": 200
+    },
+    {
+     "url": "https://coast.noaa.gov/data/docs/nerrs/Handout-Old-Woman-Creek.pdf",
+     "status": 200
+    },
+    {
+     "url": "https://dam.assets.ohio.gov/image/upload/v1775577597/odnr/coastal/owc/EstuaryExplorations_2026.pdf",
+     "status": 200
+    },
+    {
+     "url": "https://jobs.naaee.org/node/13354",
+     "status": 200
+    },
+    {
+     "url": "https://www.nerra.org/reserves/old-woman-creek-ohio/",
+     "status": 403
+    }
+   ],
+   "notes": "Managed by the Ohio DNR Office of Coastal Management; also a State Nature Preserve. Staff from the ODNR Office of Coastal Management staff directory (Old Woman Creek NERR Staff section). Office Manager and Training and Engagement Coordinator positions listed without names (likely vacant)."
+  },
+  {
+   "facility_id": "347afc985afeade9",
+   "pages_fetched": [
+    {
+     "url": "https://coast.noaa.gov/nerrs/reserves/padilla-bay.html",
+     "status": 200
+    },
+    {
+     "url": "https://ecology.wa.gov/Water-Shorelines/Shoreline-coastal-management/Padilla-Bay-reserve",
+     "status": 200
+    },
+    {
+     "url": "https://ecology.wa.gov/Water-Shorelines/Shoreline-coastal-management/Padilla-Bay-reserve/About-Padilla-Bay",
+     "status": 200
+    },
+    {
+     "url": "https://ecology.wa.gov/Water-Shorelines/Shoreline-coastal-management/Padilla-Bay-reserve/About-Padilla-Bay/About-the-Reserve",
+     "status": 200
+    },
+    {
+     "url": "https://ecology.wa.gov/Water-Shorelines/Shoreline-coastal-management/Padilla-Bay-reserve/About-Padilla-Bay/History",
+     "status": 200
+    },
+    {
+     "url": "https://ecology.wa.gov/Water-Shorelines/Shoreline-coastal-management/Padilla-Bay-reserve/About-Padilla-Bay/Contact-us",
+     "status": 200
+    },
+    {
+     "url": "https://ecology.wa.gov/Water-Shorelines/Shoreline-coastal-management/Padilla-Bay-reserve/Research",
+     "status": 200
+    },
+    {
+     "url": "https://ecology.wa.gov/Water-Shorelines/Shoreline-coastal-management/Padilla-Bay-reserve/Stewardship",
+     "status": 200
+    }
+   ],
+   "notes": "Administered by the Washington State Department of Ecology; Breazeale Interpretive Center, Mount Vernon WA. The reserve's lead is titled 'Director'. History page names the Breazeale family as early advocates but no founding manager."
+  },
+  {
+   "facility_id": "b989d5d297c3dec3",
+   "pages_fetched": [
+    {
+     "url": "https://coast.noaa.gov/nerrs/reserves/rookery-bay.html",
+     "status": 200
+    },
+    {
+     "url": "https://rookerybay.org/",
+     "status": 200
+    },
+    {
+     "url": "https://rookerybay.org/who-we-are/staff-directory/",
+     "status": 200
+    },
+    {
+     "url": "https://rookerybay.org/who-we-are/rookery-bay-research-reserve/",
+     "status": 200
+    },
+    {
+     "url": "https://rookerybay.org/learn/research/",
+     "status": 200
+    }
+   ],
+   "notes": "Managed by the Florida Department of Environmental Protection; the reserve's top position on the staff directory is 'Environmental Administrator' (treated as reserve manager, medium confidence). Friends of Rookery Bay (support nonprofit, Executive Director TJ Snopkowski) staff not added."
+  },
+  {
+   "facility_id": "22defb4a3ee37d8a",
+   "pages_fetched": [
+    {
+     "url": "https://coast.noaa.gov/nerrs/reserves/san-francisco-bay.html",
+     "status": 200
+    },
+    {
+     "url": "https://sfbaynerr.sfsu.edu/",
+     "status": 200
+    },
+    {
+     "url": "https://sfbaynerr.sfsu.edu/who-we-are/people",
+     "status": 200
+    }
+   ],
+   "notes": "Operated by San Francisco State University from the Estuary & Ocean Science (EOS) Center, Tiburon; component sites China Camp and Rush Ranch. Research Coordinator post is held on an interim basis ('until January'). Past managers listed under Alumni; Jaime Kooser (2003-2013) was manager from designation in 2003."
+  }
+ ],
+ "people": [
+  {
+   "key": "rebecca-ellin",
+   "existing_person_id": null,
+   "name": "Rebecca Ellin",
+   "name_given": "Rebecca",
+   "name_family": "Ellin",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "justin-ridge",
+   "existing_person_id": null,
+   "name": "Justin Ridge",
+   "name_given": "Justin",
+   "name_family": "Ridge",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "paula-gillikin",
+   "existing_person_id": null,
+   "name": "Paula Gillikin",
+   "name_given": "Paula",
+   "name_family": "Gillikin",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "lori-davis",
+   "existing_person_id": null,
+   "name": "Lori Davis",
+   "name_given": "Lori",
+   "name_family": "Davis",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "erik-smith-niwb",
+   "existing_person_id": null,
+   "name": "Erik Smith",
+   "name_given": "Erik",
+   "name_family": "Smith",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://sc.edu/study/colleges_schools/artsandsciences/baruch_institute/faculty-staff/smith_erik.php",
+   "bio": "Manager of the North Inlet-Winyah Bay National Estuarine Research Reserve and an assistant research professor with USC's Baruch Institute, working from the Baruch Marine Field Laboratory in Georgetown, South Carolina.",
+   "bio_source_url": "https://sc.edu/study/colleges_schools/artsandsciences/baruch_institute/faculty-staff/smith_erik.php",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "bruce-pfirrmann",
+   "existing_person_id": null,
+   "name": "Bruce Pfirrmann",
+   "name_given": "Bruce",
+   "name_family": "Pfirrmann",
+   "orcid": "0000-0002-0591-3832",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-0591-3832/employments",
+   "homepage_url": "https://sc.edu/study/colleges_schools/artsandsciences/baruch_institute/faculty-staff/pfirrmann_bruce.php",
+   "bio": "Marine and coastal ecologist who became Research Coordinator of the North Inlet-Winyah Bay NERR in 2026 after serving from 2018 as a research resource specialist at USC's Baruch Marine Field Laboratory. Holds an MS in marine science from the Virginia Institute of Marine Science and teaches field marine science and coastal ecology courses.",
+   "bio_source_url": "https://sc.edu/study/colleges_schools/artsandsciences/baruch_institute/faculty-staff/pfirrmann_bruce.php",
+   "research_interests": "Estuarine and coastal ecology; nekton (fish and invertebrate) community ecology, life histories and habitat use",
+   "research_interests_source_url": "https://sc.edu/study/colleges_schools/artsandsciences/baruch_institute/faculty-staff/pfirrmann_bruce.php"
+  },
+  {
+   "key": "jennifer-plunket",
+   "existing_person_id": null,
+   "name": "Jennifer Plunket",
+   "name_given": "Jennifer",
+   "name_family": "Plunket",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "beth-thomas",
+   "existing_person_id": null,
+   "name": "Beth Thomas",
+   "name_given": "Beth",
+   "name_family": "Thomas",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "janice-kerns",
+   "existing_person_id": null,
+   "name": "Janice Kerns",
+   "name_given": "Janice",
+   "name_family": "Kerns",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "steve-mcmurray",
+   "existing_person_id": null,
+   "name": "Steve McMurray",
+   "name_given": "Steve",
+   "name_family": "McMurray",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Has served since 2021 as Research Coordinator for Ohio's Old Woman Creek NERR, whose water-quality monitoring and research help guide how Lake Erie's coastal wetlands and estuaries are managed. Earned his master's and doctoral degrees in marine biology at UNC Wilmington, after a biology B.A. (chemistry minor) at Hiram College.",
+   "bio_source_url": "https://ohioseagrant.osu.edu/news/calendar/2026/06/11/1pgwm/research-seminar",
+   "research_interests": "Water quality monitoring; research supporting management of Lake Erie coastal wetland and estuary ecosystems",
+   "research_interests_source_url": "https://ohioseagrant.osu.edu/news/calendar/2026/06/11/1pgwm/research-seminar"
+  },
+  {
+   "key": "jacob-cianci-gaskill",
+   "existing_person_id": null,
+   "name": "Jacob Cianci-Gaskill",
+   "name_given": "Jacob",
+   "name_family": "Cianci-Gaskill",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": "Phytoplankton as drivers of nutrient cycling in the Old Woman Creek estuary",
+   "research_interests_source_url": "https://dam.assets.ohio.gov/image/upload/v1775577597/odnr/coastal/owc/EstuaryExplorations_2026.pdf"
+  },
+  {
+   "key": "veronica-hardy",
+   "existing_person_id": null,
+   "name": "Veronica Hardy",
+   "name_given": "Veronica",
+   "name_family": "Hardy",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "jennifer-bucheit",
+   "existing_person_id": null,
+   "name": "Jennifer Bucheit",
+   "name_given": "Jennifer",
+   "name_family": "Bucheit",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "jude-apple",
+   "existing_person_id": null,
+   "name": "Jude Apple",
+   "name_given": "Jude",
+   "name_family": "Apple",
+   "orcid": "0009-0000-0263-1015",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0009-0000-0263-1015/employments",
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "sylvia-yang",
+   "existing_person_id": null,
+   "name": "Sylvia Yang",
+   "name_given": "Sylvia",
+   "name_family": "Yang",
+   "orcid": "0009-0002-3950-9288",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0009-0002-3950-9288/employments",
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "roger-fuller",
+   "existing_person_id": null,
+   "name": "Roger Fuller",
+   "name_given": "Roger",
+   "name_family": "Fuller",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "chandler-colahan",
+   "existing_person_id": null,
+   "name": "Chandler Colahan",
+   "name_given": "Chandler",
+   "name_family": "Colahan",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "jeffrey-carter",
+   "existing_person_id": null,
+   "name": "Jeffrey A. Carter",
+   "name_given": "Jeffrey",
+   "name_family": "Carter",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "nerea-ubierna",
+   "existing_person_id": null,
+   "name": "Nerea Ubierna",
+   "name_given": "Nerea",
+   "name_family": "Ubierna",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "jared-franklin",
+   "existing_person_id": null,
+   "name": "Jared Franklin",
+   "name_given": "Jared",
+   "name_family": "Franklin",
+   "orcid": "0009-0001-4575-8582",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0009-0001-4575-8582/employments",
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "sarah-falkowski",
+   "existing_person_id": null,
+   "name": "Sarah Falkowski",
+   "name_given": "Sarah",
+   "name_family": "Falkowski",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "matt-ferner",
+   "existing_person_id": null,
+   "name": "Matt Ferner",
+   "name_given": "Matthew",
+   "name_family": "Ferner",
+   "orcid": "0000-0002-4862-9663",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-4862-9663/employments",
+   "homepage_url": null,
+   "bio": "Director of the San Francisco Bay NERR at San Francisco State University, also helping oversee the university's Estuary & Ocean Science Center. A marine scientist and program manager involved with the reserve since 2005, holding a Georgia Tech doctorate in applied biology and a University of Washington master's in oceanography.",
+   "bio_source_url": "https://sfbaynerr.sfsu.edu/who-we-are/people",
+   "research_interests": "Applied science for coastal ecosystem conservation and management",
+   "research_interests_source_url": "https://sfbaynerr.sfsu.edu/who-we-are/people"
+  },
+  {
+   "key": "alex-parker",
+   "existing_person_id": null,
+   "name": "Alex Parker",
+   "name_given": "Alex",
+   "name_family": "Parker",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Biological oceanographer and professor of oceanography at Cal Poly Maritime Academy, where he built the oceanography B.S. program and has held interim chair and dean roles; serving as interim Research Coordinator for the SF Bay NERR. Previously a postdoc and research scientist at SF State's EOS Center (2004-2013); serves on the CeNCOOS Governing Council.",
+   "bio_source_url": "https://sfbaynerr.sfsu.edu/who-we-are/people",
+   "research_interests": "How nutrients and other environmental factors control primary production in urbanized estuaries, especially San Francisco Bay",
+   "research_interests_source_url": "https://sfbaynerr.sfsu.edu/who-we-are/people"
+  },
+  {
+   "key": "stephanie-sisk-hilton",
+   "existing_person_id": null,
+   "name": "Stephanie Sisk-Hilton",
+   "name_given": "Stephanie",
+   "name_family": "Sisk-Hilton",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Professor of Elementary Education at San Francisco State University and Education Coordinator for the SF Bay NERR, running place-based estuary programs with partner organizations and PK-12 teachers. Earned a doctorate at UC Berkeley focused on cognition and development.",
+   "bio_source_url": "https://sfbaynerr.sfsu.edu/who-we-are/people",
+   "research_interests": "Place-based, interdisciplinary learning that engages children with local environmental issues; elementary climate science teaching",
+   "research_interests_source_url": "https://sfbaynerr.sfsu.edu/who-we-are/people"
+  },
+  {
+   "key": "anna-deck",
+   "existing_person_id": null,
+   "name": "Anna Deck",
+   "name_given": "Anna",
+   "name_family": "Deck",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "stuart-siegel",
+   "existing_person_id": null,
+   "name": "Stuart Siegel",
+   "name_given": "Stuart",
+   "name_family": "Siegel",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Coastal Resilience Specialist with the SF Bay NERR since 2015 and its Interim Reserve Manager from 2021 to 2024; works on estuarine ecosystem recovery.",
+   "bio_source_url": "https://sfbaynerr.sfsu.edu/who-we-are/people",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "mike-vasey",
+   "existing_person_id": null,
+   "name": "Michael Vasey",
+   "name_given": "Michael",
+   "name_family": "Vasey",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Conservation biologist and former SF State conservation biology instructor who led the decade-long collaborative effort to design the SF Bay NERR before its 2003 designation, then managed the reserve from 2013 to 2021. Holds a UC Santa Cruz doctorate in environmental studies; co-led assessments of tidal wetland vegetation in the estuary.",
+   "bio_source_url": "https://sfbaynerr.sfsu.edu/who-we-are/people",
+   "research_interests": "Tidal wetland vegetation of the San Francisco Estuary; manzanita systematics; effects of summer fog on coastal chaparral",
+   "research_interests_source_url": "https://sfbaynerr.sfsu.edu/who-we-are/people"
+  },
+  {
+   "key": "jaime-kooser",
+   "existing_person_id": null,
+   "name": "Jaime Kooser",
+   "name_given": "Jaime",
+   "name_family": "Kooser",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Resource geographer who managed the SF Bay NERR from 2003 to 2013. Earlier served as a deputy director at the California Coastal Commission, worked on wetlands and water-quality policy at the Washington Department of Ecology, and taught geography at the University of Washington and The Evergreen State College. Ph.D. in geography from UC Berkeley.",
+   "bio_source_url": "https://sfbaynerr.sfsu.edu/who-we-are/people",
+   "research_interests": "Coastal zone management; wetlands policy and water quality regulation",
+   "research_interests_source_url": "https://sfbaynerr.sfsu.edu/who-we-are/people"
+  }
+ ],
+ "affiliations": [
+  {
+   "facility_id": "4ac94e4e5da49682",
+   "person_key": "rebecca-ellin",
+   "role": "manager",
+   "title": "Program Manager, N.C. Coastal Reserve and NERR",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://deq.nc.gov/about/divisions/coastal-management/nc-coastal-reserve/about-reserve/contact-us",
+   "evidence": "Rebecca Ellin , Program Manager",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "4ac94e4e5da49682",
+   "person_key": "justin-ridge",
+   "role": "research-coordinator",
+   "title": "Research Coordinator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://deq.nc.gov/about/divisions/coastal-management/nc-coastal-reserve/research",
+   "evidence": "Justin Ridge, Research Coordinator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "4ac94e4e5da49682",
+   "person_key": "paula-gillikin",
+   "role": "stewardship-coordinator",
+   "title": "Stewardship Coordinator",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://deq.nc.gov/about/divisions/coastal-management/nc-coastal-reserve/about-reserve/contact-us",
+   "evidence": "Paula Gillikin , Stewardship Coordinator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "4ac94e4e5da49682",
+   "person_key": "lori-davis",
+   "role": "education-coordinator",
+   "title": "Education Coordinator",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://deq.nc.gov/about/divisions/coastal-management/nc-coastal-reserve/about-reserve/contact-us",
+   "evidence": "Lori Davis , Education Coordinator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "c42a82d1eef0f701",
+   "person_key": "erik-smith-niwb",
+   "role": "manager",
+   "title": "Manager, North Inlet-Winyah Bay NERR; Assistant Research Professor",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://sc.edu/study/colleges_schools/artsandsciences/baruch_institute/faculty-staff/smith_erik.php",
+   "evidence": "Manager, North Inlet-Winyah Bay NERR Assistant Research Professor",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "c42a82d1eef0f701",
+   "person_key": "bruce-pfirrmann",
+   "role": "research-coordinator",
+   "title": "Research Coordinator, North Inlet-Winyah Bay NERR",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2026,
+   "end_year": null,
+   "source_url": "https://sc.edu/study/colleges_schools/artsandsciences/baruch_institute/faculty-staff/pfirrmann_bruce.php",
+   "evidence": "2026 – Present: Research Coordinator, North Inlet-Winyah Bay National Estuarine Research Reserve",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "c42a82d1eef0f701",
+   "person_key": "jennifer-plunket",
+   "role": "stewardship-coordinator",
+   "title": "Stewardship Coordinator, NERR",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://sc.edu/study/colleges_schools/artsandsciences/baruch_institute/faculty-staff/",
+   "evidence": "Plunket, Jennifer Stewardship Coordinator, NERR",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "c42a82d1eef0f701",
+   "person_key": "beth-thomas",
+   "role": "education-coordinator",
+   "title": "Education Coordinator, North Inlet-Winyah Bay NERR",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://sc.edu/study/colleges_schools/artsandsciences/baruch_institute/faculty-staff/",
+   "evidence": "Thomas, Beth Education Coordinator, North Inlet-Winyah Bay NERR",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "f668c822976512fe",
+   "person_key": "janice-kerns",
+   "role": "manager",
+   "title": "Reserve Manager",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ohiodnr.gov/discover-and-learn/safety-conservation/about-odnr/coastal-management/division-of-coastal-management/staff-directory",
+   "evidence": "Janice Kerns, Ph.D. Reserve Manager",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "f668c822976512fe",
+   "person_key": "steve-mcmurray",
+   "role": "research-coordinator",
+   "title": "Research Coordinator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2021,
+   "end_year": null,
+   "source_url": "https://ohioseagrant.osu.edu/news/calendar/2026/06/11/1pgwm/research-seminar",
+   "evidence": "Since 2021, McMurray has served as Research Coordinator at the Old Woman Creek NERR",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "f668c822976512fe",
+   "person_key": "jacob-cianci-gaskill",
+   "role": "coordinator",
+   "title": "System Wide Monitoring Coordinator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ohiodnr.gov/discover-and-learn/safety-conservation/about-odnr/coastal-management/owc-nerr/research-resources-owc",
+   "evidence": "System Wide Monitoring Coordinator Jacob Cianci-Gaskill, Ph.D.",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "f668c822976512fe",
+   "person_key": "veronica-hardy",
+   "role": "stewardship-coordinator",
+   "title": "Stewardship Coordinator",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ohiodnr.gov/discover-and-learn/safety-conservation/about-odnr/coastal-management/division-of-coastal-management/staff-directory",
+   "evidence": "Veronica Hardy Stewardship Coordinator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "f668c822976512fe",
+   "person_key": "jennifer-bucheit",
+   "role": "education-coordinator",
+   "title": "Education Coordinator",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ohiodnr.gov/discover-and-learn/safety-conservation/about-odnr/coastal-management/division-of-coastal-management/staff-directory",
+   "evidence": "Jennifer Bucheit, M.S. Education Coordinator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "347afc985afeade9",
+   "person_key": "jude-apple",
+   "role": "director",
+   "title": "Director, Padilla Bay NERR",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ecology.wa.gov/Water-Shorelines/Shoreline-coastal-management/Padilla-Bay-reserve/About-Padilla-Bay/Contact-us",
+   "evidence": "Director Jude Apple",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "347afc985afeade9",
+   "person_key": "sylvia-yang",
+   "role": "research-coordinator",
+   "title": "Padilla Bay Research Coordinator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ecology.wa.gov/Water-Shorelines/Shoreline-coastal-management/Padilla-Bay-reserve/Research",
+   "evidence": "Dr. Sylvia Yang Padilla Bay Research Coordinator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "347afc985afeade9",
+   "person_key": "roger-fuller",
+   "role": "coordinator",
+   "title": "Natural Resource Coordinator (Stewardship contact)",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ecology.wa.gov/Water-Shorelines/Shoreline-coastal-management/Padilla-Bay-reserve/Stewardship",
+   "evidence": "Roger Fuller Natural Resource Coordinator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "347afc985afeade9",
+   "person_key": "chandler-colahan",
+   "role": "education-coordinator",
+   "title": "Education & Community Outreach contact",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ecology.wa.gov/Water-Shorelines/Shoreline-coastal-management/Padilla-Bay-reserve/About-Padilla-Bay/Contact-us",
+   "evidence": "Education & Community Outreach Chandler Colahan",
+   "confidence": "low"
+  },
+  {
+   "facility_id": "b989d5d297c3dec3",
+   "person_key": "jeffrey-carter",
+   "role": "manager",
+   "title": "Environmental Administrator (reserve administration lead)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://rookerybay.org/who-we-are/staff-directory/",
+   "evidence": "Environmental Administrator: Jeffrey A. Carter",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "b989d5d297c3dec3",
+   "person_key": "nerea-ubierna",
+   "role": "research-coordinator",
+   "title": "Research Coordinator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://rookerybay.org/who-we-are/staff-directory/",
+   "evidence": "Nerea Ubierna: Research Coordinator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "b989d5d297c3dec3",
+   "person_key": "jared-franklin",
+   "role": "stewardship-coordinator",
+   "title": "Stewardship Coordinator",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://rookerybay.org/who-we-are/staff-directory/",
+   "evidence": "Jared Franklin: Stewardship Coordinator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "b989d5d297c3dec3",
+   "person_key": "sarah-falkowski",
+   "role": "education-coordinator",
+   "title": "Education Coordinator",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://rookerybay.org/who-we-are/staff-directory/",
+   "evidence": "Sarah Falkowski: Education Coordinator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "22defb4a3ee37d8a",
+   "person_key": "matt-ferner",
+   "role": "director",
+   "title": "Director, San Francisco Bay NERR",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://sfbaynerr.sfsu.edu/who-we-are/people",
+   "evidence": "Matt Ferner Director",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "22defb4a3ee37d8a",
+   "person_key": "alex-parker",
+   "role": "research-coordinator",
+   "title": "Interim Research Coordinator (until January)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://sfbaynerr.sfsu.edu/who-we-are/people",
+   "evidence": "Alex Parker Interim Research Coordinator (until January)",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "22defb4a3ee37d8a",
+   "person_key": "stephanie-sisk-hilton",
+   "role": "education-coordinator",
+   "title": "Education Coordinator",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://sfbaynerr.sfsu.edu/who-we-are/people",
+   "evidence": "Stephanie Sisk-Hilton Education Coordinator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "22defb4a3ee37d8a",
+   "person_key": "anna-deck",
+   "role": "technical-staff",
+   "title": "Lead Research Technician (System-Wide Monitoring Program coordination and data management)",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://sfbaynerr.sfsu.edu/who-we-are/people",
+   "evidence": "Anna Deck Lead Research Technician",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "22defb4a3ee37d8a",
+   "person_key": "stuart-siegel",
+   "role": "scientist",
+   "title": "Coastal Resilience Specialist",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": 2015,
+   "end_year": null,
+   "source_url": "https://sfbaynerr.sfsu.edu/who-we-are/people",
+   "evidence": "Dr. Siegel has been the Coastal Resilience Specialist for the San Francisco Bay National Estuarine Research Reserve since 2015",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "22defb4a3ee37d8a",
+   "person_key": "stuart-siegel",
+   "role": "former-director",
+   "title": "Interim Reserve Manager",
+   "is_key_personnel": false,
+   "is_current": false,
+   "start_year": 2021,
+   "end_year": 2024,
+   "source_url": "https://sfbaynerr.sfsu.edu/who-we-are/people",
+   "evidence": "served as the Interim Reserve Manager from 2021 to 2024",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "22defb4a3ee37d8a",
+   "person_key": "mike-vasey",
+   "role": "former-director",
+   "title": "Reserve Manager",
+   "is_key_personnel": false,
+   "is_current": false,
+   "start_year": 2013,
+   "end_year": 2021,
+   "source_url": "https://sfbaynerr.sfsu.edu/who-we-are/people",
+   "evidence": "Mike Vasey Reserve Manager, 2013 to 2021",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "22defb4a3ee37d8a",
+   "person_key": "jaime-kooser",
+   "role": "former-director",
+   "title": "Reserve Manager (first manager after 2003 designation)",
+   "is_key_personnel": false,
+   "is_current": false,
+   "start_year": 2003,
+   "end_year": 2013,
+   "source_url": "https://sfbaynerr.sfsu.edu/who-we-are/people",
+   "evidence": "Jaime Kooser Reserve Manager, 2003 to 2013",
+   "confidence": "high"
+  }
+ ],
+ "verifications": []
+}

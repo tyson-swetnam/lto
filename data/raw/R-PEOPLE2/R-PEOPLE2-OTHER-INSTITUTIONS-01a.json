@@ -1,0 +1,592 @@
+{
+ "batch_id": "R-PEOPLE2-OTHER-INSTITUTIONS-01a",
+ "retrieved_at": "2026-10-22",
+ "verified_by": "adversarial-verifier 2026-10-22",
+ "facilities": [
+  {
+   "facility_id": "4fc4a5777ced0680",
+   "pages_fetched": [
+    {
+     "url": "https://www.nps.gov/caha/learn/management/index.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/caha/learn/management/superintendent.htm",
+     "status": 404
+    },
+    {
+     "url": "https://developer.nps.gov/api/v1/newsreleases?parkCode=caha&limit=50",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/caha/learn/news/cape-hatteras-national-seashore-shares-progress-on-cape-hatteras-lighthouse-restoration-project.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/caha/learn/news/dave-hallac-selected-as-new-superintendent-for-outer-banks-group.htm",
+     "status": 200
+    },
+    {
+     "url": "https://apnep.nc.gov/david-hallac",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/caha/learn/news/robin-snyder-selected-as-deputy-superintendent-for-cape-hatteras-national-seashore-fort-raleigh-national-historic-site-wright-brothers-national-memorial.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/caha/learn/news/meaghan-johnson-selected-as-chief-of-resource-management-for-national-parks-eastern-north-carolina.htm",
+     "status": 200
+    }
+   ],
+   "notes": "Managed within the NPS 'National Parks of Eastern North Carolina' (Outer Banks Group). Superintendent David Hallac confirmed by a July 2026 NPS release. Robin Snyder (deputy superintendent, 2022 archived release) and Meaghan Johnson (chief of resource management and science, 2021 release) were not added: no 2025-2026 page confirms they still hold those roles. Verifier: start_year 2015 comes from the archived NPS release (dave-hallac-selected-as-new-superintendent-for-outer-banks-group.htm, fetched 200): 'He will start his new assignment at Cape Hatteras in early January 2015'."
+  },
+  {
+   "facility_id": "2cc453376bcf3bb2",
+   "pages_fetched": [
+    {
+     "url": "https://www.epa.gov/aboutepa/about-center-environmental-measurement-and-modeling-cemm",
+     "status": 404
+    },
+    {
+     "url": "https://www.epa.gov/aboutepa/about-atlantic-coastal-environmental-sciences-division",
+     "status": 404
+    },
+    {
+     "url": "https://www.epa.gov/node/232559",
+     "status": 404
+    },
+    {
+     "url": "https://www.epa.gov/aboutepa/about-office-research-and-development-ord",
+     "status": 404
+    },
+    {
+     "url": "https://19january2025snapshot.epa.gov/aboutepa/about-atlantic-coastal-environmental-sciences-division",
+     "status": 200
+    },
+    {
+     "url": "https://19january2021snapshot.epa.gov/aboutepa/about-atlantic-coastal-environmental-sciences-division_.html",
+     "status": 200
+    }
+   ],
+   "notes": "The live EPA ACESD 'About' page (and the CEMM/ORD About pages) return 404 today, so current leadership is unverifiable. EPA's official January-2025 and January-2021 snapshot sites name past division directors (Tim Gleason, page last updated 2024-07-15; Wayne Munns, page last updated 2020-07-09); recorded as is_current=false. Facility url in the DB is dead and should be updated. Verifier: Gleason recorded as role=director, is_current=false (the snapshot shows him as director in Jan 2025; it does not show he left). Munns kept as former-director because the 2025 snapshot names Gleason in the post."
+  },
+  {
+   "facility_id": "631d1b1f92e90f44",
+   "pages_fetched": [
+    {
+     "url": "https://www.nasa.gov/wallops",
+     "status": 200
+    },
+    {
+     "url": "https://www.nasa.gov/wallops/leadership/",
+     "status": 404
+    },
+    {
+     "url": "https://www.nasa.gov/wallops/about",
+     "status": 200
+    },
+    {
+     "url": "https://www.nasa.gov/people/shad-combs/",
+     "status": 200
+    }
+   ],
+   "notes": "Wallops is now presented under Kennedy Space Center leadership on nasa.gov; Shad Combs is listed as Wallops Flight Facility Acting Director. No other Wallops-specific scientific leadership is named on the fetched pages."
+  },
+  {
+   "facility_id": "48a4a144e3ad245f",
+   "pages_fetched": [
+    {
+     "url": "https://coast.noaa.gov/nerrs/",
+     "status": 200
+    },
+    {
+     "url": "https://coast.noaa.gov/nerrs/about/contact.html",
+     "status": 404
+    },
+    {
+     "url": "https://coast.noaa.gov/nerrs/about/",
+     "status": 200
+    },
+    {
+     "url": "https://coast.noaa.gov/about/",
+     "status": 200
+    },
+    {
+     "url": "https://coast.noaa.gov/about/organization",
+     "status": 200
+    },
+    {
+     "url": "https://coast.noaa.gov/about/stewardship-chief/",
+     "status": 200
+    },
+    {
+     "url": "https://coast.noaa.gov/about/director/",
+     "status": 200
+    },
+    {
+     "url": "https://oceanservice.noaa.gov/ecosystems/nerrs/",
+     "status": 200
+    }
+   ],
+   "notes": "National system office: NERRS is administered by the Stewardship Division of NOAA's Office for Coastal Management (OCM org page: 'Estuarine Research Reserve System ... are administered in this division'). Division chief Joelle Gore recorded as system-level lead; OCM acting director Keelin Kuipers as parent-office leadership. No named NERRS-specific program manager on fetched pages; individual reserves have their own managers (not in scope here). Verifier: Kuipers downgraded to low confidence (heads the parent office, not NERRS itself)."
+  },
+  {
+   "facility_id": "d1f3bc5d2ac35942",
+   "pages_fetched": [
+    {
+     "url": "https://www.usgs.gov/centers/pcmsc",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/centers/pcmsc/science-staff",
+     "status": 404
+    },
+    {
+     "url": "https://www.usgs.gov/centers/pcmsc/people",
+     "status": 404
+    },
+    {
+     "url": "https://www.usgs.gov/centers/pcmsc/about",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/centers/pcmsc/connect",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/staff-profiles/louis-lou-licate",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/staff-profiles/nadine-golden",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/staff-profiles/guy-gelfenbaum",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/staff-profiles/evan-dailey",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/centers/pcmsc/history-pacific-coastal-and-marine-science-center",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0009-0003-6261-8017/employments",
+     "status": 200
+    }
+   ],
+   "notes": "Center Director Lou Licate (since 2025) and Deputy Center Director Nadine Golden from USGS staff profiles and the center Connect directory. History page lists all center leaders since 1962; first leader Orlo Childs (1962-1963) and prior director Guy Gelfenbaum (2017-2021, now Oceanographer Emeritus) added as is_current=false."
+  },
+  {
+   "facility_id": "fe678f45b43083ff",
+   "pages_fetched": [
+    {
+     "url": "https://www.sms.si.edu/",
+     "status": 403
+    },
+    {
+     "url": "https://www.sms.si.edu/aboutus/staff.htm",
+     "status": 403
+    },
+    {
+     "url": "https://naturalhistory.si.edu/research/smithsonian-marine-station/staff",
+     "status": 403
+    },
+    {
+     "url": "https://naturalhistory.si.edu/research/smithsonian-marine-station",
+     "status": 403
+    },
+    {
+     "url": "https://marinegeo.si.edu/about-us/who-we-are/valerie-paul",
+     "status": 403
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-4691-1569/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-4691-1569/employments",
+     "status": 200
+    },
+    {
+     "url": "https://www.fau.edu/hboi/newsroom/news/mary-rice/",
+     "status": 200
+    }
+   ],
+   "notes": "All si.edu hosts return 403 to automated fetches (sms.si.edu now redirects to naturalhistory.si.edu). Valerie Paul's leadership role taken from her ORCID employment record (self-asserted: 'Smithsonian Marine Station', 'Head Scientist', 2002-) so recorded at medium confidence with role leadership-team; re-check the NMNH staff page in a browser to confirm a 'Director' title. Founding director Mary E. Rice (1981-2002) from an FAU Harbor Branch obituary page. Verifier: si.edu still 403 on 2026-10-22. The FAU obituary corroborates succession ('When Mary retired, the transition to Dr. Valerie Paul was very smooth'); current status rests on ORCID only, so medium confidence kept."
+  }
+ ],
+ "people": [
+  {
+   "key": "david-hallac",
+   "existing_person_id": null,
+   "name": "David Hallac",
+   "name_given": "David",
+   "name_family": "Hallac",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Superintendent of the National Park Service's eastern North Carolina park group, which comprises Cape Hatteras National Seashore, Fort Raleigh NHS and Wright Brothers National Memorial. Trained in wildlife and fisheries biology at the University of Vermont; earlier work spanned endangered species, wetland restoration, and Everglades estuaries and coral reefs.",
+   "bio_source_url": "https://apnep.nc.gov/david-hallac",
+   "research_interests": "Protected-lands management; ecosystem management and restoration",
+   "research_interests_source_url": "https://apnep.nc.gov/david-hallac"
+  },
+  {
+   "key": "tim-gleason",
+   "existing_person_id": null,
+   "name": "Tim Gleason",
+   "name_given": "Tim",
+   "name_family": "Gleason",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "wayne-munns",
+   "existing_person_id": null,
+   "name": "Wayne Munns",
+   "name_given": "Wayne",
+   "name_family": "Munns",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "shad-combs",
+   "existing_person_id": null,
+   "name": "Shad Combs",
+   "name_given": "Shad",
+   "name_family": "Combs",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.nasa.gov/people/shad-combs/",
+   "bio": "Serves as acting head of NASA's Wallops Flight Facility, responsible for executive management and strategic direction of its spaceport and test range. An aerospace engineer with over 25 years in launch and range operations, project management and mission assurance; previously held range and flight-test leadership roles at Wallops and managed a Commercial Access to Space portfolio at NASA Headquarters.",
+   "bio_source_url": "https://www.nasa.gov/people/shad-combs/",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "joelle-gore",
+   "existing_person_id": null,
+   "name": "Joelle Gore",
+   "name_given": "Joelle",
+   "name_family": "Gore",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://coast.noaa.gov/about/stewardship-chief/",
+   "bio": "Chief of the Stewardship Division in NOAA's Office for Coastal Management, the division that administers the National Estuarine Research Reserve System and national coastal zone programs. At NOAA since 1992; earlier served as acting chief of OCRM's Coastal Programs Division and acting OCRM deputy director. Trained in architecture (UT Austin) and planning (UVA).",
+   "bio_source_url": "https://coast.noaa.gov/about/stewardship-chief/",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "keelin-kuipers",
+   "existing_person_id": null,
+   "name": "Keelin Kuipers",
+   "name_given": "Keelin",
+   "name_family": "Kuipers",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://coast.noaa.gov/about/director/",
+   "bio": "Acting director of NOAA's Office for Coastal Management, formerly its deputy director. Joined NOAA in 1999; past roles include managing the NOAA Coastal Storms Program and serving as resilience lead for NOAA's Coastal Goal, after earlier science-policy work at the National Science Foundation. Graduate training in conservation biology and environmental policy (Michigan).",
+   "bio_source_url": "https://coast.noaa.gov/about/director/",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "lou-licate",
+   "existing_person_id": null,
+   "name": "Louis (Lou) Licate",
+   "name_given": "Louis",
+   "name_family": "Licate",
+   "orcid": "0009-0003-6261-8017",
+   "orcid_source_url": "https://www.usgs.gov/staff-profiles/louis-lou-licate",
+   "homepage_url": "https://www.usgs.gov/staff-profiles/louis-lou-licate",
+   "bio": "Center Director of the USGS Pacific Coastal and Marine Science Center since 2025, leading its administration and policy. Before USGS he worked at NOAA as an oceanographer and engineering deputy chief at CO-OPS and as a navigation manager in the Office of Coast Survey. Holds master's degrees in oceanography (URI) and physics (Creighton).",
+   "bio_source_url": "https://www.usgs.gov/staff-profiles/louis-lou-licate",
+   "research_interests": "Tides; coastal processes; navigation and nautical charts; science policy and administration",
+   "research_interests_source_url": "https://www.usgs.gov/staff-profiles/louis-lou-licate"
+  },
+  {
+   "key": "nadine-golden",
+   "existing_person_id": null,
+   "name": "Nadine Golden",
+   "name_given": "Nadine",
+   "name_family": "Golden",
+   "orcid": "0000-0001-6007-6486",
+   "orcid_source_url": "https://www.usgs.gov/staff-profiles/nadine-golden",
+   "homepage_url": "https://www.usgs.gov/staff-profiles/nadine-golden",
+   "bio": "Serves as deputy center director at USGS's Pacific Coastal and Marine Science Center (Santa Cruz, California); her profile links her to the California Seafloor Mapping Program.",
+   "bio_source_url": "https://www.usgs.gov/staff-profiles/nadine-golden",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "guy-gelfenbaum",
+   "existing_person_id": null,
+   "name": "Guy Gelfenbaum",
+   "name_given": "Guy",
+   "name_family": "Gelfenbaum",
+   "orcid": "0000-0003-1291-6107",
+   "orcid_source_url": "https://www.usgs.gov/staff-profiles/guy-gelfenbaum",
+   "homepage_url": "https://www.usgs.gov/staff-profiles/guy-gelfenbaum",
+   "bio": "Emeritus oceanographer (since 2022) at USGS's Pacific Coastal and Marine Science Center, which he directed from 2017 to 2021. A geological oceanographer (PhD, University of Washington) who led USGS projects on Puget Sound nearshore habitats and southwest Washington coastal erosion and co-led research on tsunami deposits.",
+   "bio_source_url": "https://www.usgs.gov/staff-profiles/guy-gelfenbaum",
+   "research_interests": "Coastal sediment transport; shoreline erosion and coastal change; nearshore habitats; tsunami deposits and hazards",
+   "research_interests_source_url": "https://www.usgs.gov/staff-profiles/guy-gelfenbaum"
+  },
+  {
+   "key": "evan-dailey",
+   "existing_person_id": null,
+   "name": "Evan Dailey",
+   "name_given": "Evan",
+   "name_family": "Dailey",
+   "orcid": "0000-0002-4382-3870",
+   "orcid_source_url": "https://www.usgs.gov/staff-profiles/evan-dailey",
+   "homepage_url": "https://www.usgs.gov/staff-profiles/evan-dailey",
+   "bio": "Works as a data management specialist for USGS's Pacific Coastal and Marine Science Center in Santa Cruz, California.",
+   "bio_source_url": "https://www.usgs.gov/staff-profiles/evan-dailey",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "orlo-childs",
+   "existing_person_id": null,
+   "name": "Orlo Childs",
+   "name_given": "Orlo",
+   "name_family": "Childs",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "valerie-paul",
+   "existing_person_id": null,
+   "name": "Valerie Paul",
+   "name_given": "Valerie",
+   "name_family": "Paul",
+   "orcid": "0000-0002-4691-1569",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-4691-1569/employments",
+   "homepage_url": null,
+   "bio": "Head Scientist of the Smithsonian Marine Station at Fort Pierce since 2002. Before joining the Smithsonian she was a professor at the University of Guam Marine Laboratory (1985-2002).",
+   "bio_source_url": "https://pub.orcid.org/v3.0/0000-0002-4691-1569/employments",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "mary-e-rice",
+   "existing_person_id": null,
+   "name": "Mary E. Rice",
+   "name_given": "Mary",
+   "name_family": "Rice",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Invertebrate zoologist and National Museum of Natural History curator known for research on sipunculan worms. Founding director of the Smithsonian Marine Station (1981-2002), she planned its 1999 move to a new Fort Pierce laboratory and afterwards held the title of senior research scientist emeritus.",
+   "bio_source_url": "https://www.fau.edu/hboi/newsroom/news/mary-rice/",
+   "research_interests": "Sipunculan worms; invertebrate evolution and development",
+   "research_interests_source_url": "https://www.fau.edu/hboi/newsroom/news/mary-rice/"
+  }
+ ],
+ "affiliations": [
+  {
+   "facility_id": "4fc4a5777ced0680",
+   "person_key": "david-hallac",
+   "role": "superintendent",
+   "title": "Superintendent, National Parks of Eastern North Carolina",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2015,
+   "end_year": null,
+   "source_url": "https://www.nps.gov/caha/learn/news/cape-hatteras-national-seashore-shares-progress-on-cape-hatteras-lighthouse-restoration-project.htm",
+   "evidence": "said David Hallac, superintendent, National Parks of Eastern North Carolina",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "2cc453376bcf3bb2",
+   "person_key": "tim-gleason",
+   "role": "director",
+   "title": "Division Director (per EPA January-2025 snapshot; live page removed, current status unverified)",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://19january2025snapshot.epa.gov/aboutepa/about-atlantic-coastal-environmental-sciences-division",
+   "evidence": "Management Tim Gleason, Division Director",
+   "confidence": "low"
+  },
+  {
+   "facility_id": "2cc453376bcf3bb2",
+   "person_key": "wayne-munns",
+   "role": "former-director",
+   "title": "Director (per EPA January-2021 snapshot)",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://19january2021snapshot.epa.gov/aboutepa/about-atlantic-coastal-environmental-sciences-division_.html",
+   "evidence": "Management Wayne Munns, Director",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "631d1b1f92e90f44",
+   "person_key": "shad-combs",
+   "role": "director",
+   "title": "Acting Director, Wallops Flight Facility",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.nasa.gov/people/shad-combs/",
+   "evidence": "Shad Combs Acting Director, Wallops Flight Facility",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "48a4a144e3ad245f",
+   "person_key": "joelle-gore",
+   "role": "leadership-team",
+   "title": "Chief, Stewardship Division, NOAA Office for Coastal Management (division administering NERRS)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://coast.noaa.gov/about/organization",
+   "evidence": "Division Chiefs ... Joelle Gore , Stewardship Division",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "48a4a144e3ad245f",
+   "person_key": "keelin-kuipers",
+   "role": "leadership-team",
+   "title": "Director (Acting), NOAA Office for Coastal Management",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://coast.noaa.gov/about/organization",
+   "evidence": "Office Leadership Keelin Kuipers , Director (Acting)",
+   "confidence": "low"
+  },
+  {
+   "facility_id": "d1f3bc5d2ac35942",
+   "person_key": "lou-licate",
+   "role": "director",
+   "title": "Center Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2025,
+   "end_year": null,
+   "source_url": "https://www.usgs.gov/staff-profiles/louis-lou-licate",
+   "evidence": "2025 - Present, Center Director, Pacific Coastal and Marine Science Center",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "d1f3bc5d2ac35942",
+   "person_key": "nadine-golden",
+   "role": "deputy-director",
+   "title": "Deputy Center Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.usgs.gov/staff-profiles/nadine-golden",
+   "evidence": "Nadine Golden is the Deputy Center Director of the USGS Pacific Coastal and Marine Science Center.",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "d1f3bc5d2ac35942",
+   "person_key": "evan-dailey",
+   "role": "data-manager",
+   "title": "Data Management Specialist",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.usgs.gov/centers/pcmsc/connect",
+   "evidence": "Data Management Specialist Evan Dailey",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "d1f3bc5d2ac35942",
+   "person_key": "guy-gelfenbaum",
+   "role": "former-director",
+   "title": "Center Director (2017-2021); now Oceanographer Emeritus",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": 2017,
+   "end_year": 2021,
+   "source_url": "https://www.usgs.gov/staff-profiles/guy-gelfenbaum",
+   "evidence": "2017-2021: Center Director, Pacific Coastal and Marine Science Center",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "d1f3bc5d2ac35942",
+   "person_key": "guy-gelfenbaum",
+   "role": "emeritus",
+   "title": "Oceanographer Emeritus",
+   "is_key_personnel": false,
+   "is_current": false,
+   "start_year": 2022,
+   "end_year": null,
+   "source_url": "https://www.usgs.gov/staff-profiles/guy-gelfenbaum",
+   "evidence": "2022: Oceanographer Emeritus, Pacific Coastal and Marine Science Center",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "d1f3bc5d2ac35942",
+   "person_key": "orlo-childs",
+   "role": "former-director",
+   "title": "First listed PCMSC leader (Branch Chief era), 1962-1963",
+   "is_key_personnel": false,
+   "is_current": false,
+   "start_year": 1962,
+   "end_year": 1963,
+   "source_url": "https://www.usgs.gov/centers/pcmsc/history-pacific-coastal-and-marine-science-center",
+   "evidence": "PCMSC Leaders Name Active Dates Orlo Childs ... 1962-1963",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "fe678f45b43083ff",
+   "person_key": "valerie-paul",
+   "role": "leadership-team",
+   "title": "Head Scientist, Smithsonian Marine Station",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2002,
+   "end_year": null,
+   "source_url": "https://pub.orcid.org/v3.0/0000-0002-4691-1569/employments",
+   "evidence": "Smithsonian Marine Station ... role-title: Head Scientist ... start-date 2002 (ORCID employment)",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "fe678f45b43083ff",
+   "person_key": "mary-e-rice",
+   "role": "founding-PI",
+   "title": "Founding Director, Smithsonian Marine Station",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": 1981,
+   "end_year": 2002,
+   "source_url": "https://www.fau.edu/hboi/newsroom/news/mary-rice/",
+   "evidence": "In 1981, she became the Founding Director of the Smithsonian Marine Station (SMS)",
+   "confidence": "high"
+  }
+ ],
+ "verifications": []
+}

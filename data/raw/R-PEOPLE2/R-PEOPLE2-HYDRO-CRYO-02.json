@@ -1,0 +1,363 @@
+{
+ "batch_id": "R-PEOPLE2-HYDRO-CRYO-02",
+ "retrieved_at": "2026-10-22",
+ "verified_by": "adversarial-verifier 2026-10-22",
+ "facilities": [
+  {
+   "facility_id": "d752f899a8130021",
+   "pages_fetched": [
+    {
+     "url": "https://wcc.sc.egov.usda.gov/nwcc/site?sitenum=2027",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/stations?stationTriplets=*:MD:SCAN",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/nwcc/site?sitenum=2049",
+     "status": 200
+    },
+    {
+     "url": "https://www.wcc.nrcs.usda.gov/contact/index.html",
+     "status": 0
+    },
+    {
+     "url": "https://www.nrcs.usda.gov/resources/guides-and-instructions/soil-climate-analysis-network",
+     "status": 0
+    }
+   ],
+   "notes": "No people found. Automated NRCS SCAN station; station pages name no site PI/manager, only a generic 'Questions about this site' link to the NWCC state contact page, which (like all of nrcs.usda.gov) timed out today. DATA BUG: facility url uses sitenum=2027, which is 'Little River' SCAN in Tift County, Georgia (discontinued 2025-12-10). Powder Mill, MD is SCAN site 2049 (triplet 2049:MD:SCAN, 39.02621,-76.84736, reporting since 2001-10-30, operator NRCS) per the AWDB station API; url should be https://wcc.sc.egov.usda.gov/nwcc/site?sitenum=2049."
+  },
+  {
+   "facility_id": "146e9515733ddedd",
+   "pages_fetched": [
+    {
+     "url": "https://wcc.sc.egov.usda.gov/nwcc/site?sitenum=904",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/stations?stationTriplets=*:WA:SNTL",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/stations?stationTriplets=*:*:SNTL",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/nwcc/site?sitenum=1171",
+     "status": 200
+    },
+    {
+     "url": "https://www.nrcs.usda.gov/programs-initiatives/sswsf-snow-survey-and-water-supply-forecasting-program",
+     "status": 0
+    },
+    {
+     "url": "https://www.nrcs.usda.gov/conservation-basics/conservation-by-state/washington/washington-snow-survey",
+     "status": 0
+    }
+   ],
+   "notes": "No people found. Automated NRCS SNOTEL station with no site-level staff named on station pages; NRCS snow-survey contact pages (nrcs.usda.gov) timed out today and web search budget was exhausted. DATA BUG: sitenum=904 is 'Columbus Basin' SNOTEL, La Plata County, Colorado. The only WA SNOTEL with 'Trinity' in its name is site 1171 'Trinity' (1171:WA:SNTL, Chelan County, 48.07471,-120.84989, elev 2890 ft, reporting since 2010-08-18, dcoCode OR). The 'Bonanza Creek vicinity' label is unsupported by any fetched page. Record length for site 1171 (~16 y) should be rechecked."
+  },
+  {
+   "facility_id": "026a922e38c1c6a0",
+   "pages_fetched": [
+    {
+     "url": "https://www.usgs.gov/mission-areas/water-resources/science/cooperative-matching-funds-program",
+     "status": 404
+    },
+    {
+     "url": "https://water.usgs.gov/coop/",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/mission-areas/water-resources/science/usgs-cooperative-matching-funds",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/staff-profiles/joel-m-galloway",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/mission-areas/water-resources/key-officials-and-organizational-structure",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/about/key-officials",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/staff-profiles/william-werkheiser",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/staff-profiles/joshua-joseph",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/staff-profiles/edward-g-stets",
+     "status": 404
+    },
+    {
+     "url": "https://www.usgs.gov/staff-profiles/edward-stets",
+     "status": 200
+    }
+   ],
+   "notes": "The program page says CMF was formerly the Cooperative Water Program (CWP); facility url 404s and should become https://www.usgs.gov/mission-areas/water-resources/science/usgs-cooperative-matching-funds (water.usgs.gov/coop/ redirects there). Program contact: Joel M Galloway, CMF Program Manager. WMA Associate Director and Deputy Associate Director added as leadership-team. Existing person Edward Stets is a WMA Research Ecologist (Mounds View, MN) with no fetched link to CMF; his stored homepage_url 404s, the working profile is https://www.usgs.gov/staff-profiles/edward-stets (shows ORCID 0000-0001-5375-0196, matching the DB)."
+  },
+  {
+   "facility_id": "d3b581d212824656",
+   "pages_fetched": [
+    {
+     "url": "https://waterdata.usgs.gov/nwis/inventory/?site_no=01400500",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/centers/new-jersey-water-science-center",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/centers/new-jersey-water-science-center/connect",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/staff-profiles/timothy-d-oden",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/staff-profiles/heidi-l-hoppe",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/mission-areas/water-resources",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/mission-areas/water-resources/key-officials-and-organizational-structure",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/centers/new-england-water-science-center/connect",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/staff-profiles/jeffrey-riley",
+     "status": 404
+    },
+    {
+     "url": "https://www.usgs.gov/staff-profiles/jeffrey-w-riley",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/staff-profiles/john-p-masterson",
+     "status": 404
+    },
+    {
+     "url": "https://www.usgs.gov/staff-profiles/don-cline",
+     "status": 403
+    },
+    {
+     "url": "https://www.usgs.gov/staff-profiles/david-jones",
+     "status": 404
+    }
+   ],
+   "notes": "Gauge page 'Operated in cooperation with' New Jersey DEP, New Jersey Water Supply Authority, USGS Cooperative Matching Funds and USGS Federal Priority Streamgages. The gauge is a New Jersey station, so NJ Water Science Center leadership is attached (Center Director Timothy D Oden; Associate Director Heidi L. Hoppe, whose profile says she oversees NJ data-collection operations). All five existing rows are WMA/New England/Georgia staff misattached to this gauge and should be detached regardless of status. Inference (not stated on the gauge page): the NJWSC operates this NJ gauge."
+  }
+ ],
+ "people": [
+  {
+   "key": "joel-galloway",
+   "existing_person_id": null,
+   "name": "Joel M. Galloway",
+   "name_given": "Joel",
+   "name_family": "Galloway",
+   "orcid": "0000-0002-9836-9724",
+   "orcid_source_url": "https://www.usgs.gov/staff-profiles/joel-m-galloway",
+   "homepage_url": "https://www.usgs.gov/staff-profiles/joel-m-galloway",
+   "bio": "Manages the USGS Cooperative Matching Funds program and serves as tribal relations advisor to the Water Mission Area. About 30 years with USGS across Water Science Centers in the Dakotas, Arkansas, Iowa and Wyoming; long-time instructor in field water-quality methods. M.S. civil engineering (South Dakota Mines), B.S. geology (University of North Dakota).",
+   "bio_source_url": "https://www.usgs.gov/staff-profiles/joel-m-galloway",
+   "research_interests": "lake and reservoir processes and modeling; emerging contaminants; water-quality assessment; sediment dynamics",
+   "research_interests_source_url": "https://www.usgs.gov/staff-profiles/joel-m-galloway"
+  },
+  {
+   "key": "william-werkheiser",
+   "existing_person_id": null,
+   "name": "William Werkheiser",
+   "name_given": "William",
+   "name_family": "Werkheiser",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.usgs.gov/staff-profiles/william-werkheiser",
+   "bio": "Associate Director for the USGS Water Resources Mission Area. Earlier served as USGS Deputy Director (exercising the Director's delegated authority 2017-2018) and later as Interior's Senior Science Advisor and Scientific Integrity Officer. Received a Presidential Rank Award (Distinguished Executive, 2016). M.S., University of Massachusetts; B.S., Bloomsburg University.",
+   "bio_source_url": "https://www.usgs.gov/staff-profiles/william-werkheiser",
+   "research_interests": "actionable tools for drought response",
+   "research_interests_source_url": "https://www.usgs.gov/staff-profiles/william-werkheiser"
+  },
+  {
+   "key": "joshua-joseph",
+   "existing_person_id": null,
+   "name": "Joshua Joseph, Jr.",
+   "name_given": "Joshua",
+   "name_family": "Joseph",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.usgs.gov/staff-profiles/joshua-joseph",
+   "bio": "Deputy Associate Director of the USGS Water Resources Mission Area, coordinating science across the mission area and with interagency programs. Brings 25+ years in environmental and water-resources science, engineering and policy, with prior roles at Bechtel National, Procter & Gamble and the US EPA.",
+   "bio_source_url": "https://www.usgs.gov/staff-profiles/joshua-joseph",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "timothy-oden",
+   "existing_person_id": null,
+   "name": "Timothy D. Oden",
+   "name_given": "Timothy",
+   "name_family": "Oden",
+   "orcid": "0000-0003-1455-1076",
+   "orcid_source_url": "https://www.usgs.gov/staff-profiles/timothy-d-oden",
+   "homepage_url": "https://www.usgs.gov/staff-profiles/timothy-d-oden",
+   "bio": "Director of the USGS New Jersey Water Science Center. Previously led the Water Mission Area's Field Support Team in the Hydrologic Networks Branch and coordinated the water-quality partnership between USGS and the National Park Service; earlier was hydrologic data chief at the Pennsylvania center and a water-quality specialist in Texas and the Central Region.",
+   "bio_source_url": "https://www.usgs.gov/staff-profiles/timothy-d-oden",
+   "research_interests": "water-quality field methods; PFAS sampling methods; continuous water-quality sensors; national stream temperature network",
+   "research_interests_source_url": "https://www.usgs.gov/staff-profiles/timothy-d-oden"
+  },
+  {
+   "key": "heidi-hoppe",
+   "existing_person_id": null,
+   "name": "Heidi L. Hoppe",
+   "name_given": "Heidi",
+   "name_family": "Hoppe",
+   "orcid": "0000-0002-8126-1119",
+   "orcid_source_url": "https://www.usgs.gov/staff-profiles/heidi-l-hoppe",
+   "homepage_url": "https://www.usgs.gov/staff-profiles/heidi-l-hoppe",
+   "bio": "Associate Director and supervisory hydrologist at the USGS New Jersey Water Science Center, leading its science quality branch and statewide hydrologic data collection (surface water, tide, groundwater, water quality). With the center since 1999, she has been data chief and led the state's tide-gauge network and flood-warning systems.",
+   "bio_source_url": "https://www.usgs.gov/staff-profiles/heidi-l-hoppe",
+   "research_interests": "surface- and groundwater quality; streamflow; groundwater monitoring; trace-element contamination; aquatic ecosystems",
+   "research_interests_source_url": "https://www.usgs.gov/staff-profiles/heidi-l-hoppe"
+  }
+ ],
+ "affiliations": [
+  {
+   "facility_id": "026a922e38c1c6a0",
+   "person_key": "joel-galloway",
+   "role": "manager",
+   "title": "Cooperative Matching Funds Program Manager, USGS Water Resources Mission Area",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.usgs.gov/mission-areas/water-resources/science/usgs-cooperative-matching-funds",
+   "evidence": "Contacts Joel M Galloway Cooperative Matching Funds Program Manager Water Resources Mission Area",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "026a922e38c1c6a0",
+   "person_key": "william-werkheiser",
+   "role": "leadership-team",
+   "title": "Associate Director for Water Resources, USGS",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.usgs.gov/mission-areas/water-resources/key-officials-and-organizational-structure",
+   "evidence": "Office of the Associate Director Title Name Associate Director for Water Resources Bill Werkheiser",
+   "confidence": "low"
+  },
+  {
+   "facility_id": "026a922e38c1c6a0",
+   "person_key": "joshua-joseph",
+   "role": "leadership-team",
+   "title": "Deputy Associate Director for Water Resources, USGS",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.usgs.gov/mission-areas/water-resources/key-officials-and-organizational-structure",
+   "evidence": "Deputy Associate Director for Water Resources Joshua Joseph, PhD",
+   "confidence": "low"
+  },
+  {
+   "facility_id": "d3b581d212824656",
+   "person_key": "timothy-oden",
+   "role": "director",
+   "title": "Center Director, USGS New Jersey Water Science Center",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.usgs.gov/centers/new-jersey-water-science-center/connect",
+   "evidence": "Timothy D Oden Center Director New Jersey Water Science Center",
+   "confidence": "low"
+  },
+  {
+   "facility_id": "d3b581d212824656",
+   "person_key": "heidi-hoppe",
+   "role": "associate-director",
+   "title": "Associate Director (Science Quality Branch / data collection), USGS New Jersey Water Science Center",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.usgs.gov/centers/new-jersey-water-science-center/connect",
+   "evidence": "Heidi L. Hoppe Associate Director New Jersey Water Science Center",
+   "confidence": "low"
+  }
+ ],
+ "verifications": [
+  {
+   "facility_id": "026a922e38c1c6a0",
+   "person_id": "531f420333760f1b",
+   "existing_role": "faculty",
+   "status": "not-found",
+   "current_holder_key": null,
+   "source_url": "https://www.usgs.gov/mission-areas/water-resources/science/usgs-cooperative-matching-funds",
+   "evidence": "Contacts Joel M Galloway Cooperative Matching Funds Program Manager Water Resources Mission Area"
+  },
+  {
+   "facility_id": "d3b581d212824656",
+   "person_id": "f97bf3a26fe12218",
+   "existing_role": "co-PI",
+   "status": "not-found",
+   "current_holder_key": null,
+   "source_url": "https://www.usgs.gov/staff-profiles/jeffrey-w-riley",
+   "evidence": "Jeffrey W Riley Ecologist South Atlantic Water Science Center (SAWSC)"
+  },
+  {
+   "facility_id": "d3b581d212824656",
+   "person_id": "f664d2c7434eb9f1",
+   "existing_role": "director",
+   "status": "stale",
+   "current_holder_key": null,
+   "source_url": "https://www.usgs.gov/centers/new-england-water-science-center/connect",
+   "evidence": "Johnathan R Bumgarner Center Director New England Water Science Center"
+  },
+  {
+   "facility_id": "d3b581d212824656",
+   "person_id": "2f433f24105488fd",
+   "existing_role": "director",
+   "status": "stale",
+   "current_holder_key": null,
+   "source_url": "https://www.usgs.gov/mission-areas/water-resources/key-officials-and-organizational-structure",
+   "evidence": "Associate Director for Water Resources Bill Werkheiser"
+  },
+  {
+   "facility_id": "d3b581d212824656",
+   "person_id": "1abb10fefbdde00f",
+   "existing_role": "deputy-director",
+   "status": "stale",
+   "current_holder_key": null,
+   "source_url": "https://www.usgs.gov/mission-areas/water-resources/key-officials-and-organizational-structure",
+   "evidence": "Deputy Associate Director for Water Resources Joshua Joseph, PhD"
+  },
+  {
+   "facility_id": "d3b581d212824656",
+   "person_id": "7fe8ec6ac11fa14c",
+   "existing_role": "director",
+   "status": "not-found",
+   "current_holder_key": null,
+   "source_url": "https://www.usgs.gov/mission-areas/water-resources/key-officials-and-organizational-structure",
+   "evidence": null
+  }
+ ],
+ "verifier_notes": "Re-fetched every source 2026-10-22 (all HTTP 200). ORCIDs for Galloway, Oden, Hoppe shown on their USGS profiles and match pub.orcid.org names. Bios for Galloway, Oden, Hoppe rewritten to remove 8+ word verbatim runs. Werkheiser/Joseph CMF affiliations downgraded to low: source is the WMA key-officials page; CMF is a WMA program per its own page. Oden/Hoppe gauge affiliations downgraded to low: the gauge page names only cooperators; attachment rests on the gauge being NJ district 34 (api.waterdata.usgs.gov monitoring-locations/USGS-01400500) and the NJWSC page (https://www.usgs.gov/centers/new-jersey-water-science-center/science/long-term-water-monitoring-networks-new-jersey) describing 'The USGS New Jersey Water Science Center streamgage program'; Hoppe's profile says she oversees NJ data collection operations. current_holder_key cleared on the Cline and Jones stale rows: the WMA holders are not holders of a role at this gauge."
+}

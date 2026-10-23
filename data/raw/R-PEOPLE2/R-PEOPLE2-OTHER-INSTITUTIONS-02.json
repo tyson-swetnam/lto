@@ -1,0 +1,794 @@
+{
+ "batch_id": "R-PEOPLE2-OTHER-INSTITUTIONS-02",
+ "retrieved_at": "2026-10-22",
+ "verified_by": "adversarial-verifier 2026-10-22",
+ "facilities": [
+  {
+   "facility_id": "d3ae265dcba29674",
+   "pages_fetched": [
+    {
+     "url": "https://juneauicefield.org/",
+     "status": 200
+    },
+    {
+     "url": "https://juneauicefield.org/our-camps",
+     "status": 404
+    },
+    {
+     "url": "https://juneauicefield.org/about/history/",
+     "status": 404
+    },
+    {
+     "url": "https://juneauicefield.org/about",
+     "status": 200
+    },
+    {
+     "url": "https://juneauicefield.org/about/staff",
+     "status": 200
+    },
+    {
+     "url": "https://juneauicefield.org/about/academic-council",
+     "status": 200
+    },
+    {
+     "url": "https://juneauicefield.org/about/board",
+     "status": 200
+    },
+    {
+     "url": "https://juneauicefield.org/history",
+     "status": 200
+    },
+    {
+     "url": "https://juneauicefield.org/faculty",
+     "status": 200
+    },
+    {
+     "url": "https://juneauicefield.org/research/facilities",
+     "status": 200
+    },
+    {
+     "url": "https://umaine.edu/earthclimate/people/seth-campbell/",
+     "status": 200
+    },
+    {
+     "url": "https://glaciers.nichols.edu/about-mauri-pelto/",
+     "status": 200
+    },
+    {
+     "url": "https://blogs.agu.org/fromaglaciersperspective/",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-9620-8329/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-2282-6546/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0009-0009-0544-2709/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-9498-9125/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0001-9699-7500/employments",
+     "status": 200
+    }
+   ],
+   "notes": "Camp 10 has no camp-specific leadership page (facilities-use page is under construction; /our-camps 404); leadership recorded is program-wide JIRP (operated by FGER). Mauri Pelto is not named on the JIRP staff, academic council, board, faculty or history pages; his own site has a Juneau Icefield research page, so he is a researcher on the icefield rather than a listed JIRP role. FGER board (president Guy Adema) not added as scientific leadership. Allen Pope ORCID candidate 0000-0001-9699-7500 lists only Williams College, so not matched. Riley Wall and Gregory Kopache (field operations managers) and Newt Krumdieck (research operations manager) omitted as non-scientific operations staff. VERIFIER: all JIRP-wide roles downgraded high->medium because no page ties them to Camp 10 specifically; Tahi Wiggins bio_source corrected to /about/staff (facts are there, not on academic-council). ORCIDs for Campbell, Markle, Riverman, Pelto re-fetched: names and employment match."
+  },
+  {
+   "facility_id": "8a9f792df16585ec",
+   "pages_fetched": [
+    {
+     "url": "https://www.nps.gov/pore/learn/nature/science.htm",
+     "status": 404
+    },
+    {
+     "url": "https://www.nps.gov/pore/parkmgmt/staffandoffices.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/pore/learn/news/release-march-30-2026.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/pore/learn/news/newsreleases-20240912-anne-altman-selected-as-superintendent-of-point-reyes-national-seashore.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/pore/learn/management/index.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/pore/contacts.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/pore/learn/nature/index.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/im/sfan/",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/im/sfan/contactus.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/rlc/pacificcoast/index.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/rlc/pacificcoast/contactus.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/rlc/pacificcoast/about-us.htm",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0001-8464-1451/employments",
+     "status": 200
+    }
+   ],
+   "notes": "Superintendent Anne Altman confirmed on staff page and a March 30, 2026 NPS release. Ben Becker: PCSLC contact page (last updated 2016) lists him as Director and Marine Ecologist; ORCID (name Benjamin Becker) lists Science Advisor, NPS Pacific West Region, so the existing title is consistent but current PORE-specific role is medium confidence. Sarah Allen not named on any fetched NPS page. Dawn Adams absent from the SFAN contact list; program management is now listed under Jena R. Hickey. SFAN headquarters is at Fort Cronkhite (GGNRA), not PORE, so the SFAN affiliation is network-level. Web search budget was exhausted, so the Division of Science chief was not identified. VERIFIER: Becker PCSLC page is 'Last updated: May 9, 2016' and his ORCID gives Science Advisor, NPS Pacific West Region, so the director row is set is_current=false, confidence low, and his verification downgraded to unverifiable; a 2023 CV (cesu.cnr.berkeley.edu) cited by search no longer resolves (302), so no end year recorded. Jena Hickey affiliation dropped: the SFAN contact page does not mention Point Reyes and SFAN HQ is at GGNRA. Dawn Adams changed stale->not-found (absence from a list is not evidence of replacement)."
+  },
+  {
+   "facility_id": "18254d33b94ff086",
+   "pages_fetched": [
+    {
+     "url": "https://www.nrl.navy.mil/Our-Work/Areas-of-Research/Ocean-Atmospheric-Science-and-Technology/",
+     "status": 403
+    },
+    {
+     "url": "https://www.nrl.navy.mil/ssc/",
+     "status": 403
+    },
+    {
+     "url": "https://www.7320.nrlssc.navy.mil/",
+     "status": 0
+    },
+    {
+     "url": "https://www7320.nrlssc.navy.mil/",
+     "status": 200
+    },
+    {
+     "url": "https://www7320.nrlssc.navy.mil/contact.php",
+     "status": 200
+    },
+    {
+     "url": "https://www7320.nrlssc.navy.mil/projects.php",
+     "status": 200
+    },
+    {
+     "url": "https://www7320.nrlssc.navy.mil/pubs/index.php",
+     "status": 200
+    },
+    {
+     "url": "https://www.hycom.org/",
+     "status": 200
+    },
+    {
+     "url": "https://www.hycom.org/about",
+     "status": 200
+    },
+    {
+     "url": "https://www.hycom.org/contact-info",
+     "status": 200
+    },
+    {
+     "url": "https://gulfscei.cs.uno.edu/news/2026-08-17",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0003-2029-036X/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0001-8948-0618/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0009-0006-6896-4377/employments",
+     "status": 200
+    }
+   ],
+   "notes": "nrl.navy.mil returns 403 to automated fetches, so no official NRL leadership page could be read. Division leadership comes from a University of New Orleans GulfSCEI news post (2026-08-17) naming John Sample as Superintendent of the Ocean Science Division at NRL-SSC (medium confidence). Code 7320 site has no staff directory; Metzger, Jacobs and Wallcraft appear only as authors in the branch publication table (latest 2021-2022), so their current roles are unverifiable. Metzger and Jacobs ORCID records carry no employment; the Alan Wallcraft ORCID record lists Florida State University COAPS (undated), suggesting he may have moved, but this is not conclusive. VERIFIER: Ioup downgraded to low (third-party blog post; 'Geospatial Science Center' not tied to NRL-SSC by an official page)."
+  },
+  {
+   "facility_id": "353361a587e66927",
+   "pages_fetched": [
+    {
+     "url": "https://www.usgs.gov/special-topics/national-land-imaging-program",
+     "status": 404
+    },
+    {
+     "url": "https://www.usgs.gov/programs/national-land-imaging-program",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/programs/national-land-imaging-program/science/national-land-imaging-program-external-engagement",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/staff-profiles/timothy-r-newman",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/staff-profiles/daniel-w-opstal",
+     "status": 200
+    },
+    {
+     "url": "https://nsgic.org/events/usgs-landsat-program-august-4-2026-1-2-pm-et/",
+     "status": 200
+    },
+    {
+     "url": "https://www.fgdc.gov/ngac/meetings/march-2026/NLIPUpdateMarch2026",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/staff-profiles/nathan-j-wood",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-6060-9729/employments",
+     "status": 200
+    }
+   ],
+   "notes": "Facility URL now 404; program lives at usgs.gov/programs/national-land-imaging-program. Program Coordinator Timothy R. Newman and Deputy Daniel W. Opstal from USGS staff profiles; NSGIC event page (Aug 2026) also names Newman as Program Coordinator. Nathan J. Wood is a supervisory research geographer at the Western Geographic Science Center with no NLIP role on his profile; his facility link looks misattributed (his ORCID 0000-0002-6060-9729 matches name and USGS employment). VERIFIER: Newman bio rewritten to drop the acting Land Change Science claim, which is on his USGS profile, not on the cited NSGIC page."
+  }
+ ],
+ "people": [
+  {
+   "key": "seth-campbell",
+   "existing_person_id": null,
+   "name": "Seth Campbell",
+   "name_given": "Seth",
+   "name_family": "Campbell",
+   "orcid": "0000-0002-9620-8329",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-9620-8329/employments",
+   "homepage_url": "https://umaine.edu/earthclimate/people/seth-campbell/",
+   "bio": "Glaciologist and geophysicist on the University of Maine Earth and Climate Sciences faculty, and Director of Research for the Juneau Icefield Research Program. A JIRP alumnus (2007), he took over academic and research leadership of the program in 2018 and has worked in many cryosphere field seasons across Alaska, Antarctica, Canada, South America and Greenland.",
+   "bio_source_url": "https://juneauicefield.org/about/academic-council",
+   "research_interests": "Glacier geophysics and remote sensing of glacier dynamics, thermal state and internal structure; permafrost extent and change; geophysical mapping of glacial and sedimentary deposits",
+   "research_interests_source_url": "https://umaine.edu/earthclimate/people/seth-campbell/"
+  },
+  {
+   "key": "brad-markle",
+   "existing_person_id": null,
+   "name": "Brad Markle",
+   "name_given": "Brad",
+   "name_family": "Markle",
+   "orcid": "0000-0002-2282-6546",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-2282-6546/employments",
+   "homepage_url": null,
+   "bio": "Assistant professor in Geological Sciences and fellow of INSTAAR at the University of Colorado Boulder, and Director of Academics for the Juneau Icefield Research Program, where he has served across more than 13 field seasons since first attending as a student in 2007. He teaches climate, paleoclimate and geochemistry on the Icefield.",
+   "bio_source_url": "https://juneauicefield.org/about/academic-council",
+   "research_interests": "Past climate variability and climate dynamics using ice-core records and models; paleoclimate; geochemistry",
+   "research_interests_source_url": "https://juneauicefield.org/about/academic-council"
+  },
+  {
+   "key": "annie-boucher-krumdieck",
+   "existing_person_id": null,
+   "name": "Annie Boucher Krumdieck",
+   "name_given": "Annie",
+   "name_family": "Boucher Krumdieck",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Director of Operations for the Juneau Icefield Research Program, overseeing non-academic program logistics and coordinating them with the Academic Council. She has returned every season since first joining as a student in 2012, in roles from field staff to assistant operations manager; she holds a geology B.A. from Carleton College.",
+   "bio_source_url": "https://juneauicefield.org/about/staff",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "kiya-riverman",
+   "existing_person_id": null,
+   "name": "Kiya Riverman",
+   "name_given": "Kiya",
+   "name_family": "Riverman",
+   "orcid": "0009-0009-0544-2709",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0009-0009-0544-2709/employments",
+   "homepage_url": null,
+   "bio": "Environmental Studies faculty member at the University of Portland and Associate Director of Academics for the Juneau Icefield Research Program, which she has joined each summer since 2014, leading projects on seismic and gravity surveys of Taku Glacier, icefield modeling and supraglacial hydrology. PhD in Geosciences, Penn State (2017).",
+   "bio_source_url": "https://juneauicefield.org/about/academic-council",
+   "research_interests": "Glacial hydrology and ice flow; glacier geophysics",
+   "research_interests_source_url": "https://juneauicefield.org/about/academic-council"
+  },
+  {
+   "key": "allen-pope",
+   "existing_person_id": null,
+   "name": "Allen Pope",
+   "name_given": "Allen",
+   "name_family": "Pope",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Secretary General of the International Glaciological Society and Associate Director of Academics for the Juneau Icefield Research Program, contributing remote sensing and GIS instruction since first attending as a student in 2007. He holds a PhD in polar studies from Cambridge and previously served as a National Science Foundation program officer.",
+   "bio_source_url": "https://juneauicefield.org/about/academic-council",
+   "research_interests": "Remote sensing and GIS of glaciers; science communication",
+   "research_interests_source_url": "https://juneauicefield.org/about/academic-council"
+  },
+  {
+   "key": "tahi-wiggins",
+   "existing_person_id": null,
+   "name": "Tahi Wiggins",
+   "name_given": "Tahi",
+   "name_family": "Wiggins",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Program Manager of the Juneau Icefield Research Program since spring 2026, supporting the Academic Council with field-season planning, curricula and faculty onboarding. She attended JIRP as a student in 2021 and came back in 2024 as research and teaching faculty. She did graduate research on the Icefield for a University of Maine master's in Earth and Climate Science.",
+   "bio_source_url": "https://juneauicefield.org/about/staff",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "william-field",
+   "existing_person_id": null,
+   "name": "William Field",
+   "name_given": "William",
+   "name_family": "Field",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Co-developer of the Juneau Icefield Research Project with Maynard Miller, beginning in 1946 at the American Geographical Society; co-author with Miller of the 1951 publication on exploring the Juneau Ice Cap.",
+   "bio_source_url": "https://juneauicefield.org/history",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "joan-miller",
+   "existing_person_id": null,
+   "name": "Joan Miller",
+   "name_given": "Joan",
+   "name_family": "Miller",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Co-led the Juneau Icefield Research Program with Maynard Miller from its transition from project to program around 1960 through roughly the following half-century.",
+   "bio_source_url": "https://juneauicefield.org/history",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "maynard-miller",
+   "existing_person_id": "38d581ab98f80db9",
+   "name": "Maynard M. Miller",
+   "name_given": "Maynard",
+   "name_family": "Miller",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Glaciologist who in 1948 led the reconnaissance of the Juneau Icefield that started the Juneau Icefield Research Program, which he subsequently led with Joan Miller for about half a century; he had earlier studied weather and climate effects on military operations while in the U.S. Navy.",
+   "bio_source_url": "https://juneauicefield.org/history",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "mauri-pelto",
+   "existing_person_id": "e40e75f4e126ed1b",
+   "name": "Mauri Pelto",
+   "name_given": "Mauri",
+   "name_family": "Pelto",
+   "orcid": "0000-0002-9498-9125",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-9498-9125/employments",
+   "homepage_url": "https://glaciers.nichols.edu/about-mauri-pelto/",
+   "bio": "Glacier researcher who teaches environmental science and serves as Associate Provost of Accreditation at Nichols College. He has led the North Cascade Glacier Climate Project as science director since 1983, tracking mass balance on three World Glacier Monitoring Service reference glaciers, and writes the annual alpine glaciers chapter of the BAMS State of the Climate report.",
+   "bio_source_url": "https://glaciers.nichols.edu/about-mauri-pelto/",
+   "research_interests": "Glacier response to climate change; glacier mass balance; North Cascades and Juneau Icefield glaciers",
+   "research_interests_source_url": "https://glaciers.nichols.edu/about-mauri-pelto/"
+  },
+  {
+   "key": "anne-altman",
+   "existing_person_id": null,
+   "name": "Anne Altman",
+   "name_given": "Anne",
+   "name_family": "Altman",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Superintendent of Point Reyes National Seashore since September 2024, after serving there as deputy superintendent from 2022 and acting superintendent from June 2024. A National Park Service manager of more than two decades, she previously held Pacific West Region and Washington headquarters business-management roles; she holds an Earth Systems degree from Stanford and an MBA from UC Davis.",
+   "bio_source_url": "https://www.nps.gov/pore/learn/news/newsreleases-20240912-anne-altman-selected-as-superintendent-of-point-reyes-national-seashore.htm",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "fred-binnewies",
+   "existing_person_id": null,
+   "name": "Fred W. Binnewies",
+   "name_given": "Fred",
+   "name_family": "Binnewies",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "ben-becker",
+   "existing_person_id": "24aa7e3c0d56f5b1",
+   "name": "Ben Becker",
+   "name_given": "Ben",
+   "name_family": "Becker",
+   "orcid": "0000-0001-8464-1451",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0001-8464-1451/employments",
+   "homepage_url": null,
+   "bio": "National Park Service marine ecologist. An NPS contact page last updated in 2016 names him director of the Pacific Coast Science and Learning Center at Point Reyes; his ORCID record lists his position as Science Advisor for the NPS Pacific West Region.",
+   "bio_source_url": "https://www.nps.gov/rlc/pacificcoast/contactus.htm",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "john-sample",
+   "existing_person_id": null,
+   "name": "John Sample",
+   "name_given": "John",
+   "name_family": "Sample",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "elias-ioup",
+   "existing_person_id": null,
+   "name": "Elias Ioup",
+   "name_given": "Elias",
+   "name_family": "Ioup",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "timothy-newman",
+   "existing_person_id": null,
+   "name": "Timothy R. Newman",
+   "name_given": "Timothy",
+   "name_family": "Newman",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.usgs.gov/staff-profiles/timothy-r-newman",
+   "bio": "Program Coordinator of the USGS National Land Imaging Program, which builds and operates the Landsat satellites and maintains one of the world's largest civil archives of land remote sensing data. He directs researchers producing remote-sensing science products. Before USGS he served in space-related U.S. Air Force roles, retiring as a Lieutenant Colonel in 2005.",
+   "bio_source_url": "https://nsgic.org/events/usgs-landsat-program-august-4-2026-1-2-pm-et/",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "daniel-opstal",
+   "existing_person_id": null,
+   "name": "Daniel W. Opstal",
+   "name_given": "Daniel",
+   "name_family": "Opstal",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.usgs.gov/staff-profiles/daniel-w-opstal",
+   "bio": "Deputy Program Coordinator of the USGS National Land Imaging Program, handling program guidance, budgets, Administration and Congressional liaison, and international and industry Earth-observation partnerships. Formerly Executive Secretary (now emeritus) of the Civil Applications Committee, coordinating civil use of geospatial technologies with the defense and intelligence community.",
+   "bio_source_url": "https://www.usgs.gov/staff-profiles/daniel-w-opstal",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "nathan-wood",
+   "existing_person_id": "2629ed7ac232cd73",
+   "name": "Nathan J. Wood",
+   "name_given": "Nathan",
+   "name_family": "Wood",
+   "orcid": "0000-0002-6060-9729",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-6060-9729/employments",
+   "homepage_url": "https://www.usgs.gov/staff-profiles/nathan-j-wood",
+   "bio": "Supervisory research geographer at the USGS Western Geographic Science Center (since 2014), leading its Hazard Vulnerability Team. His research addresses community vulnerability to natural hazards, including exposure, demographic sensitivity and pedestrian evacuation modeling for tsunami, volcanic and coastal threats.",
+   "bio_source_url": "https://www.usgs.gov/staff-profiles/nathan-j-wood",
+   "research_interests": "Societal vulnerability to natural hazards; pedestrian evacuation modeling; geospatial hazard modeling; tsunami, volcanic and coastal hazards",
+   "research_interests_source_url": "https://www.usgs.gov/staff-profiles/nathan-j-wood"
+  }
+ ],
+ "affiliations": [
+  {
+   "facility_id": "d3ae265dcba29674",
+   "person_key": "seth-campbell",
+   "role": "director",
+   "title": "Director of Research, Juneau Icefield Research Program",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2018,
+   "end_year": null,
+   "source_url": "https://juneauicefield.org/about/academic-council",
+   "evidence": "Dr. Seth Campbell DIRECTOR OF RESEARCH",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "d3ae265dcba29674",
+   "person_key": "brad-markle",
+   "role": "director",
+   "title": "Director of Academics, Juneau Icefield Research Program",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://juneauicefield.org/about/academic-council",
+   "evidence": "Dr. Brad Markle DIRECTOR OF ACADEMICS",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "d3ae265dcba29674",
+   "person_key": "annie-boucher-krumdieck",
+   "role": "director",
+   "title": "Director of Operations, Juneau Icefield Research Program",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://juneauicefield.org/about/staff",
+   "evidence": "Annie Boucher Krumdieck DIRECTOR OF OPERATIONS",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "d3ae265dcba29674",
+   "person_key": "kiya-riverman",
+   "role": "associate-director",
+   "title": "Associate Director of Academics, Juneau Icefield Research Program",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://juneauicefield.org/about/academic-council",
+   "evidence": "Dr. Kiya Riverman ASSOCIATE DIRECTOR OF ACADEMICS",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "d3ae265dcba29674",
+   "person_key": "allen-pope",
+   "role": "associate-director",
+   "title": "Associate Director of Academics, Juneau Icefield Research Program",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://juneauicefield.org/about/academic-council",
+   "evidence": "Dr. Allen Pope ASSOCIATE DIRECTOR OF ACADEMICS",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "d3ae265dcba29674",
+   "person_key": "tahi-wiggins",
+   "role": "manager",
+   "title": "Program Manager, Juneau Icefield Research Program",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": 2026,
+   "end_year": null,
+   "source_url": "https://juneauicefield.org/about/staff",
+   "evidence": "Tahi joined JIRP as Program Manager (PM) in spring 2026",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "d3ae265dcba29674",
+   "person_key": "maynard-miller",
+   "role": "founding-PI",
+   "title": "Founder, Juneau Icefield Research Program",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": 1948,
+   "end_year": null,
+   "source_url": "https://juneauicefield.org/history",
+   "evidence": "in 1948 Maynard lead a small group of explorers on a reconnaissance of the Juneau Icefield",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "d3ae265dcba29674",
+   "person_key": "william-field",
+   "role": "founding-PI",
+   "title": "Co-developer of the Juneau Icefield Research Project (American Geographical Society)",
+   "is_key_personnel": false,
+   "is_current": false,
+   "start_year": 1946,
+   "end_year": null,
+   "source_url": "https://juneauicefield.org/history",
+   "evidence": "Beginning at the American Geographical Society in 1946 William Field and Maynard Miller collaborated on the development of JIRP",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "d3ae265dcba29674",
+   "person_key": "joan-miller",
+   "role": "former-director",
+   "title": "Co-leader of the Juneau Icefield Research Program (with Maynard Miller)",
+   "is_key_personnel": false,
+   "is_current": false,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://juneauicefield.org/history",
+   "evidence": "subsequent half-century of JIRP, was lead by the team of Maynard and Joan MIller.",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "8a9f792df16585ec",
+   "person_key": "anne-altman",
+   "role": "superintendent",
+   "title": "Superintendent, Point Reyes National Seashore",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2024,
+   "end_year": null,
+   "source_url": "https://www.nps.gov/pore/parkmgmt/staffandoffices.htm",
+   "evidence": "2024 to present: Anne Altman",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "8a9f792df16585ec",
+   "person_key": "fred-binnewies",
+   "role": "superintendent",
+   "title": "First superintendent of Point Reyes National Seashore",
+   "is_key_personnel": false,
+   "is_current": false,
+   "start_year": 1963,
+   "end_year": 1965,
+   "source_url": "https://www.nps.gov/pore/parkmgmt/staffandoffices.htm",
+   "evidence": "1963 to 1965: Fred W. Binnewies (first superintendent of Point Reyes National Seashore)",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "8a9f792df16585ec",
+   "person_key": "ben-becker",
+   "role": "director",
+   "title": "Director and Marine Ecologist, Pacific Coast Science and Learning Center (Point Reyes)",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.nps.gov/rlc/pacificcoast/contactus.htm",
+   "evidence": "Ben Becker, Ph.D. Director and Marine Ecologist",
+   "confidence": "low"
+  },
+  {
+   "facility_id": "18254d33b94ff086",
+   "person_key": "john-sample",
+   "role": "superintendent",
+   "title": "Superintendent, Ocean Science Division, NRL-SSC",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://gulfscei.cs.uno.edu/news/2026-08-17",
+   "evidence": "Dr. John Sample, Superintendent of the Ocean Science Division at NRL-SSC",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "18254d33b94ff086",
+   "person_key": "elias-ioup",
+   "role": "director",
+   "title": "Director, Geospatial Science Center (NRL-SSC)",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://gulfscei.cs.uno.edu/news/2026-08-17",
+   "evidence": "Dr. Elias Ioup, Director of the Geospatial Science Center",
+   "confidence": "low"
+  },
+  {
+   "facility_id": "353361a587e66927",
+   "person_key": "timothy-newman",
+   "role": "director",
+   "title": "Program Coordinator, National Land Imaging Program",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.usgs.gov/staff-profiles/timothy-r-newman",
+   "evidence": "Timothy R Newman is the Program Coordinator for the National Land Imaging Program",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "353361a587e66927",
+   "person_key": "daniel-opstal",
+   "role": "deputy-director",
+   "title": "Deputy Program Coordinator, National Land Imaging Program",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.usgs.gov/staff-profiles/daniel-w-opstal",
+   "evidence": "Daniel W. Opstal is the Deputy Program Coordinator for the National Land Imaging Program",
+   "confidence": "high"
+  }
+ ],
+ "verifications": [
+  {
+   "facility_id": "d3ae265dcba29674",
+   "person_id": "e40e75f4e126ed1b",
+   "existing_role": "faculty",
+   "status": "not-found",
+   "current_holder_key": null,
+   "source_url": "https://juneauicefield.org/about/academic-council",
+   "evidence": null
+  },
+  {
+   "facility_id": "d3ae265dcba29674",
+   "person_id": "38d581ab98f80db9",
+   "existing_role": "founding-PI",
+   "status": "confirmed",
+   "current_holder_key": null,
+   "source_url": "https://juneauicefield.org/history",
+   "evidence": "in 1948 Maynard lead a small group of explorers on a reconnaissance of the Juneau Icefield"
+  },
+  {
+   "facility_id": "8a9f792df16585ec",
+   "person_id": "24aa7e3c0d56f5b1",
+   "existing_role": "faculty",
+   "status": "unverifiable",
+   "current_holder_key": null,
+   "source_url": "https://www.nps.gov/rlc/pacificcoast/contactus.htm",
+   "evidence": "Ben Becker, Ph.D. Director and Marine Ecologist"
+  },
+  {
+   "facility_id": "8a9f792df16585ec",
+   "person_id": "874ee60be65d5d32",
+   "existing_role": "emeritus",
+   "status": "not-found",
+   "current_holder_key": null,
+   "source_url": null,
+   "evidence": null
+  },
+  {
+   "facility_id": "8a9f792df16585ec",
+   "person_id": "154ecdb4d33cebbe",
+   "existing_role": "coordinator",
+   "status": "not-found",
+   "current_holder_key": null,
+   "source_url": "https://www.nps.gov/im/sfan/contactus.htm",
+   "evidence": null
+  },
+  {
+   "facility_id": "18254d33b94ff086",
+   "person_id": "1d9e6fc76edb64ed",
+   "existing_role": "faculty",
+   "status": "unverifiable",
+   "current_holder_key": null,
+   "source_url": "https://www7320.nrlssc.navy.mil/pubs/index.php",
+   "evidence": "Z. Yu, Y. Fan, E. J. Metzger"
+  },
+  {
+   "facility_id": "18254d33b94ff086",
+   "person_id": "f56548cde83f673a",
+   "existing_role": "faculty",
+   "status": "unverifiable",
+   "current_holder_key": null,
+   "source_url": "https://www.hycom.org/contact-info",
+   "evidence": "(Attn: Alan Wallcraft)"
+  },
+  {
+   "facility_id": "18254d33b94ff086",
+   "person_id": "69156925c600ef3b",
+   "existing_role": "faculty",
+   "status": "unverifiable",
+   "current_holder_key": null,
+   "source_url": "https://www7320.nrlssc.navy.mil/pubs/index.php",
+   "evidence": "Y. Fan, Z. Yu, G. Jacobs"
+  },
+  {
+   "facility_id": "353361a587e66927",
+   "person_id": "2629ed7ac232cd73",
+   "existing_role": "faculty",
+   "status": "not-found",
+   "current_holder_key": null,
+   "source_url": "https://www.usgs.gov/staff-profiles/nathan-j-wood",
+   "evidence": "Nathan Wood is a supervisory research geographer with the USGS Western Geographic Science Center."
+  }
+ ]
+}

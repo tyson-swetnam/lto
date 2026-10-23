@@ -1,0 +1,229 @@
+{
+ "batch_id": "R-PEOPLE2-FIELD-STATIONS-01",
+ "retrieved_at": "2026-10-22",
+ "verified_by": "adversarial-verifier 2026-10-22",
+ "facilities": [
+  {
+   "facility_id": "e91ffce7b94d8978",
+   "pages_fetched": [
+    {
+     "url": "https://www.wmrc.edu/",
+     "status": 200
+    },
+    {
+     "url": "https://www.wmrc.edu/about-us/",
+     "status": 200
+    },
+    {
+     "url": "https://www.wmrc.edu/people/",
+     "status": 200
+    },
+    {
+     "url": "https://www.wmrc.edu/history/",
+     "status": 200
+    },
+    {
+     "url": "https://www.wmrc.edu/timeline/",
+     "status": 200
+    },
+    {
+     "url": "https://www.wmrc.edu/project/resident-wmrc-researchers-jeff-homlquist-jutta-schmidt-gengenbach/",
+     "status": 200
+    },
+    {
+     "url": "https://ucnature.org/reserves/white-mountain-research-center/",
+     "status": 200
+    },
+    {
+     "url": "https://geog.ucla.edu/person/glen-macdonald/",
+     "status": 200
+    },
+    {
+     "url": "https://www.ioes.ucla.edu/person/glen-macdonald/",
+     "status": 200
+    },
+    {
+     "url": "https://www.ioes.ucla.edu/person/jeff-holmquist/",
+     "status": 200
+    },
+    {
+     "url": "https://glenmmacdonald.com",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-0267-9825/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-0267-9825/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0003-3198-6338/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0003-3198-6338/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0009-0001-3926-0171/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0009-0001-3926-0171/employments",
+     "status": 200
+    },
+    {
+     "url": "https://wmrc.edu/staff",
+     "status": 404
+    },
+    {
+     "url": "https://wmrc.edu/about/staff",
+     "status": 404
+    }
+   ],
+   "notes": "UC WMRC (formerly White Mountain Research Station) is a UC Natural Reserve System unit administered through UCLA's Institute of the Environment and Sustainability. Current staff from wmrc.edu/people; UCNRS reserve page lists Steven DeVanzo (Operations Manager) as the contact. Founding director Nello Pace from the WMRC timeline (UC operation began 1 Sept 1950; formally appointed director 1961; end year not stated). Administrative staff (scheduling coordinator, business office manager) omitted. No existing personnel to verify. Verifier 2026-10-22: re-fetched wmrc.edu/people, /timeline, /history, the resident-researchers project page, ioes.ucla.edu and geog.ucla.edu profiles and all three ORCID records (all HTTP 200). Pace end_year left null: timeline records J. Welch as Acting Director in 1977 but does not state when Pace's term ended."
+  }
+ ],
+ "people": [
+  {
+   "key": "glen-macdonald",
+   "existing_person_id": null,
+   "name": "Glen MacDonald",
+   "name_given": "Glen",
+   "name_family": "MacDonald",
+   "orcid": "0000-0002-0267-9825",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-0267-9825/employments",
+   "homepage_url": "https://geog.ucla.edu/person/glen-macdonald/",
+   "bio": "UCLA Distinguished Professor and John Muir Memorial Chair of Geography who directs the UC White Mountain Research Center. He studies the causes of climate change and its effects on environments and societies, and how estuaries and salt marshes respond to rising seas. He formerly led UCLA's environment institute and is a National Academy of Sciences member.",
+   "bio_source_url": "https://www.ioes.ucla.edu/person/glen-macdonald/",
+   "research_interests": "Climate change impacts on ecosystems and societies; paleoclimate and paleoecology; water resources and drought; California wildfire; coastal wetlands and sea-level rise; sustainability and nature-based climate solutions",
+   "research_interests_source_url": "https://geog.ucla.edu/person/glen-macdonald/"
+  },
+  {
+   "key": "steven-devanzo",
+   "existing_person_id": null,
+   "name": "Steven DeVanzo",
+   "name_given": "Steven",
+   "name_family": "DeVanzo",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "jeff-holmquist",
+   "existing_person_id": null,
+   "name": "Jeff Holmquist",
+   "name_given": "Jeff",
+   "name_family": "Holmquist",
+   "orcid": "0000-0003-3198-6338",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0003-3198-6338/person",
+   "homepage_url": "https://www.ioes.ucla.edu/person/jeff-holmquist/",
+   "bio": "UCLA research scientist resident at the White Mountain Research Center in Bishop. An invertebrate ecologist, he examines plant-animal interactions, how landscape pattern governs animal movement and community makeup, and ecological responses to disturbance such as dam-regulated flows, across alpine meadows, streams, wetlands and desert springs.",
+   "bio_source_url": "https://www.ioes.ucla.edu/person/jeff-holmquist/",
+   "research_interests": "Plant-animal interactions; landscape structure and faunal movement; invertebrate assemblages; anthropogenic and natural disturbance; river regulation and stream benthos; montane wetlands",
+   "research_interests_source_url": "https://www.ioes.ucla.edu/person/jeff-holmquist/"
+  },
+  {
+   "key": "jutta-schmidt-gengenbach",
+   "existing_person_id": null,
+   "name": "Jutta Schmidt-Gengenbach",
+   "name_given": "Jutta",
+   "name_family": "Schmidt-Gengenbach",
+   "orcid": "0009-0001-3926-0171",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0009-0001-3926-0171/employments",
+   "homepage_url": null,
+   "bio": "Research associate with UCLA's White Mountain Research Center. With Jeff Holmquist she studies invertebrate and stream ecology, including how benthic communities respond to engineered dam releases, arthropods of montane wetlands, and stream-wide effects of removing introduced brown trout in Sequoia and Kings Canyon.",
+   "bio_source_url": "https://www.wmrc.edu/project/resident-wmrc-researchers-jeff-homlquist-jutta-schmidt-gengenbach/",
+   "research_interests": "Stream benthic invertebrates; dam flow regulation; montane wetland arthropods; restoration and disturbance ecology",
+   "research_interests_source_url": "https://www.wmrc.edu/project/resident-wmrc-researchers-jeff-homlquist-jutta-schmidt-gengenbach/"
+  },
+  {
+   "key": "nello-pace",
+   "existing_person_id": null,
+   "name": "Nello Pace",
+   "name_given": "Nello",
+   "name_family": "Pace",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "UC Berkeley scientist in high-altitude physiology who, with S.F. Cook, obtained Office of Naval Research approval in 1950 for a biological station at Mt. Barcroft. He was director when UC began running the station that September, and later secured NSF funds for a laboratory on White Mountain Peak.",
+   "bio_source_url": "https://www.wmrc.edu/timeline/",
+   "research_interests": "High-altitude physiology",
+   "research_interests_source_url": "https://www.wmrc.edu/history/"
+  }
+ ],
+ "affiliations": [
+  {
+   "facility_id": "e91ffce7b94d8978",
+   "person_key": "glen-macdonald",
+   "role": "director",
+   "title": "Director, WMRC",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.wmrc.edu/people/",
+   "evidence": "Glen MacDonald Director, WMRC",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "e91ffce7b94d8978",
+   "person_key": "steven-devanzo",
+   "role": "manager",
+   "title": "Operations Manager",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.wmrc.edu/people/",
+   "evidence": "Steven DeVanzo Operations Manager Station conditions, daily operations, maintenance",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "e91ffce7b94d8978",
+   "person_key": "jeff-holmquist",
+   "role": "scientist",
+   "title": "Research Scientist",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.wmrc.edu/people/",
+   "evidence": "Jeff Holmquist Research Scientist",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "e91ffce7b94d8978",
+   "person_key": "jutta-schmidt-gengenbach",
+   "role": "scientist",
+   "title": "Research Associate",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.wmrc.edu/people/",
+   "evidence": "Jutta Schmidt-Gengenbach Research Associate",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "e91ffce7b94d8978",
+   "person_key": "nello-pace",
+   "role": "former-director",
+   "title": "First Director (founding), White Mountain Research Station",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": 1950,
+   "end_year": null,
+   "source_url": "https://www.wmrc.edu/timeline/",
+   "evidence": "On Sept 1, 1950, UC began operation of WMRS for the ONR, with Nello Pace as Director",
+   "confidence": "high"
+  }
+ ],
+ "verifications": []
+}

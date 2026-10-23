@@ -1,0 +1,966 @@
+{
+ "batch_id": "R-PEOPLE2-ARID-NM-01b",
+ "retrieved_at": "2026-10-22",
+ "verified_by": "adversarial-verifier 2026-10-22",
+ "facilities": [
+  {
+   "facility_id": "2d8e236b944fefb5",
+   "pages_fetched": [
+    {
+     "url": "https://hsc.unm.edu/pharmacy/research/areas/metals/",
+     "status": 200
+    },
+    {
+     "url": "https://hsc.unm.edu/pharmacy/research/areas/metals/cores.html",
+     "status": 200
+    },
+    {
+     "url": "https://hsc.unm.edu/pharmacy/research/areas/metals/environmental-health-research-projects.html",
+     "status": 200
+    },
+    {
+     "url": "https://hsc.unm.edu/pharmacy/research/areas/metals/biomedial-research-projects.html",
+     "status": 200
+    },
+    {
+     "url": "https://hsc.unm.edu/pharmacy/faculty/index.html",
+     "status": 200
+    },
+    {
+     "url": "https://hsc.unm.edu/pharmacy/research/areas/cmbm/directory.html",
+     "status": 200
+    },
+    {
+     "url": "https://civil.unm.edu/faculty-staff/faculty-profiles/jose-cerrato.html",
+     "status": 200
+    },
+    {
+     "url": "https://eh2o.unm.edu/",
+     "status": 200
+    }
+   ],
+   "notes": "Administrative Core lists Director (Cerrato), Deputy Director (MacKenzie), Co-Deputy Director (Campen) and Center Administrator (Roman). Other core leads named on cores.html: Chris Shuey (SRIC) and David Begay (CEC primary contacts), Li Luo and Yan Lin (Data Management and Analysis Core). No founding-PI named on fetched pages. [verifier] Cerrato's METALS directorship rests on the METALS page; his bio was trimmed to what the civil-engineering profile says."
+  },
+  {
+   "facility_id": "3aad99b4ad03a7fe",
+   "pages_fetched": [
+    {
+     "url": "http://www.msb.unm.edu/",
+     "status": 200
+    },
+    {
+     "url": "http://www.msb.unm.edu/contact-us/index.html",
+     "status": 200
+    },
+    {
+     "url": "http://www.msb.unm.edu/about-us/index.html",
+     "status": 200
+    },
+    {
+     "url": "http://www.msb.unm.edu/about-us/history-of-the-museum/index.html",
+     "status": 200
+    },
+    {
+     "url": "http://www.msb.unm.edu/research/faculty-labs/index.html",
+     "status": 200
+    },
+    {
+     "url": "https://biology.unm.edu/people/faculty/faculty.html",
+     "status": 200
+    },
+    {
+     "url": "https://biology.unm.edu/people/faculty/profile/andersen_michael-j.html",
+     "status": 200
+    },
+    {
+     "url": "https://biology.unm.edu/people/faculty/profile/barrow_lisa.html",
+     "status": 200
+    },
+    {
+     "url": "https://biology.unm.edu/people/faculty/profile/cook_joseph.html",
+     "status": 200
+    },
+    {
+     "url": "https://biology.unm.edu/people/faculty/profile/witt_christopher-c.html",
+     "status": 200
+    },
+    {
+     "url": "https://www.andersenlabunm.org/",
+     "status": 200
+    },
+    {
+     "url": "https://barrowevobio.wixsite.com/lisabarrow",
+     "status": 200
+    },
+    {
+     "url": "https://msb.unm.edu/research/faculty-labs/cook-lab/index.html",
+     "status": 200
+    },
+    {
+     "url": "https://www.unmornithology.org/",
+     "status": 200
+    }
+   ],
+   "notes": "Leadership from the MSB contact page Administration table. History page says collections originated with Edward F. Castetter's collecting from 1928 and William J. Koster's vertebrate curation from 1938, but names no founding director, so neither was added. Christopher Witt has two ORCID records with no employments, so orcid left null. Barrow's biology profile still says Assistant Professor. [verifier] Barrow's associate-director role rests on the MSB contact page; her bio was trimmed to what the biology profile says."
+  },
+  {
+   "facility_id": "3836c01b23513f95",
+   "pages_fetched": [
+    {
+     "url": "https://mpp.unm.edu/index.html",
+     "status": 200
+    },
+    {
+     "url": "https://mpp.unm.edu/people/staff/index.html",
+     "status": 403
+    },
+    {
+     "url": "https://mpp.unm.edu/people/program-committee-members/index.html",
+     "status": 403
+    },
+    {
+     "url": "https://mpp.unm.edu/about/index.html",
+     "status": 403
+    },
+    {
+     "url": "https://mpp.unm.edu/contact/index.html",
+     "status": 403
+    },
+    {
+     "url": "https://mpp.unm.edu/current-students/2026-mpp-handbook.pdf",
+     "status": 200
+    },
+    {
+     "url": "https://mpp.unm.edu/current-students/2020-2021-mpp-handbook-updated.pdf",
+     "status": 200
+    },
+    {
+     "url": "https://grad.unm.edu/graduate-programs/application-instructions/public-policy.html",
+     "status": 200
+    },
+    {
+     "url": "https://polisci.unm.edu/people/faculty/index.html",
+     "status": 200
+    },
+    {
+     "url": "https://polisci.unm.edu/people/faculty/profile/michael-s.-rocca.html",
+     "status": 200
+    },
+    {
+     "url": "http://www.mikerocca.com/",
+     "status": 200
+    }
+   ],
+   "notes": "All mpp.unm.edu subpages return 403 (server htaccess error); the MPP handbook PDFs on the same host returned 200. August 2026 handbook names Rocca Director and Carol Anda Graduate Coordinator. Program Committee (Aug 2026) also lists Assata Zerai (Sociology), Xiaoxue Li (Economics) and Agustín León-Moreta (Public Administration); they were not added. The Aug 2020 handbook named Melissa Binder Director; end year unknown. This is a degree program, not an observatory, so research staff are few."
+  },
+  {
+   "facility_id": "440242ab387a8692",
+   "pages_fetched": [
+    {
+     "url": "https://swefc.unm.edu/home/",
+     "status": 200
+    },
+    {
+     "url": "https://swefc.unm.edu/home/about-us/staff/",
+     "status": 200
+    },
+    {
+     "url": "https://swefc.unm.edu/home/about-us/",
+     "status": 200
+    },
+    {
+     "url": "https://swefc.unm.edu/home/about-us/staff/heather-himmelberger-p-e/",
+     "status": 200
+    },
+    {
+     "url": "https://swefc.unm.edu/home/about-us/staff/matt-ziegler/",
+     "status": 200
+    },
+    {
+     "url": "https://swefc.unm.edu/home/about-us/staff/dawn-nall/",
+     "status": 200
+    },
+    {
+     "url": "https://swefc.unm.edu/home/about-us/staff/hayley-hajic/",
+     "status": 200
+    },
+    {
+     "url": "https://swefc.unm.edu/home/about-us/staff/tucker-colvin/",
+     "status": 200
+    }
+   ],
+   "notes": "SW EFC was formerly the New Mexico Environmental Finance Center and has operated since 1992 (about page). Himmelberger directed the NM EFC from 1996 to 2012 and has directed the SW EFC since 2013. No founding director is named. Most of the remaining staff are trainers and engineers and were not added."
+  },
+  {
+   "facility_id": "45f7cd7960086931",
+   "pages_fetched": [
+    {
+     "url": "https://sust.unm.edu/",
+     "status": 200
+    },
+    {
+     "url": "https://sust.unm.edu/about/index.html",
+     "status": 200
+    },
+    {
+     "url": "https://sust.unm.edu/our-community/people/index.html",
+     "status": 200
+    },
+    {
+     "url": "https://sust.unm.edu/our-community/people/andreas-hernandez.html",
+     "status": 200
+    },
+    {
+     "url": "https://sust.unm.edu/our-community/people/jessica-rowland.html",
+     "status": 200
+    },
+    {
+     "url": "https://sust.unm.edu/our-community/people/melinda-morgan.html",
+     "status": 200
+    },
+    {
+     "url": "https://sust.unm.edu/our-community/people/marygold-walsh-dilley.html",
+     "status": 200
+    },
+    {
+     "url": "https://sust.unm.edu/our-community/people/benjamin-warner.html",
+     "status": 200
+    },
+    {
+     "url": "https://www.marygoldwd.com/",
+     "status": 200
+    }
+   ],
+   "notes": "The Faculty & Staff page also lists emeriti Terry Horger (Program Specialist) and Bruce T. Milne (Professor of Biology); they were not added. Hernandez's only ORCID candidate (0009-0007-1732-8140) shows no affiliation, so orcid left null. This is an academic program, not an observatory. [verifier] Morgan ORCID added from the ORCID record (name Melinda Morgan, employer University of New Mexico)."
+  },
+  {
+   "facility_id": "c60b7b86dd2bc6ae",
+   "pages_fetched": [
+    {
+     "url": "https://uttoncenter.unm.edu/",
+     "status": 200
+    },
+    {
+     "url": "https://uttoncenter.unm.edu/utton/staff.html",
+     "status": 200
+    },
+    {
+     "url": "https://uttoncenter.unm.edu/utton/our-work-history/our-work-history.html",
+     "status": 200
+    },
+    {
+     "url": "https://uttoncenter.unm.edu/news/2017/07/utton-bio.html",
+     "status": 200
+    }
+   ],
+   "notes": "The staff page says Oglesby began as Director in 2014, but the home-page news archive has a 2017 item titled 'Utton Center Announces New Director Adrian Oglesby', so start_year confidence is medium. The work-history page dates activities from 2004 but names no founding director. Administrative staff (Sairis Perez-Gomez, Amanda Martin) were not added."
+  }
+ ],
+ "people": [
+  {
+   "key": "jose-cerrato",
+   "existing_person_id": null,
+   "name": "Jose M. Cerrato",
+   "name_given": "Jose",
+   "name_family": "Cerrato",
+   "orcid": "0000-0002-2473-6376",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-2473-6376/employments",
+   "homepage_url": "https://eh2o.unm.edu/",
+   "bio": "Professor and Regents' Lecturer in UNM's Department of Civil, Construction and Environmental Engineering, where he heads the E-H2O Research Group. His work uses spectroscopy, microscopy and aqueous chemistry to study how metals and radionuclides move through water and energy systems.",
+   "bio_source_url": "https://civil.unm.edu/faculty-staff/faculty-profiles/jose-cerrato.html",
+   "research_interests": "Energy-water biogeochemistry of metals and radionuclides; drinking water quality and treatment",
+   "research_interests_source_url": "https://civil.unm.edu/faculty-staff/faculty-profiles/jose-cerrato.html"
+  },
+  {
+   "key": "debra-mackenzie",
+   "existing_person_id": null,
+   "name": "Debra MacKenzie",
+   "name_given": "Debra",
+   "name_family": "MacKenzie",
+   "orcid": "0000-0003-4243-6286",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0003-4243-6286/employments",
+   "homepage_url": null,
+   "bio": "Research associate professor of pharmaceutical sciences in the UNM College of Pharmacy.",
+   "bio_source_url": "https://hsc.unm.edu/pharmacy/faculty/index.html",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "matthew-campen",
+   "existing_person_id": null,
+   "name": "Matthew Campen",
+   "name_given": "Matthew",
+   "name_family": "Campen",
+   "orcid": "0000-0002-2292-5050",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-2292-5050/employments",
+   "homepage_url": null,
+   "bio": "Regents' Professor in the Department of Pharmaceutical Sciences, UNM College of Pharmacy, and director of the college's Center for Metals in Biology and Medicine.",
+   "bio_source_url": "https://hsc.unm.edu/pharmacy/research/areas/cmbm/directory.html",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "carolyn-roman",
+   "existing_person_id": null,
+   "name": "Carolyn Roman",
+   "name_given": "Carolyn",
+   "name_family": "Roman",
+   "orcid": "0000-0002-0432-7196",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-0432-7196/employments",
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "mallery-quetawki",
+   "existing_person_id": null,
+   "name": "Mallery Quetawki",
+   "name_given": "Mallery",
+   "name_family": "Quetawki",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "michael-andersen",
+   "existing_person_id": null,
+   "name": "Michael J. Andersen",
+   "name_given": "Michael",
+   "name_family": "Andersen",
+   "orcid": "0000-0002-7220-5588",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-7220-5588/employments",
+   "homepage_url": "https://www.andersenlabunm.org/",
+   "bio": "Professor of biology at UNM who directs the Museum of Southwestern Biology and curates its Division of Genomic Resources. An evolutionary biologist (PhD, University of Kansas, 2013) working on avian systematics, biogeography and speciation.",
+   "bio_source_url": "https://biology.unm.edu/people/faculty/profile/andersen_michael-j.html",
+   "research_interests": "Evolutionary biology; biogeography; speciation; island biogeography; rapid radiations; avian systematics and taxonomy",
+   "research_interests_source_url": "https://biology.unm.edu/people/faculty/profile/andersen_michael-j.html"
+  },
+  {
+   "key": "lisa-barrow",
+   "existing_person_id": null,
+   "name": "Lisa Barrow",
+   "name_given": "Lisa",
+   "name_family": "Barrow",
+   "orcid": "0000-0001-7081-2432",
+   "orcid_source_url": "https://biology.unm.edu/people/faculty/profile/barrow_lisa.html",
+   "homepage_url": "https://barrowevobio.wixsite.com/lisabarrow",
+   "bio": "Assistant professor of biology at UNM and curator of the Museum of Southwestern Biology's Division of Amphibians & Reptiles. Her research centers on phylogeography, population genomics and host-parasite interactions in amphibians and reptiles.",
+   "bio_source_url": "https://biology.unm.edu/people/faculty/profile/barrow_lisa.html",
+   "research_interests": "Evolution, phylogeography, population genomics, host-parasite interactions and biodiversity conservation of amphibians and reptiles",
+   "research_interests_source_url": "https://biology.unm.edu/people/faculty/profile/barrow_lisa.html"
+  },
+  {
+   "key": "joseph-cook",
+   "existing_person_id": null,
+   "name": "Joseph A. Cook",
+   "name_given": "Joseph",
+   "name_family": "Cook",
+   "orcid": "0000-0003-3985-0670",
+   "orcid_source_url": "https://biology.unm.edu/people/faculty/profile/cook_joseph.html",
+   "homepage_url": "https://msb.unm.edu/research/faculty-labs/cook-lab/index.html",
+   "bio": "Distinguished Professor and Regents Professor of biology at UNM and curator of the Museum of Southwestern Biology's Division of Mammals. His research spans mammalian systematics, historical biogeography, speciation and island biology.",
+   "bio_source_url": "https://biology.unm.edu/people/faculty/profile/cook_joseph.html",
+   "research_interests": "Biotic conservation; historical biogeography; molecular and morphological evolution; systematics; speciation; island biology",
+   "research_interests_source_url": "https://biology.unm.edu/people/faculty/profile/cook_joseph.html"
+  },
+  {
+   "key": "christopher-witt",
+   "existing_person_id": null,
+   "name": "Christopher C. Witt",
+   "name_given": "Christopher",
+   "name_family": "Witt",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.unmornithology.org/",
+   "bio": "UNM biology professor who curates the bird collection of the Museum of Southwestern Biology. An ornithologist studying avian systematics, molecular evolution, Neotropical biogeography and high-altitude adaptation, including hummingbird physiology.",
+   "bio_source_url": "https://biology.unm.edu/people/faculty/profile/witt_christopher-c.html",
+   "research_interests": "Avian systematics and molecular evolution; phylogenetic comparative methods; Neotropical biogeography; hummingbird evolution and physiology; high-altitude adaptation",
+   "research_interests_source_url": "https://biology.unm.edu/people/faculty/profile/witt_christopher-c.html"
+  },
+  {
+   "key": "joanne-kuestner",
+   "existing_person_id": null,
+   "name": "Joanne Kuestner",
+   "name_given": "Joanne",
+   "name_family": "Kuestner",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "michael-rocca",
+   "existing_person_id": null,
+   "name": "Michael S. Rocca",
+   "name_given": "Michael",
+   "name_family": "Rocca",
+   "orcid": "0000-0002-2765-0260",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-2765-0260/employments",
+   "homepage_url": "http://www.mikerocca.com/",
+   "bio": "Professor of political science at UNM (PhD, UC Davis, 2004) and director of the Master of Public Policy program. He studies American political institutions, especially congressional position-taking, campaign finance and minority representation in Congress.",
+   "bio_source_url": "https://polisci.unm.edu/people/faculty/profile/michael-s.-rocca.html",
+   "research_interests": "American politics; public policy; money in politics; congressional position-taking; representation",
+   "research_interests_source_url": "https://polisci.unm.edu/people/faculty/profile/michael-s.-rocca.html"
+  },
+  {
+   "key": "melissa-binder",
+   "existing_person_id": null,
+   "name": "Melissa Binder",
+   "name_given": "Melissa",
+   "name_family": "Binder",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "carol-anda",
+   "existing_person_id": null,
+   "name": "Carol Anda",
+   "name_given": "Carol",
+   "name_family": "Anda",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "heather-himmelberger",
+   "existing_person_id": null,
+   "name": "Heather Himmelberger",
+   "name_given": "Heather",
+   "name_family": "Himmelberger",
+   "orcid": "0009-0000-5374-5522",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0009-0000-5374-5522/employments",
+   "homepage_url": "https://swefc.unm.edu/home/about-us/staff/heather-himmelberger-p-e/",
+   "bio": "Licensed professional engineer who has led the Southwest Environmental Finance Center since 2013, after directing its predecessor, the NM Environmental Finance Center. She helps state, local and tribal governments with water and wastewater finance, asset management and water loss control, and has served on EPA's Environmental Financial Advisory Board.",
+   "bio_source_url": "https://swefc.unm.edu/home/about-us/staff/heather-himmelberger-p-e/",
+   "research_interests": "Utility asset management; water loss auditing and control; small water system managerial and financial capacity; infrastructure funding",
+   "research_interests_source_url": "https://swefc.unm.edu/home/about-us/staff/heather-himmelberger-p-e/"
+  },
+  {
+   "key": "matt-ziegler",
+   "existing_person_id": null,
+   "name": "Matt Ziegler",
+   "name_given": "Matt",
+   "name_family": "Ziegler",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Directs the tribal drinking water program at the Southwest Environmental Finance Center, where he has worked since 2013 after joining the NM EFC in 2004. He supports EPA Region 6 tribal public water systems with compliance monitoring, training and Safe Drinking Water Act implementation.",
+   "bio_source_url": "https://swefc.unm.edu/home/about-us/staff/matt-ziegler/",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "dawn-nall",
+   "existing_person_id": null,
+   "name": "Dawn Nall",
+   "name_given": "Dawn",
+   "name_family": "Nall",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Chemical engineer and project director at the Southwest Environmental Finance Center, with prior work as a wastewater plant operator and design engineer. She trains utility operators and managers nationally on asset and energy management, rate setting and water loss reduction.",
+   "bio_source_url": "https://swefc.unm.edu/home/about-us/staff/dawn-nall/",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "hayley-hajic",
+   "existing_person_id": null,
+   "name": "Hayley Hajic",
+   "name_given": "Hayley",
+   "name_family": "Hajic",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Project director at the Southwest Environmental Finance Center since 2018, holding an MS in geography and environmental studies from UNM. Her work covers water affordability metrics, curriculum development, and regionalization and asset management assistance for small communities.",
+   "bio_source_url": "https://swefc.unm.edu/home/about-us/staff/hayley-hajic/",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "andreas-hernandez",
+   "existing_person_id": null,
+   "name": "Andreas Hernandez",
+   "name_given": "Andreas",
+   "name_family": "Hernandez",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://sust.unm.edu/our-community/people/andreas-hernandez.html",
+   "bio": "W. K. Kellogg Chair and director of UNM's Sustainability Studies Program. A researcher and filmmaker who studies just transitions to sustainability, with emphasis on agroecological systems built by grassroots movements and ecovillage communities in Brazil, Senegal and other countries, as well as political ecology and participatory budgeting.",
+   "bio_source_url": "https://sust.unm.edu/our-community/people/andreas-hernandez.html",
+   "research_interests": "Just transitions; agroecology; social movements and ecovillages; political ecology; participatory budgeting",
+   "research_interests_source_url": "https://sust.unm.edu/our-community/people/andreas-hernandez.html"
+  },
+  {
+   "key": "jessica-rowland",
+   "existing_person_id": null,
+   "name": "Jessica Rowland",
+   "name_given": "Jessica",
+   "name_family": "Rowland",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Associate director of UNM's Sustainability Studies Program, where she teaches hands-on, interdisciplinary classes covering food systems, climate change and sustainability; she organizes the UNM Sustainability Expo and Lobo Growers' Market with students.",
+   "bio_source_url": "https://sust.unm.edu/our-community/people/jessica-rowland.html",
+   "research_interests": "Sustainability; food systems; climate change",
+   "research_interests_source_url": "https://sust.unm.edu/our-community/people/jessica-rowland.html"
+  },
+  {
+   "key": "melinda-morgan",
+   "existing_person_id": null,
+   "name": "Melinda Morgan",
+   "name_given": "Melinda",
+   "name_family": "Morgan",
+   "orcid": "0000-0002-9076-739X",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-9076-739X/employments",
+   "homepage_url": null,
+   "bio": "Professor of geography and environmental studies at UNM whose scholarship examines emerging environmental governance regimes and how they interact with existing law and regulation; she teaches natural resource management, public lands and water governance.",
+   "bio_source_url": "https://sust.unm.edu/our-community/people/melinda-morgan.html",
+   "research_interests": "Environmental governance; resilience; natural resource law; water governance; public lands",
+   "research_interests_source_url": "https://sust.unm.edu/our-community/people/melinda-morgan.html"
+  },
+  {
+   "key": "marygold-walsh-dilley",
+   "existing_person_id": null,
+   "name": "Marygold Walsh-Dilley",
+   "name_given": "Marygold",
+   "name_family": "Walsh-Dilley",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.marygoldwd.com/",
+   "bio": "Associate professor of geography and environmental studies at UNM and a Latin Americanist social scientist (PhD, Cornell). She applies political ecology to food, agriculture, climate change and rural development.",
+   "bio_source_url": "https://sust.unm.edu/our-community/people/marygold-walsh-dilley.html",
+   "research_interests": "Political ecology of food and agriculture; climate change; rural development; Latin America",
+   "research_interests_source_url": "https://sust.unm.edu/our-community/people/marygold-walsh-dilley.html"
+  },
+  {
+   "key": "benjamin-warner",
+   "existing_person_id": null,
+   "name": "Benjamin Warner",
+   "name_given": "Benjamin",
+   "name_family": "Warner",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Assistant professor of geography and environmental studies at UNM whose research, rooted in critical development studies, addresses water governance, climate adaptation and vulnerability in Latin America.",
+   "bio_source_url": "https://sust.unm.edu/our-community/people/benjamin-warner.html",
+   "research_interests": "Water governance and institutions; climate change adaptation; vulnerability and risk; Latin American development; political economy",
+   "research_interests_source_url": "https://sust.unm.edu/our-community/people/benjamin-warner.html"
+  },
+  {
+   "key": "adrian-oglesby",
+   "existing_person_id": null,
+   "name": "Adrian Oglesby",
+   "name_given": "Adrian",
+   "name_family": "Oglesby",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Water lawyer and director of the Utton Transboundary Resources Center at the UNM School of Law. His practice has centered on river and riparian restoration, agricultural water, and fish and wildlife conservation; he previously ran The Nature Conservancy's NM Living Rivers Program and chairs the Bosque Ecosystem Monitoring Program.",
+   "bio_source_url": "https://uttoncenter.unm.edu/utton/staff.html",
+   "research_interests": "River and riparian restoration; agricultural preservation; water management; fish and wildlife conservation",
+   "research_interests_source_url": "https://uttoncenter.unm.edu/utton/staff.html"
+  },
+  {
+   "key": "stephanie-russo-baca",
+   "existing_person_id": null,
+   "name": "Stephanie Russo Baca",
+   "name_given": "Stephanie",
+   "name_family": "Russo Baca",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Staff attorney at the Utton Center since 2018 who directs the Joe M. Stell Ombudsman Program, which gives unrepresented New Mexico water right claimants neutral information about adjudications.",
+   "bio_source_url": "https://uttoncenter.unm.edu/utton/staff.html",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "john-fleck",
+   "existing_person_id": null,
+   "name": "John Fleck",
+   "name_given": "John",
+   "name_family": "Fleck",
+   "orcid": "0000-0001-6524-0556",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0001-6524-0556/employments",
+   "homepage_url": null,
+   "bio": "Writer in residence at the Utton Center since 2021 and former director of UNM's Water Resources Program (2016-2021). A former Albuquerque Journal science journalist, he specializes in Colorado River management and governance and belongs to the Colorado River Research Group.",
+   "bio_source_url": "https://uttoncenter.unm.edu/utton/staff.html",
+   "research_interests": "Colorado River management and governance; western water policy",
+   "research_interests_source_url": "https://uttoncenter.unm.edu/utton/staff.html"
+  },
+  {
+   "key": "rin-tara",
+   "existing_person_id": null,
+   "name": "Rin Tara",
+   "name_given": "Rin",
+   "name_family": "Tara",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Utton Center staff attorney focused on water policy and governance since 2023; a UNM law graduate whose research looks at limits of the Law of the River and climate adaptation options for western communities, especially in New Mexico.",
+   "bio_source_url": "https://uttoncenter.unm.edu/utton/staff.html",
+   "research_interests": "Water management under climate change; Law of the River; adaptation strategies for western U.S. communities",
+   "research_interests_source_url": "https://uttoncenter.unm.edu/utton/staff.html"
+  }
+ ],
+ "affiliations": [
+  {
+   "facility_id": "2d8e236b944fefb5",
+   "person_key": "jose-cerrato",
+   "role": "director",
+   "title": "Director, UNM METALS Superfund Research Program Center; Principal Investigator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://hsc.unm.edu/pharmacy/research/areas/metals/",
+   "evidence": "Principal Investigator: Jose Cerrato, PhD Director of the UNM METALS Superfund Research Program Center",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "2d8e236b944fefb5",
+   "person_key": "debra-mackenzie",
+   "role": "deputy-director",
+   "title": "Deputy Director, UNM METALS SRP Center",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://hsc.unm.edu/pharmacy/research/areas/metals/cores.html",
+   "evidence": "Dr. Debra MacKenzie Deputy Director University of New Mexico METALS SRP Center",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "2d8e236b944fefb5",
+   "person_key": "matthew-campen",
+   "role": "deputy-director",
+   "title": "Co-Deputy Director, UNM METALS SRP Center",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://hsc.unm.edu/pharmacy/research/areas/metals/cores.html",
+   "evidence": "Dr. Matt Campen Co-Deputy Director University of New Mexico METALS SRP Center",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "2d8e236b944fefb5",
+   "person_key": "carolyn-roman",
+   "role": "manager",
+   "title": "HS Associate Scientist / Center Administrator",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://hsc.unm.edu/pharmacy/research/areas/metals/cores.html",
+   "evidence": "Carolyn Roman , PhD HS Associate Scientist/Center Administrator University of New Mexico",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "2d8e236b944fefb5",
+   "person_key": "mallery-quetawki",
+   "role": "coordinator",
+   "title": "Research Translation Coordinator (Research Translation Core primary contact)",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://hsc.unm.edu/pharmacy/research/areas/metals/cores.html",
+   "evidence": "Primary Contact: Mallery Quetawki (Research Translation Coordinator) University of New Mexico",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "3aad99b4ad03a7fe",
+   "person_key": "michael-andersen",
+   "role": "director",
+   "title": "Museum Director; Curator, Division of Genomic Resources",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "http://www.msb.unm.edu/contact-us/index.html",
+   "evidence": "Michael J. Andersen, PhD Museum Director",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "3aad99b4ad03a7fe",
+   "person_key": "lisa-barrow",
+   "role": "associate-director",
+   "title": "Associate Museum Director; Curator, Division of Amphibians & Reptiles",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "http://www.msb.unm.edu/contact-us/index.html",
+   "evidence": "Lisa Barrow, PhD Associate Museum Director",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "3aad99b4ad03a7fe",
+   "person_key": "joseph-cook",
+   "role": "scientist",
+   "title": "Curator, Division of Mammals",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "http://www.msb.unm.edu/contact-us/index.html",
+   "evidence": "Division of Mammals Name Title Email Phone Joseph A. Cook, PhD Curator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "3aad99b4ad03a7fe",
+   "person_key": "christopher-witt",
+   "role": "scientist",
+   "title": "Curator, Division of Birds",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "http://www.msb.unm.edu/contact-us/index.html",
+   "evidence": "Division of Birds Name Title Email Phone Christopher C. Witt, PhD Curator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "3aad99b4ad03a7fe",
+   "person_key": "joanne-kuestner",
+   "role": "manager",
+   "title": "Museum Administrator",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "http://www.msb.unm.edu/contact-us/index.html",
+   "evidence": "Joanne Kuestner Museum Administrator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "3836c01b23513f95",
+   "person_key": "michael-rocca",
+   "role": "director",
+   "title": "Director, Master of Public Policy Program; Professor of Political Science",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://polisci.unm.edu/people/faculty/profile/michael-s.-rocca.html",
+   "evidence": "Michael S. Rocca Professor Director, Master of Public Policy Program",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "3836c01b23513f95",
+   "person_key": "melissa-binder",
+   "role": "former-director",
+   "title": "Director of MPP (as of August 2020 handbook); Associate Professor of Economics",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://mpp.unm.edu/current-students/2020-2021-mpp-handbook-updated.pdf",
+   "evidence": "Dr. Melissa Binder Associate Professor of Economics, Director of MPP",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "3836c01b23513f95",
+   "person_key": "carol-anda",
+   "role": "coordinator",
+   "title": "MPP Unit Administrator (MPP Graduate Coordinator)",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://mpp.unm.edu/current-students/2026-mpp-handbook.pdf",
+   "evidence": "Carol Anda MPP Unit Administrator",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "440242ab387a8692",
+   "person_key": "heather-himmelberger",
+   "role": "director",
+   "title": "Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2013,
+   "end_year": null,
+   "source_url": "https://swefc.unm.edu/home/about-us/staff/heather-himmelberger-p-e/",
+   "evidence": "became Director of the Southwest Environmental Finance Center in 2013",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "440242ab387a8692",
+   "person_key": "matt-ziegler",
+   "role": "manager",
+   "title": "Tribal Drinking Water Program Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://swefc.unm.edu/home/about-us/staff/",
+   "evidence": "Matt Ziegler Tribal Drinking Water Program Director",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "440242ab387a8692",
+   "person_key": "dawn-nall",
+   "role": "manager",
+   "title": "Project Director",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://swefc.unm.edu/home/about-us/staff/",
+   "evidence": "Dawn Nall Project Director",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "440242ab387a8692",
+   "person_key": "hayley-hajic",
+   "role": "manager",
+   "title": "Project Director",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://swefc.unm.edu/home/about-us/staff/",
+   "evidence": "Hayley Hajic Project Director",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "45f7cd7960086931",
+   "person_key": "andreas-hernandez",
+   "role": "director",
+   "title": "W. K. Kellogg Chair / Director of Sustainability Studies Program",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://sust.unm.edu/our-community/people/andreas-hernandez.html",
+   "evidence": "Andreas Hernandez W. K. Kellogg Chair/ Director of Sustainability Studies Program",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "45f7cd7960086931",
+   "person_key": "jessica-rowland",
+   "role": "associate-director",
+   "title": "Associate Director, Sustainability Studies Program",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://sust.unm.edu/our-community/people/index.html",
+   "evidence": "Jessica Rowland Faculty Associate Director, Sustainability Studies Program",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "45f7cd7960086931",
+   "person_key": "melinda-morgan",
+   "role": "faculty",
+   "title": "Professor of Geography and Environmental Studies",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://sust.unm.edu/our-community/people/index.html",
+   "evidence": "Melinda Morgan Faculty Professor of Geography and Environmental Studies",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "45f7cd7960086931",
+   "person_key": "marygold-walsh-dilley",
+   "role": "faculty",
+   "title": "Associate Professor, Geography and Environmental Studies",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://sust.unm.edu/our-community/people/index.html",
+   "evidence": "Marygold Walsh-Dilley Faculty Associate Professor, Geography and Environmental Studies",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "45f7cd7960086931",
+   "person_key": "benjamin-warner",
+   "role": "faculty",
+   "title": "Assistant Professor, Geography & Environmental Studies",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://sust.unm.edu/our-community/people/index.html",
+   "evidence": "Benjamin Warner Faculty Assistant Professor , Geography & Environmental Studies",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "c60b7b86dd2bc6ae",
+   "person_key": "adrian-oglesby",
+   "role": "director",
+   "title": "Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2014,
+   "end_year": null,
+   "source_url": "https://uttoncenter.unm.edu/utton/staff.html",
+   "evidence": "Adrian Oglesby began his tenure as the Director of Utton Center in 2014.",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "c60b7b86dd2bc6ae",
+   "person_key": "stephanie-russo-baca",
+   "role": "manager",
+   "title": "Staff Attorney; directs the Joe M. Stell Ombudsman Program",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": 2018,
+   "end_year": null,
+   "source_url": "https://uttoncenter.unm.edu/utton/staff.html",
+   "evidence": "Stephanie Russo Baca, Staff Attorney",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "c60b7b86dd2bc6ae",
+   "person_key": "john-fleck",
+   "role": "faculty",
+   "title": "Writer in Residence",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2021,
+   "end_year": null,
+   "source_url": "https://uttoncenter.unm.edu/utton/staff.html",
+   "evidence": "John Fleck, Writer in Residence John Fleck joined the Utton Center in fall 2021.",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "c60b7b86dd2bc6ae",
+   "person_key": "rin-tara",
+   "role": "technical-staff",
+   "title": "Staff Attorney and Water Policy and Governance Analyst",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": 2023,
+   "end_year": null,
+   "source_url": "https://uttoncenter.unm.edu/utton/staff.html",
+   "evidence": "Rin Tara, Staff Attorney and Water Policy and Governance Analyst",
+   "confidence": "high"
+  }
+ ],
+ "verifications": []
+}

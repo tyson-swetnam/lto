@@ -1,0 +1,303 @@
+{
+ "batch_id": "R-PEOPLE2-PROTECTED-AREAS-02",
+ "retrieved_at": "2026-10-22",
+ "verified_by": "adversarial-verifier 2026-10-22",
+ "facilities": [
+  {
+   "facility_id": "694f72e231a5b4d9",
+   "pages_fetched": [
+    {
+     "url": "https://www.fs.usda.gov/recarea/texas/recarea/?recid=30041",
+     "status": 200
+    },
+    {
+     "url": "https://www.fs.usda.gov/r08/texas",
+     "status": 200
+    },
+    {
+     "url": "https://www.fs.usda.gov/r08/texas/about-area",
+     "status": 200
+    },
+    {
+     "url": "https://www.fs.usda.gov/r08/texas/contact-us",
+     "status": 200
+    },
+    {
+     "url": "https://www.fs.usda.gov/r08/texas/about-area/contact",
+     "status": 404
+    },
+    {
+     "url": "https://www.fs.usda.gov/r08/texas/about-area/leadership",
+     "status": 404
+    },
+    {
+     "url": "https://www.fs.usda.gov/sites/nfs/files/r08/texas/publication/National%20Forests%20and%20Grasslands%20Fingertip%20Facts_03262025.docx",
+     "status": 200
+    },
+    {
+     "url": "https://www.fs.usda.gov/es/node/761926562",
+     "status": 200
+    }
+   ],
+   "notes": "Administered with Caddo National Grassland as one ranger district (Caddo/LBJ National Grasslands, office in Decatur TX) of the National Forests and Grasslands in Texas. The current FS site (r08/texas) has no staff directory; the March 2025 Fingertip Facts lists the Caddo/LBJ ranger line without a name. District ranger Jeff Stoney and team lead Greg Deimel are named in a USDA Forest Service story dated June 17, 2024 (current as of that date; medium confidence). Existing row 'Bob Wells' (recall, no source) appears on no fetched FS page. Verifier 2026-10-22: re-fetched the June 17, 2024 story (200) and confirmed both names and titles; a search found no newer named holder. is_current kept true, but confidence lowered to low because the only source is about 28 months old."
+  },
+  {
+   "facility_id": "02a62062148246a9",
+   "pages_fetched": [
+    {
+     "url": "https://oceanservice.noaa.gov/sentinelsites/",
+     "status": 202
+    },
+    {
+     "url": "https://oceanservice.noaa.gov/sentinelsites/northcarolina/",
+     "status": 202
+    },
+    {
+     "url": "https://ncseagrant.ncsu.edu/dorton-named-coordinator-for-nc-sentinel-site-cooperative/",
+     "status": 200
+    },
+    {
+     "url": "https://ncseagrant.ncsu.edu/spiegler-is-new-n-c-sentinel-site-cooperative-coordinator-and-sea-grant-educator/",
+     "status": 200
+    },
+    {
+     "url": "https://ncseagrant.ncsu.edu/nc-waterways-noaas-sentinel-site-program-watershed-research-featured-in-coastwatch/",
+     "status": 200
+    },
+    {
+     "url": "https://ncseagrant.ncsu.edu/wp-content/uploads/2021/01/SSQ-Volume-8-Issue-2-Nov-2020.pdf",
+     "status": 200
+    },
+    {
+     "url": "https://ncseagrant.ncsu.edu/wp-content/uploads/2021/10/SSQ-Volume-9-Issue-1-Oct-2021.pdf",
+     "status": 200
+    },
+    {
+     "url": "https://ncseagrant.ncsu.edu/people/sarah-spiegler/",
+     "status": 200
+    },
+    {
+     "url": "https://ncseagrant.ncsu.edu/people/john-fear/",
+     "status": 200
+    },
+    {
+     "url": "https://ncseagrant.ncsu.edu/about/our-team/",
+     "status": 200
+    },
+    {
+     "url": "https://ncseagrant.ncsu.edu/people/jennifer-dorton/",
+     "status": 404
+    },
+    {
+     "url": "https://www.deq.nc.gov/about/divisions/coastal-management/nc-coastal-reserve",
+     "status": 200
+    }
+   ],
+   "notes": "The N.C. Sentinel Site Cooperative (NCSSC) no longer has its own leadership: the October 2021 final quarterly newsletter says it was officially transitioning to become part of the N.C. Sea Grant extension program, and NOAA's sentinelsites URLs now redirect to the Sea Grant Resilience/RCE page. All NCSSC roles below are therefore historical (is_current=false). The last named coordinator-role holder, Cayla Cothron (climate resilience extension associate, 2021), is not on the current NC Sea Grant team page. Closest current contacts are NC Sea Grant staff (Sarah Spiegler, coastal resilience specialist; John Fear, deputy director), recorded via their past NCSSC roles. Verifier 2026-10-22: re-fetched the 2014 Dorton release and the Nov 2020 and Oct 2021 NCSSC newsletters (all 200) and confirmed every evidence snippet. The Nov 2020 issue says Spiegler moved to her Sea Grant role in August 2020 and that the new extension associate would fill the NCSSC coordinator role."
+  }
+ ],
+ "people": [
+  {
+   "key": "jeff-stoney",
+   "existing_person_id": null,
+   "name": "Jeff Stoney",
+   "name_given": "Jeff",
+   "name_family": "Stoney",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "greg-deimel",
+   "existing_person_id": null,
+   "name": "Greg Deimel",
+   "name_given": "Greg",
+   "name_family": "Deimel",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "sarah-spiegler",
+   "existing_person_id": null,
+   "name": "Sarah Spiegler",
+   "name_given": "Sarah",
+   "name_family": "Spiegler",
+   "orcid": "0009-0001-2070-8490",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0009-0001-2070-8490/employments",
+   "homepage_url": "https://ncseagrant.ncsu.edu/people/sarah-spiegler/",
+   "bio": "Extension specialist for coastal resilience at North Carolina Sea Grant, stationed at NC State's CMAST in Morehead City. Helps coastal communities plan for climate and sea-level-rise impacts through facilitation, applied research and outreach, partnering with the NC Division of Coastal Management's Resilient Coastal Communities Program. Formerly coordinated the NOAA N.C. Sentinel Site Cooperative. MEM, Duke.",
+   "bio_source_url": "https://ncseagrant.ncsu.edu/people/sarah-spiegler/",
+   "research_interests": "coastal and climate-change resilience; sea level rise impacts on coastal habitats and communities; resilience planning and extension",
+   "research_interests_source_url": "https://ncseagrant.ncsu.edu/people/sarah-spiegler/"
+  },
+  {
+   "key": "john-fear",
+   "existing_person_id": null,
+   "name": "John Fear",
+   "name_given": "John",
+   "name_family": "Fear",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://ncseagrant.ncsu.edu/people/john-fear/",
+   "bio": "Serves as deputy director for the Water Resources Research Institute and for North Carolina Sea Grant, leading the research portfolios of both UNC-system programs and sharing in their overall management. He earlier served as the N.C. Coastal Reserve's NERR research coordinator and was a postdoc at UNC-Chapel Hill's Institute of Marine Sciences. PhD, UNC-Chapel Hill.",
+   "bio_source_url": "https://ncseagrant.ncsu.edu/people/john-fear/",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "jennifer-dorton",
+   "existing_person_id": null,
+   "name": "Jennifer Dorton",
+   "name_given": "Jennifer",
+   "name_family": "Dorton",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "rebecca-ellin",
+   "existing_person_id": null,
+   "name": "Rebecca Ellin",
+   "name_given": "Rebecca",
+   "name_family": "Ellin",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "cayla-cothron",
+   "existing_person_id": null,
+   "name": "Cayla Cothron",
+   "name_given": "Cayla",
+   "name_family": "Cothron",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  }
+ ],
+ "affiliations": [
+  {
+   "facility_id": "694f72e231a5b4d9",
+   "person_key": "jeff-stoney",
+   "role": "manager",
+   "title": "District Ranger, Caddo and LBJ National Grasslands (USDA Forest Service)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.fs.usda.gov/es/node/761926562",
+   "evidence": "explains Jeff Stoney, district ranger for the Caddo and LBJ National Grasslands.",
+   "confidence": "low"
+  },
+  {
+   "facility_id": "694f72e231a5b4d9",
+   "person_key": "greg-deimel",
+   "role": "leadership-team",
+   "title": "Natural Resources and Planning Team Lead, Caddo and LBJ National Grasslands",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.fs.usda.gov/es/node/761926562",
+   "evidence": "said Greg Deimel, natural resources and planning team lead for the Caddo and LBJ National Grasslands.",
+   "confidence": "low"
+  },
+  {
+   "facility_id": "02a62062148246a9",
+   "person_key": "sarah-spiegler",
+   "role": "coordinator",
+   "title": "Coordinator, N.C. Sentinel Site Cooperative",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": 2018,
+   "end_year": 2020,
+   "source_url": "https://ncseagrant.ncsu.edu/wp-content/uploads/2021/01/SSQ-Volume-8-Issue-2-Nov-2020.pdf",
+   "evidence": "Sarah Spiegler, the coordinator of the N.C. Sentinel Site Cooperative since 2018, moved into a new position",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "02a62062148246a9",
+   "person_key": "cayla-cothron",
+   "role": "coordinator",
+   "title": "Climate Resilience Extension Associate, N.C. Sea Grant (NCSSC coordinator role during transition)",
+   "is_key_personnel": false,
+   "is_current": false,
+   "start_year": 2021,
+   "end_year": null,
+   "source_url": "https://ncseagrant.ncsu.edu/wp-content/uploads/2021/10/SSQ-Volume-9-Issue-1-Oct-2021.pdf",
+   "evidence": "N.C. Sea Grant welcomed Cayla Cothron as its new climate resilience extension associate.",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "02a62062148246a9",
+   "person_key": "jennifer-dorton",
+   "role": "coordinator",
+   "title": "Coordinator, N.C. Sentinel Site Cooperative",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": 2014,
+   "end_year": null,
+   "source_url": "https://ncseagrant.ncsu.edu/dorton-named-coordinator-for-nc-sentinel-site-cooperative/",
+   "evidence": "The North Carolina Sentinel Site Cooperative welcomes Jennifer Dorton as the new coordinator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "02a62062148246a9",
+   "person_key": "rebecca-ellin",
+   "role": "leadership-team",
+   "title": "Chair, N.C. Sentinel Site Cooperative (as of 2014)",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ncseagrant.ncsu.edu/dorton-named-coordinator-for-nc-sentinel-site-cooperative/",
+   "evidence": "notes Rebecca Ellin, chair of the NCSSC and manager of the N.C. Coastal Reserve.",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "02a62062148246a9",
+   "person_key": "john-fear",
+   "role": "leadership-team",
+   "title": "Member, NCSSC core management team (as of 2014); N.C. Sea Grant deputy director",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ncseagrant.ncsu.edu/dorton-named-coordinator-for-nc-sentinel-site-cooperative/",
+   "evidence": "notes John Fear, North Carolina Sea Grant deputy director and a member of the NCSSC core management team.",
+   "confidence": "medium"
+  }
+ ],
+ "verifications": [
+  {
+   "facility_id": "694f72e231a5b4d9",
+   "person_id": "3da3ce9c04654670",
+   "existing_role": "land-manager",
+   "status": "not-found",
+   "current_holder_key": null,
+   "source_url": "https://www.fs.usda.gov/es/node/761926562",
+   "evidence": null
+  }
+ ]
+}

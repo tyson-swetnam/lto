@@ -1,0 +1,628 @@
+{
+ "batch_id": "R-PEOPLE2-FLUX-01",
+ "retrieved_at": "2026-10-22",
+ "verified_by": "adversarial-verifier 2026-10-22",
+ "facilities": [
+  {
+   "facility_id": "9fbc07f2b4cc4440",
+   "pages_fetched": [
+    {
+     "url": "https://ameriflux.lbl.gov/sites/siteinfo/US-Me2",
+     "status": 200
+    },
+    {
+     "url": "https://terraweb.forestry.oregonstate.edu/metolius-mature-pine-ameriflux-site-us-me2",
+     "status": 200
+    },
+    {
+     "url": "https://terraweb.forestry.oregonstate.edu/people",
+     "status": 200
+    },
+    {
+     "url": "https://terraweb.forestry.oregonstate.edu/",
+     "status": 200
+    },
+    {
+     "url": "https://terraweb.forestry.oregonstate.edu/beverly-law",
+     "status": 200
+    },
+    {
+     "url": "https://directory.forestry.oregonstate.edu/people/still-chris",
+     "status": 200
+    },
+    {
+     "url": "https://directory.forestry.oregonstate.edu/people/hanson-chad",
+     "status": 200
+    },
+    {
+     "url": "https://directory.forestry.oregonstate.edu/people/irving-alex",
+     "status": 200
+    }
+   ],
+   "notes": "AmeriFlux tower team lists two PIs (Chad Hanson, Chris Still) and a technician (Alex Irving), all Oregon State University. Site is run by OSU's TERRA-PNW group, whose home page names Beverly E. Law as Director; Law (now Professor Emeritus) is a co-author on the current AmeriFlux BASE data citation. The TERRA site page says the site was established in 2001 but names no founder, so no founding-PI row was written. Verifier: Law's row re-sourced to the US-Me2 data citation (the TERRA home page is about the lab, not the site) and set is_current=false as emeritus."
+  },
+  {
+   "facility_id": "37d40b3fb9fd1ed0",
+   "pages_fetched": [
+    {
+     "url": "https://ameriflux.lbl.gov/sites/siteinfo/US-Atq",
+     "status": 200
+    },
+    {
+     "url": "https://gcrg.sdsu.edu/",
+     "status": 200
+    },
+    {
+     "url": "https://gcrg.sdsu.edu/about/director/",
+     "status": 200
+    },
+    {
+     "url": "https://gcrg.sdsu.edu/about/gcrg-team/donatella-zona/",
+     "status": 200
+    },
+    {
+     "url": "https://gcrg.sdsu.edu/about/gcrg-team/jessica-plein/",
+     "status": 200
+    },
+    {
+     "url": "https://sciences.sdsu.edu/people/donatella-zona",
+     "status": 200
+    },
+    {
+     "url": "https://www2.gwu.edu/~calm/data/north.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www2.gwu.edu/~calm/data/webforms/u3_f.htm",
+     "status": 200
+    },
+    {
+     "url": "https://geography.columbian.gwu.edu/node/86",
+     "status": 200
+    }
+   ],
+   "notes": "Two programmes share this facility. AmeriFlux US-Atq (data 1999 to present) lists PIs Donatella Zona and Walt Oechel of SDSU's Global Change Research Group (GCRG); Oechel is GCRG Director. The CALM site U3 (Atqasuk) metadata form names N. I. Shiklomanov (GWU) as responsible for data submission; that form was last modified in 2012, hence medium confidence. No LTREB-specific page was found. Verifier: dropped Jessica Plein (GCRG lab manager page does not mention Atqasuk); Shiklomanov's CALM row downgraded to low (form Last-Modified 2012-11-01). Shiklomanov's profile URL node/86 now redirects to /nikolay-shiklomanov."
+  },
+  {
+   "facility_id": "e3c3a9abcc148e9a",
+   "pages_fetched": [
+    {
+     "url": "https://www.uaf.edu/water/projects/imnavait/",
+     "status": 200
+    },
+    {
+     "url": "https://ine.uaf.edu/werc/imnavait",
+     "status": 200
+    },
+    {
+     "url": "https://ine.uaf.edu/werc/projects/imnavait/",
+     "status": 200
+    },
+    {
+     "url": "https://ine.uaf.edu/werc/projects/NorthSlope/imnavait/imnavait.html",
+     "status": 200
+    },
+    {
+     "url": "https://ine.uaf.edu/werc/people/faculty/svetlana-stuefer",
+     "status": 200
+    },
+    {
+     "url": "https://ameriflux.lbl.gov/sites/siteinfo/US-ICh",
+     "status": 200
+    },
+    {
+     "url": "https://ameriflux.lbl.gov/sites/siteinfo/US-ICs",
+     "status": 200
+    },
+    {
+     "url": "https://ameriflux.lbl.gov/sites/siteinfo/US-ICt",
+     "status": 200
+    },
+    {
+     "url": "https://www.uaf.edu/experts/eugenie-euskirchen.php",
+     "status": 200
+    },
+    {
+     "url": "https://www.uaf.edu/experts/sydonia-donie-bret-harte.php",
+     "status": 200
+    },
+    {
+     "url": "https://arc-lter.ecosystems.mbl.edu/colin-edgar",
+     "status": 0
+    }
+   ],
+   "notes": "The facility URL (uaf.edu/water/projects/imnavait/) now redirects to the generic WERC home page (ine.uaf.edu/werc/). Update the URL to https://ine.uaf.edu/werc/imnavait, the current WERC Imnavait hydrology page. On that page Svetlana Stuefer is the contact, and the data citation is Stuefer and Youcha; NSF OPP 1936752 (2020-2025) funds the work. A legacy WERC page names Douglas L. Kane as the earlier contact, for monitoring since 1985. The three AmeriFlux Imnavait towers (US-ICh, US-ICs, US-ICt) all list PIs Eugenie Euskirchen and Syndonia Bret-Harte and flux contact Colin Edgar (UAF). Edgar's ARC-LTER profile did not respond, so he has no bio. Verifier: Stuefer's role changed lead-PI -> scientist (page names her as contact and data author, not PI); AmeriFlux rows re-sourced to US-ICt, the tussock tundra tower matching this facility."
+  },
+  {
+   "facility_id": "cf95e8f78a8958e0",
+   "pages_fetched": [
+    {
+     "url": "https://ameriflux.lbl.gov/sites/siteinfo/US-Var",
+     "status": 200
+    },
+    {
+     "url": "https://ourenvironment.berkeley.edu/people/dennis-baldocchi",
+     "status": 200
+    },
+    {
+     "url": "http://nature.berkeley.edu/biometlab/sites.php?tab=US-Var",
+     "status": 404
+    },
+    {
+     "url": "https://nature.berkeley.edu/biometlab/",
+     "status": 404
+    }
+   ],
+   "notes": "AmeriFlux tower team: PI Dennis Baldocchi, ancillary-data contact Joe Verfaillie, technician Daphne Szutu (UC Berkeley). Baldocchi's ESPM profile says he set up the Berkeley semi-arid flux sites around 2000/2001, including an annual grassland near Ione, CA (Vaira Ranch is 'Vaira Ranch- Ione'). This supports the existing founding-PI row, and he is still the listed PI. The existing homepage_url (nature.berkeley.edu/biometlab/) and the site URL on the AmeriFlux page both return 404 today. Russell L. Scott (USDA-ARS) does not appear on any US-Var page fetched. Verifier: founding-PI verification re-sourced to the ESPM profile, which is the page that supports the founding claim; the AmeriFlux page supports only current PI."
+  }
+ ],
+ "people": [
+  {
+   "key": "chad-hanson-osu",
+   "existing_person_id": null,
+   "name": "Chad Hanson",
+   "name_given": "Chad",
+   "name_family": "Hanson",
+   "orcid": "0000-0003-2144-6258",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0003-2144-6258/employments",
+   "homepage_url": "https://directory.forestry.oregonstate.edu/people/hanson-chad",
+   "bio": "Data Systems Specialist in Forest Ecosystems & Society at Oregon State University's College of Forestry. His directory profile describes technician work for the AmeriFlux network's QA/QC group, which audits site data quality with an independent portable eddy covariance system.",
+   "bio_source_url": "https://directory.forestry.oregonstate.edu/people/hanson-chad",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "chris-still-osu",
+   "existing_person_id": null,
+   "name": "Christopher Still",
+   "name_given": "Christopher",
+   "name_family": "Still",
+   "orcid": "0000-0002-8295-4494",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-8295-4494/employments",
+   "homepage_url": "https://directory.forestry.oregonstate.edu/people/still-chris",
+   "bio": "Professor in Forest Ecosystems & Society at Oregon State University (Ph.D., Stanford). His group studies forest responses and feedbacks to climate change and how the carbon and water cycles are coupled across scales. Its tools include thermal imaging, microclimate and physiological sensors, and process models. He also works on the biogeography of C4 grasses.",
+   "bio_source_url": "https://directory.forestry.oregonstate.edu/people/still-chris",
+   "research_interests": "biogeography; ecophysiology; ecosystem ecology; forest-climate feedbacks; carbon-water cycle linkages; thermal imaging; C4 grasses",
+   "research_interests_source_url": "https://directory.forestry.oregonstate.edu/people/still-chris"
+  },
+  {
+   "key": "alex-irving-osu",
+   "existing_person_id": null,
+   "name": "Alex Irving",
+   "name_given": "Alex",
+   "name_family": "Irving",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://directory.forestry.oregonstate.edu/people/irving-alex",
+   "bio": "Faculty Research Assistant in Forest Ecosystems & Society at Oregon State University's College of Forestry.",
+   "bio_source_url": "https://directory.forestry.oregonstate.edu/people/irving-alex",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "beverly-law-osu",
+   "existing_person_id": null,
+   "name": "Beverly E. Law",
+   "name_given": "Beverly",
+   "name_family": "Law",
+   "orcid": "0000-0002-1605-1203",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-1605-1203/employments",
+   "homepage_url": "https://terraweb.forestry.oregonstate.edu/beverly-law",
+   "bio": "Professor Emeritus of Global Change Biology and Terrestrial Systems Science at Oregon State University. She studies how climate, fire and forest management alter ecosystem carbon and water cycling. She chaired the AmeriFlux science effort from 2000 to 2011 and is an AGU Fellow.",
+   "bio_source_url": "https://terraweb.forestry.oregonstate.edu/beverly-law",
+   "research_interests": "ecosystem carbon and water cycling; climate and disturbance effects; eddy covariance; canopy structure remote sensing; ecosystem process modeling",
+   "research_interests_source_url": "https://terraweb.forestry.oregonstate.edu/beverly-law"
+  },
+  {
+   "key": "donatella-zona-sdsu",
+   "existing_person_id": null,
+   "name": "Donatella Zona",
+   "name_given": "Donatella",
+   "name_family": "Zona",
+   "orcid": "0000-0002-0003-4839",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-0003-4839/employments",
+   "homepage_url": "https://sciences.sdsu.edu/people/donatella-zona",
+   "bio": "Professor of Biology at San Diego State University and PI in the Global Change Research Group. She studies how climate change affects Arctic tundra function and greenhouse-gas exchange, especially methane and other non-CO2 fluxes, and how tundra ecosystems adjust to or avoid environmental stress.",
+   "bio_source_url": "https://gcrg.sdsu.edu/about/gcrg-team/donatella-zona/",
+   "research_interests": "climate change; greenhouse gas emissions; stress ecology; remote sensing; Arctic ecology; methane emissions",
+   "research_interests_source_url": "https://sciences.sdsu.edu/people/donatella-zona"
+  },
+  {
+   "key": "walter-oechel-sdsu",
+   "existing_person_id": null,
+   "name": "Walter Oechel",
+   "name_given": "Walter",
+   "name_family": "Oechel",
+   "orcid": "0000-0002-3504-026X",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-3504-026X/employments",
+   "homepage_url": "https://gcrg.sdsu.edu/about/director/",
+   "bio": "Distinguished Professor of Biology at San Diego State University and director of its Global Change Research Group. He studies how terrestrial, atmospheric and marine systems interact under global change, mainly in the Arctic, the Pacific Basin and semi-arid ecosystems. His methods include eddy covariance towers, a research aircraft, remote sensing and modeling.",
+   "bio_source_url": "https://gcrg.sdsu.edu/about/director/",
+   "research_interests": "global change; Arctic carbon fluxes; eddy covariance; airborne flux measurement; remote sensing; ecosystem modeling",
+   "research_interests_source_url": "https://gcrg.sdsu.edu/about/director/"
+  },
+  {
+   "key": "nikolay-shiklomanov-gwu",
+   "existing_person_id": null,
+   "name": "Nikolay Shiklomanov",
+   "name_given": "Nikolay",
+   "name_family": "Shiklomanov",
+   "orcid": "0000-0002-8609-0240",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-8609-0240/employments",
+   "homepage_url": "https://geography.columbian.gwu.edu/nikolay-shiklomanov",
+   "bio": "Professor of Geography at George Washington University (Ph.D. in climatology, University of Delaware). He studies permafrost: long-term observations at high northern latitudes, permafrost processes, and effects on infrastructure and Arctic communities. Since the early 1990s he has done field campaigns across the Arctic of both North America and Eurasia.",
+   "bio_source_url": "https://geography.columbian.gwu.edu/nikolay-shiklomanov",
+   "research_interests": "permafrost; active-layer monitoring; Arctic climate change; permafrost and infrastructure; socioeconomic impacts of Arctic change",
+   "research_interests_source_url": "https://geography.columbian.gwu.edu/nikolay-shiklomanov"
+  },
+  {
+   "key": "eugenie-euskirchen-uaf",
+   "existing_person_id": null,
+   "name": "Eugénie Euskirchen",
+   "name_given": "Eugénie",
+   "name_family": "Euskirchen",
+   "orcid": "0000-0002-0848-4295",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-0848-4295/employments",
+   "homepage_url": "https://www.uaf.edu/experts/eugenie-euskirchen.php",
+   "bio": "Professor at the University of Alaska Fairbanks, in the Institute of Arctic Biology and the College of Natural Science and Mathematics. She studies how climate change affects arctic and boreal terrestrial ecosystems and how those changes feed back to climate, combining field work with ecosystem modeling.",
+   "bio_source_url": "https://www.uaf.edu/experts/eugenie-euskirchen.php",
+   "research_interests": "Arctic terrestrial ecology; ecosystem modeling; climate feedbacks",
+   "research_interests_source_url": "https://www.uaf.edu/experts/eugenie-euskirchen.php"
+  },
+  {
+   "key": "syndonia-bret-harte-uaf",
+   "existing_person_id": null,
+   "name": "Syndonia Bret-Harte",
+   "name_given": "Syndonia",
+   "name_family": "Bret-Harte",
+   "orcid": "0000-0001-5151-3947",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0001-5151-3947/employments",
+   "homepage_url": "https://www.uaf.edu/experts/sydonia-donie-bret-harte.php",
+   "bio": "Professor at the University of Alaska Fairbanks, affiliated with its Institute of Arctic Biology and its biology and wildlife department. She serves as PI and science director of Toolik Field Station. A plant community and ecosystem ecologist, she studies how climate change alters arctic plant composition and nutrient cycling.",
+   "bio_source_url": "https://www.uaf.edu/experts/sydonia-donie-bret-harte.php",
+   "research_interests": "arctic plant community ecology; ecosystem ecology; climate change effects on vegetation; nutrient cycling",
+   "research_interests_source_url": "https://www.uaf.edu/experts/sydonia-donie-bret-harte.php"
+  },
+  {
+   "key": "colin-edgar-uaf",
+   "existing_person_id": null,
+   "name": "Colin Edgar",
+   "name_given": "Colin",
+   "name_family": "Edgar",
+   "orcid": "0000-0002-7026-8358",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-7026-8358/employments",
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "svetlana-stuefer-uaf",
+   "existing_person_id": null,
+   "name": "Svetlana Stuefer",
+   "name_given": "Svetlana",
+   "name_family": "Stuefer",
+   "orcid": "0000-0003-0740-8335",
+   "orcid_source_url": "https://ine.uaf.edu/werc/people/faculty/svetlana-stuefer",
+   "homepage_url": "https://ine.uaf.edu/werc/people/faculty/svetlana-stuefer",
+   "bio": "Professor in the Department of Civil, Geological, and Environmental Engineering at the University of Alaska Fairbanks and a faculty member of its Water and Environmental Research Center (WERC).",
+   "bio_source_url": "https://ine.uaf.edu/werc/people/faculty/svetlana-stuefer",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "ek-youcha-uaf",
+   "existing_person_id": null,
+   "name": "E. K. Youcha",
+   "name_given": null,
+   "name_family": "Youcha",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "douglas-kane-uaf",
+   "existing_person_id": null,
+   "name": "Douglas L. Kane",
+   "name_given": "Douglas",
+   "name_family": "Kane",
+   "orcid": "0000-0003-3446-173X",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0003-3446-173X/employments",
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "dennis-baldocchi-ucb",
+   "existing_person_id": "314abcc43164901c",
+   "name": "Dennis D. Baldocchi",
+   "name_given": "Dennis",
+   "name_family": "Baldocchi",
+   "orcid": "0000-0003-3496-4919",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0003-3496-4919/employments",
+   "homepage_url": "https://ourenvironment.berkeley.edu/people/dennis-baldocchi",
+   "bio": "Distinguished Professor of Biometeorology Emeritus in UC Berkeley's ESPM department and Professor of the Graduate School. He helped pioneer eddy covariance for measuring CO2, water vapor and methane exchange. At Berkeley he set up nine long-term flux sites, among them the Ione-area grassland and oak savanna towers, and he has held roles in AmeriFlux and FLUXNET.",
+   "bio_source_url": "https://ourenvironment.berkeley.edu/people/dennis-baldocchi",
+   "research_interests": "biometeorology; climate change and ecosystems; biosphere-atmosphere interactions; agricultural meteorology; ecosystem ecology; carbon cycle; evaporation; ecohydrology",
+   "research_interests_source_url": "https://ourenvironment.berkeley.edu/people/dennis-baldocchi"
+  },
+  {
+   "key": "joe-verfaillie-ucb",
+   "existing_person_id": null,
+   "name": "Joe Verfaillie",
+   "name_given": "Joseph",
+   "name_family": "Verfaillie",
+   "orcid": "0000-0002-7009-8942",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-7009-8942/employments",
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "daphne-szutu-ucb",
+   "existing_person_id": null,
+   "name": "Daphne Szutu",
+   "name_given": "Daphne",
+   "name_family": "Szutu",
+   "orcid": "0000-0001-7698-0461",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0001-7698-0461/employments",
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  }
+ ],
+ "affiliations": [
+  {
+   "facility_id": "9fbc07f2b4cc4440",
+   "person_key": "chad-hanson-osu",
+   "role": "lead-PI",
+   "title": "AmeriFlux PI, US-Me2; Data Systems Specialist, Oregon State University",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ameriflux.lbl.gov/sites/siteinfo/US-Me2",
+   "evidence": "Tower_team: PI: Chad Hanson",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "9fbc07f2b4cc4440",
+   "person_key": "chris-still-osu",
+   "role": "lead-PI",
+   "title": "AmeriFlux PI, US-Me2; Professor, Forest Ecosystems & Society, Oregon State University",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ameriflux.lbl.gov/sites/siteinfo/US-Me2",
+   "evidence": "PI: Chris Still",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "9fbc07f2b4cc4440",
+   "person_key": "alex-irving-osu",
+   "role": "technical-staff",
+   "title": "Technician, US-Me2 tower team; Faculty Research Assistant, Oregon State University",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ameriflux.lbl.gov/sites/siteinfo/US-Me2",
+   "evidence": "Technician: Alex Irving",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "9fbc07f2b4cc4440",
+   "person_key": "beverly-law-osu",
+   "role": "emeritus",
+   "title": "Co-author, US-Me2 AmeriFlux BASE data citation; Professor Emeritus, Oregon State University",
+   "is_key_personnel": false,
+   "is_current": false,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ameriflux.lbl.gov/sites/siteinfo/US-Me2",
+   "evidence": "Citation: Chad Hanson, Chris Still, Bev Law (2026), AmeriFlux BASE US-Me2",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "37d40b3fb9fd1ed0",
+   "person_key": "donatella-zona-sdsu",
+   "role": "lead-PI",
+   "title": "AmeriFlux PI, US-Atq; Professor of Biology, San Diego State University",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ameriflux.lbl.gov/sites/siteinfo/US-Atq",
+   "evidence": "Tower_team: PI: Donatella Zona",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "37d40b3fb9fd1ed0",
+   "person_key": "walter-oechel-sdsu",
+   "role": "lead-PI",
+   "title": "AmeriFlux PI, US-Atq; Director, Global Change Research Group, San Diego State University",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ameriflux.lbl.gov/sites/siteinfo/US-Atq",
+   "evidence": "PI: Walt Oechel",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "37d40b3fb9fd1ed0",
+   "person_key": "nikolay-shiklomanov-gwu",
+   "role": "data-manager",
+   "title": "Responsible for data submission, CALM site U3 (Atqasuk); Professor of Geography, GWU",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www2.gwu.edu/~calm/data/webforms/u3_f.htm",
+   "evidence": "Responsible for data submission N. I. Shiklomanov",
+   "confidence": "low"
+  },
+  {
+   "facility_id": "e3c3a9abcc148e9a",
+   "person_key": "svetlana-stuefer-uaf",
+   "role": "scientist",
+   "title": "Contact and lead data author, WERC Imnavait Creek and Upper Kuparuk River hydrology; Professor, UAF",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ine.uaf.edu/werc/imnavait",
+   "evidence": "For questions or further information, please contact Svetlana Stuefer",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "e3c3a9abcc148e9a",
+   "person_key": "ek-youcha-uaf",
+   "role": "scientist",
+   "title": "Co-author, WERC Hydrology of Imnavait Creek and Kuparuk River dataset",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ine.uaf.edu/werc/imnavait",
+   "evidence": "Stuefer, S.L., and Youcha, E.K., 2021. Hydrology of Imnavait Creek and Kuparuk River in Alaska.",
+   "confidence": "low"
+  },
+  {
+   "facility_id": "e3c3a9abcc148e9a",
+   "person_key": "douglas-kane-uaf",
+   "role": "scientist",
+   "title": "Former project contact, WERC Imnavait Creek watershed monitoring (legacy page)",
+   "is_key_personnel": false,
+   "is_current": false,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ine.uaf.edu/werc/projects/NorthSlope/imnavait/imnavait.html",
+   "evidence": "questions or comments about this project, contact: Larry D. Hinzman ... Douglas L. Kane",
+   "confidence": "low"
+  },
+  {
+   "facility_id": "e3c3a9abcc148e9a",
+   "person_key": "eugenie-euskirchen-uaf",
+   "role": "lead-PI",
+   "title": "AmeriFlux PI, Imnavait Creek tussock tundra tower US-ICt (also US-ICh, US-ICs); Professor, UAF Institute of Arctic Biology",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ameriflux.lbl.gov/sites/siteinfo/US-ICt",
+   "evidence": "Tower_team: PI: Eugenie Euskirchen",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "e3c3a9abcc148e9a",
+   "person_key": "syndonia-bret-harte-uaf",
+   "role": "lead-PI",
+   "title": "AmeriFlux PI, Imnavait Creek tussock tundra tower US-ICt (also US-ICh, US-ICs); Professor and Science Director, Toolik Field Station, UAF",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ameriflux.lbl.gov/sites/siteinfo/US-ICt",
+   "evidence": "PI: Syndonia Bret-Harte",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "e3c3a9abcc148e9a",
+   "person_key": "colin-edgar-uaf",
+   "role": "technical-staff",
+   "title": "Flux contact, Imnavait Creek AmeriFlux towers (US-ICt, US-ICh, US-ICs); Research Professional, UAF",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ameriflux.lbl.gov/sites/siteinfo/US-ICt",
+   "evidence": "FluxContact: Colin Edgar",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "cf95e8f78a8958e0",
+   "person_key": "dennis-baldocchi-ucb",
+   "role": "lead-PI",
+   "title": "AmeriFlux PI, US-Var; Distinguished Professor of Biometeorology Emeritus, UC Berkeley",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ameriflux.lbl.gov/sites/siteinfo/US-Var",
+   "evidence": "Tower_team: PI: Dennis Baldocchi",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "cf95e8f78a8958e0",
+   "person_key": "dennis-baldocchi-ucb",
+   "role": "founding-PI",
+   "title": "Established the Berkeley semi-arid flux sites near Ione, CA (c. 2000/2001)",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": 2000,
+   "end_year": null,
+   "source_url": "https://ourenvironment.berkeley.edu/people/dennis-baldocchi",
+   "evidence": "One set of sites started circa 2000/2001 and are associated with semi-arid ecosystems",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "cf95e8f78a8958e0",
+   "person_key": "joe-verfaillie-ucb",
+   "role": "data-manager",
+   "title": "Ancillary data contact (AncContact), US-Var tower team, UC Berkeley",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ameriflux.lbl.gov/sites/siteinfo/US-Var",
+   "evidence": "AncContact: Joe Verfaillie",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "cf95e8f78a8958e0",
+   "person_key": "daphne-szutu-ucb",
+   "role": "technical-staff",
+   "title": "Technician, US-Var tower team, UC Berkeley",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ameriflux.lbl.gov/sites/siteinfo/US-Var",
+   "evidence": "Technician: Daphne Szutu",
+   "confidence": "high"
+  }
+ ],
+ "verifications": [
+  {
+   "facility_id": "cf95e8f78a8958e0",
+   "person_id": "314abcc43164901c",
+   "existing_role": "founding-PI",
+   "status": "confirmed",
+   "current_holder_key": "dennis-baldocchi-ucb",
+   "source_url": "https://ourenvironment.berkeley.edu/people/dennis-baldocchi",
+   "evidence": "One set of sites started circa 2000/2001 and are associated with semi-arid ecosystems"
+  },
+  {
+   "facility_id": "cf95e8f78a8958e0",
+   "person_id": "cbe750e7bf43e318",
+   "existing_role": "co-PI",
+   "status": "not-found",
+   "current_holder_key": null,
+   "source_url": "https://ameriflux.lbl.gov/sites/siteinfo/US-Var",
+   "evidence": "Tower_team: PI: Dennis Baldocchi"
+  }
+ ]
+}
