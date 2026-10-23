@@ -89,6 +89,7 @@ db/lake/
 # MESA publish staging, and the retired publish-time lake
 # (publish_to_mesa.py no longer builds it; ignored so old copies stay out).
 .mesa_publish/
+.mesa_publish_avus.json
 db/*.ducklake
 db/*.ducklake.wal
 db/ducklake_data/

@@ -1,0 +1,59 @@
+table,kind,generator,description
+access_modes,vocabulary,schema/vocab/access_modes.csv,"How a cloud bucket or archive can be reached: public, registered users, requester-pays and similar."
+api_endpoints,entity,scripts/load_lto_archives.py,"Documented machine calls for each data archive: path or URL, purpose, response format and an example call."
+archive_types,vocabulary,schema/vocab/archive_types.csv,"Kinds of data archive: repository, data portal, ERDDAP server, aggregator and others."
+area_coverage_matrix,derived,scripts/compute_area_metrics.py,"Facility counts per research area broken down by country and by facility type, for gap analysis."
+area_links,link,scripts/ingest.py,Which research areas each facility works in.
+authorship,link,scripts/enrich_people_openalex.py,Which catalogued person authored which publication.
+cloud_buckets,entity,scripts/load_lto_archives.py,"Public cloud storage buckets that hold an archive or facility data: provider, bucket, region and access mode."
+coauthor_candidates,registry,scripts/harvest_core_works.py,People seen as co-authors of registry members in the OpenAlex harvest who are not yet in the registry.
+coauthor_edges,registry,scripts/harvest_core_works.py,"Co-authorship between pairs of registry members, with an exemplar work and provenance for each edge."
+collaborations,derived,scripts/compute_collaborations.py,"Co-publication counts between pairs of catalogued people, with first and last year."
+data_archives,entity,scripts/load_lto_archives.py,"Data archives and portals where facility records live, including EnviroData-NM and the Arizona Water Observatory."
+data_formats,vocabulary,schema/vocab/data_formats.csv,File and service formats used by data products.
+data_licenses,vocabulary,schema/vocab/data_licenses.csv,Licences and data-use policies that apply to archives and products.
+data_products,entity,scripts/load_lto_archives.py,"Addressable datasets and map layers, each pointing at its source archive by URL, DOI or service endpoint. Holds metadata and links only."
+ecosystem_types,vocabulary,schema/vocab/ecosystem_types.csv,Ecosystem-type facet for facilities.
+facilities,entity,scripts/ingest.py; scripts/load_arid.py,"Long-term observatories, field stations, networks and institutes: one row per facility with type, location, state and record length."
+facility_archives,link,scripts/load_lto_archives.py,"Which archives hold each facility data, with the role of the archive and a per-facility entry URL."
+facility_area_funding,derived,scripts/compute_area_metrics.py,"Funding totals per facility within each research area, fiscal years 2015 to 2024."
+facility_ecosystems,link,scripts/ingest.py,Ecosystem types assigned to each facility.
+facility_life_zones,link,scripts/ingest.py,Holdridge life zones assigned to each facility.
+facility_personnel,link,scripts/load_facility_personnel.py; scripts/load_arid.py,"Roles people hold at facilities, with title, dates and the source page."
+facility_primary_groups,derived,scripts/compute_primary_groups.py,The single primary research area assigned to each facility for the knowledge map.
+facility_regions,link,scripts/populate_regions.py,Which overlay regions each facility falls inside. Currently empty.
+facility_spheres,link,scripts/ingest.py; scripts/load_arid.py,"Primary and secondary spheres (atmosphere, cryosphere, terrestrial, arid, agriculture, ocean-estuarine, freshwater) for each facility."
+facility_types,vocabulary,schema/vocab/facility_types.csv,Facility-type vocabulary.
+funder_area_funding,derived,scripts/compute_area_metrics.py,Funding totals per funder within each research area.
+funders,entity,scripts/load_lto_funding.py,Organisations that fund facilities.
+funding_events,entity,scripts/load_lto_funding.py,"Individual awards and budget lines linking a funder to a facility, with amount, fiscal year and source."
+funding_links,derived,schema/schema.sql (view over funding_events),"Flattened funder-to-facility funding rows, exported from a view for the map popups."
+life_zones,vocabulary,schema/vocab/life_zones.csv,Holdridge life-zone vocabulary.
+locations,entity,scripts/ingest.py,"Named locations of each facility (headquarters, field stations, towers, gauges) with coordinates."
+mvg_area_polygons,layout,scripts/build_mvg_layout.py,Precomputed research-area polygons for the knowledge-map layout.
+mvg_layout_metrics,layout,scripts/build_mvg_layout.py,Quality metrics for the knowledge-map layout methods.
+mvg_node_layout,layout,scripts/build_mvg_layout.py,Precomputed node positions for the knowledge-map layout.
+network_membership,link,scripts/ingest.py; scripts/load_arid.py,Which networks and programs each facility belongs to.
+networks,vocabulary,schema/vocab/networks.csv,"Networks and programs (LTER, NEON, LTAR, AmeriFlux, ARID and others)."
+people,entity,scripts/load_lto_people.py; scripts/load_arid.py,"Researchers and staff tied to facilities or projects, with ORCID and OpenAlex identifiers where verified."
+person_area_metrics,derived,scripts/compute_area_metrics.py,"Publications, citations, h-index and co-author counts per person within each research area."
+person_areas,derived,scripts/compute_lto_person_metrics.py,Research areas inherited by each person from the facilities they belong to.
+person_identity_source,registry,scripts/build_person_registry.py,Provenance for every identifier in the person registry: which source asserted it and how.
+person_primary_groups,derived,scripts/compute_primary_groups.py,The single primary research area assigned to each person for the knowledge map.
+person_registry,registry,scripts/build_person_registry.py,Unified person identities: site personnel plus the core tier of scholars from the OpenAlex harvest.
+person_validation,registry,scripts/validate_registry.py,Validation verdicts for registry identifiers. Currently empty.
+project_facilities,link,scripts/load_arid.py,"Facilities each project involves, as host, partner or site."
+project_personnel,link,scripts/load_arid.py,"Named team members of each project and their roles, as the source page words them."
+projects,entity,scripts/load_arid.py,"Projects and sub-projects listed by the ARID Institute, with extent, location precision and source page."
+provenance,entity,scripts/ingest.py; scripts/load_arid.py,"Source URL, retrieval date, confidence and agent for each facility record."
+publication_topics,entity,scripts/enrich_people_openalex.py,"OpenAlex topics, concepts and keywords attached to each publication, with scores."
+publications,entity,scripts/enrich_people_openalex.py; scripts/load_lto_publications.py,"Publications by catalogued people, with year, venue, DOI and citation count."
+region_area_links,link,scripts/populate_regions.py,Research areas associated with overlay regions. Currently empty.
+regions,entity,scripts/populate_regions.py,Overlay polygons as first-class records. Currently empty.
+registry_collaborations,registry,scripts/compute_registry_collaborations.py,Co-publication counts between pairs of person-registry members.
+registry_facilities,registry,scripts/link_registry_facilities.py,"Links from person-registry members to facilities, matched through ROR identifiers."
+research_areas,vocabulary,schema/vocab/research_areas.csv,Research-area vocabulary with parent areas.
+research_areas_active,derived,scripts/compute_primary_groups.py,"Research areas in use, with facility counts and any area each was collapsed into."
+scholar_area_assignments,layout,scripts/build_mvg_layout.py,Research area assigned to each harvested scholar for the knowledge map.
+spheres,vocabulary,schema/vocab/spheres.csv,The seven spheres used to classify facilities.
+url_health,derived,scripts/check_url_health.py,Results of the weekly URL health sweep. Currently empty.
