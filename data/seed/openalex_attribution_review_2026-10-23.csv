@@ -1,0 +1,107 @@
+person_id,name,openalex_id,verdict1,verdict2,action,evidence
+496b5c9924f3db4b,(Patricia) Danielle Shannon,A5010907844,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+fed790a5167fe6d3,Adam Schreiner-McGraw,A5080195117,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+674948ad355de80b,Adam Young,A5053830184,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+6282ec8e1b13382d,Adrian Stier,A5064787967,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+3afd97deee775519,Adrienne J. Sutton,A5014932272,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+cb25e1d7bdea0183,Albert J. Plueddemann,A5009762085,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+0c6fd51d803c8107,Alessandra Gorlier,A5081987452,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+dea2837542f2dbd8,Alex Krichels,A5065002519,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+7b3929cd1f1302cd,Alisa Coffin,A5043676681,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+efc63a8438dba2fe,Allison Snyder,A5134786765,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+425a59ea5ae3366d,Amanda C. Spivak,A5047159097,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+58bb2e883ac731c4,Amartya Saha,A5077662807,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+871bf88a69d68be1,Ana M. Aguilar-Islas,A5014193444,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+eaad23c84c29c754,Andone C. Lavery,A5054477110,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+dde1dbe623025aa0,Andrea C. Alfaro,A5054432385,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+a85889d3a0ee4349,Andrew J. Margenot,A5033548666,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+8c652689931b3bff,Andrew Schuler,A5041053996,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+0f2cd5dde79f13f5,Andrés Cibils,A5072309011,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+8bc33fcea52a3544,Anson H. Hines,A5113511249,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+d8284cdf9ccaaca7,Anthony Arendt,A5005761390,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+de112d74f236c9ae,Anthony R. Olsen,A5021366404,uncertain,correct,keep-disputed,"Identity right (OA orcid = stored); profile merges an ORNL nuclear-fuels A. R. Olsen, ~29-37 of 159 works 1948-1975 not his. Follow-up: drop pre-1972 / nuclear / coal / insect works."
+d6170b24822e7a87,Antje Boetius,A5002131026,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+cfc85f8da94497f6,Antonio Celis-Murillo,A5029464899,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+47d43fe6d8f905ef,April Bermudez,A5109655270,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+7e9779770e0b4608,Arthur J. Miller,A5090729096,uncertain,uncertain,remove,"OA orcid = stored and ORCID kept, but profile merges a UCSF orthodontist, the playwright and an SMPTE engineer (~49 of 200 works). OA id cleared; added works removed."
+be388edc0ee9661b,Aubrey K. Bunch,A5079598780,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+de717ba911e0df7e,Audrey Gamble,A5068040985,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+598a1dadc6a87c11,Becky Ball,A5021244587,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+673714ec2cc72e61,Becky Bixby,A5044433764,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+f8256f7f7c04b96c,Becky Swerida,A5046378189,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+a26e839c7d3a5d03,Benjamin Lafrance,A5053372977,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+7236f1da13813199,Benjamin Warner,A5006179506,wrong,wrong,remove,"ORCID right (UNM water governance), but OA profile is a LANL organometallic/actinide chemist: 45 of 46 works 1990-2023; BS 2001. OA id cleared; added works removed."
+576aabf3b3bf9570,Bernard R. Kuhajda,A5016004439,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+2c6a342367e85311,Bertram Boehrer,A5028931652,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+73f413a70cd41ee9,Bethany Bradley,A5011755236,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+f1cb0b2c46e0de8b,Beverly E. Law,A5064351190,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+0129639ec4598cf3,Blair Morrison,A5058859974,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+0af52c4b3699e080,Brad Markle,A5064637919,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+e749acf82390b075,Bret Schichtel,A5081067803,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+9dcc5205b159633c,Brian Dzwonkowski,A5075328931,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+707b31ac4cf525eb,Brian Wienhold,A5081825859,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+0ff0ad59a284f0a8,Brook J. Wilke,A5088711719,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+7d714ba39a05bdf7,Brooke E. Penaluna,A5077856346,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+ed554b481bba9f6c,Bruce Pfirrmann,A5041069669,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+f0182c587ae21ff4,Bryan Woodbury,A5109093970,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+22a583cf156a4578,Bryce A. Richardson,A5003044799,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+71298b0c386a02d2,Carolyn Roman,A5023147256,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+286b75d6f146a476,Carrie Laboski,A5090296028,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+202bbb8a3332595a,Catherine M. Pringle,A5015941968,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+5f8a52672738f381,Catherine R. Edwards,A5030894761,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+7004ea87d32e8eca,Chad Hanson,A5066329333,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+00635929d56cdf7c,Charles A. Stock,A5078801706,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+afd4fffc7cd17166,Charles D. Canham,A5001976802,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+58405da2e8f80a31,Charuleka Varadharajan,A5004975064,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+e045c984a2a6f712,Christa Mulder,A5003792125,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+00026e050784c815,Christel C. Kern,A5022477445,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+2b038d9a09da0acc,Christopher A. Scholin,A5081464036,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+156a86b717f0eef7,Christopher Florian,A5004470998,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+288f1a50bbfcd9da,Christopher L. Sabine,A5045793516,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+40eedc01a05ac8e4,Christopher Meinen,A5088404572,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+b97338766015313b,Christopher P. Wilmers,A5037217881,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+984db8ae22588018,Christopher Peter,A5078381141,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+1187c8979f624eec,Christopher Still,A5058803174,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+b3f2a59c89ed1e69,Claire Baffaut,A5036498571,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+c7222bbcc77a8c8e,Claire Welty,A5020556698,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+5a40a871746aa17c,Clark Alexander,A5052291224,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+3da4c7c04f891352,Colin Edgar,A5075817367,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+ed5dec7853a2d634,Connor J. Flynn,A5049350438,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+a5556c93f8f72fd3,Connor White,A5011435824,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+0eb86a3b599f336e,Cora Baird,A5001077165,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+03e094c326077dda,Cove Sturtevant,A5053588634,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+43333436d77939bb,Curtis Dell,A5081876086,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+8f5444036338460f,Dan Bahauddin,A5020748243,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+6b5037ecc7044cab,Daniel Fisher,A5076903000,wrong,wrong,remove,"ORCID and OA author are Daniel K. Fisher, USDA-ARS Stoneville MS irrigation agronomy, not NRCS Alaska Snow Survey; ORCID accepted at 0.537 ARS~NRCS. ORCID and OA id cleared; 78 works removed."
+f0657a7b1fceeb5f,Daphne Szutu,A5007106885,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+a16a8a39edfb261c,Daren Harmel,A5031090585,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+d0b05a44ba16577c,David Archer,A5045522086,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+c2c9a6521211895c,David Bosch,A5016124948,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+48620826b8e0d642,David Bushek,A5004954541,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+e02b17e5fbdd8eb7,David C. Goodrich,A5110662212,correct,,keep,OpenAlex merged old record A5019196652 into this one; same name and ORCID
+8b515170c8818ddd,David D. Turner,A5051549321,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+97dcbced951eccd3,David Durden,A5039964575,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+1614f1c205c206fa,David M. Lodge,A5077750670,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+97afc747bd02c879,David Parrish,A5003055123,uncertain,uncertain,remove,"ORCID right (VIMS eelgrass), but OA profile merges USAMRIID / Immune Tolerance Network informatics author: 11 of 22 works 1991-2008. OA id cleared; added works removed."
+c2bef6599c3abdc4,David Toledo,A5074509843,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+3d42db5e1153b9c6,David W. Clow,A5031430608,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+f4e262d16757e8d2,David W. Weller,A5017663080,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+8aefe5696aeb1545,David Y. Hollinger,A5084354688,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+b9be52a699224b0a,Debra MacKenzie,A5072175911,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+02faaf0b04ad8764,Deke Arndt,A5072548335,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+c2c2c3f470861c12,Deron Burkepile,A5041928974,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+d5fd2a740b711ec5,Diane E. Pataki,A5075365894,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+c54bdef5ba9d9fb2,Dmitry Streletskiy,A5066269383,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+1231eddda70feb0c,Donatella Zona,A5075330939,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+7dca4582530375c6,Donna N. Myers,A5082620958,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+55b9d2c7b71296db,Douglas A. Burns,A5041327742,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+ce64ac4c5bb7125f,Douglas L. Kane,A5083965618,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+3f89cc18958fef5b,Douglas P. Beard,A5012319559,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+08e65b377f946a26,Edmund Brodie,A5025628707,uncertain,correct,keep-disputed,"Identity right (OA orcid = stored, Brodie III, UVA); ~10-15 of 202 works are Edmund D. Brodie Jr.'s (USU newts, hedgehogs) plus 5 duplicate-title pairs. Follow-up: trim Jr.-only works."
+929709eda7006fc3,Edward A.G. Schuur,A5078013390,correct,,keep,Matched by stored ORCID; confirmed by first verifier
+d1c39e3d5ff9d8e3,William P. Bowman,A5050942040,wrong,,remove,"Pre-existing (not from this run); found by wipe_medicine_attributions dry run. ORCID is a Yale astronomer, OA author is W. Paul Bowman, pediatric oncologist. ORCID, OA id and 198 authorship rows cleared via wipe_misattributed_identifiers BAD_BY_ID."
+8b46cf9bb8d3d818,Michael R. Landry,A5112191115,wrong,,remove,"Never attached (excluded from the run). OA author 'M. Landry' carries stored ORCID 0009-0000-0174-1247, which is the LIGO Hanford Observatory head (pulsars, gravitational waves). ORCID replaced by verified 0000-0001-8787-2802 (Scripps profile); correct OA author is A5061728587. Pair added to BAD_BY_ID."
+a9637d30d5ba1d55,Mary Martin,A5074241907,wrong,,remove,"Never attached (excluded from the run). OA author 'Mary Catharine Martin' (libguides, Ontario primary care) carries ORCID 0000-0002-3619-4463, not her stored 0000-0003-1791-5584 (verified: Hubbard Brook profile links it; ORCID employment UNH Earth Systems Research Center). ORCID kept; openalex_id stays NULL; pair added to BAD_BY_ID."
+cf3f0b38645eab85,Jack V. Malone,A5059585762,correct,,keep,Not yet attached (excluded from the run). OA display name 'John J. Lagrosa' is his earlier name: the ORCID record (owner-entered other-name) and OA alternative names both list Jack V. Malone; ORCID employment CUERE/UMBC data manager matches the BES role. ORCID kept; safe to attach.
+0e4ecc40f1b91d40,Mark C. Serreze,A5102870908,correct,,keep,"Stored OA id is dead (404); OpenAlex merged it into A5026266151 (Mark C. Serreze, CIRES/NSIDC), whose observed_orcids include the stored 0000-0002-3699-302X alongside his duplicate 0000-0001-7670-0140. ORCID kept (CIRES profile links it). Follow-up: update openalex_id to A5026266151."
+2bc07bf089fe4b74,Kiya Riverman,A5057453725,correct,,keep,"Not yet attached (not reached by the run). Both her ORCIDs (stored 0009-0009-0544-2709 with U Portland employment, and duplicate 0000-0002-8033-3096 with glaciology works) resolve to A5057453725 Kiya L. Riverman (Oregon State / U Portland). ORCID kept; safe to attach."

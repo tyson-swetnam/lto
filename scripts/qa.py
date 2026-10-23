@@ -520,6 +520,9 @@ LEGACY_ROLES: dict[str, str] = {}
 # committed data uses; load_people_research.STATUS_MAP maps the rest).
 PEOPLE_STATUSES = ("active", "emeritus", "former", "deceased", "unknown")
 
+# Decision log of enrich_people_orcid.py and the review/wipe passes.
+ORCID_LOG = Path(__file__).resolve().parent.parent / "data" / "seed" / "orcid_resolution_log.csv"
+
 # More current holders of one leadership role at one facility than this is
 # a loader fan-in (an acronym or fuzzy match that piled one network's
 # managers onto a single facility: 26 NERR managers on Mission Aransas,
@@ -560,6 +563,23 @@ def check_people(conn, failures: list[str], warnings: list[str]) -> None:
     assert_true(not dup, f"{len(dup)} ORCID(s) held by more than one people row "
                          f"(run scripts/dedupe_people.py): "
                 + "; ".join(f"{n} {o} {ids}" for o, ids, n in dup[:5]), failures)
+
+    # An ORCID a review cleared as another person's must not come back on
+    # that person (enrich_people_orcid.py honours the log; this catches any
+    # other writer). Only cleared-wrong*: a cleared-404 record may reappear.
+    if ORCID_LOG.exists():
+        back = conn.execute(
+            """SELECT p.name, p.person_id, p.orcid, l.decision
+               FROM people p
+               JOIN read_csv(?, header=True, all_varchar=True) l
+                 ON l.person_id = p.person_id
+                AND upper(trim(l.orcid)) = upper(trim(p.orcid))
+               WHERE l.decision LIKE 'cleared-wrong%'
+               ORDER BY 1""", [str(ORCID_LOG)]).fetchall()
+        assert_true(not back, f"{len(back)} people carry an ORCID that "
+                              f"{ORCID_LOG.name} marks cleared-wrong for them: "
+                    + "; ".join(f"{n} ({pid}) {o} [{d}]" for n, pid, o, d in back[:5]),
+                    failures)
 
     bad_status = conn.execute(
         "SELECT status, COUNT(*) FROM people WHERE status IS NOT NULL "

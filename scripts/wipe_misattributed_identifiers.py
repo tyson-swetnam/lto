@@ -89,9 +89,13 @@ BAD = {
         "University of Oklahoma Health Sciences Center. The Santa Barbara "
         "Coastal LTER person is Robert J. Miller."),
     "Clark Alexander": (
-        False, True,
-        "openalex_id resolves to 'J. A. Clark' — the given name was matched "
-        "as a surname. 171 works attributed."),
+        False, False,
+        "openalex_id resolved to 'J. A. Clark' — the given name was matched "
+        "as a surname. 171 works attributed. Disarmed 2026-10-23: this entry "
+        "is keyed on the name, not the bad id, so it would wipe the correct "
+        "A5052291224 ('Clark Alexander', Skidaway Institute of Oceanography; "
+        "matched by his ORCID 0000-0002-3904-1091 and confirmed in the "
+        "2026-10-23 attribution review)."),
     "Ed Sherwood": (
         False, False,
         "openalex_id was 'Morgan Sherwood'. The stored ORCID is correct — "
@@ -178,7 +182,65 @@ BAD_BY_ID = {
     "cbe750e7bf43e318": (
         "0000-0003-2972-1525", None,
         "Russell L. Scott (USDA-ARS): the ORCID record is 'Miseon Park'."),
+    # 2026-10-23 OpenAlex attribution review (data/seed/
+    # openalex_attribution_review_2026-10-23.csv). For the first three the
+    # stored ORCID is right but the OpenAlex author carrying it has another
+    # person's works merged in; only the openalex_id is listed.
+    "7e9779770e0b4608": (
+        None, "A5090729096",
+        "Arthur J. Miller (Scripps, CCE LTER): OpenAlex A5090729096 carries "
+        "his ORCID but merges a UCSF orthodontics researcher, the playwright "
+        "and an SMPTE film engineer (~25% of 200 attached works)."),
+    "7236f1da13813199": (
+        None, "A5006179506",
+        "Benjamin P. Warner (UNM): OpenAlex A5006179506 carries his ORCID but "
+        "45 of its 46 works are a LANL organometallic/actinide chemist's "
+        "(1990-2023); he took his BS in 2001."),
+    "97afc747bd02c879": (
+        None, "A5003055123",
+        "David Parrish (CBNERR-VA / VIMS): OpenAlex A5003055123 carries his "
+        "ORCID but merges a USAMRIID / Immune Tolerance Network informatics "
+        "author (11 of 22 works, 1991-2008)."),
+    "6b5037ecc7044cab": (
+        "0000-0001-7164-731X", "A5076903000",
+        "Daniel Fisher (NRCS Alaska Snow Survey): the ORCID record and "
+        "OpenAlex author A5076903000 are Daniel K. Fisher, USDA-ARS "
+        "Stoneville MS, irrigation agronomy. The ORCID was accepted at 0.537 "
+        "by fuzzy-matching USDA ARS to USDA NRCS."),
+    # Found by the wipe_medicine_attributions.py dry run of 2026-10-23
+    # (72% of attached works medicine-tagged); predates that run.
+    "d1c39e3d5ff9d8e3": (
+        "0000-0003-4381-5245", "A5050942040",
+        "William P. Bowman (CU Boulder alpine ecologist, Niwot Ridge / Rocky "
+        "Mountain NP): the ORCID record is a Yale astronomer (Dragonfly "
+        "Telephoto Array, Helix Nebula) and OpenAlex author A5050942040 is "
+        "W. Paul Bowman, pediatric leukemia oncologist (St. Jude, Children's "
+        "Medical Center Dallas); 198 attributed works on childhood ALL."),
+    # 2026-10-23 ORCID review of the three people held out of the
+    # OpenAlex run. Neither author was ever attached; listed so a re-run
+    # cannot attach it.
+    "8b46cf9bb8d3d818": (
+        "0009-0000-0174-1247", "A5112191115",
+        "Michael R. Landry (Scripps, CCE LTER): the ORCID record is the LIGO "
+        "Hanford Observatory head (Caltech) and OpenAlex A5112191115 'M. "
+        "Landry' is his gravitational-wave author. Replaced by verified "
+        "0000-0001-8787-2802 (Scripps profile; OpenAlex A5061728587)."),
+    "a9637d30d5ba1d55": (
+        None, "A5074241907",
+        "Mary Martin (UNH ESRC, Hubbard Brook): OpenAlex A5074241907 'Mary "
+        "Catharine Martin' (libguides, Ontario primary care) carries ORCID "
+        "0000-0002-3619-4463, not her verified 0000-0003-1791-5584."),
 }
+
+
+def bad_openalex_pairs() -> set[tuple[str, str]]:
+    """(person_id, openalex_id) pairs that must never be re-attached.
+
+    enrich_people_openalex.py reads this so a re-run cannot bring back an
+    author this roster removed. Only BAD_BY_ID counts: BAD is keyed on
+    name and does not record the bad id value.
+    """
+    return {(pid, oa.upper()) for pid, (_, oa, _) in BAD_BY_ID.items() if oa}
 
 # Rows whose `orcid` column holds biography prose rather than an
 # identifier. The text is preserved by moving it into `notes` rather than
