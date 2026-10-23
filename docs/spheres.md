@@ -1,15 +1,45 @@
 # The seven spheres
 
-`lto` organises every facility under exactly one **primary sphere** and zero
-or more **secondary spheres**. The R-XREF reconciler resolves cross-sphere
-overlaps (e.g. Hubbard Brook is terrestrial-primary with atmosphere and
-freshwater secondaries; Niwot Ridge is terrestrial-primary with cryosphere
-and atmosphere secondaries).
+`lto` files facilities under a **primary sphere** and zero or more
+**secondary spheres**. Some places that several networks share appear as
+several records, one for each network's installation, and each record
+carries its own primary sphere. Hubbard Brook, for example, appears as
+Watershed 6 (freshwater-primary, terrestrial secondary) and as its NADP
+NTN deposition site (atmosphere-primary). Niwot Ridge appears as a NEON
+site (terrestrial-primary, atmosphere secondary), as an LTER cryosphere
+instrumentation record and a SNOTEL station (both cryosphere-primary),
+and as a forest flux tower (atmosphere-primary). Other shared places are
+a single record tagged with every network: Coweeta, Luquillo and
+Sevilleta each appear once.
 
 The model launched with six spheres; **Arid** was split out of Terrestrial
 in August 2026 so dryland research sites — a coherent research community
 with its own LTERs, NEON domains, and rangeland networks — stopped being
-invisible inside the largest sphere.
+invisible inside Terrestrial, the sphere with the most tagged records.
+
+As of 2026-10-23 the catalogue's 456 facilities break down like this:
+
+| Sphere | Primary | Tagged in any role |
+|---|---:|---:|
+| Aquatic — Ocean & Estuarine | 153 | 160 |
+| Terrestrial / Ecological | 112 | 287 |
+| Aquatic — Freshwater | 61 | 124 |
+| Agriculture | 59 | 66 |
+| Cryosphere | 31 | 55 |
+| Atmosphere | 23 | 99 |
+| Arid | 11 | 31 |
+
+Six facilities have no primary sphere. They are ARID Institute partner
+programmes at UNM, such as the Utton Transboundary Resources Center and
+the Southwest Environmental Finance Center, whose work is policy, finance
+and health rather than a field record (see [ARID & New Mexico](./arid.md)).
+
+By default the map colours each point by its primary sphere (the legend's
+**By primary sphere** option); points with no primary sphere are slate.
+Once the database has loaded, the **Sphere** filter matches any role, so
+choosing Arid also shows the rangeland sites that carry arid as a
+secondary sphere. Before that, the quick-loading first view matches the
+primary sphere only.
 
 ## Atmosphere
 
@@ -18,12 +48,13 @@ and trace gases.
 
 - **Anchor networks**: NOAA Global Monitoring Laboratory (GML), NADP,
   AmeriFlux, DOE ARM, CASTNET, IMPROVE, SURFRAD, TCCON, AERONET, Pandora.
-- **Landmark sites**: Mauna Loa Observatory (HI), Barrow / Utqiagvik
-  Atmospheric Baseline Observatory (AK), American Samoa Observatory,
-  ARM Southern Great Plains (OK), TCCON Park Falls (WI).
-- **Cross-sphere ties**: NADP NTN sites are co-located with terrestrial
-  LTER / EFR hosts (Hubbard Brook, H.J. Andrews, Konza). AmeriFlux flux
-  towers double as terrestrial ecosystem records.
+- **Landmark sites**: Mauna Loa Observatory (HI), Barrow Atmospheric
+  Baseline Observatory (Utqiagvik, AK), American Samoa Observatory,
+  ARM Southern Great Plains (OK), WLEF / Park Falls Tall Tower (WI).
+- **Cross-sphere ties**: NADP NTN sites are co-located with LTER / EFR
+  hosts (Hubbard Brook, H.J. Andrews, Konza), each as its own
+  atmosphere-primary record. Most AmeriFlux flux towers also carry a
+  terrestrial tag.
 
 ## Cryosphere
 
@@ -34,22 +65,32 @@ Glaciers, snow, sea-ice, and permafrost.
 - **Landmark sites**: South Cascade Glacier (WA), Wolverine Glacier (AK),
   Gulkana Glacier (AK), Sperry Glacier (MT), McMurdo Dry Valleys (AQ),
   Toolik Field Station (AK), Juneau Icefield Research Program (AK).
-- **Cross-sphere ties**: McMurdo Dry Valleys is also an LTER (terrestrial);
-  Toolik is terrestrial+freshwater+cryosphere; Niwot Ridge LTER carries
-  cryosphere instrumentation alongside its alpine-tundra ecology record.
+- **Cross-sphere ties**: McMurdo Dry Valleys is also an LTER, with
+  terrestrial and freshwater secondaries. Toolik Field Station is
+  cryosphere-primary with freshwater and terrestrial secondaries. Palmer
+  Station LTER (AQ) is cryosphere-primary with an ocean-estuarine
+  secondary. Niwot Ridge's LTER cryosphere instrumentation and SNOTEL
+  station sit alongside its terrestrial-primary NEON site record.
 
 ## Terrestrial / Ecological
 
-The largest sphere by record count: long-term ecology and forest research.
+Long-term ecology and forest research. It is second by primary sphere,
+but it is the sphere tagged on the most records once secondary roles are
+counted.
 
-- **Anchor networks**: NSF LTER (28 sites), NEON (81 sites, all included),
-  USFS Experimental Forests & Ranges (EFR — 77 per Lugo et al. 2006),
-  LTREB, NPS Inventory & Monitoring, MAB Biosphere Reserves, OBFS, UC-NRS.
-- **Landmark sites**: Hubbard Brook (NH), H.J. Andrews (OR), Coweeta (NC),
-  Luquillo (PR), Bonanza Creek (AK), Konza Prairie (KS), Cedar Creek (MN).
-- **Cross-sphere ties**: numerous EFRs are also LTERs; NEON sites overlap
-  LTAR and LTER hosts; the R-XREF agent enforces a canonical primary so
-  duplicate clusters merge to a single record on ingest.
+- **Anchor networks**: NSF LTER, NEON, USFS Experimental Forests & Ranges
+  (EFR; Lugo et al. 2006 list 77), LTREB, NPS Inventory & Monitoring, MAB
+  Biosphere Reserves, OBFS, UC-NRS. As of 2026-10-23 the catalogue holds
+  82 NEON member records and 40 records typed as experimental forests
+  or ranges (USFS sites plus USDA-ARS range and research units); the
+  USFS EFR network itself has 36 member records.
+- **Landmark sites**: Harvard Forest (MA), H.J. Andrews (OR), Coweeta
+  (NC), Luquillo (PR), Konza Prairie (KS), Cedar Creek (MN).
+- **Cross-sphere ties**: numerous EFRs are also LTERs, and NEON sites
+  overlap LTAR and LTER hosts. Some of these stay separate records, one
+  per network, so the same place can carry different primary spheres
+  (Jornada's NEON site is arid-primary, its LTAR record
+  agriculture-primary).
 
 ## Arid
 
@@ -74,30 +115,35 @@ shrublands and grasslands.
 
 Long-term cropping, rangeland, and soil-monitoring networks.
 
-- **Anchor networks**: USDA-ARS Long-Term Agroecosystem Research (LTAR —
-  18 sites, all included), ARS Rangelands, USDA Climate Hubs, NRCS SCAN,
-  Kellogg Biological Station Agricultural site, ARS long-term experiments.
+- **Anchor networks**: USDA-ARS Long-Term Agroecosystem Research (LTAR;
+  19 LTAR site records as of 2026-10-23), ARS Rangelands, USDA Climate
+  Hubs, NRCS SCAN, Kellogg Biological Station, ARS long-term experiments.
 - **Landmark sites**: Jornada Experimental Range LTAR (NM), Walnut Gulch
   LTAR (AZ), Reynolds Creek LTAR (ID), Kellogg Biological Station LTAR
   (MI), Central Plains Experimental Range LTAR (CO).
-- **Cross-sphere ties**: Most LTAR sites overlap a NEON site at the same
-  location; Jornada and Kellogg are also LTERs. Reynolds Creek carries
-  cryosphere instrumentation (mountain snowpack) and SCAN agriculture.
+- **Cross-sphere ties**: several LTAR sites share a location with a NEON
+  site (Jornada, Central Plains, Santa Rita). Jornada and Kellogg are
+  also LTERs. Reynolds Creek's USDA-ARS record carries cryosphere
+  (mountain snowpack) among its secondaries, and its SCAN station is a
+  separate agriculture-primary record.
 
 ## Aquatic — Ocean & Estuarine
 
 Coastal, ocean, and estuarine networks (largely vendored from cod-kmap and
-culled to U.S. + territory + U.S.-funded Antarctic stations).
+culled to U.S. + territory + U.S.-funded Antarctic stations). By primary
+sphere this is the largest sphere.
 
-- **Anchor networks**: IOOS Regional Associations (11), OOI, NERRS (29),
+- **Anchor networks**: IOOS Regional Associations (10 of the 11 as of
+  2026-10-23; GLOS is not yet catalogued), OOI, NERRS (29 reserves),
   National Marine Sanctuaries, EPA NEP, MarineGEO Smithsonian, NOAA NMFS
-  centres, NPS Coastal, NAML labs.
+  science centres, NAML labs.
 - **Landmark sites**: Chesapeake Bay (MD/VA), Apalachicola NERR (FL),
   Padilla Bay NERR (WA), Gray's Reef NMS (GA), Stellwagen Bank NMS (MA),
-  Palmer Station LTER (AQ).
-- **Cross-sphere ties**: Palmer is cryosphere-secondary; SERC is on the
-  ocean / terrestrial / NEON boundary; Santa Barbara Coastal LTER is the
-  rare terrestrial-LTER + ocean-LTER joint record.
+  Santa Barbara Coastal LTER (CA).
+- **Cross-sphere ties**: every NERR and National Marine Sanctuary record
+  carries a terrestrial secondary. SERC's GCREW
+  MarineGEO site sits on the ocean / terrestrial boundary. Palmer Station
+  LTER is filed under cryosphere, with ocean-estuarine as its secondary.
 
 ## Aquatic — Freshwater
 
@@ -106,10 +152,12 @@ Rivers, lakes, watersheds, and groundwater.
 - **Anchor networks**: USGS NWIS, USGS WEBB, USGS Hydrologic Benchmark
   Network (HBN), GLEON (US sites), North Temperate Lakes LTER, Hubbard
   Brook hydrology, EPA NARS (NLA / NRSA / NWCA / NCCA).
-- **Landmark sites**: Mirror Lake (NH), Lake Mendota (WI), Crater Lake
-  (OR), Toolik Lake (AK), Sleepers River Research Watershed (VT),
-  Hubbard Brook Watershed 6 (NH).
-- **Cross-sphere ties**: NTL-LTER and Hubbard Brook span freshwater +
-  terrestrial + atmosphere; NOAA GLERL spans freshwater + ocean-estuarine
-  by Great-Lakes convention; Sleepers River pairs freshwater with
-  cryosphere snowmelt.
+- **Landmark sites**: Mirror Lake (NH), Hubbard Brook Watershed 6 (NH),
+  Sleepers River Research Watershed (VT), Loch Vale Watershed (CO),
+  Trout Lake Station (WI), Toolik Lake (AK).
+- **Cross-sphere ties**: Hubbard Brook Watershed 6 is freshwater-primary
+  with a terrestrial secondary, and its deposition record sits in
+  Atmosphere. Sleepers River and Loch Vale pair freshwater with
+  cryosphere snowmelt. NOAA GLERL is filed under freshwater only. North
+  Temperate Lakes LTER is currently mis-filed under ocean-estuarine in
+  the data; it belongs here.
