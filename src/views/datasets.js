@@ -275,7 +275,11 @@ async function fetchArchives() {
 
 // Access badges: the archive-level API root first (colored by api_type),
 // then each documented endpoint call, then cloud buckets. Every badge is
-// a link plus a ⧉ copy button — the copy is the point.
+// Inline SVG rather than a glyph (U+29C9 has no glyph in many system
+// fonts and rendered as an empty box).
+const COPY_ICON = '<svg class="ds-icon" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true" focusable="false"><rect x="5" y="5" width="9" height="9" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M3 11V3.5A1.5 1.5 0 0 1 4.5 2H11" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>';
+
+// a link plus a copy button — the copy is the point.
 function accessBadges(row) {
   const parts = [];
 
@@ -292,7 +296,7 @@ function accessBadges(row) {
         ${healthDot(row.api_url)}<a class="ds-ep-link" href="${esc(row.api_url)}" target="_blank" rel="noopener"
            title="${esc(title)}">${esc(kind)}</a>
         <button class="ds-ep-copy" data-url="${esc(row.api_url)}"
-                title="Copy ${esc(row.api_url)}" aria-label="Copy API root URL">⧉</button>
+                title="Copy ${esc(row.api_url)}" aria-label="Copy API root URL">${COPY_ICON}</button>
       </span>`);
   }
 
@@ -316,7 +320,7 @@ function accessBadges(row) {
         ${healthDot(ep.url)}<a class="ds-ep-link" href="${esc(ep.url)}" target="_blank" rel="noopener"
            title="${esc(title)}">${esc(fmt)}</a>
         <button class="ds-ep-copy" data-url="${esc(ep.url)}"
-                title="Copy ${esc(ep.url)}" aria-label="Copy endpoint URL">⧉</button>
+                title="Copy ${esc(ep.url)}" aria-label="Copy endpoint URL">${COPY_ICON}</button>
       </span>`);
   }
 
@@ -339,7 +343,7 @@ function accessBadges(row) {
     ? `<a class="ds-ep-link" href="${esc(href)}" target="_blank" rel="noopener" title="${esc(title)}">${label}</a>`
     : `<span class="ds-ep-link" title="${esc(title)}">${label}</span>`}
         <button class="ds-ep-copy" data-url="${esc(b.prefix || b.name)}"
-                title="Copy bucket ${b.prefix ? 'prefix' : 'name'}" aria-label="Copy bucket">⧉</button>
+                title="Copy bucket ${b.prefix ? 'prefix' : 'name'}" aria-label="Copy bucket">${COPY_ICON}</button>
       </span>`);
   }
 
@@ -577,7 +581,7 @@ async function renderArchives(targetId) {
             the rest need registration or requester-pays 🔒)</li>
         </ul>
         <p class="ds-summary">
-          Click a badge to open the endpoint, or ⧉ to copy its URL. Hover a
+          Click a badge to open the endpoint, or ${COPY_ICON} to copy its URL. Hover a
           facility chip for its role; hover a call badge for the request
           and an example.
         </p>
@@ -655,9 +659,9 @@ async function renderArchives(targetId) {
         try { document.execCommand('copy'); } catch { /* nothing left to try */ }
         document.body.removeChild(ta);
       }
-      const prev = btn.textContent;
+      const prev = btn.innerHTML;
       btn.textContent = '✓';
-      setTimeout(() => { btn.textContent = prev; }, 1200);
+      setTimeout(() => { btn.innerHTML = prev; }, 1200);
     });
   }
 

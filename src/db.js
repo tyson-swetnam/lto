@@ -19,8 +19,11 @@ async function fetchJson(path) {
 // ---------------------------------------------------------------------------
 // Arrow → plain JS unwrap.
 //
-// DuckDB-Wasm 1.29 returns LIST<STRUCT> columns as Arrow Vector objects
-// (not plain JS arrays). They expose a numeric `.length` and integer-keyed
+// DuckDB-Wasm returns LIST<STRUCT> columns as Arrow Vector objects
+// (not plain JS arrays). True of 1.29.0 (core v1.1.1) and still true of
+// the pinned 1.33.1-dev65.0 (core v1.5.6, apache-arrow 17): a LIST<VARCHAR>
+// comes back as an Arrow Vector, Array.isArray() is false, v[0] is
+// undefined and v.get(0) works. Re-check this after any version bump. They expose a numeric `.length` and integer-keyed
 // access, but `Array.isArray()` returns false for them. This silently
 // breaks views that gate on Array.isArray() (e.g. People + Network
 // affiliation/area lists rendered "No facility roles recorded." even
@@ -52,7 +55,7 @@ export function arrowToPlain(v) {
     return v.map(arrowToPlain).filter((x) => x != null);
   }
   // Arrow Vector / list-like object: numeric `.length`, indexable.
-  // In apache-arrow ≥10 (which DuckDB-Wasm 1.29 ships), `vector[i]`
+  // In apache-arrow ≥10 (DuckDB-Wasm 1.29 through 1.33.x all ship 17), `vector[i]`
   // returns undefined and you have to call `vector.get(i)` to read a
   // value. Try .get first, fall back to bracket access, drop null
   // entries either way.
@@ -256,6 +259,11 @@ export async function initDB() {
     // Weekly URL-sweep verdicts (scripts/check_url_health.py) — datasets.js
     // paints endpoint health dots from it, so eager, not lazy.
     'url_health',
+    // Identifier provenance. Was lazy, but src/views/stats.js reads it
+    // (registry_degree / registry_graph_scope) to tell a measured zero
+    // co-author degree from one never computed, so leaving it lazy made the
+    // Stats tab fail unless the SQL tab had been opened first.
+    'person_identity_source',
     ];
 
     // Tables NO rendering view reads — only the SQL tab's canned queries and
@@ -279,11 +287,12 @@ export async function initDB() {
       // Provenance audit table — one row per (record, source_url); large
       // and unread by any rendering view.
       'provenance',
-      // Registry audit layer: identifier provenance, validation verdicts,
-      // and the provenanced co-authorship evidence. Upstream these three
-      // were 15.51 MB combined after harvest — more than the whole first
-      // paint needed — and no rendering view reads them.
-      'person_identity_source', 'person_validation',
+      // Registry audit layer: validation verdicts and the provenanced
+      // co-authorship evidence. Upstream these were 15.51 MB combined after
+      // harvest — more than the whole first paint needed — and no rendering
+      // view reads them. (person_identity_source moved to the eager list:
+      // stats.js reads it.)
+      'person_validation',
       'coauthor_edges', 'coauthor_candidates',
       // MVG layout tables (scripts/build_mvg_layout.py). The Network view
       // computes its layout client-side; these precomputed tables exist
@@ -329,6 +338,13 @@ export async function initDB() {
     // parquet without materialising it; we keep them computed). Recreate
     // them in DuckDB-Wasm so the app's SQL canned queries work.
     //
+    // Mirror rule: every v_* view in schema/schema.sql appears here with the
+    // same SQL text (change one, change both), with one exception:
+    // v_facility_funding_by_year_real joins cpi_index_us, which
+    // export_parquet.py never exports, so it cannot bind in the browser.
+    // Keep this SQL to DuckDB 1.5 syntax: the pinned wasm core is v1.5.6
+    // even though the Python pipeline runs DuckDB 2.0.
+    //
     // DEFERRED, not created here: every one of these is consumed only by
     // src/views/sql.js, and v_person_enriched binds person_areas, which is
     // itself lazy. ensureSqlTables() creates them after the lazy tables
@@ -336,6 +352,47 @@ export async function initDB() {
     // read one, move that view's creation (and its lazy base tables) back
     // into the eager path.
     const helperViews = [
+    `CREATE OR REPLACE VIEW v_facility_map AS
+       SELECT f.facility_id           AS id,
+              f.canonical_name        AS name,
+              f.acronym               AS acronym,
+              f.facility_type         AS type,
+              f.country               AS country,
+              f.region                AS region,
+              f.state                 AS state,
+              f.hq_lat                AS lat,
+              f.hq_lng                AS lng,
+              f.url                   AS url,
+              f.parent_org            AS parent_org
+       FROM facilities f
+       WHERE f.hq_lat IS NOT NULL AND f.hq_lng IS NOT NULL`,
+
+    // Binds the lazy region_area_links, so it can only live in this
+    // deferred list.
+    `CREATE OR REPLACE VIEW v_region_enriched AS
+       SELECT r.region_id,
+              r.name,
+              r.acronym,
+              r.kind,
+              r.network_id,
+              n.label         AS network_label,
+              r.url,
+              r.manager,
+              r.designated,
+              r.state,
+              r.description,
+              list(DISTINCT ra.label)         AS research_areas,
+              list(DISTINCT f.canonical_name) AS facilities,
+              count(DISTINCT fr.facility_id)  AS facility_count
+       FROM regions r
+       LEFT JOIN networks n             ON n.network_id  = r.network_id
+       LEFT JOIN region_area_links ral  ON ral.region_id = r.region_id
+       LEFT JOIN research_areas ra      ON ra.area_id    = ral.area_id
+       LEFT JOIN facility_regions fr    ON fr.region_id  = r.region_id
+       LEFT JOIN facilities f           ON f.facility_id = fr.facility_id
+       GROUP BY r.region_id, r.name, r.acronym, r.kind, r.network_id, n.label,
+                r.url, r.manager, r.designated, r.state, r.description`,
+
     `CREATE OR REPLACE VIEW v_facility_funding_by_year AS
        SELECT f.facility_id,
               f.canonical_name              AS facility,
@@ -373,7 +430,6 @@ export async function initDB() {
               fp.title,
               p.orcid,
               p.openalex_id,
-              p.email,
               p.homepage_url,
               fp.start_date,
               fp.source_url
@@ -404,6 +460,9 @@ export async function initDB() {
     // CREATE VIEW just because a referenced view contains zero rows;
     // it does fail if the view itself doesn't exist, hence the
     // try/catch around helperView creation below).
+    // This 19-column form is canonical; schema/schema.sql must carry the
+    // same text (it lagged at the original 8 columns until the DuckDB 2.0
+    // upgrade synced it).
     `CREATE OR REPLACE VIEW v_facility_enriched AS
        SELECT f.facility_id,
               f.canonical_name,
@@ -448,7 +507,6 @@ export async function initDB() {
               p.name_family,
               p.orcid,
               p.openalex_id,
-              p.email,
               p.homepage_url,
               p.research_interests,
               p.status,
@@ -464,8 +522,27 @@ export async function initDB() {
        LEFT JOIN research_areas     ra ON ra.area_id     = pa.area_id
        LEFT JOIN authorship         a  ON a.person_id    = p.person_id
        LEFT JOIN publications       pub ON pub.publication_id = a.publication_id
-       GROUP BY p.person_id, p.name, p.name_family, p.orcid, p.openalex_id,
-                p.email, p.homepage_url, p.research_interests, p.status`,
+       GROUP BY p.person_id, p.name, p.name_family, p.orcid, p.openalex_id, p.homepage_url, p.research_interests, p.status`,
+
+    // Binds the lazy person_areas, like v_person_enriched above.
+    `CREATE OR REPLACE VIEW v_person_areas_enriched AS
+       SELECT p.person_id,
+              p.name                       AS person,
+              ra.area_id,
+              ra.label                     AS area,
+              pa.weight,
+              pa.evidence_count,
+              pa.source,
+              f0.facilities                AS facilities
+       FROM person_areas pa
+       JOIN people         p  ON p.person_id  = pa.person_id
+       JOIN research_areas ra ON ra.area_id   = pa.area_id
+       LEFT JOIN (
+           SELECT fp.person_id, list(DISTINCT f.canonical_name) AS facilities
+           FROM facility_personnel fp
+           JOIN facilities f ON f.facility_id = fp.facility_id
+           GROUP BY fp.person_id
+       ) f0 ON f0.person_id = p.person_id`,
 
     // Registry validation views — mirrored from schema/schema.sql (change
     // one, change both). These bind the lazy person_validation /
@@ -493,7 +570,7 @@ export async function initDB() {
               COUNT(*) FILTER (WHERE l.verdict = 'not_applicable') AS n_not_applicable,
               COUNT(*) FILTER (WHERE l.verdict = 'unresolved')     AS n_unresolved,
               CASE WHEN COUNT(*) FILTER (WHERE l.verdict IN ('pass', 'fail')) = 0 THEN NULL
-                   ELSE CAST(COUNT(*) FILTER (WHERE l.verdict = 'pass') AS DOUBLE)
+                   ELSE COUNT(*) FILTER (WHERE l.verdict = 'pass')::DOUBLE
                         / COUNT(*) FILTER (WHERE l.verdict IN ('pass', 'fail'))
               END                                                  AS pass_rate,
               (r.orcid IS NOT NULL OR r.openalex_id IS NOT NULL

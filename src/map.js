@@ -478,7 +478,11 @@ function makeFitControl() {
     onAdd(m) {
       const div = document.createElement('div');
       div.className = 'maplibregl-ctrl fit-control';
-      div.innerHTML = '<a href="#" title="Zoom to data">&#8982; Fit</a>';
+      // Inline SVG: U+2316 has no glyph in many system fonts (an empty box).
+      div.innerHTML = '<a href="#" title="Zoom to data"><svg viewBox="0 0 16 16" width="12" height="12" '
+        + 'aria-hidden="true" focusable="false" style="vertical-align:-1px"><circle cx="8" cy="8" r="4.5" '
+        + 'fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 1v4M8 11v4M1 8h4M11 8h4" '
+        + 'stroke="currentColor" stroke-width="1.5"/></svg> Fit</a>';
       div.querySelector('a').addEventListener('click', (e) => {
         e.preventDefault();
         if (_currentFeatures.length === 0) return;
