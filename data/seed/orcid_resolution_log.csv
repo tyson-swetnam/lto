@@ -1891,3 +1891,7 @@ be4cc58dfbf07839,Xuefeng Peng,no-employment-match,,18,,,
 a7b68f47b7a02348,York Johnson,no-employment-match,,25,,,
 2a32f7976d1a5e91,Yvonne Munoz,no-employment-match,,25,,,
 6c83f31289bb64e0,Zanden Frederick,no-employment-match,,26,,,
+6b5037ecc7044cab,Daniel Fisher,cleared-wrong-person,0000-0001-7164-731X,,,"ORCID record is Daniel K. Fisher, USDA-ARS Stoneville MS (irrigation agronomy), not NRCS Alaska Snow Survey; earlier accept was ARS~NRCS fuzzy match at 0.537 (openalex_attribution_review_2026-10-23.csv)",
+d1c39e3d5ff9d8e3,William P. Bowman,cleared-wrong-person,0000-0003-4381-5245,,,"ORCID record is a Yale astronomer; OpenAlex author on it is W. Paul Bowman, pediatric oncologist (wipe_misattributed_identifiers.py BAD_BY_ID, 2026-10-23)",
+8b46cf9bb8d3d818,Michael R. Landry,cleared-wrong-person,0009-0000-0174-1247,,,"ORCID record is the LIGO Hanford Observatory head (Caltech; OpenAlex A5112191115, gravitational waves), not the Scripps plankton ecologist; earlier accept was a name-only match (orcid review 2026-10-23)",
+8b46cf9bb8d3d818,Michael R. Landry,accept,0000-0001-8787-2802,,,"Scripps Institution of Oceanography, UC San Diego (linked from https://scripps.ucsd.edu/profiles/mlandry; orcid review 2026-10-23)",California Current Ecosystem LTER
