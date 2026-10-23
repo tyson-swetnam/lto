@@ -61,15 +61,19 @@
 //      cells of its members via polygon-clipping. Smooth boundaries via
 //      one Chaikin pass to soften the polygon outlines.
 //
-// Phase 3 (PCL refinement, custom force terms) and Phase 5 (canvas
-// rendering + Web Worker) are documented in docs/map_visualization_plan.md
-// and will land as follow-up commits.
+// docs/knowledge-map.md is the reader-facing description: the sizing
+// metric, the viewport (fit-to-everything, zoom limits relative to that
+// fit) and the screen-space label tiers implemented in the "Label engine"
+// section below. PCL refinement, custom force terms and canvas rendering
+// in a Web Worker are NOT implemented; an earlier comment pointed at a
+// planning doc for them that was never committed.
 
 import { getConn, whenReady, unwrapRow } from '../db.js';
 
 // ── Module state ────────────────────────────────────────────────────
 let _container = null;
 let _layout = null;
+let _layoutPromise = null;        // in-flight fetch + buildLayout
 let _d3Promise = null;
 let _delaunayPromise = null;
 let _polygonClippingPromise = null;
@@ -82,18 +86,50 @@ let _zoomBehavior = null;
 let _zoomSvg = null;
 let _d3Mod = null;
 let _colorOf = null;
-// Last zoom level seen — used by the label-visibility logic. Default
-// to 1 so the initial paint shows labels at constant size.
+// Current d3.zoom transform and its scale. The SVG viewBox is the stage
+// in CSS pixels (see render()), so k IS the world→screen scale: one layout
+// unit occupies k CSS px. Nothing else composes into it.
 let _zoomK = 1;
-// Reference to the labels/dots selections so onZoom can resize them
-// without a full re-render.
+let _zoomT = null;
+// The transform that frames EVERY polygon in the stage, recomputed on each
+// resize. scaleExtent is expressed relative to its k (_fitK), so "zoom 4x"
+// means the same thing on a phone and on a 27-inch monitor.
+let _fitT = null;
+let _fitK = 1;
+// Stage size in CSS px, as last measured. Equal to the viewBox size.
+let _stageW = 0;
+let _stageH = 0;
+// True once the user has panned or zoomed by hand (or asked for an area).
+// While false, a resize re-fits the whole map; once true, a resize keeps
+// the user's centre and zoom instead of yanking the view back.
+let _userZoomed = false;
+// ResizeObserver on #net-stage, created once per stage element.
+let _resizeObs = null;
+let _resizeRaf = 0;
+// Pending requestAnimationFrame id for the label pass (0 = none queued).
+let _labelRaf = 0;
+// Cached label candidates (see buildLabelCandidates). null = rebuild on the
+// next pass; set by markLabelsDirty() whenever a label selection changes.
+let _labelCands = null;
+// Mark scale last written to the dots, so a pan that does not change k
+// does not rewrite 700 radii.
+let _markScaleApplied = 0;
+// The research area the user asked for (TOC row or polygon click). Its
+// name is always drawn and its outline highlighted until Reset /
+// double-click / another area.
+let _pinnedAreaId = null;
+let _polySel = null;
+// Reference to the labels/dots selections so the label pass can address
+// them without a full re-render.
 let _labelSel = null;
 let _areaLabelSel = null;
+// Two-line variant of each area name (null for one-word names). Drawn as a
+// second <text> so switching variant is a display toggle, not a rebuild.
+let _areaWrapSel = null;
 let _facLabelSel = null;
 let _dotPersonSel = null;
 let _dotFacSel = null;
-// Root <g> that carries the composed viewBox + zoom transform. onZoom
-// reads its screen CTM to size labels in real screen pixels.
+// Root <g> that carries the d3.zoom transform.
 let _rootG = null;
 // Protected-area layer: OFF by default. One aggregate chip per region
 // rather than one mark per site — see the protected_areas query.
@@ -279,33 +315,34 @@ const W_DATASET       = 1.5;
 const W_PERSON        = 0.35;
 
 // ── Label sizing: on-screen pixels, not SVG units ───────────────────
-// Every label class declares the size it should occupy ON THE SCREEN.
-// onZoom() divides by the zoom factor k to get the SVG font-size, so the
-// rendered result is the declared px at every k — the old
-// `Math.min(1, 1/max(k,0.5))` clamp collapsed to exactly 1 for all k < 1,
-// which left a mid-range area label at 6.5 px and a mid-range person label
-// at 5.0 px on screen at the initial fit (k = 0.5). Across their full base
-// ranges the old classes rendered 5.0–8.0 px (area, base 10–16) and
-// 4.0–6.0 px (person, base 8–12) at that zoom.
+// Every label class declares the size it should occupy ON THE SCREEN. The
+// label pass draws each visible <text> under a `scale(1/k)` counter-
+// transform, so font-size, halo width and offsets are all written in CSS
+// px once, and the rendered text is the declared size at every zoom.
 //
 // The floor is the legibility gate. The tooltip is the user's stated size
 // reference: .network-tooltip is 0.82rem on a 14 px root = 11.5 px body,
 // with .tt-sub at 0.78rem = 10.9 px and .tt-kind at 0.7rem = 9.8 px. So
 // 9.8 px is the smallest text this site already asks anyone to read, and
-// LABEL_MIN_PX is set there. Nothing is rendered below it — a class whose
-// screen size would fall under the floor is HIDDEN, never shrunk.
-//
-// Every base size below is >= LABEL_MIN_PX by construction, and screenPx()
-// enforces the floor a second time by returning null (which its callers
-// render as display:none) rather than a reduced size, so no arithmetic
-// change upstream can silently reintroduce sub-floor text. Note it HIDES;
-// it does not clamp — a clamp would draw the label at the floor size and
-// so change a declared size silently, which is the opposite of the intent.
+// LABEL_MIN_PX is set there. Every size below is >= the floor by
+// construction; a label that cannot be drawn at its size is HIDDEN, never
+// shrunk below it.
 const LABEL_MIN_PX = 9.8;
 // Area (region) names: the top of the hierarchy, sized like the tooltip
-// title (.tt-name 0.92rem = 12.9 px) at the small end and up to 20 px for
-// the heaviest region.
-const AREA_LABEL_PX     = { min: 13.0, max: 20.0 };
+// title (.tt-name 0.92rem = 12.9 px) at the small end and up to 18 px for
+// the heaviest region. This was 13–20 px; at the overview a 20 px name is
+// wider than all but the largest polygons, so the top end came down.
+const AREA_LABEL_PX       = { min: 12.0, max: 18.0 };
+// Smaller tier an area name drops to before it is hidden (P0-3). 11 px is
+// .tt-sub size, still above the floor.
+const AREA_LABEL_PX_SMALL = 11.0;
+// Last-resort tier for the AREA_TOP_N heaviest regions only: a single word
+// such as "Biogeochemistry" has no two-line form, and on a phone the
+// largest region was the one left unnamed at 11 px. 10 px is above the
+// floor; lighter regions stop at AREA_LABEL_PX_SMALL so region names stay
+// a step above institution names.
+const AREA_LABEL_PX_MIN   = 10.0;
+const AREA_TOP_N          = 3;
 // Organisation names: tooltip-body size, never below the floor.
 const FAC_LABEL_PX      = { min: 10.5, max: 14.0 };
 // Researcher names: tooltip .tt-kind size at the small end.
@@ -314,43 +351,105 @@ const PERSON_LABEL_PX   = { min: 10.0, max: 13.5 };
 const REG_LABEL_PX      = { min: 10.0, max: 12.5 };
 // Protected-area aggregate chips.
 const PA_LABEL_PX       = { min: 10.0, max: 12.0 };
+// Halo (paint-order stroke) widths in screen px. Area names get the
+// heaviest halo because they sit over facility fills and dots.
+const HALO_PX = { area: 3.5, fac: 2.2, person: 2.4, reg: 2.0, pa: 2.0 };
 
-// ── Zoom bands per label class ──────────────────────────────────────
-// [kMin, kMax): a class is drawn only inside its band, so labels appear
-// when they are relevant and disappear BOTH when the user is too far out
-// (nothing to attach them to) AND too far in (the region they name is no
-// longer on screen — its members are). Bands are half-open and overlap by
-// design, so at any k at least one class is labelled.
+// ── Label tiers: eligibility by ON-SCREEN SIZE, not by zoom level ───
+// The old ZOOM_BANDS gated each class on raw d3 k. k had no fixed meaning
+// on screen — it was relative to a viewBox cropped from the layout, so
+// k = 1 was a world→screen scale of 0.264 at 1600 px, 0.207 at 1280 px and
+// 0.091 on a phone — and the bands fired at different places on every
+// display. A label now shows when the thing it names is big enough on the
+// screen to hold it, which is the same test on every display:
 //
-// scaleExtent is [0.4, 12] and the initial fit lands near k = 0.5.
-//   region       0.40 – 3.0   region names; gone once you are inside one
-//   organisation 0.75 – 12    institution names; the mid-zoom reading
-//   researcher   1.30 – 12    individual names; only once a site fills
-//                             the frame, otherwise it is name soup
-//   registry     1.00 – 12    focused-site roster names
-//   protected    0.40 – 2.0   aggregate chips; coarse context only
-const ZOOM_BANDS = {
-  area:      { min: 0.40, max: 3.00 },
-  facility:  { min: 0.75, max: 12.01 },
-  person:    { min: 1.30, max: 12.01 },
-  registry:  { min: 1.00, max: 12.01 },
-  protected: { min: 0.40, max: 2.00 },
-};
+//   area name    the name (width × AREA_LABEL_FIT) lies inside the polygon
+//                on its top, middle and bottom rows, at the pole or at one
+//                of the fallback positions placeArea() tries, preferring
+//                one clear of the region's institutions. Tried as one line,
+//                two lines, then at AREA_LABEL_PX_SMALL (and, for the
+//                AREA_TOP_N heaviest regions, AREA_LABEL_PX_MIN); otherwise
+//                hidden (the TOC and the tooltip carry the name). While the
+//                polygon covers >= AREA_INSIDE_FRAC of the stage the user is
+//                inside it: its name is pinned near the top of the stage
+//                (placeAreaTop) instead of at its pole, so a deep zoom still
+//                says which region it is in. A region covering >=
+//                AREA_SCAN_FRAC whose name found no spot near its pole gets
+//                the same top-row placement as a last try. The pinned area (TOC / polygon
+//                click) is always named.
+//   organisation its sub-polygon is >= FAC_MIN_POLY_PX across both ways and
+//                >= FAC_LABEL_FIT × the label width.
+//   researcher   their institution's sub-polygon is >= PERSON_MIN_FACPOLY_PX
+//                across (a researcher with no institution drawn in the
+//                region: the region >= PERSON_MIN_AREAPOLY_PX).
+//   registry     the focused site's sub-polygon >= PERSON_MIN_FACPOLY_PX.
+//   chips        protected-area chips and "N no site" captions: the region
+//                >= CONTEXT_MIN_POLY_PX across.
+const AREA_LABEL_FIT        = 1.0;
+const AREA_INSIDE_FRAC      = 0.75;
+// A region whose on-stage part covers this share of the stage, and whose
+// name found no spot near its pole, is named on the topmost row of the
+// stage where the name fits (placeAreaTop).
+const AREA_SCAN_FRAC        = 0.2;
+// Region-name placement (runLabelPass → placeArea): vertical shifts tried
+// after the pole, as fractions of the vertical chord through it; how far
+// inside the stage edge the pole must sit before alternative anchors in
+// the region's on-stage part are tried; and the on-screen size (px, the
+// region's smaller bbox side) from which its name also keeps off every
+// institution dot, not only the ones being named.
+const AREA_LABEL_SHIFTS     = [0, -0.22, 0.22, -0.34, 0.34];
+const AREA_EDGE_MARGIN_PX   = 40;
+const AREA_DOT_AVOID_PX     = 150;
+const FAC_MIN_POLY_PX       = 40;
+const FAC_LABEL_FIT         = 0.8;
+const PERSON_MIN_FACPOLY_PX = 120;
+const PERSON_MIN_AREAPOLY_PX = 480;
+const CONTEXT_MIN_POLY_PX   = 60;
 
-// True when zoom level k sits inside a class's band.
-function inBand(band, k) {
-  return k >= band.min && k < band.max;
-}
+// ── Collision pass ──────────────────────────────────────────────────
+// ONE greedy pass over every eligible label of every class, in screen
+// space, highest priority first: pinned area > area > context chips >
+// organisation > registry researcher > researcher. A label is drawn only
+// when its padded box is fully on the stage and touches no label already
+// placed. Boxes are looked up in a uniform grid of CULL_CELL_PX cells, so
+// the pass is linear in the number of candidates instead of the old
+// per-class O(n²) getBBox() loop (which never compared ACROSS classes —
+// 115–267 cross-class overlaps at 1600 px — and never culled area names).
+const LABEL_PAD_PX  = 3;
+const CULL_CELL_PX  = 64;
+// Box height of one text line, in em. Generous on purpose: Chrome's text
+// bounding box for system-ui runs ~1.16 em, and a box that is too small
+// lets glyphs touch.
+const LINE_BOX_EM   = 1.25;
+// Baseline-to-baseline distance of a wrapped area name, in em.
+const LINE_GAP_EM   = 1.15;
 
-// SVG font-size that renders as `px` CSS pixels on screen, given the
-// composed world→screen scale s (viewBox fit × zoom k — NOT k alone).
-// Returns null when the requested screen size is below the legibility
-// floor, which callers treat as "hide this label", never "draw it smaller".
-function screenPx(px, s) {
-  if (!(px >= LABEL_MIN_PX)) return null;
-  const ss = s > 0 ? s : 1;
-  return px / ss;
-}
+// ── Viewport ────────────────────────────────────────────────────────
+// FIT_PAD_PX     stage margin around the whole map at the fit
+// AREA_FIT_PAD_PX stage margin around a polygon the user asked for
+// MIN/MAX_ZOOM_MULT scaleExtent as multiples of the fit scale. Zoom-out
+//                stops at the fitted view ("everything"): going further
+//                only shrank the map into an empty stage. Zoom-in goes to
+//                24x, or further when the stage needs it: the limit is
+//                raised to the zoom that frames the smallest region in the
+//                stage (see applyZoomExtents), so on a phone — where 24x
+//                left the smallest region 170 px wide on a 374 px stage —
+//                every region can still be brought up to full size.
+// MAX_ZOOM_CAP_MULT  hard ceiling on that raise.
+const FIT_PAD_PX      = 24;
+const AREA_FIT_PAD_PX = 48;
+const MIN_ZOOM_MULT   = 1.0;
+const MAX_ZOOM_MULT   = 24;
+const MAX_ZOOM_CAP_MULT = 200;
+// Dots and ribbons keep a constant apparent size too, but their world-
+// space growth is capped so zooming far out cannot inflate a 2.6-unit dot
+// into a blob that swallows its sub-polygon.
+const MARK_MAX_GROWTH = 2.0;
+// Region outline and fill. Stroke widths are screen px (non-scaling).
+const AREA_STROKE_PX           = 1.2;
+const AREA_STROKE_PX_PINNED    = 3.0;
+const AREA_FILL_OPACITY        = 0.18;
+const AREA_FILL_OPACITY_PINNED = 0.30;
 
 // Map a value onto a class's screen-px range with sqrt damping, then
 // clamp into [min, max]. Guarantees the result is >= LABEL_MIN_PX for
@@ -358,9 +457,8 @@ function screenPx(px, s) {
 function rampPx(range, value, denom) {
   const t = denom > 0 ? Math.sqrt(Math.max(0, value) / denom) : 0;
   const px = range.min + t * (range.max - range.min);
-  return Math.max(range.min, Math.min(range.max, px));
+  return Math.max(LABEL_MIN_PX, range.min, Math.min(range.max, px));
 }
-
 
 // ── Async-import helpers ────────────────────────────────────────────
 function loadD3() {
@@ -381,10 +479,36 @@ function loadPolygonClipping() {
 
 
 // ── Data fetch ──────────────────────────────────────────────────────
+// db.js releases whenReady() with no connection after its own start-up
+// timeout (30 s), but on a cold load DuckDB-Wasm can take longer than that
+// and still come up — one traced load released at 30.4 s and connected at
+// 68.8 s. Throwing at the release left the map failed for good. Instead,
+// poll getConn() for up to DB_WAIT_MS and say on the status line that the
+// map is waiting.
+const DB_WAIT_MS = 180000;
+const DB_POLL_MS = 500;
+const DB_NOT_READY = 'DuckDB connection not ready';
+
+async function waitForConn() {
+  try { await whenReady(); } catch (_) { /* polled below */ }
+  let conn = getConn();
+  if (conn) return conn;
+  const t0 = Date.now();
+  const statusEl = _container && _container.querySelector('#net-status');
+  while (!conn && Date.now() - t0 < DB_WAIT_MS) {
+    if (statusEl) {
+      statusEl.textContent = 'Waiting for the database to start… '
+        + `(${Math.round((Date.now() - t0) / 1000)} s)`;
+    }
+    await new Promise((r) => setTimeout(r, DB_POLL_MS));
+    conn = getConn();
+  }
+  if (!conn) throw new Error(DB_NOT_READY);
+  return conn;
+}
+
 async function fetchData() {
-  await whenReady();
-  const conn = getConn();
-  if (!conn) throw new Error('DuckDB connection not ready');
+  const conn = await waitForConn();
 
   const queries = {
     // ACTIVE areas only — collapsed_into IS NULL means this area is its
@@ -724,9 +848,7 @@ async function fetchData() {
 // region via person_primary_groups) are the only registry marks the map
 // can draw today; rosters and ribbons fill in as the harvest lands.
 async function fetchRegistry() {
-  await whenReady();
-  const conn = getConn();
-  if (!conn) throw new Error('DuckDB connection not ready');
+  const conn = await waitForConn();
 
   const queries = {
     // Researcher ↔ site roster. `graph_harvested` distinguishes
@@ -1036,6 +1158,18 @@ function buildSupergraph(data) {
 
 async function layoutSupergraph(d3, sg, w, h) {
   const cx = w / 2, cy = h / 2;
+  // STAGE ASPECT. Collision and centring are isotropic, so left alone the
+  // squares settle into a roughly round (in practice slightly portrait,
+  // 0.76) cluster whatever shape the stage is — and a 1.7:1 landscape stage
+  // then frames it with half its width empty. Every pass below is
+  // therefore run in an aspect-normalised frame, u = (x-cx)/√ar,
+  // v = (y-cy)·√ar, in which the target ellipse (rx = R·√ar, ry = R/√ar)
+  // is a circle: the seed ring is that ellipse, forceX/forceY pull
+  // harder vertically than horizontally on a landscape stage, and
+  // compactInward ranks and steps by normalised distance. Clamped so a
+  // freak stage (a collapsed panel) cannot produce a one-row layout.
+  const ar = Math.max(0.5, Math.min(2.4, (w > 0 && h > 0) ? w / h : 1));
+  const sar = Math.sqrt(ar);
   // Seed positions on a ring proportional to weight so the simulation
   // converges quickly and large groups end up roughly central.
   const sorted = [...sg.nodes].sort((a, b) => b.weight - a.weight);
@@ -1060,8 +1194,8 @@ async function layoutSupergraph(d3, sg, w, h) {
     const t = i / Math.max(sorted.length - 1, 1);
     const r = t * maxR * 0.85 + 0.05 * maxR;
     const a = i * (2 * Math.PI / Math.max(sorted.length, 6)) + 0.1 * i;
-    n.x = cx + r * Math.cos(a);
-    n.y = cy + r * Math.sin(a);
+    n.x = cx + r * sar * Math.cos(a);
+    n.y = cy + (r / sar) * Math.sin(a);
   });
 
   // Square-collision: forceCollide treats each node as a circle of
@@ -1080,6 +1214,10 @@ async function layoutSupergraph(d3, sg, w, h) {
       .strength(1)
       .iterations(2))
     .force('center', d3.forceCenter(cx, cy).strength(0.05))
+    // Anisotropic gravity: on a landscape stage (ar > 1) the vertical pull
+    // is ar² times the horizontal one, so the cluster spreads sideways.
+    .force('x', d3.forceX(cx).strength(0.05 / ar))
+    .force('y', d3.forceY(cy).strength(0.05 * ar))
     .stop();
   for (let i = 0; i < SUPERGRAPH_TICKS; i++) sim.tick();
 
@@ -1160,32 +1298,84 @@ async function layoutSupergraph(d3, sg, w, h) {
     }
   }
 
+  // Median square side: the size below which compactInward lets a square
+  // slide round an obstacle (see there).
+  const slideMaxSide = [...sg.nodes].map((n) => n.side).sort((a, b) => a - b)[
+    Math.floor(sg.nodes.length / 2)] || 0;
   function compactInward(steps) {
     for (let s = 0; s < steps; s++) {
       let ccx = 0, ccy = 0;
       for (const n of sg.nodes) { ccx += n.x; ccy += n.y; }
       ccx /= sg.nodes.length; ccy /= sg.nodes.length;
-      const order = [...sg.nodes.keys()].sort((i, j) => {
-        const a = sg.nodes[i], b = sg.nodes[j];
-        return Math.hypot(b.x - ccx, b.y - ccy) - Math.hypot(a.x - ccx, a.y - ccy);
-      });
+      // Rank and step in the aspect-normalised frame (see the top of this
+      // function): moving toward the centroid along (u, v) in that frame is
+      // a world step of (u·√ar, v/√ar), so a landscape layout is pulled in
+      // harder from above and below than from the sides.
+      const nd = (n) => Math.hypot((n.x - ccx) / sar, (n.y - ccy) * sar);
+      const order = [...sg.nodes.keys()].sort((i, j) =>
+        nd(sg.nodes[j]) - nd(sg.nodes[i]));
       let any = false;
       for (const i of order) {
         const n = sg.nodes[i];
-        const vx = ccx - n.x, vy = ccy - n.y;
-        const d = Math.hypot(vx, vy);
+        const vu = (ccx - n.x) / sar, vv = (ccy - n.y) * sar;
+        const d = Math.hypot(vu, vv);
         if (d < 1e-9) continue;
         const step = Math.max(d * 0.05, 0.5);
-        const nx = n.x + (vx / d) * step, ny = n.y + (vy / d) * step;
-        if (!overlapsAny(sg.nodes, i, nx, ny)) { n.x = nx; n.y = ny; any = true; }
+        const nx = n.x + (vu / d) * step * sar;
+        const ny = n.y + (vv / d) * step / sar;
+        if (!overlapsAny(sg.nodes, i, nx, ny)) { n.x = nx; n.y = ny; any = true; continue; }
+        // Blocked head-on: a SMALL square may slide along one axis instead.
+        // Without this a chain of small squares on the rim blocked itself —
+        // each one stopped by the next — and after the aspect stretch it
+        // trailed off the side of the map as a one-row tail. Large squares
+        // do not slide: they carry the stretched outline, and letting them
+        // slide too packed the map back to round (1.31 on a 1.77 stage).
+        if (n.side > slideMaxSide) continue;
+        if (Math.abs(nx - n.x) > 0.25 && !overlapsAny(sg.nodes, i, nx, n.y)) { n.x = nx; any = true; }
+        else if (Math.abs(ny - n.y) > 0.25 && !overlapsAny(sg.nodes, i, n.x, ny)) { n.y = ny; any = true; }
       }
       if (!any) break;
     }
   }
 
-  separateSquares(400);
-  compactInward(300);
-  separateSquares(200);   // guarantee: no overlap survives compaction
+  // The force terms alone do not get there: charge and collision dominate
+  // the weak anisotropic gravity and the cluster still settles nearly
+  // round (measured 0.76–0.9 whatever the stage). So stretch the settled
+  // arrangement from ITS aspect to the stage's — x by √(ar/cur), y by the
+  // inverse, about the centre, which keeps every square's neighbours and
+  // only changes the gaps — then let separateSquares resolve the overlaps
+  // the squeeze creates and compactInward close the gaps in the
+  // normalised frame. Those two passes pull the aspect part of the way
+  // back (two 700-unit squares cannot sit in a narrow column), so the
+  // round is repeated until the layout is within ~10% of the stage aspect,
+  // at most ASPECT_ROUNDS times. A single fixed √ar stretch overshot on a
+  // portrait phone (0.43 for a 0.68 stage) and undershot at 1280 px.
+  const layoutAspect = () => {
+    let mnX = Infinity, mnY = Infinity, mxX = -Infinity, mxY = -Infinity;
+    for (const n of sg.nodes) {
+      const half = n.side / 2;
+      if (n.x - half < mnX) mnX = n.x - half;
+      if (n.x + half > mxX) mxX = n.x + half;
+      if (n.y - half < mnY) mnY = n.y - half;
+      if (n.y + half > mxY) mxY = n.y + half;
+    }
+    return (mxX - mnX) / Math.max(1e-9, mxY - mnY);
+  };
+  const ASPECT_ROUNDS = 4;
+  for (let round = 0; round < ASPECT_ROUNDS; round++) {
+    const cur = layoutAspect();
+    if (round > 0 && Math.abs(Math.log(cur / ar)) < 0.1) break;
+    const st = Math.sqrt(Math.max(0.25, Math.min(4, ar / (cur > 0 ? cur : 1))));
+    if (Math.abs(st - 1) > 0.02) {
+      for (const n of sg.nodes) {
+        n.x = cx + (n.x - cx) * st;
+        n.y = cy + (n.y - cy) / st;
+      }
+    }
+    separateSquares(400);
+    compactInward(300);
+    separateSquares(200);   // guarantee: no overlap survives compaction
+  }
 
   // One more recenter after the relax pass.
   recenter();
@@ -1218,6 +1408,12 @@ function membersOfArea(areaId, data) {
         id: p.id, name: p.name, kind: 'person',
         orcid: p.orcid, openalex_id: p.openalex_id,
         homepage_url: p.homepage_url, area_id: areaId,
+        // layoutAndFit() places a person inside their institution's circle
+        // by this id. It used to be dropped here, so every researcher on the
+        // map fell through to the interstitial "no institution recorded"
+        // placement (hollow dot, italic name) — 529 of 529 on the shipped
+        // parquet, whatever facility_personnel said.
+        primary_facility_id: p.primary_facility_id || null,
         n_pubs: p.n_pubs, n_coauth: p.n_coauth,
         total_citations: p.total_citations,
         facility_funding_usd: p.facility_funding_usd,
@@ -1825,6 +2021,105 @@ function chaikin(ring, passes = 1) {
   return pts;
 }
 
+// Vertex mean + bbox of a ring. The closing vertex duplicates the first,
+// so it is skipped rather than counted twice.
+function ringStats(ring) {
+  let n = ring.length;
+  if (n > 1 && ring[0][0] === ring[n - 1][0] && ring[0][1] === ring[n - 1][1]) n--;
+  let sx = 0, sy = 0;
+  let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+  for (let i = 0; i < n; i++) {
+    const x = ring[i][0], y = ring[i][1];
+    sx += x; sy += y;
+    if (x < x0) x0 = x; if (y < y0) y0 = y;
+    if (x > x1) x1 = x; if (y > y1) y1 = y;
+  }
+  if (!n) return { cx: 0, cy: 0, x0: 0, y0: 0, x1: 0, y1: 0, w: 0, h: 0 };
+  return { cx: sx / n, cy: sy / n, x0, y0, x1, y1, w: x1 - x0, h: y1 - y0 };
+}
+
+// Pole of inaccessibility — the interior point farthest from the outline,
+// i.e. the centre of the largest inscribed circle. Inline port of the
+// grid-refinement algorithm in Mapbox's polylabel (Agafonkin, ISC), kept
+// here rather than imported because it is ~40 lines and the map already
+// waits on three CDN modules. Cells are refined only while they could
+// still beat the best point by more than `precision` (default 0.5% of the
+// polygon's larger side).
+function polylabel(ring, precision) {
+  const st = ringStats(ring);
+  const size = Math.min(st.w, st.h);
+  if (!(size > 0)) return { x: st.cx, y: st.cy, d: 0 };
+  const prec = precision || Math.max(st.w, st.h) / 200;
+  const cell = (x, y, half) => {
+    const d = ringSignedDist(x, y, ring);
+    return { x, y, half, d, max: d + half * Math.SQRT2 };
+  };
+  // Ascending by `max`, so pop() yields the most promising cell.
+  const queue = [];
+  const push = (c) => {
+    let lo = 0, hi = queue.length;
+    while (lo < hi) { const m = (lo + hi) >> 1; if (queue[m].max < c.max) lo = m + 1; else hi = m; }
+    queue.splice(lo, 0, c);
+  };
+  const h0 = size / 2;
+  for (let x = st.x0; x < st.x1; x += size) {
+    for (let y = st.y0; y < st.y1; y += size) push(cell(x + h0, y + h0, h0));
+  }
+  let best = cell(st.cx, st.cy, 0);
+  const boxC = cell(st.x0 + st.w / 2, st.y0 + st.h / 2, 0);
+  if (boxC.d > best.d) best = boxC;
+  while (queue.length) {
+    const c = queue.pop();
+    if (c.d > best.d) best = c;
+    if (c.max - best.d <= prec) continue;
+    const h = c.half / 2;
+    push(cell(c.x - h, c.y - h, h)); push(cell(c.x + h, c.y - h, h));
+    push(cell(c.x - h, c.y + h, h)); push(cell(c.x + h, c.y + h, h));
+  }
+  return { x: best.x, y: best.y, d: best.d };
+}
+
+// Signed distance from (x, y) to the ring outline: positive inside.
+function ringSignedDist(x, y, ring) {
+  let inside = false, minSq = Infinity;
+  for (let i = 0, n = ring.length, j = n - 1; i < n; j = i++) {
+    const a = ring[i], b = ring[j];
+    if ((a[1] > y) !== (b[1] > y)
+        && x < (b[0] - a[0]) * (y - a[1]) / (b[1] - a[1]) + a[0]) inside = !inside;
+    let px = a[0], py = a[1];
+    const dx = b[0] - px, dy = b[1] - py;
+    if (dx !== 0 || dy !== 0) {
+      const t = ((x - px) * dx + (y - py) * dy) / (dx * dx + dy * dy);
+      if (t > 1) { px = b[0]; py = b[1]; } else if (t > 0) { px += dx * t; py += dy * t; }
+    }
+    const ex = x - px, ey = y - py;
+    const sq = ex * ex + ey * ey;
+    if (sq < minSq) minSq = sq;
+  }
+  return (inside ? 1 : -1) * Math.sqrt(minSq);
+}
+
+// Length of the ring's interior chord through (x, y): horizontal when
+// `horizontal`, else vertical. 0 when the point is outside.
+function chordThrough(ring, x, y, horizontal) {
+  const hits = [];
+  const along = horizontal ? 1 : 0;      // coordinate the line is fixed in
+  const across = horizontal ? 0 : 1;
+  const v = horizontal ? y : x;
+  for (let i = 0, n = ring.length, j = n - 1; i < n; j = i++) {
+    const a = ring[i], b = ring[j];
+    if ((a[along] > v) !== (b[along] > v)) {
+      hits.push(a[across] + (v - a[along]) * (b[across] - a[across]) / (b[along] - a[along]));
+    }
+  }
+  hits.sort((p, q) => p - q);
+  const u = horizontal ? x : y;
+  for (let i = 0; i + 1 < hits.length; i += 2) {
+    if (hits[i] <= u && u <= hits[i + 1]) return hits[i + 1] - hits[i];
+  }
+  return 0;
+}
+
 
 // ── Wait for the stage to have a real size ──────────────────────────
 async function waitForStage(stage) {
@@ -1892,19 +2187,48 @@ async function buildLayout(data, w, h) {
     return { source: s, target: t, w };
   });
 
-  // Polygon centroids for label placement.
+  // Area-label anchors: the pole of inaccessibility (the interior point
+  // farthest from the outline), not the vertex mean. The vertex mean of a
+  // Chaikin-smoothed Voronoi union is biased toward whichever side carries
+  // the most vertices and can sit near an edge, which is exactly where a
+  // name has the least room. Each anchor also carries the polygon's
+  // horizontal and vertical chord through it (hw, vh) and its bbox: the
+  // label pass tests "does this name fit HERE" against the chord, not the
+  // bbox, so an L-shaped region is not credited with width it does not
+  // have at the anchor row.
   const labels = new Map();
+  const polyBBox = { x0: Infinity, y0: Infinity, x1: -Infinity, y1: -Infinity };
   for (const a of data.areas) {
     const ring = polyOut.polygons.get(a.id);
-    if (!ring) continue;
-    let cx = 0, cy = 0, n = 0;
-    for (let i = 0; i < ring.length - 1; i++) { cx += ring[i][0]; cy += ring[i][1]; n++; }
-    if (n) labels.set(a.id, { x: cx / n, y: cy / n, name: a.name, weight: a.weight });
+    if (!ring || ring.length < 4) continue;
+    const st = ringStats(ring);
+    if (st.x0 < polyBBox.x0) polyBBox.x0 = st.x0;
+    if (st.y0 < polyBBox.y0) polyBBox.y0 = st.y0;
+    if (st.x1 > polyBBox.x1) polyBBox.x1 = st.x1;
+    if (st.y1 > polyBBox.y1) polyBBox.y1 = st.y1;
+    const pole = polylabel(ring);
+    labels.set(a.id, {
+      x: pole.x, y: pole.y, name: a.name, weight: a.weight,
+      hw: chordThrough(ring, pole.x, pole.y, true),
+      vh: chordThrough(ring, pole.x, pole.y, false),
+      x0: st.x0, y0: st.y0, bw: st.w, bh: st.h,
+    });
+  }
+
+  // Institution sub-polygons: centroid (the facility dot and its label
+  // anchor) and bbox, computed ONCE here. Three call sites used to recompute
+  // the vertex mean independently.
+  for (const sp of facPolygons.values()) {
+    const st = ringStats(sp.ring || []);
+    sp.cx = st.cx; sp.cy = st.cy; sp.bw = st.w; sp.bh = st.h;
   }
 
   return {
     polygons: polyOut.polygons,
     bbox: polyOut.bbox,
+    // Bounding box of every area polygon — what the fit transform frames.
+    // (bbox above is the padded NODE box the Voronoi used, which is larger.)
+    polyBBox,
     nodes: allNodes,
     crossEdges,
     labels,
@@ -1929,6 +2253,7 @@ async function buildLayout(data, w, h) {
 function drawProtectedLayer(root) {
   if (_paChipSel) { _paChipSel.remove(); _paChipSel = null; }
   _paLabelSel = null;
+  markLabelsDirty();
   if (!_showProtected || !_layout || !_layout.protectedByArea) return;
 
   const chips = [];
@@ -1958,21 +2283,18 @@ function drawProtectedLayer(root) {
 
   const g = root.append('g').attr('class', 'mvg-pa-chips');
   _paChipSel = g;
-  // Offset below the region label so the two never collide.
-  _paLabelSel = g.attr('text-anchor', 'middle')
-    .attr('font-family', 'system-ui, sans-serif')
-    .attr('pointer-events', 'none')
-    .selectAll('text').data(chips).enter().append('text')
-    .attr('x', (d) => d.x)
-    .attr('y', (d) => d.y + 22)
-    .attr('font-weight', 600)
+  // Anchored on the region-label point and offset BELOW it by a fixed
+  // number of SCREEN px (see buildLabelCandidates). The offset used to be
+  // 22 layout units, which is 5.8 px on screen at the old first paint, so
+  // the chip landed on the region name; it now also goes through the
+  // collision pass, so the two can never be drawn on top of each other.
+  _paLabelSel = labelTexts(g.attr('pointer-events', 'none')
+    .selectAll('text').data(chips).enter().append('text'),
+  (d) => d.__basePx, HALO_PX.pa)
     .attr('fill', '#3f6212')
     .attr('stroke', '#f7fee7')
-    .attr('stroke-width', 2.0)
-    .attr('stroke-linejoin', 'round')
-    .attr('paint-order', 'stroke')
     .text((d) => d.display);
-  _paLabelSel.each(function (d) { d.__baseFont = d.__basePx; });
+  markLabelsDirty();
 }
 
 
@@ -2130,9 +2452,7 @@ function siteAnchor(facilityId) {
   if (!_layout) return null;
   const sp = _layout.facPolygons && _layout.facPolygons.get(facilityId);
   if (sp && sp.ring && sp.ring.length) {
-    let cx = 0, cy = 0;
-    for (const [x, y] of sp.ring) { cx += x; cy += y; }
-    return { x: cx / sp.ring.length, y: cy / sp.ring.length, meta: sp };
+    return { x: sp.cx, y: sp.cy, meta: sp };
   }
   const c = _layout.facCircles && _layout.facCircles.get(facilityId);
   if (c) return { x: c.x, y: c.y, r: c.r, meta: c };
@@ -2247,6 +2567,8 @@ function drawRegistryLayer(d3, tip) {
   _regNodeLinkSel = null;
   _regLabelSel = null;
   _regDomainLabelSel = null;
+  _markScaleApplied = 0;
+  markLabelsDirty();
   if (!_showRegistry || !_registry || !_layout) return;
 
   // ── Site ↔ site ribbons (always on when the layer is on) ─────────
@@ -2297,7 +2619,7 @@ function drawRegistryLayer(d3, tip) {
   for (const [areaId, coh] of (_registry.domainByArea || new Map()).entries()) {
     const lab = _layout.labels.get(areaId);
     if (!lab || !coh.n_people) continue;
-    domainData.push({ ...coh, x: lab.x, y: lab.y - 26,
+    domainData.push({ ...coh, area_id: areaId, x: lab.x, y: lab.y - 26,
                       area_name: lab.name || areaId });
   }
   if (domainData.length) {
@@ -2316,27 +2638,17 @@ function drawRegistryLayer(d3, tip) {
       .on('mouseleave', () => hideTip(tip))
       .on('click', (ev, d) => { ev.stopPropagation(); renderDomainPanel(d); });
     rings.each(function (d) { d.__baseR = domRadius(d); });
-    // Caption. Its own text class, banded with the REGION labels
-    // (ZOOM_BANDS.area, not .registry) — it annotates a region, so it
-    // belongs on screen exactly while region names are. See the
-    // applyLabels call in onZoom().
-    const caps = g.append('g').attr('text-anchor', 'middle')
-      .attr('font-family', 'system-ui, sans-serif')
-      .attr('pointer-events', 'none')
-      .selectAll('text').data(domainData).enter().append('text')
-      .attr('x', (d) => d.x)
-      .attr('y', (d) => d.y - domRadius(d) - 3)
-      .attr('font-weight', 600)
+    // Caption. Its own text class, tiered with the protected-area chips
+    // (region >= CONTEXT_MIN_POLY_PX on screen) — it annotates a region.
+    // Anchored on the top of the ring; the label pass lifts it a few
+    // screen px above. See buildLabelCandidates().
+    for (const d of domainData) d.__basePx = PA_LABEL_PX.min;
+    const caps = labelTexts(g.append('g').attr('pointer-events', 'none')
+      .selectAll('text').data(domainData).enter().append('text'),
+    (d) => d.__basePx, HALO_PX.reg)
       .attr('fill', NODE_COLORS.registry)
       .attr('stroke', '#fff7ed')
-      .attr('stroke-width', 2.0)
-      .attr('stroke-linejoin', 'round')
-      .attr('paint-order', 'stroke')
       .text((d) => `${d.n_people} no site`);
-    caps.each(function (d) {
-      d.__basePx = PA_LABEL_PX.min;
-      d.__baseFont = d.__basePx;
-    });
     _regDomainLabelSel = caps;
   } else {
     _regDomainLabelSel = null;
@@ -2416,28 +2728,20 @@ function drawRegistryLayer(d3, tip) {
   _regNodeSel.each(function (d) { d.__baseR = registryRadius(d); });
 
   // Researcher NAME LABELS at the focused site. These are the only
-  // registry names drawn on the map, and only inside ZOOM_BANDS.registry
-  // (k >= 1.0), because at the fit zoom a site sub-polygon is a few dozen
-  // pixels across and 48 names would be unreadable regardless of size.
+  // registry names drawn on the map, and only once the site's sub-polygon
+  // is >= PERSON_MIN_FACPOLY_PX on screen: at the fit zoom a site is a few
+  // dozen pixels across and 48 names would be unreadable regardless of
+  // size.
   const maxH = Math.max(1, ...shown.map((d) => d.h_index || 0));
-  _regLabelSel = _regRootG.append('g').attr('class', 'mvg-reg-labels')
-    .attr('text-anchor', 'middle')
-    .attr('font-family', 'system-ui, sans-serif')
+  for (const d of shown) d.__basePx = rampPx(REG_LABEL_PX, d.h_index || 0, maxH);
+  _regLabelSel = labelTexts(_regRootG.append('g').attr('class', 'mvg-reg-labels')
     .attr('pointer-events', 'none')
-    .selectAll('text').data(shown).enter().append('text')
-    .attr('x', (d) => d.x)
-    .attr('y', (d) => d.y - 4)
-    .attr('font-weight', 600)
+    .selectAll('text').data(shown).enter().append('text'),
+  (d) => d.__basePx, HALO_PX.reg)
     .attr('fill', '#7c2d12')
     .attr('stroke', '#fff7ed')
-    .attr('stroke-width', 2.0)
-    .attr('stroke-linejoin', 'round')
-    .attr('paint-order', 'stroke')
     .text((d) => shortName(d.display_name));
-  _regLabelSel.each(function (d) {
-    d.__basePx = rampPx(REG_LABEL_PX, d.h_index || 0, maxH);
-    d.__baseFont = d.__basePx;
-  });
+  markLabelsDirty();
 
   renderRegistryPanel(roster, shown.length, offMapEdges);
 }
@@ -2565,107 +2869,75 @@ async function render() {
     const d3 = await loadD3();
     _d3Mod = d3;
     if (!_layout) {
-      const data = await fetchData();
-      statusEl.textContent = 'Computing knowledge map (this takes 5-10 s)…';
-      _layout = await buildLayout(data, w, h);
+      // One fetch + layout at a time: a route revisit or a layer toggle
+      // while the database is still starting must not start a second one.
+      if (!_layoutPromise) {
+        _layoutPromise = (async () => {
+          const data = await fetchData();
+          statusEl.textContent = 'Computing knowledge map (this takes 5-10 s)…';
+          return buildLayout(data, w, h);
+        })().finally(() => { _layoutPromise = null; });
+      }
+      _layout = await _layoutPromise;
     }
     updateStatus();
 
     stage.innerHTML = '';
-    // viewBox is computed to focus on the WEIGHTED CORE of the map —
-    // not the bounding box of every polygon. The previous "tightest
-    // bbox of all rings" logic let one or two single-facility outlier
-    // polygons (which the force sim sometimes flings to the periphery)
-    // stretch the box, so the central dense cluster — coastal-processes,
-    // marine-ecosystems, biogeochemistry — ended up off-center and tiny
-    // while the user saw mostly empty parchment with an outlier in the
-    // top corner.
+    // VIEWPORT. The viewBox is the stage itself in CSS px (0 0 w h), so one
+    // SVG unit is one CSS pixel and the d3.zoom scale k IS the world→screen
+    // scale. The first view is a zoom TRANSFORM that frames the bounding box
+    // of every polygon (fitTransform), recomputed whenever the stage
+    // changes size.
     //
-    // Instead, we:
-    //   1. Compute the weighted centroid of all area polygons, weighted
-    //      by polygon weight (= n_facilities).
-    //   2. Rank polygons by distance from that centroid.
-    //   3. Walk the ranked list inward → outward, accumulating bbox AND
-    //      cumulative weight. Stop once cumulative weight covers
-    //      VIEWBOX_WEIGHT_FRAC of the total.
-    //
-    // Outlier polygons remain rendered (you can pan/zoom-out to see
-    // them), they just don't dictate the default frame. Tuned so the
-    // 4-5 biggest cartograms always land on screen at first paint.
-    const VIEWBOX_WEIGHT_FRAC = 0.80;
-    let bx, by, bw, bh;
-    {
-      // Polygon centroids + weights.
-      const cents = [];
-      for (const a of _layout.areas) {
-        const ring = _layout.polygons.get(a.id);
-        if (!ring || ring.length === 0) continue;
-        let cx = 0, cy = 0;
-        for (const [x, y] of ring) { cx += x; cy += y; }
-        cx /= ring.length; cy /= ring.length;
-        cents.push({ a, ring, cx, cy, w: a.weight || 1 });
-      }
-      const totalW = cents.reduce((s, c) => s + c.w, 0) || 1;
-
-      // Weighted centroid (importance-weighted "center of mass").
-      let sx = 0, sy = 0;
-      for (const c of cents) { sx += c.cx * c.w; sy += c.cy * c.w; }
-      const wcx = sx / totalW, wcy = sy / totalW;
-
-      // Sort by distance from weighted centroid; bigger polygons
-      // additionally win ties (and pull the inclusion threshold
-      // toward themselves) by penalising their distance with a
-      // sqrt-weight bonus.
-      cents.sort((p, q) => {
-        const dp = Math.hypot(p.cx - wcx, p.cy - wcy) / Math.sqrt(p.w);
-        const dq = Math.hypot(q.cx - wcx, q.cy - wcy) / Math.sqrt(q.w);
-        return dp - dq;
-      });
-
-      // Accumulate bbox until we cover VIEWBOX_WEIGHT_FRAC of weight.
-      let mnX = Infinity, mnY = Infinity, mxX = -Infinity, mxY = -Infinity;
-      let cumW = 0;
-      for (const { ring, w } of cents) {
-        for (const [x, y] of ring) {
-          if (x < mnX) mnX = x; if (y < mnY) mnY = y;
-          if (x > mxX) mxX = x; if (y > mxY) mxY = y;
-        }
-        cumW += w;
-        if (cumW / totalW >= VIEWBOX_WEIGHT_FRAC) break;
-      }
-
-      // Fall-through guard if for any reason no polygons were captured.
-      if (mnX === Infinity) {
-        for (const ring of _layout.polygons.values()) {
-          for (const [x, y] of ring) {
-            if (x < mnX) mnX = x; if (y < mnY) mnY = y;
-            if (x > mxX) mxX = x; if (y > mxY) mxY = y;
-          }
-        }
-      }
-
-      // 8% padding so polygons aren't flush against the edge.
-      const padW = (mxX - mnX) * 0.08;
-      const padH = (mxY - mnY) * 0.08;
-      bx = mnX - padW; by = mnY - padH;
-      bw = (mxX - mnX) + 2 * padW;
-      bh = (mxY - mnY) + 2 * padH;
-    }
+    // This replaced a viewBox cropped to the "weighted core" — the polygons
+    // holding 80% of the weight, plus 8% — under preserveAspectRatio meet.
+    // That crop cut the outer regions off at the bottom of the stage (4 of
+    // 38 polygons clipped at 1600 px), kept the layout's portrait aspect so
+    // half a landscape stage stayed empty, and made k relative to a box
+    // whose size depended on the window, so the zoom bands that keyed off k
+    // fired at a different on-screen scale on every display.
+    _stageW = stage.clientWidth || w;
+    _stageH = stage.clientHeight || h;
+    // Every label element is about to be replaced.
+    _shownEls = new Set();
+    _labelCands = null;
     const svg = d3.select(stage).append('svg')
-      .attr('viewBox', `${bx} ${by} ${bw} ${bh}`)
+      .attr('viewBox', `0 0 ${_stageW} ${_stageH}`)
       .attr('preserveAspectRatio', 'xMidYMid meet')
       .attr('class', 'mvg-svg');
     const root = svg.append('g').attr('class', 'mvg-root');
     _rootG = root;
 
-    // d3.zoom — captured so the TOC + polygon clicks can call it.
-    const zoom = d3.zoom().scaleExtent([0.4, 12]).on('zoom', (ev) => {
-      root.attr('transform', ev.transform);
-      onZoom(ev.transform.k);
-    });
-    svg.call(zoom);
+    // d3.zoom — captured so the TOC + polygon clicks can call it. The zoom
+    // handler itself only moves the root group; labels and marks are
+    // re-evaluated in a requestAnimationFrame-throttled pass (at most once
+    // per frame) plus one final pass when the gesture ends. The old handler
+    // re-sized and re-culled every label synchronously on every wheel event
+    // (10–123 ms each).
+    const zoom = d3.zoom()
+      .on('zoom', (ev) => {
+        root.attr('transform', ev.transform);
+        _zoomT = ev.transform;
+        _zoomK = ev.transform.k;
+        // A sourceEvent means a person did this (wheel, drag, pinch); a
+        // programmatic zoom.transform has none.
+        if (ev.sourceEvent) _userZoomed = true;
+        scheduleLabelPass();
+      })
+      .on('end', () => onZoom());
     _zoomBehavior = zoom;
     _zoomSvg = svg;
+    applyZoomExtents();
+    svg.call(zoom);
+    // Double-click on the map frames everything again (d3's default
+    // double-click zooms in 2x, which nobody needs with a wheel and a TOC).
+    svg.on('dblclick.zoom', null);
+    svg.on('dblclick.mvgfit', (ev) => { ev.preventDefault(); resetToFit(true); });
+    // First view: everything. A re-render (layer toggle) keeps the view
+    // the user had, as long as they had moved it.
+    if (_userZoomed && _zoomT) svg.call(zoom.transform, _zoomT);
+    else svg.call(zoom.transform, _fitT);
+    observeStage(stage);
 
     const tip = ensureTooltip();
 
@@ -2674,24 +2946,30 @@ async function render() {
     const colorOf = new Map(areaList.map((a, i) => [a.id, AREA_PALETTE[i % AREA_PALETTE.length]]));
     _colorOf = colorOf;
     const polyG = root.append('g').attr('class', 'mvg-polys');
-    polyG.selectAll('path').data(areaList).enter().append('path')
+    // Region outlines are drawn with a NON-SCALING stroke, i.e. in screen
+    // px: a 1.4-unit world stroke was a 0.35 px hairline at the overview
+    // and a 4 px bar at 8x. The pinned (asked-for) region gets a heavier
+    // outline and fill — see applyAreaHighlight().
+    _polySel = polyG.selectAll('path').data(areaList).enter().append('path')
       .attr('d', (a) => {
         const ring = _layout.polygons.get(a.id);
         return ring ? `M${ring.map((p) => p.join(',')).join('L')}Z` : '';
       })
       .attr('fill', (a) => colorOf.get(a.id))
-      .attr('fill-opacity', 0.18)
+      .attr('fill-opacity', AREA_FILL_OPACITY)
       .attr('stroke', (a) => colorOf.get(a.id))
       .attr('stroke-opacity', 0.9)
-      .attr('stroke-width', 1.4)
+      .attr('stroke-width', AREA_STROKE_PX)
+      .attr('vector-effect', 'non-scaling-stroke')
       .style('cursor', 'pointer')
       .on('mouseenter', function (ev, a) {
         d3.select(this).attr('fill-opacity', 0.32);
         const lab = _layout.labels.get(a.id);
         if (lab) showTip(tip, ev, areaTipHtml(a));
       })
-      .on('mouseleave', function () {
-        d3.select(this).attr('fill-opacity', 0.18);
+      .on('mouseleave', function (ev, a) {
+        d3.select(this).attr('fill-opacity', a.id === _pinnedAreaId
+          ? AREA_FILL_OPACITY_PINNED : AREA_FILL_OPACITY);
         hideTip(tip);
       })
       .on('click', (ev, a) => zoomToArea(a.id));
@@ -3052,9 +3330,7 @@ async function render() {
       const facCentroid = (d) => {
         const sp = _layout.facPolygons && _layout.facPolygons.get(d.id);
         if (!sp || !sp.ring || sp.ring.length === 0) return [d.x, d.y];
-        let cx = 0, cy = 0;
-        for (const [x, y] of sp.ring) { cx += x; cy += y; }
-        return [cx / sp.ring.length, cy / sp.ring.length];
+        return [sp.cx, sp.cy];
       };
       _dotFacSel = root.append('g').attr('class', 'mvg-fac-dots')
         .selectAll('circle').data(facNodes).enter().append('circle')
@@ -3112,7 +3388,12 @@ async function render() {
       // readable at ~1.6 px while heavy-collab/well-funded researchers
       // sit at ~3.5 px before their name kicks in. Stroke-width also
       // scales so the white halo doesn't dominate the small dots.
-      const dotPeople = perNodes.filter((p) => !labelledIds.has(p.id));
+      // EVERY researcher gets a dot, including the top-N who also carry a
+      // name label: names are now shown only when there is room on screen
+      // (see the label tiers), and a labelled-only researcher whose name is
+      // hidden would otherwise have no mark at all. The label sits just
+      // above its dot.
+      const dotPeople = perNodes;
       const dotRadius = (d) => {
         const w = d.importance || 0;
         return 1.6 + Math.min(2.2, Math.sqrt(w) * 0.55);
@@ -3134,6 +3415,10 @@ async function render() {
         .attr('stroke', (d) => (isGap(d) ? NODE_COLORS.person : '#fff'))
         .attr('stroke-width', (d) => (isGap(d) ? 0.9 : 0.5))
         .attr('stroke-dasharray', (d) => (isGap(d) ? '1.6 1.2' : null))
+        // A hollow (fill:none) circle only takes pointer events on its
+        // dashed outline by default; 'all' makes its whole disc clickable,
+        // like the filled dots.
+        .attr('pointer-events', 'all')
         .style('cursor', 'pointer')
         .on('mouseenter', (ev, d) => showTip(tip, ev, nodeTipHtml(d)))
         .on('mouseleave', () => hideTip(tip))
@@ -3148,46 +3433,31 @@ async function render() {
         d.__gapDot = isGap(d);
       });
 
-      // Name labels for the top N per area. We store the BASE font
-      // size on the datum so onZoom() can rescale relative to it.
+      // Name labels for the top N per area, sized in SCREEN px within
+      // PERSON_LABEL_PX (floor 10.0 px, above LABEL_MIN_PX). Shown only once
+      // the researcher's institution is PERSON_MIN_FACPOLY_PX across on
+      // screen — see buildLabelCandidates().
       const labelPeople = perNodes.filter((p) => labelledIds.has(p.id));
-      // SCREEN-px size, not an SVG font-size. Range floor is
-      // PERSON_LABEL_PX.min = 10.0 px, above LABEL_MIN_PX, so a person
-      // label is either drawn at >= 10 px on screen or hidden by its band.
-      // The old range was 8–12 SVG units, which rendered 4.0–6.0 px at the
-      // initial fit (k = 0.5) — 5.0 px at the middle of the range.
       const maxImportance = Math.max(1, ...labelPeople.map((d) => d.importance || 0));
-      const personBaseFont = (d) =>
-        rampPx(PERSON_LABEL_PX, d.importance || 0, maxImportance);
-      _labelSel = root.append('g').attr('class', 'mvg-per-labels')
-        .attr('text-anchor', 'middle')
-        .attr('font-family', 'system-ui, sans-serif')
-        .selectAll('text').data(labelPeople).enter().append('text')
-        .attr('x', (d) => d.x).attr('y', (d) => d.y)
-        .attr('font-size', personBaseFont)
-        .attr('font-weight', 500)
+      for (const d of labelPeople) {
+        d.__basePx = rampPx(PERSON_LABEL_PX, d.importance || 0, maxImportance);
+        d.__italic = isGap(d);
+      }
+      _labelSel = labelTexts(root.append('g').attr('class', 'mvg-per-labels')
+        .selectAll('text').data(labelPeople).enter().append('text'),
+      (d) => d.__basePx, HALO_PX.person, 500)
         // Named people in the interstitial space are italicised for the same
         // reason their dot is hollow: a label sitting in the gap between two
         // institutions would otherwise read as belonging to whichever circle
         // it happens to land nearest.
-        .attr('font-style', (d) => (isGap(d) ? 'italic' : null))
+        .attr('font-style', (d) => (d.__italic ? 'italic' : null))
         .attr('fill', '#0c4a6e')
         .attr('stroke', '#fff')
-        .attr('stroke-width', 2.4)
-        .attr('stroke-linejoin', 'round')
-        .attr('paint-order', 'stroke')
         .style('cursor', 'pointer')
         .text((d) => shortName(d.name))
         .on('mouseenter', (ev, d) => showTip(tip, ev, nodeTipHtml(d)))
         .on('mouseleave', () => hideTip(tip))
         .on('click', (ev, d) => onNodeClick(ev, d));
-      // Tag each label with its target SCREEN size so onZoom can divide
-      // by the measured world→screen scale. __baseFont is kept as an alias
-      // because cullSelection ranks by it.
-      _labelSel.each(function (d) {
-        d.__basePx = personBaseFont(d);
-        d.__baseFont = d.__basePx;
-      });
     } else {
       _labelSel = null;
       _dotPersonSel = null;
@@ -3233,80 +3503,51 @@ async function render() {
       renderRegistryPanel(null);
     }
 
-    // Layer 3.5: FACILITY NAME LABELS. Same progressive-reveal +
-    // collision-culling logic as person labels — at the default zoom
-    // only the largest institutions' names are visible, and as the
-    // user zooms in more facility names appear because their world-
-    // space bbox shrinks. Placed at sub-polygon centroid, font sized
-    // by sqrt(n_people). Hidden entirely below k = 0.7 (would
-    // overcrowd the default frame).
+    // Layer 3.5: FACILITY NAME LABELS. Shown once the institution's sub-
+    // polygon is big enough on screen to hold its name (FAC_MIN_POLY_PX,
+    // FAC_LABEL_FIT), then culled against every other label class. Anchored
+    // on the facility dot and lifted just above it, so a name no longer
+    // covers the mark it names. Font sized by people + datasets.
     if (_showFacility && _layout.facPolygons && _layout.facPolygons.size) {
       // Label weight = people here + datasets produced, so a data provider
       // is labelled ahead of a similarly-staffed site that ships nothing
-      // (cullSelection ranks by __baseFont, i.e. by this size).
+      // (the collision pass ranks organisations by this weight).
       const facLabWeight = (sp) =>
         (sp.n_people || 0) + W_DATASET * (sp.n_datasets || 0);
       const facLabMax = Math.max(1, ...[..._layout.facPolygons.values()]
         .map(facLabWeight));
-      const facLabData = [..._layout.facPolygons.entries()].map(([id, sp]) => {
-        const ring = sp.ring || [];
-        let cx = 0, cy = 0;
-        for (const [x, y] of ring) { cx += x; cy += y; }
-        if (ring.length) { cx /= ring.length; cy /= ring.length; }
-        const display = sp.acronym && sp.acronym.length <= 8
-          ? sp.acronym
-          : shortFacilityName(sp.name);
-        return {
-          id, x: cx, y: cy,
-          display, name: sp.name, acronym: sp.acronym,
-          country: sp.country, f_type: sp.f_type, url: sp.url,
-          n_people: sp.n_people || 0, area_id: sp.area_id,
-          n_datasets: sp.n_datasets || 0,
-          // SCREEN px. The old range was 7–11 SVG units and the class was
-          // hidden below k = 0.7. Under the old scale (min(1, 1/max(k,0.5)),
-          // so = 1 for every k < 1) the on-screen size was base*k below k=1
-          // and base above it: the SMALL end rendered 4.9 px at k = 0.7,
-          // 5.6 px at k = 0.8 and never exceeded 7.0 px at ANY zoom, so the
-          // majority of this class sat under a 9.8 px floor everywhere; only
-          // the large end (11 px) cleared the floor, and only from k ≈ 0.9.
-          // The floor is now FAC_LABEL_PX.min = 10.5 px on screen.
-          baseFont: rampPx(FAC_LABEL_PX, facLabWeight(sp), facLabMax),
-        };
-      });
-      _facLabelSel = root.append('g').attr('class', 'mvg-fac-labels')
-        .attr('text-anchor', 'middle')
-        .attr('font-family', 'system-ui, sans-serif')
+      const displayOf = facilityDisplayNames(_layout.facPolygons);
+      const facLabData = [..._layout.facPolygons.entries()].map(([id, sp]) => ({
+        id, x: sp.cx, y: sp.cy, bw: sp.bw, bh: sp.bh,
+        display: displayOf.get(id), name: sp.name, acronym: sp.acronym,
+        area_id: sp.area_id,
+        weight: facLabWeight(sp),
+        // Base radius of this facility's dot (see the dot layer above), so
+        // the label can sit clear of it at every zoom.
+        __dotR: sp.is_provider ? 4.2 : 2.6,
+        // SCREEN px, floor FAC_LABEL_PX.min = 10.5. The old range was 7–11
+        // SVG units and rendered 4.9–7.0 px over most of the zoom range.
+        __basePx: rampPx(FAC_LABEL_PX, facLabWeight(sp), facLabMax),
+      }));
+      _facLabelSel = labelTexts(root.append('g').attr('class', 'mvg-fac-labels')
         .attr('pointer-events', 'none')
-        .selectAll('text').data(facLabData).enter().append('text')
-        .attr('x', (d) => d.x).attr('y', (d) => d.y)
-        .attr('font-size', (d) => d.baseFont)
-        .attr('font-weight', 600)
+        .selectAll('text').data(facLabData).enter().append('text'),
+      (d) => d.__basePx, HALO_PX.fac)
         .attr('fill', '#0f172a')
         .attr('stroke', '#fef9f0')
-        .attr('stroke-width', 1.8)
-        .attr('stroke-linejoin', 'round')
-        .attr('paint-order', 'stroke')
         .text((d) => d.display);
-      _facLabelSel.each(function (d) {
-        d.__basePx = d.baseFont;
-        d.__baseFont = d.baseFont;
-      });
     } else {
       _facLabelSel = null;
     }
 
-    // Initial label-visibility/scaling pass so the very-first paint
-    // matches whatever zoom level we're starting at.
-    onZoom(_zoomK);
     // Populate the left-hand TOC of research areas (clickable to zoom).
     populateToc();
 
-    // Layer 4: polygon (research area) labels. Captured into _areaLabelSel
-    // so onZoom() can counter-scale them just like the person labels —
-    // otherwise the area names balloon at high zoom.
+    // Layer 4: polygon (research area) labels, drawn above everything
+    // else. Each region has a one-line <text> and, when its name has a
+    // space, a two-line one; the label pass shows at most one of them, at
+    // full or small size, or neither (see buildLabelCandidates).
     const labelG = root.append('g').attr('class', 'mvg-labels')
-      .attr('text-anchor', 'middle')
-      .attr('font-family', 'system-ui, sans-serif')
       .attr('pointer-events', 'none');
     const areaMaxW = Math.max(1, ...areaList.map((a) => a.weight || 0));
     const areaLabData = areaList
@@ -3314,29 +3555,32 @@ async function render() {
       .map((a) => {
         const lab = _layout.labels.get(a.id);
         return {
-          id: a.id, name: lab.name, x: lab.x, y: lab.y,
-          // SCREEN px, 13.0–20.0. The old range was 10–16 SVG units, which
-          // rendered 5.0–8.0 px at the initial fit (k = 0.5) — 6.5 px at the
-          // middle of the range — because the counter-scale clamped to 1 for
-          // every k < 1 and the transform then shrank the text. Sized by the
-          // data-and-people weight, so the biggest name belongs to the
-          // region carrying the most observatories, datasets and people.
-          baseFont: rampPx(AREA_LABEL_PX, a.weight || 0, areaMaxW),
+          id: a.id, name: lab.name, x: lab.x, y: lab.y, lab,
+          weight: a.weight || 0,
+          lines: splitTwoLines(lab.name),
+          // SCREEN px within AREA_LABEL_PX, sized by the data-and-people
+          // weight, so the biggest name belongs to the region carrying the
+          // most observatories, datasets and people.
+          __basePx: rampPx(AREA_LABEL_PX, a.weight || 0, areaMaxW),
         };
       });
-    _areaLabelSel = labelG.selectAll('text').data(areaLabData).enter().append('text')
-      .attr('x', (d) => d.x).attr('y', (d) => d.y)
-      .attr('font-size', (d) => d.baseFont)
-      .attr('font-weight', 600)
+    const areaText = (sel) => labelTexts(sel, (d) => d.__basePx, HALO_PX.area)
       .attr('fill', '#1f2937')
-      .attr('stroke', '#fff')
-      .attr('stroke-width', 2.2)
-      .attr('stroke-linejoin', 'round')
-      .attr('paint-order', 'stroke')
+      .attr('stroke', '#fff');
+    _areaLabelSel = areaText(labelG.selectAll('text.mvg-area-name')
+      .data(areaLabData).enter().append('text').attr('class', 'mvg-area-name'))
       .text((d) => d.name);
-    _areaLabelSel.each(function (d) {
-      d.__basePx = d.baseFont;
-      d.__baseFont = d.baseFont;
+    _areaLabelSel.each(function (d) { d.__el1 = this; });
+    _areaWrapSel = areaText(labelG.selectAll('text.mvg-area-name2')
+      .data(areaLabData.filter((d) => d.lines)).enter().append('text')
+      .attr('class', 'mvg-area-name2'));
+    _areaWrapSel.each(function (d) {
+      // Two lines centred on the anchor: with dominant-baseline central the
+      // line centres sit at ∓LINE_GAP_EM/2.
+      const t = d3.select(this);
+      t.append('tspan').attr('x', 0).attr('dy', `${-LINE_GAP_EM / 2}em`).text(d.lines[0]);
+      t.append('tspan').attr('x', 0).attr('dy', `${LINE_GAP_EM}em`).text(d.lines[1]);
+      d.__el2 = this;
     });
 
     // Layer 5: protected-area aggregate chips (opt-in layer). Drawn last
@@ -3344,13 +3588,26 @@ async function render() {
     // switched on. One chip per region — never one mark per protected area.
     drawProtectedLayer(root);
 
-    // Final sizing pass now that every label class exists AND the SVG is
-    // in the document, so getScreenCTM() returns the real composed scale.
-    // The earlier onZoom() call above ran before the area labels existed.
-    onZoom(_zoomK);
+    applyAreaHighlight();
+    // Every label class now exists: run the first label pass synchronously
+    // so the first paint is already culled.
+    _markScaleApplied = 0;
+    markLabelsDirty();
+    onZoom();
   } catch (err) {
     console.error('[mvg] render failed', err);
-    if (statusEl) statusEl.textContent = `Knowledge map render failed: ${err.message}`;
+    if (statusEl) {
+      statusEl.textContent = err && err.message === DB_NOT_READY
+        ? `The database did not start within ${DB_WAIT_MS / 60000} minutes, `
+          + 'so the knowledge map cannot be drawn. Press Recompute layout to '
+          + 'try again, or reload the page.'
+        : `Knowledge map render failed: ${err.message}. `
+          + 'Press Recompute layout to try again.';
+    }
+    const tocList = _container && _container.querySelector('#net-toc-list');
+    if (tocList && tocList.querySelector('.mvg-toc-empty')) {
+      tocList.innerHTML = '<li class="mvg-toc-empty">Not available</li>';
+    }
   }
 }
 
@@ -3606,68 +3863,453 @@ function onPersonClick(d) {
   location.hash = `#/people/${encodeURIComponent(d.id)}`;
 }
 
-// World→screen scale of the map root, i.e. how many CSS pixels one SVG
-// user unit occupies. It is the PRODUCT of two factors:
+// Display names for institution labels.
 //
-//   * the viewBox fit — the SVG has width/height 100% and a computed
-//     viewBox, so preserveAspectRatio scales world units to the stage
-//     independently of zoom. This factor is NOT 1 in general, and the old
-//     code ignored it entirely;
-//   * the d3.zoom factor k.
-//
-// Measuring the composed transform off the DOM is the only way to be
-// right about both. Falls back to k when the CTM is unavailable (detached
-// node, jsdom, a browser mid-layout), which reproduces the old assumption
-// rather than throwing.
-function worldToScreenScale() {
-  const node = _rootG && _rootG.node && _rootG.node();
-  if (node && typeof node.getScreenCTM === 'function') {
-    try {
-      const m = node.getScreenCTM();
-      // Uniform scale: preserveAspectRatio 'meet' and d3.zoom are both
-      // isotropic, so |a| is the whole story. Guard against 0 (hidden
-      // element) and against a stale matrix during a transition.
-      if (m && Math.abs(m.a) > 1e-6) return Math.abs(m.a);
-    } catch (_) { /* fall through to the k-only estimate */ }
+// A network acronym is a useless label when it is shared: on the shipped
+// parquet 61 sites carry one (NERR ×29, NEP ×19, LTER ×9, LTREB ×4,
+// CPER ×2), so Coastal processes read as a wall of identical
+// "NERR / NEP / LTER". A site whose acronym is shared — or that has none —
+// is labelled by its PLACE: the canonical name with the trailing network
+// designation removed ("Wells NERR" → "Wells", "Casco Bay Estuary
+// Partnership NEP" → "Casco Bay"). A unique acronym of up to 8 characters
+// is still the label, as before. The tooltip always carries the full name.
+const NETWORK_SUFFIX_RE = new RegExp(
+  '\\s+(National Estuary Program|Estuary Program|Estuary Partnership|'
+  + 'Estuaries Partnership|NERR|NEP|LTER|LTREB|LTAR|MarineGEO|NEON Site)\\b.*$');
+function facilityDisplayNames(facPolygons) {
+  const nAcr = new Map();
+  for (const sp of facPolygons.values()) {
+    if (sp.acronym) nAcr.set(sp.acronym, (nAcr.get(sp.acronym) || 0) + 1);
   }
-  return _zoomK > 0 ? _zoomK : 1;
+  const out = new Map();
+  for (const [id, sp] of facPolygons.entries()) {
+    const acr = sp.acronym;
+    if (acr && acr.length <= 8 && nAcr.get(acr) === 1) { out.set(id, acr); continue; }
+    const full = String(sp.name || '').trim();
+    const place = full.replace(NETWORK_SUFFIX_RE, '').trim();
+    out.set(id, shortFacilityName(place || full));
+  }
+  return out;
 }
 
-// Show / hide / rescale every label class in response to zoom level.
-//
-// TRUE CONSTANT SCREEN SIZE: each class declares the size it wants ON THE
-// SCREEN (the *_LABEL_PX constants). The SVG font-size is that value
-// divided by the measured world→screen scale, so the rendered text is the
-// declared number of CSS pixels at EVERY zoom level — not just k >= 1.
-//
-// The predecessor computed `Math.min(1, 1 / Math.max(k, 0.5))`, which is
-// min(1, >=1) = exactly 1 for every k < 1. Fonts therefore stayed at base
-// size in world units and the zoom transform shrank them on screen: at the
-// initial fit (k = 0.5) area labels rendered 7.0 px, person labels 5.0 px
-// and facility labels were hidden. The comment claiming constant screen
-// size was true only for k >= 1.
-//
-// HARD FLOOR: LABEL_MIN_PX (9.8 px, the site's own smallest tooltip text).
-// A class whose declared size is under the floor is HIDDEN, never shrunk —
-// screenPx() returns null and the caller sets display:none.
-//
-// ZOOM BANDS: each class is drawn only inside its ZOOM_BANDS range, so
-// labels disappear both when the user is too far OUT and too far IN.
-//
-// COLLISION CULLING: after sizing, walk visible labels largest-first,
-// measure world-space bounding boxes and hide overlaps. As the user zooms
-// in, more labels survive because world-space boxes shrink.
-function onZoom(k) {
-  _zoomK = k || 1;
-  const s = worldToScreenScale();
+// Split a region name into two lines at the space nearest its middle.
+// null for a one-word name (nothing to wrap).
+function splitTwoLines(name) {
+  const s = String(name || '').trim();
+  let best = -1;
+  for (let i = 0; i < s.length; i++) {
+    if (s[i] === ' ' && (best < 0 || Math.abs(i - s.length / 2) < Math.abs(best - s.length / 2))) best = i;
+  }
+  return best < 0 ? null : [s.slice(0, best), s.slice(best + 1)];
+}
 
-  // Marks (dots, ribbons) get constant apparent size too, but their world
-  // growth is capped at MARK_MAX_GROWTH so zooming far out can't inflate a
-  // 2.6-unit dot into a blob that swallows its sub-polygon. Text has no
-  // such cap because a clipped label is useless whereas a slightly small
-  // dot still reads as a position.
-  const MARK_MAX_GROWTH = 2.0;
-  const markScale = Math.min(MARK_MAX_GROWTH, 1 / (s > 0 ? s : 1));
+
+// ── Viewport: fit, zoom limits, resize ──────────────────────────────
+
+// The transform that frames the bounding box of EVERY polygon in the
+// stage with FIT_PAD_PX to spare. d3 composes screen = (x, y) + k·world.
+function fitTransform() {
+  const d3 = _d3Mod;
+  const bb = _layout && _layout.polyBBox;
+  if (!d3) return null;
+  if (!bb || !(bb.x1 > bb.x0) || !(bb.y1 > bb.y0) || !(_stageW > 0) || !(_stageH > 0)) {
+    return d3.zoomIdentity;
+  }
+  const bw = bb.x1 - bb.x0, bh = bb.y1 - bb.y0;
+  const k = Math.max(1e-4, Math.min((_stageW - 2 * FIT_PAD_PX) / bw,
+                                    (_stageH - 2 * FIT_PAD_PX) / bh));
+  const cx = (bb.x0 + bb.x1) / 2, cy = (bb.y0 + bb.y1) / 2;
+  return d3.zoomIdentity.translate(_stageW / 2 - k * cx, _stageH / 2 - k * cy).scale(k);
+}
+
+// Recompute the fit and every zoom limit for the current stage size.
+// scaleExtent is RELATIVE to the fit (MIN/MAX_ZOOM_MULT), and
+// translateExtent is the map's bbox padded by half its size each way, so
+// the map can no longer be flung off-screen and lost.
+function applyZoomExtents() {
+  if (!_zoomBehavior || !_layout) return;
+  _fitT = fitTransform();
+  _fitK = _fitT ? _fitT.k : 1;
+  const bb = _layout.polyBBox;
+  const bw = bb.x1 - bb.x0, bh = bb.y1 - bb.y0;
+  // The zoom zoomToArea() asks for to frame the smallest region.
+  let kAreaMax = 0;
+  for (const lab of _layout.labels.values()) {
+    if (!(lab.bw > 0) || !(lab.bh > 0)) continue;
+    kAreaMax = Math.max(kAreaMax, areaFitK(lab));
+  }
+  const kMax = Math.min(_fitK * MAX_ZOOM_CAP_MULT,
+                        Math.max(_fitK * MAX_ZOOM_MULT, kAreaMax));
+  _zoomBehavior
+    .extent([[0, 0], [_stageW, _stageH]])
+    .scaleExtent([_fitK * MIN_ZOOM_MULT, kMax])
+    .translateExtent([[bb.x0 - bw * 0.5, bb.y0 - bh * 0.5],
+                      [bb.x1 + bw * 0.5, bb.y1 + bh * 0.5]]);
+}
+
+// Back to "everything": Reset zoom, double-click, and a resize while the
+// user has not moved the view. Clears the pinned area.
+function resetToFit(animate) {
+  if (!_zoomBehavior || !_zoomSvg || !_fitT) return;
+  _userZoomed = false;
+  setPinnedArea(null);
+  const target = animate ? _zoomSvg.transition().duration(450) : _zoomSvg;
+  target.call(_zoomBehavior.transform, _fitT);
+}
+
+// Watch the stage. A resize re-fits the map if the user has not moved it,
+// otherwise keeps the world point at the centre of the stage and the zoom
+// level. Labels are re-evaluated either way: before this existed a resize
+// left them at their old size until the next wheel event (9.2 px facility
+// labels after shrinking 1280 → 780 px, 21 px area labels after growing a
+// phone viewport). Coalesced to one update per frame.
+function observeStage(stage) {
+  if (typeof ResizeObserver !== 'function') return;
+  if (_resizeObs && _resizeObs.__stage === stage) return;
+  if (_resizeObs) _resizeObs.disconnect();
+  _resizeObs = new ResizeObserver(() => {
+    if (_resizeRaf) return;
+    _resizeRaf = requestAnimationFrame(() => { _resizeRaf = 0; onStageResize(stage); });
+  });
+  _resizeObs.__stage = stage;
+  _resizeObs.observe(stage);
+}
+
+function onStageResize(stage) {
+  const w = stage.clientWidth, h = stage.clientHeight;
+  // 0×0 while another route is showing (the view is display:none).
+  if (!(w > 0 && h > 0) || !_zoomSvg || !_zoomBehavior || !_layout) return;
+  if (w === _stageW && h === _stageH) return;
+  const t = _zoomT;
+  const oldW = _stageW, oldH = _stageH;
+  _stageW = w; _stageH = h;
+  _zoomSvg.attr('viewBox', `0 0 ${w} ${h}`);
+  applyZoomExtents();
+  if (!_userZoomed || !t || !_d3Mod) {
+    _zoomSvg.call(_zoomBehavior.transform, _fitT);
+  } else {
+    const cx = (oldW / 2 - t.x) / t.k, cy = (oldH / 2 - t.y) / t.k;
+    const [k0, k1] = _zoomBehavior.scaleExtent();
+    const k = Math.max(k0, Math.min(k1, t.k));
+    _zoomSvg.call(_zoomBehavior.transform,
+      _d3Mod.zoomIdentity.translate(w / 2 - k * cx, h / 2 - k * cy).scale(k));
+  }
+  onZoom();
+}
+
+// Pin (or with null, unpin) the research area the user asked for: its
+// outline is drawn heavier, its TOC row is marked, and its name is always
+// drawn by the label pass.
+function setPinnedArea(areaId) {
+  _pinnedAreaId = areaId || null;
+  applyAreaHighlight();
+  scheduleLabelPass();
+}
+
+function applyAreaHighlight() {
+  if (_polySel) {
+    _polySel
+      .attr('stroke-width', (a) => (a.id === _pinnedAreaId ? AREA_STROKE_PX_PINNED : AREA_STROKE_PX))
+      .attr('fill-opacity', (a) => (a.id === _pinnedAreaId ? AREA_FILL_OPACITY_PINNED : AREA_FILL_OPACITY));
+    // Neighbours are drawn after it in document order and would paint over
+    // half of a heavy outline; raise the pinned path to the top of its group.
+    if (_pinnedAreaId) _polySel.filter((a) => a.id === _pinnedAreaId).raise();
+  }
+  if (_container) {
+    _container.querySelectorAll('.mvg-toc-row').forEach((btn) => {
+      const on = !!_pinnedAreaId && btn.dataset.area === _pinnedAreaId;
+      btn.classList.toggle('is-active', on);
+      if (on) btn.setAttribute('aria-current', 'true');
+      else btn.removeAttribute('aria-current');
+    });
+  }
+}
+
+
+// ── Label engine ────────────────────────────────────────────────────
+//
+// Every label is a <text> inside the zoomed root group, anchored at a
+// layout point (wx, wy). While shown it carries
+//   transform="translate(wx, wy) scale(1/k)"
+// so the zoom carries it to the right screen position and the counter-
+// scale cancels the zoom for its glyphs: font-size, halo stroke-width and
+// the `y` offset are written ONCE in screen px and never re-derived. The
+// width of every label is therefore constant on screen too, measured once
+// with a canvas context and cached.
+//
+// The pass (runLabelPass) runs at most once per animation frame while a
+// zoom or pan is in flight, and once more, synchronously, when the
+// gesture ends (onZoom). It decides eligibility from on-screen size (see
+// "Label tiers" at the top of the file), then places labels greedily in
+// priority order against a grid of already-placed boxes. Off-stage anchors
+// are rejected before any box is built, so a deep zoom costs no more than
+// the overview.
+
+const LABEL_FONT_FAMILY = 'system-ui, sans-serif';
+// Vertical offset of a protected-area chip below its region's label
+// anchor, in screen px.
+const CHIP_DY_PX = 22;
+
+// Common presentation attributes for every label class. Labels start
+// hidden; the label pass shows the ones that have room.
+function labelTexts(sel, pxOf, haloPx, weight = 600) {
+  return sel
+    .attr('text-anchor', 'middle')
+    .attr('dominant-baseline', 'central')
+    .attr('font-family', LABEL_FONT_FAMILY)
+    .attr('font-weight', weight)
+    .attr('font-size', (d) => pxOf(d))
+    .attr('stroke-width', haloPx)
+    .attr('stroke-linejoin', 'round')
+    .attr('paint-order', 'stroke')
+    .style('display', 'none')
+    .each(function (d) {
+      this.__mvgShown = false;
+      this.__mvgPx = pxOf(d);
+      this.__mvgK = null;
+      this.__mvgDy = 0;
+    });
+}
+
+let _measureCtx = null;
+const _textW100 = new Map();
+// Rendered width in CSS px of `text` at `px`, cached per string at a 100 px
+// reference size (width is linear in font size).
+function textWidthPx(text, px, weight = 600, italic = false) {
+  const key = `${italic ? 'i' : 'n'}${weight}|${text}`;
+  let w = _textW100.get(key);
+  if (w === undefined) {
+    if (!_measureCtx) {
+      try { _measureCtx = document.createElement('canvas').getContext('2d'); }
+      catch (_) { _measureCtx = null; }
+    }
+    if (_measureCtx) {
+      _measureCtx.font = `${italic ? 'italic ' : ''}${weight} 100px ${LABEL_FONT_FAMILY}`;
+      w = _measureCtx.measureText(String(text)).width;
+    } else {
+      w = String(text).length * 60;          // ~0.6 em per glyph
+    }
+    _textW100.set(key, w);
+  }
+  return (w * px) / 100;
+}
+
+// Labels shown by the previous pass, so the next one only has to touch
+// the ones that change state.
+let _shownEls = new Set();
+
+function markLabelsDirty() {
+  _labelCands = null;
+  if (_rootG) scheduleLabelPass();
+}
+
+function scheduleLabelPass() {
+  if (!_labelRaf) _labelRaf = requestAnimationFrame(runLabelPass);
+}
+
+// Run the label pass NOW (zoom end, resize, a layer redraw). Takes no
+// argument: older call sites still pass _zoomK, which is ignored — the
+// pass reads the live transform.
+function onZoom() {
+  if (_labelRaf) { cancelAnimationFrame(_labelRaf); _labelRaf = 0; }
+  runLabelPass();
+}
+
+// One record per label: its anchor, its priority and the forms it may be
+// drawn in, each with a precomputed screen width and height.
+function buildLabelCandidates() {
+  const cands = [];
+  const labels = _layout ? _layout.labels : new Map();
+  const facPolys = (_layout && _layout.facPolygons) || new Map();
+  const lineH = (px) => px * LINE_BOX_EM;
+
+  if (_areaLabelSel) {
+    const weights = [];
+    _areaLabelSel.each((d) => weights.push(d.weight || 0));
+    weights.sort((a, b) => b - a);
+    const topW = weights.length ? weights[Math.min(AREA_TOP_N, weights.length) - 1] : Infinity;
+    _areaLabelSel.each(function (d) {
+      const el1 = d.__el1 || this, el2 = d.__el2 || null;
+      const forms = [];
+      for (const px of [d.__basePx, AREA_LABEL_PX_SMALL]) {
+        forms.push({ el: el1, px, w: textWidthPx(d.name, px), h: lineH(px) });
+        if (el2) {
+          forms.push({ el: el2, px,
+            w: Math.max(textWidthPx(d.lines[0], px), textWidthPx(d.lines[1], px)),
+            h: px * (LINE_GAP_EM + LINE_BOX_EM) });
+        }
+      }
+      if ((d.weight || 0) >= topW && (d.weight || 0) > 0) {
+        const px = AREA_LABEL_PX_MIN;
+        forms.push({ el: el1, px, w: textWidthPx(d.name, px), h: lineH(px) });
+      }
+      // Fallback order for the pinned area when nothing FITS its polygon:
+      // narrowest readable form first.
+      const pinForms = [...forms].sort((a, b) => (b.px - a.px) || (a.w - b.w));
+      cands.push({ kind: 'area', id: d.id, pri: 4e6 + (d.weight || 0),
+                   wx: d.x, wy: d.y, lab: d.lab, els: el2 ? [el1, el2] : [el1],
+                   ring: (_layout && _layout.polygons.get(d.id)) || null,
+                   facs: [], forms, pinForms });
+    });
+  }
+  const ctxCand = (sel, kind, anchorDy) => {
+    if (!sel) return;
+    sel.each(function (d) {
+      const px = d.__basePx || PA_LABEL_PX.min;
+      const f = { el: this, px, w: textWidthPx(this.textContent, px), h: lineH(px) };
+      cands.push({ kind: 'ctx', pri: 3e6 + (d.n_protected || d.n_people || 0),
+                   wx: d.x, wy: anchorDy(d), lab: labels.get(d.area_id),
+                   els: [this], forms: [f],
+                   dy: kind === 'pa' ? CHIP_DY_PX : -(2 + f.h / 2) });
+    });
+  };
+  ctxCand(_paLabelSel, 'pa', (d) => d.y);
+  ctxCand(_regDomainLabelSel, 'dom', (d) => d.y - (d.__baseR || 0));
+
+  if (_facLabelSel) {
+    _facLabelSel.each(function (d) {
+      const px = d.__basePx;
+      cands.push({ kind: 'fac', pri: 2e6 + (d.weight || 0), wx: d.x, wy: d.y,
+                   area_id: d.area_id,
+                   bw: d.bw || 0, bh: d.bh || 0, dotR: d.__dotR || 2.6,
+                   els: [this],
+                   forms: [{ el: this, px, w: textWidthPx(d.display, px), h: lineH(px) }] });
+    });
+  }
+  if (_regLabelSel && _focusFacility) {
+    const sp = facPolys.get(_focusFacility);
+    _regLabelSel.each(function (d) {
+      const px = d.__basePx;
+      cands.push({ kind: 'person', pri: 1.5e6 + (d.h_index || 0), wx: d.x, wy: d.y,
+                   bw: sp ? sp.bw : 0, bh: sp ? sp.bh : 0, minPx: PERSON_MIN_FACPOLY_PX,
+                   dotR: registryRadius(d), els: [this],
+                   forms: [{ el: this, px, w: textWidthPx(this.textContent, px), h: lineH(px) }] });
+    });
+  }
+  if (_labelSel) {
+    _labelSel.each(function (d) {
+      const px = d.__basePx;
+      // A researcher inside an institution drawn here is gated on that
+      // institution's sub-polygon; one in the interstitial space on the
+      // region as a whole.
+      const sp = !d.__italic && d.primary_facility_id ? facPolys.get(d.primary_facility_id) : null;
+      const lab = labels.get(d.area_id);
+      const box = sp || (lab ? { bw: lab.bw, bh: lab.bh } : { bw: 0, bh: 0 });
+      cands.push({ kind: 'person', pri: 1e6 + (d.importance || 0), wx: d.x, wy: d.y,
+                   bw: box.bw, bh: box.bh,
+                   minPx: sp ? PERSON_MIN_FACPOLY_PX : PERSON_MIN_AREAPOLY_PX,
+                   dotR: d.__baseR || 2, els: [this],
+                   forms: [{ el: this, px,
+                             w: textWidthPx(this.textContent, px, 500, !!d.__italic),
+                             h: lineH(px) }] });
+    });
+  }
+  // Each region keeps a list of its institutions, so its name can be
+  // steered off their dots and name slots (runLabelPass).
+  const areaCand = new Map();
+  for (const c of cands) if (c.kind === 'area') areaCand.set(c.id, c);
+  for (const c of cands) {
+    if (c.kind !== 'fac') continue;
+    const a = areaCand.get(c.area_id);
+    if (a) a.facs.push(c);
+  }
+  cands.sort((a, b) => b.pri - a.pri);
+  return cands;
+}
+
+// Horizontal interior span of `ring` at row y that contains x, as [lo, hi];
+// null when (x, y) is outside.
+function rowSpan(ring, x, y) {
+  const hits = [];
+  for (let i = 0, n = ring.length, j = n - 1; i < n; j = i++) {
+    const a = ring[i], b = ring[j];
+    if ((a[1] > y) !== (b[1] > y)) {
+      hits.push(a[0] + (y - a[1]) * (b[0] - a[0]) / (b[1] - a[1]));
+    }
+  }
+  hits.sort((p, q) => p - q);
+  for (let i = 0; i + 1 < hits.length; i += 2) {
+    if (hits[i] <= x && x <= hits[i + 1]) return [hits[i], hits[i + 1]];
+  }
+  return null;
+}
+
+// Where, on row y, can a label of world half-width hw and glyph
+// half-height hh sit inside the ring? Its top, middle and bottom rows must
+// each lie inside the outline — a single chord-length test at the anchor
+// let names spill over a narrowing outline, or past one side when the
+// anchor was off-centre in its chord. Returns the x nearest to `x` at which
+// the label fits, or null.
+function labelXInRing(ring, x, y, hw, hh) {
+  let lo = -Infinity, hi = Infinity;
+  for (const yy of [y - hh, y, y + hh]) {
+    const sp = rowSpan(ring, x, yy);
+    if (!sp) return null;
+    if (sp[0] > lo) lo = sp[0];
+    if (sp[1] < hi) hi = sp[1];
+  }
+  if (hi - lo < 2 * hw) return null;
+  return Math.max(lo + hw, Math.min(hi - hw, x));
+}
+
+// Is an institution big enough on screen at scale k for its name?
+function facLabelEligible(c, k) {
+  const pw = k * c.bw, ph = k * c.bh;
+  return Math.min(pw, ph) >= FAC_MIN_POLY_PX && pw >= FAC_LABEL_FIT * c.forms[0].w;
+}
+
+function showLabel(el, px, wx, wy, dy, k) {
+  if (el.__mvgPx !== px) { el.setAttribute('font-size', px); el.__mvgPx = px; }
+  const ry = Math.round(dy * 10) / 10;
+  if (el.__mvgDy !== ry) { el.setAttribute('y', ry); el.__mvgDy = ry; }
+  if (el.__mvgK !== k) {
+    el.setAttribute('transform', `translate(${wx},${wy}) scale(${1 / k})`);
+    el.__mvgK = k;
+  }
+  if (!el.__mvgShown) { el.style.display = ''; el.__mvgShown = true; }
+}
+
+function hideLabel(el) {
+  if (el.__mvgShown !== false) { el.style.display = 'none'; el.__mvgShown = false; }
+}
+
+function gridKey(cx, cy) { return cx * 8192 + cy; }
+
+function gridHits(grid, b, pad) {
+  const c0 = Math.floor((b.x0 - pad) / CULL_CELL_PX), c1 = Math.floor((b.x1 + pad) / CULL_CELL_PX);
+  const r0 = Math.floor((b.y0 - pad) / CULL_CELL_PX), r1 = Math.floor((b.y1 + pad) / CULL_CELL_PX);
+  for (let cx = c0; cx <= c1; cx++) {
+    for (let cy = r0; cy <= r1; cy++) {
+      const list = grid.get(gridKey(cx, cy));
+      if (!list) continue;
+      for (const o of list) {
+        if (b.x0 - pad < o.x1 && b.x1 + pad > o.x0
+         && b.y0 - pad < o.y1 && b.y1 + pad > o.y0) return true;
+      }
+    }
+  }
+  return false;
+}
+
+function gridInsert(grid, b) {
+  const c0 = Math.floor(b.x0 / CULL_CELL_PX), c1 = Math.floor(b.x1 / CULL_CELL_PX);
+  const r0 = Math.floor(b.y0 / CULL_CELL_PX), r1 = Math.floor(b.y1 / CULL_CELL_PX);
+  for (let cx = c0; cx <= c1; cx++) {
+    for (let cy = r0; cy <= r1; cy++) {
+      const key = gridKey(cx, cy);
+      const list = grid.get(key);
+      if (list) list.push(b); else grid.set(key, [b]);
+    }
+  }
+}
+
+// Dots and ribbons: constant apparent size, world growth capped at
+// MARK_MAX_GROWTH. Skipped when the scale moved by under 2% since the last
+// write, so a pan rewrites nothing.
+function rescaleMarks(k) {
+  const markScale = Math.min(MARK_MAX_GROWTH, 1 / (k > 0 ? k : 1));
+  if (_markScaleApplied && Math.abs(markScale / _markScaleApplied - 1) < 0.02) return;
+  _markScaleApplied = markScale;
   if (_dotPersonSel) {
     _dotPersonSel.attr('r', (d) => (d.__baseR || 2.0) * markScale);
     // The hollow "no institution here" markers are read by their outline,
@@ -3692,106 +4334,228 @@ function onZoom(k) {
   if (_regNodeLinkSel) {
     _regNodeLinkSel.attr('stroke-width', (e) => (e.__baseW || 0.5) * markScale);
   }
+}
 
-  // One helper per class so the band test, the floor test and the halo
-  // scaling can never drift apart between classes.
-  const applyLabels = (sel, band, haloPx, cull) => {
-    if (!sel) return;
-    if (!inBand(band, _zoomK)) { sel.style('display', 'none'); return; }
-    let anyVisible = false;
-    sel.each(function (d) {
-      const fs = screenPx(d.__basePx, s);
-      if (fs == null) { this.style.display = 'none'; return; }
-      anyVisible = true;
-      this.style.display = '';
-      this.setAttribute('font-size', fs);
-      this.setAttribute('stroke-width', haloPx / (s > 0 ? s : 1));
-    });
-    if (anyVisible && cull) cullSelection(sel);
+function runLabelPass() {
+  _labelRaf = 0;
+  if (!_rootG || !_layout || !_zoomT) return;
+  const t = _zoomT, k = t.k;
+  const W = _stageW, H = _stageH;
+  rescaleMarks(k);
+  if (!_labelCands) _labelCands = buildLabelCandidates();
+
+  const grid = new Map();
+  const shown = new Set();
+  // Screen radius of a dot per unit of its base radius (see rescaleMarks).
+  const dotK = Math.min(MARK_MAX_GROWTH * k, 1);
+  const REJECT = 400;      // px beyond the stage at which an anchor is skipped outright
+
+  // Screen box of form f drawn at world (wx, wy), shifted dy screen px.
+  const boxAt = (wx, wy, dy, f) => {
+    const sx = t.x + k * wx, sy = t.y + k * wy + dy;
+    return { x0: sx - f.w / 2, x1: sx + f.w / 2, y0: sy - f.h / 2, y1: sy + f.h / 2 };
+  };
+  // Fully on the stage and clear of everything placed so far.
+  const free = (b) => !(b.x0 < 0 || b.y0 < 0 || b.x1 > W || b.y1 > H)
+    && !gridHits(grid, b, LABEL_PAD_PX);
+  const commit = (b, f, wx, wy, dy) => {
+    gridInsert(grid, b);
+    showLabel(f.el, f.px, wx, wy, dy, k);
+    shown.add(f.el);
+  };
+  const place = (c, f, dy) => {
+    const b = boxAt(c.wx, c.wy, dy, f);
+    if (!free(b)) return false;
+    commit(b, f, c.wx, c.wy, dy);
+    return true;
   };
 
-  applyLabels(_areaLabelSel,      ZOOM_BANDS.area,      2.2, false);
-  applyLabels(_paLabelSel,        ZOOM_BANDS.protected, 2.0, false);
-  // Cohort captions share the region band: they annotate a region, so they
-  // belong on screen exactly while region names are.
-  applyLabels(_regDomainLabelSel, ZOOM_BANDS.area,      2.0, false);
-  applyLabels(_facLabelSel,   ZOOM_BANDS.facility,  1.8, true);
-  applyLabels(_regLabelSel,   ZOOM_BANDS.registry,  2.0, true);
-  applyLabels(_labelSel,      ZOOM_BANDS.person,    2.0, true);
-}
+  // Screen boxes a region's name keeps off: the dot of each of its
+  // institutions once the region is large on screen, and the name slot
+  // above the dot of each institution big enough to be named. Before this,
+  // a region holding one institution put its own name on that dot (the
+  // pole of inaccessibility and the sub-polygon centroid coincide) and,
+  // being placed first, hid the institution's name at every zoom.
+  const obstaclesOf = (c) => {
+    const out = [];
+    const lab = c.lab;
+    const large = k * Math.min(lab.bw, lab.bh) >= AREA_DOT_AVOID_PX;
+    for (const fc of c.facs) {
+      const named = facLabelEligible(fc, k);
+      if (!named && !large) continue;
+      const sx = t.x + k * fc.wx, sy = t.y + k * fc.wy;
+      const r = fc.dotR * dotK + 2;
+      const f = fc.forms[0];
+      out.push(named
+        ? { x0: sx - Math.max(r, f.w / 2), x1: sx + Math.max(r, f.w / 2),
+            y0: sy - r - f.h, y1: sy + r }
+        : { x0: sx - r, x1: sx + r, y0: sy - r, y1: sy + r });
+    }
+    return out;
+  };
+  const hitsAny = (b, list) => {
+    for (const o of list) {
+      if (b.x0 - LABEL_PAD_PX < o.x1 && b.x1 + LABEL_PAD_PX > o.x0
+       && b.y0 - LABEL_PAD_PX < o.y1 && b.y1 + LABEL_PAD_PX > o.y0) return true;
+    }
+    return false;
+  };
 
-// Hide labels whose world-space bounding boxes overlap higher-priority
-// labels. Higher priority = larger base font. Generalised to take ANY
-// selection so person labels and facility labels share the same logic
-// while remaining INDEPENDENT (each cull pass operates on its own
-// bucket — facility labels overlapping person labels is fine because
-// they read as different colours / weights).
-function cullSelection(sel) {
-  if (!sel) return;
-  const nodes = sel.nodes();
-  const order = nodes.map((_, i) => i)
-    .sort((a, b) => (nodes[b].__data__.__baseFont || 0)
-                  - (nodes[a].__data__.__baseFont || 0));
-  const placed = [];
-  for (const i of order) {
-    const el = nodes[i];
-    // A label hidden by the legibility floor must STAY hidden: this loop
-    // clears display before measuring, which would otherwise resurrect it
-    // at a sub-floor size. Every current class declares a base >= the
-    // floor, so this is a guard against a future range being lowered, not
-    // a live case.
-    const basePx = el.__data__ && el.__data__.__basePx;
-    if (basePx != null && !(basePx >= LABEL_MIN_PX)) {
-      el.style.display = 'none';
+  // Place a region name. Positions tried, in order: the pole of
+  // inaccessibility, then the pole shifted up/down by AREA_LABEL_SHIFTS of
+  // the region's vertical chord; and, when the pole is off or at the edge
+  // of the stage while part of the region is on it, the same around the
+  // centre of the region's on-stage part and around the pole clamped into
+  // it — so a region filling a third of the stage with its pole just out of
+  // view is still named. With `needFit` the name must lie inside the
+  // outline on its top, middle and bottom rows, slid sideways within the
+  // outline if the anchor is off-centre (labelXInRing). A position
+  // that keeps off the region's institutions (obstaclesOf) is preferred;
+  // failing that the first that fits wins, as before.
+  const placeArea = (c, forms, needFit) => {
+    const lab = c.lab, ring = c.ring;
+    const rx0 = t.x + k * lab.x0, rx1 = t.x + k * (lab.x0 + lab.bw);
+    const ry0 = t.y + k * lab.y0, ry1 = t.y + k * (lab.y0 + lab.bh);
+    const vx0 = Math.max(0, rx0), vx1 = Math.min(W, rx1);
+    const vy0 = Math.max(0, ry0), vy1 = Math.min(H, ry1);
+    if (vx1 <= vx0 || vy1 <= vy0) return false;          // wholly off-stage
+    const anchors = [[lab.x, lab.y]];
+    const psx = t.x + k * lab.x, psy = t.y + k * lab.y;
+    const M = AREA_EDGE_MARGIN_PX;
+    if (psx < M || psx > W - M || psy < M || psy > H - M) {
+      const toW = (sx, sy) => [(sx - t.x) / k, (sy - t.y) / k];
+      anchors.push(toW((vx0 + vx1) / 2, (vy0 + vy1) / 2));
+      if (vx1 - vx0 > 2 * M && vy1 - vy0 > 2 * M) {
+        anchors.push(toW(Math.max(vx0 + M, Math.min(vx1 - M, psx)),
+                         Math.max(vy0 + M, Math.min(vy1 - M, psy))));
+      }
+    }
+    const obst = obstaclesOf(c);
+    for (const strict of obst.length ? [true, false] : [false]) {
+      for (const f of forms) {
+        // The chords through the pole bound what can fit nearby; a cheap
+        // filter before the per-row ring test.
+        if (needFit && (k * lab.hw < AREA_LABEL_FIT * f.w || k * lab.vh < f.h)) continue;
+        const hw = (AREA_LABEL_FIT * f.w) / 2 / k;
+        const hh = Math.max(0, f.h / 2 - 0.15 * f.px) / k;
+        for (const [ax, ay0] of anchors) {
+          for (const sh of AREA_LABEL_SHIFTS) {
+            const ay = ay0 + sh * lab.vh;
+            let x = ax;
+            if (ring) {
+              if (needFit) {
+                x = labelXInRing(ring, ax, ay, hw, hh);
+                if (x === null) continue;
+              } else if (!rowSpan(ring, ax, ay)) continue;
+            }
+            const b = boxAt(x, ay, 0, f);
+            if (!free(b)) continue;
+            if (strict && hitsAny(b, obst)) continue;
+            commit(b, f, x, ay, 0);
+            return true;
+          }
+        }
+      }
+    }
+    return false;
+  };
+
+  // Name a region that fills much of the stage at the topmost row of the
+  // stage where the name lies inside its outline and clear of what is
+  // already placed. Used for the region the user is inside (it covers
+  // AREA_INSIDE_FRAC of the stage, so its pole is usually off-screen), and
+  // as the last try for one whose on-stage part is >= AREA_SCAN_FRAC of the
+  // stage when placeArea found no spot. Without it a deep zoom often showed
+  // no region name at all.
+  const placeAreaTop = (c) => {
+    const ring = c.ring;
+    const xs = [W / 2, W / 4, (3 * W) / 4, W / 8, (7 * W) / 8];
+    for (const f of c.forms) {
+      if (f.el !== c.els[0]) continue;                   // one line only
+      const hw = (AREA_LABEL_FIT * f.w) / 2 / k;
+      const hh = Math.max(0, f.h / 2 - 0.15 * f.px) / k;
+      const step = Math.max(6, f.h / 2);
+      for (let sy = 12 + f.h / 2; sy <= H - 12 - f.h / 2; sy += step) {
+        const wy = (sy - t.y) / k;
+        for (const sx of xs) {
+          let x = (sx - t.x) / k;
+          if (ring) {
+            x = labelXInRing(ring, x, wy, hw, hh);
+            if (x === null) continue;
+          }
+          const b = boxAt(x, wy, 0, f);
+          if (!free(b)) continue;
+          commit(b, f, x, wy, 0);
+          return true;
+        }
+      }
+    }
+    return false;
+  };
+
+  const pinned = _pinnedAreaId
+    ? _labelCands.find((c) => c.kind === 'area' && c.id === _pinnedAreaId) : null;
+  const order = pinned ? [pinned, ..._labelCands.filter((c) => c !== pinned)] : _labelCands;
+
+  for (const c of order) {
+    if (c.kind === 'area') {
+      const lab = c.lab;
+      // Share of the stage the region's on-stage bbox covers.
+      const x0 = Math.max(0, t.x + k * lab.x0), x1 = Math.min(W, t.x + k * (lab.x0 + lab.bw));
+      const y0 = Math.max(0, t.y + k * lab.y0), y1 = Math.min(H, t.y + k * (lab.y0 + lab.bh));
+      const onStage = x1 > x0 && y1 > y0 ? ((x1 - x0) * (y1 - y0)) / (W * H) : 0;
+      // "Inside" the region: its on-stage part covers most of the stage.
+      if (c !== pinned && onStage >= AREA_INSIDE_FRAC) {
+        placeAreaTop(c);
+        continue;
+      }
+      if (placeArea(c, c.forms, true)) continue;
+      if (onStage >= AREA_SCAN_FRAC && placeAreaTop(c)) continue;
+      if (c === pinned) placeArea(c, c.pinForms, false);
       continue;
     }
-    el.style.display = '';
-    let bb;
-    try { bb = el.getBBox(); }
-    catch (_) { continue; }
-    const r = { x: bb.x - 2, y: bb.y - 2,
-                w: bb.width + 4, h: bb.height + 4 };
-    let hit = false;
-    for (const p of placed) {
-      if (r.x < p.x + p.w && r.x + r.w > p.x
-       && r.y < p.y + p.h && r.y + r.h > p.y) { hit = true; break; }
+    const sx = t.x + k * c.wx, sy = t.y + k * c.wy;
+    if (sx < -REJECT || sx > W + REJECT || sy < -REJECT || sy > H + REJECT) continue;
+    if (c.kind === 'ctx') {
+      if (!c.lab || k * Math.min(c.lab.bw, c.lab.bh) < CONTEXT_MIN_POLY_PX) continue;
+      place(c, c.forms[0], c.dy);
+    } else if (c.kind === 'fac') {
+      const f = c.forms[0];
+      if (!facLabelEligible(c, k)) continue;
+      place(c, f, -(c.dotR * dotK + 2 + f.h / 2));
+    } else {               // person / registry researcher
+      const f = c.forms[0];
+      if (k * Math.min(c.bw, c.bh) < c.minPx) continue;
+      place(c, f, -(c.dotR * dotK + 2 + f.h / 2));
     }
-    if (hit) el.style.display = 'none';
-    else placed.push(r);
   }
+  for (const el of _shownEls) if (!shown.has(el)) hideLabel(el);
+  _shownEls = shown;
 }
 
-// Programmatic zoom-to-polygon. Computes the polygon's bounding box,
-// then animates a d3.zoom transform that fits it (with margin) into
-// the SVG viewport.
+// Programmatic zoom-to-polygon: fit the polygon's bounding box to the
+// VISIBLE STAGE with AREA_FIT_PAD_PX to spare, clamped to the zoom limits
+// (which are relative to the whole-map fit), and pin the area so its name
+// and outline stay marked. The old version fitted against the viewBox size
+// and clamped k to [0.6, 8], so every small region hit 8 — past the end of
+// the old area-label band — and the area you had just clicked lost its name.
+// Scale that fits a region's bbox in the stage with AREA_FIT_PAD_PX spare.
+function areaFitK(lab) {
+  return Math.min(Math.max(1, _stageW - 2 * AREA_FIT_PAD_PX) / lab.bw,
+                  Math.max(1, _stageH - 2 * AREA_FIT_PAD_PX) / lab.bh);
+}
+
 function zoomToArea(areaId) {
-  if (!_zoomBehavior || !_zoomSvg || !_layout) return;
-  const ring = _layout.polygons.get(areaId);
-  if (!ring) return;
-  let mnX = Infinity, mnY = Infinity, mxX = -Infinity, mxY = -Infinity;
-  for (const [x, y] of ring) {
-    if (x < mnX) mnX = x; if (y < mnY) mnY = y;
-    if (x > mxX) mxX = x; if (y > mxY) mxY = y;
-  }
-  const cx = (mnX + mxX) / 2, cy = (mnY + mxY) / 2;
-  const polyW = mxX - mnX, polyH = mxY - mnY;
-  // SVG viewBox dimensions (read from attribute).
-  const vb = (_zoomSvg.attr('viewBox') || '').split(/\s+/).map(Number);
-  if (vb.length !== 4) return;
-  const [vbx, vby, vbw, vbh] = vb;
-  const margin = 1.2;  // 20% breathing room
-  const scaleX = vbw / (polyW * margin);
-  const scaleY = vbh / (polyH * margin);
-  const k = Math.max(0.6, Math.min(8, Math.min(scaleX, scaleY)));
-  // d3.zoom transform composes as: screen = T + k * world.
-  // We want world point (cx, cy) to map to viewBox center (vbx + vbw/2,
-  // vby + vbh/2). So tx = vbx + vbw/2 - k * cx, similarly for ty.
-  const tx = (vbx + vbw / 2) - k * cx;
-  const ty = (vby + vbh / 2) - k * cy;
-  if (!_d3Mod || !_d3Mod.zoomIdentity) return;
-  // Build the d3 transform: identity → translate → scale composes
-  // such that screen = T + k * world. We computed tx/ty above for k.
-  const zoomT = _d3Mod.zoomIdentity.translate(tx, ty).scale(k);
+  if (!_zoomBehavior || !_zoomSvg || !_layout || !_d3Mod) return;
+  const lab = _layout.labels.get(areaId);
+  if (!lab || !(lab.bw > 0) || !(lab.bh > 0)) return;
+  const W = _stageW, H = _stageH;
+  const cx = lab.x0 + lab.bw / 2, cy = lab.y0 + lab.bh / 2;
+  const [k0, k1] = _zoomBehavior.scaleExtent();
+  const k = Math.max(k0, Math.min(k1, areaFitK(lab)));
+  _userZoomed = true;
+  setPinnedArea(areaId);
+  const zoomT = _d3Mod.zoomIdentity.translate(W / 2 - k * cx, H / 2 - k * cy).scale(k);
   _zoomSvg.transition().duration(650).call(_zoomBehavior.transform, zoomT);
 }
 
@@ -3807,9 +4571,9 @@ export function initNetworkView(container) {
           <p class="network-sub">Country-like map of U.S. Long-Term
           Observatories. Each polygon is one research area, sized by a
           data-and-people weight. Hover for details; click a node to reveal
-          its edges, shift-click to open homepage / ORCID.
+          its edges, shift-click to open homepage / ORCID.</p>
           <a href="#" class="network-help-toggle"
-             data-net-help="open">How to read this map</a></p>
+             data-net-help="open">How to read this map</a>
           <div class="network-help" id="net-help" hidden>
             <p><strong>Region size</strong> is a data-and-people weight —
             organisations, plus a bonus for each site whose data lives in an
@@ -3824,7 +4588,21 @@ export function initNetworkView(container) {
             region.</p>
             <p><strong>Inside a region</strong>, sub-polygons are individual
             institutions; archive-linked sites carry a larger marker.
-            Researchers (sky-blue) sit inside their primary institution.</p>
+            Researchers (sky-blue) sit inside their primary institution; a
+            hollow dashed dot is a researcher with no institution drawn in
+            that region.</p>
+            <p><strong>Names appear as there is room for them.</strong> The
+            map opens framed on every region. Region names show when the
+            name fits inside its polygon on screen (on one line, two lines,
+            or smaller), institution names once an institution&rsquo;s
+            territory is large enough to hold its name, researcher names
+            once you are zoomed into their institution. Labels never overlap:
+            when two compete, the region wins over the institution and the
+            institution over the researcher. A region whose name does not
+            fit is still listed on the left and named in its tooltip.
+            Clicking a region (or its row in the list) zooms to it and keeps
+            its name and outline marked. <em>Reset zoom</em> or a
+            double-click on the map shows everything again.</p>
             <p><strong>Edges are hidden until you click a node.</strong>
             Drawing all of them at once buried the regions under a thousand
             crossing lines. Click a researcher or an institution to reveal
@@ -3843,7 +4621,9 @@ export function initNetworkView(container) {
             populated by the OpenAlex/ORCID identity harvest and fill in as
             it lands.</p>
             <p><strong>Algorithm.</strong> KMap from Hossain et al.
-            GI&nbsp;'25, with hierarchical institution sub-polygons.</p>
+            GI&nbsp;'25, with hierarchical institution sub-polygons. The
+            full description, with every label threshold, is in
+            <a href="#/docs/knowledge-map">Docs &rsaquo; Knowledge map</a>.</p>
           </div>
         </div>
         <div class="network-actions">
@@ -3892,15 +4672,27 @@ context, not organisation units.">
       <div id="net-status" class="network-status">Loading…</div>
       <div class="mvg-shell">
         <aside id="net-toc" class="mvg-toc" aria-label="Research areas">
-          <h3>Research areas</h3>
-          <ol id="net-toc-list" class="mvg-toc-list"><li class="mvg-toc-empty">Loading…</li></ol>
-          <button id="net-toc-reset" class="btn-ghost" type="button">Reset zoom</button>
+          <details class="mvg-toc-details" open>
+            <summary><h3>Research areas</h3></summary>
+            <p class="mvg-toc-key" title="Each row's numbers: organisations · datasets · people">
+              <span>area</span><span>orgs · datasets · people</span></p>
+            <ol id="net-toc-list" class="mvg-toc-list"><li class="mvg-toc-empty">Loading…</li></ol>
+          </details>
+          <button id="net-toc-reset" class="btn-ghost" type="button"
+                  title="Show the whole map (or double-click it)">Reset zoom</button>
         </aside>
         <div id="net-stage" class="network-stage"></div>
         <aside id="net-reg-panel" class="mvg-reg-panel"
                aria-label="Researchers at the selected site" hidden></aside>
       </div>
     </div>`;
+
+  // Phone: the status line is clamped to two lines (styles.css); a tap
+  // shows the rest.
+  const statusLine = _container.querySelector('#net-status');
+  if (statusLine) {
+    statusLine.addEventListener('click', () => statusLine.classList.toggle('is-open'));
+  }
 
   _container.querySelectorAll('.net-toggle input').forEach((el) => {
     el.addEventListener('change', () => {
@@ -3966,15 +4758,22 @@ context, not organisation units.">
     render().catch((err) => console.error(err));
   });
   _container.querySelector('#net-toc-reset').addEventListener('click', () => {
-    if (_zoomBehavior && _zoomSvg && _d3Mod && _d3Mod.zoomIdentity) {
-      _zoomSvg.transition().duration(450)
-        .call(_zoomBehavior.transform, _d3Mod.zoomIdentity);
-    }
+    // The fit-to-everything transform, not zoomIdentity: with the viewBox
+    // in stage px, identity is an arbitrary 1:1 view of the layout.
+    resetToFit(true);
   });
+  // On a phone the TOC would take most of the screen above the map, so it
+  // starts collapsed there (styles.css turns the summary into a toggle at
+  // the same breakpoint). Desktop keeps it open and the summary inert.
+  const tocDetails = _container.querySelector('.mvg-toc-details');
+  if (tocDetails && window.matchMedia
+      && window.matchMedia('(max-width: 760px)').matches) {
+    tocDetails.open = false;
+  }
 }
 
 // Populate the TOC sidebar with one row per active research area,
-// sorted by facility count desc. Click → zoomToArea.
+// sorted by the data-and-people weight desc. Click → zoomToArea.
 function populateToc() {
   if (!_layout || !_container || !_colorOf) return;
   const list = _container.querySelector('#net-toc-list');
@@ -3996,9 +4795,21 @@ function populateToc() {
     </li>`).join('');
   list.querySelectorAll('.mvg-toc-row').forEach((btn) => {
     btn.addEventListener('click', () => {
+      // On a phone the list sits BELOW the map (styles.css), so the row
+      // tapped is out of sight of the stage and the zoom would happen
+      // off-screen. Fold the list and bring the map into view first.
+      if (window.matchMedia && window.matchMedia('(max-width: 760px)').matches) {
+        const det = _container.querySelector('.mvg-toc-details');
+        if (det) det.open = false;
+        const stage = _container.querySelector('#net-stage');
+        if (stage && stage.scrollIntoView) {
+          stage.scrollIntoView({ block: 'start', behavior: 'smooth' });
+        }
+      }
       zoomToArea(btn.dataset.area);
     });
   });
+  applyAreaHighlight();
 }
 
 export async function renderNetworkView() {
@@ -4030,6 +4841,14 @@ export function invalidateNetworkData() {
   _paChipSel = null;
   _paLabelSel = null;
   _areaLabelSel = null;
+  _areaWrapSel = null;
+  _polySel = null;
+  _labelCands = null;
+  _shownEls = new Set();
+  // A recomputed layout has a different bbox: drop the old view and pin.
+  _zoomT = null;
+  _userZoomed = false;
+  _pinnedAreaId = null;
   _facLabelSel = null;
   _labelSel = null;
   _dotPersonSel = null;

@@ -74,6 +74,14 @@ body {
   scrollbar-width: none;
 }
 .tabs::-webkit-scrollbar { display: none; }
+/* Set by router.js when the strip overflows: fade the side with more tabs. */
+.tabs.tabs-more-right { -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent);
+                                mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent); }
+.tabs.tabs-more-left { -webkit-mask-image: linear-gradient(to left, #000 calc(100% - 28px), transparent);
+                               mask-image: linear-gradient(to left, #000 calc(100% - 28px), transparent); }
+.tabs.tabs-more-left.tabs-more-right {
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 28px, #000 calc(100% - 28px), transparent);
+          mask-image: linear-gradient(to right, transparent, #000 28px, #000 calc(100% - 28px), transparent); }
 .tabs a {
   color: rgba(255,255,255,.78);
   text-decoration: none;
@@ -795,9 +803,11 @@ footer a:hover { color: var(--c-primary); }
 /* ── Docs view ──────────────────────────────────────────────────── */
 #view-docs {
   overflow: hidden;             /* let the inner panes own scroll */
-  display: flex;
   flex-direction: column;
 }
+/* The flex display only while active: an ID selector would otherwise beat
+   `.view { display: none }` and lay the Docs pane out under other views. */
+#view-docs.active { display: flex; }
 #view-docs > #docs {
   flex: 1 1 auto;
   display: flex;
@@ -1150,7 +1160,8 @@ footer a:hover { color: var(--c-primary); }
 /* "How to read this map" — collapsed by default. The full explanation runs
    to four paragraphs; inline it pushed the map below the fold. */
 .network-help-toggle {
-  margin-left: 6px;
+  display: inline-block;
+  margin-top: 3px;
   font-size: 0.82rem;
   color: var(--c-primary-d);
   text-decoration: underline;
@@ -1173,7 +1184,12 @@ footer a:hover { color: var(--c-primary); }
 }
 .network-help p:last-child { margin-bottom: 0; }
 .network-help[hidden] { display: none; }
-.network-actions { display: flex; gap: 8px; }
+/* Wraps: on a phone the four toggles and the button are wider than the
+ * screen, and without wrapping they scrolled the whole view sideways. */
+.network-actions {
+  display: flex; flex-wrap: wrap; gap: 6px 10px;
+  align-items: center; justify-content: flex-end;
+}
 .network-actions .btn-ghost {
   background: #fff;
   border: 1px solid var(--c-border-d);
@@ -1223,6 +1239,7 @@ footer a:hover { color: var(--c-primary); }
 .network-status {
   font-size: 0.82rem;
   color: var(--c-muted);
+  padding: 4px 12px;
 }
 .network-stage {
   position: relative;
@@ -1253,6 +1270,11 @@ footer a:hover { color: var(--c-primary); }
 .mvg-shell {
   flex: 1; min-height: 0;
   display: grid; grid-template-columns: 220px 1fr auto; gap: 12px;
+  padding: 0 8px 8px;
+}
+/* Room for a one-word area name ("Biogeochemistry") beside its counts. */
+@media (min-width: 1280px) {
+  .mvg-shell { grid-template-columns: 250px 1fr auto; }
 }
 .mvg-reg-panel {
   width: 232px;
@@ -1294,11 +1316,12 @@ footer a:hover { color: var(--c-primary); }
   background: transparent !important;
   border: 1.5px dashed #65803a;
 }
-/* Region cartogram labels and the aggregate chips are sized in real screen
- * pixels by onZoom() (see LABEL_MIN_PX in network.js), so nothing here may
- * set a font-size on them — a CSS font-size would win over the attribute
- * for specificity-free presentation attributes and silently defeat the
- * floor. Only non-sizing properties belong here. */
+/* Every map label is sized in real screen pixels by the label pass in
+ * network.js (font-size attribute under a scale(1/k) counter-transform; see
+ * LABEL_MIN_PX), so nothing here may set a font-size, transform or display
+ * on them — a CSS property would win over the presentation attribute and
+ * silently defeat the floor and the collision pass. Only non-sizing
+ * properties belong here. */
 .mvg-pa-chips text, .mvg-reg-labels text { user-select: none; }
 .mvg-reg-list {
   list-style: none; margin: 4px 0 0; padding: 0;
@@ -1345,9 +1368,19 @@ footer a:hover { color: var(--c-primary); }
 .mvg-toc h3 {
   margin: 0 4px 4px; font-size: .82rem; color: #1f2937;
 }
+/* The list sits in a <details> so a phone can collapse it. On desktop it
+ * is always open and the summary is an inert heading; the <details> is
+ * the scroll container (a <details> cannot reliably be a flex container,
+ * so the list itself does not scroll). */
+.mvg-toc-details { flex: 1; min-height: 0; overflow-y: auto; }
+.mvg-toc-details > summary {
+  list-style: none; pointer-events: none;
+  position: sticky; top: 0; background: #f8fafc;
+}
+.mvg-toc-details > summary::-webkit-details-marker { display: none; }
+.mvg-toc-details > summary h3 { display: inline; }
 .mvg-toc-list {
-  list-style: none; margin: 0; padding: 0; flex: 1; min-height: 0;
-  overflow-y: auto; font-size: .82rem;
+  list-style: none; margin: 4px 0 0; padding: 0; font-size: .82rem;
 }
 .mvg-toc-list li { margin: 0; padding: 0; }
 .mvg-toc-row {
@@ -1358,17 +1391,58 @@ footer a:hover { color: var(--c-primary); }
   font: inherit; color: #1e293b; cursor: pointer; text-align: left;
 }
 .mvg-toc-row:hover { background: #e0f2fe; }
+/* The area the map is zoomed to (pinned): matches its heavier outline. */
+.mvg-toc-row.is-active {
+  background: #e0f2fe; font-weight: 600;
+  box-shadow: inset 3px 0 0 var(--c-primary);
+}
 .mvg-toc-swatch {
   width: 11px; height: 11px; border-radius: 3px;
   border: 1px solid rgba(0,0,0,.15);
 }
-.mvg-toc-label { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+/* Two lines before an ellipsis: one-line labels cut almost every area
+   name ("Coastal proc…") in a ~210 px sidebar. */
+.mvg-toc-label, .dash-toc .toc-label {
+  overflow: hidden; white-space: normal; overflow-wrap: break-word; hyphens: auto; line-height: 1.25;
+  display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical;
+}
+.mvg-toc-key {
+  display: flex; justify-content: space-between; gap: 6px;
+  margin: 2px 6px 0; font-size: .68rem; color: #64748b;
+}
 .mvg-toc-count { color: #64748b; font-size: .76rem; tabular-nums: true; }
 .mvg-toc-empty { color: #94a3b8; font-style: italic; padding: 6px; font-size: .82rem; }
 #net-toc-reset { font-size: .78rem; padding: 5px 8px; }
 @media (max-width: 760px) {
-  .mvg-shell { grid-template-columns: 1fr; }
-  .mvg-toc { max-height: 200px; }
+  /* Phone: the view scrolls vertically and the map gets a real height.
+   * Before this the stage got what was left under the header, status and
+   * a 200 px TOC — 390×261 px on a 390×844 phone. */
+  .network-view { height: auto; min-height: 100%; }
+  .network-sub { display: none; }
+  .network-header { padding: 10px 12px 6px; }
+  .network-actions { justify-content: flex-start; }
+  .mvg-shell { flex: none; grid-template-columns: 1fr; gap: 8px; }
+  .network-stage { flex: none; height: 65vh; min-height: 320px; }
+  /* Keep the map above the fold on a phone (390x844: the stage started at
+   * y 414 and the map ran to y 919). The research-area list goes under the
+   * map — a tap on a row folds it and scrolls the stage back into view —
+   * and the status line shows two lines until tapped. */
+  .network-stage { order: 1; }
+  .mvg-toc { order: 2; }
+  .mvg-reg-panel { order: 3; }
+  .network-status {
+    display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2;
+    line-clamp: 2; overflow: hidden; cursor: pointer;
+  }
+  .network-status.is-open { display: block; -webkit-line-clamp: unset; line-clamp: none; }
+  /* The TOC collapses to its heading (network.js closes it at this width). */
+  .mvg-toc { max-height: none; }
+  .mvg-toc-details { max-height: 40vh; }
+  .mvg-toc-details > summary { pointer-events: auto; cursor: pointer; }
+  .mvg-toc-details > summary::before {
+    content: '▸'; display: inline-block; width: 1em; color: #64748b;
+  }
+  .mvg-toc-details[open] > summary::before { content: '▾'; }
   /* Single-column: the roster stacks under the map instead of squeezing
    * the stage to nothing. */
   .mvg-reg-panel { width: auto; max-height: 240px; }
@@ -1392,7 +1466,7 @@ footer a:hover { color: var(--c-primary); }
 .mvg-nodes circle { transition: r 100ms ease; }
 .mvg-nodes circle:hover { r: 6; }
 .mvg-edges line { stroke-linecap: round; }
-.mvg-labels text { user-select: none; }
+.mvg-labels text, .mvg-fac-labels text, .mvg-per-labels text { user-select: none; }
 
 /* Per-element styling set by d3 on attributes, so we only decorate the
  * wrapper types here (selection highlight comes from d3 opacity changes). */
@@ -1627,6 +1701,7 @@ footer a:hover { color: var(--c-primary); }
   z-index: 1;
 }
 .sql-table td.num { text-align: right; font-variant-numeric: tabular-nums; }
+.sql-table td.sql-null { color: var(--c-muted, #888); font-style: italic; font-size: 0.85em; }
 .sql-table tbody tr:hover { background: var(--c-chip-bg); }
 .sql-empty,
 .sql-trunc {
@@ -1785,14 +1860,20 @@ footer a:hover { color: var(--c-primary); }
 }
 .ppl-card-head {
   display: flex; justify-content: space-between; align-items: baseline;
-  gap: 8px; margin-bottom: 6px;
+  flex-wrap: wrap; gap: 4px 8px; margin-bottom: 6px;
 }
+/* A grid item's min-width is its content's by default: a long nowrap
+   area chip widened the card past a 390 px viewport. */
+.ppl-card { min-width: 0; }
 .ppl-card-head h3 { margin: 0; font-size: 1.02rem; color: #0f172a; }
 .ppl-pchip {
   font-size: .72rem; padding: 2px 8px;
   background: #e0f2fe; color: #0369a1;
   border-radius: 999px; white-space: nowrap;
+  max-width: 100%; overflow: hidden; text-overflow: ellipsis;
 }
+.ppl-pchip-fac { background: transparent; border: 1px dashed #7dd3fc; }
+.ppl-pchip-fac small { opacity: .75; font-size: .62rem; }
 .ppl-metrics {
   display: grid; grid-template-columns: repeat(5, 1fr);
   gap: 4px; padding: 8px 0; border-top: 1px solid #f1f5f9;
@@ -1833,6 +1914,20 @@ footer a:hover { color: var(--c-primary); }
   color: #475569; text-transform: uppercase; letter-spacing: .03em;
 }
 .ppl-bio p, .ppl-interests p { margin: 0; font-size: .82rem; color: #1e293b; }
+/* Provenance: a small "source" link + retrieval date after a bio, interests
+ * line or affiliation, and a current / former tag on each affiliation. */
+.ppl-src { color: #0369a1; font-size: .72rem; }
+.ppl-ret { color: #94a3b8; font-size: .7rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.ppl-tag {
+  display: inline-block; margin-left: 4px; padding: 0 5px; border-radius: 8px;
+  font-size: .64rem; font-weight: 600; line-height: 1.5; vertical-align: 1px;
+  text-transform: uppercase; letter-spacing: .03em;
+}
+.ppl-tag-current { background: #dcfce7; color: #166534; }
+.ppl-tag-former  { background: #f1f5f9; color: #64748b; }
+.ppl-aff li.ppl-aff-former,
+.ppl-aff li.ppl-aff-former strong,
+.ppl-aff li.ppl-aff-former small { color: #94a3b8; }
 .ppl-links {
   margin-top: 10px; padding-top: 8px;
   border-top: 1px dashed #e2e8f0;
@@ -1840,7 +1935,7 @@ footer a:hover { color: var(--c-primary); }
 }
 .ppl-links a { color: #0369a1; }
 @media (max-width: 600px) {
-  .ppl-grid { grid-template-columns: 1fr; }
+  .ppl-grid { grid-template-columns: minmax(0, 1fr); }
   .ppl-metrics { grid-template-columns: repeat(3, 1fr); }
   .ppl-cols { grid-template-columns: 1fr; }
 }
@@ -1882,7 +1977,6 @@ footer a:hover { color: var(--c-primary); }
   width: 12px; height: 12px; border-radius: 3px;
   border: 1px solid rgba(0,0,0,.15);
 }
-.dash-toc .toc-label { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .dash-toc .toc-count { color: #64748b; font-size: .76rem; tabular-nums: true; }
 .toc-foot { font-size: .72rem; color: #94a3b8; padding: 8px 6px 0; margin: 0; }
 
@@ -1956,10 +2050,10 @@ footer a:hover { color: var(--c-primary); }
 .cov-block h5 { margin: 0 0 4px; font-size: .78rem; color: #475569; }
 .cov-list { list-style: none; margin: 0; padding: 0; font-size: .78rem; }
 .cov-row {
-  display: grid; grid-template-columns: 1fr 1fr 30px; gap: 6px;
+  display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) auto; gap: 6px;
   align-items: center; padding: 2px 0;
 }
-.cov-label { color: #1e293b; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cov-label { color: #1e293b; overflow-wrap: anywhere; line-height: 1.25; }
 .cov-bar {
   height: 8px; background: #94a3b8; border-radius: 2px;
   min-width: 4px;
@@ -2082,12 +2176,14 @@ footer a:hover { color: var(--c-primary); }
 .brw-meta .brw-type { font-weight: 600; }
 
 .brw-metrics {
-  display: grid; grid-template-columns: repeat(7, 1fr);
-  gap: 4px; padding: 8px 0;
+  /* Seven metrics: one row when the card is wide enough for every label,
+     otherwise they wrap to a second row instead of running together. */
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(68px, 1fr));
+  gap: 4px; row-gap: 8px; padding: 8px 0;
   border-top: 1px dashed #e2e8f0; border-bottom: 1px dashed #e2e8f0;
   text-align: center;
 }
-.brw-metric { font-size: .68rem; color: #64748b; }
+.brw-metric { font-size: .68rem; color: #64748b; text-align: center; white-space: nowrap; min-width: 0; }
 .brw-metric strong { display: block; font-size: .92rem; color: #0f172a; }
 
 .brw-section h4 {
@@ -2141,7 +2237,7 @@ footer a:hover { color: var(--c-primary); }
 
 @media (max-width: 720px) {
   .brw-grid { grid-template-columns: 1fr; }
-  .brw-metrics { grid-template-columns: repeat(4, 1fr); row-gap: 8px; }
+  .brw-metrics { grid-template-columns: repeat(auto-fit, minmax(64px, 1fr)); row-gap: 8px; }
 }
 
 .ppl-metrics-caveat { font-size: .68rem; color: #94a3b8; padding: 4px 0 0; line-height: 1.4; }
