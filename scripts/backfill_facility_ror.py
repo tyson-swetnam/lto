@@ -58,7 +58,8 @@ apart, and --include-type overrides the skip for a one-off run.
 
 Every decision — match, no-match, ambiguity — lands in
 data/seed/facility_ror_decisions.csv, which is the reviewable artifact;
-the DB write is just the accepted subset. Idempotent: facilities that
+the lake write is just the accepted subset (one transaction, one
+snapshot). Idempotent: facilities that
 already carry a ROR are never re-queried or overwritten.
 
 Usage::
@@ -77,16 +78,15 @@ import time
 from datetime import date
 from pathlib import Path
 
-import duckdb
 import requests
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+import lto_db  # noqa: E402
 from link_registry_facilities import (  # noqa: E402
     PLACE_TYPES, RESEARCH_TYPES, distinctive_tokens, normalize_facility_name,
 )
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "lto.duckdb"
 DECISION_LOG = ROOT / "data" / "seed" / "facility_ror_decisions.csv"
 API = "https://api.ror.org/v2/organizations"
 UA = "lto/0.2 (+https://github.com/tyson-swetnam/lto)"
@@ -315,6 +315,19 @@ def judge(name: str, acronym: str | None, country: str | None, items: list):
     return rid, display, why
 
 
+def write_rors(conn, pairs: list[tuple[str, str]]) -> None:
+    """UPDATE facilities.ror for (ror, facility_id) pairs that have none.
+    Call inside lto_db.transaction()."""
+    conn.execute("CREATE OR REPLACE TEMP TABLE _ror (ror VARCHAR, facility_id VARCHAR)")
+    conn.executemany("INSERT INTO _ror VALUES (?, ?)", pairs)
+    conn.execute("""
+        UPDATE facilities SET ror = s.ror FROM _ror s
+        WHERE facilities.facility_id = s.facility_id
+          AND (facilities.ror IS NULL OR facilities.ror = '')
+    """)
+    lto_db.assert_integrity(conn, ["facilities"])
+
+
 def apply_log(conn, dry_run: bool) -> int:
     """Write the RORs a reviewer promoted in the decision log.
 
@@ -340,10 +353,10 @@ def apply_log(conn, dry_run: bool) -> int:
     for rid, fid, name in promoted:
         print(f"[ror] accept {name[:50]:50s} → {rid}")
     if not dry_run:
-        conn.executemany(
-            "UPDATE facilities SET ror = ? WHERE facility_id = ? "
-            "AND (ror IS NULL OR ror = '')",
-            [(rid, fid) for rid, fid, _ in promoted])
+        with lto_db.transaction(
+                conn, f"backfill_facility_ror: {len(promoted)} reviewer-promoted "
+                      f"ROR(s) from {DECISION_LOG.name}"):
+            write_rors(conn, [(rid, fid) for rid, fid, _ in promoted])
     print(f"[ror] {len(promoted)} promoted ROR(s) applied"
           + (" (dry run — nothing written)" if dry_run else ""))
     return 0
@@ -351,7 +364,9 @@ def apply_log(conn, dry_run: bool) -> int:
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--db", type=Path, default=DEFAULT_DB)
+    lto_db.add_argparse_catalog(ap)
+    ap.add_argument("--db", dest="catalog", type=Path,
+                    help="Deprecated alias of --catalog.")
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--limit", type=int, default=0)
     ap.add_argument("--include-type", action="append", default=[],
@@ -364,7 +379,8 @@ def main() -> int:
                          "calls; this is how a review-* row lands")
     args = ap.parse_args()
 
-    conn = duckdb.connect(str(args.db))
+    conn = lto_db.connect(read_only=args.dry_run, catalog=args.catalog,
+                          data=args.lake_data)
     if args.apply_log:
         return apply_log(conn, args.dry_run)
     research_types = RESEARCH_TYPES | set(args.include_type)
@@ -454,9 +470,10 @@ def main() -> int:
                 row["ror"] = ""
 
     if not args.dry_run and accepted:
-        conn.executemany(
-            "UPDATE facilities SET ror = ? WHERE facility_id = ? "
-            "AND (ror IS NULL OR ror = '')", accepted)
+        with lto_db.transaction(
+                conn, f"backfill_facility_ror: {len(accepted)} ROR(s) resolved "
+                      f"against api.ror.org"):
+            write_rors(conn, accepted)
 
     # The decision log is append-only across runs: a facility that failed
     # to resolve last month and resolves today should show both, so the

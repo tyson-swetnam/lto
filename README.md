@@ -39,8 +39,12 @@ This repo is a **two-stack** project (forked-and-adapted from
 [`tyson-swetnam/cod-kmap`](https://github.com/tyson-swetnam/cod-kmap)):
 
 1. **Python data pipeline** (`scripts/`, `schema/`, `data/`) — research subagents
-   (`agents/R*-*.md`) emit JSON facility records; `scripts/ingest.py` loads them
-   into DuckDB; `scripts/export_parquet.py` writes Parquet + GeoJSON to `public/`.
+   (`agents/R*-*.md`) emit JSON facility records; `scripts/ingest.py` and the
+   `load_*.py` loaders write them into a local [DuckLake](https://ducklake.select)
+   store of record (DuckDB 2.0, SQLite catalog at `db/lto_catalog.sqlite`, data
+   files in `db/lake/`, both gitignored); `scripts/export_parquet.py` writes
+   Parquet + GeoJSON to `public/`. The committed `public/parquet/` is the canonical
+   copy of the data, and a fresh clone rebuilds the lake from it.
 2. **Static MapLibre + DuckDB-Wasm site** (`index.html`, `src/`, `public/`) —
    published to GitHub Pages with **no build step**.
 
@@ -61,14 +65,21 @@ Reference framing for site selection and long-term thresholds:
 
 ## Quick start
 
+Python 3.11 or newer (DuckDB 2.0).
+
 ```bash
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-python scripts/ingest.py          # data/raw/R*/*.json → db/lto.duckdb
-python scripts/qa.py
-python scripts/export_parquet.py
+python scripts/rebuild_lake_from_parquet.py  # public/parquet/ → db/lto_catalog.sqlite + db/lake/
+python scripts/ingest.py          # data/raw/R*/*.json → upsert into the lake; reloads schema/vocab/*.csv
+python scripts/qa.py              # data-quality + schema-constraint gate
+python scripts/export_parquet.py  # lake → public/parquet/ + public/facilities.geojson
+python scripts/export_view_caches.py
 python -m http.server 5173        # then open http://localhost:5173/
 ```
+
+To look at the site only, skip the Python steps: `python -m http.server 5173`
+serves the committed `public/` data as is.
 
 ## License
 

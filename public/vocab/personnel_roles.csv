@@ -1,0 +1,29 @@
+slug,label,is_leadership,description
+director,Director,true,"Heads the facility or program (also written Executive Director, Science Director, Station Director)."
+deputy-director,Deputy Director,true,Second in charge under the director.
+associate-director,Associate Director,true,"Associate or assistant director with a named leadership portfolio."
+lead-PI,Lead PI,true,"Lead principal investigator of a funded site or program (LTER, LTREB, LTAR lead). Several co-leads may hold it at once."
+co-PI,Co-PI,false,Co-principal investigator on the site's award; not the lead.
+founding-PI,Founding PI,false,"Founded the site or program; historical, so never superseded by a new holder."
+site-manager,Site Manager,true,Runs field operations at the site.
+manager,Manager,true,"Manages the facility or reserve (NERR Reserve Manager, Program Manager, Research Leader)."
+executive-officer,Executive Officer,true,"Chief executive of a non-profit, consortium or agency office (CEO, President, Executive Officer)."
+superintendent,Superintendent,true,Superintendent of a park or protected area.
+research-coordinator,Research Coordinator,false,Coordinates the research program (NERR Research Coordinator).
+stewardship-coordinator,Stewardship Coordinator,false,Coordinates stewardship and restoration (NERR Stewardship Coordinator).
+education-coordinator,Education Coordinator,false,Coordinates education and outreach (NERR Education Coordinator).
+information-manager,Information Manager,false,"Runs the site's information management system and data catalogue (LTER Information Manager)."
+data-manager,Data Manager,false,Manages the facility's datasets and data delivery.
+domain-manager,Domain Manager,true,"NEON field-science domain manager; one per domain, recorded on each of its sites."
+scientist,Scientist,false,"Research scientist, ecologist, hydrologist or similar staff researcher at the facility."
+faculty,Faculty,false,University faculty member affiliated with the facility.
+coordinator,Coordinator,false,"Network or program coordinator without a narrower coordinator role."
+technical-staff,Technical Staff,false,"Technician, analyst, GIS or instrument specialist."
+emeritus,Emeritus,false,Emeritus or retired scientist still associated with the facility.
+former-director,Former Director,false,Previously directed the facility; kept for history.
+leadership-team,Leadership Team,true,"Member of a named leadership team or executive committee (ARID Institute). Several hold it at once."
+advisory-board,Advisory Board,false,Member of an external advisory or steering board.
+collaborator,Collaborator,false,"External researcher who works with the facility; older rows also wrote research-collaborator."
+staff,Staff,false,Administrative or program staff.
+land-manager,Land Manager,false,Agency land-management staff responsible for the ground the facility sits on.
+alumnus,Alumnus,false,Former staff member or researcher; historical.

@@ -15,22 +15,35 @@ DuckDB stays as the fallback path if the cache is missing or stale,
 so the SQL tab keeps working and any future filtered queries still
 go through the full DuckDB path.
 
+The SQL reads the DuckLake store of record (scripts/lto_db.py),
+read-only. Output is deterministic: every result set has a total
+ORDER BY and every list() aggregate orders its elements with a unique
+tie-break, so re-running on unchanged data rewrites byte-identical JSON
+and a diff of public/cache/ shows only real changes. (Before this, row
+order followed whatever the engine produced, and DuckDB 1.5 and 2.0
+produced different orders from the same data.) The ordering changes
+alter neither columns nor types, so the row shape still matches the
+in-file fallback SQL in src/views/{people,list,projects}.js.
+
 Usage::
 
     python scripts/export_view_caches.py
-    python scripts/export_view_caches.py --db db/lto.duckdb \
-        --out public/cache
+    python scripts/export_view_caches.py --out /tmp/x/cache
+    python scripts/export_view_caches.py --catalog /tmp/x/cat.sqlite
+                                         # -> /tmp/x/export/cache/
 """
 from __future__ import annotations
 
 import argparse
 import json
+import os
+import sys
 from pathlib import Path
 
-import duckdb
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import lto_db  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "lto.duckdb"
 DEFAULT_OUT = ROOT / "public" / "cache"
 
 
@@ -39,8 +52,11 @@ WITH per_pa AS (
   -- Only the ranking score comes from the per-area table. The counts
   -- below are the person's own totals, so they do not depend on which
   -- of their papers the topic crosswalk happens to map to an area.
+  -- list_sum over an ordered list, not SUM(): a float sum depends on
+  -- the order rows arrive in, and that changes with the lake's file
+  -- layout. Same DOUBLE type as SUM().
   SELECT person_id,
-         SUM(composite_z)     AS composite_z
+         list_sum(list(composite_z ORDER BY area_id)) AS composite_z
   FROM person_area_metrics
   GROUP BY person_id
 ),
@@ -91,7 +107,9 @@ per_pa_areas AS (
 ),
 per_fund AS (
   SELECT fp.person_id,
-         SUM(faf.total_usd_nominal) AS facility_funding_usd
+         list_sum(list(faf.total_usd_nominal
+                       ORDER BY faf.facility_id, faf.area_id, fp.role))
+                                     AS facility_funding_usd
   FROM facility_personnel fp
   JOIN facility_area_funding faf ON faf.facility_id = fp.facility_id
   GROUP BY fp.person_id
@@ -101,20 +119,33 @@ per_aff AS (
   -- a project team would otherwise show a card with no affiliation.
   SELECT a.person_id,
          list(struct_pack(
-           role        := a.role,
-           title       := a.title,
-           facility    := a.facility,
-           facility_id := a.facility_id,
-           url         := a.url,
-           country     := a.country,
-           is_key      := a.is_key
-         ) ORDER BY a.is_key DESC, a.role, a.facility) AS affiliations
+           role         := a.role,
+           title        := a.title,
+           facility     := a.facility,
+           facility_id  := a.facility_id,
+           url          := a.url,
+           country      := a.country,
+           is_key       := a.is_key,
+           is_current   := a.is_current,
+           end_date     := CAST(a.end_date AS VARCHAR),
+           source_url   := a.source_url,
+           retrieved_at := CAST(a.retrieved_at AS VARCHAR),
+           confidence   := a.confidence
+         ) ORDER BY (a.is_current IS NOT FALSE
+                     AND (a.end_date IS NULL OR a.end_date > current_date)) DESC,
+                    a.is_key DESC, CASE a.role WHEN 'lead-PI' THEN 0 WHEN 'PI' THEN 0 WHEN 'director' THEN 1 WHEN 'executive-officer' THEN 1 WHEN 'superintendent' THEN 1 WHEN 'leader' THEN 1 WHEN 'manager' THEN 2 WHEN 'site-manager' THEN 2 WHEN 'domain-manager' THEN 2 WHEN 'deputy-director' THEN 3 WHEN 'associate-director' THEN 4 WHEN 'co-PI' THEN 5 WHEN 'co-leader' THEN 5 WHEN 'leadership-team' THEN 6 ELSE 9 END, a.role, a.facility, a.title,
+                    a.facility_id) AS affiliations
   FROM (
     SELECT fp.person_id, fp.role, fp.title,
            COALESCE(f.acronym || ' — ' || f.canonical_name,
                     f.canonical_name)  AS facility,
            f.facility_id, f.url, f.country,
-           fp.is_key_personnel         AS is_key
+           fp.is_key_personnel         AS is_key,
+           fp.is_current,
+           fp.end_date,
+           fp.source_url,
+           fp.retrieved_at,
+           fp.confidence
     FROM facility_personnel fp
     JOIN facilities f ON f.facility_id = fp.facility_id
     UNION ALL
@@ -123,7 +154,12 @@ per_aff AS (
            CAST(NULL AS VARCHAR)       AS facility_id,
            pj.url,
            CAST(NULL AS VARCHAR)       AS country,
-           FALSE                       AS is_key
+           FALSE                       AS is_key,
+           CAST(NULL AS BOOLEAN)       AS is_current,
+           CAST(NULL AS DATE)          AS end_date,
+           pp.source_url,
+           pp.retrieved_at,
+           pp.confidence
     FROM project_personnel pp
     JOIN projects pj ON pj.project_id = pp.project_id
   ) a
@@ -147,6 +183,9 @@ SELECT p.person_id  AS id,
        p.homepage_url,
        p.research_interests,
        p.bio,
+       p.bio_source_url,
+       CAST(p.bio_retrieved_at AS VARCHAR) AS bio_retrieved_at,
+       p.research_interests_source_url,
        g.primary_area_id,
        ra.label                            AS primary_area_label,
        COALESCE(pt.n_pubs, 0)              AS n_pubs,
@@ -159,7 +198,11 @@ SELECT p.person_id  AS id,
        pa2.affiliations                    AS affiliations,
        pr.canonical_id                     AS canonical_id,
        NULLIF(concat_ws(',',
-         CASE WHEN pr.is_site_personnel THEN 'site' END,
+         -- 'site' = holds a facility_personnel row, the registry's own
+         -- definition, read from the table itself so the pill does not
+         -- lag behind person_registry (rebuilt only with the harvest).
+         CASE WHEN pr.is_site_personnel OR EXISTS (SELECT 1 FROM facility_personnel sx
+                   WHERE sx.person_id = p.person_id) THEN 'site' END,
          CASE WHEN pr.is_scholar THEN 'scholar' END,
          CASE WHEN ap.person_id IS NOT NULL THEN 'arid' END), '') AS cohorts,
        pr.tier                             AS tier
@@ -174,6 +217,7 @@ LEFT JOIN per_fund             pf  ON pf.person_id = p.person_id
 LEFT JOIN per_aff              pa2 ON pa2.person_id = p.person_id
 LEFT JOIN person_registry      pr  ON pr.person_id = p.person_id
 LEFT JOIN arid_people          ap  ON ap.person_id = p.person_id
+ORDER BY p.person_id
 """
 
 
@@ -197,18 +241,18 @@ WITH base AS (
          f.record_length_years,
          f.long_term_threshold_met,
          f.data_portal_url,
-         (SELECT sphere_slug FROM facility_spheres
-          WHERE facility_id = f.facility_id AND role = 'primary'
-          LIMIT 1)            AS primary_sphere,
-         (SELECT list(sphere_slug) FROM facility_spheres
+         (SELECT min(sphere_slug) FROM facility_spheres
+          WHERE facility_id = f.facility_id AND role = 'primary')
+                              AS primary_sphere,
+         (SELECT list(sphere_slug ORDER BY sphere_slug) FROM facility_spheres
           WHERE facility_id = f.facility_id AND role = 'secondary')
                               AS secondary_spheres
   FROM facilities f
 ),
 nets AS (
   SELECT nm.facility_id,
-         list(struct_pack(slug := n.network_id, label := n.label, url := n.url))
-                              AS networks
+         list(struct_pack(slug := n.network_id, label := n.label, url := n.url)
+              ORDER BY n.network_id) AS networks
   FROM network_membership nm
   JOIN networks n ON n.network_id = nm.network_id
   GROUP BY nm.facility_id
@@ -222,7 +266,7 @@ archives AS (
            base_url   := da.base_url,
            scope_url  := fa.scope_url,
            sample_doi := fa.sample_doi
-         ) ORDER BY da.name) AS archive_list
+         ) ORDER BY da.name, fa.archive_id, fa.scope_url) AS archive_list
   FROM facility_archives fa
   LEFT JOIN data_archives da ON da.archive_id = fa.archive_id
   GROUP BY fa.facility_id
@@ -242,8 +286,12 @@ personnel AS (
            orcid     := p.orcid,
            openalex  := p.openalex_id,
            homepage  := p.homepage_url,
-           is_key    := fp.is_key_personnel
-         ) ORDER BY fp.is_key_personnel DESC, fp.role) AS personnel_list
+           is_key    := fp.is_key_personnel,
+           is_current := fp.is_current
+         ) ORDER BY (fp.is_current IS NOT FALSE
+                     AND (fp.end_date IS NULL OR fp.end_date > current_date)) DESC,
+                    CASE fp.role WHEN 'lead-PI' THEN 0 WHEN 'PI' THEN 0 WHEN 'director' THEN 1 WHEN 'executive-officer' THEN 1 WHEN 'superintendent' THEN 1 WHEN 'leader' THEN 1 WHEN 'manager' THEN 2 WHEN 'site-manager' THEN 2 WHEN 'domain-manager' THEN 2 WHEN 'deputy-director' THEN 3 WHEN 'associate-director' THEN 4 WHEN 'co-PI' THEN 5 WHEN 'co-leader' THEN 5 WHEN 'leadership-team' THEN 6 ELSE 9 END, fp.is_key_personnel DESC, fp.role, fp.person_id, fp.title)
+                              AS personnel_list
   FROM facility_personnel fp
   JOIN people p ON p.person_id = fp.person_id
   GROUP BY fp.facility_id
@@ -258,19 +306,21 @@ pubs AS (
 funding AS (
   SELECT fe.facility_id,
          count(*) AS n_funding,
-         sum(coalesce(fe.amount_usd, 0)) AS total_funding,
+         list_sum(list(coalesce(fe.amount_usd, 0) ORDER BY fe.event_id))
+                                     AS total_funding,
          list(struct_pack(
            funder := fr.name,
            program := fe.program,
            amount := fe.amount_usd,
            fy := fe.fiscal_year
-         ) ORDER BY coalesce(fe.amount_usd, 0) DESC) AS funding_list
+         ) ORDER BY coalesce(fe.amount_usd, 0) DESC, fe.fiscal_year DESC,
+                    fr.name, fe.program, fe.event_id) AS funding_list
   FROM funding_events fe
   JOIN funders fr ON fr.funder_id = fe.funder_id
   GROUP BY fe.facility_id
 ),
 areas AS (
-  SELECT al.facility_id, list(DISTINCT ra.label) AS research_areas
+  SELECT al.facility_id, list(DISTINCT ra.label ORDER BY ra.label) AS research_areas
   FROM area_links al
   JOIN research_areas ra ON ra.area_id = al.area_id
   GROUP BY al.facility_id
@@ -295,6 +345,7 @@ LEFT JOIN personnel pe ON pe.facility_id = b.id
 LEFT JOIN pubs      pu ON pu.facility_id = b.id
 LEFT JOIN funding   fu ON fu.facility_id = b.id
 LEFT JOIN areas     ar ON ar.facility_id = b.id
+ORDER BY b.id
 """
 
 
@@ -316,7 +367,7 @@ WITH team AS (
                       WHEN 'co-leader' THEN 4
                       WHEN 'manager'   THEN 6
                       ELSE 5
-                    END, p.name_family, p.name) AS team
+                    END, p.name_family, p.name, p.person_id, pp.role) AS team
   FROM project_personnel pp
   JOIN people p ON p.person_id = pp.person_id
   GROUP BY pp.project_id
@@ -328,7 +379,7 @@ sites AS (
            name        := f.canonical_name,
            acronym     := f.acronym,
            relation    := pf.relation
-         ) ORDER BY f.canonical_name) AS facilities
+         ) ORDER BY f.canonical_name, f.facility_id, pf.relation) AS facilities
   FROM project_facilities pf
   JOIN facilities f ON f.facility_id = pf.facility_id
   GROUP BY pf.project_id
@@ -360,7 +411,7 @@ LEFT JOIN projects par  ON par.project_id = pr.parent_project_id
 LEFT JOIN facilities lf ON lf.facility_id = pr.lead_facility_id
 LEFT JOIN team t        ON t.project_id   = pr.project_id
 LEFT JOIN sites s       ON s.project_id   = pr.project_id
-ORDER BY pr.name
+ORDER BY pr.name, pr.project_id
 """
 
 
@@ -380,7 +431,7 @@ locs AS (
            role  := role,
            lat   := lat,
            lng   := lng
-         ) ORDER BY role, label) AS locations
+         ) ORDER BY role, label, lat, lng) AS locations
   FROM locations
   GROUP BY facility_id
 ),
@@ -411,7 +462,7 @@ LEFT JOIN nets n ON n.facility_id = f.facility_id
 LEFT JOIN locs l ON l.facility_id = f.facility_id
 LEFT JOIN prim p ON p.facility_id = f.facility_id
 LEFT JOIN arid a ON a.facility_id = f.facility_id
-ORDER BY f.canonical_name
+ORDER BY f.canonical_name, f.facility_id
 """
 
 
@@ -444,26 +495,43 @@ def export_query(conn, sql: str, out_path: Path) -> int:
         for row in cur.fetchall()
     ]
     out_path.parent.mkdir(parents=True, exist_ok=True)
+    tmp = out_path.with_name(f".{out_path.name}.tmp")
     # Compact JSON — every byte saved is a byte mobile users don't pay
     # for. The browser does JSON.parse anyway so whitespace adds no
     # value. Use ensure_ascii=False so unicode (Guánica, Pu'u Maka'ala)
     # stays as UTF-8 instead of \u escapes.
-    out_path.write_text(
+    tmp.write_text(
         json.dumps(payload, ensure_ascii=False, separators=(",", ":")),
         encoding="utf-8",
     )
+    os.replace(tmp, out_path)
     return len(payload)
 
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--db", type=Path, default=DEFAULT_DB)
-    ap.add_argument("--out", type=Path, default=DEFAULT_OUT)
+    lto_db.add_argparse_catalog(ap)
+    ap.add_argument("--out", type=Path, default=None,
+                    help="cache dir (default: public/cache; <catalog dir>/export/cache "
+                         "for a non-default catalog, so a scratch lake never "
+                         "overwrites the committed caches)")
     args = ap.parse_args()
+    if args.out is None:
+        if lto_db.is_default_catalog(args.catalog):
+            args.out = DEFAULT_OUT
+        else:
+            args.out = lto_db.catalog_path(args.catalog).parent / "export" / "cache"
+            print(f"[note] non-default catalog: writing to {args.out} rather than "
+                  "public/cache (pass --out to override)", file=sys.stderr)
 
     args.out.mkdir(parents=True, exist_ok=True)
 
-    with duckdb.connect(str(args.db), read_only=True) as conn:
+    try:
+        conn = lto_db.connect(read_only=True, catalog=args.catalog, data=args.lake_data)
+    except lto_db.LakeNotFound as e:
+        print(f"[error] {e}", file=sys.stderr)
+        return 2
+    with conn:
         n_people = export_query(conn, PEOPLE_SQL, args.out / "people_cards.json")
         print(f"[cache] wrote {n_people:4d} rows → {args.out / 'people_cards.json'}"
               f"  ({(args.out / 'people_cards.json').stat().st_size // 1024} KB)")

@@ -27,8 +27,13 @@ facility's ror works at that site. No name comparison is involved.
 Usage::
 
     python scripts/link_registry_facilities.py --dry-run
-    python scripts/link_registry_facilities.py --export-parquet
+    python scripts/link_registry_facilities.py
     python scripts/link_registry_facilities.py --include-type flux-tower
+
+Both passes write the lake in one snapshot, after every OpenAlex call has
+returned; scripts/export_parquet.py publishes facilities and the core-tier
+slice of registry_facilities. --export-parquet is accepted for old callers
+and does nothing.
 """
 from __future__ import annotations
 
@@ -38,15 +43,12 @@ import time
 from datetime import date
 from pathlib import Path
 
-import duckdb
-
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+import lto_db  # noqa: E402
 import openalex_auth  # noqa: E402
 from enrich_people_orcid import normalize_facility_name  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "lto.duckdb"
-PARQUET_OUT = [ROOT / "db" / "parquet", ROOT / "public" / "parquet"]
 API = "https://api.openalex.org"
 SLEEP = 0.25
 
@@ -117,26 +119,24 @@ PLACE_TYPES = {
 }
 
 
+def has_ror_column(conn) -> bool:
+    return "ror" in {r[1] for r in conn.execute(
+        "PRAGMA table_info('facilities')").fetchall()}
+
+
 def ensure_ror_column(conn) -> None:
-    cols = {r[1] for r in conn.execute("PRAGMA table_info('facilities')").fetchall()}
-    if "ror" not in cols:
+    if not has_ror_column(conn):
         conn.execute("ALTER TABLE facilities ADD COLUMN ror VARCHAR")
         print("[schema] added facilities.ror")
 
 
 def ensure_link_table(conn) -> None:
-    # Mirrors registry_facilities in schema/schema.sql — guard for DBs
-    # rebuilt from parquet snapshots that predate the registry tables.
-    conn.execute("""
-        CREATE TABLE IF NOT EXISTS registry_facilities (
-            canonical_id  VARCHAR NOT NULL,
-            facility_id   VARCHAR NOT NULL,
-            method        VARCHAR NOT NULL,
-            ror           VARCHAR,
-            source_url    VARCHAR,
-            retrieved_at  VARCHAR,
-            confidence    VARCHAR,
-            PRIMARY KEY (canonical_id, facility_id))""")
+    # Guard for lakes rebuilt from parquet snapshots that predate the
+    # registry tables. Created column-only from the schema/schema.sql spec:
+    # DuckLake rejects the PRIMARY KEY, which lto_db.assert_integrity checks.
+    if not lto_db.table_exists(conn, "registry_facilities"):
+        conn.execute(lto_db.column_only_ddl("registry_facilities"))
+        print("[schema] created registry_facilities")
 
 
 def short(v) -> str | None:
@@ -167,10 +167,13 @@ def resolve_ror(sess, name: str, acronym: str | None) -> tuple[str | None, str]:
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--db", type=Path, default=DEFAULT_DB)
+    lto_db.add_argparse_catalog(ap)
+    ap.add_argument("--db", dest="catalog", type=Path,
+                    help="deprecated alias of --catalog")
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--limit", type=int, default=0)
-    ap.add_argument("--export-parquet", action="store_true")
+    ap.add_argument("--export-parquet", action="store_true",
+                    help="deprecated no-op: run scripts/export_parquet.py")
     ap.add_argument("--include-type", action="append", default=[],
                     metavar="SLUG",
                     help="treat this facility_type as a research organisation "
@@ -187,9 +190,21 @@ def main() -> int:
     if not args.link_only:
         openalex_auth.require_api_key()
         sess = openalex_auth.openalex_session()
-    conn = duckdb.connect(str(args.db))
-    ensure_ror_column(conn)
-    ensure_link_table(conn)
+    # Pass 1 talks to OpenAlex for minutes; nothing is written until both
+    # passes are computed, so the lake write is one short transaction (one
+    # snapshot) at the end. A dry run opens the lake read-only.
+    conn = lto_db.connect(read_only=args.dry_run,
+                          catalog=args.catalog, data=args.lake_data)
+    if args.dry_run and not (has_ror_column(conn)
+                             and lto_db.table_exists(conn, "registry_facilities")):
+        print("[error] lake lacks facilities.ror or registry_facilities; run "
+              "once without --dry-run to add them", file=sys.stderr)
+        return 2
+    if not args.dry_run:
+        with lto_db.transaction(conn, "link_registry_facilities: schema guard "
+                                      "(facilities.ror, registry_facilities)"):
+            ensure_ror_column(conn)
+            ensure_link_table(conn)
     today = date.today().isoformat()
 
     research_types = RESEARCH_TYPES | set(args.include_type)
@@ -263,9 +278,6 @@ def main() -> int:
         found = [(r, fid) for r, fid in found if r not in contested]
         print(f"[ror] {len(found)} uncontested ROR(s) will be written")
 
-    if not args.dry_run and found:
-        conn.executemany("UPDATE facilities SET ror = ? WHERE facility_id = ?", found)
-
     # ── pass 2: equality join on ROR ───────────────────────────────────
     # Rebuild only the rows this pass owns. It used to clear the whole
     # table, which was safe while this script was the sole writer and
@@ -273,19 +285,32 @@ def main() -> int:
     # contributing edges it cannot re-derive (those come from upstream's
     # own ROR join, against RORs LTO may not carry).
     if not args.dry_run:
-        conn.execute("DELETE FROM registry_facilities WHERE method = 'ror-equality'")
-        # OR IGNORE: an imported edge already claims some (person, site)
-        # pairs, and its provenance is the more specific of the two.
-        conn.execute("""
-            INSERT OR IGNORE INTO registry_facilities
-                (canonical_id, facility_id, method, ror,
-                 source_url, retrieved_at, confidence)
-            SELECT DISTINCT r.canonical_id, f.facility_id, 'ror-equality',
-                   f.ror, 'https://ror.org/' || f.ror, ?, 'high'
-            FROM person_registry r
-            JOIN facilities f ON f.ror = r.affiliation_ror
-            WHERE r.affiliation_ror IS NOT NULL AND r.affiliation_ror <> ''
-              AND f.ror IS NOT NULL AND f.ror <> ''""", [today])
+        with lto_db.transaction(conn, f"link_registry_facilities: {len(found)} "
+                                      f"facility ROR(s), ror-equality links"):
+            if found:
+                conn.execute("CREATE OR REPLACE TEMP TABLE _ror_stage "
+                             "(ror VARCHAR, facility_id VARCHAR)")
+                conn.executemany("INSERT INTO _ror_stage VALUES (?, ?)", found)
+                conn.execute("UPDATE facilities SET ror = s.ror FROM _ror_stage s "
+                             "WHERE facilities.facility_id = s.facility_id")
+            conn.execute("DELETE FROM registry_facilities WHERE method = 'ror-equality'")
+            # insert_only (the old INSERT OR IGNORE): an imported edge already
+            # claims some (person, site) pairs, and its provenance is the
+            # more specific of the two.
+            st = lto_db.merge_upsert(
+                conn, "registry_facilities", ["canonical_id", "facility_id"], """
+                SELECT DISTINCT r.canonical_id, f.facility_id,
+                       'ror-equality' AS method, f.ror,
+                       'https://ror.org/' || f.ror AS source_url,
+                       CAST(? AS VARCHAR) AS retrieved_at, 'high' AS confidence
+                FROM person_registry r
+                JOIN facilities f ON f.ror = r.affiliation_ror
+                WHERE r.affiliation_ror IS NOT NULL AND r.affiliation_ror <> ''
+                  AND f.ror IS NOT NULL AND f.ror <> ''""",
+                insert_only=True, params=[today])
+            lto_db.assert_integrity(conn, ["facilities", "registry_facilities"])
+        print(f"[link] ror-equality: {st['inserted']:,} inserted, "
+              f"{st['matched']:,} already claimed by another method")
     n = conn.execute("SELECT COUNT(*) FROM registry_facilities").fetchone()[0]
     people = conn.execute(
         "SELECT COUNT(DISTINCT canonical_id) FROM registry_facilities").fetchone()[0]
@@ -294,35 +319,20 @@ def main() -> int:
     print(f"[link] {n:,} registry↔facility link(s): "
           f"{people:,} researcher(s) across {sites} site(s)")
 
-    if args.export_parquet and not args.dry_run:
-        db_base, site_base = PARQUET_OUT
-        for base in PARQUET_OUT:
-            base.mkdir(parents=True, exist_ok=True)
-        # facilities ships whole — every site is a map feature regardless of
-        # whether any of its researchers made the core tier.
-        for base in PARQUET_OUT:
-            conn.execute(f"COPY facilities TO "
-                         f"'{base / 'facilities.parquet'}' (FORMAT PARQUET)")
-        conn.execute(f"COPY registry_facilities TO "
-                     f"'{db_base / 'registry_facilities.parquet'}' (FORMAT PARQUET)")
-        # The browser only holds the core tier of person_registry, so a link
-        # to an archive-tier researcher would render as a reference to a row
-        # that isn't there. In upstream cod-kmap, 1,204 of 1,467 links were
-        # in that state before this filter was added. Same rule the edge
-        # export uses in scripts/rank_person_registry.py.
-        conn.execute(f"""COPY (SELECT rf.* FROM registry_facilities rf
-                         JOIN person_registry r USING (canonical_id)
-                         WHERE r.tier = 'core')
-                         TO '{site_base / 'registry_facilities.parquet'}'
-                         (FORMAT PARQUET)""")
-        shipped = conn.execute(
-            "SELECT COUNT(*) FROM registry_facilities rf "
-            "JOIN person_registry r USING (canonical_id) "
-            "WHERE r.tier = 'core'").fetchone()[0]
-        print(f"[parquet] db/parquet: all {n:,} link(s); "
-              f"public/parquet: {shipped:,} core-tier link(s)")
-        print("[note] db/parquet is gitignored (stage with `git add -f`); "
-              "public/parquet is committed")
+    # The browser only holds the core tier of person_registry, so a link
+    # to an archive-tier researcher would render as a reference to a row
+    # that isn't there. In upstream cod-kmap, 1,204 of 1,467 links were
+    # in that state before this filter was added. export_parquet.py applies
+    # that filter (EXPORT_WHERE); this only reports what it will ship.
+    shipped = conn.execute(
+        "SELECT COUNT(*) FROM registry_facilities rf "
+        "JOIN person_registry r USING (canonical_id) "
+        "WHERE r.tier = 'core'").fetchone()[0]
+    print(f"[link] lake: all {n:,} link(s); export_parquet.py will ship "
+          f"{shipped:,} core-tier link(s)")
+    if args.export_parquet:
+        print("[note] --export-parquet is a no-op now; run "
+              "scripts/export_parquet.py to publish the lake")
     conn.close()
     return 0
 

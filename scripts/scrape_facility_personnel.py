@@ -68,10 +68,10 @@ except ImportError:
           file=sys.stderr)
     raise
 
-import duckdb
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import lto_db  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "lto.duckdb"
 DEFAULT_OUT = ROOT / "data" / "seed" / "scraped_personnel_candidates.csv"
 PROGRESS = ROOT / "data" / "seed" / ".scrape_progress.json"
 
@@ -227,9 +227,23 @@ def save_progress(data: dict) -> None:
     PROGRESS.write_text(json.dumps(data, indent=2, sort_keys=True))
 
 
+def catalog_arg(args) -> Path | None:
+    """--db is the pre-lake flag, kept as an alias of --catalog. The retired
+    db/lto.duckdb file itself is not a catalog, so it is ignored."""
+    if args.db is None or args.catalog is not None:
+        return args.catalog
+    if args.db.suffix == ".duckdb":
+        print(f"[deprecated] --db {args.db} ignored (db/lto.duckdb is retired); "
+              f"use --catalog", file=sys.stderr)
+        return None
+    return args.db
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--db", type=Path, default=DEFAULT_DB)
+    lto_db.add_argparse_catalog(ap)
+    ap.add_argument("--db", type=Path, default=None,
+                    help="deprecated alias of --catalog (a db/lto.duckdb path is ignored)")
     ap.add_argument("--out", type=Path, default=DEFAULT_OUT)
     ap.add_argument("--limit", type=int, default=0)
     ap.add_argument("--unresolved-only", action="store_true",
@@ -239,18 +253,14 @@ def main() -> int:
                     help="Your contact email for the polite User-Agent header")
     args = ap.parse_args()
 
-    if not args.db.exists():
-        print(f"[error] db not found: {args.db}", file=sys.stderr)
-        return 2
-
-    # read_only=True avoids taking the exclusive lock so the scraper
-    # can run alongside an in-flight enrichment or seed pass. If an
-    # older DuckDB still complains about the flag, fall back to the
-    # regular connect() after catching the error.
+    # The scraper only reads the lake (it writes a CSV for review), so it
+    # attaches read-only and can run alongside a loader.
     try:
-        conn = duckdb.connect(str(args.db), read_only=True)
-    except (TypeError, duckdb.Error):
-        conn = duckdb.connect(str(args.db))
+        conn = lto_db.connect(read_only=True, catalog=catalog_arg(args),
+                              data=args.lake_data)
+    except lto_db.LakeNotFound as e:
+        print(f"[error] {e}", file=sys.stderr)
+        return 2
     facilities = conn.execute("""
         SELECT f.facility_id, f.canonical_name, f.acronym, f.url,
                (SELECT COUNT(*) FROM facility_personnel fp
@@ -259,6 +269,7 @@ def main() -> int:
         WHERE f.url IS NOT NULL AND f.url != ''
         ORDER BY f.canonical_name
     """).fetchall()
+    conn.close()
     rows = [{"facility_id": r[0], "canonical_name": r[1], "acronym": r[2],
              "url": r[3], "n_existing": r[4]} for r in facilities]
     if args.unresolved_only:

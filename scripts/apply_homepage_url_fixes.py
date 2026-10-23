@@ -5,6 +5,9 @@ Reads every `data/raw/L-URL-FIX-*/homepage_updates.json` array and
 runs UPDATE statements against `people`. Idempotent — re-running just
 overwrites with the same values.
 
+All updates of one run land in the lake as a single snapshot (commit
+message ``apply_homepage_url_fixes: …``); nothing lands if the run fails.
+
 Strategy:
 
   1. Match by `person_id` (sha1[:16] hash) when supplied.
@@ -27,16 +30,18 @@ import json
 import sys
 from pathlib import Path
 
-import duckdb
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import lto_db  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "lto.duckdb"
 RAW_DIR = ROOT / "data" / "raw"
 
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--db", type=Path, default=DEFAULT_DB)
+    lto_db.add_argparse_catalog(ap)
+    ap.add_argument("--db", dest="catalog", type=Path,
+                    help="deprecated alias of --catalog")
     ap.add_argument("--verbose", action="store_true")
     args = ap.parse_args()
 
@@ -49,7 +54,9 @@ def main() -> int:
     by_kind: dict[str, int] = {}
     by_conf: dict[str, int] = {}
 
-    with duckdb.connect(str(args.db)) as conn:
+    with lto_db.connect(catalog=args.catalog, data=args.lake_data) as conn, \
+            lto_db.transaction(conn, "apply_homepage_url_fixes: people.homepage_url "
+                                     f"from {len(files)} L-URL-FIX file(s)"):
         for path in files:
             try:
                 payload = json.loads(path.read_text())
@@ -107,6 +114,8 @@ def main() -> int:
                 by_conf[conf] = by_conf.get(conf, 0) + 1
                 if args.verbose:
                     print(f"  [{conf:6s} {kind:18s}] {name}: {prev} → {url}")
+
+        lto_db.assert_integrity(conn, ["people"])
 
     print(f"[apply_homepage_url_fixes] applied {applied}, no-op {noop}, "
           f"name-fallback resolves {name_fallback}, "

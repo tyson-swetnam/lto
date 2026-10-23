@@ -27,40 +27,36 @@ This script:
      ``scripts/ingest.py`` does (sha1(lower(name)|lower(acronym))[:16])
      so the IDs match what's already cached in
      ``public/facilities.geojson``.
-  3. INSERT-OR-REPLACEs the 10 facility rows into ``main.facilities``
+  3. Upserts (MERGE) the 10 facility rows into ``main.facilities``
      and refreshes their ``main.locations`` HQ rows.
   4. Reads the EPA-R* rows from ``data/seed/facility_personnel_seed.csv``,
      resolves their person_id from ``main.people`` by the URL on
      homepage_url (which is set on every orphan), and writes the matching
      ``main.facility_personnel`` row.
-  5. Re-exports ``public/parquet/facilities.parquet``,
-     ``public/parquet/facility_personnel.parquet``,
-     ``public/parquet/locations.parquet`` and rewrites
-     ``public/facilities.geojson`` from ``v_facility_map`` so the static
-     site now sees a consistent DB ↔ geojson state.
+  5. Writes steps 3-4 as one lake snapshot. Publishing is no longer this
+     script's job: run ``scripts/export_parquet.py`` (the only writer of
+     ``public/parquet/`` and ``public/facilities.geojson``) and
+     ``scripts/export_view_caches.py`` afterwards.
 
-Idempotent — safe to re-run. Leaves the rest of the DB untouched.
+Idempotent — safe to re-run. Leaves the rest of the lake untouched.
 """
 from __future__ import annotations
 
+import argparse
 import csv
 import hashlib
 import json
-import shutil
 import sys
 from pathlib import Path
 
 import duckdb
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import lto_db  # noqa: E402
+
 ROOT = Path(__file__).resolve().parent.parent
-DB_PATH = ROOT / "db" / "lto.duckdb"
 EPA_JSON = ROOT / "data" / "raw" / "R1" / "facilities_epa_regional_offices.json"
 SEED_CSV = ROOT / "data" / "seed" / "facility_personnel_seed.csv"
-PARQUET_DB = ROOT / "db" / "parquet"
-PARQUET_WEB = ROOT / "public" / "parquet"
-GEOJSON_OUT = ROOT / "public" / "facilities.geojson"
-
-PARQUET_TABLES_TO_REFRESH = ("facilities", "facility_personnel", "locations", "people")
 
 
 def facility_id(name: str, acronym: str | None) -> str:
@@ -78,15 +74,32 @@ def load_epa_records() -> list[dict]:
 
 
 def upsert_facilities(conn: duckdb.DuckDBPyConnection, recs: list[dict]) -> list[str]:
-    """Insert/refresh the 10 EPA Region facilities. Returns their IDs."""
+    """Insert/refresh the 10 EPA Region facilities. Returns their IDs.
+
+    Rows are staged, then MERGEd on the primary key (the old INSERT OR
+    REPLACE). Only the columns named here are overwritten; derived ones
+    (state, ror, record_length_years, ...) survive a re-run.
+    """
+    conn.execute(
+        """CREATE OR REPLACE TEMP TABLE _stage_epa_facilities (
+               facility_id VARCHAR, canonical_name VARCHAR, acronym VARCHAR,
+               parent_org VARCHAR, facility_type VARCHAR, country VARCHAR,
+               region VARCHAR, hq_address VARCHAR, hq_lat DOUBLE,
+               hq_lng DOUBLE, url VARCHAR, contact VARCHAR,
+               established INTEGER, created_at TIMESTAMP, _seq INTEGER)""")
+    conn.execute(
+        """CREATE OR REPLACE TEMP TABLE _stage_epa_locations (
+               location_id VARCHAR, facility_id VARCHAR, label VARCHAR,
+               address VARCHAR, lat DOUBLE, lng DOUBLE, role VARCHAR,
+               _seq INTEGER)""")
     ids: list[str] = []
     for d in recs:
         fid = facility_id(d["canonical_name"], d.get("acronym"))
         ids.append(fid)
         hq = d.get("hq") or {}
         conn.execute(
-            """INSERT OR REPLACE INTO main.facilities VALUES
-               (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)""",
+            """INSERT INTO _stage_epa_facilities VALUES
+               (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP, ?)""",
             [
                 fid,
                 d.get("canonical_name"),
@@ -101,13 +114,15 @@ def upsert_facilities(conn: duckdb.DuckDBPyConnection, recs: list[dict]) -> list
                 d.get("url"),
                 d.get("contact"),
                 d.get("established"),
+                len(ids),
             ],
         )
         # locations
         for loc in (d.get("locations") or []):
             lid = location_id(fid, loc.get("label"))
             conn.execute(
-                "INSERT OR REPLACE INTO main.locations VALUES (?,?,?,?,?,?,?)",
+                "INSERT INTO _stage_epa_locations VALUES (?,?,?,?,?,?,?,"
+                " (SELECT count(*) FROM _stage_epa_locations))",
                 [
                     lid,
                     fid,
@@ -118,6 +133,19 @@ def upsert_facilities(conn: duckdb.DuckDBPyConnection, recs: list[dict]) -> list
                     loc.get("role"),
                 ],
             )
+    # Last write wins on a repeated key, as the per-row REPLACE did;
+    # created_at is set only when the row is first inserted.
+    print("[fix] facilities merge: " + str(lto_db.merge_upsert(
+        conn, "facilities", ["facility_id"], "_stage_epa_facilities",
+        update_cols=["canonical_name", "acronym", "parent_org",
+                     "facility_type", "country", "region", "hq_address",
+                     "hq_lat", "hq_lng", "url", "contact", "established"],
+        order_by="_seq DESC")), file=sys.stderr)
+    print("[fix] locations merge: " + str(lto_db.merge_upsert(
+        conn, "locations", ["location_id"], "_stage_epa_locations",
+        order_by="_seq DESC")), file=sys.stderr)
+    conn.execute("DROP TABLE _stage_epa_facilities")
+    conn.execute("DROP TABLE _stage_epa_locations")
     return ids
 
 
@@ -174,13 +202,17 @@ def link_administrators(conn: duckdb.DuckDBPyConnection) -> int:
             role = (row.get("role") or "Regional Administrator").strip()
             title = (row.get("title") or "").strip() or None
             is_key = (row.get("is_key_personnel") or "").strip().lower() in ("true", "1", "yes")
-            conn.execute(
-                """INSERT OR REPLACE INTO main.facility_personnel
-                   (person_id, facility_id, role, title, is_key_personnel,
-                    start_date, end_date, source, source_url, retrieved_at,
-                    confidence, notes)
-                   VALUES (?, ?, ?, ?, ?, NULL, NULL, ?, ?, CURRENT_DATE, ?, ?)""",
-                [
+            # One-row MERGE on (person_id, facility_id, role) — the old
+            # INSERT OR REPLACE; at most 10 rows, so no staging needed.
+            lto_db.merge_upsert(
+                conn, "facility_personnel", ["person_id", "facility_id", "role"],
+                """SELECT ? AS person_id, ? AS facility_id, ? AS role,
+                          ? AS title, ? AS is_key_personnel,
+                          NULL::DATE AS start_date, NULL::DATE AS end_date,
+                          ? AS source, ? AS source_url,
+                          CURRENT_DATE AS retrieved_at, ? AS confidence,
+                          ? AS notes""",
+                params=[
                     pid, fid, role, title, is_key,
                     (row.get("source") or "press-release"),
                     (row.get("source_url") or "").strip() or None,
@@ -194,61 +226,34 @@ def link_administrators(conn: duckdb.DuckDBPyConnection) -> int:
     return n_linked
 
 
-def export_parquet(conn: duckdb.DuckDBPyConnection) -> None:
-    PARQUET_DB.mkdir(parents=True, exist_ok=True)
-    PARQUET_WEB.mkdir(parents=True, exist_ok=True)
-    for t in PARQUET_TABLES_TO_REFRESH:
-        out = PARQUET_DB / f"{t}.parquet"
-        conn.execute(f"COPY (SELECT * FROM main.{t}) TO '{out}' (FORMAT PARQUET)")
-        shutil.copyfile(out, PARQUET_WEB / f"{t}.parquet")
-    print(f"[ok] refreshed parquet: {', '.join(PARQUET_TABLES_TO_REFRESH)}")
-
-
-def rebuild_facilities_geojson(conn: duckdb.DuckDBPyConnection) -> int:
-    rows = conn.execute(
-        """SELECT id, name, acronym, type, country, lat, lng, url, parent_org
-           FROM v_facility_map"""
-    ).fetchall()
-    feats = []
-    for fid, name, acronym, ftype, country, lat, lng, url, parent in rows:
-        feats.append({
-            "type": "Feature",
-            "geometry": {"type": "Point", "coordinates": [lng, lat]},
-            "properties": {
-                "id": fid, "name": name, "acronym": acronym, "type": ftype,
-                "country": country, "url": url, "parent_org": parent,
-            },
-        })
-    GEOJSON_OUT.write_text(
-        json.dumps({"type": "FeatureCollection", "features": feats}, indent=0)
-    )
-    return len(feats)
-
-
 def main() -> int:
-    print(f"[fix] DB: {DB_PATH}", file=sys.stderr)
+    ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
+    lto_db.add_argparse_catalog(ap)
+    args = ap.parse_args()
+    print(f"[fix] lake catalog: {lto_db.catalog_path(args.catalog)}", file=sys.stderr)
     recs = load_epa_records()
     print(f"[fix] EPA Region records to upsert: {len(recs)}", file=sys.stderr)
 
-    with duckdb.connect(str(DB_PATH)) as conn:
-        ids = upsert_facilities(conn, recs)
-        print(f"[fix] upserted {len(ids)} EPA Region facilities", file=sys.stderr)
+    with lto_db.connect(catalog=args.catalog, data=args.lake_data) as conn:
+        with lto_db.transaction(conn, f"fix_epa_region_affiliations: {len(recs)} "
+                                      f"EPA Region facilities + administrators"):
+            ids = upsert_facilities(conn, recs)
+            print(f"[fix] upserted {len(ids)} EPA Region facilities", file=sys.stderr)
 
-        # Make sure parent EPA agency exists in funders so the parent-agency
-        # link in the JSON has a place to land. (Not strictly required for
-        # the affiliation fix but keeps provenance complete.)
-        # — funders backfill omitted; the existing R9 funding flow tooling
-        # owns funder hygiene.
+            # Make sure parent EPA agency exists in funders so the parent-agency
+            # link in the JSON has a place to land. (Not strictly required for
+            # the affiliation fix but keeps provenance complete.)
+            # — funders backfill omitted; the existing R9 funding flow tooling
+            # owns funder hygiene.
 
-        n = link_administrators(conn)
-        print(f"[fix] linked {n} administrators via facility_personnel", file=sys.stderr)
+            n = link_administrators(conn)
+            print(f"[fix] linked {n} administrators via facility_personnel", file=sys.stderr)
+            lto_db.assert_integrity(conn, ["facilities", "locations", "facility_personnel"])
 
-        # Re-export parquet for the four tables that changed
-        export_parquet(conn)
-
-        # Rebuild facilities.geojson so the static site is consistent
-        n_geo = rebuild_facilities_geojson(conn)
-        print(f"[fix] rebuilt {GEOJSON_OUT} with {n_geo} features", file=sys.stderr)
+        # parquet + facilities.geojson are export_parquet.py's to write.
+        print("[fix] next: scripts/backfill_facility_state.py, then "
+              "export_parquet.py and export_view_caches.py to publish",
+              file=sys.stderr)
 
         # Sanity: orphan-people count after fix
         orphan = conn.execute(

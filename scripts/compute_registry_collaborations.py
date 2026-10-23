@@ -29,7 +29,11 @@ Shared context on each edge:
 Usage::
 
     python scripts/compute_registry_collaborations.py --dry-run
-    python scripts/compute_registry_collaborations.py --export-parquet
+    python scripts/compute_registry_collaborations.py
+
+The edges replace registry_collaborations in the lake in one snapshot;
+scripts/export_parquet.py publishes the core-tier slice. --export-parquet
+is accepted for old callers and does nothing.
 """
 from __future__ import annotations
 
@@ -40,14 +44,11 @@ import time
 from collections import defaultdict
 from pathlib import Path
 
-import duckdb
-
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+import lto_db  # noqa: E402
 import openalex_auth  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "lto.duckdb"
-PARQUET_OUT = [ROOT / "db" / "parquet", ROOT / "public" / "parquet"]
 CACHE = ROOT / "data" / "raw" / "registry_collab" / "_state"
 API = "https://api.openalex.org"
 SLEEP = 0.05
@@ -99,20 +100,20 @@ def fetch_works(sess, oa_id: str) -> list[dict]:
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--db", type=Path, default=DEFAULT_DB)
+    lto_db.add_argparse_catalog(ap)
+    ap.add_argument("--db", dest="catalog", type=Path,
+                    help="deprecated alias of --catalog")
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--resume", action="store_true", default=True)
     ap.add_argument("--limit", type=int, default=0)
-    ap.add_argument("--export-parquet", action="store_true")
+    ap.add_argument("--export-parquet", action="store_true",
+                    help="deprecated no-op: run scripts/export_parquet.py")
     args = ap.parse_args()
-
-    if not args.db.exists():
-        print(f"[error] db not found: {args.db}", file=sys.stderr)
-        return 2
 
     openalex_auth.require_api_key()
     sess = openalex_auth.openalex_session()
-    conn = duckdb.connect(str(args.db))
+    conn = lto_db.connect(read_only=args.dry_run,
+                          catalog=args.catalog, data=args.lake_data)
 
     members = conn.execute(
         "SELECT canonical_id, openalex_id, display_name FROM person_registry "
@@ -201,20 +202,26 @@ def main() -> int:
         conn.close()
         return 0
 
-    conn.execute("DELETE FROM registry_collaborations")
+    # Stage in a temp table with the target's column types, then replace
+    # the table in one statement pair: row-by-row INSERTs into the lake are
+    # slow, and DELETE + INSERT in one transaction is one snapshot.
+    cols = ("canonical_id_a, canonical_id_b, co_pub_count, first_year, "
+            "last_year, shared_areas, shared_facilities")
+    conn.execute(f"CREATE OR REPLACE TEMP TABLE _rc_stage AS "
+                 f"SELECT {cols} FROM registry_collaborations LIMIT 0")
     if rows:
-        conn.executemany(
-            "INSERT INTO registry_collaborations (canonical_id_a, canonical_id_b, "
-            "co_pub_count, first_year, last_year, shared_areas, shared_facilities) "
-            "VALUES (?,?,?,?,?,?,?)", rows)
+        conn.executemany(f"INSERT INTO _rc_stage ({cols}) VALUES (?,?,?,?,?,?,?)", rows)
+    with lto_db.transaction(conn, f"compute_registry_collaborations: {len(rows)} "
+                                  f"edges over {len(members)} registry member(s)"):
+        conn.execute("DELETE FROM registry_collaborations")
+        conn.execute(f"INSERT INTO registry_collaborations ({cols}) "
+                     f"SELECT {cols} FROM _rc_stage")
+        lto_db.assert_integrity(conn, ["registry_collaborations"])
     print(f"[db] registry_collaborations {len(rows)} rows")
 
     if args.export_parquet:
-        for base in PARQUET_OUT:
-            base.mkdir(parents=True, exist_ok=True)
-            out = base / "registry_collaborations.parquet"
-            conn.execute(f"COPY registry_collaborations TO '{out}' (FORMAT PARQUET)")
-            print(f"[parquet] wrote {out}")
+        print("[note] --export-parquet is a no-op now; run "
+              "scripts/export_parquet.py to publish the lake")
     conn.close()
     return 0
 

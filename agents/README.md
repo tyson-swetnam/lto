@@ -17,7 +17,7 @@ threshold of ≥10 years of continuous record.
 Wave 0  Vendor cod-kmap engine                       (one-time bootstrap)
 Wave A  D1 schema deltas + D3 vocab extension        (contracts)
 Wave B  R-* research agents (one per sphere/network) (raw JSON per agent)
-Wave C  D2 ingest → db/lto.duckdb → public/parquet/
+Wave C  D2 ingest → DuckLake (db/lto_catalog.sqlite + db/lake/) → public/parquet/
 Wave D  F1..F4 frontend + deploy
 Wave E  R-SYNTH verification + coverage report
 ```
@@ -37,6 +37,13 @@ Wave B fan-out (single parallel batch):
 | `R-AQ-FRESH` | Freshwater (USGS NWIS / WEBB / HBN, GLEON, NTL-LTER, Hubbard Brook hydrology, EPA NARS) |
 | `R-XREF` | Cross-sphere mappings (Hubbard Brook = TER+ATM+FRESH, Niwot = CRY+TER, Bonanza Creek = TER+CRY, Coweeta = TER+FRESH, Jornada = TER+AGR, KBS = TER+AGR …) |
 | `R-FUND` | Funding-flow enrichment (NSF, USDA, NOAA, DOE, USGS, NASA, EPA) |
+
+People are researched separately, by facility batch, under
+[`R-PEOPLE.md`](R-PEOPLE.md). R-PEOPLE2 research batches write
+`data/raw/R-PEOPLE2/`, and bio updates for people already in the lake write
+`data/raw/R-PEOPLE2-BIO/`. An adversarial verifier re-fetches and checks
+each batch, and `scripts/load_people_research.py` loads it. These records
+do not use the facility schema below.
 
 ## Shared facility JSON record
 
@@ -183,3 +190,8 @@ A handful of facilities that MUST appear in the output (for QA).
    lat/lng null and set `hq.address` precisely; D2's geocoder will fill in.
 8. **Confidence honesty.** Mark uncertain records `confidence = "low"`
    rather than omitting them; D2's QA pass surfaces these for review.
+9. **Fetched, not recalled.** Every value cites a page you fetched in this
+   run, and `retrieved_at` is the real fetch date, not a fixed one. Do not
+   fill fields from model memory; leave them null instead. Earlier waves
+   that were written from recall (the first R-PEOPLE wave) are being
+   replaced for exactly this reason.

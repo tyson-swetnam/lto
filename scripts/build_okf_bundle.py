@@ -11,10 +11,10 @@ docs/okf/ — the bundle the Docs tab serves as "Data Access (OKF)":
   docs/okf/access-*.md         curated access-method guides (hand-written,
                                NOT touched by this script)
 
-Reads ONLY public/parquet/ through an in-memory DuckDB connection, so it
-is safe to run while a harvest holds the db/lto.duckdb write lock, and
-every figure in the generated docs is re-derivable from committed
-parquet — the repo's standing rule for documentation claims.
+Reads ONLY public/parquet/ through an in-memory DuckDB connection — never
+the lake — so every figure in the generated docs is re-derivable from
+committed parquet, the repo's standing rule for documentation claims.
+Run it after export_parquet.py, or it documents the previous export.
 
 Idempotent: output depends only on the parquet inputs and the pinned
 generator id; re-running on unchanged data rewrites identical files

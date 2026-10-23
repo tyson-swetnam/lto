@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """Compute per-research-area dashboard metrics for the Stats view.
 
-Reads lto.duckdb and emits three parquets that drive the per-area
-dashboards in src/views/stats.js:
+Reads the DuckLake (scripts/lto_db.py) and writes three derived tables
+back into it; export_parquet.py ships them as the parquets that drive the
+per-area dashboards in src/views/stats.js:
 
-  1. person_area_metrics.parquet — composite researcher score per
+  1. person_area_metrics — composite researcher score per
      (area_id, person_id):
         n_publications  : COUNT(DISTINCT publications) tagged to that
                           area via publication_topics × crosswalk
@@ -16,25 +17,26 @@ dashboards in src/views/stats.js:
                           publication coverage don't disadvantage their
                           own top researchers)
 
-  2. facility_area_funding.parquet — per (area_id, facility_id):
+  2. facility_area_funding — per (area_id, facility_id):
         n_funding_events
         total_usd_nominal      (FY2015-FY2024)
         n_distinct_funders
         funder_top1_name + funder_top1_usd  (largest funder for the
                                               facility within this area)
-     Plus a per (area_id, funder_id) parquet, funder_area_funding,
+     Plus a per (area_id, funder_id) table, funder_area_funding,
      showing each area's largest contributors.
 
-  3. area_coverage_matrix.parquet — per (area_id, country) and per
+  3. area_coverage_matrix — per (area_id, country) and per
      (area_id, region_kind) facility counts, used by the gap-analysis
      callouts. (region_kind = sanctuary | nerr-reserve | nep-program |
      nps-unit | neon-domain | epa-region.)
 
-Idempotent — overwrites every parquet on each run.
+Idempotent — replaces every table on each run, in one lake snapshot.
+Run scripts/export_parquet.py afterwards to publish them.
 
 Usage::
     python scripts/compute_area_metrics.py
-    python scripts/compute_area_metrics.py --db db/lto.duckdb
+    python scripts/compute_area_metrics.py --catalog db/lto_catalog.sqlite
 """
 from __future__ import annotations
 
@@ -42,25 +44,16 @@ import argparse
 import sys
 from pathlib import Path
 
-import duckdb
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import lto_db  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "lto.duckdb"
-PARQUET_OUT = [ROOT / "db" / "parquet", ROOT / "public" / "parquet"]
-
-
-def export(conn, table: str, name: str) -> None:
-    for base in PARQUET_OUT:
-        base.mkdir(parents=True, exist_ok=True)
-        out = base / f"{name}.parquet"
-        conn.execute(f"COPY {table} TO '{out}' (FORMAT PARQUET)")
-        print(f"[parquet] {out}")
 
 
 def sync_research_areas(conn) -> None:
     """Add research areas the vocab CSV has gained since the DB was built.
 
-    A database rebuilt from parquet carries research_areas as of the last
+    A lake rebuilt from parquet carries research_areas as of the last
     export, so an area added to schema/vocab/research_areas.csv (and used
     by the crosswalk) would otherwise produce metrics rows with no label.
     """
@@ -134,7 +127,10 @@ def compute_person_area_metrics(conn) -> None:
         CREATE TEMP TABLE _person_area_pubs AS
         SELECT pa.area_id, a.person_id,
                COUNT(DISTINCT pa.publication_id)     AS n_publications,
-               SUM(COALESCE(p.cited_by_count, 0))    AS total_citations,
+               -- DOUBLE, not the HUGEINT SUM(BIGINT) gives: the published
+               -- parquet (and a lake rebuilt from it) holds DOUBLE, and a
+               -- HUGEINT reaches duckdb-wasm as a non-number.
+               CAST(SUM(COALESCE(p.cited_by_count, 0)) AS DOUBLE) AS total_citations,
                array_agg(COALESCE(p.cited_by_count, 0)
                          ORDER BY COALESCE(p.cited_by_count, 0) DESC)
                                                      AS cite_list
@@ -192,9 +188,7 @@ def compute_person_area_metrics(conn) -> None:
               "leaving existing person_area_metrics rows intact "
               "(populated by compute_lto_person_metrics.py).")
         return
-    conn.execute("DROP TABLE IF EXISTS person_area_metrics")
-    conn.execute("""
-        CREATE TABLE person_area_metrics AS
+    n = lto_db.replace_table(conn, "person_area_metrics", """
         WITH base AS (
           SELECT b.area_id, b.person_id, p.name AS person_name,
                  b.n_publications,
@@ -209,16 +203,36 @@ def compute_person_area_metrics(conn) -> None:
                                       ON c.area_id = b.area_id
                                      AND c.person_id = b.person_id
         ),
+        -- Per-area mean and sample standard deviation for z-scoring,
+        -- computed from exact integer sums (every input is a count).
+        -- stddev() over a window accumulates in floating point in
+        -- whatever order the rows arrive, so composite_z changed in its
+        -- last bits from run to run and every re-run rewrote the
+        -- published parquet. Same values to ~1e-14; now reproducible.
+        sums AS (
+          SELECT area_id,
+                 count(*)::HUGEINT                                     AS n,
+                 sum(n_publications::HUGEINT)                          AS p1,
+                 sum(n_publications::HUGEINT * n_publications)         AS p2,
+                 sum(total_citations::HUGEINT)                         AS c1,
+                 sum(total_citations::HUGEINT * total_citations::HUGEINT) AS c2,
+                 sum(n_co_authors::HUGEINT)                            AS o1,
+                 sum(n_co_authors::HUGEINT * n_co_authors)             AS o2
+          FROM base GROUP BY area_id
+        ),
+        stats AS (
+          SELECT area_id,
+                 p1::DOUBLE / n AS pub_mu,
+                 CASE WHEN n > 1 THEN sqrt((n * p2 - p1 * p1)::DOUBLE / (n * (n - 1))) END AS pub_sd,
+                 c1::DOUBLE / n AS cit_mu,
+                 CASE WHEN n > 1 THEN sqrt((n * c2 - c1 * c1)::DOUBLE / (n * (n - 1))) END AS cit_sd,
+                 o1::DOUBLE / n AS co_mu,
+                 CASE WHEN n > 1 THEN sqrt((n * o2 - o1 * o1)::DOUBLE / (n * (n - 1))) END AS co_sd
+          FROM sums
+        ),
         with_stats AS (
-          SELECT *,
-                 -- per-area statistics for z-scoring
-                 avg(n_publications)  OVER (PARTITION BY area_id) AS pub_mu,
-                 stddev(n_publications) OVER (PARTITION BY area_id) AS pub_sd,
-                 avg(total_citations) OVER (PARTITION BY area_id) AS cit_mu,
-                 stddev(total_citations) OVER (PARTITION BY area_id) AS cit_sd,
-                 avg(n_co_authors)    OVER (PARTITION BY area_id) AS co_mu,
-                 stddev(n_co_authors) OVER (PARTITION BY area_id) AS co_sd
-          FROM base
+          SELECT base.*, stats.* EXCLUDE (area_id)
+          FROM base JOIN stats USING (area_id)
         )
         SELECT area_id, person_id, person_name,
                n_publications, total_citations, h_index, n_co_authors,
@@ -232,9 +246,7 @@ def compute_person_area_metrics(conn) -> None:
                  AS composite_z
         FROM with_stats
     """)
-    n = conn.execute("SELECT COUNT(*) FROM person_area_metrics").fetchone()[0]
     print(f"  person_area_metrics rows: {n}")
-    export(conn, "person_area_metrics", "person_area_metrics")
 
 
 def compute_facility_area_funding(conn) -> None:
@@ -246,9 +258,7 @@ def compute_facility_area_funding(conn) -> None:
     per-grant)."""
     print("[area funding] computing…")
 
-    conn.execute("DROP TABLE IF EXISTS facility_area_funding")
-    conn.execute("""
-        CREATE TABLE facility_area_funding AS
+    n = lto_db.replace_table(conn, "facility_area_funding", """
         WITH events AS (
           SELECT g.primary_area_id AS area_id,
                  fe.facility_id,
@@ -304,14 +314,10 @@ def compute_facility_area_funding(conn) -> None:
               AND tf.rk = 1
         LEFT  JOIN funders fu ON fu.funder_id = tf.funder_id
     """)
-    n = conn.execute("SELECT COUNT(*) FROM facility_area_funding").fetchone()[0]
     print(f"  facility_area_funding rows: {n}")
-    export(conn, "facility_area_funding", "facility_area_funding")
 
     # Per (area, funder)
-    conn.execute("DROP TABLE IF EXISTS funder_area_funding")
-    conn.execute("""
-        CREATE TABLE funder_area_funding AS
+    n = lto_db.replace_table(conn, "funder_area_funding", """
         WITH events AS (
           SELECT g.primary_area_id AS area_id,
                  fe.funder_id,
@@ -333,9 +339,7 @@ def compute_facility_area_funding(conn) -> None:
         JOIN funders fu ON fu.funder_id = e.funder_id
         GROUP BY e.area_id, e.funder_id, fu.name, fu.type
     """)
-    n = conn.execute("SELECT COUNT(*) FROM funder_area_funding").fetchone()[0]
     print(f"  funder_area_funding rows: {n}")
-    export(conn, "funder_area_funding", "funder_area_funding")
 
 
 def compute_coverage_matrix(conn) -> None:
@@ -345,9 +349,7 @@ def compute_coverage_matrix(conn) -> None:
     Pacific Northwest' style gaps."""
     print("[coverage matrix] computing…")
 
-    conn.execute("DROP TABLE IF EXISTS area_coverage_matrix")
-    conn.execute("""
-        CREATE TABLE area_coverage_matrix AS
+    n = lto_db.replace_table(conn, "area_coverage_matrix", """
         SELECT g.primary_area_id    AS area_id,
                'country'             AS dim,
                f.country             AS bucket,
@@ -377,60 +379,34 @@ def compute_coverage_matrix(conn) -> None:
         WHERE  g.primary_area_id IS NOT NULL
         GROUP  BY g.primary_area_id, f.facility_type
     """)
-    n = conn.execute("SELECT COUNT(*) FROM area_coverage_matrix").fetchone()[0]
     print(f"  area_coverage_matrix rows: {n}")
-    export(conn, "area_coverage_matrix", "area_coverage_matrix")
 
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--db", type=Path, default=DEFAULT_DB)
+    lto_db.add_argparse_catalog(ap)
+    ap.add_argument("--db", dest="catalog", type=Path,
+                    help="deprecated alias of --catalog")
     args = ap.parse_args()
 
-    if not args.db.exists():
-        print(f"[error] db not found: {args.db}", file=sys.stderr)
-        return 2
-    conn = duckdb.connect(str(args.db))
+    conn = lto_db.connect(catalog=args.catalog, data=args.lake_data)
 
-    # Make the parquet-only groupings from scripts/compute_primary_groups.py
-    # reachable by their canonical names.
-    #
-    # These used not to exist in the duckdb file at all, so a plain CREATE OR
-    # REPLACE VIEW was enough. scripts/rebuild_db_from_parquet.py now
-    # materialises them as BASE TABLEs, and DuckDB refuses to replace a table
-    # with a view ("Existing object X is of type Table, trying to replace with
-    # type View") — which crashed this script upstream on any database built
-    # the documented way. Drop whatever is there first, so the freshly
-    # exported parquet wins regardless of how the DB was assembled.
-    pq = ROOT / "db" / "parquet"
-    for t in ("facility_primary_groups", "person_primary_groups",
-              "research_areas_active"):
-        path = pq / f"{t}.parquet"
-        if not path.exists():
-            continue
-        # DROP ... IF EXISTS still raises when the object exists with the
-        # *other* type, so drop by whatever type is actually there: a rebuilt
-        # DB has a BASE TABLE here, and a re-run of this script has a VIEW.
-        kind = conn.execute(
-            "SELECT table_type FROM information_schema.tables WHERE table_name = ?",
-            [t],
-        ).fetchone()
-        if kind:
-            conn.execute(
-                f"DROP {'VIEW' if kind[0] == 'VIEW' else 'TABLE'} IF EXISTS {t}")
-        # CREATE VIEW cannot take a bound parameter ("Unexpected prepared
-        # parameter"), so the path is interpolated. It is derived from ROOT,
-        # not from user input.
-        conn.execute(
-            f"CREATE VIEW {t} AS SELECT * FROM read_parquet('{path}')"
-        )
+    # facility_primary_groups / person_primary_groups / research_areas_active
+    # are lake tables now (scripts/compute_primary_groups.py writes them
+    # there), so the old "register the exported parquet as a view" step is
+    # gone: reading db/parquet here would see the previous export, not the
+    # latest compute.
+    with lto_db.transaction(conn, "compute_area_metrics: person_area_metrics, "
+                                  "facility/funder_area_funding, area_coverage_matrix"):
+        sync_research_areas(conn)
+        compute_person_area_metrics(conn)
+        compute_facility_area_funding(conn)
+        compute_coverage_matrix(conn)
+        lto_db.assert_integrity(conn, ["research_areas", "person_area_metrics",
+                                       "facility_area_funding", "funder_area_funding",
+                                       "area_coverage_matrix"])
 
-    sync_research_areas(conn)
-    compute_person_area_metrics(conn)
-    compute_facility_area_funding(conn)
-    compute_coverage_matrix(conn)
-
-    print("[done]")
+    print("[done] tables written to the lake (run export_parquet.py to publish)")
     conn.close()
     return 0
 

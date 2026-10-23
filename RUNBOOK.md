@@ -10,8 +10,10 @@ or a terminal session that has unrestricted network.
 
 ## What's already done
 
-Branch: `claude/observatory-network-setup-zqxUT` (commit `09e0012` or
-later). Run `git log --oneline main..HEAD` for the full history.
+Branch: `main` (the DuckLake store, `scripts/lto_db.py` and
+`scripts/rebuild_lake_from_parquet.py`, landed there; the older
+`claude/observatory-network-setup-zqxUT` branch predates them and its
+setup fails at the first lake command).
 
 | | Count |
 |---|---:|
@@ -45,23 +47,52 @@ like:
 ```bash
 git clone https://github.com/tyson-swetnam/lto.git
 cd lto
-git checkout claude/observatory-network-setup-zqxUT
+git checkout main
 git pull
 
-python -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt
-pip install requests rapidfuzz scholarly  # extras the enrich scripts need
+python -m venv .venv && source .venv/bin/activate   # Python >= 3.11
+pip install -r requirements.txt   # pins duckdb==2.0.0; includes requests + rapidfuzz
+pip install scholarly             # only for Step 3's slow path
 
-# DuckDB on-disk format isn't portable across versions; rebuild from
-# committed parquet so any local DuckDB version works.
-python scripts/rebuild_db_from_parquet.py
+# The store of record is a local DuckLake (db/lto_catalog.sqlite +
+# db/lake/, gitignored). Build it from the committed parquet:
+python scripts/rebuild_lake_from_parquet.py
 ```
 
-Set a polite-pool email so OpenAlex doesn't rate-limit you:
+OpenAlex requires an API key on every request (the old `mailto=` /
+`OPENALEX_MAILTO` "polite pool" no longer applies, and the scripts do not
+send an email address). Set the key before Step 2:
 
 ```bash
-export OPENALEX_MAILTO="your.email@example.org"
+export OPENALEX_API_KEY="…"
 ```
+
+Every script below writes to the lake through `scripts/lto_db.py`, one
+snapshot per run with a commit message naming the script. To see what a
+step changed:
+
+```bash
+python - <<'PY'
+import sys; sys.path.insert(0, "scripts"); import lto_db
+c = lto_db.connect(read_only=True)
+for r in lto_db.rows(c, "SELECT snapshot_id, snapshot_time::VARCHAR, commit_message "
+                        "FROM lake.snapshots() ORDER BY 1 DESC LIMIT 10"):
+    print(*r)
+PY
+```
+
+`ducklake_table_changes('lake', 'main', '<table>', <from>, <to>)` lists
+the rows a range of snapshots inserted, updated or deleted. Experiment on
+a scratch lake by setting `LTO_LAKE_CATALOG=/tmp/x/cat.sqlite` before the
+rebuild and every later command (and unset `LTO_LAKE_DATA`, or point it
+inside `/tmp/x/`: the rebuild refuses to put a scratch catalog on
+`db/lake/`). With a scratch catalog, `export_parquet.py` and
+`export_view_caches.py` write to `/tmp/x/export/`, not `public/`; pass
+`--out` / `--geojson` explicitly to publish from it.
+
+Lake writes are serialised: each script's transaction holds a lock on
+`<catalog>.lock`, so two steps run at once queue rather than conflict
+(a waiting one prints `[lock] … waiting`). Readers never wait.
 
 ## Step 1 — ORCID backfill (fast, non-destructive)
 
@@ -101,11 +132,11 @@ python scripts/enrich_people_openalex.py --max-pubs 200
 
 # Inspect coverage.
 python -c "
-import duckdb
-c = duckdb.connect('db/lto.duckdb', read_only=True)
-print('with openalex:', c.execute('SELECT count(*) FROM people WHERE openalex_id IS NOT NULL').fetchone()[0])
-print('publications: ', c.execute('SELECT count(*) FROM publications').fetchone()[0])
-print('authorship:   ', c.execute('SELECT count(*) FROM authorship').fetchone()[0])
+import sys; sys.path.insert(0, 'scripts'); import lto_db
+c = lto_db.connect(read_only=True)
+print('with openalex:', lto_db.scalar(c, 'SELECT count(*) FROM people WHERE openalex_id IS NOT NULL'))
+print('publications: ', lto_db.scalar(c, 'SELECT count(*) FROM publications'))
+print('authorship:   ', lto_db.scalar(c, 'SELECT count(*) FROM authorship'))
 "
 ```
 
@@ -160,42 +191,70 @@ python scripts/fetch_funding_usaspending.py --include-contracts
 python scripts/fetch_funding_990.py
 ```
 
-Each script writes to `funding_events` and to a per-funder table in
-`db/parquet/`; existing rows are updated rather than duplicated
-(`event_id = sha1(funder||facility||award_id||fiscal_year)`).
+Each script `MERGE`s into the lake's `funding_events`; existing rows are
+updated rather than duplicated
+(`event_id = sha1(funder||facility||award_id||fiscal_year)`). Nothing
+reaches `public/parquet/` until Step 6.
 
 ## Step 5 — Recompute derived tables
 
 After Steps 1–4 the publication graph and funding graph have grown by
 1–2 orders of magnitude. Re-derive everything that depends on them:
 
+Run them in this order. Each rewrites its tables in the lake in one
+snapshot; `export_parquet.py` (Step 6) publishes them.
+
 ```bash
-# Pairwise co-authorship counts across the publication graph.
+# 1. Pairwise co-authorship counts across the publication graph.
 python scripts/compute_collaborations.py
 
-# Per-(person, area) metrics + h-index from the LTO computation
-# that bypasses publication_topics. Run this if Step 2 added pubs but
-# OpenAlex topics aren't loaded.
-python scripts/compute_lto_person_metrics.py
+# 2. person_areas from publication topics (needs publication_topics,
+#    which Step 2 seeds when OpenAlex returns topic tags).
+python scripts/compute_person_areas.py
+#    If publication_topics is still empty, use the LTO fallback instead,
+#    which infers areas from facility affiliations:
+# python scripts/compute_lto_person_metrics.py
 
-# OR, if Step 2 also seeded publication_topics (it does, when OpenAlex
-# returns concept tags), use the original cod-kmap pipeline instead:
-# python scripts/compute_area_metrics.py
-
-# MVG primary-area assignment per facility / person + the
-# research_areas_active "active areas" set used by the Network view.
+# 3. MVG primary-area assignment per facility / person + the
+#    research_areas_active "active areas" set used by the Network view.
 python scripts/compute_primary_groups.py
+
+# 4. Per-area metrics, funding-by-area and the coverage matrix. Must run
+#    AFTER compute_primary_groups: its facility/funder funding tables and
+#    area_coverage_matrix join facility_primary_groups, so running it
+#    first builds them from stale groups.
+python scripts/compute_area_metrics.py
+
+# 5. Precomputed KMap/PCL layout for the Network view.
+python scripts/build_mvg_layout.py
 ```
 
 ## Step 6 — QA + parquet export
 
 ```bash
-python scripts/qa.py                  # data-quality gate; exits non-zero on failure
-python scripts/export_parquet.py      # 25 parquet tables → db/parquet/ + public/parquet/
+python scripts/qa.py                  # data-quality + integrity gate; exits non-zero on failure
+python scripts/lake_maintenance.py    # optional: compact files, expire snapshots > 90 days
+python scripts/export_parquet.py      # every TABLES entry → public/parquet/ + facilities.geojson
+python scripts/export_view_caches.py  # Browse / People / Projects JSON caches
 python scripts/build_web_overlays.py  # only if upstream overlay GeoJSON moved
 ```
 
+`export_parquet.py` fails, writing nothing, if any table in its `TABLES`
+list is missing from the lake; run the script that produces it. Its
+output is deterministic, so an unchanged table produces an unchanged file.
+
 Common QA failures:
+
+- *integrity: duplicate key / orphaned reference / CHECK / column drift*
+  → the lake does not enforce `schema/schema.sql`'s keys at write time;
+  `qa.py` does, plus the derived tables' keys and the soft references
+  (`lto_db.DERIVED_CONSTRAINTS` / `SOFT_REFERENCES`). A *derived-table*
+  orphan after deleting or merging people means the `compute_*` /
+  `build_mvg_layout.py` step has not been re-run since.
+  The message names the table, constraint and count. Find the run that
+  introduced it with `lake.snapshots()` and `ducklake_table_changes`, fix
+  the loader input, and re-run the loader (or restore the table from an
+  earlier snapshot).
 
 - *facilities without coordinates* → run
   `python scripts/ingest.py` (without `--skip-geocode`) to pull lat/lng
@@ -209,13 +268,14 @@ Common QA failures:
 
 ```bash
 git status
-git add public/parquet/ public/facilities.geojson db/parquet/ data/seed/
+git add public/parquet/ public/facilities.geojson public/cache/ data/seed/
+git switch -c data/enrichment-$(date +%Y%m%d)
 git commit -m "data refresh: ORCID + OpenAlex + NSF + USAspending enrichment"
-git push origin claude/observatory-network-setup-zqxUT
+git push -u origin HEAD
 ```
 
-Then either merge `claude/observatory-network-setup-zqxUT` into `main`
-to trigger the GitHub Pages deploy, or rebase the existing PR.
+Then open a PR against `main`; merging it triggers the GitHub Pages
+deploy.
 
 ## Step 8 — Verify
 
@@ -246,7 +306,10 @@ Tabs to spot-check:
 
 ### OpenAlex returns 429 Too Many Requests
 
-Set `OPENALEX_MAILTO` and retry. The polite pool is much faster.
+Check that `OPENALEX_API_KEY` is set in the shell running the script
+(every OpenAlex call needs it), then retry with a smaller `--limit`.
+Keyed clients get OpenAlex's documented rate limits; there is no
+email-based polite pool any more.
 
 ### ORCID `--reverify` is removing some manually-supplied ORCIDs
 
@@ -266,11 +329,11 @@ the prime-recipient layer.
 ### `compute_collaborations.py` seg-faults / OOMs
 
 The full authorship graph after OpenAlex enrichment can be ~30k–100k
-rows. Bump Python's recursion limit and use `--max-people 500` if the
-script offers it. Otherwise just run the batched form:
+rows. The script is a single SQL self-join inside DuckDB; to shrink the
+edge set, keep only repeat co-authors:
 
 ```bash
-python scripts/compute_collaborations.py --batch 200
+python scripts/compute_collaborations.py --min-co-pubs 2
 ```
 
 ### Parquets are huge after enrichment

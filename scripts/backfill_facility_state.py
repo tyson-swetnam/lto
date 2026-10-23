@@ -37,13 +37,14 @@ import math
 import sys
 from pathlib import Path
 
-import duckdb
 import requests
 from shapely.geometry import Point, mapping, shape
 from shapely.strtree import STRtree
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import lto_db  # noqa: E402
+
 ROOT = Path(__file__).resolve().parent.parent
-DB_PATH = ROOT / "db" / "lto.duckdb"
 CACHE = ROOT / "data" / "raw" / "census" / "_state" / "us_states.geojson"
 LOG = ROOT / "data" / "seed" / "facility_state.csv"
 
@@ -109,9 +110,10 @@ def load_manual() -> dict[str, str]:
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--dry-run", action="store_true",
-                    help="report the assignments without writing the DB or the log")
+                    help="report the assignments without writing the lake or the log")
     ap.add_argument("--nm-outline", type=Path, default=None,
                     help="also write the New Mexico polygon to this GeoJSON path")
+    lto_db.add_argparse_catalog(ap)
     args = ap.parse_args()
 
     states = load_states()
@@ -133,7 +135,8 @@ def main() -> int:
         }))
         print(f"[ok] wrote {args.nm_outline}")
 
-    conn = duckdb.connect(str(DB_PATH), read_only=args.dry_run)
+    conn = lto_db.connect(read_only=args.dry_run, catalog=args.catalog,
+                          data=args.lake_data)
     rows = conn.execute(
         "SELECT facility_id, canonical_name, hq_lat, hq_lng "
         "FROM facilities ORDER BY facility_id"
@@ -169,10 +172,17 @@ def main() -> int:
     if args.dry_run:
         return 0
 
-    conn.executemany(
-        "UPDATE facilities SET state = ? WHERE facility_id = ?",
-        [(r["state"] or None, r["facility_id"]) for r in log],
-    )
+    with lto_db.transaction(
+            conn, f"backfill_facility_state: state on "
+                  f"{sum(1 for r in log if r['state'])} of {len(log)} facilities "
+                  f"({', '.join(f'{k}={v}' for k, v in sorted(by_method.items()))})"):
+        conn.execute("CREATE OR REPLACE TEMP TABLE _state "
+                     "(facility_id VARCHAR, state VARCHAR)")
+        conn.executemany("INSERT INTO _state VALUES (?, ?)",
+                         [(r["facility_id"], r["state"] or None) for r in log])
+        conn.execute("UPDATE facilities SET state = s.state FROM _state s "
+                     "WHERE facilities.facility_id = s.facility_id")
+        lto_db.assert_integrity(conn, ["facilities"])
     conn.close()
     with LOG.open("w", newline="") as fh:
         w = csv.DictWriter(fh, fieldnames=LOG_FIELDS, lineterminator="\n")

@@ -21,9 +21,11 @@ canonical entry.
 Usage::
 
     python scripts/compute_collaborations.py
-    python scripts/compute_collaborations.py --db db/lto.duckdb
+    python scripts/compute_collaborations.py --catalog db/lto_catalog.sqlite
     python scripts/compute_collaborations.py --min-co-pubs 2
-    python scripts/compute_collaborations.py --export-parquet
+
+The table is rebuilt in the lake in one snapshot; scripts/export_parquet.py
+publishes it. --export-parquet is accepted for old callers and does nothing.
 """
 from __future__ import annotations
 
@@ -31,30 +33,22 @@ import argparse
 import sys
 from pathlib import Path
 
-import duckdb
-
-ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "lto.duckdb"
-PARQUET_OUT = [ROOT / "db" / "parquet", ROOT / "public" / "parquet"]
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import lto_db  # noqa: E402
 
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--db", type=Path, default=DEFAULT_DB)
+    lto_db.add_argparse_catalog(ap)
+    ap.add_argument("--db", dest="catalog", type=Path,
+                    help="deprecated alias of --catalog")
     ap.add_argument("--min-co-pubs", type=int, default=1,
                     help="Only keep pairs with at least this many shared pubs")
-    ap.add_argument("--export-parquet", action="store_true")
+    ap.add_argument("--export-parquet", action="store_true",
+                    help="deprecated no-op: run scripts/export_parquet.py")
     args = ap.parse_args()
 
-    if not args.db.exists():
-        print(f"[error] db not found: {args.db}", file=sys.stderr)
-        return 2
-
-    conn = duckdb.connect(str(args.db))
-
-    # Rebuild from scratch — collaborations is a derived table, so
-    # wiping it on every run keeps it trivially correct.
-    conn.execute("DELETE FROM collaborations")
+    conn = lto_db.connect(catalog=args.catalog, data=args.lake_data)
 
     # Self-join authorship on publication_id; keep only a<b so each
     # pair appears once. Join publications for pub_year so we can
@@ -78,7 +72,15 @@ def main() -> int:
     GROUP BY a.person_id, b.person_id
     HAVING COUNT(*) >= ?
     """
-    conn.execute(sql, [args.min_co_pubs])
+    # Rebuild from scratch — collaborations is a derived table, so
+    # wiping it on every run keeps it trivially correct. It is also a
+    # schema.sql table, so DELETE + INSERT (not replace_table) keeps its
+    # column definitions. One transaction = one snapshot.
+    with lto_db.transaction(conn, f"compute_collaborations: rebuild from "
+                                  f"authorship (min_co_pubs={args.min_co_pubs})"):
+        conn.execute("DELETE FROM collaborations")
+        conn.execute(sql, [args.min_co_pubs])
+        lto_db.assert_integrity(conn, ["collaborations"])
 
     stats = conn.execute("""
         SELECT COUNT(*), MIN(first_year), MAX(last_year),
@@ -103,11 +105,8 @@ def main() -> int:
               f"{r[2]:>3} pubs  [{r[3]}..{r[4]}]")
 
     if args.export_parquet:
-        for base in PARQUET_OUT:
-            base.mkdir(parents=True, exist_ok=True)
-            out = base / "collaborations.parquet"
-            conn.execute(f"COPY collaborations TO '{out}' (FORMAT PARQUET)")
-            print(f"[parquet] wrote {out}")
+        print("[note] --export-parquet is a no-op now; run "
+              "scripts/export_parquet.py to publish the lake")
 
     conn.close()
     return 0

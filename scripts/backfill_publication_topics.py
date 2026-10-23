@@ -11,6 +11,11 @@ which is ~10× faster than re-running enrich_people_openalex.py.
 Idempotent: skips any publication that already has at least one row in
 publication_topics. Re-running fills in the gaps left by previous runs.
 
+Rows are staged in a TEMP table while the batches are fetched and land
+in the DuckLake in one transaction at the end (one snapshot). Ctrl-C
+stops fetching and still writes what was staged, so an interrupted run
+keeps its progress.
+
 Usage::
 
     python scripts/backfill_publication_topics.py
@@ -25,8 +30,6 @@ import sys
 import time
 from pathlib import Path
 
-import duckdb
-
 try:
     import requests
 except ImportError:
@@ -36,6 +39,7 @@ except ImportError:
 # Reuse the topic-row builder + id-shortener from the main enricher so
 # we never diverge on what counts as a row.
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+import lto_db  # noqa: E402
 from enrich_people_openalex import (  # noqa: E402
     _short_concept_id, session as _session,
 )
@@ -65,17 +69,29 @@ def _topic_rows_for_work(pub_id: str, w: dict) -> list[tuple]:
     return rows
 
 
-def bulk_upsert_topics(conn, all_rows: list[tuple]) -> int:
-    """Bulk-insert topic rows. Uses a temp table + INSERT ... SELECT
-    DISTINCT to dedupe within the batch, then ANTI-JOIN against the
-    existing publication_topics so we only insert new (publication_id,
-    concept_id) pairs. ~50× faster than per-row ON CONFLICT INSERTs."""
+TOPIC_STAGE_DDL = """
+    CREATE OR REPLACE TEMP TABLE _topic_stage (
+        publication_id  VARCHAR,
+        concept_id      VARCHAR,
+        concept_name    VARCHAR,
+        score           DOUBLE,
+        level           INTEGER,
+        kind            VARCHAR,
+        source          VARCHAR
+    )
+"""
+
+
+def stage_topics(conn, all_rows: list[tuple], seen: set) -> int:
+    """Stage topic rows in the TEMP table (not a lake write). Dedupes on
+    (publication_id, concept_id) across the whole run via ``seen``; the
+    insert-only merge in write_topics() skips pairs already in the lake.
+    Returns the number of rows staged."""
     if not all_rows:
         return 0
-    # Dedupe within the batch (the same (pub_id, concept_id) may appear
-    # twice if a work somehow lists a concept under two ontologies — we
-    # keep whichever came first, which is fine).
-    seen: set = set()
+    # Dedupe (the same (pub_id, concept_id) may appear twice if a work
+    # somehow lists a concept under two ontologies — we keep whichever
+    # came first, which is fine).
     deduped: list[tuple] = []
     for r in all_rows:
         key = (r[0], r[1])
@@ -83,43 +99,27 @@ def bulk_upsert_topics(conn, all_rows: list[tuple]) -> int:
             continue
         seen.add(key)
         deduped.append(r)
-    conn.execute("BEGIN TRANSACTION")
-    try:
-        conn.execute("""
-            CREATE TEMP TABLE _topic_stage (
-                publication_id  VARCHAR,
-                concept_id      VARCHAR,
-                concept_name    VARCHAR,
-                score           DOUBLE,
-                level           INTEGER,
-                kind            VARCHAR,
-                source          VARCHAR
-            )
-        """)
+    if deduped:
         conn.executemany(
             "INSERT INTO _topic_stage VALUES (?, ?, ?, ?, ?, ?, ?)",
             deduped,
         )
-        before = conn.execute("SELECT COUNT(*) FROM publication_topics").fetchone()[0]
-        conn.execute("""
-            INSERT INTO publication_topics
-            SELECT s.* FROM _topic_stage s
-            LEFT JOIN publication_topics t
-              ON t.publication_id = s.publication_id
-             AND t.concept_id     = s.concept_id
-            WHERE t.publication_id IS NULL
-        """)
-        after = conn.execute("SELECT COUNT(*) FROM publication_topics").fetchone()[0]
-        conn.execute("DROP TABLE _topic_stage")
-        conn.execute("COMMIT")
-        return after - before
-    except Exception as e:
-        conn.execute("ROLLBACK")
-        print(f"[bulk-insert] failed, falling back to per-row: {e}")
-        return 0
+    return len(deduped)
 
-ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "lto.duckdb"
+
+def write_topics(conn, n_pubs: int) -> int:
+    """Insert the staged pairs the lake lacks, in one transaction.
+    Returns the number of rows inserted."""
+    with lto_db.transaction(
+            conn, f"backfill_publication_topics: topics for {n_pubs} "
+                  f"publication(s)"):
+        st = lto_db.merge_upsert(
+            conn, "publication_topics", ["publication_id", "concept_id"],
+            "_topic_stage", insert_only=True)
+        lto_db.assert_integrity(conn, ["publication_topics"])
+    return st["inserted"]
+
+
 API = "https://api.openalex.org"
 BATCH = 50
 RETRY = 3
@@ -150,7 +150,9 @@ def fetch_works_batch(sess: requests.Session, oa_ids: list[str]) -> list[dict]:
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--db", type=Path, default=DEFAULT_DB)
+    lto_db.add_argparse_catalog(ap)
+    ap.add_argument("--db", dest="catalog", type=Path,
+                    help="Deprecated alias of --catalog.")
     ap.add_argument("--limit", type=int, default=0,
                     help="Max publications to backfill (0 = all)")
     ap.add_argument("--batch-size", type=int, default=BATCH)
@@ -163,12 +165,13 @@ def main() -> int:
                          "and is what compute_person_areas.py actually needs.")
     args = ap.parse_args()
 
-    if not args.db.exists():
-        print(f"[error] db not found: {args.db}", file=sys.stderr)
+    try:
+        conn = lto_db.connect(catalog=args.catalog, data=args.lake_data)
+    except lto_db.LakeNotFound as e:
+        print(f"[error] {e}", file=sys.stderr)
         return 2
-
-    conn = duckdb.connect(str(args.db))
     sess = _session()
+    conn.execute(TOPIC_STAGE_DDL)
 
     # publications that have an openalex_id and (when --only-missing)
     # don't already have any rows in publication_topics.
@@ -206,27 +209,33 @@ def main() -> int:
 
     total_topics = 0
     total_pubs_done = 0
-    for i in range(0, len(todo_ids), args.batch_size):
-        chunk = todo_ids[i : i + args.batch_size]
-        works = fetch_works_batch(sess, chunk)
-        batch_rows: list[tuple] = []
-        for w in works:
-            oa_short = (w.get("id", "").split("/")[-1])
-            pid = map_oa_to_pub.get(oa_short)
-            if not pid:
-                continue
-            batch_rows.extend(_topic_rows_for_work(pid, w))
-            total_pubs_done += 1
-        n = bulk_upsert_topics(conn, batch_rows)
-        total_topics += n
-        # Progress
-        done_pct = 100 * (i + len(chunk)) / max(len(todo_ids), 1)
-        print(f"  [{i + len(chunk)}/{len(todo_ids)} {done_pct:5.1f}%] "
-              f"pubs_done={total_pubs_done}  topics+={total_topics}")
-        # Tiny politeness delay; OpenAlex polite pool is generous.
+    seen: set = set()
+    try:
+        for i in range(0, len(todo_ids), args.batch_size):
+            chunk = todo_ids[i : i + args.batch_size]
+            works = fetch_works_batch(sess, chunk)
+            batch_rows: list[tuple] = []
+            for w in works:
+                oa_short = (w.get("id", "").split("/")[-1])
+                pid = map_oa_to_pub.get(oa_short)
+                if not pid:
+                    continue
+                batch_rows.extend(_topic_rows_for_work(pid, w))
+                total_pubs_done += 1
+            n = stage_topics(conn, batch_rows, seen)
+            total_topics += n
+            # Progress
+            done_pct = 100 * (i + len(chunk)) / max(len(todo_ids), 1)
+            print(f"  [{i + len(chunk)}/{len(todo_ids)} {done_pct:5.1f}%] "
+                  f"pubs_done={total_pubs_done}  topics staged={total_topics}")
+            # Tiny politeness delay; OpenAlex polite pool is generous.
+    except KeyboardInterrupt:
+        print("\n[interrupted] writing the topics staged so far")
 
+    written = write_topics(conn, total_pubs_done) if total_topics else 0
     conn.close()
-    print(f"[done] pubs={total_pubs_done}  topics_written={total_topics}")
+    print(f"[done] pubs={total_pubs_done}  topics_written={written}"
+          f"{'  (run export_parquet.py to publish)' if written else ''}")
     return 0
 
 

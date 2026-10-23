@@ -6,8 +6,9 @@ serve the whole harvested population — upstream cod-kmap saw 190k authors
 match its topic filter, and the LTO topic set harvests at the same order
 of magnitude. This script scores every registry row and promotes the top
 ``--core-size`` to ``tier='core'``; only that tier is exported to
-public/parquet. The full population stays in db/lto.duckdb (and its
-db/parquet mirror) for analysis.
+public/parquet (by scripts/export_parquet.py, which filters on tier). The
+full population stays in the lake (db/lto_catalog.sqlite + db/lake/) for
+analysis.
 
 Scoring
 -------
@@ -41,8 +42,12 @@ show, and a metric threshold must never drop them.
 
 Usage::
 
-    python scripts/rank_person_registry.py --core-size 10000 --export-parquet
+    python scripts/rank_person_registry.py --core-size 10000
     python scripts/rank_person_registry.py --dry-run
+
+A real run writes tier/tier_rank/tier_score in one lake snapshot; then run
+scripts/export_parquet.py. --export-parquet is accepted for old callers and
+does nothing.
 """
 from __future__ import annotations
 
@@ -51,12 +56,8 @@ import sys
 from datetime import date
 from pathlib import Path
 
-import duckdb
-
-ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "lto.duckdb"
-DB_PARQUET = ROOT / "db" / "parquet"
-SITE_PARQUET = ROOT / "public" / "parquet"
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import lto_db  # noqa: E402
 
 DEFAULT_WEIGHTS = dict(lto_output=0.35, impact=0.35,
                        recency=0.15, connectivity=0.15)
@@ -64,7 +65,9 @@ DEFAULT_WEIGHTS = dict(lto_output=0.35, impact=0.35,
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--db", type=Path, default=DEFAULT_DB)
+    lto_db.add_argparse_catalog(ap)
+    ap.add_argument("--db", dest="catalog", type=Path,
+                    help="deprecated alias of --catalog")
     ap.add_argument("--core-size", type=int, default=10000)
     ap.add_argument("--w-lto", type=float, default=DEFAULT_WEIGHTS["lto_output"])
     ap.add_argument("--w-impact", type=float, default=DEFAULT_WEIGHTS["impact"])
@@ -72,10 +75,12 @@ def main() -> int:
     ap.add_argument("--w-connectivity", type=float,
                     default=DEFAULT_WEIGHTS["connectivity"])
     ap.add_argument("--dry-run", action="store_true")
-    ap.add_argument("--export-parquet", action="store_true")
+    ap.add_argument("--export-parquet", action="store_true",
+                    help="deprecated no-op: run scripts/export_parquet.py")
     args = ap.parse_args()
 
-    conn = duckdb.connect(str(args.db))
+    conn = lto_db.connect(read_only=args.dry_run,
+                          catalog=args.catalog, data=args.lake_data)
     total = conn.execute("SELECT COUNT(*) FROM person_registry").fetchone()[0]
     print(f"[rank] scoring {total:,} registry row(s)")
 
@@ -137,39 +142,30 @@ def main() -> int:
         conn.close()
         return 0
 
-    conn.executemany(
-        "UPDATE person_registry SET tier = ?, tier_rank = ?, tier_score = ? "
-        "WHERE canonical_id = ?", updates)
+    # One set-based UPDATE from a staged table: a per-row UPDATE against
+    # the lake is far slower at harvest scale (100k+ rows).
+    conn.execute("CREATE OR REPLACE TEMP TABLE _tier_stage "
+                 "(tier VARCHAR, tier_rank INTEGER, tier_score DOUBLE, "
+                 "canonical_id VARCHAR)")
+    conn.executemany("INSERT INTO _tier_stage VALUES (?, ?, ?, ?)", updates)
+    with lto_db.transaction(conn, f"rank_person_registry: core={n_core} "
+                                  f"archive={total - n_core} (core_size={core_size})"):
+        conn.execute("""
+            UPDATE person_registry
+            SET tier = s.tier, tier_rank = s.tier_rank, tier_score = s.tier_score
+            FROM _tier_stage s
+            WHERE person_registry.canonical_id = s.canonical_id""")
+        lto_db.assert_integrity(conn, ["person_registry"])
 
+    # Shipping is export_parquet.py's job: it exports tier='core' only, and
+    # keeps registry_collaborations / registry_facilities / coauthor_edges
+    # rows only when both endpoints ship (EXPORT_WHERE), or the browser
+    # would hold edges pointing at absent nodes — which qa.py's orphan-edge
+    # invariant would (correctly) fail on a site rebuild.
+    print("[rank] tiers written to the lake (run export_parquet.py to publish)")
     if args.export_parquet:
-        DB_PARQUET.mkdir(parents=True, exist_ok=True)
-        SITE_PARQUET.mkdir(parents=True, exist_ok=True)
-        # Full population to db/parquet — the analysis mirror.
-        conn.execute(f"COPY person_registry TO "
-                     f"'{DB_PARQUET / 'person_registry.parquet'}' (FORMAT PARQUET)")
-        conn.execute(f"COPY person_identity_source TO "
-                     f"'{DB_PARQUET / 'person_identity_source.parquet'}' (FORMAT PARQUET)")
-        conn.execute(f"COPY registry_collaborations TO "
-                     f"'{DB_PARQUET / 'registry_collaborations.parquet'}' (FORMAT PARQUET)")
-        # Core tier only to public/parquet — this is what the browser loads.
-        conn.execute(f"""COPY (SELECT * FROM person_registry WHERE tier = 'core')
-                         TO '{SITE_PARQUET / 'person_registry.parquet'}' (FORMAT PARQUET)""")
-        conn.execute(f"""COPY (SELECT s.* FROM person_identity_source s
-                         JOIN person_registry r USING (canonical_id)
-                         WHERE r.tier = 'core')
-                         TO '{SITE_PARQUET / 'person_identity_source.parquet'}' (FORMAT PARQUET)""")
-        # Edges are kept only when BOTH endpoints ship, or the browser
-        # would hold edges pointing at absent nodes — which qa.py's
-        # orphan-edge invariant would (correctly) fail on a site rebuild.
-        conn.execute(f"""COPY (SELECT c.* FROM registry_collaborations c
-                         JOIN person_registry a ON a.canonical_id = c.canonical_id_a
-                         JOIN person_registry b ON b.canonical_id = c.canonical_id_b
-                         WHERE a.tier = 'core' AND b.tier = 'core')
-                         TO '{SITE_PARQUET / 'registry_collaborations.parquet'}' (FORMAT PARQUET)""")
-        for p in (SITE_PARQUET / "person_registry.parquet",
-                  SITE_PARQUET / "registry_collaborations.parquet"):
-            print(f"[parquet] site {p.name}: {p.stat().st_size / 1e6:.1f} MB")
-        print("[note] parquet is gitignored; stage with `git add -f`")
+        print("[note] --export-parquet is a no-op now; run "
+              "scripts/export_parquet.py to publish the lake")
     conn.close()
     return 0
 

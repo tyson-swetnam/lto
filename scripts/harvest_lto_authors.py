@@ -52,13 +52,11 @@ import time
 from datetime import date
 from pathlib import Path
 
-import duckdb
-
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+import lto_db  # noqa: E402
 import openalex_auth  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "lto.duckdb"
 TOPICS_CSV = ROOT / "schema" / "vocab" / "lto_openalex_topics.csv"
 STATE = ROOT / "data" / "raw" / "lto_authors" / "_state"
 API = "https://api.openalex.org"
@@ -152,7 +150,9 @@ def flatten(a: dict, lto: set[str]) -> dict | None:
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--db", type=Path, default=DEFAULT_DB)
+    lto_db.add_argparse_catalog(ap)
+    ap.add_argument("--db", dest="catalog", type=Path,
+                    help="Deprecated alias of --catalog.")
     ap.add_argument("--min-works", type=int, default=10)
     ap.add_argument("--min-lto-works", type=int, default=3,
                     help="drop authors whose LTO-topic output is below this; "
@@ -167,6 +167,13 @@ def main() -> int:
     ap.add_argument("--resume", action="store_true")
     ap.add_argument("--dry-run", action="store_true")
     args = ap.parse_args()
+
+    # Fail before a long harvest, not after it, when the lake is missing.
+    if not args.dry_run and not lto_db.catalog_path(args.catalog).exists():
+        print(f"[error] DuckLake catalog not found: "
+              f"{lto_db.catalog_path(args.catalog)} — run "
+              f"scripts/rebuild_lake_from_parquet.py", file=sys.stderr)
+        return 2
 
     openalex_auth.require_api_key()
     sess = openalex_auth.openalex_session()
@@ -278,7 +285,7 @@ def main() -> int:
         return 0
 
     # ── load into person_registry as tier='archive' ────────────────────
-    conn = duckdb.connect(str(args.db))
+    conn = lto_db.connect(catalog=args.catalog, data=args.lake_data)
     existing = {r[0] for r in conn.execute(
         "SELECT openalex_id FROM person_registry "
         "WHERE openalex_id IS NOT NULL").fetchall()}
@@ -326,15 +333,28 @@ def main() -> int:
                      f"{API}/authors/{d['openalex_id']}", "high", today])
 
     if new_rows:
-        conn.executemany(
-            f"INSERT INTO person_registry ({','.join(cols)}) "
-            f"VALUES ({','.join('?' * len(cols))})", new_rows)
-        conn.executemany(
-            "INSERT INTO person_identity_source (canonical_id, field, value, "
-            "method, evidence, source_url, confidence, retrieved_at) "
-            "VALUES (?,?,?,?,?,?,?,?)", prov)
+        # Staged in a TEMP table, then one INSERT: one lake snapshot, and
+        # a canonical_id clash fails assert_integrity and rolls back both
+        # tables (the old file's PRIMARY KEY did the same at INSERT).
+        with lto_db.transaction(
+                conn, f"harvest_lto_authors: +{len(new_rows):,} archive-tier "
+                      f"registry rows from {len(topics)} LTO topics"):
+            conn.execute(
+                f"CREATE OR REPLACE TEMP TABLE _harvest AS SELECT {','.join(cols)} "
+                f"FROM person_registry LIMIT 0")
+            conn.executemany(
+                f"INSERT INTO _harvest ({','.join(cols)}) "
+                f"VALUES ({','.join('?' * len(cols))})", new_rows)
+            conn.execute(f"INSERT INTO person_registry ({','.join(cols)}) "
+                         f"SELECT {','.join(cols)} FROM _harvest")
+            conn.executemany(
+                "INSERT INTO person_identity_source (canonical_id, field, value, "
+                "method, evidence, source_url, confidence, retrieved_at) "
+                "VALUES (?,?,?,?,?,?,?,?)", prov)
+            lto_db.assert_integrity(conn, ["person_registry",
+                                           "person_identity_source"])
     n = conn.execute("SELECT COUNT(*) FROM person_registry").fetchone()[0]
-    print(f"[db] +{len(new_rows):,} new archive-tier rows "
+    print(f"[lake] +{len(new_rows):,} new archive-tier rows "
           f"({skipped:,} already in the registry); person_registry now {n:,}")
     conn.close()
     return 0

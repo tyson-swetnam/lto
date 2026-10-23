@@ -101,7 +101,7 @@ pointers, with no data copied.
 ## Refreshing the layer
 
 ```bash
-python scripts/rebuild_db_from_parquet.py
+python scripts/rebuild_lake_from_parquet.py   # after a clone or pull only: it rebuilds the lake from public/parquet/
 python scripts/fetch_arid_site.py          # arid.unm.edu → data/raw/R-ARID/
 python scripts/load_arid.py
 python scripts/backfill_facility_state.py

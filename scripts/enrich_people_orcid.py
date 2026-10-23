@@ -20,7 +20,7 @@ more namesakes are logged `ambiguous-name-only` and left null.
 Logs every decision to data/seed/orcid_resolution_log.csv for audit.
 
 Usage::
-    python scripts/enrich_people_orcid.py --db db/lto.duckdb
+    python scripts/enrich_people_orcid.py
     python scripts/enrich_people_orcid.py --batch 25
     python scripts/enrich_people_orcid.py --min-conf 0.80
     python scripts/enrich_people_orcid.py --dry-run
@@ -38,21 +38,21 @@ import unicodedata
 from difflib import SequenceMatcher
 from pathlib import Path
 
-import duckdb
 try:
     import requests
 except ImportError:
     print("[error] pip install requests --break-system-packages", file=sys.stderr)
     raise
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import lto_db  # noqa: E402
+
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "lto.duckdb"
 LOG_CSV = ROOT / "data" / "seed" / "orcid_resolution_log.csv"
 
 API_SEARCH = "https://pub.orcid.org/v3.0/expanded-search/"
 API_EMPLOY = "https://pub.orcid.org/v3.0/{orcid}/employments"
 API_EDU    = "https://pub.orcid.org/v3.0/{orcid}/educations"
-PARQUET_OUT = [ROOT / "db" / "parquet", ROOT / "public" / "parquet"]
 
 
 def session() -> requests.Session:
@@ -374,17 +374,11 @@ def resolve_one(sess, person, min_conf):
     }
 
 
-def export_parquet(conn):
-    for base in PARQUET_OUT:
-        base.mkdir(parents=True, exist_ok=True)
-        out = base / "people.parquet"
-        conn.execute(f"COPY people TO '{out}' (FORMAT PARQUET)")
-        print(f"[parquet] wrote {out}")
-
-
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--db", type=Path, default=DEFAULT_DB)
+    lto_db.add_argparse_catalog(ap)
+    ap.add_argument("--db", dest="catalog", type=Path,
+                    help="Deprecated alias of --catalog.")
     ap.add_argument("--batch", type=int, default=50)
     ap.add_argument("--min-conf", type=float, default=0.45)
     ap.add_argument("--dry-run", action="store_true")
@@ -394,11 +388,11 @@ def main() -> int:
                          "after a refactor of the matching rules.")
     args = ap.parse_args()
 
-    if not args.db.exists():
-        print(f"[error] db not found: {args.db}", file=sys.stderr)
+    try:
+        conn = lto_db.connect(catalog=args.catalog, data=args.lake_data)
+    except lto_db.LakeNotFound as e:
+        print(f"[error] {e}", file=sys.stderr)
         return 2
-
-    conn = duckdb.connect(str(args.db))
     sess = session()
 
     # Build the work list — each person + the list of facility names
@@ -421,7 +415,7 @@ def main() -> int:
                               f.canonical_name),
                      f.parent_org
                    ])),
-                   x -> x IS NOT NULL AND x <> ''
+                   lambda x: x IS NOT NULL AND x <> ''
                  ) AS facilities
           FROM   facility_personnel fp
           JOIN   facilities         f  ON f.facility_id = fp.facility_id
@@ -457,34 +451,49 @@ def main() -> int:
 
     totals = {"accept": 0, "no-candidates": 0, "no-employment-match": 0,
               "skip-no-family": 0, "errors": 0}
-    for i, p in enumerate(people, 1):
-        try:
-            orcid, info = resolve_one(sess, p, args.min_conf)
-        except Exception as e:
-            print(f"  [{i}/{len(people)}] {p['name']:30s} ERROR: {e}")
-            totals["errors"] += 1
-            continue
-        log_w.writerow([
-            p["person_id"], p["name"], info["decision"], orcid or "",
-            info.get("candidates", 0), info.get("score", ""),
-            info.get("match_org", ""), info.get("match_facility", ""),
-        ])
-        totals[info["decision"]] = totals.get(info["decision"], 0) + 1
-        msg = orcid or "—"
-        print(f"  [{i}/{len(people)}] {p['name']:30s} {info['decision']:25s} {msg}")
-        if orcid and not args.dry_run:
-            conn.execute(
-                "UPDATE people SET orcid = ?, updated_at = now() "
-                "WHERE person_id = ?",
-                [orcid, p["person_id"]],
-            )
-        time.sleep(0.05)
+    # Accepted ORCIDs are collected and written in one transaction after
+    # the loop: one lake snapshot per run, no write waiting on the API.
+    resolved: list[tuple[str, str]] = []
+    try:
+        for i, p in enumerate(people, 1):
+            try:
+                orcid, info = resolve_one(sess, p, args.min_conf)
+            except Exception as e:
+                print(f"  [{i}/{len(people)}] {p['name']:30s} ERROR: {e}")
+                totals["errors"] += 1
+                continue
+            log_w.writerow([
+                p["person_id"], p["name"], info["decision"], orcid or "",
+                info.get("candidates", 0), info.get("score", ""),
+                info.get("match_org", ""), info.get("match_facility", ""),
+            ])
+            totals[info["decision"]] = totals.get(info["decision"], 0) + 1
+            msg = orcid or "—"
+            print(f"  [{i}/{len(people)}] {p['name']:30s} {info['decision']:25s} {msg}")
+            if orcid:
+                resolved.append((p["person_id"], orcid))
+            time.sleep(0.05)
+    except KeyboardInterrupt:
+        print(f"\n[interrupted] after {len(resolved)} accepted ORCIDs; "
+              f"writing those")
     log.close()
 
     print(f"[totals] {totals}")
 
-    if not args.dry_run:
-        export_parquet(conn)
+    if resolved and not args.dry_run:
+        with lto_db.transaction(
+                conn, f"enrich_people_orcid: {len(resolved)} ORCIDs "
+                      f"(min-conf {args.min_conf})"):
+            conn.execute("CREATE OR REPLACE TEMP TABLE _orcid "
+                         "(person_id VARCHAR, orcid VARCHAR)")
+            conn.executemany("INSERT INTO _orcid VALUES (?, ?)", resolved)
+            conn.execute("""
+                UPDATE people SET orcid = s.orcid, updated_at = now()
+                FROM   _orcid s WHERE people.person_id = s.person_id
+            """)
+            lto_db.assert_integrity(conn, ["people"])
+        print(f"[lake] wrote {len(resolved)} ORCIDs "
+              f"(run export_parquet.py to publish)")
     conn.close()
     return 0
 

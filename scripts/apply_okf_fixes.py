@@ -34,10 +34,13 @@ after this script is therefore:
     python scripts/export_parquet.py
     python scripts/build_okf_bundle.py
 
-Idempotent: an UPDATE to the current value changes nothing, and a
+Idempotent: an UPDATE to the current value is skipped (so a re-run on
+an up-to-date lake writes no snapshot at all), and a
 DELETE-ROW for an already-deleted endpoint reports 0. The CSVs are
 append-only history — a fix that is later superseded gets a new row, and
-rows apply in file order so the newest wins.
+rows apply in file order so the newest wins. A real run is one lake
+snapshot (commit message ``apply_okf_fixes: …``); --dry-run opens the
+lake read-only.
 
 Usage::
 
@@ -49,12 +52,13 @@ from __future__ import annotations
 import argparse
 import csv
 import sys
+from contextlib import nullcontext
 from pathlib import Path
 
-import duckdb
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import lto_db  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "lto.duckdb"
 ENDPOINT_CSV = ROOT / "data" / "seed" / "okf_endpoint_fixes.csv"
 ARCHIVE_CSV = ROOT / "data" / "seed" / "okf_archive_fixes.csv"
 
@@ -82,8 +86,9 @@ def apply_product_fixes(conn, dry: bool) -> tuple[int, list[str]]:
             continue
         if not dry:
             conn.execute(
-                f"UPDATE data_products SET {field} = ? WHERE product_id = ?",
-                [row["new_value"], pid])
+                f"UPDATE data_products SET {field} = ? WHERE product_id = ? "
+                f"AND {field} IS DISTINCT FROM ?",
+                [row["new_value"], pid, row["new_value"]])
         updated += 1
     return updated, problems
 
@@ -112,8 +117,9 @@ def apply_endpoint_fixes(conn, dry: bool) -> tuple[int, int, list[str]]:
             continue
         if not dry:
             conn.execute(
-                f"UPDATE api_endpoints SET {field} = ? WHERE endpoint_id = ?",
-                [row["new_value"], eid])
+                f"UPDATE api_endpoints SET {field} = ? WHERE endpoint_id = ? "
+                f"AND {field} IS DISTINCT FROM ?",
+                [row["new_value"], eid, row["new_value"]])
         updated += 1
     return updated, deleted, problems
 
@@ -136,23 +142,34 @@ def apply_archive_fixes(conn, dry: bool) -> tuple[int, list[str]]:
             continue
         if not dry:
             conn.execute(
-                f"UPDATE data_archives SET {field} = ? WHERE archive_id = ?",
-                [row["new_value"], aid])
+                f"UPDATE data_archives SET {field} = ? WHERE archive_id = ? "
+                f"AND {field} IS DISTINCT FROM ?",
+                [row["new_value"], aid, row["new_value"]])
         updated += 1
     return updated, problems
 
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--db", type=Path, default=DEFAULT_DB)
+    lto_db.add_argparse_catalog(ap)
+    ap.add_argument("--db", dest="catalog", type=Path,
+                    help="deprecated alias of --catalog")
     ap.add_argument("--dry-run", action="store_true")
     args = ap.parse_args()
 
-    conn = duckdb.connect(str(args.db))
-    ep_updated, ep_deleted, ep_problems = apply_endpoint_fixes(conn, args.dry_run)
-    ar_updated, ar_problems = apply_archive_fixes(conn, args.dry_run)
-    pr_updated, pr_problems = apply_product_fixes(conn, args.dry_run)
-    conn.close()
+    # One snapshot for all three logs. As before, rows with a problem are
+    # reported (exit 1) and the valid rows are still applied.
+    with lto_db.connect(read_only=args.dry_run, catalog=args.catalog,
+                        data=args.lake_data) as conn, \
+            (nullcontext() if args.dry_run else lto_db.transaction(
+                conn, "apply_okf_fixes: api_endpoints, data_archives, "
+                      "data_products from data/seed/okf_*_fixes.csv")):
+        ep_updated, ep_deleted, ep_problems = apply_endpoint_fixes(conn, args.dry_run)
+        ar_updated, ar_problems = apply_archive_fixes(conn, args.dry_run)
+        pr_updated, pr_problems = apply_product_fixes(conn, args.dry_run)
+        if not args.dry_run:
+            lto_db.assert_integrity(
+                conn, ["api_endpoints", "data_archives", "data_products"])
 
     tag = " (dry run — nothing written)" if args.dry_run else ""
     print(f"[fixes] api_endpoints: {ep_updated} field update(s), "

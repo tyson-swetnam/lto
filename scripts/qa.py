@@ -13,17 +13,40 @@ checkout with no data:
 
 Both are ported from cod-kmap, where each exists because of a shipped
 incident documented in its docstring.
+
+The store is a DuckLake (scripts/lto_db.py), opened read-only. DuckLake
+cannot hold PRIMARY KEY / UNIQUE / FOREIGN KEY / CHECK constraints, so
+the first database gate, check_integrity, re-enforces every constraint
+declared in schema/schema.sql (duplicate keys, orphaned references,
+failed CHECKs, NULLs in NOT NULL columns) against the lake. That gate is
+what used to be the database's own job; a loader that writes a duplicate
+or an orphan now fails here instead of at INSERT time. The same gate
+covers the derived tables' keys (lto_db.DERIVED_CONSTRAINTS), the soft
+references schema.sql does not declare (lto_db.SOFT_REFERENCES) and
+column drift between the lake and schema.sql.
+
+Warnings (printed, not failures) flag known debt that needs a data change
+to clear: vocabulary tables that differ from schema/vocab/*.csv. (Duplicate
+ORCIDs in people were a warning until dedupe_people.py ran; they fail now.)
+
+Usage::
+
+    python scripts/qa.py
+    python scripts/qa.py --catalog /tmp/scratch/cat.sqlite   # or $LTO_LAKE_CATALOG
 """
 
 from __future__ import annotations
 
+import argparse
 import json
 import sys
 from pathlib import Path
 
 import duckdb
 
-DB_PATH = Path(__file__).resolve().parent.parent / "db" / "lto.duckdb"
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import lto_db  # noqa: E402
+from load_people_research import merge_redirects, same_person_name  # noqa: E402
 
 # Territories that fall outside their country's main bounding box. Guam
 # and the Northern Marianas sit at ~+145 EAST longitude and Palmyra at
@@ -484,6 +507,178 @@ def check_person_registry(conn, failures: list[str]) -> None:
                 failures)
 
 
+VOCAB_DIR = Path(__file__).resolve().parent.parent / "schema" / "vocab"
+
+# Roles older loaders wrote before personnel_roles.csv existed, tolerated
+# here while rows still carried them. Empty since 2026-10-22, when the three
+# 'research-collaborator' rows became 'collaborator'
+# (data/seed/personnel_repairs_2026-10-22.csv); add an entry only with a
+# migration that clears it.
+LEGACY_ROLES: dict[str, str] = {}
+
+# people.status values (schema.sql's comment, plus 'deceased', which the
+# committed data uses; load_people_research.STATUS_MAP maps the rest).
+PEOPLE_STATUSES = ("active", "emeritus", "former", "deceased", "unknown")
+
+# More current holders of one leadership role at one facility than this is
+# a loader fan-in (an acronym or fuzzy match that piled one network's
+# managers onto a single facility: 26 NERR managers on Mission Aransas,
+# Bonanza Creek and Tenderfoot Creek PIs on Bent Creek).
+MAX_CURRENT_LEADERS = 5
+
+# Reviewed pairs of different people at one facility whose names
+# same_person_name() would take for one person: frozenset({id_a, id_b}).
+DISTINCT_NAMESAKES: set[frozenset[str]] = set()
+
+
+def check_people(conn, failures: list[str], warnings: list[str]) -> None:
+    """People-layer invariants that schema.sql states in comments."""
+    if table_rows(conn, "people") <= 0:
+        return
+    no_src = conn.execute(
+        "SELECT COUNT(*) FROM people WHERE bio IS NOT NULL AND bio_source_url IS NULL"
+    ).fetchone()[0]
+    assert_true(no_src == 0, f"{no_src} people have a bio without bio_source_url", failures)
+
+    roles_csv = VOCAB_DIR / "personnel_roles.csv"
+    if roles_csv.exists() and table_rows(conn, "facility_personnel") > 0:
+        bad = conn.execute(
+            """SELECT role, COUNT(*) FROM facility_personnel
+               WHERE role NOT IN (SELECT slug FROM read_csv_auto(?, header=True))
+                 AND role NOT IN (SELECT unnest(?::VARCHAR[]))
+               GROUP BY role ORDER BY role""",
+            [str(roles_csv), list(LEGACY_ROLES)]).fetchall()
+        assert_true(not bad, f"facility_personnel roles not in personnel_roles.csv: {bad}",
+                    failures)
+
+    # One ORCID, one person (scripts/dedupe_people.py merges them).
+    dup = conn.execute(
+        """SELECT upper(orcid), list(person_id ORDER BY person_id), any_value(name)
+           FROM people WHERE orcid IS NOT NULL AND orcid <> ''
+           GROUP BY 1 HAVING COUNT(*) > 1 ORDER BY 1"""
+    ).fetchall()
+    assert_true(not dup, f"{len(dup)} ORCID(s) held by more than one people row "
+                         f"(run scripts/dedupe_people.py): "
+                + "; ".join(f"{n} {o} {ids}" for o, ids, n in dup[:5]), failures)
+
+    bad_status = conn.execute(
+        "SELECT status, COUNT(*) FROM people WHERE status IS NOT NULL "
+        "AND status NOT IN (SELECT unnest(?::VARCHAR[])) GROUP BY 1 ORDER BY 1",
+        [list(PEOPLE_STATUSES)]).fetchall()
+    assert_true(not bad_status, f"people.status outside {PEOPLE_STATUSES}: {bad_status}",
+                failures)
+
+    # Contact details stay in the lake: export_parquet.EXPORT_REDACT blanks
+    # people.email on the way to public/ (served to anyone, queryable from
+    # the SQL tab).
+    pub = lto_db.PUBLIC_PARQUET / "people.parquet"
+    if pub.exists():
+        n_mail = conn.execute("SELECT count(email) FROM read_parquet(?)", [str(pub)]).fetchone()[0]
+        assert_true(n_mail == 0, f"{n_mail} email addresses published in {pub.name} "
+                                 f"(re-run export_parquet.py)", failures)
+
+    if table_rows(conn, "facility_personnel") <= 0:
+        return
+    bad_conf = conn.execute(
+        "SELECT confidence, COUNT(*) FROM facility_personnel WHERE confidence IS NULL "
+        "OR confidence NOT IN ('high', 'medium', 'low') GROUP BY 1 ORDER BY 1").fetchall()
+    assert_true(not bad_conf, f"facility_personnel.confidence not high/medium/low: {bad_conf}",
+                failures)
+    for sql, what in (
+        ("end_date < start_date", "end_date before start_date"),
+        # Against the row's own retrieval date, not today's: a term that
+        # ends in 2029 is not an error in 2029 until a source says so.
+        ("is_current AND end_date <= retrieved_at",
+         "is_current = true from a source retrieved on/after the row's end_date"),
+        ("evidence IS NOT NULL AND (source_url IS NULL OR retrieved_at IS NULL)",
+         "evidence without source_url / retrieved_at"),
+    ):
+        n = conn.execute(f"SELECT COUNT(*) FROM facility_personnel WHERE {sql}").fetchone()[0]
+        assert_true(n == 0, f"{n} facility_personnel rows with {what}", failures)
+    # A person dedupe_people.py merged away must stay gone: a loader that
+    # re-mints the id (a seed CSV or research file written before the merge)
+    # brings the duplicate back. Loaders map these ids through
+    # load_people_research.canonical_person_id.
+    merged = merge_redirects()
+    back = conn.execute(
+        "SELECT person_id, name FROM people WHERE person_id IN (SELECT unnest(?::VARCHAR[])) "
+        "ORDER BY 1", [sorted(merged)]).fetchall() if merged else []
+    assert_true(not back, f"{len(back)} people rows carry an id merged away in "
+                          f"data/seed/people_merge_log.csv (a loader re-created them): "
+                + "; ".join(f"{n} {pid} -> {merged[pid]}" for pid, n in back[:5]), failures)
+
+    # Two person_ids at one facility under spellings of one name ('Ken
+    # Dunton' / 'Kenneth H. Dunton') are one person filed twice; one of them
+    # then reads as a former holder replaced by themselves. Merge them via
+    # data/seed/people_merge_seed.csv; a reviewed pair of real namesakes
+    # goes in DISTINCT_NAMESAKES.
+    by_fac: dict[str, list[tuple[str, str]]] = {}
+    for fid, pid, name in conn.execute(
+            "SELECT DISTINCT fp.facility_id, p.person_id, p.name FROM facility_personnel fp "
+            "JOIN people p USING (person_id) ORDER BY ALL").fetchall():
+        by_fac.setdefault(fid, []).append((pid, name))
+    twins = []
+    for fid, ppl in by_fac.items():
+        for i, (a, na) in enumerate(ppl):
+            for b, nb in ppl[i + 1:]:
+                if frozenset((a, b)) not in DISTINCT_NAMESAKES and same_person_name(na, nb):
+                    twins.append(f"{na} ({a}) / {nb} ({b}) @ {fid}")
+    assert_true(not twins, f"{len(twins)} same-facility people pairs under one name "
+                           f"(merge via data/seed/people_merge_seed.csv): " + "; ".join(twins[:5]),
+                failures)
+
+    if roles_csv.exists():
+        fan = conn.execute(
+            """SELECT f.canonical_name, fp.role, COUNT(*) FROM facility_personnel fp
+               JOIN facilities f USING (facility_id)
+               WHERE COALESCE(fp.is_current, true)
+                 AND (fp.end_date IS NULL OR fp.end_date > current_date)
+                 AND fp.role IN (SELECT slug FROM read_csv_auto(?, header=True)
+                                 WHERE is_leadership AND slug <> 'leadership-team')
+               GROUP BY ALL HAVING COUNT(*) > ? ORDER BY 3 DESC""",
+            [str(roles_csv), MAX_CURRENT_LEADERS]).fetchall()
+        assert_true(not fan, f"more than {MAX_CURRENT_LEADERS} current holders of one "
+                             f"leadership role at a facility (loader fan-in?): {fan[:5]}",
+                    failures)
+
+
+# Vocabulary tables loaded verbatim from schema/vocab/<table>.csv by
+# ingest.py's load_vocab (same column mapping).
+VOCAB_SQL = {
+    "facility_types": "SELECT slug, label, description FROM read_csv_auto(?, header=True)",
+    "research_areas": "SELECT slug AS area_id, label, gcmd_uri, parent_slug AS parent_id "
+                      "FROM read_csv_auto(?, header=True)",
+    "networks": "SELECT slug AS network_id, label, level, url FROM read_csv_auto(?, header=True)",
+    **{t: "SELECT * FROM read_csv_auto(?, header=True)"
+       for t in ("spheres", "ecosystem_types", "life_zones", "archive_types",
+                 "data_formats", "data_licenses", "access_modes")},
+}
+
+
+def check_vocab_sync(conn, warnings: list[str]) -> None:
+    """Each vocab table should equal its canonical CSV.
+
+    A warning: the next ingest.py reloads the table from the CSV, so a
+    difference here is a change that run (and the export after it) will
+    ship. Fix whichever side is wrong before that happens.
+    """
+    for t, sql in VOCAB_SQL.items():
+        f = VOCAB_DIR / f"{t}.csv"
+        if not f.exists() or table_rows(conn, t) < 0:
+            continue
+        try:
+            only_csv = conn.execute(f"SELECT count(*) FROM (({sql}) EXCEPT (SELECT * FROM {t}))",
+                                    [str(f)]).fetchone()[0]
+            only_lake = conn.execute(f"SELECT count(*) FROM ((SELECT * FROM {t}) EXCEPT ({sql}))",
+                                     [str(f)]).fetchone()[0]
+        except duckdb.Error as e:
+            warnings.append(f"vocab {t}: cannot compare with {f.name}: {str(e).splitlines()[0]}")
+            continue
+        if only_csv or only_lake:
+            warnings.append(f"vocab {t} differs from schema/vocab/{f.name}: {only_csv} CSV row(s) "
+                            f"not in the lake, {only_lake} lake row(s) not in the CSV")
+
+
 def check_registry_edges(conn, failures: list[str]) -> None:
     """Undirected-edge conventions on both registry edge tables."""
     for table in ("registry_collaborations", "coauthor_edges"):
@@ -643,10 +838,42 @@ process.stdout.write(JSON.stringify(out));
                     failures)
 
 
+def check_integrity(conn, failures: list[str]) -> None:
+    """Every PRIMARY KEY, UNIQUE, FOREIGN KEY, CHECK and NOT NULL in schema.sql.
+
+    The lake stores no constraints (DuckLake rejects them), so this is the
+    only place they are enforced. Generated from duckdb_constraints() of
+    schema.sql run in an in-memory spec database — a constraint added to
+    the schema is checked here with no change to this file.
+    """
+    violations = lto_db.integrity_violations(conn)
+    for v in violations:
+        ref = f" -> {v['ref_table']}" if v.get("ref_table") else ""
+        what = {"derived": "derived-table constraint",
+                "soft": "soft reference"}.get(v.get("origin"), "schema constraint")
+        assert_true(False,
+                    f"{what} violated: {v['table']} {v['kind']} "
+                    f"{v['columns']}{ref}: {v['count']} row(s)/key(s), "
+                    f"e.g. {v['sample'][:3]}", failures)
+    print(f"[qa] integrity: {lto_db.constraint_count()} constraints checked "
+          f"(schema.sql + derived tables + soft references) and columns compared "
+          f"with schema.sql; {len(violations)} violated", file=sys.stderr)
+
+
 def main() -> int:
+    ap = argparse.ArgumentParser(description="LTO data-quality gate")
+    lto_db.add_argparse_catalog(ap)
+    args = ap.parse_args()
+
     failures: list[str] = []
-    with duckdb.connect(str(DB_PATH)) as conn:
-        conn.execute("SET search_path = main;")
+    warnings: list[str] = []
+    try:
+        conn = lto_db.connect(read_only=True, catalog=args.catalog, data=args.lake_data)
+    except lto_db.LakeNotFound as e:
+        print(f"QA FAILED:\n  - {e}")
+        return 1
+    with conn:
+        check_integrity(conn, failures)
 
         # An empty facilities table is never a valid catalogue. Without this
         # every check below passes vacuously and export_parquet.py would then
@@ -692,22 +919,30 @@ def main() -> int:
         # LTO layered tables. Each block no-ops when its table is empty or
         # absent, so the ingest-only CI rebuild isn't failed by data it
         # never produces.
-        check_tables_present(conn, failures)
-        check_columns(conn, failures)
-        check_spheres(conn, failures)
-        check_life_zones(conn, failures)
-        check_archives(conn, failures)
-        check_states(conn, failures)
-        check_projects(conn, failures)
-        check_portal_products(conn, failures)
-        check_topic_crosswalk(conn, failures)
-        check_person_registry(conn, failures)
-        check_registry_edges(conn, failures)
+        # A lake whose columns drifted from schema.sql (reported by
+        # check_integrity) can make a hand-written check's SQL fail to
+        # bind; that is reported as a failure, not a traceback.
+        for check, extra in (
+            (check_tables_present, ()), (check_columns, ()), (check_spheres, ()),
+            (check_life_zones, ()), (check_archives, ()), (check_states, ()),
+            (check_projects, ()), (check_portal_products, ()),
+            (check_topic_crosswalk, ()), (check_person_registry, ()),
+            (check_registry_edges, ()), (check_people, (warnings,)),
+        ):
+            try:
+                check(conn, failures, *extra)
+            except duckdb.Error as e:
+                failures.append(f"{check.__name__} could not run: "
+                                f"{str(e).splitlines()[0][:200]}")
+        check_vocab_sync(conn, warnings)
 
     # Outside the DB block: these read source files, not the database,
     # and must run even on a checkout with no data.
     check_frontend_parses(failures)
     check_view_sql_types(failures)
+
+    for w in warnings:
+        print(f"[qa] WARNING: {w}")
 
     if failures:
         print("QA FAILED:")

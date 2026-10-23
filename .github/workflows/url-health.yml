@@ -9,6 +9,9 @@ permissions:
   contents: write
   pull-requests: write
 
+# The PR step also needs the repo setting "Allow GitHub Actions to create
+# and approve pull requests" (Settings -> Actions -> General).
+
 jobs:
   check:
     runs-on: ubuntu-latest
@@ -16,15 +19,22 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
+          # duckdb 2.0 needs Python >= 3.11.
           python-version: "3.12"
           cache: pip
-      - run: pip install -r requirements.txt requests
-      - name: Rebuild DB from committed parquet
-        run: python scripts/rebuild_db_from_parquet.py
+      - run: pip install -r requirements.txt
+      # The DuckLake store (db/lto_catalog.sqlite + db/lake/) is gitignored
+      # local state; every run rebuilds it from the committed parquet.
+      # The ducklake/sqlite extensions are fetched from extensions.duckdb.org
+      # on first use. Nothing else is cached.
+      - name: Rebuild DuckLake from committed parquet
+        run: python scripts/rebuild_lake_from_parquet.py
       - name: HTTP HEAD every URL
         run: python scripts/check_url_health.py --concurrency 16 --timeout 8
       - name: Apply pattern-based URL hygiene
         run: python scripts/url_hygiene.py
+      - name: Run QA
+        run: python scripts/qa.py
       - name: Re-export parquet
         run: python scripts/export_parquet.py
       - name: Re-export view caches
@@ -38,9 +48,10 @@ jobs:
           body: |
             Automated URL HEAD verification produced by
             `scripts/check_url_health.py` + pattern-based hygiene from
-            `scripts/url_hygiene.py`. Review the
-            `data/seed/url_health_check.csv` and `url_hygiene_log.csv`
-            diffs before merging.
+            `scripts/url_hygiene.py`, run against a DuckLake rebuilt from
+            the committed parquet and re-exported after `scripts/qa.py`.
+            Review the `data/seed/url_health_check.csv` and
+            `url_hygiene_log.csv` diffs before merging.
           add-paths: |
             data/seed/url_health_check.csv
             data/seed/url_hygiene_log.csv
@@ -48,5 +59,6 @@ jobs:
             public/parquet/people.parquet
             public/parquet/facilities.parquet
             public/parquet/data_archives.parquet
+            public/facilities.geojson
             public/cache/*.json
           labels: url-health

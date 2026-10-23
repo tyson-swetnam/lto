@@ -8,19 +8,19 @@ What a publish is
 -----------------
 1.  **Preflight** — the set of parquet files in ``public/parquet/`` must
     exactly match the ``TABLES`` list in ``scripts/export_parquet.py``.
-    ``export_parquet.py`` *fails soft* (a missing table is skipped and the
-    stale parquet stays on disk), so this check is what turns "the export
-    said ok" into "the export actually covered every table".
-2.  **Local DuckLake snapshot** (optional, ``--skip-lake`` or automatic
-    fallback) — loads every table into ``db/lto_lake.ducklake`` so data
-    history is queryable locally::
-
-        ATTACH 'ducklake:db/lto_lake.ducklake' AS lake (DATA_PATH 'db/ducklake_data/');
-        SELECT * FROM lake.snapshots();
-
-    Catalogue + data dir are gitignored; losing them costs nothing (the
-    committed parquet is canonical). If the ducklake extension can't load
-    the publish continues — a fallback run is not a degraded run.
+    The export now fails hard on a missing table, but a stray or stale
+    file left in ``public/parquet/`` is still only caught here.
+2.  **Lake snapshot** — reads (read-only) the newest snapshot of the
+    DuckLake store of record (``scripts/lto_db.py``: ``db/lto_catalog.sqlite``
+    + ``db/lake/``) and records its id, time, author and commit message in
+    ``MANIFEST.json``, so a publish names the lake state it came from.
+    This used to build a *separate* lake (``db/lto_lake.ducklake``) by
+    copying the parquet on every publish — a copy, not the store — and
+    swallowed every error. Now a missing or unreadable lake stops the
+    publish; ``--skip-lake`` records ``"lake": null`` deliberately (e.g.
+    publishing from a checkout that never built a lake). Snapshot ids are
+    local to one machine's lake; the parquet sha256s are what identify
+    the published data.
 3.  **Stage** — copies parquet/, facilities.geojson, public/cache/*.json,
     schema/vocab/* (+ data/vocab_crosswalk/*.csv if present), docs/*.md
     into ``.mesa_publish/`` and writes ``MANIFEST.json`` (per-file sha256 +
@@ -41,7 +41,8 @@ Usage::
     python scripts/publish_to_mesa.py --dry-run
     python scripts/publish_to_mesa.py
     python scripts/publish_to_mesa.py --freeze      # milestone (merge-to-main)
-    python scripts/publish_to_mesa.py --skip-lake
+    python scripts/publish_to_mesa.py --skip-lake      # no lake on this machine
+    python scripts/publish_to_mesa.py --catalog /path/to/cat.sqlite
 """
 from __future__ import annotations
 
@@ -61,8 +62,6 @@ CACHE_DIR = ROOT / "public" / "cache"
 VOCAB_DIR = ROOT / "schema" / "vocab"
 CROSSWALK_DIR = ROOT / "data" / "vocab_crosswalk"
 DOCS_DIR = ROOT / "docs"
-LAKE_CATALOG = ROOT / "db" / "lto_lake.ducklake"
-LAKE_DATA = ROOT / "db" / "ducklake_data"
 IRODS_DEST = "i:/iplant/home/tswetnam/lto"
 
 
@@ -107,35 +106,32 @@ def preflight() -> list[str]:
     return tables
 
 
-def build_local_lake(tables: list[str]) -> str | None:
-    """Snapshot every table into the local DuckLake. Returns snapshot id or None."""
+def lake_snapshot(catalog: Path | None, data: Path | None) -> dict:
+    """Newest snapshot of the store-of-record lake (read-only).
+
+    Raises (LakeNotFound, duckdb.Error) rather than returning None: a
+    publish that claims lake provenance must actually have it.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import lto_db  # noqa: PLC0415
+
+    con = lto_db.connect(read_only=True, catalog=catalog, data=data)
     try:
-        import duckdb
-
-        conn = duckdb.connect()
-        conn.execute("INSTALL ducklake; LOAD ducklake;")
-        LAKE_DATA.mkdir(parents=True, exist_ok=True)
-        conn.execute(
-            f"ATTACH 'ducklake:{LAKE_CATALOG}' AS lake (DATA_PATH '{LAKE_DATA}/')"
-        )
-        for t in tables:
-            conn.execute(
-                f"CREATE OR REPLACE TABLE lake.{t} AS "
-                f"SELECT * FROM read_parquet('{PARQUET_DIR / t}.parquet')"
-            )
-        snap = conn.execute(
-            "SELECT max(snapshot_id) FROM lake.snapshots()"
-        ).fetchone()[0]
-        print(f"[lake] snapshot {snap} recorded ({len(tables)} tables)")
-        return str(snap)
-    except Exception as e:  # extension unavailable, no network, etc.
-        print(f"[lake] skipped — {type(e).__name__}: {e}", file=sys.stderr)
-        print("[lake] the publish is NOT degraded; committed parquet stays canonical",
-              file=sys.stderr)
-        return None
+        snap = lto_db.latest_snapshot(con)
+        cat = lto_db.catalog_path(catalog)
+        # Repo-relative when it is the usual lake; never a home-dir path.
+        snap["catalog"] = (str(cat.relative_to(ROOT)) if cat.is_relative_to(ROOT)
+                           else cat.name)
+        snap["ducklake_version"] = lto_db.scalar(
+            con, "SELECT value FROM lake.options() WHERE option_name = 'version'")
+    finally:
+        con.close()
+    print(f"[lake] snapshot {snap.get('snapshot_id')} "
+          f"({snap.get('snapshot_time')}): {snap.get('commit_message')!r}")
+    return snap
 
 
-def stage(tables: list[str], staging: Path, lake_snapshot: str | None) -> dict:
+def stage(tables: list[str], staging: Path, lake: dict | None) -> dict:
     if staging.exists():
         shutil.rmtree(staging)
     (staging / "parquet").mkdir(parents=True)
@@ -164,7 +160,9 @@ def stage(tables: list[str], staging: Path, lake_snapshot: str | None) -> dict:
         "git_commit": sh("git", "-C", str(ROOT), "rev-parse", "HEAD"),
         "git_branch": sh("git", "-C", str(ROOT), "rev-parse", "--abbrev-ref", "HEAD"),
         "table_count": len(tables),
-        "lake_snapshot": lake_snapshot,
+        # Store-of-record lake state this publish was exported from (None
+        # only with --skip-lake). snapshot_id is local to that machine's lake.
+        "lake": lake,
         "files": {
             str(p.relative_to(staging)): {
                 "sha256": hashlib.sha256(p.read_bytes()).hexdigest(),
@@ -201,13 +199,28 @@ def main() -> int:
     ap.add_argument("--dry-run", action="store_true", help="preflight + stage only")
     ap.add_argument("--freeze", action="store_true",
                     help="also write a frozen copy under snapshots/<date>-<sha>/")
-    ap.add_argument("--skip-lake", action="store_true", help="skip the local DuckLake")
+    ap.add_argument("--skip-lake", action="store_true",
+                    help="do not record the lake snapshot (MANIFEST gets \"lake\": null)")
+    ap.add_argument("--catalog", type=Path, default=None,
+                    help="DuckLake catalog (default: $LTO_LAKE_CATALOG or db/lto_catalog.sqlite)")
+    ap.add_argument("--lake-data", type=Path, default=None,
+                    help="DuckLake data dir (default: $LTO_LAKE_DATA or <catalog dir>/lake)")
     ap.add_argument("--staging", type=Path, default=ROOT / ".mesa_publish")
     args = ap.parse_args()
 
     tables = preflight()
-    lake_snapshot = None if args.skip_lake else build_local_lake(tables)
-    manifest = stage(tables, args.staging, lake_snapshot)
+    if args.skip_lake:
+        print("[lake] --skip-lake: MANIFEST records no lake snapshot", file=sys.stderr)
+        lake = None
+    else:
+        try:
+            lake = lake_snapshot(args.catalog, args.lake_data)
+        except Exception as e:  # noqa: BLE001 — reported, then the publish stops
+            print(f"[lake] FAILED to read the lake: {type(e).__name__}: {e}\n"
+                  "[lake] build it (scripts/rebuild_lake_from_parquet.py) or pass "
+                  "--skip-lake to publish without lake provenance.", file=sys.stderr)
+            return 1
+    manifest = stage(tables, args.staging, lake)
 
     if args.dry_run:
         print("[dry-run] skipping upload + stamp")
@@ -225,6 +238,8 @@ def main() -> int:
         "lto.publish.timestamp": manifest["timestamp_utc"],
         "lto.publish.manifest_sha256": manifest_sha,
         "lto.publish.tables": str(manifest["table_count"]),
+        **({"lto.publish.lake_snapshot": str(manifest["lake"]["snapshot_id"])}
+           if manifest.get("lake") else {}),
     }, indent=2))
     return 0
 

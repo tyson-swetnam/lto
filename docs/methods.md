@@ -2,8 +2,8 @@
 
 `lto` is a research-agent ETL on top of a static visualisation stack.
 Source records are produced by **knowledge-only** subagents (one markdown
-spec per agent under `agents/`), validated by a QA gate, ingested into
-DuckDB, and exported as Parquet + GeoJSON for the browser.
+spec per agent under `agents/`), loaded into a DuckLake store of record,
+validated by a QA gate, and exported as Parquet + GeoJSON for the browser.
 
 ## Wave model
 
@@ -11,7 +11,7 @@ DuckDB, and exported as Parquet + GeoJSON for the browser.
 Wave 0  Vendor cod-kmap engine                    (one-time bootstrap)
 Wave A  D1 schema deltas + D3 vocab extension     (contracts)
 Wave B  R-* facility research agents              (raw JSON per sphere)
-Wave C  D2 ingest → db/lto.duckdb → public/parquet/
+Wave C  D2 ingest → DuckLake (db/lto_catalog.sqlite + db/lake/) → public/parquet/
 Wave D  F1..F4 frontend + deploy
 Wave E  R-XREF reconciliation + coverage report
 Wave F  R-PEOPLE-* + R-PEOPLE-LOOP2-* people pass
@@ -22,6 +22,38 @@ runs the next wave only after every agent in the prior wave has emitted
 its JSON. The entry-point script for each wave is `scripts/ingest.py`
 (Wave C), `scripts/qa.py` (gate between waves), and the per-pass
 enrichment scripts (post-Wave-F).
+
+## Store of record
+
+The pipeline writes to a [DuckLake](https://ducklake.select) on the
+operator's machine, run by DuckDB 2.0: a SQLite catalog at
+`db/lto_catalog.sqlite` and parquet data files under `db/lake/`. Every
+script opens it through `scripts/lto_db.py`.
+
+- **History.** Each loader, enricher or `compute_*` run commits one
+  snapshot with an author and a message naming the script. Earlier
+  states stay queryable (`AT (VERSION => n)`), and
+  `ducklake_table_changes()` lists the rows a run inserted, updated or
+  deleted: for example, who a facility's director was before the last
+  personnel load. `scripts/lake_maintenance.py` compacts the lake and
+  expires snapshots older than 90 days.
+- **Constraints.** DuckLake does not enforce primary keys, foreign keys,
+  UNIQUE or CHECK constraints. `schema/schema.sql` still declares them,
+  and `scripts/qa.py` checks every one against the lake before export,
+  together with the derived tables' keys, the undeclared (soft)
+  references and the column list of every table. A duplicate key or an
+  orphaned reference therefore fails QA rather than the `INSERT`.
+  Loaders upsert with `MERGE` on de-duplicated keys, run the same check
+  before they commit, and take an exclusive lock for the length of
+  their transaction, so two runs never interleave writes.
+- **What is published.** The lake is local working state and is not
+  committed. `scripts/export_parquet.py` writes every table to
+  `public/parquet/` in a deterministic row order, and those committed
+  files are the canonical copy: the site reads them, and a fresh clone
+  (or a pull) rebuilds the lake from them
+  (`scripts/rebuild_lake_from_parquet.py`, which always reads
+  `public/parquet/` unless told otherwise). An export from a scratch
+  lake goes next to that lake, not into `public/`.
 
 ## Sub-agent roster
 
@@ -78,7 +110,9 @@ For the people side (`R-PEOPLE-*`):
 The browser side is **DuckDB-Wasm + MapLibre, no build step**:
 
 - `index.html` defines an importmap that pulls `maplibre-gl` and
-  `@duckdb/duckdb-wasm` from esm.sh.
+  `@duckdb/duckdb-wasm` (pinned `1.33.1-dev65.0`, DuckDB core 1.5.6)
+  from esm.sh. The browser reads the exported parquet over HTTP range
+  requests; it does not attach the lake.
 - `src/db.js` registers `public/parquet/*.parquet` as DuckDB views and
   re-creates helper views (these don't survive Parquet export).
 - `src/views/{list,stats,docs,network,people,sql}.js` render one tab each.

@@ -12,46 +12,45 @@ Drops:
   * matching area_links rows
   * matching provenance rows where agent='R11' and record_type='facility'
 
-Then re-exports the affected parquets and the
-``public/facilities.geojson`` snapshot.
+All deletes land in the lake as one snapshot (commit message
+``remove_neon_facility_points: …``), after an integrity check; nothing
+lands if a remaining table still points at a NEON row. This script no
+longer writes parquet or ``public/facilities.geojson`` — publish with
+qa.py → export_parquet.py → export_view_caches.py afterwards. Point it
+at a scratch lake with ``$LTO_LAKE_CATALOG`` or ``--catalog``.
 
-Idempotent — re-running on a clean DB drops 0 rows.
+Idempotent — re-running on a clean lake drops 0 rows and writes no
+snapshot.
 """
 from __future__ import annotations
 
-import json
-import os
-import shutil
+import argparse
 import sys
-import time
 from pathlib import Path
 
-import duckdb
-
 ROOT = Path(__file__).resolve().parent.parent.parent
-DB_PATH = Path(os.environ.get("COD_KMAP_DB", str(ROOT / "db" / "lto.duckdb")))
-OUT_DB = ROOT / "db" / "parquet"
-OUT_WEB = ROOT / "public" / "parquet"
-GEOJSON_OUT = ROOT / "public" / "facilities.geojson"
+sys.path.insert(0, str(ROOT / "scripts"))
+import lto_db  # noqa: E402
+
 R11_FAC_FILE = (ROOT / "data" / "raw" / "R11_coastal_ecosystems"
                 / "facilities_neon_sites.json")
 
-PARQUET_TABLES = (
-    "facilities", "locations", "network_membership", "area_links",
-    "provenance",
-)
-
 
 def main() -> int:
-    if not DB_PATH.exists():
-        print(f"[err] DB not found: {DB_PATH}", file=sys.stderr)
+    ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    lto_db.add_argparse_catalog(ap)
+    args = ap.parse_args()
+    try:
+        conn = lto_db.connect(catalog=args.catalog, data=args.lake_data)
+    except lto_db.LakeNotFound as e:
+        print(f"[err] {e}", file=sys.stderr)
         return 2
-    print(f"[neon-rm] DB: {DB_PATH}", file=sys.stderr)
+    print(f"[neon-rm] lake: {lto_db.catalog_path(args.catalog)}", file=sys.stderr)
 
-    with duckdb.connect(str(DB_PATH)) as conn:
+    with conn:
         # Find the facility_ids to delete
         rows = conn.execute(
-            "SELECT facility_id FROM main.facilities "
+            "SELECT facility_id FROM facilities "
             "WHERE parent_org = 'National Ecological Observatory Network'"
         ).fetchall()
         ids = [r[0] for r in rows]
@@ -61,78 +60,45 @@ def main() -> int:
             print("[neon-rm] nothing to do", file=sys.stderr)
             return 0
 
-        # DELETE child tables FIRST (DuckDB FKs); then facilities.
         ph = ",".join(["?"] * len(ids))
-        for child in ("locations", "network_membership", "area_links",
-                      "facility_regions", "facility_personnel"):
-            try:
-                n = conn.execute(
-                    f"SELECT COUNT(*) FROM main.{child} "
-                    f"WHERE facility_id IN ({ph})", ids,
-                ).fetchone()[0]
+        with lto_db.transaction(conn, f"remove_neon_facility_points: drop "
+                                      f"{len(ids)} NEON facility points"):
+            for child in ("locations", "network_membership", "area_links",
+                          "facility_regions", "facility_personnel",
+                          "registry_facilities"):
+                # A failed statement aborts the transaction, so probe for
+                # the table instead of try/except.
+                if not lto_db.table_exists(conn, child):
+                    print(f"[neon-rm]   {child}: skipped (no such table)",
+                          file=sys.stderr)
+                    continue
+                n = lto_db.scalar(
+                    conn, f"SELECT COUNT(*) FROM {child} "
+                          f"WHERE facility_id IN ({ph})", ids)
                 conn.execute(
-                    f"DELETE FROM main.{child} "
-                    f"WHERE facility_id IN ({ph})", ids,
-                )
+                    f"DELETE FROM {child} WHERE facility_id IN ({ph})", ids)
                 print(f"[neon-rm]   {child}: -{n}", file=sys.stderr)
-            except Exception as exc:  # noqa: BLE001
-                # Some tables may not exist depending on schema version
-                print(f"[neon-rm]   {child}: skipped ({exc})", file=sys.stderr)
 
-        # provenance has no FK to facilities so we can delete by record_id
-        try:
-            n = conn.execute(
-                f"SELECT COUNT(*) FROM main.provenance "
-                f"WHERE record_id IN ({ph}) AND record_type='facility'",
-                ids,
-            ).fetchone()[0]
+            # provenance has no FK to facilities so we delete by record_id
+            n = lto_db.scalar(
+                conn, f"SELECT COUNT(*) FROM provenance "
+                      f"WHERE record_id IN ({ph}) AND record_type='facility'", ids)
             conn.execute(
-                f"DELETE FROM main.provenance "
-                f"WHERE record_id IN ({ph}) AND record_type='facility'", ids,
-            )
+                f"DELETE FROM provenance "
+                f"WHERE record_id IN ({ph}) AND record_type='facility'", ids)
             print(f"[neon-rm]   provenance: -{n}", file=sys.stderr)
-        except Exception as exc:  # noqa: BLE001
-            print(f"[neon-rm]   provenance: skipped ({exc})", file=sys.stderr)
 
-        # Finally drop the facility rows
-        conn.execute(
-            f"DELETE FROM main.facilities WHERE facility_id IN ({ph})", ids,
-        )
-        print(f"[neon-rm]   facilities: -{len(ids)}", file=sys.stderr)
+            # Finally drop the facility rows
+            conn.execute(
+                f"DELETE FROM facilities WHERE facility_id IN ({ph})", ids)
+            print(f"[neon-rm]   facilities: -{len(ids)}", file=sys.stderr)
 
-        # Re-export the affected parquets to both db/ and public/
-        OUT_DB.mkdir(parents=True, exist_ok=True)
-        OUT_WEB.mkdir(parents=True, exist_ok=True)
-        for t in PARQUET_TABLES:
-            out = OUT_DB / f"{t}.parquet"
-            try:
-                conn.execute(f"COPY (SELECT * FROM main.{t}) TO '{out}' "
-                             "(FORMAT PARQUET)")
-                shutil.copyfile(out, OUT_WEB / f"{t}.parquet")
-            except Exception as exc:  # noqa: BLE001
-                print(f"[neon-rm]   skipped re-export of {t}: {exc}",
-                      file=sys.stderr)
-        print(f"[neon-rm] refreshed parquets: {', '.join(PARQUET_TABLES)}",
+            # Nothing cascades in a lake: any other table that still
+            # points at a dropped facility (declared FKs and the soft
+            # references in lto_db.SOFT_REFERENCES) fails this and rolls back.
+            lto_db.assert_integrity(conn, ["facilities", "provenance"])
+        print("[neon-rm] next: qa.py → export_parquet.py → export_view_caches.py",
               file=sys.stderr)
-
-        # Rebuild the published facilities.geojson
-        rows = conn.execute(
-            """SELECT id, name, acronym, type, country, lat, lng, url, parent_org
-               FROM v_facility_map"""
-        ).fetchall()
-        feats = [{
-            "type": "Feature",
-            "geometry": {"type": "Point", "coordinates": [lng, lat]},
-            "properties": {
-                "id": fid_, "name": name, "acronym": acr, "type": ftype,
-                "country": country, "url": url, "parent_org": parent,
-            },
-        } for fid_, name, acr, ftype, country, lat, lng, url, parent in rows]
-        GEOJSON_OUT.write_text(
-            json.dumps({"type": "FeatureCollection", "features": feats}, indent=0)
-        )
-        print(f"[neon-rm] rebuilt {GEOJSON_OUT.relative_to(ROOT)}: "
-              f"{len(feats)} features", file=sys.stderr)
 
     # Drop the now-orphan R11 seed file so future ingest_r11.py runs
     # don't re-add the points.

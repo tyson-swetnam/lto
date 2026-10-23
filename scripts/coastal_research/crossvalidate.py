@@ -21,12 +21,13 @@ import sys
 from collections import Counter, defaultdict
 from pathlib import Path
 
-import duckdb
 from rapidfuzz import fuzz
 
 ROOT = Path(__file__).resolve().parent.parent.parent
+sys.path.insert(0, str(ROOT / "scripts"))
+import lto_db  # noqa: E402  (lake location: $LTO_LAKE_CATALOG or db/)
+
 OUT = ROOT / "data" / "raw" / "R11_coastal_ecosystems" / "gap_report.md"
-DB = ROOT / "db" / "lto.duckdb"
 
 NEW_LAYERS = [
     ("coastal-fws-units", "USFWS Refuges & Approved Boundaries"),
@@ -67,13 +68,13 @@ def main() -> int:
         feats = load_layer(ln)
         legacy_names[ln] = {name_norm(f["properties"].get("name", "")) for f in feats}
 
-    # Index facilities table
-    if DB.exists():
-        with duckdb.connect(str(DB), read_only=True) as conn:
+    # Index facilities table (empty when the lake has not been built)
+    try:
+        with lto_db.connect(read_only=True) as conn:
             facs = conn.execute(
                 "SELECT facility_id, canonical_name, acronym FROM facilities"
             ).fetchall()
-    else:
+    except lto_db.LakeNotFound:
         facs = []
     fac_index = {name_norm(name): (fid, name, acr) for fid, name, acr in facs}
     fac_acr_index = {(acr or "").lower(): (fid, name, acr) for fid, name, acr in facs if acr}

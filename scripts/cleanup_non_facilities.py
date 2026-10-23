@@ -19,17 +19,18 @@ records have already been removed.
 
 Usage::
     python scripts/cleanup_non_facilities.py
-    python scripts/cleanup_non_facilities.py --db db/lto.duckdb --dry-run
+    python scripts/cleanup_non_facilities.py --catalog db/lto_catalog.sqlite --dry-run
 """
 from __future__ import annotations
 
 import argparse
+import sys
 from pathlib import Path
 
-import duckdb
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import lto_db  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "lto.duckdb"
 
 # Patterns / acronyms to drop. Each entry is a SQL WHERE clause fragment.
 # Add new patterns at the bottom as future loops surface more non-facility
@@ -77,23 +78,31 @@ DROP_PATTERNS = [
 ]
 
 # Tables that hold a `facility_id` foreign key and need cascade-delete
-# before we can drop the facility row. Order matters only for clarity.
+# alongside the facility row (the lake cascades nothing; any child table
+# missed here fails assert_integrity and rolls the run back). Order
+# matters only for clarity.
 DEPENDENT_TABLES = [
     "facility_archives", "facility_personnel", "facility_spheres",
     "facility_ecosystems", "facility_life_zones", "facility_regions",
     "facility_primary_groups", "area_links", "network_membership",
     "funding_events", "data_products", "api_endpoints", "cloud_buckets",
     "locations", "provenance",
+    # Soft reference (not declared in schema.sql); assert_integrity checks
+    # it through lto_db.SOFT_REFERENCES.
+    "registry_facilities",
 ]
 
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--db", type=Path, default=DEFAULT_DB)
+    lto_db.add_argparse_catalog(ap)
+    ap.add_argument("--db", dest="catalog", type=Path,
+                    help="deprecated alias of --catalog")
     ap.add_argument("--dry-run", action="store_true")
     args = ap.parse_args()
 
-    with duckdb.connect(str(args.db)) as conn:
+    with lto_db.connect(read_only=args.dry_run, catalog=args.catalog,
+                        data=args.lake_data) as conn:
         # Resolve every facility_id matched by any pattern.
         ids: list[tuple[str, str, str]] = []
         for label, where in DROP_PATTERNS:
@@ -122,27 +131,33 @@ def main() -> int:
         # but only with literal SQL — so build the placeholders ourselves.
         placeholders = ",".join(["?"] * len(fid_set))
 
-        # Drop dependents first.
-        for tbl in DEPENDENT_TABLES:
-            try:
-                n = conn.execute(
+        # A failed statement aborts the whole transaction, so probe for
+        # the table and its facility_id column instead of try/except.
+        has_fid = {r[0] for r in lto_db.rows(
+            conn, "SELECT table_name FROM duckdb_columns() "
+                  "WHERE database_name = ? AND schema_name = 'main' "
+                  "AND column_name = 'facility_id'", [lto_db.LAKE])}
+
+        with lto_db.transaction(
+                conn, f"cleanup_non_facilities: drop {len(fid_set)} "
+                      f"non-facility rows and their dependents"):
+            # Drop dependents first.
+            for tbl in DEPENDENT_TABLES:
+                if tbl not in has_fid:
+                    # Table may not exist on a fresh lake — skip cleanly.
+                    continue
+                conn.execute(
                     f"DELETE FROM {tbl} WHERE facility_id IN ({placeholders})",
                     list(fid_set),
-                ).fetchone()
-                # DuckDB DELETE returns row counts via `Changes`; not always
-                # exposed via fetchone(). Skip strict counting; the eval
-                # script will re-tally.
-            except duckdb.Error as e:
-                # Table may not exist on a fresh DB, or facility_id column
-                # may differ — skip cleanly.
-                if "does not exist" not in str(e).lower():
-                    print(f"  [warn] {tbl}: {e}")
+                ).fetchall()
 
-        # Finally, drop the facility rows themselves.
-        conn.execute(
-            f"DELETE FROM facilities WHERE facility_id IN ({placeholders})",
-            list(fid_set),
-        )
+            # Finally, drop the facility rows themselves.
+            conn.execute(
+                f"DELETE FROM facilities WHERE facility_id IN ({placeholders})",
+                list(fid_set),
+            )
+            # Covers every foreign key that points at facilities.
+            lto_db.assert_integrity(conn, ["facilities"])
         n_after = conn.execute("SELECT count(*) FROM facilities").fetchone()[0]
         print(f"[cleanup_non_facilities] facilities table now: {n_after} rows")
 

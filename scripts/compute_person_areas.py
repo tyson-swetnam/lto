@@ -34,6 +34,9 @@ Usage::
     python scripts/compute_person_areas.py --min-weight 0.05
     python scripts/compute_person_areas.py --top-areas 5  # cap per person
     python scripts/compute_person_areas.py --dry-run
+
+A real run is one lake snapshot (DELETE + INSERT in one transaction); a
+--dry-run opens the lake read-only and writes nothing.
 """
 from __future__ import annotations
 
@@ -43,10 +46,10 @@ import sys
 from pathlib import Path
 from collections import defaultdict
 
-import duckdb
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import lto_db  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "lto.duckdb"
 DEFAULT_CROSSWALK = ROOT / "data" / "vocab_crosswalk" / "openalex_to_area.csv"
 
 CONFIDENCE_MULT = {"high": 1.0, "medium": 0.7, "low": 0.4}
@@ -73,7 +76,9 @@ def load_crosswalk(path: Path) -> dict[str, list[tuple[str, float]]]:
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--db", type=Path, default=DEFAULT_DB)
+    lto_db.add_argparse_catalog(ap)
+    ap.add_argument("--db", dest="catalog", type=Path,
+                    help="deprecated alias of --catalog")
     ap.add_argument("--crosswalk", type=Path, default=DEFAULT_CROSSWALK)
     ap.add_argument("--min-evidence", type=int, default=2,
                     help="Drop (person, area) pairs with fewer than N "
@@ -88,9 +93,6 @@ def main() -> int:
                     help="Compute and print summary, but do not write.")
     args = ap.parse_args()
 
-    if not args.db.exists():
-        print(f"[error] db not found: {args.db}", file=sys.stderr)
-        return 2
     if not args.crosswalk.exists():
         print(f"[error] crosswalk not found: {args.crosswalk}", file=sys.stderr)
         return 2
@@ -99,7 +101,8 @@ def main() -> int:
     print(f"[crosswalk] {len(crosswalk)} OpenAlex ids → "
           f"{sum(len(v) for v in crosswalk.values())} (id, area) pairs")
 
-    conn = duckdb.connect(str(args.db))
+    conn = lto_db.connect(read_only=args.dry_run,
+                          catalog=args.catalog, data=args.lake_data)
 
     # Load the (publication_id, concept_id, score) join we need into
     # a Python list — for ~250k rows this is trivial RAM-wise and lets
@@ -181,43 +184,49 @@ def main() -> int:
         return 0
 
     # Replace only rows we own. Manual entries (source='manual') survive.
-    conn.execute("DELETE FROM person_areas WHERE source = 'openalex_topics'")
-    if out_rows:
-        # Bulk insert via a temp table, dedupe to be safe (in case the
-        # same person shows up twice for an area, which shouldn't happen
-        # but the PK constraint would crash the whole batch if it did).
-        conn.execute("""
-            CREATE TEMP TABLE _pa_stage (
-                person_id      VARCHAR,
-                area_id        VARCHAR,
-                weight         DOUBLE,
-                evidence_count INTEGER,
-                source         VARCHAR
+    # The delete and the insert are one transaction, so one lake snapshot,
+    # and assert_integrity rolls both back if a person/area FK is broken.
+    with lto_db.transaction(conn, f"compute_person_areas: {len(out_rows)} "
+                                  f"openalex_topics rows (min_evidence="
+                                  f"{args.min_evidence}, top_areas={args.top_areas})"):
+        conn.execute("DELETE FROM person_areas WHERE source = 'openalex_topics'")
+        if out_rows:
+            # Bulk insert via a temp table, dedupe to be safe (in case the
+            # same person shows up twice for an area, which shouldn't happen
+            # but the lake enforces no PK, so a duplicate would land).
+            conn.execute("""
+                CREATE TEMP TABLE _pa_stage (
+                    person_id      VARCHAR,
+                    area_id        VARCHAR,
+                    weight         DOUBLE,
+                    evidence_count INTEGER,
+                    source         VARCHAR
+                )
+            """)
+            conn.executemany(
+                "INSERT INTO _pa_stage VALUES (?, ?, ?, ?, ?)", out_rows,
             )
-        """)
-        conn.executemany(
-            "INSERT INTO _pa_stage VALUES (?, ?, ?, ?, ?)", out_rows,
-        )
-        conn.execute("""
-            INSERT INTO person_areas (person_id, area_id, weight,
-                                      evidence_count, source)
-            SELECT person_id, area_id, MAX(weight), MAX(evidence_count),
-                   ANY_VALUE(source)
-            FROM _pa_stage
-            WHERE EXISTS (
-                SELECT 1 FROM people p WHERE p.person_id = _pa_stage.person_id
-            )
-            AND EXISTS (
-                SELECT 1 FROM research_areas ra WHERE ra.area_id = _pa_stage.area_id
-            )
-            AND NOT EXISTS (
-                SELECT 1 FROM person_areas pa
-                WHERE pa.person_id = _pa_stage.person_id
-                  AND pa.area_id   = _pa_stage.area_id
-            )
-            GROUP BY person_id, area_id
-        """)
-        conn.execute("DROP TABLE _pa_stage")
+            conn.execute("""
+                INSERT INTO person_areas (person_id, area_id, weight,
+                                          evidence_count, source)
+                SELECT person_id, area_id, MAX(weight), MAX(evidence_count),
+                       ANY_VALUE(source)
+                FROM _pa_stage
+                WHERE EXISTS (
+                    SELECT 1 FROM people p WHERE p.person_id = _pa_stage.person_id
+                )
+                AND EXISTS (
+                    SELECT 1 FROM research_areas ra WHERE ra.area_id = _pa_stage.area_id
+                )
+                AND NOT EXISTS (
+                    SELECT 1 FROM person_areas pa
+                    WHERE pa.person_id = _pa_stage.person_id
+                      AND pa.area_id   = _pa_stage.area_id
+                )
+                GROUP BY person_id, area_id
+            """)
+            conn.execute("DROP TABLE _pa_stage")
+        lto_db.assert_integrity(conn, ["person_areas"])
     n_total = conn.execute("SELECT COUNT(*) FROM person_areas").fetchone()[0]
     n_topic = conn.execute(
         "SELECT COUNT(*) FROM person_areas WHERE source = 'openalex_topics'"

@@ -31,26 +31,31 @@ within-area z-scored across all people in that area.
 Usage::
 
     python scripts/compute_lto_person_metrics.py
-    python scripts/compute_lto_person_metrics.py --db db/lto.duckdb
+    python scripts/compute_lto_person_metrics.py --catalog db/lto_catalog.sqlite
+
+Both tables are written into the lake in one snapshot; run
+scripts/export_parquet.py afterwards to publish them.
 """
 from __future__ import annotations
 
 import argparse
+import sys
 from pathlib import Path
 
-import duckdb
-
-ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "lto.duckdb"
-PARQUET_DIRS = [ROOT / "db" / "parquet", ROOT / "public" / "parquet"]
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import lto_db  # noqa: E402
 
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--db", type=Path, default=DEFAULT_DB)
+    lto_db.add_argparse_catalog(ap)
+    ap.add_argument("--db", dest="catalog", type=Path,
+                    help="deprecated alias of --catalog")
     args = ap.parse_args()
 
-    with duckdb.connect(str(args.db)) as conn:
+    conn = lto_db.connect(catalog=args.catalog, data=args.lake_data)
+    with lto_db.transaction(conn, "compute_lto_person_metrics: person_areas + "
+                                  "person_area_metrics from facility area_links"):
         # 1. Seed person_areas from facility_personnel JOIN area_links.
         #    Each (person, area) row has weight = 1/len(facility_areas)
         #    so a single-facility person totals 1.0 across all their areas.
@@ -81,7 +86,8 @@ def main() -> int:
             CREATE TEMP TABLE _person_pub_totals AS
             SELECT a.person_id,
                    count(DISTINCT a.publication_id) AS n_pubs,
-                   sum(coalesce(p.cited_by_count, 0)) AS total_citations,
+                   -- DOUBLE, as published (SUM(BIGINT) is HUGEINT).
+                   CAST(sum(coalesce(p.cited_by_count, 0)) AS DOUBLE) AS total_citations,
                    array_agg(coalesce(p.cited_by_count, 0)
                              ORDER BY coalesce(p.cited_by_count, 0) DESC)
                                                     AS cite_list
@@ -124,9 +130,7 @@ def main() -> int:
         #    with `MAX(...)` (not `SUM(...)`) to get per-person totals. The
         #    composite_z is the within-area z-score so the area-list ordering
         #    still ranks people by their relative strength in each area.
-        conn.execute("DROP TABLE IF EXISTS person_area_metrics")
-        conn.execute("""
-            CREATE TABLE person_area_metrics AS
+        n_pam = lto_db.replace_table(conn, "person_area_metrics", """
             WITH base AS (
                 SELECT pa.area_id,
                        p.person_id,
@@ -141,15 +145,29 @@ def main() -> int:
                 LEFT JOIN _person_h           h ON h.person_id = p.person_id
                 LEFT JOIN _person_coauth      c ON c.person_id = p.person_id
             ),
+            -- Mean and sample sd from exact integer sums: a windowed
+            -- stddev() is order-dependent in its last bits, which made
+            -- composite_z (and the published parquet) differ run to run.
+            sums AS (
+                SELECT area_id,
+                       count(*)::HUGEINT                                     AS n,
+                       sum(n_publications::HUGEINT)                          AS p1,
+                       sum(n_publications::HUGEINT * n_publications)         AS p2,
+                       sum(total_citations::HUGEINT)                         AS c1,
+                       sum(total_citations::HUGEINT * total_citations::HUGEINT) AS c2,
+                       sum(n_co_authors::HUGEINT)                            AS o1,
+                       sum(n_co_authors::HUGEINT * n_co_authors)             AS o2
+                FROM base GROUP BY area_id
+            ),
             with_stats AS (
-                SELECT *,
-                       avg(n_publications)  OVER (PARTITION BY area_id) AS pub_mu,
-                       stddev(n_publications) OVER (PARTITION BY area_id) AS pub_sd,
-                       avg(total_citations) OVER (PARTITION BY area_id) AS cit_mu,
-                       stddev(total_citations) OVER (PARTITION BY area_id) AS cit_sd,
-                       avg(n_co_authors)    OVER (PARTITION BY area_id) AS co_mu,
-                       stddev(n_co_authors) OVER (PARTITION BY area_id) AS co_sd
-                FROM base
+                SELECT base.*,
+                       s.p1::DOUBLE / s.n AS pub_mu,
+                       CASE WHEN s.n > 1 THEN sqrt((s.n * s.p2 - s.p1 * s.p1)::DOUBLE / (s.n * (s.n - 1))) END AS pub_sd,
+                       s.c1::DOUBLE / s.n AS cit_mu,
+                       CASE WHEN s.n > 1 THEN sqrt((s.n * s.c2 - s.c1 * s.c1)::DOUBLE / (s.n * (s.n - 1))) END AS cit_sd,
+                       s.o1::DOUBLE / s.n AS co_mu,
+                       CASE WHEN s.n > 1 THEN sqrt((s.n * s.o2 - s.o1 * s.o1)::DOUBLE / (s.n * (s.n - 1))) END AS co_sd
+                FROM base JOIN sums s USING (area_id)
             )
             SELECT area_id, person_id, person_name,
                    n_publications, total_citations, h_index, n_co_authors,
@@ -164,7 +182,6 @@ def main() -> int:
                    ) AS composite_z
             FROM with_stats
         """)
-        n_pam = conn.execute("SELECT count(*) FROM person_area_metrics").fetchone()[0]
         print(f"[person_area_metrics] {n_pam} rows written")
 
         # 6. Refresh person_areas.evidence_count from publication count.
@@ -175,14 +192,12 @@ def main() -> int:
                  WHERE person_id = person_areas.person_id), 0)
         """)
 
-        # 7. Export the affected parquets.
-        for table in ("person_areas", "person_area_metrics"):
-            for d in PARQUET_DIRS:
-                d.mkdir(parents=True, exist_ok=True)
-                p = d / f"{table}.parquet"
-                conn.execute(f"COPY (SELECT * FROM {table}) TO '{p}' (FORMAT PARQUET)")
-                print(f"[parquet] wrote {p}")
+        lto_db.assert_integrity(conn, ["person_areas", "person_area_metrics"])
 
+    # 7. Publishing is export_parquet.py's job; both tables are in the lake.
+    print("[done] person_areas + person_area_metrics written to the lake "
+          "(run export_parquet.py to publish)")
+    conn.close()
     return 0
 
 

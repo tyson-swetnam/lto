@@ -42,7 +42,8 @@ Effects, mirroring wipe_bad_openalex_attributions.py:
     be legitimately linked to another
   * records a provenance row per change
 
-Re-runs are idempotent.
+Re-runs are idempotent. A run is one lake snapshot; run
+scripts/export_parquet.py afterwards to publish it.
 
 Usage::
     python scripts/wipe_misattributed_identifiers.py --dry-run
@@ -51,15 +52,15 @@ Usage::
 from __future__ import annotations
 
 import argparse
+import contextlib
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
-import duckdb
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import lto_db  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "lto.duckdb"
-PARQUET_OUT = [ROOT / "db" / "parquet", ROOT / "public" / "parquet"]
 
 # name -> (wipe_orcid, wipe_openalex, evidence)
 BAD = {
@@ -92,10 +93,12 @@ BAD = {
         "openalex_id resolves to 'J. A. Clark' — the given name was matched "
         "as a surname. 171 works attributed."),
     "Ed Sherwood": (
-        False, True,
-        "openalex_id is 'Morgan Sherwood'. The stored ORCID is correct — "
+        False, False,
+        "openalex_id was 'Morgan Sherwood'. The stored ORCID is correct — "
         "its works are seagrass remote sensing and harmful algal blooms at "
-        "the Tampa Bay Estuary Program — so only the OpenAlex id is wiped."),
+        "the Tampa Bay Estuary Program. Disarmed 2026-10-22: OpenAlex now "
+        "resolves A5065465046 to Edward T. Sherwood, Tampa Bay Estuary "
+        "Program (ORCID 0000-0001-5330-302X), so the id is right and kept."),
     "Erik Smith": (
         True, False,
         "Stored ORCID's employer is the Electric Power Research Institute "
@@ -140,6 +143,43 @@ BAD = {
         "Center for Marine and Environmental Studies person."),
 }
 
+# 2026-10-22 sweep of every stored ORCID against pub.orcid.org: these ids
+# resolve to a different human, and four of them had carried the wrong
+# OpenAlex author (and its works) in with them. Keyed on person_id and on
+# the bad value itself, so a re-run never clears an id corrected later
+# (people can share a name: there were two "Kathleen C. Weathers" rows).
+# person_id -> (bad orcid or None, bad openalex_id or None, evidence)
+BAD_BY_ID = {
+    "b45b83f6ff14d22b": (
+        "0000-0002-9622-3318", "A5048108051",
+        "Jan A. Newton (UW APL / NANOOS): the ORCID record and OpenAlex author "
+        "A5048108051 are Mark Dopson, microbiologist at Linnaeus University "
+        "(245 works)."),
+    "4be69b66a360b7a8": (
+        "0000-0002-3550-5485", "A5003462162",
+        "Kathleen C. Weathers (Cary Institute): the ORCID record and OpenAlex "
+        "author A5003462162 are Heather A. Lawson, Washington University in "
+        "St. Louis. Her own iD 0000-0002-3575-6508 (employer Cary Institute) "
+        "was verified by R-PEOPLE2."),
+    "55b9d2c7b71296db": (
+        "0000-0002-6435-3863", "A5023463877",
+        "Douglas A. Burns (USGS): the ORCID record and OpenAlex author "
+        "A5023463877 are Piotr Konopelski, Medical University of Warsaw."),
+    "b6da7a008f6b2319": (
+        "0000-0003-2728-6996", "A5013456283",
+        "Kathryn L. Cottingham (Dartmouth): the ORCID record and OpenAlex "
+        "author A5013456283 are Chih-Kai Peng, Chung Shan Medical University."),
+    "03d2c5d35441a78b": (
+        "0000-0001-6339-5546", None,
+        "Robert J. Toonen (HIMB): the ORCID record is 'Felipe Freire'."),
+    "1f588d98bcf365e5": (
+        "0000-0002-1042-7484", None,
+        "J. William Munger (Harvard): the ORCID record is 'Janeth Montero Mendoza'."),
+    "cbe750e7bf43e318": (
+        "0000-0003-2972-1525", None,
+        "Russell L. Scott (USDA-ARS): the ORCID record is 'Miseon Park'."),
+}
+
 # Rows whose `orcid` column holds biography prose rather than an
 # identifier. The text is preserved by moving it into `notes` rather than
 # being discarded, since it is hand-curated and true — it is simply in
@@ -149,18 +189,49 @@ PROSE_IN_ORCID = ["Marty Downs", "Víctor Manuel Vidal Martínez"]
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--db", type=Path, default=DEFAULT_DB)
+    lto_db.add_argparse_catalog(ap)
+    ap.add_argument("--db", dest="catalog", type=Path,
+                    help="deprecated alias of --catalog")
     ap.add_argument("--dry-run", action="store_true")
     args = ap.parse_args()
 
-    if not args.db.exists():
-        print(f"[error] db not found: {args.db}", file=sys.stderr)
+    try:
+        conn = lto_db.connect(read_only=args.dry_run, catalog=args.catalog,
+                              data=args.lake_data)
+    except lto_db.LakeNotFound as e:
+        print(f"[error] {e}", file=sys.stderr)
         return 2
 
-    conn = duckdb.connect(str(args.db))
+    # A dry run opens the lake read-only and writes nothing; a real run
+    # is one snapshot (rolled back whole if the integrity check fails).
+    tx = (contextlib.nullcontext() if args.dry_run else lto_db.transaction(
+        conn, f"wipe_misattributed_identifiers: {len(BAD) + len(BAD_BY_ID)} roster + "
+              f"{len(PROSE_IN_ORCID)} prose-in-orcid rows"))
+    with tx:
+        totals = _wipe(conn, args.dry_run)
+        if not args.dry_run:
+            lto_db.assert_integrity(
+                conn, ["people", "authorship", "person_areas", "provenance"])
+    n_orcid, n_oa, n_auth, n_areas, n_prose = totals
+
+    print(f"[totals] orcid_wiped={n_orcid} openalex_wiped={n_oa} "
+          f"authorship_deleted={n_auth} person_areas_deleted={n_areas} "
+          f"prose_moved={n_prose}")
+
+    if not args.dry_run:
+        # parquet is export_parquet.py's to write.
+        print("[next] run scripts/export_parquet.py and export_view_caches.py "
+              "to publish")
+    conn.close()
+    return 0
+
+
+def _wipe(conn, dry_run: bool) -> tuple[int, int, int, int, int]:
+    """Apply BAD and PROSE_IN_ORCID; with dry_run, only print."""
     now = datetime.now(timezone.utc).isoformat()
     n_orcid = n_oa = n_auth = n_areas = n_prose = 0
 
+    todo = []
     for name, (wipe_orcid, wipe_oa, why) in BAD.items():
         row = conn.execute(
             "SELECT person_id, orcid, openalex_id FROM people WHERE name = ?",
@@ -168,6 +239,17 @@ def main() -> int:
         if not row:
             print(f"  [skip] {name}: not in people")
             continue
+        todo.append((name, wipe_orcid, wipe_oa, why, row))
+    for pid, (bad_orcid, bad_oa, why) in BAD_BY_ID.items():
+        row = conn.execute(
+            "SELECT person_id, orcid, openalex_id, name FROM people WHERE person_id = ?",
+            [pid]).fetchone()
+        if not row:
+            print(f"  [skip] {pid}: not in people")
+            continue
+        todo.append((row[3], bool(bad_orcid) and (row[1] or "").upper() == bad_orcid,
+                     bool(bad_oa) and (row[2] or "").upper() == bad_oa, why, row[:3]))
+    for name, wipe_orcid, wipe_oa, why, row in todo:
         pid, orcid, oaid = row
         acts = []
         if wipe_orcid and orcid:
@@ -181,7 +263,7 @@ def main() -> int:
             [pid]).fetchone()[0]
         print(f"  {name}: wiping {', '.join(acts)}"
               + (f" and {npub} authorship rows" if wipe_oa and npub else ""))
-        if args.dry_run:
+        if dry_run:
             continue
 
         if wipe_orcid and orcid:
@@ -221,26 +303,14 @@ def main() -> int:
         if not orcid or len(orcid) == 19:
             continue
         print(f"  {name}: moving prose out of orcid into notes")
-        if args.dry_run:
+        if dry_run:
             continue
         merged = "; ".join(t for t in [notes, orcid] if t)
         conn.execute("UPDATE people SET orcid = NULL, notes = ?, "
                      "updated_at = now() WHERE person_id = ?", [merged, pid])
         n_prose += 1
 
-    print(f"[totals] orcid_wiped={n_orcid} openalex_wiped={n_oa} "
-          f"authorship_deleted={n_auth} person_areas_deleted={n_areas} "
-          f"prose_moved={n_prose}")
-
-    if not args.dry_run:
-        for base in PARQUET_OUT:
-            base.mkdir(parents=True, exist_ok=True)
-            for tbl in ("people", "authorship", "person_areas", "provenance"):
-                out = base / f"{tbl}.parquet"
-                conn.execute(f"COPY {tbl} TO '{out}' (FORMAT PARQUET)")
-            print(f"[parquet] refreshed {base}")
-    conn.close()
-    return 0
+    return n_orcid, n_oa, n_auth, n_areas, n_prose
 
 
 if __name__ == "__main__":

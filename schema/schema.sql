@@ -496,10 +496,17 @@ SELECT
     f.hq_lat,
     f.hq_lng,
     f.url,
+    f.parent_org,
+    f.established,
+    f.record_length_years,
+    f.long_term_threshold_met,
+    f.data_portal_url,
     list(DISTINCT ra.label)        AS research_areas,
     list(DISTINCT n.label)         AS networks,
     list(DISTINCT fu.name)         AS funders,
-    list(DISTINCT r.name)          AS regions
+    list(DISTINCT r.name)          AS regions,
+    list(DISTINCT s.label)         AS spheres,
+    list(DISTINCT et.label)        AS ecosystem_types
 FROM facilities f
 LEFT JOIN area_links al        ON al.facility_id = f.facility_id
 LEFT JOIN research_areas ra    ON ra.area_id    = al.area_id
@@ -509,8 +516,14 @@ LEFT JOIN funding_links fl     ON fl.facility_id = f.facility_id
 LEFT JOIN funders fu           ON fu.funder_id   = fl.funder_id
 LEFT JOIN facility_regions fr  ON fr.facility_id = f.facility_id
 LEFT JOIN regions r            ON r.region_id    = fr.region_id
+LEFT JOIN facility_spheres   fs ON fs.facility_id = f.facility_id
+LEFT JOIN spheres            s  ON s.slug         = fs.sphere_slug
+LEFT JOIN facility_ecosystems fes ON fes.facility_id = f.facility_id
+LEFT JOIN ecosystem_types    et ON et.slug        = fes.ecosystem_slug
 GROUP BY f.facility_id, f.canonical_name, f.acronym, f.facility_type,
-         f.country, f.hq_lat, f.hq_lng, f.url;
+         f.country, f.hq_lat, f.hq_lng, f.url, f.parent_org,
+         f.established, f.record_length_years,
+         f.long_term_threshold_met, f.data_portal_url;
 
 -- Region enriched — every polygon with its network + any facilities within.
 CREATE OR REPLACE VIEW v_region_enriched AS
@@ -637,7 +650,9 @@ LEFT JOIN cpi_index_us cpi_anchor ON cpi_anchor.year = 2024;
 -- single-institution model didn't need.
 
 CREATE OR REPLACE TABLE people (
-    person_id           VARCHAR PRIMARY KEY,       -- hash(lower(name)+orcid_or_email_or_idx)
+    person_id           VARCHAR PRIMARY KEY,       -- sha1(lower(name)||'||')[:16]; never re-derived when
+                                                   -- an ORCID/email arrives (older rows used
+                                                   -- name|orcid|email and keep their ids)
     name                VARCHAR NOT NULL,          -- "First Middle Last", display form
     name_family         VARCHAR,                   -- last name (sort key)
     name_given          VARCHAR,                   -- first + middle
@@ -654,7 +669,16 @@ CREATE OR REPLACE TABLE people (
     status              VARCHAR,                   -- active | emeritus | former | unknown
     notes               VARCHAR,
     created_at          TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at          TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    updated_at          TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    -- Provenance for the narrative fields. Appended last so a lake migrated
+    -- in place (lto_db.ensure_schema: ALTER TABLE ADD COLUMN) has the same
+    -- column order as one rebuilt from parquet.
+    bio_source_url      VARCHAR,                   -- page the bio paraphrases; a bio without one
+                                                   -- is not written (scripts/load_people_research.py)
+    bio_retrieved_at    DATE,
+    research_interests_source_url VARCHAR,
+    orcid_source_url    VARCHAR,                   -- page that ties this ORCID to this person
+    homepage_checked_at DATE                       -- last date homepage_url was fetched and resolved
 );
 
 -- Role a person plays at a facility. A single person can hold multiple
@@ -665,11 +689,9 @@ CREATE OR REPLACE TABLE people (
 CREATE OR REPLACE TABLE facility_personnel (
     person_id           VARCHAR NOT NULL REFERENCES people(person_id),
     facility_id         VARCHAR NOT NULL REFERENCES facilities(facility_id),
-    role                VARCHAR NOT NULL,          -- Director | Deputy Director | Associate Director |
-                                                   -- Chief Scientist | Principal Investigator |
-                                                   -- Program Manager | Head Administrator |
-                                                   -- Professor | Research Scientist | Postdoc |
-                                                   -- Graduate Student | Technician | Staff | Emeritus
+    role                VARCHAR NOT NULL,          -- slug from schema/vocab/personnel_roles.csv
+                                                   -- (director | lead-PI | site-manager | ...);
+                                                   -- older loaders also wrote free-text Title Case
     title               VARCHAR,                   -- free-text (e.g. "Professor of Marine Biology")
     is_key_personnel    BOOLEAN DEFAULT false,     -- flag for Director / Chief Scientist / Head Admin
     start_date          DATE,
@@ -679,6 +701,9 @@ CREATE OR REPLACE TABLE facility_personnel (
     retrieved_at        DATE,
     confidence          VARCHAR,                   -- high | medium | low
     notes               VARCHAR,
+    is_current          BOOLEAN,                   -- false = superseded / no longer listed (row kept);
+                                                   -- NULL = not stated (read end_date)
+    evidence            VARCHAR,                   -- short quote from source_url backing the row
     PRIMARY KEY (person_id, facility_id, role)
 );
 
@@ -777,7 +802,6 @@ SELECT
     fp.title,
     p.orcid,
     p.openalex_id,
-    p.email,
     p.homepage_url,
     fp.start_date,
     fp.source_url
@@ -797,7 +821,6 @@ SELECT
     p.name_family,
     p.orcid,
     p.openalex_id,
-    p.email,
     p.homepage_url,
     p.research_interests,
     p.status,
@@ -813,8 +836,7 @@ LEFT JOIN person_areas       pa ON pa.person_id   = p.person_id
 LEFT JOIN research_areas     ra ON ra.area_id     = pa.area_id
 LEFT JOIN authorship         a  ON a.person_id    = p.person_id
 LEFT JOIN publications       pub ON pub.publication_id = a.publication_id
-GROUP BY p.person_id, p.name, p.name_family, p.orcid, p.openalex_id,
-         p.email, p.homepage_url, p.research_interests, p.status;
+GROUP BY p.person_id, p.name, p.name_family, p.orcid, p.openalex_id, p.homepage_url, p.research_interests, p.status;
 
 -- person × research_area enriched with the actual evidence count and
 -- the top topics (drawn from publication_topics) that pushed the

@@ -33,7 +33,8 @@ For each flagged person:
   * Leave publications themselves untouched (they may have legitimate
     co-authors among other people in the dataset).
 
-Then re-export the affected parquets.
+All of it is one lake snapshot; run scripts/export_parquet.py (and
+export_view_caches.py) afterwards to publish the affected parquets.
 
 Idempotent — re-running finds nothing left to wipe.
 
@@ -45,16 +46,13 @@ Usage:
 from __future__ import annotations
 
 import argparse
-import os
-import shutil
 import sys
 from pathlib import Path
 
-import duckdb
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import lto_db  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "lto.duckdb"
-PARQUET_DIRS = [ROOT / "db" / "parquet", ROOT / "public" / "parquet"]
 
 # Strong medical terms: presence in research_interests is a strong negative
 # signal regardless of marine-keyword overlap (because authors with one
@@ -159,11 +157,11 @@ def find_suspects(conn, med_pct_threshold: float):
 
 def wipe(conn, suspects, *, keep_orcid: bool = False) -> dict:
     if not suspects:
-        return {"people": 0, "authorship": 0, "person_areas": 0}
+        return {"people": 0, "authorship_deleted": 0, "person_areas_deleted": 0}
     pids = [s[0] for s in suspects
             if (not keep_orcid) or not (s[4] and s[4].startswith("0000-"))]
     if not pids:
-        return {"people": 0, "authorship": 0, "person_areas": 0}
+        return {"people": 0, "authorship_deleted": 0, "person_areas_deleted": 0}
     placeholder = ",".join(["?"] * len(pids))
 
     n_aut_before = conn.execute(
@@ -196,19 +194,11 @@ def wipe(conn, suspects, *, keep_orcid: bool = False) -> dict:
     }
 
 
-def export_parquet(conn) -> None:
-    for base in PARQUET_DIRS:
-        base.mkdir(parents=True, exist_ok=True)
-        for t in ("people", "authorship", "person_areas"):
-            out = base / f"{t}.parquet"
-            conn.execute(f"COPY {t} TO '{out}' (FORMAT PARQUET)")
-
-
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument("--db", type=Path,
-                    default=Path(os.environ.get("COD_KMAP_DB",
-                                                 str(DEFAULT_DB))))
+    lto_db.add_argparse_catalog(ap)
+    ap.add_argument("--db", dest="catalog", type=Path,
+                    help="deprecated alias of --catalog")
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--med-pct-threshold", type=float, default=25.0,
                     help="Wipe a person whose >= this %% of pubs are "
@@ -218,12 +208,14 @@ def main() -> int:
                          "trip the medicine heuristics. Off by default.")
     args = ap.parse_args()
 
-    if not args.db.exists():
-        print(f"[err] DB not found: {args.db}", file=sys.stderr)
+    print(f"[wipe] lake catalog: {lto_db.catalog_path(args.catalog)}",
+          file=sys.stderr)
+    try:
+        conn = lto_db.connect(read_only=args.dry_run, catalog=args.catalog,
+                              data=args.lake_data)
+    except lto_db.LakeNotFound as e:
+        print(f"[err] {e}", file=sys.stderr)
         return 2
-    print(f"[wipe] DB: {args.db}", file=sys.stderr)
-
-    conn = duckdb.connect(str(args.db))
     suspects = find_suspects(conn, args.med_pct_threshold)
     print(f"[wipe] {len(suspects)} suspects identified", file=sys.stderr)
     print()
@@ -237,16 +229,22 @@ def main() -> int:
         conn.close()
         return 0
 
-    res = wipe(conn, suspects, keep_orcid=args.keep_orcid)
+    with lto_db.transaction(conn, f"wipe_medicine_attributions: "
+                                  f"{len(suspects)} suspects "
+                                  f"(med-pct >= {args.med_pct_threshold:g}"
+                                  + (", keep-orcid" if args.keep_orcid else "")
+                                  + ")"):
+        res = wipe(conn, suspects, keep_orcid=args.keep_orcid)
+        lto_db.assert_integrity(conn, ["people", "authorship", "person_areas"])
     print()
     print(f"[wiped] people: {res['people']}  "
           f"authorship_deleted: {res['authorship_deleted']}  "
           f"person_areas_deleted: {res['person_areas_deleted']}",
           file=sys.stderr)
 
-    export_parquet(conn)
-    print("[wipe] re-exported people, authorship, person_areas parquets",
-          file=sys.stderr)
+    # parquet is export_parquet.py's to write.
+    print("[wipe] run scripts/export_parquet.py and export_view_caches.py "
+          "to publish people, authorship, person_areas", file=sys.stderr)
     conn.close()
     return 0
 

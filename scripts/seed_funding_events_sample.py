@@ -15,8 +15,9 @@ nicely with multi-year funding rows.
 Run from repo root (idempotent)::
 
     python scripts/seed_funding_events_sample.py
-    python scripts/seed_funding_events_sample.py --db db/lto.duckdb
-    python scripts/seed_funding_events_sample.py --export-parquet
+    python scripts/seed_funding_events_sample.py --catalog db/lto_catalog.sqlite
+
+Writes one lake snapshot; run scripts/export_parquet.py to publish.
 """
 from __future__ import annotations
 
@@ -25,11 +26,10 @@ import hashlib
 import sys
 from pathlib import Path
 
-import duckdb
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import lto_db  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "lto.duckdb"
-PARQUET_OUT = [ROOT / "db" / "parquet", ROOT / "public" / "parquet"]
 
 
 # (funder_name_exact, facility_name_like, fiscal_year, amount_usd,
@@ -110,6 +110,16 @@ def resolve_ids(conn, funder_name: str, facility_like: str):
 
 
 def seed(conn) -> tuple[int, int]:
+    # Stage every resolvable row, then one insert-only MERGE (the old
+    # ON CONFLICT (event_id) DO NOTHING).
+    conn.execute("""
+        CREATE OR REPLACE TEMP TABLE _stage_seed_events (
+            event_id VARCHAR, funder_id VARCHAR, facility_id VARCHAR,
+            amount_usd DOUBLE, fiscal_year INTEGER, award_id VARCHAR,
+            award_title VARCHAR, program VARCHAR, relation VARCHAR,
+            source VARCHAR, source_url VARCHAR, retrieved_at DATE,
+            confidence VARCHAR, _seq INTEGER)
+    """)
     inserted = 0
     skipped = 0
     for (fn, fac_like, fy, amt, award, title, program, relation) in SAMPLE:
@@ -121,41 +131,41 @@ def seed(conn) -> tuple[int, int]:
             continue
         eid = event_id(funder_id, fac_id, award, fy)
         conn.execute("""
-            INSERT INTO funding_events (
-                event_id, funder_id, facility_id, amount_usd, fiscal_year,
-                award_id, award_title, program, relation,
-                source, source_url, retrieved_at, confidence
-            )
-            VALUES (?,?,?,?,?,?,?,?,?,?,?,CURRENT_DATE,?)
-            ON CONFLICT (event_id) DO NOTHING
+            INSERT INTO _stage_seed_events
+            VALUES (?,?,?,?,?,?,?,?,?,?,?,CURRENT_DATE,?,?)
         """, [eid, funder_id, fac_id, amt, fy, award, title, program,
               relation, "NSF Award Search",
               f"https://www.nsf.gov/awardsearch/showAward?AWD_ID={award}",
-              "high"])
+              "high", inserted])
         inserted += 1
+    if inserted:
+        stats = lto_db.merge_upsert(conn, "funding_events", ["event_id"],
+                                    "_stage_seed_events", insert_only=True,
+                                    order_by="_seq")
+        print(f"[seed] merge: {stats}")
+    conn.execute("DROP TABLE _stage_seed_events")
     return inserted, skipped
-
-
-def export_parquet(conn) -> None:
-    for base in PARQUET_OUT:
-        base.mkdir(parents=True, exist_ok=True)
-        for table in ("funding_events", "funding_links"):
-            out = base / f"{table}.parquet"
-            conn.execute(f"COPY {table} TO '{out}' (FORMAT PARQUET)")
-            print(f"[parquet] wrote {out}")
 
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--db", type=Path, default=DEFAULT_DB)
-    ap.add_argument("--export-parquet", action="store_true")
+    lto_db.add_argparse_catalog(ap)
+    ap.add_argument("--db", dest="catalog", type=Path,
+                    help="deprecated alias of --catalog")
+    ap.add_argument("--export-parquet", action="store_true",
+                    help="Deprecated: publishing is export_parquet.py's job; "
+                         "this flag only prints that reminder.")
     args = ap.parse_args()
-    if not args.db.exists():
-        print(f"[error] db not found: {args.db}", file=sys.stderr)
+    try:
+        conn = lto_db.connect(catalog=args.catalog, data=args.lake_data)
+    except lto_db.LakeNotFound as e:
+        print(f"[error] {e}", file=sys.stderr)
         return 2
 
-    conn = duckdb.connect(str(args.db))
-    ins, skip = seed(conn)
+    with lto_db.transaction(conn, f"seed_funding_events_sample: "
+                                  f"{len(SAMPLE)} sample NSF LTER funding rows"):
+        ins, skip = seed(conn)
+        lto_db.assert_integrity(conn, ["funding_events"])
     print(f"[seed] inserted {ins}, skipped {skip}")
 
     summary = conn.execute("""
@@ -170,7 +180,8 @@ def main() -> int:
           f"year_range=[{summary[3]}..{summary[4]}]")
 
     if args.export_parquet:
-        export_parquet(conn)
+        print("[parquet] --export-parquet is deprecated: run "
+              "scripts/export_parquet.py (and export_view_caches.py) to publish")
 
     conn.close()
     return 0

@@ -61,7 +61,9 @@ Usage::
 
     python scripts/enrich_registry_identifiers.py --dry-run
     python scripts/enrich_registry_identifiers.py --hydrate-only
-    python scripts/enrich_registry_identifiers.py --export-parquet
+
+Writes go to the DuckLake (scripts/lto_db.py) in one transaction at the
+end of the run; publish with scripts/export_parquet.py.
 """
 from __future__ import annotations
 
@@ -74,15 +76,12 @@ import unicodedata
 from datetime import date
 from pathlib import Path
 
-import duckdb
-
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+import lto_db  # noqa: E402
 import openalex_auth  # noqa: E402
 from enrich_people_orcid import normalize_facility_name  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "lto.duckdb"
-PARQUET_OUT = [ROOT / "db" / "parquet", ROOT / "public" / "parquet"]
 TOPICS_CSV = ROOT / "schema" / "vocab" / "lto_openalex_topics.csv"
 API = "https://api.openalex.org"
 SLEEP = 0.05
@@ -302,26 +301,43 @@ def resolve_by_name_and_institution(sess, name: str, affiliation: str,
     return best, "resolved"
 
 
+# Hydration columns. The identifier columns keep a value already on file
+# (COALESCE(existing, new)); the rest take the new value when OpenAlex
+# supplied one. A None from author_fields() never overwrites anything.
+KEEP_EXISTING = ("orcid", "openalex_id", "google_scholar_id", "homepage_url")
+HYDRATE_COLS = ("openalex_id", "orcid", "google_scholar_id", "homepage_url",
+                "affiliation", "affiliation_ror", "affiliation_country",
+                "works_count", "cited_by_count", "h_index", "i10_index",
+                "two_yr_mean_citedness", "lto_works_count", "lto_share")
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--db", type=Path, default=DEFAULT_DB)
+    lto_db.add_argparse_catalog(ap)
+    ap.add_argument("--db", dest="catalog", type=Path,
+                    help="Deprecated alias of --catalog.")
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--hydrate-only", action="store_true",
                     help="skip name+institution resolution of unidentified rows")
     ap.add_argument("--limit", type=int, default=0)
-    ap.add_argument("--export-parquet", action="store_true")
+    ap.add_argument("--export-parquet", action="store_true",
+                    help="Deprecated no-op: scripts/export_parquet.py is the "
+                         "only writer of public/parquet.")
     args = ap.parse_args()
 
-    if not args.db.exists():
-        print(f"[error] db not found: {args.db}", file=sys.stderr)
+    try:
+        conn = lto_db.connect(catalog=args.catalog, data=args.lake_data)
+    except lto_db.LakeNotFound as e:
+        print(f"[error] {e}", file=sys.stderr)
         return 2
 
     openalex_auth.require_api_key()
     sess = openalex_auth.openalex_session()
-    conn = duckdb.connect(str(args.db))
     lto_topics = lto_topic_ids()
     today = date.today().isoformat()
     prov: list[list] = []
+    hydrate_rows: list[tuple] = []          # (canonical_id, *HYDRATE_COLS)
+    found: list[tuple] = []
 
     # ── hydrate rows that already have an identifier ───────────────────
     rows = conn.execute(
@@ -334,43 +350,38 @@ def main() -> int:
         rows = rows[:args.limit]
     print(f"[hydrate] {len(rows)} registry row(s) with an identifier")
     hydrated = 0
-    for i, (cid, name, orcid, oa_id) in enumerate(rows, 1):
-        a = fetch_author(sess, oa_id=oa_id, orcid=orcid)
-        time.sleep(SLEEP)
-        if not a:
-            continue
-        f = author_fields(a, lto_topics)
-        # Never let hydration overwrite an ORCID already on file — if
-        # OpenAlex disagrees, that is a finding to inspect, not to apply.
-        if orcid and f["orcid"] and f["orcid"] != orcid:
-            prov.append([cid, "orcid-conflict", f["orcid"], "openalex-author-record",
-                         f"OpenAlex author {f['openalex_id']} reports ORCID "
-                         f"{f['orcid']} but the registry holds {orcid}; not applied",
-                         f"{API}/authors/{f['openalex_id']}", "low", today])
-            f.pop("orcid")
-        sets, vals = [], []
-        for k, v in f.items():
-            if v is None:
+    interrupted = False
+    try:
+        for i, (cid, name, orcid, oa_id) in enumerate(rows, 1):
+            a = fetch_author(sess, oa_id=oa_id, orcid=orcid)
+            time.sleep(SLEEP)
+            if not a:
                 continue
-            sets.append(f"{k} = COALESCE({k}, ?)" if k in
-                        ("orcid", "openalex_id", "google_scholar_id", "homepage_url")
-                        else f"{k} = ?")
-            vals.append(v)
-        if not sets:
-            continue
-        if not args.dry_run:
-            conn.execute(f"UPDATE person_registry SET {', '.join(sets)} "
-                         f"WHERE canonical_id = ?", vals + [cid])
-        hydrated += 1
-        prov.append([cid, "hydrate", f.get("openalex_id"), "openalex-author-record",
-                     f"metrics + affiliation from OpenAlex author record",
-                     f"{API}/authors/{f.get('openalex_id')}", "high", today])
-        if i % 50 == 0:
-            print(f"  [hydrate] {i}/{len(rows)}")
+            f = author_fields(a, lto_topics)
+            # Never let hydration overwrite an ORCID already on file — if
+            # OpenAlex disagrees, that is a finding to inspect, not to apply.
+            if orcid and f["orcid"] and f["orcid"] != orcid:
+                prov.append([cid, "orcid-conflict", f["orcid"], "openalex-author-record",
+                             f"OpenAlex author {f['openalex_id']} reports ORCID "
+                             f"{f['orcid']} but the registry holds {orcid}; not applied",
+                             f"{API}/authors/{f['openalex_id']}", "low", today])
+                f.pop("orcid")
+            if all(v is None for v in f.values()):
+                continue
+            hydrate_rows.append((cid, *(f.get(k) for k in HYDRATE_COLS)))
+            hydrated += 1
+            prov.append([cid, "hydrate", f.get("openalex_id"), "openalex-author-record",
+                         f"metrics + affiliation from OpenAlex author record",
+                         f"{API}/authors/{f.get('openalex_id')}", "high", today])
+            if i % 50 == 0:
+                print(f"  [hydrate] {i}/{len(rows)}")
+    except KeyboardInterrupt:
+        interrupted = True
+        print("\n[interrupted] writing the hydration collected so far")
     print(f"[hydrate] filled {hydrated} row(s)")
 
-    if args.hydrate_only:
-        _finish(conn, prov, args)
+    if args.hydrate_only or interrupted:
+        _finish(conn, prov, hydrate_rows, found, args)
         return 0
 
     # ── resolve the rows that have no identifier at all ────────────────
@@ -392,26 +403,24 @@ def main() -> int:
     print(f"\n[resolve] {len(unresolved)} row(s) with no persistent identifier")
 
     decisions: dict[str, int] = {}
-    found: list[tuple] = []
-    for i, (src, sid, name, aff) in enumerate(unresolved, 1):
-        a, decision = resolve_by_name_and_institution(sess, name, aff or "")
-        time.sleep(SLEEP)
-        decisions[decision] = decisions.get(decision, 0) + 1
-        if decision == "resolved" and a:
-            f = author_fields(a, lto_topics)
-            found.append((src, sid, name, aff, f))
-        if i % 50 == 0:
-            print(f"  [resolve] {i}/{len(unresolved)}  {decisions}")
+    try:
+        for i, (src, sid, name, aff) in enumerate(unresolved, 1):
+            a, decision = resolve_by_name_and_institution(sess, name, aff or "")
+            time.sleep(SLEEP)
+            decisions[decision] = decisions.get(decision, 0) + 1
+            if decision == "resolved" and a:
+                f = author_fields(a, lto_topics)
+                found.append((src, sid, name, aff, f))
+            if i % 50 == 0:
+                print(f"  [resolve] {i}/{len(unresolved)}  {decisions}")
+    except KeyboardInterrupt:
+        print("\n[interrupted] writing the identifiers resolved so far")
 
     print(f"[resolve] {decisions}")
     print(f"[resolve] {len(found)} row(s) gained an identifier")
 
     if not args.dry_run and found:
         for src, sid, name, aff, f in found:
-            conn.execute(
-                "UPDATE people SET orcid = COALESCE(orcid, ?), "
-                "openalex_id = COALESCE(openalex_id, ?) WHERE person_id = ?",
-                [f.get("orcid"), f.get("openalex_id"), sid])
             cid = (f"orcid:{f['orcid']}" if f.get("orcid")
                    else f"openalex:{f['openalex_id']}")
             prov.append([cid, "resolve", f.get("openalex_id"),
@@ -421,26 +430,60 @@ def main() -> int:
                          f"compatible given names, and a shared distinctive "
                          f"institution token against '{(aff or '')[:60]}'",
                          f"{API}/authors/{f.get('openalex_id')}", "medium", today])
+
+    _finish(conn, prov, hydrate_rows, found, args)
+    if not args.dry_run and found:
         print("[resolve] wrote identifiers back to the source table — "
               "re-run scripts/build_person_registry.py to fold them in")
-
-    _finish(conn, prov, args)
     return 0
 
 
-def _finish(conn, prov, args) -> None:
-    if prov and not args.dry_run:
-        conn.executemany(
-            "INSERT INTO person_identity_source (canonical_id, field, value, "
-            "method, evidence, source_url, confidence, retrieved_at) "
-            "VALUES (?,?,?,?,?,?,?,?)", prov)
+def _finish(conn, prov, hydrate_rows, found, args) -> None:
+    """Write everything the run collected in one lake transaction."""
+    if args.dry_run or not (prov or hydrate_rows or found):
+        conn.close()
+        return
+    with lto_db.transaction(
+            conn, f"enrich_registry_identifiers: hydrated {len(hydrate_rows)}, "
+                  f"resolved {len(found)}, {len(prov)} provenance row(s)"):
+        if hydrate_rows:
+            conn.execute(
+                "CREATE OR REPLACE TEMP TABLE _hydrate AS SELECT canonical_id, "
+                + ", ".join(HYDRATE_COLS) + " FROM person_registry LIMIT 0")
+            conn.executemany(
+                f"INSERT INTO _hydrate VALUES ({', '.join('?' * (1 + len(HYDRATE_COLS)))})",
+                hydrate_rows)
+            sets = ", ".join(
+                f"{k} = COALESCE(person_registry.{k}, s.{k})" if k in KEEP_EXISTING
+                else f"{k} = COALESCE(s.{k}, person_registry.{k})"
+                for k in HYDRATE_COLS)
+            conn.execute(f"UPDATE person_registry SET {sets} FROM _hydrate s "
+                         f"WHERE person_registry.canonical_id = s.canonical_id")
+        if found:
+            conn.execute("CREATE OR REPLACE TEMP TABLE _resolved "
+                         "(person_id VARCHAR, orcid VARCHAR, openalex_id VARCHAR)")
+            conn.executemany("INSERT INTO _resolved VALUES (?, ?, ?)",
+                             [(sid, f.get("orcid"), f.get("openalex_id"))
+                              for _src, sid, _n, _a, f in found])
+            conn.execute("""
+                UPDATE people SET orcid = COALESCE(people.orcid, s.orcid),
+                                  openalex_id = COALESCE(people.openalex_id, s.openalex_id)
+                FROM   _resolved s WHERE people.person_id = s.person_id
+            """)
+        if prov:
+            conn.executemany(
+                "INSERT INTO person_identity_source (canonical_id, field, value, "
+                "method, evidence, source_url, confidence, retrieved_at) "
+                "VALUES (?,?,?,?,?,?,?,?)", prov)
+        lto_db.assert_integrity(conn, ["person_registry", "people",
+                                       "person_identity_source"])
+    print(f"[lake] person_registry hydrated={len(hydrate_rows)}  "
+          f"people resolved={len(found)}")
+    if prov:
         print(f"[provenance] +{len(prov)} assertion(s)")
-    if args.export_parquet and not args.dry_run:
-        for base in PARQUET_OUT:
-            base.mkdir(parents=True, exist_ok=True)
-            for t in ("person_registry", "person_identity_source", "people"):
-                conn.execute(f"COPY {t} TO '{base / (t + '.parquet')}' (FORMAT PARQUET)")
-            print(f"[parquet] refreshed {base}")
+    if args.export_parquet:
+        print("[parquet] --export-parquet is a no-op now; "
+              "run scripts/export_parquet.py to publish")
     conn.close()
 
 

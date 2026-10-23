@@ -9,6 +9,20 @@ permissions:
   contents: write
   pull-requests: write
 
+# The PR step also needs the repo setting "Allow GitHub Actions to create
+# and approve pull requests" (Settings -> Actions -> General). GitHub also
+# disables a scheduled workflow after 60 days without repo activity
+# ("disabled_inactivity"); re-enable with `gh workflow enable "Refresh data"`.
+# Neither is fixable from this file; see CLAUDE.md "CI workflows".
+#
+# The loaders below keep created_at/updated_at on rows whose content did
+# not change, so an unchanged week produces no data diff (and no PR).
+#
+# This does NOT run scripts/ingest.py. The national raw JSON is not in the
+# repo, so ingest has nothing to load on a fresh clone; public/parquet/ is
+# the only copy of those facilities. Instead the lake is rebuilt from that
+# parquet and only the loaders whose inputs ARE committed are re-run.
+
 jobs:
   refresh:
     runs-on: ubuntu-latest
@@ -16,11 +30,22 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
+          # duckdb 2.0 needs Python >= 3.11.
           python-version: "3.12"
           cache: pip
       - run: pip install -r requirements.txt
-      - name: Ingest raw data
-        run: python scripts/ingest.py
+      # The DuckLake store (db/lto_catalog.sqlite + db/lake/) is gitignored
+      # local state; every run rebuilds it from the committed parquet.
+      # The ducklake/sqlite extensions are fetched from extensions.duckdb.org
+      # on first use. Nothing else is cached.
+      - name: Rebuild DuckLake from committed parquet
+        run: python scripts/rebuild_lake_from_parquet.py
+      - name: Load ARID layer (data/raw/R-ARID + data/seed/arid_*.csv)
+        run: python scripts/load_arid.py
+      - name: Load data archives (data/raw/J-ENVIRODATA, J-AZWATER, ...)
+        run: python scripts/load_lto_archives.py
+      - name: Derive facilities.state (Census TIGERweb)
+        run: python scripts/backfill_facility_state.py
       - name: Run QA
         run: python scripts/qa.py
       - name: Export Parquet + GeoJSON
@@ -34,11 +59,14 @@ jobs:
           title: "chore(data): weekly refresh"
           commit-message: "chore(data): weekly refresh"
           body: |
-            Automated weekly data refresh produced by `scripts/ingest.py`.
-            Review Parquet and GeoJSON diffs before merging.
+            Automated weekly data refresh: DuckLake rebuilt from the
+            committed parquet, committed-input loaders re-run
+            (`load_arid.py`, `load_lto_archives.py`,
+            `backfill_facility_state.py`), then `qa.py` and re-export.
+            Review Parquet, GeoJSON and cache diffs before merging.
           add-paths: |
-            db/parquet/*.parquet
             public/parquet/*.parquet
             public/facilities.geojson
             public/cache/*.json
+            data/seed/facility_state.csv
           labels: data-refresh
