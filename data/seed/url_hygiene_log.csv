@@ -486,3 +486,69 @@ people,9d3301b5bedc7bb0,Carl A. Roland,homepage_url,https://www.nps.gov/im/cakn/
 people,504dc47213217627,Margaret R. MacCluskie,homepage_url,https://www.nps.gov/im/cakn/contact.htm,,null:^https?://www\.nps\.gov/im/[a-z]+/contact(?:us)?\.htm$,2026-05-07
 people,2ea743ac79d858a6,Jean L. Steiner,homepage_url,https://www.ars.usda.gov/plains-area/el-reno-ok/grazinglands-research-laboratory/people/,,null:^https?://www\.ars\.usda\.gov/[a-z-]+/[a-z-]+/[a-z-]+/people/?$,2026-05-07
 people,413ae75281f8da75,Mike Britten,homepage_url,https://www.nps.gov/im/romn/contact.htm,,null:^https?://www\.nps\.gov/im/[a-z]+/contact(?:us)?\.htm$,2026-05-07
+people,02617aa472d365ef,Dennis R. Helsel,homepage_url,https://practicalstats.com/,,null:^https?://[^/]+/?$,2026-10-23
+people,03d2c5d35441a78b,Robert J. Toonen,homepage_url,https://tobolab.org/,,null:^https?://[^/]+/?$,2026-10-23
+people,065ae200269c6713,David Burke,homepage_url,https://floridakeys.noaa.gov/about/staff.html,,null:^https?://[^/]+/about/staff\.(?:html|php|aspx)/?$,2026-10-23
+people,09a824a3618b53ef,Jessica Rowland,homepage_url,https://abqstew.com/,,null:^https?://[^/]+/?$,2026-10-23
+people,0b8dce97a9584859,Marcy Litvak,homepage_url,https://www.litvaklab.org/,,null:^https?://[^/]+/?$,2026-10-23
+people,1252478f7bf2a9b3,Jeremy Goldbogen,homepage_url,https://hopkinsmarinestation.stanford.edu/people,,null:^https?://[^/]+/people/?$,2026-10-23
+people,145392e0afbdd03e,Adam Langley,homepage_url,https://jadamlangley.wordpress.com/,,null:^https?://[^/]+/?$,2026-10-23
+people,1b3e397a2768eb14,Martin Tresguerres,homepage_url,https://mtresguerres.scrippsprofiles.ucsd.edu/,,null:^https?://[^/]+/?$,2026-10-23
+people,21eefc825ce2a6c2,Lisa Marshall,homepage_url,https://gbep.texas.gov/,,null:^https?://[^/]+/?$,2026-10-23
+people,2216dae2ac06adae,Suzanne L. Strom,homepage_url,https://stromlab.wwu.edu/,,null:^https?://[^/]+/?$,2026-10-23
+people,3e16ca4a8e369987,Jonathan S. Lefcheck,homepage_url,https://jonlefcheck.net/,,null:^https?://[^/]+/?$,2026-10-23
+people,3ed0239c3096f7e6,Curtis C. Bohlen,homepage_url,https://www.cascobayestuary.org/about-us/staff/,,null:^https?://[^/]+/about-us/staff/?$,2026-10-23
+people,404dcf841bfdb26c,Michael Rocca,homepage_url,http://www.mikerocca.com/,,null:^https?://[^/]+/?$,2026-10-23
+people,5a40a871746aa17c,Clark Alexander,homepage_url,https://www.skio.uga.edu/,,null:^https?://[^/]+/?$,2026-10-23
+people,5ba16ec5c660b06e,Laura Crossey,homepage_url,https://lcrossey.com,,null:^https?://[^/]+/?$,2026-10-23
+people,5feb89c455300ff0,Max C. N. Castorani,homepage_url,https://castorani.evsc.virginia.edu/,,null:^https?://[^/]+/?$,2026-10-23
+people,6200adc5b7f152a9,Pete DeCola,homepage_url,https://stellwagen.noaa.gov/about/staff.html,,null:^https?://[^/]+/about/staff\.(?:html|php|aspx)/?$,2026-10-23
+people,621508ca8d0282a1,Kevin Smith,homepage_url,https://mdcoastalbays.org/,,null:^https?://[^/]+/?$,2026-10-23
+people,621e14ebbafe8c13,Megan N. Dethier,homepage_url,https://megandethier.wordpress.com/,,null:^https?://[^/]+/?$,2026-10-23
+people,65b49f356bcaf79e,Eve-Lyn Hinckley,homepage_url,https://www.ebgscience.org/,,null:^https?://[^/]+/?$,2026-10-23
+people,673714ec2cc72e61,Becky Bixby,homepage_url,https://bbixby.weebly.com/,,null:^https?://[^/]+/?$,2026-10-23
+people,6cf585b07dcd7587,Christopher C. Witt,homepage_url,https://www.unmornithology.org/,,null:^https?://[^/]+/?$,2026-10-23
+people,6f64a8c2116cd3a2,Alex Harper,homepage_url,https://cencoos.org/,,null:^https?://[^/]+/?$,2026-10-23
+people,70e88a89a0d1d4df,Marygold Walsh-Dilley,homepage_url,https://www.marygoldwd.com/,,null:^https?://[^/]+/?$,2026-10-23
+people,72bf2df40aab5e9a,William Monty Graham,homepage_url,https://serc.si.edu/about-us/staff,,null:^https?://[^/]+/about-us/staff/?$,2026-10-23
+people,773368924c8acdab,Thomas Turner,homepage_url,https://www.tacl.online/,,null:^https?://[^/]+/?$,2026-10-23
+people,78c14f4c0045ff7e,Mike Crowley,homepage_url,https://maracoos.org/,,null:^https?://[^/]+/?$,2026-10-23
+people,820647e48e2e96f8,Sarah Fernald,homepage_url,https://hrnerr.org/our-staff/,,null:^https?://[^/]+/our-staff/?$,2026-10-23
+people,864ab8d9adc0835a,Katie Swanson,homepage_url,https://www.missionaransas.org/our-team/,,null:^https?://[^/]+/our-team/?$,2026-10-23
+people,8c218de18239a239,Steve Canty,homepage_url,https://marinegeo.si.edu/,,null:^https?://[^/]+/?$,2026-10-23
+people,8fc197f59630d462,Victoria Congdon,homepage_url,https://www.missionaransas.org/our-team/,,null:^https?://[^/]+/our-team/?$,2026-10-23
+people,92ed867947f8fdb0,Paul C. Hanson,homepage_url,https://hanson.limnology.wisc.edu/,,null:^https?://[^/]+/?$,2026-10-23
+people,9aa4789346786e1f,Stephen R. Palumbi,homepage_url,https://palumbilab.stanford.edu,,null:^https?://[^/]+/?$,2026-10-23
+people,9b738567dbc65f91,Caitlin Sweeney,homepage_url,https://www.sfestuary.org/staff/,,null:^https?://[^/]+/staff/?$,2026-10-23
+people,9cd3a412f030b098,Ann Kitajima,homepage_url,https://www.mbnep.org/our-team/,,null:^https?://[^/]+/our-team/?$,2026-10-23
+people,9d0c1da64e27d162,Megan Medina,homepage_url,https://sccoos.org/,,null:^https?://[^/]+/?$,2026-10-23
+people,9e008ea3b82ccf90,Clarissa Anderson,homepage_url,https://cra002.scrippsprofiles.ucsd.edu/,,null:^https?://[^/]+/?$,2026-10-23
+people,9edcb400387ce56b,Deb Kelley,homepage_url,https://oceanobservatories.org/,,null:^https?://[^/]+/?$,2026-10-23
+people,a1d5eda865bb38de,Ralph F. Keeling,homepage_url,https://rkeeling.scrippsprofiles.ucsd.edu/,,null:^https?://[^/]+/?$,2026-10-23
+people,a349444c1fa4d68f,Seth Newsome,homepage_url,https://sethnewsome.org/,,null:^https?://[^/]+/?$,2026-10-23
+people,ab6f93d07690909f,Michelle Felterman,homepage_url,https://btnep.org/,,null:^https?://[^/]+/?$,2026-10-23
+people,b0057acbfc0c61d3,Cristina D. Takacs-Vesbach,homepage_url,https://www.wildmicrobiome.org/,,null:^https?://[^/]+/?$,2026-10-23
+people,b0310e7bdaa70df8,Andrew McGowan,homepage_url,https://barnegatbaypartnership.org/,,null:^https?://[^/]+/?$,2026-10-23
+people,b45f8af5a4ea7fee,Tonna-Marie Surgeon Rogers,homepage_url,https://waquoitbayreserve.org/about/staff,,null:^https?://[^/]+/about/staff/?$,2026-10-23
+people,b517c254a31c6ad0,Mary Ford,homepage_url,https://maracoos.org/,,null:^https?://[^/]+/?$,2026-10-23
+people,bf45e655d9307d6d,Erica Seiden,homepage_url,https://coast.noaa.gov/about/staff/,,null:^https?://[^/]+/about/staff/?$,2026-10-23
+people,c15f16afa2789b8a,Bob Cowen,homepage_url,https://hmsc.oregonstate.edu/,,null:^https?://[^/]+/?$,2026-10-23
+people,c29b86a25536a8aa,Alex Webster,homepage_url,https://alexjwebster.weebly.com/,,null:^https?://[^/]+/?$,2026-10-23
+people,c3b93845ce50b80a,Caitlin Chaffee,homepage_url,http://nbnerr.org/about/,,null:^https?://[^/]+/about/?$,2026-10-23
+people,c4578832400f873c,Cory Riley,homepage_url,https://greatbay.org/,,null:^https?://[^/]+/?$,2026-10-23
+people,d5cfd9aea51b7b42,Jose Cerrato,homepage_url,https://eh2o.unm.edu/,,null:^https?://[^/]+/?$,2026-10-23
+people,d7a9966fec318ef3,Melinda D. Smith,homepage_url,https://smithlab.colostate.edu/,,null:^https?://[^/]+/?$,2026-10-23
+people,d8c601099de23ef4,Jennifer Dorton,homepage_url,https://secoora.org/,,null:^https?://[^/]+/?$,2026-10-23
+people,dc047dd3d3d003d8,Stan Rogers,homepage_url,https://graysreef.noaa.gov/about/staff.html,,null:^https?://[^/]+/about/staff\.(?:html|php|aspx)/?$,2026-10-23
+people,dc65fc5efd99e015,Roy A. Armstrong,homepage_url,http://bio-optics.uprm.edu,,null:^https?://[^/]+/?$,2026-10-23
+people,e02aed9e576cd9c3,Ralph Garono,homepage_url,https://lakesuperiornerr.org/,,null:^https?://[^/]+/?$,2026-10-23
+people,e6f7a86fd90b5242,Ayesha Gray,homepage_url,https://grandbaynerr.org/,,null:^https?://[^/]+/?$,2026-10-23
+people,ebf6b29af8901951,Julio M. Morell,homepage_url,https://caricoos.org/,,null:^https?://[^/]+/?$,2026-10-23
+people,edafe4cd6666d5af,Hatim Geli,homepage_url,https://hydrologylab.nmsu.edu/,,null:^https?://[^/]+/?$,2026-10-23
+people,efbb6cbe883dcb6f,Michael J. Andersen,homepage_url,https://www.andersenlabunm.org/,,null:^https?://[^/]+/?$,2026-10-23
+people,f11b01ff1c76bb6a,Mark D. Ohman,homepage_url,https://mohman.scrippsprofiles.ucsd.edu/,,null:^https?://[^/]+/?$,2026-10-23
+people,f2d526f99f53d312,Thomas De Pree,homepage_url,https://thomasdepree.com/,,null:^https?://[^/]+/?$,2026-10-23
+people,f2ec194405d50b28,Melissa Iwamoto,homepage_url,https://www.pacioos.hawaii.edu/contact/,,null:^https?://[^/]+/contact/?$,2026-10-23
+people,f4494c5a205afa79,Michelle C. Mack,homepage_url,https://macklab.nau.edu/,,null:^https?://[^/]+/?$,2026-10-23
+people,f4cb8eeebc939f37,Stuart E. Jones,homepage_url,https://www.stuartjoneslab.com/,,null:^https?://[^/]+/?$,2026-10-23
+people,fba4e46d4139e884,Patricia Chardón-Maldonado,homepage_url,https://caricoos.org/,,null:^https?://[^/]+/?$,2026-10-23
