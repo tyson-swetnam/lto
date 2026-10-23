@@ -1,11 +1,18 @@
 """cod-kmap ingest pipeline (D2 deliverable).
 
 Reads all research-agent JSON under data/raw/R*/, normalizes and deduplicates
-records, geocodes missing coordinates, loads everything into
-db/lto.duckdb per schema/schema.sql, and records provenance.
+records, geocodes missing coordinates, upserts everything into the DuckLake
+store of record (db/lto_catalog.sqlite + db/lake/, see scripts/lto_db.py)
+per schema/schema.sql, and records provenance.
+
+The lake must exist (scripts/rebuild_lake_from_parquet.py). This is an
+upsert, not a rebuild: the national raw inputs are not in the repo, so
+facilities already in the lake and absent from data/raw stay as they are.
+One run is one lake snapshot; populate_regions (unless --skip-regions)
+writes a second.
 
 Usage:
-    python scripts/ingest.py                # full rebuild
+    python scripts/ingest.py                # upsert data/raw/R*/ into the lake
     python scripts/ingest.py --skip-geocode # use cache only
 """
 
@@ -26,13 +33,13 @@ from typing import Any, Iterable
 import duckdb
 from rapidfuzz import fuzz
 
-from geocode import Geocoder
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import lto_db  # noqa: E402
+from geocode import Geocoder  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 RAW_DIR = ROOT / "data" / "raw"
-SCHEMA_SQL = ROOT / "schema" / "schema.sql"
 VOCAB_DIR = ROOT / "schema" / "vocab"
-DB_PATH = ROOT / "db" / "lto.duckdb"
 
 
 def facility_id(name: str, acronym: str | None) -> str:
@@ -194,12 +201,19 @@ def geocode_missing(records: list[Record], skip: bool) -> None:
                 hq["lat"], hq["lng"] = coords
 
 
-def ensure_schema(conn: duckdb.DuckDBPyConnection) -> None:
+def load_spatial(conn: duckdb.DuckDBPyConnection) -> None:
     try:
         conn.execute("INSTALL spatial; LOAD spatial;")
     except duckdb.Error as e:
         print(f"[warn] spatial extension unavailable ({e}); continuing without geom support")
-    conn.execute(SCHEMA_SQL.read_text())
+
+
+def ensure_schema(conn: duckdb.DuckDBPyConnection) -> None:
+    # schema.sql cannot run against the lake (it fails on the first
+    # PRIMARY KEY); lto_db.ensure_schema adds whatever tables or columns
+    # it has gained since the lake was built, and never drops anything.
+    for change in lto_db.ensure_schema(conn):
+        print(f"[schema] {change}")
 
 
 def load_vocab(conn: duckdb.DuckDBPyConnection) -> None:
@@ -240,79 +254,50 @@ def load_vocab(conn: duckdb.DuckDBPyConnection) -> None:
         )
 
 
-def insert_records(conn: duckdb.DuckDBPyConnection, records: list[Record]) -> None:
+def _stage(conn: duckdb.DuckDBPyConnection, name: str, cols: str, rows: list[tuple]) -> None:
+    """A TEMP table of rows from Python, with a `_seq` column in input
+    order so merge_upsert can keep the first (INSERT OR IGNORE) or the
+    last (INSERT OR REPLACE) of two rows with the same key."""
+    conn.execute(f"CREATE OR REPLACE TEMP TABLE {name} ({cols}, _seq INTEGER)")
+    if rows:
+        n = cols.count(",") + 2
+        conn.executemany(f"INSERT INTO {name} VALUES ({', '.join('?' * n)})",
+                         [(*r, i) for i, r in enumerate(rows)])
+
+
+def insert_records(conn: duckdb.DuckDBPyConnection, records: list[Record]) -> dict:
+    """Upsert the records and their link rows. Returns merge_upsert stats
+    per table.
+
+    Rows are collected per table and written with one MERGE each. The
+    lake checks no foreign keys, so the link rows whose vocab slug is
+    unknown, which DuckDB used to reject one by one, are filtered out
+    by a join against the vocab table instead (still silently: a single
+    typo in an R-agent's output doesn't tank the ingest)."""
     today = datetime.now(timezone.utc).date()
 
+    fac, spheres, ecos, lzs, locs, areas, nets = [], [], [], [], [], [], []
+    funders, events, prov = [], [], []
     for r in records:
         d = r.raw
-        conn.execute(
-            # Named columns, not positional: the table has gained columns
-            # (ror, state) that raw records don't carry, and a positional
-            # VALUES list breaks every time one is added.
-            """INSERT OR REPLACE INTO main.facilities
-               (facility_id, canonical_name, acronym, parent_org, facility_type,
-                country, region, hq_address, hq_lat, hq_lng, url, contact,
-                established, record_length_years, long_term_threshold_met,
-                data_portal_url, created_at)
-               VALUES
-               (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)""",
-            [
-                r.fid,
-                d.get("canonical_name"),
-                d.get("acronym"),
-                d.get("parent_org"),
-                d.get("facility_type"),
-                d.get("country"),
-                d.get("region"),
-                (d.get("hq") or {}).get("address"),
-                (d.get("hq") or {}).get("lat"),
-                (d.get("hq") or {}).get("lng"),
-                d.get("url"),
-                d.get("contact"),
-                d.get("established"),
-                d.get("record_length_years"),
-                d.get("long_term_threshold_met"),
-                d.get("data_portal_url"),
-            ],
-        )
+        hq = d.get("hq") or {}
+        fac.append((
+            r.fid, d.get("canonical_name"), d.get("acronym"), d.get("parent_org"),
+            d.get("facility_type"), d.get("country"), d.get("region"),
+            hq.get("address"), hq.get("lat"), hq.get("lng"), d.get("url"),
+            d.get("contact"), d.get("established"), d.get("record_length_years"),
+            d.get("long_term_threshold_met"), d.get("data_portal_url"),
+        ))
 
-        # LTO sphere / ecosystem / life-zone link tables. Unknown slugs are
-        # silently dropped (rather than failing the whole record) so a
-        # single typo in an R-agent's output doesn't tank the ingest.
+        # LTO sphere / ecosystem / life-zone link tables.
         primary = d.get("primary_sphere")
         if primary:
-            try:
-                conn.execute(
-                    "INSERT OR IGNORE INTO main.facility_spheres VALUES (?, ?, 'primary')",
-                    [r.fid, primary],
-                )
-            except duckdb.ConstraintException:
-                pass
+            spheres.append((r.fid, primary, "primary"))
         for sec in d.get("secondary_spheres") or []:
             if sec and sec != primary:
-                try:
-                    conn.execute(
-                        "INSERT OR IGNORE INTO main.facility_spheres VALUES (?, ?, 'secondary')",
-                        [r.fid, sec],
-                    )
-                except duckdb.ConstraintException:
-                    pass
-        for eco in d.get("ecosystem_types") or []:
-            try:
-                conn.execute(
-                    "INSERT OR IGNORE INTO main.facility_ecosystems VALUES (?, ?)",
-                    [r.fid, eco],
-                )
-            except duckdb.ConstraintException:
-                pass
-        for lz in d.get("life_zones") or []:
-            try:
-                conn.execute(
-                    "INSERT OR IGNORE INTO main.facility_life_zones VALUES (?, ?)",
-                    [r.fid, lz],
-                )
-            except duckdb.ConstraintException:
-                pass
+                spheres.append((r.fid, sec, "secondary"))
+        ecos += [(r.fid, eco) for eco in d.get("ecosystem_types") or []]
+        lzs += [(r.fid, lz) for lz in d.get("life_zones") or []]
 
         locations: list[dict] = d.get("locations") or []
         if not locations and d.get("hq"):
@@ -324,77 +309,125 @@ def insert_records(conn: duckdb.DuckDBPyConnection, records: list[Record]) -> No
                 "role": "headquarters",
             }]
         for loc in locations:
-            conn.execute(
-                "INSERT OR REPLACE INTO main.locations VALUES (?,?,?,?,?,?,?)",
-                [
-                    location_id(r.fid, loc.get("label")),
-                    r.fid,
-                    loc.get("label"),
-                    loc.get("address"),
-                    loc.get("lat"),
-                    loc.get("lng"),
-                    loc.get("role") or "headquarters",
-                ],
-            )
+            locs.append((
+                location_id(r.fid, loc.get("label")), r.fid, loc.get("label"),
+                loc.get("address"), loc.get("lat"), loc.get("lng"),
+                loc.get("role") or "headquarters",
+            ))
 
-        for area in d.get("research_areas") or []:
-            try:
-                conn.execute(
-                    "INSERT OR IGNORE INTO main.area_links VALUES (?, ?)",
-                    [r.fid, area],
-                )
-            except duckdb.ConstraintException:
-                pass  # unknown research_area slug — drop the link silently
-
+        areas += [(r.fid, area) for area in d.get("research_areas") or []]
         for net in d.get("networks") or []:
-            net_slug = net.lower() if isinstance(net, str) else str(net).lower()
-            try:
-                conn.execute(
-                    "INSERT OR IGNORE INTO main.network_membership VALUES (?, ?, ?)",
-                    [r.fid, net_slug, None],
-                )
-            except duckdb.ConstraintException:
-                pass  # unknown network slug — drop the link silently
+            nets.append((r.fid, net.lower() if isinstance(net, str) else str(net).lower()))
 
         for funder in d.get("funders") or []:
             fname = funder.get("name") if isinstance(funder, dict) else str(funder)
             if not fname:
                 continue
             fuid = funder_id(fname)
-            conn.execute(
-                "INSERT OR IGNORE INTO main.funders VALUES (?, ?, NULL, NULL, NULL, NULL)",
-                [fuid, fname],
-            )
+            funders.append((fuid, fname))
             # funding_links is a backwards-compat view over funding_events
             # in the LTO schema. Insert into funding_events directly.
-            try:
-                conn.execute(
-                    """INSERT OR IGNORE INTO main.funding_events
-                       (event_id, funder_id, facility_id, relation, source_url, retrieved_at, confidence)
-                       VALUES (?, ?, ?, ?, ?, CURRENT_DATE, 'low')""",
-                    [
-                        location_id(fuid, r.fid),  # deterministic event_id stub
-                        fuid,
-                        r.fid,
-                        (funder.get("relation") if isinstance(funder, dict) else None),
-                        d.get("provenance", {}).get("source_url"),
-                    ],
-                )
-            except duckdb.Error:
-                pass  # event_id collision or schema drift; non-fatal
-
-        prov = d.get("provenance") or {}
-        conn.execute(
-            "INSERT INTO main.provenance VALUES (?, ?, ?, ?, ?, ?)",
-            [
-                "facility",
+            events.append((
+                location_id(fuid, r.fid),  # deterministic event_id stub
+                fuid,
                 r.fid,
-                prov.get("source_url"),
-                prov.get("retrieved_at") or today.isoformat(),
-                prov.get("confidence", "medium"),
-                r.agent,
-            ],
-        )
+                (funder.get("relation") if isinstance(funder, dict) else None),
+                d.get("provenance", {}).get("source_url"),
+            ))
+
+        p = d.get("provenance") or {}
+        prov.append((
+            "facility", r.fid, p.get("source_url"),
+            p.get("retrieved_at") or today.isoformat(),
+            p.get("confidence", "medium"), r.agent,
+        ))
+
+    stats: dict[str, dict] = {}
+    up = lto_db.merge_upsert
+
+    # Named columns, not positional: the table has gained columns (ror,
+    # state) that raw records don't carry. Those, and created_at, keep
+    # their lake values on a match; a new row gets created_at = now.
+    _stage(conn, "_s_facilities",
+           "facility_id VARCHAR, canonical_name VARCHAR, acronym VARCHAR, "
+           "parent_org VARCHAR, facility_type VARCHAR, country VARCHAR, region VARCHAR, "
+           "hq_address VARCHAR, hq_lat DOUBLE, hq_lng DOUBLE, url VARCHAR, contact VARCHAR, "
+           "established INTEGER, record_length_years INTEGER, "
+           "long_term_threshold_met BOOLEAN, data_portal_url VARCHAR", fac)
+    stats["facilities"] = up(conn, "facilities", ["facility_id"], "_s_facilities",
+                             order_by="_seq DESC")
+
+    def links(table: str, cols: str, rows: list[tuple], key: list[str],
+              vocab: str, vocab_col: str, ref_col: str,
+              replace_for: set[str] | None = None, insert_only: bool = True) -> None:
+        """Write one link table. ``replace_for``: facilities whose raw
+        record carries this field, so the record is the whole truth for
+        it — their existing rows are deleted first and a link the record
+        dropped does not linger. (Before the lake, ingest re-created every
+        table from schema.sql, so links always matched the raw data.)"""
+        _stage(conn, f"_s_{table}", cols, rows)
+        if replace_for:
+            conn.execute(f"DELETE FROM main.{table} WHERE facility_id IN "
+                         f"(SELECT unnest(?::VARCHAR[]))", [sorted(replace_for)])
+        stats[table] = up(
+            conn, table, key,
+            f"SELECT s.* FROM _s_{table} s WHERE EXISTS "
+            f"(SELECT 1 FROM main.{vocab} v WHERE v.{vocab_col} = s.{ref_col})",
+            insert_only=insert_only, order_by="_seq")
+        stats[table]["unknown_slug"] = len(rows) - stats[table]["source_rows"]
+
+    def carrying(*fields: str) -> set[str]:
+        return {r.fid for r in records if any(f in r.raw for f in fields)}
+
+    # Spheres: the raw record's primary/secondary set replaces the
+    # facility's rows. That includes the 'arid' rows scripts/add_arid_sphere.py
+    # adds, so re-run it (idempotent) after an ingest, as before.
+    links("facility_spheres", "facility_id VARCHAR, sphere_slug VARCHAR, role VARCHAR",
+          spheres, ["facility_id", "sphere_slug"], "spheres", "slug", "sphere_slug",
+          replace_for=carrying("primary_sphere", "secondary_spheres"))
+    links("facility_ecosystems", "facility_id VARCHAR, ecosystem_slug VARCHAR",
+          ecos, ["facility_id", "ecosystem_slug"], "ecosystem_types", "slug", "ecosystem_slug",
+          replace_for=carrying("ecosystem_types"))
+    links("facility_life_zones", "facility_id VARCHAR, life_zone_slug VARCHAR",
+          lzs, ["facility_id", "life_zone_slug"], "life_zones", "slug", "life_zone_slug",
+          replace_for=carrying("life_zones"))
+    links("area_links", "facility_id VARCHAR, area_id VARCHAR",
+          areas, ["facility_id", "area_id"], "research_areas", "area_id", "area_id",
+          replace_for=carrying("research_areas"))
+    # Not replaced: other loaders add memberships to ingested facilities
+    # (load_arid.py's arid-unm rows), and the raw records do not know them.
+    links("network_membership", "facility_id VARCHAR, network_id VARCHAR",
+          nets, ["facility_id", "network_id"], "networks", "network_id", "network_id")
+
+    _stage(conn, "_s_locations",
+           "location_id VARCHAR, facility_id VARCHAR, label VARCHAR, address VARCHAR, "
+           "lat DOUBLE, lng DOUBLE, role VARCHAR", locs)
+    stats["locations"] = up(conn, "locations", ["location_id"], "_s_locations",
+                            order_by="_seq DESC")
+
+    _stage(conn, "_s_funders", "funder_id VARCHAR, name VARCHAR", funders)
+    stats["funders"] = up(conn, "funders", ["funder_id"], "_s_funders",
+                          insert_only=True, order_by="_seq")
+    _stage(conn, "_s_events",
+           "event_id VARCHAR, funder_id VARCHAR, facility_id VARCHAR, relation VARCHAR, "
+           "source_url VARCHAR", events)
+    stats["funding_events"] = up(
+        conn, "funding_events", ["event_id"],
+        "SELECT *, CURRENT_DATE AS retrieved_at, 'low' AS confidence FROM _s_events",
+        insert_only=True, order_by="_seq")
+
+    # provenance has no key; replace this agent's row for each facility so
+    # a re-run does not stack duplicates.
+    _stage(conn, "_s_provenance",
+           "record_type VARCHAR, record_id VARCHAR, source_url VARCHAR, "
+           "retrieved_at DATE, confidence VARCHAR, agent VARCHAR", prov)
+    conn.execute(
+        "DELETE FROM main.provenance p WHERE EXISTS (SELECT 1 FROM _s_provenance s "
+        "WHERE s.record_type = p.record_type AND s.record_id = p.record_id "
+        "AND s.agent IS NOT DISTINCT FROM p.agent)")
+    conn.execute("INSERT INTO main.provenance SELECT * EXCLUDE (_seq) FROM _s_provenance")
+    stats["provenance"] = {"inserted": len(prov)}
+    return stats
 
 
 def log_run(conn: duckdb.DuckDBPyConnection, started: datetime, count: int, status: str) -> None:
@@ -412,35 +445,49 @@ def main() -> int:
                         help="Don't rebuild the regions / facility_regions "
                              "tables from public/overlays/ (saves time if "
                              "overlays haven't changed).")
+    lto_db.add_argparse_catalog(parser)
     args = parser.parse_args()
 
     started = datetime.now(timezone.utc)
-    DB_PATH.parent.mkdir(parents=True, exist_ok=True)
 
     records = load_raw_records()
     if not records:
-        print("[info] no raw records found — creating empty schema only")
+        print("[info] no raw records found — refreshing schema and vocab only")
     assign_ids(records)
     records = dedup(records)
     geocode_missing(records, args.skip_geocode)
 
-    with duckdb.connect(str(DB_PATH)) as conn:
-        ensure_schema(conn)
-        load_vocab(conn)
-        insert_records(conn, records)
-        log_run(conn, started, len(records), "success")
+    conn = lto_db.connect(catalog=args.catalog, data=args.lake_data)
+    try:
+        load_spatial(conn)
+        with lto_db.transaction(conn, f"ingest: {len(records)} facilities from data/raw/R*"):
+            ensure_schema(conn)
+            load_vocab(conn)
+            stats = insert_records(conn, records)
+            log_run(conn, started, len(records), "success")
+            lto_db.assert_integrity(conn, [
+                "facility_types", "research_areas", "networks", "spheres",
+                "ecosystem_types", "life_zones", "archive_types", "data_formats",
+                "data_licenses", "access_modes", "facilities", "locations",
+                "funders", "funding_events", "area_links", "network_membership",
+                "facility_spheres", "facility_ecosystems", "facility_life_zones",
+                "provenance", "ingest_runs",
+            ])
+        for table, st in stats.items():
+            print(f"  {table:20s} {st}")
+        print(f"[ok] wrote {len(records)} facilities to {lto_db.catalog_path(args.catalog)}")
 
-    print(f"[ok] wrote {len(records)} facilities to {DB_PATH}")
-
-    # Rebuild the overlay-derived tables unless the caller opted out.
-    if not args.skip_regions:
-        try:
-            # Import lazily so the ingest step doesn't require shapely
-            # unless the user asks for the regions pass.
-            from populate_regions import populate as populate_regions
-            populate_regions(DB_PATH)
-        except Exception as e:
-            print(f"[warn] populate_regions failed ({e!r}); continuing")
+        # Rebuild the overlay-derived tables unless the caller opted out.
+        if not args.skip_regions:
+            try:
+                # Import lazily so the ingest step doesn't require shapely
+                # unless the user asks for the regions pass.
+                from populate_regions import populate as populate_regions
+                populate_regions(conn)
+            except Exception as e:
+                print(f"[warn] populate_regions failed ({e!r}); continuing")
+    finally:
+        conn.close()
 
     return 0
 

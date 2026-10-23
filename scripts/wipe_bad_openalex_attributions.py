@@ -24,7 +24,8 @@ person_areas mapping at all — then:
   * Leaves publications themselves untouched (they may have legitimate
     co-authors among other people in the dataset).
 
-Re-runs are idempotent: a fresh run finds nothing left to wipe.
+Re-runs are idempotent: a fresh run finds nothing left to wipe. The wipe
+is one lake snapshot; run scripts/export_parquet.py to publish it.
 
 Usage:
     python scripts/wipe_bad_openalex_attributions.py
@@ -37,11 +38,10 @@ import argparse
 import sys
 from pathlib import Path
 
-import duckdb
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import lto_db  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "lto.duckdb"
-PARQUET_OUT = [ROOT / "db" / "parquet", ROOT / "public" / "parquet"]
 
 # Marine / coastal / oceanographic keywords. A person's research_interests
 # string is split on ', ' and lowercased; if NO token contains any of
@@ -103,7 +103,7 @@ def find_suspects(conn, strict: bool):
 def wipe(conn, suspects):
     pids = [s[0] for s in suspects]
     if not pids:
-        return {'people': 0, 'authorship': 0, 'person_areas': 0}
+        return {'people': 0, 'authorship_deleted': 0, 'person_areas_deleted': 0}
     placeholder = ','.join(['?'] * len(pids))
     n_aut = conn.execute(
         f"DELETE FROM authorship   WHERE person_id IN ({placeholder})",
@@ -120,8 +120,7 @@ def wipe(conn, suspects):
             WHERE person_id IN ({placeholder})""",
         pids,
     ).fetchone()
-    # DuckDB DELETE/UPDATE return rowcount tuples in some versions; fall
-    # back to selecting the change indirectly if needed.
+    # DELETE/UPDATE return a one-row (count) result.
     return {
         'people': len(pids),
         'authorship_deleted': n_aut[0] if n_aut else None,
@@ -129,18 +128,11 @@ def wipe(conn, suspects):
     }
 
 
-def export_parquet(conn):
-    for base in PARQUET_OUT:
-        base.mkdir(parents=True, exist_ok=True)
-        for t in ('people', 'authorship', 'person_areas'):
-            out = base / f"{t}.parquet"
-            conn.execute(f"COPY {t} TO '{out}' (FORMAT PARQUET)")
-            print(f"[parquet] wrote {out}")
-
-
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--db", type=Path, default=DEFAULT_DB)
+    lto_db.add_argparse_catalog(ap)
+    ap.add_argument("--db", dest="catalog", type=Path,
+                    help="deprecated alias of --catalog")
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--strict", action="store_true",
                     help="Also wipe people who have an openalex_id but "
@@ -149,10 +141,12 @@ def main() -> int:
                          "contain a marine keyword by coincidence).")
     args = ap.parse_args()
 
-    if not args.db.exists():
-        print(f"[error] db not found: {args.db}", file=sys.stderr)
+    try:
+        conn = lto_db.connect(read_only=args.dry_run, catalog=args.catalog,
+                              data=args.lake_data)
+    except lto_db.LakeNotFound as e:
+        print(f"[error] {e}", file=sys.stderr)
         return 2
-    conn = duckdb.connect(str(args.db))
 
     suspects = find_suspects(conn, args.strict)
     print(f"[suspects] {len(suspects)} candidates for wipe:")
@@ -165,12 +159,23 @@ def main() -> int:
         print("\n[dry-run] would wipe; skipping writes.")
         return 0
 
-    res = wipe(conn, suspects)
+    if not suspects:
+        print("\n[wiped] nothing to wipe")
+        conn.close()
+        print("[done]")
+        return 0
+
+    with lto_db.transaction(conn, f"wipe_bad_openalex_attributions: "
+                                  f"{len(suspects)} people"
+                                  + (" (--strict)" if args.strict else "")):
+        res = wipe(conn, suspects)
+        lto_db.assert_integrity(conn, ["people", "authorship", "person_areas"])
     print(f"\n[wiped] people: {res['people']}  "
           f"authorship_deleted: {res['authorship_deleted']}  "
           f"person_areas_deleted: {res['person_areas_deleted']}")
 
-    export_parquet(conn)
+    # parquet is export_parquet.py's to write.
+    print("[next] run scripts/export_parquet.py and export_view_caches.py to publish")
     conn.close()
     print("[done]")
     return 0

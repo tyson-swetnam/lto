@@ -32,7 +32,8 @@ Header is required. Columns:
 Idempotent via event_id = hash(funder|facility|"agency-budget"|fiscal_year).
 Re-running an updated CSV REPLACES rows for the same (facility, fy)
 that came from this loader. Rows from other sources (NSF, USAspending,
-ProPublica) are untouched.
+ProPublica) are untouched. One run is one DuckLake snapshot
+(scripts/lto_db.py); --dry-run opens the lake read-only and writes none.
 
 Usage::
 
@@ -50,8 +51,10 @@ from pathlib import Path
 
 import duckdb
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import lto_db  # noqa: E402
+
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "lto.duckdb"
 DEFAULT_DIR = ROOT / "data" / "funding_research" / "agency_budgets"
 
 
@@ -173,6 +176,10 @@ def load_csv(conn, path: Path, dry: bool) -> dict:
                     """, [eid, funder_id, fid, amt, fy,
                           program, relation, src_url, confidence, notes])
                     stats["rows_written"] += 1
+            except duckdb.Error:
+                # A failed statement has aborted the transaction: every
+                # later row would fail too. Stop, and roll the run back.
+                raise
             except Exception as e:
                 print(f"[error] {path.name}:{ln} {e}")
                 stats["errors"] += 1
@@ -181,7 +188,8 @@ def load_csv(conn, path: Path, dry: bool) -> dict:
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--db", type=Path, default=DEFAULT_DB)
+    lto_db.add_argparse_catalog(ap)
+    ap.add_argument("--db", dest="catalog", type=Path, help="deprecated alias of --catalog")
     ap.add_argument("--csv", type=Path, action="append",
                     help="Specific CSV file to load. Repeatable. Default "
                          "is to glob data/funding_research/agency_budgets/*.csv")
@@ -189,11 +197,12 @@ def main() -> int:
     ap.add_argument("--dry-run", action="store_true")
     args = ap.parse_args()
 
-    if not args.db.exists():
-        print(f"[error] db not found: {args.db}", file=sys.stderr)
+    try:
+        conn = lto_db.connect(read_only=args.dry_run, catalog=args.catalog,
+                              data=args.lake_data)
+    except lto_db.LakeNotFound as e:
+        print(f"[error] {e}", file=sys.stderr)
         return 2
-
-    conn = duckdb.connect(str(args.db))
 
     if args.csv:
         files = list(args.csv)
@@ -209,13 +218,23 @@ def main() -> int:
 
     grand = {"rows_read": 0, "rows_written": 0, "rows_replaced": 0,
              "errors": 0}
-    for f in files:
-        print(f"[load] {f.relative_to(ROOT) if f.is_relative_to(ROOT) else f}")
-        s = load_csv(conn, f, args.dry_run)
-        for k in grand:
-            grand[k] += s[k]
-        print(f"  read={s['rows_read']}  wrote={s['rows_written']}  "
-              f"replaced={s['rows_replaced']}  errors={s['errors']}")
+
+    def load_all() -> None:
+        for f in files:
+            print(f"[load] {f.relative_to(ROOT) if f.is_relative_to(ROOT) else f}")
+            s = load_csv(conn, f, args.dry_run)
+            for k in grand:
+                grand[k] += s[k]
+            print(f"  read={s['rows_read']}  wrote={s['rows_written']}  "
+                  f"replaced={s['rows_replaced']}  errors={s['errors']}")
+
+    if args.dry_run:
+        load_all()
+    else:
+        with lto_db.transaction(conn, f"load_agency_budgets: agency-budget funding_events "
+                                      f"from {len(files)} CSV(s)"):
+            load_all()
+            lto_db.assert_integrity(conn, ["funders", "funding_events"])
 
     print(f"\n[done] read={grand['rows_read']}  wrote={grand['rows_written']}  "
           f"replaced={grand['rows_replaced']}  errors={grand['errors']}")

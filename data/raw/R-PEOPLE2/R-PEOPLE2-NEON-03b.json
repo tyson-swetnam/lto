@@ -1,0 +1,398 @@
+{
+ "batch_id": "R-PEOPLE2-NEON-03b",
+ "retrieved_at": "2026-10-22",
+ "verified_by": "adversarial-verifier 2026-10-22",
+ "facilities": [
+  {
+   "facility_id": "093f79bcf5273184",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/leco",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=1",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=2",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/contact-us/field-offices",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/bill-martin",
+     "status": 200
+    }
+   ],
+   "notes": "NEON Domain D07 (Appalachians & Cumberland Plateau), gradient aquatic site; Domain 07 support facility in Oak Ridge, TN. Site host: Great Smoky Mountains National Park (National Park Service). Colocated with the GRSM terrestrial NEON site. NEON site page names no host-agency staff; only the NEON domain manager is recorded. Verifier: person page names the domain, not the site; site-to-domain link confirmed on the field-site page and current listing confirmed in the NEON staff directory (2026-10-22), so confidence set to medium."
+  },
+  {
+   "facility_id": "8099ea512105c1f2",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/leno",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=1",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=2",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/contact-us/field-offices",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/beth-fugate",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0009-0003-4822-8987/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0009-0003-4822-8987/employments",
+     "status": 200
+    }
+   ],
+   "notes": "NEON Domain D08 (Ozarks Complex), gradient terrestrial site; Domain 08 support facility in Tuscaloosa, AL. Site hosts: US Fish and Wildlife Service (Choctaw National Wildlife Refuge, distributed plots) and US Army Corps of Engineers (Lenoir Landing Park, flux tower and tower plots). Host staff not named on the NEON page. Verifier: person page names the domain, not the site; site-to-domain link confirmed on the field-site page and current listing confirmed in the NEON staff directory (2026-10-22), so confidence set to medium."
+  },
+  {
+   "facility_id": "b8ccea8b26e17e45",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/lewi",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=1",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=2",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/contact-us/field-offices",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/ty-lindberg",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-1043-0587/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-1043-0587/employments",
+     "status": 200
+    }
+   ],
+   "notes": "NEON Domain D02 (Mid-Atlantic), gradient aquatic site; Domain 02 support facility in Front Royal, VA (Smithsonian Conservation Biology Institute grounds). Site host: Casey Trees (private nonprofit); NEON page says site access is coordinated with the NEON Domain Manager. ORCID 0000-0002-1043-0587 (Ty Lindberg) not used: record lists no employment, so affiliation cannot be matched. Verifier: person page names the domain, not the site; site-to-domain link confirmed on the field-site page and current listing confirmed in the NEON staff directory (2026-10-22), so confidence set to medium."
+  },
+  {
+   "facility_id": "3728fefeb4efec3e",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/liro",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=1",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=2",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/contact-us/field-offices",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/ashley-spink-0",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-5484-7763/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-5484-7763/employments",
+     "status": 200
+    }
+   ],
+   "notes": "NEON Domain D05 (Great Lakes), gradient aquatic site in American Legion State Forest, Vilas County, WI; Domain 05 support facility in Land O Lakes, WI. Site host: Wisconsin Department of Natural Resources. D05 manager is not shown with a domain title in the NEON staff directory listing; the person page (Field Operations Manager Domain 5, role since 2025) is the source. Verifier: person page names the domain, not the site; site-to-domain link confirmed on the field-site page and current listing confirmed in the NEON staff directory (2026-10-22), so confidence set to medium."
+  },
+  {
+   "facility_id": "10d821a3f74402d9",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/hopb",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=1",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=2",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/contact-us/field-offices",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/joleisa-cramer",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-5333-6523/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-5333-6523/employments",
+     "status": 200
+    }
+   ],
+   "notes": "NEON Domain D01 (Northeast), core aquatic site draining to Quabbin Reservoir; Domain 01 support facility in Fitchburg, MA. Site host: Massachusetts DCR Division of Water Supply Protection. Near the HARV terrestrial site. ORCID 0000-0002-5333-6523 (JoLeisa Cramer) not used: record lists no employment. Verifier: person page names the domain, not the site; site-to-domain link confirmed on the field-site page and current listing confirmed in the NEON staff directory (2026-10-22), so confidence set to medium."
+  },
+  {
+   "facility_id": "f3b0aeaaad49f40f",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/teak",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=1",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=2",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/contact-us/field-offices",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/catie-halvorsen-0",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0001-9719-1429/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0001-9719-1429/employments",
+     "status": 200
+    },
+    {
+     "url": "https://research.fs.usda.gov/psw/forestsandranges/locations/teakettle",
+     "status": 200
+    }
+   ],
+   "notes": "NEON Domain D17 (Pacific Southwest), gradient terrestrial site in Sierra National Forest, partially encompassing the USFS Pacific Southwest Research Station's Teakettle Experimental Forest; Domain 17 support facility in Fresno, CA. Site host: Sierra National Forest. The USFS Teakettle EF page names no lead scientist (contact given only as an email address, not recorded), so no Teakettle EF personnel were added. ORCID 0000-0001-9719-1429 (Catie Halvorsen) not used: record lists no employment. Verifier: person page names the domain, not the site; site-to-domain link confirmed on the field-site page and current listing confirmed in the NEON staff directory (2026-10-22), so confidence set to medium."
+  }
+ ],
+ "people": [
+  {
+   "key": "bill-martin",
+   "existing_person_id": null,
+   "name": "Bill Martin",
+   "name_given": "Bill",
+   "name_family": "Martin",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.neonscience.org/person/bill-martin",
+   "bio": "Manager of NEON's Domain 07 (Appalachians and Cumberland Plateau) field operations, based in Tennessee. Earlier worked at the Pantex facility in Amarillo, Texas, first as an environmental and ecological sampling and analysis technician (1993-1997) and later, from 2007, as an operations manager for environmental remediation projects.",
+   "bio_source_url": "https://www.neonscience.org/person/bill-martin",
+   "research_interests": "environmental and ecological baseline assessment; environmental remediation operations",
+   "research_interests_source_url": "https://www.neonscience.org/person/bill-martin"
+  },
+  {
+   "key": "beth-fugate",
+   "existing_person_id": null,
+   "name": "Beth Fugate",
+   "name_given": "Beth",
+   "name_family": "Fugate",
+   "orcid": "0009-0003-4822-8987",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0009-0003-4822-8987/employments",
+   "homepage_url": "https://www.neonscience.org/person/beth-fugate",
+   "bio": "Since 2023 has managed field operations for NEON Domain 08 (Ozarks Complex) from Tuscaloosa, Alabama, running six Alabama sites and the D08 field science team. Previously a toxicologist, a Florida DEP environmental specialist in coastal habitat restoration and monitoring, and manager of the Northwest Florida Aquatic Preserves. B.S. in marine biology, University of West Alabama.",
+   "bio_source_url": "https://www.neonscience.org/person/beth-fugate",
+   "research_interests": "coastal habitat restoration and monitoring; aquatic preserve management; marine biology",
+   "research_interests_source_url": "https://www.neonscience.org/person/beth-fugate"
+  },
+  {
+   "key": "ty-lindberg",
+   "existing_person_id": null,
+   "name": "Ty Lindberg",
+   "name_given": "Ty",
+   "name_family": "Lindberg",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.neonscience.org/person/ty-lindberg",
+   "bio": "Field Operations Manager for NEON Domain 02 (Mid-Atlantic) at Front Royal, Virginia, responsible for three flux towers with soil arrays, two instrumented streams and sampling at five sites. Formerly a researcher and lab manager at Duke University's Nicholas School studying water-quality effects of mountaintop coal mining and selenium transport. M.S. in zoology, NC State.",
+   "bio_source_url": "https://www.neonscience.org/person/ty-lindberg",
+   "research_interests": "water quality impacts of surface coal mining; selenium fate and transport in aquatic ecosystems; population genetics; quantitative fisheries management",
+   "research_interests_source_url": "https://www.neonscience.org/person/ty-lindberg"
+  },
+  {
+   "key": "ashley-spink",
+   "existing_person_id": null,
+   "name": "Ashley Spink",
+   "name_given": "Ashley",
+   "name_family": "Spink",
+   "orcid": "0000-0002-5484-7763",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-5484-7763/employments",
+   "homepage_url": "https://www.neonscience.org/person/ashley-spink-0",
+   "bio": "Field Operations Manager for NEON's Great Lakes Domain (D05) in Land O' Lakes, Wisconsin since 2025. Joined NEON in 2014 as a field technician leading small mammal, soil and invertebrate sampling. Earlier wildlife work on deer, grouse, bats and invertebrates; B.S. wildlife ecology (UW-Stevens Point), M.S. environmental science and policy (UW-Green Bay).",
+   "bio_source_url": "https://www.neonscience.org/person/ashley-spink-0",
+   "research_interests": "wildlife ecology; small mammal, soil and invertebrate sampling",
+   "research_interests_source_url": "https://www.neonscience.org/person/ashley-spink-0"
+  },
+  {
+   "key": "joleisa-cramer",
+   "existing_person_id": null,
+   "name": "JoLeisa Cramer",
+   "name_given": "JoLeisa",
+   "name_family": "Cramer",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.neonscience.org/person/joleisa-cramer",
+   "bio": "Manager of the NEON Field Science Operations Office for the Northeast (Domain 01), leading roughly 20 staff across four remote field sites. Has more than 13 years in ecology and natural resources work, including leading sampling for multiple mammal species. B.S. fisheries and wildlife and M.S. natural resources, University of Nebraska-Lincoln.",
+   "bio_source_url": "https://www.neonscience.org/person/joleisa-cramer",
+   "research_interests": "mammalogy; field sampling of mammal species",
+   "research_interests_source_url": "https://www.neonscience.org/person/joleisa-cramer"
+  },
+  {
+   "key": "catie-halvorsen",
+   "existing_person_id": null,
+   "name": "Catie Halvorsen",
+   "name_given": "Catie",
+   "name_family": "Halvorsen",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.neonscience.org/person/catie-halvorsen-0",
+   "bio": "Field Operations Manager for NEON Domain 17 (Pacific Southwest) since 2024, having joined NEON as an aquatics field technician and then field ecologist. Prior experience includes elephant seal population monitoring at San Simeon and U.S. Forest Service hydrology, engineering and aquatic projects. B.S. environmental engineering, Cal Poly San Luis Obispo.",
+   "bio_source_url": "https://www.neonscience.org/person/catie-halvorsen-0",
+   "research_interests": "hydrology; aquatic ecology; long-term population monitoring",
+   "research_interests_source_url": "https://www.neonscience.org/person/catie-halvorsen-0"
+  }
+ ],
+ "affiliations": [
+  {
+   "facility_id": "093f79bcf5273184",
+   "person_key": "bill-martin",
+   "role": "domain-manager",
+   "title": "NEON Domain Manager, D07: Appalachians and Cumberland Plateau",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/person/bill-martin",
+   "evidence": "Bill Martin Manager, D07: Appalachians and Cumberland Plateau Tennessee Field Science",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "8099ea512105c1f2",
+   "person_key": "beth-fugate",
+   "role": "domain-manager",
+   "title": "NEON Field Operations Manager, D08: Ozarks Complex",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2023,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/person/beth-fugate",
+   "evidence": "Beth is the Field Operations Manager for NEON Domain 08 - Ozarks Complex.",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "b8ccea8b26e17e45",
+   "person_key": "ty-lindberg",
+   "role": "domain-manager",
+   "title": "NEON Field Operations Manager, D02: Mid-Atlantic",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/person/ty-lindberg",
+   "evidence": "Ty Lindberg is the Field Operations Manager for Domain 02, located in Front Royal, VA",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "3728fefeb4efec3e",
+   "person_key": "ashley-spink",
+   "role": "domain-manager",
+   "title": "NEON Field Operations Manager, D05: Great Lakes",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2025,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/person/ashley-spink-0",
+   "evidence": "In 2025, Ashley moved to the role of Field Operations Manager for the Great Lakes (D05) domain",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "10d821a3f74402d9",
+   "person_key": "joleisa-cramer",
+   "role": "domain-manager",
+   "title": "NEON Domain Manager, D01: Northeast",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/person/joleisa-cramer",
+   "evidence": "JoLeisa Cramer Manager, D01: Northeast Domain 01 Field Science",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "f3b0aeaaad49f40f",
+   "person_key": "catie-halvorsen",
+   "role": "domain-manager",
+   "title": "NEON Field Operations Manager, D17: Pacific Southwest",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2024,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/person/catie-halvorsen-0",
+   "evidence": "Catie Halvorsen Field Operations Manager D17 Pacific Southwest Field Science",
+   "confidence": "medium"
+  }
+ ],
+ "verifications": []
+}

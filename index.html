@@ -7,11 +7,16 @@
     <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
     <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" />
     <link rel="stylesheet" href="./src/styles.css" />
+    <!-- duckdb-wasm 1.33.1-dev65.0 embeds DuckDB core v1.5.6 (069cc9f9b5). It is
+         the newest npm build whose jsDelivr bundles and extensions.duckdb.org
+         parquet/ducklake extensions all resolve; 1.33.1-dev110.0 (core
+         v2.0.0-dev88614) autoloads parquet from a per-commit URL that 404s.
+         Keep browser SQL in src/ to DuckDB 1.5 syntax. -->
     <script type="importmap">
     {
       "imports": {
         "maplibre-gl": "https://esm.sh/maplibre-gl@4.7.1",
-        "@duckdb/duckdb-wasm": "https://esm.sh/@duckdb/duckdb-wasm@1.29.0"
+        "@duckdb/duckdb-wasm": "https://esm.sh/@duckdb/duckdb-wasm@1.33.1-dev65.0"
       }
     }
     </script>

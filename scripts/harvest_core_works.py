@@ -16,7 +16,7 @@ the collaboration graph should be built from what this harvests.
 Output goes to the gitignored checkpoint dir
 data/raw/oa_harvest/_state/harvest_{works,pairs}.parquet.d/, which
 `validate_registry.py --stage match` reads to build coauthor_edges and
-coauthor_candidates. Nothing here touches the DB.
+coauthor_candidates. The lake is only read (person_registry).
 
 Quota: the run stops at --request-budget (default 6,500, leaving room
 under the 10k/day cap for the validate stages), and a batch cut short by
@@ -35,21 +35,21 @@ import argparse
 import sys
 from pathlib import Path
 
-import duckdb
 import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import harvest_runner  # noqa: E402
+import lto_db  # noqa: E402
 import openalex_auth  # noqa: E402
 from validate_registry import quota_remaining  # noqa: E402
 
-ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "lto.duckdb"
 
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--db", type=Path, default=DEFAULT_DB)
+    lto_db.add_argparse_catalog(ap)
+    ap.add_argument("--db", dest="catalog", type=Path,
+                    help="Deprecated alias of --catalog.")
     ap.add_argument("--tier", default="core", choices=["core", "all"],
                     help="'core' is the 2,000 shipped identities; 'all' is "
                          "every registry row with an OpenAlex id and will "
@@ -65,7 +65,8 @@ def main() -> int:
     args = ap.parse_args()
 
     openalex_auth.require_api_key()
-    conn = duckdb.connect(str(args.db), read_only=True)
+    conn = lto_db.connect(read_only=True, catalog=args.catalog,
+                          data=args.lake_data)
     where = "openalex_id IS NOT NULL AND openalex_id <> ''"
     if args.tier == "core":
         where += " AND tier = 'core'"

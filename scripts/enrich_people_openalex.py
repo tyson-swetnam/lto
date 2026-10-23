@@ -34,7 +34,7 @@ Usage::
     python scripts/enrich_people_openalex.py --dry-run           # no writes
     python scripts/enrich_people_openalex.py --limit 10          # small batch
     python scripts/enrich_people_openalex.py --people-csv data/seed/arid_people.csv
-    python scripts/enrich_people_openalex.py --db db/lto.duckdb
+    python scripts/enrich_people_openalex.py --catalog /tmp/scratch/cat.sqlite
 
 Environment:
     OPENALEX_API_KEY=…                    # required
@@ -56,13 +56,11 @@ except ImportError:
     print("[error] pip install requests --break-system-packages", file=sys.stderr)
     raise
 
-import duckdb
-
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+import lto_db  # noqa: E402
 import openalex_auth  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "lto.duckdb"
 API = "https://api.openalex.org"
 UA = "lto/0.2 (+https://github.com/tyson-swetnam/lto)"
 
@@ -157,10 +155,68 @@ def _short_concept_id(raw: str) -> str | None:
     return raw
 
 
+# Writes are staged in TEMP tables while the loop talks to OpenAlex and
+# land in the lake in one transaction at the end of the run (one
+# snapshot). TEMP tables live outside the lake, so staging them is not a
+# lake write. Lookups read the lake and the stage together, so a paper
+# staged for one author is reused, not re-inserted, for a co-author.
+STAGE_DDL = [
+    "CREATE OR REPLACE TEMP TABLE _stage_people "
+    "(person_id VARCHAR, openalex_id VARCHAR, research_interests VARCHAR)",
+    # Only the columns staged below: merge_upsert inserts every column the
+    # stage shares with the target, so a staged created_at (NULL) would
+    # override the column's DEFAULT CURRENT_TIMESTAMP.
+    "CREATE OR REPLACE TEMP TABLE _stage_publications AS "
+    "SELECT publication_id, doi, title, pub_year, pub_type, journal, cited_by_count, "
+    "openalex_id, url, source, retrieved_at FROM publications LIMIT 0",
+    "CREATE OR REPLACE TEMP TABLE _stage_authorship AS "
+    "SELECT person_id, publication_id, raw_name, 0 AS _seq FROM authorship LIMIT 0",
+    "CREATE OR REPLACE TEMP TABLE _stage_topics AS "
+    "SELECT publication_id, concept_id, concept_name, score, level, kind, source, "
+    "0 AS _seq FROM publication_topics LIMIT 0",
+]
+_seq = 0
+
+
+def _next_seq() -> int:
+    global _seq
+    _seq += 1
+    return _seq
+
+
+def write_stage(conn) -> dict:
+    """Apply the staged writes to the lake. Call inside transaction().
+
+    ON CONFLICT DO NOTHING (authorship, publication_topics) becomes an
+    insert-only MERGE where the first staged row wins, as before.
+    """
+    # Same expressions as the old per-person UPDATE.
+    conn.execute("""
+        UPDATE people SET openalex_id = s.openalex_id,
+               research_interests = COALESCE(NULLIF(s.research_interests, ''),
+                                             people.research_interests),
+               updated_at = now()
+        FROM   _stage_people s WHERE people.person_id = s.person_id
+    """)
+    out = {"people": lto_db.scalar(conn, "SELECT count(*) FROM _stage_people")}
+    out["publications"] = lto_db.merge_upsert(
+        conn, "publications", ["publication_id"], "_stage_publications",
+        insert_only=True)
+    out["authorship"] = lto_db.merge_upsert(
+        conn, "authorship", ["person_id", "publication_id"], "_stage_authorship",
+        insert_only=True, order_by="_seq")
+    out["publication_topics"] = lto_db.merge_upsert(
+        conn, "publication_topics", ["publication_id", "concept_id"],
+        "_stage_topics", insert_only=True, order_by="_seq")
+    lto_db.assert_integrity(conn, ["people", "publications", "authorship",
+                                   "publication_topics"])
+    return out
+
+
 def upsert_publication_topics(conn, pub_id: str, work: dict) -> int:
-    """Write OpenAlex concepts + topics + keywords for a publication.
-    Idempotent: ON CONFLICT DO NOTHING so re-runs are cheap. Returns
-    the number of rows actually inserted."""
+    """Stage OpenAlex concepts + topics + keywords for a publication.
+    Idempotent: staged rows go in insert-only, so re-runs are cheap.
+    Returns the number of rows staged."""
     rows: list[tuple] = []
     for c in (work.get("concepts") or []):
         cid = _short_concept_id(c.get("id"))
@@ -190,20 +246,18 @@ def upsert_publication_topics(conn, pub_id: str, work: dict) -> int:
         try:
             conn.execute(
                 """
-                INSERT INTO publication_topics (
+                INSERT INTO _stage_topics (
                     publication_id, concept_id, concept_name,
-                    score, level, kind, source
+                    score, level, kind, source, _seq
                 )
-                VALUES (?, ?, ?, ?, ?, ?, ?)
-                ON CONFLICT (publication_id, concept_id) DO NOTHING
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?)
                 """,
-                list(r),
+                [*r, _next_seq()],
             )
             written += 1
         except Exception as e:
-            # Most likely an FK violation if pub_id was somehow stale,
-            # or a transient conflict on a concurrent write. Log + skip
-            # so one bad row doesn't kill the rest of the publication.
+            # A bad value (e.g. a score that won't cast). Log + skip so
+            # one bad row doesn't kill the rest of the publication.
             print(f"[topics] skip {pub_id}/{r[1]}: {e}")
     return written
 
@@ -229,17 +283,22 @@ def upsert_publication(conn, work: dict) -> str | None:
     # of the same paper). We use the first row we find and reuse its
     # publication_id for the authorship link so the second insert
     # doesn't trip publications.doi UNIQUE and crash the whole author's
-    # enrichment run.
+    # enrichment run. Rows staged earlier in this run count as existing.
+    # The row whose publication_id matches is preferred over a DOI hit.
+    known = ("(SELECT publication_id, doi, cited_by_count FROM publications "
+             "UNION ALL SELECT publication_id, doi, cited_by_count "
+             "FROM _stage_publications)")
     if doi:
         hit = conn.execute(
-            "SELECT publication_id, cited_by_count "
-            "FROM publications WHERE publication_id = ? OR doi = ? LIMIT 1",
-            [pub_id, doi],
+            f"SELECT publication_id, cited_by_count FROM {known} "
+            "WHERE publication_id = ? OR doi = ? "
+            "ORDER BY publication_id = ? DESC LIMIT 1",
+            [pub_id, doi, pub_id],
         ).fetchone()
     else:
         hit = conn.execute(
-            "SELECT publication_id, cited_by_count "
-            "FROM publications WHERE publication_id = ? LIMIT 1",
+            f"SELECT publication_id, cited_by_count FROM {known} "
+            "WHERE publication_id = ? LIMIT 1",
             [pub_id],
         ).fetchone()
     if hit and hit[0] != pub_id:
@@ -255,7 +314,7 @@ def upsert_publication(conn, work: dict) -> str | None:
     if existing is None:
         conn.execute(
             """
-            INSERT INTO publications (
+            INSERT INTO _stage_publications (
                 publication_id, doi, title, pub_year, pub_type,
                 journal, cited_by_count, openalex_id, url, source, retrieved_at
             )
@@ -266,20 +325,10 @@ def upsert_publication(conn, work: dict) -> str | None:
         )
     # existing row case: skip the UPDATE.
     #
-    # DuckDB (≥1.0, as of 1.5.x) refuses to UPDATE a row that has any
-    # FK still pointing at it, even when the UPDATE doesn't touch the
-    # PK column. This breaks co-author enrichment: if person A is
-    # enriched first and has paper X, paper X gets an authorship row
-    # (A, X). When we then process co-author B on the same paper,
-    # upsert_publication tries to UPDATE publications.cited_by_count
-    # for X, and DuckDB aborts with
-    #
-    #   Constraint Error: Violates foreign key constraint because key
-    #   "publication_id: W…" is still referenced by a foreign key in
-    #   a different table
-    #
-    # The first write is already factually correct (same OpenAlex
-    # data, minutes apart), so we can safely skip the refresh and
+    # This was forced by the old native DuckDB file, which refused to
+    # UPDATE a row any FK pointed at. The lake has no such block, but
+    # the first write is already factually correct (same OpenAlex
+    # data, minutes apart), so the refresh is still skipped and we
     # just fall through to the authorship INSERT.
     return pub_id
 
@@ -297,10 +346,8 @@ def enrich_person(conn, sess: requests.Session, person: dict,
     )
     if not dry:
         conn.execute(
-            "UPDATE people SET openalex_id = ?, research_interests = "
-            "COALESCE(NULLIF(?, ''), research_interests), "
-            "updated_at = now() WHERE person_id = ?",
-            [author_oa_short, interests, person["person_id"]],
+            "INSERT INTO _stage_people VALUES (?, ?, ?)",
+            [person["person_id"], author_oa_short, interests],
         )
 
     works = fetch_works(sess, author_oa, max_pubs)
@@ -314,17 +361,16 @@ def enrich_person(conn, sess: requests.Session, person: dict,
             continue
         conn.execute(
             """
-            INSERT INTO authorship (person_id, publication_id, raw_name)
-            VALUES (?, ?, ?)
-            ON CONFLICT (person_id, publication_id) DO NOTHING
+            INSERT INTO _stage_authorship (person_id, publication_id, raw_name, _seq)
+            VALUES (?, ?, ?, ?)
             """,
-            [person["person_id"], pid, person["name"]],
+            [person["person_id"], pid, person["name"], _next_seq()],
         )
         # Write OpenAlex topics/concepts/keywords for this work. We do
         # this *every* time we see the publication (not just on first
         # insert) because OpenAlex topic scores update over time and
-        # we'd rather refresh than miss the new ones; ON CONFLICT DO
-        # NOTHING keeps re-runs cheap when nothing has changed.
+        # we'd rather refresh than miss the new ones; the insert-only
+        # merge keeps re-runs cheap when nothing has changed.
         result["topics_written"] += upsert_publication_topics(conn, pid, w)
         result["upserted"] += 1
     return result
@@ -332,7 +378,9 @@ def enrich_person(conn, sess: requests.Session, person: dict,
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--db", type=Path, default=DEFAULT_DB)
+    lto_db.add_argparse_catalog(ap)
+    ap.add_argument("--db", dest="catalog", type=Path,
+                    help="Deprecated alias of --catalog.")
     ap.add_argument("--limit", type=int, default=0,
                     help="Max people to process (0 = all)")
     ap.add_argument("--max-pubs", type=int, default=100,
@@ -344,12 +392,15 @@ def main() -> int:
                          "person is re-fetched, which refreshes the whole catalogue.")
     args = ap.parse_args()
 
-    if not args.db.exists():
-        print(f"[error] db not found: {args.db}", file=sys.stderr)
+    try:
+        conn = lto_db.connect(catalog=args.catalog, data=args.lake_data)
+    except lto_db.LakeNotFound as e:
+        print(f"[error] {e}", file=sys.stderr)
         return 2
-
-    conn = duckdb.connect(str(args.db))
     sess = session()
+    if not args.dry_run:
+        for ddl in STAGE_DDL:
+            conn.execute(ddl)
 
     # .fetchall() + manual dict build is more portable across DuckDB
     # versions than .fetchdf() (pandas bridge varies) and avoids a
@@ -372,24 +423,37 @@ def main() -> int:
           f"{'  (dry-run)' if args.dry_run else ''}")
 
     totals = {"works_found": 0, "upserted": 0, "topics": 0, "skipped": 0}
-    for i, p in enumerate(people, 1):
-        try:
-            r = enrich_person(conn, sess, p, args.max_pubs, args.dry_run)
-            totals["works_found"] += r["works_found"]
-            totals["upserted"] += r["upserted"]
-            totals["topics"] += r.get("topics_written", 0)
-            if not r["works_found"]:
+    try:
+        for i, p in enumerate(people, 1):
+            try:
+                r = enrich_person(conn, sess, p, args.max_pubs, args.dry_run)
+                totals["works_found"] += r["works_found"]
+                totals["upserted"] += r["upserted"]
+                totals["topics"] += r.get("topics_written", 0)
+                if not r["works_found"]:
+                    totals["skipped"] += 1
+                print(f"  [{i}/{len(people)}] {p['name']}  "
+                      f"works={r['works_found']}  wrote={r['upserted']}  "
+                      f"topics+={r.get('topics_written', 0)}")
+            except Exception as e:
+                print(f"  [{i}/{len(people)}] {p['name']}  ERROR: {e}")
                 totals["skipped"] += 1
-            print(f"  [{i}/{len(people)}] {p['name']}  "
-                  f"works={r['works_found']}  wrote={r['upserted']}  "
-                  f"topics+={r.get('topics_written', 0)}")
-        except Exception as e:
-            print(f"  [{i}/{len(people)}] {p['name']}  ERROR: {e}")
-            totals["skipped"] += 1
+    except KeyboardInterrupt:
+        print("\n[interrupted] writing what was staged so far")
 
     print(f"[done] works_found={totals['works_found']}  "
           f"upserted={totals['upserted']}  topics={totals['topics']}  "
           f"skipped={totals['skipped']}")
+    if not args.dry_run:
+        with lto_db.transaction(
+                conn, f"enrich_people_openalex: {len(people)} people, "
+                      f"max-pubs {args.max_pubs}"
+                      + (f", from {args.people_csv.name}" if args.people_csv else "")):
+            out = write_stage(conn)
+        print(f"[lake] people={out['people']}  "
+              + "  ".join(f"{t}={out[t]}" for t in
+                          ("publications", "authorship", "publication_topics"))
+              + "  (run export_parquet.py to publish)")
     conn.close()
     return 0
 

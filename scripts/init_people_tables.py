@@ -1,32 +1,36 @@
 #!/usr/bin/env python3
-"""Create / refresh the people-side tables + views in lto.duckdb.
+"""Create / refresh the people-side tables + views in the DuckLake.
 
 Run this once (idempotent) before any of the enrichment scripts. It
-adds:
+makes sure the lake has:
 
   * people                — person master record
   * facility_personnel    — who holds which role at which facility, when
   * publications          — paper records (from OpenAlex / Scopus / WoS)
   * authorship            — many-to-many: person wrote publication
   * person_areas          — person ↔ research_area (topic weighting)
+  * publication_topics    — per-publication OpenAlex topics / concepts
   * collaborations        — pairwise co-authorship counts
   * v_facility_key_personnel  — current Directors / Chief Scientists view
   * v_person_enriched     — person rollup for the web app's people tab
+  * v_person_areas_enriched
 
-We deliberately do NOT re-run schema/schema.sql in full because it uses
-CREATE OR REPLACE TABLE for facilities/research_areas, which cascades
-over dependents. Instead this script inlines just the new DDL so the
-existing facilities / research_areas / etc. tables are untouched.
+This script used to inline its own copy of that DDL, because re-running
+schema/schema.sql in full would have dropped the populated tables. On the
+lake schema.sql is never executed (DuckLake rejects its PRIMARY / FOREIGN
+KEY clauses); lto_db.ensure_schema() reads it instead and adds whatever
+tables and columns the lake is missing — e.g. people.bio_source_url or
+facility_personnel.is_current — and re-creates the views, without
+dropping or retyping anything. schema.sql is therefore the one definition.
+(That covers the old person_areas.evidence_count migration too.)
 
 Usage::
 
     python scripts/init_people_tables.py
-    python scripts/init_people_tables.py --db db/lto.duckdb
-    python scripts/init_people_tables.py --export-parquet
+    python scripts/init_people_tables.py --catalog /tmp/scratch/cat.sqlite
 
-The `--export-parquet` flag re-exports people/facility_personnel and
-friends into db/parquet + public/parquet so the web app's DuckDB-Wasm
-can read them.
+``--export-parquet`` is kept as a no-op: export_parquet.py is the only
+writer of public/parquet.
 """
 from __future__ import annotations
 
@@ -34,230 +38,49 @@ import argparse
 import sys
 from pathlib import Path
 
-import duckdb
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import lto_db  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "lto.duckdb"
-PARQUET_OUT = [ROOT / "db" / "parquet", ROOT / "public" / "parquet"]
-
-PEOPLE_TABLES_DDL = r"""
-CREATE TABLE IF NOT EXISTS people (
-    person_id           VARCHAR PRIMARY KEY,
-    name                VARCHAR NOT NULL,
-    name_family         VARCHAR,
-    name_given          VARCHAR,
-    email               VARCHAR,
-    orcid               VARCHAR,
-    openalex_id         VARCHAR,
-    scopus_author_id    VARCHAR,
-    wos_researcher_id   VARCHAR,
-    google_scholar_id   VARCHAR,
-    homepage_url        VARCHAR,
-    photo_url           VARCHAR,
-    research_interests  VARCHAR,
-    bio                 VARCHAR,
-    status              VARCHAR,
-    notes               VARCHAR,
-    created_at          TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at          TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
-CREATE TABLE IF NOT EXISTS facility_personnel (
-    person_id           VARCHAR NOT NULL,
-    facility_id         VARCHAR NOT NULL,
-    role                VARCHAR NOT NULL,
-    title               VARCHAR,
-    is_key_personnel    BOOLEAN DEFAULT false,
-    start_date          DATE,
-    end_date            DATE,
-    source              VARCHAR,
-    source_url          VARCHAR,
-    retrieved_at        DATE,
-    confidence          VARCHAR,
-    notes               VARCHAR,
-    PRIMARY KEY (person_id, facility_id, role)
-);
-
-CREATE TABLE IF NOT EXISTS publications (
-    publication_id      VARCHAR PRIMARY KEY,
-    doi                 VARCHAR UNIQUE,
-    title               VARCHAR,
-    abstract            VARCHAR,
-    pub_year            INTEGER,
-    pub_type            VARCHAR,
-    journal             VARCHAR,
-    venue               VARCHAR,
-    cited_by_count      INTEGER DEFAULT 0,
-    openalex_id         VARCHAR,
-    scopus_eid          VARCHAR,
-    wos_uid             VARCHAR,
-    url                 VARCHAR,
-    source              VARCHAR,
-    retrieved_at        DATE,
-    created_at          TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
-CREATE TABLE IF NOT EXISTS authorship (
-    person_id           VARCHAR NOT NULL,
-    publication_id      VARCHAR NOT NULL,
-    author_position     INTEGER,
-    is_corresponding    BOOLEAN DEFAULT false,
-    raw_name            VARCHAR,
-    PRIMARY KEY (person_id, publication_id)
-);
-
-CREATE TABLE IF NOT EXISTS person_areas (
-    person_id           VARCHAR NOT NULL,
-    area_id             VARCHAR NOT NULL,
-    weight              DOUBLE DEFAULT 1.0,
-    evidence_count      INTEGER DEFAULT 0,
-    source              VARCHAR,
-    PRIMARY KEY (person_id, area_id)
-);
-
--- Per-publication OpenAlex topics / concepts / keywords. See
--- schema/schema.sql for the design rationale; in short, we store
--- all three OpenAlex ontologies so the crosswalk can match against
--- whichever best identifies a research area.
-CREATE TABLE IF NOT EXISTS publication_topics (
-    publication_id      VARCHAR NOT NULL,
-    concept_id          VARCHAR NOT NULL,
-    concept_name        VARCHAR NOT NULL,
-    score               DOUBLE,
-    level               INTEGER,
-    kind                VARCHAR DEFAULT 'concept',
-    source              VARCHAR DEFAULT 'openalex',
-    PRIMARY KEY (publication_id, concept_id)
-);
-
-CREATE TABLE IF NOT EXISTS collaborations (
-    person_a_id         VARCHAR NOT NULL,
-    person_b_id         VARCHAR NOT NULL,
-    co_pub_count        INTEGER DEFAULT 0,
-    first_year          INTEGER,
-    last_year           INTEGER,
-    strength            DOUBLE DEFAULT 0.0,
-    PRIMARY KEY (person_a_id, person_b_id)
-);
-"""
-
-# Migration: older databases were created before evidence_count was
-# added to person_areas. ALTER TABLE is idempotent here (DuckDB ≥0.10
-# accepts IF NOT EXISTS on ADD COLUMN).
-PERSON_AREAS_MIGRATION = """
-ALTER TABLE person_areas ADD COLUMN IF NOT EXISTS evidence_count INTEGER DEFAULT 0;
-"""
-
-PEOPLE_VIEWS_DDL = r"""
-CREATE OR REPLACE VIEW v_person_areas_enriched AS
-SELECT
-    p.person_id,
-    p.name                       AS person,
-    ra.area_id,
-    ra.label                     AS area,
-    pa.weight,
-    pa.evidence_count,
-    pa.source
-FROM person_areas pa
-JOIN people         p  ON p.person_id  = pa.person_id
-JOIN research_areas ra ON ra.area_id   = pa.area_id;
-
-CREATE OR REPLACE VIEW v_facility_key_personnel AS
-SELECT
-    f.facility_id,
-    f.canonical_name         AS facility,
-    f.acronym                AS facility_acronym,
-    p.person_id,
-    p.name,
-    fp.role,
-    fp.title,
-    p.orcid,
-    p.openalex_id,
-    p.email,
-    p.homepage_url,
-    fp.start_date,
-    fp.source_url
-FROM facility_personnel fp
-JOIN people     p ON p.person_id   = fp.person_id
-JOIN facilities f ON f.facility_id = fp.facility_id
-WHERE fp.is_key_personnel = true
-  AND (fp.end_date IS NULL OR fp.end_date > CURRENT_DATE);
-
-CREATE OR REPLACE VIEW v_person_enriched AS
-SELECT
-    p.person_id,
-    p.name,
-    p.name_family,
-    p.orcid,
-    p.openalex_id,
-    p.email,
-    p.homepage_url,
-    p.research_interests,
-    p.status,
-    list(DISTINCT f.canonical_name)  AS facilities,
-    list(DISTINCT fp.role)           AS roles,
-    list(DISTINCT ra.label)          AS research_areas,
-    COUNT(DISTINCT a.publication_id) AS n_publications,
-    MAX(pub.pub_year)                AS latest_pub_year
-FROM people p
-LEFT JOIN facility_personnel fp ON fp.person_id   = p.person_id
-LEFT JOIN facilities         f  ON f.facility_id  = fp.facility_id
-LEFT JOIN person_areas       pa ON pa.person_id   = p.person_id
-LEFT JOIN research_areas     ra ON ra.area_id     = pa.area_id
-LEFT JOIN authorship         a  ON a.person_id    = p.person_id
-LEFT JOIN publications       pub ON pub.publication_id = a.publication_id
-GROUP BY p.person_id, p.name, p.name_family, p.orcid, p.openalex_id,
-         p.email, p.homepage_url, p.research_interests, p.status;
-"""
 
 
-def apply(conn: duckdb.DuckDBPyConnection) -> None:
-    conn.execute(PEOPLE_TABLES_DDL)
-    # Migration: older DBs created before evidence_count was added.
-    # ALTER TABLE ADD COLUMN IF NOT EXISTS is a no-op on fresh DBs.
-    try:
-        conn.execute(PERSON_AREAS_MIGRATION)
-    except Exception as e:
-        # Some older DuckDB versions don't accept IF NOT EXISTS on
-        # ADD COLUMN; fall back to a probe-then-add pattern.
-        try:
-            cols = [r[0] for r in conn.execute(
-                "SELECT column_name FROM information_schema.columns "
-                "WHERE table_name = 'person_areas'"
-            ).fetchall()]
-            if "evidence_count" not in cols:
-                conn.execute(
-                    "ALTER TABLE person_areas "
-                    "ADD COLUMN evidence_count INTEGER DEFAULT 0"
-                )
-        except Exception as e2:
-            print(f"[warn] person_areas migration: {e2}")
-    conn.execute(PEOPLE_VIEWS_DDL)
+def apply(conn) -> list[str]:
+    """Bring the lake up to schema.sql. Run inside lto_db.transaction()."""
+    changes = lto_db.ensure_schema(conn)
+    for c in changes:
+        print(f"[people] {c}")
     print("[people] tables + views applied")
+    return changes
 
 
-def export_parquet(conn: duckdb.DuckDBPyConnection) -> None:
-    tables = ["people", "facility_personnel", "publications",
-              "authorship", "person_areas", "publication_topics",
-              "collaborations"]
-    for base in PARQUET_OUT:
-        base.mkdir(parents=True, exist_ok=True)
-        for t in tables:
-            out = base / f"{t}.parquet"
-            conn.execute(f"COPY {t} TO '{out}' (FORMAT PARQUET)")
-            print(f"[parquet] wrote {out}")
+def catalog_arg(args) -> Path | None:
+    """--db is the pre-lake flag, kept as an alias of --catalog. The retired
+    db/lto.duckdb file itself is not a catalog, so it is ignored."""
+    if args.db is None or args.catalog is not None:
+        return args.catalog
+    if args.db.suffix == ".duckdb":
+        print(f"[deprecated] --db {args.db} ignored (db/lto.duckdb is retired); "
+              f"use --catalog", file=sys.stderr)
+        return None
+    return args.db
 
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--db", type=Path, default=DEFAULT_DB)
-    ap.add_argument("--export-parquet", action="store_true")
+    lto_db.add_argparse_catalog(ap)
+    ap.add_argument("--db", type=Path, default=None,
+                    help="deprecated alias of --catalog (a db/lto.duckdb path is ignored)")
+    ap.add_argument("--export-parquet", action="store_true",
+                    help="deprecated no-op: run scripts/export_parquet.py to publish")
     args = ap.parse_args()
-    if not args.db.exists():
-        print(f"[error] db not found: {args.db}", file=sys.stderr)
+    try:
+        conn = lto_db.connect(catalog=catalog_arg(args), data=args.lake_data)
+    except lto_db.LakeNotFound as e:
+        print(f"[error] {e}", file=sys.stderr)
         return 2
-    conn = duckdb.connect(str(args.db))
-    apply(conn)
+    with lto_db.transaction(conn, "init_people_tables: bring people tables + views "
+                                  "up to schema.sql"):
+        apply(conn)
 
     stats = conn.execute("""
         SELECT (SELECT COUNT(*) FROM people)             AS n_people,
@@ -265,13 +88,14 @@ def main() -> int:
                (SELECT COUNT(*) FROM publications)       AS n_pubs,
                (SELECT COUNT(*) FROM authorship)         AS n_authorship,
                (SELECT COUNT(*) FROM collaborations)     AS n_collabs
-    """).fetchone()
+    """).fetchall()[0]
     print(f"[summary] people={stats[0]}  facility_personnel={stats[1]}  "
           f"publications={stats[2]}  authorship={stats[3]}  "
           f"collaborations={stats[4]}")
 
     if args.export_parquet:
-        export_parquet(conn)
+        print("[parquet] --export-parquet is a no-op now: run scripts/export_parquet.py "
+              "(the only writer of public/parquet)")
     conn.close()
     return 0
 

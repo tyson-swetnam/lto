@@ -9,10 +9,15 @@ Mirror of `load_lto_people.py` for the funding side. Companion to the
 existing `fetch_funding_*.py` API-driven enrichers — those will run in
 CI where api.nsf.gov / usaspending.gov are reachable.
 
+One run is one DuckLake snapshot (scripts/lto_db.py): the funders and
+the events are each written with one MERGE (a repeated key keeps its last
+row, as INSERT OR REPLACE did). An event DuckDB used to reject (a date
+that does not parse, an unknown facility) is checked first and skipped.
+
 Usage::
 
     python scripts/load_lto_funding.py
-    python scripts/load_lto_funding.py --db db/lto.duckdb --verbose
+    python scripts/load_lto_funding.py --catalog db/lto_catalog.sqlite --verbose
 """
 from __future__ import annotations
 
@@ -22,10 +27,11 @@ import json
 import sys
 from pathlib import Path
 
-import duckdb
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import lto_db  # noqa: E402
+from load_lto_archives import row_error  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "lto.duckdb"
 RAW_DIR = ROOT / "data" / "raw"
 
 
@@ -75,9 +81,26 @@ def resolve_facility(conn, name: str, acronym: str | None) -> str | None:
     return None
 
 
+FUNDER_COLS = ["funder_id", "name", "type", "country", "url", "notes"]
+EVENT_COLS = ["event_id", "funder_id", "facility_id", "amount_usd", "amount_currency",
+              "fiscal_year", "period_start", "period_end", "award_id", "award_title",
+              "program", "relation", "source", "source_url", "retrieved_at",
+              "confidence", "notes"]
+
+
+def stage(conn, name: str, table: str, cols: list[str], rows: list[list]) -> None:
+    """TEMP table typed like `table`'s `cols`, plus `_seq` in input order."""
+    conn.execute(f"CREATE OR REPLACE TEMP TABLE {name} AS "
+                 f"SELECT {', '.join(cols)}, 0 AS _seq FROM {table} LIMIT 0")
+    if rows:
+        conn.executemany(f"INSERT INTO {name} VALUES ({', '.join('?' * (len(cols) + 1))})",
+                         [[*r, i] for i, r in enumerate(rows)])
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--db", type=Path, default=DEFAULT_DB)
+    lto_db.add_argparse_catalog(ap)
+    ap.add_argument("--db", dest="catalog", type=Path, help="deprecated alias of --catalog")
     ap.add_argument("--verbose", action="store_true")
     args = ap.parse_args()
 
@@ -94,7 +117,11 @@ def main() -> int:
     skipped = 0
     warnings: list[str] = []
 
-    with duckdb.connect(str(args.db)) as conn:
+    funder_rows: list[list] = []
+    pending: list[tuple[str, list]] = []      # (funder name, event row)
+    conn = lto_db.connect(catalog=args.catalog, data=args.lake_data)
+    with lto_db.transaction(conn, f"load_lto_funding: funders + funding_events from "
+                                  f"{len(files)} agent files"):
         for path in files:
             try:
                 events = json.loads(path.read_text())
@@ -109,20 +136,14 @@ def main() -> int:
                     skipped += 1
                     continue
                 fuid = funder_id(fname)
-                # Upsert funder dimension.
-                conn.execute(
-                    """
-                    INSERT OR REPLACE INTO funders (funder_id, name, type, country, url, notes)
-                    VALUES (?, ?, ?, ?, ?, ?)
-                    """,
-                    [
-                        fuid, fname,
-                        ev.get("funder_type"),
-                        ev.get("funder_country") or "US",
-                        ev.get("funder_url"),
-                        ev.get("funder_notes"),
-                    ],
-                )
+                # Upsert funder dimension (written below, before the events).
+                funder_rows.append([
+                    fuid, fname,
+                    ev.get("funder_type"),
+                    ev.get("funder_country") or "US",
+                    ev.get("funder_url"),
+                    ev.get("funder_notes"),
+                ])
                 inserted_funders += 1
 
                 fac_id = resolve_facility(conn, ev.get("facility_canonical_name"), ev.get("facility_acronym"))
@@ -132,51 +153,54 @@ def main() -> int:
                     continue
 
                 eid = event_id(fuid, fac_id, ev.get("award_id"), ev.get("fiscal_year"))
-                try:
-                    conn.execute(
-                        """
-                        INSERT OR REPLACE INTO funding_events (
-                            event_id, funder_id, facility_id,
-                            amount_usd, amount_currency, fiscal_year,
-                            period_start, period_end,
-                            award_id, award_title, program,
-                            relation, source, source_url,
-                            retrieved_at, confidence, notes
-                        ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
-                        """,
-                        [
-                            eid, fuid, fac_id,
-                            ev.get("amount_usd"),
-                            ev.get("amount_currency") or "USD",
-                            ev.get("fiscal_year"),
-                            ev.get("period_start"), ev.get("period_end"),
-                            ev.get("award_id"), ev.get("award_title"), ev.get("program"),
-                            ev.get("relation"), ev.get("source") or agent, ev.get("source_url"),
-                            ev.get("retrieved_at") or "2026-05-05",
-                            ev.get("confidence") or "medium",
-                            ev.get("notes"),
-                        ],
-                    )
-                    inserted_events += 1
-                except duckdb.Error as e:
-                    skipped += 1
-                    warnings.append(f"  insert failed for {fname}/{ev.get('facility_canonical_name')}: {e}")
+                pending.append((f"{fname}/{ev.get('facility_canonical_name')}", [
+                    eid, fuid, fac_id,
+                    ev.get("amount_usd"),
+                    ev.get("amount_currency") or "USD",
+                    ev.get("fiscal_year"),
+                    ev.get("period_start"), ev.get("period_end"),
+                    ev.get("award_id"), ev.get("award_title"), ev.get("program"),
+                    ev.get("relation"), ev.get("source") or agent, ev.get("source_url"),
+                    ev.get("retrieved_at") or "2026-05-05",
+                    ev.get("confidence") or "medium",
+                    ev.get("notes"),
+                ]))
 
-        print(f"[load_lto_funding] inserted {inserted_events} events, {inserted_funders} funder upserts, skipped {skipped}")
-        if args.verbose and warnings:
-            print("\n".join(warnings[:25]))
-            if len(warnings) > 25:
-                print(f"  … {len(warnings) - 25} more suppressed")
+        # Funders first, so the events' funder_id check finds them.
+        stage(conn, "_funders", "funders", FUNDER_COLS, funder_rows)
+        f_stats = lto_db.merge_upsert(conn, "funders", ["funder_id"], "_funders",
+                                      order_by="_seq DESC")
+        event_rows: list[list] = []
+        for label, row in pending:
+            err = row_error(conn, "funding_events", dict(zip(EVENT_COLS, row)))
+            if err:
+                skipped += 1
+                warnings.append(f"  insert failed for {label}: {err}")
+            else:
+                event_rows.append(row)
+                inserted_events += 1
+        stage(conn, "_events", "funding_events", EVENT_COLS, event_rows)
+        e_stats = lto_db.merge_upsert(conn, "funding_events", ["event_id"], "_events",
+                                      order_by="_seq DESC")
+        lto_db.assert_integrity(conn, ["funders", "funding_events"])
 
-        # Coverage stats
-        n_total = conn.execute("SELECT count(*) FROM funding_events").fetchone()[0]
-        n_amt = conn.execute("SELECT count(*) FROM funding_events WHERE amount_usd IS NOT NULL").fetchone()[0]
-        sum_amt = conn.execute("SELECT sum(amount_usd) FROM funding_events").fetchone()[0]
-        n_fac = conn.execute("SELECT count(DISTINCT facility_id) FROM funding_events WHERE amount_usd IS NOT NULL").fetchone()[0]
-        print(
-            f"[load_lto_funding] coverage — {n_amt}/{n_total} events with amount_usd "
-            f"(${(sum_amt or 0)/1e6:.1f}M total) across {n_fac} unique facilities"
-        )
+    print(f"[load_lto_funding] funders {f_stats}; funding_events {e_stats}")
+    print(f"[load_lto_funding] inserted {inserted_events} events, {inserted_funders} funder upserts, skipped {skipped}")
+    if args.verbose and warnings:
+        print("\n".join(warnings[:25]))
+        if len(warnings) > 25:
+            print(f"  … {len(warnings) - 25} more suppressed")
+
+    # Coverage stats
+    n_total = conn.execute("SELECT count(*) FROM funding_events").fetchone()[0]
+    n_amt = conn.execute("SELECT count(*) FROM funding_events WHERE amount_usd IS NOT NULL").fetchone()[0]
+    sum_amt = conn.execute("SELECT sum(amount_usd) FROM funding_events").fetchone()[0]
+    n_fac = conn.execute("SELECT count(DISTINCT facility_id) FROM funding_events WHERE amount_usd IS NOT NULL").fetchone()[0]
+    print(
+        f"[load_lto_funding] coverage — {n_amt}/{n_total} events with amount_usd "
+        f"(${(sum_amt or 0)/1e6:.1f}M total) across {n_fac} unique facilities"
+    )
+    conn.close()
 
     return 0
 

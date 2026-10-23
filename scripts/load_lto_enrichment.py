@@ -18,10 +18,15 @@ Each Q-ENRICH-* agent writes up to 4 files:
 This loader composes the existing per-domain loaders so agent output
 gets folded into the right tables without duplicating dedupe logic.
 
+The facility rows and updates are one DuckLake snapshot (scripts/lto_db.py).
+The lake checks no foreign keys, so a link row or an update that DuckDB
+used to reject (an unknown sphere slug, an established year that is not
+a number) is checked first and skipped, as before.
+
 Usage::
 
     python scripts/load_lto_enrichment.py
-    python scripts/load_lto_enrichment.py --db db/lto.duckdb --verbose
+    python scripts/load_lto_enrichment.py --catalog db/lto_catalog.sqlite --verbose
 """
 from __future__ import annotations
 
@@ -31,10 +36,11 @@ import shutil
 import sys
 from pathlib import Path
 
-import duckdb
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import lto_db  # noqa: E402
+from load_lto_archives import RowRejected, cast_error, write_row  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "lto.duckdb"
 RAW_DIR = ROOT / "data" / "raw"
 ENRICH_GLOB = "Q-ENRICH-*"
 
@@ -114,66 +120,45 @@ def load_additional_facilities(conn, verbose: bool) -> int:
                 (name.lower() + "|" + acronym.lower()).encode("utf-8")
             ).hexdigest()[:16]
             hq = r.get("hq") or {}
-            conn.execute(
-                """INSERT OR REPLACE INTO facilities (
-                    facility_id, canonical_name, acronym, parent_org,
-                    facility_type, country, region, hq_address, hq_lat, hq_lng,
-                    url, contact, established,
-                    record_length_years, long_term_threshold_met, data_portal_url,
-                    created_at
-                ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,CURRENT_TIMESTAMP)""",
-                [
-                    fid, name, acronym, r.get("parent_org"),
-                    r.get("facility_type"), r.get("country") or "US", r.get("region"),
-                    hq.get("address"), hq.get("lat"), hq.get("lng"),
-                    r.get("url"), r.get("contact"), r.get("established"),
-                    r.get("record_length_years"),
-                    r.get("long_term_threshold_met"),
-                    r.get("data_portal_url"),
-                ],
-            )
+            # A bad facility row (unknown facility_type, no name) still
+            # stops the run, now at assert_integrity in main().
+            write_row(conn, "facilities", {
+                "facility_id": fid, "canonical_name": name, "acronym": acronym,
+                "parent_org": r.get("parent_org"), "facility_type": r.get("facility_type"),
+                "country": r.get("country") or "US", "region": r.get("region"),
+                "hq_address": hq.get("address"), "hq_lat": hq.get("lat"),
+                "hq_lng": hq.get("lng"), "url": r.get("url"), "contact": r.get("contact"),
+                "established": r.get("established"),
+                "record_length_years": r.get("record_length_years"),
+                "long_term_threshold_met": r.get("long_term_threshold_met"),
+                "data_portal_url": r.get("data_portal_url"),
+            }, key=["facility_id"], checked=True)
+
+            def link(table: str, row: dict) -> None:
+                # Unknown slugs are dropped silently, as DuckDB's FK
+                # rejection used to be.
+                try:
+                    write_row(conn, table, row, key=list(row)[:2], insert_only=True)
+                except RowRejected:
+                    pass
+
             # facility_spheres
             primary = r.get("primary_sphere")
             if primary:
-                try:
-                    conn.execute(
-                        "INSERT OR IGNORE INTO facility_spheres VALUES (?, ?, 'primary')",
-                        [fid, primary],
-                    )
-                except duckdb.Error:
-                    pass
+                link("facility_spheres",
+                     {"facility_id": fid, "sphere_slug": primary, "role": "primary"})
             for sec in r.get("secondary_spheres") or []:
-                try:
-                    conn.execute(
-                        "INSERT OR IGNORE INTO facility_spheres VALUES (?, ?, 'secondary')",
-                        [fid, sec],
-                    )
-                except duckdb.Error:
-                    pass
+                link("facility_spheres",
+                     {"facility_id": fid, "sphere_slug": sec, "role": "secondary"})
             for eco in r.get("ecosystem_types") or []:
-                try:
-                    conn.execute(
-                        "INSERT OR IGNORE INTO facility_ecosystems VALUES (?, ?)",
-                        [fid, eco],
-                    )
-                except duckdb.Error:
-                    pass
+                link("facility_ecosystems", {"facility_id": fid, "ecosystem_slug": eco})
             for net in r.get("networks") or []:
-                try:
-                    conn.execute(
-                        "INSERT OR IGNORE INTO network_membership VALUES (?, ?, NULL)",
-                        [fid, net.lower() if isinstance(net, str) else net],
-                    )
-                except duckdb.Error:
-                    pass
+                link("network_membership",
+                     {"facility_id": fid,
+                      "network_id": net.lower() if isinstance(net, str) else net,
+                      "role": None})
             for area in r.get("research_areas") or []:
-                try:
-                    conn.execute(
-                        "INSERT OR IGNORE INTO area_links VALUES (?, ?)",
-                        [fid, area],
-                    )
-                except duckdb.Error:
-                    pass
+                link("area_links", {"facility_id": fid, "area_id": area})
             inserted += 1
             if verbose:
                 print(f"  [insert] {name} ({acronym}) [{primary}, est {r.get('established')}]")
@@ -222,7 +207,8 @@ def load_facility_updates(conn, verbose: bool) -> int:
                     print(f"  [skip] no facility for '{name}' ({acronym})")
                 continue
             fid = row[0]
-            try:
+            err = cast_error("facilities", field, new_val)
+            if err is None:
                 conn.execute(
                     f"UPDATE facilities SET {field} = ? WHERE facility_id = ?",
                     [new_val, fid],
@@ -230,23 +216,30 @@ def load_facility_updates(conn, verbose: bool) -> int:
                 applied += 1
                 if verbose:
                     print(f"  [update] {name} ({acronym}) {field} → {new_val!r}")
-            except duckdb.Error as e:
+            else:
                 skipped += 1
                 if verbose:
-                    print(f"  [skip] {name} update failed: {e}")
+                    print(f"  [skip] {name} update failed: {err}")
     print(f"[enrich] facility_updates — applied {applied}, skipped {skipped}")
     return applied
 
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--db", type=Path, default=DEFAULT_DB)
+    lto_db.add_argparse_catalog(ap)
+    ap.add_argument("--db", dest="catalog", type=Path, help="deprecated alias of --catalog")
     ap.add_argument("--verbose", action="store_true")
     args = ap.parse_args()
 
-    with duckdb.connect(str(args.db)) as conn:
+    agents = sorted(d.name for d in RAW_DIR.glob(ENRICH_GLOB))
+    conn = lto_db.connect(catalog=args.catalog, data=args.lake_data)
+    with lto_db.transaction(conn, f"load_lto_enrichment: facilities + facility updates from "
+                                  f"{', '.join(agents) or 'no Q-ENRICH-* dirs'}"):
         load_additional_facilities(conn, args.verbose)
         load_facility_updates(conn, args.verbose)
+        lto_db.assert_integrity(conn, ["facilities", "facility_spheres", "facility_ecosystems",
+                                       "network_membership", "area_links"])
+    conn.close()
 
     # Stage publications + data_products into the namespaces the
     # existing loaders glob, then invoke them. additional_people.json

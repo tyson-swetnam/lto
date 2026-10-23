@@ -35,7 +35,13 @@ function navigate(path) {
   // up the parent tab '/people'.
   document.querySelectorAll('.tabs a[data-view]').forEach((a) => {
     a.classList.toggle('active', a.dataset.view === rootSeg);
+    // On a phone the tab strip scrolls sideways; keep the active tab in view.
+    if (a.dataset.view === rootSeg && a.parentElement
+        && a.parentElement.scrollWidth > a.parentElement.clientWidth) {
+      a.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+    }
   });
+  updateTabOverflow();
 
   // Hide/show sidebar for views that don't need it. Keep in step with the
   // `no-sidebar` class each route handler in main.js sets: this toggle
@@ -55,8 +61,23 @@ function navigate(path) {
   if (handler) handler(path);
 }
 
+// When the tab strip overflows (phone widths), fade the edge that has more
+// tabs behind it so the hidden SQL / Stats / Docs tabs read as scrollable.
+function updateTabOverflow() {
+  const nav = document.querySelector('.tabs');
+  if (!nav) return;
+  const max = nav.scrollWidth - nav.clientWidth;
+  nav.classList.toggle('tabs-more-right', max > 2 && nav.scrollLeft < max - 2);
+  nav.classList.toggle('tabs-more-left', max > 2 && nav.scrollLeft > 2);
+}
+
 export function initRouter(routes) {
   _routes = routes;
+  const nav = document.querySelector('.tabs');
+  if (nav) {
+    nav.addEventListener('scroll', updateTabOverflow, { passive: true });
+    window.addEventListener('resize', updateTabOverflow, { passive: true });
+  }
 
   window.addEventListener('hashchange', () => {
     // Ignore in-page anchor changes — the browser already scrolled

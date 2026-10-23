@@ -1,0 +1,101 @@
+{
+  "batch_id": "R-PEOPLE2-DRYLANDS-SW-03",
+  "retrieved_at": "2026-10-22",
+  "verified_by": "adversarial-verifier 2026-10-22",
+  "facilities": [
+    {
+      "facility_id": "3ef8f8206b3af64b",
+      "pages_fetched": [
+        {
+          "url": "https://wcc.sc.egov.usda.gov/nwcc/site?sitenum=2026",
+          "status": 200
+        },
+        {
+          "url": "https://wcc.sc.egov.usda.gov/nwcc/sitenotes?sitenum=2026",
+          "status": 200
+        },
+        {
+          "url": "https://catalog.data.gov/dataset/us-department-of-agriculture-soil-climate-analysis-network-scan-site-2026-data-walnut-gulc",
+          "status": 200
+        },
+        {
+          "url": "https://ltar.ars.usda.gov/sites/wgew",
+          "status": 200
+        },
+        {
+          "url": "https://www.ars.usda.gov/pacific-west-area/tucson-az/southwest-watershed-research-center/",
+          "status": 200
+        },
+        {
+          "url": "https://www.ars.usda.gov/pacific-west-area/tucson-az/southwest-watershed-research-center/docs/staff/",
+          "status": 200
+        },
+        {
+          "url": "https://www.ars.usda.gov/pacific-west-area/tucson-az/southwest-watershed-research-center/docs/about-swrc/",
+          "status": 200
+        },
+        {
+          "url": "https://www.ars.usda.gov/pacific-west-area/tucson-az/southwest-watershed-research-center/people/philip-heilman/",
+          "status": 200
+        },
+        {
+          "url": "https://nrcs-prod.azureedge.us/contact/state-office-contacts/arizona-state-office",
+          "status": 200
+        },
+        {
+          "url": "https://pub.orcid.org/v3.0/0000-0002-1073-4564/person",
+          "status": 200
+        },
+        {
+          "url": "https://pub.orcid.org/v3.0/0000-0002-1073-4564/employments",
+          "status": 200
+        },
+        {
+          "url": "https://www.nrcs.usda.gov/contact/state-office-contacts/arizona-state-office",
+          "status": 0
+        },
+        {
+          "url": "https://www.nrcs.usda.gov/resources/data-and-reports/soil-climate-analysis-network",
+          "status": 0
+        },
+        {
+          "url": "https://www.wcc.nrcs.usda.gov/contact/index.html",
+          "status": 0
+        }
+      ],
+      "notes": "NRCS SCAN station; the official NWCC site page and site notes name no PI, manager or operator (they only point to a generic NRCS state contact page, which did not respond). Reporting since 1999-03-19. The data.gov record (published by Agricultural Research Service, keyword WGEW) lists Dino DeSimone as dataset contactPoint; he does not appear on the current NRCS Arizona state office directory, so his current status is unconfirmed. The station sits in the USDA-ARS Walnut Gulch Experimental Watershed; the LTAR WGEW page lists SCAN among networks with which WGEW shares data, so the WGEW/SWRC Research Leader (Philip Heilman) is recorded as host-site leadership at low confidence, not as station PI. NRCS AZ directory lists a Water Supply Specialist for snow survey questions but nothing ties that person to this SCAN station, so not added. Status 0 = connection timeout from nrcs.usda.gov / wcc.nrcs.usda.gov. VERIFIER 2026-10-22: Re-fetched NWCC site page, site notes, data.gov record, LTAR WGEW page and Heilman ARS profile (all 200). Dropped Philip Heilman: the LTAR page is about the Walnut Gulch Experimental Watershed (an ARS facility), not this NRCS SCAN station; SCAN appears there only as a network WGEW shares data with, so the page does not show him in any role at this station. He belongs on a WGEW facility record, not here. Kept Dino DeSimone at low confidence: the data.gov record for this station (modified 2025-11-22) lists him as contactPoint; 'data-manager' is the nearest allowed role for a dataset contact, and he is absent from the current NRCS AZ directory mirror, so current status rests only on that record. Email address deliberately not recorded."
+    }
+  ],
+  "people": [
+    {
+      "key": "dino-desimone",
+      "existing_person_id": null,
+      "name": "Dino DeSimone",
+      "name_given": "Dino",
+      "name_family": "DeSimone",
+      "orcid": null,
+      "orcid_source_url": null,
+      "homepage_url": null,
+      "bio": null,
+      "bio_source_url": null,
+      "research_interests": null,
+      "research_interests_source_url": null
+    }
+  ],
+  "affiliations": [
+    {
+      "facility_id": "3ef8f8206b3af64b",
+      "person_key": "dino-desimone",
+      "role": "data-manager",
+      "title": "Listed contact point for the data.gov dataset record of SCAN site 2026 (Walnut Gulch #1)",
+      "is_key_personnel": false,
+      "is_current": true,
+      "start_year": null,
+      "end_year": null,
+      "source_url": "https://catalog.data.gov/dataset/us-department-of-agriculture-soil-climate-analysis-network-scan-site-2026-data-walnut-gulc",
+      "evidence": "contactPoint { \"fn\" : \"DeSimone, Dino\"",
+      "confidence": "low"
+    }
+  ],
+  "verifications": []
+}

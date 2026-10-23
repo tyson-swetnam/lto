@@ -1,0 +1,858 @@
+{
+ "batch_id": "R-PEOPLE2-NEP-01a",
+ "retrieved_at": "2026-10-22",
+ "verified_by": "adversarial-verifier 2026-10-22",
+ "facilities": [
+  {
+   "facility_id": "0d6b1e55d4c3c23d",
+   "pages_fetched": [
+    {
+     "url": "https://apnep.nc.gov/about-us/staff",
+     "status": 200
+    },
+    {
+     "url": "https://apnep.nc.gov/about-us/our-history",
+     "status": 200
+    },
+    {
+     "url": "https://apnep.nc.gov/about-apnep/apnep-staff/bill-crowell",
+     "status": 200
+    },
+    {
+     "url": "https://apnep.nc.gov/about-apnep/apnep-staff/heather-jennings",
+     "status": 200
+    },
+    {
+     "url": "https://apnep.nc.gov/about-apnep/apnep-staff/tim-ellis",
+     "status": 200
+    },
+    {
+     "url": "https://apnep.nc.gov/about-apnep/apnep-staff/dean-carpenter",
+     "status": 200
+    },
+    {
+     "url": "https://apnep.nc.gov/about-apnep/apnep-staff/stacey-feken",
+     "status": 200
+    },
+    {
+     "url": "https://apnep.nc.gov/about/staff",
+     "status": 404
+    }
+   ],
+   "notes": "State-hosted NEP (NC DEQ, Raleigh). Staff page lists Director, Program Manager, Program Scientist, Quantitative Ecologist; history page (fetched) gives 1987 designation but names no founding director. EPA liaisons listed on staff page were not added (EPA staff, not APNEP)."
+  },
+  {
+   "facility_id": "c19eea5e35c4ff35",
+   "pages_fetched": [
+    {
+     "url": "https://btnep.org/about-btnep/meet-the-staff/",
+     "status": 200
+    },
+    {
+     "url": "https://lumcon.edu/2024/06/18/btnep-welcomes-bren-haase-as-program-director/",
+     "status": 200
+    },
+    {
+     "url": "https://btnep.org/2024/11/01/btnep-announces-new-deputy-director/",
+     "status": 200
+    },
+    {
+     "url": "https://btnep.org/about-btnep/what-is-btnep/",
+     "status": 200
+    }
+   ],
+   "notes": "Hosted at The Coastal Center, Nicholls State University (Thibodaux, LA); director announcement published by LUMCON. Estuary designated 1990 per what-is-btnep page; no founding director named on fetched pages. Note: btnep.org page footers contain an injected spam string ('situs gacor') - site appears compromised; staff content itself looks legitimate. Verifier: staff-page-only affiliations (Barron, Nunna, Benoit) downgraded to medium because btnep.org carries injected spam; Haase and Felterman are corroborated by the LUMCON release and BTNEP news post."
+  },
+  {
+   "facility_id": "2adc72ff42d9de08",
+   "pages_fetched": [
+    {
+     "url": "https://barnegatbaypartnership.org/",
+     "status": 200
+    },
+    {
+     "url": "https://barnegatbaypartnership.org/about/",
+     "status": 200
+    }
+   ],
+   "notes": "Administered as a department of Ocean County College since 2003 (bbp.ocean.edu redirects to barnegatbaypartnership.org). Director McGowan previously managed estuary science at an unnamed Delaware NEP; not linked to Inland Bays because the page does not name it."
+  },
+  {
+   "facility_id": "ec5c32126ce47483",
+   "pages_fetched": [
+    {
+     "url": "https://inlandbays.org/about/staff/",
+     "status": 200
+    },
+    {
+     "url": "https://inlandbays.org/staff/christophe-tulou-executive-director/",
+     "status": 200
+    },
+    {
+     "url": "https://inlandbays.org/staff/bryan-ochs/",
+     "status": 200
+    },
+    {
+     "url": "https://inlandbays.org/staff/meghan-noe-fellows/",
+     "status": 200
+    },
+    {
+     "url": "https://inlandbays.org/staff/taylor-hoffman-science-coordinator/",
+     "status": 200
+    }
+   ],
+   "notes": "Independent nonprofit (Rehoboth Beach, DE). Staff page and individual profiles fetched; Director of Finance/Outreach not added as non-science leadership."
+  },
+  {
+   "facility_id": "e1a7385483473434",
+   "pages_fetched": [
+    {
+     "url": "https://gbep.texas.gov/",
+     "status": 200
+    },
+    {
+     "url": "https://gbep.texas.gov/contacts/",
+     "status": 200
+    },
+    {
+     "url": "https://gbep.texas.gov/about-the-estuary-program/",
+     "status": 200
+    },
+    {
+     "url": "https://www.tceq.texas.gov/agency/directory/water_directory.html",
+     "status": 200
+    },
+    {
+     "url": "https://gbep.texas.gov/about/staff/",
+     "status": 404
+    }
+   ],
+   "notes": "Administered by TCEQ (Houston office). Contacts page lists Program Manager (program head) and coordinators; no individual bios published. TCEQ Office of Water directory corroborates Lisa Marshall as GBEP Manager. Program established 1989; no founding manager named."
+  },
+  {
+   "facility_id": "a3df950de95bd5e8",
+   "pages_fetched": [
+    {
+     "url": "https://www.estuarypartnership.org/",
+     "status": 200
+    },
+    {
+     "url": "https://www.estuarypartnership.org/who-we-are/our-staff-board",
+     "status": 200
+    },
+    {
+     "url": "https://www.estuarypartnership.org/staff",
+     "status": 404
+    }
+   ],
+   "notes": "Nonprofit (Portland, OR). Single staff/board page with bios; Keith Marcoe ORCID record lists Lower Columbia Estuary Partnership employment and Stony Brook/UVM degrees matching the staff bio. Verifier: ORCID 0000-0002-5743-2651 re-fetched (name Keith Marcoe; employment Lower Columbia Estuary Partnership from 2007; MS Stony Brook, BS UVM). Bios reworded so 'joined in YEAR' is not stated as 'title since YEAR'."
+  }
+ ],
+ "people": [
+  {
+   "key": "bill-crowell",
+   "existing_person_id": null,
+   "name": "Bill Crowell",
+   "name_given": "Bill",
+   "name_family": "Crowell",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://apnep.nc.gov/about-apnep/apnep-staff/bill-crowell",
+   "bio": "Has led North Carolina's Albemarle-Pamlico estuary partnership (APNEP) as director since 2002, overseeing its budget, grants, staff and implementation of the estuary's CCMP. Earlier a senior policy analyst at the NC Division of Coastal Management; doctorate from Prescott College on environmental educators' views of sustainability; AICP-certified planner.",
+   "bio_source_url": "https://apnep.nc.gov/about-apnep/apnep-staff/bill-crowell",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "heather-jennings",
+   "existing_person_id": null,
+   "name": "Heather Jennings",
+   "name_given": "Heather",
+   "name_family": "Jennings",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://apnep.nc.gov/about-apnep/apnep-staff/heather-jennings",
+   "bio": "Program Manager at the Albemarle-Pamlico National Estuary Partnership, which she joined in 2018. Previously administered North Carolina's Section 319(h) nonpoint-source grant program for watershed restoration, and earlier worked as an NC State research associate on freshwater mussel surveys and oyster pathogen detection.",
+   "bio_source_url": "https://apnep.nc.gov/about-apnep/apnep-staff/heather-jennings",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "tim-ellis",
+   "existing_person_id": null,
+   "name": "Tim Ellis",
+   "name_given": "Tim",
+   "name_family": "Ellis",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://apnep.nc.gov/about-apnep/apnep-staff/tim-ellis",
+   "bio": "Quantitative Ecologist with the Albemarle-Pamlico National Estuary Partnership since 2017, analysing ecological indicators for its monitoring and assessment program. Holds a PhD from NC State in fisheries, wildlife and conservation biology; previously studied spotted seatrout population dynamics as an NCSU postdoc and VIMS visiting scientist.",
+   "bio_source_url": "https://apnep.nc.gov/about-apnep/apnep-staff/tim-ellis",
+   "research_interests": "Estuarine ecology; fisheries science; ecological indicators for estuarine monitoring and assessment; population dynamics of coastal finfish and their habitats.",
+   "research_interests_source_url": "https://apnep.nc.gov/about-apnep/apnep-staff/tim-ellis"
+  },
+  {
+   "key": "dean-carpenter",
+   "existing_person_id": null,
+   "name": "Dean Carpenter",
+   "name_given": "Dean",
+   "name_family": "Carpenter",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://apnep.nc.gov/about-apnep/apnep-staff/dean-carpenter",
+   "bio": "Program Scientist at the Albemarle-Pamlico National Estuary Partnership, which he joined in 2003; coordinates its Science & Technology Initiative, Science and Technical Advisory Committee and monitoring/assessment teams. Formerly a project manager at the Water Environment Research Foundation and an environmental scientist supporting EPA research; D.Env. from UCLA.",
+   "bio_source_url": "https://apnep.nc.gov/about-apnep/apnep-staff/dean-carpenter",
+   "research_interests": "Regional-scale ecological risk assessment methods and their use in ecosystem-based management.",
+   "research_interests_source_url": "https://apnep.nc.gov/about-apnep/apnep-staff/dean-carpenter"
+  },
+  {
+   "key": "stacey-feken",
+   "existing_person_id": null,
+   "name": "Stacey Feken",
+   "name_given": "Stacey",
+   "name_family": "Feken",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://apnep.nc.gov/about-apnep/apnep-staff/stacey-feken",
+   "bio": "Policy and Engagement Manager at the Albemarle-Pamlico National Estuary Partnership, which she joined in 2016. Before that she spent 14 years at the Florida Department of Environmental Protection on Everglades (CERP) and South Florida ecosystem restoration; holds a marine sciences MS (University of Georgia Marine Institute, Sapelo Island).",
+   "bio_source_url": "https://apnep.nc.gov/about-apnep/apnep-staff/stacey-feken",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "bren-haase",
+   "existing_person_id": null,
+   "name": "Bren Haase",
+   "name_given": "Bren",
+   "name_family": "Haase",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Appointed in 2024 to lead Louisiana's Barataria-Terrebonne estuary program (BTNEP) as director. Brings three decades of coastal wetland ecology, restoration and regulatory work across private, state and federal sectors; trained in marine biology (Auburn) and oceanography and coastal sciences (LSU).",
+   "bio_source_url": "https://lumcon.edu/2024/06/18/btnep-welcomes-bren-haase-as-program-director/",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "michelle-felterman",
+   "existing_person_id": null,
+   "name": "Michelle Felterman",
+   "name_given": "Michelle",
+   "name_family": "Felterman",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Became BTNEP's deputy director in late 2024. Previously a senior scientist at Louisiana's Coastal Protection and Restoration Authority managing the Atchafalaya Basin Program, and a NEPA project manager for NAVFAC Southeast; holds an MS from Nicholls State and a JD from Tulane.",
+   "bio_source_url": "https://btnep.org/2024/11/01/btnep-announces-new-deputy-director/",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "andrew-barron",
+   "existing_person_id": null,
+   "name": "Andrew Barron",
+   "name_given": "Andrew",
+   "name_family": "Barron",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Senior Research Scientist at the Barataria-Terrebonne National Estuary Program, managing water-quality, coastal-restoration and cultural-heritage projects and overseeing data quality assurance. Represents the program on Louisiana coastal planning committees; previously worked in LDEQ's nonpoint-source pollution unit. MS in soil mineralogy/chemistry.",
+   "bio_source_url": "https://btnep.org/about-btnep/meet-the-staff/",
+   "research_interests": "Water quality; coastal restoration; quality assurance of scientific data collection.",
+   "research_interests_source_url": "https://btnep.org/about-btnep/meet-the-staff/"
+  },
+  {
+   "key": "siva-nunna",
+   "existing_person_id": null,
+   "name": "Siva Nunna",
+   "name_given": "Siva",
+   "name_family": "Nunna",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Water Quality Coordinator at the Barataria-Terrebonne National Estuary Program, running watershed projects and surface-water monitoring and data assessment, with restoration work on the Bayou Folse and Bayou Lafourche watersheds alongside LDEQ. Holds a Nicholls State MS in marine/environmental biology.",
+   "bio_source_url": "https://btnep.org/about-btnep/meet-the-staff/",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "matt-benoit",
+   "existing_person_id": null,
+   "name": "Matt Benoit",
+   "name_given": "Matt",
+   "name_family": "Benoit",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Habitat Restoration Manager at the Barataria-Terrebonne National Estuary Program, leading its coastal vegetative restoration program, including revegetation of the Fourchon Maritime Forest Ridge since 2008 and the program's native plant production facility at the Nicholls State University farm.",
+   "bio_source_url": "https://btnep.org/about-btnep/meet-the-staff/",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "andrew-mcgowan",
+   "existing_person_id": null,
+   "name": "Andrew McGowan",
+   "name_given": "Andrew",
+   "name_family": "McGowan",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Director of the Barnegat Bay Partnership (New Jersey) since August 2023, after eight years managing estuary science for another National Estuary Program in Delaware. Work spans forage fish modelling, horseshoe crab movement, oyster reef and seagrass restoration, salt marsh change and continuous water-quality monitoring.",
+   "bio_source_url": "https://barnegatbaypartnership.org/about/",
+   "research_interests": "Restoring estuarine habitats, especially seagrass and shellfish beds; ecological role of forage fish; ecological and economic effects of estuarine water-quality problems.",
+   "research_interests_source_url": "https://barnegatbaypartnership.org/about/"
+  },
+  {
+   "key": "nina-sassano",
+   "existing_person_id": null,
+   "name": "Nina Sassano",
+   "name_given": "Nina",
+   "name_family": "Sassano",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Associate Director of Outreach at the Barnegat Bay Partnership, where she earlier worked as a field technician (2011-2013). Holds a master's from East Carolina University on bay nettle reproduction and has a decade of marine science education and program coordination experience.",
+   "bio_source_url": "https://barnegatbaypartnership.org/about/",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "ceili-pestalozzi",
+   "existing_person_id": null,
+   "name": "Ceili Pestalozzi",
+   "name_given": "Ceili",
+   "name_family": "Pestalozzi",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Wetlands and Watershed Manager at the Barnegat Bay Partnership, coordinating sub-watershed management plans and managing wetland research and restoration projects. Joined BBP as a technician in 2015 and returned in 2020; MS in ecology from SUNY ESF on coastal freshwater wetland water levels.",
+   "bio_source_url": "https://barnegatbaypartnership.org/about/",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "nicole-petersen",
+   "existing_person_id": null,
+   "name": "Nicole Petersen",
+   "name_given": "Nicole",
+   "name_family": "Petersen",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Water Quality Coordinator at the Barnegat Bay Partnership, which she joined in 2015. Helped launch its continuous water-quality monitoring program and gain NJDEP certification for its lab, and now runs that monitoring program; BS in environmental science from Stockton University.",
+   "bio_source_url": "https://barnegatbaypartnership.org/about/",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "christophe-tulou",
+   "existing_person_id": null,
+   "name": "Christophe Tulou",
+   "name_given": "Christophe",
+   "name_family": "Tulou",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://inlandbays.org/staff/christophe-tulou-executive-director/",
+   "bio": "Executive Director of the Delaware Center for the Inland Bays. Former Senate EPW Committee senior counsel, EPA senior advisor on the Chesapeake Bay, Delaware DNREC secretary, District Department of the Environment director and Pew Oceans Commission executive director; trained in zoology, marine affairs and law.",
+   "bio_source_url": "https://inlandbays.org/staff/christophe-tulou-executive-director/",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "bryan-ochs",
+   "existing_person_id": null,
+   "name": "Bryan Ochs",
+   "name_given": "Bryan",
+   "name_family": "Ochs",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://inlandbays.org/staff/bryan-ochs/",
+   "bio": "Deputy Director of the Delaware Center for the Inland Bays, responsible for administrative operations including HR, finance, IT, development and communications. A US Air Force veteran with management degrees (MBA, MS) from Wilmington University.",
+   "bio_source_url": "https://inlandbays.org/staff/bryan-ochs/",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "meghan-noe-fellows",
+   "existing_person_id": null,
+   "name": "Meghan Noe Fellows",
+   "name_given": "Meghan",
+   "name_family": "Noe Fellows",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://inlandbays.org/staff/meghan-noe-fellows/",
+   "bio": "Director of Estuary Science and Restoration at the Delaware Center for the Inland Bays, which she joined in 2022, heading its research, monitoring and restoration. Previously managed stream and forest restoration for Fairfax County, Virginia; MS in restoration ecology from San Diego State; Virginia's first Certified Ecological Restoration Practitioner.",
+   "bio_source_url": "https://inlandbays.org/staff/meghan-noe-fellows/",
+   "research_interests": "Ecological restoration; estuary monitoring; ongoing research on an endemic salt marsh plant of southern California.",
+   "research_interests_source_url": "https://inlandbays.org/staff/meghan-noe-fellows/"
+  },
+  {
+   "key": "taylor-hoffman",
+   "existing_person_id": null,
+   "name": "Taylor Hoffman",
+   "name_given": "Taylor",
+   "name_family": "Hoffman",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://inlandbays.org/staff/taylor-hoffman-science-coordinator/",
+   "bio": "Science Coordinator at the Delaware Center for the Inland Bays since October 2023, working on seagrass (SAV), reforestation and living-shoreline restoration plus routine water-quality monitoring. Studied blue crabs for a University of Delaware marine biosciences MS.",
+   "bio_source_url": "https://inlandbays.org/staff/taylor-hoffman-science-coordinator/",
+   "research_interests": "Submerged aquatic vegetation; living shorelines; ambient water-quality monitoring; blue crab biology.",
+   "research_interests_source_url": "https://inlandbays.org/staff/taylor-hoffman-science-coordinator/"
+  },
+  {
+   "key": "lisa-marshall",
+   "existing_person_id": null,
+   "name": "Lisa M. Marshall",
+   "name_given": "Lisa",
+   "name_family": "Marshall",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "jenelle-estrada",
+   "existing_person_id": null,
+   "name": "Jenelle Estrada",
+   "name_given": "Jenelle",
+   "name_family": "Estrada",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "christian-rines",
+   "existing_person_id": null,
+   "name": "Christian Rines",
+   "name_given": "Christian",
+   "name_family": "Rines",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "celina-gauthier-lowry",
+   "existing_person_id": null,
+   "name": "Celina Gauthier Lowry",
+   "name_given": "Celina",
+   "name_family": "Gauthier Lowry",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "elaine-placido",
+   "existing_person_id": null,
+   "name": "Elaine Placido",
+   "name_given": "Elaine",
+   "name_family": "Placido",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Leads the Lower Columbia Estuary Partnership as executive director; she joined the organization in 2020, bringing over twenty years in local government and nonprofit work and US Coast Guard service. Earned an MPA (Nebraska-Omaha) and a DPA (Valdosta State).",
+   "bio_source_url": "https://www.estuarypartnership.org/who-we-are/our-staff-board",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "catherine-corbett",
+   "existing_person_id": null,
+   "name": "Catherine Corbett",
+   "name_given": "Catherine",
+   "name_family": "Corbett",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Chief Scientist at the Lower Columbia Estuary Partnership, which she joined in 2008; heads its science team and its restoration, monitoring and data programs and facilitates the Science Work Group. Previously the Charlotte Harbor NEP's senior scientist, developing resource-based water-quality targets; has published on southwest Florida seagrass.",
+   "bio_source_url": "https://www.estuarypartnership.org/who-we-are/our-staff-board",
+   "research_interests": "Habitat restoration prioritization and effectiveness monitoring; estuarine water-quality targets; seagrass ecology.",
+   "research_interests_source_url": "https://www.estuarypartnership.org/who-we-are/our-staff-board"
+  },
+  {
+   "key": "keith-marcoe",
+   "existing_person_id": null,
+   "name": "Keith Marcoe",
+   "name_given": "Keith",
+   "name_family": "Marcoe",
+   "orcid": "0000-0002-5743-2651",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-5743-2651/employments",
+   "homepage_url": null,
+   "bio": "GIS and Data Management Specialist at the Lower Columbia Estuary Partnership, which he joined in 2008; builds GIS databases for its monitoring, restoration and education work, fills land-cover and bathymetry data gaps, and tracks a century of habitat change on the lower Columbia River. MS in marine environmental sciences, Stony Brook.",
+   "bio_source_url": "https://www.estuarypartnership.org/who-we-are/our-staff-board",
+   "research_interests": "GIS databases; land cover and bathymetric data; historical habitat change in the lower Columbia River; regional restoration project inventory.",
+   "research_interests_source_url": "https://www.estuarypartnership.org/who-we-are/our-staff-board"
+  },
+  {
+   "key": "katarina-lunde",
+   "existing_person_id": null,
+   "name": "Katarina Lunde",
+   "name_given": "Katarina",
+   "name_family": "Lunde",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Monitoring Program Lead at the Lower Columbia Estuary Partnership, which she joined in 2025 as a research scientist on its ecosystem and action-effectiveness monitoring programs. A plant ecologist (MS, Oregon State) with experience in biological invasions, plant-insect interactions and lidar/hyperspectral remote sensing.",
+   "bio_source_url": "https://www.estuarypartnership.org/who-we-are/our-staff-board",
+   "research_interests": "Plant population ecology; biological invasions; plant-insect interactions and biocontrol impacts; remote sensing and GIS for vegetation classification.",
+   "research_interests_source_url": "https://www.estuarypartnership.org/who-we-are/our-staff-board"
+  }
+ ],
+ "affiliations": [
+  {
+   "facility_id": "0d6b1e55d4c3c23d",
+   "person_key": "bill-crowell",
+   "role": "director",
+   "title": "Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2002,
+   "end_year": null,
+   "source_url": "https://apnep.nc.gov/about-apnep/apnep-staff/bill-crowell",
+   "evidence": "Dr. William L. Crowell Jr. (Bill) has been Director of the Albemarle-Pamlico National Estuary Partnership since 2002",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "0d6b1e55d4c3c23d",
+   "person_key": "heather-jennings",
+   "role": "manager",
+   "title": "Program Manager",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2018,
+   "end_year": null,
+   "source_url": "https://apnep.nc.gov/about-apnep/apnep-staff/heather-jennings",
+   "evidence": "Heather Jennings Program Manager",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "0d6b1e55d4c3c23d",
+   "person_key": "tim-ellis",
+   "role": "scientist",
+   "title": "Quantitative Ecologist",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2017,
+   "end_year": null,
+   "source_url": "https://apnep.nc.gov/about-apnep/apnep-staff/tim-ellis",
+   "evidence": "Tim Ellis joined APNEP in 2017 as the partnership's Quantitative Ecologist.",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "0d6b1e55d4c3c23d",
+   "person_key": "dean-carpenter",
+   "role": "scientist",
+   "title": "Program Scientist",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2003,
+   "end_year": null,
+   "source_url": "https://apnep.nc.gov/about-apnep/apnep-staff/dean-carpenter",
+   "evidence": "Dr. Dean Carpenter joined APNEP in 2003. As APNEP's Program Scientist",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "0d6b1e55d4c3c23d",
+   "person_key": "stacey-feken",
+   "role": "manager",
+   "title": "Policy and Engagement Manager",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2016,
+   "end_year": null,
+   "source_url": "https://apnep.nc.gov/about-us/staff",
+   "evidence": "Stacey Feken Policy and Engagement Manager",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "c19eea5e35c4ff35",
+   "person_key": "bren-haase",
+   "role": "director",
+   "title": "Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2024,
+   "end_year": null,
+   "source_url": "https://btnep.org/about-btnep/meet-the-staff/",
+   "evidence": "Bren Haase Director",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "c19eea5e35c4ff35",
+   "person_key": "michelle-felterman",
+   "role": "deputy-director",
+   "title": "Deputy Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2024,
+   "end_year": null,
+   "source_url": "https://btnep.org/2024/11/01/btnep-announces-new-deputy-director/",
+   "evidence": "Michelle Felterman has been named the new deputy director of the Barataria-Terrebonne National Estuary Program (BTNEP).",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "c19eea5e35c4ff35",
+   "person_key": "andrew-barron",
+   "role": "scientist",
+   "title": "Senior Research Scientist",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://btnep.org/about-btnep/meet-the-staff/",
+   "evidence": "Andrew Barron Senior Research Scientist",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "c19eea5e35c4ff35",
+   "person_key": "siva-nunna",
+   "role": "coordinator",
+   "title": "Water Quality Coordinator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://btnep.org/about-btnep/meet-the-staff/",
+   "evidence": "Siva Nunna Water Quality Coordinator",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "c19eea5e35c4ff35",
+   "person_key": "matt-benoit",
+   "role": "manager",
+   "title": "Habitat Restoration Manager",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://btnep.org/about-btnep/meet-the-staff/",
+   "evidence": "Matt Benoit Habitat Restoration Manager",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "2adc72ff42d9de08",
+   "person_key": "andrew-mcgowan",
+   "role": "director",
+   "title": "Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2023,
+   "end_year": null,
+   "source_url": "https://barnegatbaypartnership.org/about/",
+   "evidence": "Andrew McGowan Director Andrew came to the BBP in August of 2023",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "2adc72ff42d9de08",
+   "person_key": "nina-sassano",
+   "role": "associate-director",
+   "title": "Associate Director Of Outreach",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://barnegatbaypartnership.org/about/",
+   "evidence": "Nina Sassano Associate Director Of Outreach",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "2adc72ff42d9de08",
+   "person_key": "ceili-pestalozzi",
+   "role": "manager",
+   "title": "Wetlands And Watershed Manager",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://barnegatbaypartnership.org/about/",
+   "evidence": "Ceili Pestalozzi Wetlands And Watershed Manager",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "2adc72ff42d9de08",
+   "person_key": "nicole-petersen",
+   "role": "coordinator",
+   "title": "Water Quality Coordinator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2015,
+   "end_year": null,
+   "source_url": "https://barnegatbaypartnership.org/about/",
+   "evidence": "Nicole Petersen Water Quality Coordinator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "ec5c32126ce47483",
+   "person_key": "christophe-tulou",
+   "role": "director",
+   "title": "Executive Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://inlandbays.org/about/staff/",
+   "evidence": "Christophe Tulou Executive Director",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "ec5c32126ce47483",
+   "person_key": "bryan-ochs",
+   "role": "deputy-director",
+   "title": "Deputy Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://inlandbays.org/about/staff/",
+   "evidence": "Bryan Ochs Deputy Director",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "ec5c32126ce47483",
+   "person_key": "meghan-noe-fellows",
+   "role": "leadership-team",
+   "title": "Director, Estuary Science and Restoration",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2022,
+   "end_year": null,
+   "source_url": "https://inlandbays.org/staff/meghan-noe-fellows/",
+   "evidence": "Meghan Noe Fellows is the Center's Director of Estuary Science and Restoration.",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "ec5c32126ce47483",
+   "person_key": "taylor-hoffman",
+   "role": "coordinator",
+   "title": "Science Coordinator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2023,
+   "end_year": null,
+   "source_url": "https://inlandbays.org/staff/taylor-hoffman-science-coordinator/",
+   "evidence": "Taylor joined the Delaware Center for the Inland Bays as the Science Coordinator in October of 2023.",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "e1a7385483473434",
+   "person_key": "lisa-marshall",
+   "role": "manager",
+   "title": "Program Manager",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://gbep.texas.gov/contacts/",
+   "evidence": "Lisa M. Marshall Program Manager",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "e1a7385483473434",
+   "person_key": "jenelle-estrada",
+   "role": "research-coordinator",
+   "title": "Monitoring and Research Coordinator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://gbep.texas.gov/contacts/",
+   "evidence": "Jenelle Estrada Monitoring and Research Coordinator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "e1a7385483473434",
+   "person_key": "christian-rines",
+   "role": "coordinator",
+   "title": "Water & Sediment Quality Coordinator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://gbep.texas.gov/contacts/",
+   "evidence": "Christian Rines Water & Sediment Quality Coordinator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "e1a7385483473434",
+   "person_key": "celina-gauthier-lowry",
+   "role": "coordinator",
+   "title": "Technical Program Coordinator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://gbep.texas.gov/contacts/",
+   "evidence": "Celina Gauthier Lowry Technical Program Coordinator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "a3df950de95bd5e8",
+   "person_key": "elaine-placido",
+   "role": "director",
+   "title": "Executive Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2020,
+   "end_year": null,
+   "source_url": "https://www.estuarypartnership.org/who-we-are/our-staff-board",
+   "evidence": "Elaine Placido, DPA Executive Director",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "a3df950de95bd5e8",
+   "person_key": "catherine-corbett",
+   "role": "scientist",
+   "title": "Chief Scientist",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2008,
+   "end_year": null,
+   "source_url": "https://www.estuarypartnership.org/who-we-are/our-staff-board",
+   "evidence": "Catherine joined the Estuary Partnership in 2008. She leads the Science Team",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "a3df950de95bd5e8",
+   "person_key": "keith-marcoe",
+   "role": "data-manager",
+   "title": "GIS & Data Management Specialist",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2008,
+   "end_year": null,
+   "source_url": "https://www.estuarypartnership.org/who-we-are/our-staff-board",
+   "evidence": "Keith Marcoe GIS & Data Management Specialist",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "a3df950de95bd5e8",
+   "person_key": "katarina-lunde",
+   "role": "scientist",
+   "title": "Monitoring Program Lead",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2025,
+   "end_year": null,
+   "source_url": "https://www.estuarypartnership.org/who-we-are/our-staff-board",
+   "evidence": "Katarina Lunde Monitoring Program Lead",
+   "confidence": "high"
+  }
+ ],
+ "verifications": []
+}

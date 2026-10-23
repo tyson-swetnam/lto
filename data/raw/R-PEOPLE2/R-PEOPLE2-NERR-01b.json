@@ -1,0 +1,1009 @@
+{
+ "batch_id": "R-PEOPLE2-NERR-01b",
+ "retrieved_at": "2026-10-22",
+ "verified_by": "adversarial-verifier 2026-10-22",
+ "facilities": [
+  {
+   "facility_id": "9b4911f8fe1a9ebd",
+   "pages_fetched": [
+    {
+     "url": "https://coast.noaa.gov/nerrs/reserves/delaware.html",
+     "status": 200
+    },
+    {
+     "url": "https://www.dnrec.delaware.gov/coastal-programs/delaware-national-estuarine-research-reserve/",
+     "status": 404
+    },
+    {
+     "url": "https://dnrec.delaware.gov/coastal-programs/",
+     "status": 200
+    },
+    {
+     "url": "https://dnrec.delaware.gov/coastal-programs/research-reserve/",
+     "status": 200
+    },
+    {
+     "url": "https://dnrec.delaware.gov/coastal-programs/dcp-contacts/",
+     "status": 200
+    },
+    {
+     "url": "https://documents.dnrec.delaware.gov/coastal/DNERR/2022-DNERR-Management-Plan.pdf",
+     "status": 200
+    },
+    {
+     "url": "https://documents.dnrec.delaware.gov/coastal/DNERR/Documents/St%20Jones%20One%20Pager.pdf",
+     "status": 200
+    },
+    {
+     "url": "https://news.delaware.gov/2023/07/20/delaware-national-estuarine-research-reserve-turns-30/",
+     "status": 200
+    },
+    {
+     "url": "https://news.delaware.gov/2026/09/28/blackbird-creek-fall-festival-set-for-october-17/",
+     "status": 200
+    },
+    {
+     "url": "https://www.buzzsprout.com/2435823/contributors",
+     "status": 200
+    },
+    {
+     "url": "https://skimmersays.buzzsprout.com/2435823/contributors/100055",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-5324-6827/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0009-0007-3512-626X/employments",
+     "status": 200
+    }
+   ],
+   "notes": "Managed by DNREC Division of Climate, Coastal & Energy (Delaware Coastal Programs); designated 1993; components St. Jones Reserve (Dover) and Blackbird Creek Reserve (Townsend). No DNREC web page names the current Reserve Manager: the DCP contacts page lists only Jesse Hayden, PE, Coastal Programs Section Administrator (not recorded as reserve staff), and the 2022-2027 management plan names positions but not people. The only named Reserve Manager is Rachael Phillos on an undated St. Jones one-pager whose PDF metadata is 2017/2019, so that row is low confidence and may be stale. Research and Stewardship Coordinators come from the reserve Education Team podcast (Skimmer Says) contributor pages, not a DNREC directory. ORCID records found for Mollie Yacano and Christina Whiteman list no employment, so ORCID left null. VERIFIER: Rachael Phillos (Reserve Manager) dropped: the only source is an undated one-pager whose PDF metadata is 2017/2019 and no current page confirms her, so is_current=true was unsupported. Yacano and Whiteman rest on the reserve Education Team podcast pages (medium)."
+  },
+  {
+   "facility_id": "449c081d421f2116",
+   "pages_fetched": [
+    {
+     "url": "https://www.elkhornslough.org/reserve/staff/",
+     "status": 404
+    },
+    {
+     "url": "https://www.elkhornslough.org/",
+     "status": 200
+    },
+    {
+     "url": "https://elkhornslough.org/about/staff/",
+     "status": 200
+    },
+    {
+     "url": "https://elkhornslough.org/page-data/about/staff/page-data.json",
+     "status": 200
+    },
+    {
+     "url": "https://elkhornslough.org/page-data/sq/d/3386460756.json",
+     "status": 200
+    },
+    {
+     "url": "https://elkhornslough.org/reserve/",
+     "status": 200
+    },
+    {
+     "url": "https://elkhornslough.org/reserve/research/",
+     "status": 200
+    },
+    {
+     "url": "https://wildlife.ca.gov/Lands/Places-to-Visit/Elkhorn-Slough-ER",
+     "status": 200
+    },
+    {
+     "url": "https://wasson.eeb.ucsc.edu/",
+     "status": 200
+    },
+    {
+     "url": "https://wasson.eeb.ucsc.edu/people/kerstin-wasson/",
+     "status": 200
+    },
+    {
+     "url": "https://wasson.eeb.ucsc.edu/people/kerstin-wasson/current-research/",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-1858-4505/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0009-0009-2853-7241/employments",
+     "status": 200
+    }
+   ],
+   "notes": "Reserve is owned and run by the California Department of Fish and Wildlife with NOAA and the Elkhorn Slough Foundation (ESF). The /about/staff/ page is client-rendered; its staff list (name, position, department, bio) was read from the Gatsby static-query JSON the page loads (page-data/sq/d/3386460756.json), which is the source_url used for staff rows. That list names no CDFW Reserve Manager (the post was not found on CDFW's Elkhorn Slough ER page either), so the reserve manager is unknown. ESF staff (Executive Director Taylor Honrath etc.) are foundation, not reserve, staff and were not added. Kerstin Wasson's ORCID record (0000-0002-1858-4505) lists no employment and her lab pages show no iD, so ORCID left null. VERIFIER: Wasson's bio was reworded so it rests only on her lab homepage (bio_source_url)."
+  },
+  {
+   "facility_id": "960fc51b86672cc2",
+   "pages_fetched": [
+    {
+     "url": "https://grandbaynerr.org/staff/",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-0243-0771/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0001-5323-1521/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0003-1168-5087/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-8756-0902/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-8083-2434/employments",
+     "status": 200
+    }
+   ],
+   "notes": "Grand Bay NERR (Moss Point, MS) staff page lists current staff and a dated Past Staff section. Mark Woodrey was Research Coordinator Aug 2002 - Jun 2020 (confirmed by his ORCID employment record); Kim Cressman (SWMP Manager/Research Coordinator 2011-2022) and Jennifer DeBose (past Research Coordinator, undated) also appear as past staff and were not added. MSU profile for Woodrey (wildlifefisheries.msstate.edu) could not be fetched (TLS/connection failure). ORCID records for Ayesha Gray and Jonathan Pitchford have no employment entries, so ORCID left null."
+  },
+  {
+   "facility_id": "7ddbc5ef577648ee",
+   "pages_fetched": [
+    {
+     "url": "https://greatbay.org/staff/",
+     "status": 403
+    },
+    {
+     "url": "https://www.greatbay.org/",
+     "status": 403
+    },
+    {
+     "url": "https://greatbay.org/",
+     "status": 200
+    },
+    {
+     "url": "https://greatbay.org/about/who-we-are/",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0009-0002-0500-9031/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0009-0001-0806-9948/employments",
+     "status": 200
+    }
+   ],
+   "notes": "greatbay.org returns 403 to curl; the Who We Are page was read with WebFetch (HTTP 200). Reserve is run by NH Fish and Game (staff emails at wildlife.nh.gov). Cory Riley is listed as Manager, Chris Peter as Research Coordinator. An ORCID record for a Lauren White employed by NH Fish and Game (Biologist, 2025-) exists but the role title differs and the name is common, so ORCID left null for Lauren White. Facility URL could be set to https://greatbay.org/. VERIFIER: Who We Are was re-read with WebFetch because curl gets 403. Riley, White and Vaccaro bios were reworded to remove an 8-word copied run and unsupported details: the page does not tie Jackson Estuarine Lab to UNH in White's bio, and it gives 2021 as when Vaccaro came to NH, not when she joined the reserve."
+  },
+  {
+   "facility_id": "acfc1994d0e6cc5e",
+   "pages_fetched": [
+    {
+     "url": "https://gtmnerr.org/staff/",
+     "status": 404
+    },
+    {
+     "url": "https://gtmnerr.org/",
+     "status": 200
+    },
+    {
+     "url": "https://gtmnerr.org/about-us/",
+     "status": 200
+    },
+    {
+     "url": "https://gtmnerr.org/research/",
+     "status": 200
+    },
+    {
+     "url": "https://floridadep.gov/rcp/nerr-guana-tolomato-matanzas",
+     "status": 404
+    },
+    {
+     "url": "https://floridadep.gov/rcp/nerr-gtm",
+     "status": 200
+    },
+    {
+     "url": "https://floridadep.gov/rcp/rcp/content/contacts",
+     "status": 200
+    },
+    {
+     "url": "https://floridadep.gov/sites/default/files/QA_Plan_GTM_Research_Program_2024.pdf",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-0063-5167/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0009-0002-9076-4567/employments",
+     "status": 200
+    }
+   ],
+   "notes": "Managed by Florida DEP Office of Resilience and Coastal Protection (Northeast Florida Region; Regional Administrator Scott Eastman); designated Aug 19, 1999. gtmnerr.org is the Friends of the GTM Reserve site and names no staff. DEP contacts page lists Lia Sansom under the GTM NERR and Matthew Bernanke as Stewardship Coordinator; the DEP 2024 research-program Quality Plan (signed 12/19/2024) names Lia Sansom GTMNERR Manager and Nikki Dix GTMNERR Research Director (the reserve's research-coordinator post), plus research staff. The plan lists the Water Quality (SWMP) Program Manager post as vacant at that date. Nikki Dix's ORCID record is under the name Nicole Dix with employment Research Director, GTM NERR, 2013-. VERIFIER: Sansom is confirmed by the current DEP contacts page; Dix's currency rests on the Dec 2024 QA plan plus her ORCID record (Research Director 2013-present), so confidence is medium; Petrinec and Prevost appear only in the Dec 2024 QA plan, so they are downgraded to low as possibly stale."
+  },
+  {
+   "facility_id": "d2beef812eb53bc7",
+   "pages_fetched": [
+    {
+     "url": "https://heeianerr.org/staff/",
+     "status": 404
+    },
+    {
+     "url": "https://heeianerr.org/",
+     "status": 200
+    },
+    {
+     "url": "https://heeianerr.org/about-us/",
+     "status": 200
+    },
+    {
+     "url": "https://heeianerr.org/former-nerrds/",
+     "status": 200
+    },
+    {
+     "url": "https://www.himb.hawaii.edu/people/",
+     "status": 200
+    },
+    {
+     "url": "https://www.himb.hawaii.edu/people/kawika-b-winter/",
+     "status": 200
+    },
+    {
+     "url": "https://www.himb.hawaii.edu/people/yoshimi-shimi-rii/",
+     "status": 200
+    },
+    {
+     "url": "https://www.himb.hawaii.edu/kawika-winter/",
+     "status": 404
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0003-3762-7125/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-6486-8955/person",
+     "status": 200
+    }
+   ],
+   "notes": "Designated Jan 2017; led by the University of Hawaii at Manoa Hawaii Institute of Marine Biology (HIMB). Core staff from heeianerr.org About Us and the HIMB people directory. HIMB lists Aimee Sato as Stewardship Coordinator while heeianerr.org lists her as Biocultural Research & Administrative Assistant; the HIMB title is used. Casey Ching is Coastal Training Program Coordinator (heeianerr.org) / Training and Engagement Coordinator (HIMB); not added. Former NERRds page lists only past grad students/postdocs, no founding director. VERIFIER: Aimee Sato is downgraded to low because heeianerr.org (Biocultural Research & Administrative Assistant) and the HIMB directory (Stewardship Coordinator) disagree on her title."
+  }
+ ],
+ "people": [
+  {
+   "key": "mollie-yacano",
+   "existing_person_id": null,
+   "name": "Mollie Yacano",
+   "name_given": "Mollie",
+   "name_family": "Yacano",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Research Coordinator at the Delaware NERR. She runs the reserve's applied research and monitoring, including the System-Wide Monitoring Program, marsh bird surveys and emergent vegetation monitoring, and coordinates outside partners' projects at the St. Jones and Blackbird Creek components.",
+   "bio_source_url": "https://skimmersays.buzzsprout.com/2435823/contributors/100055",
+   "research_interests": "estuarine monitoring (SWMP); marsh bird surveys; emergent marsh vegetation monitoring",
+   "research_interests_source_url": "https://skimmersays.buzzsprout.com/2435823/contributors/100055"
+  },
+  {
+   "key": "christina-whiteman",
+   "existing_person_id": null,
+   "name": "Christina Whiteman",
+   "name_given": "Christina",
+   "name_family": "Whiteman",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Stewardship Coordinator at the Delaware NERR, responsible for long-term biological monitoring of wetland plant communities, ecotone boundaries, birds and soundscapes, for restoration planning, and for mapping the land-use and habitat history of the reserve with demonstration sites.",
+   "bio_source_url": "https://www.buzzsprout.com/2435823/contributors",
+   "research_interests": "wetland plant community monitoring; ecotone boundaries; avian ecology; soundscapes; restoration planning",
+   "research_interests_source_url": "https://www.buzzsprout.com/2435823/contributors"
+  },
+  {
+   "key": "laurel-sullivan",
+   "existing_person_id": null,
+   "name": "Laurel Sullivan",
+   "name_given": "Laurel",
+   "name_family": "Sullivan",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "kerstin-wasson",
+   "existing_person_id": null,
+   "name": "Kerstin Wasson",
+   "name_given": "Kerstin",
+   "name_family": "Wasson",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://wasson.eeb.ucsc.edu/people/kerstin-wasson/",
+   "bio": "Research Coordinator of the Elkhorn Slough NERR and adjunct professor of ecology and evolutionary biology at UC Santa Cruz. Her lab identifies and ranks human-caused threats to estuaries and tests restoration approaches to reduce them, with current emphasis on salt marsh persistence, the marsh-upland transition zone and native oyster recovery.",
+   "bio_source_url": "https://wasson.eeb.ucsc.edu/people/kerstin-wasson/",
+   "research_interests": "estuarine conservation; salt marsh loss and sea-level rise; marsh-upland ecotone; Olympia oyster restoration; biological invasions in estuaries",
+   "research_interests_source_url": "https://wasson.eeb.ucsc.edu/people/kerstin-wasson/current-research/"
+  },
+  {
+   "key": "andrea-woolfolk",
+   "existing_person_id": null,
+   "name": "Andrea Woolfolk",
+   "name_given": "Andrea",
+   "name_family": "Woolfolk",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Stewardship Coordinator at the Elkhorn Slough NERR, active in coastal ecology and land management around the slough since 1994. Trained at Moss Landing Marine Laboratories, she manages upland habitat, restores native grassland and wildflower cover, and applies historical ecology to plan habitat projects.",
+   "bio_source_url": "https://elkhornslough.org/page-data/sq/d/3386460756.json",
+   "research_interests": "upland habitat management; native grassland restoration; historical ecology",
+   "research_interests_source_url": "https://elkhornslough.org/page-data/sq/d/3386460756.json"
+  },
+  {
+   "key": "monique-fountain",
+   "existing_person_id": null,
+   "name": "Monique Fountain",
+   "name_given": "Monique",
+   "name_family": "Fountain",
+   "orcid": "0009-0009-2853-7241",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0009-0009-2853-7241/employments",
+   "homepage_url": null,
+   "bio": "Directs the Tidal Wetland Program of the Elkhorn Slough NERR, which she joined in 2009, running estuary-wide strategic planning with a stakeholder group of more than 100 and carrying out large tidal marsh restoration projects. She holds a marine science master's from San Francisco State University.",
+   "bio_source_url": "https://elkhornslough.org/page-data/sq/d/3386460756.json",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "susanne-fork",
+   "existing_person_id": null,
+   "name": "Susanne Fork",
+   "name_given": "Susanne",
+   "name_family": "Fork",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Research Biologist at the Elkhorn Slough NERR who runs volunteer-based biological monitoring, including quarterly and monthly shorebird counts, songbird and raptor nesting observations, and yearly surveys of mudflat invertebrates. She holds a master's in marine science from UC Santa Cruz.",
+   "bio_source_url": "https://elkhornslough.org/page-data/sq/d/3386460756.json",
+   "research_interests": "shorebird monitoring; intertidal mudflat invertebrates; arthropods of native vs exotic vegetation",
+   "research_interests_source_url": "https://elkhornslough.org/page-data/sq/d/3386460756.json"
+  },
+  {
+   "key": "ayesha-gray",
+   "existing_person_id": null,
+   "name": "Ayesha Gray",
+   "name_given": "Ayesha",
+   "name_family": "Gray",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Director of the Grand Bay NERR in Mississippi. A research scientist focused on how aquatic ecosystems function, how wetlands support fisheries, and how well habitat restoration works, using experimental designs to track recovery. Ph.D. from the University of Washington School of Aquatic and Fishery Sciences.",
+   "bio_source_url": "https://grandbaynerr.org/staff/",
+   "research_interests": "aquatic ecosystem function; wetland support of fisheries; habitat restoration effectiveness",
+   "research_interests_source_url": "https://grandbaynerr.org/staff/"
+  },
+  {
+   "key": "mike-archer",
+   "existing_person_id": null,
+   "name": "Mike Archer",
+   "name_given": "Mike",
+   "name_family": "Archer",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Research Coordinator at the Grand Bay NERR. He measures peak above- and below-ground marsh biomass to judge marsh response to sea-level rise, supports Sentinel Site sampling and prescribed burns, and oversees marine debris cleanup. M.S. in environmental science, Drexel University.",
+   "bio_source_url": "https://grandbaynerr.org/staff/",
+   "research_interests": "salt marsh biomass; marsh response to sea-level rise",
+   "research_interests_source_url": "https://grandbaynerr.org/staff/"
+  },
+  {
+   "key": "jonathan-pitchford",
+   "existing_person_id": null,
+   "name": "Jonathan Pitchford",
+   "name_given": "Jonathan",
+   "name_family": "Pitchford",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Stewardship Coordinator at the Grand Bay NERR since 2016, tracking long-term change in reserve resources through the Sentinel Site Program and restoring and monitoring aquatic and upland habitats. Doctorate in natural resource science, West Virginia University.",
+   "bio_source_url": "https://grandbaynerr.org/staff/",
+   "research_interests": "long-term monitoring (Sentinel Sites); aquatic and terrestrial habitat restoration",
+   "research_interests_source_url": "https://grandbaynerr.org/staff/"
+  },
+  {
+   "key": "cassy-porter",
+   "existing_person_id": null,
+   "name": "Cassy Porter",
+   "name_given": "Cassy",
+   "name_family": "Porter",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "System-Wide Monitoring Program manager at the Grand Bay NERR since May 2021, after serving as intern and wetlands resource specialist. Has worked on NRDA vegetation and bird monitoring, Sentinel Site monitoring, and fire and invasive-species management in longleaf pine savannas.",
+   "bio_source_url": "https://grandbaynerr.org/staff/",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "mark-woodrey",
+   "existing_person_id": null,
+   "name": "Mark Woodrey",
+   "name_given": "Mark",
+   "name_family": "Woodrey",
+   "orcid": "0000-0002-0243-0771",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-0243-0771/employments",
+   "homepage_url": null,
+   "bio": "Ornithologist on the research faculty of Mississippi State University's Coastal Research and Extension Center, and Grand Bay NERR Research Coordinator for 18 years. Studies tidal marsh birds as indicators of restoration success, human and climate impacts on coastal species, and mercury in coastal ecosystems.",
+   "bio_source_url": "https://grandbaynerr.org/staff/",
+   "research_interests": "tidal marsh bird ecology; marsh birds as restoration indicators; climate change effects on coastal species; mercury in coastal ecosystems",
+   "research_interests_source_url": "https://grandbaynerr.org/staff/"
+  },
+  {
+   "key": "cory-riley",
+   "existing_person_id": null,
+   "name": "Cory Riley",
+   "name_given": "Cory",
+   "name_family": "Riley",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Manager of the Great Bay NERR in New Hampshire, responsible for its education, research, stewardship and coastal training programs. Before that she was NOAA's liaison to reserves on the East Coast and to national programs. M.S. in environmental, coastal and ocean science, UMass Boston.",
+   "bio_source_url": "https://greatbay.org/about/who-we-are/",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "chris-peter",
+   "existing_person_id": null,
+   "name": "Christopher Peter",
+   "name_given": "Christopher",
+   "name_family": "Peter",
+   "orcid": "0009-0002-0500-9031",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0009-0002-0500-9031/employments",
+   "homepage_url": null,
+   "bio": "Research Coordinator of the Great Bay NERR, directing its research and monitoring and contributing to regional and national estuarine monitoring and restoration efforts, including a regional study of sea-level rise effects on salt marshes. Formerly a scientist at UNH Jackson Estuarine Laboratory; M.S. in natural resources, UNH.",
+   "bio_source_url": "https://greatbay.org/about/who-we-are/",
+   "research_interests": "estuarine monitoring; salt marsh response to sea-level rise; estuarine restoration",
+   "research_interests_source_url": "https://greatbay.org/about/who-we-are/"
+  },
+  {
+   "key": "lauren-white",
+   "existing_person_id": null,
+   "name": "Lauren White",
+   "name_given": "Lauren",
+   "name_family": "White",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Stewardship Coordinator of the Great Bay NERR, leading habitat monitoring, protection and restoration. Earlier on the reserve research staff she studied salt marsh habitats and wildlife, including range-expanding species, after salt marsh, eelgrass and invertebrate work at Jackson Estuarine Laboratory. M.S., natural resources, UNH.",
+   "bio_source_url": "https://greatbay.org/about/who-we-are/",
+   "research_interests": "salt marsh habitat and wildlife; range-expanding species; coastal habitat restoration",
+   "research_interests_source_url": "https://greatbay.org/about/who-we-are/"
+  },
+  {
+   "key": "lynn-vaccaro",
+   "existing_person_id": null,
+   "name": "Lynn Vaccaro",
+   "name_given": "Lynn",
+   "name_family": "Vaccaro",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Coastal Training Program Coordinator at the Great Bay NERR. She came to New Hampshire in 2021 after twelve years with Michigan Sea Grant and the University of Michigan Water Center.",
+   "bio_source_url": "https://greatbay.org/about/who-we-are/",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "kelle-loughlin",
+   "existing_person_id": null,
+   "name": "Kelle Loughlin",
+   "name_given": "Kelle",
+   "name_family": "Loughlin",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "lia-sansom",
+   "existing_person_id": null,
+   "name": "Lia Sansom",
+   "name_given": "Lia",
+   "name_family": "Sansom",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Reserve Manager of the GTM NERR for the Florida Department of Environmental Protection, responsible for all program and administrative functions including budgets, grants and personnel. Also manager of the Pellicer Creek and Guana River Marsh aquatic preserves and liaison to the Friends of the GTM Reserve.",
+   "bio_source_url": "https://floridadep.gov/sites/default/files/QA_Plan_GTM_Research_Program_2024.pdf",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "nikki-dix",
+   "existing_person_id": null,
+   "name": "Nikki Dix",
+   "name_given": "Nikki",
+   "name_family": "Dix",
+   "orcid": "0000-0002-0063-5167",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-0063-5167/employments",
+   "homepage_url": null,
+   "bio": "Research Director of the GTM NERR, leading the reserve's research and monitoring programs, setting their scientific direction and overseeing data quality objectives and quality assurance for the System-Wide Monitoring Program and related projects.",
+   "bio_source_url": "https://floridadep.gov/sites/default/files/QA_Plan_GTM_Research_Program_2024.pdf",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "matthew-bernanke",
+   "existing_person_id": null,
+   "name": "Matthew Bernanke",
+   "name_given": "Matthew",
+   "name_family": "Bernanke",
+   "orcid": "0009-0002-9076-4567",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0009-0002-9076-4567/employments",
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "kathryn-petrinec",
+   "existing_person_id": null,
+   "name": "Kathryn Petrinec",
+   "name_given": "Kathryn",
+   "name_family": "Petrinec",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "SWMP Data Specialist and Quality Assurance Officer at the GTM NERR, managing water quality, meteorological and nutrient monitoring data and maintaining the reserve's quality manual.",
+   "bio_source_url": "https://floridadep.gov/sites/default/files/QA_Plan_GTM_Research_Program_2024.pdf",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "hans-prevost",
+   "existing_person_id": null,
+   "name": "Hans Prevost",
+   "name_given": "Hans",
+   "name_family": "Prevost",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Lead Biologist at the GTM NERR, reporting to the Research Director and in charge of SWMP emergent vegetation monitoring, oyster monitoring and related coastal habitat monitoring.",
+   "bio_source_url": "https://floridadep.gov/sites/default/files/QA_Plan_GTM_Research_Program_2024.pdf",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "kawika-winter",
+   "existing_person_id": null,
+   "name": "Kawika B. Winter",
+   "name_given": "Kawika",
+   "name_family": "Winter",
+   "orcid": "0000-0003-3762-7125",
+   "orcid_source_url": "https://www.himb.hawaii.edu/people/kawika-b-winter/",
+   "homepage_url": "https://www.himb.hawaii.edu/people/kawika-b-winter/",
+   "bio": "Associate professor, Hawaiʻi Institute of Marine Biology (University of Hawaiʻi, Mānoa) and Director of the Heʻeia NERR. His transdisciplinary work links science, Indigenous stewardship and policy, seeking the ecological basis of Indigenous resource management; he serves on the federal Ocean Research Advisory Panel.",
+   "bio_source_url": "https://www.himb.hawaii.edu/people/kawika-b-winter/",
+   "research_interests": "ecological foundations of Indigenous resource management; biocultural stewardship; conservation policy",
+   "research_interests_source_url": "https://www.himb.hawaii.edu/people/kawika-b-winter/"
+  },
+  {
+   "key": "shimi-rii",
+   "existing_person_id": null,
+   "name": "Yoshimi (Shimi) Rii",
+   "name_given": "Yoshimi",
+   "name_family": "Rii",
+   "orcid": "0000-0002-6486-8955",
+   "orcid_source_url": "https://www.himb.hawaii.edu/people/yoshimi-shimi-rii/",
+   "homepage_url": "https://www.himb.hawaii.edu/people/yoshimi-shimi-rii/",
+   "bio": "Specialist faculty, Hawaiʻi Institute of Marine Biology, and Research Coordinator of the Heʻeia NERR, where she leads the System-Wide Monitoring Program. She studies nutrient and plankton dynamics from estuaries to the open ocean with eDNA, productivity and microscopy, and the ahupuaʻa-scale effects of biocultural restoration.",
+   "bio_source_url": "https://www.himb.hawaii.edu/people/yoshimi-shimi-rii/",
+   "research_interests": "nutrient and plankton dynamics; eDNA; primary productivity; biocultural restoration impacts; place-based community science",
+   "research_interests_source_url": "https://www.himb.hawaii.edu/people/yoshimi-shimi-rii/"
+  },
+  {
+   "key": "aimee-sato",
+   "existing_person_id": null,
+   "name": "Aimee Sato",
+   "name_given": "Aimee",
+   "name_family": "Sato",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "fred-reppun",
+   "existing_person_id": null,
+   "name": "Fred Reppun",
+   "name_given": "Fred",
+   "name_family": "Reppun",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "gus-robertson",
+   "existing_person_id": null,
+   "name": "James \"Gus\" Robertson",
+   "name_given": "James",
+   "name_family": "Robertson",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  }
+ ],
+ "affiliations": [
+  {
+   "facility_id": "9b4911f8fe1a9ebd",
+   "person_key": "mollie-yacano",
+   "role": "research-coordinator",
+   "title": "Research Coordinator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://skimmersays.buzzsprout.com/2435823/contributors/100055",
+   "evidence": "Dr. Mollie Yacano is the Research Coordinator at the Delaware National Estuarine Research Reserve.",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "9b4911f8fe1a9ebd",
+   "person_key": "christina-whiteman",
+   "role": "stewardship-coordinator",
+   "title": "Stewardship Coordinator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.buzzsprout.com/2435823/contributors",
+   "evidence": "Christina Whiteman is the Stewardship Coordinator at the Delaware National Estuarine Research Reserve (DNERR).",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "9b4911f8fe1a9ebd",
+   "person_key": "laurel-sullivan",
+   "role": "education-coordinator",
+   "title": "Education Coordinator",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://news.delaware.gov/2026/09/28/blackbird-creek-fall-festival-set-for-october-17/",
+   "evidence": "said Laurel Sullivan, education coordinator at DNERR.",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "449c081d421f2116",
+   "person_key": "kerstin-wasson",
+   "role": "research-coordinator",
+   "title": "ESNERR Research Coordinator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://elkhornslough.org/page-data/sq/d/3386460756.json",
+   "evidence": "\"name\":\"Kerstin Wasson\",\"position\":\"ESNERR Research Coordinator\"",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "449c081d421f2116",
+   "person_key": "andrea-woolfolk",
+   "role": "stewardship-coordinator",
+   "title": "ESNERR Stewardship Coordinator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://elkhornslough.org/page-data/sq/d/3386460756.json",
+   "evidence": "\"name\":\"Andrea Woolfolk\",\"position\":\"ESNERR Stewardship Coordinator\"",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "449c081d421f2116",
+   "person_key": "monique-fountain",
+   "role": "leadership-team",
+   "title": "ESNERR Tidal Wetland Program Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://elkhornslough.org/page-data/sq/d/3386460756.json",
+   "evidence": "\"name\":\"Monique Fountain\",\"position\":\"ESNERR Tidal Wetland Program Director\"",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "449c081d421f2116",
+   "person_key": "susanne-fork",
+   "role": "scientist",
+   "title": "ESNERR Research Biologist",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://elkhornslough.org/page-data/sq/d/3386460756.json",
+   "evidence": "\"name\":\"Susanne Fork\",\"position\":\"ESNERR Research Biologist\"",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "960fc51b86672cc2",
+   "person_key": "ayesha-gray",
+   "role": "director",
+   "title": "Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://grandbaynerr.org/staff/",
+   "evidence": "Ayesha Gray, Ph.D. | Director",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "960fc51b86672cc2",
+   "person_key": "mike-archer",
+   "role": "research-coordinator",
+   "title": "Research Coordinator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://grandbaynerr.org/staff/",
+   "evidence": "Mike Archer | Research Coordinator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "960fc51b86672cc2",
+   "person_key": "jonathan-pitchford",
+   "role": "stewardship-coordinator",
+   "title": "Stewardship Coordinator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://grandbaynerr.org/staff/",
+   "evidence": "Jonathan Pitchford, Ph.D. | Stewardship Coordinator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "960fc51b86672cc2",
+   "person_key": "cassy-porter",
+   "role": "manager",
+   "title": "SWMP Manager",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": 2021,
+   "end_year": null,
+   "source_url": "https://grandbaynerr.org/staff/",
+   "evidence": "Cassy Porter | SWMP Manager",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "960fc51b86672cc2",
+   "person_key": "mark-woodrey",
+   "role": "research-coordinator",
+   "title": "Research Coordinator (August 2002 - June 2020)",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": 2002,
+   "end_year": 2020,
+   "source_url": "https://grandbaynerr.org/staff/",
+   "evidence": "Mark Woodrey, Ph.D. | Research Coordinator (August 2002 – June 2020)",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "7ddbc5ef577648ee",
+   "person_key": "cory-riley",
+   "role": "manager",
+   "title": "Manager",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://greatbay.org/about/who-we-are/",
+   "evidence": "Cory oversees the Reserve’s education, research, stewardship, and coastal training programs.",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "7ddbc5ef577648ee",
+   "person_key": "chris-peter",
+   "role": "research-coordinator",
+   "title": "Research Coordinator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://greatbay.org/about/who-we-are/",
+   "evidence": "Chris leads the research and monitoring programs at the Great Bay Reserve.",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "7ddbc5ef577648ee",
+   "person_key": "lauren-white",
+   "role": "stewardship-coordinator",
+   "title": "Stewardship Coordinator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://greatbay.org/about/who-we-are/",
+   "evidence": "Lauren leads the stewardship program at the Great Bay Reserve",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "7ddbc5ef577648ee",
+   "person_key": "lynn-vaccaro",
+   "role": "coordinator",
+   "title": "Coastal Training Program Coordinator",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://greatbay.org/about/who-we-are/",
+   "evidence": "LYNN VACCARO: Coastal Training Program Coordinator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "7ddbc5ef577648ee",
+   "person_key": "kelle-loughlin",
+   "role": "education-coordinator",
+   "title": "Education Coordinator & Director, Great Bay Discovery Center",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://greatbay.org/about/who-we-are/",
+   "evidence": "KELLE LOUGHLIN: Education Coordinator & Director, Great Bay Discovery Center",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "acfc1994d0e6cc5e",
+   "person_key": "lia-sansom",
+   "role": "manager",
+   "title": "GTMNERR Manager (Environmental Manager)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://floridadep.gov/sites/default/files/QA_Plan_GTM_Research_Program_2024.pdf",
+   "evidence": "Lia Sansom, M.B.A., GTMNERR Manager (Environmental Manager)",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "acfc1994d0e6cc5e",
+   "person_key": "nikki-dix",
+   "role": "research-coordinator",
+   "title": "GTMNERR Research Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://floridadep.gov/sites/default/files/QA_Plan_GTM_Research_Program_2024.pdf",
+   "evidence": "Nikki Dix, Ph.D., GTMNERR Research Director",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "acfc1994d0e6cc5e",
+   "person_key": "matthew-bernanke",
+   "role": "stewardship-coordinator",
+   "title": "Stewardship Coordinator, GTM Research Reserve / Aquatic Preserve Manager",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://floridadep.gov/rcp/rcp/content/contacts",
+   "evidence": "Matthew Bernanke - Stewardship Coordinator, GTM Research Reserve/ Aquatic Preserve Manager",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "acfc1994d0e6cc5e",
+   "person_key": "kathryn-petrinec",
+   "role": "data-manager",
+   "title": "GTMNERR SWMP Data Specialist / QA Officer",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://floridadep.gov/sites/default/files/QA_Plan_GTM_Research_Program_2024.pdf",
+   "evidence": "Kathryn Petrinec, B.S., GTMNERR SWMP Data Specialist/ QA Officer",
+   "confidence": "low"
+  },
+  {
+   "facility_id": "acfc1994d0e6cc5e",
+   "person_key": "hans-prevost",
+   "role": "scientist",
+   "title": "Lead Biologist",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://floridadep.gov/sites/default/files/QA_Plan_GTM_Research_Program_2024.pdf",
+   "evidence": "Hans Prevost, M.S., Lead Biologist",
+   "confidence": "low"
+  },
+  {
+   "facility_id": "d2beef812eb53bc7",
+   "person_key": "kawika-winter",
+   "role": "director",
+   "title": "Reserve Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://heeianerr.org/about-us/",
+   "evidence": "Kawika Winter, Ph.D. Reserve Director",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "d2beef812eb53bc7",
+   "person_key": "shimi-rii",
+   "role": "research-coordinator",
+   "title": "Research Coordinator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://heeianerr.org/about-us/",
+   "evidence": "Shimi Rii, Ph.D. Research Coordinator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "d2beef812eb53bc7",
+   "person_key": "aimee-sato",
+   "role": "stewardship-coordinator",
+   "title": "Indigenous Stewardship Specialist, Stewardship Coordinator",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.himb.hawaii.edu/people/",
+   "evidence": "Aimee Sato Indigenous Stewardship Specialist, Stewardship Coordinator",
+   "confidence": "low"
+  },
+  {
+   "facility_id": "d2beef812eb53bc7",
+   "person_key": "fred-reppun",
+   "role": "education-coordinator",
+   "title": "Education Coordinator",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://heeianerr.org/about-us/",
+   "evidence": "Fred Reppun, M.S. Education Coordinator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "d2beef812eb53bc7",
+   "person_key": "gus-robertson",
+   "role": "technical-staff",
+   "title": "SWMP Senior Research Technician",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://heeianerr.org/about-us/",
+   "evidence": "James “Gus” Robertson SWMP Senior Research Technician",
+   "confidence": "high"
+  }
+ ],
+ "verifications": []
+}

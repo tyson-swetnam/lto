@@ -8,11 +8,16 @@ Pipeline stages (each independently runnable via --stage):
              name, and resolve its affiliation ROR against api.ror.org. Writes
              person_validation, long form, one row per (canonical_id, check_id,
              run_id) so re-validation appends and runs can be diffed.
+             (It used to write db/parquet/person_validation.parquet only,
+             which export_parquet.py then overwrote from the empty table.)
   harvest    Page each researcher's LTO-topic works and emit co-author pairs.
   match      Resolve harvested co-authors against the registry BY IDENTIFIER
              ONLY, then rank the non-matching remainder as expansion candidates.
+             Replaces coauthor_edges / coauthor_candidates and the lake-only
+             coauthor_unmatched_population table.
   rdf        Serialize the registry + candidates to Turtle, run OWL-RL sameAs
-             closure, and report split identities the relational join misses.
+             closure, and report split identities the relational join misses
+             (lake-only table split_identity_findings).
   shacl      Validate the RDF against schema/shapes/lto-shapes.ttl.
 
 MEASURED CONSTRAINTS -- these drove the design; do not "optimise" past them.
@@ -53,6 +58,11 @@ Usage:
     python scripts/validate_registry.py --stage harvest --request-budget 2000
     python scripts/validate_registry.py --stage match
     python scripts/validate_registry.py --stage rdf --stage shacl
+
+Every stage that writes does so into the DuckLake (scripts/lto_db.py) in
+one snapshot per stage; scripts/export_parquet.py publishes the schema
+tables. coauthor_unmatched_population and split_identity_findings are
+analysis tables kept in the lake only (not in export_parquet.TABLES).
 """
 from __future__ import annotations
 
@@ -65,16 +75,13 @@ import time
 from datetime import date
 from pathlib import Path
 
-import duckdb
 import pandas as pd
 import requests
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+import lto_db  # noqa: E402
 import openalex_auth  # noqa: E402  (shared keyed session; see scripts/openalex_auth.py)
 
-DB = "db/lto.duckdb"
-PARQUET_DIR = "db/parquet"
-PUBLIC_DIR = "public/parquet"
 TOPIC_SET = "schema/vocab/lto_openalex_topics.csv"
 STATE = "data/raw/oa_harvest/_state/harvest_state.json"
 WORKS_DIR = "data/raw/oa_harvest/_state/harvest_works.parquet.d"
@@ -265,7 +272,7 @@ def stage_validate(con, run_id: str, batch_size: int = 50) -> pd.DataFrame:
             # internal 'lto:<seed_table>' form rather than an http URL).
             src = url or oa_url or reg_url or (
                 "https://github.com/tyson-swetnam/lto/blob/main/"
-                "db/parquet/people.parquet")
+                "public/parquet/people.parquet")
             conf = ("low" if verdict in ("unresolved",)
                     else "high" if verdict == "pass"
                     else "medium")
@@ -364,9 +371,19 @@ def stage_validate(con, run_id: str, batch_size: int = 50) -> pd.DataFrame:
     assert out.validation_id.is_unique, "validation_id must be unique (PK)"
     assert out.source_url.notna().all(), "every verdict needs a citable source"
     assert set(out.confidence) <= set(CONF), f"confidence must be in {CONF}"
-    os.makedirs(PARQUET_DIR, exist_ok=True)
-    out.to_parquet(f"{PARQUET_DIR}/person_validation.parquet", index=False)
-    print(f"[validate] wrote {len(out):,} verdicts", flush=True)
+    # Append this run (validation_id is per run_id); re-running the same
+    # run_id updates its rows in place rather than duplicating them.
+    con.register("_validation_df", out)
+    try:
+        with lto_db.transaction(con, f"validate_registry: validate {run_id} "
+                                     f"({len(out):,} verdicts)"):
+            st = lto_db.merge_upsert(con, "person_validation", ["validation_id"],
+                                     "SELECT * FROM _validation_df")
+            lto_db.assert_integrity(con, ["person_validation"])
+    finally:
+        con.unregister("_validation_df")
+    print(f"[validate] wrote {len(out):,} verdicts "
+          f"({st['inserted']:,} new, {st['matched']:,} replaced)", flush=True)
     print(out.groupby(["check_id", "verdict"]).size().to_string(), flush=True)
     return out
 
@@ -382,7 +399,9 @@ def stage_match(con, run_id: str) -> None:
     asserted, so the candidate queue is auditable independently of the matching.
     """
     today = date.today().isoformat()
-    con.execute(f"CREATE OR REPLACE VIEW _pairs AS "
+    # TEMP: a plain CREATE VIEW would land in the lake (the connection USEs
+    # it) as a persistent view over a local harvest path.
+    con.execute(f"CREATE OR REPLACE TEMP VIEW _pairs AS "
                 f"SELECT * FROM '{PAIRS_DIR}/*.parquet'")
 
     ca = con.execute("""
@@ -515,11 +534,19 @@ def stage_match(con, run_id: str) -> None:
     cand["retrieved_at"] = today
     cand["run_id"] = run_id
 
-    os.makedirs(PARQUET_DIR, exist_ok=True)
-    ca.to_parquet(f"{PARQUET_DIR}/coauthor_unmatched_population.parquet",
-                  index=False)
-    _write_conforming(con, edges, "coauthor_edges")
-    _write_conforming(con, cand, "coauthor_candidates")
+    with lto_db.transaction(con, f"validate_registry: match {run_id} "
+                                 f"({len(edges):,} edges, {len(cand):,} candidates)"):
+        con.register("_ca_df", ca)
+        try:
+            n_ca = lto_db.replace_table(con, "coauthor_unmatched_population",
+                                        "SELECT * FROM _ca_df")
+        finally:
+            con.unregister("_ca_df")
+        print(f"[match] coauthor_unmatched_population: {n_ca:,} row(s) (lake only)",
+              flush=True)
+        _write_conforming(con, edges, "coauthor_edges")
+        _write_conforming(con, cand, "coauthor_candidates")
+        lto_db.assert_integrity(con, ["coauthor_edges", "coauthor_candidates"])
     print(f"[match] {len(edges):,} edges, {len(cand):,} candidates", flush=True)
 
 
@@ -533,9 +560,12 @@ def _write_conforming(con, df: pd.DataFrame, table: str) -> None:
     table empty. That lost every edge: export_parquet.py owns the same file
     and rewrites it from the DB, so the next export replaced 495,803 real
     coauthor_edges with a 592-byte empty file, and qa.py's edge invariants
-    skipped the table for having no rows. The DB is the source of truth here
-    and export_parquet.py is the only writer of parquet — this loads the DB
-    and lets that script ship the core-tier slice.
+    skipped the table for having no rows. The lake is the source of truth
+    here and export_parquet.py is the only writer of parquet — this loads
+    the lake and lets that script ship the core-tier slice.
+
+    A schema.sql table, so DELETE + INSERT (not replace_table) keeps its
+    column definitions. Call inside lto_db.transaction().
     """
     cols = [r[0] for r in con.execute(f"DESCRIBE {table}").fetchall()]
     missing = [c for c in cols if c not in df.columns]
@@ -546,7 +576,7 @@ def _write_conforming(con, df: pd.DataFrame, table: str) -> None:
     con.execute(f"DELETE FROM {table}")
     con.execute(f"INSERT INTO {table} SELECT * FROM _conforming_df")
     con.unregister("_conforming_df")
-    n = con.execute(f"SELECT COUNT(*) FROM {table}").fetchone()[0]
+    n = lto_db.scalar(con, f"SELECT COUNT(*) FROM {table}")
     print(f"[match] {table}: {n:,} row(s) loaded", flush=True)
 
 
@@ -680,8 +710,14 @@ def stage_rdf(con, run_id: str, out_ttl: str = "db/derived/lto-registry.ttl"):
         split["source_url"] = OA + "authors/" + split.duplicate_openalex_id
         split["confidence"] = "high"
         split["retrieved_at"] = today
-        split.to_parquet(f"{PARQUET_DIR}/split_identity_findings.parquet",
-                         index=False)
+        with lto_db.transaction(con, f"validate_registry: rdf {run_id} "
+                                     f"({len(split):,} split identities)"):
+            con.register("_split_df", split)
+            try:
+                lto_db.replace_table(con, "split_identity_findings",
+                                     "SELECT * FROM _split_df")
+            finally:
+                con.unregister("_split_df")
     print(f"[rdf] {len(split):,} split identities "
           f"(shared ORCID, different OpenAlex id)", flush=True)
     return out_ttl
@@ -718,7 +754,9 @@ def main() -> int:
                                 formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--stage", action="append", required=True,
                     choices=["validate", "harvest", "match", "rdf", "shacl"])
-    ap.add_argument("--db", default=DB)
+    lto_db.add_argparse_catalog(ap)
+    ap.add_argument("--db", dest="catalog", type=Path,
+                    help="deprecated alias of --catalog")
     ap.add_argument("--request-budget", type=int, default=2000,
                     help="hard cap on OpenAlex requests this run (quota is "
                          "10,000/day, one credit per request, shared)")
@@ -728,8 +766,9 @@ def main() -> int:
     a = ap.parse_args()
 
     run_id = a.run_id or "val-" + time.strftime("%Y%m%dT%H%M%SZ", time.gmtime())
-    con = duckdb.connect(a.db)
-    print(f"[run] {run_id} db={a.db} stages={a.stage}", flush=True)
+    con = lto_db.connect(catalog=a.catalog, data=a.lake_data)
+    print(f"[run] {run_id} lake={lto_db.catalog_path(a.catalog)} "
+          f"stages={a.stage}", flush=True)
 
     if {"validate", "harvest"} & set(a.stage):
         q = quota_remaining()

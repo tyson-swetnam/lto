@@ -1,0 +1,1633 @@
+{
+ "batch_id": "R-PEOPLE2-LTER-01a",
+ "retrieved_at": "2026-10-22",
+ "verified_by": "adversarial-verifier 2026-10-22",
+ "facilities": [
+  {
+   "facility_id": "31397c3268f282b0",
+   "pages_fetched": [
+    {
+     "url": "https://lternet.edu/site/arctic-lter/",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/directory/?usite=1896&go=1&all=true",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/directory/?user=6820",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/directory/?user=2157",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/directory/?user=6829",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/directory/?user=16223",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/directory/?user=1459",
+     "status": 200
+    },
+    {
+     "url": "https://new-www.mbl.edu/news/not-moment-too-soon-ecologists-flock-arctic-field-station",
+     "status": 200
+    },
+    {
+     "url": "https://arc.lternet.edu/",
+     "status": 403
+    },
+    {
+     "url": "https://arc-lter.lamont.columbia.edu/people/",
+     "status": 403
+    },
+    {
+     "url": "https://arc-lter.ecosystems.mbl.edu/",
+     "status": 0
+    },
+    {
+     "url": "https://prod.lsa.umich.edu/earth/people/faculty/rmcory.html",
+     "status": 200
+    },
+    {
+     "url": "https://prod.lsa.umich.edu/eeb/people/faculty/gwk.html",
+     "status": 200
+    },
+    {
+     "url": "https://lsa.umich.edu/eeb/people/faculty/gwk.html",
+     "status": 403
+    },
+    {
+     "url": "https://www.iab.uaf.edu/people/profile/?id=58",
+     "status": 404
+    },
+    {
+     "url": "https://www.mbl.edu/research/scientists-directory/john-e-hobbie",
+     "status": 404
+    },
+    {
+     "url": "https://lamont.columbia.edu/directory/kevin-l-griffin",
+     "status": 403
+    },
+    {
+     "url": "https://e3b.columbia.edu/faculty/kevin-l-griffin/",
+     "status": 403
+    }
+   ],
+   "notes": "Lead PI per lternet.edu Site Contacts is Kevin Griffin (Columbia/Lamont) with Rose Cory co-lead; the ARC site moved to arc-lter.lamont.columbia.edu, which returned 403 to curl and WebFetch, and arc-lter.ecosystems.mbl.edu timed out, so site-hosted personnel/history pages could not be read. Kling is still listed as Co-PI in the lternet.edu site directory (that directory also keeps stale roles, e.g. Rastetter still shown as Lead PI). F. Stuart Chapin III does not appear in the full ARC lternet.edu directory. Existing homepage URLs for Chapin (uaf.edu IAB profile) and Hobbie (mbl.edu directory) returned 404; Kling's lsa.umich.edu page returned 403 but prod.lsa.umich.edu serves it (200). Griffin's Columbia/Lamont profile pages returned 403, so his bio uses his ORCID employment record. Verifier: Kling (Co-PI per lternet.edu directory) downgraded to low, since that directory also still lists Rastetter as Lead PI; Hobbie founding-PI downgraded to low (page names him leader of the 1975 Toolik research group that preceded the 1987 LTER)."
+  },
+  {
+   "facility_id": "39c749224b574218",
+   "pages_fetched": [
+    {
+     "url": "https://lternet.edu/site/california-current-ecosystem-lter/",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/directory/?usite=1944&go=1&all=true",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/directory/?user=2572",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/directory/?user=12278",
+     "status": 200
+    },
+    {
+     "url": "https://www.bco-dmo.org/project/2086",
+     "status": 200
+    },
+    {
+     "url": "https://scripps.ucsd.edu/profiles/kbarbeau",
+     "status": 200
+    },
+    {
+     "url": "https://scripps.ucsd.edu/profiles/mohman",
+     "status": 200
+    },
+    {
+     "url": "https://scripps.ucsd.edu/profiles/mlandry",
+     "status": 200
+    },
+    {
+     "url": "https://scripps.ucsd.edu/profiles/laluwihare",
+     "status": 200
+    },
+    {
+     "url": "https://scripps.ucsd.edu/profiles/ajmiller",
+     "status": 200
+    },
+    {
+     "url": "https://ccelter.ucsd.edu/about-us/people/",
+     "status": 0
+    },
+    {
+     "url": "https://cce.lternet.edu/",
+     "status": 301
+    }
+   ],
+   "notes": "ccelter.ucsd.edu (the CCE site, also behind cce.lternet.edu redirects) refused connections today, so the site's own people page could not be read; co-PIs are taken from the BCO-DMO project page for the current CCE LTER award (OCE-2224726). Mark Ohman's Scripps profile now reads 'Emeritus / Professor of Graduate Division'; he is still listed as Co-PI in the lternet.edu site directory but not on the current award's BCO-DMO people list. Landry's emeritus status confirmed on Scripps profile. Verifier: BCO-DMO also lists Andrew E. Allen as Co-PI (not added). Evidence spacing normalised."
+  },
+  {
+   "facility_id": "bb2539d13dcb2865",
+   "pages_fetched": [
+    {
+     "url": "https://lternet.edu/site/cedar-creek-ecosystem-science-reserve/",
+     "status": 200
+    },
+    {
+     "url": "https://cedarcreek.umn.edu/cdr-lter-personnel",
+     "status": 200
+    },
+    {
+     "url": "https://cedarcreek.umn.edu/about-cedar-creek-lter",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/directory/?usite=1902&go=1&all=true",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/directory/?user=3414",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/directory/?user=15371",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/directory/?user=1312",
+     "status": 200
+    },
+    {
+     "url": "https://cbs.umn.edu/directory/elizabeth-borer",
+     "status": 200
+    },
+    {
+     "url": "https://cbs.umn.edu/directory/peter-kennedy",
+     "status": 200
+    },
+    {
+     "url": "https://cbs.umn.edu/directory/eric-seabloom",
+     "status": 200
+    },
+    {
+     "url": "https://cbs.umn.edu/directory/g-david-tilman",
+     "status": 200
+    },
+    {
+     "url": "https://cbs.umn.edu/directory/sarah-e-hobbie",
+     "status": 200
+    }
+   ],
+   "notes": "Elizabeth Borer (lead) and Peter Kennedy (co-lead) are the CDR LTER Co-Leaders; Hobbie, Seabloom and Tilman remain listed as Principal Investigators. No fetched page names Tilman as founding PI (the about page says CDR joined LTER in 1982 without naming a PI), so that role is unverifiable. Existing cbs.umn.edu/contacts/* homepage URLs redirect to cbs.umn.edu/directory/*."
+  },
+  {
+   "facility_id": "449b4b7b64e59122",
+   "pages_fetched": [
+    {
+     "url": "https://lternet.edu/site/florida-coastal-everglades-lter/",
+     "status": 200
+    },
+    {
+     "url": "https://fcelter.fiu.edu/about_us/personnel/",
+     "status": 200
+    },
+    {
+     "url": "https://fcelter.fiu.edu/about/people/index.html",
+     "status": 200
+    },
+    {
+     "url": "https://fcelter.fiu.edu/about/index.html",
+     "status": 200
+    },
+    {
+     "url": "https://fce-lter.fiu.edu/",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/directory/?user=2699",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/directory/?user=11363",
+     "status": 200
+    },
+    {
+     "url": "https://case.fiu.edu/about/directory/profiles/kominoski-john.html",
+     "status": 200
+    },
+    {
+     "url": "https://case.fiu.edu/about/directory/profiles/gaiser-evelyn.html",
+     "status": 200
+    },
+    {
+     "url": "https://case.fiu.edu/about/directory/profiles/troxler-tiffany.html",
+     "status": 200
+    },
+    {
+     "url": "https://case.fiu.edu/about/directory/profiles/rehage-jennifer.html",
+     "status": 404
+    },
+    {
+     "url": "https://sustainability.asu.edu/person/daniel-childers/",
+     "status": 404
+    }
+   ],
+   "notes": "FCE governance page lists the lead PI as 'de facto IEC Chair' for each phase: Childers (FCE I 2000-2006), Gaiser (FCE II-III), Kominoski (FCE IV 2018-2025 and FCE V 2025-2031). Gaiser's FIU profile says she led FCE 2007-2021, so dates for the Gaiser-to-Kominoski handover differ between sources; Kominoski start_year left null. Childers' ASU homepage URL in the DB returned 404. Verifier: Gaiser 2007-2021 (FIU profile) conflicts with governance page (Gaiser de facto IEC Chair FCE II 2006-2012 and FCE III; Kominoski FCE IV 2018-2025); confidence lowered to medium."
+  },
+  {
+   "facility_id": "9ddcb1de9b747a64",
+   "pages_fetched": [
+    {
+     "url": "https://lternet.edu/site/andrews-forest-lter/",
+     "status": 200
+    },
+    {
+     "url": "https://andrewsforest.oregonstate.edu/about-us/contacts",
+     "status": 200
+    },
+    {
+     "url": "https://andrewsforest.oregonstate.edu/about-us/personnel-directory",
+     "status": 200
+    },
+    {
+     "url": "https://andrewsforest.oregonstate.edu/about-forest/history/program-history",
+     "status": 200
+    },
+    {
+     "url": "https://andrewsforest.oregonstate.edu/personnel/membership",
+     "status": 200
+    },
+    {
+     "url": "https://andrewsforest.oregonstate.edu/people",
+     "status": 404
+    },
+    {
+     "url": "https://lternet.edu/directory/?usite=1894&go=1&all=true",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/directory/?user=3411",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/directory/?user=4142",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/directory/?user=1993",
+     "status": 200
+    },
+    {
+     "url": "https://directory.forestry.oregonstate.edu/people/betts-matthew",
+     "status": 200
+    },
+    {
+     "url": "https://ceoas.oregonstate.edu/people/julia-jones",
+     "status": 200
+    },
+    {
+     "url": "https://andrewsforest.oregonstate.edu/people/mark-harmon",
+     "status": 404
+    },
+    {
+     "url": "https://research.fs.usda.gov/people/frederick-swanson",
+     "status": 404
+    },
+    {
+     "url": "https://research.fs.usda.gov/people/sherri-johnson",
+     "status": 404
+    },
+    {
+     "url": "https://research.fs.usda.gov/people/jonathan-long",
+     "status": 404
+    },
+    {
+     "url": "https://environment.uw.edu/faculty/jerry-franklin/",
+     "status": 404
+    },
+    {
+     "url": "https://research.fs.usda.gov/people/brooke-penaluna",
+     "status": 404
+    }
+   ],
+   "notes": "Andrews contacts page names Matthew Betts as OSU lead scientist and LTER lead PI, Brooke Penaluna as USFS PNW lead scientist, Mark Schulze as Forest Director. The program-history page names no founding PI, so Franklin's founding-PI role is unverifiable. Jonathan Long, Steven Garman, Barbara Bond and Jerry Franklin are absent from the Andrews personnel directory. Swanson, Harmon and S. Johnson are listed there as Principal Investigators (Swanson's emeritus status not shown). Existing homepage URLs for Swanson, S. Johnson, Long (research.fs.usda.gov), Harmon (andrewsforest people) and Franklin (UW) returned 404."
+  },
+  {
+   "facility_id": "a02ea62e175196ea",
+   "pages_fetched": [
+    {
+     "url": "https://lternet.edu/site/kellogg-biological-station-lter/",
+     "status": 200
+    },
+    {
+     "url": "https://ltar.ars.usda.gov/sites/kbs/",
+     "status": 200
+    },
+    {
+     "url": "https://lter.kbs.msu.edu/people",
+     "status": 200
+    },
+    {
+     "url": "https://lter.kbs.msu.edu/leadership/",
+     "status": 200
+    },
+    {
+     "url": "https://lter.kbs.msu.edu/who-we-are/project-history/",
+     "status": 200
+    },
+    {
+     "url": "https://lter.kbs.msu.edu/people/813",
+     "status": 200
+    },
+    {
+     "url": "https://lter.kbs.msu.edu/people/669",
+     "status": 200
+    },
+    {
+     "url": "https://lter.kbs.msu.edu/people/944",
+     "status": 200
+    },
+    {
+     "url": "https://lter.kbs.msu.edu/people/235",
+     "status": 200
+    },
+    {
+     "url": "https://lter.kbs.msu.edu/people/27",
+     "status": 200
+    },
+    {
+     "url": "https://lter.kbs.msu.edu/people/307",
+     "status": 200
+    },
+    {
+     "url": "https://ltar.ars.usda.gov/",
+     "status": 200
+    },
+    {
+     "url": "https://ltar.kbs.msu.edu/",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/directory/?usite=1938&go=1&all=true",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/directory/?user=5887",
+     "status": 200
+    },
+    {
+     "url": "https://lter.kbs.msu.edu/people/faculty/g-philip-robertson/",
+     "status": 404
+    },
+    {
+     "url": "https://lter.kbs.msu.edu/people/faculty/stephen-k-hamilton/",
+     "status": 404
+    },
+    {
+     "url": "https://lter.kbs.msu.edu/people/research-staff/sven-bohm/",
+     "status": 404
+    }
+   ],
+   "notes": "Facility record combines KBS LTER and KBS LTAR. LTER: Nick Haddad lead PI and Sarah Evans co-lead PI (co-Directors). LTAR (started 2020): ltar.ars.usda.gov lists leaders Phil Robertson, Nick Haddad, Steve Hamilton and Brook Wilke, so Robertson and Hamilton are confirmed as LTAR leaders (Robertson is no longer LTER lead PI). Hamilton does not appear on the KBS LTER people page. Existing lter.kbs.msu.edu/people/faculty|research-staff/* homepage URLs return 404; current profile URLs are lter.kbs.msu.edu/people/<id>. ltar.kbs.msu.edu is JavaScript-rendered (no readable roster). Verifier: ltar.ars.usda.gov lists four equal Leader(s); Robertson changed from lead-PI to co-PI and his existing lead-PI verification marked stale (lternet.edu names Nick Haddad Lead PI)."
+  }
+ ],
+ "people": [
+  {
+   "key": "griffin",
+   "existing_person_id": null,
+   "name": "Kevin Griffin",
+   "name_given": "Kevin",
+   "name_family": "Griffin",
+   "orcid": "0000-0003-4124-3757",
+   "orcid_source_url": "https://lternet.edu/directory/?user=6820",
+   "homepage_url": null,
+   "bio": "Professor in the Department of Ecology, Evolution and Environmental Biology at Columbia University, where his employment is recorded as beginning in 1997.",
+   "bio_source_url": "https://pub.orcid.org/v3.0/0000-0003-4124-3757/employments",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "cory",
+   "existing_person_id": null,
+   "name": "Rose Cory",
+   "name_given": "Rose",
+   "name_family": "Cory",
+   "orcid": "0000-0001-9867-7084",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0001-9867-7084/employments",
+   "homepage_url": "https://prod.lsa.umich.edu/earth/people/faculty/rmcory.html",
+   "bio": "Professor in the University of Michigan Department of Earth and Environmental Sciences, where she also serves as associate chair for curriculum and undergraduate studies; trained in environmental engineering at the University of Colorado Boulder.",
+   "bio_source_url": "https://prod.lsa.umich.edu/earth/people/faculty/rmcory.html",
+   "research_interests": "environmental biogeochemistry; geochemistry; climate change; geobiology",
+   "research_interests_source_url": "https://prod.lsa.umich.edu/earth/people/faculty/rmcory.html"
+  },
+  {
+   "key": "dobkowski",
+   "existing_person_id": null,
+   "name": "Jason Dobkowski",
+   "name_given": "Jason",
+   "name_family": "Dobkowski",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "kjaer",
+   "existing_person_id": null,
+   "name": "Savannah Kjaer",
+   "name_given": "Savannah",
+   "name_family": "Kjaer",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "kling",
+   "existing_person_id": "a917ec61067391a0",
+   "name": "George W. Kling",
+   "name_given": "George",
+   "name_family": "Kling",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://prod.lsa.umich.edu/eeb/people/faculty/gwk.html",
+   "bio": "University of Michigan faculty member in ecology and evolutionary biology since 1991; aquatic ecologist and biogeochemist working on carbon and nutrient cycling, isotope-based food-web studies, and connected arctic lakes and streams, with additional work on tropical African lakes.",
+   "bio_source_url": "https://prod.lsa.umich.edu/eeb/people/faculty/gwk.html",
+   "research_interests": "aquatic ecology; biogeochemistry; carbon and nutrient cycling; stable isotopes and food webs; lake-stream landscape linkages; microbial diversity and ecosystem function",
+   "research_interests_source_url": "https://prod.lsa.umich.edu/eeb/people/faculty/gwk.html"
+  },
+  {
+   "key": "jhobbie",
+   "existing_person_id": "7c3332d51d99a70f",
+   "name": "John E. Hobbie",
+   "name_given": "John",
+   "name_family": "Hobbie",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "rastetter",
+   "existing_person_id": null,
+   "name": "Edward Rastetter",
+   "name_given": "Edward",
+   "name_family": "Rastetter",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "barbeau",
+   "existing_person_id": null,
+   "name": "Katherine Barbeau",
+   "name_given": "Katherine",
+   "name_family": "Barbeau",
+   "orcid": "0000-0002-2132-7219",
+   "orcid_source_url": "https://lternet.edu/directory/?user=2572",
+   "homepage_url": "https://scripps.ucsd.edu/profiles/kbarbeau",
+   "bio": "Scripps Institution of Oceanography (UC San Diego) professor in the Geosciences Research Division; investigates how trace elements are cycled by marine chemistry and microbes, using analytical chemistry, microbiology and molecular tools on research cruises and in the lab.",
+   "bio_source_url": "https://scripps.ucsd.edu/profiles/kbarbeau",
+   "research_interests": "trace element cycling in marine systems; plankton ecology and food-web interactions; genomics and bioinformatics; marine tracers",
+   "research_interests_source_url": "https://scripps.ucsd.edu/profiles/kbarbeau"
+  },
+  {
+   "key": "stukel",
+   "existing_person_id": null,
+   "name": "Michael R. Stukel",
+   "name_given": "Michael",
+   "name_family": "Stukel",
+   "orcid": "0000-0002-7696-6739",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-7696-6739/employments",
+   "homepage_url": null,
+   "bio": "Associate professor in Florida State University's Department of Earth, Ocean, and Atmospheric Science, a position held since 2014.",
+   "bio_source_url": "https://pub.orcid.org/v3.0/0000-0002-7696-6739/employments",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "aluwihare",
+   "existing_person_id": null,
+   "name": "Lihini Aluwihare",
+   "name_given": "Lihini",
+   "name_family": "Aluwihare",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://scripps.ucsd.edu/profiles/laluwihare",
+   "bio": "Professor at Scripps Institution of Oceanography in the Geosciences Research Division; works on aquatic organic matter, using isotopic tracers and analytical methods for complex mixtures and studying the range of microbial metabolisms.",
+   "bio_source_url": "https://scripps.ucsd.edu/profiles/laluwihare",
+   "research_interests": "organic matter composition and cycling; analysis of complex organic mixtures; isotopic tracing of organic matter sources and residence times; microbial metabolic diversity in aquatic systems",
+   "research_interests_source_url": "https://scripps.ucsd.edu/profiles/laluwihare"
+  },
+  {
+   "key": "amiller",
+   "existing_person_id": null,
+   "name": "Arthur J. Miller",
+   "name_given": "Arthur",
+   "name_family": "Miller",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://scripps.ucsd.edu/profiles/ajmiller",
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": "climate-change impacts on marine life; ecosystem dynamics; coastal and physical oceanography; ocean-atmosphere interactions; ocean and climate modeling and state estimation",
+   "research_interests_source_url": "https://scripps.ucsd.edu/profiles/ajmiller"
+  },
+  {
+   "key": "frants",
+   "existing_person_id": null,
+   "name": "Marina Frants",
+   "name_given": "Marina",
+   "name_family": "Frants",
+   "orcid": "0000-0002-1148-0252",
+   "orcid_source_url": "https://lternet.edu/directory/?user=12278",
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "borer",
+   "existing_person_id": null,
+   "name": "Elizabeth Borer",
+   "name_given": "Elizabeth",
+   "name_family": "Borer",
+   "orcid": "0000-0003-2259-5853",
+   "orcid_source_url": "https://lternet.edu/directory/?user=3414",
+   "homepage_url": "https://cbs.umn.edu/directory/elizabeth-borer",
+   "bio": "Regents Professor and Distinguished McKnight University Professor in Ecology, Evolution, and Behavior at the University of Minnesota; studies how nitrogen deposition, rising CO2, invasions and extinctions jointly shape disease risk, biodiversity and ecosystem function, mainly in grasslands.",
+   "bio_source_url": "https://cbs.umn.edu/directory/elizabeth-borer",
+   "research_interests": "global change ecology; nutrient deposition; disease ecology; biodiversity and ecosystem function; species invasions",
+   "research_interests_source_url": "https://cbs.umn.edu/directory/elizabeth-borer"
+  },
+  {
+   "key": "pkennedy",
+   "existing_person_id": null,
+   "name": "Peter G. Kennedy",
+   "name_given": "Peter",
+   "name_family": "Kennedy",
+   "orcid": "0000-0003-2615-3892",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0003-2615-3892/employments",
+   "homepage_url": "https://cbs.umn.edu/directory/peter-kennedy",
+   "bio": "Professor of Plant and Microbial Biology at the University of Minnesota and holder of the PMB Wardle Chair of Microbial Ecology (2023 onward); investigates the diversity and roles of microbial communities, particularly those living in symbiosis with plants.",
+   "bio_source_url": "https://cbs.umn.edu/directory/peter-kennedy",
+   "research_interests": "mycology; microbial ecology; plant-microbe symbioses; community ecology",
+   "research_interests_source_url": "https://cbs.umn.edu/directory/peter-kennedy"
+  },
+  {
+   "key": "bahauddin",
+   "existing_person_id": null,
+   "name": "Dan Bahauddin",
+   "name_given": "Dan",
+   "name_family": "Bahauddin",
+   "orcid": "0000-0003-1190-2926",
+   "orcid_source_url": "https://lternet.edu/directory/?user=1312",
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "shobbie",
+   "existing_person_id": "40147e9b2dd665ce",
+   "name": "Sarah E. Hobbie",
+   "name_given": "Sarah",
+   "name_family": "Hobbie",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://cbs.umn.edu/directory/sarah-e-hobbie",
+   "bio": "Regents Professor and Distinguished McKnight University Professor in Ecology, Evolution, and Behavior at the University of Minnesota; ecosystem ecologist studying how atmospheric and climate change, urbanization and plant species composition alter biogeochemical cycles.",
+   "bio_source_url": "https://cbs.umn.edu/directory/sarah-e-hobbie",
+   "research_interests": "ecosystem ecology; biogeochemistry; global change; urban ecosystems; plant diversity effects on nutrient cycling",
+   "research_interests_source_url": "https://cbs.umn.edu/directory/sarah-e-hobbie"
+  },
+  {
+   "key": "seabloom",
+   "existing_person_id": "3ecec15a0484af94",
+   "name": "Eric W. Seabloom",
+   "name_given": "Eric",
+   "name_family": "Seabloom",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://cbs.umn.edu/directory/eric-seabloom",
+   "bio": "Distinguished McKnight University Professor in Ecology, Evolution, and Behavior at the University of Minnesota, affiliated with Cedar Creek LTER and the Nutrient Network; combines theory, experiments and observation to understand human impacts on ecosystems.",
+   "bio_source_url": "https://cbs.umn.edu/directory/eric-seabloom",
+   "research_interests": "community ecology of disease; biological invasions; restoration ecology; plant and soil microbiomes; global change",
+   "research_interests_source_url": "https://cbs.umn.edu/directory/eric-seabloom"
+  },
+  {
+   "key": "tilman",
+   "existing_person_id": "e8a32ac37b918719",
+   "name": "G. David Tilman",
+   "name_given": "David",
+   "name_family": "Tilman",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://cbs.umn.edu/directory/g-david-tilman",
+   "bio": "Regents Professor and McKnight Presidential Chair in Ecology, Evolution, and Behavior at the University of Minnesota; studies the causes of large-scale patterns in biodiversity and ecosystem dynamics, the benefits ecosystems provide to society, and sustainability under rising human demand.",
+   "bio_source_url": "https://cbs.umn.edu/directory/g-david-tilman",
+   "research_interests": "biodiversity and ecosystem functioning; ecosystem services; resource competition; environmental sustainability",
+   "research_interests_source_url": "https://cbs.umn.edu/directory/g-david-tilman"
+  },
+  {
+   "key": "kominoski",
+   "existing_person_id": "4a38247ff5c3944d",
+   "name": "John S. Kominoski",
+   "name_given": "John",
+   "name_family": "Kominoski",
+   "orcid": "0000-0002-0978-3326",
+   "orcid_source_url": "https://lternet.edu/directory/?user=2699",
+   "homepage_url": "https://case.fiu.edu/about/directory/profiles/kominoski-john.html",
+   "bio": "Professor of Biological Sciences at Florida International University and lead PI of the FCE LTER; an ecosystem ecologist and biogeochemist examining how nutrient enrichment and saltwater intrusion alter organic matter processing and carbon storage across freshwater, brackish and coastal wetlands.",
+   "bio_source_url": "https://case.fiu.edu/about/directory/profiles/kominoski-john.html",
+   "research_interests": "ecosystem ecology; biogeochemistry; organic matter processing; saltwater intrusion; wetland carbon storage; ecosystem metabolism",
+   "research_interests_source_url": "https://case.fiu.edu/about/directory/profiles/kominoski-john.html"
+  },
+  {
+   "key": "gaiser",
+   "existing_person_id": "9d009ce27a162c4c",
+   "name": "Evelyn E. Gaiser",
+   "name_given": "Evelyn",
+   "name_family": "Gaiser",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://case.fiu.edu/about/directory/profiles/gaiser-evelyn.html",
+   "bio": "Distinguished University Professor and George Barley Eminent Scholars Chair at Florida International University; aquatic ecologist who uses algae as indicators of long-term climate and land-use change in South Florida waters; led the FCE LTER from 2007 to 2021.",
+   "bio_source_url": "https://case.fiu.edu/about/directory/profiles/gaiser-evelyn.html",
+   "research_interests": "aquatic ecology; algae as indicators of environmental change; Everglades restoration; long-term ecological research",
+   "research_interests_source_url": "https://case.fiu.edu/about/directory/profiles/gaiser-evelyn.html"
+  },
+  {
+   "key": "childers",
+   "existing_person_id": "9e1ff713b34bfd02",
+   "name": "Daniel L. Childers",
+   "name_given": "Daniel",
+   "name_family": "Childers",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "troxler",
+   "existing_person_id": null,
+   "name": "Tiffany Troxler",
+   "name_given": "Tiffany",
+   "name_family": "Troxler",
+   "orcid": "0000-0001-7100-7742",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0001-7100-7742/employments",
+   "homepage_url": "https://case.fiu.edu/about/directory/profiles/troxler-tiffany.html",
+   "bio": "Associate Professor at Florida International University, where she is also graduate program director and Associate Director of Science for the Sea Level Solutions Center.",
+   "bio_source_url": "https://case.fiu.edu/about/directory/profiles/troxler-tiffany.html",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "rehage",
+   "existing_person_id": null,
+   "name": "Jennifer Rehage",
+   "name_given": "Jennifer",
+   "name_family": "Rehage",
+   "orcid": "0000-0003-0009-6906",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0003-0009-6906/employments",
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "kamener",
+   "existing_person_id": null,
+   "name": "Gabriel Kamener",
+   "name_given": "Gabriel",
+   "name_family": "Kamener",
+   "orcid": "0000-0002-4202-7573",
+   "orcid_source_url": "https://lternet.edu/directory/?user=11363",
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "rugge",
+   "existing_person_id": null,
+   "name": "Mike Rugge",
+   "name_given": "Mike",
+   "name_family": "Rugge",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "betts",
+   "existing_person_id": null,
+   "name": "Matthew G. Betts",
+   "name_given": "Matthew",
+   "name_family": "Betts",
+   "orcid": "0000-0002-7100-2551",
+   "orcid_source_url": "https://lternet.edu/directory/?user=3411",
+   "homepage_url": "https://directory.forestry.oregonstate.edu/people/betts-matthew",
+   "bio": "Professor and Ruth Spaniol Chair in Oregon State University's College of Forestry and lead scientist of the HJ Andrews LTER program; studies how landscape structure affects animal demography and dispersal, ecological thresholds, forest trophic cascades and species distributions.",
+   "bio_source_url": "https://directory.forestry.oregonstate.edu/people/betts-matthew",
+   "research_interests": "landscape effects on animal population demography; animal movement and dispersal; population viability modeling; ecological thresholds; forest trophic cascades; species distribution modeling; sustainable forestry",
+   "research_interests_source_url": "https://directory.forestry.oregonstate.edu/people/betts-matthew"
+  },
+  {
+   "key": "schulze",
+   "existing_person_id": null,
+   "name": "Mark D. Schulze",
+   "name_given": "Mark",
+   "name_family": "Schulze",
+   "orcid": "0000-0003-0438-4091",
+   "orcid_source_url": "https://lternet.edu/directory/?user=4142",
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "remillard",
+   "existing_person_id": null,
+   "name": "Suzanne M. Remillard",
+   "name_given": "Suzanne",
+   "name_family": "Remillard",
+   "orcid": "0000-0002-0365-8866",
+   "orcid_source_url": "https://lternet.edu/directory/?user=1993",
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "penaluna",
+   "existing_person_id": null,
+   "name": "Brooke E. Penaluna",
+   "name_given": "Brooke",
+   "name_family": "Penaluna",
+   "orcid": "0000-0001-7215-770X",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0001-7215-770X/employments",
+   "homepage_url": null,
+   "bio": "Scientist with the USDA Forest Service Pacific Northwest Research Station who serves as the station's lead scientist for the H.J. Andrews Experimental Forest.",
+   "bio_source_url": "https://andrewsforest.oregonstate.edu/about-us/contacts",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "digregorio",
+   "existing_person_id": null,
+   "name": "Lina DiGregorio",
+   "name_given": "Lina",
+   "name_family": "DiGregorio",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "jjones",
+   "existing_person_id": "275723277f7feea8",
+   "name": "Julia A. Jones",
+   "name_given": "Julia",
+   "name_family": "Jones",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://ceoas.oregonstate.edu/directory/julia-jones",
+   "bio": "University Distinguished Professor of Geography at Oregon State University; examines how land use, climate change and disturbance influence hydrology, geomorphology and water quality, with long-term research at the H.J. Andrews Experimental Forest and other LTER sites.",
+   "bio_source_url": "https://ceoas.oregonstate.edu/directory/julia-jones",
+   "research_interests": "forest hydrology; landscape ecology; spatio-temporal statistics; surface processes; biogeography; climate and disturbance effects on water",
+   "research_interests_source_url": "https://ceoas.oregonstate.edu/directory/julia-jones"
+  },
+  {
+   "key": "haddad",
+   "existing_person_id": null,
+   "name": "Nicholas Haddad",
+   "name_given": "Nicholas",
+   "name_family": "Haddad",
+   "orcid": "0000-0002-1591-9322",
+   "orcid_source_url": "https://lter.kbs.msu.edu/people/813",
+   "homepage_url": "https://lter.kbs.msu.edu/people/813",
+   "bio": "Co-director of the KBS LTER at Michigan State University's Kellogg Biological Station; applies ecological principles to biodiversity conservation, studying habitat connectivity, corridors, prairie strips and insect populations in diversified agricultural landscapes.",
+   "bio_source_url": "https://lter.kbs.msu.edu/leadership/",
+   "research_interests": "landscape corridors and habitat connectivity; prairie strips in farmland; butterfly and other insect population ecology",
+   "research_interests_source_url": "https://lter.kbs.msu.edu/leadership/"
+  },
+  {
+   "key": "sevans",
+   "existing_person_id": null,
+   "name": "Sarah Evans",
+   "name_given": "Sarah",
+   "name_family": "Evans",
+   "orcid": "0000-0001-6728-4499",
+   "orcid_source_url": "https://lter.kbs.msu.edu/people/669",
+   "homepage_url": "https://lter.kbs.msu.edu/people/669",
+   "bio": "Co-director of the KBS LTER; a soil microbial ecologist studying how microbes function under drought, climate change and land-use change, including rainout-shelter drought experiments run jointly with partner labs.",
+   "bio_source_url": "https://lter.kbs.msu.edu/leadership/",
+   "research_interests": "soil biology; microbial ecology; climate change; drought",
+   "research_interests_source_url": "https://lter.kbs.msu.edu/leadership/"
+  },
+  {
+   "key": "nbaker",
+   "existing_person_id": null,
+   "name": "Nameer Baker",
+   "name_given": "Nameer",
+   "name_family": "Baker",
+   "orcid": "0000-0002-8827-3307",
+   "orcid_source_url": "https://lter.kbs.msu.edu/people/944",
+   "homepage_url": "https://lter.kbs.msu.edu/people/944",
+   "bio": "Science Coordinator of the KBS LTER at Michigan State University; a microbial ecologist (postdoctoral work on switchgrass rhizosphere microbes, doctoral work on Mediterranean litter decomposers) who coordinates collaboration among labs in the long-term experiments.",
+   "bio_source_url": "https://lter.kbs.msu.edu/leadership/",
+   "research_interests": "microbial ecology; decomposition; climate change; mentorship",
+   "research_interests_source_url": "https://lter.kbs.msu.edu/leadership/"
+  },
+  {
+   "key": "wilke",
+   "existing_person_id": null,
+   "name": "Brook J. Wilke",
+   "name_given": "Brook",
+   "name_family": "Wilke",
+   "orcid": "0000-0001-6746-5206",
+   "orcid_source_url": "https://lter.kbs.msu.edu/people/307",
+   "homepage_url": "https://lter.kbs.msu.edu/people/307",
+   "bio": "Farm Manager at Michigan State University's Kellogg Biological Station and member of the KBS LTER Agronomy Committee.",
+   "bio_source_url": "https://lter.kbs.msu.edu/people/307",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "robertson",
+   "existing_person_id": "e94658d4c146128c",
+   "name": "G. Philip Robertson",
+   "name_given": "Philip",
+   "name_family": "Robertson",
+   "orcid": "0000-0001-9771-9895",
+   "orcid_source_url": "https://lter.kbs.msu.edu/people/235",
+   "homepage_url": "https://lter.kbs.msu.edu/people/235",
+   "bio": "University Distinguished Professor in Michigan State University's Department of Plant, Soil, and Microbial Sciences, based at the Kellogg Biological Station.",
+   "bio_source_url": "https://lter.kbs.msu.edu/people/235",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "hamilton",
+   "existing_person_id": "192965b176145665",
+   "name": "Stephen K. Hamilton",
+   "name_given": "Stephen",
+   "name_family": "Hamilton",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "bohm",
+   "existing_person_id": "52af70a7fa6cf7aa",
+   "name": "Sven Bohm",
+   "name_given": "Sven",
+   "name_family": "Bohm",
+   "orcid": "0000-0002-6224-7848",
+   "orcid_source_url": "https://lter.kbs.msu.edu/people/27",
+   "homepage_url": "https://lter.kbs.msu.edu/people/27",
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  }
+ ],
+ "affiliations": [
+  {
+   "facility_id": "31397c3268f282b0",
+   "person_key": "griffin",
+   "role": "lead-PI",
+   "title": "Lead Principal Investigator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/arctic-lter/",
+   "evidence": "Lead Principal Investigator: Kevin Griffin",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "31397c3268f282b0",
+   "person_key": "cory",
+   "role": "co-PI",
+   "title": "Co-Lead Principal Investigator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/arctic-lter/",
+   "evidence": "Co-Lead Principal Investigator: Rose Cory",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "31397c3268f282b0",
+   "person_key": "dobkowski",
+   "role": "information-manager",
+   "title": "Information Manager",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/arctic-lter/",
+   "evidence": "Information Manager: Jason Dobkowski",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "31397c3268f282b0",
+   "person_key": "kjaer",
+   "role": "information-manager",
+   "title": "Information Manager",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/arctic-lter/",
+   "evidence": "Information Manager: Savannah Kjaer",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "31397c3268f282b0",
+   "person_key": "kling",
+   "role": "co-PI",
+   "title": "Co-Principal Investigator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lternet.edu/directory/?user=1459",
+   "evidence": "Title: Co-Principal Investigator Sites: Arctic LTER",
+   "confidence": "low"
+  },
+  {
+   "facility_id": "31397c3268f282b0",
+   "person_key": "jhobbie",
+   "role": "founding-PI",
+   "title": "Leader of the original 1975 Toolik Lake research group",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": 1975,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/arctic-lter/",
+   "evidence": "Most of the members of this group, led by John Hobbie of the Marine Biological Laboratory",
+   "confidence": "low"
+  },
+  {
+   "facility_id": "31397c3268f282b0",
+   "person_key": "rastetter",
+   "role": "lead-PI",
+   "title": "MBL principal investigator managing the Arctic LTER (as of 2021)",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://new-www.mbl.edu/news/not-moment-too-soon-ecologists-flock-arctic-field-station",
+   "evidence": "managed by an MBL principal investigator (currently Ed Rastetter) since its founding in 1987",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "39c749224b574218",
+   "person_key": "barbeau",
+   "role": "lead-PI",
+   "title": "Lead Principal Investigator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/california-current-ecosystem-lter/",
+   "evidence": "Lead Principal Investigator: Katherine Barbeau",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "39c749224b574218",
+   "person_key": "stukel",
+   "role": "co-PI",
+   "title": "Co-Principal Investigator (CCE LTER award)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.bco-dmo.org/project/2086",
+   "evidence": "Co-Principal Investigator: Michael R. Stukel",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "39c749224b574218",
+   "person_key": "aluwihare",
+   "role": "co-PI",
+   "title": "Co-Principal Investigator (CCE LTER award)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.bco-dmo.org/project/2086",
+   "evidence": "Co-Principal Investigator: Lihini Aluwihare",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "39c749224b574218",
+   "person_key": "amiller",
+   "role": "co-PI",
+   "title": "Co-Principal Investigator (CCE LTER award)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.bco-dmo.org/project/2086",
+   "evidence": "Co-Principal Investigator: Arthur J. Miller",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "39c749224b574218",
+   "person_key": "frants",
+   "role": "information-manager",
+   "title": "Information Manager",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/california-current-ecosystem-lter/",
+   "evidence": "Information Manager: Marina Frants",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "bb2539d13dcb2865",
+   "person_key": "borer",
+   "role": "lead-PI",
+   "title": "Lead Principal Investigator (Co-Leader)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/cedar-creek-ecosystem-science-reserve/",
+   "evidence": "Lead Principal Investigator: Elizabeth Borer",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "bb2539d13dcb2865",
+   "person_key": "pkennedy",
+   "role": "co-PI",
+   "title": "Co-Lead Principal Investigator (Co-Leader)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/cedar-creek-ecosystem-science-reserve/",
+   "evidence": "Co-Lead Principal Investigator: Peter Kennedy",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "bb2539d13dcb2865",
+   "person_key": "bahauddin",
+   "role": "information-manager",
+   "title": "Information Manager",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://cedarcreek.umn.edu/cdr-lter-personnel",
+   "evidence": "Dan Bahauddin - Information Manager",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "bb2539d13dcb2865",
+   "person_key": "shobbie",
+   "role": "co-PI",
+   "title": "Principal Investigator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://cedarcreek.umn.edu/cdr-lter-personnel",
+   "evidence": "Sarah Hobbie - University of Minnesota",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "bb2539d13dcb2865",
+   "person_key": "seabloom",
+   "role": "co-PI",
+   "title": "Principal Investigator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://cedarcreek.umn.edu/cdr-lter-personnel",
+   "evidence": "Eric Seabloom - University of Minnesota",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "bb2539d13dcb2865",
+   "person_key": "tilman",
+   "role": "co-PI",
+   "title": "Principal Investigator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://cedarcreek.umn.edu/cdr-lter-personnel",
+   "evidence": "David Tilman - University of Minnesota",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "449b4b7b64e59122",
+   "person_key": "kominoski",
+   "role": "lead-PI",
+   "title": "Lead Principal Investigator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/florida-coastal-everglades-lter/",
+   "evidence": "Lead Principal Investigator: John Kominoski",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "449b4b7b64e59122",
+   "person_key": "gaiser",
+   "role": "lead-PI",
+   "title": "Former Lead PI of FCE LTER",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": 2007,
+   "end_year": 2021,
+   "source_url": "https://case.fiu.edu/about/directory/profiles/gaiser-evelyn.html",
+   "evidence": "which Dr. Gaiser has led from 2007-2021",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "449b4b7b64e59122",
+   "person_key": "childers",
+   "role": "founding-PI",
+   "title": "Lead PI / de facto IEC Chair, FCE I (2000-2006)",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": 2000,
+   "end_year": 2006,
+   "source_url": "https://fcelter.fiu.edu/about/people/index.html",
+   "evidence": "Dan Childers, de facto IEC Chair",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "449b4b7b64e59122",
+   "person_key": "troxler",
+   "role": "co-PI",
+   "title": "Principal Investigator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://fcelter.fiu.edu/about_us/personnel/",
+   "evidence": "Tiffany Troxler Florida International University",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "449b4b7b64e59122",
+   "person_key": "rehage",
+   "role": "co-PI",
+   "title": "Principal Investigator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://fcelter.fiu.edu/about_us/personnel/",
+   "evidence": "Jennifer Rehage Florida International University",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "449b4b7b64e59122",
+   "person_key": "kamener",
+   "role": "information-manager",
+   "title": "Information Manager",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/florida-coastal-everglades-lter/",
+   "evidence": "Information Manager: Gabriel Kamener",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "449b4b7b64e59122",
+   "person_key": "rugge",
+   "role": "manager",
+   "title": "Project Manager",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://fcelter.fiu.edu/about/people/index.html",
+   "evidence": "Project Manager: Mike Rugge",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "9ddcb1de9b747a64",
+   "person_key": "betts",
+   "role": "lead-PI",
+   "title": "Oregon State University Lead Scientist and LTER Lead Principal Investigator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://andrewsforest.oregonstate.edu/about-us/contacts",
+   "evidence": "Oregon State University Lead Scientist and LTER Lead Principal Investigator Matthew Betts",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "9ddcb1de9b747a64",
+   "person_key": "penaluna",
+   "role": "scientist",
+   "title": "USFS Pacific Northwest Research Station Lead Scientist",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://andrewsforest.oregonstate.edu/about-us/contacts",
+   "evidence": "USFS Pacific Northwest Research Station Lead Scientist Brooke Penaluna",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "9ddcb1de9b747a64",
+   "person_key": "schulze",
+   "role": "site-manager",
+   "title": "Forest Director; LTER Research/Site Coordinator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://andrewsforest.oregonstate.edu/about-us/contacts",
+   "evidence": "Forest Director Mark Schulze",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "9ddcb1de9b747a64",
+   "person_key": "remillard",
+   "role": "information-manager",
+   "title": "LTER Information Manager",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/andrews-forest-lter/",
+   "evidence": "Information Manager: Suzanne Remillard",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "9ddcb1de9b747a64",
+   "person_key": "digregorio",
+   "role": "coordinator",
+   "title": "Andrews Forest LTER Coordinator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://andrewsforest.oregonstate.edu/about-us/contacts",
+   "evidence": "Andrews Forest LTER Coordinator Lina DiGregorio",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "9ddcb1de9b747a64",
+   "person_key": "jjones",
+   "role": "co-PI",
+   "title": "Principal Investigator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://andrewsforest.oregonstate.edu/about-us/personnel-directory",
+   "evidence": "Jones, Julia A. (Principal Investigator)",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "a02ea62e175196ea",
+   "person_key": "haddad",
+   "role": "lead-PI",
+   "title": "KBS LTER Lead PI (co-Director); KBS LTAR co-leader",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/kellogg-biological-station-lter/",
+   "evidence": "Lead Principal Investigator: Nick Haddad",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "a02ea62e175196ea",
+   "person_key": "sevans",
+   "role": "co-PI",
+   "title": "KBS LTER Co-Lead PI (co-Director)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/kellogg-biological-station-lter/",
+   "evidence": "Co-Lead Principal Investigator: Sarah Evans",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "a02ea62e175196ea",
+   "person_key": "nbaker",
+   "role": "research-coordinator",
+   "title": "Science Coordinator (Research/Site Coordinator)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/kellogg-biological-station-lter/",
+   "evidence": "Research/Site Coordinator: Nameer Baker",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "a02ea62e175196ea",
+   "person_key": "wilke",
+   "role": "co-PI",
+   "title": "KBS LTAR site co-leader; KBS Farm Manager",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ltar.ars.usda.gov/sites/kbs/",
+   "evidence": "Phil Robertson, Nick Haddad, Steve Hamilton, and Brook Wilke",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "a02ea62e175196ea",
+   "person_key": "robertson",
+   "role": "co-PI",
+   "title": "KBS LTAR site co-leader (one of four listed leaders)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ltar.ars.usda.gov/sites/kbs/",
+   "evidence": "Phil Robertson, Nick Haddad, Steve Hamilton, and Brook Wilke",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "a02ea62e175196ea",
+   "person_key": "hamilton",
+   "role": "co-PI",
+   "title": "KBS LTAR site co-leader",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ltar.ars.usda.gov/sites/kbs/",
+   "evidence": "Phil Robertson, Nick Haddad, Steve Hamilton, and Brook Wilke",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "a02ea62e175196ea",
+   "person_key": "bohm",
+   "role": "information-manager",
+   "title": "Information Manager",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/kellogg-biological-station-lter/",
+   "evidence": "Information Manager: Sven Bohm",
+   "confidence": "high"
+  }
+ ],
+ "verifications": [
+  {
+   "facility_id": "31397c3268f282b0",
+   "person_id": "5b7ec70d7ea9364c",
+   "existing_role": "co-PI",
+   "status": "not-found",
+   "current_holder_key": null,
+   "source_url": "https://lternet.edu/directory/?usite=1896&go=1&all=true",
+   "evidence": null
+  },
+  {
+   "facility_id": "31397c3268f282b0",
+   "person_id": "7c3332d51d99a70f",
+   "existing_role": "founding-PI",
+   "status": "confirmed",
+   "current_holder_key": "jhobbie",
+   "source_url": "https://lternet.edu/site/arctic-lter/",
+   "evidence": "Most of the members of this group, led by John Hobbie of the Marine Biological Laboratory"
+  },
+  {
+   "facility_id": "31397c3268f282b0",
+   "person_id": "a917ec61067391a0",
+   "existing_role": "lead-PI",
+   "status": "stale",
+   "current_holder_key": "griffin",
+   "source_url": "https://lternet.edu/site/arctic-lter/",
+   "evidence": "Lead Principal Investigator: Kevin Griffin"
+  },
+  {
+   "facility_id": "39c749224b574218",
+   "person_id": "d5868bedb8f7dcb3",
+   "existing_role": "lead-PI",
+   "status": "stale",
+   "current_holder_key": "barbeau",
+   "source_url": "https://lternet.edu/site/california-current-ecosystem-lter/",
+   "evidence": "Lead Principal Investigator: Katherine Barbeau"
+  },
+  {
+   "facility_id": "39c749224b574218",
+   "person_id": "8b46cf9bb8d3d818",
+   "existing_role": "emeritus",
+   "status": "confirmed",
+   "current_holder_key": null,
+   "source_url": "https://scripps.ucsd.edu/profiles/mlandry",
+   "evidence": "Emeritus / Professor of Graduate Division"
+  },
+  {
+   "facility_id": "bb2539d13dcb2865",
+   "person_id": "e8a32ac37b918719",
+   "existing_role": "founding-PI",
+   "status": "unverifiable",
+   "current_holder_key": null,
+   "source_url": "https://cedarcreek.umn.edu/cdr-lter-personnel",
+   "evidence": "David Tilman - University of Minnesota"
+  },
+  {
+   "facility_id": "bb2539d13dcb2865",
+   "person_id": "40147e9b2dd665ce",
+   "existing_role": "lead-PI",
+   "status": "stale",
+   "current_holder_key": "borer",
+   "source_url": "https://lternet.edu/site/cedar-creek-ecosystem-science-reserve/",
+   "evidence": "Lead Principal Investigator: Elizabeth Borer"
+  },
+  {
+   "facility_id": "bb2539d13dcb2865",
+   "person_id": "3ecec15a0484af94",
+   "existing_role": "co-PI",
+   "status": "confirmed",
+   "current_holder_key": "seabloom",
+   "source_url": "https://cedarcreek.umn.edu/cdr-lter-personnel",
+   "evidence": "Eric Seabloom - University of Minnesota"
+  },
+  {
+   "facility_id": "449b4b7b64e59122",
+   "person_id": "9e1ff713b34bfd02",
+   "existing_role": "founding-PI",
+   "status": "confirmed",
+   "current_holder_key": "childers",
+   "source_url": "https://fcelter.fiu.edu/about/people/index.html",
+   "evidence": "Dan Childers, de facto IEC Chair"
+  },
+  {
+   "facility_id": "449b4b7b64e59122",
+   "person_id": "9d009ce27a162c4c",
+   "existing_role": "lead-PI",
+   "status": "stale",
+   "current_holder_key": "kominoski",
+   "source_url": "https://lternet.edu/site/florida-coastal-everglades-lter/",
+   "evidence": "Lead Principal Investigator: John Kominoski"
+  },
+  {
+   "facility_id": "449b4b7b64e59122",
+   "person_id": "4a38247ff5c3944d",
+   "existing_role": "co-PI",
+   "status": "stale",
+   "current_holder_key": null,
+   "source_url": "https://lternet.edu/site/florida-coastal-everglades-lter/",
+   "evidence": "Lead Principal Investigator: John Kominoski"
+  },
+  {
+   "facility_id": "9ddcb1de9b747a64",
+   "person_id": "868c24653a75997a",
+   "existing_role": "emeritus",
+   "status": "unverifiable",
+   "current_holder_key": null,
+   "source_url": "https://andrewsforest.oregonstate.edu/about-us/personnel-directory",
+   "evidence": "Swanson, Frederick J. (Principal Investigator)"
+  },
+  {
+   "facility_id": "9ddcb1de9b747a64",
+   "person_id": "a398fb35ba8d3a16",
+   "existing_role": "co-PI",
+   "status": "confirmed",
+   "current_holder_key": null,
+   "source_url": "https://andrewsforest.oregonstate.edu/about-us/personnel-directory",
+   "evidence": "Harmon, Mark E. (Principal Investigator)"
+  },
+  {
+   "facility_id": "9ddcb1de9b747a64",
+   "person_id": "dcca8a3b723b5ff3",
+   "existing_role": "co-PI",
+   "status": "confirmed",
+   "current_holder_key": null,
+   "source_url": "https://andrewsforest.oregonstate.edu/about-us/personnel-directory",
+   "evidence": "Johnson, Sherri L. (Principal Investigator)"
+  },
+  {
+   "facility_id": "9ddcb1de9b747a64",
+   "person_id": "9cb12ddb7eb973a7",
+   "existing_role": "faculty",
+   "status": "not-found",
+   "current_holder_key": null,
+   "source_url": "https://andrewsforest.oregonstate.edu/about-us/personnel-directory",
+   "evidence": null
+  },
+  {
+   "facility_id": "9ddcb1de9b747a64",
+   "person_id": "5eaa251843542cc7",
+   "existing_role": "co-PI",
+   "status": "not-found",
+   "current_holder_key": null,
+   "source_url": "https://andrewsforest.oregonstate.edu/about-us/personnel-directory",
+   "evidence": null
+  },
+  {
+   "facility_id": "9ddcb1de9b747a64",
+   "person_id": "38a28e7ea22cbdf3",
+   "existing_role": "founding-PI",
+   "status": "unverifiable",
+   "current_holder_key": null,
+   "source_url": "https://andrewsforest.oregonstate.edu/about-forest/history/program-history",
+   "evidence": null
+  },
+  {
+   "facility_id": "9ddcb1de9b747a64",
+   "person_id": "275723277f7feea8",
+   "existing_role": "lead-PI",
+   "status": "stale",
+   "current_holder_key": "betts",
+   "source_url": "https://lternet.edu/site/andrews-forest-lter/",
+   "evidence": "Lead Principal Investigator: Matthew Betts"
+  },
+  {
+   "facility_id": "9ddcb1de9b747a64",
+   "person_id": "ef845c7cc69e0633",
+   "existing_role": "emeritus",
+   "status": "not-found",
+   "current_holder_key": null,
+   "source_url": "https://andrewsforest.oregonstate.edu/about-us/personnel-directory",
+   "evidence": null
+  },
+  {
+   "facility_id": "a02ea62e175196ea",
+   "person_id": "e94658d4c146128c",
+   "existing_role": "lead-PI",
+   "status": "stale",
+   "current_holder_key": "haddad",
+   "source_url": "https://lternet.edu/site/kellogg-biological-station-lter/",
+   "evidence": "Lead Principal Investigator: Nick Haddad"
+  },
+  {
+   "facility_id": "a02ea62e175196ea",
+   "person_id": "192965b176145665",
+   "existing_role": "co-PI",
+   "status": "confirmed",
+   "current_holder_key": "hamilton",
+   "source_url": "https://ltar.ars.usda.gov/sites/kbs/",
+   "evidence": "Phil Robertson, Nick Haddad, Steve Hamilton, and Brook Wilke"
+  },
+  {
+   "facility_id": "a02ea62e175196ea",
+   "person_id": "52af70a7fa6cf7aa",
+   "existing_role": "information-manager",
+   "status": "confirmed",
+   "current_holder_key": "bohm",
+   "source_url": "https://lternet.edu/site/kellogg-biological-station-lter/",
+   "evidence": "Information Manager: Sven Bohm"
+  }
+ ]
+}

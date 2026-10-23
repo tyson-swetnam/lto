@@ -35,16 +35,14 @@ import sys
 import time
 from pathlib import Path
 
-import duckdb
 try:
     import requests
 except ImportError:
     print("[error] pip install requests --break-system-packages", file=sys.stderr)
     raise
 
-ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "lto.duckdb"
-PARQUET_OUT = [ROOT / "db" / "parquet", ROOT / "public" / "parquet"]
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import lto_db  # noqa: E402
 
 OA_AUTHOR = "https://api.openalex.org/authors/{id}"
 ORCID_EID = "https://pub.orcid.org/v3.0/{orcid}/external-identifiers"
@@ -122,17 +120,11 @@ def fetch_from_orcid(sess: requests.Session, orcid: str) -> str | None:
     return None
 
 
-def export_parquet(conn):
-    for base in PARQUET_OUT:
-        base.mkdir(parents=True, exist_ok=True)
-        out = base / "people.parquet"
-        conn.execute(f"COPY people TO '{out}' (FORMAT PARQUET)")
-        print(f"[parquet] wrote {out}")
-
-
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--db", type=Path, default=DEFAULT_DB)
+    lto_db.add_argparse_catalog(ap)
+    ap.add_argument("--db", dest="catalog", type=Path,
+                    help="Deprecated alias of --catalog.")
     ap.add_argument("--source", choices=("openalex", "orcid", "scholarly"),
                     default="openalex")
     ap.add_argument("--batch", type=int, default=0,
@@ -142,11 +134,11 @@ def main() -> int:
     ap.add_argument("--dry-run", action="store_true")
     args = ap.parse_args()
 
-    if not args.db.exists():
-        print(f"[error] db not found: {args.db}", file=sys.stderr)
+    try:
+        conn = lto_db.connect(catalog=args.catalog, data=args.lake_data)
+    except lto_db.LakeNotFound as e:
+        print(f"[error] {e}", file=sys.stderr)
         return 2
-
-    conn = duckdb.connect(str(args.db))
     sess = session()
 
     where = "TRUE" if args.reverify else \
@@ -168,40 +160,54 @@ def main() -> int:
           f"{'  (dry-run)' if args.dry_run else ''}")
 
     totals = {"hit": 0, "miss": 0, "errors": 0}
-    for i, (pid, name, oa, orcid, _existing) in enumerate(rows, 1):
-        try:
-            if args.source == "openalex":
-                gs = fetch_from_openalex(sess, oa)
-            elif args.source == "orcid":
-                gs = fetch_from_orcid(sess, orcid)
+    # Hits are collected and written in one transaction after the loop,
+    # so a run is one lake snapshot and no write waits on the network.
+    found: list[tuple[str, str]] = []
+    try:
+        for i, (pid, name, oa, orcid, _existing) in enumerate(rows, 1):
+            try:
+                if args.source == "openalex":
+                    gs = fetch_from_openalex(sess, oa)
+                elif args.source == "orcid":
+                    gs = fetch_from_orcid(sess, orcid)
+                else:
+                    # Tier 3 stub — see plan doc. We don't run scholarly
+                    # by default because of Google rate-limit fragility.
+                    print("[error] --source scholarly not implemented yet",
+                          file=sys.stderr)
+                    return 3
+            except Exception as e:
+                print(f"  [{i}/{len(rows)}] {name[:30]:30s}  ERROR: {e}")
+                totals["errors"] += 1
+                continue
+            if gs:
+                totals["hit"] += 1
+                print(f"  [{i}/{len(rows)}] {name[:30]:30s}  ✓ {gs}")
+                found.append((pid, gs))
             else:
-                # Tier 3 stub — see plan doc. We don't run scholarly
-                # by default because of Google rate-limit fragility.
-                print("[error] --source scholarly not implemented yet",
-                      file=sys.stderr)
-                return 3
-        except Exception as e:
-            print(f"  [{i}/{len(rows)}] {name[:30]:30s}  ERROR: {e}")
-            totals["errors"] += 1
-            continue
-        if gs:
-            totals["hit"] += 1
-            print(f"  [{i}/{len(rows)}] {name[:30]:30s}  ✓ {gs}")
-            if not args.dry_run:
-                conn.execute(
-                    "UPDATE people SET google_scholar_id = ?, "
-                    "updated_at = now() WHERE person_id = ?",
-                    [gs, pid],
-                )
-        else:
-            totals["miss"] += 1
-            print(f"  [{i}/{len(rows)}] {name[:30]:30s}  no scholar id")
-        time.sleep(0.05)
+                totals["miss"] += 1
+                print(f"  [{i}/{len(rows)}] {name[:30]:30s}  no scholar id")
+            time.sleep(0.05)
+    except KeyboardInterrupt:
+        print(f"\n[interrupted] after {len(found)} hits; writing those")
 
     print(f"[done] hit={totals['hit']}  miss={totals['miss']}  "
           f"errors={totals['errors']}")
-    if not args.dry_run:
-        export_parquet(conn)
+    if found and not args.dry_run:
+        with lto_db.transaction(
+                conn, f"enrich_people_gscholar: {len(found)} Google Scholar "
+                      f"ids via {args.source}"):
+            conn.execute("CREATE OR REPLACE TEMP TABLE _gs "
+                         "(person_id VARCHAR, google_scholar_id VARCHAR)")
+            conn.executemany("INSERT INTO _gs VALUES (?, ?)", found)
+            conn.execute("""
+                UPDATE people SET google_scholar_id = s.google_scholar_id,
+                                  updated_at = now()
+                FROM   _gs s WHERE people.person_id = s.person_id
+            """)
+            lto_db.assert_integrity(conn, ["people"])
+        print(f"[lake] wrote {len(found)} google_scholar_id values "
+              f"(run export_parquet.py to publish)")
     conn.close()
     return 0
 

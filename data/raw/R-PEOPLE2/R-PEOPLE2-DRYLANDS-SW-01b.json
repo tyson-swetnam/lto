@@ -1,0 +1,759 @@
+{
+ "batch_id": "R-PEOPLE2-DRYLANDS-SW-01b",
+ "retrieved_at": "2026-10-22",
+ "verified_by": "adversarial-verifier 2026-10-22",
+ "facilities": [
+  {
+   "facility_id": "ba14031ce27e1f5f",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/srer",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/domains/desert-southwest",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?combine=D14&field_profile_department_target_id=All",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/abraham-karam",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/impact/observatory-blog/chance-fire-research-and-recovery-neon-desert-site",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/field-sites/about-field-sites/domains/d14",
+     "status": 404
+    },
+    {
+     "url": "https://santarita.arizona.edu/contact-us/people",
+     "status": 200
+    },
+    {
+     "url": "https://santarita.arizona.edu/person/mitchel-mcclaran",
+     "status": 200
+    },
+    {
+     "url": "https://santarita.arizona.edu/person/joao-weisshaupt",
+     "status": 200
+    },
+    {
+     "url": "https://santarita.arizona.edu/person/alessandra-gorlier",
+     "status": 200
+    },
+    {
+     "url": "https://santarita.arizona.edu/person/brett-blum",
+     "status": 200
+    },
+    {
+     "url": "https://santarita.arizona.edu/about-us/history",
+     "status": 200
+    },
+    {
+     "url": "https://snre.arizona.edu/mitch-mcclaran",
+     "status": 200
+    },
+    {
+     "url": "https://snre.arizona.edu/alessandra-gorlier",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-8456-8976/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0009-0004-4109-0695/employments",
+     "status": 200
+    }
+   ],
+   "notes": "NEON terrestrial site in Domain 14 (Desert Southwest); NEON domain page names no manager, so the D14 manager comes from the NEON staff directory and Karam's NEON profile. Site host is the University of Arizona (per NEON site page). Host-side leadership taken from santarita.arizona.edu People page: Mitchel McClaran (Director for Research, SRER), Joao Weisshaupt (Range Manager), Alessandra Gorlier (Research Scientist IV), Brett Blum (Director, Southern Arizona Experiment Station). No founding director named on fetched pages (SRER history page only says established 1902/1903 by USFS; UA took over in 1988 per NEON page). LTAR-side lead not researched: no LTAR page for SRER was located. Verifier: NEON SRER page confirms D14 and University of Arizona host; Karam's link is domain-level (confidence medium). Host-range staff from santarita.arizona.edu describe the Range, not the NEON plot network, so downgraded to medium; Blum directs the parent Southern Arizona Experiment Station (low)."
+  },
+  {
+   "facility_id": "622fb44dae141c45",
+   "pages_fetched": [
+    {
+     "url": "https://www.fs.usda.gov/rmrs/experimental-forests-ranges/fraser-experimental-forest",
+     "status": 200
+    },
+    {
+     "url": "https://research.fs.usda.gov/rmrs/forestsandranges/locations/fef",
+     "status": 200
+    },
+    {
+     "url": "https://research.fs.usda.gov/about/people/kevin.elder",
+     "status": 200
+    },
+    {
+     "url": "https://research.fs.usda.gov/about/people/banning.j.starr",
+     "status": 200
+    },
+    {
+     "url": "https://research.fs.usda.gov/about/people/charles.c.rhoades",
+     "status": 200
+    },
+    {
+     "url": "https://research.fs.usda.gov/about/people/robert.musselman",
+     "status": 200
+    },
+    {
+     "url": "https://www.fs.usda.gov/rmrs/people/crhoades",
+     "status": 200
+    },
+    {
+     "url": "https://research.fs.usda.gov/about/people/charles.rhoades",
+     "status": 404
+    },
+    {
+     "url": "https://www.fs.usda.gov/fraser",
+     "status": 404
+    },
+    {
+     "url": "https://www.fs.usda.gov/r02/arp/recreation/fraser-experimental-forest",
+     "status": 200
+    }
+   ],
+   "notes": "The facility URL in the DB (fs.usda.gov/rmrs/experimental-forests-ranges/fraser-experimental-forest) and the existing Rhoades source_url (fs.usda.gov/rmrs/people/crhoades) now return the generic RMRS home page; the current page is https://research.fs.usda.gov/rmrs/forestsandranges/locations/fef, whose Key Personnel lists Kelly J. Elder (Scientist in Charge) and Banning J. Starr (Manager). 'Scientist in Charge' mapped to role lead-PI. Existing person Robert M. Musselman: the RMRS profile found is 'Robert C. Musselman' (Former Employee, Emeritus Scientist) whose linked work is GLEES, not Fraser - middle initial differs from the DB row. Rhoades: profile ties his publications to Fraser but he is not listed as Fraser key personnel; 'co-PI' is a loose label. Correct Rhoades homepage is https://research.fs.usda.gov/about/people/charles.c.rhoades (DB homepage_url research.fs.usda.gov/people/charles-rhoades returns 404). Verifier: fef page re-fetched, Elder (Scientist in Charge) and Starr (Manager) confirmed. Rhoades confirmed as long-term Fraser researcher (profile lists Fraser publications 2005-2019, incl. 'three decades of research at the Fraser Experimental Forest'); co-PI label remains loose. Musselman profile is Robert C. (emeritus, GLEES); no Fraser tie. Note the Rhoades/Elder Fraser papers list a co-author Robert M. Hubbard, so the DB's 'Robert M. Musselman' may be a name conflation; flagged, not changed."
+  },
+  {
+   "facility_id": "f440750fc002e532",
+   "pages_fetched": [
+    {
+     "url": "https://www.fs.usda.gov/rmrs/experimental-forests-ranges/great-basin-experimental-range",
+     "status": 200
+    },
+    {
+     "url": "https://research.fs.usda.gov/rmrs/forestsandranges/locations/gber",
+     "status": 200
+    },
+    {
+     "url": "https://research.fs.usda.gov/about/people/bryce.richardson2",
+     "status": 200
+    },
+    {
+     "url": "https://snow.edu/community/great-basin-station/history.html",
+     "status": 200
+    },
+    {
+     "url": "https://pws.byu.edu/bruce-roundy",
+     "status": 404
+    },
+    {
+     "url": "https://pws.byu.edu/Faculty-Staff",
+     "status": 200
+    },
+    {
+     "url": "https://lifesciences.byu.edu/moving-on-and-moving-in-retirees-and-incomers",
+     "status": 200
+    }
+   ],
+   "notes": "DB facility URL now redirects to the generic RMRS home page; current page is https://research.fs.usda.gov/rmrs/forestsandranges/locations/gber, which lists only one Key Personnel: Bryce A. Richardson (Scientist in Charge). Snow College manages the station facilities since 1992 (snow.edu history) but no Snow College manager is named there. No founding director named on fetched official pages. Existing Bruce A. Roundy: BYU profile URL is 404, he is absent from the BYU PWS faculty list and appears under 'Retiring Faculty and Admin' on a BYU Life Sciences page; no fetched page ties him to GBR. Verifier: gber page lists only Richardson; Roundy absent from it; pws.byu.edu/bruce-roundy re-checked 404 today."
+  },
+  {
+   "facility_id": "2556705b356302b7",
+   "pages_fetched": [
+    {
+     "url": "https://watershed.lbl.gov/",
+     "status": 200
+    },
+    {
+     "url": "https://watershed.lbl.gov/our-team/",
+     "status": 200
+    },
+    {
+     "url": "https://watershed.lbl.gov/research-results/acknowledgements/",
+     "status": 200
+    },
+    {
+     "url": "https://profiles.lbl.gov/19467-eoin-brodie",
+     "status": 200
+    },
+    {
+     "url": "https://profiles.lbl.gov/18916-kenneth-williams",
+     "status": 200
+    },
+    {
+     "url": "https://profiles.lbl.gov/22600-michelle-newcomer",
+     "status": 200
+    },
+    {
+     "url": "https://profiles.lbl.gov/21337-charuleka-varadharajan",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0003-2087-607X/employments",
+     "status": 200
+    }
+   ],
+   "notes": "Facility is run as Berkeley Lab's Watershed Function Scientific Focus Area (DOE). Team page 'Leadership' block: Eoin Brodie (Lead Principal Investigator), Kristin Boye (SLAC), Kenneth H. Williams, Michelle Newcomer (Deputy of Integration), Jacob Gimbel (Project Manager, not added); Charuleka Varadharajan is on the Executive Committee as Data Management Lead. profiles.lbl.gov is a JavaScript app: profile text and ORCID links were read from a headless-Chrome render of the page (HTTP 200). No founding PI is named on fetched SFA pages. RMBL (co-host in parent_org) staff appear only as team members. Verifier: team page re-fetched; LBL profiles rendered in headless Chromium (HTTP 200) and each shows the ORCID iD used."
+  },
+  {
+   "facility_id": "4cc7f52b5d75691c",
+   "pages_fetched": [
+    {
+     "url": "https://www.usgs.gov/centers/werc/science/mojave-global-change-facility",
+     "status": 404
+    },
+    {
+     "url": "https://ornl.gov/content/ndff-site-characteristics",
+     "status": 404
+    },
+    {
+     "url": "https://www.energy.gov/nepa/articles/cx-026326-nevada-desert-research-center-nv-desert-face-and-mojave-global-change",
+     "status": 200
+    },
+    {
+     "url": "https://www.dri.edu/?p=140097",
+     "status": 200
+    },
+    {
+     "url": "https://www.dri.edu/directory/lynn-fenstermaker/",
+     "status": 200
+    },
+    {
+     "url": "https://www.unlv.edu/news/article/prestigious-professors-stan-smith",
+     "status": 200
+    },
+    {
+     "url": "https://www.osti.gov/biblio/920615",
+     "status": 200
+    },
+    {
+     "url": "https://www.unr.edu/nres/people/robert-nowak",
+     "status": 404
+    }
+   ],
+   "notes": "DB facility URL (USGS WERC) is 404. MGCF is part of the Nevada Desert Research Center run jointly by DRI, UNLV and UNR at the Nevada National Security Site (DOE CX-026326); USGS is not named as operator on any fetched page. No current director/PI could be found: Lynn Fenstermaker (DRI) is described as a past director and is Research Professor Emeritus; a 2005 UNLV article names Stanley D. Smith as UNLV lead PI of the NDRC; Robert S. Nowak authored the DOE final technical report saying 'in 2001 we established' the MGCF. DRI's 2023 article says both NDRC sites are being maintained for future research. All three added as is_current=false. Verifier: DRI directory page does not state the length of Fenstermaker's DRI service, so that clause was removed from her bio. Nowak's founding-PI link rests on his sole-author DOE report saying 'in 2001 we established' the MGCF (confidence low)."
+  },
+  {
+   "facility_id": "c4b1e9a1bb8a38af",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/arik",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/domains/central-plains",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/field-sites/about-field-sites/domains/d10",
+     "status": 404
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?combine=D10&field_profile_department_target_id=All",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/lauren-hostert",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-8085-4297/employments",
+     "status": 200
+    },
+    {
+     "url": "https://www.nature.org/en-us/get-involved/how-to-help/places-we-protect/fox-ranch/",
+     "status": 200
+    }
+   ],
+   "notes": "NEON aquatic site in Domain 10 (Central Plains), operated from the Domain 10/13 Support Facility in Boulder. Domain manager from the NEON staff directory: Lauren Hostert (Manager, D10 and D13). Site host is The Nature Conservancy Colorado (Fox Ranch Preserve); the NEON page refers to a TNC site manager but neither NEON nor the TNC preserve page names that person. Verifier: NEON ARIK page confirms D10; Hostert's link is domain-level (confidence medium)."
+  }
+ ],
+ "people": [
+  {
+   "key": "abraham-karam",
+   "existing_person_id": null,
+   "name": "Abraham Karam",
+   "name_given": "Abraham",
+   "name_family": "Karam",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.neonscience.org/person/abraham-karam",
+   "bio": "Manages NEON's Desert Southwest field domain (D14) from Tucson, after earlier NEON work in Domains 10/13 in Boulder. Earlier worked as an Arizona State University research specialist, then as a consulting-firm project manager on native-fish projects such as razorback sucker and bonytail work on the lower Colorado River. B.S. and M.S., Southern Oregon University.",
+   "bio_source_url": "https://www.neonscience.org/person/abraham-karam",
+   "research_interests": "aquatic biology; native fish conservation in the Desert Southwest",
+   "research_interests_source_url": "https://www.neonscience.org/person/abraham-karam"
+  },
+  {
+   "key": "mitchel-mcclaran",
+   "existing_person_id": null,
+   "name": "Mitchel McClaran",
+   "name_given": "Mitchel",
+   "name_family": "McClaran",
+   "orcid": "0000-0002-8456-8976",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-8456-8976/employments",
+   "homepage_url": "https://snre.arizona.edu/mitch-mcclaran",
+   "bio": "Professor of Range Management in the University of Arizona School of Natural Resources and the Environment and Director for Research at the Santa Rita Experimental Range. Holds a PhD in wildland resource science (UC Berkeley, 1986). Works on how rangeland management, plant community ecology and rangeland policy interact.",
+   "bio_source_url": "https://santarita.arizona.edu/person/mitchel-mcclaran",
+   "research_interests": "rangeland management; rangeland plant community ecology; rangeland policy; restoration and fire ecology",
+   "research_interests_source_url": "https://snre.arizona.edu/mitch-mcclaran"
+  },
+  {
+   "key": "joao-weisshaupt",
+   "existing_person_id": null,
+   "name": "Joao Weisshaupt",
+   "name_given": "Joao",
+   "name_family": "Weisshaupt",
+   "orcid": "0009-0004-4109-0695",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0009-0004-4109-0695/employments",
+   "homepage_url": "https://santarita.arizona.edu/person/joao-weisshaupt",
+   "bio": "Range Manager for the Santa Rita Experimental Range within the University of Arizona's Southern Arizona Experiment Station, based at the range's Florida Station.",
+   "bio_source_url": "https://santarita.arizona.edu/person/joao-weisshaupt",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "alessandra-gorlier",
+   "existing_person_id": null,
+   "name": "Alessandra Gorlier",
+   "name_given": "Alessandra",
+   "name_family": "Gorlier",
+   "orcid": "0000-0002-9158-7366",
+   "orcid_source_url": "https://snre.arizona.edu/alessandra-gorlier",
+   "homepage_url": "https://snre.arizona.edu/alessandra-gorlier",
+   "bio": "Has held a Research Scientist IV post at UA since 2018, in the McClaran lab. Leads long-term vegetation studies on the Santa Rita Experimental Range, curates its long-term databases and runs its website. Earlier spent about fifteen years in grassland ecology research at the University of Turin. PhD, University of Florence (2006).",
+   "bio_source_url": "https://snre.arizona.edu/alessandra-gorlier",
+   "research_interests": "desert grassland dynamics; rangeland and alpine grassland ecology; grazing management for conservation and restoration; plant community classification and monitoring; plant diversity",
+   "research_interests_source_url": "https://snre.arizona.edu/alessandra-gorlier"
+  },
+  {
+   "key": "brett-blum",
+   "existing_person_id": null,
+   "name": "Brett Blum",
+   "name_given": "Brett",
+   "name_family": "Blum",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://santarita.arizona.edu/person/brett-blum",
+   "bio": "Directs the University of Arizona's Southern Arizona Experiment Station, which includes the Santa Rita Experimental Range, and serves as Interim Director of the Arizona Experiment Station.",
+   "bio_source_url": "https://santarita.arizona.edu/person/brett-blum",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "kelly-elder",
+   "existing_person_id": null,
+   "name": "Kelly J. Elder",
+   "name_given": "Kelly",
+   "name_family": "Elder",
+   "orcid": "0000-0002-1143-8708",
+   "orcid_source_url": "https://research.fs.usda.gov/about/people/kevin.elder",
+   "homepage_url": "https://research.fs.usda.gov/about/people/kevin.elder",
+   "bio": "Research Hydrologist with the USDA Forest Service Rocky Mountain Research Station (Water and Watersheds program) and Scientist in Charge of the Fraser Experimental Forest. PhD in physical geography/hydrology, UC Santa Barbara (1995). Publishes on mountain snow hydrology, airborne and radar snow measurement, avalanches and forested headwater catchments.",
+   "bio_source_url": "https://research.fs.usda.gov/about/people/kevin.elder",
+   "research_interests": "snow hydrology; snow water equivalent remote sensing (InSAR, SnowEx); avalanche frequency; hydrology of cold-region forested watersheds; stream chemistry after bark beetle disturbance",
+   "research_interests_source_url": "https://research.fs.usda.gov/about/people/kevin.elder"
+  },
+  {
+   "key": "banning-starr",
+   "existing_person_id": null,
+   "name": "Banning J. Starr",
+   "name_given": "Banning",
+   "name_family": "Starr",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://research.fs.usda.gov/about/people/banning.j.starr",
+   "bio": "Ecologist with the USDA Forest Service Rocky Mountain Research Station (Water and Watersheds program) and manager of the Fraser Experimental Forest. Co-authors Fraser studies on snagfall and stream chemistry after bark beetle outbreaks, and on soil changes after pile burning in subalpine forest.",
+   "bio_source_url": "https://research.fs.usda.gov/about/people/banning.j.starr",
+   "research_interests": "subalpine forest response to bark beetle infestation; headwater stream chemistry; pile-burn soil effects",
+   "research_interests_source_url": "https://research.fs.usda.gov/about/people/banning.j.starr"
+  },
+  {
+   "key": "bryce-richardson",
+   "existing_person_id": null,
+   "name": "Bryce A. Richardson",
+   "name_given": "Bryce",
+   "name_family": "Richardson",
+   "orcid": "0000-0001-9521-4367",
+   "orcid_source_url": "https://research.fs.usda.gov/about/people/bryce.richardson2",
+   "homepage_url": "https://research.fs.usda.gov/about/people/bryce.richardson2",
+   "bio": "Plant Research Geneticist at the USDA Forest Service Rocky Mountain Research Station (Maintaining Resilient Dryland Ecosystems program) and Scientist in Charge of the Great Basin Experimental Range. PhD in plant pathology, Washington State University (2006). Studies genetics and climate adaptation of big sagebrush and other dryland plants to guide seed transfer and restoration.",
+   "bio_source_url": "https://research.fs.usda.gov/about/people/bryce.richardson2",
+   "research_interests": "big sagebrush genomics and polyploidy; climate-based seed transfer; restoration genetics of native plants; white pine blister rust",
+   "research_interests_source_url": "https://research.fs.usda.gov/about/people/bryce.richardson2"
+  },
+  {
+   "key": "eoin-brodie",
+   "existing_person_id": null,
+   "name": "Eoin Brodie",
+   "name_given": "Eoin",
+   "name_family": "Brodie",
+   "orcid": "0000-0002-8453-8435",
+   "orcid_source_url": "https://profiles.lbl.gov/19467-eoin-brodie",
+   "homepage_url": "https://profiles.lbl.gov/19467-eoin-brodie",
+   "bio": "Senior Scientist at Lawrence Berkeley National Laboratory and interim director of its Climate and Ecosystem Sciences Division; adjunct associate professor in UC Berkeley's ESPM department. A microbiologist and biogeochemist, he leads the Watershed Function SFA and the microbial mechanisms work of the Belowground Biogeochemistry SFA.",
+   "bio_source_url": "https://profiles.lbl.gov/19467-eoin-brodie",
+   "research_interests": "microbial traits and their impacts on ecosystem processes",
+   "research_interests_source_url": "https://watershed.lbl.gov/our-team/"
+  },
+  {
+   "key": "kenneth-williams",
+   "existing_person_id": null,
+   "name": "Kenneth Hurst Williams",
+   "name_given": "Kenneth",
+   "name_family": "Williams",
+   "orcid": "0000-0002-3568-1155",
+   "orcid_source_url": "https://profiles.lbl.gov/18916-kenneth-williams",
+   "homepage_url": "https://profiles.lbl.gov/18916-kenneth-williams",
+   "bio": "Senior Scientist at Lawrence Berkeley National Laboratory who leads the lab's Environmental Remediation and Water Resources program within its climate and ecosystem sciences division. Trained in geology, geophysics and environmental science at UC Berkeley (PhD 2008). Known for biogeophysics methods that sense subsurface microbial activity with minimal disturbance.",
+   "bio_source_url": "https://profiles.lbl.gov/18916-kenneth-williams",
+   "research_interests": "biogeophysics; subsurface microbial activity characterization; geochemistry",
+   "research_interests_source_url": "https://profiles.lbl.gov/18916-kenneth-williams"
+  },
+  {
+   "key": "michelle-newcomer",
+   "existing_person_id": null,
+   "name": "Michelle Newcomer",
+   "name_given": "Michelle",
+   "name_family": "Newcomer",
+   "orcid": "0000-0001-5138-9026",
+   "orcid_source_url": "https://profiles.lbl.gov/22600-michelle-newcomer",
+   "homepage_url": "https://profiles.lbl.gov/22600-michelle-newcomer",
+   "bio": "Research Scientist in Berkeley Lab's Climate and Ecosystem Sciences Division and a Watershed Function SFA member. Studies how climate disturbances such as wildfire change hydrological and biogeochemical cycling, including surface water-groundwater exchange, in Colorado and California. PhD in civil and environmental engineering, UC Berkeley (2015).",
+   "bio_source_url": "https://profiles.lbl.gov/22600-michelle-newcomer",
+   "research_interests": "hydrological and biogeochemical response to disturbance in hyporheic zones; wildfire; surface water-groundwater interactions; reactive biogeochemistry",
+   "research_interests_source_url": "https://profiles.lbl.gov/22600-michelle-newcomer"
+  },
+  {
+   "key": "kristin-boye",
+   "existing_person_id": null,
+   "name": "Kristin Boye",
+   "name_given": "Kristin",
+   "name_family": "Boye",
+   "orcid": "0000-0003-2087-607X",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0003-2087-607X/employments",
+   "homepage_url": null,
+   "bio": "Staff Scientist at SLAC National Accelerator Laboratory and a member of the Watershed Function SFA leadership group.",
+   "bio_source_url": "https://watershed.lbl.gov/our-team/",
+   "research_interests": "soil biogeochemistry in redox-impacted environments",
+   "research_interests_source_url": "https://watershed.lbl.gov/our-team/"
+  },
+  {
+   "key": "charuleka-varadharajan",
+   "existing_person_id": null,
+   "name": "Charuleka Varadharajan",
+   "name_given": "Charuleka",
+   "name_family": "Varadharajan",
+   "orcid": "0000-0002-4142-3224",
+   "orcid_source_url": "https://profiles.lbl.gov/21337-charuleka-varadharajan",
+   "homepage_url": "https://profiles.lbl.gov/21337-charuleka-varadharajan",
+   "bio": "Computational Earth scientist and Staff Scientist at Berkeley Lab, heading its Earth AI and data program; she helped build DOE's ESS-DIVE repository. Applies machine learning and data integration to hydrology and water quality; 2019 DOE Early Career awardee. PhD in civil and environmental engineering, MIT. Leads data management for the Watershed Function SFA.",
+   "bio_source_url": "https://profiles.lbl.gov/21337-charuleka-varadharajan",
+   "research_interests": "computational hydrology and biogeochemistry; AI/machine learning; data management",
+   "research_interests_source_url": "https://watershed.lbl.gov/our-team/"
+  },
+  {
+   "key": "lauren-hostert",
+   "existing_person_id": null,
+   "name": "Lauren Hostert",
+   "name_given": "Lauren",
+   "name_family": "Hostert",
+   "orcid": "0000-0002-8085-4297",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-8085-4297/employments",
+   "homepage_url": "https://www.neonscience.org/person/lauren-hostert",
+   "bio": "Manager of NEON's Central Plains (D10) and Southern Rockies and Colorado Plateau (D13) domains in NEON Field Science since 2022. Previously a stream ecologist (assistant scientist) at the Illinois Natural History Survey and, before that, a senior field ecologist in NEON's Domain 11.",
+   "bio_source_url": "https://pub.orcid.org/v3.0/0000-0002-8085-4297/employments",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "lynn-fenstermaker",
+   "existing_person_id": null,
+   "name": "Lynn Fenstermaker",
+   "name_given": "Lynn",
+   "name_family": "Fenstermaker",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.dri.edu/directory/lynn-fenstermaker/",
+   "bio": "Research Professor Emeritus at the Desert Research Institute (Earth and Ecosystem Sciences). A remote-sensing ecologist who studied environmental stress on Great Basin and Mojave vegetation, she formerly directed the Nevada Space Grant Consortium, Nevada NASA EPSCoR, NevCAN and the Nevada Desert FACE and Mojave Global Change facilities. PhD in biology, UNLV (2003).",
+   "bio_source_url": "https://www.dri.edu/directory/lynn-fenstermaker/",
+   "research_interests": "remote sensing (multispectral, hyperspectral, SAR, UAS) of vegetation stress; evapotranspiration of riparian and phreatophyte zones; wildfire effects on desert vegetation; ecosystem response to climate change",
+   "research_interests_source_url": "https://www.dri.edu/directory/lynn-fenstermaker/"
+  },
+  {
+   "key": "stanley-smith",
+   "existing_person_id": null,
+   "name": "Stanley D. Smith",
+   "name_given": "Stanley",
+   "name_family": "Smith",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Per a 2005 UNLV article, a biological sciences professor at UNLV who studied Mojave Desert plant ecophysiology and global change, and served as UNLV's lead principal investigator for the Nevada Desert Research Center (Desert FACE and Mojave Global Change facilities). Received UNLV's 2003 Harry Reid Silver State Research Award.",
+   "bio_source_url": "https://www.unlv.edu/news/article/prestigious-professors-stan-smith",
+   "research_interests": "plant water use; photosynthesis; high-temperature responses; invasive species; global change in deserts",
+   "research_interests_source_url": "https://www.unlv.edu/news/article/prestigious-professors-stan-smith"
+  },
+  {
+   "key": "robert-nowak",
+   "existing_person_id": null,
+   "name": "Robert S. Nowak",
+   "name_given": "Robert",
+   "name_family": "Nowak",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  }
+ ],
+ "affiliations": [
+  {
+   "facility_id": "ba14031ce27e1f5f",
+   "person_key": "abraham-karam",
+   "role": "domain-manager",
+   "title": "Manager, D14: Desert Southwest (NEON)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/about/staff?combine=D14&field_profile_department_target_id=All",
+   "evidence": "Abraham Karam Manager, D14: Desert Southwest Field Science",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "ba14031ce27e1f5f",
+   "person_key": "mitchel-mcclaran",
+   "role": "director",
+   "title": "Director for Research, Santa Rita Experimental Range (site host, University of Arizona)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://santarita.arizona.edu/contact-us/people",
+   "evidence": "Mitchel McClaran Professor of Range Management, University of Arizona Director for Research, Santa Rita Experimental Range",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "ba14031ce27e1f5f",
+   "person_key": "joao-weisshaupt",
+   "role": "site-manager",
+   "title": "Range Manager, Southern Arizona Experiment Station - Santa Rita Experimental Range",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://santarita.arizona.edu/contact-us/people",
+   "evidence": "Joao Weisshaupt Range Manager, Southern Arizona Experiment Station - Santa Rita Experimental Range",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "ba14031ce27e1f5f",
+   "person_key": "alessandra-gorlier",
+   "role": "scientist",
+   "title": "Research Scientist IV, Southern Arizona Experiment Station - Santa Rita Experimental Range",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": 2018,
+   "end_year": null,
+   "source_url": "https://santarita.arizona.edu/contact-us/people",
+   "evidence": "Alessandra Gorlier Research Scientist IV, Southern Arizona Experiment Station - Santa Rita Experimental Range",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "ba14031ce27e1f5f",
+   "person_key": "brett-blum",
+   "role": "leadership-team",
+   "title": "Director, Southern Arizona Experiment Station; Interim Director, Arizona Experiment Station",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://santarita.arizona.edu/contact-us/people",
+   "evidence": "Brett Blum Interim Director, Arizona Experiment Station Director, Southern Arizona Experiment Station",
+   "confidence": "low"
+  },
+  {
+   "facility_id": "622fb44dae141c45",
+   "person_key": "kelly-elder",
+   "role": "lead-PI",
+   "title": "Scientist in Charge; Research Hydrologist, USFS RMRS",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://research.fs.usda.gov/rmrs/forestsandranges/locations/fef",
+   "evidence": "Key Personnel Scientist in Charge Person Kelly J. Elder, PhD Research Hydrologist",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "622fb44dae141c45",
+   "person_key": "banning-starr",
+   "role": "site-manager",
+   "title": "Manager; Ecologist, USFS RMRS",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://research.fs.usda.gov/rmrs/forestsandranges/locations/fef",
+   "evidence": "Manager Person Banning J. Starr Ecologist",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "f440750fc002e532",
+   "person_key": "bryce-richardson",
+   "role": "lead-PI",
+   "title": "Scientist in Charge; Plant Research Geneticist, USFS RMRS",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://research.fs.usda.gov/rmrs/forestsandranges/locations/gber",
+   "evidence": "Key Personnel Scientist in Charge Person Bryce A. Richardson, PhD Plant Research Geneticist",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "2556705b356302b7",
+   "person_key": "eoin-brodie",
+   "role": "lead-PI",
+   "title": "Lead Principal Investigator and Laboratory Research Manager, Watershed Function SFA",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://watershed.lbl.gov/our-team/",
+   "evidence": "Leadership Eoin Brodie Lead Principal Investigator and Laboratory Research Manager Berkeley Lab",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "2556705b356302b7",
+   "person_key": "kenneth-williams",
+   "role": "leadership-team",
+   "title": "Senior Geological Scientist, Berkeley Lab (SFA Leadership)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://watershed.lbl.gov/our-team/",
+   "evidence": "Kenneth Hurst Williams Senior Geological Scientist Berkeley Lab",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "2556705b356302b7",
+   "person_key": "michelle-newcomer",
+   "role": "leadership-team",
+   "title": "Research Scientist; Deputy of Integration and Research Focus Area 3 Lead",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://watershed.lbl.gov/our-team/",
+   "evidence": "Michelle Newcomer Research Scientist; Deputy of Integration and Research Focus Area 3 Lead",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "2556705b356302b7",
+   "person_key": "kristin-boye",
+   "role": "leadership-team",
+   "title": "Staff Scientist, SLAC National Accelerator Laboratory (SFA Leadership)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://watershed.lbl.gov/our-team/",
+   "evidence": "Kristin Boye Staff Scientist SLAC National Accelerator Laboratory",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "2556705b356302b7",
+   "person_key": "charuleka-varadharajan",
+   "role": "data-manager",
+   "title": "Research Focus Area 1 and Data Management Lead",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://watershed.lbl.gov/our-team/",
+   "evidence": "Charuleka Varadharajan Research Focus Area 1 and Data Management Lead Berkeley Lab",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "4cc7f52b5d75691c",
+   "person_key": "lynn-fenstermaker",
+   "role": "former-director",
+   "title": "Past Director, Mojave Global Change Facility; Research Professor Emeritus, DRI",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.dri.edu/directory/lynn-fenstermaker/",
+   "evidence": "Dr. Fenstermaker has management and supervisory experience as the past Directors of ... the Mojave Global Change Facility (MGCF)",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "4cc7f52b5d75691c",
+   "person_key": "stanley-smith",
+   "role": "lead-PI",
+   "title": "UNLV lead principal investigator, Nevada Desert Research Center (incl. MGCF)",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.unlv.edu/news/article/prestigious-professors-stan-smith",
+   "evidence": "Smith is working as UNLV's lead principal investigator with the Nevada Desert Research Center (NDRC)",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "4cc7f52b5d75691c",
+   "person_key": "robert-nowak",
+   "role": "founding-PI",
+   "title": "Sole author, DOE final technical report (2007) on the MGCF experiment, which the report says was established in 2001",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": 2001,
+   "end_year": null,
+   "source_url": "https://www.osti.gov/biblio/920615",
+   "evidence": "Nowak, Robert S ... in 2001 we established a long-term manipulative global change experiment, called the Mojave Global Change Facility",
+   "confidence": "low"
+  },
+  {
+   "facility_id": "c4b1e9a1bb8a38af",
+   "person_key": "lauren-hostert",
+   "role": "domain-manager",
+   "title": "Manager, D10: Central Plains; D13: Southern Rockies and Colorado Plateau (NEON)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2022,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/about/staff?combine=D10&field_profile_department_target_id=All",
+   "evidence": "Lauren Hostert Manager, D10: Central Plains; D13: Southern Rockies and Colorado Plateau Field Science",
+   "confidence": "medium"
+  }
+ ],
+ "verifications": [
+  {
+   "facility_id": "622fb44dae141c45",
+   "person_id": "069819363768ffc9",
+   "existing_role": "co-PI",
+   "status": "not-found",
+   "current_holder_key": null,
+   "source_url": "https://research.fs.usda.gov/about/people/robert.musselman",
+   "evidence": "Robert C. Musselman, PhD Former Employee Emeritus Scientist Rocky Mountain Research Station"
+  },
+  {
+   "facility_id": "622fb44dae141c45",
+   "person_id": "3ed20ddcd7b1909b",
+   "existing_role": "co-PI",
+   "status": "confirmed",
+   "current_holder_key": null,
+   "source_url": "https://research.fs.usda.gov/about/people/charles.c.rhoades",
+   "evidence": "Fraser Experimental Forest. Chuck Rhoades, Kelly Elder, Rob Hubbard, Mark Dixon."
+  },
+  {
+   "facility_id": "f440750fc002e532",
+   "person_id": "a8d586b9db690191",
+   "existing_role": "co-PI",
+   "status": "not-found",
+   "current_holder_key": null,
+   "source_url": "https://lifesciences.byu.edu/moving-on-and-moving-in-retirees-and-incomers",
+   "evidence": "Retiring Faculty and Admin Bruce Roundy | BIO"
+  }
+ ]
+}

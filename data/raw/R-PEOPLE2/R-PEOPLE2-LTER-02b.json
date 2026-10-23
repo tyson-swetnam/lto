@@ -1,0 +1,1116 @@
+{
+ "batch_id": "R-PEOPLE2-LTER-02b",
+ "retrieved_at": "2026-10-22",
+ "verified_by": "adversarial-verifier 2026-10-22",
+ "facilities": [
+  {
+   "facility_id": "714c66db72565768",
+   "pages_fetched": [
+    {
+     "url": "https://lternet.edu/site/moorea-coral-reef-lter/",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/site/mcr/",
+     "status": 404
+    },
+    {
+     "url": "https://lternet.edu/directory/?usite=1918&go=1",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/directory/?usite=1918&go=1&sort=role&dir=ASC",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/directory/?usite=1918&go=1&sort=role&dir=DESC",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/directory/?uname=Schmitt&go=Search",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/directory/?uname=Holbrook&go=Search",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/directory/?uname=Edmunds&go=Search",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/directory/?user=1969",
+     "status": 200
+    },
+    {
+     "url": "https://mcr.lternet.edu/people",
+     "status": null
+    },
+    {
+     "url": "https://api.nsf.gov/services/v1/awards/0417412.json?printFields=id,title,piFirstName,piLastName,coPDPI,startDate,expDate,awardeeName",
+     "status": 200
+    },
+    {
+     "url": "https://api.nsf.gov/services/v1/awards/2224354.json?printFields=id,title,piFirstName,piLastName,coPDPI,startDate,expDate,awardeeName",
+     "status": 200
+    },
+    {
+     "url": "https://news.ucsb.edu/people/deron-burkepile",
+     "status": 200
+    },
+    {
+     "url": "https://labs.eemb.ucsb.edu/burkepile/deron/",
+     "status": 200
+    },
+    {
+     "url": "https://www.eemb.ucsb.edu/people/faculty/vega-thurber",
+     "status": 200
+    },
+    {
+     "url": "https://www.eemb.ucsb.edu/people/emeriti/schmitt",
+     "status": 200
+    },
+    {
+     "url": "https://www.eemb.ucsb.edu/people/emeriti/holbrook",
+     "status": 200
+    },
+    {
+     "url": "https://www.csun.edu/~pjedmunds/",
+     "status": 404
+    }
+   ],
+   "notes": "Site own page mcr.lternet.edu refused connections on 2026-10-22 (curl and WebFetch), so roles come from the LTER Network site page, LTER directory and the NSF Award API. Current award OCE-2224354 (MCR IV, 2022-2028) PI Deron Burkepile; co-PIs Carpenter, Schmitt, Edmunds, Vega Thurber; Holbrook flagged (Former). Existing homepage_url for Edmunds (csun.edu/~pjedmunds/) returns 404 today. Schmitt and Holbrook UCSB EEMB faculty URLs now redirect to /people/emeriti/ pages (title Research Professor). Verifier 2026-10-22: all lternet.edu, NSF API and UCSB pages re-fetched (200); mcr.lternet.edu still unreachable. Site page names Burkepile lead PI and Krumbholz IM; directory lists Edmunds and Carpenter as MCR co-PIs; Holbrook's directory row is now under SBC and the NSF award marks her (Former), so stale stands. Schmitt is listed as MCR Investigator in the directory but as an active co-PI on OCE-2224354. Burkepile bio rewritten to the bio source alone (savanna/prairie detail came from a different page)."
+  },
+  {
+   "facility_id": "4b897473a3d94b82",
+   "pages_fetched": [
+    {
+     "url": "https://lternet.edu/site/northeast-u-s-shelf/",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/site/nes/",
+     "status": 404
+    },
+    {
+     "url": "https://lternet.edu/site/northeast-u-s-shelf-lter/",
+     "status": 404
+    },
+    {
+     "url": "https://lternet.edu/directory/?usite=1948&go=1&sort=role&dir=ASC",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/directory/?usite=1948&go=1&sort=role&dir=DESC",
+     "status": 200
+    },
+    {
+     "url": "https://nes-lter.whoi.edu/about/",
+     "status": 200
+    },
+    {
+     "url": "https://api.nsf.gov/services/v1/awards/1655686.json?printFields=id,title,piFirstName,piLastName,coPDPI,startDate,expDate,awardeeName",
+     "status": 200
+    },
+    {
+     "url": "https://api.nsf.gov/services/v1/awards/2322676.json?printFields=id,title,piFirstName,piLastName,coPDPI,startDate,expDate,awardeeName",
+     "status": 200
+    },
+    {
+     "url": "https://www2.whoi.edu/staff/hsosik/",
+     "status": 200
+    },
+    {
+     "url": "https://directory.whoi.edu/profile/hsosik",
+     "status": 200
+    },
+    {
+     "url": "https://directory.whoi.edu/profile/mneubert",
+     "status": 200
+    },
+    {
+     "url": "https://directory.whoi.edu/profile/rji",
+     "status": 200
+    },
+    {
+     "url": "https://directory.whoi.edu/profile/kmorkeski",
+     "status": 200
+    },
+    {
+     "url": "https://directory.whoi.edu/profile/cahearn",
+     "status": 200
+    }
+   ],
+   "notes": "Led from Woods Hole Oceanographic Institution; became an LTER site September 2017 (NSF OCE-1655686, PI Heidi Sosik); current award OCE-2322676 (NES II, 2023-2028). Site page says 11 co-PIs; only those on the current NSF award are added. Verifier 2026-10-22: site page, nes-lter.whoi.edu/about (Sosik lead, 11 co-PIs), NSF 1655686/2322676 and WHOI profiles re-fetched (200). Canonical name in DB ('Northeast US Margin LTER') corresponds to the LTER Network's Northeast U.S. Shelf LTER (NES). Rubao Ji start_year 2017 rests on OCE-1655686, where he is co-PI. Ji bio corrected: WHOI directory lists him as Biology Department Chair."
+  },
+  {
+   "facility_id": "50642bf3064308c8",
+   "pages_fetched": [
+    {
+     "url": "https://lternet.edu/site/northern-gulf-alaska/",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/site/nga/",
+     "status": 404
+    },
+    {
+     "url": "https://lternet.edu/site/northern-gulf-of-alaska-lter/",
+     "status": 404
+    },
+    {
+     "url": "https://lternet.edu/directory/?usite=1950&go=1&sort=role&dir=ASC",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/directory/?usite=1950&go=1&sort=role&dir=DESC",
+     "status": 200
+    },
+    {
+     "url": "https://nga.lternet.edu/about-us/personnel/",
+     "status": null
+    },
+    {
+     "url": "https://api.nsf.gov/services/v1/awards/1656070.json?printFields=id,title,piFirstName,piLastName,coPDPI,startDate,expDate,awardeeName",
+     "status": 200
+    },
+    {
+     "url": "https://api.nsf.gov/services/v1/awards/2322806.json?printFields=id,title,piFirstName,piLastName,coPDPI,startDate,expDate,awardeeName",
+     "status": 200
+    },
+    {
+     "url": "https://uaf.edu/cfos/people/faculty/detail/russell-hopcroft.php",
+     "status": 200
+    },
+    {
+     "url": "https://uaf.edu/cfos/people/faculty/detail/seth-danielson.php",
+     "status": 200
+    },
+    {
+     "url": "https://uaf.edu/cfos/people/faculty/detail/ana-aguilar-islas.php",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/directory/?user=16212",
+     "status": 200
+    }
+   ],
+   "notes": "Site own page nga.lternet.edu timed out on 2026-10-22, so roles come from the LTER Network site page, LTER directory and NSF Award API. Led from University of Alaska Fairbanks; LTER since 2017 (OCE-1656070), current award OCE-2322806 (2023-2028). Builds on the Seward Line / GAK1 time series (LTER site page: observations for more than 45 years). Verifier 2026-10-22: site page, LTER directory, NSF 1656070/2322806 and UAF profiles re-fetched (200). start_year 2017 for Danielson, Aguilar-Islas and Fiechter rests on OCE-1656070 (all three co-PIs). Canino ORCID kept: ORCID employment is Axiom Data Science and her LTER directory profile (user=16212, NGA Information Manager) carries an axiomdatascience.com address. Seward Line '1970' in the draft note was not on any fetched page; replaced with the site page's 'more than 45 years'."
+  },
+  {
+   "facility_id": "b93f51cc632277b0",
+   "pages_fetched": [
+    {
+     "url": "https://lternet.edu/site/plum-island-ecosystems-lter/",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/site/pie/",
+     "status": 404
+    },
+    {
+     "url": "https://lternet.edu/directory/?usite=1926&go=1&sort=role&dir=ASC",
+     "status": 200
+    },
+    {
+     "url": "https://pie-lter.mbl.edu/",
+     "status": 200
+    },
+    {
+     "url": "https://pie-lter.mbl.edu/people/",
+     "status": 200
+    },
+    {
+     "url": "https://pie-lter.mbl.edu/about-us/",
+     "status": 200
+    },
+    {
+     "url": "https://pie-lter.ecosystems.mbl.edu/plum-island-ecosystems-lter-personnel",
+     "status": 404
+    },
+    {
+     "url": "https://pie-lter.mbl.edu/people/anne-giblin/",
+     "status": 200
+    },
+    {
+     "url": "https://pie-lter.mbl.edu/people/jim-mcclelland/",
+     "status": 200
+    },
+    {
+     "url": "https://pie-lter.mbl.edu/people/risa-mcnellis/",
+     "status": 200
+    },
+    {
+     "url": "https://www.mbl.edu/research/faculty-directory/Anne%20Giblin",
+     "status": 200
+    },
+    {
+     "url": "https://www.mbl.edu/research/faculty-directory/James%20McClelland",
+     "status": 200
+    },
+    {
+     "url": "https://api.nsf.gov/services/v1/awards/9726921.json?printFields=id,title,piFirstName,piLastName,coPDPI,startDate,expDate,awardeeName",
+     "status": 200
+    },
+    {
+     "url": "https://api.nsf.gov/services/v1/awards/2224608.json?printFields=id,title,piFirstName,piLastName,coPDPI,startDate,expDate,awardeeName",
+     "status": 200
+    }
+   ],
+   "notes": "Administered by the Marine Biological Laboratory; NSF LTER site since 1998 (OCE-9726921, PI Charles Hopkinson), preceded by NSF Land Margin Ecosystems Research 1992-1997. Current award OCE-2224608 (PIE VI, 2022-2028) PI Anne Giblin. Verifier 2026-10-22: site page (PIE LTER since 1998, LMER 1992-1997), pie-lter.mbl.edu people pages, MBL profiles and NSF 9726921/2224608 re-fetched (200). Giblin, McClelland and McNellis ORCIDs are shown on their PIE LTER profile pages. McClelland bio softened on Arctic work to what the MBL page supports."
+  },
+  {
+   "facility_id": "b3c4acfee79eb573",
+   "pages_fetched": [
+    {
+     "url": "https://lternet.edu/site/virginia-coast-reserve-lter/",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/site/vcr/",
+     "status": 404
+    },
+    {
+     "url": "https://lternet.edu/directory/?usite=1934&go=1&sort=role&dir=ASC",
+     "status": 200
+    },
+    {
+     "url": "https://www.vcrlter.virginia.edu/",
+     "status": 200
+    },
+    {
+     "url": "https://www.vcrlter.virginia.edu/home2/?page_id=324",
+     "status": 200
+    },
+    {
+     "url": "https://www.vcrlter.virginia.edu/data/personnel/listsite1.php?QSITE=VCR&LETTER=All",
+     "status": 200
+    },
+    {
+     "url": "https://www.vcrlter.virginia.edu/data/personnel/person.php?QID=mcastorani",
+     "status": 200
+    },
+    {
+     "url": "https://www.vcrlter.virginia.edu/data/personnel/person.php?QID=kmcglathery",
+     "status": 200
+    },
+    {
+     "url": "https://www.vcrlter.virginia.edu/data/personnel/person.php?QID=jporter",
+     "status": 200
+    },
+    {
+     "url": "https://www.vcrlter.virginia.edu/data/personnel/person.php?QID=cjohnston",
+     "status": 200
+    },
+    {
+     "url": "https://www.vcrlter.virginia.edu/data/personnel/person.php?QID=cwhite",
+     "status": 200
+    },
+    {
+     "url": "https://castorani.evsc.virginia.edu/",
+     "status": 200
+    },
+    {
+     "url": "https://castorani.evsc.virginia.edu/people/",
+     "status": 200
+    },
+    {
+     "url": "https://evsc.as.virginia.edu/people/karen-mcglathery",
+     "status": 200
+    },
+    {
+     "url": "https://evsc.as.virginia.edu/people/cora-baird",
+     "status": 200
+    },
+    {
+     "url": "https://api.nsf.gov/services/v1/awards/9211772.json?printFields=id,title,piFirstName,piLastName,coPDPI,startDate,expDate,awardeeName",
+     "status": 200
+    },
+    {
+     "url": "https://api.nsf.gov/services/v1/awards/2425178.json?printFields=id,title,piFirstName,piLastName,coPDPI,startDate,expDate,awardeeName",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/directory/?usite=1934&go=1&sort=role&dir=DESC",
+     "status": 200
+    }
+   ],
+   "notes": "Run by University of Virginia from the Anheuser-Busch Coastal Research Center (ABCRC), Oyster VA; program began 1987. LTER Network site page names Max Castorani lead PI (current award DEB-2425178, 2025-2031); the LTER directory row for Karen McGlathery still says Lead Principal Investigator (stale; she is co-PI on DEB-2425178). Founding (1987) PI not named on any fetched page; Bruce Hayden was PI of the 1992 award (DEB-9211772). Verifier 2026-10-22: site page, VCR personnel pages, UVA pages and NSF 9211772/2425178 re-fetched (200). Directory (dir=DESC, fetched) still lists McGlathery as Lead Principal Investigator and her UVA page says she is lead PI; both stale against the site contacts and DEB-2425178 (PI Castorani, McGlathery co-PI). ORCIDs for Castorani, Porter, Baird and White are shown on their VCR personnel pages."
+  }
+ ],
+ "people": [
+  {
+   "key": "deron-burkepile",
+   "existing_person_id": null,
+   "name": "Deron Burkepile",
+   "name_given": "Deron",
+   "name_family": "Burkepile",
+   "orcid": "0000-0002-0427-0484",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-0427-0484/employments",
+   "homepage_url": "https://labs.eemb.ucsb.edu/burkepile/deron/",
+   "bio": "Professor of Ecology, Evolution, and Marine Biology at UC Santa Barbara and lead PI of the Moorea Coral Reef LTER. His work links community and ecosystem ecology to conservation: effects of consumer loss on ecosystem function, how predation risk steers herbivores, how nutrient inputs alter community dynamics and disease, and global-change effects on consumer-prey interactions.",
+   "bio_source_url": "https://news.ucsb.edu/people/deron-burkepile",
+   "research_interests": "consumer biodiversity loss and ecosystem function; predation risk and herbivore impacts; anthropogenic and consumer-derived nutrients, community dynamics and disease; global change effects on consumer-prey interactions",
+   "research_interests_source_url": "https://news.ucsb.edu/people/deron-burkepile"
+  },
+  {
+   "key": "hillary-krumbholz",
+   "existing_person_id": null,
+   "name": "Hillary Krumbholz",
+   "name_given": "Hillary",
+   "name_family": "Krumbholz",
+   "orcid": "0000-0001-9808-1758",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0001-9808-1758/employments",
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "robert-carpenter",
+   "existing_person_id": null,
+   "name": "Robert C. Carpenter",
+   "name_given": "Robert",
+   "name_family": "Carpenter",
+   "orcid": "0000-0003-4232-1868",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0003-4232-1868/employments",
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "rebecca-vega-thurber",
+   "existing_person_id": null,
+   "name": "Rebecca Vega Thurber",
+   "name_given": "Rebecca",
+   "name_family": "Vega Thurber",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.eemb.ucsb.edu/people/faculty/vega-thurber",
+   "bio": "UC Santa Barbara professor in Ecology, Evolution, and Marine Biology who also directs the campus Marine Science Institute. Her laboratory investigates bacteria and viruses associated with threatened hosts and habitats, notably corals, to understand and reduce disease and ecosystem degradation; she is a co-PI on the current MCR LTER award.",
+   "bio_source_url": "https://www.eemb.ucsb.edu/people/faculty/vega-thurber",
+   "research_interests": "disease ecology; microbial and viral dynamics in threatened hosts and habitats; coral reef decline",
+   "research_interests_source_url": "https://www.eemb.ucsb.edu/people/faculty/vega-thurber"
+  },
+  {
+   "key": "russell-schmitt",
+   "existing_person_id": "791cd33e5e3e6645",
+   "name": "Russell J. Schmitt",
+   "name_given": "Russell",
+   "name_family": "Schmitt",
+   "orcid": "0000-0002-9674-4244",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-9674-4244/employments",
+   "homepage_url": "https://www.eemb.ucsb.edu/people/emeriti/schmitt",
+   "bio": "Research Professor at UC Santa Barbara (Marine Science Institute) working in marine population and community ecology. He was PI of the 2004 NSF award that established the Moorea Coral Reef LTER and remains a co-PI on its current award.",
+   "bio_source_url": "https://www.eemb.ucsb.edu/people/emeriti/schmitt",
+   "research_interests": "population and community ecology; marine ecology",
+   "research_interests_source_url": "https://www.eemb.ucsb.edu/people/emeriti/schmitt"
+  },
+  {
+   "key": "sally-holbrook",
+   "existing_person_id": "f7d5a851ece50276",
+   "name": "Sally J. Holbrook",
+   "name_given": "Sally",
+   "name_family": "Holbrook",
+   "orcid": "0000-0002-3015-3484",
+   "orcid_source_url": "https://lternet.edu/directory/?user=1969",
+   "homepage_url": "https://www.eemb.ucsb.edu/people/emeriti/holbrook",
+   "bio": "Research Professor at UC Santa Barbara (Marine Science Institute) whose work addresses population dynamics and interactions of reef fishes, including damselfish settlement and regulation, long-term change in nearshore fish assemblages, and methods for restoring surfgrass.",
+   "bio_source_url": "https://www.eemb.ucsb.edu/people/emeriti/holbrook",
+   "research_interests": "reef fish population dynamics; long-term trends in reef fish communities; surfgrass restoration",
+   "research_interests_source_url": "https://www.eemb.ucsb.edu/people/emeriti/holbrook"
+  },
+  {
+   "key": "heidi-sosik",
+   "existing_person_id": null,
+   "name": "Heidi M. Sosik",
+   "name_given": "Heidi",
+   "name_family": "Sosik",
+   "orcid": "0000-0002-4591-2842",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-4591-2842/employments",
+   "homepage_url": "https://www2.whoi.edu/staff/hsosik/",
+   "bio": "Senior Scientist at Woods Hole Oceanographic Institution, on staff since 1994, and lead PI of the Northeast U.S. Shelf LTER since its 2017 start. A biological oceanographer, she studies phytoplankton ecology and optics and co-developed automated in-water plankton imaging instruments.",
+   "bio_source_url": "https://www2.whoi.edu/staff/hsosik/",
+   "research_interests": "phytoplankton ecology and physiology; population-dynamics modeling; bio-optical oceanography; harmful algal bloom ecology; ocean observing technology and data informatics",
+   "research_interests_source_url": "https://directory.whoi.edu/profile/hsosik"
+  },
+  {
+   "key": "kate-morkeski",
+   "existing_person_id": null,
+   "name": "Kate Morkeski",
+   "name_given": "Kate",
+   "name_family": "Morkeski",
+   "orcid": "0000-0002-2903-5851",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-2903-5851/employments",
+   "homepage_url": "https://www2.whoi.edu/staff/kmorkeski/",
+   "bio": "Research Associate II in the Marine Chemistry & Geochemistry Department at Woods Hole Oceanographic Institution and information manager for the Northeast U.S. Shelf LTER.",
+   "bio_source_url": "https://directory.whoi.edu/profile/kmorkeski",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "connor-ahearn",
+   "existing_person_id": null,
+   "name": "Connor Ahearn",
+   "name_given": "Connor",
+   "name_family": "Ahearn",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "michael-neubert",
+   "existing_person_id": null,
+   "name": "Michael G. Neubert",
+   "name_given": "Michael",
+   "name_family": "Neubert",
+   "orcid": "0000-0001-8820-5008",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0001-8820-5008/employments",
+   "homepage_url": null,
+   "bio": "Senior Scientist at Woods Hole Oceanographic Institution and co-PI on the current NES LTER award; a theoretical biologist applying mathematics, nonlinear dynamics and spatial models to population dynamics and community ecology.",
+   "bio_source_url": "https://directory.whoi.edu/profile/mneubert",
+   "research_interests": "theoretical and mathematical biology; population dynamics; community ecology; nonlinear dynamics; integrodifference equations; spatial models",
+   "research_interests_source_url": "https://directory.whoi.edu/profile/mneubert"
+  },
+  {
+   "key": "rubao-ji",
+   "existing_person_id": null,
+   "name": "Rubao Ji",
+   "name_given": "Rubao",
+   "name_family": "Ji",
+   "orcid": "0000-0002-8839-5427",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-8839-5427/employments",
+   "homepage_url": null,
+   "bio": "Chair of the Biology Department at Woods Hole Oceanographic Institution and NES LTER co-PI. He builds coupled biological-physical numerical models of estuarine and coastal food webs, phytoplankton blooms and zooplankton populations.",
+   "bio_source_url": "https://directory.whoi.edu/profile/rji",
+   "research_interests": "coupled biological-physical modeling; coastal and estuarine food web dynamics; phytoplankton bloom dynamics; zooplankton population models",
+   "research_interests_source_url": "https://directory.whoi.edu/profile/rji"
+  },
+  {
+   "key": "russell-hopcroft",
+   "existing_person_id": null,
+   "name": "Russell R. Hopcroft",
+   "name_given": "Russell",
+   "name_family": "Hopcroft",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://uaf.edu/cfos/people/faculty/detail/russell-hopcroft.php",
+   "bio": "Professor and Chair of the Department of Oceanography in the University of Alaska Fairbanks College of Fisheries and Ocean Sciences, and lead PI of the Northern Gulf of Alaska LTER since 2017. His research centers on zooplankton, midwater ecology and energy transfer in Arctic and subarctic marine ecosystems.",
+   "bio_source_url": "https://uaf.edu/cfos/people/faculty/detail/russell-hopcroft.php",
+   "research_interests": "trophodynamics; midwater ecology; zooplankton; Arctic and subarctic ecosystems",
+   "research_interests_source_url": "https://uaf.edu/cfos/people/faculty/detail/russell-hopcroft.php"
+  },
+  {
+   "key": "seth-danielson",
+   "existing_person_id": null,
+   "name": "Seth L. Danielson",
+   "name_given": "Seth",
+   "name_family": "Danielson",
+   "orcid": "0000-0002-9191-4363",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-9191-4363/employments",
+   "homepage_url": "https://uaf.edu/cfos/people/faculty/detail/seth-danielson.php",
+   "bio": "Professor at the UAF College of Fisheries and Ocean Sciences and co-lead PI of the NGA LTER. A physical oceanographer, he combines observations and numerical models to study circulation, temperature and salinity on Alaska shelves, including ocean-climate monitoring at station GAK1.",
+   "bio_source_url": "https://uaf.edu/cfos/people/faculty/detail/seth-danielson.php",
+   "research_interests": "continental shelf circulation; oceanographic data processing and analysis; atmosphere-ocean interactions",
+   "research_interests_source_url": "https://uaf.edu/cfos/people/faculty/detail/seth-danielson.php"
+  },
+  {
+   "key": "adrienne-canino",
+   "existing_person_id": null,
+   "name": "Adrienne Canino",
+   "name_given": "Adrienne",
+   "name_family": "Canino",
+   "orcid": "0000-0001-9443-8609",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0001-9443-8609/employments",
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "ana-aguilar-islas",
+   "existing_person_id": null,
+   "name": "Ana M. Aguilar-Islas",
+   "name_given": "Ana",
+   "name_family": "Aguilar-Islas",
+   "orcid": "0000-0003-1987-7841",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0003-1987-7841/employments",
+   "homepage_url": "https://uaf.edu/cfos/people/faculty/detail/ana-aguilar-islas.php",
+   "bio": "Professor at the UAF College of Fisheries and Ocean Sciences and NGA LTER co-PI; a marine chemist who studies trace-metal biogeochemistry in high-latitude seas and sea ice, pairing field programs with analytical method development.",
+   "bio_source_url": "https://uaf.edu/cfos/people/faculty/detail/ana-aguilar-islas.php",
+   "research_interests": "trace metal marine biogeochemistry; analytical methods for trace metals in seawater; trace metal cycling in sea ice",
+   "research_interests_source_url": "https://uaf.edu/cfos/people/faculty/detail/ana-aguilar-islas.php"
+  },
+  {
+   "key": "jerome-fiechter",
+   "existing_person_id": null,
+   "name": "Jerome Fiechter",
+   "name_given": "Jerome",
+   "name_family": "Fiechter",
+   "orcid": "0000-0003-2036-2458",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0003-2036-2458/employments",
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "anne-giblin",
+   "existing_person_id": null,
+   "name": "Anne E. Giblin",
+   "name_given": "Anne",
+   "name_family": "Giblin",
+   "orcid": "0000-0003-3851-2178",
+   "orcid_source_url": "https://pie-lter.mbl.edu/people/anne-giblin/",
+   "homepage_url": "https://www.mbl.edu/research/faculty-directory/Anne%20Giblin",
+   "bio": "Senior Scientist at the Marine Biological Laboratory, where she directs The Ecosystems Center, and lead PI of the Plum Island Ecosystems LTER. A biogeochemist, she studies how nitrogen, sulfur, iron and phosphorus cycle in sediments and soils, from New England salt marshes and shelf waters to Arctic lakes and tundra.",
+   "bio_source_url": "https://www.mbl.edu/research/faculty-directory/Anne%20Giblin",
+   "research_interests": "sediment and soil biogeochemistry; nitrogen removal pathways (denitrification, DNRA); estuarine nitrogen and carbon cycling under sea-level rise; Arctic lake and tundra nutrient cycling",
+   "research_interests_source_url": "https://www.mbl.edu/research/faculty-directory/Anne%20Giblin"
+  },
+  {
+   "key": "james-mcclelland",
+   "existing_person_id": null,
+   "name": "James W. McClelland",
+   "name_given": "James",
+   "name_family": "McClelland",
+   "orcid": "0000-0001-9619-8194",
+   "orcid_source_url": "https://pie-lter.mbl.edu/people/jim-mcclelland/",
+   "homepage_url": "https://www.mbl.edu/research/faculty-directory/James%20McClelland",
+   "bio": "Senior Scientist at the Marine Biological Laboratory and co-lead PI of the PIE LTER. He investigates how human activity changes land-to-sea fluxes of water, carbon and nutrients and how estuaries and coastal waters respond, often using stable isotopes and natural tracers; his work includes Arctic river chemistry.",
+   "bio_source_url": "https://www.mbl.edu/research/faculty-directory/James%20McClelland",
+   "research_interests": "land-sea coupling of water, carbon and nutrient fluxes; coastal ecosystem responses to land-derived inputs; stable isotope tracers; Arctic rivers and coasts",
+   "research_interests_source_url": "https://www.mbl.edu/research/faculty-directory/James%20McClelland"
+  },
+  {
+   "key": "risa-mcnellis",
+   "existing_person_id": null,
+   "name": "Risa McNellis",
+   "name_given": "Risa",
+   "name_family": "McNellis",
+   "orcid": "0000-0002-3538-9269",
+   "orcid_source_url": "https://pie-lter.mbl.edu/people/risa-mcnellis/",
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "samuel-kelsey",
+   "existing_person_id": null,
+   "name": "Samuel Kelsey",
+   "name_given": "Samuel",
+   "name_family": "Kelsey",
+   "orcid": "0000-0002-3683-1848",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-3683-1848/employments",
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "charles-hopkinson",
+   "existing_person_id": null,
+   "name": "Charles S. Hopkinson",
+   "name_given": "Charles",
+   "name_family": "Hopkinson",
+   "orcid": "0000-0002-7331-8322",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-7331-8322/employments",
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "max-castorani",
+   "existing_person_id": null,
+   "name": "Max C. N. Castorani",
+   "name_given": "Max",
+   "name_family": "Castorani",
+   "orcid": "0000-0002-7372-9359",
+   "orcid_source_url": "https://www.vcrlter.virginia.edu/data/personnel/person.php?QID=mcastorani",
+   "homepage_url": "https://castorani.evsc.virginia.edu/",
+   "bio": "University of Virginia Associate Professor (Environmental Sciences) since 2023 and lead PI of the Virginia Coast Reserve LTER. His lab studies population and community ecology of kelp forests, seagrass meadows and oyster reefs, focusing on disturbance, restoration, biodiversity and stability, and spatial connectivity.",
+   "bio_source_url": "https://castorani.evsc.virginia.edu/people/",
+   "research_interests": "coastal marine population and community ecology; disturbance and restoration; biodiversity and ecosystem stability; spatial connectivity; kelp forests, seagrass and oyster reefs",
+   "research_interests_source_url": "https://castorani.evsc.virginia.edu/"
+  },
+  {
+   "key": "cora-baird",
+   "existing_person_id": null,
+   "name": "Cora A. Baird",
+   "name_given": "Cora",
+   "name_family": "Baird",
+   "orcid": "0000-0001-8348-8379",
+   "orcid_source_url": "https://www.vcrlter.virginia.edu/data/personnel/person.php?QID=cjohnston",
+   "homepage_url": "https://evsc.as.virginia.edu/people/cora-baird",
+   "bio": "Site Director of the University of Virginia Coastal Research Center (ABCRC) on the Eastern Shore and VCR LTER research/site coordinator. A coastal community ecologist, she manages field facilities and research logistics and leads the program’s education, outreach and community liaison work.",
+   "bio_source_url": "https://evsc.as.virginia.edu/people/cora-baird",
+   "research_interests": "community ecology of changing coastal systems",
+   "research_interests_source_url": "https://evsc.as.virginia.edu/people/cora-baird"
+  },
+  {
+   "key": "john-porter",
+   "existing_person_id": null,
+   "name": "John H. Porter",
+   "name_given": "John",
+   "name_family": "Porter",
+   "orcid": "0000-0003-3118-5784",
+   "orcid_source_url": "https://www.vcrlter.virginia.edu/data/personnel/person.php?QID=jporter",
+   "homepage_url": null,
+   "bio": "Research Associate Professor in the University of Virginia Department of Environmental Sciences and information manager for the Virginia Coast Reserve LTER, working on ecological data management, landscape, community and population ecology, GIS and remote sensing.",
+   "bio_source_url": "https://www.vcrlter.virginia.edu/data/personnel/person.php?QID=jporter",
+   "research_interests": "data management; population, community and landscape ecology; remote sensing; GIS",
+   "research_interests_source_url": "https://www.vcrlter.virginia.edu/data/personnel/person.php?QID=jporter"
+  },
+  {
+   "key": "connor-white",
+   "existing_person_id": null,
+   "name": "Connor F. White",
+   "name_given": "Connor",
+   "name_family": "White",
+   "orcid": "0000-0001-8260-290X",
+   "orcid_source_url": "https://www.vcrlter.virginia.edu/data/personnel/person.php?QID=cwhite",
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "karen-mcglathery",
+   "existing_person_id": null,
+   "name": "Karen J. McGlathery",
+   "name_given": "Karen",
+   "name_family": "McGlathery",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://evsc.as.virginia.edu/people/karen-mcglathery",
+   "bio": "Sherrell J. Aston Professor in the University of Virginia Department of Environmental Sciences. Her group studies ecosystem change in shallow coastal systems, including seagrass blue carbon and restoration, salt marsh resilience to sea-level rise, and the effects of nutrient enrichment and species invasions.",
+   "bio_source_url": "https://evsc.as.virginia.edu/people/karen-mcglathery",
+   "research_interests": "shallow coastal ecosystem dynamics; seagrass blue carbon and restoration; salt marsh resilience to sea-level rise; nutrient over-enrichment; species invasions",
+   "research_interests_source_url": "https://evsc.as.virginia.edu/people/karen-mcglathery"
+  },
+  {
+   "key": "bruce-hayden",
+   "existing_person_id": null,
+   "name": "Bruce P. Hayden",
+   "name_given": "Bruce",
+   "name_family": "Hayden",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  }
+ ],
+ "affiliations": [
+  {
+   "facility_id": "714c66db72565768",
+   "person_key": "deron-burkepile",
+   "role": "lead-PI",
+   "title": "Lead Principal Investigator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2022,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/moorea-coral-reef-lter/",
+   "evidence": "Lead Principal Investigator: Deron Burkepile",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "714c66db72565768",
+   "person_key": "hillary-krumbholz",
+   "role": "information-manager",
+   "title": "Information Manager",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/moorea-coral-reef-lter/",
+   "evidence": "Information Manager: Hillary Krumbholz",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "714c66db72565768",
+   "person_key": "robert-carpenter",
+   "role": "co-PI",
+   "title": "Co-Principal Investigator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lternet.edu/directory/?usite=1918&go=1&sort=role&dir=ASC",
+   "evidence": "Carpenter, Robert ... MCR Co-Principal Investigator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "714c66db72565768",
+   "person_key": "rebecca-vega-thurber",
+   "role": "co-PI",
+   "title": "Co-Principal Investigator (MCR IV, OCE-2224354)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2022,
+   "end_year": null,
+   "source_url": "https://api.nsf.gov/services/v1/awards/2224354.json?printFields=id,title,piFirstName,piLastName,coPDPI,startDate,expDate,awardeeName",
+   "evidence": "title: LTER: MCR IV ... coPDPI: Rebecca L Vega",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "714c66db72565768",
+   "person_key": "russell-schmitt",
+   "role": "co-PI",
+   "title": "Co-Principal Investigator (MCR IV, OCE-2224354)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2022,
+   "end_year": null,
+   "source_url": "https://api.nsf.gov/services/v1/awards/2224354.json?printFields=id,title,piFirstName,piLastName,coPDPI,startDate,expDate,awardeeName",
+   "evidence": "title: LTER: MCR IV ... coPDPI: Russell J Schmitt",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "714c66db72565768",
+   "person_key": "sally-holbrook",
+   "role": "co-PI",
+   "title": "Co-Principal Investigator (former, MCR IV)",
+   "is_key_personnel": false,
+   "is_current": false,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://api.nsf.gov/services/v1/awards/2224354.json?printFields=id,title,piFirstName,piLastName,coPDPI,startDate,expDate,awardeeName",
+   "evidence": "coPDPI: Sally J Holbrook (Former)",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "4b897473a3d94b82",
+   "person_key": "heidi-sosik",
+   "role": "lead-PI",
+   "title": "Lead Principal Investigator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2017,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/northeast-u-s-shelf/",
+   "evidence": "Lead Principal Investigator: Heidi Sosik",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "4b897473a3d94b82",
+   "person_key": "heidi-sosik",
+   "role": "founding-PI",
+   "title": "Principal Investigator, NES LTER phase 1 (OCE-1655686)",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": 2017,
+   "end_year": 2024,
+   "source_url": "https://api.nsf.gov/services/v1/awards/1655686.json?printFields=id,title,piFirstName,piLastName,coPDPI,startDate,expDate,awardeeName",
+   "evidence": "piFirstName: Heidi; piLastName: Sosik; startDate: 09/01/2017",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "4b897473a3d94b82",
+   "person_key": "kate-morkeski",
+   "role": "information-manager",
+   "title": "Information Manager",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/northeast-u-s-shelf/",
+   "evidence": "Information Manager: Kate Morkeski",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "4b897473a3d94b82",
+   "person_key": "connor-ahearn",
+   "role": "research-coordinator",
+   "title": "Research/Site Coordinator; Administrative Contact",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/northeast-u-s-shelf/",
+   "evidence": "Research/Site Coordinator: Connor Ahearn",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "4b897473a3d94b82",
+   "person_key": "michael-neubert",
+   "role": "co-PI",
+   "title": "Co-Principal Investigator (NES II, OCE-2322676)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2023,
+   "end_year": null,
+   "source_url": "https://api.nsf.gov/services/v1/awards/2322676.json?printFields=id,title,piFirstName,piLastName,coPDPI,startDate,expDate,awardeeName",
+   "evidence": "title: LTER: Scales of Variability ... (NES II); coPDPI: Michael G Neubert",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "4b897473a3d94b82",
+   "person_key": "rubao-ji",
+   "role": "co-PI",
+   "title": "Co-Principal Investigator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2017,
+   "end_year": null,
+   "source_url": "https://lternet.edu/directory/?usite=1948&go=1&sort=role&dir=ASC",
+   "evidence": "Ji, Rubao ... NES Co-Principal Investigator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "50642bf3064308c8",
+   "person_key": "russell-hopcroft",
+   "role": "lead-PI",
+   "title": "Lead Principal Investigator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2017,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/northern-gulf-alaska/",
+   "evidence": "Lead Principal Investigator: Russell Hopcroft",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "50642bf3064308c8",
+   "person_key": "seth-danielson",
+   "role": "co-PI",
+   "title": "Co-Lead Principal Investigator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2017,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/northern-gulf-alaska/",
+   "evidence": "Co-Lead Principal Investigator: Seth Danielson",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "50642bf3064308c8",
+   "person_key": "adrienne-canino",
+   "role": "information-manager",
+   "title": "Information Manager",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/northern-gulf-alaska/",
+   "evidence": "Information Manager: Adrienne Canino",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "50642bf3064308c8",
+   "person_key": "ana-aguilar-islas",
+   "role": "co-PI",
+   "title": "Co-Principal Investigator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2017,
+   "end_year": null,
+   "source_url": "https://api.nsf.gov/services/v1/awards/2322806.json?printFields=id,title,piFirstName,piLastName,coPDPI,startDate,expDate,awardeeName",
+   "evidence": "title: LTER: NGA Phase II ...; coPDPI: Ana M Aguilar-Islas",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "50642bf3064308c8",
+   "person_key": "jerome-fiechter",
+   "role": "co-PI",
+   "title": "Co-Principal Investigator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2017,
+   "end_year": null,
+   "source_url": "https://api.nsf.gov/services/v1/awards/2322806.json?printFields=id,title,piFirstName,piLastName,coPDPI,startDate,expDate,awardeeName",
+   "evidence": "title: LTER: NGA Phase II ...; coPDPI: Jerome Fiechter",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "b93f51cc632277b0",
+   "person_key": "anne-giblin",
+   "role": "lead-PI",
+   "title": "Lead Principal Investigator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2022,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/plum-island-ecosystems-lter/",
+   "evidence": "Lead Principal Investigator: Anne Giblin",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "b93f51cc632277b0",
+   "person_key": "james-mcclelland",
+   "role": "co-PI",
+   "title": "Co-Lead Principal Investigator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2022,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/plum-island-ecosystems-lter/",
+   "evidence": "Co-Lead Principal Investigator: James McClelland",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "b93f51cc632277b0",
+   "person_key": "risa-mcnellis",
+   "role": "information-manager",
+   "title": "Information Manager",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://pie-lter.mbl.edu/people/",
+   "evidence": "Risa McNellis, Information Manager",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "b93f51cc632277b0",
+   "person_key": "samuel-kelsey",
+   "role": "research-coordinator",
+   "title": "Research/Site Coordinator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/plum-island-ecosystems-lter/",
+   "evidence": "Research/Site Coordinator: Sam Kelsey",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "b93f51cc632277b0",
+   "person_key": "charles-hopkinson",
+   "role": "founding-PI",
+   "title": "Principal Investigator, first PIE LTER award (OCE-9726921)",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": 1998,
+   "end_year": 2005,
+   "source_url": "https://api.nsf.gov/services/v1/awards/9726921.json?printFields=id,title,piFirstName,piLastName,coPDPI,startDate,expDate,awardeeName",
+   "evidence": "LTER: Plum Island Sound Comparative Ecosystem Study; piFirstName: Charles; piLastName: Hopkinson; startDate: 07/01/1998",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "b3c4acfee79eb573",
+   "person_key": "max-castorani",
+   "role": "lead-PI",
+   "title": "Lead Principal Investigator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2025,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/virginia-coast-reserve-lter/",
+   "evidence": "Lead Principal Investigator: Max Castorani",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "b3c4acfee79eb573",
+   "person_key": "cora-baird",
+   "role": "research-coordinator",
+   "title": "Research/Site Coordinator; Education Contact; ABCRC Site Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/virginia-coast-reserve-lter/",
+   "evidence": "Research/Site Coordinator: Cora Baird",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "b3c4acfee79eb573",
+   "person_key": "john-porter",
+   "role": "information-manager",
+   "title": "Information Manager",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/virginia-coast-reserve-lter/",
+   "evidence": "Information Manager: John Porter",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "b3c4acfee79eb573",
+   "person_key": "connor-white",
+   "role": "information-manager",
+   "title": "Information Manager",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/virginia-coast-reserve-lter/",
+   "evidence": "Information Manager: Connor White",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "b3c4acfee79eb573",
+   "person_key": "karen-mcglathery",
+   "role": "co-PI",
+   "title": "Co-Principal Investigator (DEB-2425178)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2025,
+   "end_year": null,
+   "source_url": "https://api.nsf.gov/services/v1/awards/2425178.json?printFields=id,title,piFirstName,piLastName,coPDPI,startDate,expDate,awardeeName",
+   "evidence": "title: LTER: Environmental drivers and ecosystem state change...; coPDPI: Karen J McGlathery",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "b3c4acfee79eb573",
+   "person_key": "bruce-hayden",
+   "role": "lead-PI",
+   "title": "Principal Investigator, VCR LTER award DEB-9211772",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": 1992,
+   "end_year": 1995,
+   "source_url": "https://api.nsf.gov/services/v1/awards/9211772.json?printFields=id,title,piFirstName,piLastName,coPDPI,startDate,expDate,awardeeName",
+   "evidence": "title: The Virginia Coast Reserve LTER Site; piFirstName: Bruce; piLastName: Hayden",
+   "confidence": "medium"
+  }
+ ],
+ "verifications": [
+  {
+   "facility_id": "714c66db72565768",
+   "person_id": "1b2336f0683e42ee",
+   "existing_role": "co-PI",
+   "status": "confirmed",
+   "current_holder_key": null,
+   "source_url": "https://lternet.edu/directory/?uname=Edmunds&go=Search",
+   "evidence": "Edmunds, Peter ... MCR Co-Principal Investigator"
+  },
+  {
+   "facility_id": "714c66db72565768",
+   "person_id": "791cd33e5e3e6645",
+   "existing_role": "founding-PI",
+   "status": "confirmed",
+   "current_holder_key": null,
+   "source_url": "https://api.nsf.gov/services/v1/awards/0417412.json?printFields=id,title,piFirstName,piLastName,coPDPI,startDate,expDate,awardeeName",
+   "evidence": "LTER: Long-Term Dynamics of a Coral Reef Ecosystem; piFirstName: Russell; piLastName: Schmitt; startDate: 09/01/2004"
+  },
+  {
+   "facility_id": "714c66db72565768",
+   "person_id": "f7d5a851ece50276",
+   "existing_role": "co-PI",
+   "status": "stale",
+   "current_holder_key": null,
+   "source_url": "https://api.nsf.gov/services/v1/awards/2224354.json?printFields=id,title,piFirstName,piLastName,coPDPI,startDate,expDate,awardeeName",
+   "evidence": "LTER: MCR IV ... coPDPI: Sally J Holbrook (Former)"
+  }
+ ]
+}

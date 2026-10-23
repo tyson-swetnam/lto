@@ -1,0 +1,397 @@
+{
+ "batch_id": "R-PEOPLE2-NEON-01b",
+ "retrieved_at": "2026-10-22",
+ "verified_by": "adversarial-verifier 2026-10-22",
+ "facilities": [
+  {
+   "facility_id": "1cf190cb0f984185",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/wref",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=2",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/ben-vierra",
+     "status": 200
+    },
+    {
+     "url": "https://research.fs.usda.gov/pnw/forestsandranges/locations/windriver",
+     "status": 200
+    },
+    {
+     "url": "https://research.fs.usda.gov/about/people/donald.brown2",
+     "status": 200
+    },
+    {
+     "url": "https://ameriflux.lbl.gov/sites/siteinfo/US-xWR",
+     "status": 200
+    },
+    {
+     "url": "https://ameriflux.lbl.gov/sites/siteinfo/US-Wrc",
+     "status": 200
+    },
+    {
+     "url": "https://people.llnl.gov/wharton4",
+     "status": 200
+    },
+    {
+     "url": "https://www.washington.edu/news/1997/06/01/about-the-wind-river-canopy-crane/",
+     "status": 200
+    },
+    {
+     "url": "https://www.washington.edu/news/2011/04/27/era-of-canopy-crane-ending-certain-research-and-education-activities-remain-view-slideshow/",
+     "status": 200
+    },
+    {
+     "url": "https://research.fs.usda.gov/treesearch/33093",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-6647-0369/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0003-3557-164X/employments",
+     "status": 200
+    },
+    {
+     "url": "https://www.fs.usda.gov/research/pnw/efr",
+     "status": 200
+    },
+    {
+     "url": "https://andrewsforest.oregonstate.edu/people/mark-harmon",
+     "status": 404
+    },
+    {
+     "url": "https://environment.uw.edu/faculty/jerry-franklin/",
+     "status": 404
+    },
+    {
+     "url": "https://www.sefs.uw.edu/people/franklin",
+     "status": 404
+    }
+   ],
+   "notes": "NEON Domain 16 core terrestrial site; Domain 16 field office in Vancouver, WA (Vierra profile names WREF directly). Verifier: the USFS Wind River EF page (Lead Scientist Donald J. Brown; 1932 founders Thornton T. Munger and Leo A. Isaac), the AmeriFlux US-Wrc crane tower page (PI Sonia Wharton) and the 1997 UW canopy-crane release (site director David Shaw) describe the Wind River Experimental Forest / canopy crane, which the catalogue holds as a separate facility (088693714db43c1d, WREF-EF; its record links US-Wrc). Those people were dropped here as wrong-facility; they are candidates for 088693714db43c1d (Shaw already exists there as person 4f846ce4583fcd8c). Existing NEON-site rows for Woodsmith, Harmon and Franklin are cross-listed copies of WREF-EF rows; no fetched page ties any of them to the NEON site, so all three are unverifiable here (Franklin's 2011 UW article ties him to the canopy crane, not the NEON site). Existing-row URLs www.fs.usda.gov/research/pnw and /research/pnw/efr redirect to the R&D homepage; andrewsforest Harmon and UW Franklin homepage URLs return 404."
+  },
+  {
+   "facility_id": "e92b951bab3583f3",
+   "pages_fetched": [
+    {
+     "url": "https://www.nps.gov/havo/learn/management/index.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/havo/contacts.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/havo/learn/news/hawaii-volcanoes-national-park-fact-sheet.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/havo/learn/news/20201203_rhonda-loh-selected-as-superintendent.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/havo/learn/news/20260917-nr-nps-award-torigoe.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/havo/learn/management/superintendent.htm",
+     "status": 404
+    },
+    {
+     "url": "https://www.neonscience.org/person/mike-long",
+     "status": 200
+    }
+   ],
+   "notes": "Biosphere reserve is administered as Hawaii Volcanoes National Park (NPS); park designated International Biosphere Reserve 1980. Superintendent Rhonda Loh named in a Sept 17, 2026 NPS release and on the park fact sheet. NEON Domain 20 manager Mike Long's profile ties him only to the Puu Makaala (PUUM) NEON site, not to the park, so he is not attached here."
+  },
+  {
+   "facility_id": "0a41fe688a0131fd",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/laja",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=2",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/jean-sandoval",
+     "status": 200
+    },
+    {
+     "url": "https://www.uprm.edu/eea/subestaciones/",
+     "status": 200
+    }
+   ],
+   "notes": "NEON Atlantic Neotropical Domain (D04) terrestrial site; Lajas Experimental Station managed by University of Puerto Rico - Mayaguez. Only the NEON D04 domain manager is identifiable; his profile names the domain, not this site, so confidence is medium."
+  },
+  {
+   "facility_id": "ed4550ae033fdbc9",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/cupe",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=2",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/jean-sandoval",
+     "status": 200
+    }
+   ],
+   "notes": "NEON D04 aquatic site; Rio Cupeyes managed by the Puerto Rico DRNA under delegation from the Commonwealth. Only the NEON D04 domain manager is identifiable (profile names the domain, not the site; confidence medium)."
+  },
+  {
+   "facility_id": "8738c77246dbdefa",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/guil",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=2",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/jean-sandoval",
+     "status": 200
+    }
+   ],
+   "notes": "NEON D04 aquatic site, now named Rio Yahuecas (formerly Rio Guilarte); located at a UPR-Mayaguez agricultural research substation. Only the NEON D04 domain manager is identifiable (profile names the domain, not the site; confidence medium)."
+  },
+  {
+   "facility_id": "4e957806b29ddb6a",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/scbi",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=2",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/ty-lindberg",
+     "status": 200
+    },
+    {
+     "url": "https://ameriflux.lbl.gov/sites/siteinfo/US-xSC",
+     "status": 200
+    },
+    {
+     "url": "https://www.si.edu/unit/conservation-biology-institute",
+     "status": 403
+    },
+    {
+     "url": "https://nationalzoo.si.edu/about/staff/brandie-smith",
+     "status": 200
+    }
+   ],
+   "notes": "NEON Mid-Atlantic Domain (D02) core site hosted by the Smithsonian Conservation Biology Institute, Front Royal, VA, which also hosts the D02 base of operations. Lindberg's profile places his D02 office on the SCBI grounds but does not name the SCBI field site, so confidence is medium. Host-org director claim from the draft was not confirmed by the verifier and was removed."
+  }
+ ],
+ "people": [
+  {
+   "key": "ben-vierra",
+   "existing_person_id": null,
+   "name": "Ben Vierra",
+   "name_given": "Ben",
+   "name_family": "Vierra",
+   "orcid": "0000-0002-6647-0369",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-6647-0369/employments",
+   "homepage_url": "https://www.neonscience.org/person/ben-vierra",
+   "bio": "NEON field science manager for Domain 16 (Pacific Northwest), working from a Vancouver, Washington office and responsible for staff and infrastructure at the Wind River, Abby Road, Martha Creek and McRae Creek sites. Manager since 2016; joined NEON in 2013 as a Domain 01 field ecologist. M.S., natural resources, North Carolina State; ESA-certified ecologist.",
+   "bio_source_url": "https://www.neonscience.org/person/ben-vierra",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "rhonda-loh",
+   "existing_person_id": null,
+   "name": "Rhonda Loh",
+   "name_given": "Rhonda",
+   "name_family": "Loh",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Superintendent of Hawaii Volcanoes National Park since December 2020, having been acting superintendent from April 2019. Within the park she rose from biological technician to park botanist and later headed natural resource management, and has acted as superintendent at several other Hawaii parks. M.S. in chemistry (Stanford); Ph.D. in botany (University of Hawaii at Manoa).",
+   "bio_source_url": "https://www.nps.gov/havo/learn/news/20201203_rhonda-loh-selected-as-superintendent.htm",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "stacey-torigoe",
+   "existing_person_id": null,
+   "name": "Stacey Kehaulani Torigoe",
+   "name_given": "Stacey",
+   "name_family": "Torigoe",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Ecologist at Hawaii Volcanoes National Park who directs its invasive species and biosecurity programs; named recipient of the 2026 NPS Director's Award for Natural Resource Management. Provides resource-protection leadership across Pacific Islands parks and is vice chair of the Pacific West Region Natural Resource Advisory Committee.",
+   "bio_source_url": "https://www.nps.gov/havo/learn/news/20260917-nr-nps-award-torigoe.htm",
+   "research_interests": "invasive plant management; biosecurity; native Hawaiian ecosystem protection",
+   "research_interests_source_url": "https://www.nps.gov/havo/learn/news/20260917-nr-nps-award-torigoe.htm"
+  },
+  {
+   "key": "jean-sandoval",
+   "existing_person_id": null,
+   "name": "Jean Sandoval",
+   "name_given": "Jean",
+   "name_family": "Sandoval",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.neonscience.org/person/jean-sandoval",
+   "bio": "Manager of NEON's Domain 04 (Atlantic Neotropical) office. Environmental scientist with prior non-profit conservation experience and an M.S. in environmental management; skills include GIS, project management and community engagement. Has worked on Puerto Rican crested toad recovery, sea turtle conservation and reforestation projects.",
+   "bio_source_url": "https://www.neonscience.org/person/jean-sandoval",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "ty-lindberg",
+   "existing_person_id": null,
+   "name": "Ty Lindberg",
+   "name_given": "Ty",
+   "name_family": "Lindberg",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.neonscience.org/person/ty-lindberg",
+   "bio": "Field operations manager for NEON Domain 02 (Mid-Atlantic), whose office sits on the Smithsonian Conservation Biology Institute grounds in Front Royal, Virginia; oversees eddy-flux towers, instrumented streams and field sampling. Previously a Duke Nicholas School researcher and lab manager studying water-quality impacts of surface coal mining and selenium transport. M.S. in zoology, NC State.",
+   "bio_source_url": "https://www.neonscience.org/person/ty-lindberg",
+   "research_interests": "water quality effects of surface coal mining; selenium fate and transport in aquatic ecosystems; population genetics; fisheries management",
+   "research_interests_source_url": "https://www.neonscience.org/person/ty-lindberg"
+  }
+ ],
+ "affiliations": [
+  {
+   "facility_id": "1cf190cb0f984185",
+   "person_key": "ben-vierra",
+   "role": "domain-manager",
+   "title": "Manager, D16: Pacific Northwest (NEON)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2016,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/person/ben-vierra",
+   "evidence": "Ben manages NEON personnel, activities, and research infrastructure in the Pacific Northwest (Domain 16)",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "e92b951bab3583f3",
+   "person_key": "rhonda-loh",
+   "role": "superintendent",
+   "title": "Superintendent, Hawaii Volcanoes National Park",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2020,
+   "end_year": null,
+   "source_url": "https://www.nps.gov/havo/learn/news/20260917-nr-nps-award-torigoe.htm",
+   "evidence": "said Park Superintendent Rhonda Loh",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "e92b951bab3583f3",
+   "person_key": "stacey-torigoe",
+   "role": "scientist",
+   "title": "Ecologist, Hawaii Volcanoes National Park (invasive species and biosecurity programs)",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.nps.gov/havo/learn/news/20260917-nr-nps-award-torigoe.htm",
+   "evidence": "Hawaiʻi Volcanoes National Park Ecologist Stacey Kehaulani Torigoe",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "0a41fe688a0131fd",
+   "person_key": "jean-sandoval",
+   "role": "domain-manager",
+   "title": "Manager, D04: Atlantic Neotropical (NEON)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/person/jean-sandoval",
+   "evidence": "Jean Sandoval Manager, D04: Atlantic Neotropical D04 Domain office",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "ed4550ae033fdbc9",
+   "person_key": "jean-sandoval",
+   "role": "domain-manager",
+   "title": "Manager, D04: Atlantic Neotropical (NEON)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/person/jean-sandoval",
+   "evidence": "Jean Sandoval Manager, D04: Atlantic Neotropical D04 Domain office",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "8738c77246dbdefa",
+   "person_key": "jean-sandoval",
+   "role": "domain-manager",
+   "title": "Manager, D04: Atlantic Neotropical (NEON)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/person/jean-sandoval",
+   "evidence": "Jean Sandoval Manager, D04: Atlantic Neotropical D04 Domain office",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "4e957806b29ddb6a",
+   "person_key": "ty-lindberg",
+   "role": "domain-manager",
+   "title": "Manager, D02: Mid-Atlantic (NEON Field Operations Manager)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/person/ty-lindberg",
+   "evidence": "Ty Lindberg is the Field Operations Manager for Domain 02, located in Front Royal, VA",
+   "confidence": "medium"
+  }
+ ],
+ "verifications": [
+  {
+   "facility_id": "1cf190cb0f984185",
+   "person_id": "8fe1d70043b5f99c",
+   "existing_role": "emeritus",
+   "status": "unverifiable",
+   "current_holder_key": null,
+   "source_url": "https://pub.orcid.org/v3.0/0000-0003-3557-164X/employments",
+   "evidence": "ORCID employment: USDA, Forest Service, Pacific Northwest Research Station, Research Hydrologist, 1987-2010; no Wind River link found"
+  },
+  {
+   "facility_id": "1cf190cb0f984185",
+   "person_id": "a398fb35ba8d3a16",
+   "existing_role": "co-PI",
+   "status": "unverifiable",
+   "current_holder_key": null,
+   "source_url": "https://research.fs.usda.gov/treesearch/33093",
+   "evidence": "Authors: Jack E. Janisch, Mark E. Harmon ... clearcuts on the Wind River Ranger District, Washington, USA"
+  },
+  {
+   "facility_id": "1cf190cb0f984185",
+   "person_id": "38a28e7ea22cbdf3",
+   "existing_role": "founding-PI",
+   "status": "unverifiable",
+   "current_holder_key": null,
+   "source_url": "https://www.washington.edu/news/2011/04/27/era-of-canopy-crane-ending-certain-research-and-education-activities-remain-view-slideshow/",
+   "evidence": "Jerry Franklin, UW professor of forest resources, who was the prime mover in the 1990s for landing"
+  }
+ ]
+}

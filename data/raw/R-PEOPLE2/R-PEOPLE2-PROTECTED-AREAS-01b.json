@@ -1,0 +1,584 @@
+{
+ "batch_id": "R-PEOPLE2-PROTECTED-AREAS-01b",
+ "retrieved_at": "2026-10-22",
+ "verified_by": "adversarial-verifier 2026-10-22",
+ "facilities": [
+  {
+   "facility_id": "1da64df0fd7c426e",
+   "pages_fetched": [
+    {
+     "url": "https://www.nps.gov/im/sien/",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/im/sien/contact.htm",
+     "status": 404
+    },
+    {
+     "url": "https://www.nps.gov/im/sien/contactus.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/im/sien/about-us.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/im/",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/im/contactus.htm",
+     "status": 200
+    }
+   ],
+   "notes": "SIEN contact page (updated April 9, 2025) lists three network staff: Anne Pfaff (Program Manager), Sarah Wakamiya (Data Manager), Kelly Martin (Physical Scientist). About-us page says the network is hiring an ecologist, logistics coordinator and science communicator; Linda Mutch is no longer listed. Steve Fancy and Thomas Philippi are national NPS-IM figures and do not appear on nps.gov/im or the SIEN pages fetched. [verifier] Linda Mutch absent from current staff list (stale); no fetched page states who succeeded her, so current_holder_key left null."
+  },
+  {
+   "facility_id": "2feacf8b13ab3ede",
+   "pages_fetched": [
+    {
+     "url": "https://www.nps.gov/seki/contacts.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/seki/learn/management/index.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/seki/learn/management/superintendent.htm",
+     "status": 404
+    },
+    {
+     "url": "https://www.nps.gov/seki/learn/news/newsreleases.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/seki/learn/news/seki.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/seki/learn/news/fact-sheet.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/seki/learn/nature/biosphere-reserve.htm",
+     "status": 404
+    },
+    {
+     "url": "https://www.usajobs.gov/job/864033300",
+     "status": 200
+    },
+    {
+     "url": "https://ourenvironment.berkeley.edu/people/patrick-gonzalez",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-7105-0561/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-7105-0561/employments",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/orgs/1778/index.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/orgs/1050/index.htm",
+     "status": 200
+    }
+   ],
+   "notes": "No current NPS staff page names the superintendent; Clay Jordan is named Superintendent as contact on a USAJobs SEKI vacancy (Resources Management and Sciences Chief) whose qualifications deadline was 04/20/2026, and an archived NPS release (Sept 2020) records his selection starting Nov 8, 2020. That chief-of-science position was vacant/being filled in 2026, so no science chief is recorded. No page fetched ties Patrick Gonzalez or Karen Trevino to the SEKI Biosphere Reserve; Gonzalez's Berkeley profile and ORCID confirm his own titles and are used only to enrich his person record (no new affiliation added)."
+  },
+  {
+   "facility_id": "d4111f5729db974a",
+   "pages_fetched": [
+    {
+     "url": "https://www.fws.gov/refuge/aransas",
+     "status": 200
+    },
+    {
+     "url": "https://www.fws.gov/refuge/aransas/contact-us",
+     "status": 200
+    },
+    {
+     "url": "https://www.fws.gov/refuge/aransas/about-us",
+     "status": 200
+    },
+    {
+     "url": "https://www.kristv.com/news/local-news/in-your-neighborhood/aransas-county/aransas-national-wildlife-refuge-plans-to-expand-through-land-protection-grant",
+     "status": 200
+    }
+   ],
+   "notes": "FWS refuge pages list no staff names. Refuge manager taken from a KRIS-TV news story published 2024-05-06 (not an official page), so confidence is low; current status as of 2026 unconfirmed. [verifier] Re-fetched 2026-10-22: story datePublished 2024-05-06; currency in 2026 unconfirmed, kept low."
+  },
+  {
+   "facility_id": "7512cf5fb679f50c",
+   "pages_fetched": [
+    {
+     "url": "https://www.fws.gov/refuge/hakalau-forest",
+     "status": 200
+    },
+    {
+     "url": "https://www.fws.gov/refuge/hakalau-forest/contact-us",
+     "status": 200
+    },
+    {
+     "url": "https://www.fws.gov/refuge/hakalau-forest/about-us",
+     "status": 200
+    },
+    {
+     "url": "https://www.hawaiipublicradio.org/the-conversation/2025-11-20/hakalau-refuge-marks-4-decades-of-conservation-amid-funding-threats",
+     "status": 200
+    },
+    {
+     "url": "https://friendsofhakalauforest.org/about-us/",
+     "status": 200
+    },
+    {
+     "url": "https://www.fws.gov/story/2024-05/birds-hakalau-forest-and-kona-forest",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/staff-profiles/richard-j-camp",
+     "status": 200
+    }
+   ],
+   "notes": "Refuge is a unit of the Big Island NWR Complex; FWS pages list no staff names. Interim manager Springer Kaye named by Hawaii Public Radio (Nov 20, 2025). Former deputy refuge manager Donna Ball (2020-2025, retired) from the Friends of Hakalau Forest board page and a 2024 FWS story. USGS research statistician Rick Camp co-analyzed the refuge's three-decade forest bird survey record (FWS story). [verifier] Rick Camp link rests on a dated May 2024 FWS story about a completed analysis: downgraded to low, is_current=false. Kaye/Hamren roles from a Nov 2025 news story only (low)."
+  },
+  {
+   "facility_id": "fe150287423eeeb2",
+   "pages_fetched": [
+    {
+     "url": "https://oceanservice.noaa.gov/sentinelsites/",
+     "status": 202
+    },
+    {
+     "url": "https://oceanservice.noaa.gov/sentinelsites/chesapeake/",
+     "status": 202
+    },
+    {
+     "url": "https://www.mdsg.umd.edu/node/4324",
+     "status": 200
+    },
+    {
+     "url": "https://www.mdsg.umd.edu/taryn-sudol",
+     "status": 200
+    },
+    {
+     "url": "https://www.mdsg.umd.edu/news/maryland-sea-grant-hires-first-coordinator-chesapeake-bay-sentinel-site-cooperative",
+     "status": 200
+    }
+   ],
+   "notes": "NOAA oceanservice.noaa.gov/sentinelsites/ URLs now redirect to seagrant.noaa.gov/Our-Work/RCE (no site content). The Chesapeake Bay Sentinel Site Cooperative coordinator is hosted by Maryland Sea Grant; current coordinator Taryn Sudol; first coordinator Sarah Wilkins (hired 2015). Suggested facility URL: https://www.mdsg.umd.edu/node/4324"
+  },
+  {
+   "facility_id": "885e59f7b4a660c3",
+   "pages_fetched": [
+    {
+     "url": "https://oceanservice.noaa.gov/sentinelsites/hawaii/",
+     "status": 202
+    },
+    {
+     "url": "https://seagrant.soest.hawaii.edu/coastal-and-climate-science-and-resilience/ccs-projects/hissc/",
+     "status": 200
+    },
+    {
+     "url": "https://seagrant.soest.hawaii.edu/directory-detail/?smid=33456",
+     "status": 200
+    }
+   ],
+   "notes": "Hawaiian Islands Sentinel Site Cooperative (HISSC) is coordinated jointly by University of Hawaii Sea Grant and NOAA Office for Coastal Management; HISSC page (c) 2026 names Katy Hintzen as Cooperative Coordinator. Suggested facility URL: https://seagrant.soest.hawaii.edu/coastal-and-climate-science-and-resilience/ccs-projects/hissc/"
+  }
+ ],
+ "people": [
+  {
+   "key": "anne-pfaff",
+   "existing_person_id": null,
+   "name": "Anne Pfaff",
+   "name_given": "Anne",
+   "name_family": "Pfaff",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Network Program Manager for the NPS Sierra Nevada Inventory & Monitoring Network, returning to the Park Service after more than 25 years with USGS, where she was an ecologist and later research coordinator at the Sequoia-Kings Canyon Field Station working on forest and fire ecology projects across California.",
+   "bio_source_url": "https://www.nps.gov/im/sien/about-us.htm",
+   "research_interests": "landscape-scale conservation; broad-scale natural resource management; forest and fire ecology",
+   "research_interests_source_url": "https://www.nps.gov/im/sien/about-us.htm"
+  },
+  {
+   "key": "sarah-wakamiya",
+   "existing_person_id": null,
+   "name": "Sarah Wakamiya",
+   "name_given": "Sarah",
+   "name_family": "Wakamiya",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Data Manager for the NPS Sierra Nevada Network since 2021, building applications and workflows that store, analyze and share monitoring data; has served over a decade as an Inventory & Monitoring data manager, earlier with the Mid-Atlantic, Northern Great Plains and San Francisco Bay Area networks. Holds an M.S. in wildlife ecology.",
+   "bio_source_url": "https://www.nps.gov/im/sien/about-us.htm",
+   "research_interests": "monitoring data management; data visualization",
+   "research_interests_source_url": "https://www.nps.gov/im/sien/about-us.htm"
+  },
+  {
+   "key": "kelly-martin-sien",
+   "existing_person_id": null,
+   "name": "Kelly Martin",
+   "name_given": "Kelly",
+   "name_family": "Martin",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Physical Scientist with the NPS Sierra Nevada Network since 2024, leading water-resources monitoring of network lakes, rivers and wetlands; previously held ecology and physical-science positions at several western national parks. Master's in biology from CSU Fresno with an alpine-lake ecotoxicology focus.",
+   "bio_source_url": "https://www.nps.gov/im/sien/about-us.htm",
+   "research_interests": "water resources monitoring; alpine lakes and wetlands; ecotoxicology",
+   "research_interests_source_url": "https://www.nps.gov/im/sien/about-us.htm"
+  },
+  {
+   "key": "clay-jordan",
+   "existing_person_id": null,
+   "name": "Clay Jordan",
+   "name_given": "Clay",
+   "name_family": "Jordan",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Sequoia and Kings Canyon superintendent since late 2020, selected from the deputy superintendent post at Great Smoky Mountains; a long National Park Service career in visitor and resource protection at parks including Olympic, Mount Rainier and Shenandoah.",
+   "bio_source_url": "https://www.nps.gov/seki/learn/news/seki.htm",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "patrick-gonzalez",
+   "existing_person_id": "f7a886589676aac7",
+   "name": "Patrick Gonzalez",
+   "name_given": "Patrick",
+   "name_family": "Gonzalez",
+   "orcid": "0000-0002-7105-0561",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-7105-0561/employments",
+   "homepage_url": "https://ourenvironment.berkeley.edu/people/patrick-gonzalez",
+   "bio": "Associate Adjunct Professor at UC Berkeley; climate change scientist and forest ecologist. Formerly the National Park Service's principal climate change scientist (2010-2021) and an assistant director at the White House OSTP; IPCC lead author whose research documents climate-driven biome shifts, wildfire carbon losses and accelerated warming in national parks.",
+   "bio_source_url": "https://ourenvironment.berkeley.edu/people/patrick-gonzalez",
+   "research_interests": "climate change; forest ecology; ecosystem carbon; wildfire; biome shifts; national parks",
+   "research_interests_source_url": "https://ourenvironment.berkeley.edu/people/patrick-gonzalez"
+  },
+  {
+   "key": "joe-saenz",
+   "existing_person_id": null,
+   "name": "Joe Saenz",
+   "name_given": "Joe",
+   "name_family": "Saenz",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Refuge Manager at Aransas National Wildlife Refuge, Texas, per 2024 news coverage in which he discussed whooping crane recovery and the refuge's expanded land-acquisition boundary.",
+   "bio_source_url": "https://www.kristv.com/news/local-news/in-your-neighborhood/aransas-county/aransas-national-wildlife-refuge-plans-to-expand-through-land-protection-grant",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "springer-kaye",
+   "existing_person_id": null,
+   "name": "Springer Kaye",
+   "name_given": "Springer",
+   "name_family": "Kaye",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Interim manager of Hakalau Forest National Wildlife Refuge (USFWS) as of late 2025; first worked at the refuge as an intern in 1999.",
+   "bio_source_url": "https://www.hawaiipublicradio.org/the-conversation/2025-11-20/hakalau-refuge-marks-4-decades-of-conservation-amid-funding-threats",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "donna-ball",
+   "existing_person_id": null,
+   "name": "Donna Ball",
+   "name_given": "Donna",
+   "name_family": "Ball",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Retired USFWS biologist and manager with 34 years of federal service; Deputy Refuge Manager of the Big Island NWR Complex 2020-2025, earlier a conservation-partnerships biologist at the Pacific Islands Fish and Wildlife Office and a refuge biologist at the Kona and Hakalau units (1998-2006).",
+   "bio_source_url": "https://friendsofhakalauforest.org/about-us/",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "rick-camp",
+   "existing_person_id": null,
+   "name": "Richard J. Camp",
+   "name_given": "Richard J.",
+   "name_family": "Camp",
+   "orcid": "0000-0001-7008-923X",
+   "orcid_source_url": "https://www.usgs.gov/staff-profiles/richard-j-camp",
+   "homepage_url": "https://www.usgs.gov/staff-profiles/richard-j-camp",
+   "bio": "Research Statistician at the USGS Pacific Island Ecosystems Research Center, Kilauea Field Station; specializes in quantitative ecology, abundance and demographic modeling, and avian ecology and conservation, including design and analysis of Pacific Island bird surveys.",
+   "bio_source_url": "https://www.usgs.gov/staff-profiles/richard-j-camp",
+   "research_interests": "status and trend estimation; Bayesian inference; hierarchical modeling; spatial and temporal modeling; population dynamics modeling; avian ecology and conservation",
+   "research_interests_source_url": "https://www.usgs.gov/staff-profiles/richard-j-camp"
+  },
+  {
+   "key": "eric-preston-hamren",
+   "existing_person_id": null,
+   "name": "Eric-Preston Hamren",
+   "name_given": "Eric-Preston",
+   "name_family": "Hamren",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "taryn-sudol",
+   "existing_person_id": null,
+   "name": "Taryn Sudol",
+   "name_given": "Taryn",
+   "name_family": "Sudol",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.mdsg.umd.edu/taryn-sudol",
+   "bio": "Coordinator of the Chesapeake Bay Sentinel Site Cooperative, hosted by Maryland Sea Grant; works to better connect research and outreach among federal coastal reserves of the Chesapeake region, applying sea-level-rise science to coastal decisions. Holds an M.S. from the University of Maryland in conservation biology and sustainable development.",
+   "bio_source_url": "https://www.mdsg.umd.edu/taryn-sudol",
+   "research_interests": "sea level rise; coastal resilience; research-to-management integration across coastal reserves",
+   "research_interests_source_url": "https://www.mdsg.umd.edu/node/4324"
+  },
+  {
+   "key": "sarah-wilkins",
+   "existing_person_id": null,
+   "name": "Sarah Wilkins",
+   "name_given": "Sarah",
+   "name_family": "Wilkins",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Inaugural Chesapeake Bay Sentinel Site Cooperative coordinator, hired in 2015 by the Maryland Sea Grant Extension Program in partnership with Maryland DNR; previously a Knauss Marine Policy Fellow at NOAA National Ocean Service headquarters.",
+   "bio_source_url": "https://www.mdsg.umd.edu/news/maryland-sea-grant-hires-first-coordinator-chesapeake-bay-sentinel-site-cooperative",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "katy-hintzen",
+   "existing_person_id": null,
+   "name": "Katy Hintzen",
+   "name_given": "Katy",
+   "name_family": "Hintzen",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://seagrant.soest.hawaii.edu/directory-detail/?smid=33456",
+   "bio": "University of Hawaii Sea Grant extension agent in coastal resilience and coordinator of the Hawaiian Islands Sentinel Site Cooperative; also liaises on climate adaptation services for the Pacific Islands CASC and coordinates projects and partners for Sea Grant's Ulana Ike center. Previously worked on Great Lakes resilience with Michigan Sea Grant.",
+   "bio_source_url": "https://seagrant.soest.hawaii.edu/directory-detail/?smid=33456",
+   "research_interests": "coastal hazards; sea-level rise adaptation; climate adaptation; community-researcher partnerships",
+   "research_interests_source_url": "https://seagrant.soest.hawaii.edu/directory-detail/?smid=33456"
+  }
+ ],
+ "affiliations": [
+  {
+   "facility_id": "1da64df0fd7c426e",
+   "person_key": "anne-pfaff",
+   "role": "manager",
+   "title": "Network Program Manager, Sierra Nevada Inventory & Monitoring Network",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.nps.gov/im/sien/about-us.htm",
+   "evidence": "Network Staff Anne Pfaff, Network Program Manager",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "1da64df0fd7c426e",
+   "person_key": "sarah-wakamiya",
+   "role": "data-manager",
+   "title": "Data Manager",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2021,
+   "end_year": null,
+   "source_url": "https://www.nps.gov/im/sien/about-us.htm",
+   "evidence": "Sarah Wakamiya, Data Manager Sarah joined the Sierra Nevada Network in August 2021.",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "1da64df0fd7c426e",
+   "person_key": "kelly-martin-sien",
+   "role": "scientist",
+   "title": "Physical Scientist",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": 2024,
+   "end_year": null,
+   "source_url": "https://www.nps.gov/im/sien/about-us.htm",
+   "evidence": "Kelly Martin, Physical Scientist Kelly joined the Sierra Nevada Network in 2024 as the Physical Scientist.",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "2feacf8b13ab3ede",
+   "person_key": "clay-jordan",
+   "role": "superintendent",
+   "title": "Superintendent, Sequoia and Kings Canyon National Parks",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2020,
+   "end_year": null,
+   "source_url": "https://www.usajobs.gov/job/864033300",
+   "evidence": "please contact: Clay Jordan, Superintendent Sequoia and Kings Canyon National Parks",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "d4111f5729db974a",
+   "person_key": "joe-saenz",
+   "role": "manager",
+   "title": "Refuge Manager",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.kristv.com/news/local-news/in-your-neighborhood/aransas-county/aransas-national-wildlife-refuge-plans-to-expand-through-land-protection-grant",
+   "evidence": "whooping cranes numbers were very low down to 15 birds in 1940,” Refuge Manager Joe Saenz said.",
+   "confidence": "low"
+  },
+  {
+   "facility_id": "7512cf5fb679f50c",
+   "person_key": "springer-kaye",
+   "role": "manager",
+   "title": "Interim Refuge Manager",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.hawaiipublicradio.org/the-conversation/2025-11-20/hakalau-refuge-marks-4-decades-of-conservation-amid-funding-threats",
+   "evidence": "said Springer Kaye, the interim manager of the refuge.",
+   "confidence": "low"
+  },
+  {
+   "facility_id": "7512cf5fb679f50c",
+   "person_key": "donna-ball",
+   "role": "deputy-director",
+   "title": "Deputy Refuge Manager, Big Island National Wildlife Refuge Complex",
+   "is_key_personnel": false,
+   "is_current": false,
+   "start_year": 2020,
+   "end_year": 2025,
+   "source_url": "https://friendsofhakalauforest.org/about-us/",
+   "evidence": "she served as the Deputy Refuge Manager at the Big Island NWRC from 2020-2025",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "7512cf5fb679f50c",
+   "person_key": "rick-camp",
+   "role": "scientist",
+   "title": "Research Statistician, USGS PIERC (co-analyst of refuge forest bird survey record, 2024 FWS story)",
+   "is_key_personnel": false,
+   "is_current": false,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.fws.gov/story/2024-05/birds-hakalau-forest-and-kona-forest",
+   "evidence": "said USGS scientist Rick Camp",
+   "confidence": "low"
+  },
+  {
+   "facility_id": "7512cf5fb679f50c",
+   "person_key": "eric-preston-hamren",
+   "role": "technical-staff",
+   "title": "Nursery Manager",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.hawaiipublicradio.org/the-conversation/2025-11-20/hakalau-refuge-marks-4-decades-of-conservation-amid-funding-threats",
+   "evidence": "Eric-Preston Hamren of Hakalau Forest National Wildlife Refuge ... He's back in his role as nursery manager",
+   "confidence": "low"
+  },
+  {
+   "facility_id": "fe150287423eeeb2",
+   "person_key": "taryn-sudol",
+   "role": "coordinator",
+   "title": "Coordinator, Chesapeake Bay Sentinel Site Cooperative (Maryland Sea Grant)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.mdsg.umd.edu/node/4324",
+   "evidence": "contact: Taryn Sudol Coordinator for the Chesapeake Bay Sentinel Site Cooperative",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "fe150287423eeeb2",
+   "person_key": "sarah-wilkins",
+   "role": "coordinator",
+   "title": "First Coordinator, Chesapeake Bay Sentinel Site Cooperative",
+   "is_key_personnel": false,
+   "is_current": false,
+   "start_year": 2015,
+   "end_year": null,
+   "source_url": "https://www.mdsg.umd.edu/news/maryland-sea-grant-hires-first-coordinator-chesapeake-bay-sentinel-site-cooperative",
+   "evidence": "has hired Sarah Wilkins as the first-ever coordinator of the Chesapeake Bay Sentinel Site Cooperative (CBSSC).",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "885e59f7b4a660c3",
+   "person_key": "katy-hintzen",
+   "role": "coordinator",
+   "title": "Cooperative Coordinator, Hawaiian Islands Sentinel Site Cooperative (UH Sea Grant)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://seagrant.soest.hawaii.edu/coastal-and-climate-science-and-resilience/ccs-projects/hissc/",
+   "evidence": "Contact Us Katy Hintzen Cooperative Coordinator",
+   "confidence": "high"
+  }
+ ],
+ "verifications": [
+  {
+   "facility_id": "1da64df0fd7c426e",
+   "person_id": "97c9f8b0a50a7751",
+   "existing_role": "emeritus",
+   "status": "not-found",
+   "current_holder_key": null,
+   "source_url": "https://www.nps.gov/im/",
+   "evidence": null
+  },
+  {
+   "facility_id": "1da64df0fd7c426e",
+   "person_id": "dd8f6330cf10998b",
+   "existing_role": "faculty",
+   "status": "not-found",
+   "current_holder_key": null,
+   "source_url": "https://www.nps.gov/im/",
+   "evidence": null
+  },
+  {
+   "facility_id": "1da64df0fd7c426e",
+   "person_id": "913445d0864ba4b1",
+   "existing_role": "coordinator",
+   "status": "stale",
+   "current_holder_key": null,
+   "source_url": "https://www.nps.gov/im/sien/contactus.htm",
+   "evidence": "Name Title/Position Learn More Anne Pfaff Program Manager Sarah Wakamiya Data Manager Kelly Martin Physical Scientist"
+  },
+  {
+   "facility_id": "2feacf8b13ab3ede",
+   "person_id": "f7a886589676aac7",
+   "existing_role": "faculty",
+   "status": "unverifiable",
+   "current_holder_key": null,
+   "source_url": "https://ourenvironment.berkeley.edu/people/patrick-gonzalez",
+   "evidence": "Dr. Gonzalez previously served as Principal Climate Change Scientist of the U.S. National Park Service"
+  },
+  {
+   "facility_id": "2feacf8b13ab3ede",
+   "person_id": "d2dacbce0b6f2307",
+   "existing_role": "coordinator",
+   "status": "not-found",
+   "current_holder_key": null,
+   "source_url": "https://www.nps.gov/orgs/1050/index.htm",
+   "evidence": null
+  }
+ ]
+}

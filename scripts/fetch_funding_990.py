@@ -48,9 +48,12 @@ import csv
 import hashlib
 import sys
 import time
+from datetime import date
 from pathlib import Path
 
-import duckdb
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import lto_db  # noqa: E402
+
 try:
     import requests
 except ImportError:
@@ -58,7 +61,6 @@ except ImportError:
     raise
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "lto.duckdb"
 DEFAULT_OVERRIDES = ROOT / "data" / "funding_overrides" / "propublica_ein_overrides.csv"
 API_SEARCH = "https://projects.propublica.org/nonprofits/api/v2/search.json"
 API_ORG = "https://projects.propublica.org/nonprofits/api/v2/organizations/{ein}.json"
@@ -88,6 +90,73 @@ def session() -> requests.Session:
         "mailto:tswetnam@arizona.edu)"
     )
     return s
+
+
+# ---------------------------------------------------------------------------
+# Lake writes. Rows are buffered in memory while the API is walked and land
+# in one lake snapshot per FLUSH_EVERY facilities, plus a final one (also
+# when the run dies), so a run that times out keeps what it fetched and
+# --skip-done resumes from there. A dry run opens the lake read-only and
+# never flushes.
+# ---------------------------------------------------------------------------
+
+FLUSH_EVERY = 25
+EVENT_COLS = (
+    "event_id", "funder_id", "facility_id", "amount_usd", "amount_currency",
+    "fiscal_year", "period_start", "period_end", "award_id", "award_title",
+    "program", "relation", "source", "source_url", "retrieved_at",
+    "confidence", "notes",
+)
+
+
+class LakeBuffer:
+    """funders and funding_events rows waiting for the next flush()."""
+
+    def __init__(self) -> None:
+        self.events: list[tuple] = []
+        # funder_id -> (name, type, country, url)
+        self.funders: dict[str, tuple] = {}
+
+    def add_event(self, **cols) -> None:
+        self.events.append(tuple(cols.get(c) for c in EVENT_COLS))
+
+
+def flush(conn, buf: LakeBuffer, message: str) -> None:
+    """Write the buffer as one snapshot; the old per-row INSERT ... ON
+    CONFLICT (event_id) DO NOTHING is an insert-only MERGE (first row
+    staged for a repeated event_id wins, as the first INSERT did)."""
+    if not buf.events and not buf.funders:
+        return
+    stats = None
+    with lto_db.transaction(conn, message):
+        if buf.funders:
+            conn.execute(
+                "CREATE OR REPLACE TEMP TABLE _stage_funders (funder_id VARCHAR, "
+                "name VARCHAR, type VARCHAR, country VARCHAR, url VARCHAR)")
+            conn.executemany("INSERT INTO _stage_funders VALUES (?, ?, ?, ?, ?)",
+                             [(fid, *v) for fid, v in buf.funders.items()])
+            lto_db.merge_upsert(conn, "funders", ["funder_id"], "_stage_funders",
+                                insert_only=True)
+            conn.execute("DROP TABLE _stage_funders")
+        if buf.events:
+            conn.execute(
+                f"CREATE OR REPLACE TEMP TABLE _stage_events AS SELECT "
+                f"{', '.join(EVENT_COLS)}, 0::BIGINT AS _seq "
+                f"FROM funding_events LIMIT 0")
+            conn.executemany(
+                f"INSERT INTO _stage_events VALUES "
+                f"({', '.join(['?'] * (len(EVENT_COLS) + 1))})",
+                [(*e, i) for i, e in enumerate(buf.events)])
+            stats = lto_db.merge_upsert(conn, "funding_events", ["event_id"],
+                                        "_stage_events", insert_only=True,
+                                        order_by="_seq")
+            conn.execute("DROP TABLE _stage_events")
+        lto_db.assert_integrity(conn, ["funders", "funding_events"])
+    print(f"[lake] {message}"
+          + (f"  (staged={stats['source_rows']} new={stats['inserted']} "
+             f"already-present={stats['matched']})" if stats else ""))
+    buf.events.clear()
+    buf.funders.clear()
 
 
 def load_overrides(path: Path) -> dict[str, dict]:
@@ -141,21 +210,14 @@ def fetch_org(sess: requests.Session, ein: str) -> dict | None:
     return r.json()
 
 
-def ensure_self_funder(conn) -> str:
+def ensure_self_funder(buf: LakeBuffer) -> str:
+    """Queue the self-funder row; flush() inserts it only if absent."""
     fid = funder_id_990()
-    hit = conn.execute(
-        "SELECT funder_id FROM funders WHERE funder_id = ?", [fid]
-    ).fetchone()
-    if not hit:
-        conn.execute(
-            "INSERT INTO funders (funder_id, name, type, country, url) "
-            "VALUES (?, ?, ?, 'US', ?)",
-            [fid, FUNDER_NAME, FUNDER_TYPE, FUNDER_URL],
-        )
+    buf.funders[fid] = (FUNDER_NAME, FUNDER_TYPE, "US", FUNDER_URL)
     return fid
 
 
-def write_filings(conn, funder_id: str, facility: dict, ein: str,
+def write_filings(buf: LakeBuffer, funder_id: str, facility: dict, ein: str,
                   filings: list[dict], start_fy: int, end_fy: int,
                   dry: bool) -> int:
     if dry or not filings:
@@ -179,31 +241,21 @@ def write_filings(conn, funder_id: str, facility: dict, ein: str,
             f"ein={ein}; total_expenses_usd={int(exp)}; "
             f"pdf={f.get('pdf_url') or ''}"
         )[:500]
-        try:
-            conn.execute("""
-                INSERT INTO funding_events (
-                    event_id, funder_id, facility_id,
-                    amount_usd, amount_currency,
-                    fiscal_year, period_start, period_end,
-                    award_id, award_title, program, relation,
-                    source, source_url, retrieved_at, confidence, notes
-                )
-                VALUES (?, ?, ?, ?, 'USD', ?, NULL, NULL,
-                        ?, 'Form 990 total revenue',
-                        'Form 990 (annual filing)',
-                        'annual-revenue-990',
-                        'ProPublica Nonprofit Explorer',
-                        ?, current_date, 'high', ?)
-                ON CONFLICT (event_id) DO NOTHING
-            """, [eid, funder_id, fid, rev, fy,
-                  f"EIN-{ein}-FY{fy}", src_url, notes])
-            inserted += 1
-        except Exception as e:
-            print(f"[warn] insert {ein}/{fy} failed: {e}")
+        buf.add_event(
+            event_id=eid, funder_id=funder_id, facility_id=fid,
+            amount_usd=rev, amount_currency="USD", fiscal_year=fy,
+            award_id=f"EIN-{ein}-FY{fy}",
+            award_title="Form 990 total revenue",
+            program="Form 990 (annual filing)",
+            relation="annual-revenue-990",
+            source="ProPublica Nonprofit Explorer",
+            source_url=src_url, retrieved_at=date.today(),
+            confidence="high", notes=notes)
+        inserted += 1
     return inserted
 
 
-def process_facility(conn, sess: requests.Session, funder_id: str,
+def process_facility(buf: LakeBuffer, sess: requests.Session, funder_id: str,
                      facility: dict, overrides: dict,
                      start_fy: int, end_fy: int, dry: bool) -> dict:
     fid = facility["facility_id"]
@@ -242,7 +294,7 @@ def process_facility(conn, sess: requests.Session, funder_id: str,
         return {"hit": False, "filings": 0, "inserted": 0, "skipped": False}
 
     filings = org.get("filings_with_data", [])
-    inserted = write_filings(conn, funder_id, facility, chosen_ein,
+    inserted = write_filings(buf, funder_id, facility, chosen_ein,
                              filings, start_fy, end_fy, dry)
     return {"hit": True, "ein": chosen_ein,
             "org_name": org.get("organization", {}).get("name"),
@@ -251,7 +303,9 @@ def process_facility(conn, sess: requests.Session, funder_id: str,
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--db", type=Path, default=DEFAULT_DB)
+    lto_db.add_argparse_catalog(ap)
+    ap.add_argument("--db", dest="catalog", type=Path,
+                    help="deprecated alias of --catalog")
     ap.add_argument("--overrides", type=Path, default=DEFAULT_OVERRIDES)
     ap.add_argument("--start-fy", type=int, default=2015)
     ap.add_argument("--end-fy",   type=int, default=2024)
@@ -262,13 +316,15 @@ def main() -> int:
                     help="Skip facilities that already have a 990 row.")
     args = ap.parse_args()
 
-    if not args.db.exists():
-        print(f"[error] db not found: {args.db}", file=sys.stderr)
+    try:
+        conn = lto_db.connect(read_only=args.dry_run, catalog=args.catalog,
+                              data=args.lake_data)
+    except lto_db.LakeNotFound as e:
+        print(f"[error] {e}", file=sys.stderr)
         return 2
-
-    conn = duckdb.connect(str(args.db))
     sess = session()
-    funder_id = ensure_self_funder(conn)
+    buf = LakeBuffer()
+    funder_id = ensure_self_funder(buf)
     overrides = load_overrides(args.overrides)
 
     rows = conn.execute("""
@@ -306,30 +362,43 @@ def main() -> int:
           f"{'  (dry-run)' if args.dry_run else ''}")
 
     totals = {"hit": 0, "skipped": 0, "no_match": 0, "inserted": 0}
-    for i, fac in enumerate(facilities, 1):
-        try:
-            r = process_facility(conn, sess, funder_id, fac, overrides,
-                                 args.start_fy, args.end_fy, args.dry_run)
-        except Exception as e:
+    # Checkpoint: one snapshot per FLUSH_EVERY facilities, plus the rest
+    # in `finally` (a crash or Ctrl-C keeps what was fetched).
+    span = f"FY{args.start_fy}-FY{args.end_fy}"
+    first = 1
+    try:
+        for i, fac in enumerate(facilities, 1):
+            if not args.dry_run and i > first and (i - 1) % FLUSH_EVERY == 0:
+                flush(conn, buf, f"fetch_funding_990: {span}, facilities "
+                                 f"{first}-{i - 1} of {len(facilities)}")
+                first = i
+            try:
+                r = process_facility(buf, sess, funder_id, fac, overrides,
+                                     args.start_fy, args.end_fy, args.dry_run)
+            except Exception as e:
+                print(f"  [{i}/{len(facilities)}] {(fac['acronym'] or ''):10s} "
+                      f"{fac['canonical_name'][:50]:50s}  ERROR: {e}")
+                continue
+            if r.get("skipped"):
+                totals["skipped"] += 1
+                print(f"  [{i}/{len(facilities)}] {(fac['acronym'] or ''):10s} "
+                      f"{fac['canonical_name'][:50]:50s}  SKIPPED (override)")
+                continue
+            if not r.get("hit"):
+                totals["no_match"] += 1
+                print(f"  [{i}/{len(facilities)}] {(fac['acronym'] or ''):10s} "
+                      f"{fac['canonical_name'][:50]:50s}  no 990 match")
+                continue
+            totals["hit"] += 1
+            totals["inserted"] += r["inserted"]
             print(f"  [{i}/{len(facilities)}] {(fac['acronym'] or ''):10s} "
-                  f"{fac['canonical_name'][:50]:50s}  ERROR: {e}")
-            continue
-        if r.get("skipped"):
-            totals["skipped"] += 1
-            print(f"  [{i}/{len(facilities)}] {(fac['acronym'] or ''):10s} "
-                  f"{fac['canonical_name'][:50]:50s}  SKIPPED (override)")
-            continue
-        if not r.get("hit"):
-            totals["no_match"] += 1
-            print(f"  [{i}/{len(facilities)}] {(fac['acronym'] or ''):10s} "
-                  f"{fac['canonical_name'][:50]:50s}  no 990 match")
-            continue
-        totals["hit"] += 1
-        totals["inserted"] += r["inserted"]
-        print(f"  [{i}/{len(facilities)}] {(fac['acronym'] or ''):10s} "
-              f"{fac['canonical_name'][:50]:50s}  EIN={r['ein']}  "
-              f"filings={r['filings']:2d}  wrote={r['inserted']:2d}")
-        time.sleep(0.1)
+                  f"{fac['canonical_name'][:50]:50s}  EIN={r['ein']}  "
+                  f"filings={r['filings']:2d}  wrote={r['inserted']:2d}")
+            time.sleep(0.1)
+    finally:
+        if not args.dry_run:
+            flush(conn, buf, f"fetch_funding_990: {span}, facilities "
+                             f"{first}-{len(facilities)} of {len(facilities)}")
 
     print(f"[done] hit={totals['hit']}  no_match={totals['no_match']}  "
           f"skipped={totals['skipped']}  inserted={totals['inserted']}")

@@ -11,6 +11,9 @@ those are *flagged* suspect URLs the agent couldn't replace from
 training data. They stay in the audit output for CI's HTTP-HEAD
 checker to verify and (if dead) drop.
 
+A real run lands in the lake as one snapshot (commit message
+``apply_url_corrections: …``); --dry-run opens the lake read-only.
+
 Usage::
 
     python scripts/apply_url_corrections.py
@@ -21,19 +24,23 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
+from contextlib import nullcontext
 from pathlib import Path
 
-import duckdb
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import lto_db  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "lto.duckdb"
 RAW_DIR = ROOT / "data" / "raw"
 CONF_RANK = {"high": 3, "medium": 2, "low": 1, None: 0}
 
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--db", type=Path, default=DEFAULT_DB)
+    lto_db.add_argparse_catalog(ap)
+    ap.add_argument("--db", dest="catalog", type=Path,
+                    help="deprecated alias of --catalog")
     ap.add_argument("--min-confidence", default="high",
                     choices=["high", "medium", "low"])
     ap.add_argument("--dry-run", action="store_true")
@@ -74,7 +81,11 @@ def main() -> int:
 
     applied = 0
     skipped = 0
-    with duckdb.connect(str(args.db)) as conn:
+    with lto_db.connect(read_only=args.dry_run, catalog=args.catalog,
+                        data=args.lake_data) as conn, \
+            (nullcontext() if args.dry_run else lto_db.transaction(
+                conn, f"apply_url_corrections: people.homepage_url, "
+                      f"{len(candidates)} candidate(s) >= {args.min_confidence}")):
         for r in candidates:
             name = (r.get("name") or "").strip()
             new_url = r.get("suggested_url")
@@ -107,6 +118,8 @@ def main() -> int:
                 )
                 applied += 1
                 print(f"  [ok] {name}: {old_url} -> {new_url}")
+        if not args.dry_run:
+            lto_db.assert_integrity(conn, ["people"])
 
     mode = "[dry-run] would have" if args.dry_run else "[apply_url]"
     print(f"{mode} updated {applied} rows; skipped {skipped}.")

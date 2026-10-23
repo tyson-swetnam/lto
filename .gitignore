@@ -36,6 +36,14 @@ db/parquet/*.parquet
 !data/raw/J-AZWATER/
 !data/raw/J-AZWATER/*.json
 
+# Exception: fetched people inputs (second people wave + bios) are committed
+# for the same reason — the first people wave's raw JSON was never kept, so
+# it cannot be re-loaded or re-checked. Fetch caches stay ignored.
+!data/raw/R-PEOPLE2/
+!data/raw/R-PEOPLE2/*.json
+!data/raw/R-PEOPLE2-BIO/
+!data/raw/R-PEOPLE2-BIO/*.json
+
 # Large raster deliverables — too big for GitHub without LFS.
 # Use `git add -f path.img` only after `git lfs install` has been run.
 *.img
@@ -69,7 +77,17 @@ db/*.duckdb.bak
 # track or push.
 COMMIT_*.sh
 
-# MESA publish staging + local DuckLake (publish_to_mesa.py); parquet stays canonical
+# DuckLake store of record (scripts/lto_db.py): SQLite catalog + data files.
+# Local working state, rebuilt from public/parquet by
+# scripts/rebuild_lake_from_parquet.py; public/parquet stays canonical.
+db/lto_catalog.sqlite
+db/lto_catalog.sqlite-*
+db/lto_catalog.sqlite.lock
+*.sqlite.lock
+db/lake/
+
+# MESA publish staging, and the retired publish-time lake
+# (publish_to_mesa.py no longer builds it; ignored so old copies stay out).
 .mesa_publish/
 .mesa_publish_avus.json
 db/*.ducklake

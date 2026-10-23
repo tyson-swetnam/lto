@@ -32,7 +32,7 @@ checkpoint.
 
 Environment::
 
-    OPENALEX_EMAIL=tswetnam@arizona.edu   # polite pool, higher rate limit
+    OPENALEX_API_KEY=...   # required (scripts/openalex_auth.py)
 
 Usage::
 
@@ -41,7 +41,15 @@ Usage::
     python scripts/seed_people_from_openalex.py --top-authors 5  # fewer per facility
     python scripts/seed_people_from_openalex.py --dry-run        # resolve only
     python scripts/seed_people_from_openalex.py --force-refresh  # re-check facilities
-    python scripts/seed_people_from_openalex.py --export-parquet # refresh parquets
+
+Writes the DuckLake store of record (scripts/lto_db.py): one snapshot per
+facility (so an interrupted run keeps what it finished, as the progress
+checkpoint assumes). ``--export-parquet`` is a no-op now; publish with
+export_parquet.py.
+
+person_id is the name-only stable hash shared by the people loaders; an
+existing person with the author's ORCID or OpenAlex id, or under the
+pre-lake hash(name|orcid|openalex_id), keeps that id.
 
 Typical wall-clock time: ~5-8 minutes for all 210 facilities in the
 polite pool.
@@ -65,13 +73,13 @@ except ImportError:
     print("[error] pip install requests --break-system-packages", file=sys.stderr)
     raise
 
-import duckdb
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import lto_db  # noqa: E402
+from load_people_research import resolve_person_id  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "lto.duckdb"
 OVERRIDES = ROOT / "data" / "seed" / "openalex_institution_overrides.csv"
 PROGRESS = ROOT / "data" / "seed" / ".openalex_seed_progress.json"
-PARQUET_OUT = [ROOT / "db" / "parquet", ROOT / "public" / "parquet"]
 API = "https://api.openalex.org"
 
 
@@ -260,8 +268,8 @@ def top_authors(sess: requests.Session, institution_id: str,
 
 # ── DB upsert ───────────────────────────────────────────────────────
 def person_id(name: str, orcid: str = "", openalex_id: str = "") -> str:
-    """ORCID or openalex_id is the strongest disambiguator; fall back to
-    name alone."""
+    """The pre-lake id, hash(name|orcid|openalex_id). Only used to find a
+    row this script minted before; new people get the name-only id."""
     key = f"{name.strip().lower()}|{(orcid or '').strip()}|{(openalex_id or '').strip()}"
     return hashlib.sha1(key.encode("utf-8")).hexdigest()[:16]
 
@@ -279,14 +287,14 @@ def upsert_person(conn, author: dict) -> str:
     orcid = author.get("orcid")
     if orcid:
         orcid = orcid.replace("https://orcid.org/", "")
-    pid = person_id(name, orcid or "", oa_short)
+    pid = resolve_person_id(conn, name, orcid, oa_short,
+                            legacy_id=person_id(name, orcid or "", oa_short))
     given, family = split_name(name)
     concepts = author.get("x_concepts") or author.get("topics") or []
     interests = ", ".join(c.get("display_name", "") for c in concepts[:5]).strip(", ")
 
-    existing = conn.execute(
-        "SELECT 1 FROM people WHERE person_id = ?", [pid]
-    ).fetchone()
+    existing = lto_db.scalar(
+        conn, "SELECT 1 FROM people WHERE person_id = ?", [pid])
     if existing is None:
         conn.execute(
             """
@@ -300,48 +308,39 @@ def upsert_person(conn, author: dict) -> str:
             [pid, name, family, given, orcid, oa_short, interests, "active"],
         )
     else:
-        # Only UPDATE if the row has no authorship rows yet (avoids the
-        # DuckDB FK-update limitation that bit the enricher earlier).
-        has_refs = conn.execute(
-            "SELECT 1 FROM authorship WHERE person_id = ? LIMIT 1", [pid]
-        ).fetchone()
-        if has_refs is None:
-            conn.execute(
-                """
-                UPDATE people SET
-                    name         = COALESCE(?, name),
-                    name_family  = COALESCE(?, name_family),
-                    name_given   = COALESCE(?, name_given),
-                    orcid        = COALESCE(?, orcid),
-                    openalex_id  = COALESCE(?, openalex_id),
-                    research_interests =
-                        COALESCE(NULLIF(?, ''), research_interests),
-                    updated_at = now()
-                WHERE person_id = ?
-                """,
-                [name, family, given, orcid, oa_short, interests, pid],
-            )
+        # The old guard (update only people with no authorship rows) worked
+        # around DuckDB's FK-update block; the lake has none, so an existing
+        # person is always filled in.
+        conn.execute(
+            """
+            UPDATE people SET
+                name         = COALESCE(?, name),
+                name_family  = COALESCE(?, name_family),
+                name_given   = COALESCE(?, name_given),
+                orcid        = COALESCE(?, orcid),
+                openalex_id  = COALESCE(?, openalex_id),
+                research_interests =
+                    COALESCE(NULLIF(?, ''), research_interests),
+                updated_at = now()
+            WHERE person_id = ?
+            """,
+            [name, family, given, orcid, oa_short, interests, pid],
+        )
     return pid
 
 
 def upsert_personnel(conn, person_pid: str, facility_id: str,
                      author: dict, institution_id: str) -> None:
     role = "Research Scientist"
-    conn.execute(
-        """
-        INSERT INTO facility_personnel (
-            person_id, facility_id, role, title, is_key_personnel,
-            source, source_url, retrieved_at, confidence, notes
-        )
-        VALUES (?, ?, ?, ?, ?, ?, ?, current_date, ?, ?)
-        ON CONFLICT (person_id, facility_id, role) DO UPDATE SET
-            source     = excluded.source,
-            source_url = excluded.source_url,
-            retrieved_at = excluded.retrieved_at,
-            confidence = excluded.confidence,
-            notes      = excluded.notes
-        """,
-        [person_pid, facility_id, role,
+    # Was INSERT ... ON CONFLICT DO UPDATE: a match refreshes only the
+    # provenance columns, never title / is_key_personnel.
+    lto_db.merge_upsert(
+        conn, "facility_personnel", ["person_id", "facility_id", "role"],
+        "SELECT ? AS person_id, ? AS facility_id, ? AS role, ? AS title, "
+        "?::BOOLEAN AS is_key_personnel, ? AS source, ? AS source_url, "
+        "current_date AS retrieved_at, ? AS confidence, ? AS notes",
+        update_cols=["source", "source_url", "retrieved_at", "confidence", "notes"],
+        params=[person_pid, facility_id, role,
          f"Top-{role.lower()} publisher at {author.get('display_name') or ''}",
          False, "openalex:top-authors",
          f"https://openalex.org/{institution_id}", "medium",
@@ -366,9 +365,23 @@ def save_progress(data: dict) -> None:
 
 
 # ── Main ────────────────────────────────────────────────────────────
+def catalog_arg(args) -> Path | None:
+    """--db is the pre-lake flag, kept as an alias of --catalog. The retired
+    db/lto.duckdb file itself is not a catalog, so it is ignored."""
+    if args.db is None or args.catalog is not None:
+        return args.catalog
+    if args.db.suffix == ".duckdb":
+        print(f"[deprecated] --db {args.db} ignored (db/lto.duckdb is retired); "
+              f"use --catalog", file=sys.stderr)
+        return None
+    return args.db
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--db", type=Path, default=DEFAULT_DB)
+    lto_db.add_argparse_catalog(ap)
+    ap.add_argument("--db", type=Path, default=None,
+                    help="deprecated alias of --catalog (a db/lto.duckdb path is ignored)")
     ap.add_argument("--limit", type=int, default=0,
                     help="Max facilities to process (0 = all)")
     ap.add_argument("--top-authors", type=int, default=10,
@@ -378,22 +391,22 @@ def main() -> int:
     ap.add_argument("--force-refresh", action="store_true",
                     help="Ignore the progress checkpoint and re-check every facility")
     ap.add_argument("--export-parquet", action="store_true",
-                    help="Re-export people + facility_personnel parquets after the run")
+                    help="deprecated no-op: run scripts/export_parquet.py to publish")
     args = ap.parse_args()
 
-    if not args.db.exists():
-        print(f"[error] db not found: {args.db}", file=sys.stderr)
+    try:
+        conn = lto_db.connect(read_only=args.dry_run, catalog=catalog_arg(args),
+                              data=args.lake_data)
+    except lto_db.LakeNotFound as e:
+        print(f"[error] {e}", file=sys.stderr)
         return 2
-
-    conn = duckdb.connect(str(args.db))
     sess = session()
     overrides = load_overrides()
     progress = {} if args.force_refresh else load_progress()
 
-    facilities = conn.execute(
-        "SELECT facility_id, canonical_name, acronym, url, facility_type "
-        "FROM facilities ORDER BY canonical_name"
-    ).fetchall()
+    facilities = lto_db.rows(
+        conn, "SELECT facility_id, canonical_name, acronym, url, facility_type "
+              "FROM facilities ORDER BY canonical_name")
     facilities = [
         {"facility_id": r[0], "canonical_name": r[1], "acronym": r[2],
          "url": r[3], "facility_type": r[4]}
@@ -456,15 +469,21 @@ def main() -> int:
 
         totals["resolved"] += 1
         n = 0
-        for a in authors:
-            if args.dry_run:
-                continue
+        if not args.dry_run:
+            # One snapshot per facility. A failed statement aborts the
+            # transaction, so an author write error now rolls back this
+            # facility's authors (none half-land) and the run moves on.
             try:
-                pid = upsert_person(conn, a)
-                upsert_personnel(conn, pid, fid, a, chosen)
-                n += 1
+                with lto_db.transaction(conn, f"seed_people_from_openalex: "
+                                              f"{f['canonical_name'][:60]} ({chosen})"):
+                    for a in authors:
+                        pid = upsert_person(conn, a)
+                        upsert_personnel(conn, pid, fid, a, chosen)
+                        n += 1
+                    lto_db.assert_integrity(conn, ["people", "facility_personnel"])
             except Exception as e:
-                print(f"    author write error for {a.get('display_name')}: {e}")
+                print(f"    author write error at {f['canonical_name'][:46]}: {e}")
+                n = 0
         totals["authors"] += n
         note = f"  (skipped stubs: {','.join(stub_skipped)})" if stub_skipped else ""
         print(f"  [{i}/{len(facilities)}] {f['canonical_name'][:46]:<46} "
@@ -483,12 +502,8 @@ def main() -> int:
           f"authors_written={totals['authors']}")
 
     if args.export_parquet and not args.dry_run:
-        for base in PARQUET_OUT:
-            base.mkdir(parents=True, exist_ok=True)
-            for t in ("people", "facility_personnel"):
-                out = base / f"{t}.parquet"
-                conn.execute(f"COPY {t} TO '{out}' (FORMAT PARQUET)")
-                print(f"[parquet] wrote {out}")
+        print("[parquet] --export-parquet is a no-op now: run scripts/export_parquet.py "
+              "(the only writer of public/parquet)")
     conn.close()
     return 0
 

@@ -1,0 +1,784 @@
+{
+ "batch_id": "R-PEOPLE2-USFS-EFR-01",
+ "retrieved_at": "2026-10-22",
+ "verified_by": "adversarial-verifier 2026-10-22",
+ "facilities": [
+  {
+   "facility_id": "a5e14adead5ebf35",
+   "pages_fetched": [
+    {
+     "url": "https://sagehen.ucnature.org/",
+     "status": 200
+    },
+    {
+     "url": "https://sagehen.ucnature.org/staff/",
+     "status": 200
+    },
+    {
+     "url": "https://sagehen.ucnature.org/about/",
+     "status": 200
+    },
+    {
+     "url": "https://sagehen.ucnature.org/history/",
+     "status": 200
+    },
+    {
+     "url": "https://sagehen.ucnature.org/timeline/",
+     "status": 200
+    },
+    {
+     "url": "https://ucnature.org/reserves/sagehen-creek-field-station/",
+     "status": 200
+    },
+    {
+     "url": "https://research.fs.usda.gov/psw/forestsandranges/locations/sagehen",
+     "status": 200
+    },
+    {
+     "url": "https://ourenvironment.berkeley.edu/people/neil-d-tsutsui",
+     "status": 200
+    },
+    {
+     "url": "https://nature.berkeley.edu/tsutsuilab/",
+     "status": 404
+    },
+    {
+     "url": "https://www.wsl.ch/en/staff/kirchner",
+     "status": 200
+    },
+    {
+     "url": "https://www.wsl.ch/en/news/king-carl-xvi-gustaf-professorship-in-environmental-sciences-awarded-to-james-kirchner/",
+     "status": 200
+    }
+   ],
+   "notes": "sagehen.ucnrs.org now redirects to sagehen.ucnature.org (facility url should be updated). Station is run by UC Berkeley under a USFS special-use permit; staff page names Reserve Director Tim Brown, Faculty Director Neil Tsutsui, and Senior Advisor & Director Emeritus James Kirchner. The USFS PSW Sagehen EF page lists no USFS key personnel, only the station contact. History page names P. R. Needham as the 1951 faculty director and A. Starker Leopold as co-founder. Faculty lab URL on the staff page (nature.berkeley.edu/tsutsuilab/) returns 404; departmental profile used instead. On-site steward Dan Sayler (maintenance) omitted as non-scientific staff."
+  },
+  {
+   "facility_id": "def3b244cd0760d1",
+   "pages_fetched": [
+    {
+     "url": "https://research.fs.usda.gov/srs/forestsandranges/locations/calhoun",
+     "status": 200
+    },
+    {
+     "url": "https://research.fs.usda.gov/about/people/mac.a.callaham",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0001-7915-427X/person",
+     "status": 200
+    },
+    {
+     "url": "https://research.fs.usda.gov/treesearch/49096",
+     "status": 200
+    },
+    {
+     "url": "https://czo-archive.criticalzone.org/calhoun/people/",
+     "status": 200
+    },
+    {
+     "url": "https://warnell.uga.edu/team-member/daniel-markewitz/",
+     "status": 200
+    },
+    {
+     "url": "https://warnell.uga.edu/profiles/dr-daniel-markewitz",
+     "status": 404
+    },
+    {
+     "url": "https://nicholas.duke.edu/people/faculty/richter",
+     "status": 200
+    }
+   ],
+   "notes": "USFS SRS page lists Mac A. Callaham (Team Leader/Research Ecologist) as the Key Personnel point of contact. Richter/Markewitz roles verified only on the archived Calhoun CZO people page (CZO program ended Dec 2020), so they reflect the CZO era. Duke profile returned an Anubis anti-bot challenge rather than content; not bypassed, so no Richter bio. Markewitz's stored homepage URL is dead (404); new profile is https://warnell.uga.edu/team-member/daniel-markewitz/."
+  },
+  {
+   "facility_id": "85c3b53e9ef95bd1",
+   "pages_fetched": [
+    {
+     "url": "https://www.fs.usda.gov/rmrs/experimental-forests-ranges/glacier-lake-ecosystem-experiments-site",
+     "status": 200
+    },
+    {
+     "url": "https://research.fs.usda.gov/rmrs/forestsandranges/locations/glees",
+     "status": 200
+    },
+    {
+     "url": "https://research.fs.usda.gov/about/people/john.frank",
+     "status": 200
+    },
+    {
+     "url": "https://research.fs.usda.gov/about/people/john.korfmacher",
+     "status": 200
+    },
+    {
+     "url": "https://research.fs.usda.gov/about/people/george.valentine",
+     "status": 200
+    },
+    {
+     "url": "https://research.fs.usda.gov/about/people/kathleen.a.dwire",
+     "status": 200
+    },
+    {
+     "url": "https://research.fs.usda.gov/rmrs/understory/glacier-lakes-ecosystem-experiments-site-glees-brochure",
+     "status": 200
+    },
+    {
+     "url": "https://research.fs.usda.gov/treesearch/7430",
+     "status": 200
+    }
+   ],
+   "notes": "Old fs.usda.gov URL redirects to the RMRS home; current page is research.fs.usda.gov/rmrs/forestsandranges/locations/glees. Its Key Personnel block names John M. Frank as Scientist in Charge, with Korfmacher and Valentine as scientists and collaborators. Body text still tells researchers to contact Dr. Kate Dwire as GLEES scientist-in-charge, but her profile marks her as a Former Employee, so she is recorded as a former holder. Existing row 'Robert M. Musselman': every fetched page spells the name Robert C. Musselman (R. C. Musselman, technical coordinator of the 1994 GLEES GTR). No fetched page calls him founding PI."
+  },
+  {
+   "facility_id": "53c5bb60afd13bc5",
+   "pages_fetched": [
+    {
+     "url": "https://research.fs.usda.gov/psw/projects/krew",
+     "status": 404
+    },
+    {
+     "url": "https://research.fs.usda.gov/psw/forestsandranges/locations/teakettle",
+     "status": 200
+    },
+    {
+     "url": "https://www.tularebasinwatershedpartnership.org/files/60cf2576c/krewoverview_finaldraft_v2.pdf",
+     "status": 200
+    },
+    {
+     "url": "https://research.fs.usda.gov/treesearch/62541",
+     "status": 200
+    },
+    {
+     "url": "https://research.fs.usda.gov/treesearch/44859",
+     "status": 200
+    },
+    {
+     "url": "https://research.fs.usda.gov/treesearch/48815",
+     "status": 200
+    },
+    {
+     "url": "https://www.fs.usda.gov/rds/archive/catalog/RDS-2017-0040",
+     "status": 200
+    },
+    {
+     "url": "https://www.fs.usda.gov/rds/archive/products/RDS-2017-0040/_metadata_RDS-2017-0040.html",
+     "status": 200
+    },
+    {
+     "url": "https://www.fs.usda.gov/rds/archive/products/RDS-2018-0028/_metadata_RDS-2018-0028.html",
+     "status": 200
+    },
+    {
+     "url": "https://research.fs.usda.gov/about/people/carolyn.hunsaker",
+     "status": 200
+    },
+    {
+     "url": "https://research.fs.usda.gov/about/people/joseph.wagenbrenner",
+     "status": 200
+    },
+    {
+     "url": "https://research.fs.usda.gov/about/people/mohammad.safeeq",
+     "status": 200
+    },
+    {
+     "url": "https://research.fs.usda.gov/about/people/malcolm.p.north",
+     "status": 200
+    },
+    {
+     "url": "https://ecohydrology.ucmerced.edu/data/",
+     "status": 200
+    },
+    {
+     "url": "https://es.ucmerced.edu/people/roger-bales",
+     "status": 403
+    },
+    {
+     "url": "https://es.ucmerced.edu/people/martha-conklin",
+     "status": 403
+    }
+   ],
+   "notes": "The facility URL (research.fs.usda.gov/psw/projects/krew) is 404 today, and no current official page names a KREW lead. The PSW KREW Project Overview PDF (c.2016, hosted by Tulare Basin Watershed Partnership) lists Carolyn Hunsaker as Principal Scientist. Her profile now reads Volunteer / Scientist Emerita. Joe Wagenbrenner (PSW Research Hydrologist) is the point of contact on the KREW streamwater chemistry data publication and lead author of the 2021 KREW infrastructure paper, so he is the most likely current lead, but no page gives him that title. Mohammad Safeeq is listed as a 'Former Cooperator' and is not added. The UC Merced profiles for Bales and Conklin return 403. Stored homepage URLs for Hunsaker and North (research.fs.usda.gov/people/...) are 404; the current profiles are under /about/people/."
+  },
+  {
+   "facility_id": "db737b212afb72fd",
+   "pages_fetched": [
+    {
+     "url": "https://research.fs.usda.gov/iitf/forestsandranges/locations/sabana",
+     "status": 404
+    },
+    {
+     "url": "https://research.fs.usda.gov/iitf/about/rd",
+     "status": 200
+    },
+    {
+     "url": "https://research.fs.usda.gov/iitf/forestsandranges",
+     "status": 200
+    },
+    {
+     "url": "https://research.fs.usda.gov/iitf/forestsandranges/locations/lef",
+     "status": 200
+    },
+    {
+     "url": "https://research.fs.usda.gov/iitf/people",
+     "status": 200
+    },
+    {
+     "url": "https://research.fs.usda.gov/iitf/about",
+     "status": 200
+    },
+    {
+     "url": "https://research.fs.usda.gov/about/people/grizelle.gonzalez",
+     "status": 200
+    },
+    {
+     "url": "https://research.fs.usda.gov/about/people/ariel.lugo",
+     "status": 200
+    },
+    {
+     "url": "https://czo-archive.criticalzone.org/luquillo/infrastructure/field-area/sabana-field-station1/",
+     "status": 200
+    }
+   ],
+   "notes": "Official IITF pages describe the Sabana Field Research Station as an IITF facility but name no station manager. The current IITF Director (Grizelle Gonzalez, per her profile and the IITF people directory) is recorded as the leadership holder (medium confidence, at parent-institute level). The archived Luquillo CZO Sabana page (pre-2020) lists 'Grizelle González - Project Leader, Research Unit' as the Sabana contact. Ariel Lugo's profile now reads Former Employee / Scientist Emeritus, and the stored homepage URL (research.fs.usda.gov/people/ariel-lugo) is outdated."
+  },
+  {
+   "facility_id": "7b551249dcfba4fa",
+   "pages_fetched": [
+    {
+     "url": "https://www.ars.usda.gov/pacific-west-area/fairbanks-alaska/subarctic-agricultural-research-unit/",
+     "status": 404
+    },
+    {
+     "url": "https://www.ars.usda.gov/pacific-west-area/fairbanks-alaska/subarctic-agricultural-research-unit/people/",
+     "status": 404
+    },
+    {
+     "url": "https://www.ars.usda.gov/pacific-west-area/fairbanks-ak/",
+     "status": 404
+    },
+    {
+     "url": "https://www.ars.usda.gov/pacific-west-area/",
+     "status": 200
+    },
+    {
+     "url": "https://agresearchmag.ars.usda.gov/2011/aug/locations",
+     "status": 200
+    },
+    {
+     "url": "https://www.uaf.edu/afes/places/fairbanks/",
+     "status": 200
+    },
+    {
+     "url": "https://www.uaf.edu/experts/mingchu-zhang.php",
+     "status": 200
+    }
+   ],
+   "notes": "NOTHING FOUND for current leadership. The ARS unit URLs return 404, and the ARS Pacific West Area page fetched today lists 21 locations with no Fairbanks/Alaska location. The only ARS mention is a 2011 ARS magazine listing ('Fairbanks, Alaska 1 research unit 22 employees'), so the unit appears to be closed or no longer listed. The adjacent Fairbanks Experiment Farm is a UAF facility (farm manager Kieran Gleason). It is not added because it is a different facility. Facility classification as experimental-forest-range also looks wrong."
+  }
+ ],
+ "people": [
+  {
+   "key": "tim-brown",
+   "existing_person_id": null,
+   "name": "Tim Brown",
+   "name_given": "Tim",
+   "name_family": "Brown",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "neil-tsutsui",
+   "existing_person_id": null,
+   "name": "Neil D. Tsutsui",
+   "name_given": "Neil D.",
+   "name_family": "Tsutsui",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://ourenvironment.berkeley.edu/people/neil-d-tsutsui",
+   "bio": "Professor in UC Berkeley's Department of Environmental Science, Policy, and Management. His lab investigates social insects, chiefly ants: their chemical signaling, behavior, ecology, genetics and evolution, through both field and laboratory work. He earned his PhD at UC San Diego.",
+   "bio_source_url": "https://ourenvironment.berkeley.edu/people/neil-d-tsutsui",
+   "research_interests": "social insect (ant) behavior; genetics and genomics; chemical ecology; science outreach and outdoor education",
+   "research_interests_source_url": "https://ourenvironment.berkeley.edu/people/neil-d-tsutsui"
+  },
+  {
+   "key": "james-kirchner",
+   "existing_person_id": null,
+   "name": "James W. Kirchner",
+   "name_given": "James W.",
+   "name_family": "Kirchner",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.wsl.ch/en/staff/kirchner",
+   "bio": "Hydrologist who directed the Swiss Federal Institute WSL from 2007 to 2012 and held ETH Zurich's chair in physics of environmental systems until August 2024; he remains a visiting scientist at WSL. Named the 2025/26 King Carl XVI Gustaf visiting professor, hosted by the Swedish University of Agricultural Sciences in Umea.",
+   "bio_source_url": "https://www.wsl.ch/en/news/king-carl-xvi-gustaf-professorship-in-environmental-sciences-awarded-to-james-kirchner/",
+   "research_interests": "hydrology of mountain and forested landscapes; precipitation, snowmelt and groundwater recharge; water availability for streams, lakes and forests",
+   "research_interests_source_url": "https://www.wsl.ch/en/news/king-carl-xvi-gustaf-professorship-in-environmental-sciences-awarded-to-james-kirchner/"
+  },
+  {
+   "key": "p-r-needham",
+   "existing_person_id": null,
+   "name": "P. R. Needham",
+   "name_given": "P. R.",
+   "name_family": "Needham",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "a-starker-leopold",
+   "existing_person_id": null,
+   "name": "A. Starker Leopold",
+   "name_given": "A. Starker",
+   "name_family": "Leopold",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "mac-callaham",
+   "existing_person_id": null,
+   "name": "Mac A. Callaham",
+   "name_given": "Mac A.",
+   "name_family": "Callaham",
+   "orcid": "0000-0001-7915-427X",
+   "orcid_source_url": "https://research.fs.usda.gov/about/people/mac.a.callaham",
+   "homepage_url": "https://research.fs.usda.gov/about/people/mac.a.callaham",
+   "bio": "Team leader and research ecologist at the USDA Forest Service Southern Research Station. Holds a biology PhD from Kansas State (2000) and an agronomy MS from the University of Georgia; his publications cover soil fauna, fire and smoke, and soil change.",
+   "bio_source_url": "https://research.fs.usda.gov/about/people/mac.a.callaham",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "daniel-markewitz",
+   "existing_person_id": "6771bf636098b7c5",
+   "name": "Daniel Markewitz",
+   "name_given": "Daniel",
+   "name_family": "Markewitz",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://warnell.uga.edu/team-member/daniel-markewitz/",
+   "bio": "Professor of soil-site productivity in UGA's Warnell forestry and natural resources school, where he has taught since 1998, with a 1996 Duke PhD. He studies how nutrient and water cycling shape forest soil and drainage-water chemistry and productivity. His current projects include critical zone science at Calhoun.",
+   "bio_source_url": "https://warnell.uga.edu/team-member/daniel-markewitz/",
+   "research_interests": "forest soil biogeochemistry; nutrient and hydrologic cycling; soil and stream water chemistry under land-use change; long-term soil quality; Calhoun critical zone science",
+   "research_interests_source_url": "https://warnell.uga.edu/team-member/daniel-markewitz/"
+  },
+  {
+   "key": "john-frank",
+   "existing_person_id": null,
+   "name": "John M. Frank",
+   "name_given": "John M.",
+   "name_family": "Frank",
+   "orcid": "0000-0001-6543-0333",
+   "orcid_source_url": "https://research.fs.usda.gov/about/people/john.frank",
+   "homepage_url": "https://research.fs.usda.gov/about/people/john.frank",
+   "bio": "Research ecologist with the USDA Forest Service Rocky Mountain Research Station. He holds a University of Wyoming ecology PhD (2016) and an electrical engineering MS from Kansas State. His listed work deals with eddy-covariance flux methods, snowmelt energy budgets and bark-beetle impacts in subalpine forests.",
+   "bio_source_url": "https://research.fs.usda.gov/about/people/john.frank",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "john-korfmacher",
+   "existing_person_id": null,
+   "name": "John L. Korfmacher",
+   "name_given": "John L.",
+   "name_family": "Korfmacher",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://research.fs.usda.gov/about/people/john.korfmacher",
+   "bio": "Physical scientist with the USDA Forest Service Rocky Mountain Research Station. He holds an MS in geography from the University of Nevada and co-authored a 2021 chapter describing GLEES.",
+   "bio_source_url": "https://research.fs.usda.gov/about/people/john.korfmacher",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "george-valentine",
+   "existing_person_id": null,
+   "name": "George P. Valentine",
+   "name_given": "George P.",
+   "name_family": "Valentine",
+   "orcid": "0009-0009-0403-7576",
+   "orcid_source_url": "https://research.fs.usda.gov/about/people/george.valentine",
+   "homepage_url": "https://research.fs.usda.gov/about/people/george.valentine",
+   "bio": "Ecologist with the USDA Forest Service Rocky Mountain Research Station.",
+   "bio_source_url": "https://research.fs.usda.gov/about/people/george.valentine",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "kathleen-dwire",
+   "existing_person_id": null,
+   "name": "Kathleen A. Dwire",
+   "name_given": "Kathleen A.",
+   "name_family": "Dwire",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://research.fs.usda.gov/about/people/kathleen.a.dwire",
+   "bio": "Research ecologist formerly with the USDA Forest Service Rocky Mountain Research Station, now listed as a former employee. She holds a PhD in fisheries from Oregon State University (2001) and an MS in plant ecology from UC Davis.",
+   "bio_source_url": "https://research.fs.usda.gov/about/people/kathleen.a.dwire",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "carolyn-hunsaker",
+   "existing_person_id": "7bae5581771793bb",
+   "name": "Carolyn T. Hunsaker",
+   "name_given": "Carolyn T.",
+   "name_family": "Hunsaker",
+   "orcid": "0000-0002-5662-2402",
+   "orcid_source_url": "https://research.fs.usda.gov/about/people/carolyn.hunsaker",
+   "homepage_url": "https://research.fs.usda.gov/about/people/carolyn.hunsaker",
+   "bio": "Scientist emerita and volunteer with the USDA Forest Service Pacific Southwest Research Station, holding a 1980 University of California doctorate in environmental science and engineering. Her publications include syntheses of the Kings River Experimental Watersheds' infrastructure, data and headwater-stream findings.",
+   "bio_source_url": "https://research.fs.usda.gov/about/people/carolyn.hunsaker",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "joseph-wagenbrenner",
+   "existing_person_id": null,
+   "name": "Joseph Wagenbrenner",
+   "name_given": "Joseph",
+   "name_family": "Wagenbrenner",
+   "orcid": "0000-0003-3317-5141",
+   "orcid_source_url": "https://research.fs.usda.gov/about/people/joseph.wagenbrenner",
+   "homepage_url": "https://research.fs.usda.gov/about/people/joseph.wagenbrenner",
+   "bio": "Research hydrologist with the USDA Forest Service Pacific Southwest Research Station. He received a PhD in biological and agricultural engineering from Washington State University (2013) and an MS in watershed science from Colorado State University. He is lead author of a 2021 paper on Kings River Experimental Watersheds infrastructure and data.",
+   "bio_source_url": "https://research.fs.usda.gov/about/people/joseph.wagenbrenner",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "malcolm-north",
+   "existing_person_id": "677f418d7108aeba",
+   "name": "Malcolm P. North",
+   "name_given": "Malcolm P.",
+   "name_family": "North",
+   "orcid": "0000-0002-9090-784X",
+   "orcid_source_url": "https://research.fs.usda.gov/about/people/malcolm.p.north",
+   "homepage_url": "https://research.fs.usda.gov/about/people/malcolm.p.north",
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "grizelle-gonzalez",
+   "existing_person_id": null,
+   "name": "Grizelle Gonzalez",
+   "name_given": "Grizelle",
+   "name_family": "Gonzalez",
+   "orcid": "0000-0003-3007-5540",
+   "orcid_source_url": "https://research.fs.usda.gov/about/people/grizelle.gonzalez",
+   "homepage_url": "https://research.fs.usda.gov/about/people/grizelle.gonzalez",
+   "bio": "Director of the USDA Forest Service International Institute of Tropical Forestry in Puerto Rico. A soil ecologist, she earned a 1999 PhD at the University of Colorado Boulder studying soil fauna, microbes and leaf-litter decay in tropical and subalpine forests, after biology degrees from the University of Puerto Rico.",
+   "bio_source_url": "https://research.fs.usda.gov/about/people/grizelle.gonzalez",
+   "research_interests": "soil ecology and biology; soil fauna and plant litter decomposition",
+   "research_interests_source_url": "https://research.fs.usda.gov/about/people/grizelle.gonzalez"
+  },
+  {
+   "key": "ariel-lugo",
+   "existing_person_id": "746e1ad0d1876655",
+   "name": "Ariel Lugo",
+   "name_given": "Ariel",
+   "name_family": "Lugo",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://research.fs.usda.gov/about/people/ariel.lugo",
+   "bio": "Scientist emeritus and former employee of the USDA Forest Service International Institute of Tropical Forestry. He earned an ecology PhD at the University of North Carolina at Chapel Hill (1969) and a biology MS at the University of Puerto Rico (1965).",
+   "bio_source_url": "https://research.fs.usda.gov/about/people/ariel.lugo",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "mingchu-zhang",
+   "existing_person_id": "833343a12c62a1d9",
+   "name": "Mingchu Zhang",
+   "name_given": "Mingchu",
+   "name_family": "Zhang",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.uaf.edu/experts/mingchu-zhang.php",
+   "bio": "Emeritus professor of natural resources and environmental studies at the University of Alaska Fairbanks, affiliated with the College of Natural Science and Mathematics and the Agricultural and Forestry Experiment Station. His agricultural research addresses crop selection for Alaska, soil fertility, fertilizers and composting.",
+   "bio_source_url": "https://www.uaf.edu/experts/mingchu-zhang.php",
+   "research_interests": "small grain and canola selection for Alaska; peony nutrient management; soil fertility; fertilizer technology; composting",
+   "research_interests_source_url": "https://www.uaf.edu/experts/mingchu-zhang.php"
+  }
+ ],
+ "affiliations": [
+  {
+   "facility_id": "a5e14adead5ebf35",
+   "person_key": "tim-brown",
+   "role": "director",
+   "title": "Reserve Director, Central Sierra Field Stations, UC Berkeley",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://sagehen.ucnature.org/staff/",
+   "evidence": "Reserve Director Tim Brown Central Sierra Field Stations University of California, Berkeley",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "a5e14adead5ebf35",
+   "person_key": "neil-tsutsui",
+   "role": "director",
+   "title": "Faculty Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://sagehen.ucnature.org/staff/",
+   "evidence": "Faculty Director Professor Neil Tsutsui Department of Environmental Science, Policy, and Management",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "a5e14adead5ebf35",
+   "person_key": "james-kirchner",
+   "role": "emeritus",
+   "title": "Senior Advisor & Director Emeritus",
+   "is_key_personnel": false,
+   "is_current": false,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://sagehen.ucnature.org/staff/",
+   "evidence": "Senior Advisor & Director Emeritus Prof. James W. Kirchner",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "a5e14adead5ebf35",
+   "person_key": "p-r-needham",
+   "role": "founding-PI",
+   "title": "Sagehen Faculty Director (founding, 1951)",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": 1951,
+   "end_year": null,
+   "source_url": "https://sagehen.ucnature.org/history/",
+   "evidence": "1951: Sagehen Creek Field Station Begins Sagehen Faculty Director, P. R. Needham",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "a5e14adead5ebf35",
+   "person_key": "a-starker-leopold",
+   "role": "founding-PI",
+   "title": "Co-founder (selected the Sagehen Creek site with Needham)",
+   "is_key_personnel": false,
+   "is_current": false,
+   "start_year": 1951,
+   "end_year": null,
+   "source_url": "https://sagehen.ucnature.org/history/",
+   "evidence": "Leopold and Needham settled on Sagehen Creek",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "def3b244cd0760d1",
+   "person_key": "mac-callaham",
+   "role": "scientist",
+   "title": "Key Personnel point of contact; Team Leader/Research Ecologist, USFS SRS",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://research.fs.usda.gov/srs/forestsandranges/locations/calhoun",
+   "evidence": "Key Personnel Point of Contact Person Mac A. Callaham, PhD Team Leader/Research Ecologist",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "85c3b53e9ef95bd1",
+   "person_key": "john-frank",
+   "role": "lead-PI",
+   "title": "Scientist in Charge; Research Ecologist, USFS RMRS",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://research.fs.usda.gov/rmrs/forestsandranges/locations/glees",
+   "evidence": "Key Personnel Scientist in Charge Person John M. Frank, PhD Research Ecologist",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "85c3b53e9ef95bd1",
+   "person_key": "john-korfmacher",
+   "role": "scientist",
+   "title": "Physical Scientist, USFS RMRS (Scientists and Collaborators)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://research.fs.usda.gov/rmrs/forestsandranges/locations/glees",
+   "evidence": "Scientists and Collaborators Person John L. Korfmacher Physical Scientist",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "85c3b53e9ef95bd1",
+   "person_key": "george-valentine",
+   "role": "scientist",
+   "title": "Ecologist, USFS RMRS (Scientists and Collaborators)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://research.fs.usda.gov/rmrs/forestsandranges/locations/glees",
+   "evidence": "Person George P. Valentine Ecologist",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "85c3b53e9ef95bd1",
+   "person_key": "kathleen-dwire",
+   "role": "lead-PI",
+   "title": "GLEES scientist-in-charge (former; profile lists Former Employee)",
+   "is_key_personnel": false,
+   "is_current": false,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://research.fs.usda.gov/rmrs/forestsandranges/locations/glees",
+   "evidence": "Please contact Dr. Kate Dwire, GLEES scientist-in-charge.",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "53c5bb60afd13bc5",
+   "person_key": "carolyn-hunsaker",
+   "role": "founding-PI",
+   "title": "Research Ecologist and Principal Scientist, KREW (c.2015 project overview; now Volunteer Scientist Emerita)",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.tularebasinwatershedpartnership.org/files/60cf2576c/krewoverview_finaldraft_v2.pdf",
+   "evidence": "Dr. Carolyn Hunsaker Research Ecologist and Principal Scientist",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "53c5bb60afd13bc5",
+   "person_key": "joseph-wagenbrenner",
+   "role": "scientist",
+   "title": "Research Hydrologist, USFS PSW; KREW data point of contact",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.fs.usda.gov/rds/archive/products/RDS-2017-0040/_metadata_RDS-2017-0040.html",
+   "evidence": "Point_of_Contact: Contact_Information: Contact_Person_Primary: Contact_Person: Joe Wagenbrenner",
+   "confidence": "low"
+  },
+  {
+   "facility_id": "db737b212afb72fd",
+   "person_key": "grizelle-gonzalez",
+   "role": "director",
+   "title": "Director, USDA Forest Service International Institute of Tropical Forestry (operator of Sabana Field Research Station)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://research.fs.usda.gov/about/people/grizelle.gonzalez",
+   "evidence": "Grizelle Gonzalez, PhD Director International Institute of Tropical Forestry",
+   "confidence": "low"
+  }
+ ],
+ "verifications": [
+  {
+   "facility_id": "def3b244cd0760d1",
+   "person_id": "390c0c0202494942",
+   "existing_role": "founding-PI",
+   "status": "unverifiable",
+   "current_holder_key": null,
+   "source_url": "https://czo-archive.criticalzone.org/calhoun/people/",
+   "evidence": "Contacts Daniel Richter Lead-PI Professor"
+  },
+  {
+   "facility_id": "def3b244cd0760d1",
+   "person_id": "6771bf636098b7c5",
+   "existing_role": "co-PI",
+   "status": "unverifiable",
+   "current_holder_key": null,
+   "source_url": "https://czo-archive.criticalzone.org/calhoun/people/",
+   "evidence": "Daniel Markewitz INVESTIGATOR"
+  },
+  {
+   "facility_id": "85c3b53e9ef95bd1",
+   "person_id": "069819363768ffc9",
+   "existing_role": "founding-PI",
+   "status": "unverifiable",
+   "current_holder_key": null,
+   "source_url": "https://research.fs.usda.gov/treesearch/7430",
+   "evidence": "Musselman, R. C., technical coordinator. 1994. The Glacier Lakes Ecosystem Experiments Site."
+  },
+  {
+   "facility_id": "53c5bb60afd13bc5",
+   "person_id": "7bae5581771793bb",
+   "existing_role": "founding-PI",
+   "status": "stale",
+   "current_holder_key": null,
+   "source_url": "https://research.fs.usda.gov/about/people/carolyn.hunsaker",
+   "evidence": "Carolyn T. Hunsaker Volunteer Scientist Emerita Pacific Southwest Research Station"
+  },
+  {
+   "facility_id": "53c5bb60afd13bc5",
+   "person_id": "e2f1087ef1255876",
+   "existing_role": "co-PI",
+   "status": "unverifiable",
+   "current_holder_key": null,
+   "source_url": "https://es.ucmerced.edu/people/roger-bales",
+   "evidence": null
+  },
+  {
+   "facility_id": "53c5bb60afd13bc5",
+   "person_id": "c9f3ab63499d8381",
+   "existing_role": "co-PI",
+   "status": "unverifiable",
+   "current_holder_key": null,
+   "source_url": "https://es.ucmerced.edu/people/martha-conklin",
+   "evidence": null
+  },
+  {
+   "facility_id": "53c5bb60afd13bc5",
+   "person_id": "677f418d7108aeba",
+   "existing_role": "collaborator",
+   "status": "unverifiable",
+   "current_holder_key": null,
+   "source_url": "https://research.fs.usda.gov/about/people/malcolm.p.north",
+   "evidence": null
+  },
+  {
+   "facility_id": "db737b212afb72fd",
+   "person_id": "746e1ad0d1876655",
+   "existing_role": "co-PI",
+   "status": "stale",
+   "current_holder_key": null,
+   "source_url": "https://research.fs.usda.gov/about/people/ariel.lugo",
+   "evidence": "Ariel Lugo, PhD Former Employee Scientist Emeritus International Institute of Tropical Forestry"
+  },
+  {
+   "facility_id": "7b551249dcfba4fa",
+   "person_id": "833343a12c62a1d9",
+   "existing_role": "research-collaborator",
+   "status": "unverifiable",
+   "current_holder_key": null,
+   "source_url": "https://www.uaf.edu/experts/mingchu-zhang.php",
+   "evidence": "Professor of natural resources and environmental studies, emeritus"
+  }
+ ],
+ "verification_notes": [
+  "All 31 cited pages re-fetched 2026-10-22; HTTP codes matched the draft (UC Merced 403, KREW project page and ARS unit 404). All 7 ORCIDs match pub.orcid.org names and appear on the cited USFS profiles.",
+  "Calhoun: Callaham is listed as 'Point of Contact', not a PI; role lead-PI -> scientist.",
+  "Calhoun: the Richter and Markewitz checks were downgraded confirmed -> unverifiable. Only the archived CZO page (pre-2020) supports them, and it says Lead-PI and INVESTIGATOR, not founding-PI or co-PI. 'confirmed' would have set confidence high and is_current true.",
+  "KREW: Hunsaker is now Volunteer Scientist Emerita, so verification confirmed -> stale ('confirmed' would set is_current true). Dropped start_year 2000: that is when the project began, not a documented start for her.",
+  "KREW: Wagenbrenner is tied only through a 2019 data-archive point of contact, so confidence medium -> low and is_key_personnel -> false.",
+  "Sabana: Lugo's profile reads 'Former Employee / Scientist Emeritus', so not-found -> stale. Gonzalez is director of the parent institute (IITF), which the IITF page says operates Sabana; that link is indirect, so confidence medium -> low.",
+  "Sagehen: Kirchner is 'Director Emeritus', so is_current -> false.",
+  "Callaham and Frank research_interests set to null: they were inferred from publication titles and are not stated on the profiles.",
+  "Tsutsui: bio punctuation fixed. Kirchner and Markewitz: bios reworded to remove 8-word runs copied from the source."
+ ]
+}

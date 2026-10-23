@@ -1,0 +1,771 @@
+{
+ "batch_id": "R-PEOPLE2-PROTECTED-AREAS-01a",
+ "retrieved_at": "2026-10-22",
+ "verified_by": "adversarial-verifier 2026-10-22",
+ "facilities": [
+  {
+   "facility_id": "24c3562a165bfbdc",
+   "pages_fetched": [
+    {
+     "url": "https://www.fws.gov/refuge/alaska-maritime/contact-us",
+     "status": 200
+    },
+    {
+     "url": "https://www.fws.gov/refuge/alaska-maritime",
+     "status": 200
+    },
+    {
+     "url": "https://www.fws.gov/refuge/alaska-maritime/about-us",
+     "status": 200
+    },
+    {
+     "url": "https://www.fws.gov/staff-profile/heather-renner",
+     "status": 200
+    },
+    {
+     "url": "https://www.fws.gov/staff-profile/brie-drummond",
+     "status": 200
+    },
+    {
+     "url": "https://www.fws.gov/staff-profile/nora-rojek",
+     "status": 200
+    },
+    {
+     "url": "https://www.fws.gov/staff-profile/arthur-kettle",
+     "status": 200
+    }
+   ],
+   "notes": "Biosphere reserve is administered as Alaska Maritime NWR (USFWS, Homer AK). Refuge contact page lists an Acting Refuge Manager; no permanent manager named. Facility url https://www.fws.gov/refuge/alaska_maritime now resolves at /refuge/alaska-maritime. ORCID search hits for Renner, Drummond, Rojek list no employment, so not used."
+  },
+  {
+   "facility_id": "11d662ff707dc12f",
+   "pages_fetched": [
+    {
+     "url": "https://www.nps.gov/ever/learn/news/florida-python-challenge-2026-media-release.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/ever/learn/news/pedro-ramos-selected-as-new-superintendent.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/ever/learn/news/dr-g-melodie-naja-named-director-of-the-national-park-service-s-south-florida-natural-resources-center.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/ever/learn/nature/sfnrcaboutus.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/ever/learn/scienceresearch.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/ever/contacts.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/ever/learn/management/index.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/ever/learn/news/parkmanagementbios.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/ever/learn/management/superintendent.htm",
+     "status": 404
+    }
+   ],
+   "notes": "Ramos confirmed as superintendent by a May 2026 NPS release; start year from 2015 selection release (archived). SFNRC (the park science division) director Naja is supported only by a January 2021 release; current status not reconfirmed in 2026, hence confidence low. parkmanagementbios.htm (2015) is outdated and not used. Verifier: no 2026 page names the SFNRC director (sfnrcaboutus last updated 2021; contacts 2018), so Naja's is_current set to null."
+  },
+  {
+   "facility_id": "66f1d62297060297",
+   "pages_fetched": [
+    {
+     "url": "https://www.nps.gov/im/netn/index.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/im/netn/contact-us.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/im/netn/who-we-are.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/im/netn/our-science.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/im/netn/contactus.htm",
+     "status": 404
+    },
+    {
+     "url": "https://www.nps.gov/im/netn/staff.htm",
+     "status": 404
+    }
+   ],
+   "notes": "Contact page last updated September 29, 2026. Science communication and technician staff omitted. ORCID 0000-0002-4619-3042 (Aaron Weed) has no employment record, so not used."
+  },
+  {
+   "facility_id": "ec8a0c9101241645",
+   "pages_fetched": [
+    {
+     "url": "https://www.nps.gov/olym/learn/management/superintendent-s-compendium.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/olym/learn/news/sula-jacobs-selected-as-superintendent-for-olympic-national-park.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/olym/learn/news/olympic-national-park-invites-the-public-to-share-design-ideas-for-future-hurricane-ridge-day-lodge.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/im/nccn/about.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/im/nccn/contactus.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/olym/learn/scienceresearch.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/olym/contacts.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/olym/learn/management/index.htm",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-6528-1961/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0009-0009-4384-379X/employments",
+     "status": 200
+    }
+   ],
+   "notes": "Superintendent Jacobs confirmed by compendium amended January 2026 and a December 2025 release. Park science staff taken from the NCCN I&M about page (last updated October 14, 2026). NCCN program manager Andy Ray is housed at Olympic but belongs to the NCCN network facility, so not added here."
+  },
+  {
+   "facility_id": "c3649e50f58ab3c2",
+   "pages_fetched": [
+    {
+     "url": "https://www.nps.gov/im/gryn/index.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/im/gryn/contactus.htm",
+     "status": 200
+    },
+    {
+     "url": "https://montanaioe.org/affiliates/kristin-legg",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-7509-7535/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0003-0229-5255/employments",
+     "status": 200
+    }
+   ],
+   "notes": "Contact page last updated August 7, 2026; Data Manager listed as vacant. Cathy Jean (existing row, already titled former coordinator) is not on the current staff list; program manager is Kristin Legg (ORCID employment: NPS I&M Division, Program Manager - Ecologist, 2010-present)."
+  },
+  {
+   "facility_id": "427b0906a9107a87",
+   "pages_fetched": [
+    {
+     "url": "https://www.nps.gov/im/klmn/index.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/im/klmn/contactus.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/im/klmn/contact.htm",
+     "status": 404
+    },
+    {
+     "url": "https://www.nps.gov/im/klmn/staff.htm",
+     "status": 404
+    }
+   ],
+   "notes": "Contact page (last updated May 22, 2025) lists the Program Manager position as Vacant; Daniel Sarr is not listed, so no current leader can be named. Staff confidence medium because the page is 17 months old. An ORCID for an NPS-employed Allison Snyder (0009-0005-0429-8769) has no works or department, so not used. Verifier: the staff page lists the Program Manager as Vacant, which contradicts Sarr's existing Program Manager row, so the verification is recorded as stale (no current holder)."
+  }
+ ],
+ "people": [
+  {
+   "key": "heather-renner",
+   "existing_person_id": null,
+   "name": "Heather Renner",
+   "name_given": "Heather",
+   "name_family": "Renner",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.fws.gov/staff-profile/heather-renner",
+   "bio": "Acting refuge manager of Alaska Maritime National Wildlife Refuge (U.S. Fish and Wildlife Service), based in Homer, Alaska, with listed expertise in wildlife biology. A 2024 agency feature describes her path to the refuge's supervisory wildlife biologist position.",
+   "bio_source_url": "https://www.fws.gov/staff-profile/heather-renner",
+   "research_interests": "Wildlife biology",
+   "research_interests_source_url": "https://www.fws.gov/staff-profile/heather-renner"
+  },
+  {
+   "key": "brie-drummond",
+   "existing_person_id": null,
+   "name": "Brie Drummond",
+   "name_given": "Brie",
+   "name_family": "Drummond",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.fws.gov/staff-profile/brie-drummond",
+   "bio": "Wildlife biologist with the U.S. Fish and Wildlife Service at Alaska Maritime National Wildlife Refuge (Homer, Alaska), where she also serves as biologist for the refuge's Gulf of Alaska Unit.",
+   "bio_source_url": "https://www.fws.gov/staff-profile/brie-drummond",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "nora-rojek",
+   "existing_person_id": null,
+   "name": "Nora Rojek",
+   "name_given": "Nora",
+   "name_family": "Rojek",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.fws.gov/staff-profile/nora-rojek",
+   "bio": "Wildlife biologist with the Alaska Maritime National Wildlife Refuge (USFWS) in Homer, Alaska, serving as the refuge's biologist for its Aleutian Islands Unit.",
+   "bio_source_url": "https://www.fws.gov/staff-profile/nora-rojek",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "arthur-kettle",
+   "existing_person_id": null,
+   "name": "Arthur Kettle",
+   "name_given": "Arthur",
+   "name_family": "Kettle",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.fws.gov/staff-profile/arthur-kettle",
+   "bio": "Wildlife biologist at the Alaska Maritime National Wildlife Refuge (USFWS), Homer, Alaska; his listed expertise is seabird monitoring with remote cameras in the Barren Islands.",
+   "bio_source_url": "https://www.fws.gov/staff-profile/arthur-kettle",
+   "research_interests": "Remote-camera seabird monitoring (Barren Islands)",
+   "research_interests_source_url": "https://www.fws.gov/staff-profile/arthur-kettle"
+  },
+  {
+   "key": "pedro-ramos",
+   "existing_person_id": null,
+   "name": "Pedro Ramos",
+   "name_given": "Pedro",
+   "name_family": "Ramos",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Selected in January 2015 to lead Everglades and Dry Tortugas National Parks as superintendent. He joined the NPS in 2001 at Big Cypress National Preserve, becoming deputy superintendent in 2005 and superintendent in 2009, after earlier USDA Rural Development posts. He holds a 1990 B.S. from the University of Massachusetts Amherst.",
+   "bio_source_url": "https://www.nps.gov/ever/learn/news/pedro-ramos-selected-as-new-superintendent.htm",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "melodie-naja",
+   "existing_person_id": null,
+   "name": "G. Melodie Naja",
+   "name_given": "G. Melodie",
+   "name_family": "Naja",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Named director of the NPS South Florida Natural Resources Center, the science division of Everglades National Park, in January 2021. She has worked on Everglades issues since 2008 and before the appointment directed science at the Everglades Foundation, leading interdisciplinary scientists, modelers and engineers on restoration projects.",
+   "bio_source_url": "https://www.nps.gov/ever/learn/news/dr-g-melodie-naja-named-director-of-the-national-park-service-s-south-florida-natural-resources-center.htm",
+   "research_interests": "Everglades ecosystem restoration science",
+   "research_interests_source_url": "https://www.nps.gov/ever/learn/news/dr-g-melodie-naja-named-director-of-the-national-park-service-s-south-florida-natural-resources-center.htm"
+  },
+  {
+   "key": "robert-johnson-sfnrc",
+   "existing_person_id": null,
+   "name": "Robert Johnson",
+   "name_given": "Robert",
+   "name_family": "Johnson",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Led the NPS South Florida Natural Resources Center at Everglades National Park as director for about 25 years before G. Melodie Naja succeeded him in 2021.",
+   "bio_source_url": "https://www.nps.gov/ever/learn/news/dr-g-melodie-naja-named-director-of-the-national-park-service-s-south-florida-natural-resources-center.htm",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "aaron-weed",
+   "existing_person_id": null,
+   "name": "Aaron Weed",
+   "name_given": "Aaron",
+   "name_family": "Weed",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Program manager of the NPS Northeast Temperate Inventory & Monitoring Network, responsible for planning and coordinating the whole program. Before the NPS he held postdoctoral posts at Dartmouth and the University of Idaho on bark beetle and invasive weed population dynamics. Ph.D., Environmental Science, University of Rhode Island.",
+   "bio_source_url": "https://www.nps.gov/im/netn/who-we-are.htm",
+   "research_interests": "Population dynamics of resource-management species (bark beetles, invasive weeds); breeding landbird and coastal bird monitoring",
+   "research_interests_source_url": "https://www.nps.gov/im/netn/who-we-are.htm"
+  },
+  {
+   "key": "adam-kozlowski",
+   "existing_person_id": null,
+   "name": "Adam Kozlowski",
+   "name_given": "Adam",
+   "name_family": "Kozlowski",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Data manager for the NPS Northeast Temperate Network since 2008, developing databases, mobile apps and quality-control procedures for monitoring protocols. He earlier spent nine years as a threatened and endangered species biologist with the Utah Division of Wildlife Resources. M.S., Wildlife Sciences, Utah State University.",
+   "bio_source_url": "https://www.nps.gov/im/netn/who-we-are.htm",
+   "research_interests": "Monitoring data management; rocky intertidal community monitoring",
+   "research_interests_source_url": "https://www.nps.gov/im/netn/who-we-are.htm"
+  },
+  {
+   "key": "sula-jacobs",
+   "existing_person_id": null,
+   "name": "Sula Jacobs",
+   "name_given": "Sula",
+   "name_family": "Jacobs",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Superintendent of Olympic National Park, selected in 2022. She previously led Delaware Water Gap National Recreation Area (from 2018) and Cumberland Gap National Historical Park, and was assistant superintendent at Biscayne. She holds a master's in public policy from UC Berkeley's Goldman School.",
+   "bio_source_url": "https://www.nps.gov/olym/learn/news/sula-jacobs-selected-as-superintendent-for-olympic-national-park.htm",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "jerald-weaver",
+   "existing_person_id": null,
+   "name": "Jerald Weaver",
+   "name_given": "Jerald",
+   "name_family": "Weaver",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "steven-fradkin",
+   "existing_person_id": null,
+   "name": "Steven Fradkin",
+   "name_given": "Steven",
+   "name_family": "Fradkin",
+   "orcid": "0000-0002-6528-1961",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-6528-1961/employments",
+   "homepage_url": null,
+   "bio": "Coastal and marine ecologist at Olympic National Park who leads intertidal monitoring and Olympic mountain-lakes monitoring for the North Coast and Cascades Inventory & Monitoring Network.",
+   "bio_source_url": "https://www.nps.gov/im/nccn/about.htm",
+   "research_interests": "Rocky intertidal monitoring; mountain lakes limnology",
+   "research_interests_source_url": "https://www.nps.gov/im/nccn/about.htm"
+  },
+  {
+   "key": "bill-baccus",
+   "existing_person_id": null,
+   "name": "Bill Baccus",
+   "name_given": "Bill",
+   "name_family": "Baccus",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "miranda-terwilliger",
+   "existing_person_id": null,
+   "name": "Miranda Terwilliger",
+   "name_given": "Miranda",
+   "name_family": "Terwilliger",
+   "orcid": "0009-0009-4384-379X",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0009-0009-4384-379X/employments",
+   "homepage_url": null,
+   "bio": "National Park Service wildlife biologist at Olympic National Park since 2024 according to her ORCID record, following wildlife biologist work at Grand Canyon (2016-2024) and ecologist work at Wrangell-St. Elias (2009-2016).",
+   "bio_source_url": "https://pub.orcid.org/v3.0/0009-0009-4384-379X/employments",
+   "research_interests": "Landbird monitoring",
+   "research_interests_source_url": "https://www.nps.gov/im/nccn/about.htm"
+  },
+  {
+   "key": "kristin-legg",
+   "existing_person_id": null,
+   "name": "Kristin Legg",
+   "name_given": "Kristin",
+   "name_family": "Legg",
+   "orcid": "0000-0002-7509-7535",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-7509-7535/employments",
+   "homepage_url": "https://montanaioe.org/affiliates/kristin-legg",
+   "bio": "Program manager of the NPS Greater Yellowstone Inventory & Monitoring Network, overseeing natural-resource monitoring for Yellowstone, Grand Teton and Bighorn Canyon. She formerly headed natural and cultural resource management at three park units and held several Yellowstone posts. M.S., Fish and Wildlife Management, Montana State University.",
+   "bio_source_url": "https://montanaioe.org/affiliates/kristin-legg",
+   "research_interests": "Park natural-resource inventory and monitoring; bighorn sheep habitat use and movements (M.S. research)",
+   "research_interests_source_url": "https://montanaioe.org/affiliates/kristin-legg"
+  },
+  {
+   "key": "benjamin-lafrance",
+   "existing_person_id": null,
+   "name": "Benjamin Lafrance",
+   "name_given": "Benjamin",
+   "name_family": "Lafrance",
+   "orcid": "0000-0003-0229-5255",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0003-0229-5255/employments",
+   "homepage_url": null,
+   "bio": "Physical scientist with the NPS Greater Yellowstone Inventory and Monitoring Network since 2023 per his ORCID record; earlier amphibian field coordinator with the Northern Rockies Conservation Cooperative (2020-2023) and a UC Berkeley graduate student in molecular and cell biology.",
+   "bio_source_url": "https://pub.orcid.org/v3.0/0000-0003-0229-5255/employments",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "erin-shanahan",
+   "existing_person_id": null,
+   "name": "Erin Shanahan",
+   "name_given": "Erin",
+   "name_family": "Shanahan",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "eric-dinger",
+   "existing_person_id": null,
+   "name": "Eric Dinger",
+   "name_given": "Eric",
+   "name_family": "Dinger",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Aquatic and quantitative ecologist with the NPS Klamath Inventory & Monitoring Network at Southern Oregon University, Ashland; program lead for the network's stream, lake and rocky intertidal monitoring.",
+   "bio_source_url": "https://www.nps.gov/im/klmn/contactus.htm",
+   "research_interests": "Streams, lakes and rocky intertidal monitoring",
+   "research_interests_source_url": "https://www.nps.gov/im/klmn/contactus.htm"
+  },
+  {
+   "key": "allison-snyder",
+   "existing_person_id": null,
+   "name": "Allison Snyder",
+   "name_given": "Allison",
+   "name_family": "Snyder",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Data manager for the NPS Klamath Inventory & Monitoring Network in Ashland, Oregon, and program lead for its land cover and land use monitoring.",
+   "bio_source_url": "https://www.nps.gov/im/klmn/contactus.htm",
+   "research_interests": "Land cover and land use monitoring; monitoring data management",
+   "research_interests_source_url": "https://www.nps.gov/im/klmn/contactus.htm"
+  },
+  {
+   "key": "lauren-youngblood",
+   "existing_person_id": null,
+   "name": "Lauren Youngblood",
+   "name_given": "Lauren",
+   "name_family": "Youngblood",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Ecologist with the NPS Klamath Inventory & Monitoring Network, Ashland, Oregon; she leads the network's monitoring of vegetation and whitebark pine and its program for detecting invasive plants early.",
+   "bio_source_url": "https://www.nps.gov/im/klmn/contactus.htm",
+   "research_interests": "Vegetation, whitebark pine and invasive plant early-detection monitoring",
+   "research_interests_source_url": "https://www.nps.gov/im/klmn/contactus.htm"
+  }
+ ],
+ "affiliations": [
+  {
+   "facility_id": "24c3562a165bfbdc",
+   "person_key": "heather-renner",
+   "role": "manager",
+   "title": "Acting Refuge Manager, Alaska Maritime National Wildlife Refuge",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.fws.gov/refuge/alaska-maritime/contact-us",
+   "evidence": "Heather Renner Acting Refuge Manager National Wildlife Refuge System",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "24c3562a165bfbdc",
+   "person_key": "nora-rojek",
+   "role": "scientist",
+   "title": "Wildlife Biologist; Aleutian Islands Unit Biologist",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.fws.gov/staff-profile/nora-rojek",
+   "evidence": "Aleutian Islands Unit Biologist for Alaska Maritime National Wildlife Refuge",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "24c3562a165bfbdc",
+   "person_key": "brie-drummond",
+   "role": "scientist",
+   "title": "Wildlife Biologist; Gulf of Alaska Unit Biologist",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.fws.gov/staff-profile/brie-drummond",
+   "evidence": "Gulf of Alaska Unit Biologist for Alaska Maritime National Wildlife Refuge",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "24c3562a165bfbdc",
+   "person_key": "arthur-kettle",
+   "role": "scientist",
+   "title": "Wildlife Biologist",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.fws.gov/staff-profile/arthur-kettle",
+   "evidence": "Arthur Kettle Wildlife Biologist Alaska Maritime National Wildlife Refuge",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "11d662ff707dc12f",
+   "person_key": "pedro-ramos",
+   "role": "superintendent",
+   "title": "Superintendent, Everglades and Dry Tortugas National Parks",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2015,
+   "end_year": null,
+   "source_url": "https://www.nps.gov/ever/learn/news/florida-python-challenge-2026-media-release.htm",
+   "evidence": "said Superintendent Pedro Ramos of Everglades National Park",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "11d662ff707dc12f",
+   "person_key": "melodie-naja",
+   "role": "director",
+   "title": "Director, South Florida Natural Resources Center",
+   "is_key_personnel": true,
+   "is_current": null,
+   "start_year": 2021,
+   "end_year": null,
+   "source_url": "https://www.nps.gov/ever/learn/news/dr-g-melodie-naja-named-director-of-the-national-park-service-s-south-florida-natural-resources-center.htm",
+   "evidence": "Dr. G. Melodie Naja is the new Director of the National Park Service's South Florida Natural Resources Center",
+   "confidence": "low"
+  },
+  {
+   "facility_id": "11d662ff707dc12f",
+   "person_key": "robert-johnson-sfnrc",
+   "role": "former-director",
+   "title": "Former Director, South Florida Natural Resources Center",
+   "is_key_personnel": false,
+   "is_current": false,
+   "start_year": null,
+   "end_year": 2021,
+   "source_url": "https://www.nps.gov/ever/learn/news/dr-g-melodie-naja-named-director-of-the-national-park-service-s-south-florida-natural-resources-center.htm",
+   "evidence": "previously held by Robert “Bob” Johnson, who served as Director of the Center for 25 years",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "66f1d62297060297",
+   "person_key": "aaron-weed",
+   "role": "manager",
+   "title": "Program Manager",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.nps.gov/im/netn/contact-us.htm",
+   "evidence": "Program Manager: Aaron Weed",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "66f1d62297060297",
+   "person_key": "adam-kozlowski",
+   "role": "data-manager",
+   "title": "Data Manager",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2008,
+   "end_year": null,
+   "source_url": "https://www.nps.gov/im/netn/contact-us.htm",
+   "evidence": "Data Manager: Adam Kozlowski",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "ec8a0c9101241645",
+   "person_key": "sula-jacobs",
+   "role": "superintendent",
+   "title": "Superintendent, Olympic National Park",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2022,
+   "end_year": null,
+   "source_url": "https://www.nps.gov/olym/learn/management/superintendent-s-compendium.htm",
+   "evidence": "Approved By: Sula Jacobs Superintendent",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "ec8a0c9101241645",
+   "person_key": "jerald-weaver",
+   "role": "manager",
+   "title": "Chief of Resources Management, Olympic National Park",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.nps.gov/im/nccn/about.htm",
+   "evidence": "Jerald Weaver, Chief of Resources Management - Olympic National Park",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "ec8a0c9101241645",
+   "person_key": "steven-fradkin",
+   "role": "scientist",
+   "title": "Coastal/Marine Ecologist; NCCN Intertidal and Mountain Lakes (Olympic) Monitoring Lead",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.nps.gov/im/nccn/about.htm",
+   "evidence": "Steven Fradkin Intertidal Monitoring Lead and Mountain Lakes (Olympic) Monitoring Lead Coastal/Marine Ecologist Olympic National Park",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "ec8a0c9101241645",
+   "person_key": "bill-baccus",
+   "role": "scientist",
+   "title": "Ecologist, Olympic National Park",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.nps.gov/im/nccn/about.htm",
+   "evidence": "Bill Baccus Ecologist Olympic National Park",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "ec8a0c9101241645",
+   "person_key": "miranda-terwilliger",
+   "role": "scientist",
+   "title": "Wildlife Branch Lead; NCCN Landbirds Monitoring Lead",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.nps.gov/im/nccn/about.htm",
+   "evidence": "Miranda Terwilliger Landbirds Monitoring Lead Wildlife Branch Lead Olympic National Park",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "c3649e50f58ab3c2",
+   "person_key": "kristin-legg",
+   "role": "manager",
+   "title": "Program Manager",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.nps.gov/im/gryn/contactus.htm",
+   "evidence": "Program Manager: Kristin Legg",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "c3649e50f58ab3c2",
+   "person_key": "benjamin-lafrance",
+   "role": "scientist",
+   "title": "Physical Scientist/Aquatics Lead",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": 2023,
+   "end_year": null,
+   "source_url": "https://www.nps.gov/im/gryn/contactus.htm",
+   "evidence": "Physical Scientist/Aquatics Lead: Benjamin Lafrance",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "c3649e50f58ab3c2",
+   "person_key": "erin-shanahan",
+   "role": "scientist",
+   "title": "Ecologist (Vegetation)",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.nps.gov/im/gryn/contactus.htm",
+   "evidence": "Ecologist (Vegetation): Erin Shanahan",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "427b0906a9107a87",
+   "person_key": "eric-dinger",
+   "role": "scientist",
+   "title": "Aquatic/Quantitative Ecologist",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.nps.gov/im/klmn/contactus.htm",
+   "evidence": "Eric Dinger Aquatic/Quantitative Ecologist Program lead for Streams, Lakes, and Rocky Intertidal Zone monitoring",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "427b0906a9107a87",
+   "person_key": "allison-snyder",
+   "role": "data-manager",
+   "title": "Data Manager",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.nps.gov/im/klmn/contactus.htm",
+   "evidence": "Allison Snyder Data Manager Program lead for Land Cover and Land Use monitoring",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "427b0906a9107a87",
+   "person_key": "lauren-youngblood",
+   "role": "scientist",
+   "title": "Ecologist",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.nps.gov/im/klmn/contactus.htm",
+   "evidence": "Lauren Youngblood Ecologist Program lead for Vegetation, Whitebark Pine",
+   "confidence": "medium"
+  }
+ ],
+ "verifications": [
+  {
+   "facility_id": "c3649e50f58ab3c2",
+   "person_id": "bf80a2465cbb1ac9",
+   "existing_role": "coordinator",
+   "status": "stale",
+   "current_holder_key": "kristin-legg",
+   "source_url": "https://www.nps.gov/im/gryn/contactus.htm",
+   "evidence": "Program Manager: Kristin Legg"
+  },
+  {
+   "facility_id": "427b0906a9107a87",
+   "person_id": "9a8ebcbfb9e8a8d6",
+   "existing_role": "coordinator",
+   "status": "stale",
+   "current_holder_key": null,
+   "source_url": "https://www.nps.gov/im/klmn/contactus.htm",
+   "evidence": "Klamath Network Staff and Affiliates Vacant Program Manager"
+  }
+ ]
+}

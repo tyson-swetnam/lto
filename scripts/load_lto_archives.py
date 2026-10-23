@@ -12,12 +12,15 @@ upserts into:
   api_endpoints        ←  api_endpoints.json
   cloud_buckets        ←  cloud_buckets.json
 
-Idempotent on deterministic ID hashes so re-runs upsert.
+Idempotent on deterministic ID hashes so re-runs upsert. One run is one
+DuckLake snapshot (scripts/lto_db.py). The lake does not check foreign
+keys, so each row is checked before it is written (row_error below); a
+row that fails is skipped and counted, as before.
 
 Usage::
 
     python scripts/load_lto_archives.py
-    python scripts/load_lto_archives.py --db db/lto.duckdb --verbose
+    python scripts/load_lto_archives.py --catalog db/lto_catalog.sqlite --verbose
 """
 from __future__ import annotations
 
@@ -30,8 +33,10 @@ from pathlib import Path
 
 import duckdb
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import lto_db  # noqa: E402
+
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "lto.duckdb"
 RAW_DIR = ROOT / "data" / "raw"
 
 DOI_RE = re.compile(r"^10\.\d{4,9}/[\w./()<>:;-]+$")
@@ -89,6 +94,91 @@ def resolve_facility(conn, name: str | None, acronym: str | None) -> str | None:
     return None
 
 
+# ── row gate ─────────────────────────────────────────────────────────────
+# DuckDB used to reject a bad row (an unknown vocab slug, a NULL title, a
+# date that does not parse) at INSERT, and each handler's caller skipped
+# it. The lake checks NOT NULL and types but no keys, and inside
+# lto_db.transaction() any failed statement aborts the whole run. So each
+# row is tried first against an empty in-memory copy of its table (types,
+# NOT NULL) and its foreign keys are looked up in the lake.
+# (Local to this script; a candidate for lto_db.)
+_probe: duckdb.DuckDBPyConnection | None = None
+
+
+def row_error(conn, table: str, row: dict, fks: bool = True) -> str | None:
+    """Why `row` could not be written to `table`, or None if it can.
+    fks=False skips the foreign-key lookups (the caller checks them)."""
+    global _probe
+    if _probe is None:
+        _probe = duckdb.connect()
+    if not lto_db.table_exists(_probe, table, catalog="memory"):
+        _probe.execute(lto_db.column_only_ddl(table))
+    cols = ", ".join(lto_db.qident(c) for c in row)
+    _probe.execute("BEGIN")
+    try:
+        _probe.execute(f"INSERT INTO {lto_db.qident(table)} ({cols}) "
+                       f"VALUES ({', '.join('?' * len(row))})", list(row.values()))
+    except duckdb.Error as e:
+        return str(e).splitlines()[0]
+    finally:
+        _probe.execute("ROLLBACK")
+    for d in lto_db.spec()["constraints"] if fks else []:
+        if d["table"] != table or d["kind"] != "FOREIGN KEY":
+            continue
+        vals = [row.get(c) for c in d["columns"]]
+        if any(v is None for v in vals):
+            continue
+        on = " AND ".join(f"{lto_db.qident(c)} = ?" for c in d["ref_columns"])
+        if not lto_db.rows(conn, f"SELECT 1 FROM {lto_db.qident(d['ref_table'])} "
+                                 f"WHERE {on} LIMIT 1", vals):
+            return (f"foreign key {d['columns']} -> {d['ref_table']}: "
+                    f"{vals} does not exist")
+    return None
+
+
+def cast_error(table: str, col: str, value) -> str | None:
+    """Why `value` could not be stored in `table`.`col` (an UPDATE's
+    check; the probe row of row_error() would trip other NOT NULLs)."""
+    global _probe
+    if _probe is None:
+        _probe = duckdb.connect()
+    try:
+        _probe.execute(f"SELECT CAST(? AS {_coltype(table, col)})", [value]).fetchall()
+    except duckdb.Error as e:
+        return str(e).splitlines()[0]
+    return None
+
+
+class RowRejected(Exception):
+    """A row failed row_error(); main() counts it as skipped."""
+
+
+def write_row(conn, table: str, row: dict, key: list[str] | None = None,
+              insert_only: bool = False, checked: bool = False) -> None:
+    """Check `row` (unless the caller already has), then write it: merge on
+    `key` (INSERT OR REPLACE, or INSERT OR IGNORE with insert_only), or a
+    plain INSERT without one."""
+    err = None if checked else row_error(conn, table, row)
+    if err:
+        raise RowRejected(err)
+    if key is None:
+        conn.execute(f"INSERT INTO {lto_db.qident(table)} "
+                     f"({', '.join(lto_db.qident(c) for c in row)}) "
+                     f"VALUES ({', '.join('?' * len(row))})", list(row.values()))
+        return
+    lto_db.merge_upsert(
+        conn, table, key,
+        "SELECT " + ", ".join(f"?::{_coltype(table, c)} AS {lto_db.qident(c)}" for c in row),
+        params=list(row.values()), insert_only=insert_only)
+
+
+def _coltype(table: str, col: str) -> str:
+    for name, typ, _nullable, _default in lto_db.spec()["columns"][table]:
+        if name == col:
+            return typ
+    raise KeyError(f"{table}.{col}")
+
+
 def safe_doi(doi: str | None) -> str | None:
     if not doi:
         return None
@@ -101,20 +191,14 @@ def upsert_archive(conn, agent: str, a: dict) -> bool:
     if not aid:
         return False
     aid = aid.strip().lower()
-    conn.execute(
-        """
-        INSERT OR IGNORE INTO data_archives
-            (archive_id, name, organization, archive_type, base_url, api_url,
-             api_doc_url, api_type, license_slug, doi_prefix, notes)
-        VALUES (?,?,?,?,?,?,?,?,?,?,?)
-        """,
-        [
-            aid, a.get("name"), a.get("organization"), a.get("archive_type"),
-            a.get("base_url"), a.get("api_url"), a.get("api_doc_url"),
-            a.get("api_type"), a.get("license_slug"), a.get("doi_prefix"),
-            (a.get("notes") or "") + (f" [via {agent}]" if agent else ""),
-        ],
-    )
+    write_row(conn, "data_archives", {
+        "archive_id": aid, "name": a.get("name"), "organization": a.get("organization"),
+        "archive_type": a.get("archive_type"), "base_url": a.get("base_url"),
+        "api_url": a.get("api_url"), "api_doc_url": a.get("api_doc_url"),
+        "api_type": a.get("api_type"), "license_slug": a.get("license_slug"),
+        "doi_prefix": a.get("doi_prefix"),
+        "notes": (a.get("notes") or "") + (f" [via {agent}]" if agent else ""),
+    }, key=["archive_id"], insert_only=True)
     return True
 
 
@@ -123,20 +207,13 @@ def upsert_facility_archive(conn, agent: str, fa: dict) -> bool:
     aid = (fa.get("archive_id") or "").strip().lower()
     if not (fac_id and aid):
         return False
-    conn.execute(
-        """
-        INSERT OR REPLACE INTO facility_archives
-            (facility_id, archive_id, role, scope_url, scope_id, sample_doi, notes)
-        VALUES (?,?,?,?,?,?,?)
-        """,
-        [
-            fac_id, aid,
-            fa.get("role") or "primary",
-            fa.get("scope_url"), fa.get("scope_id"),
-            safe_doi(fa.get("sample_doi")),
-            (fa.get("notes") or "") + (f" [via {agent}]" if agent else ""),
-        ],
-    )
+    write_row(conn, "facility_archives", {
+        "facility_id": fac_id, "archive_id": aid,
+        "role": fa.get("role") or "primary",
+        "scope_url": fa.get("scope_url"), "scope_id": fa.get("scope_id"),
+        "sample_doi": safe_doi(fa.get("sample_doi")),
+        "notes": (fa.get("notes") or "") + (f" [via {agent}]" if agent else ""),
+    }, key=["facility_id", "archive_id"])
     return True
 
 
@@ -149,37 +226,38 @@ def upsert_product(conn, agent: str, p: dict) -> bool:
     doi = safe_doi(p.get("doi"))
     ident = p.get("identifier") or doi or title
     pid = sha16(f"{aid or ''}|{ident}")
-    # DELETE-then-INSERT to honour the (publication_id) PK + (doi) uniqueness.
+    row = {
+        "product_id": pid, "archive_id": aid, "facility_id": fac_id, "title": title,
+        "doi": doi, "identifier": p.get("identifier"), "url": p.get("url"),
+        "format_slug": p.get("format_slug"), "license_slug": p.get("license_slug"),
+        "temporal_start": p.get("temporal_start"), "temporal_end": p.get("temporal_end"),
+        "bbox_min_lon": p.get("bbox_min_lon"), "bbox_min_lat": p.get("bbox_min_lat"),
+        "bbox_max_lon": p.get("bbox_max_lon"), "bbox_max_lat": p.get("bbox_max_lat"),
+        "variables_text": p.get("variables_text"), "citation": p.get("citation"),
+        "cited_by_count": p.get("cited_by_count"),
+        "source": agent or p.get("source"),
+        "retrieved_at": p.get("retrieved_at") or "2026-05-05",
+        "confidence": p.get("confidence") or "medium",
+        "notes": p.get("notes"),
+        "description": p.get("description"), "category": p.get("category"),
+        "api_url": p.get("api_url"),
+    }
+    err = row_error(conn, "data_products", row)
+    if err:
+        raise RowRejected(err)
+    # DELETE-then-INSERT to honour the (product_id) PK + (doi) uniqueness.
+    # The row being replaced keeps its created_at (its own id first, else
+    # the DOI holder's), so re-running on unchanged inputs changes nothing
+    # and the weekly refresh does not open a timestamp-only diff.
+    prev = lto_db.rows(conn, "SELECT created_at FROM data_products "
+                             "WHERE product_id = ? OR (doi = ? AND ? IS NOT NULL) "
+                             "ORDER BY product_id = ? DESC LIMIT 1", [pid, doi, doi, pid])
+    if prev and prev[0][0] is not None:
+        row["created_at"] = prev[0][0]
     if doi:
         conn.execute("DELETE FROM data_products WHERE doi = ?", [doi])
     conn.execute("DELETE FROM data_products WHERE product_id = ?", [pid])
-    conn.execute(
-        """
-        INSERT INTO data_products
-            (product_id, archive_id, facility_id, title, doi, identifier, url,
-             format_slug, license_slug,
-             temporal_start, temporal_end,
-             bbox_min_lon, bbox_min_lat, bbox_max_lon, bbox_max_lat,
-             variables_text, citation, cited_by_count,
-             source, retrieved_at, confidence, notes,
-             description, category, api_url)
-        VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
-        """,
-        [
-            pid, aid, fac_id, title, doi, p.get("identifier"), p.get("url"),
-            p.get("format_slug"), p.get("license_slug"),
-            p.get("temporal_start"), p.get("temporal_end"),
-            p.get("bbox_min_lon"), p.get("bbox_min_lat"),
-            p.get("bbox_max_lon"), p.get("bbox_max_lat"),
-            p.get("variables_text"), p.get("citation"),
-            p.get("cited_by_count"),
-            agent or p.get("source"),
-            p.get("retrieved_at") or "2026-05-05",
-            p.get("confidence") or "medium",
-            p.get("notes"),
-            p.get("description"), p.get("category"), p.get("api_url"),
-        ],
-    )
+    write_row(conn, "data_products", row, checked=True)
     return True
 
 
@@ -190,21 +268,13 @@ def upsert_endpoint(conn, agent: str, e: dict) -> bool:
     if not path:
         return False
     eid = sha16(f"{aid or ''}|{path}")
-    conn.execute(
-        """
-        INSERT OR REPLACE INTO api_endpoints
-            (endpoint_id, archive_id, facility_id, path_or_url, method,
-             purpose, response_format, schema_url, example_call, notes)
-        VALUES (?,?,?,?,?,?,?,?,?,?)
-        """,
-        [
-            eid, aid, fac_id, path,
-            e.get("method") or "GET",
-            e.get("purpose"), e.get("response_format"),
-            e.get("schema_url"), e.get("example_call"),
-            (e.get("notes") or "") + (f" [via {agent}]" if agent else ""),
-        ],
-    )
+    write_row(conn, "api_endpoints", {
+        "endpoint_id": eid, "archive_id": aid, "facility_id": fac_id,
+        "path_or_url": path, "method": e.get("method") or "GET",
+        "purpose": e.get("purpose"), "response_format": e.get("response_format"),
+        "schema_url": e.get("schema_url"), "example_call": e.get("example_call"),
+        "notes": (e.get("notes") or "") + (f" [via {agent}]" if agent else ""),
+    }, key=["endpoint_id"])
     return True
 
 
@@ -216,20 +286,14 @@ def upsert_bucket(conn, agent: str, b: dict) -> bool:
     if not bname:
         return False
     bid = sha16(f"{provider}|{bname}|{b.get('region') or ''}")
-    conn.execute(
-        """
-        INSERT OR REPLACE INTO cloud_buckets
-            (bucket_id, archive_id, facility_id, provider, bucket_name,
-             region, access_mode, documentation_url, sample_prefix, notes)
-        VALUES (?,?,?,?,?,?,?,?,?,?)
-        """,
-        [
-            bid, aid, fac_id, provider, bname,
-            b.get("region"), b.get("access_mode") or "unknown",
-            b.get("documentation_url"), b.get("sample_prefix"),
-            (b.get("notes") or "") + (f" [via {agent}]" if agent else ""),
-        ],
-    )
+    write_row(conn, "cloud_buckets", {
+        "bucket_id": bid, "archive_id": aid, "facility_id": fac_id,
+        "provider": provider, "bucket_name": bname, "region": b.get("region"),
+        "access_mode": b.get("access_mode") or "unknown",
+        "documentation_url": b.get("documentation_url"),
+        "sample_prefix": b.get("sample_prefix"),
+        "notes": (b.get("notes") or "") + (f" [via {agent}]" if agent else ""),
+    }, key=["bucket_id"])
     return True
 
 
@@ -247,10 +311,10 @@ def sync_vocab(conn) -> None:
     for table in VOCAB_TABLES:
         csv_path = VOCAB_DIR / f"{table}.csv"
         if csv_path.exists():
-            conn.execute(
-                f"INSERT OR IGNORE INTO {table} "
-                f"SELECT * FROM read_csv_auto(?, header=True, all_varchar=True)",
-                [str(csv_path)],
+            lto_db.merge_upsert(
+                conn, table, ["slug"],
+                "SELECT * FROM read_csv_auto(?, header=True, all_varchar=True)",
+                params=[str(csv_path)], insert_only=True,
             )
 
 
@@ -265,7 +329,8 @@ HANDLERS = {
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--db", type=Path, default=DEFAULT_DB)
+    lto_db.add_argparse_catalog(ap)
+    ap.add_argument("--db", dest="catalog", type=Path, help="deprecated alias of --catalog")
     ap.add_argument("--verbose", action="store_true")
     args = ap.parse_args()
 
@@ -276,7 +341,10 @@ def main() -> int:
     # before any facility_archives / data_products / api_endpoints /
     # cloud_buckets row tries to FK-reference an archive_id. Iterate by
     # filename outer, folder inner.
-    with duckdb.connect(str(args.db)) as conn:
+    agents = sorted({d.name for d in RAW_DIR.glob("[JKMO]-*")})
+    conn = lto_db.connect(catalog=args.catalog, data=args.lake_data)
+    with lto_db.transaction(conn, f"load_lto_archives: Wave-J archives + products from "
+                                  f"{', '.join(agents) or 'no agent dirs'}"):
         sync_vocab(conn)
         for fname, fn in HANDLERS.items():
             for d in sorted(set(
@@ -305,9 +373,13 @@ def main() -> int:
                         else:
                             counts[fname]["skip"] += 1
                             warnings.append(f"  {agent}/{fname}: skipped {str(r)[:80]}")
-                    except duckdb.Error as e:
+                    except RowRejected as e:
                         counts[fname]["skip"] += 1
                         warnings.append(f"  {agent}/{fname} insert error: {e}")
+        lto_db.assert_integrity(conn, ["archive_types", "data_formats", "data_licenses",
+                                       "access_modes", "data_archives", "facility_archives",
+                                       "data_products", "api_endpoints", "cloud_buckets"])
+    conn.close()
 
     print("[load_lto_archives] summary")
     for k, v in counts.items():

@@ -62,7 +62,9 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import date
 from pathlib import Path
 
-import duckdb
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import lto_db  # noqa: E402
+
 try:
     import requests
 except ImportError:
@@ -70,7 +72,6 @@ except ImportError:
     raise
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "lto.duckdb"
 DEFAULT_OVERRIDES = ROOT / "data" / "funding_overrides" / "usaspending_recipient_overrides.csv"
 API_SEARCH = "https://api.usaspending.gov/api/v2/search/spending_by_award/"
 API_TRANSACTIONS = "https://api.usaspending.gov/api/v2/transactions/"
@@ -127,6 +128,83 @@ def session() -> requests.Session:
     )
     s.headers["Content-Type"] = "application/json"
     return s
+
+
+# ---------------------------------------------------------------------------
+# Lake writes. Rows are buffered in memory while the API is walked and land
+# in one lake snapshot per FLUSH_EVERY facilities, plus a final one (also
+# when the run dies), so a run that times out keeps what it fetched and
+# --skip-done resumes from there. A dry run opens the lake read-only and
+# never flushes.
+# ---------------------------------------------------------------------------
+
+FLUSH_EVERY = 25
+EVENT_COLS = (
+    "event_id", "funder_id", "facility_id", "amount_usd", "amount_currency",
+    "fiscal_year", "period_start", "period_end", "award_id", "award_title",
+    "program", "relation", "source", "source_url", "retrieved_at",
+    "confidence", "notes",
+)
+
+
+class LakeBuffer:
+    """funders and funding_events rows waiting for the next flush()."""
+
+    def __init__(self) -> None:
+        self.events: list[tuple] = []
+        # funder_id -> (name, type, country, url)
+        self.funders: dict[str, tuple] = {}
+
+    def add_event(self, **cols) -> None:
+        self.events.append(tuple(cols.get(c) for c in EVENT_COLS))
+
+
+def flush(conn, buf: LakeBuffer, message: str) -> None:
+    """Write the buffer as one snapshot; the old per-row INSERT ... ON
+    CONFLICT (event_id) DO NOTHING is an insert-only MERGE (first row
+    staged for a repeated event_id wins, as the first INSERT did)."""
+    if not buf.events and not buf.funders:
+        return
+    stats = None
+    with lto_db.transaction(conn, message):
+        if buf.funders:
+            conn.execute(
+                "CREATE OR REPLACE TEMP TABLE _stage_funders (funder_id VARCHAR, "
+                "name VARCHAR, type VARCHAR, country VARCHAR, url VARCHAR)")
+            conn.executemany("INSERT INTO _stage_funders VALUES (?, ?, ?, ?, ?)",
+                             [(fid, *v) for fid, v in buf.funders.items()])
+            # Existing funder: fill only its NULL type/country/url (the old
+            # UPDATE ... SET x = COALESCE(x, ?)); new funder: insert.
+            conn.execute("""
+                MERGE INTO funders t USING _stage_funders s
+                  ON t.funder_id = s.funder_id
+                WHEN MATCHED AND (t.type IS NULL OR t.country IS NULL
+                                  OR (t.url IS NULL AND s.url IS NOT NULL))
+                  THEN UPDATE SET type = COALESCE(t.type, s.type),
+                                  country = COALESCE(t.country, s.country),
+                                  url = COALESCE(t.url, s.url)
+                WHEN NOT MATCHED THEN INSERT (funder_id, name, type, country, url)
+                  VALUES (s.funder_id, s.name, s.type, s.country, s.url)""")
+            conn.execute("DROP TABLE _stage_funders")
+        if buf.events:
+            conn.execute(
+                f"CREATE OR REPLACE TEMP TABLE _stage_events AS SELECT "
+                f"{', '.join(EVENT_COLS)}, 0::BIGINT AS _seq "
+                f"FROM funding_events LIMIT 0")
+            conn.executemany(
+                f"INSERT INTO _stage_events VALUES "
+                f"({', '.join(['?'] * (len(EVENT_COLS) + 1))})",
+                [(*e, i) for i, e in enumerate(buf.events)])
+            stats = lto_db.merge_upsert(conn, "funding_events", ["event_id"],
+                                        "_stage_events", insert_only=True,
+                                        order_by="_seq")
+            conn.execute("DROP TABLE _stage_events")
+        lto_db.assert_integrity(conn, ["funders", "funding_events"])
+    print(f"[lake] {message}"
+          + (f"  (staged={stats['source_rows']} new={stats['inserted']} "
+             f"already-present={stats['matched']})" if stats else ""))
+    buf.events.clear()
+    buf.funders.clear()
 
 
 def load_overrides(path: Path) -> dict[str, dict]:
@@ -329,23 +407,11 @@ def fy_for_date(iso: str | None) -> int | None:
     return y if mo < 10 else y + 1
 
 
-def ensure_funder(conn, name: str, kind: str = "federal") -> str:
+def ensure_funder(buf: LakeBuffer, name: str, kind: str = "federal") -> str:
+    """Queue a funder row; flush() inserts it, or fills its NULL
+    type/country if it already exists. The first name seen for an id wins."""
     fid = funder_id_for(name)
-    hit = conn.execute(
-        "SELECT funder_id FROM funders WHERE funder_id = ?", [fid]
-    ).fetchone()
-    if hit:
-        conn.execute(
-            "UPDATE funders SET type = COALESCE(type, ?), "
-            "country = COALESCE(country, 'US') WHERE funder_id = ?",
-            [kind, fid],
-        )
-        return fid
-    conn.execute(
-        "INSERT INTO funders (funder_id, name, type, country) "
-        "VALUES (?, ?, ?, 'US')",
-        [fid, name, kind],
-    )
+    buf.funders.setdefault(fid, (name, kind, "US", None))
     return fid
 
 
@@ -382,7 +448,7 @@ def fetch_and_summarise(award: dict, sess: requests.Session,
     return award, fy_totals, ps, pe
 
 
-def write_award_rows(conn, facility_id: str, award: dict,
+def write_award_rows(buf: LakeBuffer, facility_id: str, award: dict,
                      fy_totals: dict[int, float],
                      period_start: str | None,
                      period_end: str | None,
@@ -394,34 +460,23 @@ def write_award_rows(conn, facility_id: str, award: dict,
     sub_agency = (award.get("Awarding Sub Agency") or "").strip()
     cfda = (award.get("CFDA Number") or "").strip() or None
     src_url = f"https://www.usaspending.gov/award/{internal_id}/"
-    funder_id = ensure_funder(conn, funder_name, "federal")
+    funder_id = ensure_funder(buf, funder_name, "federal")
     program = (sub_agency or cfda or "")[:200]
     inserted = 0
     for fy, total in fy_totals.items():
         if total == 0:
             continue
         eid = event_id_for(funder_id, facility_id, award_id or internal_id, fy)
-        try:
-            conn.execute("""
-                INSERT INTO funding_events (
-                    event_id, funder_id, facility_id,
-                    amount_usd, amount_currency,
-                    fiscal_year, period_start, period_end,
-                    award_id, award_title, program, relation,
-                    source, source_url, retrieved_at, confidence, notes
-                )
-                VALUES (?, ?, ?, ?, 'USD', ?, ?, ?, ?, ?, ?,
-                        ?, 'USAspending.gov', ?, current_date, ?, ?)
-                ON CONFLICT (event_id) DO NOTHING
-            """, [eid, funder_id, facility_id, total, fy,
-                  period_start, period_end,
-                  award_id or internal_id, title, program,
-                  _relation_for_type(award),
-                  src_url, confidence,
-                  f"awarding_subagency={sub_agency}; cfda={cfda or ''}"])
-            inserted += 1
-        except Exception as e:
-            print(f"[warn] insert {award_id}/{fy} failed: {e}")
+        buf.add_event(
+            event_id=eid, funder_id=funder_id, facility_id=facility_id,
+            amount_usd=total, amount_currency="USD", fiscal_year=fy,
+            period_start=period_start, period_end=period_end,
+            award_id=award_id or internal_id, award_title=title,
+            program=program, relation=_relation_for_type(award),
+            source="USAspending.gov", source_url=src_url,
+            retrieved_at=date.today(), confidence=confidence,
+            notes=f"awarding_subagency={sub_agency}; cfda={cfda or ''}")
+        inserted += 1
     return inserted
 
 
@@ -489,7 +544,7 @@ def _signed_fy(award: dict) -> int | None:
     return None
 
 
-def process_facility(conn, sess: requests.Session, facility: dict,
+def process_facility(buf: LakeBuffer, sess: requests.Session, facility: dict,
                      overrides: dict, start_fy: int, end_fy: int,
                      include_contracts: bool, no_transactions: bool,
                      dry: bool) -> dict:
@@ -569,34 +624,23 @@ def process_facility(conn, sess: requests.Session, facility: dict,
         for grp in by_award_fy.values():
             if grp["amount"] == 0:
                 continue
-            funder_id = ensure_funder(conn, grp["agency"], "federal")
+            funder_id = ensure_funder(buf, grp["agency"], "federal")
             program = (grp["sub_agency"] or "")[:200]
             src_url = (
                 f"https://www.usaspending.gov/award/{grp['internal_id']}/"
                 if grp["internal_id"] else None
             )
             eid = event_id_for(funder_id, fid, grp["award_id"], grp["fy"])
-            try:
-                conn.execute("""
-                    INSERT INTO funding_events (
-                        event_id, funder_id, facility_id,
-                        amount_usd, amount_currency,
-                        fiscal_year, period_start, period_end,
-                        award_id, award_title, program, relation,
-                        source, source_url, retrieved_at, confidence, notes
-                    )
-                    VALUES (?, ?, ?, ?, 'USD', ?, ?, ?, ?, NULL, ?, ?,
-                            'USAspending.gov', ?, current_date, 'high', ?)
-                    ON CONFLICT (event_id) DO NOTHING
-                """, [eid, funder_id, fid, grp["amount"], grp["fy"],
-                      grp["first_action"], grp["last_action"],
-                      grp["award_id"], program,
-                      "grant",
-                      src_url,
-                      f"awarding_subagency={grp['sub_agency']}"])
-                inserted += 1
-            except Exception as e:
-                print(f"[warn] insert {grp['award_id']}/{grp['fy']} failed: {e}")
+            buf.add_event(
+                event_id=eid, funder_id=funder_id, facility_id=fid,
+                amount_usd=grp["amount"], amount_currency="USD",
+                fiscal_year=grp["fy"], period_start=grp["first_action"],
+                period_end=grp["last_action"], award_id=grp["award_id"],
+                award_title=None, program=program, relation="grant",
+                source="USAspending.gov", source_url=src_url,
+                retrieved_at=date.today(), confidence="high",
+                notes=f"awarding_subagency={grp['sub_agency']}")
+            inserted += 1
     matched_n = len(by_award_fy)
     candidates_n = len(txn_rows)
 
@@ -617,7 +661,7 @@ def process_facility(conn, sess: requests.Session, facility: dict,
                 if amt == 0:
                     continue
                 inserted += write_award_rows(
-                    conn, fid, a,
+                    buf, fid, a,
                     {fy_proxy: amt}, None, None,
                     confidence="medium",  # FY proxy, not transactions truth
                 )
@@ -639,7 +683,7 @@ def process_facility(conn, sess: requests.Session, facility: dict,
                     except Exception as e:
                         print(f"[warn] worker failed: {e}")
             for award, fy_totals, ps, pe in results:
-                inserted += write_award_rows(conn, fid, award, fy_totals, ps, pe)
+                inserted += write_award_rows(buf, fid, award, fy_totals, ps, pe)
     return {
         "awards": matched_n,
         "candidates": candidates_n,
@@ -651,7 +695,9 @@ def process_facility(conn, sess: requests.Session, facility: dict,
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--db", type=Path, default=DEFAULT_DB)
+    lto_db.add_argparse_catalog(ap)
+    ap.add_argument("--db", dest="catalog", type=Path,
+                    help="deprecated alias of --catalog")
     ap.add_argument("--overrides", type=Path, default=DEFAULT_OVERRIDES)
     ap.add_argument("--start-fy", type=int, default=2015)
     ap.add_argument("--end-fy",   type=int, default=2024)
@@ -672,12 +718,14 @@ def main() -> int:
     ap.add_argument("--dry-run", action="store_true")
     args = ap.parse_args()
 
-    if not args.db.exists():
-        print(f"[error] db not found: {args.db}", file=sys.stderr)
+    try:
+        conn = lto_db.connect(read_only=args.dry_run, catalog=args.catalog,
+                              data=args.lake_data)
+    except lto_db.LakeNotFound as e:
+        print(f"[error] {e}", file=sys.stderr)
         return 2
-
-    conn = duckdb.connect(str(args.db))
     sess = session()
+    buf = LakeBuffer()
     overrides = load_overrides(args.overrides)
 
     rows = conn.execute("""
@@ -710,26 +758,39 @@ def main() -> int:
 
     totals = {"awards": 0, "inserted": 0, "queries": 0,
               "processed": 0, "skipped": 0}
-    for i, fac in enumerate(facilities, 1):
-        try:
-            r = process_facility(conn, sess, fac, overrides,
-                                 args.start_fy, args.end_fy,
-                                 args.include_contracts,
-                                 args.no_transactions, args.dry_run)
-        except Exception as e:
+    # Checkpoint: one snapshot per FLUSH_EVERY facilities, plus the rest
+    # in `finally` (a crash or Ctrl-C keeps what was fetched).
+    span = f"FY{args.start_fy}-FY{args.end_fy}"
+    first = 1
+    try:
+        for i, fac in enumerate(facilities, 1):
+            if not args.dry_run and i > first and (i - 1) % FLUSH_EVERY == 0:
+                flush(conn, buf, f"fetch_funding_usaspending: {span}, facilities "
+                                 f"{first}-{i - 1} of {len(facilities)}")
+                first = i
+            try:
+                r = process_facility(buf, sess, fac, overrides,
+                                     args.start_fy, args.end_fy,
+                                     args.include_contracts,
+                                     args.no_transactions, args.dry_run)
+            except Exception as e:
+                print(f"  [{i}/{len(facilities)}] {(fac['acronym'] or ''):10s} "
+                      f"{fac['canonical_name'][:50]:50s}  ERROR: {e}")
+                continue
+            if r.get("skipped"):
+                totals["skipped"] += 1
+                continue
+            totals["awards"] += r["awards"]
+            totals["inserted"] += r["inserted"]
+            totals["queries"] += r["queries"]
+            totals["processed"] += 1
             print(f"  [{i}/{len(facilities)}] {(fac['acronym'] or ''):10s} "
-                  f"{fac['canonical_name'][:50]:50s}  ERROR: {e}")
-            continue
-        if r.get("skipped"):
-            totals["skipped"] += 1
-            continue
-        totals["awards"] += r["awards"]
-        totals["inserted"] += r["inserted"]
-        totals["queries"] += r["queries"]
-        totals["processed"] += 1
-        print(f"  [{i}/{len(facilities)}] {(fac['acronym'] or ''):10s} "
-              f"{fac['canonical_name'][:50]:50s}  q={r['queries']:2d}  "
-              f"matched={r['awards']:4d}  wrote={r['inserted']:4d}")
+                  f"{fac['canonical_name'][:50]:50s}  q={r['queries']:2d}  "
+                  f"matched={r['awards']:4d}  wrote={r['inserted']:4d}")
+    finally:
+        if not args.dry_run:
+            flush(conn, buf, f"fetch_funding_usaspending: {span}, facilities "
+                             f"{first}-{len(facilities)} of {len(facilities)}")
 
     print(f"[done] processed={totals['processed']}  "
           f"skipped={totals['skipped']}  queries={totals['queries']}  "

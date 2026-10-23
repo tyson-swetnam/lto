@@ -1,0 +1,199 @@
+{
+ "batch_id": "R-PEOPLE2-ARID-NM-02",
+ "retrieved_at": "2026-10-22",
+ "verified_by": "adversarial-verifier 2026-10-22",
+ "facilities": [
+  {
+   "facility_id": "7924e081e8ad8d68",
+   "pages_fetched": [
+    {
+     "url": "https://wrp.unm.edu/",
+     "status": 200
+    },
+    {
+     "url": "https://wrp.unm.edu/about/index.html",
+     "status": 200
+    },
+    {
+     "url": "https://wrp.unm.edu/contact/index.html",
+     "status": 200
+    },
+    {
+     "url": "https://wrp.unm.edu/faculty/index.html",
+     "status": 200
+    },
+    {
+     "url": "https://wrp.unm.edu/about/faculty-staff.html",
+     "status": 404
+    },
+    {
+     "url": "https://biology.unm.edu/people/faculty/profile/bixby_becky.html",
+     "status": 200
+    },
+    {
+     "url": "https://bbixby.weebly.com/",
+     "status": 200
+    },
+    {
+     "url": "https://civil.unm.edu/faculty-staff/faculty-profiles/anjali-mulchandani.html",
+     "status": 200
+    },
+    {
+     "url": "https://econ.unm.edu/people/faculty/profile/jingjing-wang.html",
+     "status": 200
+    },
+    {
+     "url": "https://sites.google.com/view/jingjingwang",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-6672-4920/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-6672-4920/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0001-6529-8336/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0001-6529-8336/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0001-7589-0368/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0001-7589-0368/employments",
+     "status": 200
+    }
+   ],
+   "notes": "Leadership from the WRP Contact page: Director Becky Bixby; Acting Associate Director (Fall 2026) Anjali Mulchandani while Associate Director Jingjing Wang is on sabbatical. All three already exist in people (ARID seed) so existing_person_id is set. A Program Administrator is also listed but is non-scientific staff and was not added. No history page naming a founding director was found on wrp.unm.edu. The faculty page lists ~40 affiliated faculty; these were not added as facility personnel. Bixby's ORCID record is under the name 'Rebecca Bixby' (UNM, dept 'Biology, Water Resources'); accepted as a match on the employer + department, but the given name differs from the 'Becky' used on UNM pages, so a reviewer may want to confirm it. VERIFIER: all three affiliations re-confirmed on the contact page (200, 2026-10-22). Bixby bio re-sourced to the UNM Biology profile (the weebly page does not state her position, WRP role or PhD). Bixby ORCID kept: record name Rebecca Bixby, employment UNM 'Biology, Water Resources', works on NM reservoirs and stream algae. Wang bio corrected ('dairy' -> 'livestock' manure). ORCIDs for Mulchandani (name + UNM employment) and Wang (linked from her own site) confirmed."
+  },
+  {
+   "facility_id": "6b8f4ab20b0c821d",
+   "pages_fetched": [
+    {
+     "url": "https://wcc.sc.egov.usda.gov/nwcc/site?sitenum=2001",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/stations?networkCds=SCAN&stateCds=NM",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/nwcc/site?sitenum=2015",
+     "status": 200
+    }
+   ],
+   "notes": "DATA ERROR: the facility URL sitenum=2001 is SCAN 'Rogers Farm #1' in Lancaster County, Nebraska, not Adams Ranch. AWDB station metadata gives Adams Ranch #1 as station 2015:NM:SCAN (Lincoln County, NM, 34.25294,-105.41973, elev 6170 ft, operator NRCS, since 1993-10-25); the DB has it at 33.9667,-103.65, roughly 170 km away. The facility name, URL and coordinates should be corrected. No people: NRCS SCAN site pages and station metadata name no PI, manager or station contact (operator is NRCS only; the 'Questions about this site' contact page did not respond)."
+  },
+  {
+   "facility_id": "99988c194cd66757",
+   "pages_fetched": [
+    {
+     "url": "https://wcc.sc.egov.usda.gov/nwcc/site?sitenum=2003",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/stations?networkCds=SCAN&stateCds=NM",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/nwcc/site?sitenum=2107",
+     "status": 200
+    }
+   ],
+   "notes": "DATA ERROR: the facility URL sitenum=2003 is SCAN 'Wabeno #1' in Forest County, Wisconsin. AWDB station metadata gives Crossroads as station 2107:NM:SCAN (Lea County, NM, 33.53513,-103.242, elev 4050 ft, operator NRCS, since 2005-03-12); the DB coordinates (33.5333,-103.3167) are close. The name '#2003' and URL should be corrected to 2107. The record also starts in 2005, which may affect the >=10-year threshold. No people: SCAN pages and metadata name no PI, manager or contact person."
+  }
+ ],
+ "people": [
+  {
+   "key": "becky-bixby",
+   "existing_person_id": "673714ec2cc72e61",
+   "name": "Becky Bixby",
+   "name_given": "Becky",
+   "name_family": "Bixby",
+   "orcid": "0000-0002-6672-4920",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-6672-4920/employments",
+   "homepage_url": "https://bbixby.weebly.com/",
+   "bio": "Research professor in the UNM Department of Biology who directs the university's Water Resources Program. An aquatic ecologist with a 2001 University of Michigan doctorate in biology, her research centers on periphyton ecology and biodiversity.",
+   "bio_source_url": "https://biology.unm.edu/people/faculty/profile/bixby_becky.html",
+   "research_interests": "Aquatic ecology; periphyton ecology and biodiversity",
+   "research_interests_source_url": "https://biology.unm.edu/people/faculty/profile/bixby_becky.html"
+  },
+  {
+   "key": "anjali-mulchandani",
+   "existing_person_id": "5c9e564145b40899",
+   "name": "Anjali Mulchandani",
+   "name_given": "Anjali",
+   "name_family": "Mulchandani",
+   "orcid": "0000-0001-6529-8336",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0001-6529-8336/employments",
+   "homepage_url": "https://civil.unm.edu/faculty-staff/faculty-profiles/anjali-mulchandani.html",
+   "bio": "Assistant professor of civil, construction and environmental engineering at UNM, where she heads the Environmental Resource Sustainability group. Her research spans the water-energy nexus, harvesting water from the atmosphere, waste-to-energy technology and remediation, with an emphasis on science communication and community-needs research. Previously a Stanford postdoc; PhD from Arizona State.",
+   "bio_source_url": "https://civil.unm.edu/faculty-staff/faculty-profiles/anjali-mulchandani.html",
+   "research_interests": "Environmental resource sustainability; water-energy nexus; atmospheric water harvesting; water quality; engineering education; science communication",
+   "research_interests_source_url": "https://civil.unm.edu/faculty-staff/faculty-profiles/anjali-mulchandani.html"
+  },
+  {
+   "key": "jingjing-wang",
+   "existing_person_id": "555356e0213a2c78",
+   "name": "Jingjing Wang",
+   "name_given": "Jingjing",
+   "name_family": "Wang",
+   "orcid": "0000-0001-7589-0368",
+   "orcid_source_url": "https://sites.google.com/view/jingjingwang",
+   "homepage_url": "https://sites.google.com/view/jingjingwang",
+   "bio": "Associate professor of economics at UNM working in environmental and natural-resource economics. She builds integrated and dynamic optimization models and econometric analyses of how policy and markets allocate water and other resources, including urban conservation, cross-sector water trading, livestock manure with bioenergy, and nitrogen in drylands.",
+   "bio_source_url": "https://econ.unm.edu/people/faculty/profile/jingjing-wang.html",
+   "research_interests": "Water economics; nutrient management; renewable energy; climate change; integrated modelling",
+   "research_interests_source_url": "https://econ.unm.edu/people/faculty/profile/jingjing-wang.html"
+  }
+ ],
+ "affiliations": [
+  {
+   "facility_id": "7924e081e8ad8d68",
+   "person_key": "becky-bixby",
+   "role": "director",
+   "title": "Director, Water Resources Program",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://wrp.unm.edu/contact/index.html",
+   "evidence": "Director Becky Bixby, PhD Research Professor Department of Biology",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "7924e081e8ad8d68",
+   "person_key": "anjali-mulchandani",
+   "role": "associate-director",
+   "title": "Acting Associate Director (Fall 2026)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2026,
+   "end_year": null,
+   "source_url": "https://wrp.unm.edu/contact/index.html",
+   "evidence": "Acting Associate Director (Fall 2026) Anjali Mulchandani, PhD Assistant Professor",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "7924e081e8ad8d68",
+   "person_key": "jingjing-wang",
+   "role": "associate-director",
+   "title": "Associate Director (on sabbatical, Fall 2026)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://wrp.unm.edu/contact/index.html",
+   "evidence": "Associate Director (on sabbatical, Fall 2026) Jingjing Wang, PhD Associate Professor Department of Economics",
+   "confidence": "high"
+  }
+ ],
+ "verifications": []
+}

@@ -1,0 +1,793 @@
+{
+ "batch_id": "R-PEOPLE2-NEP-01b",
+ "retrieved_at": "2026-10-22",
+ "verified_by": "adversarial-verifier 2026-10-22",
+ "facilities": [
+  {
+   "facility_id": "db36727508052028",
+   "pages_fetched": [
+    {
+     "url": "https://www.mobilebaynep.com/",
+     "status": 200
+    },
+    {
+     "url": "https://www.mobilebaynep.com/who-we-are/",
+     "status": 200
+    },
+    {
+     "url": "https://www.mobilebaynep.com/who-we-are/staff/jason-kudulis/",
+     "status": 200
+    },
+    {
+     "url": "https://www.mobilebaynep.com/who-we-are/staff/blair-morrison/",
+     "status": 200
+    },
+    {
+     "url": "https://www.mobilebaynep.com/who-we-are/staff/cody-aloi/",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-3784-6056/employments",
+     "status": 200
+    }
+   ],
+   "notes": "Staff listed on who-we-are page (#our-staff) with individual profile pages. No founding director named on the Our Story section."
+  },
+  {
+   "facility_id": "d9bad8026c38e336",
+   "pages_fetched": [
+    {
+     "url": "https://www.mbnep.org/",
+     "status": 200
+    },
+    {
+     "url": "https://www.mbnep.org/our-team/",
+     "status": 200
+    }
+   ],
+   "notes": "Morro Bay NEP (mbnep.org) team page lists staff with short bios; no individual profile pages and no ORCID matches found. No history page naming a founding director was fetched."
+  },
+  {
+   "facility_id": "9d4583c180914ac0",
+   "pages_fetched": [
+    {
+     "url": "https://www.nbep.org/",
+     "status": 200
+    },
+    {
+     "url": "https://www.nbep.org/who-we-are",
+     "status": 200
+    },
+    {
+     "url": "https://www.nbep.org/our-work",
+     "status": 200
+    }
+   ],
+   "notes": "NBEP is hosted by Roger Williams University (per who-we-are page). Staff list on who-we-are page; no individual profile pages. ORCID search found no record with matching employment for these staff."
+  },
+  {
+   "facility_id": "b18d4e304929d1f3",
+   "pages_fetched": [
+    {
+     "url": "https://www.delawareestuary.org/",
+     "status": 200
+    },
+    {
+     "url": "https://www.delawareestuary.org/staff/",
+     "status": 200
+    },
+    {
+     "url": "https://www.delawareestuary.org/history/",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0003-1130-5793/employments",
+     "status": 200
+    }
+   ],
+   "notes": "Partnership for the Delaware Estuary hosts the Delaware Estuary Program. Kathy Klein was ED 1997-2007 and returned in 2018 (staff page). History page does not name a founding director."
+  },
+  {
+   "facility_id": "14fa1197ed4975e3",
+   "pages_fetched": [
+    {
+     "url": "https://www.peconicestuary.org/",
+     "status": 200
+    },
+    {
+     "url": "https://www.peconicestuary.org/about-pep/staff-and-contacts/",
+     "status": 200
+    },
+    {
+     "url": "https://www.peconicestuary.org/peconic-estuary/the-peconic-estuary-story/",
+     "status": 200
+    },
+    {
+     "url": "https://researchconnect.suny.edu/en/persons/joyce-novak/",
+     "status": 200
+    }
+   ],
+   "notes": "Peconic Estuary Partnership is administered via Stony Brook University (SoMAS); staff page gives names/titles only, director bio from SUNY Research Connect profile. Verifier 2026-10-22: the director affiliation is sourced to the SUNY Research Connect profile, which carries the 2018 start year. The PEP staff page separately confirms that she is the current Executive Director."
+  },
+  {
+   "facility_id": "6b49d19b5accaf76",
+   "pages_fetched": [
+    {
+     "url": "https://prepestuaries.org/staff/",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0009-0002-0606-5908/employments",
+     "status": 200
+    }
+   ],
+   "notes": "prepestuaries.org returns 403 to curl (bot blocking); the staff page was read via WebFetch, which succeeded. PREP is housed at the University of New Hampshire. UNH Today article URL redirected to the UNH Today home page, so no start year for the director was taken from it. homepage_url left null for PREP staff because the page could not be confirmed 200 with curl. Verifier 2026-10-22: staff page still returns 403 to curl; names, titles and every bio fact were re-confirmed via WebFetch only, so PREP affiliations are downgraded to medium confidence."
+  }
+ ],
+ "people": [
+  {
+   "key": "jason-kudulis",
+   "existing_person_id": null,
+   "name": "Jason Kudulis",
+   "name_given": "Jason",
+   "name_family": "Kudulis",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.mobilebaynep.com/who-we-are/staff/jason-kudulis/",
+   "bio": "Leads Mobile Bay NEP as its Director, guiding the program's management conference of community leaders and overseeing restoration projects aimed at water quality and coastal resilience in Alabama. Earlier roles included the National Park Service, Alabama and Utah state agencies, and nonprofits. Holds degrees from the University of South Alabama and University of Alabama.",
+   "bio_source_url": "https://www.mobilebaynep.com/who-we-are/staff/jason-kudulis/",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "blair-morrison",
+   "existing_person_id": null,
+   "name": "Blair Morrison",
+   "name_given": "Blair",
+   "name_family": "Morrison",
+   "orcid": "0000-0002-3784-6056",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-3784-6056/employments",
+   "homepage_url": "https://www.mobilebaynep.com/who-we-are/staff/blair-morrison/",
+   "bio": "Science and Monitoring Program Lead at the Mobile Bay NEP, coordinating long-term ecosystem evaluation across the Mobile Bay watersheds and helping run the program's Science Advisory Committee. Trained in marine science at the University of Alabama and University of South Alabama, with thesis work at Dauphin Island Sea Lab on plankton, Vibrio and environmental drivers.",
+   "bio_source_url": "https://www.mobilebaynep.com/who-we-are/staff/blair-morrison/",
+   "research_interests": "estuaries; disturbance; water quality; climate change; plankton and Vibrio ecology",
+   "research_interests_source_url": "https://www.mobilebaynep.com/who-we-are/staff/blair-morrison/"
+  },
+  {
+   "key": "cody-aloi",
+   "existing_person_id": null,
+   "name": "Cody Aloi",
+   "name_given": "Cody",
+   "name_family": "Aloi",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.mobilebaynep.com/who-we-are/staff/cody-aloi/",
+   "bio": "Program Manager at the Mobile Bay NEP, applying an operations-management and entrepreneurship background to lead strategic initiatives for Alabama's coast. Previously served in the U.S. Navy and worked as a security contractor before joining the program.",
+   "bio_source_url": "https://www.mobilebaynep.com/who-we-are/staff/cody-aloi/",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "ann-kitajima",
+   "existing_person_id": null,
+   "name": "Ann Kitajima",
+   "name_given": "Ann",
+   "name_family": "Kitajima",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Executive Director of the Morro Bay National Estuary Program, in charge of program and financial oversight, strategic planning and administration. She previously held the program's Assistant Director and Monitoring Program Manager positions.",
+   "bio_source_url": "https://www.mbnep.org/our-team/",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "sara-soroka",
+   "existing_person_id": null,
+   "name": "Sara Soroka",
+   "name_given": "Sara",
+   "name_family": "Soroka",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Associate Director of the Morro Bay NEP. Holds a master's from the Bren School at UC Santa Barbara, focused on water resource management and environmental policy; earlier worked at Yosemite National Park.",
+   "bio_source_url": "https://www.mbnep.org/our-team/",
+   "research_interests": "water resource management; environmental policy",
+   "research_interests_source_url": "https://www.mbnep.org/our-team/"
+  },
+  {
+   "key": "carolyn-geraghty",
+   "existing_person_id": null,
+   "name": "Carolyn Geraghty",
+   "name_given": "Carolyn",
+   "name_family": "Geraghty",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Restoration Program Director at the Morro Bay NEP, developing watershed and estuarine restoration and conservation projects. Formerly an environmental scientist at the San Francisco Estuary Institute and restoration director at the Klamath Basin Rangeland Trust. Master's in environmental planning (UC Berkeley) with research evaluating stream restoration in Oregon's Klamath Basin.",
+   "bio_source_url": "https://www.mbnep.org/our-team/",
+   "research_interests": "watershed science; stream and estuarine restoration; aquatic ecology; water quality monitoring",
+   "research_interests_source_url": "https://www.mbnep.org/our-team/"
+  },
+  {
+   "key": "makenzie-oconnor",
+   "existing_person_id": null,
+   "name": "Makenzie O'Connor",
+   "name_given": "Makenzie",
+   "name_family": "O'Connor",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Monitoring Program Manager at the Morro Bay NEP, coordinating ongoing watershed monitoring with partner agencies and volunteers. Holds a 2015 B.S. in environmental science and ecology and has worked in river and mountain ecosystems from the Klamath River to the Truckee-Tahoe region.",
+   "bio_source_url": "https://www.mbnep.org/our-team/",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "forest-lurz",
+   "existing_person_id": null,
+   "name": "Forest Lurz",
+   "name_given": "Forest",
+   "name_family": "Lurz",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Education Coordinator at the Morro Bay NEP. Holds a bachelor's in ecology and evolutionary biology from UC Santa Cruz (2015) and was most recently a Cambria-based naturalist (Camp Ocean Pines).",
+   "bio_source_url": "https://www.mbnep.org/our-team/",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "darcy-young",
+   "existing_person_id": null,
+   "name": "Darcy Young",
+   "name_given": "Darcy",
+   "name_family": "Young",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Executive Director of the Narragansett Bay Estuary Program, focused on building partnerships for watershed restoration. Joined NBEP in 2022 as Watershed Outreach Manager after seven years with a sister estuary program on Florida's west coast. Biology degrees from Clark University.",
+   "bio_source_url": "https://www.nbep.org/who-we-are",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "courtney-schmidt",
+   "existing_person_id": null,
+   "name": "Courtney Schmidt",
+   "name_given": "Courtney",
+   "name_family": "Schmidt",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Staff Scientist at the Narragansett Bay Estuary Program since 2014, managing scientific projects, synthesizing regional data with partners, identifying research needs and running the internship program. Earned M.S. and Ph.D. degrees at the University of Rhode Island Graduate School of Oceanography.",
+   "bio_source_url": "https://www.nbep.org/who-we-are",
+   "research_interests": "regional data synthesis; estuarine science for management",
+   "research_interests_source_url": "https://www.nbep.org/who-we-are"
+  },
+  {
+   "key": "jennifer-rogers-nbep",
+   "existing_person_id": null,
+   "name": "Jennifer Rogers",
+   "name_given": "Jennifer",
+   "name_family": "Rogers",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Staff Ecologist at the Narragansett Bay Estuary Program; an aquatic ecologist who has studied salt marsh, rocky intertidal and freshwater stream habitats and works to link management-driven research with restoration and conservation decisions. Holds an M.S. and D.Env. from UCLA.",
+   "bio_source_url": "https://www.nbep.org/who-we-are",
+   "research_interests": "coastal salt marsh; rocky intertidal ecology; freshwater streams; science-to-management",
+   "research_interests_source_url": "https://www.nbep.org/who-we-are"
+  },
+  {
+   "key": "mariel-sorlien",
+   "existing_person_id": null,
+   "name": "Mariel Sorlien",
+   "name_given": "Mariel",
+   "name_family": "Sorlien",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Geospatial and Design Manager at the Narragansett Bay Estuary Program since 2022, analyzing data and producing maps and story maps with partners. Holds a master's in environmental science and management plus a GIS and remote sensing certificate from the University of Rhode Island.",
+   "bio_source_url": "https://www.nbep.org/who-we-are",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "kathy-klein",
+   "existing_person_id": null,
+   "name": "Kathy Klein",
+   "name_given": "Kathy",
+   "name_family": "Klein",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Executive Director of the Partnership for the Delaware Estuary, a post she first held from 1997 to 2007 before returning in 2018. In between she was executive director of the Delaware River Basin's water resources association and consulted on strategic planning for the Philadelphia Water Department.",
+   "bio_source_url": "https://www.delawareestuary.org/staff/",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "leeann-haaf",
+   "existing_person_id": null,
+   "name": "LeeAnn Haaf",
+   "name_given": "LeeAnn",
+   "name_family": "Haaf",
+   "orcid": "0000-0003-1130-5793",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0003-1130-5793/employments",
+   "homepage_url": null,
+   "bio": "Director of Estuary Science at the Partnership for the Delaware Estuary, leading its science program and ecological assessments, researching coastal wetlands and forests, and leading reports on Delaware Estuary health status and trends. Joined PDE in 2013; earned all three environmental science degrees (through the Ph.D.) at Drexel.",
+   "bio_source_url": "https://www.delawareestuary.org/staff/",
+   "research_interests": "coastal wetlands; coastal forests; estuary health status and trends; restoration",
+   "research_interests_source_url": "https://www.delawareestuary.org/staff/"
+  },
+  {
+   "key": "haley-burns",
+   "existing_person_id": null,
+   "name": "Haley Burns",
+   "name_given": "Haley",
+   "name_family": "Burns",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Manages the Delaware Estuary Program for PDE, supporting the program's Steering and Estuary Implementation Committees, board committees and government affairs.",
+   "bio_source_url": "https://www.delawareestuary.org/staff/",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "martha-maxwell-doyle",
+   "existing_person_id": null,
+   "name": "Martha Maxwell-Doyle",
+   "name_given": "Martha",
+   "name_family": "Maxwell-Doyle",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Programs Director at the Partnership for the Delaware Estuary, coordinating programmatic work with agencies and partners on environmental science, policy and resource management. Has held leadership roles at two estuary programs (PDE and Barnegat Bay Partnership) and serves on several New Jersey councils; B.S. from Rutgers Cook College.",
+   "bio_source_url": "https://www.delawareestuary.org/staff/",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "leah-morgan",
+   "existing_person_id": null,
+   "name": "Leah Morgan",
+   "name_given": "Leah",
+   "name_family": "Morgan",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "PDE's Estuary Science Manager, running restoration projects including the oyster shell recycling program and the permitting, implementation and monitoring of living shorelines.",
+   "bio_source_url": "https://www.delawareestuary.org/staff/",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "joyce-novak",
+   "existing_person_id": null,
+   "name": "Joyce Novak",
+   "name_given": "Joyce",
+   "name_family": "Novak",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://researchconnect.suny.edu/en/persons/joyce-novak/",
+   "bio": "Executive Director of the Peconic Estuary Partnership since 2018 and current chair of the national association of NEPs; oversaw PEP's 2020 management plan. Previously spent 14 years in Ireland in coastal paleoecology, watershed management and fisheries sustainability work, and started her career on NYC DEP wetland and Blue Belt projects. PhD (2017) on Galway Bay paleoenvironments.",
+   "bio_source_url": "https://researchconnect.suny.edu/en/persons/joyce-novak/",
+   "research_interests": "coastal paleoecology; watershed management; coastal planning; coastal and ocean policy; climate change; sustainability",
+   "research_interests_source_url": "https://researchconnect.suny.edu/en/persons/joyce-novak/"
+  },
+  {
+   "key": "marissa-velasquez",
+   "existing_person_id": null,
+   "name": "Marissa Velasquez",
+   "name_given": "Marissa",
+   "name_family": "Velasquez",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "kalle-matso",
+   "existing_person_id": null,
+   "name": "Kalle Matso",
+   "name_given": "Kalle",
+   "name_family": "Matso",
+   "orcid": "0009-0002-0606-5908",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0009-0002-0606-5908/employments",
+   "homepage_url": null,
+   "bio": "Director of the Piscataqua Region Estuaries Partnership at the University of New Hampshire, coordinating its science-based programs and focusing on linking science to timely decisions. Previously managed the NERRS Science Collaborative and the CICEET research portfolio at UNH. UNH master's (eelgrass ecology) and PhD on how research becomes action.",
+   "bio_source_url": "https://prepestuaries.org/staff/",
+   "research_interests": "eelgrass ecology; linking science to decision-making",
+   "research_interests_source_url": "https://prepestuaries.org/staff/"
+  },
+  {
+   "key": "abigail-lyon",
+   "existing_person_id": null,
+   "name": "Abigail Lyon",
+   "name_given": "Abigail",
+   "name_family": "Lyon",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Assistant Director and Community Engagement Manager at PREP, managing the PREPA project and providing municipalities with technical assistance and data. Holds a 2015 UNH M.S. in integrated coastal ecosystem science, policy and management; earlier interned with PREP and the Great Bay NERR.",
+   "bio_source_url": "https://prepestuaries.org/staff/",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "chris-whitney",
+   "existing_person_id": null,
+   "name": "Chris Whitney",
+   "name_given": "Chris",
+   "name_family": "Whitney",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Program Scientist at PREP, analyzing and visualizing data for management decisions and managing the partnership's data. UNH master's in soil and water resources management and PhD in earth and environmental sciences, studying how wetlands, beaver ponds and reservoirs shape downstream nutrient export toward the Plum Island Estuary.",
+   "bio_source_url": "https://prepestuaries.org/staff/",
+   "research_interests": "watershed nutrient dynamics; wetlands, beaver ponds and reservoirs; data analysis and visualization",
+   "research_interests_source_url": "https://prepestuaries.org/staff/"
+  },
+  {
+   "key": "trevor-mattera",
+   "existing_person_id": null,
+   "name": "Trevor Mattera",
+   "name_given": "Trevor",
+   "name_family": "Mattera",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Habitat Program Manager at PREP, coordinating estuarine habitat restoration and management with partners. UNH master's in natural resources with research on living-shoreline policy in New Hampshire; previously with the St. Kitts Sea Turtle Monitoring Network.",
+   "bio_source_url": "https://prepestuaries.org/staff/",
+   "research_interests": "estuarine habitat restoration; living shoreline policy",
+   "research_interests_source_url": "https://prepestuaries.org/staff/"
+  },
+  {
+   "key": "kaitlin-van-volkom",
+   "existing_person_id": null,
+   "name": "Kaitlin Van Volkom",
+   "name_given": "Kaitlin",
+   "name_family": "Van Volkom",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Scientist at PREP who works on eelgrass monitoring as part of the dive team, oyster restoration and monitoring with The Nature Conservancy in New Hampshire, and fish use of oyster reefs. UNH M.S. and Ph.D. in marine biology on invasive species, extreme weather and benthic communities.",
+   "bio_source_url": "https://prepestuaries.org/staff/",
+   "research_interests": "eelgrass monitoring; oyster restoration; benthic community ecology; invasive species; predator-prey interactions",
+   "research_interests_source_url": "https://prepestuaries.org/staff/"
+  }
+ ],
+ "affiliations": [
+  {
+   "facility_id": "db36727508052028",
+   "person_key": "jason-kudulis",
+   "role": "director",
+   "title": "Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.mobilebaynep.com/who-we-are/staff/jason-kudulis/",
+   "evidence": "As Director of the Mobile Bay National Estuary Program (MBNEP), Kudulis guides a management conference",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "db36727508052028",
+   "person_key": "blair-morrison",
+   "role": "scientist",
+   "title": "Science and Monitoring Program Lead",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.mobilebaynep.com/who-we-are/staff/blair-morrison/",
+   "evidence": "Blair serves as the Science and Monitoring Program Lead",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "db36727508052028",
+   "person_key": "cody-aloi",
+   "role": "manager",
+   "title": "Program Manager",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.mobilebaynep.com/who-we-are/staff/cody-aloi/",
+   "evidence": "As Program Manager for the Mobile Bay National Estuary Program (MBNEP), Cody leverages",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "d9bad8026c38e336",
+   "person_key": "ann-kitajima",
+   "role": "director",
+   "title": "Executive Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.mbnep.org/our-team/",
+   "evidence": "Ann serves as the organization’s Executive Director, responsible for program and financial oversight",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "d9bad8026c38e336",
+   "person_key": "sara-soroka",
+   "role": "associate-director",
+   "title": "Associate Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.mbnep.org/our-team/",
+   "evidence": "Sara serves as Associate Director of the Estuary Program.",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "d9bad8026c38e336",
+   "person_key": "carolyn-geraghty",
+   "role": "manager",
+   "title": "Restoration Program Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.mbnep.org/our-team/",
+   "evidence": "Carolyn Geraghty Restoration Program Director Develops and oversees watershed and estuarine restoration projects",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "d9bad8026c38e336",
+   "person_key": "makenzie-oconnor",
+   "role": "manager",
+   "title": "Monitoring Program Manager",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.mbnep.org/our-team/",
+   "evidence": "Makenzie coordinates ongoing monitoring in the watershed through collaboration with local partners, agencies, and volunteers.",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "d9bad8026c38e336",
+   "person_key": "forest-lurz",
+   "role": "education-coordinator",
+   "title": "Education Coordinator",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.mbnep.org/our-team/",
+   "evidence": "Forest Lurz Education Coordinator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "9d4583c180914ac0",
+   "person_key": "darcy-young",
+   "role": "director",
+   "title": "Executive Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.nbep.org/who-we-are",
+   "evidence": "Darcy Young Executive Director Darcy's work with NBEP revolves around creating, sustaining, and celebrating partnerships",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "9d4583c180914ac0",
+   "person_key": "courtney-schmidt",
+   "role": "scientist",
+   "title": "Staff Scientist",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2014,
+   "end_year": null,
+   "source_url": "https://www.nbep.org/who-we-are",
+   "evidence": "Courtney has been the Staff Scientist at NBEP since July 2014.",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "9d4583c180914ac0",
+   "person_key": "jennifer-rogers-nbep",
+   "role": "scientist",
+   "title": "Staff Ecologist",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.nbep.org/who-we-are",
+   "evidence": "Jennifer Rogers Staff Ecologist Jennifer is an aquatic ecologist",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "9d4583c180914ac0",
+   "person_key": "mariel-sorlien",
+   "role": "technical-staff",
+   "title": "Geospatial and Design Manager",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": 2022,
+   "end_year": null,
+   "source_url": "https://www.nbep.org/who-we-are",
+   "evidence": "Mariel has been the Geospatial and Design Manager since May 2022.",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "b18d4e304929d1f3",
+   "person_key": "kathy-klein",
+   "role": "director",
+   "title": "Executive Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2018,
+   "end_year": null,
+   "source_url": "https://www.delawareestuary.org/staff/",
+   "evidence": "Kathy Klein is PDE’s Executive Director.",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "b18d4e304929d1f3",
+   "person_key": "kathy-klein",
+   "role": "former-director",
+   "title": "Executive Director",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": 1997,
+   "end_year": 2007,
+   "source_url": "https://www.delawareestuary.org/staff/",
+   "evidence": "Kathy first joined PDE in 1997 and served as the Executive Director until 2007.",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "b18d4e304929d1f3",
+   "person_key": "leeann-haaf",
+   "role": "scientist",
+   "title": "Director of Estuary Science",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.delawareestuary.org/staff/",
+   "evidence": "LeeAnn Haaf, Ph.D. is PDE’s Director of Estuary Science.",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "b18d4e304929d1f3",
+   "person_key": "haley-burns",
+   "role": "manager",
+   "title": "Delaware Estuary Program Manager",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.delawareestuary.org/staff/",
+   "evidence": "Haley Burns is the Delaware Estuary Program Manager at PDE.",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "b18d4e304929d1f3",
+   "person_key": "martha-maxwell-doyle",
+   "role": "leadership-team",
+   "title": "Programs Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.delawareestuary.org/staff/",
+   "evidence": "Martha Maxwell-Doyle is PDE’s Programs Director.",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "b18d4e304929d1f3",
+   "person_key": "leah-morgan",
+   "role": "manager",
+   "title": "Estuary Science Manager",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.delawareestuary.org/staff/",
+   "evidence": "Leah Morgan is the Estuary Science Manager at the Partnership for the Delaware Estuary.",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "14fa1197ed4975e3",
+   "person_key": "joyce-novak",
+   "role": "director",
+   "title": "Executive Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2018,
+   "end_year": null,
+   "source_url": "https://researchconnect.suny.edu/en/persons/joyce-novak/",
+   "evidence": "Joyce has served as the Executive Director of the Peconic Estuary Partnership (PEP)",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "14fa1197ed4975e3",
+   "person_key": "marissa-velasquez",
+   "role": "manager",
+   "title": "Natural Resource Program Manager",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.peconicestuary.org/about-pep/staff-and-contacts/",
+   "evidence": "Marissa Velasquez Natural Resource Program Manager",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "6b49d19b5accaf76",
+   "person_key": "kalle-matso",
+   "role": "director",
+   "title": "Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://prepestuaries.org/staff/",
+   "evidence": "Dr. Kalle Matso, Director",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "6b49d19b5accaf76",
+   "person_key": "abigail-lyon",
+   "role": "associate-director",
+   "title": "Assistant Director and Community Engagement Manager",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://prepestuaries.org/staff/",
+   "evidence": "Abigail Lyon, Assistant Director and Community Engagement Manager",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "6b49d19b5accaf76",
+   "person_key": "chris-whitney",
+   "role": "scientist",
+   "title": "Program Scientist",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://prepestuaries.org/staff/",
+   "evidence": "Dr. Chris Whitney, Program Scientist",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "6b49d19b5accaf76",
+   "person_key": "trevor-mattera",
+   "role": "manager",
+   "title": "Habitat Program Manager",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://prepestuaries.org/staff/",
+   "evidence": "Trevor Mattera, Habitat Program Manager",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "6b49d19b5accaf76",
+   "person_key": "kaitlin-van-volkom",
+   "role": "scientist",
+   "title": "Scientist",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://prepestuaries.org/staff/",
+   "evidence": "Kaitlin Van Volkom, Scientist",
+   "confidence": "medium"
+  }
+ ],
+ "verifications": []
+}

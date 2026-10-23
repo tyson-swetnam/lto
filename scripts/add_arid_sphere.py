@@ -27,14 +27,15 @@ Usage::
 from __future__ import annotations
 
 import argparse
+import contextlib
 import csv
 import sys
 from pathlib import Path
 
-import duckdb
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import lto_db  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
-DB = ROOT / "db" / "lto.duckdb"
 VOCAB = ROOT / "schema" / "vocab" / "spheres.csv"
 
 # Sites whose identity IS dryland research — primary flips to arid.
@@ -59,11 +60,35 @@ PRIMARY_NAMES = [
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--dry-run", action="store_true")
+    lto_db.add_argparse_catalog(ap)
     args = ap.parse_args()
 
-    conn = duckdb.connect(str(DB))
-    conn.execute("SET search_path = main;")
+    conn = lto_db.connect(read_only=args.dry_run,
+                          catalog=args.catalog, data=args.lake_data)
+    # One snapshot for the whole run; a dry run opens the lake read-only
+    # and writes nothing.
+    tx = (contextlib.nullcontext() if args.dry_run else lto_db.transaction(
+        conn, "add_arid_sphere: arid vocab row, primary flips, secondary tags"))
+    with tx:
+        _apply(conn, args.dry_run)
+        if not args.dry_run:
+            lto_db.assert_integrity(
+                conn, ["spheres", "facility_spheres", "facility_ecosystems"])
 
+    n_primary = conn.execute(
+        "SELECT COUNT(*) FROM facility_spheres WHERE sphere_slug='arid' AND role='primary'"
+    ).fetchone()[0]
+    n_secondary = conn.execute(
+        "SELECT COUNT(*) FROM facility_spheres WHERE sphere_slug='arid' AND role='secondary'"
+    ).fetchone()[0]
+    print(f"[done] arid sphere: {n_primary} primary, {n_secondary} secondary"
+          + (" (dry run — no writes)" if args.dry_run else ""))
+    conn.close()
+    return 0
+
+
+def _apply(conn, dry_run: bool) -> None:
+    """Steps 1-5; with dry_run, print the changes and write nothing."""
     # 1. Vocab row, straight from the canonical CSV so label/description
     #    can never drift from schema/vocab/spheres.csv.
     with VOCAB.open() as fh:
@@ -72,7 +97,7 @@ def main() -> int:
         "SELECT COUNT(*) FROM spheres WHERE slug = 'arid'").fetchone()[0]
     if not exists:
         print(f"[vocab] inserting sphere 'arid' — {row['label']}")
-        if not args.dry_run:
+        if not dry_run:
             conn.execute(
                 "INSERT INTO spheres (slug, label, description) VALUES (?, ?, ?)",
                 [row["slug"], row["label"], row["description"]])
@@ -100,7 +125,7 @@ def main() -> int:
         if cur and cur[0] == "arid":
             continue
         print(f"[primary] {name}: {cur[0] if cur else '(none)'} -> arid")
-        if args.dry_run:
+        if dry_run:
             continue
         conn.execute(
             "DELETE FROM facility_spheres WHERE facility_id = ? AND sphere_slug = 'arid'",
@@ -116,7 +141,7 @@ def main() -> int:
             [fid])
 
     # 4. Sonoran Desert Network also gains the ecosystem tag it was missing.
-    if not args.dry_run:
+    if not dry_run:
         conn.execute(
             """INSERT INTO facility_ecosystems (facility_id, ecosystem_slug)
                SELECT facility_id, 'arid-land' FROM facilities
@@ -138,21 +163,10 @@ def main() -> int:
         [flip_ids]).fetchall()
     for fid, name in secondaries:
         print(f"[secondary] {name}: + arid")
-        if not args.dry_run:
+        if not dry_run:
             conn.execute(
                 "INSERT INTO facility_spheres (facility_id, sphere_slug, role) VALUES (?, 'arid', 'secondary')",
                 [fid])
-
-    n_primary = conn.execute(
-        "SELECT COUNT(*) FROM facility_spheres WHERE sphere_slug='arid' AND role='primary'"
-    ).fetchone()[0]
-    n_secondary = conn.execute(
-        "SELECT COUNT(*) FROM facility_spheres WHERE sphere_slug='arid' AND role='secondary'"
-    ).fetchone()[0]
-    print(f"[done] arid sphere: {n_primary} primary, {n_secondary} secondary"
-          + (" (dry run — no writes)" if args.dry_run else ""))
-    conn.close()
-    return 0
 
 
 if __name__ == "__main__":

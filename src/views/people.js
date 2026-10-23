@@ -28,6 +28,7 @@
 
 import { getConn, whenReady, unwrapRow } from '../db.js';
 import { DATA_BASE } from '../config.js';
+import { loadRoleLabels, roleLabel } from '../roles.js';
 
 // 60 cards per page: enough that a page feels like a directory, small
 // enough that innerHTML swaps stay instant on mobile. Filter and sort
@@ -100,7 +101,57 @@ function numify(o) {
   return unwrapRow(o);
 }
 
+// Only http(s) links leave the page: esc() keeps a value from breaking
+// out of the attribute but would still let a javascript: URL through.
+function safeUrl(u) {
+  const v = String(u ?? '').trim();
+  return /^https?:\/\//i.test(v) ? v : '';
+}
+
+// Column names of the registered parquet views, as 'table.column'.
+async function columnSet(conn, tables) {
+  const names = tables.map((t) => `'${t.replace(/[^a-z_]/g, '')}'`).join(',');
+  const r = await conn.query(
+    `SELECT table_name, column_name FROM information_schema.columns
+     WHERE table_name IN (${names})`);
+  const out = new Set();
+  for (const row of r.toArray()) {
+    const o = row.toJSON();
+    out.add(`${o.table_name}.${o.column_name}`);
+  }
+  return out;
+}
+
+// 'current' only when a source said so (is_current = true); 'former' when
+// the row was superseded or has an end date; nothing when unknown — an
+// older row with neither flag is not a claim that the role is current.
+const TODAY = new Date().toISOString().slice(0, 10);
+function affStatus(a) {
+  if (a.is_current === false) return 'former';
+  if (a.end_date && String(a.end_date).slice(0, 10) <= TODAY) return 'former';
+  if (a.is_current === true) return 'current';
+  return '';
+}
+
+// A small "source" link with the retrieval date beside it. Empty when the
+// row has no http(s) source.
+function srcLink(url, retrieved, confidence) {
+  const href = safeUrl(url);
+  if (!href) return '';
+  const when = retrieved ? String(retrieved).slice(0, 10) : '';
+  const tip = [when && `Retrieved ${when}`, confidence && `confidence: ${confidence}`]
+    .filter(Boolean).join(' · ');
+  return `<a class="ppl-src" href="${esc(href)}" target="_blank" rel="noopener"`
+       + `${tip ? ` title="${esc(tip)}"` : ''}>source</a>`
+       + (when ? ` <span class="ppl-ret">${esc(when)}</span>` : '');
+}
+
 async function fetchPeople() {
+  const [rows] = await Promise.all([fetchPeopleRows(), loadRoleLabels()]);
+  return rows;
+}
+
+async function fetchPeopleRows() {
   // Fast path: a pre-computed JSON cache built by
   // scripts/export_view_caches.py. This is the SAME data the heavy
   // DuckDB query below produces, so the cards render identically —
@@ -119,6 +170,17 @@ async function fetchPeople() {
   const conn = getConn();
   if (!conn) throw new Error('DuckDB connection not ready');
 
+  // The provenance columns (people.bio_source_url …, facility_personnel.
+  // is_current) arrived with the R-PEOPLE2 wave. A parquet exported before
+  // it lacks them, and naming a missing column fails the whole query, so
+  // probe first and select a typed NULL in its place — the row shape stays
+  // the same either way.
+  const cols = await columnSet(conn, ['people', 'facility_personnel']);
+  const col = (alias, table, name, type) =>
+    (cols.has(`${table}.${name}`) ? `${alias}.${name}` : `CAST(NULL AS ${type})`);
+  const dateStr = (alias, table, name) =>
+    `CAST(${col(alias, table, name, 'DATE')} AS VARCHAR)`;
+
   // Per-person aggregate row + list of affiliations + list of areas.
   // Cleaned-up version (DuckDB-Wasm is stricter than CLI DuckDB about
   // join-alias-shadowing-CTE-name and untyped empty-list literals):
@@ -129,8 +191,10 @@ async function fetchPeople() {
       -- Only the ranking score comes from the per-area table. The counts
       -- below are the person's own totals, so they do not depend on which
       -- of their papers the topic crosswalk happens to map to an area.
+      -- list_sum over an ordered list, not SUM(): same DOUBLE, but the
+      -- result does not depend on row arrival order (matches the cache).
       SELECT person_id,
-             SUM(composite_z)     AS composite_z
+             list_sum(list(composite_z ORDER BY area_id)) AS composite_z
       FROM person_area_metrics
       GROUP BY person_id
     ),
@@ -181,7 +245,9 @@ async function fetchPeople() {
     ),
     per_fund AS (
       SELECT fp.person_id,
-             SUM(faf.total_usd_nominal) AS facility_funding_usd
+             list_sum(list(faf.total_usd_nominal
+                           ORDER BY faf.facility_id, faf.area_id, fp.role))
+                                         AS facility_funding_usd
       FROM facility_personnel fp
       JOIN facility_area_funding faf ON faf.facility_id = fp.facility_id
       GROUP BY fp.person_id
@@ -191,20 +257,33 @@ async function fetchPeople() {
       -- a project team would otherwise show a card with no affiliation.
       SELECT a.person_id,
              list(struct_pack(
-               role        := a.role,
-               title       := a.title,
-               facility    := a.facility,
-               facility_id := a.facility_id,
-               url         := a.url,
-               country     := a.country,
-               is_key      := a.is_key
-             ) ORDER BY a.is_key DESC, a.role, a.facility) AS affiliations
+               role         := a.role,
+               title        := a.title,
+               facility     := a.facility,
+               facility_id  := a.facility_id,
+               url          := a.url,
+               country      := a.country,
+               is_key       := a.is_key,
+               is_current   := a.is_current,
+               end_date     := CAST(a.end_date AS VARCHAR),
+               source_url   := a.source_url,
+               retrieved_at := CAST(a.retrieved_at AS VARCHAR),
+               confidence   := a.confidence
+             ) ORDER BY (a.is_current IS NOT FALSE
+                         AND (a.end_date IS NULL OR a.end_date > current_date)) DESC,
+                        a.is_key DESC, CASE a.role WHEN 'lead-PI' THEN 0 WHEN 'PI' THEN 0 WHEN 'director' THEN 1 WHEN 'executive-officer' THEN 1 WHEN 'superintendent' THEN 1 WHEN 'leader' THEN 1 WHEN 'manager' THEN 2 WHEN 'site-manager' THEN 2 WHEN 'domain-manager' THEN 2 WHEN 'deputy-director' THEN 3 WHEN 'associate-director' THEN 4 WHEN 'co-PI' THEN 5 WHEN 'co-leader' THEN 5 WHEN 'leadership-team' THEN 6 ELSE 9 END, a.role, a.facility, a.title,
+                        a.facility_id) AS affiliations
       FROM (
         SELECT fp.person_id, fp.role, fp.title,
                COALESCE(f.acronym || ' — ' || f.canonical_name,
                         f.canonical_name)  AS facility,
                f.facility_id, f.url, f.country,
-               fp.is_key_personnel         AS is_key
+               fp.is_key_personnel         AS is_key,
+               ${col('fp', 'facility_personnel', 'is_current', 'BOOLEAN')} AS is_current,
+               fp.end_date,
+               fp.source_url,
+               fp.retrieved_at,
+               fp.confidence
         FROM facility_personnel fp
         JOIN facilities f ON f.facility_id = fp.facility_id
         UNION ALL
@@ -213,7 +292,12 @@ async function fetchPeople() {
                CAST(NULL AS VARCHAR)       AS facility_id,
                pj.url,
                CAST(NULL AS VARCHAR)       AS country,
-               FALSE                       AS is_key
+               FALSE                       AS is_key,
+               CAST(NULL AS BOOLEAN)       AS is_current,
+               CAST(NULL AS DATE)          AS end_date,
+               pp.source_url,
+               pp.retrieved_at,
+               pp.confidence
         FROM project_personnel pp
         JOIN projects pj ON pj.project_id = pp.project_id
       ) a
@@ -237,6 +321,10 @@ async function fetchPeople() {
            p.homepage_url,
            p.research_interests,
            p.bio,
+           ${col('p', 'people', 'bio_source_url', 'VARCHAR')} AS bio_source_url,
+           ${dateStr('p', 'people', 'bio_retrieved_at')} AS bio_retrieved_at,
+           ${col('p', 'people', 'research_interests_source_url', 'VARCHAR')}
+                                               AS research_interests_source_url,
            g.primary_area_id,
            ra.label                            AS primary_area_label,
            COALESCE(pt.n_pubs, 0)              AS n_pubs,
@@ -249,7 +337,11 @@ async function fetchPeople() {
            pa2.affiliations                    AS affiliations,
            pr.canonical_id                     AS canonical_id,
            NULLIF(concat_ws(',',
-             CASE WHEN pr.is_site_personnel THEN 'site' END,
+             -- 'site' = holds a facility_personnel row, the registry's own
+             -- definition, read from the table itself so the pill does not
+             -- lag behind person_registry (rebuilt only with the harvest).
+             CASE WHEN pr.is_site_personnel OR EXISTS (SELECT 1 FROM facility_personnel sx
+                       WHERE sx.person_id = p.person_id) THEN 'site' END,
              CASE WHEN pr.is_scholar THEN 'scholar' END,
              CASE WHEN ap.person_id IS NOT NULL THEN 'arid' END), '') AS cohorts,
            pr.tier                             AS tier
@@ -264,6 +356,7 @@ async function fetchPeople() {
     LEFT JOIN per_aff              pa2 ON pa2.person_id = p.person_id
     LEFT JOIN person_registry      pr  ON pr.person_id = p.person_id
     LEFT JOIN arid_people          ap  ON ap.person_id = p.person_id
+    ORDER BY p.person_id
   `;
   const r = await conn.query(sql);
   return r.toArray().map((row) => numify(row.toJSON()));
@@ -282,16 +375,30 @@ function cardHtml(p) {
   // db.js handles the Arrow → plain JS conversion + drops null list
   // entries, but we still defend here against partial structs (e.g. a
   // list element that's an empty {} from a quirky DuckDB-Wasm decode).
+  // Former roles sink below current and unknown ones. The SQL already
+  // orders them this way; the stable sort keeps an older cache (no
+  // is_current field) in its shipped order.
   const affRaw = (Array.isArray(p.affiliations) ? p.affiliations : [])
-    .filter((a) => a && (a.role || a.facility || a.title));
+    .filter((a) => a && (a.role || a.facility || a.title))
+    .map((a, i) => ({ a, i, st: affStatus(a) }))
+    .sort((x, y) => ((x.st === 'former') - (y.st === 'former')) || (x.i - y.i))
+    .map(({ a, st }) => ({ ...a, _st: st }));
   const areaRaw = (Array.isArray(p.areas) ? p.areas : [])
     .filter((a) => a && (a.area || a.area_id));
-  const aff = affRaw.slice(0, 4).map((a) => `
-    <li>
-      <strong>${esc(a.role || '—')}</strong>
-      ${a.title ? ` · ${esc(a.title)}` : ''}
-      <br><small>${a.url ? `<a href="${esc(a.url)}" target="_blank" rel="noopener">${esc(a.facility || '')}</a>` : esc(a.facility || '')}${a.country ? ` <span class="ppl-flag">${esc(a.country)}</span>` : ''}</small>
-    </li>`).join('');
+  const aff = affRaw.slice(0, 4).map((a) => {
+    const facUrl = safeUrl(a.url);
+    const fac = facUrl
+      ? `<a href="${esc(facUrl)}" target="_blank" rel="noopener">${esc(a.facility || '')}</a>`
+      : esc(a.facility || '');
+    const tag = a._st
+      ? ` <span class="ppl-tag ppl-tag-${a._st}">${a._st}</span>` : '';
+    const src = srcLink(a.source_url, a.retrieved_at, a.confidence);
+    return `
+    <li${a._st === 'former' ? ' class="ppl-aff-former"' : ''}>
+      <strong>${esc(roleLabel(a.role))}</strong>${a.title ? ` · ${esc(a.title)}` : ''}${tag}
+      <br><small>${a.facility ? `at ${fac}` : ''}${a.country ? ` <span class="ppl-flag">${esc(a.country)}</span>` : ''}${src ? ` · ${src}` : ''}</small>
+    </li>`;
+  }).join('');
   const moreAff = affRaw.length > 4
     ? `<li class="ppl-more">+${affRaw.length - 4} more</li>` : '';
 
@@ -306,7 +413,12 @@ function cardHtml(p) {
     <header class="ppl-card-head">
       <h3>${esc(p.name)}</h3>
       ${p.primary_area_label
-        ? `<span class="ppl-pchip">${esc(p.primary_area_label)}</span>`
+        ? (areas
+          ? `<span class="ppl-pchip">${esc(p.primary_area_label)}</span>`
+          // No publication-mapped areas: the primary area then comes from
+          // the person's facility (compute_primary_groups' fallback), so
+          // say so instead of contradicting "No publications mapped".
+          : `<span class="ppl-pchip ppl-pchip-fac" title="No publications mapped yet; this area is taken from the person's facility, not from their papers.">${esc(p.primary_area_label)} <small>via facility</small></span>`)
         : ''}
     </header>
     <div class="ppl-metrics" title="Counts are computed from the LTO publication corpus only — i.e. the ~600 flagship papers manually curated across the 6 spheres. They are NOT career-wide h-index / citation totals; for that, follow the ORCID / OpenAlex / Google Scholar links above. The full per-author publication history will be backfilled by the CI-side OpenAlex enrichment script (see RUNBOOK.md step 2).">
@@ -331,10 +443,12 @@ function cardHtml(p) {
       </div>
     </div>
     ${p.bio
-      ? `<div class="ppl-bio"><h4>Bio</h4><p>${esc(p.bio)}</p></div>`
+      ? `<div class="ppl-bio"><h4>Bio</h4><p>${esc(p.bio)}${
+          p.bio_source_url ? ` <small>${srcLink(p.bio_source_url, p.bio_retrieved_at)}</small>` : ''}</p></div>`
       : ''}
     ${p.research_interests
-      ? `<div class="ppl-interests"><h4>Research interests</h4><p>${esc(p.research_interests)}</p></div>`
+      ? `<div class="ppl-interests"><h4>Research interests</h4><p>${esc(p.research_interests)}${
+          p.research_interests_source_url ? ` <small>${srcLink(p.research_interests_source_url)}</small>` : ''}</p></div>`
       : ''}
     ${urls.length ? `<footer class="ppl-links">${urls.join(' · ')}</footer>` : ''}
   </article>`;
@@ -394,9 +508,13 @@ function noticeHtml(id) {
 // as a bug. Hiding the whole row degrades gracefully to the old UI.
 function cohortRowHtml() {
   if (!_cachedPeople || !_cachedPeople.some((p) => p.cohorts)) return '';
-  const pills = Object.entries(COHORTS).map(([k, c]) => `
+  // A cohort nobody is in (no scholar harvest shipped yet) gets no pill:
+  // clicking it could only ever show an empty list.
+  const pills = Object.entries(COHORTS).map(([k, c]) => [k, c, _cachedPeople.filter(c.test).length])
+    .filter(([k, , n]) => n > 0 || k === 'all' || k === _cohort)
+    .map(([k, c, n]) => `
     <button type="button" class="ppl-cohort${k === _cohort ? ' ppl-cohort-on' : ''}" data-cohort="${k}">
-      ${esc(c.label)} <span class="ppl-cohort-n">${fmtInt(_cachedPeople.filter(c.test).length)}</span>
+      ${esc(c.label)} <span class="ppl-cohort-n">${fmtInt(n)}</span>
     </button>`).join('');
   return `<div class="ppl-cohorts">${pills}</div>`;
 }

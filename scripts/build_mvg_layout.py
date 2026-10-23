@@ -5,13 +5,13 @@ github.com/tyson-swetnam/lto).
 
 Implements KMap and PCL from Hossain, Moradi, Mondal & Kobourov, "Map
 Visualizations for Graphs with Group Restrictions", Graphics Interface 2025
-(see scripts/mvg.py), and writes four tables to db/parquet/ and
-public/parquet/:
+(see scripts/mvg.py), and writes four derived tables into the lake (one
+snapshot; scripts/export_parquet.py publishes them to public/parquet/):
 
-  mvg_node_layout.parquet          per-node KMap and PCL coordinates
-  mvg_area_polygons.parquet        per-area polygon WKT + area/size shares
-  scholar_area_assignments.parquet scholar -> research area (+confidence)
-  mvg_layout_metrics.parquet       M1-M7 quality metrics for both methods
+  mvg_node_layout          per-node KMap and PCL coordinates
+  mvg_area_polygons        per-area polygon WKT + area/size shares
+  scholar_area_assignments scholar -> research area (+confidence)
+  mvg_layout_metrics       M1-M7 quality metrics for both methods
 
 The front end recomputes a KMap-equivalent layout in src/views/network.js at
 page load; these tables let it read a precomputed PCL layout instead
@@ -19,28 +19,35 @@ page load; these tables let it read a precomputed PCL layout instead
 
 Node population (529 nodes / 2,711 edges / 21 root areas as of the
 116-identity registry, before the OpenAlex harvest lands):
-  site personnel   people.parquet with an area in person_primary_groups
+  site personnel   people with an area in person_primary_groups
                    (cohort "personnel"; a person_registry row that is
                    is_scholar and not is_site_personnel flips the cohort
                    to "scholar" without moving the node)
-  scholars         person_registry rows with is_scholar = true that are
+  scholars         core-tier person_registry rows with is_scholar = true that are
                    not already placed via person_primary_groups
                    (cohort "scholar"; currently 0 rows -- the pipeline
                    degrades to a personnel-only graph until the harvest)
 
-Edges: internal co-authorship (authorship.parquet) plus registry
-collaborations (registry_collaborations.parquet, canonical ids resolved to
+Edges: internal co-authorship (authorship) plus registry
+collaborations (registry_collaborations, canonical ids resolved to
 either node kind; currently 0 rows, which is fine -- co-authorship alone
 carries the layout).
 
-This script reads the committed parquet catalog only and never opens
-db/lto.duckdb, so it is safe to run while a harvest holds the DB write
-lock. It needs scipy + shapely at runtime (see scripts/mvg.py); scipy is
-checked up front because it is not part of the base requirements.
+Inputs are read from the lake by default, so a layout run straight after
+compute_primary_groups.py sees its output without an export in between.
+person_registry is read at tier='core' only, the slice export_parquet.py
+ships, so the layout's node set matches what the browser holds. With
+--parquet-dir it reads a parquet catalog instead (in-memory DuckDB, as it
+used to). The lake's SQLite catalog takes no write lock, so a run is safe
+while a harvest is writing. It needs scipy + shapely at runtime (see
+scripts/mvg.py); scipy is checked up front because it is not part of the
+base requirements.
 
 Usage:
-  python scripts/build_mvg_layout.py                  # both output dirs
+  python scripts/build_mvg_layout.py                  # lake -> lake
   python scripts/build_mvg_layout.py --k-ext 12       # sparser graph
+  python scripts/build_mvg_layout.py --parquet-dir public/parquet \
+      --out-dir /tmp/mvg                              # parquet -> parquet, lake untouched
 
 PROVENANCE WARNING. Research areas for scholars are INFERRED, not curated:
 no curated scholar->area table exists in the LTO catalog. A scholar whose
@@ -64,6 +71,7 @@ import os
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import lto_db  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -84,7 +92,7 @@ def _derive_topic_map(con, P, id2lab, parent):
     case-insensitive exact match, else by substring containment kept only
     when it is unambiguous (exactly one candidate area)."""
     concepts = [r[0] for r in con.execute(
-        f"select distinct concept_name from '{P('publication_topics')}' "
+        f"select distinct concept_name from {P('publication_topics')} "
         f"where concept_name is not null").fetchall()]
     root_of = {}
     for aid, lab in id2lab.items():
@@ -106,25 +114,34 @@ def _derive_topic_map(con, P, id2lab, parent):
     return tmap
 
 
-def load_graph(parquet_dir, topic_map_path):
-    """Assemble the combined node/edge/label lists from the parquet catalog.
+def load_graph(parquet_dir, topic_map_path, lake=None):
+    """Assemble the combined node/edge/label lists from the lake (``lake``,
+    an lto_db connection) or, when it is None, from the parquet catalog
+    in ``parquet_dir``.
 
     Returns (recs, uids, labels, edges, sch_rows) where recs is a list of
     node dicts, edges is index pairs into uids, and sch_rows is one row per
     is_scholar registry member for scholar_area_assignments."""
-    import duckdb
-    con = duckdb.connect()  # in-memory; reads parquet, never db/lto.duckdb
-    P = lambda t: os.path.join(parquet_dir, t + ".parquet")
+    if lake is not None:
+        con = lake
+        # The lake holds the archive tier too; the browser (and the
+        # committed parquet this used to read) only has tier='core'.
+        P = lambda t: ("(SELECT * FROM person_registry WHERE tier = 'core')"
+                       if t == "person_registry" else lto_db.qident(t))
+    else:
+        import duckdb
+        con = duckdb.connect()  # in-memory; reads parquet only
+        P = lambda t: "'" + os.path.join(parquet_dir, t + ".parquet") + "'"
 
     areas = con.execute(
-        f"select area_id, label, parent_id from '{P('research_areas')}'").fetchall()
+        f"select area_id, label, parent_id from {P('research_areas')}").fetchall()
     id2lab = {a: l for a, l, _ in areas}
     parent = {a: p for a, _, p in areas}
 
     names = dict(con.execute(
-        f"select person_id, name from '{P('people')}'").fetchall())
+        f"select person_id, name from {P('people')}").fetchall())
     pg = con.execute(
-        f"select person_id, primary_area_id, score from '{P('person_primary_groups')}' "
+        f"select person_id, primary_area_id, score from {P('person_primary_groups')} "
         f"where primary_area_id is not null").fetchall()
     area_of, ppg_score = {}, {}
     for pid, aid, score in pg:
@@ -135,7 +152,7 @@ def load_graph(parquet_dir, topic_map_path):
 
     reg = con.execute(
         f"select canonical_id, display_name, person_id, is_site_personnel, "
-        f"is_scholar, h_index from '{P('person_registry')}'").fetchall()
+        f"is_scholar, h_index from {P('person_registry')}").fetchall()
     scholars = [r for r in reg if r[4]]
     # A registry row that is scholar-only flips the cohort of its people-
     # directory node; is_site_personnel wins when both flags are set.
@@ -156,8 +173,8 @@ def load_graph(parquet_dir, topic_map_path):
     topics = collections.defaultdict(list)
     for pid, phrase in con.execute(
             f"""select a.person_id, pt.concept_name
-                from '{P('authorship')}' a
-                join '{P('publication_topics')}' pt
+                from {P('authorship')} a
+                join {P('publication_topics')} pt
                   on a.publication_id = pt.publication_id
                 where a.person_id is not null
                   and pt.concept_name is not null""").fetchall():
@@ -207,7 +224,7 @@ def load_graph(parquet_dir, topic_map_path):
 
     E = set()
     for a, b in con.execute(
-            f"""with a as (select person_id, publication_id from '{P('authorship')}'
+            f"""with a as (select person_id, publication_id from {P('authorship')}
                            where person_id is not null)
                 select x.person_id pa, y.person_id pb from a x join a y
                  on x.publication_id = y.publication_id and x.person_id < y.person_id
@@ -216,7 +233,7 @@ def load_graph(parquet_dir, topic_map_path):
             E.add(tuple(sorted((uid_person[a], uid_person[b]))))
     for a, b in con.execute(
             f"select canonical_id_a, canonical_id_b "
-            f"from '{P('registry_collaborations')}'").fetchall():
+            f"from {P('registry_collaborations')}").fetchall():
         ua, ub = canon2uid.get(a), canon2uid.get(b)
         if ua and ub and ua != ub:
             E.add(tuple(sorted((ua, ub))))
@@ -233,8 +250,13 @@ def load_graph(parquet_dir, topic_map_path):
 def main(argv=None):
     ap = argparse.ArgumentParser(
         description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--parquet-dir", default=os.path.join(ROOT, "db", "parquet"))
-    ap.add_argument("--out-dir", action="append", default=None)
+    ap.add_argument("--parquet-dir", default=None,
+                    help="read inputs from this parquet catalog instead of "
+                         "the lake")
+    ap.add_argument("--out-dir", action="append", default=None,
+                    help="write the four tables as parquet here (repeatable) "
+                         "INSTEAD of into the lake")
+    lto_db.add_argparse_catalog(ap)
     ap.add_argument("--topic-map",
                     default=os.path.join(ROOT, "db", "derived", "topic_area_map.json"))
     ap.add_argument("--k-ext", type=float, default=40.0,
@@ -245,8 +267,7 @@ def main(argv=None):
     ap.add_argument("--iterations", type=int, default=250)
     ap.add_argument("--seed", type=int, default=7)
     args = ap.parse_args(argv)
-    out_dirs = args.out_dir or [os.path.join(ROOT, "db", "parquet"),
-                                os.path.join(ROOT, "public", "parquet")]
+    out_dirs = args.out_dir or []
 
     try:
         import scipy  # noqa: F401  (mvg.py lazily imports scipy.spatial/sparse)
@@ -261,7 +282,16 @@ def main(argv=None):
     import polars as pl
     import mvg
 
-    recs, uids, labels, edges, sch_rows = load_graph(args.parquet_dir, args.topic_map)
+    # Open the lake only when it is read or written. A writer connection
+    # when the outputs go to the lake; the read happens before the long
+    # layout computation and the write is one short transaction after it.
+    lake = None
+    if args.parquet_dir is None or not out_dirs:
+        lake = lto_db.connect(read_only=bool(out_dirs),
+                              catalog=args.catalog, data=args.lake_data)
+    recs, uids, labels, edges, sch_rows = load_graph(
+        args.parquet_dir, args.topic_map,
+        lake=lake if args.parquet_dir is None else None)
     if not uids:
         print("[error] empty graph: no people with a primary research area "
               "in person_primary_groups and no assignable scholars",
@@ -336,13 +366,26 @@ def main(argv=None):
                 "h_index": pl.Int64, "method": pl.String},
         orient="row")
 
+    tables = [("mvg_node_layout", layout), ("mvg_area_polygons", polys),
+              ("scholar_area_assignments", sch), ("mvg_layout_metrics", metrics)]
     for d in out_dirs:
         os.makedirs(d, exist_ok=True)
-        layout.write_parquet(os.path.join(d, "mvg_node_layout.parquet"))
-        polys.write_parquet(os.path.join(d, "mvg_area_polygons.parquet"))
-        sch.write_parquet(os.path.join(d, "scholar_area_assignments.parquet"))
-        metrics.write_parquet(os.path.join(d, "mvg_layout_metrics.parquet"))
+        for name, df in tables:
+            df.write_parquet(os.path.join(d, name + ".parquet"))
         print("wrote layout tables ->", os.path.abspath(d))
+    if not out_dirs:
+        with lto_db.transaction(lake, f"build_mvg_layout: {len(uids)} nodes, "
+                                      f"{len(edges)} edges, k_ext={args.k_ext:g}, "
+                                      f"seed={args.seed}"):
+            for name, df in tables:
+                lake.register("_mvg_df", df)
+                try:
+                    n = lto_db.replace_table(lake, name, "SELECT * FROM _mvg_df")
+                finally:
+                    lake.unregister("_mvg_df")
+                print(f"[lake] {name}: {n} rows")
+            lto_db.assert_integrity(lake, ["mvg_node_layout", "scholar_area_assignments"])
+        print("wrote layout tables -> lake (run export_parquet.py to publish)")
     return 0
 
 

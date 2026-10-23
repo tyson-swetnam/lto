@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """URL hygiene pass — pattern-based broken-URL cleanup.
 
-Runs against the LTO DuckDB and:
+Runs against the LTO lake (scripts/lto_db.py) and:
 
   1. NULLs homepage_url, facilities.url, facilities.data_portal_url
      where the URL matches a "definitely junk" pattern (root-domain
@@ -9,6 +9,9 @@ Runs against the LTO DuckDB and:
   2. Migrates known-deprecated hosts to their current canonical form
      (e.g. nrs.fs.fed.us → research.fs.usda.gov/nrs).
   3. Logs every decision to data/seed/url_hygiene_log.csv for audit.
+
+Steps 1-2 land as one lake snapshot (commit message ``url_hygiene: …``).
+--dry-run opens the lake read-only; it still appends the decision log.
 
 This pass is sandbox-safe (no network). The companion
 scripts/check_url_health.py does HTTP HEAD verification in CI where
@@ -24,13 +27,14 @@ from __future__ import annotations
 import argparse
 import csv
 import re
+import sys
 from datetime import date
 from pathlib import Path
 
-import duckdb
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import lto_db  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "lto.duckdb"
 LOG_PATH = ROOT / "data" / "seed" / "url_hygiene_log.csv"
 
 
@@ -110,16 +114,33 @@ def apply_patterns(url: str | None, patterns) -> tuple[str | None, str | None]:
     return url, None
 
 
+def apply_updates(conn, table: str, key: str, field: str,
+                  updates: list[tuple[str, str | None]]) -> None:
+    """One staged UPDATE per field (a per-row UPDATE costs ~10 ms on a lake)."""
+    if not updates:
+        return
+    conn.execute("CREATE OR REPLACE TEMP TABLE _url_fix (k VARCHAR, v VARCHAR)")
+    conn.executemany("INSERT INTO _url_fix VALUES (?, ?)", updates)
+    conn.execute(f"UPDATE {table} SET {field} = _url_fix.v FROM _url_fix "
+                 f"WHERE {table}.{key} = _url_fix.k")
+    conn.execute("DROP TABLE _url_fix")
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--db", type=Path, default=DEFAULT_DB)
+    lto_db.add_argparse_catalog(ap)
+    ap.add_argument("--db", dest="catalog", type=Path,
+                    help="deprecated alias of --catalog")
     ap.add_argument("--dry-run", action="store_true")
     args = ap.parse_args()
 
     LOG_PATH.parent.mkdir(parents=True, exist_ok=True)
     log_rows = []
+    people_updates: list[tuple[str, str | None]] = []
+    facility_updates: list[tuple[str, str | None]] = []
 
-    with duckdb.connect(str(args.db)) as conn:
+    with lto_db.connect(read_only=args.dry_run, catalog=args.catalog,
+                        data=args.lake_data) as conn:
         # 1. people.homepage_url
         rows = conn.execute(
             "SELECT person_id, name, homepage_url FROM people "
@@ -135,11 +156,7 @@ def main() -> int:
                 "field": "homepage_url", "old": url, "new": new or "",
                 "decision": decision, "checked_at": date.today().isoformat(),
             })
-            if not args.dry_run:
-                conn.execute(
-                    "UPDATE people SET homepage_url = ? WHERE person_id = ?",
-                    [new, pid],
-                )
+            people_updates.append((pid, new))
             if new is None:
                 nulled += 1
             else:
@@ -162,17 +179,23 @@ def main() -> int:
                 "field": "url", "old": url, "new": new or "",
                 "decision": decision, "checked_at": date.today().isoformat(),
             })
-            if not args.dry_run:
-                conn.execute(
-                    "UPDATE facilities SET url = ? WHERE facility_id = ?",
-                    [new, fid],
-                )
+            facility_updates.append((fid, new))
             if new is None:
                 nulled += 1
             else:
                 rewritten += 1
         print(f"[url_hygiene] facilities.url — nulled {nulled}, rewrote {rewritten}, "
               f"audited {len(rows)}")
+
+        if not args.dry_run and (people_updates or facility_updates):
+            with lto_db.transaction(
+                    conn, f"url_hygiene: {len(people_updates)} people.homepage_url, "
+                          f"{len(facility_updates)} facilities.url"):
+                apply_updates(conn, "people", "person_id", "homepage_url",
+                              people_updates)
+                apply_updates(conn, "facilities", "facility_id", "url",
+                              facility_updates)
+                lto_db.assert_integrity(conn, ["people", "facilities"])
 
     # Append the decision log (CSV).
     write_header = not LOG_PATH.exists()

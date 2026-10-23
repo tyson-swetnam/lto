@@ -1,0 +1,564 @@
+{
+ "batch_id": "R-PEOPLE2-NEON-02a",
+ "retrieved_at": "2026-10-22",
+ "verified_by": "adversarial-verifier 2026-10-22",
+ "facilities": [
+  {
+   "facility_id": "1b1aa56be6c70b18",
+   "pages_fetched": [
+    {
+     "url": "https://www.nps.gov/yell/",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/yell/learn/management/index.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/yell/learn/management/bios.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/yell/learn/management/ycr.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/yell/learn/management/superintendent.htm",
+     "status": 404
+    },
+    {
+     "url": "https://www.nps.gov/im/gryn/index.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/im/gryn/contactus.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/im/gryn/parks-partners.htm",
+     "status": 200
+    },
+    {
+     "url": "https://montanaioe.org/about/people/affiliated/legg-kristin",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/articles/000/interagency-whitebark-pine-monitoring-program-in-the-greater-yellowstone-ecosystem-overview.htm",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-7509-7535/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-7509-7535/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0003-0229-5255/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0003-0229-5255/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0003-4637-0851/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-5279-9825/employments",
+     "status": 200
+    }
+   ],
+   "notes": "Biosphere reserve administered as Yellowstone National Park (NPS). Superintendent's Office page (last updated Oct 14, 2026) names Barclay Trimble as Acting Superintendent (since Oct 2026) and Kristen Kosick as Deputy Superintendent (since Sept 2026). NPS I&M: Greater Yellowstone Network (GRYN, Bozeman, MT) monitors Yellowstone; its contact page names Kristin Legg program manager, Erin Shanahan vegetation ecologist, Benjamin Lafrance physical scientist/aquatics lead; GRYN data manager listed as Vacant. GRYN staff are network-level (4 park units), so confidence medium. Yellowstone Center for Resources page names no branch chiefs. NEON D12 domain manager Amy Jacobs is named on the colocated BLDE page but not attached to the biosphere-reserve record. Two ORCID records for Erin Shanahan have no employments, so no ORCID assigned."
+  },
+  {
+   "facility_id": "7bb765b19ea9ee16",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/abby",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=1",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=2",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=3",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/ben-vierra",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-6647-0369/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-6647-0369/employments",
+     "status": 200
+    },
+    {
+     "url": "https://www.dnr.wa.gov/",
+     "status": 200
+    }
+   ],
+   "notes": "NEON Domain D16 (Pacific Northwest) terrestrial site; Domain 16 support facility in Vancouver, WA. Site host: Washington Department of Natural Resources (https://www.dnr.wa.gov/); no WDNR staff named on the NEON page. Colocated: AmeriFlux, Critical Zone Exploration Network. Domain manager Ben Vierra's profile lists ABBY among D16 study sites."
+  },
+  {
+   "facility_id": "2332ffb8a3de6d23",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/blde",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=1",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=2",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=3",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/amy-jacobs",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0003-0817-8420/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0009-0002-7055-7528/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-1277-4471/employments",
+     "status": 200
+    }
+   ],
+   "notes": "NEON Domain D12 (Northern Rockies) aquatic site in Yellowstone National Park; Domain 12 support facility in Bozeman, MT. Site host: Yellowstone National Park (NPS; research via IRMA permitting). Site page names NEON Domain Manager Amy Jacobs as contact. Colocated: YELL NEON terrestrial site, Yellowstone Biosphere Reserve, NADP Tower Falls. No ORCID for Amy Jacobs could be tied (candidate records list no employment)."
+  },
+  {
+   "facility_id": "8a4f2b5f9f76fb1d",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/blan",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=1",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=2",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=3",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/ty-lindberg",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-1043-0587/employments",
+     "status": 200
+    },
+    {
+     "url": "https://blandy.virginia.edu/people",
+     "status": 200
+    }
+   ],
+   "notes": "NEON Domain D02 (Mid-Atlantic) terrestrial site; Domain 02 support facility in Front Royal, VA (SCBI grounds). Site hosts: Casey Trees (private) and Blandy Experimental Farm (University of Virginia). Blandy people page lists David E. Carr as Director & Research Professor and Kyle J. Haynes as Associate Director (host-station staff; belong to a Blandy record, not attached here). Colocated: Lewis Run NEON, University of Virginia, AmeriFlux. ORCID 0000-0002-1043-0587 (Ty Lindberg) has no employments, so not assigned."
+  },
+  {
+   "facility_id": "d9a4f706806d1494",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/blue",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=1",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=2",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=3",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/joe-buck",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0009-0001-9656-7305/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0009-0001-9656-7305/employments",
+     "status": 200
+    },
+    {
+     "url": "https://www.nature.org/en-us/get-involved/how-to-help/places-we-protect/okayanahli-preserve/",
+     "status": 200
+    }
+   ],
+   "notes": "NEON Domain D11 (Southern Plains) aquatic site; Domain 11 support facility in Denton, TX. Site host: The Nature Conservancy Oklahoma (Oka' Yanahli Preserve); no TNC preserve staff named on the NEON page. Only the NEON domain manager is identifiable."
+  },
+  {
+   "facility_id": "a3c911549a4f779f",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/cari",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=1",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=2",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=3",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/chris-baird",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0009-0003-9818-0205/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0009-0003-9818-0205/employments",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/site/bonanza-creek-lter/",
+     "status": 200
+    }
+   ],
+   "notes": "NEON Domain D19 (Taiga) aquatic site in Caribou-Poker Creeks Research Watershed; D18/D19 support facility in Fairbanks, AK. Site host: University of Alaska Fairbanks; NEON page says the site is co-located with Bonanza Creek LTER (lternet.edu lists Michelle Mack as BNZ lead PI; belongs to the LTER record). Colocated: BONA NEON, North Slope Science Initiative, CPCRW."
+  }
+ ],
+ "people": [
+  {
+   "key": "barclay-trimble",
+   "existing_person_id": null,
+   "name": "Barclay Trimble",
+   "name_given": "Barclay",
+   "name_family": "Trimble",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.nps.gov/yell/learn/management/bios.htm",
+   "bio": "Acting superintendent of Yellowstone National Park since October 2026, with a 35-year National Park Service career. Earlier posts include superintendent of Mammoth Cave National Park and of the Outer Banks Group, deputy and acting superintendent at Grand Canyon, and Southeast Region deputy regional director/chief of staff.",
+   "bio_source_url": "https://www.nps.gov/yell/learn/management/bios.htm",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "kristen-kosick",
+   "existing_person_id": null,
+   "name": "Kristen Kosick",
+   "name_given": "Kristen",
+   "name_family": "Kosick",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.nps.gov/yell/learn/management/bios.htm",
+   "bio": "Deputy superintendent of Yellowstone National Park since September 2026, overseeing visitor and resource protection, education, facilities and administration divisions. Previously led Michigan State Parks for the Michigan DNR (from 2025) and spent 15 years in NPS roles, including Yellowstone fee program manager and chief of staff.",
+   "bio_source_url": "https://www.nps.gov/yell/learn/management/bios.htm",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "kristin-legg",
+   "existing_person_id": null,
+   "name": "Kristin Legg",
+   "name_given": "Kristin",
+   "name_family": "Legg",
+   "orcid": "0000-0002-7509-7535",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-7509-7535/employments",
+   "homepage_url": "https://montanaioe.org/about/people/affiliated/legg-kristin",
+   "bio": "Leads the NPS Greater Yellowstone I&M Network as program manager, overseeing natural-resource monitoring for Yellowstone, Grand Teton and Bighorn Canyon. Formerly chief of natural and cultural resource management at three park units; holds a Montana State University master's in fish and wildlife management (bighorn sheep habitat use).",
+   "bio_source_url": "https://montanaioe.org/about/people/affiliated/legg-kristin",
+   "research_interests": "national park natural resource inventory and monitoring; natural resource management",
+   "research_interests_source_url": "https://montanaioe.org/about/people/affiliated/legg-kristin"
+  },
+  {
+   "key": "erin-shanahan",
+   "existing_person_id": null,
+   "name": "Erin Shanahan",
+   "name_given": "Erin",
+   "name_family": "Shanahan",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "benjamin-lafrance",
+   "existing_person_id": null,
+   "name": "Benjamin Lafrance",
+   "name_given": "Benjamin",
+   "name_family": "LaFrance",
+   "orcid": "0000-0003-0229-5255",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0003-0229-5255/employments",
+   "homepage_url": null,
+   "bio": "Physical scientist with the National Park Service Greater Yellowstone Inventory and Monitoring Network in Bozeman since 2023. Previously amphibian field coordinator for the Northern Rockies Conservation Cooperative (2020-2023), after graduate study in molecular and cell biology at UC Berkeley.",
+   "bio_source_url": "https://pub.orcid.org/v3.0/0000-0003-0229-5255/employments",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "ben-vierra",
+   "existing_person_id": null,
+   "name": "Ben Vierra",
+   "name_given": "Ben",
+   "name_family": "Vierra",
+   "orcid": "0000-0002-6647-0369",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-6647-0369/employments",
+   "homepage_url": "https://www.neonscience.org/person/ben-vierra",
+   "bio": "NEON field operations manager for Domain 16 (Pacific Northwest) since fall 2016, based in Vancouver, WA, covering Wind River, Abby Road, Martha Creek and McRae Creek. Joined NEON in 2013 as a Domain 01 field ecologist; earlier held forest ecology and forestry field jobs; ESA-certified Ecologist.",
+   "bio_source_url": "https://www.neonscience.org/person/ben-vierra",
+   "research_interests": "forest ecology; forestry (field-oriented)",
+   "research_interests_source_url": "https://www.neonscience.org/person/ben-vierra"
+  },
+  {
+   "key": "amy-jacobs",
+   "existing_person_id": null,
+   "name": "Amy Jacobs",
+   "name_given": "Amy",
+   "name_family": "Jacobs",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.neonscience.org/person/amy-jacobs",
+   "bio": "NEON field operations manager for Domains 12 (Northern Rockies) and 15 (Great Basin), based in Salt Lake City. Earlier studied environmental stress effects on marine bacterioplankton at sea, then managed a Florida coastal ecosystem restoration program. Holds a biology master's from the University of West Florida.",
+   "bio_source_url": "https://www.neonscience.org/person/amy-jacobs",
+   "research_interests": "marine bacterioplankton responses to environmental stressors; coastal estuarine habitat restoration (prior work)",
+   "research_interests_source_url": "https://www.neonscience.org/person/amy-jacobs"
+  },
+  {
+   "key": "ty-lindberg",
+   "existing_person_id": null,
+   "name": "Ty Lindberg",
+   "name_given": "Ty",
+   "name_family": "Lindberg",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.neonscience.org/person/ty-lindberg",
+   "bio": "NEON field operations manager for Domain 02 (Mid-Atlantic) in Front Royal, VA, running flux towers, stream sites and sampling at five field locations. Previously a researcher and lab manager at Duke's Nicholas School studying surface coal mining impacts on water quality; M.S. in zoology from NC State.",
+   "bio_source_url": "https://www.neonscience.org/person/ty-lindberg",
+   "research_interests": "water quality impacts of surface coal mining; selenium fate and transport in aquatic ecosystems; fisheries population genetics (prior research)",
+   "research_interests_source_url": "https://www.neonscience.org/person/ty-lindberg"
+  },
+  {
+   "key": "joe-buck",
+   "existing_person_id": null,
+   "name": "Joe Buck",
+   "name_given": "Joe",
+   "name_family": "Buck",
+   "orcid": "0009-0001-9656-7305",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0009-0001-9656-7305/employments",
+   "homepage_url": "https://www.neonscience.org/person/joe-buck",
+   "bio": "Domain manager with the National Ecological Observatory Network since 2025; his ORCID record also lists a manager position at Battelle Memorial Institute.",
+   "bio_source_url": "https://pub.orcid.org/v3.0/0009-0001-9656-7305/employments",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "chris-baird",
+   "existing_person_id": null,
+   "name": "Chris Baird",
+   "name_given": "Christopher",
+   "name_family": "Baird",
+   "orcid": "0009-0003-9818-0205",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0009-0003-9818-0205/employments",
+   "homepage_url": "https://www.neonscience.org/person/chris-baird",
+   "bio": "Field operations manager for NEON Domains 18 (Tundra) and 19 (Taiga), both run from the Fairbanks, Alaska domain facility. Before NEON he worked for state, federal and private research groups in the U.S. and Canada; B.S. from UBC and M.S. in biology from Queen's University.",
+   "bio_source_url": "https://www.neonscience.org/person/chris-baird",
+   "research_interests": "seabird ecology; arctic ecology (prior research focus)",
+   "research_interests_source_url": "https://www.neonscience.org/person/chris-baird"
+  }
+ ],
+ "affiliations": [
+  {
+   "facility_id": "1b1aa56be6c70b18",
+   "person_key": "barclay-trimble",
+   "role": "superintendent",
+   "title": "Acting Superintendent, Yellowstone National Park",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2026,
+   "end_year": null,
+   "source_url": "https://www.nps.gov/yell/learn/management/bios.htm",
+   "evidence": "Barclay Trimble assumed duties as the acting superintendent of Yellowstone National Park in October 2026.",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "1b1aa56be6c70b18",
+   "person_key": "kristen-kosick",
+   "role": "deputy-director",
+   "title": "Deputy Superintendent, Yellowstone National Park",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2026,
+   "end_year": null,
+   "source_url": "https://www.nps.gov/yell/learn/management/bios.htm",
+   "evidence": "Kristen Kosick assumed duties as the deputy superintendent of Yellowstone National Park in September 2026.",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "1b1aa56be6c70b18",
+   "person_key": "kristin-legg",
+   "role": "manager",
+   "title": "Program Manager, NPS Greater Yellowstone Inventory & Monitoring Network",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.nps.gov/im/gryn/contactus.htm",
+   "evidence": "Program Manager: Kristin Legg",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "1b1aa56be6c70b18",
+   "person_key": "erin-shanahan",
+   "role": "scientist",
+   "title": "Ecologist (Vegetation), NPS Greater Yellowstone Inventory & Monitoring Network",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.nps.gov/im/gryn/contactus.htm",
+   "evidence": "Ecologist (Vegetation): Erin Shanahan",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "1b1aa56be6c70b18",
+   "person_key": "benjamin-lafrance",
+   "role": "scientist",
+   "title": "Physical Scientist/Aquatics Lead, NPS Greater Yellowstone Inventory & Monitoring Network",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.nps.gov/im/gryn/contactus.htm",
+   "evidence": "Physical Scientist/Aquatics Lead: Benjamin Lafrance",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "7bb765b19ea9ee16",
+   "person_key": "ben-vierra",
+   "role": "domain-manager",
+   "title": "NEON Domain Manager, D16: Pacific Northwest",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2016,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/person/ben-vierra",
+   "evidence": "Ben Vierra Manager, D16: Pacific Northwest",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "2332ffb8a3de6d23",
+   "person_key": "amy-jacobs",
+   "role": "domain-manager",
+   "title": "NEON Domain Manager, D12: Northern Rockies; D15: Great Basin",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/field-sites/blde",
+   "evidence": "Reach out to the NEON Domain Manager, Amy Jacobs, prior to contacting NPS permitting",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "8a4f2b5f9f76fb1d",
+   "person_key": "ty-lindberg",
+   "role": "domain-manager",
+   "title": "NEON Domain Manager, D02: Mid-Atlantic",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/person/ty-lindberg",
+   "evidence": "Ty Lindberg Manager, D02: Mid-Atlantic",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "d9a4f706806d1494",
+   "person_key": "joe-buck",
+   "role": "domain-manager",
+   "title": "NEON Domain Manager, D11: Southern Plains",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/person/joe-buck",
+   "evidence": "Joe Buck Manager, D11: Southern Plains",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "a3c911549a4f779f",
+   "person_key": "chris-baird",
+   "role": "domain-manager",
+   "title": "NEON Domain Manager, D19: Taiga; D18: Tundra",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/person/chris-baird",
+   "evidence": "Chris Baird Manager, D19: Taiga; D18: Tundra",
+   "confidence": "medium"
+  }
+ ],
+ "verifications": [],
+ "verification_notes": [
+  "All 10 affiliation source pages and 5 ORCID person/employment records re-fetched 2026-10-22 (HTTP 200); evidence snippets present.",
+  "Lindberg/Buck/Baird affiliations downgraded high->medium: profile names only the NEON domain; facility membership in that domain comes from the site page.",
+  "benjamin-lafrance bio: removed 'aquatics lead' (not in bio_source_url ORCID record; it is on the GRYN contact page, kept in the affiliation title).",
+  "joe-buck bio: removed Denton, TX and Domain 11 office claim (not in bio_source_url ORCID record)."
+ ]
+}

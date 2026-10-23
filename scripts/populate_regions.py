@@ -4,8 +4,8 @@ facilities.
 
 Run as a standalone step (idempotent):
 
-    python scripts/populate_regions.py                # use default db/lto.duckdb
-    python scripts/populate_regions.py --db <path>
+    python scripts/populate_regions.py                # the default lake (db/lto_catalog.sqlite)
+    python scripts/populate_regions.py --catalog <path>
 
 Or, automatically, at the end of `scripts/ingest.py`.
 
@@ -14,7 +14,9 @@ Design notes
 
 * Each polygon in public/overlays/*.geojson becomes one row in `regions`.
   Its `region_id` is a stable hash of (network_id, lower(name)) so re-runs
-  are idempotent.
+  are idempotent. Two polygons that share a network and a name (a refuge
+  drawn as two parts) share that id: the first one supplies the `regions`
+  row, and a facility inside either part is linked to it.
 
 * `facility_regions` is derived: for every row in `facilities` with a
   non-null hq_lat/hq_lng, we do a point-in-polygon test against every
@@ -27,6 +29,10 @@ Design notes
   wide (e.g. every NMS sanctuary is tagged with "marine-ecosystems",
   "marine-policy-and-socio-economics"). You can refine per-region links by
   editing the rows in DuckDB directly.
+
+* One run is one lake snapshot: the three tables are emptied and refilled
+  in a single lto_db.transaction, checked by lto_db.assert_integrity
+  before it commits.
 
 Dependencies
 ------------
@@ -46,9 +52,11 @@ import duckdb
 from shapely.geometry import shape, Point
 from shapely.strtree import STRtree
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import lto_db  # noqa: E402
+
 ROOT = Path(__file__).resolve().parent.parent
 OVERLAYS = ROOT / 'public' / 'overlays'
-DEFAULT_DB = ROOT / 'db' / 'lto.duckdb'
 
 
 # ── Region kind -> seed research-area slugs ─────────────────────────
@@ -143,21 +151,27 @@ def load_region_rows(files: list[Path]) -> list[dict]:
     return rows
 
 
-def insert_regions(conn: duckdb.DuckDBPyConnection, rows: list[dict]) -> None:
+REGION_COLS = ('region_id', 'name', 'acronym', 'kind', 'network_id', 'url',
+               'manager', 'designated', 'state', 'description',
+               'source_file', 'source')
+
+
+def insert_regions(conn: duckdb.DuckDBPyConnection, rows: list[dict]) -> int:
+    """Refill `regions`, one row per region_id (the first polygon wins).
+
+    The lake has no primary key to reject a second polygon with the same
+    (network, name), so duplicates are dropped here instead."""
     conn.execute('DELETE FROM main.regions')
+    first: dict[str, dict] = {}
     for r in rows:
-        conn.execute(
-            """INSERT INTO main.regions
-               (region_id, name, acronym, kind, network_id, url, manager,
-                designated, state, description, source_file, source)
-               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
-            [
-                r['region_id'], r['name'], r['acronym'], r['kind'],
-                r['network_id'], r['url'], r['manager'],
-                r['designated'], r['state'], r['description'],
-                r['source_file'], r['source'],
-            ],
+        first.setdefault(r['region_id'], r)
+    if first:
+        conn.executemany(
+            f"INSERT INTO main.regions ({', '.join(REGION_COLS)}) "
+            f"VALUES ({', '.join('?' * len(REGION_COLS))})",
+            [[r[c] for c in REGION_COLS] for r in first.values()],
         )
+    return len(first)
 
 
 def insert_region_area_links(conn: duckdb.DuckDBPyConnection, rows: list[dict]) -> None:
@@ -165,14 +179,15 @@ def insert_region_area_links(conn: duckdb.DuckDBPyConnection, rows: list[dict]) 
     valid_areas = {
         a for (a,) in conn.execute('SELECT area_id FROM main.research_areas').fetchall()
     }
+    links: set[tuple[str, str]] = set()
     for r in rows:
         for area_id in KIND_AREAS.get(r['kind'] or '', []):
             if area_id not in valid_areas:
                 continue
-            conn.execute(
-                "INSERT OR IGNORE INTO main.region_area_links VALUES (?, ?)",
-                [r['region_id'], area_id],
-            )
+            links.add((r['region_id'], area_id))
+    if links:
+        conn.executemany('INSERT INTO main.region_area_links VALUES (?, ?)',
+                         sorted(links))
 
 
 def insert_facility_regions(conn: duckdb.DuckDBPyConnection, rows: list[dict]) -> int:
@@ -193,7 +208,7 @@ def insert_facility_regions(conn: duckdb.DuckDBPyConnection, rows: list[dict]) -
            WHERE hq_lat IS NOT NULL AND hq_lng IS NOT NULL"""
     ).fetchall()
 
-    n_links = 0
+    links: set[tuple[str, str]] = set()
     for fid, lat, lng in facilities:
         pt = Point(lng, lat)
         for idx in tree.query(pt):
@@ -204,40 +219,52 @@ def insert_facility_regions(conn: duckdb.DuckDBPyConnection, rows: list[dict]) -
             except (TypeError, ValueError):
                 geom_idx = geoms.index(idx)
             if geoms[geom_idx].contains(pt):
-                conn.execute(
-                    "INSERT OR IGNORE INTO main.facility_regions "
-                    "VALUES (?, ?, 'within', 0.0)",
-                    [fid, ids[geom_idx]],
-                )
-                n_links += 1
-    return n_links
+                links.add((fid, ids[geom_idx]))
+    if links:
+        conn.executemany(
+            "INSERT INTO main.facility_regions VALUES (?, ?, 'within', 0.0)",
+            sorted(links),
+        )
+    return len(links)
 
 
 # ── Main ────────────────────────────────────────────────────────────
 
-def populate(db_path: Path) -> None:
+def populate(conn: duckdb.DuckDBPyConnection | None = None,
+             catalog: Path | None = None, lake_data: Path | None = None) -> None:
+    """Rebuild the three region tables. Uses `conn` when given (ingest.py
+    passes its own lake connection), else opens the lake at `catalog`."""
     files = overlay_files()
     rows = load_region_rows(files)
     print(f'[info] loaded {len(rows)} region polygons from {len(files)} overlay files')
 
-    with duckdb.connect(str(db_path)) as conn:
-        # We need schema.sql to have been applied already. ingest.py does
-        # that; if running standalone against an existing db, the tables
-        # are present from the previous run.
-        conn.execute('SET search_path = main;')
-        insert_regions(conn, rows)
-        insert_region_area_links(conn, rows)
-        n_links = insert_facility_regions(conn, rows)
-        print(f'[ok] regions: {len(rows)} rows')
-        print(f'[ok] region_area_links: seeded from kind heuristics')
-        print(f'[ok] facility_regions: {n_links} containment edges')
+    own = conn is None
+    if own:
+        conn = lto_db.connect(catalog=catalog, data=lake_data)
+    try:
+        with lto_db.transaction(conn, f'populate_regions: {len(rows)} overlay polygons '
+                                      f'from {len(files)} files'):
+            n_regions = insert_regions(conn, rows)
+            insert_region_area_links(conn, rows)
+            n_links = insert_facility_regions(conn, rows)
+            lto_db.assert_integrity(conn, ['regions', 'region_area_links', 'facility_regions'])
+    finally:
+        if own:
+            conn.close()
+    dup = len(rows) - n_regions
+    print(f'[ok] regions: {n_regions} rows'
+          + (f' ({dup} polygons share a region_id with an earlier one)' if dup else ''))
+    print(f'[ok] region_area_links: seeded from kind heuristics')
+    print(f'[ok] facility_regions: {n_links} containment edges')
 
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument('--db', default=str(DEFAULT_DB), help='path to DuckDB file')
+    lto_db.add_argparse_catalog(parser)
+    parser.add_argument('--db', dest='catalog', type=Path,
+                        help='deprecated alias of --catalog')
     args = parser.parse_args()
-    populate(Path(args.db))
+    populate(catalog=args.catalog, lake_data=args.lake_data)
     return 0
 
 

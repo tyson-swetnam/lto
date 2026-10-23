@@ -9,8 +9,10 @@ field-wide scholar harvest are NOT reconstructed by any script in the
 registry build chain (build_person_registry ->
 compute_registry_collaborations -> link_registry_facilities ->
 rank_person_registry -> qa; the harvest is not in it). Re-run the harvest
-explicitly, or restore db/parquet/person_registry.parquet, if you need the
-archive tier back.
+explicitly, or restore the lake to the snapshot before this run
+(``SELECT * FROM person_registry AT (VERSION => n)``; every run is one
+snapshot, see lake.snapshots()), if you need the archive tier back. The
+archive tier is not in public/parquet, which ships tier='core' only.
 
 
 In upstream cod-kmap, three human-facing layers grew independently; an
@@ -49,7 +51,10 @@ and the ORCID agree.
 Usage::
 
     python scripts/build_person_registry.py --dry-run
-    python scripts/build_person_registry.py --export-parquet
+    python scripts/build_person_registry.py
+
+The rebuild is one lake snapshot; scripts/export_parquet.py publishes it.
+--export-parquet is accepted for old callers and does nothing.
 """
 from __future__ import annotations
 
@@ -61,9 +66,10 @@ from pathlib import Path
 
 import duckdb
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import lto_db  # noqa: E402
+
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "lto.duckdb"
-PARQUET_OUT = [ROOT / "db" / "parquet", ROOT / "public" / "parquet"]
 REGISTRY_TABLES = ("person_registry", "person_identity_source",
                    "registry_collaborations", "registry_facilities")
 
@@ -99,20 +105,23 @@ def split_name(full: str) -> tuple[str, str]:
 
 
 def ensure_tables(conn) -> None:
-    """Create the registry tables if this DB predates them."""
-    ddl = (ROOT / "schema" / "schema.sql").read_text()
-    marker = "CREATE OR REPLACE TABLE person_registry"
-    if marker not in ddl:
+    """Create the registry tables if this lake predates them.
+
+    schema.sql cannot be executed against the lake (DuckLake rejects its
+    PRIMARY KEYs), so each missing table is created column-only from the
+    schema.sql spec; lto_db.assert_integrity enforces the keys. Only absent
+    tables are created — an existing populated table is never replaced.
+    Call inside a transaction.
+    """
+    spec_tables = set(lto_db.spec()["tables"])
+    if not all(t in spec_tables for t in REGISTRY_TABLES):
         print("[error] schema.sql has no person_registry DDL", file=sys.stderr)
         raise SystemExit(2)
-    have = {r[0] for r in conn.execute(
-        "SELECT table_name FROM information_schema.tables").fetchall()}
-    if all(t in have for t in REGISTRY_TABLES):
-        return
-    # CREATE OR REPLACE would wipe an existing populated table, so only run
-    # the DDL when at least one of the registry tables is genuinely absent.
-    conn.execute(ddl[ddl.index(marker):])
-    print("[schema] created registry tables from schema/schema.sql")
+    have = set(lto_db.lake_tables(conn))
+    for t in REGISTRY_TABLES:
+        if t not in have:
+            conn.execute(lto_db.column_only_ddl(t))
+            print(f"[schema] created {t} from schema/schema.sql")
 
 
 class Registry:
@@ -231,17 +240,18 @@ def load(conn, table: str, cols: str) -> list[dict]:
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--db", type=Path, default=DEFAULT_DB)
+    lto_db.add_argparse_catalog(ap)
+    ap.add_argument("--db", dest="catalog", type=Path,
+                    help="deprecated alias of --catalog")
     ap.add_argument("--dry-run", action="store_true")
-    ap.add_argument("--export-parquet", action="store_true")
+    ap.add_argument("--export-parquet", action="store_true",
+                    help="deprecated no-op: run scripts/export_parquet.py")
     args = ap.parse_args()
 
-    if not args.db.exists():
-        print(f"[error] db not found: {args.db}", file=sys.stderr)
-        return 2
-
-    conn = duckdb.connect(str(args.db))
-    ensure_tables(conn)
+    # A dry run reads only; the registry tables are created (if absent)
+    # inside the write transaction below, so it never writes a snapshot.
+    conn = lto_db.connect(read_only=args.dry_run,
+                          catalog=args.catalog, data=args.lake_data)
     reg = Registry()
 
     # ── people (facility staff / directory) ────────────────────────────
@@ -300,32 +310,43 @@ def main() -> int:
         conn.close()
         return 0
 
-    conn.execute("DELETE FROM person_registry")
-    conn.execute("DELETE FROM person_identity_source")
     cols = list(reg.rows[0].keys()) if reg.rows else []
-    if reg.rows:
-        conn.executemany(
-            f"INSERT INTO person_registry ({','.join(cols)}) "
-            f"VALUES ({','.join('?' * len(cols))})",
-            [[r[c] for c in cols] for r in reg.rows])
-    if reg.prov:
-        pcols = ["canonical_id", "field", "value", "method", "evidence",
-                 "source_url", "confidence", "retrieved_at"]
-        conn.executemany(
-            f"INSERT INTO person_identity_source ({','.join(pcols)}) "
-            f"VALUES ({','.join('?' * len(pcols))})",
-            [[p[c] for c in pcols] for p in reg.prov])
+    pcols = ["canonical_id", "field", "value", "method", "evidence",
+             "source_url", "confidence", "retrieved_at"]
+    with lto_db.transaction(conn, f"build_person_registry: rebuild from people "
+                                  f"({n} identities, {len(reg.prov)} sources)"):
+        ensure_tables(conn)
+        # Stage in temp tables typed like the targets, then one INSERT each:
+        # row-by-row INSERTs into the lake are slow.
+        conn.execute("CREATE OR REPLACE TEMP TABLE _reg_stage AS "
+                     "SELECT * FROM person_registry LIMIT 0")
+        conn.execute("CREATE OR REPLACE TEMP TABLE _src_stage AS "
+                     "SELECT * FROM person_identity_source LIMIT 0")
+        if reg.rows:
+            conn.executemany(
+                f"INSERT INTO _reg_stage ({','.join(cols)}) "
+                f"VALUES ({','.join('?' * len(cols))})",
+                [[r[c] for c in cols] for r in reg.rows])
+        if reg.prov:
+            conn.executemany(
+                f"INSERT INTO _src_stage ({','.join(pcols)}) "
+                f"VALUES ({','.join('?' * len(pcols))})",
+                [[p[c] for c in pcols] for p in reg.prov])
+        conn.execute("DELETE FROM person_registry")
+        conn.execute("DELETE FROM person_identity_source")
+        if reg.rows:
+            conn.execute(f"INSERT INTO person_registry ({','.join(cols)}) "
+                         f"SELECT {','.join(cols)} FROM _reg_stage")
+        if reg.prov:
+            conn.execute(f"INSERT INTO person_identity_source ({','.join(pcols)}) "
+                         f"SELECT {','.join(pcols)} FROM _src_stage")
+        lto_db.assert_integrity(conn, ["person_registry", "person_identity_source"])
     print(f"[db] person_registry {n} rows, "
           f"person_identity_source {len(reg.prov)} rows")
 
     if args.export_parquet:
-        for base in PARQUET_OUT:
-            base.mkdir(parents=True, exist_ok=True)
-            for t in REGISTRY_TABLES:
-                out = base / f"{t}.parquet"
-                conn.execute(f"COPY {t} TO '{out}' (FORMAT PARQUET)")
-            print(f"[parquet] wrote {base}/person_registry.parquet (+3)")
-        print("[note] parquet is gitignored; stage with `git add -f`")
+        print("[note] --export-parquet is a no-op now; run "
+              "scripts/export_parquet.py to publish the lake")
     conn.close()
     return 0
 

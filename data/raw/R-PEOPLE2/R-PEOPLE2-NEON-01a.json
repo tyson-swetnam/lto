@@ -1,0 +1,372 @@
+{
+ "batch_id": "R-PEOPLE2-NEON-01a",
+ "retrieved_at": "2026-10-22",
+ "verified_by": "adversarial-verifier 2026-10-22",
+ "facilities": [
+  {
+   "facility_id": "fd4aba50b1f49207",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/guan",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=1",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=2",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/jean-sandoval",
+     "status": 200
+    }
+   ],
+   "notes": "NEON Domain D04 (Atlantic Neotropical); domain support facility in Guanica, PR. Site host: Puerto Rico Department of Natural and Environmental Resources (DRNA), https://www.drna.pr.gov/. Colocated: UNESCO Biosphere Reserve, CZEN, AmeriFlux. Host agency staff not named on the NEON page; no host-station leadership recorded. Verifier: site page confirms domain D04; the manager's NEON profile names the domain, not the site, so the site link is inferred (confidence medium)."
+  },
+  {
+   "facility_id": "9335a5d5ee8fc58a",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/harv",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=1",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=2",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/joleisa-cramer",
+     "status": 200
+    },
+    {
+     "url": "https://harvardforest.fas.harvard.edu/about/people/",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/site/harvard-forest-lter/",
+     "status": 200
+    }
+   ],
+   "notes": "NEON Domain D01 (Northeast); domain support facility in Fitchburg, MA. Site hosts: Harvard Forest and Massachusetts Department of Conservation and Recreation (Quabbin). Colocated: Harvard University, ForestGEO, CZEN, AmeriFlux, NOAA GML. Harvard Forest leadership not added here: its people page names two people as 'Director' (Missy Holbrook and Jonathan Thompson), so the current director is ambiguous; Harvard Forest LTER contacts belong to the LTER facility record. Verifier: site page confirms domain D01; the manager's NEON profile names the domain, not the site, so the site link is inferred (confidence medium)."
+  },
+  {
+   "facility_id": "3a04ddf73c1f42a9",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/osbs",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=1",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=2",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/guy-fausnaught",
+     "status": 200
+    },
+    {
+     "url": "https://ordway-swisher.ufl.edu/about/contact/",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0009-0002-5765-0314/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0009-0002-5765-0314/employments",
+     "status": 200
+    }
+   ],
+   "notes": "NEON Domain D03 (Southeast); domain support facility in Gainesville, FL. Site host: University of Florida Foundation (Ordway-Swisher Biological Station, https://ordway-swisher.ufl.edu/). Host station personnel page lists John Davis as Director and Tracey Sleek as Assistant Director of OSBS (host-station staff, not NEON; not added as NEON-site affiliations). Colocated: University of Florida, CZEN, AmeriFlux. Verifier: site page confirms domain D03; the manager's NEON profile names the domain, not the site, so the site link is inferred (confidence medium)."
+  },
+  {
+   "facility_id": "cbf8ad27d362e134",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/bona",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=1",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=2",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/chris-baird",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/site/bonanza-creek-lter/",
+     "status": 200
+    },
+    {
+     "url": "https://www.lter.uaf.edu/",
+     "status": 0
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0009-0003-9818-0205/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0009-0003-9818-0205/employments",
+     "status": 200
+    }
+   ],
+   "notes": "NEON Domain D19 (Taiga); D18/D19 share one support facility in Fairbanks, AK. Site host: University of Alaska Fairbanks. Site page says the NEON site is co-located with Bonanza Creek LTER (lternet.edu lists Michelle Mack as BNZ lead PI; LTER contacts belong to the LTER facility record). Colocated: Caribou-Poker Creeks Research Watershed, NADP, CZEN, North Slope Science Initiative. www.lter.uaf.edu did not respond (timeout). Verifier: site page confirms domain D19; the manager's NEON profile names the domain, not the site, so the site link is inferred (confidence medium)."
+  },
+  {
+   "facility_id": "35325c870700487f",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/kona",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=1",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=2",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/becky-miller",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/site/konza-prairie-lter/",
+     "status": 200
+    }
+   ],
+   "notes": "NEON Domain D06 (Prairie Peninsula); domain support facility in Manhattan, KS. Site host: Kansas State University (Konza Prairie Biological Station). Colocated: Konza Prairie LTER (lternet.edu lists Jesse Nippert lead PI, Meghan Avolio co-lead PI; belong to the LTER record), NADP, CZEN, NOAA USCRN. kpbs.konza.k-state.edu staff page not found (404). Verifier: site page confirms domain D06; the manager's NEON profile names the domain, not the site, so the site link is inferred (confidence medium)."
+  },
+  {
+   "facility_id": "bee394d91ac8cc15",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/tool",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=1",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=2",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/chris-baird",
+     "status": 200
+    },
+    {
+     "url": "https://www.uaf.edu/toolik/about/people.php",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/site/arctic-lter/",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0009-0003-9818-0205/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0009-0003-9818-0205/employments",
+     "status": 200
+    }
+   ],
+   "notes": "NEON Domain D18 (Tundra); D18/D19 share one support facility in Fairbanks, AK. Site host: BLM Alaska; approvals defer first to Toolik Field Station (UAF). Toolik people page lists Donie Bret-Harte and Brian Barnes as Co-Science Directors of the field station (host-station staff; belong to the Toolik Field Station record). Colocated: Arctic LTER, NADP, CZEN, AmeriFlux, North Slope Science Initiative. Verifier: site page confirms domain D18; the manager's NEON profile names the domain, not the site, so the site link is inferred (confidence medium)."
+  }
+ ],
+ "people": [
+  {
+   "key": "jean-sandoval",
+   "existing_person_id": null,
+   "name": "Jean Sandoval",
+   "name_given": "Jean",
+   "name_family": "Sandoval",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.neonscience.org/person/jean-sandoval",
+   "bio": "NEON field science manager for Domain 04 (Atlantic Neotropical) at the D04 domain office in Puerto Rico. Environmental scientist with an M.S. in environmental management and prior conservation non-profit experience; skills in GIS, project management, and community engagement and citizen science.",
+   "bio_source_url": "https://www.neonscience.org/person/jean-sandoval",
+   "research_interests": "GIS; project management; community engagement and citizen science; Puerto Rican crested toad recovery; sea turtle conservation; reforestation",
+   "research_interests_source_url": "https://www.neonscience.org/person/jean-sandoval"
+  },
+  {
+   "key": "joleisa-cramer",
+   "existing_person_id": null,
+   "name": "JoLeisa Cramer",
+   "name_given": "JoLeisa",
+   "name_family": "Cramer",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.neonscience.org/person/joleisa-cramer",
+   "bio": "Manager of NEON field science operations in the Northeast (Domain 01), leading a team of about 20 staff across four remote field sites. Holds a B.S. in fisheries and wildlife and an M.S. in natural resources from the University of Nebraska-Lincoln, with more than a decade of ecological fieldwork experience.",
+   "bio_source_url": "https://www.neonscience.org/person/joleisa-cramer",
+   "research_interests": "mammalogy; field sampling of mammal species",
+   "research_interests_source_url": "https://www.neonscience.org/person/joleisa-cramer"
+  },
+  {
+   "key": "guy-fausnaught",
+   "existing_person_id": null,
+   "name": "Guy Fausnaught",
+   "name_given": "Guy",
+   "name_family": "Fausnaught",
+   "orcid": "0009-0002-5765-0314",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0009-0002-5765-0314/employments",
+   "homepage_url": "https://www.neonscience.org/person/guy-fausnaught",
+   "bio": "NEON field operations manager for Domain 03, based in Gainesville, Florida, overseeing instrument maintenance, field sampling and laboratory work at three aquatic and three terrestrial sites in Florida and Georgia. With Battelle since 2005, first on chemical demilitarization monitoring, then NEON from 2017; B.S. in biology, Jacksonville State University.",
+   "bio_source_url": "https://www.neonscience.org/person/guy-fausnaught",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "chris-baird",
+   "existing_person_id": null,
+   "name": "Chris Baird",
+   "name_given": "Christopher",
+   "name_family": "Baird",
+   "orcid": "0009-0003-9818-0205",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0009-0003-9818-0205/employments",
+   "homepage_url": "https://www.neonscience.org/person/chris-baird",
+   "bio": "Field operations manager for NEON Domains 18 (Tundra) and 19 (Taiga), both run from the domain facility in Fairbanks, Alaska. Previously worked for state, federal and private research institutions in the U.S. and Canada; B.S. from UBC (2007) and M.S. in biology from Queen's University (2013).",
+   "bio_source_url": "https://www.neonscience.org/person/chris-baird",
+   "research_interests": "seabird ecology; arctic ecology (prior research focus)",
+   "research_interests_source_url": "https://www.neonscience.org/person/chris-baird"
+  },
+  {
+   "key": "becky-miller",
+   "existing_person_id": null,
+   "name": "Becky Miller",
+   "name_given": "Becky",
+   "name_family": "Miller",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.neonscience.org/person/becky-miller",
+   "bio": "Field science manager for NEON Domain 06 (Prairie Peninsula) in Kansas; she joined NEON in January 2017. Previously a longtime Kansas State University project manager whose work centered on livestock infectious disease research and food-animal biosecurity; B.S. in animal science, Kansas State (2000).",
+   "bio_source_url": "https://www.neonscience.org/person/becky-miller",
+   "research_interests": "infectious disease of livestock; food-animal biosecurity",
+   "research_interests_source_url": "https://www.neonscience.org/person/becky-miller"
+  }
+ ],
+ "affiliations": [
+  {
+   "facility_id": "fd4aba50b1f49207",
+   "person_key": "jean-sandoval",
+   "role": "domain-manager",
+   "title": "NEON Domain Manager, D04: Atlantic Neotropical",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/person/jean-sandoval",
+   "evidence": "Jean Sandoval Manager, D04: Atlantic Neotropical",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "9335a5d5ee8fc58a",
+   "person_key": "joleisa-cramer",
+   "role": "domain-manager",
+   "title": "NEON Domain Manager, D01: Northeast",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/person/joleisa-cramer",
+   "evidence": "JoLeisa Cramer Manager, D01: Northeast",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "3a04ddf73c1f42a9",
+   "person_key": "guy-fausnaught",
+   "role": "domain-manager",
+   "title": "NEON Domain Manager, D03: Southeast",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/person/guy-fausnaught",
+   "evidence": "Guy Fausnaught Manager, D03: Southeast",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "cbf8ad27d362e134",
+   "person_key": "chris-baird",
+   "role": "domain-manager",
+   "title": "NEON Domain Manager, D19: Taiga; D18: Tundra",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/person/chris-baird",
+   "evidence": "Chris Baird Manager, D19: Taiga; D18: Tundra",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "35325c870700487f",
+   "person_key": "becky-miller",
+   "role": "domain-manager",
+   "title": "NEON Domain Manager, D06: Prairie Peninsula",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/person/becky-miller",
+   "evidence": "Becky Miller Manager, D06: Prairie Peninsula",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "bee394d91ac8cc15",
+   "person_key": "chris-baird",
+   "role": "domain-manager",
+   "title": "NEON Domain Manager, D19: Taiga; D18: Tundra",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/person/chris-baird",
+   "evidence": "Chris Baird Manager, D19: Taiga; D18: Tundra",
+   "confidence": "medium"
+  }
+ ],
+ "verifications": []
+}

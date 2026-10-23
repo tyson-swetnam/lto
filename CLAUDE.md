@@ -6,63 +6,92 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 `lto` (Long-Term Observatories of the United States) is a **two-stack** project, forked and adapted from [`tyson-swetnam/cod-kmap`](https://github.com/tyson-swetnam/cod-kmap):
 
-1. **Python data pipeline** (`scripts/`, `schema/`, `data/`) — ingests JSON from a fleet of research subagents (`agents/*.md`) into DuckDB, then exports Parquet + GeoJSON + JSON view caches to `public/`.
+1. **Python data pipeline** (`scripts/`, `schema/`, `data/`) — ingests JSON from a fleet of research subagents (`agents/*.md`) into a **DuckLake** store of record (DuckDB 2.0, SQLite catalog), then exports Parquet + GeoJSON + JSON view caches to `public/`.
 2. **Static MapLibre + DuckDB-Wasm site** (`index.html`, `src/`, `public/`) — published to GitHub Pages with **no build step**. ES modules + CDN importmap; do not introduce npm/Vite.
 
-The browser fetches `public/parquet/*.parquet` over HTTP range requests via DuckDB-Wasm, with `public/facilities.geojson` as a first-paint fallback and `public/cache/*.json` as a fast path for two views (see gotchas).
+The browser fetches `public/parquet/*.parquet` over HTTP range requests via DuckDB-Wasm, with `public/facilities.geojson` as a first-paint fallback and `public/cache/*.json` as a fast path for three views (see gotchas). The browser never touches the lake.
 
-**The DuckDB file is still named `db/lto.duckdb`** — every script hardcodes that name. README.md's `db/lto.duckdb` is wrong; ignore it.
+**There is no `db/lto.duckdb` any more.** The store is `db/lto_catalog.sqlite` (catalog) + `db/lake/` (data files), both gitignored, opened only through `scripts/lto_db.py`. See [DuckLake store](#ducklake-store).
 
 ## Common commands
 
 ```bash
-# Python pipeline (run from repo root, in a venv)
+# Python pipeline (run from repo root, in a venv; Python >= 3.11 for duckdb 2.0)
 python -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt
+pip install -r requirements.txt          # pins duckdb==2.0.0
 
-python scripts/rebuild_db_from_parquet.py  # FIRST after any pull — recreate db/lto.duckdb from committed public/parquet/
-python scripts/ingest.py               # data/raw/R*/*.json → db/lto.duckdb
+python scripts/rebuild_lake_from_parquet.py  # FIRST after a clone or pull — rebuild the lake from public/parquet/
+python scripts/ingest.py               # data/raw/R*/*.json → upsert into the lake
 python scripts/ingest.py --skip-geocode  # use .geocode_cache.json only
-python scripts/qa.py                   # data-quality gate (exits non-zero on failure)
-python scripts/export_parquet.py       # db/lto.duckdb → db/parquet/*, public/parquet/*, public/facilities.geojson
+python scripts/qa.py                   # data-quality + integrity gate (exits non-zero on failure)
+python scripts/export_parquet.py       # lake → public/parquet/*, public/facilities.geojson (--db-out db/parquet for a local copy)
 python scripts/export_view_caches.py   # → public/cache/{browse_cards,people_cards,project_cards,site_groups}.json
+python scripts/lake_maintenance.py     # compact files, expire snapshots > 90 days (optional, before export)
 python scripts/build_web_overlays.py   # network_synth_spatial_analysis/ → public/overlays/*.geojson + manifest.json
 
 # Web UI
 python -m http.server 5173             # then open http://localhost:5173/
 ```
 
-The canonical post-edit sequence is: mutate the DB → `qa.py` → `export_parquet.py` → `export_view_caches.py`. Skipping the last step leaves the Browse and People tabs showing stale data.
+The canonical post-edit sequence is: mutate the lake → `qa.py` → `export_parquet.py` → `export_view_caches.py`. Skipping the last step leaves the Browse, People and Projects tabs showing stale data. `rebuild_db_from_parquet.py` is a deprecated shim that runs the lake rebuild.
 
-There is no test framework. `qa.py` is the only correctness gate; add new invariants there rather than introducing pytest. Its JS parse check needs `node` on PATH and is skipped without it (`pip install nodejs-wheel-binaries` provides one). It asserts: no null `facility_type`/`country`, every `facility_type` resolves against the vocab table, every facility has a `provenance` row, and every geocoded facility falls inside its country's bbox (`BBOX_BY_COUNTRY`).
+There is no test framework. `qa.py` is the only correctness gate; add new invariants there rather than introducing pytest. Its JS parse check needs `node` on PATH and is skipped without it (`pip install nodejs-wheel-binaries` provides one). Its first database check re-enforces every PRIMARY KEY / UNIQUE / FOREIGN KEY / CHECK / NOT NULL in `schema/schema.sql` against the lake (see gotchas). It also asserts: no null `facility_type`/`country`, every `facility_type` resolves against the vocab table, every facility has a `provenance` row, and every geocoded facility falls inside its country's bbox (`BBOX_BY_COUNTRY`).
 
-`RUNBOOK.md` is the operator guide for the external-API enrichment passes (ORCID → OpenAlex → NSF/USAspending/990 → recompute derived tables). Follow it rather than re-deriving the order; those scripts need real network access and `OPENALEX_MAILTO` set.
+`RUNBOOK.md` is the operator guide for the external-API enrichment passes (ORCID → OpenAlex → NSF/USAspending/990 → recompute derived tables). Follow it rather than re-deriving the order; those scripts need real network access and `OPENALEX_API_KEY` set.
+
+## DuckLake store
+
+- **Layout.** `db/lto_catalog.sqlite` is the DuckLake 1.1 catalog (tables, snapshots, commit messages, small inlined writes); `db/lake/` holds its parquet data files. SQLite was chosen over a DuckDB-file catalog because it has no DuckDB storage-version trap and readers never block. **Writers are serialised:** `lto_db.transaction()` holds an exclusive `flock` on `<catalog>.lock` from `BEGIN` to `COMMIT`, so a second writer waits (it prints `[lock] … waiting`). Without it two overlapping transactions could each pass `assert_integrity` and commit a duplicate key or an orphan. A write outside `transaction()` is not serialised. Snapshot ids are local and mean nothing across clones.
+- **One way in.** Every script calls `lto_db.connect()` (`read_only=True` for readers, `snapshot=n` for time travel). It attaches the lake as `lake` and runs `USE lake`, so unqualified names work. It raises `LakeNotFound` rather than silently creating an empty lake; only the rebuild passes `create=True`.
+- **Pointing at another lake** (tests, CI, scratch): `LTO_LAKE_CATALOG=/path/cat.sqlite` and optionally `LTO_LAKE_DATA=/path/data/` (defaults to `<catalog dir>/lake`), or `--catalog` / `--lake-data` on any script. An explicit `--catalog` ignores `$LTO_LAKE_DATA`, and the rebuild refuses to pair a non-default catalog with `db/lake/`. With a non-default catalog, `export_parquet.py` and `export_view_caches.py` write to `<catalog dir>/export/` instead of `public/`; pass `--out`/`--geojson` to publish from one deliberately. Never experiment on `db/` when a scratch lake will do.
+- **One run, one snapshot.** Loaders and `compute_*` wrap their writes in `with lto_db.transaction(con, "script_name: what changed"):`, which commits once with an author and message (nothing is committed if nothing changed). Autocommit statements each make their own snapshot and data file; don't write outside a transaction.
+- **History.** From `python` with `import lto_db; con = lto_db.connect(read_only=True)`:
+  ```sql
+  SELECT snapshot_id, snapshot_time, author, commit_message FROM lake.snapshots() ORDER BY 1 DESC;
+  SELECT * FROM facilities AT (VERSION => 12) WHERE facility_id = '…';            -- table as of snapshot 12
+  SELECT change_type, person_id, role FROM ducklake_table_changes('lake', 'main', 'facility_personnel', 12, 15);
+  ```
+  `lto_db.connect(snapshot=12)` attaches the whole lake read-only at that snapshot. To restore a table, `DELETE` + `INSERT … SELECT … AT (VERSION => n)` in one transaction; `CREATE OR REPLACE TABLE … AS SELECT … AT (…)` drops NOT NULL/DEFAULT.
+- **Maintenance.** `scripts/lake_maintenance.py` flushes inlined rows, merges small files, folds delete files, expires snapshots older than `--older-than-days` (default 90; `--no-expire`, `--dry-run`) and deletes unreferenced files. It fails if any table's row count or content hash changes. Expired snapshots can no longer be time-travelled to. Don't run it while another process writes.
+- **The lake is disposable; `public/parquet/` is not.** Unexported lake changes are lost on a rebuild. `lto_db.ensure_schema(con)` adds new `schema.sql` tables/columns/views in place so a schema edit doesn't force a rebuild.
 
 ## Critical gotchas
 
-- **DuckDB on-disk format is not portable across versions** (e.g. 1.5.x writes a file 1.3.x cannot read). The `.duckdb` file and `db/parquet/` are both gitignored; the canonical committed artifact is `public/parquet/*.parquet`. After pulling, run `scripts/rebuild_db_from_parquet.py` before doing anything that opens the DB (it reads `db/parquet/` if a local export has filled it, else `public/parquet/`). See that script for the full rationale.
+- **The canonical committed artifact is `public/parquet/*.parquet`.** The lake (`db/lto_catalog.sqlite`, `db/lake/`) and `db/parquet/` are gitignored. After pulling, run `scripts/rebuild_lake_from_parquet.py` before anything that opens the lake. It always builds from `public/parquet/` (a stale `db/parquet/` used to win and revert pulled data); `--parquet db/parquet` loads a local export on purpose. A spec-1.1 catalog needs DuckDB 2.0; DuckDB 1.x clients cannot open it. Exported parquet still reads in DuckDB 1.1+.
 
-- **Three views bypass DuckDB entirely.** `src/views/list.js`, `src/views/people.js` and `src/views/projects.js` fetch `public/cache/browse_cards.json` / `people_cards.json` / `project_cards.json` (plus `site_groups.json` for the Projects tab's network groups) first and only fall through to DuckDB-Wasm if the fetch 404s. That JSON is materialised offline by `scripts/export_view_caches.py` from the same SQL. Consequence: **changing the SQL in those view files, or the underlying data, has no visible effect until you re-run `export_view_caches.py` and commit the JSON.** Keep the cache SQL and the in-file fallback SQL in sync — they must produce identical row shapes.
+- **Constraints are logical, enforced by QA, not at write time.** DuckLake rejects PRIMARY KEY, UNIQUE, FOREIGN KEY, CHECK, indexes and sequences. `schema/schema.sql` keeps them all, but is executed only in an in-memory "spec" database; the lake is created column-only (types, NOT NULL, DEFAULT — those *are* enforced). `qa.py` (via `lto_db.integrity_violations`) fails on any duplicate key, orphan reference, failed CHECK or column drift from `schema.sql`, and loaders call `lto_db.assert_integrity(con, tables)` before COMMIT so a bad batch rolls back. The same check covers the derived tables' keys (`lto_db.DERIVED_CONSTRAINTS`; their producers assert them) and the references `schema.sql` leaves undeclared — projects, `registry_facilities`, `person_registry.person_id` (`lto_db.SOFT_REFERENCES`). An unknown table name passed to `assert_integrity` raises. The old foreign-key update block is gone: `UPDATE facilities SET facility_type = …` works on referenced rows — and so does renaming a key, which orphans children silently until QA catches it.
 
-- **Views don't survive parquet export.** `schema/schema.sql` defines helper views (`v_facility_map`, `v_facility_enriched`, `v_region_enriched`, `v_facility_funding_by_year`, `v_funder_funding_by_year`, `v_funding_ledger`, `v_facility_key_personnel`, `v_person_enriched`, `v_person_areas_enriched`, …) — the subset the frontend needs is re-created in the browser by `src/db.js` after registering parquet tables. Add new views in **both** places or the SQL tab will lose them.
+- **Upserts are `MERGE`, never `INSERT OR REPLACE` / `INSERT OR IGNORE` / `ON CONFLICT`.** Those need a primary key and fail on the lake. Use `lto_db.merge_upsert(con, table, key_cols, source, …)` (`insert_only=True` for insert-if-absent, `coalesce=` to keep existing non-NULLs). A `MERGE` whose source repeats a key inserts both rows; `merge_upsert` de-duplicates with `DISTINCT ON`. Stage per-row loops in a TEMP table and merge once.
 
-- **Arrow LIST/STRUCT columns are not plain JS arrays.** DuckDB-Wasm 1.29 returns Arrow Vectors that have `.length` but fail `Array.isArray()`. Always run row results through `arrowToPlain()` / `unwrapRow()` from `src/db.js` before downstream view code touches them — see the comment block in that file for the trap this fixed.
+- **DuckDB 2.0 Python API.** `Relation.fetchone()` is removed (use `lto_db.scalar()` / `lto_db.rows()`); single-arrow lambdas fail (`lambda x: x + 1`, not `x -> x + 1`); `con.execute(q).pl()` / `.arrow()` are removed (use `con.sql(q).pl()` / `.to_arrow_table()`). `execute().fetchone()` then another `execute()` is fine, but a relation-API call (`.sql`, `.table`, `.register`) on a connection with a half-read `execute()` result raises `ResourceInUseException`. Reading a `TIMESTAMPTZ` into Python needs `pytz`.
+
+- **Three views bypass DuckDB entirely.** `src/views/list.js`, `src/views/people.js` and `src/views/projects.js` fetch `public/cache/browse_cards.json` / `people_cards.json` / `project_cards.json` (plus `site_groups.json` for the Projects tab's network groups) first and only fall through to DuckDB-Wasm if the fetch 404s. That JSON is materialised offline by `scripts/export_view_caches.py` from the same SQL. Consequence: **changing the SQL in those view files, or the underlying data, has no visible effect until you re-run `export_view_caches.py` and commit the JSON.** Keep the cache SQL and the in-file fallback SQL in sync — they must produce identical row shapes, and the cache SQL orders every list (and uses `list_sum`) so output is byte-stable.
+
+- **Views live in three places.** `schema/schema.sql` defines helper views (`v_facility_map`, `v_facility_enriched`, `v_region_enriched`, `v_facility_funding_by_year`, `v_funder_funding_by_year`, `v_funding_ledger`, `v_facility_key_personnel`, `v_person_enriched`, `v_person_areas_enriched`, …). The rebuild and `ensure_schema` create them in the lake; they don't survive parquet export, so the subset the frontend needs is re-created in the browser by `src/db.js` after registering parquet tables. Add new views in **both** `schema.sql` and `src/db.js` or the SQL tab will lose them.
+
+- **Browser SQL is DuckDB 1.5 SQL.** `index.html` pins `@duckdb/duckdb-wasm@1.33.1-dev65.0` (core v1.5.6; no stable 2.0 wasm exists). Anything in `src/` or that `src/db.js` re-creates must run on 1.5, and `qa.py` fails if a `src/views` query returns DECIMAL/HUGEINT.
+
+- **Arrow LIST/STRUCT columns are not plain JS arrays.** DuckDB-Wasm (1.29 through 1.33.x) returns Arrow Vectors that have `.length` but fail `Array.isArray()`. Always run row results through `arrowToPlain()` / `unwrapRow()` from `src/db.js` before downstream view code touches them — see the comment block in that file for the trap this fixed.
 
 - **Map sources need `Feature` shapes, not raw rows.** `query()` in `src/db.js` wraps each row in `{ type: 'Feature', geometry: { type: 'Point', coordinates: [...] }, properties: ... }` and drops rows with null coordinates. MapLibre silently skips rows that lack `geometry`.
 
 - **Vocabularies are duplicated** between `schema/vocab/` (canonical, used by ingest/QA) and `public/vocab/` (served to the browser for filter labels). Keep them in sync — commit `c08fd86` fixed exactly this drift; `cp schema/vocab/*.csv public/vocab/` is the fix.
 
-- **`export_parquet.py` fails soft on missing tables.** A `CatalogException` is swallowed and the table is skipped, leaving whatever stale parquet is already in `public/parquet/`. A "successful" export can therefore ship old data for a table a `compute_*` script hasn't produced yet — check the `[ok] exported …` line against the skip list.
+- **`export_parquet.py` hard-fails on a missing table.** Every table in `TABLES` is checked before any file is written; a missing one aborts the export with nothing written (`ALLOW_MISSING` is the explicit exception list, empty today). Output is deterministic: rows are ordered by primary key then all columns, every column is written OPTIONAL, the GeoJSON is ordered by id, and files are written via temp + rename. Re-exporting unchanged data gives byte-identical files, so a diff in `public/` is a real change.
+
+- **`export_parquet.py` is the only writer of `public/parquet/`.** `compute_*`, `build_mvg_layout.py` and `check_url_health.py` write their tables into the lake (`lto_db.replace_table`); export publishes them. Keep derived numeric columns in the types the parquet already holds (e.g. cast `total_citations` to DOUBLE, not HUGEINT) or a computed lake exports different bytes from a rebuilt one.
 
 - **The OpenAlex topic crosswalk must be copied from data, never typed.** `data/vocab_crosswalk/openalex_to_area.csv` maps OpenAlex topic/concept ids to `research_areas`; `compute_area_metrics.py` uses it for every per-area number. Its first version had recalled ids ("Kelp" carried the id of "Global warming") and filed dryland ecologists under marine debris. Take id and name together from `publication_topics`; `qa.py` fails on an id whose label disagrees with the data or an unknown area. People-card totals (pubs, citations, h-index) come from `authorship`, not from this table.
 
 - **`COMMIT_*.sh` are one-shot driver scripts**, gitignored, not source. Don't read them as documentation of current state — they are historical commit drivers.
 
-- **The national raw inputs are not in the repo.** `data/raw/**/*.json` is gitignored, so the 445 original facilities cannot be re-ingested from source; `public/parquet/` is their only copy. Running `ingest.py` on a clean checkout builds an empty schema, which `qa.py` now rejects. The ARID wave is the exception: `data/raw/R-ARID/` and `data/raw/J-ENVIRODATA/` are committed.
-
-- **DuckDB blocks updates to foreign-key columns of a referenced row.** `UPDATE facilities SET facility_type = …` on a facility that personnel rows point at fails ("still referenced by a foreign key"). Loaders insert-if-absent and update only plain columns; the project tables use soft references for the same reason.
+- **The national raw inputs are not in the repo.** `data/raw/**/*.json` is gitignored, so the 445 original facilities cannot be re-ingested from source; `public/parquet/` is their only copy. `ingest.py` upserts into an existing lake (it raises `LakeNotFound` on a fresh clone) and leaves facilities absent from `data/raw` alone. For a facility it does load, the raw record's spheres, ecosystems, life zones and research areas replace the lake's (so re-run `add_arid_sphere.py` after it), and every vocab table is reloaded from `schema/vocab/*.csv` — `qa.py` warns when a vocab table and its CSV differ, i.e. before an ingest would ship the difference. Committed exceptions: `data/raw/R-ARID/`, `data/raw/J-ENVIRODATA/`, `data/raw/J-AZWATER/`, `data/raw/R-PEOPLE2/` and `data/raw/R-PEOPLE2-BIO/`.
 
 - **`facilities.state` is derived.** Any loader that adds facilities must be followed by `scripts/backfill_facility_state.py`, or the new rows drop out of the New Mexico and drylands lenses. `qa.py` fails on a US facility with coordinates and no state.
+
+- **Merged people stay merged.** `dedupe_people.py` merges on identifiers, or on a reviewed pair in `data/seed/people_merge_seed.csv` (spellings of one name at the same facility, or a fetched ORCID/OpenAlex record), and logs every merge in `data/seed/people_merge_log.csv`. Every people loader reads ids through `load_people_research.canonical_person_id`, so a seed CSV or research file written before a merge never re-creates the duplicate; `qa.py` fails if a merged id is back, or if two person_ids at one facility are spellings of one name (`same_person_name`). Loaders only fill a person's homepage/notes/identifiers; they never overwrite what a research batch wrote.
+
+- **Contact details are not published.** `people.email` is not written by the loaders and `export_parquet.EXPORT_REDACT` blanks it on export; `qa.py` fails if `public/parquet/people.parquet` carries one. Views and SQL-tab examples must not select it.
 
 ## Regional focus: ARID and New Mexico
 
@@ -93,26 +122,26 @@ Beyond facilities the schema covers: regions (overlay polygons + `facility_regio
 
 ## Script families
 
-`scripts/` has ~55 files; they fall into groups, and the group tells you when to run one:
+`scripts/` has ~60 files; they fall into groups, and the group tells you when to run one. All of them open the lake through `lto_db.py`.
 
-- **Core pipeline** — `ingest.py`, `qa.py`, `export_parquet.py`, `export_view_caches.py`, `rebuild_db_from_parquet.py`, `geocode.py`.
-- **`load_*.py`** — idempotent loaders for hand/agent-authored JSON+CSV under `data/raw/<AGENT>/` and `data/seed/`. Each upserts on a deterministic ID hash, so re-runs update rather than duplicate.
+- **Core pipeline** — `lto_db.py` (shared helper), `rebuild_lake_from_parquet.py`, `ingest.py`, `qa.py`, `export_parquet.py`, `export_view_caches.py`, `lake_maintenance.py`, `geocode.py`.
+- **`load_*.py`** — idempotent loaders for hand/agent-authored JSON+CSV under `data/raw/<AGENT>/` and `data/seed/`. Each `MERGE`s on a deterministic ID hash, so re-runs update rather than duplicate, one snapshot per run (`load_people_research.py` writes one per input file).
 - **`enrich_people_*.py`** — external identity/bibliometric APIs (ORCID, OpenAlex, Google Scholar). Strict matching by design: a wrong ORCID is worse than a missing one, so unmatched rows stay NULL.
 - **`fetch_funding_*.py`** — NSF Award Search, USAspending, IRS 990. Write into `funding_events` keyed `sha1(funder||facility||award_id||fiscal_year)`.
-- **`compute_*.py`** — derived tables (collaborations, person/area metrics, MVG primary groups). Re-run after anything that grows the publication or funding graph; they write parquet directly as well as into the DB.
-- **URL hygiene** — `check_url_health.py` (HTTP HEAD sweep), `url_hygiene.py` (pattern rewrites), `apply_*_url_*.py`. Decision logs land in `data/seed/*.csv`; those CSVs are the reviewable artifact.
+- **`compute_*.py`** + `build_mvg_layout.py` — derived tables (collaborations, person/area metrics, MVG primary groups and layout), written into the lake with `replace_table`. Re-run after anything that grows the publication or funding graph, in this order: `compute_collaborations` → `compute_person_areas` → `compute_primary_groups` → `compute_area_metrics` (its funding and coverage tables join `facility_primary_groups`) → `build_mvg_layout`.
+- **URL hygiene** — `check_url_health.py` (HTTP HEAD sweep → `url_health` lake table + CSV), `url_hygiene.py` (pattern rewrites), `apply_*_url_*.py`. Decision logs land in `data/seed/*.csv`; those CSVs are the reviewable artifact.
 
 `data/seed/` is the manually-curated layer (personnel seeds, ORCID resolution log, URL health/hygiene logs) and is committed — treat it as input, not output.
 
 ## Pipeline / wave model
 
-Subagents are organized in waves; each `agents/<ID>-*.md` declares scope, sources, inputs, outputs, method, and known-landmark QA checks. Beyond the original `R1..R10`, later waves add sphere-specific agents (`R-ATM`, `R-CRY`, `R-TER-*`, `R-AGR`, `R-AQ-*`), `R-PEOPLE`, `H-FUND-PUB`, `J-DATA`, and `L-URL-FIX`.
+Subagents are organized in waves; each `agents/<ID>-*.md` declares scope, sources, inputs, outputs, method, and known-landmark QA checks. Beyond the original `R1..R10`, later waves add sphere-specific agents (`R-ATM`, `R-CRY`, `R-TER-*`, `R-AGR`, `R-AQ-*`), `R-PEOPLE`, `H-FUND-PUB`, `J-DATA`, and `L-URL-FIX`. Older agent specs still name `db/cod_kmap.duckdb` / `db/lto.duckdb`; read those as "the lake".
 
 ```
 Wave 1  D1 schema  + D3 vocabulary           → schema/, schema/vocab/
 Wave 2  R1..R8 regional research agents      → data/raw/R*/facilities_*.json
 Wave 3  R9 funding-flows, R10 COMPASS sites  → data/raw/R9/, data/raw/R10/
-Wave 4  D2 ingest pipeline                   → db/lto.duckdb, db/parquet/
+Wave 4  D2 ingest pipeline                   → DuckLake (db/lto_catalog.sqlite + db/lake/) → public/parquet/
 Wave 5  F1..F4 frontend + deploy             → src/, public/, .github/workflows/deploy.yml
 Wave 6  verification + iteration
 ```
@@ -123,7 +152,7 @@ When network access is unavailable, the working pattern is the parallel-subagent
 
 ## Frontend layout
 
-- `index.html` — importmap pulls `maplibre-gl` + `@duckdb/duckdb-wasm` from esm.sh; loads `src/main.js` as a module.
+- `index.html` — importmap pulls `maplibre-gl` + `@duckdb/duckdb-wasm` (pinned `1.33.1-dev65.0`, core v1.5.6) from esm.sh; loads `src/main.js` as a module.
 - `src/main.js` — bootstraps map, filters, overlays, hash-router, then the 9 routes (`/`, `/browse`, `/network`, `/projects`, `/people`, `/data`, `/sql`, `/stats`, `/docs`). Sub-routes like `/people/<id>`, `/projects/<id>`, `/data/<archive_id>/products` and `/docs/<slug>` dispatch on the first path segment.
 - `src/db.js` — DuckDB-Wasm init, parquet view registration, helper views, `query()` (returns GeoJSON Features), and the Arrow→JS unwrap helpers. Each `CREATE OR REPLACE VIEW` is individually try/caught so one missing parquet doesn't break the rest.
 - `src/config.js` — `DATA_BASE` resolves all data fetches relative to `index.html`; never hardcode `/public/` paths in views.
@@ -136,10 +165,12 @@ The site degrades in three tiers: GeoJSON fallback → JSON view caches → full
 ## CI workflows
 
 - `deploy.yml` (push to `main`) — stages only `index.html`, `favicon.svg`, `src/`, `public/`, `docs/`. Anything outside those paths (agents, scripts, schema, data/raw) is **not** on the live site. Adding a new runtime-fetched directory means editing this staging step.
-- `refresh-data.yml` (weekly, Sun 06:00 UTC) — ingest → qa → export_parquet → export_view_caches, opens a PR with the parquet/GeoJSON/cache diffs.
-- `url-health.yml` (weekly, Mon 07:00 UTC) — rebuild from parquet → HEAD sweep → hygiene → re-export, opens a PR.
+- `refresh-data.yml` (weekly, Sun 06:00 UTC) — rebuild lake from parquet → `load_arid` → `load_lto_archives` → `backfill_facility_state` → qa → export_parquet → export_view_caches, opens a PR. It does not run `ingest.py` (no raw national inputs in CI).
+- `url-health.yml` (weekly, Mon 07:00 UTC) — rebuild lake from parquet → HEAD sweep → hygiene → qa → re-export, opens a PR.
 
-Both scheduled workflows open PRs rather than pushing; review the data diffs before merging.
+Both scheduled workflows run Python 3.12, rebuild the lake from scratch each run (nothing but pip is cached; the ducklake/sqlite extensions download from extensions.duckdb.org), and open PRs rather than pushing; review the data diffs before merging. The loaders they re-run keep `created_at`/`updated_at` on unchanged rows, so a week with no input change opens no data diff.
+
+Repository settings the YAML cannot fix (checked 2026-10-22): "Refresh data" was `disabled_inactivity`, and the repo's workflow permissions had `can_approve_pull_request_reviews: false`, so the PR step fails. A repo admin re-enables them with `gh workflow enable "Refresh data"` and `gh api -X PUT repos/tyson-swetnam/lto/actions/permissions/workflow -f default_workflow_permissions=read -F can_approve_pull_request_reviews=true` (Settings → Actions → General → "Allow GitHub Actions to create and approve pull requests").
 
 ## External datasets
 

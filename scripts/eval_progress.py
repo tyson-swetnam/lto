@@ -10,7 +10,7 @@ Writes `agents/PROGRESS.md` — a structured gap report:
 Run idempotently after every wave / loop:
 
     python scripts/eval_progress.py
-    python scripts/eval_progress.py --db db/lto.duckdb
+    python scripts/eval_progress.py --catalog db/lto_catalog.sqlite
 
 The output file is git-tracked so future Claude sessions can read it
 on startup and pick up where the previous loop left off.
@@ -18,13 +18,14 @@ on startup and pick up where the previous loop left off.
 from __future__ import annotations
 
 import argparse
+import sys
 from datetime import datetime
 from pathlib import Path
 
-import duckdb
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import lto_db  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "lto.duckdb"
 OUT = ROOT / "agents" / "PROGRESS.md"
 
 
@@ -43,10 +44,13 @@ CHECKLIST = [
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--db", type=Path, default=DEFAULT_DB)
+    lto_db.add_argparse_catalog(ap)
+    ap.add_argument("--db", dest="catalog", type=Path,
+                    help="deprecated alias of --catalog")
     args = ap.parse_args()
 
-    with duckdb.connect(str(args.db), read_only=True) as conn:
+    with lto_db.connect(read_only=True, catalog=args.catalog,
+                        data=args.lake_data) as conn:
         # Materialize the per-facility coverage matrix.
         coverage = conn.execute("""
             WITH base AS (

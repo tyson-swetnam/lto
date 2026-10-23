@@ -1,0 +1,358 @@
+{
+ "batch_id": "R-PEOPLE2-NEON-05a",
+ "retrieved_at": "2026-10-22",
+ "verified_by": "adversarial-verifier 2026-10-22",
+ "facilities": [
+  {
+   "facility_id": "e2f4712cb22232da",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/puum",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=1",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=2",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=3",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/mike-long",
+     "status": 200
+    },
+    {
+     "url": "https://ameriflux.lbl.gov/sites/siteinfo/US-xPU",
+     "status": 200
+    }
+   ],
+   "notes": "NEON Domain D20 (Pacific Tropical); PUUM is the only D20 site. Field operations office 60 Nowelo Street, Hilo, HI. Site host: Hawaii Division of Forestry and Wildlife (Natural Area Reserves, https://dlnr.hawaii.gov/ecosystems/nars/permits/). Colocated: Research Natural Area Reserve, CZEN, AmeriFlux (US-xPU). Host-agency staff not named on the NEON page. AmeriFlux siteinfo lists the PI as the organisation 'National Ecological Observatory Network' with network-wide flux contacts only (no site-specific PI), so no tower PI added."
+  },
+  {
+   "facility_id": "11660aa883209b2f",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/sjer",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=1",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=2",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=3",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/catie-halvorsen-0",
+     "status": 200
+    },
+    {
+     "url": "https://ameriflux.lbl.gov/sites/siteinfo/US-xSJ",
+     "status": 200
+    },
+    {
+     "url": "https://www.fs.usda.gov/research/psw/forestsandranges/locations/sanjoaquin",
+     "status": 200
+    }
+   ],
+   "notes": "NEON Domain D17 (Pacific Southwest); field operations office 4727 West Shaw Avenue, Fresno, CA. Site host: San Joaquin Experimental Range (USDA Forest Service Pacific Southwest Research Station). Colocated: PSW Research Station SJER, Southern Sierra CZO, CZEN, AmeriFlux (US-xSJ). The host URL on the NEON page now lands on the generic Forest Service R&D home page, so no host scientist-in-charge could be identified. AmeriFlux siteinfo lists the PI as the organisation 'National Ecological Observatory Network' with network-wide flux contacts only (no site-specific PI), so no tower PI added."
+  },
+  {
+   "facility_id": "9d9f2d2e39b4bdf7",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/soap",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=1",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=2",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=3",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/catie-halvorsen-0",
+     "status": 200
+    },
+    {
+     "url": "https://ameriflux.lbl.gov/sites/siteinfo/US-xSP",
+     "status": 200
+    }
+   ],
+   "notes": "NEON Domain D17 (Pacific Southwest); field operations office in Fresno, CA. Site host: Sierra National Forest (https://www.fs.usda.gov/sierra/). Colocated: Upper Big Creek NEON (aquatic), Southern Sierra CZO, CZEN, AmeriFlux (US-xSP). Host staff not named on the NEON page. AmeriFlux siteinfo lists the PI as the organisation 'National Ecological Observatory Network' with network-wide flux contacts only (no site-specific PI), so no tower PI added."
+  },
+  {
+   "facility_id": "f132d925c3b40f4f",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/stei",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=1",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=2",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=3",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/ashley-spink-0",
+     "status": 200
+    },
+    {
+     "url": "https://ameriflux.lbl.gov/sites/siteinfo/US-xST",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/node/4180",
+     "status": 404
+    }
+   ],
+   "notes": "NEON Domain D05 (Great Lakes); field operations office 7647 Notre Dame Lane, Land O Lakes, WI. Site host: private landowner (NEON page: 'Private - Steigerwaldt-Chequamegon'); no host contact named. Colocated: AmeriFlux (US-xST). D05 manager is not listed in the NEON staff directory table; identified from her NEON profile page. A search hit naming Peter Weishampel as D05 manager (neonscience.org/node/4180) now returns 404, so he was not added. AmeriFlux siteinfo lists the PI as the organisation 'National Ecological Observatory Network' with network-wide flux contacts only (no site-specific PI), so no tower PI added."
+  },
+  {
+   "facility_id": "f7668cd467f82025",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/tall",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=1",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=2",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=3",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/beth-fugate",
+     "status": 200
+    },
+    {
+     "url": "https://ameriflux.lbl.gov/sites/siteinfo/US-xTA",
+     "status": 200
+    }
+   ],
+   "notes": "NEON Domain D08 (Ozarks Complex); field operations office 6050 Mimosa Circle, Suite C, Tuscaloosa, AL. Site host: Talladega National Forest (USDA Forest Service); NEON page says to coordinate access with the NEON Domain Manager. Colocated: Mayfield Creek NEON (aquatic), CZEN, AmeriFlux (US-xTA). AmeriFlux siteinfo lists the PI as the organisation 'National Ecological Observatory Network' with network-wide flux contacts only (no site-specific PI), so no tower PI added."
+  },
+  {
+   "facility_id": "5f19761c0bf6790a",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/tecr",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=1",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=2",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=3",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/catie-halvorsen-0",
+     "status": 200
+    },
+    {
+     "url": "https://www.fs.usda.gov/research/psw/forestsandranges/locations/teakettle",
+     "status": 200
+    }
+   ],
+   "notes": "NEON Domain D17 (Pacific Southwest) aquatic site; field operations office in Fresno, CA. Site host: USDA Forest Service Pacific Southwest Research Station (Teakettle Experimental Forest). Colocated: Lower Teakettle NEON (terrestrial). The PSW Teakettle URL now lands on the generic Forest Service R&D home page, so no host scientist could be identified."
+  }
+ ],
+ "people": [
+  {
+   "key": "mike-long",
+   "existing_person_id": null,
+   "name": "Mike Long",
+   "name_given": "Mike",
+   "name_family": "Long",
+   "orcid": "0000-0002-4728-8983",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-4728-8983/employments",
+   "homepage_url": "https://www.neonscience.org/person/mike-long",
+   "bio": "Has led NEON's Domain 20 (Pacific Tropical) field operations from Hilo, Hawaii since July 2018, running the PUUM site on Hawaii Island with a small permanent and seasonal crew. Holds a biology B.S. (UC San Diego) and a natural resources M.S. (University of Hawaii at Manoa); previously worked for the Hawaii Plant Extinction Prevention Program.",
+   "bio_source_url": "https://www.neonscience.org/person/mike-long",
+   "research_interests": "conservation of Hawaiian ecosystems; recovery of critically endangered Hawaiian plants",
+   "research_interests_source_url": "https://www.neonscience.org/person/mike-long"
+  },
+  {
+   "key": "catie-halvorsen",
+   "existing_person_id": null,
+   "name": "Catie Halvorsen",
+   "name_given": "Catie",
+   "name_family": "Halvorsen",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.neonscience.org/person/catie-halvorsen-0",
+   "bio": "NEON field operations manager for Domain 17 (Pacific Southwest) since 2024, after moving up from aquatics field technician and field ecologist within NEON. Environmental engineering graduate of Cal Poly San Luis Obispo; earlier work included elephant seal population monitoring and U.S. Forest Service engineering, hydrology and aquatic projects.",
+   "bio_source_url": "https://www.neonscience.org/person/catie-halvorsen-0",
+   "research_interests": "aquatic field ecology; hydrology; long-term elephant seal population monitoring; ecological restoration",
+   "research_interests_source_url": "https://www.neonscience.org/person/catie-halvorsen-0"
+  },
+  {
+   "key": "ashley-spink",
+   "existing_person_id": null,
+   "name": "Ashley Spink",
+   "name_given": "Ashley",
+   "name_family": "Spink",
+   "orcid": "0000-0002-5484-7763",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-5484-7763/employments",
+   "homepage_url": "https://www.neonscience.org/person/ashley-spink-0",
+   "bio": "Field operations manager for NEON's Great Lakes Domain (D05) in Land O' Lakes, Wisconsin since 2025; joined NEON in 2014 as a field technician responsible for small mammal, soil and invertebrate protocols. Holds a wildlife ecology B.S. (UW-Stevens Point) and an environmental science and policy M.S. (UW-Green Bay).",
+   "bio_source_url": "https://www.neonscience.org/person/ashley-spink-0",
+   "research_interests": "wildlife ecology; small mammal, soil and invertebrate sampling",
+   "research_interests_source_url": "https://www.neonscience.org/person/ashley-spink-0"
+  },
+  {
+   "key": "beth-fugate",
+   "existing_person_id": null,
+   "name": "Beth Fugate",
+   "name_given": "Beth",
+   "name_family": "Fugate",
+   "orcid": "0009-0003-4822-8987",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0009-0003-4822-8987/employments",
+   "homepage_url": "https://www.neonscience.org/person/beth-fugate",
+   "bio": "Field operations manager for NEON's Domain 08 (Ozarks Complex) in Tuscaloosa, Alabama since 2023, overseeing six Alabama field sites and the domain's sampling team. Marine biology graduate of the University of West Alabama; formerly a toxicologist, a coastal restoration specialist with Florida DEP, and manager of the Northwest Florida Aquatic Preserves.",
+   "bio_source_url": "https://www.neonscience.org/person/beth-fugate",
+   "research_interests": "coastal habitat restoration and monitoring; management of submerged state lands",
+   "research_interests_source_url": "https://www.neonscience.org/person/beth-fugate"
+  }
+ ],
+ "affiliations": [
+  {
+   "facility_id": "e2f4712cb22232da",
+   "person_key": "mike-long",
+   "role": "domain-manager",
+   "title": "NEON Field Operations Manager, D20: Pacific Tropical",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2018,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/person/mike-long",
+   "evidence": "Mike Long is the Field Operations Manager for Domain 20 (Pacific Tropical)",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "11660aa883209b2f",
+   "person_key": "catie-halvorsen",
+   "role": "domain-manager",
+   "title": "NEON Field Operations Manager, D17: Pacific Southwest",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2024,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/person/catie-halvorsen-0",
+   "evidence": "current role as Field Operations Manager for Domain 17, the Pacific Southwest, in 2024",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "9d9f2d2e39b4bdf7",
+   "person_key": "catie-halvorsen",
+   "role": "domain-manager",
+   "title": "NEON Field Operations Manager, D17: Pacific Southwest",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2024,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/person/catie-halvorsen-0",
+   "evidence": "current role as Field Operations Manager for Domain 17, the Pacific Southwest, in 2024",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "5f19761c0bf6790a",
+   "person_key": "catie-halvorsen",
+   "role": "domain-manager",
+   "title": "NEON Field Operations Manager, D17: Pacific Southwest",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2024,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/person/catie-halvorsen-0",
+   "evidence": "current role as Field Operations Manager for Domain 17, the Pacific Southwest, in 2024",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "f132d925c3b40f4f",
+   "person_key": "ashley-spink",
+   "role": "domain-manager",
+   "title": "NEON Field Operations Manager, D05: Great Lakes",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2025,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/person/ashley-spink-0",
+   "evidence": "Ashley moved to the role of Field Operations Manager for the Great Lakes (D05) domain",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "f7668cd467f82025",
+   "person_key": "beth-fugate",
+   "role": "domain-manager",
+   "title": "NEON Field Operations Manager, D08: Ozarks Complex",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2023,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/person/beth-fugate",
+   "evidence": "Beth is the Field Operations Manager for NEON Domain 08 - Ozarks Complex.",
+   "confidence": "medium"
+  }
+ ],
+ "verifications": []
+}

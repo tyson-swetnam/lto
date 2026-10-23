@@ -1,0 +1,1524 @@
+{
+ "batch_id": "R-PEOPLE2-LTER-02a",
+ "retrieved_at": "2026-10-22",
+ "verified_by": "adversarial-verifier 2026-10-22",
+ "facilities": [
+  {
+   "facility_id": "288ac52b707d703d",
+   "pages_fetched": [
+    {
+     "url": "https://baltimoreecosystemstudy.org/",
+     "status": 200
+    },
+    {
+     "url": "https://baltimoreecosystemstudy.org/category/directors-blog/",
+     "status": 200
+    },
+    {
+     "url": "https://baltimoreecosystemstudy.org/people/",
+     "status": 200
+    },
+    {
+     "url": "https://baltimoreecosystemstudy.org/project-structure/",
+     "status": 200
+    },
+    {
+     "url": "https://baltimoreecosystemstudy.org/project-structure/contact/",
+     "status": 200
+    },
+    {
+     "url": "https://environment.yale.edu/directory/faculty/morgan-grove",
+     "status": 200
+    },
+    {
+     "url": "https://ges.umbc.edu/christopher-swan/",
+     "status": 200
+    },
+    {
+     "url": "https://ges.umbc.edu/swan/",
+     "status": 404
+    },
+    {
+     "url": "https://hixon.yale.edu/person/morgan-grove-0",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/site/baltimore-ecosystem-study-lter/",
+     "status": 404
+    },
+    {
+     "url": "https://lternet.edu/site/baltimore-ecosystem-study/",
+     "status": 200
+    },
+    {
+     "url": "https://plantsciences.ucdavis.edu/people/mary-cadenasso",
+     "status": 0
+    },
+    {
+     "url": "https://research.fs.usda.gov/about/people/grove",
+     "status": 404
+    },
+    {
+     "url": "https://www.caryinstitute.org/news-insights/feature/dr-emma-rosi-marshall-named-director-designate-bes",
+     "status": 200
+    },
+    {
+     "url": "https://www.caryinstitute.org/our-people/emma-j-rosi",
+     "status": 404
+    },
+    {
+     "url": "https://www.caryinstitute.org/our-people/peter-m-groffman",
+     "status": 404
+    },
+    {
+     "url": "https://www.caryinstitute.org/our-people/steward-ta-pickett",
+     "status": 404
+    },
+    {
+     "url": "https://www.caryinstitute.org/science/our-scientists/dr-emma-j-rosi",
+     "status": 200
+    },
+    {
+     "url": "https://www.caryinstitute.org/science/our-scientists/dr-peter-m-groffman",
+     "status": 200
+    },
+    {
+     "url": "https://www.caryinstitute.org/science/our-scientists/dr-steward-t-pickett",
+     "status": 200
+    },
+    {
+     "url": "https://www.gc.cuny.edu/people/peter-groffman",
+     "status": 403
+    }
+   ],
+   "notes": "BES LTER NSF funding ended Nov 2022 (lternet.edu); BES continues as a consortium (USFS, Cary, UMBC) with an LTREB watershed grant from Sept 2021. baltimoreecosystemstudy.org/people lists Christopher Swan as Project Director and Morgan Grove as Co-Director (page undated; many investigator titles look old, so medium confidence). Grove has since left the USDA Forest Service (Yale Hixon profile) - existing title 'Research Scientist, USDA Forest Service' is stale, and his fs.usda.gov homepage returned 404. Cadenasso's co-PI role is historical (Phase III award DEB-1027188, 2011); she is now listed only as an Investigator - treat as former co-PI. Existing Pickett homepage URL (caryinstitute.org/our-people/...) returns 404; current is caryinstitute.org/science/our-scientists/dr-steward-t-pickett. Cadenasso UC Davis homepage timed out."
+  },
+  {
+   "facility_id": "01ef51b8abf6f751",
+   "pages_fetched": [
+    {
+     "url": "https://ble.lternet.edu/",
+     "status": 200
+    },
+    {
+     "url": "https://ble.lternet.edu/about",
+     "status": 200
+    },
+    {
+     "url": "https://ble.lternet.edu/people",
+     "status": 200
+    },
+    {
+     "url": "https://cesuexperts.uri.edu/experts/james-mcclelland",
+     "status": 403
+    },
+    {
+     "url": "https://experts.utexas.edu/kenneth_dunton",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/directory/?usite=1952&go=1",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/directory/?usite=1952&urole=0&go=1",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/site/beaufort-lagoon-ecosystem/",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/site/beaufort-lagoon-ecosystems-lter/",
+     "status": 404
+    },
+    {
+     "url": "https://marinescience.utexas.edu/about-department/mission-leadership",
+     "status": 200
+    },
+    {
+     "url": "https://marinescience.utexas.edu/people/kenneth-dunton",
+     "status": 404
+    },
+    {
+     "url": "https://pie-lter.mbl.edu/people/james-mcclelland",
+     "status": 404
+    },
+    {
+     "url": "https://utmsi.utexas.edu/staff/dunton/",
+     "status": 404
+    },
+    {
+     "url": "https://www.mbl.edu/news/five-new-faculty-arrive-expanding-mbls-resident-science-program",
+     "status": 200
+    },
+    {
+     "url": "https://www.mbl.edu/research/research-staff/james-mcclelland",
+     "status": 404
+    }
+   ],
+   "notes": "Beaufort Lagoon Ecosystems LTER, funded by NSF in 2017 (BLE I 2017-2023, BLE II award #2322664 2023-2028), led from UT Austin Marine Science Institute; nodes along the Alaskan Beaufort Sea coast. Site home page http://ble.lternet.edu."
+  },
+  {
+   "facility_id": "b6ad40b6cd18f42e",
+   "pages_fetched": [
+    {
+     "url": "https://ccelter.ucsd.edu/",
+     "status": 0
+    },
+    {
+     "url": "https://lternet.edu/directory/?usite=1944&go=1",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/directory/?usite=1944&urole=0&go=1",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/site/california-current-ecosystem-lter/",
+     "status": 200
+    },
+    {
+     "url": "https://mohman.scrippsprofiles.ucsd.edu/",
+     "status": 200
+    },
+    {
+     "url": "https://scripps.ucsd.edu/news/california-current-ecosystem-program-ready-dig-deeply-mechanisms-work-sea",
+     "status": 200
+    },
+    {
+     "url": "https://scripps.ucsd.edu/news/more-6-million-awarded-scripps-based-long-term-ecological-research-program",
+     "status": 200
+    },
+    {
+     "url": "https://scripps.ucsd.edu/profiles/kbarbeau",
+     "status": 200
+    },
+    {
+     "url": "https://scripps.ucsd.edu/profiles/laluwihare",
+     "status": 200
+    },
+    {
+     "url": "https://scripps.ucsd.edu/profiles/mohman",
+     "status": 200
+    },
+    {
+     "url": "https://scripps.ucsd.edu/profiles/pfranks",
+     "status": 404
+    }
+   ],
+   "notes": "CCE LTER site (ccelter.ucsd.edu) timed out / refused connection from both curl and WebFetch on 2026-10-22, so personnel come from lternet.edu site contacts + directory and Scripps profiles. Launched 2004 at Scripps Institution of Oceanography; Mark Ohman founding/lead PI in early phases, Katherine Barbeau now lead PI. Peter Franks's Scripps profile URL guess 404'd; no bio."
+  },
+  {
+   "facility_id": "1496a5fc3a668206",
+   "pages_fetched": [
+    {
+     "url": "https://fce-lter.fiu.edu/about/personnel/profiles/index.php?resnum=409",
+     "status": 200
+    },
+    {
+     "url": "https://fce-lter.fiu.edu/about/personnel/profiles/index.php?resnum=623",
+     "status": 200
+    },
+    {
+     "url": "https://fce-lter.fiu.edu/about/personnel/profiles/index.php?resnum=63",
+     "status": 200
+    },
+    {
+     "url": "https://fcelter.fiu.edu/",
+     "status": 200
+    },
+    {
+     "url": "https://fcelter.fiu.edu/about/index.html",
+     "status": 200
+    },
+    {
+     "url": "https://fcelter.fiu.edu/about/people/index.html",
+     "status": 200
+    },
+    {
+     "url": "https://givenews.fiu.edu/2021/03/11/21-years-of-data-collection-on-water-quality-plants-animals-has-made-fiu-a-vital-resource-for-researchers-concerned-with-health-of-everglades/",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/site/florida-coastal-everglades-lter/",
+     "status": 200
+    }
+   ],
+   "notes": "FCE LTER based at Florida International University, founded 2000; now in phase FCE V (2025-2031). Kominoski became lead PI at the 2021 renewal, succeeding Evelyn Gaiser (lead since 2007). Founding (2000) lead PI not named on any fetched official page, so not recorded."
+  },
+  {
+   "facility_id": "8ae383aa534d8fe9",
+   "pages_fetched": [
+    {
+     "url": "https://gce-lter.marsci.uga.edu/",
+     "status": 200
+    },
+    {
+     "url": "https://gce-lter.marsci.uga.edu/public/app/personnel.asp",
+     "status": 200
+    },
+    {
+     "url": "https://gce-lter.marsci.uga.edu/public/gce_overview.htm",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/directory/?usite=1910&urole=0&go=1",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/site/georgia-coastal-ecosystems-lter/",
+     "status": 200
+    },
+    {
+     "url": "https://marsci.uga.edu/directory/people/amanda-spivak",
+     "status": 200
+    },
+    {
+     "url": "https://marsci.uga.edu/directory/people/john-williams",
+     "status": 404
+    },
+    {
+     "url": "https://marsci.uga.edu/directory/people/merryl-alber",
+     "status": 200
+    },
+    {
+     "url": "https://marsci.uga.edu/directory/people/wade-sheldon",
+     "status": 200
+    },
+    {
+     "url": "https://www.bio.uh.edu/faculty/pennings-steven-c",
+     "status": 0
+    },
+    {
+     "url": "https://www.uh.edu/nsm/biology-biochemistry/people/profiles/steven-pennings/",
+     "status": 200
+    }
+   ],
+   "notes": "GCE LTER (University of Georgia, Sapelo Island), established 2000. GCE personnel page lists Alber Project Director, Pennings Field Director, Spivak Co-Project Director, Sheldon Information Manager. Founding lead PI not named on a fetched official page, so not recorded."
+  },
+  {
+   "facility_id": "3e9450eeb3d41500",
+   "pages_fetched": [
+    {
+     "url": "https://ameriflux.lbl.gov/sites/siteinfo/US-HBK",
+     "status": 200
+    },
+    {
+     "url": "https://hubbardbrook.org/",
+     "status": 200
+    },
+    {
+     "url": "https://hubbardbrook.org/about-the-forest/",
+     "status": 200
+    },
+    {
+     "url": "https://hubbardbrook.org/about-the-study/",
+     "status": 200
+    },
+    {
+     "url": "https://hubbardbrook.org/experimental-watersheds-research-sites/",
+     "status": 200
+    },
+    {
+     "url": "https://hubbardbrook.org/hubbard-brook-committees/",
+     "status": 200
+    },
+    {
+     "url": "https://hubbardbrook.org/hubbard-brook-lter/",
+     "status": 200
+    },
+    {
+     "url": "https://hubbardbrook.org/hubbard-brook-research-foundation/staff/",
+     "status": 200
+    },
+    {
+     "url": "https://hubbardbrook.org/people/",
+     "status": 200
+    },
+    {
+     "url": "https://hubbardbrook.org/people/anthea-lavallee/",
+     "status": 200
+    },
+    {
+     "url": "https://hubbardbrook.org/people/gene-likens/",
+     "status": 200
+    },
+    {
+     "url": "https://hubbardbrook.org/people/john-campbell/",
+     "status": 200
+    },
+    {
+     "url": "https://hubbardbrook.org/people/lindsey-rustad/",
+     "status": 200
+    },
+    {
+     "url": "https://hubbardbrook.org/people/mary-martin/",
+     "status": 200
+    },
+    {
+     "url": "https://hubbardbrook.org/people/pamela-templer/",
+     "status": 200
+    },
+    {
+     "url": "https://hubbardbrook.org/people/peter-groffman/",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/directory/?usite=1914&urole=0&go=1",
+     "status": 200
+    },
+    {
+     "url": "https://lternet.edu/site/hubbard-brook-lter/",
+     "status": 200
+    },
+    {
+     "url": "https://people.bu.edu/ptempler/",
+     "status": 200
+    },
+    {
+     "url": "https://research.fs.usda.gov/about/people/jlcampbell",
+     "status": 404
+    },
+    {
+     "url": "https://www.caryinstitute.org/our-people/gene-e-likens",
+     "status": 404
+    },
+    {
+     "url": "https://www.caryinstitute.org/science/our-scientists/dr-gene-e-likens",
+     "status": 200
+    }
+   ],
+   "notes": "Watershed 6 is the biogeochemical reference watershed of the Hubbard Brook Experimental Forest (USDA Forest Service, est. 1955); leadership recorded is that of the Hubbard Brook Ecosystem Study / LTER, which runs W6 monitoring. AmeriFlux US-HBK (2016-present) PIs are forest-wide, not W6-specific (medium confidence). Existing Gene Likens ORCID 0000-0001-6230-2840 returns 404 at pub.orcid.org - replace with 0000-0002-0884-2726 (Gene Likens, Cary Institute, President Emeritus); existing Likens homepage (caryinstitute.org/our-scientists/gene-e-likens) should become caryinstitute.org/science/our-scientists/dr-gene-e-likens. 'William E. Reed' does not appear in the Hubbard Brook personnel directory (only a graduate student Ryan Reed) - likely spurious. hubbardbrook.org committee page lists Templer as 'LTER PI' on the SCC while lternet.edu lists Groffman lead PI / Templer co-lead."
+  }
+ ],
+ "people": [
+  {
+   "key": "christopher-swan",
+   "existing_person_id": null,
+   "name": "Christopher M. Swan",
+   "name_given": "Christopher",
+   "name_family": "Swan",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://ges.umbc.edu/christopher-swan/",
+   "bio": "Professor in the Department of Geography & Environmental Systems at the University of Maryland, Baltimore County. An ecologist working on community assembly and biodiversity in cities and in river and stream networks, including stream restoration; listed by the Baltimore Ecosystem Study as its Project Director.",
+   "bio_source_url": "https://ges.umbc.edu/christopher-swan/",
+   "research_interests": "Community ecology; biodiversity; urban ecology; ecology of rivers and streams",
+   "research_interests_source_url": "https://ges.umbc.edu/christopher-swan/"
+  },
+  {
+   "key": "morgan-grove",
+   "existing_person_id": "42bf8f3c32b3e898",
+   "name": "J. Morgan Grove",
+   "name_given": "J. Morgan",
+   "name_family": "Grove",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://hixon.yale.edu/person/morgan-grove-0",
+   "bio": "Yale School of the Environment lecturer and social scientist. Spent about thirty years with the USDA Forest Service, where he led the Baltimore Urban Field Station, and has been a co-principal investigator of the Baltimore Ecosystem Study since it started in 1997; also co-chairs Baltimore's city sustainability commission.",
+   "bio_source_url": "https://hixon.yale.edu/person/morgan-grove-0",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "steward-pickett",
+   "existing_person_id": "845ecfc716487cc8",
+   "name": "Steward T.A. Pickett",
+   "name_given": "Steward",
+   "name_family": "Pickett",
+   "orcid": "0000-0002-1899-976X",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-1899-976X/employments",
+   "homepage_url": "https://www.caryinstitute.org/science/our-scientists/dr-steward-t-pickett",
+   "bio": "Plant ecologist at the Cary Institute of Ecosystem Studies whose expertise spans vegetation, landscape and urban ecology. He was the Baltimore Ecosystem Study's founding director (1997-2016) and co-led an urban sustainability research coordination network; recent work traces ecological legacies of redlining and equity in green stormwater infrastructure.",
+   "bio_source_url": "https://www.caryinstitute.org/science/our-scientists/dr-steward-t-pickett",
+   "research_interests": "Urban ecology; landscape ecology; succession",
+   "research_interests_source_url": "https://www.caryinstitute.org/science/our-scientists/dr-steward-t-pickett"
+  },
+  {
+   "key": "emma-rosi",
+   "existing_person_id": null,
+   "name": "Emma J. Rosi",
+   "name_given": "Emma",
+   "name_family": "Rosi",
+   "orcid": "0000-0002-3476-6368",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-3476-6368/employments",
+   "homepage_url": "https://www.caryinstitute.org/science/our-scientists/dr-emma-j-rosi",
+   "bio": "Aquatic ecologist (PhD, University of Georgia) at the Cary Institute of Ecosystem Studies who directed the Baltimore Ecosystem Study. Her research examines how urbanization, land use and climate change reshape freshwater ecosystems, including pharmaceutical contaminants and leaking wastewater infrastructure; Fellow of the Society for Freshwater Science.",
+   "bio_source_url": "https://www.caryinstitute.org/science/our-scientists/dr-emma-j-rosi",
+   "research_interests": "Freshwater ecosystems; invasive species; human impacts",
+   "research_interests_source_url": "https://www.caryinstitute.org/science/our-scientists/dr-emma-j-rosi"
+  },
+  {
+   "key": "claire-welty",
+   "existing_person_id": null,
+   "name": "Claire Welty",
+   "name_given": "Claire",
+   "name_family": "Welty",
+   "orcid": "0000-0003-1236-6934",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0003-1236-6934/employments",
+   "homepage_url": null,
+   "bio": "Professor of chemical, biochemical and environmental engineering at the University of Maryland, Baltimore County, where she directs CUERE, its urban environmental research and education center; long-time Baltimore Ecosystem Study investigator.",
+   "bio_source_url": "https://baltimoreecosystemstudy.org/people/",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "mary-cadenasso",
+   "existing_person_id": "baae7bccdda9a1d2",
+   "name": "Mary L. Cadenasso",
+   "name_given": "Mary",
+   "name_family": "Cadenasso",
+   "orcid": "0000-0002-6521-067X",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-6521-067X/employments",
+   "homepage_url": null,
+   "bio": "Professor in the Department of Plant Sciences at the University of California, Davis, and an investigator with the Baltimore Ecosystem Study.",
+   "bio_source_url": "https://baltimoreecosystemstudy.org/people/",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "jack-malone",
+   "existing_person_id": null,
+   "name": "Jack V. Malone",
+   "name_given": "Jack",
+   "name_family": "Malone",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "peter-groffman",
+   "existing_person_id": null,
+   "name": "Peter M. Groffman",
+   "name_given": "Peter",
+   "name_family": "Groffman",
+   "orcid": "0000-0001-8371-6255",
+   "orcid_source_url": "https://hubbardbrook.org/people/peter-groffman/",
+   "homepage_url": "https://www.caryinstitute.org/science/our-scientists/dr-peter-m-groffman",
+   "bio": "Microbial ecologist studying how soil microbes control carbon and nitrogen cycling, notably nitrogen gas fluxes from soils, in rural and urban settings. Professor at the CUNY Advanced Science Research Center (Graduate Center) and Brooklyn College, also affiliated with the Cary Institute; his work is centred on the Hubbard Brook and Baltimore LTER sites.",
+   "bio_source_url": "https://www.caryinstitute.org/science/our-scientists/dr-peter-m-groffman",
+   "research_interests": "Soil microbial ecology; carbon and nitrogen dynamics; soil freezing and snow depth effects on nitrogen cycling; nitrogen gas fluxes; watershed calcium addition",
+   "research_interests_source_url": "https://hubbardbrook.org/people/peter-groffman/"
+  },
+  {
+   "key": "mary-martin",
+   "existing_person_id": null,
+   "name": "Mary Martin",
+   "name_given": "Mary",
+   "name_family": "Martin",
+   "orcid": "0000-0003-1791-5584",
+   "orcid_source_url": "https://hubbardbrook.org/people/mary-martin/",
+   "homepage_url": "https://hubbardbrook.org/people/mary-martin/",
+   "bio": "Information manager for the Hubbard Brook Ecosystem Study, based at the University of New Hampshire's Earth Systems Research Center.",
+   "bio_source_url": "https://hubbardbrook.org/people/mary-martin/",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "kenneth-dunton",
+   "existing_person_id": null,
+   "name": "Kenneth H. Dunton",
+   "name_given": "Kenneth",
+   "name_family": "Dunton",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://experts.utexas.edu/kenneth_dunton",
+   "bio": "Professor and Chair of the Department of Marine Science at the University of Texas Marine Science Institute. Works on estuarine, coastal and shelf ecosystems, from organic-matter sources in Texas marshes, seagrasses and mangroves to Arctic kelp beds and Beaufort Sea lagoons; directs long-term Texas seagrass monitoring and founded the BLE LTER.",
+   "bio_source_url": "https://marinescience.utexas.edu/about-department/mission-leadership",
+   "research_interests": "Marine vegetation of subtropical and polar regions; estuarine and coastal food webs; carbon and nitrogen cycling in aquatic plant communities; stable isotope tracing of human-derived nitrogen; ecosystem response to climate change",
+   "research_interests_source_url": "https://experts.utexas.edu/kenneth_dunton"
+  },
+  {
+   "key": "james-mcclelland",
+   "existing_person_id": null,
+   "name": "James W. McClelland",
+   "name_given": "James",
+   "name_family": "McClelland",
+   "orcid": "0000-0001-9619-8194",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0001-9619-8194/employments",
+   "homepage_url": null,
+   "bio": "Senior Scientist in the Marine Biological Laboratory's Ecosystems Center since 2022, after faculty service at the University of Texas at Austin. Studies coastal ecosystems and how human activity changes the flow of water, carbon and nutrients from land to sea, including biogeochemical transport through watersheds and coastal oceans.",
+   "bio_source_url": "https://www.mbl.edu/news/five-new-faculty-arrive-expanding-mbls-resident-science-program",
+   "research_interests": "Land-to-sea fluxes; biogeochemical cycling; estuarine ecosystem dynamics",
+   "research_interests_source_url": "https://ble.lternet.edu/people"
+  },
+  {
+   "key": "nathan-mctigue",
+   "existing_person_id": null,
+   "name": "Nathan McTigue",
+   "name_given": "Nathan",
+   "name_family": "McTigue",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Core Program Lead for the Beaufort Lagoon Ecosystems LTER at the University of Texas at Austin, also serving as the site's research/site coordinator.",
+   "bio_source_url": "https://ble.lternet.edu/people",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "tim-whiteaker",
+   "existing_person_id": null,
+   "name": "Tim Whiteaker",
+   "name_given": "Tim",
+   "name_family": "Whiteaker",
+   "orcid": "0000-0002-1940-4158",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-1940-4158/employments",
+   "homepage_url": null,
+   "bio": "Information manager for the Beaufort Lagoon Ecosystems LTER at the University of Texas at Austin, responsible for data management and the project website.",
+   "bio_source_url": "https://ble.lternet.edu/people",
+   "research_interests": "Data management; website",
+   "research_interests_source_url": "https://ble.lternet.edu/people"
+  },
+  {
+   "key": "katherine-barbeau",
+   "existing_person_id": null,
+   "name": "Katherine Barbeau",
+   "name_given": "Katherine",
+   "name_family": "Barbeau",
+   "orcid": "0000-0002-2132-7219",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-2132-7219/employments",
+   "homepage_url": "https://scripps.ucsd.edu/profiles/kbarbeau",
+   "bio": "Professor at Scripps Institution of Oceanography (Geosciences Research Division), UC San Diego. Her seagoing group studies how trace elements move through marine chemical and biological systems, combining chemical analysis with microbiological, genomic and molecular methods at sea and in the lab.",
+   "bio_source_url": "https://scripps.ucsd.edu/profiles/kbarbeau",
+   "research_interests": "Marine trace element cycling; marine chemistry; marine microbiology; biogeochemistry; plankton ecology",
+   "research_interests_source_url": "https://scripps.ucsd.edu/profiles/kbarbeau"
+  },
+  {
+   "key": "mark-ohman",
+   "existing_person_id": null,
+   "name": "Mark D. Ohman",
+   "name_given": "Mark",
+   "name_family": "Ohman",
+   "orcid": "0000-0001-8136-3695",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0001-8136-3695/employments",
+   "homepage_url": "https://mohman.scrippsprofiles.ucsd.edu/",
+   "bio": "Emeritus distinguished professor of biological oceanography at Scripps Institution of Oceanography and founding PI of the California Current Ecosystem LTER. Studies zooplankton population ecology, especially copepods, climate effects on California Current pelagic food webs, and autonomous sampling with the Zooglider and moorings.",
+   "bio_source_url": "https://mohman.scrippsprofiles.ucsd.edu/",
+   "research_interests": "Zooplankton population ecology (planktonic copepods); climate change effects on California Current pelagic food webs; autonomous measurement methods (Zooglider, moorings); mortality and demographic estimation",
+   "research_interests_source_url": "https://mohman.scrippsprofiles.ucsd.edu/"
+  },
+  {
+   "key": "lihini-aluwihare",
+   "existing_person_id": null,
+   "name": "Lihini Aluwihare",
+   "name_given": "Lihini",
+   "name_family": "Aluwihare",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://scripps.ucsd.edu/profiles/laluwihare",
+   "bio": "Professor in the Geosciences Research Division at Scripps Institution of Oceanography, UC San Diego, researching the makeup and cycling of organic matter, isotopic tracers of its origin and residence time, analytical methods for complex mixtures, and microbial metabolic diversity in aquatic environments.",
+   "bio_source_url": "https://scripps.ucsd.edu/profiles/laluwihare",
+   "research_interests": "Organic matter composition and cycling; analytical techniques for complex mixtures; isotopic tracers of organic matter source and residence time; microbial metabolic diversity in aquatic environments",
+   "research_interests_source_url": "https://scripps.ucsd.edu/profiles/laluwihare"
+  },
+  {
+   "key": "peter-franks",
+   "existing_person_id": null,
+   "name": "Peter Franks",
+   "name_given": "Peter",
+   "name_family": "Franks",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "marina-frants",
+   "existing_person_id": null,
+   "name": "Marina Frants",
+   "name_given": "Marina",
+   "name_family": "Frants",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "john-kominoski",
+   "existing_person_id": null,
+   "name": "John S. Kominoski",
+   "name_given": "John",
+   "name_family": "Kominoski",
+   "orcid": "0000-0002-0978-3326",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-0978-3326/employments",
+   "homepage_url": "https://fce-lter.fiu.edu/about/personnel/profiles/index.php?resnum=409",
+   "bio": "Ecologist at Florida International University and lead principal investigator of the Florida Coastal Everglades LTER. Works on links between biodiversity and ecosystem function, global change biology and land-water connections, contributing to FCE working groups on hydrologic stressors, detritus and microbes, and vegetation.",
+   "bio_source_url": "https://fce-lter.fiu.edu/about/personnel/profiles/index.php?resnum=409",
+   "research_interests": "Biodiversity-ecosystem functioning; global change biology; terrestrial-aquatic linkages",
+   "research_interests_source_url": "https://fce-lter.fiu.edu/about/personnel/profiles/index.php?resnum=409"
+  },
+  {
+   "key": "mike-rugge",
+   "existing_person_id": null,
+   "name": "Mike Rugge",
+   "name_given": "Mike",
+   "name_family": "Rugge",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Project Manager of the Florida Coastal Everglades LTER, based at Florida International University's Institute of Environment.",
+   "bio_source_url": "https://fce-lter.fiu.edu/about/personnel/profiles/index.php?resnum=63",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "gabriel-kamener",
+   "existing_person_id": null,
+   "name": "Gabriel Kamener",
+   "name_given": "Gabriel",
+   "name_family": "Kamener",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Information Manager of the Florida Coastal Everglades LTER at Florida International University's Institute of Environment.",
+   "bio_source_url": "https://fce-lter.fiu.edu/about/personnel/profiles/index.php?resnum=623",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "evelyn-gaiser",
+   "existing_person_id": null,
+   "name": "Evelyn E. Gaiser",
+   "name_given": "Evelyn",
+   "name_family": "Gaiser",
+   "orcid": "0000-0003-2065-4821",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0003-2065-4821/employments",
+   "homepage_url": null,
+   "bio": "Biological sciences professor at Florida International University holding the George Barley endowed eminent scholars chair; led the Florida Coastal Everglades LTER from 2007 until John Kominoski became principal investigator at the 2021 renewal.",
+   "bio_source_url": "https://givenews.fiu.edu/2021/03/11/21-years-of-data-collection-on-water-quality-plants-animals-has-made-fiu-a-vital-resource-for-researchers-concerned-with-health-of-everglades/",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "merryl-alber",
+   "existing_person_id": null,
+   "name": "Merryl Alber",
+   "name_given": "Merryl",
+   "name_family": "Alber",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://marsci.uga.edu/directory/people/merryl-alber",
+   "bio": "Professor of marine sciences at the University of Georgia who directs its Marine Institute on Sapelo Island. Her research covers nearshore and estuarine ecology, including food webs, effects of freshwater withdrawal, estuarine flushing models, suspended sediment fate, human pressures on the coast, and links between science and policy.",
+   "bio_source_url": "https://marsci.uga.edu/directory/people/merryl-alber",
+   "research_interests": "Marine ecology of nearshore environments; estuarine food webs; impacts of freshwater withdrawal on coastal systems; estuarine flushing time models; suspended sediments in estuaries; human impacts in the coastal zone; science-policy interactions",
+   "research_interests_source_url": "https://marsci.uga.edu/directory/people/merryl-alber"
+  },
+  {
+   "key": "steven-pennings",
+   "existing_person_id": null,
+   "name": "Steven C. Pennings",
+   "name_given": "Steven",
+   "name_family": "Pennings",
+   "orcid": "0000-0003-4757-7125",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0003-4757-7125/employments",
+   "homepage_url": "https://www.uh.edu/nsm/biology-biochemistry/people/profiles/steven-pennings/",
+   "bio": "Moores Professor in the Department of Biology and Biochemistry at the University of Houston. Studies what structures plant communities of coastal prairies, salt marshes and mangroves, using experiments on stress gradients, disturbance and species interactions, and examines how mangrove expansion alters wetland services.",
+   "bio_source_url": "https://www.uh.edu/nsm/biology-biochemistry/people/profiles/steven-pennings/",
+   "research_interests": "Plant community ecology of salt marshes, mangroves and coastal prairies; mangrove range expansion",
+   "research_interests_source_url": "https://www.uh.edu/nsm/biology-biochemistry/people/profiles/steven-pennings/"
+  },
+  {
+   "key": "amanda-spivak",
+   "existing_person_id": null,
+   "name": "Amanda C. Spivak",
+   "name_given": "Amanda",
+   "name_family": "Spivak",
+   "orcid": "0000-0001-6743-0783",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0001-6743-0783/employments",
+   "homepage_url": "https://marsci.uga.edu/directory/people/amanda-spivak",
+   "bio": "Professor of marine sciences at the University of Georgia and Co-Director of the Georgia Coastal Ecosystems LTER. A biogeochemist and ecosystem ecologist, she studies how carbon is transformed in dynamic coastal settings and how natural and human stressors shift those pathways.",
+   "bio_source_url": "https://marsci.uga.edu/directory/people/amanda-spivak",
+   "research_interests": "Biogeochemistry; climate change; chemical oceanography; coastal carbon cycling",
+   "research_interests_source_url": "https://marsci.uga.edu/directory/people/amanda-spivak"
+  },
+  {
+   "key": "wade-sheldon",
+   "existing_person_id": null,
+   "name": "Wade Sheldon",
+   "name_given": "Wade",
+   "name_family": "Sheldon",
+   "orcid": "0000-0001-9652-9678",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0001-9652-9678/employments",
+   "homepage_url": "https://marsci.uga.edu/directory/people/wade-sheldon",
+   "bio": "Scientific computing professional specialist in the University of Georgia Department of Marine Sciences, whose professional site is the Georgia Coastal Ecosystems LTER.",
+   "bio_source_url": "https://marsci.uga.edu/directory/people/wade-sheldon",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "john-williams",
+   "existing_person_id": null,
+   "name": "John Williams",
+   "name_given": "John",
+   "name_family": "Williams",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "pamela-templer",
+   "existing_person_id": null,
+   "name": "Pamela H. Templer",
+   "name_given": "Pamela",
+   "name_family": "Templer",
+   "orcid": "0000-0002-6570-3837",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-6570-3837/employments",
+   "homepage_url": "https://people.bu.edu/ptempler/",
+   "bio": "Distinguished Professor and Chair of Biology at Boston University and director of its URBAN graduate program. Her lab investigates how climate change, atmospheric deposition and urbanization alter carbon and nitrogen cycling in forests, with emphasis on plant-microbe interactions, and runs experiments at Hubbard Brook.",
+   "bio_source_url": "https://people.bu.edu/ptempler/",
+   "research_interests": "Ecosystem ecology; biogeochemistry; global change; carbon and nitrogen cycling; plant-microbial interactions",
+   "research_interests_source_url": "https://people.bu.edu/ptempler/"
+  },
+  {
+   "key": "matthew-ayres",
+   "existing_person_id": null,
+   "name": "Matthew Ayres",
+   "name_given": "Matthew",
+   "name_family": "Ayres",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "melany-fisk",
+   "existing_person_id": null,
+   "name": "Melany Fisk",
+   "name_given": "Melany",
+   "name_family": "Fisk",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "anthea-lavallee",
+   "existing_person_id": null,
+   "name": "Anthea Lavallee",
+   "name_given": "Anthea",
+   "name_family": "Lavallee",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://hubbardbrook.org/people/anthea-lavallee/",
+   "bio": "Leads the Hubbard Brook Research Foundation as its Executive Director, with prior experience leading education programs at environmental and zoological organizations.",
+   "bio_source_url": "https://hubbardbrook.org/people/anthea-lavallee/",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "gene-likens",
+   "existing_person_id": "954055a62e37ab9f",
+   "name": "Gene E. Likens",
+   "name_given": "Gene",
+   "name_family": "Likens",
+   "orcid": "0000-0002-0884-2726",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-0884-2726/employments",
+   "homepage_url": "https://www.caryinstitute.org/science/our-scientists/dr-gene-e-likens",
+   "bio": "Ecologist who is founding director and president emeritus of the Cary Institute of Ecosystem Studies. He co-founded the Hubbard Brook Ecosystem Study in 1963 and is known for long-term studies of how energy and chemicals move through forests, streams and lakes, along with biogeochemistry and acid rain research.",
+   "bio_source_url": "https://www.caryinstitute.org/science/our-scientists/dr-gene-e-likens",
+   "research_interests": "Ecosystem ecology; biogeochemistry; acid rain; human impacts on aquatic and terrestrial ecosystems",
+   "research_interests_source_url": "https://www.caryinstitute.org/science/our-scientists/dr-gene-e-likens"
+  },
+  {
+   "key": "f-herbert-bormann",
+   "existing_person_id": null,
+   "name": "F. Herbert Bormann",
+   "name_given": "F. Herbert",
+   "name_family": "Bormann",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "robert-pierce",
+   "existing_person_id": null,
+   "name": "Robert S. Pierce",
+   "name_given": "Robert",
+   "name_family": "Pierce",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "noye-johnson",
+   "existing_person_id": null,
+   "name": "Noye Johnson",
+   "name_given": "Noye",
+   "name_family": "Johnson",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "john-campbell",
+   "existing_person_id": null,
+   "name": "John L. Campbell",
+   "name_given": "John",
+   "name_family": "Campbell",
+   "orcid": "0000-0003-4956-1696",
+   "orcid_source_url": "https://hubbardbrook.org/people/john-campbell/",
+   "homepage_url": "https://hubbardbrook.org/people/john-campbell/",
+   "bio": "USDA Forest Service Northern Research Station scientist and Hubbard Brook investigator studying how forested watersheds respond to disturbance, including air pollution, harvesting, ice storms, soil freezing and drought, using long-term records, experiments and models.",
+   "bio_source_url": "https://hubbardbrook.org/people/john-campbell/",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "eric-kelsey",
+   "existing_person_id": null,
+   "name": "Eric Kelsey",
+   "name_given": "Eric",
+   "name_family": "Kelsey",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "mark-green",
+   "existing_person_id": null,
+   "name": "Mark Green",
+   "name_given": "Mark",
+   "name_family": "Green",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  }
+ ],
+ "affiliations": [
+  {
+   "facility_id": "288ac52b707d703d",
+   "person_key": "christopher-swan",
+   "role": "director",
+   "title": "Project Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://baltimoreecosystemstudy.org/people/",
+   "evidence": "Project Director Christopher M. Swan, PhD, Professor, Department of Geography & Environmental Systems, University of Maryland, Baltimore County",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "288ac52b707d703d",
+   "person_key": "morgan-grove",
+   "role": "co-PI",
+   "title": "Co-Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://baltimoreecosystemstudy.org/people/",
+   "evidence": "Co-Director J. Morgan Grove, PhD, Social Ecologist, USDA Forest Service, Northern Research Station",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "288ac52b707d703d",
+   "person_key": "steward-pickett",
+   "role": "founding-PI",
+   "title": "Founding Project Director (1998-2016); PI 2016-2021",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": 1998,
+   "end_year": 2016,
+   "source_url": "https://lternet.edu/site/baltimore-ecosystem-study/",
+   "evidence": "Steward Pickett, Project Director from 1998-2016, PI from 2016-2021",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "288ac52b707d703d",
+   "person_key": "emma-rosi",
+   "role": "former-director",
+   "title": "Project Director 2016-2021",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": 2016,
+   "end_year": 2021,
+   "source_url": "https://lternet.edu/site/baltimore-ecosystem-study/",
+   "evidence": "Emma Rosi, Project Director from 2016-2021",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "288ac52b707d703d",
+   "person_key": "peter-groffman",
+   "role": "deputy-director",
+   "title": "Deputy Director 1998-2021",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": 1998,
+   "end_year": 2021,
+   "source_url": "https://lternet.edu/site/baltimore-ecosystem-study/",
+   "evidence": "Peter Groffman, Deputy Director from 1998-2021",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "288ac52b707d703d",
+   "person_key": "claire-welty",
+   "role": "site-manager",
+   "title": "PI and Onsite Manager 2000-2021",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": 2000,
+   "end_year": 2021,
+   "source_url": "https://lternet.edu/site/baltimore-ecosystem-study/",
+   "evidence": "Claire Welty, PI and Onsite Manager from 2000-2021",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "288ac52b707d703d",
+   "person_key": "mary-cadenasso",
+   "role": "co-PI",
+   "title": "Co-Principal Investigator, BES Phase III (DEB-1027188)",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": 2011,
+   "end_year": null,
+   "source_url": "https://baltimoreecosystemstudy.org/project-structure/",
+   "evidence": "Co-Principal Investigator: Mary Cadenasso, J. Morgan Grove, Claire Welty, Emma Rosi, Peter Groffman",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "288ac52b707d703d",
+   "person_key": "mary-martin",
+   "role": "information-manager",
+   "title": "Information Manager 2018-2021",
+   "is_key_personnel": false,
+   "is_current": false,
+   "start_year": 2018,
+   "end_year": 2021,
+   "source_url": "https://lternet.edu/site/baltimore-ecosystem-study/",
+   "evidence": "Mary Martin, Information Manager from 2018-2021",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "288ac52b707d703d",
+   "person_key": "jack-malone",
+   "role": "data-manager",
+   "title": "Environmental Data Manager & GIS Manager, CUERE, UMBC; BES Webmaster & Data Manager",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://baltimoreecosystemstudy.org/people/",
+   "evidence": "Jack V. Malone, PhD, Environmental Data Manager & GIS Manager",
+   "confidence": "low"
+  },
+  {
+   "facility_id": "01ef51b8abf6f751",
+   "person_key": "kenneth-dunton",
+   "role": "lead-PI",
+   "title": "Lead Principal Investigator / Project Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/beaufort-lagoon-ecosystem/",
+   "evidence": "Lead Principal Investigator: Kenneth Dunton",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "01ef51b8abf6f751",
+   "person_key": "kenneth-dunton",
+   "role": "founding-PI",
+   "title": "Founding Director, Beaufort Lagoon Ecosystems LTER",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://marinescience.utexas.edu/about-department/mission-leadership",
+   "evidence": "As the founding director of the Beaufort Sea Lagoons Ecosystems (BLE), the first marine LTER",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "01ef51b8abf6f751",
+   "person_key": "james-mcclelland",
+   "role": "co-PI",
+   "title": "Co-Lead Principal Investigator / Co-Project Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/beaufort-lagoon-ecosystem/",
+   "evidence": "Co-Lead Principal Investigator: James McClelland",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "01ef51b8abf6f751",
+   "person_key": "nathan-mctigue",
+   "role": "research-coordinator",
+   "title": "Research/Site Coordinator; Core Program Lead",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/beaufort-lagoon-ecosystem/",
+   "evidence": "Research/Site Coordinator: Nathan McTigue",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "01ef51b8abf6f751",
+   "person_key": "tim-whiteaker",
+   "role": "information-manager",
+   "title": "Information Manager",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/beaufort-lagoon-ecosystem/",
+   "evidence": "Information Manager: Tim Whiteaker",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "b6ad40b6cd18f42e",
+   "person_key": "katherine-barbeau",
+   "role": "lead-PI",
+   "title": "Lead Principal Investigator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/california-current-ecosystem-lter/",
+   "evidence": "Lead Principal Investigator: Katherine Barbeau",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "b6ad40b6cd18f42e",
+   "person_key": "mark-ohman",
+   "role": "co-PI",
+   "title": "Co-Principal Investigator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lternet.edu/directory/?usite=1944&urole=0&go=1",
+   "evidence": "Ohman, Mark ... CCE Co-Principal Investigator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "b6ad40b6cd18f42e",
+   "person_key": "mark-ohman",
+   "role": "founding-PI",
+   "title": "Founding PI",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://mohman.scrippsprofiles.ucsd.edu/",
+   "evidence": "Founding PI, California Current Ecosystem LTER Site",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "b6ad40b6cd18f42e",
+   "person_key": "lihini-aluwihare",
+   "role": "co-PI",
+   "title": "Co-Principal Investigator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lternet.edu/directory/?usite=1944&go=1",
+   "evidence": "Aluwihare, Lihini ... CCE Co-Principal Investigator",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "b6ad40b6cd18f42e",
+   "person_key": "peter-franks",
+   "role": "co-PI",
+   "title": "Co-Principal Investigator",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lternet.edu/directory/?usite=1944&go=1",
+   "evidence": "Franks, Peter ... CCE Co-Principal Investigator",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "b6ad40b6cd18f42e",
+   "person_key": "marina-frants",
+   "role": "information-manager",
+   "title": "Information Manager",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/california-current-ecosystem-lter/",
+   "evidence": "Information Manager: Marina Frants",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "1496a5fc3a668206",
+   "person_key": "john-kominoski",
+   "role": "lead-PI",
+   "title": "Lead Principal Investigator; IEC Chair",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/florida-coastal-everglades-lter/",
+   "evidence": "Lead Principal Investigator: John Kominoski",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "1496a5fc3a668206",
+   "person_key": "mike-rugge",
+   "role": "manager",
+   "title": "Project Manager",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://fcelter.fiu.edu/about/people/index.html",
+   "evidence": "Project Manager: Mike Rugge",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "1496a5fc3a668206",
+   "person_key": "gabriel-kamener",
+   "role": "information-manager",
+   "title": "Information Manager",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/florida-coastal-everglades-lter/",
+   "evidence": "Information Manager: Gabriel Kamener",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "1496a5fc3a668206",
+   "person_key": "evelyn-gaiser",
+   "role": "former-director",
+   "title": "Former Lead Principal Investigator (from 2007)",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": 2007,
+   "end_year": null,
+   "source_url": "https://givenews.fiu.edu/2021/03/11/21-years-of-data-collection-on-water-quality-plants-animals-has-made-fiu-a-vital-resource-for-researchers-concerned-with-health-of-everglades/",
+   "evidence": "Evelyn Gaiser, the Endowed George Barley Eminent Scholars Chair ... who has led the program since 2007",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "8ae383aa534d8fe9",
+   "person_key": "merryl-alber",
+   "role": "lead-PI",
+   "title": "Lead Principal Investigator / Project Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/georgia-coastal-ecosystems-lter/",
+   "evidence": "Lead Principal Investigator: Merryl Alber",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "8ae383aa534d8fe9",
+   "person_key": "steven-pennings",
+   "role": "co-PI",
+   "title": "Co-Lead Principal Investigator / Field Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/georgia-coastal-ecosystems-lter/",
+   "evidence": "Co-Lead Principal Investigator: Steven Pennings",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "8ae383aa534d8fe9",
+   "person_key": "amanda-spivak",
+   "role": "co-PI",
+   "title": "Co-Project Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://gce-lter.marsci.uga.edu/public/app/personnel.asp",
+   "evidence": "Amanda Spivak , Co-Project Director",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "8ae383aa534d8fe9",
+   "person_key": "wade-sheldon",
+   "role": "information-manager",
+   "title": "Information Manager",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/georgia-coastal-ecosystems-lter/",
+   "evidence": "Information Manager: Wade Sheldon",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "8ae383aa534d8fe9",
+   "person_key": "john-williams",
+   "role": "research-coordinator",
+   "title": "Sapelo Field Research Coordinator",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://gce-lter.marsci.uga.edu/public/app/personnel.asp",
+   "evidence": "John Williams , Sapelo Field Research Coordinator",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "3e9450eeb3d41500",
+   "person_key": "peter-groffman",
+   "role": "lead-PI",
+   "title": "Lead Principal Investigator, Hubbard Brook LTER",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/hubbard-brook-lter/",
+   "evidence": "Lead Principal Investigator: Peter Groffman",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "3e9450eeb3d41500",
+   "person_key": "pamela-templer",
+   "role": "co-PI",
+   "title": "Co-Lead Principal Investigator, Hubbard Brook LTER",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/hubbard-brook-lter/",
+   "evidence": "Co-Lead Principal Investigator: Pamela Templer",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "3e9450eeb3d41500",
+   "person_key": "matthew-ayres",
+   "role": "co-PI",
+   "title": "Co-Principal Investigator, Hubbard Brook LTER",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://hubbardbrook.org/hubbard-brook-lter/",
+   "evidence": "Matthew Ayres (Co-Principal Investigator) Dartmouth College",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "3e9450eeb3d41500",
+   "person_key": "melany-fisk",
+   "role": "co-PI",
+   "title": "Co-Principal Investigator, Hubbard Brook LTER",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://hubbardbrook.org/hubbard-brook-lter/",
+   "evidence": "Melany Fisk (Co-Principal Investigator) Miami University",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "3e9450eeb3d41500",
+   "person_key": "mary-martin",
+   "role": "information-manager",
+   "title": "Information Manager",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/hubbard-brook-lter/",
+   "evidence": "Information Manager: Mary Martin",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "3e9450eeb3d41500",
+   "person_key": "anthea-lavallee",
+   "role": "executive-officer",
+   "title": "Executive Director, Hubbard Brook Research Foundation",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://hubbardbrook.org/hubbard-brook-research-foundation/staff/",
+   "evidence": "Anthea Lavallee , Executive Director",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "3e9450eeb3d41500",
+   "person_key": "john-campbell",
+   "role": "scientist",
+   "title": "Investigator (USDA Forest Service); Scientific Coordinating Committee",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://hubbardbrook.org/people/john-campbell/",
+   "evidence": "Hubbard Brook Role: Investigator, Scientific Coordinating Committee",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "3e9450eeb3d41500",
+   "person_key": "eric-kelsey",
+   "role": "scientist",
+   "title": "PI, AmeriFlux US-HBK tower (Hubbard Brook Experimental Forest)",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ameriflux.lbl.gov/sites/siteinfo/US-HBK",
+   "evidence": "PI: Eric Kelsey",
+   "confidence": "low"
+  },
+  {
+   "facility_id": "3e9450eeb3d41500",
+   "person_key": "mark-green",
+   "role": "scientist",
+   "title": "PI, AmeriFlux US-HBK tower (Hubbard Brook Experimental Forest)",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ameriflux.lbl.gov/sites/siteinfo/US-HBK",
+   "evidence": "PI: Mark Green",
+   "confidence": "low"
+  },
+  {
+   "facility_id": "3e9450eeb3d41500",
+   "person_key": "gene-likens",
+   "role": "founding-PI",
+   "title": "Co-founder, Hubbard Brook Ecosystem Study (1963)",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": 1963,
+   "end_year": null,
+   "source_url": "https://hubbardbrook.org/about-the-study/",
+   "evidence": "co-founded in 1963 by aquatic ecologist Gene E. Likens, terrestrial ecologist F. Herbert Bormann, soil scientist Robert S. Pierce",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "3e9450eeb3d41500",
+   "person_key": "f-herbert-bormann",
+   "role": "founding-PI",
+   "title": "Co-founder, Hubbard Brook Ecosystem Study (1963)",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": 1963,
+   "end_year": null,
+   "source_url": "https://hubbardbrook.org/about-the-study/",
+   "evidence": "co-founded in 1963 by aquatic ecologist Gene E. Likens, terrestrial ecologist F. Herbert Bormann, soil scientist Robert S. Pierce",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "3e9450eeb3d41500",
+   "person_key": "robert-pierce",
+   "role": "founding-PI",
+   "title": "Co-founder, Hubbard Brook Ecosystem Study (1963)",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": 1963,
+   "end_year": null,
+   "source_url": "https://hubbardbrook.org/about-the-study/",
+   "evidence": "co-founded in 1963 by aquatic ecologist Gene E. Likens, terrestrial ecologist F. Herbert Bormann, soil scientist Robert S. Pierce",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "3e9450eeb3d41500",
+   "person_key": "noye-johnson",
+   "role": "founding-PI",
+   "title": "Co-founder, Hubbard Brook Ecosystem Study (1963)",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": 1963,
+   "end_year": null,
+   "source_url": "https://hubbardbrook.org/about-the-study/",
+   "evidence": "co-founded in 1963 by aquatic ecologist Gene E. Likens ... and geologist Noye Johnson",
+   "confidence": "medium"
+  }
+ ],
+ "verifications": [
+  {
+   "facility_id": "288ac52b707d703d",
+   "person_id": "845ecfc716487cc8",
+   "existing_role": "founding-PI",
+   "status": "confirmed",
+   "current_holder_key": null,
+   "source_url": "https://lternet.edu/site/baltimore-ecosystem-study/",
+   "evidence": "Steward Pickett, Project Director from 1998-2016, PI from 2016-2021"
+  },
+  {
+   "facility_id": "288ac52b707d703d",
+   "person_id": "42bf8f3c32b3e898",
+   "existing_role": "co-PI",
+   "status": "confirmed",
+   "current_holder_key": null,
+   "source_url": "https://hixon.yale.edu/person/morgan-grove-0",
+   "evidence": "Morgan continues as a Co-Principal Investigator in the Baltimore Ecosystem Study (BES), which began in 1997."
+  },
+  {
+   "facility_id": "288ac52b707d703d",
+   "person_id": "baae7bccdda9a1d2",
+   "existing_role": "co-PI",
+   "status": "stale",
+   "current_holder_key": null,
+   "source_url": "https://baltimoreecosystemstudy.org/people/",
+   "evidence": "Investigators ... Mary L. Cadenasso, PhD , Professor, Department of Plant Sciences, University of California, Davis"
+  },
+  {
+   "facility_id": "3e9450eeb3d41500",
+   "person_id": "954055a62e37ab9f",
+   "existing_role": "founding-PI",
+   "status": "confirmed",
+   "current_holder_key": null,
+   "source_url": "https://hubbardbrook.org/about-the-study/",
+   "evidence": "co-founded in 1963 by aquatic ecologist Gene E. Likens"
+  },
+  {
+   "facility_id": "3e9450eeb3d41500",
+   "person_id": "3f19b5e2c0a7af7d",
+   "existing_role": "co-PI",
+   "status": "not-found",
+   "current_holder_key": null,
+   "source_url": "https://hubbardbrook.org/people/",
+   "evidence": null
+  }
+ ]
+}

@@ -1,0 +1,825 @@
+{
+ "batch_id": "R-PEOPLE2-OCEAN-COASTAL-01b",
+ "retrieved_at": "2026-10-22",
+ "verified_by": "adversarial-verifier 2026-10-22",
+ "facilities": [
+  {
+   "facility_id": "b4769ffb0e4ad961",
+   "pages_fetched": [
+    {
+     "url": "https://marine.uprm.edu/",
+     "status": 0
+    },
+    {
+     "url": "https://www.uprm.edu/cimarum/",
+     "status": 404
+    },
+    {
+     "url": "https://www.uprm.edu/marine/",
+     "status": 404
+    },
+    {
+     "url": "https://www.uprm.edu/cima/",
+     "status": 200
+    },
+    {
+     "url": "https://www.uprm.edu/marinesciences/",
+     "status": 404
+    },
+    {
+     "url": "https://www.uprm.edu/cienciasmarinas/",
+     "status": 404
+    },
+    {
+     "url": "https://cima.uprm.edu/",
+     "status": 0
+    },
+    {
+     "url": "https://www.uprm.edu/arci/",
+     "status": 200
+    },
+    {
+     "url": "https://www.uprm.edu/cima/staff/",
+     "status": 200
+    },
+    {
+     "url": "https://www.uprm.edu/cima/faculty/",
+     "status": 200
+    },
+    {
+     "url": "http://bio-optics.uprm.edu",
+     "status": 200
+    }
+   ],
+   "notes": "marine.uprm.edu does not resolve (DNS); department site now at www.uprm.edu/cima/. DMS PERSONNEL page lists Director Ernesto Weil and Associate Director Roy A. Armstrong (page itself warns it 'may be outdated'). Miguel Canals (CariCOOS technical director) holds an adjunct DMS appointment. History page names Maximo Cerame-Vivas as author of the 1966 proposal creating the department but does not call him founding director, so no founding row. Canals ORCID 0000-0003-4635-0965 has no employment data, not used. Verifier: Weil/Armstrong downgraded to medium because the faculty page states it may be outdated; Armstrong bio re-sourced to the faculty page."
+  },
+  {
+   "facility_id": "84f4cf9530192cd8",
+   "pages_fetched": [
+    {
+     "url": "https://www.uvi.edu/research/cmes/",
+     "status": 200
+    },
+    {
+     "url": "https://www.uvi.edu/research/cmes",
+     "status": 200
+    },
+    {
+     "url": "https://www.uvi.edu/research/centers-institutes/cmes/",
+     "status": 200
+    },
+    {
+     "url": "https://uvi.edu/news/2025/25_133_uvi_cmes_invites_community_to_open_house_renovated_building.html",
+     "status": 200
+    },
+    {
+     "url": "https://www.uvi.edu/research/center-for-marine-environmental-studies/about-cmes/goals-and-mission.html",
+     "status": 200
+    },
+    {
+     "url": "https://www.uvi.edu/research/center-for-marine-environmental-studies/",
+     "status": 200
+    },
+    {
+     "url": "https://www.uvi.edu/research/center-for-marine-environmental-studies/about-cmes/index.html",
+     "status": 200
+    },
+    {
+     "url": "https://www.uvi.edu/research/center-for-marine-environmental-studies/research/index.html",
+     "status": 200
+    },
+    {
+     "url": "https://www.uvi.edu/research/center-for-marine-environmental-studies/environmental_analysis_lab.html",
+     "status": 200
+    },
+    {
+     "url": "https://www.uvi.edu/research/center-for-marine-environmental-studies/facilities-and-support/index.html",
+     "status": 200
+    },
+    {
+     "url": "https://archive.uvi.edu/directory/profiles/faculty/jobsis-paul.aspx",
+     "status": 401
+    }
+   ],
+   "notes": "Stored facility URL www.uvi.edu/research/cmes/ returns HTTP 200 but is a 'Page not found' soft-404; live CMES pages are under www.uvi.edu/research/center-for-marine-environmental-studies/. Director Paul D. Jobsis named in UVI news (Oct 2025) and as facility contact. Archived UVI faculty profile returned 401, so no bio. ORCID 0000-0002-1152-2889 (Paul Jobsis) lists only CWORI employment, so not matched to UVI and not used. Verifier: facilities page lists Amber Packard as Contact/Lead of the Environmental Analysis Lab, not Laboratory Manager; title corrected."
+  },
+  {
+   "facility_id": "659db848c8224d61",
+   "pages_fetched": [
+    {
+     "url": "https://marinescience.ucdavis.edu/bml",
+     "status": 403
+    },
+    {
+     "url": "https://marinescience.ucdavis.edu/",
+     "status": 403
+    },
+    {
+     "url": "https://marinescience.ucdavis.edu/about/leadership",
+     "status": 403
+    },
+    {
+     "url": "https://marinescience.ucdavis.edu/people/tessa-hill",
+     "status": 403
+    },
+    {
+     "url": "https://bml.ucdavis.edu/",
+     "status": 403
+    },
+    {
+     "url": "https://www.ucdavis.edu/news/new-bodega-lab-director-turns-love-ocean-her-lifes-work",
+     "status": 200
+    },
+    {
+     "url": "https://research.ucdavis.edu/now-recruiting-director-bodega-marine-laboratory",
+     "status": 200
+    },
+    {
+     "url": "https://www.ucdavis.edu/news/marine-ecosystem-expert-head-bodega-lab",
+     "status": 200
+    },
+    {
+     "url": "https://research.ucdavis.edu/?p=77290",
+     "status": 200
+    },
+    {
+     "url": "https://www.pressdemocrat.com/2006/12/08/cadet-hand-jr",
+     "status": 200
+    },
+    {
+     "url": "https://research.ucdavis.edu/?p=79609",
+     "status": 200
+    },
+    {
+     "url": "https://eps.ucdavis.edu/people/tessa-hill",
+     "status": 403
+    },
+    {
+     "url": "https://eps.ucdavis.edu/people/thill",
+     "status": 403
+    },
+    {
+     "url": "https://desp.ucdavis.edu/people/john-largier",
+     "status": 403
+    },
+    {
+     "url": "https://desp.ucdavis.edu/people/jlargier",
+     "status": 403
+    },
+    {
+     "url": "https://animalscience.ucdavis.edu/people/andrea-alfaro",
+     "status": 403
+    }
+   ],
+   "notes": "All marinescience.ucdavis.edu / bml.ucdavis.edu and UC Davis department Drupal pages return 403 to both curl and WebFetch, so Tessa Hill could not be checked. Current director Andrea C. Alfaro (effective 2026-01-01) per UC Davis Office of Research announcement, succeeding John Largier (BML director since April 2022). Founding director Cadet Hand served 1961-1985 per Press Democrat obituary (existing end_date 1980 looks wrong). Associate Director Kristin Aquilino appears only in search snippets of 403 pages; not added. Existing Tessa Hill ORCID 0000-0002-3014-7170 returns 404 from pub.orcid.org; ORCID 0000-0003-4159-9104 (Tessa Hill, UC Davis, Professor, Earth & Planetary Sciences) matches name and stored title, supplied on her people row. Verifier: Largier bio no longer cites the ORCID-only 2004 date. ORCID 0000-0002-3014-7170 re-checked: 404. Tessa Hill page re-checked: 403, still unverifiable."
+  },
+  {
+   "facility_id": "cc181c7953452ffc",
+   "pages_fetched": [
+    {
+     "url": "https://marinegeo.si.edu/",
+     "status": 403
+    },
+    {
+     "url": "https://utmsi.utexas.edu/?p=9209",
+     "status": 200
+    },
+    {
+     "url": "https://marinegeo.si.edu/taxonomy/term/31",
+     "status": 403
+    }
+   ],
+   "notes": "No facility URL in DB; marinegeo.si.edu returns 403. Only fetched source is a 2018 UTMSI news item saying UT Marine Science Institute and Texas A&M-Corpus Christi joined MarineGEO; it names workshop attendees (e.g., Ed Buskey, Lauren Yeager, Lee Smee, Chris Patrick) but assigns no site-lead role, so nobody added. Web search budget was exhausted before a further search could be made."
+  },
+  {
+   "facility_id": "48921a4314f79831",
+   "pages_fetched": [
+    {
+     "url": "https://www.himb.hawaii.edu/",
+     "status": 200
+    },
+    {
+     "url": "https://www.himb.hawaii.edu/who-we-are/people/",
+     "status": 200
+    },
+    {
+     "url": "https://www.himb.hawaii.edu/who-we-are/about/",
+     "status": 200
+    },
+    {
+     "url": "https://www.himb.hawaii.edu/who-we-are/directors-council/",
+     "status": 200
+    },
+    {
+     "url": "https://www.himb.hawaii.edu/people/megan-j-donahue/",
+     "status": 200
+    },
+    {
+     "url": "https://www.himb.hawaii.edu/people/malia-ana-j-rivera/",
+     "status": 200
+    },
+    {
+     "url": "https://www.himb.hawaii.edu/people/robert-toonen/",
+     "status": 200
+    },
+    {
+     "url": "https://www.himb.hawaii.edu/people/kawika-b-winter/",
+     "status": 200
+    },
+    {
+     "url": "https://www.himb.hawaii.edu/researchers/robert-toonen/",
+     "status": 200
+    },
+    {
+     "url": "https://www.himb.hawaii.edu/ToonenLab/",
+     "status": 404
+    },
+    {
+     "url": "https://www.himb.hawaii.edu/research/labs/",
+     "status": 200
+    },
+    {
+     "url": "https://www.himb.hawaii.edu/lab/tobo-lab/",
+     "status": 200
+    },
+    {
+     "url": "https://www.himb.hawaii.edu/lab/costal-systems-ecology-lab/",
+     "status": 200
+    },
+    {
+     "url": "https://tobolab.org/",
+     "status": 200
+    }
+   ],
+   "notes": "Our People page: Megan J. Donahue (HIMB Director), Malia Ana J. Rivera (Associate Director). Kawika Winter listed as Director of He'eia NERR (separate facility) - not added here. Founded 1951; no founding director named on fetched pages. Toonen's stored homepage www.himb.hawaii.edu/ToonenLab/ now 404; ToBo Lab site is tobolab.org. Verifier: existing Toonen ORCID 0000-0001-6339-5546 resolves to FELIPE FREIRE on pub.orcid.org, so it is wrong and should be cleared on the existing person row."
+  },
+  {
+   "facility_id": "8b91f78cdc556120",
+   "pages_fetched": [
+    {
+     "url": "https://hopkinsmarinestation.stanford.edu/",
+     "status": 0
+    },
+    {
+     "url": "https://hopkins.stanford.edu/",
+     "status": 307
+    },
+    {
+     "url": "https://news.stanford.edu/report/?p=8506",
+     "status": 403
+    },
+    {
+     "url": "https://profiles.stanford.edu/stephen-palumbi",
+     "status": 200
+    },
+    {
+     "url": "https://profiles.stanford.edu/fiorenza-micheli",
+     "status": 200
+    },
+    {
+     "url": "https://profiles.stanford.edu/george-somero",
+     "status": 200
+    },
+    {
+     "url": "https://sustainability.stanford.edu/our-community/departments/oceans",
+     "status": 404
+    },
+    {
+     "url": "https://oceans.stanford.edu/",
+     "status": 200
+    },
+    {
+     "url": "https://palumbi.stanford.edu/",
+     "status": 0
+    },
+    {
+     "url": "https://oceans.stanford.edu/about",
+     "status": 200
+    },
+    {
+     "url": "https://oceans.stanford.edu/people/oceans-department/staff-0/",
+     "status": 200
+    },
+    {
+     "url": "https://oceans.stanford.edu/oceans.stanford.edu/academics/studying-stanford-hopkins-marine-station",
+     "status": 200
+    },
+    {
+     "url": "https://oceans.stanford.edu/people/oceans-department/emeritus-0/",
+     "status": 200
+    },
+    {
+     "url": "https://palumbilab.stanford.edu",
+     "status": 200
+    }
+   ],
+   "notes": "hopkinsmarinestation.stanford.edu fails TLS handshake (curl and WebFetch), so the station's own leadership page could not be read. Palumbi's current Stanford profile says he is 'now the Director' (bio text undated; Micheli's profile lists her as co-director 2020-2022), hence medium confidence. Somero's profile lists Director 2000-2008 and 'Associate Director 2008-current' while he is emeritus (low confidence on the latter). Haderlie not found on any reachable page. Stored homepages under hopkinsmarinestation.stanford.edu and palumbi.stanford.edu are unreachable; profiles.stanford.edu / palumbilab.stanford.edu given instead. Verifier: Somero 2008-current Associate Director kept at low confidence; it rests only on his profile CV list."
+  }
+ ],
+ "people": [
+  {
+   "key": "ernesto-weil",
+   "existing_person_id": null,
+   "name": "Ernesto Weil",
+   "name_given": "Ernesto",
+   "name_family": "Weil",
+   "orcid": "0000-0001-5275-1584",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0001-5275-1584/employments",
+   "homepage_url": null,
+   "bio": "Professor and director of the Department of Marine Sciences at the University of Puerto Rico at Mayagüez, working on coral reef biology, ecology and systematics; earned his PhD in zoology at the University of Texas at Austin in 1992.",
+   "bio_source_url": "https://www.uprm.edu/cima/faculty/",
+   "research_interests": "coral reef biology; coral reef ecology; systematics",
+   "research_interests_source_url": "https://www.uprm.edu/cima/faculty/"
+  },
+  {
+   "key": "roy-armstrong",
+   "existing_person_id": null,
+   "name": "Roy A. Armstrong",
+   "name_given": "Roy",
+   "name_family": "Armstrong",
+   "orcid": "0000-0002-8748-8787",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-8748-8787/employments",
+   "homepage_url": "http://bio-optics.uprm.edu",
+   "bio": "Professor of bio-optical oceanography and remote sensing and associate director of the Department of Marine Sciences at UPR-Mayaguez; directs its Bio-optical Oceanography Laboratory, based at the Magueyes marine laboratories.",
+   "bio_source_url": "https://www.uprm.edu/cima/faculty/",
+   "research_interests": "bio-optical oceanography; ocean color remote sensing; hyperspectral remote sensing of coral reefs; mesophotic reefs; Saharan dust effects",
+   "research_interests_source_url": "http://bio-optics.uprm.edu"
+  },
+  {
+   "key": "miguel-canals",
+   "existing_person_id": null,
+   "name": "Miguel Canals Silander",
+   "name_given": "Miguel",
+   "name_family": "Canals Silander",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Associate professor of engineering science and materials at UPRM with an adjunct appointment in physical oceanography in the Department of Marine Sciences; leads UPRM's applied ocean science and engineering center and serves as CariCOOS technical director.",
+   "bio_source_url": "https://www.uprm.edu/cima/faculty/",
+   "research_interests": "physical oceanography; applied ocean science and engineering; coastal ocean observing",
+   "research_interests_source_url": "https://www.uprm.edu/cima/faculty/"
+  },
+  {
+   "key": "paul-jobsis",
+   "existing_person_id": null,
+   "name": "Paul D. Jobsis",
+   "name_given": "Paul",
+   "name_family": "Jobsis",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "amber-packard",
+   "existing_person_id": null,
+   "name": "Amber Packard",
+   "name_given": "Amber",
+   "name_family": "Packard",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "andrea-alfaro",
+   "existing_person_id": null,
+   "name": "Andrea C. Alfaro",
+   "name_given": "Andrea",
+   "name_family": "Alfaro",
+   "orcid": "0000-0003-0543-7212",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0003-0543-7212/employments",
+   "homepage_url": null,
+   "bio": "Director of UC Davis's Coastal and Marine Sciences Institute and Bodega Marine Laboratory from January 2026 and professor of animal science; previously taught marine ecology and aquaculture as a professor in Auckland, New Zealand. Studies disease, physiology, microbiomes and climate resilience of farmed fish and shellfish.",
+   "bio_source_url": "https://research.ucdavis.edu/?p=79609",
+   "research_interests": "aquatic animal disease; animal physiology; host-microbe interactions; climate resilience; nutritional efficiency in fish and shellfish; thermal stress, hypoxia and pathogen exposure",
+   "research_interests_source_url": "https://research.ucdavis.edu/?p=79609"
+  },
+  {
+   "key": "john-largier",
+   "existing_person_id": null,
+   "name": "John Largier",
+   "name_given": "John",
+   "name_family": "Largier",
+   "orcid": "0000-0003-4273-4443",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0003-4273-4443/employments",
+   "homepage_url": null,
+   "bio": "Professor in the UC Davis Department of Environmental Science and Policy who directed Bodega Marine Laboratory from April 2022 until Andrea Alfaro assumed responsibility for the lab in January 2026.",
+   "bio_source_url": "https://research.ucdavis.edu/?p=79609",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "susan-williams",
+   "existing_person_id": null,
+   "name": "Susan Williams",
+   "name_given": "Susan",
+   "name_family": "Williams",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Marine ecologist who became Bodega Marine Laboratory director in 2000, having been a biology professor at San Diego State and head of its Coastal & Marine Institute; earlier led science for a NOAA undersea research program based in the USVI. Works on seagrasses, seaweeds and coral reefs.",
+   "bio_source_url": "https://www.ucdavis.edu/news/marine-ecosystem-expert-head-bodega-lab",
+   "research_interests": "nearshore marine ecosystems; nutrient cycling; plant-animal interactions; restoration genetics; seagrasses, seaweeds and coral reefs",
+   "research_interests_source_url": "https://www.ucdavis.edu/news/marine-ecosystem-expert-head-bodega-lab"
+  },
+  {
+   "key": "james-clegg",
+   "existing_person_id": null,
+   "name": "James Clegg",
+   "name_given": "James",
+   "name_family": "Clegg",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "cadet-hand",
+   "existing_person_id": "1476fa2ef14d2c65",
+   "name": "Cadet H. Hand Jr.",
+   "name_given": "Cadet",
+   "name_family": "Hand",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "UC Berkeley zoologist and authority on jellyfish and sea anemones who started a Bodega Bay field station, was founding director of Bodega Marine Laboratory from 1961, helped win NSF funds to build it, and led it until 1985 before continuing research as emeritus.",
+   "bio_source_url": "https://www.pressdemocrat.com/2006/12/08/cadet-hand-jr",
+   "research_interests": "jellyfish; sea anemones; natural history of Bodega Head",
+   "research_interests_source_url": "https://www.pressdemocrat.com/2006/12/08/cadet-hand-jr"
+  },
+  {
+   "key": "tessa-hill",
+   "existing_person_id": "a5ebaa6a8d61f469",
+   "name": "Tessa M. Hill",
+   "name_given": "Tessa",
+   "name_family": "Hill",
+   "orcid": "0000-0003-4159-9104",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0003-4159-9104/employments",
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "megan-donahue",
+   "existing_person_id": null,
+   "name": "Megan J. Donahue",
+   "name_given": "Megan",
+   "name_family": "Donahue",
+   "orcid": "0000-0002-7529-001X",
+   "orcid_source_url": "https://www.himb.hawaii.edu/people/megan-j-donahue/",
+   "homepage_url": "https://www.himb.hawaii.edu/lab/costal-systems-ecology-lab/",
+   "bio": "Director of the Hawaiʻi Institute of Marine Biology and head of its Coastal Systems Ecology Lab; a quantitative ecologist working on spatial dynamics of marine populations and communities, coral demography, reef bioerosion and coral disease models across the Pacific Islands.",
+   "bio_source_url": "https://www.himb.hawaii.edu/lab/costal-systems-ecology-lab/",
+   "research_interests": "population and community ecology; coastal ecosystem health; ecological modeling; coral demography; reef bioerosion; coral disease modeling",
+   "research_interests_source_url": "https://www.himb.hawaii.edu/people/megan-j-donahue/"
+  },
+  {
+   "key": "malia-rivera",
+   "existing_person_id": null,
+   "name": "Malia Ana J. Rivera",
+   "name_given": "Malia Ana",
+   "name_family": "Rivera",
+   "orcid": "0000-0003-4978-2309",
+   "orcid_source_url": "https://www.himb.hawaii.edu/people/malia-ana-j-rivera/",
+   "homepage_url": "https://www.himb.hawaii.edu/people/malia-ana-j-rivera/",
+   "bio": "Specialist professor and associate director at HIMB, which she rejoined in 2005 to coordinate the HIMB–Northwestern Hawaiian Islands research partnership; trained in marine population genetics and molecular systematics, she now builds research pathways into marine science for Hawaiʻi students.",
+   "bio_source_url": "https://www.himb.hawaii.edu/people/malia-ana-j-rivera/",
+   "research_interests": "marine population genetics; molecular systematics of Hawaiian fishes and terrestrial invertebrates; STEM pathways for Hawaiʻi students",
+   "research_interests_source_url": "https://www.himb.hawaii.edu/people/malia-ana-j-rivera/"
+  },
+  {
+   "key": "robert-toonen",
+   "existing_person_id": "03d2c5d35441a78b",
+   "name": "Robert J. Toonen",
+   "name_given": "Robert",
+   "name_family": "Toonen",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://tobolab.org/",
+   "bio": "HIMB faculty member who runs the ToBo Lab jointly with Brian Bowen, examining dispersal and recruitment of coastal marine invertebrates and how larval development modes affect the evolution of Hawaiian coral reef species.",
+   "bio_source_url": "https://www.himb.hawaii.edu/lab/tobo-lab/",
+   "research_interests": "larval dispersal and recruitment; marine invertebrate population genetics; evolution of larval development modes; Hawaiian coral reef biodiversity",
+   "research_interests_source_url": "https://www.himb.hawaii.edu/lab/tobo-lab/"
+  },
+  {
+   "key": "stephen-palumbi",
+   "existing_person_id": "9aa4789346786e1f",
+   "name": "Stephen R. Palumbi",
+   "name_given": "Stephen",
+   "name_family": "Palumbi",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://palumbilab.stanford.edu",
+   "bio": "Stanford marine sciences professor (Steel Jr. chair) based at Hopkins Marine Station; uses genetics and genomics to study evolution and conservation of marine species, from market forensics of whales and sharks to locating heat-tolerant corals and evaluating marine reserves.",
+   "bio_source_url": "https://profiles.stanford.edu/stephen-palumbi",
+   "research_interests": "marine genomics; molecular evolution and speciation; conservation genetics; marine reserves; coral resilience to heat stress",
+   "research_interests_source_url": "https://profiles.stanford.edu/stephen-palumbi"
+  },
+  {
+   "key": "george-somero",
+   "existing_person_id": "7bbb44e20d56d998",
+   "name": "George N. Somero",
+   "name_given": "George",
+   "name_family": "Somero",
+   "orcid": "0000-0003-1431-6455",
+   "orcid_source_url": "https://profiles.stanford.edu/george-somero",
+   "homepage_url": "https://profiles.stanford.edu/george-somero",
+   "bio": "Emeritus Packard chair in marine science at Stanford who directed Hopkins Marine Station from 2000 to 2008; a National Academy of Sciences member studying how temperature and desiccation stress affect organisms and how their proteins and physiology adapt.",
+   "bio_source_url": "https://profiles.stanford.edu/george-somero",
+   "research_interests": "environmental adaptation; thermal physiology; desiccation stress; protein adaptation",
+   "research_interests_source_url": "https://profiles.stanford.edu/george-somero"
+  },
+  {
+   "key": "fiorenza-micheli",
+   "existing_person_id": null,
+   "name": "Fiorenza Micheli",
+   "name_given": "Fiorenza",
+   "name_family": "Micheli",
+   "orcid": "0000-0002-6865-1438",
+   "orcid_source_url": "https://profiles.stanford.edu/fiorenza-micheli",
+   "homepage_url": "https://profiles.stanford.edu/fiorenza-micheli",
+   "bio": "Holder of a Packard chair in marine science at Stanford and chair of the Oceans Department in the Doerr School of Sustainability; co-directed Hopkins Marine Station 2020–2022 and co-directs the Center for Ocean Solutions. Researches coastal community dynamics, predators, small-scale fisheries and marine protected areas.",
+   "bio_source_url": "https://profiles.stanford.edu/fiorenza-micheli",
+   "research_interests": "coastal marine community ecology; climate impacts on marine ecosystems; trophic cascades; small-scale fisheries; marine protected areas",
+   "research_interests_source_url": "https://profiles.stanford.edu/fiorenza-micheli"
+  }
+ ],
+ "affiliations": [
+  {
+   "facility_id": "b4769ffb0e4ad961",
+   "person_key": "ernesto-weil",
+   "role": "director",
+   "title": "Director, Department of Marine Sciences",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.uprm.edu/cima/faculty/",
+   "evidence": "Ernesto Weil, PhD Director of the Department of Marine Sciences",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "b4769ffb0e4ad961",
+   "person_key": "roy-armstrong",
+   "role": "associate-director",
+   "title": "Associate Director, Department of Marine Sciences; Director, Bio-optical Oceanography Laboratory",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.uprm.edu/cima/faculty/",
+   "evidence": "Roy A. Armstrong, PhD Associate Director of the Department of Marine Sciences",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "b4769ffb0e4ad961",
+   "person_key": "miguel-canals",
+   "role": "faculty",
+   "title": "Adjunct Associate Professor, Physical Oceanography; Technical Director, CariCOOS",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.uprm.edu/cima/faculty/",
+   "evidence": "Miguel Canals Silander, PhD Director, UPRM Center for Applied Ocean Science and Engineering Technical Director",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "84f4cf9530192cd8",
+   "person_key": "paul-jobsis",
+   "role": "director",
+   "title": "Director, Center for Marine and Environmental Studies",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://uvi.edu/news/2025/25_133_uvi_cmes_invites_community_to_open_house_renovated_building.html",
+   "evidence": "said Dr. Paul D. Jobsis, UVI Director of the Center for Marine and Environmental Studies.",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "84f4cf9530192cd8",
+   "person_key": "amber-packard",
+   "role": "manager",
+   "title": "Contact/Lead, Environmental Analysis Lab",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.uvi.edu/research/center-for-marine-environmental-studies/facilities-and-support/index.html",
+   "evidence": "Environmental Analysis Lab Amber Packard",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "659db848c8224d61",
+   "person_key": "andrea-alfaro",
+   "role": "director",
+   "title": "Director, Bodega Marine Laboratory and Coastal and Marine Sciences Institute",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2026,
+   "end_year": null,
+   "source_url": "https://research.ucdavis.edu/?p=79609",
+   "evidence": "In her role, Alfaro also assumes responsibility for the Bodega Marine Laboratory (BML)",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "659db848c8224d61",
+   "person_key": "john-largier",
+   "role": "former-director",
+   "title": "Director, Bodega Marine Laboratory",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": 2022,
+   "end_year": 2025,
+   "source_url": "https://research.ucdavis.edu/?p=79609",
+   "evidence": "Largier , a professor in the Department of Environmental Science and Policy and director of BML since April of 2022",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "659db848c8224d61",
+   "person_key": "susan-williams",
+   "role": "former-director",
+   "title": "Director, Bodega Marine Laboratory",
+   "is_key_personnel": false,
+   "is_current": false,
+   "start_year": 2000,
+   "end_year": null,
+   "source_url": "https://www.ucdavis.edu/news/marine-ecosystem-expert-head-bodega-lab",
+   "evidence": "Williams is the new director of Bodega Marine Laboratory, one of UC Davis' organized research units.",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "659db848c8224d61",
+   "person_key": "james-clegg",
+   "role": "former-director",
+   "title": "Director, Bodega Marine Laboratory",
+   "is_key_personnel": false,
+   "is_current": false,
+   "start_year": 1986,
+   "end_year": null,
+   "source_url": "https://www.pressdemocrat.com/2006/12/08/cadet-hand-jr",
+   "evidence": "said James Clegg, who took over as lab director from Hand in 1986.",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "659db848c8224d61",
+   "person_key": "cadet-hand",
+   "role": "founding-PI",
+   "title": "Founding Director, Bodega Marine Laboratory",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": 1961,
+   "end_year": 1985,
+   "source_url": "https://www.pressdemocrat.com/2006/12/08/cadet-hand-jr",
+   "evidence": "In 1961, Hand was the founding director of the Bodega Marine Lab",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "48921a4314f79831",
+   "person_key": "megan-donahue",
+   "role": "director",
+   "title": "HIMB Director & Researcher",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.himb.hawaii.edu/who-we-are/people/",
+   "evidence": "Megan J. Donahue, PhD HIMB Director & Researcher",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "48921a4314f79831",
+   "person_key": "malia-rivera",
+   "role": "associate-director",
+   "title": "Specialist Professor, Associate Director",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.himb.hawaii.edu/who-we-are/people/",
+   "evidence": "Malia Ana J. Rivera, PhD Specialist Professor, Associate Director",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "8b91f78cdc556120",
+   "person_key": "stephen-palumbi",
+   "role": "director",
+   "title": "Director, Hopkins Marine Station",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://profiles.stanford.edu/stephen-palumbi",
+   "evidence": "Steve is based at Stanford University's Hopkins Marine Station, where he is now the Director.",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "8b91f78cdc556120",
+   "person_key": "george-somero",
+   "role": "former-director",
+   "title": "Director, Hopkins Marine Station",
+   "is_key_personnel": false,
+   "is_current": false,
+   "start_year": 2000,
+   "end_year": 2008,
+   "source_url": "https://profiles.stanford.edu/george-somero",
+   "evidence": "2000-2008 Director—Hopkins Marine Station, Stanford University",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "8b91f78cdc556120",
+   "person_key": "george-somero",
+   "role": "associate-director",
+   "title": "Associate Director, Hopkins Marine Station",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": 2008,
+   "end_year": null,
+   "source_url": "https://profiles.stanford.edu/george-somero",
+   "evidence": "2008-current Associate Director—Hopkins Marine Station",
+   "confidence": "low"
+  },
+  {
+   "facility_id": "8b91f78cdc556120",
+   "person_key": "fiorenza-micheli",
+   "role": "former-director",
+   "title": "Co-director, Hopkins Marine Station",
+   "is_key_personnel": false,
+   "is_current": false,
+   "start_year": 2020,
+   "end_year": 2022,
+   "source_url": "https://profiles.stanford.edu/fiorenza-micheli",
+   "evidence": "Co-director, Hopkins Marine Station (2020 - 2022)",
+   "confidence": "high"
+  }
+ ],
+ "verifications": [
+  {
+   "facility_id": "659db848c8224d61",
+   "person_id": "a5ebaa6a8d61f469",
+   "existing_role": "faculty",
+   "status": "unverifiable",
+   "current_holder_key": null,
+   "source_url": "https://marinescience.ucdavis.edu/people/tessa-hill",
+   "evidence": null
+  },
+  {
+   "facility_id": "659db848c8224d61",
+   "person_id": "1476fa2ef14d2c65",
+   "existing_role": "founding-PI",
+   "status": "confirmed",
+   "current_holder_key": null,
+   "source_url": "https://www.pressdemocrat.com/2006/12/08/cadet-hand-jr",
+   "evidence": "In 1961, Hand was the founding director of the Bodega Marine Lab"
+  },
+  {
+   "facility_id": "48921a4314f79831",
+   "person_id": "03d2c5d35441a78b",
+   "existing_role": "faculty",
+   "status": "confirmed",
+   "current_holder_key": null,
+   "source_url": "https://www.himb.hawaii.edu/who-we-are/people/",
+   "evidence": "HIMB Faculty Robert Toonen ToBo Lab"
+  },
+  {
+   "facility_id": "8b91f78cdc556120",
+   "person_id": "7bbb44e20d56d998",
+   "existing_role": "emeritus",
+   "status": "confirmed",
+   "current_holder_key": null,
+   "source_url": "https://profiles.stanford.edu/george-somero",
+   "evidence": "David and Lucile Packard Professor in Marine Science, Emeritus Hopkins Marine Station"
+  },
+  {
+   "facility_id": "8b91f78cdc556120",
+   "person_id": "9aa4789346786e1f",
+   "existing_role": "faculty",
+   "status": "confirmed",
+   "current_holder_key": null,
+   "source_url": "https://profiles.stanford.edu/stephen-palumbi",
+   "evidence": "Stephen Palumbi Jane and Marshall Steel Jr. Professor of Marine Sciences, Professor of Oceans and of Biology"
+  },
+  {
+   "facility_id": "8b91f78cdc556120",
+   "person_id": "1a33a9821431a520",
+   "existing_role": "faculty",
+   "status": "unverifiable",
+   "current_holder_key": null,
+   "source_url": null,
+   "evidence": null
+  }
+ ]
+}

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""HTTP HEAD verification of every URL in the LTO database.
+"""HTTP HEAD verification of every URL in the LTO lake.
 
 Runs in CI where the network is unrestricted (sandbox blocks every
 external host). For each URL in:
@@ -21,10 +21,12 @@ and records:
   url, status_code, final_url (after redirects), checked_at
 
 plus a coarse `status` label and bare `http_code` — into
-`data/seed/url_health_check.csv` (full audit columns) AND
-`public/parquet/url_health.parquet` (url, status, http_code,
-checked_at only — the table src/views/datasets.js joins to paint the
-endpoint health dots on the Data tab).
+`data/seed/url_health_check.csv` (full audit columns) AND the lake's
+`url_health` table (url, status, http_code, checked_at only — the table
+src/views/datasets.js joins to paint the endpoint health dots on the
+Data tab). export_parquet.py publishes that table as
+public/parquet/url_health.parquet; this script no longer writes
+public/parquet itself.
 
 Endpoint templates with `{PLACEHOLDER}` segments (AmeriFlux's
 `{SITE_ID}`, ARM's `{YYYY-MM-DD}`, …) are never requested — a literal
@@ -32,12 +34,12 @@ GET of the template is guaranteed 4xx and would smear red over rows
 that are perfectly healthy once substituted. They record as
 `template-skipped` with no http_code.
 
-The parquet is written through an *in-memory* DuckDB from the already-
-collected rows — never through db/lto.duckdb, which may be write-locked
-by a running harvest. URL collection prefers the DB (CI runs this right
-after rebuild_db_from_parquet.py) but falls back to reading
-public/parquet/ directly when the DB is locked or absent; force that
-path with --from-parquet.
+The table is replaced in one lake snapshot (commit message
+``check_url_health: …``) after the sweep. URL collection prefers the
+lake (CI runs this right after rebuild_lake_from_parquet.py) but falls
+back to reading public/parquet/ directly when the lake cannot be opened;
+force that path with --from-parquet. A real run still needs the lake to
+write into, and checks for it before sending any request.
 
 Usage (in CI)::
 
@@ -53,11 +55,15 @@ from __future__ import annotations
 import argparse
 import csv
 import re
+import sys
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import date
 from pathlib import Path
 
 import duckdb
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import lto_db  # noqa: E402
 
 try:
     import requests
@@ -65,10 +71,8 @@ except ImportError:
     requests = None
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "lto.duckdb"
 PARQUET_DIR = ROOT / "public" / "parquet"
 OUT = ROOT / "data" / "seed" / "url_health_check.csv"
-PARQUET_OUT = PARQUET_DIR / "url_health.parquet"
 
 URL_SOURCES = [
     ("people", "person_id", "name", "homepage_url"),
@@ -127,7 +131,7 @@ def collect_urls(conn: duckdb.DuckDBPyConnection,
     """Enumerate every checkable URL.
 
     `rel_for` maps a logical table name to a FROM-clause relation —
-    the bare table name against the DB, a read_parquet() call against
+    the bare table name against the lake, a read_parquet() call against
     public/parquet/ (see collect_from_parquet).
     """
     rows = []
@@ -148,11 +152,10 @@ def collect_urls(conn: duckdb.DuckDBPyConnection,
 
 
 def collect_from_parquet() -> list[dict]:
-    """URL collection without the DB — read public/parquet/ directly.
+    """URL collection without the lake — read public/parquet/ directly.
 
-    Used when db/lto.duckdb is locked by a running harvest or hasn't
-    been rebuilt in this checkout (the parquet files, not the .duckdb,
-    are the committed artifact).
+    Used when the lake hasn't been built in this checkout (the parquet
+    files, not the lake, are the committed artifact).
     """
     with duckdb.connect() as conn:  # in-memory
         return collect_urls(
@@ -207,54 +210,68 @@ def write_csv(rows: list[dict]) -> None:
     print(f"[check_url_health] wrote {len(rows)} rows → {OUT.relative_to(ROOT)}")
 
 
-def write_parquet(rows: list[dict], out: Path = PARQUET_OUT) -> None:
-    """Per-URL verdicts → public/parquet/url_health.parquet.
+def write_lake(rows: list[dict], catalog: Path | None = None,
+               data: Path | None = None) -> None:
+    """Per-URL verdicts → the lake's url_health table (one snapshot).
 
     One row per distinct URL (the same URL can appear under several
     table/field pairs — base_url doubling as api_url is common); a real
-    check beats a template-skipped/unchecked duplicate. Written through
-    an in-memory DuckDB on purpose: db/lto.duckdb may be write-locked
-    by a harvest, and this artifact never needs the DB anyway.
+    check beats a template-skipped/unchecked duplicate. url_health is a
+    derived table (not in schema.sql), so it is replaced wholesale.
     """
     best: dict[str, dict] = {}
     for r in rows:
         cur = best.get(r["url"])
         if cur is None or (cur.get("http_code") is None and r.get("http_code") is not None):
             best[r["url"]] = r
-    out.parent.mkdir(parents=True, exist_ok=True)
-    with duckdb.connect() as conn:  # in-memory
-        conn.execute(
-            "CREATE TABLE url_health "
-            "(url VARCHAR, status VARCHAR, http_code INTEGER, checked_at VARCHAR)")
-        if best:
-            conn.executemany(
-                "INSERT INTO url_health VALUES (?, ?, ?, ?)",
-                [(r["url"], r["status"], r["http_code"], r["checked_at"])
-                 for r in best.values()])
-        conn.execute(f"COPY url_health TO '{out.as_posix()}' (FORMAT PARQUET)")
-    rel = out.relative_to(ROOT) if out.is_relative_to(ROOT) else out
-    print(f"[check_url_health] wrote {len(best)} URLs → {rel}")
+    with lto_db.connect(catalog=catalog, data=data) as conn:
+        with lto_db.transaction(conn, f"check_url_health: url_health, "
+                                      f"{len(best)} URLs checked"):
+            conn.execute(
+                "CREATE OR REPLACE TEMP TABLE _url_health "
+                "(url VARCHAR, status VARCHAR, http_code INTEGER, checked_at VARCHAR)")
+            if best:
+                conn.executemany(
+                    "INSERT INTO _url_health VALUES (?, ?, ?, ?)",
+                    [(r["url"], r["status"], r["http_code"], r["checked_at"])
+                     for r in best.values()])
+            n = lto_db.replace_table(conn, "url_health", "SELECT * FROM _url_health")
+            conn.execute("DROP TABLE _url_health")
+    print(f"[check_url_health] wrote {n} URLs → lake url_health "
+          "(run export_parquet.py to publish)")
 
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--db", type=Path, default=DEFAULT_DB)
+    lto_db.add_argparse_catalog(ap)
+    ap.add_argument("--db", dest="catalog", type=Path,
+                    help="deprecated alias of --catalog")
     ap.add_argument("--concurrency", type=int, default=16)
     ap.add_argument("--timeout", type=int, default=8)
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--from-parquet", action="store_true",
-                    help="collect URLs from public/parquet/ instead of the DB "
-                         "(automatic when the DB is locked or absent)")
+                    help="collect URLs from public/parquet/ instead of the lake "
+                         "(automatic when the lake is absent)")
     args = ap.parse_args()
+
+    if not (args.dry_run or requests is None):
+        # The sweep takes minutes; fail before it if there is nowhere to
+        # write the result.
+        cat = lto_db.catalog_path(args.catalog)
+        if not cat.exists():
+            raise lto_db.LakeNotFound(
+                f"DuckLake catalog not found: {cat}\n"
+                f"  Build it first:  python scripts/rebuild_lake_from_parquet.py")
 
     if args.from_parquet:
         urls = collect_from_parquet()
     else:
         try:
-            with duckdb.connect(str(args.db), read_only=True) as conn:
+            with lto_db.connect(read_only=True, catalog=args.catalog,
+                                data=args.lake_data) as conn:
                 urls = collect_urls(conn)
-        except duckdb.Error as e:
-            print(f"[check_url_health] cannot open {args.db} "
+        except (lto_db.LakeNotFound, duckdb.Error) as e:
+            print(f"[check_url_health] cannot open the lake "
                   f"({type(e).__name__}: {e}) — falling back to public/parquet/")
             urls = collect_from_parquet()
     print(f"[check_url_health] collected {len(urls)} URLs across {len(URL_SOURCES)} fields")
@@ -278,8 +295,8 @@ def main() -> int:
             finalise({**u, "status_code": -1, "final_url": "", "error": "dry-run"}, today)
             for u in checkable
         ]
-        # CSV only: a dry-run must not clobber the shipped url_health.parquet
-        # with all-'unchecked' rows.
+        # CSV only: a dry-run must not clobber the url_health table (and
+        # so the shipped url_health.parquet) with all-'unchecked' rows.
         write_csv(rows)
         return 0
 
@@ -300,7 +317,7 @@ def main() -> int:
         print(f"  {status}: {n}")
 
     write_csv(results)
-    write_parquet(results)
+    write_lake(results, args.catalog, args.lake_data)
     return 0
 
 

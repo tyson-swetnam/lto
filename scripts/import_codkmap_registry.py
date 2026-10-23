@@ -41,7 +41,9 @@ person_identity_source assertion (method='cod-kmap-import') naming the
 upstream parquet snapshot, so every import can be walked back.
 
 Idempotent: existing canonical_ids are never overwritten; edge inserts
-are keyed. Usage::
+are keyed. All four steps are one DuckLake transaction (one snapshot),
+checked against schema.sql's keys before commit; --dry-run attaches the
+lake read-only. Usage::
 
     python scripts/import_codkmap_registry.py [--dry-run]
     python scripts/import_codkmap_registry.py --upstream ../cod-kmap/db/parquet
@@ -49,14 +51,15 @@ are keyed. Usage::
 from __future__ import annotations
 
 import argparse
+import contextlib
 import datetime as dt
 import sys
 from pathlib import Path
 
-import duckdb
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import lto_db  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
-DB = ROOT / "db" / "lto.duckdb"
 DEFAULT_UPSTREAM = ROOT.parent / "cod-kmap" / "db" / "parquet"
 UPSTREAM_URL = "https://github.com/tyson-swetnam/cod-kmap"
 
@@ -76,6 +79,7 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--upstream", type=Path, default=DEFAULT_UPSTREAM)
     ap.add_argument("--dry-run", action="store_true")
+    lto_db.add_argparse_catalog(ap)
     args = ap.parse_args()
     up = args.upstream
     for req in ("person_registry", "registry_facilities", "facilities",
@@ -84,11 +88,28 @@ def main() -> int:
             print(f"[error] {up / req}.parquet not found", file=sys.stderr)
             return 2
 
-    conn = duckdb.connect(str(DB))
-    conn.execute("SET search_path = main;")
+    conn = lto_db.connect(read_only=args.dry_run, catalog=args.catalog,
+                          data=args.lake_data)
     pq = lambda t: f"read_parquet('{up / t}.parquet')"  # noqa: E731
     today = dt.date.today().isoformat()
+    txn = contextlib.nullcontext() if args.dry_run else lto_db.transaction(
+        conn, f"import_codkmap_registry: site-linked researchers from {up}")
+    with txn:
+        run(conn, args, pq, today)
+        if not args.dry_run:
+            lto_db.assert_integrity(conn, ["facilities", "person_registry",
+                                           "person_identity_source", "registry_facilities",
+                                           "registry_collaborations"])
 
+    total = lto_db.scalar(conn, "SELECT count(*) FROM person_registry")
+    print(f"[done] person_registry now {total:,} rows"
+          + (" (dry run — no writes)" if args.dry_run else ""))
+    conn.close()
+    return 0
+
+
+def run(conn, args, pq, today: str) -> None:
+    """The four import steps; writes are skipped under --dry-run."""
     # Shared facilities = identical facility_id hashes on both sides.
     conn.execute(f"""
         CREATE OR REPLACE TEMP TABLE _shared AS
@@ -179,12 +200,6 @@ def main() -> int:
               AND (e.canonical_id_a, e.canonical_id_b) NOT IN
                   (SELECT canonical_id_a, canonical_id_b FROM registry_collaborations)""")
     print(f"[collab] {n_collab} co-publication edge(s) imported")
-
-    total = conn.execute("SELECT count(*) FROM person_registry").fetchone()[0]
-    print(f"[done] person_registry now {total:,} rows"
-          + (" (dry run — no writes)" if args.dry_run else ""))
-    conn.close()
-    return 0
 
 
 if __name__ == "__main__":

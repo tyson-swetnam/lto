@@ -14,32 +14,31 @@ plus:
 Run from the repo root, idempotent::
 
     python scripts/migrate_funding_events.py
-    python scripts/migrate_funding_events.py --db db/lto.duckdb
-    python scripts/migrate_funding_events.py --export-parquet
+    python scripts/migrate_funding_events.py --catalog db/lto_catalog.sqlite
 
-This script:
+This script, as one lake snapshot:
   1. Ensures funding_events + cpi_index_us + helper views exist
-     (reads schema/schema.sql so the definitions stay in one place).
+     (lto_db.ensure_schema reads schema/schema.sql so the definitions
+     stay in one place).
   2. If the *table* funding_links still exists, copies its rows into
      funding_events with computed event_ids, then drops the old table.
      The backwards-compat VIEW funding_links is created by schema.sql.
-  3. Optionally re-exports the relevant parquet files under db/parquet/
-     and public/parquet/ (so the web app picks up the new schema).
+  3. Publishing is export_parquet.py's job (the only writer of
+     public/parquet); --export-parquet now just says so.
 """
 from __future__ import annotations
 
 import argparse
 import hashlib
-import shutil
 import sys
 from pathlib import Path
 
 import duckdb
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import lto_db  # noqa: E402
+
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB = ROOT / "db" / "lto.duckdb"
-SCHEMA_SQL = ROOT / "schema" / "schema.sql"
-PARQUET_OUT = [ROOT / "db" / "parquet", ROOT / "public" / "parquet"]
 
 
 def event_id(funder_id: str, facility_id: str, award_id: str | None,
@@ -56,8 +55,8 @@ def event_id(funder_id: str, facility_id: str, award_id: str | None,
 def table_exists(conn: duckdb.DuckDBPyConnection, name: str) -> bool:
     row = conn.execute(
         "SELECT table_type FROM information_schema.tables "
-        "WHERE table_schema='main' AND table_name=?",
-        [name],
+        "WHERE table_catalog=? AND table_schema='main' AND table_name=?",
+        [lto_db.LAKE, name],
     ).fetchone()
     return bool(row) and row[0] == "BASE TABLE"
 
@@ -65,111 +64,21 @@ def table_exists(conn: duckdb.DuckDBPyConnection, name: str) -> bool:
 def view_exists(conn: duckdb.DuckDBPyConnection, name: str) -> bool:
     row = conn.execute(
         "SELECT table_type FROM information_schema.tables "
-        "WHERE table_schema='main' AND table_name=?",
-        [name],
+        "WHERE table_catalog=? AND table_schema='main' AND table_name=?",
+        [lto_db.LAKE, name],
     ).fetchone()
     return bool(row) and row[0] == "VIEW"
 
 
-# Inline DDL for the pieces this migration owns. We intentionally do
-# NOT re-run schema/schema.sql against an existing DB: CREATE OR REPLACE
-# TABLE would cascade-fail on facility_types (which everything else
-# references), and we don't want to risk dropping good data.
-NEW_TABLES_DDL = r"""
-CREATE TABLE IF NOT EXISTS funding_events (
-    event_id        VARCHAR PRIMARY KEY,
-    funder_id       VARCHAR NOT NULL REFERENCES funders(funder_id),
-    facility_id     VARCHAR NOT NULL REFERENCES facilities(facility_id),
-    amount_usd      DOUBLE,
-    amount_currency VARCHAR DEFAULT 'USD',
-    fiscal_year     INTEGER,
-    period_start    DATE,
-    period_end      DATE,
-    award_id        VARCHAR,
-    award_title     VARCHAR,
-    program         VARCHAR,
-    relation        VARCHAR,
-    source          VARCHAR,
-    source_url      VARCHAR,
-    retrieved_at    DATE,
-    confidence      VARCHAR,
-    notes           VARCHAR,
-    created_at      TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
-CREATE TABLE IF NOT EXISTS cpi_index_us (
-    year    INTEGER PRIMARY KEY,
-    cpi_u   DOUBLE NOT NULL,
-    source  VARCHAR DEFAULT 'BLS CPI-U'
-);
-"""
-
-VIEWS_DDL = r"""
-CREATE OR REPLACE VIEW funding_links AS
-SELECT funder_id, facility_id, amount_usd, fiscal_year, award_id,
-       relation, source_url
-FROM   funding_events;
-
-CREATE OR REPLACE VIEW v_facility_funding_by_year AS
-SELECT  f.facility_id,
-        f.canonical_name              AS facility,
-        f.acronym,
-        fe.fiscal_year,
-        SUM(fe.amount_usd)            AS total_usd_nominal,
-        COUNT(*)                      AS n_awards,
-        list(DISTINCT fu.name)        AS funders
-FROM facilities       f
-JOIN funding_events   fe ON fe.facility_id = f.facility_id
-JOIN funders          fu ON fu.funder_id   = fe.funder_id
-WHERE fe.fiscal_year IS NOT NULL AND fe.amount_usd IS NOT NULL
-GROUP BY f.facility_id, f.canonical_name, f.acronym, fe.fiscal_year;
-
-CREATE OR REPLACE VIEW v_funder_funding_by_year AS
-SELECT  fu.funder_id,
-        fu.name                       AS funder,
-        fu.type                       AS funder_type,
-        fe.fiscal_year,
-        SUM(fe.amount_usd)            AS total_usd_nominal,
-        COUNT(*)                      AS n_awards,
-        COUNT(DISTINCT fe.facility_id) AS n_facilities
-FROM funders         fu
-JOIN funding_events  fe ON fe.funder_id = fu.funder_id
-WHERE fe.fiscal_year IS NOT NULL AND fe.amount_usd IS NOT NULL
-GROUP BY fu.funder_id, fu.name, fu.type, fe.fiscal_year;
-
-CREATE OR REPLACE VIEW v_funding_ledger AS
-SELECT  fe.event_id, fe.fiscal_year, fe.period_start, fe.period_end,
-        fu.name AS funder, fu.type AS funder_type,
-        f.canonical_name AS facility, f.acronym AS facility_acronym,
-        f.facility_type  AS facility_kind, f.country,
-        fe.amount_usd    AS amount_usd_nominal, fe.amount_currency,
-        fe.award_id, fe.award_title, fe.program, fe.relation,
-        fe.source, fe.source_url, fe.retrieved_at, fe.confidence, fe.notes
-FROM funding_events fe
-JOIN funders    fu ON fu.funder_id  = fe.funder_id
-JOIN facilities f  ON f.facility_id = fe.facility_id;
-
-CREATE OR REPLACE VIEW v_facility_funding_by_year_real AS
-SELECT v.*,
-       CASE
-         WHEN cpi_yr.cpi_u IS NOT NULL AND cpi_anchor.cpi_u IS NOT NULL
-         THEN v.total_usd_nominal * (cpi_anchor.cpi_u / cpi_yr.cpi_u)
-         ELSE NULL
-       END AS total_usd_real_2024
-FROM v_facility_funding_by_year v
-LEFT JOIN cpi_index_us cpi_yr     ON cpi_yr.year     = v.fiscal_year
-LEFT JOIN cpi_index_us cpi_anchor ON cpi_anchor.year = 2024;
-"""
-
-
 def apply_schema(conn: duckdb.DuckDBPyConnection) -> None:
-    """Create the new tables if they don't exist and (re)create the views.
-    Does not touch any pre-existing table — safe to run against a
-    populated database."""
-    conn.execute(NEW_TABLES_DDL)
+    """Create the new tables if they don't exist and (re)create the views,
+    all from schema/schema.sql. Never drops or retypes a pre-existing
+    table — safe to run against a populated lake. schema.sql itself is
+    never executed against the lake (its PRIMARY KEYs would fail)."""
     # The funding_links VIEW creation must happen AFTER the legacy
     # funding_links table is renamed/dropped (caller handles that).
-    conn.execute(VIEWS_DDL)
+    for change in lto_db.ensure_schema(conn):
+        print(f"[schema] {change}")
     print("[schema] ensured funding_events + cpi_index_us + helper views")
 
 
@@ -190,57 +99,34 @@ def migrate_rows(conn: duckdb.DuckDBPyConnection) -> int:
         FROM _funding_links_legacy
     """).fetchall()
 
-    n = 0
-    for (funder_id, facility_id, amount_usd, fiscal_year, award_id,
-         relation, source_url) in rows:
-        eid = event_id(funder_id, facility_id, award_id, fiscal_year)
-        conn.execute("""
-            INSERT INTO funding_events (
-                event_id, funder_id, facility_id, amount_usd, fiscal_year,
-                award_id, relation, source_url, source, confidence
-            )
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-            ON CONFLICT (event_id) DO NOTHING
-        """, [eid, funder_id, facility_id, amount_usd, fiscal_year,
-              award_id, relation, source_url,
-              "legacy:funding_links", "medium"])
-        n += 1
+    # Stage once, then one insert-only MERGE (the old ON CONFLICT DO
+    # NOTHING): an event_id already in funding_events is left alone.
+    conn.execute("""
+        CREATE OR REPLACE TEMP TABLE _stage_legacy_events (
+            event_id VARCHAR, funder_id VARCHAR, facility_id VARCHAR,
+            amount_usd DOUBLE, fiscal_year INTEGER, award_id VARCHAR,
+            relation VARCHAR, source_url VARCHAR, source VARCHAR,
+            confidence VARCHAR, _seq INTEGER)
+    """)
+    conn.executemany(
+        "INSERT INTO _stage_legacy_events VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+        [(event_id(funder_id, facility_id, award_id, fiscal_year),
+          funder_id, facility_id, amount_usd, fiscal_year, award_id,
+          relation, source_url, "legacy:funding_links", "medium", i)
+         for i, (funder_id, facility_id, amount_usd, fiscal_year, award_id,
+                 relation, source_url) in enumerate(rows)])
+    if rows:
+        stats = lto_db.merge_upsert(conn, "funding_events", ["event_id"],
+                                    "_stage_legacy_events", insert_only=True,
+                                    order_by="_seq")
+        print(f"[migrate] merge: {stats}")
+    conn.execute("DROP TABLE _stage_legacy_events")
     conn.execute("DROP TABLE _funding_links_legacy")
-    return n
+    return len(rows)
 
 
-def export_parquet(conn: duckdb.DuckDBPyConnection) -> None:
-    """Re-export the tables the web app loads. We also re-export
-    `funding_links` (which is now a view) as a parquet so the existing
-    db.js keeps working without a schema refactor on the client."""
-    for base in PARQUET_OUT:
-        base.mkdir(parents=True, exist_ok=True)
-        for table in ("funding_events", "funders", "facilities"):
-            out = base / f"{table}.parquet"
-            conn.execute(f"COPY {table} TO '{out}' (FORMAT PARQUET)")
-            print(f"[parquet] wrote {out}")
-        # funding_links is a VIEW; COPY works on both tables and views.
-        out = base / "funding_links.parquet"
-        conn.execute(f"COPY funding_links TO '{out}' (FORMAT PARQUET)")
-        print(f"[parquet] wrote {out}")
-
-
-def main() -> int:
-    ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument("--db", type=Path, default=DEFAULT_DB,
-                    help="Path to lto.duckdb (default: db/lto.duckdb)")
-    ap.add_argument("--export-parquet", action="store_true",
-                    help="Re-export the funding_events/funders/facilities/"
-                         "funding_links parquet files under db/parquet/ "
-                         "and public/parquet/ after migration.")
-    args = ap.parse_args()
-
-    if not args.db.exists():
-        print(f"[error] database not found: {args.db}", file=sys.stderr)
-        return 2
-
-    conn = duckdb.connect(str(args.db))
-
+def _migrate(conn: duckdb.DuckDBPyConnection) -> int:
+    """Steps 1-3; returns the number of legacy rows copied."""
     # Step 1: if funding_links is still a real table (old schema), rename
     # it out of the way so schema.sql's CREATE VIEW doesn't complain.
     if table_exists(conn, "funding_links"):
@@ -248,11 +134,40 @@ def main() -> int:
         print("[migrate] renamed funding_links -> _funding_links_legacy")
 
     # Step 2: apply schema (defines funding_events, cpi_index_us, views,
-    # and the funding_links compatibility view).
-    apply_schema(conn)
+    # and the funding_links compatibility view). Skipped when all of it is
+    # already there, so an already-migrated lake gets no empty snapshot.
+    if (table_exists(conn, "_funding_links_legacy")
+            or not view_exists(conn, "funding_links")
+            or not table_exists(conn, "funding_events")
+            or not table_exists(conn, "cpi_index_us")):
+        apply_schema(conn)
+    else:
+        print("[schema] funding_events + cpi_index_us + funding_links view present")
 
     # Step 3: copy old rows -> new table.
-    n = migrate_rows(conn)
+    return migrate_rows(conn)
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser(description=__doc__)
+    lto_db.add_argparse_catalog(ap)
+    ap.add_argument("--db", dest="catalog", type=Path,
+                    help="deprecated alias of --catalog")
+    ap.add_argument("--export-parquet", action="store_true",
+                    help="Deprecated: publishing is export_parquet.py's job; "
+                         "this flag only prints that reminder.")
+    args = ap.parse_args()
+
+    try:
+        conn = lto_db.connect(catalog=args.catalog, data=args.lake_data)
+    except lto_db.LakeNotFound as e:
+        print(f"[error] {e}", file=sys.stderr)
+        return 2
+
+    with lto_db.transaction(conn, "migrate_funding_events: funding_links -> "
+                                  "funding_events + helper views"):
+        n = _migrate(conn)
+        lto_db.assert_integrity(conn, ["funding_events", "cpi_index_us"])
     if n:
         print(f"[migrate] copied {n} legacy rows into funding_events")
     else:
@@ -273,7 +188,8 @@ def main() -> int:
           f"funders={stats[4]}, year range=[{stats[5]}..{stats[6]}]")
 
     if args.export_parquet:
-        export_parquet(conn)
+        print("[parquet] --export-parquet is deprecated: run "
+              "scripts/export_parquet.py (and export_view_caches.py) to publish")
 
     conn.close()
     return 0

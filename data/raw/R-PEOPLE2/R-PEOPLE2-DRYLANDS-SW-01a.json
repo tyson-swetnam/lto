@@ -1,0 +1,812 @@
+{
+ "batch_id": "R-PEOPLE2-DRYLANDS-SW-01a",
+ "retrieved_at": "2026-10-22",
+ "verified_by": "adversarial-verifier 2026-10-22",
+ "facilities": [
+  {
+   "facility_id": "f84b3487ac36c0b1",
+   "pages_fetched": [
+    {
+     "url": "https://lternet.edu/site/central-arizona-phoenix-lter/",
+     "status": 200
+    },
+    {
+     "url": "https://globalfutures.asu.edu/caplter/",
+     "status": 200
+    },
+    {
+     "url": "https://globalfutures.asu.edu/caplter/team/",
+     "status": 200
+    },
+    {
+     "url": "https://globalfutures.asu.edu/caplter/about/",
+     "status": 200
+    },
+    {
+     "url": "https://globalfutures.asu.edu/caplter/publications/proposals/",
+     "status": 200
+    },
+    {
+     "url": "https://search.asu.edu/profile/856021",
+     "status": 200
+    },
+    {
+     "url": "https://sustainability-innovation.asu.edu/caplter/people/",
+     "status": 404
+    },
+    {
+     "url": "http://caplter.asu.edu/people/",
+     "status": 404
+    }
+   ],
+   "notes": "CAP site moved to globalfutures.asu.edu/caplter; old /people/ pages 404. Lead PI changed from Nancy Grimm to Becky Ball (program director). Grimm and Redman named on 1997 founding award; Childers first-listed on 2022 renewal and sits on CAPV Executive Committee. Existing Grimm homepage sols.asu.edu redirects to search.asu.edu/profile/71704."
+  },
+  {
+   "facility_id": "cd70593449cf3e0d",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/cper",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=1",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/lauren-hostert",
+     "status": 200
+    },
+    {
+     "url": "https://ltar.ars.usda.gov/sites/cper/",
+     "status": 200
+    },
+    {
+     "url": "https://www.ars.usda.gov/plains-area/fort-collins-co/center-for-agricultural-resources-research/rangeland-resources-systems-research/docs/rrsr/central-plains-experimental-research-location/",
+     "status": 200
+    },
+    {
+     "url": "https://www.ars.usda.gov/plains-area/fort-collins-co/center-for-agricultural-resources-research/rangeland-resources-systems-research/people/justin-derner/",
+     "status": 200
+    }
+   ],
+   "notes": "NEON D10 terrestrial site; site host USDA-ARS Central Plains Experimental Range (Rangeland Resources & Systems Research Unit). NEON Domain 10/13 support facility in Boulder. Domain manager from NEON staff directory. ARS CPER page names data manager Nicole Kaplan (not added). CPER LTAR leaders: Justin Derner (RL & Site Lead), Augustine, Blumenthal, Hoover, Porensky, Peck, Ma. [verifier] Derner row dropped: LTAR CPER page belongs to facility c6dacbae194cda38 (Central Plains Experimental Range LTAR), outside this batch."
+  },
+  {
+   "facility_id": "5617ed506cffb7ed",
+   "pages_fetched": [
+    {
+     "url": "https://lternet.edu/site/niwot-ridge-lter/",
+     "status": 200
+    },
+    {
+     "url": "https://nwt.lternet.edu/",
+     "status": 200
+    },
+    {
+     "url": "https://nwt.lternet.edu/our-team",
+     "status": 200
+    },
+    {
+     "url": "https://nwt.lternet.edu/alumni",
+     "status": 200
+    },
+    {
+     "url": "https://www.colorado.edu/ebio/nancy-emery",
+     "status": 200
+    },
+    {
+     "url": "https://www.colorado.edu/instaar/will-wieder",
+     "status": 200
+    },
+    {
+     "url": "https://www.ebgscience.org/",
+     "status": 200
+    },
+    {
+     "url": "https://nwt.lternet.edu/people",
+     "status": 404
+    },
+    {
+     "url": "https://www.colorado.edu/instaar/mark-williams",
+     "status": 404
+    }
+   ],
+   "notes": "Facility mirrors Niwot Ridge LTER leadership. NWT team page lists PI Emery and co-PIs Hinckley, Taylor, Spasojevic (UC Riverside), Wieder; staff incl. Project Coordinator Anne Marie Panetta. McKnight and Williams appear under Former Key Investigators; Jill Baron not on team or alumni pages. No founding-PI history page found. Existing Mark Williams homepage URL now 404. [verifier] McKnight/Williams alumni rows recorded as role=scientist, is_current=false."
+  },
+  {
+   "facility_id": "0a8234c4b0396842",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/niwo",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=1",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/lauren-hostert",
+     "status": 200
+    },
+    {
+     "url": "https://nwt.lternet.edu/our-team",
+     "status": 200
+    },
+    {
+     "url": "https://www.colorado.edu/lab/taylor/",
+     "status": 200
+    }
+   ],
+   "notes": "NEON D13 terrestrial site; site hosts University of Colorado Boulder (Mountain Research Station, INSTAAR) and Arapaho and Roosevelt National Forests & Pawnee National Grassland (USFS). Shares D10/13 domain office in Boulder. [verifier] Scott Taylor moved to NWT LTER (5617ed506cffb7ed) as co-PI; MRS directorship is not a NEON NIWO role."
+  },
+  {
+   "facility_id": "671c4cab3a1580d0",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/onaq",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/about/staff?page=1",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/amy-jacobs",
+     "status": 200
+    }
+   ],
+   "notes": "NEON D15 terrestrial site; site host BLM Salt Lake City Field Office. Domain 15 support facility in South Salt Lake City. No ORCID found for Amy Jacobs."
+  },
+  {
+   "facility_id": "cec881f4e0ea76bf",
+   "pages_fetched": [
+    {
+     "url": "https://www.ars.usda.gov/pacific-west-area/boise-id/northwest-watershed-research-center/",
+     "status": 200
+    },
+    {
+     "url": "https://ltar.ars.usda.gov/sites/gb/",
+     "status": 200
+    },
+    {
+     "url": "https://www.ars.usda.gov/pacific-west-area/docs/pacific-west-area-office-leadership-biographies/",
+     "status": 200
+    },
+    {
+     "url": "https://criticalzone.org/people/kathleen-lohse",
+     "status": 200
+    },
+    {
+     "url": "https://www.ars.usda.gov/people-locations/people-list/?modeCode=20-52-05-00",
+     "status": 200
+    },
+    {
+     "url": "https://ltar.ars.usda.gov/sites/rcew/",
+     "status": 404
+    },
+    {
+     "url": "https://www.isu.edu/biology/faculty-and-staff/faculty-listing/kathleen-lohse.html",
+     "status": 404
+    }
+   ],
+   "notes": "LTAR Great Basin site page lists leader Jason Williams; his ORCID record shows NWRC Research Leader since 2024. ARS NWRC staff list is loaded dynamically (no names in HTML). Fred Pierson listed today as ARS PWA Associate Director after 17 years as NWRC Research Leader. Lohse is Director of Reynolds Creek CZO (NSF), not an LTAR role; existing ISU homepage URL now 404. Seyfried: no current official page found to confirm emeritus status. [verifier] Lohse RC-CZO director row dropped (different entity); Lohse verification downgraded to unverifiable. GB LTAR page names RCEW/NWRC as the GB site, so Jason Williams stays on this facility."
+  }
+ ],
+ "people": [
+  {
+   "key": "becky-ball",
+   "existing_person_id": null,
+   "name": "Becky Ball",
+   "name_given": "Becky",
+   "name_family": "Ball",
+   "orcid": "0000-0001-8592-1316",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0001-8592-1316/employments",
+   "homepage_url": null,
+   "bio": "Professor in the School of Mathematical and Natural Sciences at Arizona State University since 2010; before that she held a postdoctoral position in environmental studies at Dartmouth College (2007-2010).",
+   "bio_source_url": "https://pub.orcid.org/v3.0/0000-0001-8592-1316/employments",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "kelli-larson",
+   "existing_person_id": null,
+   "name": "Kelli Larson",
+   "name_given": "Kelli",
+   "name_family": "Larson",
+   "orcid": "0000-0001-6558-2687",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0001-6558-2687/employments",
+   "homepage_url": "https://search.asu.edu/profile/856021",
+   "bio": "Human-environment geographer who joined Arizona State University in 2005 and is a professor in its School of Geographical Sciences and Urban Planning and School of Sustainability. Lead social scientist for the CAP LTER, director of the Phoenix Area Social Survey, and founding director of ASU's SURE undergraduate research program.",
+   "bio_source_url": "https://search.asu.edu/profile/856021",
+   "research_interests": "Human-environment geography; urban and landscape sustainability; environmental planning and management; public perceptions, attitudes and behaviors; residential gardening and human-wildlife interactions",
+   "research_interests_source_url": "https://search.asu.edu/profile/856021"
+  },
+  {
+   "key": "stevan-earl",
+   "existing_person_id": null,
+   "name": "Stevan Earl",
+   "name_given": "Stevan",
+   "name_family": "Earl",
+   "orcid": "0000-0002-4465-452X",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-4465-452X/employments",
+   "homepage_url": null,
+   "bio": "Data manager at Arizona State University (Knowledge Enterprise) since 2015.",
+   "bio_source_url": "https://pub.orcid.org/v3.0/0000-0002-4465-452X/employments",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "quincy-stewart",
+   "existing_person_id": null,
+   "name": "Quincy Stewart",
+   "name_given": "Quincy",
+   "name_family": "Stewart",
+   "orcid": "0000-0002-8117-8454",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-8117-8454/employments",
+   "homepage_url": null,
+   "bio": "Site manager for the Central Arizona-Phoenix LTER at Arizona State University since 2020.",
+   "bio_source_url": "https://pub.orcid.org/v3.0/0000-0002-8117-8454/employments",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "mark-watkins",
+   "existing_person_id": null,
+   "name": "Mark Watkins",
+   "name_given": "Mark",
+   "name_family": "Watkins",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "nancy-grimm",
+   "existing_person_id": "c1e26e84b048f9e8",
+   "name": "Nancy B. Grimm",
+   "name_given": "Nancy",
+   "name_family": "Grimm",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "nancy-emery",
+   "existing_person_id": null,
+   "name": "Nancy Emery",
+   "name_given": "Nancy",
+   "name_family": "Emery",
+   "orcid": "0000-0003-0278-514X",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0003-0278-514X/employments",
+   "homepage_url": "https://www.colorado.edu/ebio/nancy-emery",
+   "bio": "Evolutionary ecologist and professor at the University of Colorado Boulder; as lead principal investigator of the Niwot Ridge LTER she oversees the project, its staff, budget and annual NSF reporting. Her lab studies how plants adapt to and persist in variable, changing environments.",
+   "bio_source_url": "https://nwt.lternet.edu/our-team",
+   "research_interests": "Evolution of dispersal; habitat specialization; phenotypic plasticity in plants of variable environments; population, community and evolutionary ecology",
+   "research_interests_source_url": "https://www.colorado.edu/ebio/nancy-emery"
+  },
+  {
+   "key": "sarah-elmendorf",
+   "existing_person_id": null,
+   "name": "Sarah Elmendorf",
+   "name_given": "Sarah",
+   "name_family": "Elmendorf",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Information manager and quantitative ecologist for the Niwot Ridge LTER, overseeing data archiving and quality control and analysing long-term, multi-site data on climate-change impacts, especially phenology and alpine tundra plant communities.",
+   "bio_source_url": "https://nwt.lternet.edu/our-team",
+   "research_interests": "Phenology; tundra plant community ecology; ecological impacts of climate change; long-term and multi-site data analysis",
+   "research_interests_source_url": "https://nwt.lternet.edu/our-team"
+  },
+  {
+   "key": "eve-lyn-hinckley",
+   "existing_person_id": null,
+   "name": "Eve-Lyn Hinckley",
+   "name_given": "Eve-Lyn",
+   "name_family": "Hinckley",
+   "orcid": "0000-0002-7081-0530",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-7081-0530/employments",
+   "homepage_url": "https://www.ebgscience.org/",
+   "bio": "Interdisciplinary environmental scientist (biogeochemistry and hydrology) and associate professor at the University of Colorado Boulder; Niwot Ridge LTER co-PI who co-leads biogeochemical measurements and advises on long-term surface-water sampling. Studies how human activity alters flows of carbon, nutrients and water.",
+   "bio_source_url": "https://nwt.lternet.edu/our-team",
+   "research_interests": "Human alteration of carbon, nitrogen, sulfur and mercury cycles; water and nutrient fluxes; use-inspired biogeochemistry",
+   "research_interests_source_url": "https://www.ebgscience.org/"
+  },
+  {
+   "key": "will-wieder",
+   "existing_person_id": null,
+   "name": "Will Wieder",
+   "name_given": "Will",
+   "name_family": "Wieder",
+   "orcid": "0000-0001-7116-1985",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0001-7116-1985/employments",
+   "homepage_url": "https://www.colorado.edu/instaar/will-wieder",
+   "bio": "Ecosystem modeler and soil biogeochemist: research scientist at the University of Colorado Boulder and project scientist at the National Center for Atmospheric Research. Co-PI of the Niwot Ridge LTER, leading its integration and modeling work and bringing ecological insight into Earth system models.",
+   "bio_source_url": "https://nwt.lternet.edu/our-team",
+   "research_interests": "Soil biochemistry; Earth system modeling; tropical forest ecology; global biogeochemical cycles",
+   "research_interests_source_url": "https://www.colorado.edu/instaar/will-wieder"
+  },
+  {
+   "key": "jennifer-morse",
+   "existing_person_id": null,
+   "name": "Jennifer Morse",
+   "name_given": "Jennifer",
+   "name_family": "Morse",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Lead field technician and staff scientist for the Niwot Ridge LTER; runs collection of the site's climate and hydrology data, telemetry for its meteorological stations and sensor networks, and field logistics with the CU Mountain Research Station.",
+   "bio_source_url": "https://nwt.lternet.edu/our-team",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "diane-mcknight",
+   "existing_person_id": "7636b67be6a536db",
+   "name": "Diane M. McKnight",
+   "name_given": "Diane",
+   "name_family": "McKnight",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "mark-williams",
+   "existing_person_id": "517a62bbfa5de4f9",
+   "name": "Mark W. Williams",
+   "name_given": "Mark",
+   "name_family": "Williams",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "lauren-hostert",
+   "existing_person_id": null,
+   "name": "Lauren Hostert",
+   "name_given": "Lauren",
+   "name_family": "Hostert",
+   "orcid": "0000-0002-8085-4297",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-8085-4297/employments",
+   "homepage_url": "https://www.neonscience.org/person/lauren-hostert",
+   "bio": "Field science manager at the National Ecological Observatory Network since 2022. Earlier a stream ecologist (assistant scientist) with the Illinois Natural History Survey, University of Illinois (2018-2022), and a senior field ecologist in NEON's Domain 11 field operations (2014-2018).",
+   "bio_source_url": "https://pub.orcid.org/v3.0/0000-0002-8085-4297/employments",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "amy-jacobs",
+   "existing_person_id": null,
+   "name": "Amy Jacobs",
+   "name_given": "Amy",
+   "name_family": "Jacobs",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.neonscience.org/person/amy-jacobs",
+   "bio": "Manages NEON field operations in the Great Basin (D15) and Northern Rockies (D12) domains from Salt Lake City. Earlier career in oceanographic research on marine bacterioplankton and in leading coastal habitat restoration for the State of Florida; master's degree in biology (University of West Florida).",
+   "bio_source_url": "https://www.neonscience.org/person/amy-jacobs",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "scott-taylor",
+   "existing_person_id": null,
+   "name": "Scott Taylor",
+   "name_given": "Scott",
+   "name_family": "Taylor",
+   "orcid": "0000-0001-9580-9125",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0001-9580-9125/employments",
+   "homepage_url": "https://www.colorado.edu/lab/taylor/",
+   "bio": "Evolutionary biologist and ornithologist; professor at the University of Colorado Boulder and director of its Mountain Research Station. As a Niwot Ridge LTER co-PI he leads the long-term chickadee breeding study; his group uses hybrid zones to study the genetics of speciation.",
+   "bio_source_url": "https://nwt.lternet.edu/our-team",
+   "research_interests": "Hybrid zones and speciation; genetic basis of reproductive isolation; effects of climate change on species distributions and interactions",
+   "research_interests_source_url": "https://nwt.lternet.edu/our-team"
+  },
+  {
+   "key": "jason-williams",
+   "existing_person_id": null,
+   "name": "Jason Williams",
+   "name_given": "Jason",
+   "name_family": "Williams",
+   "orcid": "0000-0002-6289-4789",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-6289-4789/employments",
+   "homepage_url": null,
+   "bio": "USDA-ARS hydrologist: Research Leader and supervisory research hydrologist at the Northwest Watershed Research Center since 2024, after serving as a research hydrologist at the ARS Southwest Watershed Research Center (2016-2024) and, from 2006 to 2016, as a hydrologist at the Northwest Watershed Research Center.",
+   "bio_source_url": "https://pub.orcid.org/v3.0/0000-0002-6289-4789/employments",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "fred-pierson",
+   "existing_person_id": null,
+   "name": "Frederick (Fred) Pierson",
+   "name_given": "Frederick",
+   "name_family": "Pierson",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "USDA-ARS scientist, now an associate director of the ARS Pacific West Area, who previously spent 17 years as Research Leader of the Northwest Watershed Research Center. Known for rangeland ecohydrology research on juniper encroachment and fire effects on runoff and erosion, and for helping build the RHEM erosion model.",
+   "bio_source_url": "https://www.ars.usda.gov/pacific-west-area/docs/pacific-west-area-office-leadership-biographies/",
+   "research_interests": "Rangeland ecohydrology; fire effects on runoff and soil erosion; woodland (juniper) encroachment; rangeland conservation practices; Rangeland Hydrology and Erosion Model (RHEM)",
+   "research_interests_source_url": "https://www.ars.usda.gov/pacific-west-area/docs/pacific-west-area-office-leadership-biographies/"
+  },
+  {
+   "key": "kathleen-lohse",
+   "existing_person_id": "8b8b12abf5313165",
+   "name": "Kathleen A. Lohse",
+   "name_given": "Kathleen",
+   "name_family": "Lohse",
+   "orcid": "0000-0003-1779-6773",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0003-1779-6773/employments",
+   "homepage_url": "https://criticalzone.org/people/kathleen-lohse",
+   "bio": "Ecosystem scientist and professor at Idaho State University working where ecology, earth-system science and hydrology meet; director of the NSF Reynolds Creek Critical Zone Observatory since 2013, and now senior personnel or collaborator in the CZ Network geomicrobiology and drylands clusters.",
+   "bio_source_url": "https://criticalzone.org/people/kathleen-lohse",
+   "research_interests": "Ecosystem responses to human-driven change; critical zone science; biogeochemistry and hydrology",
+   "research_interests_source_url": "https://criticalzone.org/people/kathleen-lohse"
+  }
+ ],
+ "affiliations": [
+  {
+   "facility_id": "f84b3487ac36c0b1",
+   "person_key": "becky-ball",
+   "role": "lead-PI",
+   "title": "Program Director & Lead Principal Investigator, CAP LTER; Professor, ASU School of Mathematical and Natural Sciences",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/central-arizona-phoenix-lter/",
+   "evidence": "Lead Principal Investigator: Becky Ball",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "f84b3487ac36c0b1",
+   "person_key": "becky-ball",
+   "role": "director",
+   "title": "Program Director, CAP LTER",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://globalfutures.asu.edu/caplter/team/",
+   "evidence": "Program director Becky Ball Professor School of Mathematical and Natural Sciences",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "f84b3487ac36c0b1",
+   "person_key": "kelli-larson",
+   "role": "associate-director",
+   "title": "Associate Director, CAP LTER; Professor, ASU School of Geographical Sciences and Urban Planning",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://globalfutures.asu.edu/caplter/team/",
+   "evidence": "Associate director Kelli Larson Professor School of Geographical Sciences and Urban Planning",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "f84b3487ac36c0b1",
+   "person_key": "stevan-earl",
+   "role": "information-manager",
+   "title": "Information Manager / Research Data Manager, CAP LTER",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/central-arizona-phoenix-lter/",
+   "evidence": "Information Manager: Stevan Earl",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "f84b3487ac36c0b1",
+   "person_key": "quincy-stewart",
+   "role": "site-manager",
+   "title": "Research Analyst, CAP LTER Site Manager; Research/Site Coordinator (lternet.edu)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://globalfutures.asu.edu/caplter/team/",
+   "evidence": "Quincy Stewart Research Analyst, CAP LTER Site Mgr",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "f84b3487ac36c0b1",
+   "person_key": "mark-watkins",
+   "role": "manager",
+   "title": "Program Manager, CAP LTER",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://globalfutures.asu.edu/caplter/team/",
+   "evidence": "Mark Watkins Program Manager Central Arizona-Phoenix Long Term Ecological Research",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "f84b3487ac36c0b1",
+   "person_key": "nancy-grimm",
+   "role": "founding-PI",
+   "title": "Founding co-PI (1997 award, with C. Redman); Regents Professor, ASU School of Life Sciences",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": 1997,
+   "end_year": null,
+   "source_url": "https://globalfutures.asu.edu/caplter/publications/proposals/",
+   "evidence": "N. Grimm and C. Redman. National Science Foundation, LTER program. 1997.",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "f84b3487ac36c0b1",
+   "person_key": "nancy-grimm",
+   "role": "leadership-team",
+   "title": "CAPV Executive Committee member; Regents Professor, ASU School of Life Sciences",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://globalfutures.asu.edu/caplter/team/",
+   "evidence": "CAPV Executive Committee ... Nancy Grimm Regents Professor School of Life Sciences",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "5617ed506cffb7ed",
+   "person_key": "nancy-emery",
+   "role": "lead-PI",
+   "title": "Lead Principal Investigator, Niwot Ridge LTER; Professor, University of Colorado Boulder",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/niwot-ridge-lter/",
+   "evidence": "Lead Principal Investigator: Nancy Emery",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "5617ed506cffb7ed",
+   "person_key": "sarah-elmendorf",
+   "role": "information-manager",
+   "title": "Information Manager and Quantitative Ecologist, Niwot Ridge LTER",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://lternet.edu/site/niwot-ridge-lter/",
+   "evidence": "Information Manager: Sarah Elmendorf",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "5617ed506cffb7ed",
+   "person_key": "eve-lyn-hinckley",
+   "role": "co-PI",
+   "title": "Co-PI (biogeochemistry), Niwot Ridge LTER; Associate Professor, University of Colorado Boulder",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://nwt.lternet.edu/our-team",
+   "evidence": "Eve-Lyn Hinckley Co-PI, Ecosystem Biogeochemist",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "5617ed506cffb7ed",
+   "person_key": "will-wieder",
+   "role": "co-PI",
+   "title": "Co-PI (integration and modeling), Niwot Ridge LTER; Project Scientist, NCAR",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://nwt.lternet.edu/our-team",
+   "evidence": "Will Wieder Co-PI, Ecosystem Modeler and Soil Biogeochemist",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "5617ed506cffb7ed",
+   "person_key": "jennifer-morse",
+   "role": "technical-staff",
+   "title": "Lead Field Technician and Staff Scientist (climate, hydrology, met stations and sensor networks), Niwot Ridge LTER",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://nwt.lternet.edu/our-team",
+   "evidence": "Jennifer Morse Lead Field Technician and Staff Scientist",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "5617ed506cffb7ed",
+   "person_key": "diane-mcknight",
+   "role": "scientist",
+   "title": "Former Key Investigator, Niwot Ridge LTER; INSTAAR, University of Colorado Boulder",
+   "is_key_personnel": false,
+   "is_current": false,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://nwt.lternet.edu/alumni",
+   "evidence": "Former Key Investigators ... Diane McKnight Institute of Arctic and Alpine Research",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "5617ed506cffb7ed",
+   "person_key": "mark-williams",
+   "role": "scientist",
+   "title": "Former Key Investigator, Niwot Ridge LTER; Department of Geography, University of Colorado Boulder",
+   "is_key_personnel": false,
+   "is_current": false,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://nwt.lternet.edu/alumni",
+   "evidence": "Mark Williams Department of Geography University of Colorado, Boulder",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "cd70593449cf3e0d",
+   "person_key": "lauren-hostert",
+   "role": "domain-manager",
+   "title": "NEON Field Science Manager, D10: Central Plains; D13: Southern Rockies and Colorado Plateau",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/about/staff?page=1",
+   "evidence": "Lauren Hostert Manager, D10: Central Plains; D13: Southern Rockies and Colorado Plateau Field Science",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "0a8234c4b0396842",
+   "person_key": "lauren-hostert",
+   "role": "domain-manager",
+   "title": "NEON Field Science Manager, D10: Central Plains; D13: Southern Rockies and Colorado Plateau",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/about/staff?page=1",
+   "evidence": "Lauren Hostert Manager, D10: Central Plains; D13: Southern Rockies and Colorado Plateau Field Science",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "5617ed506cffb7ed",
+   "person_key": "scott-taylor",
+   "role": "co-PI",
+   "title": "Co-PI (long-term chickadee breeding data), Niwot Ridge LTER; Professor, University of Colorado Boulder; Director, Mountain Research Station",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://nwt.lternet.edu/our-team",
+   "evidence": "Scott Taylor Co-PI , Evolutionary Biologist and Ornithologist",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "671c4cab3a1580d0",
+   "person_key": "amy-jacobs",
+   "role": "domain-manager",
+   "title": "NEON Field Science Manager, D12: Northern Rockies; D15: Great Basin",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.neonscience.org/about/staff?page=1",
+   "evidence": "Amy Jacobs Manager, D12: Northern Rockies; D15: Great Basin Field Science",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "cec881f4e0ea76bf",
+   "person_key": "jason-williams",
+   "role": "lead-PI",
+   "title": "LTAR Great Basin (Reynolds Creek) site leader; Research Leader & Supervisory Research Hydrologist, USDA-ARS Northwest Watershed Research Center",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://ltar.ars.usda.gov/sites/gb/",
+   "evidence": "Reynolds Creek Experimental Watershed is 239 km2 ... Leader(s) Jason Williams",
+   "confidence": "high"
+  },
+  {
+   "facility_id": "cec881f4e0ea76bf",
+   "person_key": "fred-pierson",
+   "role": "former-director",
+   "title": "Former Research Leader, USDA-ARS Northwest Watershed Research Center (17 years); now Associate Director, ARS Pacific West Area",
+   "is_key_personnel": false,
+   "is_current": false,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.ars.usda.gov/pacific-west-area/docs/pacific-west-area-office-leadership-biographies/",
+   "evidence": "including 17 years as Research Leader of the ARS Northwest Watershed Research Center",
+   "confidence": "medium"
+  }
+ ],
+ "verifications": [
+  {
+   "facility_id": "f84b3487ac36c0b1",
+   "person_id": "c1e26e84b048f9e8",
+   "existing_role": "lead-PI",
+   "status": "stale",
+   "current_holder_key": "becky-ball",
+   "source_url": "https://lternet.edu/site/central-arizona-phoenix-lter/",
+   "evidence": "Lead Principal Investigator: Becky Ball"
+  },
+  {
+   "facility_id": "f84b3487ac36c0b1",
+   "person_id": "b099a3abf6df7fd4",
+   "existing_role": "founding-PI",
+   "status": "confirmed",
+   "current_holder_key": null,
+   "source_url": "https://globalfutures.asu.edu/caplter/publications/proposals/",
+   "evidence": "N. Grimm and C. Redman. National Science Foundation, LTER program. 1997."
+  },
+  {
+   "facility_id": "f84b3487ac36c0b1",
+   "person_id": "9e1ff713b34bfd02",
+   "existing_role": "co-PI",
+   "status": "confirmed",
+   "current_holder_key": null,
+   "source_url": "https://globalfutures.asu.edu/caplter/publications/proposals/",
+   "evidence": "D. L. Childers, B. Ball, K. Larson, B. L. Turner, and N.B. Grimm. National Science Foundation LTER Program, 2022."
+  },
+  {
+   "facility_id": "5617ed506cffb7ed",
+   "person_id": "7636b67be6a536db",
+   "existing_role": "co-PI",
+   "status": "stale",
+   "current_holder_key": null,
+   "source_url": "https://nwt.lternet.edu/alumni",
+   "evidence": "Former Key Investigators ... Diane McKnight Institute of Arctic and Alpine Research"
+  },
+  {
+   "facility_id": "5617ed506cffb7ed",
+   "person_id": "7642e53f0e8ae7d2",
+   "existing_role": "co-PI",
+   "status": "not-found",
+   "current_holder_key": null,
+   "source_url": "https://nwt.lternet.edu/our-team",
+   "evidence": null
+  },
+  {
+   "facility_id": "5617ed506cffb7ed",
+   "person_id": "517a62bbfa5de4f9",
+   "existing_role": "emeritus",
+   "status": "confirmed",
+   "current_holder_key": null,
+   "source_url": "https://nwt.lternet.edu/alumni",
+   "evidence": "Former Key Investigators ... Mark Williams Department of Geography University of Colorado, Boulder"
+  },
+  {
+   "facility_id": "cec881f4e0ea76bf",
+   "person_id": "8b8b12abf5313165",
+   "existing_role": "co-PI",
+   "status": "unverifiable",
+   "current_holder_key": null,
+   "source_url": "https://criticalzone.org/people/kathleen-lohse",
+   "evidence": null
+  },
+  {
+   "facility_id": "cec881f4e0ea76bf",
+   "person_id": "22bc4f4a9ca43e24",
+   "existing_role": "emeritus",
+   "status": "unverifiable",
+   "current_holder_key": null,
+   "source_url": null,
+   "evidence": null
+  }
+ ]
+}

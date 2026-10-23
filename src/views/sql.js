@@ -236,8 +236,7 @@ SELECT facility_acronym,
        role,
        title,
        orcid,
-       homepage_url,
-       email
+       homepage_url
 FROM   v_facility_key_personnel
 ORDER  BY facility, role, name;`,
   },
@@ -328,15 +327,33 @@ function escHtml(s) {
 // Convert a DuckDB-Wasm Arrow RecordBatch-backed Table to a simple
 // array of plain JS objects. Delegates to unwrapRow (db.js) which
 // handles BigInts, Arrow Vectors (LIST<STRUCT>), and nested structs.
-// Date stringification is added on top here since the SQL view renders
-// dates verbatim in the result table.
+// DATE and TIMESTAMP columns arrive from DuckDB-Wasm as epoch
+// milliseconds (plain numbers, never Date objects), so they are
+// formatted here from the Arrow schema: a DATE as YYYY-MM-DD, a
+// TIMESTAMP as YYYY-MM-DD HH:MM:SS (UTC when the column has a zone).
+const ARROW_DATE = 8;        // apache-arrow Type.Date
+const ARROW_TIMESTAMP = 10;  // apache-arrow Type.Timestamp
+function fmtTemporal(v, type) {
+  const n = typeof v === 'bigint' ? Number(v) : v;
+  if (typeof n !== 'number' || !Number.isFinite(n)) return v;
+  const d = new Date(n);
+  if (Number.isNaN(d.getTime())) return v;
+  const iso = d.toISOString();
+  if (type.typeId === ARROW_DATE) return iso.slice(0, 10);
+  const t = iso.slice(0, 19).replace('T', ' ') + (iso.slice(19, 23) === '.000' ? '' : iso.slice(19, 23));
+  return type.timezone ? `${t} UTC` : t;
+}
 function resultToRows(result) {
+  const temporal = (result.schema?.fields || [])
+    .filter((f) => f.type && (f.type.typeId === ARROW_DATE || f.type.typeId === ARROW_TIMESTAMP))
+    .map((f) => [f.name, f.type]);
   return result.toArray().map((row) => {
     const o = unwrapRow(row.toJSON());
+    for (const [k, type] of temporal) {
+      if (o[k] != null) o[k] = fmtTemporal(o[k], type);
+    }
     for (const k of Object.keys(o)) {
-      if (o[k] instanceof Date) {
-        o[k] = o[k].toISOString();
-      }
+      if (o[k] instanceof Date) o[k] = o[k].toISOString();
     }
     return o;
   });
@@ -349,7 +366,9 @@ function renderTable(rows) {
   const body = rows.slice(0, 500).map((r) =>
     `<tr>${cols.map((c) => {
       const v = r[c];
-      const display = v == null ? '' : typeof v === 'object' ? JSON.stringify(v) : String(v);
+      // NULL is shown as such, so it can be told apart from an empty string.
+      if (v == null) return '<td class="sql-null">NULL</td>';
+      const display = typeof v === 'object' ? JSON.stringify(v) : String(v);
       const num = typeof v === 'number' ? ' class="num"' : '';
       return `<td${num}>${escHtml(display)}</td>`;
     }).join('')}</tr>`,

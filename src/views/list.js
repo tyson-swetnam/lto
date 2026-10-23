@@ -19,6 +19,7 @@
 import { getConn, query, unwrapRow, whenReady } from '../db.js';
 import { TYPE_COLORS } from '../map.js';
 import { DATA_BASE } from '../config.js';
+import { loadRoleLabels, roleLabel } from '../roles.js';
 
 let _container = null;
 let _features = [];
@@ -138,6 +139,20 @@ async function fetchEnrichedFacilities(ids) {
   if (!cleanIds.length) return [];
   const inList = cleanIds.map((s) => `'${s}'`).join(',');
 
+  // facility_personnel.is_current arrived with the R-PEOPLE2 wave; a parquet
+  // exported before it lacks the column, so select a typed NULL instead of
+  // failing the whole query. Row shape is the same either way.
+  let hasIsCurrent = false;
+  try {
+    const r = await conn.query(
+      `SELECT count(*) AS n FROM information_schema.columns
+       WHERE table_name = 'facility_personnel' AND column_name = 'is_current'`);
+    hasIsCurrent = Number(r.toArray()[0].toJSON().n) > 0;
+  } catch (_) { /* assume absent */ }
+  const isCurrent = hasIsCurrent ? 'fp.is_current' : 'CAST(NULL AS BOOLEAN)';
+
+  // Mirrors BROWSE_SQL in scripts/export_view_caches.py (plus the id
+  // filter): same columns, same list ordering, list_sum for the total.
   const sql = `
     WITH base AS (
       SELECT f.facility_id        AS id,
@@ -155,10 +170,10 @@ async function fetchEnrichedFacilities(ids) {
              f.record_length_years,
              f.long_term_threshold_met,
              f.data_portal_url,
-             (SELECT sphere_slug FROM facility_spheres
-              WHERE facility_id = f.facility_id AND role = 'primary'
-              LIMIT 1)            AS primary_sphere,
-             (SELECT list(sphere_slug) FROM facility_spheres
+             (SELECT min(sphere_slug) FROM facility_spheres
+              WHERE facility_id = f.facility_id AND role = 'primary')
+                                  AS primary_sphere,
+             (SELECT list(sphere_slug ORDER BY sphere_slug) FROM facility_spheres
               WHERE facility_id = f.facility_id AND role = 'secondary')
                                   AS secondary_spheres
       FROM facilities f
@@ -166,8 +181,8 @@ async function fetchEnrichedFacilities(ids) {
     ),
     nets AS (
       SELECT nm.facility_id,
-             list(struct_pack(slug := n.network_id, label := n.label, url := n.url))
-                                  AS networks
+             list(struct_pack(slug := n.network_id, label := n.label, url := n.url)
+                  ORDER BY n.network_id) AS networks
       FROM network_membership nm
       JOIN networks n ON n.network_id = nm.network_id
       GROUP BY nm.facility_id
@@ -181,7 +196,7 @@ async function fetchEnrichedFacilities(ids) {
                base_url   := da.base_url,
                scope_url  := fa.scope_url,
                sample_doi := fa.sample_doi
-             ) ORDER BY da.name) AS archive_list
+             ) ORDER BY da.name, fa.archive_id, fa.scope_url) AS archive_list
       FROM facility_archives fa
       LEFT JOIN data_archives da ON da.archive_id = fa.archive_id
       GROUP BY fa.facility_id
@@ -201,8 +216,12 @@ async function fetchEnrichedFacilities(ids) {
                orcid     := p.orcid,
                openalex  := p.openalex_id,
                homepage  := p.homepage_url,
-               is_key    := fp.is_key_personnel
-             ) ORDER BY fp.is_key_personnel DESC, fp.role) AS personnel_list
+               is_key    := fp.is_key_personnel,
+               is_current := ${isCurrent}
+             ) ORDER BY (${isCurrent} IS NOT FALSE
+                         AND (fp.end_date IS NULL OR fp.end_date > current_date)) DESC,
+                        CASE fp.role WHEN 'lead-PI' THEN 0 WHEN 'PI' THEN 0 WHEN 'director' THEN 1 WHEN 'executive-officer' THEN 1 WHEN 'superintendent' THEN 1 WHEN 'leader' THEN 1 WHEN 'manager' THEN 2 WHEN 'site-manager' THEN 2 WHEN 'domain-manager' THEN 2 WHEN 'deputy-director' THEN 3 WHEN 'associate-director' THEN 4 WHEN 'co-PI' THEN 5 WHEN 'co-leader' THEN 5 WHEN 'leadership-team' THEN 6 ELSE 9 END, fp.is_key_personnel DESC, fp.role, fp.person_id, fp.title)
+                                  AS personnel_list
       FROM facility_personnel fp
       JOIN people p ON p.person_id = fp.person_id
       GROUP BY fp.facility_id
@@ -217,16 +236,24 @@ async function fetchEnrichedFacilities(ids) {
     funding AS (
       SELECT fe.facility_id,
              count(*) AS n_funding,
-             sum(coalesce(fe.amount_usd, 0)) AS total_funding,
+             list_sum(list(coalesce(fe.amount_usd, 0) ORDER BY fe.event_id))
+                                         AS total_funding,
              list(struct_pack(
                funder := fr.name,
                program := fe.program,
                amount := fe.amount_usd,
                fy := fe.fiscal_year
-             ) ORDER BY coalesce(fe.amount_usd, 0) DESC) AS funding_list
+             ) ORDER BY coalesce(fe.amount_usd, 0) DESC, fe.fiscal_year DESC,
+                        fr.name, fe.program, fe.event_id) AS funding_list
       FROM funding_events fe
       JOIN funders fr ON fr.funder_id = fe.funder_id
       GROUP BY fe.facility_id
+    ),
+    areas AS (
+      SELECT al.facility_id, list(DISTINCT ra.label ORDER BY ra.label) AS research_areas
+      FROM area_links al
+      JOIN research_areas ra ON ra.area_id = al.area_id
+      GROUP BY al.facility_id
     )
     SELECT b.*,
            coalesce(n.networks, [])                  AS networks,
@@ -238,7 +265,8 @@ async function fetchEnrichedFacilities(ids) {
            coalesce(pu.n_pubs, 0)                    AS n_pubs,
            coalesce(fu.n_funding, 0)                 AS n_funding,
            coalesce(fu.total_funding, 0)             AS total_funding,
-           coalesce(fu.funding_list, [])             AS funding_list
+           coalesce(fu.funding_list, [])             AS funding_list,
+           coalesce(ar.research_areas, [])           AS research_areas
     FROM base b
     LEFT JOIN nets      n  ON n.facility_id  = b.id
     LEFT JOIN archives  a  ON a.facility_id  = b.id
@@ -246,6 +274,8 @@ async function fetchEnrichedFacilities(ids) {
     LEFT JOIN personnel pe ON pe.facility_id = b.id
     LEFT JOIN pubs      pu ON pu.facility_id = b.id
     LEFT JOIN funding   fu ON fu.facility_id = b.id
+    LEFT JOIN areas     ar ON ar.facility_id = b.id
+    ORDER BY b.id
   `;
 
   const r = await conn.query(sql);
@@ -316,7 +346,9 @@ function sphereChip(slug) {
 }
 
 function metricCell(value, label) {
-  return `<span class="brw-metric"><strong>${value}</strong><br>${label}</span>`;
+  // <strong> is display:block (styles.css), so no <br>: one would add a
+  // blank line between each value and its label.
+  return `<span class="brw-metric"><strong>${value}</strong>${label}</span>`;
 }
 
 // Long-record tier badge. Picks the highest qualifying tier from
@@ -343,8 +375,30 @@ function cardHtml(f) {
   const archives = (f.archive_list || []).slice(0, 3);
   const moreArchives = (f.archive_list || []).length - archives.length;
 
-  const personnel = (f.personnel_list || []).slice(0, 3);
-  const morePersonnel = (f.personnel_list || []).length - personnel.length;
+  // One entry per person, their roles merged (someone who is both co-PI
+  // and director is one person, as n_personnel counts them). Order is the
+  // SQL's: current before superseded, then lead PI / director / manager /
+  // co-PI. Superseded holders (is_current = false) go last; the stable
+  // sort covers a cache that predates that ordering.
+  const byPerson = new Map();
+  for (const p of (f.personnel_list || [])) {
+    const k = p.person_id || p.name;
+    if (!byPerson.has(k)) byPerson.set(k, { ...p, roles: [], titles: [] });
+    const g = byPerson.get(k);
+    if (p.role && !g.roles.some((r) => r.role === p.role)) {
+      g.roles.push({ role: p.role, former: p.is_current === false });
+    }
+    if (p.title && !g.titles.includes(p.title)) g.titles.push(p.title);
+  }
+  const people = [...byPerson.values()].map((g) => ({
+    ...g, allFormer: g.roles.length > 0 && g.roles.every((r) => r.former),
+  }));
+  const personnel = people
+    .map((p, i) => ({ p, i }))
+    .sort((x, y) => (x.p.allFormer - y.p.allFormer) || (x.i - y.i))
+    .map(({ p }) => p)
+    .slice(0, 3);
+  const morePersonnel = people.length - personnel.length;
 
   const funding = (f.funding_list || []).filter((x) => x && x.amount).slice(0, 3);
 
@@ -430,9 +484,12 @@ function cardHtml(f) {
                : label;
              const orcid = (p.orcid && primary !== orcidUrl)
                ? ` <a href="${esc(orcidUrl)}" target="_blank" rel="noopener" title="ORCID">⚙</a>` : '';
+             const roles = p.roles.map((r) => esc(roleLabel(r.role))
+               + (r.former && !p.allFormer ? ' <small>(former)</small>' : '')).join(' · ');
              return `<li>
-               <strong>${esc(p.role || '')}</strong> ${home}${orcid}
-               ${p.title ? `<br><small>${esc(p.title)}</small>` : ''}
+               <strong>${roles}</strong> ${home}${orcid}${p.allFormer
+                 ? ' <span class="ppl-tag ppl-tag-former">former</span>' : ''}
+               ${p.titles.length ? `<br><small>${esc(p.titles.join('; '))}</small>` : ''}
              </li>`;
            }).join('')}
            ${morePersonnel > 0 ? `<li class="brw-more">+${morePersonnel} more</li>` : ''}
@@ -585,7 +642,7 @@ export function renderList(features) {
     <div class="brw-loading">Loading rich facility data…</div>`;
 
   if (_enrichInflight) _enrichInflight = null; // discard prior promise's resolution
-  const promise = fetchEnrichedFacilities(ids).then((rows) => {
+  const promise = Promise.all([fetchEnrichedFacilities(ids), loadRoleLabels()]).then(([rows]) => {
     if (_enrichInflight !== promise) return; // a newer call started; bail
     rows._cacheKey = cacheKey;
     _enriched = rows;
