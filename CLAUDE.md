@@ -74,6 +74,17 @@ The catalogue is national, but the site opens on New Mexico and the Southwest dr
 - **Arizona Water Observatory** — `fetch_az_water_observatory.py` → `data/raw/J-AZWATER/*.json` → `load_lto_archives.py`. One archive (`arizona-water-observatory`) and one product per OGC API collection, built from the API's `/collections` document alone. Pointers only, like EnviroData-NM; `POINTER_ARCHIVES` in `qa.py` holds the host each archive's links must stay on.
 - Everything in this layer is fetched or cites a fetched page. Do not fill it from model recall.
 
+## MESA project on the CyVerse Data Store
+
+The published copy of the lake lives at `/iplant/home/tswetnam/lto`, an enrolled MESA project (`mesa.enabled=true`; AVU history as `snapshot_<id>.parquet` under `.mesa/ducklake/`). `scripts/publish_to_mesa.py` is the only way content gets there; read its docstring before publishing.
+
+- **Publish from a clean `main`.** `--dry-run` stages to `.mesa_publish/` and writes `.mesa_publish_avus.json` without uploading. The upload itself needs `gocmd`; mesa-mcp's `ds_upload_file` only returns instructions.
+- **Metadata goes through mesa-mcp, never `imeta`.** Only writes made through mesa-mcp are mirrored into the project's DuckLake history. One `ds_add_avus` call is one snapshot, so batch per target.
+- **iRODS adds AVUs, it never replaces them.** Delete a superseded value (`ds_delete_avu`, by attribute and exact value) before adding its replacement. The root carries one DataCite record (canonical `datacite.*` names plus the CyVerse-template names such as `Description` and `Subject`; the mixed-case pairs are intentional), seven `envo.*` sphere terms, and one current `lto.publish.*` stamp.
+- **Table AVUs are the stable facts only** (`lto.table.name`, `.description`, `.kind`, `.generator`, `.columns`), sourced from `schema/table_descriptions.csv`. Row counts and checksums go in `TABLES.json` / `MANIFEST.json`. A new table needs a row in that CSV or the publish preflight fails.
+- **Keep AVU values under ~400 characters.** Values near 900 characters lost the server response through mesa-mcp: the write landed but was not mirrored to DuckLake.
+- **The DuckLake catalog is per machine** (`~/.mesa/ducklake/catalog.duckdb`). On a machine where the project is not yet registered, run `mesa_ducklake_init_project` once (idempotent) before writing AVUs, or the writes are not recorded.
+
 ## Domain model
 
 Facilities are classified along the LTO **six-sphere** model (`spheres`, `facility_spheres` with a `primary` role): atmosphere, cryosphere, terrestrial/ecological, agriculture, aquatic-ocean/estuarine, aquatic-freshwater. Orthogonal facets are `ecosystem_types` and `life_zones` (via `facility_ecosystems` / `facility_life_zones`). The default inclusion gate is the Peters et al. 2013 long-term threshold (≥10 years of record) — `facilities.record_length_years` and `long_term_threshold_met`, surfaced as the "≥10y" filter. `docs/data-model.md` and `docs/spheres.md` are the human-facing writeups.
