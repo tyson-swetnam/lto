@@ -31,7 +31,7 @@ Wave F  R-PEOPLE-* + R-PEOPLE-LOOP2-* people pass (from recall)
 Wave J  J-DATA data archives, products, APIs, buckets (from recall)
 ARID    R-ARID, J-ENVIRODATA, J-AZWATER           (fetched, 2026-10-09)
 People  R-PEOPLE2 + R-PEOPLE2-BIO                 (fetched + verified, 2026-10-22)
-Enrich  ORCID-keyed OpenAlex pass                 (partial, 2026-10-23)
+Enrich  two ORCID-keyed OpenAlex passes           (complete, 2026-10-23)
 Weekly  data refresh (Sun) + URL-health sweep (Mon), each opens a PR
 ```
 
@@ -165,24 +165,30 @@ For the people side:
   is empty (or holds an earlier OpenAlex-generated list) and never
   overwrites a curated value.
 - **Rejected pairs stay rejected.** A `cleared-*` row in the ORCID log
-  (78 as of 2026-10-23: 68 dead iDs, 10 belonging to someone else)
+  (79 as of 2026-10-24: 68 dead iDs, 11 belonging to someone else)
   blocks that (person, ORCID) pair, and `qa.py` fails if a
   cleared-as-wrong ORCID comes back. Removed (person, OpenAlex id) pairs
   are listed in `scripts/wipe_misattributed_identifiers.py`, and the
   OpenAlex script will not attach them again.
-- **New attributions are reviewed.** In the 2026-10-23 OpenAlex pass,
+- **New attributions are reviewed.** In both OpenAlex passes,
   every new or changed attribution was checked against the OpenAlex
   author record, and disputed ones got a second, independent review. An
   id was removed when the reviewers judged it wrong or a merge of
   several people. The decisions are in
-  `data/seed/openalex_attribution_review_2026-10-23.csv` (106 rows: 103
-  attributions from this pass and 3 earlier misattributions found
-  during it; 97 kept, 2 kept but disputed, 7 removed, of which 2 had
-  both reviewers voting "wrong"). That pass is partial: the
-  OpenAlex daily credit ran out after 378 of 1,302 people.
+  `data/seed/openalex_attribution_review_2026-10-23.csv` (pass 1, 106
+  rows: 103 attributions from that pass and 3 earlier misattributions
+  found during it; 97 kept, 2 kept but disputed, 7 removed, of which 2
+  had both reviewers voting "wrong") and
+  `data/seed/openalex_attribution_review_2026-10-24.csv` (pass 2, 232
+  rows: 225 kept, 3 kept but disputed, 4 removed, all 4 with both
+  reviewers voting "wrong"). Pass 1 stopped after 378 of 1,302 people
+  when the OpenAlex daily credit ran out; pass 2 processed the other 924,
+  so every person in the queue has been through OpenAlex. Of those 924,
+  407 resolved; 478 have neither an ORCID nor an OpenAlex id and 39 have
+  an ORCID that OpenAlex does not know, so this method cannot reach them.
 - The enrichment scripts are run by hand, following `RUNBOOK.md`. No CI
-  workflow runs them. As of 2026-10-23, 612 of 1,305 people have an
-  ORCID and 333 an OpenAlex id.
+  workflow runs them. As of 2026-10-24, 611 of 1,305 people have an
+  ORCID and 560 an OpenAlex id.
 
 ## Weekly loops
 

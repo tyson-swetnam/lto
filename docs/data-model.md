@@ -128,15 +128,15 @@ R-PEOPLE2 wave.
 | `person_areas` | `(person_id, area_id, weight, evidence_count, source)`. |
 | `collaborations` | Person-pair edges derived from co-authorship (`person_a_id`, `person_b_id`, `co_pub_count`, `first_year`, `last_year`, `strength`). |
 
-As of 2026-10-23, 37,519 of the 38,239 publications were retrieved from
+As of 2026-10-24, 63,511 of the 64,231 publications were retrieved from
 OpenAlex (August to October 2026). The other 720 are older records
 labelled as training-data recall in `source`. `person_areas` and
 `collaborations` are recomputed by the `compute_*` scripts. A person's
 areas come from two sources that sit side by side: the areas of their
 facilities (source `facility-area-inheritance`) and, for people with
 enough OpenAlex-tagged publications, areas derived from those topics
-(source `openalex_topics`). As of 2026-10-23, 521 people have inherited
-areas, 296 have topic-derived areas, and 189 have both (628 people in
+(source `openalex_topics`). As of 2026-10-24, 521 people have inherited
+areas, 556 have topic-derived areas, and 279 have both (798 people in
 all). See [Methods](./methods.md) for how
 identifiers are matched.
 
@@ -155,10 +155,10 @@ one, so a field and its source arrive together or not at all.
 | a `facility_personnel` row | `source_url`, plus `evidence`, a short quote from that page | `retrieved_at` |
 
 Values written before that rule, or by the enrichment scripts, may lack
-a source column. As of 2026-10-23 all 780 bios carry `bio_source_url`.
-552 of the 921 research-interest lines carry a source; when the OpenAlex
-pass fills one, the source is the author's OpenAlex page. 373 of the 612
-stored ORCID iDs carry `orcid_source_url`.
+a source column. As of 2026-10-24 all 780 bios carry `bio_source_url`.
+650 of the 974 research-interest lines carry a source; when the OpenAlex
+pass fills one, the source is the author's OpenAlex page (98 lines). 373
+of the 611 stored ORCID iDs carry `orcid_source_url`.
 
 - **Bios** paraphrase the cited page in 60 words or fewer. They contain no
   email address, phone number or photo, and no run of 8 or more words is
