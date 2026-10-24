@@ -89,13 +89,15 @@ Identifiers and publications come from two open APIs:
   matches and either a fetched profile or an employment at the right
   institution confirms it, or, for people with no facility on file, the
   name resolves to exactly one ORCID record. A wrong ORCID is worse than a missing one, so
-  unmatched people stay blank (612 of 1,305 people carry one as of
-  2026-10-23).
+  unmatched people stay blank (611 of 1,305 people carry one as of
+  2026-10-24).
 - **OpenAlex** — <https://api.openalex.org/> — publications, citations
   and topics. People are matched only through their ORCID or a stored
-  OpenAlex id, never by name search. The first pass is partial: as of
-  2026-10-23 it had processed 378 of the 1,302 people then in the catalogue, and 333 people carry
-  an OpenAlex id. Every new attribution was reviewed.
+  OpenAlex id, never by name search. Two passes have processed all 1,302
+  people in the queue, and as of 2026-10-24 560 people carry an OpenAlex
+  id. The other people cannot be matched this way because they have no
+  ORCID or OpenAlex id, or an ORCID OpenAlex does not know. Every new
+  attribution was reviewed.
 
 From all of these we store identifiers, links and short paraphrases, not
 copied page text.
