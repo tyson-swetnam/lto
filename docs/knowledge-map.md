@@ -2,6 +2,8 @@
 
 The **Network** tab (`#/network`) draws the catalogue as a map of research areas. Each polygon is one research area. Inside it, smaller cells are the institutions (facilities) that work in that area, and dots are the researchers attached to them. This page describes how big each region is, what the first view shows, and when names appear. The code is `src/views/network.js`.
 
+As of 2026-10-23 the map's data holds 53 regions (the active research areas that carry any weight; 30 more carry none and are left out), with 433 institutions and 1,225 researchers assigned to them. Which region each institution and researcher belongs to was last recomputed on 2026-10-23, after a partial OpenAlex publication pass.
+
 ## What sizes a region
 
 A region's area is proportional to a **data-and-people weight**:
@@ -13,7 +15,7 @@ weight = organisations
        + 0.35 × researchers anchored in the region
 ```
 
-It is not the raw facility count. About a third of the catalogued facilities are place-type monitoring installations: protected areas, flux towers, streamgage networks, experimental forests. A raw count measures how much of the catalogue falls in an area, not how much observatory capacity it has.
+It is not the raw facility count. As of 2026-10-23, 158 of the 456 catalogued facilities (about a third) are place-type monitoring installations: protected areas (18), flux towers (27), streamgage networks (39), experimental forests and ranges (40), LTAR sites (19), atmospheric baseline observatories (10) and glacier-monitoring sites (5). A raw count measures how much of the catalogue falls in an area, not how much observatory capacity it has.
 
 Protected areas are never counted as organisations. They stay in the catalogue, and the off-by-default **Protected areas (context)** layer draws them as one chip per region. Their data products and people still count toward the region's weight.
 
@@ -32,7 +34,7 @@ The layout is shaped to the stage. On a wide screen the squares are pulled towar
 ## Viewport
 
 - **First view: the whole map.** The map opens framed so that every polygon fits on the stage with a 24 px margin. Nothing is cropped.
-- **Zoom limits are relative to that first view.** Zooming out stops at the first view. Zooming in goes to 24×, or further if the stage needs it: the limit is raised to whatever zoom frames the smallest region in the stage. On a large monitor 24× is already enough; on a phone, where 24× left the smallest region less than half the stage wide, the limit is about 39×. Because the limits are tied to the fit, "4×" means the same on a phone and on a large monitor.
+- **Zoom limits are relative to that first view.** Zooming out stops at the first view. Zooming in goes to 24×, or further if the stage needs it: the limit is raised to whatever zoom frames the smallest region in the stage. On a large monitor 24× is usually enough. On a phone, 24× can leave the smallest region less than half the stage wide, so the limit is higher there. Because the limits are tied to the fit, "4×" means the same on a phone and on a large monitor.
 - **The map cannot be lost off-screen.** You can pan at most half the map's size past any edge.
 - **Resizing.** If you have not zoomed or panned, a resize refits the whole map. If you have, the point at the centre of the stage stays there and the zoom level is kept. Labels are recomputed either way.
 - **Going to a region.** Clicking a region, or its row in the sidebar, zooms to fit that region with a 48 px margin. The region is then **pinned**: its outline is heavier, its fill darker, its sidebar row marked, and its name is always shown.
@@ -48,8 +50,8 @@ Names are not tied to a zoom level. A name shows when the thing it names is larg
 | Region name, pinned | Always. | as above |
 | Region name, "inside" | When the polygon covers ¾ or more of the stage, you are inside the region and its pole is usually off-screen. The name then moves to the topmost row of the stage where it fits inside the outline and clears the other labels. A region covering a fifth of the stage or more gets the same placement if no spot near its pole works. Without this, a deep zoom often showed no region name at all. | as above |
 | Institution | Its sub-polygon is at least 40 px across in both directions, and at least 0.8× the width of its name. | 10.5–14 px |
-| Researcher | Their institution's sub-polygon is at least 120 px across. A researcher with no institution drawn in that region needs the region itself to be 480 px across. At most 14 researchers per region are eligible, in order of importance. | 10–13.5 px |
-| Registry researcher | Only in the *Researchers & co-authorship* layer, for the site you clicked: that site's sub-polygon is at least 120 px across. | 10–12.5 px |
+| Researcher | Their institution's sub-polygon is at least 120 px across. A researcher with no institution drawn in that region needs the region itself to be 480 px across. At most 14 researchers per region are eligible, in order of importance (see below). | 10–13.5 px |
+| Registry researcher | Only in the *Researchers & co-authorship* layer, for the site you shift-clicked: that site's sub-polygon is at least 120 px across. | 10–12.5 px |
 | Protected-area chips, "N no site" captions | The region is at least 60 px across. | 10–12 px |
 
 ### Labels never overlap
@@ -72,6 +74,7 @@ The pass runs at most once per animation frame while you zoom or pan, and once m
 - **Region names** start at the polygon's *pole of inaccessibility*: the interior point farthest from the edge. This is not the average of the vertices, which can fall near a boundary on an irregular shape. If the name does not fit there, the map slides it sideways within the outline, then tries positions a little above and below. Region names carry a heavier halo than other labels, because they sit over cells and dots.
 - **Region names keep off institutions.** Once a region is large on screen (150 px or more across), its name avoids its institutions' dots, and it always avoids the space above the dot of any institution large enough to be named. Without this, a region holding a single institution put its own name on that institution's dot, because the two share a centre, and hid the institution's name at every zoom. If no clear position exists, the name goes in the first position that fits.
 - **A large region partly off the stage is still named.** When the pole is outside the stage, or within 40 px of its edge, the map also tries the centre of the region's on-stage part, and the pole moved into that part.
+- **Researcher importance** ranks researchers for naming and sets the size of their dot and name. It combines their publication count, their number of co-authors, and the recorded funding of the institutions they work at; the tooltip shows whichever of the three are non-zero. Publication and co-author counts come from OpenAlex, and as of 2026-10-23 only 333 of the 1,305 people in the catalogue have an OpenAlex record, so most researchers have none. The funding figures are recalled by research agents, not taken from award records. Treat importance as a rough ordering.
 - **Institution names.** An acronym is used as the name only when no other institution has the same one. Network acronyms shared by many sites (NERR, NEP, LTER, LTREB, …) are replaced by the place name. For example, "Wells NERR" is labelled **Wells**, not **NERR**. Names sit just above their dot, so they do not cover it. The tooltip always gives the full name.
 
 ## Controls
@@ -79,12 +82,12 @@ The pass runs at most once per animation frame while you zoom or pan, and once m
 | Control | Effect |
 |---|---|
 | **Facilities** / **People** | Show or hide institution and researcher marks. These switches also decide which cross-area edges a click can reveal. |
-| **Researchers & co-authorship** | Turns on the researcher registry. Amber ribbons are co-publication between catalogued sites. Clicking a marker opens its roster. |
+| **Researchers & co-authorship** | Turns on the researcher registry. Amber ribbons are co-publication between catalogued sites. Shift-clicking a site opens its roster. Clicking a dashed "no site" badge lists that region's researchers placed by research area alone. Clicking a registry researcher opens their People card, or their ORCID or OpenAlex profile. |
 | **Protected areas (context)** | One aggregate chip per region for the protected areas catalogued there. |
 | **Recompute layout** | Runs the layout again for the current stage. |
 | Click a region or a sidebar row | Zooms to the region and pins it. On a phone, tapping a sidebar row also folds the list and scrolls the map into view. |
 | Click an institution or researcher | Reveals that node's cross-area edges. Click it again, click the background, or press **Esc** to hide them. |
-| Shift-click | Opens the homepage, or the ORCID record for a researcher. |
+| Shift-click | On an institution, opens its homepage, or its researcher roster when *Researchers & co-authorship* is on. On a researcher, opens their card on the **People** tab. |
 | **Reset zoom** / double-click | Shows the whole map again. |
 
 On a phone (760 px wide or less), the subtitle is hidden and the toggles wrap. The status line shows two lines; tap it to see the rest. The map gets 65% of the screen height. The sidebar moves below the map and collapses to a **Research areas** heading you can tap to open. Together these keep the whole map above the fold on a 390×844 screen.
@@ -95,4 +98,4 @@ The map needs the in-browser database (DuckDB-Wasm). On a slow first load the da
 
 ## Not implemented
 
-The KMap paper's PCL boundary refinement, custom force terms, and canvas rendering in a Web Worker are not implemented. The pipeline also writes precomputed layout tables (`mvg_node_layout`, `mvg_area_polygons`, `mvg_layout_metrics`, from `scripts/build_mvg_layout.py`), but the browser does not use them yet; it computes its own layout.
+The browser does not implement the KMap paper's PCL boundary refinement, custom force terms, or canvas rendering in a Web Worker. The pipeline script `scripts/build_mvg_layout.py` computes both a KMap and a PCL layout offline and writes them to `mvg_node_layout`, `mvg_area_polygons`, `scholar_area_assignments` and `mvg_layout_metrics`. You can query those tables in the SQL tab, but the Network tab does not read them; it computes its own layout.

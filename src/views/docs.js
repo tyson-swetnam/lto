@@ -32,6 +32,7 @@ const DOC_PAGES = [
   { title: 'ARID & New Mexico', path: 'docs/arid.md' },
   { title: 'Spheres',           path: 'docs/spheres.md' },
   { title: 'Networks',          path: 'docs/networks.md' },
+  { title: 'Knowledge Map',     path: 'docs/knowledge-map.md' },
   { title: 'Data Model',        path: 'docs/data-model.md' },
   { title: 'Methods',           path: 'docs/methods.md' },
   { title: 'Coverage',          path: 'docs/coverage.md' },
@@ -100,6 +101,9 @@ function rewriteHref(href) {
 function inlinesMd(s) {
   return escHtml(s)
     .replace(/`([^`]+)`/g, '<code>$1</code>')
+    // <https://…> autolink; escHtml has already turned the brackets into &lt; &gt;.
+    .replace(/&lt;(https?:\/\/[^\s]+?)&gt;/g,
+      (_m, url) => `<a href="${url}" target="_blank" rel="noopener">${url}</a>`)
     .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
     .replace(/\*([^*]+)\*/g, '<em>$1</em>')
     .replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_m, text, href) => {
@@ -151,6 +155,12 @@ function mdToHtml(md) {
   let inTable = false, tableLines = [];
   let inBQ = false, bqLines = [];
   let inHtml = false, htmlLines = [];
+  // Consecutive prose lines form one paragraph (markdown soft wrap), so
+  // inline markup that spans a line break — **bold**, [links](…) — renders.
+  let paraLines = [];
+  // Raw text of the open <li>, re-rendered whole when a continuation line
+  // arrives, for the same reason.
+  let liRaw = null;
 
   // Stack of `<ul>`/`<ol>` indents currently open.
   // Each entry = { indent: number-of-leading-spaces, kind: 'ul'|'ol' }
@@ -173,9 +183,19 @@ function mdToHtml(md) {
       inIndentCode = false;
     }
   };
+  const flushPara = () => {
+    if (paraLines.length) {
+      out.push(`<p>${inlinesMd(paraLines.join(' '))}</p>`);
+      paraLines = [];
+    }
+  };
   const flushBQ = () => {
     if (inBQ) {
-      out.push('<blockquote>' + bqLines.map((l) => `<p>${inlinesMd(l)}</p>`).join('') + '</blockquote>');
+      // Blank '>' lines separate paragraphs inside the quote.
+      const paras = bqLines.join('\n').split(/\n\s*\n/)
+        .map((p) => p.split('\n').map((l) => l.trim()).join(' ').trim())
+        .filter(Boolean);
+      out.push('<blockquote>' + paras.map((p) => `<p>${inlinesMd(p)}</p>`).join('') + '</blockquote>');
       bqLines = [];
       inBQ = false;
     }
@@ -194,7 +214,7 @@ function mdToHtml(md) {
         codeLines = [];
         inCode = false;
       } else {
-        closeAllLists(); flushTable(); flushIndentCode(); flushBQ(); flushHtml();
+        flushPara(); closeAllLists(); flushTable(); flushIndentCode(); flushBQ(); flushHtml();
         inCode = true;
       }
       continue;
@@ -203,9 +223,11 @@ function mdToHtml(md) {
 
     // Pass-through HTML block (line begins with `<` and looks like a tag).
     // Flushed as-is so authors can drop in <iframe>, <details>, <img>, etc.
-    if (/^<[a-zA-Z!][^>]*>?/.test(line.trim()) && !inIndentCode) {
+    // A line opening with an <https://…> autolink is prose, not a tag.
+    if (/^<[a-zA-Z!][^>]*>?/.test(line.trim()) && !/^<https?:\/\//.test(line.trim())
+        && !inIndentCode) {
       if (!inHtml) {
-        closeAllLists(); flushTable(); flushIndentCode(); flushBQ();
+        flushPara(); closeAllLists(); flushTable(); flushIndentCode(); flushBQ();
         inHtml = true;
       }
       htmlLines.push(line);
@@ -216,7 +238,7 @@ function mdToHtml(md) {
 
     // Pipe-table.
     if (line.startsWith('|')) {
-      closeAllLists(); flushIndentCode(); flushBQ();
+      flushPara(); closeAllLists(); flushIndentCode(); flushBQ();
       tableLines.push(line);
       inTable = true;
       continue;
@@ -226,7 +248,7 @@ function mdToHtml(md) {
     // Headings (always close pending blocks first).
     const hMatch = line.match(/^(#{1,6})\s+(.*)/);
     if (hMatch) {
-      closeAllLists(); flushIndentCode(); flushBQ();
+      flushPara(); closeAllLists(); flushIndentCode(); flushBQ();
       const level = hMatch[1].length;
       const rawText = hMatch[2];
       let id = slugify(rawText);
@@ -241,7 +263,7 @@ function mdToHtml(md) {
 
     // Horizontal rule.
     if (/^---+$/.test(line.trim())) {
-      closeAllLists(); flushIndentCode(); flushBQ();
+      flushPara(); closeAllLists(); flushIndentCode(); flushBQ();
       out.push('<hr>');
       continue;
     }
@@ -249,7 +271,7 @@ function mdToHtml(md) {
     // Blockquote.
     const bqMatch = line.match(/^>\s?(.*)/);
     if (bqMatch) {
-      closeAllLists(); flushIndentCode();
+      flushPara(); closeAllLists(); flushIndentCode();
       if (!inBQ) inBQ = true;
       bqLines.push(bqMatch[1]);
       continue;
@@ -260,7 +282,7 @@ function mdToHtml(md) {
     // a nesting level. We open / close <ul>/<ol> as the indent depth changes.
     const listMatch = line.match(/^(\s*)([-*]|\d+\.)\s+(.*)/);
     if (listMatch) {
-      flushIndentCode(); flushBQ();
+      flushPara(); flushIndentCode(); flushBQ();
       const indent = listMatch[1].length;
       const marker = listMatch[2];
       const text = listMatch[3];
@@ -275,6 +297,7 @@ function mdToHtml(md) {
         listStack.push({ indent, kind });
         out.push(`<${kind}>`);
       }
+      liRaw = text;
       out.push(`<li>${inlinesMd(text)}</li>`);
       continue;
     }
@@ -283,15 +306,17 @@ function mdToHtml(md) {
     // its full text. Only triggers while we're inside a list.
     if (listStack.length && /^\s{2,}\S/.test(line)) {
       const last = out.length - 1;
-      if (last >= 0 && out[last].endsWith('</li>')) {
-        out[last] = out[last].replace(/<\/li>$/, ' ' + inlinesMd(line.trim()) + '</li>');
+      if (last >= 0 && out[last].endsWith('</li>') && liRaw !== null) {
+        liRaw += ' ' + line.trim();
+        out[last] = `<li>${inlinesMd(liRaw)}</li>`;
         continue;
       }
     }
+    liRaw = null;
     if (line.trim() !== '' && listStack.length) closeAllLists();
 
     // Indented (4-space) code block — but only when we're NOT in a list.
-    if (/^ {4}\S/.test(line) && !listStack.length) {
+    if (/^ {4}\S/.test(line) && !listStack.length && !paraLines.length) {
       flushTable();
       if (!inIndentCode) inIndentCode = true;
       indentLines.push(line);
@@ -306,16 +331,18 @@ function mdToHtml(md) {
 
     // Blank line: paragraph break.
     if (line.trim() === '') {
+      flushPara();
       closeAllLists();
       out.push('');
       continue;
     }
 
-    // Paragraph (default).
-    out.push(`<p>${inlinesMd(line)}</p>`);
+    // Paragraph (default): buffer until the next blank line or block.
+    paraLines.push(line.trim());
   }
 
   // Final flush of any open block.
+  flushPara();
   if (inTable) flushTable();
   flushIndentCode();
   flushBQ();

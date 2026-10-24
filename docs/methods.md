@@ -1,9 +1,22 @@
 # Methods
 
 `lto` is a research-agent ETL on top of a static visualisation stack.
-Source records are produced by **knowledge-only** subagents (one markdown
-spec per agent under `agents/`), loaded into a DuckLake store of record,
-validated by a QA gate, and exported as Parquet + GeoJSON for the browser.
+Source records are produced by subagents (one markdown spec per agent
+under `agents/`), loaded into a DuckLake store of record, validated by a
+QA gate, and exported as Parquet + GeoJSON for the browser.
+
+The agents worked in two modes, and the data still shows both:
+
+- **Recall (2026-04 to 2026-05).** The facility waves (B–E), the
+  first people pass (Wave F), the funding and publication pass
+  (`H-FUND-PUB`) and the data-archive wave (Wave J) ran in a sandbox
+  without web access, so agents wrote records from model knowledge,
+  each citing the source page it named.
+- **Fetched (from 2026-10).** The ARID Institute layer, the
+  EnviroData-NM and Arizona Water Observatory catalogues, and the
+  second people pass (R-PEOPLE2) take every value from a page fetched
+  in that run. Nothing in them is filled from recall; a missing value
+  stays null.
 
 ## Wave model
 
@@ -14,14 +27,22 @@ Wave B  R-* facility research agents              (raw JSON per sphere)
 Wave C  D2 ingest → DuckLake (db/lto_catalog.sqlite + db/lake/) → public/parquet/
 Wave D  F1..F4 frontend + deploy
 Wave E  R-XREF reconciliation + coverage report
-Wave F  R-PEOPLE-* + R-PEOPLE-LOOP2-* people pass
+Wave F  R-PEOPLE-* + R-PEOPLE-LOOP2-* people pass (from recall)
+Wave J  J-DATA data archives, products, APIs, buckets (from recall)
+ARID    R-ARID, J-ENVIRODATA, J-AZWATER           (fetched, 2026-10-09)
+People  R-PEOPLE2 + R-PEOPLE2-BIO                 (fetched + verified, 2026-10-22)
+Enrich  ORCID-keyed OpenAlex pass                 (partial, 2026-10-23)
+Weekly  data refresh (Sun) + URL-health sweep (Mon), each opens a PR
 ```
 
-Each wave is a single parallel batch over its sub-agents; the parent
-runs the next wave only after every agent in the prior wave has emitted
-its JSON. The entry-point script for each wave is `scripts/ingest.py`
-(Wave C), `scripts/qa.py` (gate between waves), and the per-pass
-enrichment scripts (post-Wave-F).
+Each agent wave (B–F, J, ARID, People) is a single parallel batch over
+its sub-agents; the parent runs the next wave only after every agent in
+the prior wave has emitted its JSON. Enrich and Weekly are script runs,
+by hand and in CI respectively, not agent batches. The entry points are `scripts/ingest.py` (Wave C),
+`scripts/load_arid.py` and `scripts/load_lto_archives.py` (ARID and the
+archive catalogues), `scripts/load_people_research.py` (R-PEOPLE2), the
+enrichment scripts listed under *Identifier strategy* below,
+and `scripts/qa.py` as the gate before every export.
 
 ## Store of record
 
@@ -40,12 +61,14 @@ script opens it through `scripts/lto_db.py`.
 - **Constraints.** DuckLake does not enforce primary keys, foreign keys,
   UNIQUE or CHECK constraints. `schema/schema.sql` still declares them,
   and `scripts/qa.py` checks every one against the lake before export,
-  together with the derived tables' keys, the undeclared (soft)
-  references and the column list of every table. A duplicate key or an
-  orphaned reference therefore fails QA rather than the `INSERT`.
-  Loaders upsert with `MERGE` on de-duplicated keys, run the same check
-  before they commit, and take an exclusive lock for the length of
-  their transaction, so two runs never interleave writes.
+  together with NOT NULL, the derived tables' keys, the undeclared
+  (soft) references and the column list of every table: 249 checks as
+  of 2026-10-23 (223 declared in `schema.sql`, 17 derived keys, 9 soft
+  references). A
+  duplicate key or an orphaned reference therefore fails QA rather than
+  the `INSERT`. Loaders upsert with `MERGE` on de-duplicated keys, run
+  the same check before they commit, and take an exclusive lock for the
+  length of their transaction, so two runs never interleave writes.
 - **What is published.** The lake is local working state and is not
   committed. `scripts/export_parquet.py` writes every table to
   `public/parquet/` in a deterministic row order, and those committed
@@ -60,62 +83,139 @@ script opens it through `scripts/lto_db.py`.
 | Bundle | Agents | Scope |
 |---|---|---|
 | Wave-B facility | 11 | One per sphere or sub-network: `R-ATM`, `R-CRY`, `R-TER-LTER`, `R-TER-EFR`, `R-TER-NEON`, `R-TER-OTHER`, `R-AGR`, `R-AQ-OCEAN-CULL`, `R-AQ-FRESH`, plus `R-XREF` and `R-FUND` |
-| Wave-F people | 9 | One per sphere/network: `R-PEOPLE-LTER`, `R-PEOPLE-NEON`, `R-PEOPLE-EFR`, `R-PEOPLE-AGR`, `R-PEOPLE-OCEAN`, `R-PEOPLE-FRESH`, `R-PEOPLE-ATM`, `R-PEOPLE-CRY`, `R-PEOPLE-OTHER` |
+| Wave-F people | 9 | First people pass, from recall: `R-PEOPLE-LTER`, `R-PEOPLE-NEON`, `R-PEOPLE-EFR`, `R-PEOPLE-AGR`, `R-PEOPLE-OCEAN`, `R-PEOPLE-FRESH`, `R-PEOPLE-ATM`, `R-PEOPLE-CRY`, `R-PEOPLE-OTHER` |
 | Loop / repair | 2+ | `R-PEOPLE-LOOP2-EFR`, `R-PEOPLE-LOOP2-ORCID`, etc. — see [loops](./loops.md) |
 | Cross-cutting | 2 | `R-XREF` (sphere reconciliation), `R-FUND` (funding flows) |
+| Data archives | 11 + 2 | `J-DATA` fan-out (11 `J-A-*` agents, e.g. `J-A-EDI`, `J-A-NEON`, `J-A-USDA`), plus `J-ENVIRODATA` and `J-AZWATER` |
+| ARID | 1 | `R-ARID` (UNM ARID Institute, partner centers, projects, people) — see [ARID & New Mexico](./arid.md) |
+| People, fetched | 2 kinds | `R-PEOPLE2` research batches (51 files) and `R-PEOPLE2-BIO` bio batches (31 files), each checked by an adversarial verifier; spec in `agents/R-PEOPLE.md` |
 
 ## Inclusion gate
 
-The default filter is the **Peters et al. 2013 ≥10-year continuous-record
-threshold** (`record_length_years >= 10`). Records below the threshold
-are kept in the database with `long_term_threshold_met = false` but
-hidden by default in the UI. NEON, LTER, and LTAR sites with shorter
-records are kept on the basis of their parent network's intent.
+Facilities are tested against the **Peters et al. 2013 ≥10-year
+continuous-record threshold**, stored as `long_term_threshold_met`
+(`record_length_years >= 10`). Records below it are kept in the
+database with `long_term_threshold_met = false` and are **shown** by
+default: the "Show only facilities with ≥10y record" checkbox is off
+until a visitor ticks it. As of 2026-10-23, 315 of 456 facilities meet
+the threshold and 73 have a record shorter than 10 years. The other 68
+have no record length: 57 of them are flagged `false` all the same, so
+"not ≥10y" can mean "unknown", and 11 carry no flag at all. The default
+view is narrowed instead by the Southwest drylands scope lens (see
+[ARID & New Mexico](./arid.md)).
 
 ## Provenance
 
-Every record carries a `provenance` block:
+Every facility has a `provenance` row; `qa.py` fails if one is missing.
+A real row:
 
 ```json
 {
-  "source_url": "https://hubbardbrook.org/about-us/",
+  "record_type": "facility",
+  "source_url": "https://hubbardbrook.org/",
   "retrieved_at": "2026-05-05",
   "confidence": "high",
-  "agent": "R-TER-LTER"
+  "agent": "R-AQ-FRESH"
 }
 ```
 
-- **`source_url`** is required. No record may be ingested without one.
-- **`retrieved_at`** is the date the agent observed the source.
+- **`source_url`** is the page the record rests on. It is meant to be
+  present on every record, but QA does not yet enforce it: as of
+  2026-10-23, 46 of 456 facilities have no provenance row with a
+  `source_url`.
+- **`retrieved_at`** is the date the agent observed the source. For the
+  recall-era waves it is the run date, not a fetch date.
 - **`confidence`** is one of `high` (primary agency / institution page),
   `medium` (third-party aggregator), or `low` (inferred or memory-only).
   Low-confidence records are kept and surfaced for manual review.
 
+People rows carry their own provenance: `facility_personnel` has
+`source_url`, `retrieved_at` and `confidence` columns. Of its 1,537
+rows, 862 come from R-PEOPLE2 (fetched 2026-10-22) and also quote the
+page in `evidence`, and 30 from R-ARID (fetched 2026-10-09). 624 are
+recall-era rows dated 2026-04-24 to 2026-05-06, 31 of them with no
+`source_url`, and 21 rows have no date. Every
+bio, research-interests line and ORCID written by R-PEOPLE2 names its
+source in a `*_source_url` column.
+
 ## Identifier strategy
 
-For the people side (`R-PEOPLE-*`):
+For the people side:
 
 - The ID priority is **ORCID > OpenAlex > Google Scholar > homepage URL**.
-- Subagents **never hallucinate** identifiers. If they cannot recall an
-  ORCID with high confidence, they leave the field null and the record
-  is marked `confidence = "low"`.
+- **A wrong identifier is worse than a missing one.** Every resolver
+  leaves the field null rather than guess.
 - ORCID format is regex-validated (`^\d{4}-\d{4}-\d{4}-\d{3}[\dX]$`).
 - OpenAlex format is regex-validated (`^A\d+$`).
-- Empty identifier fields are backfilled by the enrichment scripts in CI
-  (`scripts/enrich_people_orcid.py`, `_openalex.py`, `_gscholar.py`)
-  which query the public APIs by name + institution.
+- **R-PEOPLE2** keeps an ORCID only if the verifier fetched it from
+  `pub.orcid.org`, the name matches, and it appears on a fetched profile
+  page or in an employment at the right institution.
+- **`scripts/enrich_people_orcid.py`** searches the ORCID public API.
+  The family name must match exactly and the given name agree. When the
+  person has a facility on file, the ORCID employment record must also
+  share a distinctive token with one of their facilities, and the
+  highest-scoring candidate that passes is taken. A person with no
+  facility is matched on name alone only if exactly one ORCID fits
+  (logged `accept-name-only`); two or more namesakes are left null
+  (`ambiguous-name-only`). Every decision is logged in
+  `data/seed/orcid_resolution_log.csv`.
+- **`scripts/enrich_people_openalex.py`** matches only through a stored
+  OpenAlex id or the person's ORCID. Name search is disabled. It needs
+  `OPENALEX_API_KEY`. It fills `research_interests` only when the field
+  is empty (or holds an earlier OpenAlex-generated list) and never
+  overwrites a curated value.
+- **Rejected pairs stay rejected.** A `cleared-*` row in the ORCID log
+  (78 as of 2026-10-23: 68 dead iDs, 10 belonging to someone else)
+  blocks that (person, ORCID) pair, and `qa.py` fails if a
+  cleared-as-wrong ORCID comes back. Removed (person, OpenAlex id) pairs
+  are listed in `scripts/wipe_misattributed_identifiers.py`, and the
+  OpenAlex script will not attach them again.
+- **New attributions are reviewed.** In the 2026-10-23 OpenAlex pass,
+  every new or changed attribution was checked against the OpenAlex
+  author record, and disputed ones got a second, independent review. An
+  id was removed when the reviewers judged it wrong or a merge of
+  several people. The decisions are in
+  `data/seed/openalex_attribution_review_2026-10-23.csv` (106 rows: 103
+  attributions from this pass and 3 earlier misattributions found
+  during it; 97 kept, 2 kept but disputed, 7 removed, of which 2 had
+  both reviewers voting "wrong"). That pass is partial: the
+  OpenAlex daily credit ran out after 378 of 1,302 people.
+- The enrichment scripts are run by hand, following `RUNBOOK.md`. No CI
+  workflow runs them. As of 2026-10-23, 612 of 1,305 people have an
+  ORCID and 333 an OpenAlex id.
+
+## Weekly loops
+
+Two scheduled workflows rebuild the lake from the committed parquet,
+re-export, and open a pull request with the data diff; nothing is
+pushed to `main` without review.
+
+- **Data refresh** (`.github/workflows/refresh-data.yml`, Sundays 06:00
+  UTC) re-runs `load_arid.py`, `load_lto_archives.py` and
+  `backfill_facility_state.py`, then `qa.py`, `export_parquet.py` and
+  `export_view_caches.py`. It runs no ingest and no enrichment.
+- **URL health** (`.github/workflows/url-health.yml`, Mondays 07:00
+  UTC) sends an HTTP HEAD request to every stored URL
+  (`scripts/check_url_health.py`), applies pattern-based fixes
+  (`scripts/url_hygiene.py`), then runs QA and both exports. Results
+  and decisions land in `data/seed/url_health_check.csv` and
+  `data/seed/url_hygiene_log.csv`. The 2026-10-23 sweep covered 2,427
+  distinct URLs (1,626 ok, 116 templates skipped) and set to null 66
+  people homepages that pointed at a bare domain (51) or a generic
+  staff or team page (15).
 
 ## Static stack
 
 The browser side is **DuckDB-Wasm + MapLibre, no build step**:
 
-- `index.html` defines an importmap that pulls `maplibre-gl` and
+- `index.html` defines an importmap that pulls `maplibre-gl` (4.7.1) and
   `@duckdb/duckdb-wasm` (pinned `1.33.1-dev65.0`, DuckDB core 1.5.6)
   from esm.sh. The browser reads the exported parquet over HTTP range
   requests; it does not attach the lake.
 - `src/db.js` registers `public/parquet/*.parquet` as DuckDB views and
   re-creates helper views (these don't survive Parquet export).
-- `src/views/{list,stats,docs,network,people,sql}.js` render one tab each.
+- `src/views/{list,stats,docs,network,projects,people,datasets,sql}.js`
+  render one tab each (`list.js` is Browse, `datasets.js` is Data).
 - The deploy workflow (`.github/workflows/deploy.yml`) stages only
   `index.html`, `favicon.svg`, `src/`, `public/`, and `docs/`. Everything
   else (`agents/`, `scripts/`, `schema/`, `data/raw/`) is excluded from
