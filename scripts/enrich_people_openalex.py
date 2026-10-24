@@ -218,13 +218,15 @@ def resolve_author(sess: requests.Session, person: dict) -> dict | None:
 def fetch_works(sess: requests.Session, author_oa_id: str,
                 max_records: int = 100) -> list[dict]:
     """Fetch up to `max_records` publications for this OpenAlex author.
-    Uses cursor pagination."""
+    Uses cursor pagination at OpenAlex's maximum page size (200): every
+    list request costs one credit of the daily allowance whatever its
+    size, so 50-record pages cost 4x the credits for the same works."""
     out: list[dict] = []
     cursor = "*"
     while cursor and len(out) < max_records:
         r = sess.get(f"{API}/works", params={
             "filter": f"authorships.author.id:{author_oa_id}",
-            "per_page": min(50, max_records - len(out)),
+            "per_page": min(200, max_records - len(out)),
             "cursor": cursor,
         })
         if not r.ok:
