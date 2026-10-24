@@ -110,11 +110,16 @@ BAD = {
         "correct — 'Erik M. Smith' at the University of South Carolina, "
         "which runs North Inlet-Winyah Bay NERR — so only the ORCID goes."),
     "James McClelland": (
-        False, True,
-        "openalex_id is 'James L. McClelland', the Stanford cognitive "
-        "scientist; the attributed works are on bilingualism and reading "
+        False, False,
+        "openalex_id was 'James L. McClelland', the Stanford cognitive "
+        "scientist; the attributed works were on bilingualism and reading "
         "development. The stored ORCID is correct — 'J. W. McClelland', "
-        "Arctic river biogeochemistry, Beaufort Lagoon LTER."),
+        "Arctic river biogeochemistry, Beaufort Lagoon LTER. Disarmed "
+        "2026-10-24: this entry is keyed on the name, not the bad id, so it "
+        "would wipe the correct A5019713703 (matched by his ORCID "
+        "0000-0001-9619-8194 and confirmed in the 2026-10-24 attribution "
+        "review). The cognitive scientist's id was never committed, so it "
+        "cannot be listed in BAD_BY_ID; the ORCID match is the guard."),
     "Jean Wiener": (
         False, True,
         "openalex_id resolves to 'O. Schneider'. 182 works attributed."),
@@ -230,6 +235,33 @@ BAD_BY_ID = {
         "Mary Martin (UNH ESRC, Hubbard Brook): OpenAlex A5074241907 'Mary "
         "Catharine Martin' (libguides, Ontario primary care) carries ORCID "
         "0000-0002-3619-4463, not her verified 0000-0003-1791-5584."),
+    # 2026-10-24 OpenAlex attribution review, pass 2 (data/seed/
+    # openalex_attribution_review_2026-10-24.csv). Wang and both Millers
+    # keep their (correct) ORCID; the OpenAlex author carrying it is a
+    # multi-person merge. Burke's stored ORCID is itself another person's.
+    "555356e0213a2c78": (
+        None, "A5100426850",
+        "Jingjing Wang (UNM Economics, ARID): OpenAlex A5100426850 carries "
+        "her ORCID but merges many Jingjing Wangs (Hunan, Central South, "
+        "Beijing Normal, Northwest A&F; adsorption, oxidation chemistry); "
+        "2 of a 10-work sample were hers."),
+    "fdd01ff8110578aa": (
+        None, "A5012500008",
+        "Mark E. Miller (USGS Canyonlands / NPS dryland ecologist): OpenAlex "
+        "A5012500008 carries his ORCID but merges an Urban Institute health-"
+        "policy author (NEJM), a Southern Utah University historian and "
+        "others; only ~34 of 182 works match his ORCID DOIs."),
+    "ebb4846a95cda597": (
+        "0000-0001-6265-5385", "A5091839520",
+        "Pat Burke (NOAA CO-OPS Oceanographic Division): the ORCID record and "
+        "OpenAlex author A5091839520 are Patrick C. Burke, NSSL Warn-on-"
+        "Forecast / WPC meteorologist (OU meteorology); ~18 of 24 works are "
+        "his, the rest a CO-OPS Burke merged in."),
+    "d574f93e9f92a588": (
+        None, "A5085326552",
+        "Robert J. Miller (UCSB MSI, SBC LTER): OpenAlex A5085326552 carries "
+        "his ORCID but merges several Robert J. Millers (492 works 1952-2026: "
+        "GE reliability testing, DFO Canada fisheries, education, medicine)."),
 }
 
 
