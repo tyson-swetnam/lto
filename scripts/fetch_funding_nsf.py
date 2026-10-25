@@ -98,6 +98,13 @@ AUTO_AWARDEE_BLOCKLIST = (
     "national estuary program", "epa region", "noaa fisheries",
     "geological survey",  # "U.S. Geological Survey" never NSF-funded as awardee
 )
+# Matched against the facility's own name: a reserve or estuary program whose
+# parent_org is its lead agency or host (a university, per NOAA or the
+# program's homepage) is not that university's NSF portfolio.
+AUTO_AWARDEE_NAME_BLOCKLIST = (
+    "estuarine research reserve", "estuary program", "estuary partnership",
+    "estuaries partnership",
+)
 
 
 def _hash(s: str) -> str:
@@ -400,12 +407,14 @@ def write_award(buf: LakeBuffer, funder_id: str, facility_id: str, award: dict,
     return inserted
 
 
-def _auto_awardee(parent: str) -> str | None:
+def _auto_awardee(parent: str, name: str = "") -> str | None:
     """Decide whether to treat parent_org as an NSF awardee."""
     if not parent:
         return None
     p = parent.lower()
     if any(b in p for b in AUTO_AWARDEE_BLOCKLIST):
+        return None
+    if any(b in (name or "").lower() for b in AUTO_AWARDEE_NAME_BLOCKLIST):
         return None
     if any(h in p for h in AUTO_AWARDEE_HINTS):
         return parent
@@ -442,7 +451,7 @@ def process_facility(buf: LakeBuffer, sess: requests.Session, funder_id: str,
     # parent_org auto-awardee would attach every award the host
     # institution holds (an LTREB plot study hosted by a university).
     if not awardees and not ov.get("award_ids"):
-        auto = _auto_awardee(parent)
+        auto = _auto_awardee(parent, facility.get("canonical_name") or "")
         if auto:
             awardees = [auto]
     if not awardees and not ov.get("award_ids"):

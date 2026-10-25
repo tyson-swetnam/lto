@@ -10,7 +10,7 @@ database.
   2013.** *Long-Term Trends in Ecological Systems: A Basis for
   Understanding Responses to Global Change.* USDA ARS Technical
   Bulletin 1931. Source of the **≥10-year continuous-record threshold**
-  behind the map's optional "≥10y" filter (off by default; 320 of 446
+  behind the map's optional "≥10y" filter (off by default; 348 of 446
   facilities meet it as of 2026-10-25), and of the **EcoTrends 50** site
   list (Table 1-1) that we check landmark coverage against.
 

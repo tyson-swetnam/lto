@@ -51,10 +51,11 @@ def resolve_facility(conn, name: str | None, acronym: str | None) -> str | None:
         return None
     # If both name and acronym are provided, try the most specific match first:
     # exact name, then name+acronym join, then name ILIKE, then acronym alone.
-    # cod-kmap heritage data assigns generic acronyms (e.g. acronym="NERR" for
-    # all 30 reserves), so resolving by acronym alone can collapse 30 distinct
-    # facilities to a single row — we fall back to acronym only when no name
-    # is provided.
+    # cod-kmap heritage data assigned generic acronyms (acronym="NERR" for all
+    # the reserves, until data/seed/facility_fixes.csv gave each its own or
+    # NULL), so resolving by a shared acronym alone can collapse
+    # distinct facilities to a single row — we fall back to acronym only when
+    # no name is provided.
     if name:
         row = conn.execute(
             "SELECT facility_id FROM facilities WHERE lower(canonical_name) = lower(?) LIMIT 1",

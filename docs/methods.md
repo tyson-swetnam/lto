@@ -97,9 +97,9 @@ continuous-record threshold**, stored as `long_term_threshold_met`
 (`record_length_years >= 10`). Records below it are kept in the
 database with `long_term_threshold_met = false` and are **shown** by
 default: the "Show only facilities with ≥10y record" checkbox is off
-until a visitor ticks it. As of 2026-10-25, 320 of 446 facilities meet
-the threshold and 73 have a record shorter than 10 years. The other 53
-have no record length: 42 of them are flagged `false` all the same, so
+until a visitor ticks it. As of 2026-10-25, 348 of 446 facilities meet
+the threshold and 74 have a record shorter than 10 years. The other 24
+have no record length: 13 of them are flagged `false` all the same, so
 "not ≥10y" can mean "unknown", and 11 carry no flag at all. The default
 view is narrowed instead by the Southwest drylands scope lens (see
 [ARID & New Mexico](./arid.md)).

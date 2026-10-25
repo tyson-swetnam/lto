@@ -20,8 +20,9 @@ evidence (load_people_research.py) is left alone.
 
 Facility matching:
   - If `facility_acronym` is set and exactly one facility carries it,
-    use that one (29 facilities share "NERR", 19 "NEP", ...: a shared
-    acronym falls through to the name).
+    use that one (a shared acronym, e.g. "CPER", falls through to the
+    name; the NERR/NEP rows lost their generic "NERR"/"NEP" in
+    data/seed/facility_fixes.csv, so their seed lines match by name).
   - Else if `facility_name_like` is set, match canonical_name ILIKE %…%
     and require exactly one hit; otherwise skip the row with a warning.
 

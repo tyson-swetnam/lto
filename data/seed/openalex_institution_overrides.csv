@@ -9,8 +9,9 @@ facility_acronym,facility_id,openalex_institution_id,notes
 #   - OpenAlex simply hasn't crawled that small program
 #
 # Either key works as the lookup — facility_acronym (when unique) OR
-# facility_id (when acronym is ambiguous, e.g. all LTER sites share
-# acronym "LTER", and all NERRs share "NERR"). The
+# facility_id (when acronym is ambiguous: the LTER sites once shared
+# acronym "LTER" and the NERRs "NERR"; merges and data/seed/facility_fixes.csv
+# have since given each its own acronym or NULL). The
 # openalex_institution_id is the short form starting with "I"
 # (https://openalex.org/I123456789 → I123456789).
 #

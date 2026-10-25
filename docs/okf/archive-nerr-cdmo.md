@@ -4,7 +4,7 @@ title: "NERRS Centralized Data Management Office"
 description: "NOAA Office for Coastal Management / University of South Carolina, Baruch Marine Field Lab — observatory-network holding long-term observatory records."
 resource: "https://cdmo.baruch.sc.edu/"
 tags: [observatory-network, soap, nerrs-data-policy]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-10-25T15:22:13Z }
 status: stable
 ---
 
@@ -24,36 +24,36 @@ Operates the System-Wide Monitoring Program (SWMP) for all 30 NERR reserves. Per
 
 # Depositing facilities
 
-- **NERR** ACE Basin NERR (primary)
-- **NERR** Apalachicola NERR (primary)
-- **NERR** Chesapeake Bay Maryland NERR (primary)
-- **NERR** Chesapeake Bay Virginia NERR (primary)
-- **NERR** Delaware NERR (primary)
-- **NERR** Elkhorn Slough NERR (primary)
-- **NERR** Grand Bay NERR (primary)
-- **NERR** Great Bay NERR (primary)
-- **NERR** Guana Tolomato Matanza NERR (primary)
-- **NERR** He'eia NERR (primary)
-- **NERR** Hudson River NERR (primary)
-- **NERR** Jacques Cousteau NERR (primary)
-- **NERR** Jobos Bay NERR (primary)
-- **NERR** Kachemak Bay NERR (primary)
-- **NERR** Lake Superior NERR (primary)
-- **NERR** Mission Aransas NERR (primary)
-- **NERR** Narragansett Bay NERR (primary)
+- ACE Basin National Estuarine Research Reserve (primary)
+- **ANERR** Apalachicola National Estuarine Research Reserve (primary)
+- **CBNERR-MD** Chesapeake Bay-Maryland National Estuarine Research Reserve (primary)
+- **CBNERR-VA** Chesapeake Bay-Virginia National Estuarine Research Reserve (primary)
+- **DNERR** Delaware National Estuarine Research Reserve (primary)
+- Elkhorn Slough National Estuarine Research Reserve (primary)
+- Grand Bay National Estuarine Research Reserve (primary)
+- **GBNERR** Great Bay National Estuarine Research Reserve (primary)
+- **GTMNERR** Guana Tolomato Matanzas National Estuarine Research Reserve (primary)
+- He‘eia National Estuarine Research Reserve (primary)
+- **HRNERR** Hudson River National Estuarine Research Reserve (primary)
+- **JC NERR** Jacques Cousteau National Estuarine Research Reserve (primary)
+- **JBNERR** Jobos Bay National Estuarine Research Reserve (primary)
+- **KBNERR** Kachemak Bay National Estuarine Research Reserve (primary)
+- Lake Superior National Estuarine Research Reserve (primary)
+- Mission-Aransas National Estuarine Research Reserve (primary)
+- **NBNERR** Narragansett Bay National Estuarine Research Reserve (primary)
 - **NERRS** National Estuarine Research Reserve System (primary)
-- **NERR** North Carolina NERR (primary)
-- **NERR** North Inlet-Winyah Bay NERR (primary)
-- **NERR** Old Woman Creek NERR (primary)
-- **NERR** Padilla Bay NERR (primary)
-- **NERR** Rookery Bay NERR (primary)
-- **NERR** San Francisco Bay NERR (primary)
-- **NERR** Sapelo Island NERR (primary)
-- **NERR** South Slough NERR (primary)
-- **NERR** Tijuana River NERR (primary)
-- **NERR** Waquoit Bay NERR (primary)
-- **NERR** Weeks Bay NERR (primary)
-- **NERR** Wells NERR (primary)
+- North Carolina National Estuarine Research Reserve (primary)
+- North Inlet-Winyah Bay National Estuarine Research Reserve (primary)
+- Old Woman Creek National Estuarine Research Reserve (primary)
+- Padilla Bay National Estuarine Research Reserve (primary)
+- Rookery Bay National Estuarine Research Reserve (primary)
+- San Francisco Bay National Estuarine Research Reserve (primary)
+- **SINERR** Sapelo Island National Estuarine Research Reserve (primary)
+- South Slough National Estuarine Research Reserve (primary)
+- **TRNERR** Tijuana River National Estuarine Research Reserve (primary)
+- Waquoit Bay National Estuarine Research Reserve (primary)
+- Weeks Bay National Estuarine Research Reserve (primary)
+- Wells National Estuarine Research Reserve (primary)
 - **OCM** NOAA Office for Coastal Management (host)
 
 # Data products

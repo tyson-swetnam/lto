@@ -3867,16 +3867,20 @@ function onPersonClick(d) {
 
 // Display names for institution labels.
 //
-// A network acronym is a useless label when it is shared: on the shipped
-// parquet 61 sites carry one (NERR ×29, NEP ×19, LTER ×9, LTREB ×4,
-// CPER ×2), so Coastal processes read as a wall of identical
+// A network acronym is a useless label when it is shared: the COMPASS cull
+// once gave 29 reserves "NERR" and 19 programs "NEP" (facility_fixes.csv
+// replaced them with each program's own acronym or NULL; the LTER and LTREB
+// rows were merged or fixed, and only CPER is still shared), so Coastal
+// processes read as a wall of identical
 // "NERR / NEP / LTER". A site whose acronym is shared — or that has none —
 // is labelled by its PLACE: the canonical name with the trailing network
-// designation removed ("Wells NERR" → "Wells", "Casco Bay Estuary
-// Partnership NEP" → "Casco Bay"). A unique acronym of up to 8 characters
-// is still the label, as before. The tooltip always carries the full name.
+// designation removed ("Wells National Estuarine Research Reserve" →
+// "Wells", "Casco Bay Estuary Partnership" → "Casco Bay"). A unique acronym
+// of up to 8 characters is still the label, as before. The tooltip always
+// carries the full name.
 const NETWORK_SUFFIX_RE = new RegExp(
-  '\\s+(National Estuary Program|Estuary Program|Estuary Partnership|'
+  '\\s+(National Estuarine Research Reserve|National Estuary Program|'
+  + 'National Estuary Partnership|Estuary Program|Estuary Partnership|'
   + 'Estuaries Partnership|NERR|NEP|LTER|LTREB|LTAR|MarineGEO|NEON Site)\\b.*$');
 function facilityDisplayNames(facPolygons) {
   const nAcr = new Map();
