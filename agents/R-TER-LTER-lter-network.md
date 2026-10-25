@@ -45,8 +45,13 @@ LTER members but use `primary_sphere = "ocean-estuarine"` (or
    - `primary_sphere` per the table below.
    - `ecosystem_types` = the EcoTrends type from Peters 2013 Table 1-2.
    - `networks` = `["lter", …]` plus any co-listed networks.
-2. For each site, list ≥1 location: HQ + a representative reference site
-   (e.g. Watershed 6 at Hubbard Brook, Konza Prairie HQ at Manhattan KS).
+2. The record's own `hq` point is the site: the Latitude/Longitude on its
+   lternet.edu profile, not the lead institution. List ≥1 location: a
+   representative reference site, plus the lead institution's office with
+   role `office` (e.g. Watershed 6 at Hubbard Brook; for Konza, the Konza
+   Prairie field station plus the KSU Manhattan office). Scripps, WHOI,
+   UVA, UNM, KSU and NMSU offices are all `office` locations, not the
+   `hq` point.
 3. Pull `established` from the site's history page; compute
    `record_length_years = 2026 - established` and set the threshold flag.
 4. `data_portal_url` = the EDI scope landing page for the site.
