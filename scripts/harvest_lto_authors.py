@@ -339,9 +339,8 @@ def main() -> int:
         with lto_db.transaction(
                 conn, f"harvest_lto_authors: +{len(new_rows):,} archive-tier "
                       f"registry rows from {len(topics)} LTO topics"):
-            conn.execute(
-                f"CREATE OR REPLACE TEMP TABLE _harvest AS SELECT {','.join(cols)} "
-                f"FROM person_registry LIMIT 0")
+            lto_db.create_temp_like(
+                conn, "_harvest", f"SELECT {','.join(cols)} FROM person_registry")
             conn.executemany(
                 f"INSERT INTO _harvest ({','.join(cols)}) "
                 f"VALUES ({','.join('?' * len(cols))})", new_rows)

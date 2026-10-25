@@ -445,6 +445,28 @@ def _columns_of(con, relation_sql: str, params: Sequence | None = None) -> list[
     return names
 
 
+def create_temp_like(con, name: str, select_sql: str,
+                     params: Sequence | None = None) -> list[str]:
+    """Create (or replace) an EMPTY TEMP table shaped like ``select_sql``.
+
+    Use this instead of ``CREATE TEMP TABLE t AS SELECT ... LIMIT 0``. In
+    DuckDB 2.0.0 a DuckDB-native (TEMP or in-memory) table created by an
+    empty CTAS inside a transaction and then bulk-filled by one
+    ``INSERT ... SELECT`` of >= 122,880 rows (one row group) -- from a lake
+    table, another TEMP table or a registered Arrow/pandas object -- reads
+    back as 0 rows: count(*) and every later scan (merge_upsert's own copy,
+    DISTINCT ON) see nothing, so the write silently drops the batch.
+    ``executemany`` fills and DuckLake tables are not affected, and nor are
+    tables declared with explicit column DDL, which is what this builds
+    from ``DESCRIBE``. Returns the column names, in order.
+    """
+    cur = con.execute(f"DESCRIBE {select_sql}", list(params or []))
+    cols = [(r[0], r[1]) for r in cur.fetchall()]
+    con.execute(f"CREATE OR REPLACE TEMP TABLE {qident(name)} ("
+                + ", ".join(f"{qident(n)} {t}" for n, t in cols) + ")")
+    return [n for n, _ in cols]
+
+
 _merge_seq = 0
 
 

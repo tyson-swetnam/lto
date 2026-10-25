@@ -318,10 +318,8 @@ def main() -> int:
         ensure_tables(conn)
         # Stage in temp tables typed like the targets, then one INSERT each:
         # row-by-row INSERTs into the lake are slow.
-        conn.execute("CREATE OR REPLACE TEMP TABLE _reg_stage AS "
-                     "SELECT * FROM person_registry LIMIT 0")
-        conn.execute("CREATE OR REPLACE TEMP TABLE _src_stage AS "
-                     "SELECT * FROM person_identity_source LIMIT 0")
+        lto_db.create_temp_like(conn, "_reg_stage", "SELECT * FROM person_registry")
+        lto_db.create_temp_like(conn, "_src_stage", "SELECT * FROM person_identity_source")
         if reg.rows:
             conn.executemany(
                 f"INSERT INTO _reg_stage ({','.join(cols)}) "

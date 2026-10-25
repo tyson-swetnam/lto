@@ -237,8 +237,7 @@ def main() -> int:
                      "OR publication_id IN (SELECT unnest(?))) "
                      "AND publication_id NOT IN (SELECT unnest(?))",
                      [sorted(del_dois), sorted(del_pids), sorted(staged)])
-        conn.execute(f"CREATE OR REPLACE TEMP TABLE _pubs AS "
-                     f"SELECT {', '.join(PUB_COLS)} FROM publications LIMIT 0")
+        lto_db.create_temp_like(conn, "_pubs", f"SELECT {', '.join(PUB_COLS)} FROM publications")
         if staged:
             conn.executemany(f"INSERT INTO _pubs VALUES ({', '.join('?' * len(PUB_COLS))})",
                              [list(r.values()) for r in staged.values()])
@@ -246,8 +245,8 @@ def main() -> int:
             conn, "publications", ["publication_id"], "_pubs", update_cols=[],
             extra_set={c: f"COALESCE(t.{lto_db.qident(c)}, s.{lto_db.qident(c)})"
                        for c in PUB_COLS if c != "publication_id"})
-        conn.execute(f"CREATE OR REPLACE TEMP TABLE _auth AS "
-                     f"SELECT {', '.join(AUTH_COLS)}, 0 AS _seq FROM authorship LIMIT 0")
+        lto_db.create_temp_like(conn, "_auth",
+                                f"SELECT {', '.join(AUTH_COLS)}, 0 AS _seq FROM authorship")
         if auth_rows:
             conn.executemany("INSERT INTO _auth VALUES (?,?,?,?,?,?)",
                              [[*r, i] for i, r in enumerate(auth_rows)])

@@ -192,10 +192,9 @@ def flush(conn, buf: LakeBuffer, message: str) -> None:
                   VALUES (s.funder_id, s.name, s.type, s.country, s.url)""")
             conn.execute("DROP TABLE _stage_funders")
         if buf.events:
-            conn.execute(
-                f"CREATE OR REPLACE TEMP TABLE _stage_events AS SELECT "
-                f"{', '.join(EVENT_COLS)}, 0::BIGINT AS _seq "
-                f"FROM funding_events LIMIT 0")
+            lto_db.create_temp_like(
+                conn, "_stage_events",
+                f"SELECT {', '.join(EVENT_COLS)}, 0::BIGINT AS _seq FROM funding_events")
             conn.executemany(
                 f"INSERT INTO _stage_events VALUES "
                 f"({', '.join(['?'] * (len(EVENT_COLS) + 1))})",
