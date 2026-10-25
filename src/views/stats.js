@@ -6,7 +6,7 @@
 // jumps to its section. Each section shows:
 //
 //   - Headline: area label + facility/people/funding totals
-//   - Top-N facilities by total funding (FY2015-FY2024)
+//   - Top-N facilities by total funding (fiscal years as in the data)
 //   - Top-N researchers by composite z-score (pubs + citations + co-authors)
 //   - Top funders for the area
 //   - Coverage breakdown by country + by region overlay kind
@@ -56,6 +56,14 @@ function fmtUsd(n) {
 function fmtInt(n) {
   if (!n && n !== 0) return '—';
   return Math.round(n).toLocaleString();
+}
+// The fiscal years a funding total covers, from the data (the totals are
+// not filtered to a fixed window): ' (FY1993–FY2026)' by default, or
+// with another lead such as ' across '. Empty when nothing is dated.
+function fyRange(r, lead) {
+  if (!r || !r.min_fy) return '';
+  const span = r.min_fy === r.max_fy ? `FY${r.min_fy}` : `FY${r.min_fy}–FY${r.max_fy}`;
+  return lead ? `${lead}${span}` : ` (${span})`;
 }
 function fmtZ(n) {
   if (!n && n !== 0) return '0.0';
@@ -145,7 +153,9 @@ async function fetchAll() {
     area_funding_totals: `
       SELECT area_id,
              COUNT(DISTINCT facility_id)       AS n_funded_facilities,
-             SUM(total_usd_nominal)            AS total_usd
+             SUM(total_usd_nominal)            AS total_usd,
+             CAST(MIN(min_fy) AS INTEGER)      AS min_fy,
+             CAST(MAX(max_fy) AS INTEGER)      AS max_fy
       FROM   facility_area_funding
       GROUP  BY area_id`,
 
@@ -785,7 +795,7 @@ function buildSection(area, idx, ix, color) {
     </header>
     <div class="area-grid">
       <div class="dash-card">
-        <h4>Top facilities by total funding (FY2015-FY2024)</h4>
+        <h4>Top facilities by total funding${fyRange(tot)}</h4>
         ${topFacilitiesTable(facs)}
       </div>
       <div class="dash-card">
@@ -865,6 +875,10 @@ async function renderDashboard() {
   const totalPeople = data.people_per_area.reduce((s, r) => s + (r.n_people || 0), 0);
   const totalFunding = [...fundingTotals.values()]
     .reduce((s, r) => s + (r.total_usd || 0), 0);
+  const fyAll = [...fundingTotals.values()].reduce((acc, r) => ({
+    min_fy: r.min_fy && (!acc.min_fy || r.min_fy < acc.min_fy) ? r.min_fy : acc.min_fy,
+    max_fy: r.max_fy && (!acc.max_fy || r.max_fy > acc.max_fy) ? r.max_fy : acc.max_fy,
+  }), {});
 
   _container.innerHTML = `
     <div class="dash-page">
@@ -875,8 +889,8 @@ async function renderDashboard() {
           <strong>${fmtInt(totalFacilities)}</strong> facilities (each tagged
           to its primary area),
           <strong>${fmtInt(totalPeople)}</strong> researchers,
-          <strong>${fmtUsd(totalFunding)}</strong> in tracked grant funding
-          across FY2015-FY2024.
+          <strong>${fmtUsd(totalFunding)}</strong> in tracked grant funding${
+            fyRange(fyAll, ' across ')}.
         </p>
         <p class="dash-help">
           Each section below profiles one research area: who runs the work,

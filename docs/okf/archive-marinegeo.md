@@ -4,7 +4,7 @@ title: "MarineGEO — Smithsonian Tennenbaum Marine Observatories Network"
 description: "Smithsonian Environmental Research Center / Smithsonian Institution — observatory-network holding long-term observatory records."
 resource: "https://marinegeo.si.edu/"
 tags: [observatory-network, github, cc-by-4.0]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-10-25T14:00:51Z }
 status: stable
 ---
 
@@ -25,9 +25,7 @@ Smithsonian-led global coastal biodiversity network with partner sites (SERC Che
 # Depositing facilities
 
 - **FHL** Friday Harbor Laboratories (primary)
-- Gulf Coast MarineGEO (primary)
-- Indian River Lagoon MarineGEO (primary)
-- SERC, GCREW MarineGEO (primary)
+- Gulf Coast Texas MarineGEO (primary)
 - San Francisco Bay MarineGEO (primary)
 - **SMSFP** Smithsonian Marine Station at Fort Pierce (primary)
 - **SERC** Smithsonian Environmental Research Center (host)

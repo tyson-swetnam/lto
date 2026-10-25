@@ -437,7 +437,11 @@ def process_facility(buf: LakeBuffer, sess: requests.Session, funder_id: str,
 
     ov = overrides.get(fid, {})
     awardees: list[str] = list(ov.get("awardees") or [])
-    if not awardees:
+    # An award_id whitelist with no awardee row is the whole answer (the
+    # override docstring: it "skips API search"): falling back to the
+    # parent_org auto-awardee would attach every award the host
+    # institution holds (an LTREB plot study hosted by a university).
+    if not awardees and not ov.get("award_ids"):
         auto = _auto_awardee(parent)
         if auto:
             awardees = [auto]

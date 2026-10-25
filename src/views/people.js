@@ -244,11 +244,13 @@ async function fetchPeopleRows() {
       GROUP BY pam.person_id
     ),
     per_fund AS (
+      -- One count per (person, facility): someone with two roles at a
+      -- facility (director and co-PI) must not add its funding twice.
       SELECT fp.person_id,
              list_sum(list(faf.total_usd_nominal
-                           ORDER BY faf.facility_id, faf.area_id, fp.role))
+                           ORDER BY faf.facility_id, faf.area_id))
                                          AS facility_funding_usd
-      FROM facility_personnel fp
+      FROM (SELECT DISTINCT person_id, facility_id FROM facility_personnel) fp
       JOIN facility_area_funding faf ON faf.facility_id = fp.facility_id
       GROUP BY fp.person_id
     ),

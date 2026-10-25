@@ -12,7 +12,8 @@ facility_id,awardee_name,program_match,title_match,award_id,notes
 #
 # A row may set ONLY awardee_name (pulls all that awardee's NSF awards),
 # OR awardee_name + program_match (filters to a program family),
-# OR award_id (pins a specific known award).
+# OR award_id (pins a specific known award). A facility whose rows are
+# award_id only gets exactly those awards: no parent_org auto-awardee search.
 #
 # === LTER sites — coastal-relevant subset of US LTER Network ===
 # Each LTER's NSF awardee is the host university; the award is identified
@@ -83,3 +84,52 @@ f3b529d1eda8e073,University of California-Santa Barbara,LONG TERM ECOLOGICAL RES
 # URI Graduate School of Oceanography
 099f35eb7143a89d,University of Rhode Island,,Graduate School of Oceanography,,URI-GSO title
 099f35eb7143a89d,University of Rhode Island,,Narragansett,,URI-GSO Bay Campus
+#
+# === LTREB plot studies: award_id whitelist only ===
+# Each LTREB is one award series at one site; the awardee is a host
+# institution holding many unrelated NSF awards, so the facility gets its
+# series by id and no awardee search. Fetched from api.nsf.gov 2026-10-25.
+# Not every abstract or performance site names the study site: an award
+# belongs to a series by its LTREB title (title prefix 'LTREB' and the
+# series' wording) and PI continuity in the API records, and the site comes
+# from the series' own sources:
+#   North Inlet    — PI James Morris on five, Madilyn Fletcher on 9816157;
+#                    all but 0316429 name North Inlet in the API record
+#   GCReW          — PI Jonathan Langley with co-PI J. Patrick Megonigal on
+#                    all five; 0950080, 1457100 and 1557009 name GCREW /
+#                    GCReW, 2051343 and 2530657 do not
+#   Swan's Island  — PIs Petraitis / Dudgeon / Kubler; the abstracts say
+#                    only 'Gulf of Maine'. The site is from the series' data
+#                    paper, Petraitis & Dudgeon 2015, Ecological Archives
+#                    E096-274: plots 'on Swan's Island, Maine in 1996'
+#                    (esapubs.org/archive/ecol/E096/274/suppl-1.php)
+#   West Falmouth  — PI Robert Howarth on both; 1654845 names West
+#                    Falmouth Harbor, 2311106 only 'a coastal harbor on
+#                    Cape Cod'
+# Left out on purpose: 9529564 'Alternative Stable States on Rocky
+# Intertidal Shores' (Petraitis, 1996-2001) is a Biological Oceanography
+# award, not an LTREB-program award (no LTREB title or program), although
+# its April 1996 start precedes the plots; this facility is the LTREB series.
+# Most of these awards fall outside fetch_funding_nsf's default FY2015-2024
+# window. To re-fetch the whole series into a lake:
+#   python scripts/fetch_funding_nsf.py --facility-id <id> --start-fy 1990 --end-fy 2030
+# North Inlet LTREB (USC; 'Long Term Studies of Salt Marsh Primary Production', record since 1984)
+46598db0265aaa38,,,,9306855,LTREB award series
+46598db0265aaa38,,,,9816157,LTREB award series
+46598db0265aaa38,,,,0316429,LTREB award series
+46598db0265aaa38,,,,1052636,LTREB award series
+46598db0265aaa38,,,,1654853,LTREB award series
+46598db0265aaa38,,,,2348767,LTREB award series
+# Global Change Research Wetland (GCReW) LTREB at SERC (Smithsonian Institution; tidal marsh series)
+0cc368787cd559c3,,,,0950080,LTREB award series
+0cc368787cd559c3,,,,1457100,LTREB award series
+0cc368787cd559c3,,,,1557009,LTREB award series
+0cc368787cd559c3,,,,2051343,LTREB award series
+0cc368787cd559c3,,,,2530657,LTREB award series
+# Swan's Island LTREB (UPenn / CSUN; alternative states on rocky intertidal shores)
+5173db142db727f4,,,,0314980,LTREB award series
+5173db142db727f4,,,,1020480,LTREB award series
+5173db142db727f4,,,,1555641,LTREB award series
+# West Falmouth Harbor LTREB (Cornell / MBL; nitrogen and carbon in a shallow coastal ecosystem)
+8b17ffd2b418fb60,,,,1654845,LTREB award series
+8b17ffd2b418fb60,,,,2311106,LTREB award series

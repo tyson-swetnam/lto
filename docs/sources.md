@@ -10,8 +10,8 @@ database.
   2013.** *Long-Term Trends in Ecological Systems: A Basis for
   Understanding Responses to Global Change.* USDA ARS Technical
   Bulletin 1931. Source of the **≥10-year continuous-record threshold**
-  behind the map's optional "≥10y" filter (off by default; 316 of 448
-  facilities meet it as of 2026-10-24), and of the **EcoTrends 50** site
+  behind the map's optional "≥10y" filter (off by default; 320 of 446
+  facilities meet it as of 2026-10-25), and of the **EcoTrends 50** site
   list (Table 1-1) that we check landmark coverage against.
 
 - **Lugo, A.E., Swanson, F.J., González, O.R., Adams, M.B., Palik, B.,
@@ -27,7 +27,7 @@ database.
 Facility records are sourced primarily from the agency or institution
 that operates each observatory. The largest contributors are below; the
 counts are facilities in this catalogue tagged with that network as of
-2026-10-23, not the program's own site totals.
+2026-10-25, not the program's own site totals.
 
 - **NSF LTERnet** — <https://lternet.edu/> — LTER sites.
 - **NSF DEB LTREB** — <https://www.nsf.gov/funding/opportunities/long-term-research-environmental-biology-ltreb> — sites with LTREB-funded projects (23).
@@ -39,7 +39,7 @@ counts are facilities in this catalogue tagged with that network as of
 - **DOE ARM** — <https://www.arm.gov/> — Atmospheric Radiation Measurement sites (3).
 - **EPA** — <https://www.epa.gov/> — CASTNET (6), National Estuary Programs (27).
 - **NOAA NOS / IOOS** — <https://ioos.noaa.gov/> — IOOS (15, 10 of them Regional Associations), NERRS (30), NMS (5).
-- **Smithsonian MarineGEO** — <https://marinegeo.si.edu/> — coastal biodiversity sites (6).
+- **Smithsonian MarineGEO** — <https://marinegeo.si.edu/> — coastal biodiversity sites (5).
 - **NRCS** — SNOTEL snow-telemetry (12) and SCAN soil-climate (11) sites.
 
 ## New Mexico and Southwest sources
@@ -79,7 +79,7 @@ Each affiliation from the 2026-10-22 pass (851 rows as of 2026-10-24) keeps its
 `source_url`, its retrieval date and an evidence quote of 25 words or
 fewer from that page. A bio is a short paraphrase (at most 60 words) of a
 named source page, not a copy. Older rows from the spring 2026 passes
-(about 670) have no evidence quote, and a few have no source or date;
+(about 660) have no evidence quote, and a few have no source or date;
 they remain until a fetched page confirms, replaces or retires them. The
 People tab shows the source and retrieval date where the row has one.
 
@@ -89,8 +89,8 @@ Identifiers and publications come from two open APIs:
   matches and either a fetched profile or an employment at the right
   institution confirms it, or, for people with no facility on file, the
   name resolves to exactly one ORCID record. A wrong ORCID is worse than a missing one, so
-  unmatched people stay blank (611 of 1,304 people carry one as of
-  2026-10-24).
+  unmatched people stay blank (611 of 1,310 people carry one as of
+  2026-10-25).
 - **OpenAlex** — <https://api.openalex.org/> — publications, citations
   and topics. People are matched only through their ORCID or a stored
   OpenAlex id, never by name search. Two passes have processed all 1,302
@@ -102,9 +102,11 @@ Identifiers and publications come from two open APIs:
 From all of these we store identifiers, links and short paraphrases, not
 copied page text.
 
-**Not yet from fetched sources:** funding amounts. Every funding event
-with a dollar amount is labelled as recalled rather than fetched, so treat
-any funding total as provisional.
+**Mostly not from fetched sources:** funding amounts. Of the 383 funding
+events with a dollar amount, 340 are labelled as recalled rather than
+fetched. The other 43 are the four LTREB award series (North Inlet, GCReW,
+Swan's Island, West Falmouth Harbor), fetched from the NSF Award API on
+2026-10-25. Treat any funding total as provisional.
 
 ## Engine attribution
 

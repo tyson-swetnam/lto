@@ -1,0 +1,214 @@
+{
+ "batch_id": "R-PEOPLE2-MARINEGEO-01",
+ "retrieved_at": "2026-10-25",
+ "verified_by": "ltreb-marinegeo check workflow 2026-10-25 (investigator + challenger)",
+ "facilities": [
+  {
+   "facility_id": "cc181c7953452ffc",
+   "pages_fetched": [
+    {
+     "url": "http://web.archive.org/web/20250329074510/https://marinegeo.si.edu/network/gulf-coast-texas",
+     "status": 200
+    },
+    {
+     "url": "https://marinegeo.si.edu/network/gulf-coast-texas",
+     "status": 403
+    }
+   ],
+   "notes": "Live marinegeo.si.edu returned 403 ('Smithsonian site temporarily unavailable') on 2026-10-25; the team is read from the Wayback capture of 2025-03-29. The page lists 'Principal Investigator: Simon Brandl' and then Ed Buskey, David Portnoy and Ed Proffitt with no role, so those three are recorded as scientist. No person of these names was in people (name and surname search, 2026-10-25). The network director Steve Canty's 'director' row was removed (data/seed/facility_fixes.csv)."
+  },
+  {
+   "facility_id": "c54df27d3d5ff656",
+   "pages_fetched": [
+    {
+     "url": "http://web.archive.org/web/20250329074517/https://marinegeo.si.edu/network/san-francisco-bay",
+     "status": 200
+    },
+    {
+     "url": "https://marinegeo.si.edu/network/san-francisco-bay",
+     "status": 403
+    }
+   ],
+   "notes": "Team read from the Wayback capture of 2025-03-29 (live site 403). 'Principal Investigator: Katharyn Boyer', then Margot Buchbinder with no role (recorded as scientist). Neither was in people."
+  },
+  {
+   "facility_id": "0cc368787cd559c3",
+   "pages_fetched": [
+    {
+     "url": "https://api.nsf.gov/services/v1/awards/0950080.json",
+     "status": 200
+    },
+    {
+     "url": "https://api.nsf.gov/services/v1/awards/2530657.json",
+     "status": 200
+    }
+   ],
+   "notes": "Megonigal's co-PI row (source nsf-award-search, award 1557009, no evidence) carried his SERC job title; the title is restated from the current award 2530657, on which he is co-PI. He is co-PI on every award of the series from 0950080 (start 05/15/2010), so start_year is 2010 (year-only, like the other rows)."
+  },
+  {
+   "facility_id": "c42a82d1eef0f701",
+   "pages_fetched": [
+    {
+     "url": "https://sc.edu/study/colleges_schools/artsandsciences/baruch_institute/faculty-staff/",
+     "status": 200
+    }
+   ],
+   "notes": "The Baruch Institute staff list gives Bruce Pfirrmann as 'Research Coordinator, North Inlet-Winyah Bay NERR' and Erik Smith as 'Manager, North Inlet-Winyah Bay NERR'. Smith's research-coordinator row (facility-webpage, since 2004, no evidence) is stale; his manager row stands."
+  }
+ ],
+ "people": [
+  {
+   "key": "simon-brandl",
+   "existing_person_id": null,
+   "name": "Simon Brandl",
+   "name_given": "Simon",
+   "name_family": "Brandl"
+  },
+  {
+   "key": "ed-buskey",
+   "existing_person_id": null,
+   "name": "Ed Buskey",
+   "name_given": "Ed",
+   "name_family": "Buskey"
+  },
+  {
+   "key": "david-portnoy",
+   "existing_person_id": null,
+   "name": "David Portnoy",
+   "name_given": "David",
+   "name_family": "Portnoy"
+  },
+  {
+   "key": "ed-proffitt",
+   "existing_person_id": null,
+   "name": "Ed Proffitt",
+   "name_given": "Ed",
+   "name_family": "Proffitt"
+  },
+  {
+   "key": "katharyn-boyer",
+   "existing_person_id": null,
+   "name": "Katharyn Boyer",
+   "name_given": "Katharyn",
+   "name_family": "Boyer"
+  },
+  {
+   "key": "margot-buchbinder",
+   "existing_person_id": null,
+   "name": "Margot Buchbinder",
+   "name_given": "Margot",
+   "name_family": "Buchbinder"
+  },
+  {
+   "key": "patrick-megonigal",
+   "existing_person_id": "3bc0e80527fb3e39",
+   "name": "Patrick Megonigal",
+   "name_given": "J. Patrick",
+   "name_family": "Megonigal"
+  }
+ ],
+ "affiliations": [
+  {
+   "facility_id": "cc181c7953452ffc",
+   "person_key": "simon-brandl",
+   "role": "lead-PI",
+   "title": "Principal Investigator, Gulf Coast Texas MarineGEO observatory",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "http://web.archive.org/web/20250329074510/https://marinegeo.si.edu/network/gulf-coast-texas",
+   "evidence": "MarineGEO Team Principal Investigator: Simon Brandl",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "cc181c7953452ffc",
+   "person_key": "ed-buskey",
+   "role": "scientist",
+   "title": "MarineGEO team, Gulf Coast Texas observatory",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "http://web.archive.org/web/20250329074510/https://marinegeo.si.edu/network/gulf-coast-texas",
+   "evidence": "MarineGEO Team ... Ed Buskey",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "cc181c7953452ffc",
+   "person_key": "david-portnoy",
+   "role": "scientist",
+   "title": "MarineGEO team, Gulf Coast Texas observatory",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "http://web.archive.org/web/20250329074510/https://marinegeo.si.edu/network/gulf-coast-texas",
+   "evidence": "MarineGEO Team ... David Portnoy",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "cc181c7953452ffc",
+   "person_key": "ed-proffitt",
+   "role": "scientist",
+   "title": "MarineGEO team, Gulf Coast Texas observatory",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "http://web.archive.org/web/20250329074510/https://marinegeo.si.edu/network/gulf-coast-texas",
+   "evidence": "MarineGEO Team ... Ed Proffitt",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "c54df27d3d5ff656",
+   "person_key": "katharyn-boyer",
+   "role": "lead-PI",
+   "title": "Principal Investigator, San Francisco Bay MarineGEO observatory",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "http://web.archive.org/web/20250329074517/https://marinegeo.si.edu/network/san-francisco-bay",
+   "evidence": "MarineGEO Team Principal Investigator: Katharyn Boyer",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "c54df27d3d5ff656",
+   "person_key": "margot-buchbinder",
+   "role": "scientist",
+   "title": "MarineGEO team, San Francisco Bay observatory",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "http://web.archive.org/web/20250329074517/https://marinegeo.si.edu/network/san-francisco-bay",
+   "evidence": "MarineGEO Team ... Margot Buchbinder",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "0cc368787cd559c3",
+   "person_key": "patrick-megonigal",
+   "role": "co-PI",
+   "title": "Co-PI, NSF LTREB award 2530657",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2010,
+   "end_year": null,
+   "source_url": "https://api.nsf.gov/services/v1/awards/2530657.json",
+   "evidence": "\"coPDPI\":[\"James P Megonigal",
+   "confidence": "high"
+  }
+ ],
+ "verifications": [
+  {
+   "facility_id": "c42a82d1eef0f701",
+   "person_id": "fd1a07d3b4b419fe",
+   "existing_role": "research-coordinator",
+   "status": "stale",
+   "current_holder_key": null,
+   "source_url": "https://sc.edu/study/colleges_schools/artsandsciences/baruch_institute/faculty-staff/",
+   "evidence": "Pfirrmann, Bruce Research Coordinator, North Inlet-Winyah Bay NERR"
+  }
+ ]
+}
