@@ -8,8 +8,9 @@ the 2026-10-25 MarineGEO / LTREB fixes, the 2026-10-25 LTAR and funder
 merges, the 2026-10-25 Reynolds Creek / Walnut Gulch merges, and the
 2026-10-25 Fort Keogh / Northern Plains / Southern Plains merges, and the
 2026-10-25 National Estuary Program host typing, the 2026-10-25 BLE and
-MCR map-point fixes, and the 2026-10-25 NERR / NEP award fetch from
-USAspending.gov. The counts
+MCR map-point fixes, the 2026-10-25 NERR / NEP award fetch from
+USAspending.gov, and the 2026-10-25 map-point fixes for eight more LTER
+sites. The counts
 change whenever the data is
 re-exported. To recount, query the tables on the [SQL tab](#/sql). For
 example:
@@ -33,16 +34,46 @@ Every facility has coordinates, and every US facility has a state.
   Southwest drylands (the default view) **63**, All U.S. **440**. See
   [ARID & New Mexico](./arid.md).
 
-Two LTER sites used to sit on their lead institution's office instead of
+Ten LTER sites used to sit on their lead institution's office instead of
 the site. Beaufort Lagoon Ecosystems (BLE) was mapped at the UT Marine
 Science Institute in Port Aransas, TX, and Moorea Coral Reef (MCR) at the
 UCSB Marine Science Institute, on the same point as Santa Barbara Coastal.
 On 2026-10-25 both moved to the point their lternet.edu site profile gives:
 BLE to the Alaskan Beaufort Sea coast (state AK), and MCR to Moorea,
 French Polynesia (country PF, no state, like the Antarctic LTER sites).
-The two offices stay on as `office` locations
-(`data/seed/facility_fixes.csv`). MCR still shows in the All U.S. lens,
-as McMurdo and Palmer do.
+MCR still shows in the All U.S. lens, as McMurdo and Palmer do.
+
+The same day eight more sites moved from their institution to their
+lternet.edu profile point:
+
+| Site | Was at | Now at | State |
+|---|---|---|---|
+| California Current Ecosystem (CCE) | Scripps, La Jolla | 32.8736, -120.28, offshore in the California Current | CA |
+| Florida Coastal Everglades (FCE) | FIU, Miami | 25.4682, -80.8533, coastal Everglades | FL |
+| Northeast U.S. Shelf (NES) | WHOI, Woods Hole | 40.6967, -70.8833, on the shelf transect south of Martha's Vineyard | MA |
+| Northern Gulf of Alaska (NGA) | UAF, Fairbanks | 59.045, -148.7, on the Gulf of Alaska shelf off Seward | AK |
+| Plum Island Ecosystems (PIE) | MBL, Woods Hole | 42.759, -70.891, Plum Island Sound | MA |
+| Virginia Coast Reserve (VCR) | UVA, Charlottesville | 37.283, -75.913, the Coastal Research Center at Oyster | VA |
+| Sevilleta (SEV) | UNM, Albuquerque | 34.353, -106.882, Sevilleta National Wildlife Refuge | NM |
+| Konza Prairie (KNZ) | Kansas State University, Manhattan | 39.093, -96.575, Konza Prairie Biological Station | KS |
+
+No state changed. The CCE, NES and NGA points are offshore, outside every
+state polygon, so `backfill_facility_state.py` gives them the nearest state
+(CA at 72.9 km, MA at 56.2 km, AK at 75.2 km). Sevilleta stays in the
+ARID, New Mexico and Southwest drylands lenses, and the lens counts above
+did not change. Each of the ten sites keeps its institution as an `office`
+location, and every change is cited in `data/seed/facility_fixes.csv`.
+Jornada Basin (JRN) was already mapped on its profile point, but its
+address was the NMSU office in Las Cruces. It now gives a site description,
+and the NMSU location has role `office` too. Three sites stay on a campus
+because their lternet.edu profile point is the campus: Central
+Arizona-Phoenix (ASU, Tempe), Minneapolis-St. Paul (University of
+Minnesota, St. Paul) and Santa Barbara Coastal (UCSB). Each campus lies
+inside its urban or coastal site. Every
+LTER site row now sits within 20 km of its lternet.edu profile point except
+"Bonanza Creek LTER Caribou-Poker Creeks Permafrost Sites". That row is
+mapped at the Caribou-Poker Creeks watershed, 38 km from the Bonanza Creek
+profile point in Fairbanks. McMurdo is the farthest of the rest, at 17 km.
 
 Eight LTER sites used to appear twice: once as their LTER site row and once
 as a COMPASS synthesis-networks import under a near-duplicate name (Plum
