@@ -15,8 +15,8 @@ NEON points already show the result. The scope lens, country, research
 area, the ≥10y toggle and the established-year range leave it on. Turning an overlay back on
 by hand keeps it on until those filters are cleared.
 
-As of 2026-10-25 there are 576 membership rows. 57 of the 66 networks have
-at least one member. 397 of the 444 facilities belong to one or more
+As of 2026-10-25 there are 578 membership rows. 57 of the 66 networks have
+at least one member. 399 of the 446 facilities belong to one or more
 networks. The other 47 belong to none, and you find them by sphere, type
 or research area instead.
 
@@ -102,8 +102,8 @@ ARID scope lens. See [ARID & New Mexico](./arid.md).
 | `goos` | Global Ocean Observing System | international | 6 | <https://goosocean.org> |
 | `iocaribe` | IOC Sub-Commission for the Caribbean and Adjacent Regions | international | 3 | <https://iocaribe.ioc-unesco.org> |
 | `onc` | Ocean Networks Canada | canada-national | 0 | <https://www.oceannetworks.ca> |
-| `nerrs` | National Estuarine Research Reserve System | us-national | 30 | <https://coast.noaa.gov/nerrs> |
-| `nep` | National Estuary Program | us-national | 27 | <https://www.epa.gov/nep> |
+| `nerrs` | National Estuarine Research Reserve System | us-national | 31 | <https://coast.noaa.gov/nerrs> |
+| `nep` | National Estuary Program | us-national | 28 | <https://www.epa.gov/nep> |
 | `nms` | National Marine Sanctuary System | us-national | 5 | <https://sanctuaries.noaa.gov> |
 | `marine-monument` | U.S. Marine National Monument | us-national | 0 | <https://www.fws.gov/program/national-wildlife-refuge-system> |
 | `nps-coastal` | National Park Service Coastal Units | us-national | 0 | <https://www.nps.gov/> |

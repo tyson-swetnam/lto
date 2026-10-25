@@ -46,7 +46,20 @@ def sha16(s: str) -> str:
     return hashlib.sha1(s.encode("utf-8")).hexdigest()[:16]
 
 
-def resolve_facility(conn, name: str | None, acronym: str | None) -> str | None:
+def resolve_facility(conn, name: str | None, acronym: str | None,
+                     facility_id: str | None = None) -> str | None:
+    # An explicit facility_id pins the link: it is used when that facility
+    # exists and the record is skipped when it does not. There is no name or
+    # fuzzy fallback, because a fuzzy hit would silently move the link to a
+    # different facility (a "Connecticut National Estuarine Research Reserve"
+    # record against a lake without that row resolved to Wells NERR at
+    # token_set_ratio >= 85 and overwrote its CDMO scope_id).
+    if facility_id:
+        row = conn.execute(
+            "SELECT facility_id FROM facilities WHERE facility_id = ? LIMIT 1",
+            [facility_id.strip()],
+        ).fetchone()
+        return row[0] if row else None
     if not (name or acronym):
         return None
     # If both name and acronym are provided, try the most specific match first:
@@ -204,7 +217,8 @@ def upsert_archive(conn, agent: str, a: dict) -> bool:
 
 
 def upsert_facility_archive(conn, agent: str, fa: dict) -> bool:
-    fac_id = resolve_facility(conn, fa.get("facility_canonical_name"), fa.get("facility_acronym"))
+    fac_id = resolve_facility(conn, fa.get("facility_canonical_name"), fa.get("facility_acronym"),
+                              fa.get("facility_id"))
     aid = (fa.get("archive_id") or "").strip().lower()
     if not (fac_id and aid):
         return False
@@ -220,7 +234,8 @@ def upsert_facility_archive(conn, agent: str, fa: dict) -> bool:
 
 def upsert_product(conn, agent: str, p: dict) -> bool:
     aid = (p.get("archive_id") or "").strip().lower() or None
-    fac_id = resolve_facility(conn, p.get("facility_canonical_name"), p.get("facility_acronym"))
+    fac_id = resolve_facility(conn, p.get("facility_canonical_name"), p.get("facility_acronym"),
+                              p.get("facility_id"))
     title = p.get("title")
     if not title:
         return False
@@ -264,7 +279,8 @@ def upsert_product(conn, agent: str, p: dict) -> bool:
 
 def upsert_endpoint(conn, agent: str, e: dict) -> bool:
     aid = (e.get("archive_id") or "").strip().lower() or None
-    fac_id = resolve_facility(conn, e.get("facility_canonical_name"), e.get("facility_acronym"))
+    fac_id = resolve_facility(conn, e.get("facility_canonical_name"), e.get("facility_acronym"),
+                              e.get("facility_id"))
     path = e.get("path_or_url")
     if not path:
         return False
@@ -281,7 +297,8 @@ def upsert_endpoint(conn, agent: str, e: dict) -> bool:
 
 def upsert_bucket(conn, agent: str, b: dict) -> bool:
     aid = (b.get("archive_id") or "").strip().lower() or None
-    fac_id = resolve_facility(conn, b.get("facility_canonical_name"), b.get("facility_acronym"))
+    fac_id = resolve_facility(conn, b.get("facility_canonical_name"), b.get("facility_acronym"),
+                              b.get("facility_id"))
     bname = (b.get("bucket_name") or "").strip()
     provider = (b.get("provider") or "s3").strip().lower()
     if not bname:

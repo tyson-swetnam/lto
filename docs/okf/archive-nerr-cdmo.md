@@ -4,7 +4,7 @@ title: "NERRS Centralized Data Management Office"
 description: "NOAA Office for Coastal Management / University of South Carolina, Baruch Marine Field Lab — observatory-network holding long-term observatory records."
 resource: "https://cdmo.baruch.sc.edu/"
 tags: [observatory-network, soap, nerrs-data-policy]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-10-25T15:22:13Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-10-25T17:45:12Z }
 status: stable
 ---
 
@@ -28,6 +28,7 @@ Operates the System-Wide Monitoring Program (SWMP) for all 30 NERR reserves. Per
 - **ANERR** Apalachicola National Estuarine Research Reserve (primary)
 - **CBNERR-MD** Chesapeake Bay-Maryland National Estuarine Research Reserve (primary)
 - **CBNERR-VA** Chesapeake Bay-Virginia National Estuarine Research Reserve (primary)
+- Connecticut National Estuarine Research Reserve (primary)
 - **DNERR** Delaware National Estuarine Research Reserve (primary)
 - Elkhorn Slough National Estuarine Research Reserve (primary)
 - Grand Bay National Estuarine Research Reserve (primary)

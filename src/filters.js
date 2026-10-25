@@ -217,20 +217,20 @@ export async function initFilters(container, state) {
   );
   container.appendChild(networkSection);
 
-  // 4. Facility type. Hardcoded slug list curated for the LTO catalog —
-  // only types that currently have ≥1 facility are rendered. Reserved or
-  // never-instantiated slugs (industry, local-gov, university-institute,
-  // vessel, virtual, foundation, observatory, international-*,
-  // protected-area-state/private) stay in schema/vocab/facility_types.csv
+  // 4. Facility type. Hardcoded slug list curated for the LTO catalog.
+  // Slugs with no facility today (industry, vessel, virtual, foundation,
+  // observatory, international-*) stay in schema/vocab/facility_types.csv
   // so future ingests can use them but don't clutter the UI as
-  // always-zero checkboxes.
+  // always-zero checkboxes. protected-area-state and
+  // protected-area-private have one facility each but are not listed
+  // here (or in SHOWN_TYPES in src/map.js) yet.
   const typeSlugs = [
     'federal', 'state', 'nonprofit',
     // LTO-specific observatory types — these dominate the dataset.
     'experimental-forest-range', 'flux-tower', 'ltar-site',
     'streamgage-network', 'glacier-monitoring', 'atmospheric-baseline',
     'field-station', 'university-field-station', 'university-marine-lab',
-    'university-institute',
+    'university-institute', 'local-gov',
     'protected-area-federal', 'network',
   ];
   const typeSection = makeFacetSection(
@@ -354,7 +354,7 @@ export async function initFilters(container, state) {
 
       // Update type labels now that we have the CSV. Filter the rows
       // against the in-use set above so "reserved" vocab entries
-      // (industry / local-gov / university-institute / vessel / virtual)
+      // (industry / vessel / virtual)
       // stay in the schema but don't appear as dead-end checkboxes.
       const usedSlugs = new Set(typeSlugs);
       const typeBody = typeSection.querySelector('.facet-body');

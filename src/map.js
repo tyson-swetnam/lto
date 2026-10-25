@@ -568,7 +568,7 @@ function makeLegendControl() {
 
       // Initial population: facility types via vocab CSV. Only the
       // types that actually have facilities are shown — reserved slugs
-      // (industry / local-gov / university-institute / vessel / virtual)
+      // (industry / vessel / virtual)
       // stay in the vocab file but are hidden from the legend so users
       // don't see always-empty chips. Keep this in sync with the
       // `typeSlugs` list in src/filters.js.
@@ -577,7 +577,7 @@ function makeLegendControl() {
         'experimental-forest-range', 'flux-tower', 'ltar-site',
         'streamgage-network', 'glacier-monitoring', 'atmospheric-baseline',
         'field-station', 'university-field-station', 'university-marine-lab',
-        'university-institute',
+        'university-institute', 'local-gov',
         'protected-area-federal', 'network',
       ]);
 

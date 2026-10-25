@@ -97,8 +97,8 @@ continuous-record threshold**, stored as `long_term_threshold_met`
 (`record_length_years >= 10`). Records below it are kept in the
 database with `long_term_threshold_met = false` and are **shown** by
 default: the "Show only facilities with ≥10y record" checkbox is off
-until a visitor ticks it. As of 2026-10-25, 346 of 444 facilities meet
-the threshold and 74 have a record shorter than 10 years. The other 24
+until a visitor ticks it. As of 2026-10-25, 347 of 446 facilities meet
+the threshold and 75 have a record shorter than 10 years. The other 24
 have no record length: 13 of them are flagged `false` all the same, so
 "not ≥10y" can mean "unknown", and 11 carry no flag at all. The default
 view is narrowed instead by the Southwest drylands scope lens (see
@@ -121,7 +121,7 @@ A real row:
 
 - **`source_url`** is the page the record rests on. It is meant to be
   present on every record, but QA does not yet enforce it: as of
-  2026-10-25, 44 of 444 facilities have no provenance row with a
+  2026-10-25, 44 of 446 facilities have no provenance row with a
   `source_url`.
 - **`retrieved_at`** is the date the agent observed the source. For the
   recall-era waves it is the run date, not a fetch date.
@@ -131,7 +131,7 @@ A real row:
 
 People rows carry their own provenance: `facility_personnel` has
 `source_url`, `retrieved_at` and `confidence` columns. As of 2026-10-25,
-of its 1,516 rows, 858 come from R-PEOPLE2 (851 fetched 2026-10-22, 7 on
+of its 1,536 rows, 878 come from R-PEOPLE2 (851 fetched 2026-10-22, 27 on
 2026-10-25) and also quote the page in `evidence`, 5 older rows were
 re-cited from fetched LTAR and Jornada pages through
 `data/seed/facility_fixes.csv` on 2026-10-25 (with `evidence`), and 30 come
@@ -189,7 +189,7 @@ For the people side:
   407 resolved; 478 have neither an ORCID nor an OpenAlex id and 39 have
   an ORCID that OpenAlex does not know, so this method cannot reach them.
 - The enrichment scripts are run by hand, following `RUNBOOK.md`. No CI
-  workflow runs them. As of 2026-10-25, 611 of 1,310 people have an
+  workflow runs them. As of 2026-10-25, 611 of 1,330 people have an
   ORCID and 560 an OpenAlex id.
 
 ## Weekly loops

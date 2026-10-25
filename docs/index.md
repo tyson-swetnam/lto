@@ -2,7 +2,7 @@
 
 `lto` is an interactive map and database cataloguing United States long-term
 environmental observatories across seven interlocking spheres. As of
-2026-10-25 it holds 444 facilities and 1,310 people. The site is a static
+2026-10-25 it holds 446 facilities and 1,330 people. The site is a static
 MapLibre + DuckDB-Wasm front-end (DuckDB 1.5.6 in the browser) that reads
 Parquet files over HTTP. Behind it, a Python pipeline loads research-agent
 and fetched-source JSON into a DuckLake store of record (DuckDB 2.0), checks
@@ -41,7 +41,7 @@ drylands* to *All U.S.* See [ARID & New Mexico](./arid.md).
 
 The long-term reference is the **Peters et al. 2013 ≥10-year
 continuous-record threshold** (USDA ARS Tech. Bulletin 1931). As of
-2026-10-25, 346 of the 444 facilities meet it. Facilities below the
+2026-10-25, 347 of the 446 facilities meet it. Facilities below the
 threshold stay in the database and are shown by default. Tick **Show only
 facilities with ≥10y record** in the filter panel to hide them.
 

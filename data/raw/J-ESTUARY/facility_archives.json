@@ -1,0 +1,49 @@
+[
+  {
+    "facility_id": "4da06ce200c54800",
+    "facility_canonical_name": "Connecticut National Estuarine Research Reserve",
+    "archive_id": "nerr-cdmo",
+    "role": "primary",
+    "scope_url": "https://cdmo.baruch.sc.edu/get/landing.cfm",
+    "scope_id": null,
+    "notes": "SWMP establishment is a stated objective; no CDMO code listed",
+    "sources": [
+      {
+        "source_url": "https://estuarineresearchreserve.center.uconn.edu/research/",
+        "retrieved_at": "2026-10-25",
+        "confidence": "high",
+        "evidence": "through establishment of the System Wide Monitoring Program (SWMP)"
+      },
+      {
+        "source_url": "https://cdmo.baruch.sc.edu/get/reserves_gis_data.txt",
+        "retrieved_at": "2026-10-25",
+        "confidence": "high",
+        "evidence": "\"reserve_name\": \"Narragansett Bay\",",
+        "note": "CDMO reserve list: 29 reserve codes plus ALL, no Connecticut entry."
+      }
+    ]
+  },
+  {
+    "facility_id": "51767bd943f43bf0",
+    "facility_canonical_name": "Coastal and Heartland National Estuary Partnership",
+    "archive_id": "nep-data",
+    "role": "primary",
+    "scope_url": "https://www.chnep.org/",
+    "scope_id": "CHNEP",
+    "notes": "Coastal and Heartland NEP (FL)",
+    "sources": [
+      {
+        "source_url": "https://www.epa.gov/nep/individual-estuary-program-websites",
+        "retrieved_at": "2026-10-25",
+        "confidence": "high",
+        "evidence": "[http://www.chnep.org/] Coastal and Heartland National Estuary Partnership"
+      },
+      {
+        "source_url": "https://www.chnep.org/about-the-chnep",
+        "retrieved_at": "2026-10-25",
+        "confidence": "high",
+        "evidence": "The Coastal & Heartland National Estuary Partnership (CHNEP, formerly"
+      }
+    ]
+  }
+]
