@@ -8,9 +8,12 @@ Runs against the LTO lake (scripts/lto_db.py) and:
      only, deprecated landing pages, broken templates).
   2. Migrates known-deprecated hosts to their current canonical form
      (e.g. nrs.fs.fed.us → research.fs.usda.gov/nrs).
-  3. Logs every decision to data/seed/url_hygiene_log.csv for audit.
+  3. Never nulls a homepage in KEEP_URLS (reviewed personal and lab
+     sites that the bare-root pattern used to catch), and restores one
+     this pass had nulled earlier if the field is still empty.
+  4. Logs every decision to data/seed/url_hygiene_log.csv for audit.
 
-Steps 1-2 land as one lake snapshot (commit message ``url_hygiene: …``).
+Steps 1-3 land as one lake snapshot (commit message ``url_hygiene: …``).
 --dry-run opens the lake read-only; it still appends the decision log.
 
 This pass is sandbox-safe (no network). The companion
@@ -35,6 +38,66 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import lto_db  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
+
+# Personal and lab homepages that are a bare root domain. The bare-root
+# pattern below nulled every one of them on 2026-10-23; load_arid.py then
+# wrote the ARID people's back on each weekly refresh, and the Monday
+# sweep nulled them again. Reviewed one by one from the log: each is the
+# person's own site or their lab's, not an organisation landing page.
+# (Organisation pages such as montereybay.noaa.gov, lakesunapee.org or
+# dnr.wisconsin.gov stay nulled.) Compared after url_key() normalisation.
+KEEP_URLS: dict[str, str] = {
+    "https://jadamlangley.wordpress.com/": "Adam Langley, personal site",
+    "https://flux.aos.wisc.edu/": "Ankur Desai, his flux lab",
+    "https://alexjwebster.weebly.com/": "Alex Webster, personal site (ARID)",
+    "https://www.richardsonlab.org/": "Andrew Richardson, his lab",
+    "https://bbixby.weebly.com/": "Becky Bixby, personal site (ARID)",
+    "https://www.carey.biol.vt.edu/": "Cayelan Carey, her lab",
+    "https://www.unmornithology.org/": "Christopher Witt, his lab",
+    "https://cra002.scrippsprofiles.ucsd.edu/": "Clarissa Anderson, Scripps profile",
+    "https://www.wildmicrobiome.org/": "Cristina Takacs-Vesbach, her lab",
+    "https://practicalstats.com/": "Dennis Helsel, his own practice",
+    "https://brodielab.evolution.virginia.edu/": "Edmund Brodie III, his lab",
+    "https://www.ebgscience.org/": "Eve-Lyn Hinckley, her lab",
+    "https://hydrologylab.nmsu.edu/": "Hatim Geli, his lab (ARID)",
+    "https://abqstew.com/": "Jessica Rowland, her site (ARID)",
+    "https://jonlefcheck.net/": "Jonathan Lefcheck, personal site",
+    "https://eh2o.unm.edu/": "Jose Cerrato, his lab (ARID)",
+    "https://lcrossey.com": "Laura Crossey, personal site (ARID)",
+    "https://www.litvaklab.org/": "Marcy Litvak, her lab (ARID)",
+    "https://mohman.scrippsprofiles.ucsd.edu/": "Mark Ohman, Scripps profile",
+    "https://mtresguerres.scrippsprofiles.ucsd.edu/": "Martin Tresguerres, Scripps profile",
+    "https://www.marygoldwd.com/": "Marygold Walsh-Dilley, personal site",
+    "https://castorani.evsc.virginia.edu/": "Max Castorani, his lab",
+    "https://megandethier.wordpress.com/": "Megan Dethier, personal site",
+    "https://smithlab.colostate.edu/": "Melinda Smith, her lab",
+    "https://www.andersenlabunm.org/": "Michael Andersen, his lab",
+    "https://macklab.nau.edu/": "Michelle Mack, her lab",
+    "https://hanson.limnology.wisc.edu/": "Paul Hanson, his lab",
+    "https://rkeeling.scrippsprofiles.ucsd.edu/": "Ralph Keeling, Scripps profile",
+    "https://tobolab.org/": "Robert Toonen, his lab (ToBo)",
+    "http://bio-optics.uprm.edu": "Roy Armstrong, his lab",
+    "https://sethnewsome.org/": "Seth Newsome, personal site",
+    "https://palumbilab.stanford.edu": "Stephen Palumbi, his lab",
+    "https://www.stuartjoneslab.com/": "Stuart Jones, his lab",
+    "https://stromlab.wwu.edu/": "Suzanne Strom, her lab",
+    "https://thomasdepree.com/": "Thomas De Pree, personal site (ARID)",
+    "https://www.tacl.online/": "Thomas Turner, his lab (ARID)",
+}
+
+
+def url_key(url: str | None) -> str:
+    """Comparison key: no scheme, no leading www., lower-case host, no trailing /."""
+    s = (url or "").strip()
+    s = re.sub(r"^https?://", "", s, flags=re.I)
+    host, _, rest = s.partition("/")
+    host = host.lower()
+    if host.startswith("www."):
+        host = host[4:]
+    return (host + ("/" + rest if rest else "")).rstrip("/")
+
+
+KEEP_KEYS = frozenset(url_key(u) for u in KEEP_URLS)
 LOG_PATH = ROOT / "data" / "seed" / "url_hygiene_log.csv"
 
 
@@ -103,6 +166,8 @@ def apply_patterns(url: str | None, patterns) -> tuple[str | None, str | None]:
     if not url:
         return url, None
     s = url.strip()
+    if url_key(s) in KEEP_KEYS:
+        return url, None
     for rx, action in patterns:
         m = rx.match(s)
         if not m:
@@ -163,6 +228,32 @@ def main() -> int:
                 rewritten += 1
         print(f"[url_hygiene] people.homepage_url — nulled {nulled}, rewrote {rewritten}, "
               f"audited {len(rows)}")
+
+        # 1b. Undo this pass's own earlier mistakes: a homepage it nulled
+        # whose old value is in KEEP_URLS comes back, but only while the
+        # field is still empty (a loader or research batch may have
+        # written a better one since).
+        last_null: dict[str, str] = {}
+        if LOG_PATH.exists():
+            with LOG_PATH.open(newline="") as f:
+                for r in csv.DictReader(f):
+                    if (r["table"] == "people" and r["field"] == "homepage_url"
+                            and r["decision"].startswith("null:") and r["old"]):
+                        last_null[r["id"]] = r["old"]
+        empty = {pid: name for pid, name in conn.execute(
+            "SELECT person_id, name FROM people WHERE homepage_url IS NULL").fetchall()}
+        restored = 0
+        for pid, old in sorted(last_null.items()):
+            if pid in empty and url_key(old) in KEEP_KEYS:
+                log_rows.append({
+                    "table": "people", "id": pid, "name": empty[pid],
+                    "field": "homepage_url", "old": "", "new": old,
+                    "decision": "restore:keep-list",
+                    "checked_at": date.today().isoformat(),
+                })
+                people_updates.append((pid, old))
+                restored += 1
+        print(f"[url_hygiene] people.homepage_url — restored {restored} from KEEP_URLS")
 
         # 2. facilities.url
         rows = conn.execute(

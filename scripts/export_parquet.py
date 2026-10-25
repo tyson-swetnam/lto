@@ -45,8 +45,12 @@ Rules, each fixing a way the old export could ship the wrong thing:
   * Files are written to a temp name and renamed, so an interrupted run
     never leaves a truncated parquet behind.
 
-COPY uses DuckDB's default parquet options (SNAPPY, format v1), which
-DuckDB 1.1 (inside duckdb-wasm 1.29) and later read. Every column is
+COPY writes ZSTD (level 3, format v1), which DuckDB 1.1 (inside
+duckdb-wasm) and later read. Not DuckDB's default SNAPPY: its bundled
+Snappy takes CPU-specific paths, so an aarch64 workstation and the x86
+CI runner wrote different bytes for identical pages, and every weekly
+refresh rewrote every file. ZSTD output depends only on the library
+version and level. Every column is
 written OPTIONAL, as DuckDB 1.x wrote them (see ``copy_table``): DuckDB 2.0
 would otherwise mark a column REQUIRED whenever the lake's current physical
 layout lets it prove there are no NULLs, so the bytes would change with
@@ -228,7 +232,8 @@ def copy_table(con, table: str, where: str, dest: Path,
     con.execute(
         f"COPY (SELECT _t.* FROM (SELECT 1 AS __lto_one) _d LEFT JOIN {src} _t ON true "
         f"ORDER BY {order_by(con, table)} "
-        f"LIMIT (SELECT count(*) FROM {src})) TO '{tmp.as_posix()}' (FORMAT PARQUET)")
+        f"LIMIT (SELECT count(*) FROM {src})) TO '{tmp.as_posix()}' "
+        f"(FORMAT PARQUET, COMPRESSION zstd, COMPRESSION_LEVEL 3)")
     os.replace(tmp, dest)
     return lto_db.scalar(con, "SELECT count(*) FROM read_parquet(?)", [str(dest)])
 
