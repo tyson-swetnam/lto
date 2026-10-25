@@ -211,7 +211,7 @@ def fetch_org(sess: requests.Session, ein: str) -> dict | None:
 
 def ensure_self_funder(buf: LakeBuffer) -> str:
     """Queue the self-funder row; flush() inserts it only if absent."""
-    fid = funder_id_990()
+    fid = lto_db.canonical_funder_id(funder_id_990())
     buf.funders[fid] = (FUNDER_NAME, FUNDER_TYPE, "US", FUNDER_URL)
     return fid
 

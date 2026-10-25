@@ -38,6 +38,7 @@ Usage::
 from __future__ import annotations
 
 import argparse
+import csv
 import json
 import sys
 from pathlib import Path
@@ -272,6 +273,66 @@ def check_facility_merges(conn, failures: list[str], warnings: list[str]) -> Non
             warnings.append(f"{rel} still names {len(hits)} merged facility id(s) "
                             f"(rewrite to the kept id): "
                             + ", ".join(f"{f} -> {merged[f]}" for f in hits[:5]))
+
+
+# Committed inputs that name funders by id or by name and that a writer
+# reads as live input: a merged id or name left in one is resolved by
+# lto_db.canonical_funder, but the file should say the survivor.
+FUNDER_INPUTS = [
+    "data/funding_research/agency_budgets",
+    "data/funding_overrides",
+]
+
+
+def check_funder_merges(conn, failures: list[str], warnings: list[str]) -> None:
+    """A funder merge_funders.py merged away must stay gone: a writer that
+    mints its id again (ingest.py's sha1('nsf'), a raw record's 'EPA') would
+    bring the duplicate back. Every id the merge log redirects (merged ids
+    and both hash families' ids of each merged name, alias and kept name)
+    must be absent from funders and funding_events."""
+    merged, kept_names = lto_db._funder_redirect_maps()
+    if not merged:
+        return
+    ids = sorted(merged)
+    back = conn.execute(
+        "SELECT funder_id, name FROM funders "
+        "WHERE funder_id IN (SELECT unnest(?::VARCHAR[])) ORDER BY 1", [ids]).fetchall()
+    assert_true(not back, f"{len(back)} funders rows carry an id merged away in "
+                          f"data/seed/funder_merge_log.csv (a writer re-created them): "
+                + "; ".join(f"{n} {fid} -> {merged[fid]}" for fid, n in back[:5]), failures)
+    ev = conn.execute(
+        "SELECT count(*) FROM funding_events "
+        "WHERE funder_id IN (SELECT unnest(?::VARCHAR[]))", [ids]).fetchone()[0]
+    assert_true(not ev, f"{ev} funding_events rows name a funder id merged away in "
+                        f"data/seed/funder_merge_log.csv", failures)
+    root = Path(__file__).resolve().parent.parent
+    for rel in FUNDER_INPUTS:
+        base = root / rel
+        for path in sorted(base.glob("*.csv")) if base.is_dir() else [base]:
+            if not path.exists():
+                continue
+            text = path.read_text(encoding="utf-8")
+            rel = path.relative_to(root) if path.is_relative_to(root) else path
+            hits = sorted({fid for line in text.splitlines()
+                           for fid in merged if fid in line})
+            if hits:
+                warnings.append(f"{rel} still names {len(hits)} merged "
+                                f"funder id(s) (rewrite to the kept id): "
+                                + ", ".join(f"{f} -> {merged[f]}" for f in hits[:5]))
+            # Most inputs name funders by name (agency_budgets' funder_name):
+            # a merged name ('NOAA OCM', 'USGS') would load onto the survivor
+            # without a trace, so name it here too.
+            stale = set()
+            for r in csv.DictReader(text.splitlines()):
+                n = (r.get("funder_name") or "").strip()
+                keep = next((merged[i] for i in lto_db.funder_name_ids(n) if i in merged), None)
+                if keep and n.lower() != (kept_names.get(keep) or "").strip().lower():
+                    stale.add((n, keep))
+            if stale:
+                warnings.append(f"{rel} names {len(stale)} merged funder "
+                                f"name(s) (it loads onto the kept funder; rename it): "
+                                + ", ".join(f"'{n}' -> {k} '{kept_names.get(k)}'"
+                                            for n, k in sorted(stale)[:5]))
 
 
 def check_states(conn, failures: list[str]) -> None:
@@ -699,6 +760,24 @@ def check_people(conn, failures: list[str], warnings: list[str]) -> None:
                              f"leadership role at a facility (loader fan-in?): {fan[:5]}",
                     failures)
 
+    # An area inherited from a facility needs that facility link: a merge or
+    # fix that drops a person's role (or a facility's area) leaves the People
+    # tab saying 'via facility' beside 'No facility roles recorded'.
+    # compute_person_areas.py prunes these rows.
+    if table_rows(conn, "person_areas") > 0:
+        stale = conn.execute(
+            """SELECT count(*), count(DISTINCT person_id) FROM person_areas pa
+               WHERE source = 'facility-area-inheritance'
+                 AND NOT EXISTS (SELECT 1 FROM facility_personnel fp
+                                 JOIN area_links al ON al.facility_id = fp.facility_id
+                                 WHERE fp.person_id = pa.person_id
+                                   AND al.area_id = pa.area_id)""").fetchone()
+        assert_true(stale[0] == 0,
+                    f"{stale[0]} facility-area-inheritance person_areas rows ({stale[1]} "
+                    "people) have no facility link carrying that area — run "
+                    "scripts/compute_person_areas.py and the rest of the compute chain",
+                    failures)
+
 
 # Vocabulary tables loaded verbatim from schema/vocab/<table>.csv by
 # ingest.py's load_vocab (same column mapping).
@@ -986,7 +1065,7 @@ def main() -> int:
             (check_projects, ()), (check_portal_products, ()),
             (check_topic_crosswalk, ()), (check_person_registry, ()),
             (check_registry_edges, ()), (check_people, (warnings,)),
-            (check_facility_merges, (warnings,)),
+            (check_facility_merges, (warnings,)), (check_funder_merges, (warnings,)),
         ):
             try:
                 check(conn, failures, *extra)

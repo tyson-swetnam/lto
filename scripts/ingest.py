@@ -340,7 +340,9 @@ def insert_records(conn: duckdb.DuckDBPyConnection, records: list[Record]) -> di
             fname = funder.get("name") if isinstance(funder, dict) else str(funder)
             if not fname:
                 continue
-            fuid = funder_id(fname)
+            # A merged-away funder ('NSF', 'EPA', ...) lands on its survivor
+            # under the survivor's name (lto_db.canonical_funder).
+            fuid, fname = lto_db.canonical_funder(funder_id(fname), fname)
             funders.append((fuid, fname))
             # funding_links is a backwards-compat view over funding_events
             # in the LTO schema. Insert into funding_events directly.

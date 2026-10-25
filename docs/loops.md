@@ -81,7 +81,7 @@ As of 2026-10-23 the committed batches are 51 research files covering
 
 | Loop | What it does | State as of 2026-10-24 |
 |---|---|---|
-| `R-PEOPLE2` research | Re-researches each facility's leaders from fetched pages and rules on the rows already there | 52 batches, 267 facilities. 858 of 1,519 affiliation rows come from this pass (851 fetched 2026-10-22, 7 on 2026-10-25) |
+| `R-PEOPLE2` research | Re-researches each facility's leaders from fetched pages and rules on the rows already there | 52 batches, 267 facilities. 858 of 1,516 affiliation rows come from this pass (851 fetched 2026-10-22, 7 on 2026-10-25) |
 | `R-PEOPLE2-BIO` | Sourced bio, interests, ORCID and status for existing people | 31 batches, 290 updates; 780 people have a bio |
 | `dedupe_people.py` | Merges duplicate people on identifier or page evidence | 57 merges logged |
 | `enrich_people_orcid.py` | Strict ORCID backfill: family name, given name and an employment at a known facility must all match; a person with no facility on file is matched only when the name resolves to exactly one ORCID (34 such matches logged `accept-name-only`) | 611 people have an ORCID. 79 wrong or dead iDs are logged `cleared-*` in `data/seed/orcid_resolution_log.csv` and are never re-attached; `qa.py` fails if a cleared-wrong iD comes back |
@@ -110,9 +110,9 @@ The first plan also named three loop agents, `R-PEOPLE-LOOP2-EFR`,
 `R-PEOPLE-LOOP2-ORCID` and `R-PEOPLE-LOOP2-OPENALEX`. None of them left
 a spec or a batch file in the repo. The two enrichment scripts now do
 the ORCID and OpenAlex work. The EFR work is only partly done: the
-catalogue holds 40 facilities of type `experimental-forest-range`, and
+catalogue holds 38 facilities of type `experimental-forest-range`, and
 R-PEOPLE2 has re-researched 11 of them so far (6 in its `USFS-EFR`
-batch). The other 29 carry only older rows.
+batch). The other 27 carry only older rows.
 
 ## Network access
 
@@ -165,7 +165,7 @@ When adding a new agent:
 - Cite a `source_url` for every record. For people, every affiliation
   also needs an `evidence` quote; `load_people_research.py` refuses an
   affiliation that lacks either. (Some recall-era rows have no
-  `source_url`: 46 facilities and 31 personnel rows.)
+  `source_url`: 44 facilities and 31 personnel rows.)
 - Mark `confidence` honestly: `high` when the page names the person in
   that role at that facility, and lower when the page supports less.
 - If a facility agent's scope overlaps another agent's, leave a `notes`

@@ -4,7 +4,7 @@ title: "USFS Research Data Archive"
 description: "USDA Forest Service / Rocky Mountain Research Station — repository holding long-term observatory records."
 resource: "https://www.fs.usda.gov/rds/archive/"
 tags: [repository, rest, public-domain-us]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-10-25T17:07:27Z }
 status: stable
 ---
 
@@ -56,13 +56,12 @@ USFS RDS issues citable DOIs of form 10.2737/RDS-YYYY-NNNN for forest-research d
 
 # Data products
 
-28 addressable products catalogued. Top by citations:
+26 addressable products catalogued. Top by citations:
 
 | Product | Format | Coverage | Citations |
 |---|---|---|---|
 | [Bartlett Experimental Forest permanent forest inventory plots, 1931-present](https://www.fs.usda.gov/rds/archive/Catalog?searchTerm=Bartlett) | csv | 1931-01-01–present | n/a |
 | [Bent Creek Experimental Forest hardwood silviculture and oak regeneration plots](https://www.fs.usda.gov/rds/archive/Catalog?searchTerm=Bent+Creek) | csv | 1955-01-01–present | n/a |
-| [Bonanza Creek Experimental Forest forest dynamics permanent-plot data](https://www.fs.usda.gov/rds/archive/Catalog?searchTerm=Bonanza+Creek) | csv | 1989-01-01–present | n/a |
 | [Calhoun Long-Term Soil Ecosystem Experiment soil cores](https://www.fs.usda.gov/rds/archive/Catalog?searchTerm=Calhoun) | csv | 1962-01-01–present | n/a |
 | [Caspar Creek Experimental Watersheds streamflow and sediment data](https://www.fs.usda.gov/rds/archive/Catalog?searchTerm=Caspar+Creek) | csv | 1962-01-01–present | n/a |
 | [Coweeta Hydrologic Laboratory Climate and Streamflow Data](https://www.fs.usda.gov/rds/archive/Catalog?searchTerm=Coweeta) | csv | 1934-01-01–present | n/a |
@@ -70,3 +69,4 @@ USFS RDS issues citable DOIs of form 10.2737/RDS-YYYY-NNNN for forest-research d
 | [Discharge in gaged mountain streams in the H.J. Andrews Experimental Forest](https://www.fs.usda.gov/rds/archive/Catalog?searchTerm=Andrews+streamflow) | csv | 1949-01-01–present | n/a |
 | [Fernow Experimental Forest streamflow + chemistry watershed data](https://www.fs.usda.gov/rds/archive/Catalog?searchTerm=Fernow) | csv | 1951-01-01–present | n/a |
 | [Fraser Experimental Forest watershed streamflow, snow, and climate data](https://www.fs.usda.gov/rds/archive/Catalog?searchTerm=Fraser+Experimental) | csv | 1937-01-01–present | n/a |
+| [GLEES atmospheric deposition and meteorological data](https://www.fs.usda.gov/rds/archive/Catalog?searchTerm=GLEES) | csv | 1989-01-01–present | n/a |

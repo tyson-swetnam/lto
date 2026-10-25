@@ -4,7 +4,7 @@ title: "Environmental Data Initiative Repository"
 description: "Environmental Data Initiative (EDI) / NSF — repository holding long-term observatory records."
 resource: "https://portal.edirepository.org/"
 tags: [repository, rest, edi-data-policy]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-10-25T04:20:50Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-10-25T17:07:27Z }
 status: stable
 ---
 
@@ -32,7 +32,6 @@ PASTA REST API; EML 2.2 metadata; per-LTER 'scope' namespace pattern knb-lter-<a
 - **ARC** Arctic LTER (Toolik Field Station) (primary)
 - **BES** Baltimore Ecosystem Study LTER (primary)
 - **BLE** Beaufort Lagoon Ecosystems LTER (primary)
-- **BEN** Bent Creek Experimental Forest (primary)
 - **BLAN-EF** Blandy Experimental Farm / State Arboretum of Virginia (primary)
 - **BNZ-CPCRW** Bonanza Creek LTER Caribou-Poker Creeks Permafrost Sites (primary)
 - **CCE** California Current Ecosystem LTER (primary)
@@ -77,7 +76,7 @@ PASTA REST API; EML 2.2 metadata; per-LTER 'scope' namespace pattern knb-lter-<a
 
 # Data products
 
-84 addressable products catalogued. Top by citations:
+82 addressable products catalogued. Top by citations:
 
 | Product | Format | Coverage | Citations |
 |---|---|---|---|
@@ -87,7 +86,7 @@ PASTA REST API; EML 2.2 metadata; per-LTER 'scope' namespace pattern knb-lter-<a
 | [BES LTER: Stream Water Chemistry, Baltimore Watershed Network](https://portal.edirepository.org/nis/mapbrowse?packageid=knb-lter-bes.1057) | csv | 1998-01-01–present | n/a |
 | [BLE LTER: Lagoon Water-Column Nutrients and Dissolved Organic Matter](https://portal.edirepository.org/nis/mapbrowse?packageid=knb-lter-ble.18) | csv | 2018-01-01–present | n/a |
 | [BLE LTER: Time-Series Lagoon Hydrography, Beaufort Sea Coastal Stations](https://portal.edirepository.org/nis/mapbrowse?packageid=knb-lter-ble.10) | csv | 2018-01-01–present | n/a |
-| [Bonanza Creek LTER: Boreal Climate Records, Caribou-Poker Creeks and Bonanza Creek Stations](https://portal.edirepository.org/nis/mapbrowse?packageid=knb-lter-bnz.412) | csv | 1988-01-01–present | n/a |
-| [Bonanza Creek LTER: Long-Term Tree-Ring Series, Boreal Floodplain and Upland Stands](https://portal.edirepository.org/nis/mapbrowse?packageid=knb-lter-bnz.501) | csv | 1900-01-01–present | n/a |
 | [CAP LTER: Long-Term Bird Surveys, Phoenix Metro Point Counts](https://portal.edirepository.org/nis/mapbrowse?packageid=knb-lter-cap.46) | csv | 2000-01-01–present | n/a |
 | [CAP LTER: Phoenix Area Social Survey - Long-Term Household Environmental Attitudes](https://portal.edirepository.org/nis/mapbrowse?packageid=knb-lter-cap.628) | csv | 2001-01-01–present | n/a |
+| [CCE LTER: Mesozooplankton Abundance and Biomass from CalCOFI/CCE Cruises](https://portal.edirepository.org/nis/mapbrowse?packageid=knb-lter-cce.236) | csv | 2006-01-01–present | n/a |
+| [CCE LTER: Process Cruise CTD Hydrography Bottle Files](https://portal.edirepository.org/nis/mapbrowse?packageid=knb-lter-cce.20) | csv | 2006-01-01–present | n/a |

@@ -15,9 +15,9 @@ NEON points already show the result. The scope lens, country, research
 area, the ≥10y toggle and the established-year range leave it on. Turning an overlay back on
 by hand keeps it on until those filters are cleared.
 
-As of 2026-10-25 there are 578 membership rows. 57 of the 66 networks have
-at least one member. 398 of the 446 facilities belong to one or more
-networks. The other 48 belong to none, and you find them by sphere, type
+As of 2026-10-25 there are 576 membership rows. 57 of the 66 networks have
+at least one member. 397 of the 444 facilities belong to one or more
+networks. The other 47 belong to none, and you find them by sphere, type
 or research area instead.
 
 The **Facilities** column counts facility records in this catalogue as of
@@ -59,10 +59,10 @@ grouping below is only to make the list easier to read.
 
 | Slug | Full name | Level | Facilities | URL |
 |---|---|---|---:|---|
-| `lter` | Long-Term Ecological Research Network | us-national | 51 | <https://lternet.edu> |
+| `lter` | Long-Term Ecological Research Network | us-national | 50 | <https://lternet.edu> |
 | `lter-site` | Long-Term Ecological Research member site | us-regional | 2 | <https://lternet.edu/site/> |
 | `neon` | National Ecological Observatory Network | us-national | 82 | <https://www.neonscience.org> |
-| `ltreb` | Long-term Research in Environmental Biology | us-national | 23 | <https://www.nsf.gov/funding/opportunities/long-term-research-environmental-biology-ltreb> |
+| `ltreb` | Long-term Research in Environmental Biology | us-national | 22 | <https://www.nsf.gov/funding/opportunities/long-term-research-environmental-biology-ltreb> |
 | `usfs-rna-ef` | USFS Research Natural Area / Experimental Forest network | us-national | 36 | <https://www.fs.usda.gov/research/rmrs/research-natural-areas> |
 | `nps-im` | NPS Inventory and Monitoring Program | us-national | 16 | <https://www.nps.gov/im/> |
 | `ofs` | Organization of Biological Field Stations | us-national | 16 | <https://www.obfs.org> |

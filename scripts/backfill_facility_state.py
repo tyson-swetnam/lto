@@ -5,7 +5,8 @@
 ("Southwest", "Domain 14 — Desert Southwest", "EPA Region 6"), so there
 was no way to ask for "the New Mexico facilities". This derives a USPS
 state / territory code for every facility that has coordinates and
-writes the decision log to data/seed/facility_state.csv.
+writes the decision log to data/seed/facility_state.csv (to
+<catalog dir>/export/facility_state.csv for a non-default catalog).
 
 Run from the repo root (idempotent)::
 
@@ -113,8 +114,16 @@ def main() -> int:
                     help="report the assignments without writing the lake or the log")
     ap.add_argument("--nm-outline", type=Path, default=None,
                     help="also write the New Mexico polygon to this GeoJSON path")
+    ap.add_argument("--log", type=Path, default=None,
+                    help="where to write the decision log (default: "
+                         "data/seed/facility_state.csv; <catalog dir>/export/"
+                         "facility_state.csv for a non-default catalog, so a "
+                         "scratch lake never rewrites the committed seed)")
     lto_db.add_argparse_catalog(ap)
     args = ap.parse_args()
+    if args.log is None:
+        args.log = (LOG if lto_db.is_default_catalog(args.catalog) else
+                    lto_db.catalog_path(args.catalog).parent / "export" / LOG.name)
 
     states = load_states()
     codes = [c for c, _ in states]
@@ -180,16 +189,21 @@ def main() -> int:
                      "(facility_id VARCHAR, state VARCHAR)")
         conn.executemany("INSERT INTO _state VALUES (?, ?)",
                          [(r["facility_id"], r["state"] or None) for r in log])
+        # Only rows whose state changes, so a re-run writes no snapshot.
         conn.execute("UPDATE facilities SET state = s.state FROM _state s "
-                     "WHERE facilities.facility_id = s.facility_id")
+                     "WHERE facilities.facility_id = s.facility_id "
+                     "AND facilities.state IS DISTINCT FROM s.state")
         lto_db.assert_integrity(conn, ["facilities"])
     conn.close()
-    with LOG.open("w", newline="") as fh:
+    args.log.parent.mkdir(parents=True, exist_ok=True)
+    with args.log.open("w", newline="") as fh:
         w = csv.DictWriter(fh, fieldnames=LOG_FIELDS, lineterminator="\n")
         w.writeheader()
         w.writerows(log)
+    shown = (args.log.resolve().relative_to(ROOT)
+             if args.log.resolve().is_relative_to(ROOT) else args.log)
     print(f"[ok] set state on {sum(1 for r in log if r['state'])} of {len(log)} "
-          f"facilities; log → {LOG.relative_to(ROOT)}")
+          f"facilities; log → {shown}")
     return 0
 
 

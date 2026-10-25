@@ -125,6 +125,7 @@ import argparse
 import csv
 import fcntl
 import functools
+import hashlib
 import os
 import sys
 import re
@@ -341,6 +342,84 @@ def canonical_facility_id(fid: str | None) -> str | None:
         return fid
     fid = fid.strip()
     return facility_merge_redirects().get(fid, fid)
+
+
+# ---------------------------------------------------------------------------
+# Merged funders
+# ---------------------------------------------------------------------------
+
+FUNDER_MERGE_LOG = ROOT / "data" / "seed" / "funder_merge_log.csv"
+_funder_redirects: dict[Path, tuple[dict[str, str], dict[str, str]]] = {}
+
+
+def funder_name_ids(name: str | None) -> list[str]:
+    """Every id a writer mints for a funder name: the sha1 family (ingest.py,
+    load_lto_funding.py) and the blake2b family (fetch_funding_nsf /
+    _usaspending, load_agency_budgets, fetch_funding_990), both over
+    lower(strip(name)), first 16 hex characters."""
+    key = (name or "").strip().lower()
+    if not key:
+        return []
+    return [hashlib.sha1(key.encode("utf-8")).hexdigest()[:16],
+            hashlib.blake2b(key.encode("utf-8"), digest_size=8).hexdigest()]
+
+
+def funder_merge_redirects(path: Path = FUNDER_MERGE_LOG) -> dict[str, str]:
+    """retired funder id -> the funder_id it was merged into
+    (merge_funders.py's log), closed transitively. Keys are each merged id
+    plus both families' ids for the merged name, the log's aliases and the
+    kept name (so 'NSF' minted by ingest, 'Environmental Protection Agency'
+    minted by the USAspending fetcher, or the survivor's own name minted by
+    the other hash family all land on the survivor)."""
+    return _funder_redirect_maps(path)[0]
+
+
+def _funder_redirect_maps(path: Path = FUNDER_MERGE_LOG
+                          ) -> tuple[dict[str, str], dict[str, str]]:
+    key = Path(path).resolve()
+    if key not in _funder_redirects:
+        m: dict[str, str] = {}
+        names: dict[str, str] = {}
+        if key.exists():
+            with key.open(newline="", encoding="utf-8") as fh:
+                for r in csv.DictReader(fh):
+                    kept, merged = (r.get("kept_id") or "").strip(), (r.get("merged_id") or "").strip()
+                    if not (kept and merged):
+                        continue
+                    names[kept] = (r.get("kept_name") or "").strip()
+                    aliases = [a for a in (r.get("aliases") or "").split("|") if a.strip()]
+                    for n in [r.get("merged_name"), r.get("kept_name"), *aliases]:
+                        for i in funder_name_ids(n):
+                            if i != kept:
+                                m.setdefault(i, kept)
+                    m[merged] = kept
+        for k in list(m):
+            seen = {k}
+            while m[k] in m and m[k] not in seen:
+                seen.add(m[k])
+                m[k] = m[m[k]]
+        _funder_redirects[key] = (m, names)
+    return _funder_redirects[key]
+
+
+def canonical_funder_id(fid: str | None) -> str | None:
+    """The funder a (possibly merged-away) funder_id now lives under."""
+    if not fid:
+        return fid
+    fid = fid.strip()
+    return funder_merge_redirects().get(fid, fid)
+
+
+def canonical_funder(fid: str, name: str | None) -> tuple[str, str | None]:
+    """(funder_id, name) a writer should use for the funder it minted as
+    ``fid`` from ``name``: a merged-away id is sent to its survivor and the
+    survivor's name replaces the retired one, so an upsert neither
+    re-creates the merged funder nor renames the survivor."""
+    m, names = _funder_redirect_maps()
+    keep = m.get(fid.strip(), fid.strip()) if fid else fid
+    if keep != fid and names.get(keep):
+        return keep, names[keep]
+    return keep, name
 
 
 def latest_snapshot(con, catalog: str = LAKE) -> dict:
