@@ -4,7 +4,7 @@ title: "EPA National Estuary Program Data"
 description: "U.S. Environmental Protection Agency / Office of Water — program holding long-term observatory records."
 resource: "https://www.epa.gov/nep/local-estuary-programs"
 tags: [program, rest, epa-public]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-10-25T15:22:13Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-10-25T17:45:12Z }
 status: stable
 ---
 
@@ -24,6 +24,7 @@ status: stable
 - **BBNEP** Buzzards Bay National Estuary Program (primary)
 - **CBEP** Casco Bay Estuary Partnership (primary)
 - **CBBEP** Coastal Bend Bays and Estuaries Program (primary)
+- **CHNEP** Coastal and Heartland National Estuary Partnership (primary)
 - Delaware Center for the Inland Bays (primary)
 - **GBEP** Galveston Bay Estuary Program (primary)
 - **IRLNEP** Indian River Lagoon National Estuary Program (primary)

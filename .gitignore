@@ -36,6 +36,13 @@ db/parquet/*.parquet
 !data/raw/J-AZWATER/
 !data/raw/J-AZWATER/*.json
 
+# Exception: Connecticut NERR and CHNEP, added from fetched NOAA / EPA /
+# program pages (facility records + their archive links). Fetch caches stay ignored.
+!data/raw/R-ESTUARY/
+!data/raw/R-ESTUARY/facilities_*.json
+!data/raw/J-ESTUARY/
+!data/raw/J-ESTUARY/*.json
+
 # Exception: fetched people inputs (second people wave + bios) are committed
 # for the same reason — the first people wave's raw JSON was never kept, so
 # it cannot be re-loaded or re-checked. Fetch caches stay ignored.

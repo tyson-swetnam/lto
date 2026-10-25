@@ -1,0 +1,537 @@
+[
+  {
+    "record_id": "R-ESTUARY-0001",
+    "canonical_name": "Connecticut National Estuarine Research Reserve",
+    "acronym": null,
+    "parent_org": "University of Connecticut",
+    "facility_type": "university-institute",
+    "country": "US",
+    "region": null,
+    "hq": {
+      "address": "Lowell P. Weicker Jr. Building, 1080 Shennecossett Road, Suite 207, Groton, CT 06340",
+      "lat": 41.3200254,
+      "lng": -72.065226
+    },
+    "locations": [
+      {
+        "label": "Connecticut NERR headquarters, UConn Avery Point campus (Groton)",
+        "address": "Lowell P. Weicker Jr. Building, 1080 Shennecossett Road, Suite 207, Groton, CT 06340",
+        "lat": 41.3200254,
+        "lng": -72.065226,
+        "role": "headquarters"
+      }
+    ],
+    "primary_sphere": "ocean-estuarine",
+    "secondary_spheres": [
+      "terrestrial"
+    ],
+    "ecosystem_types": [],
+    "life_zones": [],
+    "research_areas": [
+      "coastal-processes",
+      "coastal-terrestrial-ecosystems",
+      "estuaries-and-wetlands",
+      "tidal-wetlands",
+      "salt-marshes"
+    ],
+    "networks": [
+      "nerrs"
+    ],
+    "funders": [
+      {
+        "name": "NOAA Office for Coastal Management",
+        "relation": "parent-agency"
+      }
+    ],
+    "url": "https://estuarineresearchreserve.center.uconn.edu/",
+    "data_portal_url": null,
+    "established": 2022,
+    "record_length_years": 4,
+    "long_term_threshold_met": false,
+    "provenance": {
+      "source_url": "https://coast.noaa.gov/nerrs/reserves/connecticut.html",
+      "retrieved_at": "2026-10-25",
+      "confidence": "high",
+      "agent": "R-ESTUARY"
+    },
+    "field_provenance": {
+      "canonical_name": [
+        {
+          "source_url": "https://coast.noaa.gov/nerrs/reserves/connecticut.html",
+          "retrieved_at": "2026-10-25",
+          "confidence": "high",
+          "evidence": "Connecticut National Estuarine Research Reserve Reserve Information"
+        }
+      ],
+      "acronym": [
+        {
+          "source_url": "https://estuarineresearchreserve.center.uconn.edu/ct-reserve/",
+          "retrieved_at": "2026-10-25",
+          "confidence": "high",
+          "evidence": "transitioned into the lead management role for the CT NERR",
+          "note": "'CT NERR' appears only in running text; acronym left NULL (PR #22 rule: set only where a page states one)."
+        }
+      ],
+      "parent_org": [
+        {
+          "source_url": "https://coast.noaa.gov/nerrs/reserves/connecticut.html",
+          "retrieved_at": "2026-10-25",
+          "confidence": "high",
+          "evidence": "Lead Agency University of Connecticut"
+        },
+        {
+          "source_url": "https://estuarineresearchreserve.center.uconn.edu/ct-reserve/",
+          "retrieved_at": "2026-10-25",
+          "confidence": "high",
+          "evidence": "The University of Connecticut is the lead state agency"
+        }
+      ],
+      "facility_type": [
+        {
+          "source_url": "https://coast.noaa.gov/nerrs/reserves/connecticut.html",
+          "retrieved_at": "2026-10-25",
+          "confidence": "medium",
+          "evidence": "Lead Agency University of Connecticut",
+          "note": "NOAA names the university, not a marine lab or institute; no fetched page calls Avery Point a marine lab. Counter-precedent: SF Bay NERR (also university-only per NOAA) is university-marine-lab because its own site places it at the Estuary & Ocean Science Center."
+        }
+      ],
+      "country": [
+        {
+          "source_url": "https://coast.noaa.gov/nerrs/reserves/connecticut.html",
+          "retrieved_at": "2026-10-25",
+          "confidence": "high",
+          "evidence": "Southeastern Connecticut with uplands in Lyme and Old Lyme"
+        }
+      ],
+      "hq.address": [
+        {
+          "source_url": "https://estuarineresearchreserve.center.uconn.edu/",
+          "retrieved_at": "2026-10-25",
+          "confidence": "high",
+          "evidence": "Lowell P. Weicker Jr. Building 1080 Shennecossett Road, Suite 207"
+        },
+        {
+          "source_url": "https://estuarineresearchreserve.center.uconn.edu/",
+          "retrieved_at": "2026-10-25",
+          "confidence": "high",
+          "evidence": "Groton, Connecticut 06340"
+        },
+        {
+          "source_url": "https://coast.noaa.gov/nerrs/reserves/connecticut.html",
+          "retrieved_at": "2026-10-25",
+          "confidence": "high",
+          "evidence": "The headquarters are located in Groton (University of Connecticut Avery Point campus)"
+        }
+      ],
+      "hq.lat_lng": [
+        {
+          "source_url": "https://nominatim.openstreetmap.org/search?street=1080+Shennecossett+Road&city=Groton&state=Connecticut&postalcode=06340&country=US&format=jsonv2&addressdetails=1",
+          "retrieved_at": "2026-10-25",
+          "confidence": "medium",
+          "evidence": "\"lat\":\"41.3200254\",\"lon\":\"-72.0652260\"",
+          "note": "Nominatim structured search, result 2 of 2 (way 659809610), an address interpolation, not a building. Chosen because it lies inside the OSM bbox of the 'University of Connecticut Avery Point' campus (lat 41.3150958-41.3200876); result 1 (41.3202870,-72.0631260) is ~20 m north of it."
+        }
+      ],
+      "url": [
+        {
+          "source_url": "https://coast.noaa.gov/nerrs/reserves/connecticut.html",
+          "retrieved_at": "2026-10-25",
+          "confidence": "high",
+          "evidence": "[https://estuarineresearchreserve.center.uconn.edu/] Reserve Website"
+        }
+      ],
+      "established": [
+        {
+          "source_url": "https://coast.noaa.gov/nerrs/reserves/connecticut.html",
+          "retrieved_at": "2026-10-25",
+          "confidence": "high",
+          "evidence": "Designated 2022"
+        },
+        {
+          "source_url": "https://estuarineresearchreserve.center.uconn.edu/ct-reserve/",
+          "retrieved_at": "2026-10-25",
+          "confidence": "high",
+          "evidence": "On Friday January 14, 2022, the Reserve was officially designated"
+        }
+      ],
+      "record_length_years": [
+        {
+          "source_url": "https://coast.noaa.gov/nerrs/reserves/connecticut.html",
+          "retrieved_at": "2026-10-25",
+          "confidence": "high",
+          "evidence": "Designated 2022",
+          "note": "2026 - 2022"
+        }
+      ],
+      "long_term_threshold_met": [
+        {
+          "source_url": "https://coast.noaa.gov/nerrs/reserves/connecticut.html",
+          "retrieved_at": "2026-10-25",
+          "confidence": "high",
+          "evidence": "Designated 2022",
+          "note": "4 < 10"
+        }
+      ],
+      "spheres": [
+        {
+          "source_url": "https://coast.noaa.gov/nerrs/reserves/connecticut.html",
+          "retrieved_at": "2026-10-25",
+          "confidence": "high",
+          "evidence": "saltwater and brackish intertidal marshes and flats; beaches and dunes",
+          "note": "NERR pattern: ocean-estuarine primary + terrestrial secondary"
+        }
+      ],
+      "research_areas": [
+        {
+          "source_url": "https://coast.noaa.gov/nerrs/reserves/connecticut.html",
+          "retrieved_at": "2026-10-25",
+          "confidence": "high",
+          "evidence": "saltwater and brackish intertidal marshes and flats",
+          "note": "Exact set on the coastal NERR rows"
+        }
+      ],
+      "networks": [
+        {
+          "source_url": "https://coast.noaa.gov/nerrs/reserves/connecticut.html",
+          "retrieved_at": "2026-10-25",
+          "confidence": "high",
+          "evidence": "one of 30 reserves in the National Estuarine Research Reserve System"
+        }
+      ],
+      "funders": [
+        {
+          "source_url": "https://coast.noaa.gov/nerrs/reserves/connecticut.html",
+          "retrieved_at": "2026-10-25",
+          "confidence": "high",
+          "evidence": "NOAA’s Office for Coastal Management provides funding, national guidance, and technical assistance",
+          "note": "Parent-agency stub only; no dollar amounts."
+        }
+      ]
+    },
+    "management_partner": {
+      "name": "Connecticut Department of Energy and Environmental Protection (CT DEEP)",
+      "sources": [
+        {
+          "source_url": "https://coast.noaa.gov/nerrs/reserves/connecticut.html",
+          "retrieved_at": "2026-10-25",
+          "confidence": "high",
+          "evidence": "in close partnership with the Connecticut Department of Energy and Environmental Protection"
+        },
+        {
+          "source_url": "https://estuarineresearchreserve.center.uconn.edu/ct-reserve/",
+          "retrieved_at": "2026-10-25",
+          "confidence": "high",
+          "evidence": "DEEP, who will retain the authority for managing lands owned by DEEP"
+        }
+      ]
+    },
+    "components": [
+      {
+        "label": "Long Island Sound (including parts of Fishers Island Sound)",
+        "source_url": "https://coast.noaa.gov/nerrs/reserves/connecticut.html",
+        "retrieved_at": "2026-10-25",
+        "confidence": "high",
+        "evidence": "protects a large area of the Long Island Sound"
+      },
+      {
+        "label": "Lower Thames River",
+        "source_url": "https://coast.noaa.gov/nerrs/reserves/connecticut.html",
+        "retrieved_at": "2026-10-25",
+        "confidence": "high",
+        "evidence": "portions of the lower Thames River"
+      },
+      {
+        "label": "Lower Connecticut River",
+        "source_url": "https://coast.noaa.gov/nerrs/reserves/connecticut.html",
+        "retrieved_at": "2026-10-25",
+        "confidence": "high",
+        "evidence": "portions of the lower Connecticut River, which contains the highest fish diversity"
+      },
+      {
+        "label": "Lord Cove Natural Area Preserve",
+        "source_url": "https://coast.noaa.gov/nerrs/reserves/connecticut.html",
+        "retrieved_at": "2026-10-25",
+        "confidence": "high",
+        "evidence": "Lord Cove Natural Area Preserve",
+        "note": "The reserve site writes 'Lord Cove Natural Area Preservation'."
+      },
+      {
+        "label": "Roger Tory Peterson Natural Area Preserve",
+        "source_url": "https://coast.noaa.gov/nerrs/reserves/connecticut.html",
+        "retrieved_at": "2026-10-25",
+        "confidence": "high",
+        "evidence": "Roger Tory Peterson Natural Area Preserve",
+        "note": "The reserve site writes 'Natural Area Preservation (formerly Great Island Wildlife Management Area)'."
+      },
+      {
+        "label": "Bluff Point State Park / Coastal Reserve / Natural Area Preserve",
+        "source_url": "https://coast.noaa.gov/nerrs/reserves/connecticut.html",
+        "retrieved_at": "2026-10-25",
+        "confidence": "high",
+        "evidence": "Bluff Point State Park/Coastal Reserve/Natural Area Preserve"
+      },
+      {
+        "label": "Haley Farm State Park",
+        "source_url": "https://coast.noaa.gov/nerrs/reserves/connecticut.html",
+        "retrieved_at": "2026-10-25",
+        "confidence": "high",
+        "evidence": "and Haley Farm State Park"
+      },
+      {
+        "label": "CT DEEP Marine District Headquarters (Old Lyme), facility support",
+        "source_url": "https://coast.noaa.gov/nerrs/reserves/connecticut.html",
+        "retrieved_at": "2026-10-25",
+        "confidence": "high",
+        "evidence": "Connecticut Department of Energy and Environmental Protection Marine District Headquarters",
+        "note": "The reserve's recreation page calls it DEEP's 'Marine Headquarters' (https://estuarineresearchreserve.center.uconn.edu/recreation/)."
+      }
+    ],
+    "notes": "Components are recorded here for reference only; ingest loads the single headquarters location. No CDMO SWMP station code is published for this reserve (see data/raw/J-ESTUARY/facility_archives.json)."
+  },
+  {
+    "record_id": "R-ESTUARY-0002",
+    "canonical_name": "Coastal and Heartland National Estuary Partnership",
+    "acronym": "CHNEP",
+    "parent_org": "Charlotte County",
+    "facility_type": "local-gov",
+    "country": "US",
+    "region": "EPA Region 4",
+    "hq": {
+      "address": "1050 Loveland Blvd, Unit D, Port Charlotte, FL 33980",
+      "lat": 27.0126444,
+      "lng": -82.0570466
+    },
+    "locations": [
+      {
+        "label": "CHNEP office (Port Charlotte)",
+        "address": "1050 Loveland Blvd, Unit D, Port Charlotte, FL 33980",
+        "lat": 27.0126444,
+        "lng": -82.0570466,
+        "role": "headquarters"
+      }
+    ],
+    "primary_sphere": "ocean-estuarine",
+    "secondary_spheres": [
+      "terrestrial"
+    ],
+    "ecosystem_types": [],
+    "life_zones": [],
+    "research_areas": [
+      "coastal-processes",
+      "coastal-terrestrial-ecosystems",
+      "estuaries-and-wetlands",
+      "tidal-wetlands"
+    ],
+    "networks": [
+      "nep"
+    ],
+    "funders": [
+      {
+        "name": "U.S. Environmental Protection Agency",
+        "relation": "parent-agency"
+      }
+    ],
+    "url": "https://www.chnep.org/",
+    "data_portal_url": null,
+    "established": 1995,
+    "record_length_years": 31,
+    "long_term_threshold_met": true,
+    "provenance": {
+      "source_url": "https://www.epa.gov/nep/individual-estuary-program-websites",
+      "retrieved_at": "2026-10-25",
+      "confidence": "high",
+      "agent": "R-ESTUARY"
+    },
+    "field_provenance": {
+      "canonical_name": [
+        {
+          "source_url": "https://www.epa.gov/nep/individual-estuary-program-websites",
+          "retrieved_at": "2026-10-25",
+          "confidence": "high",
+          "evidence": "[http://www.chnep.org/] Coastal and Heartland National Estuary Partnership",
+          "note": "EPA spelling ('and'); the program itself writes '&'."
+        },
+        {
+          "source_url": "https://www.chnep.org/",
+          "retrieved_at": "2026-10-25",
+          "confidence": "high",
+          "evidence": "Coastal & Heartland National Estuary Partnership, 1050 Loveland Blvd"
+        }
+      ],
+      "former_name": [
+        {
+          "source_url": "https://www.chnep.org/about-the-chnep",
+          "retrieved_at": "2026-10-25",
+          "confidence": "high",
+          "evidence": "formerly the Charlotte Harbor National Estuary Program"
+        },
+        {
+          "source_url": "https://www.chnep.org/_files/ugd/252fd8_6bb1a3f29fa34df98428e215776b1448.pdf",
+          "retrieved_at": "2026-10-25",
+          "confidence": "high",
+          "evidence": "and the program name was changed to",
+          "note": "2025 CCMP: renamed in 2019 when the area was expanded by 716 sq mi"
+        }
+      ],
+      "acronym": [
+        {
+          "source_url": "https://www.chnep.org/about-the-chnep",
+          "retrieved_at": "2026-10-25",
+          "confidence": "high",
+          "evidence": "The Coastal & Heartland National Estuary Partnership (CHNEP, formerly"
+        }
+      ],
+      "parent_org": [
+        {
+          "source_url": "https://api.usaspending.gov/api/v2/search/spending_by_award/",
+          "retrieved_at": "2026-10-25",
+          "confidence": "medium",
+          "evidence": "\"Award ID\":\"02D42123\",\"Recipient Name\":\"COUNTY OF CHARLOTTE\"",
+          "query": "POST keywords=[\"Coastal and Heartland National Estuary\"], grants (award types 02-05), period 2008-10-01..2026-09-30"
+        },
+        {
+          "source_url": "https://api.usaspending.gov/api/v2/search/spending_by_award/",
+          "retrieved_at": "2026-10-25",
+          "confidence": "medium",
+          "evidence": "COMPLIANCE WITH HOST AGENCY FINANCE AND PROCUREMENT REQUIREMENTS",
+          "query": "POST keywords=[\"Coastal and Heartland National Estuary\"], grants (award types 02-05), period 2008-10-01..2026-09-30"
+        },
+        {
+          "source_url": "https://www.chnep.org/_files/ugd/252fd8_74da685af3ba45b5ab7e2780aa98f69a.pdf",
+          "retrieved_at": "2026-10-25",
+          "confidence": "medium",
+          "evidence": "host entity (the grant recipient and employer of the Director",
+          "note": "EPA NEP funding guidance, posted on chnep.org"
+        }
+      ],
+      "parent_org_note": "Inferred: no chnep.org page names the host. The current EPA awards for CHNEP (02D42123, 02D41623; 2022-10-01..2027-09-30) go to County of Charlotte, 02D42123 cites 'host agency' requirements, and EPA's guidance defines the host entity as the grant recipient. An earlier award (00D22214, 2014-10-01..2021-09-30) went to the City of Punta Gorda, so the host has changed over time.",
+      "facility_type": [
+        {
+          "source_url": "https://api.usaspending.gov/api/v2/search/spending_by_award/",
+          "retrieved_at": "2026-10-25",
+          "confidence": "medium",
+          "evidence": "\"Recipient Name\":\"COUNTY OF CHARLOTTE\"",
+          "query": "POST keywords=[\"Coastal and Heartland National Estuary\"], grants (award types 02-05), period 2008-10-01..2026-09-30",
+          "note": "Typed by host (county government -> local-gov). Note: San Francisco Estuary Partnership, hosted by regional government bodies, is typed nonprofit."
+        }
+      ],
+      "country": [
+        {
+          "source_url": "https://www.chnep.org/",
+          "retrieved_at": "2026-10-25",
+          "confidence": "high",
+          "evidence": "Port Charlotte FL 33980"
+        }
+      ],
+      "region": [
+        {
+          "source_url": "https://www.epa.gov/aboutepa/about-epa-region-4-southeast",
+          "retrieved_at": "2026-10-25",
+          "confidence": "high",
+          "evidence": "Serving Alabama, Florida, Georgia, Kentucky, Mississippi",
+          "note": "Reached from the 'Florida' option (node/2585) of https://www.epa.gov/aboutepa/visiting-regional-office"
+        }
+      ],
+      "hq.address": [
+        {
+          "source_url": "https://www.chnep.org/",
+          "retrieved_at": "2026-10-25",
+          "confidence": "high",
+          "evidence": "National Estuary Partnership, 1050 Loveland Blvd, Unit D, Port Charlotte FL 33980"
+        }
+      ],
+      "hq.lat_lng": [
+        {
+          "source_url": "https://nominatim.openstreetmap.org/search?street=1050+Loveland+Blvd&city=Port+Charlotte&state=Florida&postalcode=33980&country=US&format=jsonv2&addressdetails=1",
+          "retrieved_at": "2026-10-25",
+          "confidence": "high",
+          "evidence": "\"lat\":\"27.0126444\",\"lon\":\"-82.0570466\"",
+          "note": "Nominatim structured search, single result: building 'Charlotte County Human Services Department, 1050, Loveland Boulevard' (way 640443002)"
+        }
+      ],
+      "url": [
+        {
+          "source_url": "https://www.epa.gov/nep/individual-estuary-program-websites",
+          "retrieved_at": "2026-10-25",
+          "confidence": "high",
+          "evidence": "[http://www.chnep.org/] Coastal and Heartland National Estuary Partnership",
+          "note": "Served at https://www.chnep.org/ (HTTP 200)"
+        }
+      ],
+      "established": [
+        {
+          "source_url": "https://www.chnep.org/about-the-chnep",
+          "retrieved_at": "2026-10-25",
+          "confidence": "high",
+          "evidence": "On July 6, 1995, seven nominations were accepted, including the CHNEP."
+        },
+        {
+          "source_url": "https://www.chnep.org/",
+          "retrieved_at": "2026-10-25",
+          "confidence": "high",
+          "evidence": "Central and Southwest Florida since 1995"
+        }
+      ],
+      "record_length_years": [
+        {
+          "source_url": "https://www.chnep.org/about-the-chnep",
+          "retrieved_at": "2026-10-25",
+          "confidence": "high",
+          "evidence": "On July 6, 1995, seven nominations were accepted",
+          "note": "2026 - 1995"
+        }
+      ],
+      "long_term_threshold_met": [
+        {
+          "source_url": "https://www.chnep.org/about-the-chnep",
+          "retrieved_at": "2026-10-25",
+          "confidence": "high",
+          "evidence": "On July 6, 1995, seven nominations were accepted",
+          "note": "31 >= 10"
+        }
+      ],
+      "spheres": [
+        {
+          "source_url": "https://www.chnep.org/",
+          "retrieved_at": "2026-10-25",
+          "confidence": "high",
+          "evidence": "protect and restore water and wildlife habitat in Central and Southwest Florida",
+          "note": "NEP pattern: ocean-estuarine primary + terrestrial secondary"
+        }
+      ],
+      "research_areas": [
+        {
+          "source_url": "https://www.chnep.org/",
+          "retrieved_at": "2026-10-25",
+          "confidence": "high",
+          "evidence": "protect and restore water and wildlife habitat",
+          "note": "Exact set on the NEP rows"
+        }
+      ],
+      "networks": [
+        {
+          "source_url": "https://www.chnep.org/",
+          "retrieved_at": "2026-10-25",
+          "confidence": "high",
+          "evidence": "The CHNEP is part of the US EPA National Estuary Program."
+        },
+        {
+          "source_url": "https://www.epa.gov/nep/individual-estuary-program-websites",
+          "retrieved_at": "2026-10-25",
+          "confidence": "high",
+          "evidence": "Coastal and Heartland National Estuary Partnership"
+        }
+      ],
+      "funders": [
+        {
+          "source_url": "https://www.chnep.org/",
+          "retrieved_at": "2026-10-25",
+          "confidence": "high",
+          "evidence": "The CHNEP is part of the US EPA National Estuary Program.",
+          "note": "Parent-agency stub only; no dollar amounts."
+        }
+      ]
+    },
+    "notes": "One of 28 EPA National Estuary Programs (CHNEP about page; EPA local-programs page). Program area 5,416 square miles of Central and Southwest Florida (2025 CCMP; 4,700 sq mi at the 1995 nomination, expanded by 716 sq mi in 2019)."
+  }
+]

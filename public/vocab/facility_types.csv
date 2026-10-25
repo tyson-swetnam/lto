@@ -1,7 +1,7 @@
 slug,label,description
 federal,Federal agency,"US federal-government-operated facility"
 state,State agency,"US state-government-operated facility"
-local-gov,Local government,"RESERVED — US county, city, or special district. No facilities ingested yet; slug kept for future coverage."
+local-gov,Local government,"US county, city, or special-district government, or a program it hosts (e.g. a National Estuary Program whose host agency is a county)"
 university-marine-lab,University marine lab,"University-operated marine or coastal laboratory"
 university-institute,University institute,"Campus-based research institute, center or program that organises research rather than operating a single field site (e.g. the ARID Institute at UNM and its partner centers)"
 nonprofit,Nonprofit,"US 501(c)(3) research or conservation organization"

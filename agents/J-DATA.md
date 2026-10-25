@@ -139,6 +139,10 @@ Per agent, one folder `data/raw/<AGENT_ID>/` with up to four files:
 - **`facility_canonical_name`** when present must match an existing row
   in the `facilities` table (case-insensitive). The loader fuzz-matches
   on canonical_name + acronym.
+- **`facility_id`** (optional) pins the row to that facility. When it is
+  present the loader uses it alone, with no name or fuzzy fallback, and
+  skips the row if the facility does not exist. Give it whenever the
+  name might be close to another facility's (the NERRs and NEPs).
 - **`agent` provenance**: set in `notes` or alongside; loader adds
   `source = <agent-id>` automatically.
 

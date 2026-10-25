@@ -176,7 +176,7 @@ of the 611 stored ORCID iDs carry `orcid_source_url`.
   still ahead. The People tab labels a role *current* only when
   `is_current = true`, and *former* when it is `false` or the `end_date`
   has passed. Browse cards mark a role *former* when `is_current = false`
-  and list those holders last. As of 2026-10-25, of 1,516 rows, 744 are
+  and list those holders last. As of 2026-10-25, of 1,536 rows, 764 are
   `true`, 180 `false` and 592 `NULL`.
 - **`confidence`** rates how directly the source supports the row, not how
   important the person is. The researching agent sets it, and the verifier

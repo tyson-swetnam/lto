@@ -16,16 +16,16 @@ WHERE role = 'primary' GROUP BY 1 ORDER BY 2 DESC;
 
 ## Total facilities
 
-The catalogue holds **444 facilities**: US 429, Puerto Rico 10,
+The catalogue holds **446 facilities**: US 431, Puerto Rico 10,
 Antarctica 3, American Samoa 1 and US Virgin Islands 1. Every facility has
 coordinates, and every US facility has a state.
 
-- **346** meet the Peters et al. 2013 long-term threshold (≥10 years of
-  record), 87 do not, and 11 are unclassified. 24 facilities have no
+- **347** meet the Peters et al. 2013 long-term threshold (≥10 years of
+  record), 88 do not, and 11 are unclassified. 24 facilities have no
   record length at all, and 13 of those are counted as not meeting the
   threshold. The "≥10y" filter is off by default.
 - Scope lenses: ARID Institute & partners **12**, New Mexico **18**,
-  Southwest drylands (the default view) **66**, All U.S. **444**. See
+  Southwest drylands (the default view) **66**, All U.S. **446**. See
   [ARID & New Mexico](./arid.md).
 
 Eight LTER sites used to appear twice: once as their LTER site row and once
@@ -84,24 +84,25 @@ These are counts from the catalogue. `qa.py` does not check them.
 | **NEON** | 82 facilities in network `neon` | 77 of them are named "… NEON Site". The others are NEON members under other names. |
 | **LTER** | 50 in network `lter` (2 of them also tagged `lter-site`) | Also holds NEON, NADP, AmeriFlux and field-station rows at LTER sites, so this is not a count of LTER sites. **26** LTER sites have a current lead PI that matches the LTER Network's site page (lternet.edu) or the site's own page. |
 | **LTAR** | 26 in network `ltar` | 19 of them are of type `ltar-site`. |
-| **NERRS** | 29 of 30 reserves | Network `nerrs` also includes NOAA's Office for Coastal Management. Connecticut is missing. Guana Tolomato Matanzas and Mission-Aransas, missing in May 2026, are now present. Names, designation years, lead agencies and websites follow each reserve's NOAA page (2026-10-25). Facility type follows NOAA's lead agency: `state` for a state agency (20 reserves), `university-marine-lab` for a university marine lab or institute (6), `university-institute` for another university unit (Kachemak Bay, Lake Superior), and `federal` for Tijuana River, whose lead is California State Parks together with the U.S. Fish and Wildlife Service. |
-| **National Estuary Programs** | 27 of 28 on EPA's list | Network `nep`. The Coastal and Heartland National Estuary Partnership (CHNEP) is missing. Names and websites follow EPA's program list (2026-10-25). Only three establishment years are confirmed by a fetched page: Buzzards Bay (1985), Mobile Bay (1995) and Lower Columbia (1995). The other programs' years, and the ≥10y flags that follow from them, are unverified values from the original cull. |
+| **NERRS** | 30 of 30 reserves | Network `nerrs` also includes NOAA's Office for Coastal Management. Connecticut, the 30th reserve (designated 2022), was added on 2026-10-25 from its NOAA page and the reserve's own site (`data/raw/R-ESTUARY/`). Guana Tolomato Matanzas and Mission-Aransas, missing in May 2026, are now present. Names, designation years, lead agencies and websites follow each reserve's NOAA page (2026-10-25). Facility type follows NOAA's lead agency: `state` for a state agency (20 reserves), `university-marine-lab` for a university marine lab or institute (6), `university-institute` for another university unit (Kachemak Bay, Lake Superior, Connecticut), and `federal` for Tijuana River, whose lead is California State Parks together with the U.S. Fish and Wildlife Service. |
+| **National Estuary Programs** | 28 of 28 on EPA's list | Network `nep`. The Coastal and Heartland National Estuary Partnership (CHNEP) was added on 2026-10-25 from EPA's list and chnep.org (`data/raw/R-ESTUARY/`); it is typed `local-gov`, after Charlotte County, the recipient of its current EPA awards. Names and websites follow EPA's program list (2026-10-25). Only four establishment years are confirmed by a fetched page: Buzzards Bay (1985), Mobile Bay (1995), Lower Columbia (1995) and CHNEP (1995). The other programs' years, and the ≥10y flags that follow from them, are unverified values from the original cull. |
 | **IOOS Regional Associations** | 10 of 11 | GLOS is missing. |
 | **EcoTrends (Peters 2013 Table 1-1)** | Not re-run since 2026-05-05 (then 44 / 49 by name) | A facility named "H.J. Andrews Experimental Forest" is now present. No facility is named for Shortgrass Steppe, Coram EF, Tallgrass Prairie or Bandelier. A name match can miss a site that is catalogued under a different name. |
 | **USFS Experimental Forests & Ranges** | 38 of type `experimental-forest-range`; 36 in network `usfs-rna-ef`; 47 in either | Still short of the 77 on the Lugo 2006 list that the May check used. No pass since then has added EFRs. |
 
 ## People
 
-As of 2026-10-25 the people table holds **1,310 people**. Of these,
-**1,219** have at least one facility affiliation. There are 1,516
-affiliation rows across 429 facilities.
+As of 2026-10-25 the people table holds **1,330 people**. Of these,
+**1,239** have at least one facility affiliation. There are 1,536
+affiliation rows across 431 facilities.
 
 How the affiliation rows were made:
 
 - **851 rows** were fetched on 2026-10-22 by the R-PEOPLE2 wave. Each was
   read from a cited page, carries a quote of the evidence, and was checked
   by an adversarial re-fetch. See [Methods](./methods.md). Seven more
-  (batch R-PEOPLE2-MARINEGEO-01) were fetched on 2026-10-25.
+  (batch R-PEOPLE2-MARINEGEO-01) and 20 for the Connecticut NERR and
+  CHNEP (batch R-PEOPLE2-ESTUARY-01) were fetched on 2026-10-25.
 - **5 rows** from the spring passes were re-cited on 2026-10-25 from
   fetched LTAR and Jornada pages (`data/seed/facility_fixes.csv`), each with
   an `evidence` quote.
@@ -109,7 +110,7 @@ How the affiliation rows were made:
   no date. Many come from the earlier recall-based people waves. Some were
   repaired or ended by the 2026-10-22 pass, but most have **not been
   re-verified** against a fetched page.
-- `is_current` is true on 744 rows and false on 180. It is not set on 592
+- `is_current` is true on 764 rows and false on 180. It is not set on 592
   rows, which are mostly older rows that nobody has marked as current or
   former.
 
@@ -117,20 +118,21 @@ Rows by role (a person can hold several):
 
 | Role | Rows |
 |---|---:|
-| director | 204 |
+| director | 206 |
 | lead-PI | 202 |
 | co-PI | 188 |
-| manager | 104 |
-| scientist | 96 |
+| manager | 107 |
+| scientist | 97 |
 | leadership-team | 83 |
 | founding-PI | 75 |
 | faculty | 74 |
 | domain-manager | 73 |
-| emeritus | 58 |
+| emeritus | 59 |
+| coordinator | 45 |
 | former-director | 44 |
-| 16 other roles | 315 |
+| 15 other roles | 283 |
 
-The 16 other roles include information-manager (27), superintendent (23)
+The 15 other roles include information-manager (27), superintendent (23)
 and site-manager (12).
 
 **Biographies:** 780 people have a bio, and every one cites its source page.
@@ -138,12 +140,12 @@ and site-manager (12).
 **Research interests:** 973 people have research interests. 649 of them
 cite a source page, 98 of those an OpenAlex author page.
 
-**[Knowledge Map](./knowledge-map.md):** 1,250 people are placed under a
+**[Knowledge Map](./knowledge-map.md):** 1,270 people are placed under a
 primary research area.
 
 ## Identifier validation
 
-- **ORCID**: **611** people (46.6%). The ORCID log
+- **ORCID**: **611** people (45.9%). The ORCID log
   (`data/seed/orcid_resolution_log.csv`) records 79 stored iDs that were
   later cleared: 68 no longer resolved, and 11 belonged to someone else.
   PR #16 also cleared two wrong iDs and replaced a third, and PR #18

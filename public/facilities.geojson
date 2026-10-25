@@ -3334,6 +3334,32 @@
 "geometry": {
 "type": "Point",
 "coordinates": [
+-72.065226,
+41.3200254
+]
+},
+"properties": {
+"id": "4da06ce200c54800",
+"name": "Connecticut National Estuarine Research Reserve",
+"acronym": null,
+"type": "university-institute",
+"country": "US",
+"url": "https://estuarineresearchreserve.center.uconn.edu/",
+"parent_org": "University of Connecticut",
+"established": 2022,
+"record_length_years": 4,
+"long_term_threshold_met": false,
+"primary_sphere": "ocean-estuarine",
+"state": "CT",
+"has_arid_sphere": false,
+"in_arid_network": false
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
 -80.5239,
 37.3753
 ]
@@ -3533,6 +3559,32 @@
 "long_term_threshold_met": true,
 "primary_sphere": "ocean-estuarine",
 "state": "ME",
+"has_arid_sphere": false,
+"in_arid_network": false
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-82.0570466,
+27.0126444
+]
+},
+"properties": {
+"id": "51767bd943f43bf0",
+"name": "Coastal and Heartland National Estuary Partnership",
+"acronym": "CHNEP",
+"type": "local-gov",
+"country": "US",
+"url": "https://www.chnep.org/",
+"parent_org": "Charlotte County",
+"established": 1995,
+"record_length_years": 31,
+"long_term_threshold_met": true,
+"primary_sphere": "ocean-estuarine",
+"state": "FL",
 "has_arid_sphere": false,
 "in_arid_network": false
 }
