@@ -4,7 +4,7 @@ title: "CalCOFI Data Archive"
 description: "California Cooperative Oceanic Fisheries Investigations / SIO / NMFS-SWFSC / CDFW — program holding long-term observatory records."
 resource: "https://calcofi.org/data/"
 tags: [program, http-files, cc-by-4.0]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-10-25T04:20:50Z }
 status: stable
 ---
 
@@ -26,4 +26,4 @@ Quarterly CalCOFI cruise hydrographic, biological, and ichthyoplankton data 1949
 
 - **SIO** Scripps Institution of Oceanography (host)
 - **SWFSC** Southwest Fisheries Science Center (host)
-- **LTER** California Current LTER (secondary)
+- **CCE** California Current Ecosystem LTER (secondary)

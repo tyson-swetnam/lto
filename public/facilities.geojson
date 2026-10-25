@@ -84,32 +84,6 @@
 "geometry": {
 "type": "Point",
 "coordinates": [
--156.78861,
-71.29005
-]
-},
-"properties": {
-"id": "01ef51b8abf6f751",
-"name": "Beaufort Lagoon LTER",
-"acronym": "LTER",
-"type": "network",
-"country": "US",
-"url": null,
-"parent_org": "US Long-Term Ecological Research Network",
-"established": null,
-"record_length_years": null,
-"long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine",
-"state": "AK",
-"has_arid_sphere": false,
-"in_arid_network": false
-}
-},
-{
-"type": "Feature",
-"geometry": {
-"type": "Point",
-"coordinates": [
 -147.8208,
 64.8584
 ]
@@ -1063,32 +1037,6 @@
 "long_term_threshold_met": true,
 "primary_sphere": "cryosphere",
 "state": "WA",
-"has_arid_sphere": false,
-"in_arid_network": false
-}
-},
-{
-"type": "Feature",
-"geometry": {
-"type": "Point",
-"coordinates": [
--80.8533,
-25.4682
-]
-},
-"properties": {
-"id": "1496a5fc3a668206",
-"name": "Florida Coast LTER",
-"acronym": "LTER",
-"type": "network",
-"country": "US",
-"url": null,
-"parent_org": "US Long-Term Ecological Research Network",
-"established": null,
-"record_length_years": null,
-"long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine",
-"state": "FL",
 "has_arid_sphere": false,
 "in_arid_network": false
 }
@@ -3464,32 +3412,6 @@
 "geometry": {
 "type": "Point",
 "coordinates": [
--70.8833,
-40.6967
-]
-},
-"properties": {
-"id": "4b897473a3d94b82",
-"name": "Northeast US Margin LTER",
-"acronym": "LTER",
-"type": "network",
-"country": "US",
-"url": null,
-"parent_org": "US Long-Term Ecological Research Network",
-"established": null,
-"record_length_years": null,
-"long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine",
-"state": "MA",
-"has_arid_sphere": false,
-"in_arid_network": false
-}
-},
-{
-"type": "Feature",
-"geometry": {
-"type": "Point",
-"coordinates": [
 -115.951,
 36.823
 ]
@@ -3663,32 +3585,6 @@
 "long_term_threshold_met": true,
 "primary_sphere": "terrestrial",
 "state": "WY",
-"has_arid_sphere": false,
-"in_arid_network": false
-}
-},
-{
-"type": "Feature",
-"geometry": {
-"type": "Point",
-"coordinates": [
--148.7,
-59.045
-]
-},
-"properties": {
-"id": "50642bf3064308c8",
-"name": "Northern Gulf of Alaska LTER",
-"acronym": "LTER",
-"type": "network",
-"country": "US",
-"url": null,
-"parent_org": "US Long-Term Ecological Research Network",
-"established": null,
-"record_length_years": null,
-"long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine",
-"state": "AK",
 "has_arid_sphere": false,
 "in_arid_network": false
 }
@@ -6142,32 +6038,6 @@
 "geometry": {
 "type": "Point",
 "coordinates": [
--81.371,
-31.427
-]
-},
-"properties": {
-"id": "8ae383aa534d8fe9",
-"name": "Georgia Coast LTER",
-"acronym": "LTER",
-"type": "network",
-"country": "US",
-"url": null,
-"parent_org": "US Long-Term Ecological Research Network",
-"established": null,
-"record_length_years": null,
-"long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine",
-"state": "GA",
-"has_arid_sphere": false,
-"in_arid_network": false
-}
-},
-{
-"type": "Feature",
-"geometry": {
-"type": "Point",
-"coordinates": [
 -70.6494753,
 41.6056631
 ]
@@ -7988,32 +7858,6 @@
 "geometry": {
 "type": "Point",
 "coordinates": [
--75.913,
-37.283
-]
-},
-"properties": {
-"id": "b3c4acfee79eb573",
-"name": "Virginia Coast LTER",
-"acronym": "LTER",
-"type": "network",
-"country": "US",
-"url": null,
-"parent_org": "US Long-Term Ecological Research Network",
-"established": null,
-"record_length_years": null,
-"long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine",
-"state": "VA",
-"has_arid_sphere": false,
-"in_arid_network": false
-}
-},
-{
-"type": "Feature",
-"geometry": {
-"type": "Point",
-"coordinates": [
 -112.1986,
 44.2453
 ]
@@ -8196,32 +8040,6 @@
 "geometry": {
 "type": "Point",
 "coordinates": [
--120.28,
-32.8736
-]
-},
-"properties": {
-"id": "b6ad40b6cd18f42e",
-"name": "California Current LTER",
-"acronym": "LTER",
-"type": "network",
-"country": "US",
-"url": null,
-"parent_org": "US Long-Term Ecological Research Network",
-"established": null,
-"record_length_years": null,
-"long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine",
-"state": "CA",
-"has_arid_sphere": false,
-"in_arid_network": false
-}
-},
-{
-"type": "Feature",
-"geometry": {
-"type": "Point",
-"coordinates": [
 -97.3506,
 31.0617
 ]
@@ -8317,32 +8135,6 @@
 "long_term_threshold_met": false,
 "primary_sphere": "ocean-estuarine",
 "state": "MD",
-"has_arid_sphere": false,
-"in_arid_network": false
-}
-},
-{
-"type": "Feature",
-"geometry": {
-"type": "Point",
-"coordinates": [
--70.891,
-42.759
-]
-},
-"properties": {
-"id": "b93f51cc632277b0",
-"name": "Plum Island LTER",
-"acronym": "LTER",
-"type": "network",
-"country": "US",
-"url": null,
-"parent_org": "US Long-Term Ecological Research Network",
-"established": null,
-"record_length_years": null,
-"long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine",
-"state": "MA",
 "has_arid_sphere": false,
 "in_arid_network": false
 }
@@ -10075,15 +9867,15 @@
 "properties": {
 "id": "d8e10a908168815c",
 "name": "North Temperate Lakes LTER",
-"acronym": "LTER",
-"type": "network",
+"acronym": "NTL",
+"type": "university-field-station",
 "country": "US",
-"url": null,
-"parent_org": "US Long-Term Ecological Research Network",
-"established": null,
-"record_length_years": null,
-"long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine",
+"url": "https://lter.limnology.wisc.edu/",
+"parent_org": "University of Wisconsin\u2013Madison",
+"established": 1981,
+"record_length_years": 45,
+"long_term_threshold_met": true,
+"primary_sphere": "freshwater",
 "state": "WI",
 "has_arid_sphere": false,
 "in_arid_network": false

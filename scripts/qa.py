@@ -236,6 +236,44 @@ def check_spheres(conn, failures: list[str]) -> None:
                 f"{orphan} facility_spheres rows point at unknown facilities", failures)
 
 
+# Committed inputs keyed on facility_id that a loader reads as live input
+# (not history): a merged id left in one is resolved by
+# lto_db.canonical_facility_id, but the file should say the kept id.
+FACILITY_ID_INPUTS = [
+    "data/funding_overrides/nsf_recipient_overrides.csv",
+    "data/funding_overrides/usaspending_recipient_overrides.csv",
+    "data/seed/openalex_institution_overrides.csv",
+    "data/seed/facility_fixes.csv",
+]
+
+
+def check_facility_merges(conn, failures: list[str], warnings: list[str]) -> None:
+    """A facility merge_facilities.py merged away must stay gone: a loader
+    that re-creates the id (an override, seed or regenerated raw file
+    written before the merge) brings the duplicate back."""
+    merged = lto_db.facility_merge_redirects()
+    if not merged:
+        return
+    back = conn.execute(
+        "SELECT facility_id, canonical_name FROM facilities "
+        "WHERE facility_id IN (SELECT unnest(?::VARCHAR[])) ORDER BY 1",
+        [sorted(merged)]).fetchall()
+    assert_true(not back, f"{len(back)} facilities rows carry an id merged away in "
+                          f"data/seed/facility_merge_log.csv (a loader re-created them): "
+                + "; ".join(f"{n} {fid} -> {merged[fid]}" for fid, n in back[:5]), failures)
+    root = Path(__file__).resolve().parent.parent
+    for rel in FACILITY_ID_INPUTS:
+        path = root / rel
+        if not path.exists():
+            continue
+        hits = sorted({fid for line in path.read_text(encoding="utf-8").splitlines()
+                       for fid in merged if fid in line})
+        if hits:
+            warnings.append(f"{rel} still names {len(hits)} merged facility id(s) "
+                            f"(rewrite to the kept id): "
+                            + ", ".join(f"{f} -> {merged[f]}" for f in hits[:5]))
+
+
 def check_states(conn, failures: list[str]) -> None:
     """Once any facility carries a state, every locatable US one must.
 
@@ -948,6 +986,7 @@ def main() -> int:
             (check_projects, ()), (check_portal_products, ()),
             (check_topic_crosswalk, ()), (check_person_registry, ()),
             (check_registry_edges, ()), (check_people, (warnings,)),
+            (check_facility_merges, (warnings,)),
         ):
             try:
                 check(conn, failures, *extra)

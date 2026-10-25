@@ -10,8 +10,8 @@ database.
   2013.** *Long-Term Trends in Ecological Systems: A Basis for
   Understanding Responses to Global Change.* USDA ARS Technical
   Bulletin 1931. Source of the **≥10-year continuous-record threshold**
-  behind the map's optional "≥10y" filter (off by default; 315 of 456
-  facilities meet it as of 2026-10-23), and of the **EcoTrends 50** site
+  behind the map's optional "≥10y" filter (off by default; 316 of 448
+  facilities meet it as of 2026-10-24), and of the **EcoTrends 50** site
   list (Table 1-1) that we check landmark coverage against.
 
 - **Lugo, A.E., Swanson, F.J., González, O.R., Adams, M.B., Palik, B.,
@@ -75,11 +75,11 @@ The pages used are:
 - **NSF award records** — <https://api.nsf.gov/>.
 - **Institutional profile pages** of the people themselves.
 
-Each affiliation from the 2026-10-22 pass (862 rows) keeps its
+Each affiliation from the 2026-10-22 pass (851 rows as of 2026-10-24) keeps its
 `source_url`, its retrieval date and an evidence quote of 25 words or
 fewer from that page. A bio is a short paraphrase (at most 60 words) of a
 named source page, not a copy. Older rows from the spring 2026 passes
-(about 675) have no evidence quote, and a few have no source or date;
+(about 670) have no evidence quote, and a few have no source or date;
 they remain until a fetched page confirms, replaces or retires them. The
 People tab shows the source and retrieval date where the row has one.
 
@@ -89,7 +89,7 @@ Identifiers and publications come from two open APIs:
   matches and either a fetched profile or an employment at the right
   institution confirms it, or, for people with no facility on file, the
   name resolves to exactly one ORCID record. A wrong ORCID is worse than a missing one, so
-  unmatched people stay blank (611 of 1,305 people carry one as of
+  unmatched people stay blank (611 of 1,304 people carry one as of
   2026-10-24).
 - **OpenAlex** — <https://api.openalex.org/> — publications, citations
   and topics. People are matched only through their ORCID or a stored

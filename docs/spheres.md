@@ -17,13 +17,13 @@ in August 2026 so dryland research sites — a coherent research community
 with its own LTERs, NEON domains, and rangeland networks — stopped being
 invisible inside Terrestrial, the sphere with the most tagged records.
 
-As of 2026-10-23 the catalogue's 456 facilities break down like this:
+As of 2026-10-24 the catalogue's 448 facilities break down like this:
 
 | Sphere | Primary | Tagged in any role |
 |---|---:|---:|
-| Aquatic — Ocean & Estuarine | 153 | 160 |
-| Terrestrial / Ecological | 112 | 287 |
-| Aquatic — Freshwater | 61 | 124 |
+| Aquatic — Ocean & Estuarine | 144 | 151 |
+| Terrestrial / Ecological | 112 | 288 |
+| Aquatic — Freshwater | 62 | 125 |
 | Agriculture | 59 | 66 |
 | Cryosphere | 31 | 55 |
 | Atmosphere | 23 | 99 |

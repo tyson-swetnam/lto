@@ -26,36 +26,36 @@ a3250b6ee5b1e18e,University of California-Santa Barbara,LONG TERM ECOLOGICAL RES
 a3250b6ee5b1e18e,University of California-Santa Barbara,LONG TERM ECOLOGICAL RESEARCH,Kelp Forest,,SBC LTER kelp focus
 a3250b6ee5b1e18e,University of California-Santa Barbara,LONG TERM ECOLOGICAL RESEARCH,Land-Ocean,,SBC LTER VII variant
 # California Current Ecosystem LTER (Scripps / UCSD)
-b6ad40b6cd18f42e,University of California-San Diego Scripps Inst of Oceanography,LONG TERM ECOLOGICAL RESEARCH,California Current,,CCE LTER core
-b6ad40b6cd18f42e,University of California-San Diego Scripps Inst of Oceanography,LONG TERM ECOLOGICAL RESEARCH,CCE,,CCE LTER acronym
+39c749224b574218,University of California-San Diego Scripps Inst of Oceanography,LONG TERM ECOLOGICAL RESEARCH,California Current,,CCE LTER core
+39c749224b574218,University of California-San Diego Scripps Inst of Oceanography,LONG TERM ECOLOGICAL RESEARCH,CCE,,CCE LTER acronym
 # Florida Coastal Everglades LTER (FIU)
-1496a5fc3a668206,Florida International University,LONG TERM ECOLOGICAL RESEARCH,Florida Coastal Everglades,,FCE LTER core
-1496a5fc3a668206,Florida International University,LONG TERM ECOLOGICAL RESEARCH,FCE,,FCE LTER acronym
+449b4b7b64e59122,Florida International University,LONG TERM ECOLOGICAL RESEARCH,Florida Coastal Everglades,,FCE LTER core
+449b4b7b64e59122,Florida International University,LONG TERM ECOLOGICAL RESEARCH,FCE,,FCE LTER acronym
 # Georgia Coastal Ecosystems LTER (UGA)
-8ae383aa534d8fe9,University of Georgia Research Foundation Inc,LONG TERM ECOLOGICAL RESEARCH,Georgia Coastal,,GCE LTER core
-8ae383aa534d8fe9,University of Georgia Research Foundation Inc,LONG TERM ECOLOGICAL RESEARCH,GCE,,GCE LTER acronym
+c8f0ec54accbd4fd,University of Georgia Research Foundation Inc,LONG TERM ECOLOGICAL RESEARCH,Georgia Coastal,,GCE LTER core
+c8f0ec54accbd4fd,University of Georgia Research Foundation Inc,LONG TERM ECOLOGICAL RESEARCH,GCE,,GCE LTER acronym
 # Plum Island Ecosystems LTER (MBL)
-b93f51cc632277b0,Marine Biological Laboratory,LONG TERM ECOLOGICAL RESEARCH,Plum Island,,PIE LTER core
-b93f51cc632277b0,Marine Biological Laboratory,LONG TERM ECOLOGICAL RESEARCH,PIE,,PIE LTER acronym
+bed592638b95b7e5,Marine Biological Laboratory,LONG TERM ECOLOGICAL RESEARCH,Plum Island,,PIE LTER core
+bed592638b95b7e5,Marine Biological Laboratory,LONG TERM ECOLOGICAL RESEARCH,PIE,,PIE LTER acronym
 # Virginia Coast Reserve LTER (UVA)
-b3c4acfee79eb573,University of Virginia Main Campus,LONG TERM ECOLOGICAL RESEARCH,Virginia Coast,,VCR LTER core
-b3c4acfee79eb573,University of Virginia Main Campus,LONG TERM ECOLOGICAL RESEARCH,VCR,,VCR LTER acronym
-b3c4acfee79eb573,University of Virginia Main Campus,LONG TERM ECOLOGICAL RESEARCH,Coast Reserve,,VCR LTER variant
+ee98ac1a90620cf5,University of Virginia Main Campus,LONG TERM ECOLOGICAL RESEARCH,Virginia Coast,,VCR LTER core
+ee98ac1a90620cf5,University of Virginia Main Campus,LONG TERM ECOLOGICAL RESEARCH,VCR,,VCR LTER acronym
+ee98ac1a90620cf5,University of Virginia Main Campus,LONG TERM ECOLOGICAL RESEARCH,Coast Reserve,,VCR LTER variant
 # Beaufort Lagoon Ecosystems LTER (Texas A&M Corpus Christi)
-01ef51b8abf6f751,University of Texas Marine Science Institute,LONG TERM ECOLOGICAL RESEARCH,Beaufort Lagoon,,BLE LTER core
-01ef51b8abf6f751,University of Texas at Austin,LONG TERM ECOLOGICAL RESEARCH,Beaufort Lagoon,,BLE LTER alt awardee
-01ef51b8abf6f751,University of Texas Marine Science Institute,LONG TERM ECOLOGICAL RESEARCH,BLE,,BLE LTER acronym
+07a6f90011ac0705,University of Texas Marine Science Institute,LONG TERM ECOLOGICAL RESEARCH,Beaufort Lagoon,,BLE LTER core
+07a6f90011ac0705,University of Texas at Austin,LONG TERM ECOLOGICAL RESEARCH,Beaufort Lagoon,,BLE LTER alt awardee
+07a6f90011ac0705,University of Texas Marine Science Institute,LONG TERM ECOLOGICAL RESEARCH,BLE,,BLE LTER acronym
 # Northern Gulf of Alaska LTER (UAF)
-50642bf3064308c8,University of Alaska Fairbanks Campus,LONG TERM ECOLOGICAL RESEARCH,Northern Gulf of Alaska,,NGA LTER core
-50642bf3064308c8,University of Alaska Fairbanks Campus,LONG TERM ECOLOGICAL RESEARCH,NGA,,NGA LTER acronym
-50642bf3064308c8,University of Alaska Fairbanks Campus,LONG TERM ECOLOGICAL RESEARCH,Gulf of Alaska,,NGA LTER variant
+024de417014c4567,University of Alaska Fairbanks Campus,LONG TERM ECOLOGICAL RESEARCH,Northern Gulf of Alaska,,NGA LTER core
+024de417014c4567,University of Alaska Fairbanks Campus,LONG TERM ECOLOGICAL RESEARCH,NGA,,NGA LTER acronym
+024de417014c4567,University of Alaska Fairbanks Campus,LONG TERM ECOLOGICAL RESEARCH,Gulf of Alaska,,NGA LTER variant
 # North Temperate Lakes LTER (UW Madison) — kept for Great Lakes coverage
 d8e10a908168815c,University of Wisconsin-Madison,LONG TERM ECOLOGICAL RESEARCH,North Temperate Lakes,,NTL LTER core
 d8e10a908168815c,University of Wisconsin-Madison,LONG TERM ECOLOGICAL RESEARCH,NTL,,NTL LTER acronym
 # Northeast US Shelf LTER (WHOI / Rutgers)
-4b897473a3d94b82,Woods Hole Oceanographic Institution,LONG TERM ECOLOGICAL RESEARCH,Northeast U.S. Shelf,,NES LTER WHOI
-4b897473a3d94b82,Rutgers University New Brunswick,LONG TERM ECOLOGICAL RESEARCH,Northeast U.S. Shelf,,NES LTER Rutgers
-4b897473a3d94b82,Woods Hole Oceanographic Institution,LONG TERM ECOLOGICAL RESEARCH,NES-LTER,,NES LTER variant
+33d9cc3f89ec9a3a,Woods Hole Oceanographic Institution,LONG TERM ECOLOGICAL RESEARCH,Northeast U.S. Shelf,,NES LTER WHOI
+33d9cc3f89ec9a3a,Rutgers University New Brunswick,LONG TERM ECOLOGICAL RESEARCH,Northeast U.S. Shelf,,NES LTER Rutgers
+33d9cc3f89ec9a3a,Woods Hole Oceanographic Institution,LONG TERM ECOLOGICAL RESEARCH,NES-LTER,,NES LTER variant
 # LTER Network Office (UCSB / NCEAS)
 f3b529d1eda8e073,University of California-Santa Barbara,LONG TERM ECOLOGICAL RESEARCH,LTER Network Office,,LNO core
 f3b529d1eda8e073,University of California-Santa Barbara,LONG TERM ECOLOGICAL RESEARCH,LTER National,,LNO variant

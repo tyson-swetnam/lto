@@ -25,13 +25,13 @@ facility_id,recipient_search_text,award_id,description_match,notes
 a3250b6ee5b1e18e,University of California Santa Barbara,,Santa Barbara Coastal LTER,SBC LTER
 a3250b6ee5b1e18e,University of California Santa Barbara,,Land/Ocean Interactions,SBC LTER
 a3250b6ee5b1e18e,University of California Santa Barbara,,Kelp Forest,SBC LTER
-1496a5fc3a668206,Florida International University,,Florida Coastal Everglades,FCE LTER
-1496a5fc3a668206,Florida International University,,FCE LTER,FCE LTER variant
-8ae383aa534d8fe9,University of Georgia Research Foundation,,Georgia Coastal,GCE LTER
-b6ad40b6cd18f42e,University of California San Diego,,California Current Ecosystem,CCE LTER
-b3c4acfee79eb573,University of Virginia,,Virginia Coast Reserve,VCR LTER
-50642bf3064308c8,University of Alaska Fairbanks,,Northern Gulf of Alaska,NGA LTER
-b93f51cc632277b0,Marine Biological Laboratory,,Plum Island,PIE LTER
+449b4b7b64e59122,Florida International University,,Florida Coastal Everglades,FCE LTER
+449b4b7b64e59122,Florida International University,,FCE LTER,FCE LTER variant
+c8f0ec54accbd4fd,University of Georgia Research Foundation,,Georgia Coastal,GCE LTER
+39c749224b574218,University of California San Diego,,California Current Ecosystem,CCE LTER
+ee98ac1a90620cf5,University of Virginia,,Virginia Coast Reserve,VCR LTER
+024de417014c4567,University of Alaska Fairbanks,,Northern Gulf of Alaska,NGA LTER
+bed592638b95b7e5,Marine Biological Laboratory,,Plum Island,PIE LTER
 # === Sea Grant programs (each housed at host university) ===
 ,University of Connecticut,,Connecticut Sea Grant,CT SG
 ,University of California San Diego,,California Sea Grant,CA SG

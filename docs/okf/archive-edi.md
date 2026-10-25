@@ -4,7 +4,7 @@ title: "Environmental Data Initiative Repository"
 description: "Environmental Data Initiative (EDI) / NSF — repository holding long-term observatory records."
 resource: "https://portal.edirepository.org/"
 tags: [repository, rest, edi-data-policy]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-10-25T04:20:50Z }
 status: stable
 ---
 
@@ -54,9 +54,9 @@ PASTA REST API; EML 2.2 metadata; per-LTER 'scope' namespace pattern knb-lter-<a
 - **MCR** Moorea Coral Reef LTER (primary)
 - **MLBS-BS** Mountain Lake Biological Station (primary)
 - **NWT-CRY** Niwot Ridge LTER Cryosphere Instrumentation (primary)
-- **LTER** North Temperate Lakes LTER (primary)
+- **NTL** North Temperate Lakes LTER (primary)
 - **NES** Northeast U.S. Shelf LTER (primary)
-- **LTER** Northern Gulf of Alaska LTER (primary)
+- **NGA** Northern Gulf of Alaska LTER (primary)
 - **OSBS-BS** Ordway-Swisher Biological Station (primary)
 - **PAL** Palmer Station LTER (primary)
 - **PIE** Plum Island Ecosystems LTER (primary)

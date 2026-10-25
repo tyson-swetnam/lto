@@ -14,37 +14,39 @@ WHERE role = 'primary' GROUP BY 1 ORDER BY 2 DESC;
 
 ## Total facilities
 
-The catalogue holds **456 facilities**: US 441, Puerto Rico 10,
+The catalogue holds **448 facilities**: US 433, Puerto Rico 10,
 Antarctica 3, American Samoa 1 and US Virgin Islands 1. Every facility has
 coordinates, and every US facility has a state.
 
-- **315** meet the Peters et al. 2013 long-term threshold (≥10 years of
-  record), 130 do not, and 11 are unclassified. 68 facilities have no
-  record length at all, and 57 of those are counted as not meeting the
+- **316** meet the Peters et al. 2013 long-term threshold (≥10 years of
+  record), 121 do not, and 11 are unclassified. 59 facilities have no
+  record length at all, and 48 of those are counted as not meeting the
   threshold. The "≥10y" filter is off by default.
 - Scope lenses: ARID Institute & partners **12**, New Mexico **19**,
-  Southwest drylands (the default view) **67**, All U.S. **456**. See
+  Southwest drylands (the default view) **67**, All U.S. **448**. See
   [ARID & New Mexico](./arid.md).
 
-Deduplication is not complete. Several LTER sites still appear as two rows
-with near-duplicate names, for example Plum Island / Plum Island Ecosystems,
-Georgia Coast / Georgia Coastal Ecosystems and Florida Coast / Florida
-Coastal Everglades.
+Eight LTER sites used to appear twice: once as their LTER site row and once
+as a COMPASS synthesis-networks import under a near-duplicate name (Plum
+Island LTER, Georgia Coast LTER, Florida Coast LTER and others). On
+2026-10-24 `scripts/merge_facilities.py` merged each import into its site
+row on reviewed, cited pairs (`data/seed/facility_merge_seed.csv`). The
+merge does not search for duplicates; other near-duplicates may remain.
 
 ## By primary sphere
 
 | Sphere | Primary | Tagged in any role |
 |---|---:|---:|
-| ocean-estuarine | 153 | 160 |
-| terrestrial | 112 | 287 |
-| freshwater | 61 | 124 |
+| ocean-estuarine | 144 | 151 |
+| terrestrial | 112 | 288 |
+| freshwater | 62 | 125 |
 | agriculture | 59 | 66 |
 | cryosphere | 31 | 55 |
 | atmosphere | 23 | 99 |
 | arid | 11 | 31 |
-| **total** | **450** | |
+| **total** | **442** | |
 
-That accounts for 450 facilities. The other **6** have no primary sphere.
+That accounts for 442 facilities. The other **6** have no primary sphere.
 All six are ARID partner institutes at UNM: METALS, the Public Policy
 Program, the SW Environmental Finance Center, Sustainability Studies, the
 Center for Health Equity and the Utton Center. By primary sphere,
@@ -58,7 +60,7 @@ These are counts from the catalogue. `qa.py` does not check them.
 | Landmark list | In the catalogue | Notes |
 |---|---|---|
 | **NEON** | 82 facilities in network `neon` | 77 of them are named "… NEON Site". The others are NEON members under other names. |
-| **LTER** | 59 in network `lter` (11 of them also tagged `lter-site`) | Includes the near-duplicate rows above, so this is not a count of LTER sites. **26** LTER sites have a current lead PI that matches the LTER Network's site page (lternet.edu) or the site's own page. |
+| **LTER** | 51 in network `lter` (2 of them also tagged `lter-site`) | Also holds NEON, NADP, AmeriFlux and field-station rows at LTER sites, so this is not a count of LTER sites. **26** LTER sites have a current lead PI that matches the LTER Network's site page (lternet.edu) or the site's own page. |
 | **LTAR** | 26 in network `ltar` | 19 of them are of type `ltar-site`. |
 | **NERRS** | 29 of 30 reserves | Network `nerrs` also includes NOAA's Office for Coastal Management. Connecticut is missing. Guana Tolomato Matanzas and Mission-Aransas, missing in May 2026, are now present. |
 | **IOOS Regional Associations** | 10 of 11 | GLOS is missing. |
@@ -67,20 +69,20 @@ These are counts from the catalogue. `qa.py` does not check them.
 
 ## People
 
-As of 2026-10-23 the people table holds **1,305 people**. Of these,
-**1,217** have at least one facility affiliation. There are 1,537
-affiliation rows across 441 facilities.
+As of 2026-10-24 the people table holds **1,304 people**. Of these,
+**1,216** have at least one facility affiliation. There are 1,519
+affiliation rows across 433 facilities.
 
 How the affiliation rows were made:
 
-- **862 rows** were fetched on 2026-10-22 by the R-PEOPLE2 wave. Each was
+- **851 rows** were fetched on 2026-10-22 by the R-PEOPLE2 wave. Each was
   read from a cited page, carries a quote of the evidence, and was checked
   by an adversarial re-fetch. See [Methods](./methods.md).
-- **654 rows** are older, dated 2026-04-24 to 2026-10-09, and 21 rows have
+- **647 rows** are older, dated 2026-04-24 to 2026-10-09, and 21 rows have
   no date. Many come from the earlier recall-based people waves. Some were
   repaired or ended by the 2026-10-22 pass, but most have **not been
   re-verified** against a fetched page.
-- `is_current` is true on 747 rows and false on 177. It is not set on 613
+- `is_current` is true on 736 rows and false on 177. It is not set on 606
   rows, which are mostly older rows that nobody has marked as current or
   former.
 
@@ -89,19 +91,19 @@ Rows by role (a person can hold several):
 | Role | Rows |
 |---|---:|
 | director | 209 |
-| lead-PI | 209 |
-| co-PI | 195 |
-| manager | 105 |
+| lead-PI | 201 |
+| co-PI | 192 |
+| manager | 104 |
 | scientist | 91 |
 | leadership-team | 83 |
-| founding-PI | 76 |
+| founding-PI | 75 |
 | faculty | 74 |
 | domain-manager | 73 |
 | emeritus | 58 |
 | former-director | 44 |
-| 16 other roles | 320 |
+| 16 other roles | 315 |
 
-The 16 other roles include information-manager (31), superintendent (23)
+The 16 other roles include information-manager (27), superintendent (23)
 and site-manager (12).
 
 **Biographies:** 780 people have a bio, and every one cites its source page.

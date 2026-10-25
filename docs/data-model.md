@@ -176,8 +176,8 @@ of the 611 stored ORCID iDs carry `orcid_source_url`.
   still ahead. The People tab labels a role *current* only when
   `is_current = true`, and *former* when it is `false` or the `end_date`
   has passed. Browse cards mark a role *former* when `is_current = false`
-  and list those holders last. As of 2026-10-23, of 1,537 rows, 747 are
-  `true`, 177 `false` and 613 `NULL`.
+  and list those holders last. As of 2026-10-24, of 1,519 rows, 736 are
+  `true`, 177 `false` and 606 `NULL`.
 - **`confidence`** rates how directly the source supports the row, not how
   important the person is. The researching agent sets it, and the verifier
   lowers it when the page supports less than claimed. `agents/R-PEOPLE.md`
@@ -191,8 +191,8 @@ of the 611 stored ORCID iDs carry `orcid_source_url`.
 
   Rows from before R-PEOPLE2 were mostly recalled rather than fetched. Their
   `confidence` is the agent's own rating and is not backed by `evidence`.
-  As of 2026-10-23, 862 rows were fetched on 2026-10-22 and all of them
-  carry `evidence`; 654 older rows and 21 undated rows do not.
+  As of 2026-10-24, 851 rows were fetched on 2026-10-22 and all of them
+  carry `evidence`; 647 older rows and 21 undated rows do not.
 - **Roles** are slugs from `schema/vocab/personnel_roles.csv` (copied to
   `public/vocab/` for display labels). Its `is_leadership` column marks
   the roles that one batch can supersede at a facility: `director`,

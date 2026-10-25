@@ -122,6 +122,7 @@ Gotchas this module exists to absorb
 from __future__ import annotations
 
 import argparse
+import csv
 import fcntl
 import functools
 import os
@@ -300,6 +301,46 @@ def lake_tables(con, catalog: str = LAKE) -> list[str]:
 
 def qident(name: str) -> str:
     return '"' + name.replace('"', '""') + '"'
+
+
+# ---------------------------------------------------------------------------
+# Merged facilities
+# ---------------------------------------------------------------------------
+
+FACILITY_MERGE_LOG = ROOT / "data" / "seed" / "facility_merge_log.csv"
+_facility_redirects: dict[Path, dict[str, str]] = {}
+
+
+def facility_merge_redirects(path: Path = FACILITY_MERGE_LOG) -> dict[str, str]:
+    """merged_id -> the facility_id it was merged into (merge_facilities.py's
+    log), closed transitively. A seed CSV, override file or research batch
+    written before a merge still names the merged id; loaders send it to
+    the kept facility instead of failing on it or re-creating it. ingest.py
+    is the exception: it drops a raw record whose id was merged away (its
+    facets would overwrite the kept facility's)."""
+    key = Path(path).resolve()
+    if key not in _facility_redirects:
+        m: dict[str, str] = {}
+        if key.exists():
+            with key.open(newline="", encoding="utf-8") as fh:
+                for r in csv.DictReader(fh):
+                    if r.get("merged_id") and r.get("kept_id"):
+                        m[r["merged_id"].strip()] = r["kept_id"].strip()
+        for k in list(m):
+            seen = {k}
+            while m[k] in m and m[k] not in seen:
+                seen.add(m[k])
+                m[k] = m[m[k]]
+        _facility_redirects[key] = m
+    return _facility_redirects[key]
+
+
+def canonical_facility_id(fid: str | None) -> str | None:
+    """The facility a (possibly merged-away) facility_id now lives under."""
+    if not fid:
+        return fid
+    fid = fid.strip()
+    return facility_merge_redirects().get(fid, fid)
 
 
 def latest_snapshot(con, catalog: str = LAKE) -> dict:

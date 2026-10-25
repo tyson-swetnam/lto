@@ -8,7 +8,7 @@ facility_acronym,facility_name_like,person_name,role,title,is_key_personnel,orci
 # Columns:
 #   facility_acronym    exact match on facilities.acronym (preferred)
 #   facility_name_like  ILIKE %…% fallback when acronym is ambiguous
-#                       (all LTER sites share acronym "LTER")
+#                       (e.g. the 29 reserves that share "NERR")
 #   person_name         as shown on the institutional bio page
 #   role                Director | Lead PI | Dean | President & CEO | ...
 #   title               free-text position title
@@ -39,18 +39,21 @@ SkIO,,Clark Alexander,Director,Director of the UGA Skidaway Institute of Oceanog
 SERC,,William Monty Graham,Director,"Director of the Smithsonian Environmental Research Center (W. M. ""Monty"" Graham)",true,,,,https://serc.si.edu/about-us/staff,press-release,https://www.si.edu/newsdesk/releases/william-monty-graham-named-director-smithsonian-environmental-research-center,high
 Mote,,Michael P. Crosby,President & CEO,President & CEO of Mote Marine Laboratory & Aquarium,true,,,,https://mote.org/about/leadership/,facility-webpage,https://mote.org/about/leadership/,high
 #
-# LTER sites (share acronym "LTER" in DB — use facility_name_like) ─────
+# LTER sites (facility_acronym is the site code, unique in the DB since 2026-10-24) ─
 ,Santa Barbara Coastal LTER,Bob Miller,Lead PI,Lead Principal Investigator (UCSB Marine Science Institute),true,,,,https://sbclter.msi.ucsb.edu/about/people/,facility-webpage,https://sbclter.msi.ucsb.edu/,high
-,Plum Island LTER,Anne Giblin,Lead PI,"Lead Principal Investigator (MBL Ecosystems Center); Senior Scientist",true,,,,https://pie-lter.mbl.edu/people/anne-giblin/,facility-webpage,https://pie-lter.mbl.edu/people/anne-giblin/,high
-,Georgia Coast LTER,Merryl Alber,Lead PI,Lead Principal Investigator (UGA Department of Marine Sciences),true,,,,https://gce-lter.marsci.uga.edu/public/app/personnel_bios.asp?id=malber,facility-webpage,https://gce-lter.marsci.uga.edu/public/app/personnel_bios.asp?id=malber,high
-,Georgia Coast LTER,Steven Pennings,Co-Lead PI,Co-Lead Principal Investigator (University of Houston),true,,,,,facility-webpage,https://www.bco-dmo.org/project/550511,high
-,Virginia Coast LTER,Karen McGlathery,Lead PI,"Lead Investigator VCR LTER; Sherrell J. Aston Professor of Environmental Sciences; Director of UVA Environmental Institute",true,,,,https://www.vcrlter.virginia.edu/home2/?page_id=324,facility-webpage,https://www.vcrlter.virginia.edu/home2/?page_id=324,high
-,California Current LTER,Katherine Barbeau,Lead PI,Lead Principal Investigator (UCSD Scripps Institution of Oceanography),true,,,,https://ccelter.ucsd.edu/,facility-webpage,https://www.bco-dmo.org/project/2086,high
-,Florida Coast LTER,John Kominoski,Lead PI,Lead Principal Investigator (FIU Institute of Environment),true,,,,https://fcelter.fiu.edu/about/people/index.html,facility-webpage,https://news.fiu.edu/2025/fiu-gets-6.375-million-renewal-from-nsf-for-everglades-research,high
-,Beaufort Lagoon LTER,Ken Dunton,Lead PI,Lead Principal Investigator (UT Austin Marine Science Institute),true,,,,https://ble.lternet.edu/people.html,facility-webpage,https://ble.lternet.edu/about.html,high
-,Beaufort Lagoon LTER,James McClelland,Co-PI,Co-Principal Investigator,true,,,,https://ble.lternet.edu/people.html,facility-webpage,https://ble.lternet.edu/about.html,high
-,Northern Gulf of Alaska LTER,Russ Hopcroft,Lead PI,Lead Principal Investigator (University of Alaska Fairbanks),true,,,,https://nga.lternet.edu/about-us/personnel/,facility-webpage,https://nga.lternet.edu/about-us/personnel/,high
-,Northern Gulf of Alaska LTER,Seth Danielson,Co-PI,Co-Principal Investigator (University of Alaska Fairbanks),true,,,,https://nga.lternet.edu/about-us/personnel/,facility-webpage,https://nga.lternet.edu/about-us/personnel/,high
+PIE,Plum Island LTER,Anne Giblin,Lead PI,"Lead Principal Investigator (MBL Ecosystems Center); Senior Scientist",true,,,,https://pie-lter.mbl.edu/people/anne-giblin/,facility-webpage,https://pie-lter.mbl.edu/people/anne-giblin/,high
+GCE,Georgia Coast LTER,Merryl Alber,Lead PI,Lead Principal Investigator (UGA Department of Marine Sciences),true,,,,https://gce-lter.marsci.uga.edu/public/app/personnel_bios.asp?id=malber,facility-webpage,https://gce-lter.marsci.uga.edu/public/app/personnel_bios.asp?id=malber,high
+GCE,Georgia Coast LTER,Steven Pennings,Co-Lead PI,Co-Lead Principal Investigator (University of Houston),true,,,,,facility-webpage,https://www.bco-dmo.org/project/550511,high
+# Superseded 2026-10-24: https://lternet.edu/site/virginia-coast-reserve-lter/ lists
+# 'Lead Principal Investigator: Max Castorani' (the R-PEOPLE2-LTER-01b row); McGlathery's
+# VCR lead-PI row is is_current=false, so this line is kept only as history.
+# VCR,Virginia Coast LTER,Karen McGlathery,Lead PI,"Lead Investigator VCR LTER; Sherrell J. Aston Professor of Environmental Sciences; Director of UVA Environmental Institute",true,,,,https://www.vcrlter.virginia.edu/home2/?page_id=324,facility-webpage,https://www.vcrlter.virginia.edu/home2/?page_id=324,high
+CCE,California Current LTER,Katherine Barbeau,Lead PI,Lead Principal Investigator (UCSD Scripps Institution of Oceanography),true,,,,https://ccelter.ucsd.edu/,facility-webpage,https://www.bco-dmo.org/project/2086,high
+FCE,Florida Coast LTER,John Kominoski,Lead PI,Lead Principal Investigator (FIU Institute of Environment),true,,,,https://fcelter.fiu.edu/about/people/index.html,facility-webpage,https://news.fiu.edu/2025/fiu-gets-6.375-million-renewal-from-nsf-for-everglades-research,high
+BLE,Beaufort Lagoon LTER,Ken Dunton,Lead PI,Lead Principal Investigator (UT Austin Marine Science Institute),true,,,,https://ble.lternet.edu/people.html,facility-webpage,https://ble.lternet.edu/about.html,high
+BLE,Beaufort Lagoon LTER,James McClelland,Co-PI,Co-Principal Investigator,true,,,,https://ble.lternet.edu/people.html,facility-webpage,https://ble.lternet.edu/about.html,high
+NGA,Northern Gulf of Alaska LTER,Russ Hopcroft,Lead PI,Lead Principal Investigator (University of Alaska Fairbanks),true,,,,https://nga.lternet.edu/about-us/personnel/,facility-webpage,https://nga.lternet.edu/about-us/personnel/,high
+NGA,Northern Gulf of Alaska LTER,Seth Danielson,Co-PI,Co-Principal Investigator (University of Alaska Fairbanks),true,,,,https://nga.lternet.edu/about-us/personnel/,facility-webpage,https://nga.lternet.edu/about-us/personnel/,high
 #
 # === Second pass (2026-04-24): NOAA Fisheries Science Centers + other high-value facilities ===
 #
@@ -107,8 +110,8 @@ ERDC-CHL,,Ty V. Wamsley,Director,"Director, USACE ERDC Coastal and Hydraulics La
 # === Round 4 batch 1 (2026-04-24): additional LTER sites + first NERR ===
 #
 # LTER sites — remaining Lead PIs
-,North Temperate Lakes LTER,Emily Stanley,Lead PI,"Lead Principal Investigator, NTL LTER (UW-Madison Center for Limnology)",true,,,,https://lter.limnology.wisc.edu/people,facility-webpage,https://lter.limnology.wisc.edu/,high
-,Northeast US Margin LTER,Heidi M. Sosik,Lead PI,"Lead Principal Investigator, NES LTER (Woods Hole Oceanographic Institution)",true,,,,https://nes-lter.whoi.edu/about/,facility-webpage,https://nes-lter.whoi.edu/,high
+NTL,North Temperate Lakes LTER,Emily Stanley,Lead PI,"Lead Principal Investigator, NTL LTER (UW-Madison Center for Limnology)",true,,,,https://lter.limnology.wisc.edu/people,facility-webpage,https://lter.limnology.wisc.edu/,high
+NES,Northeast US Margin LTER,Heidi M. Sosik,Lead PI,"Lead Principal Investigator, NES LTER (Woods Hole Oceanographic Institution)",true,,,,https://nes-lter.whoi.edu/about/,facility-webpage,https://nes-lter.whoi.edu/,high
 #
 # NERR Reserves — Reserve Managers
 ,Grand Bay NERR,Ayesha Gray,Reserve Manager,"Reserve Manager, Grand Bay National Estuarine Research Reserve (Mississippi DMR)",true,,,,https://grandbaynerr.org/,facility-webpage,https://dmr.ms.gov/grand-bay-nerr/,high

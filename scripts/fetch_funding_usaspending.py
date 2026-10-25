@@ -219,7 +219,9 @@ def load_overrides(path: Path) -> dict[str, dict]:
             (line for line in fh if not line.lstrip().startswith("#")),
         )
         for row in reader:
-            fid = (row.get("facility_id") or "").strip()
+            # A facility merged away (merge_facilities.py) keeps its
+            # overrides under the facility it was kept as.
+            fid = lto_db.canonical_facility_id((row.get("facility_id") or "").strip())
             if not fid:
                 continue
             entry = out.setdefault(fid, {

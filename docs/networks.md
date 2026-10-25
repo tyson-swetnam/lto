@@ -15,13 +15,13 @@ NEON points already show the result. The scope lens, country, research
 area, the ≥10y toggle and the established-year range leave it on. Turning an overlay back on
 by hand keeps it on until those filters are cleared.
 
-As of 2026-10-23 there are 596 membership rows. 57 of the 66 networks have
-at least one member. 407 of the 456 facilities belong to one or more
+As of 2026-10-24 there are 579 membership rows. 57 of the 66 networks have
+at least one member. 399 of the 448 facilities belong to one or more
 networks. The other 49 belong to none, and you find them by sphere, type
 or research area instead.
 
 The **Facilities** column counts facility records in this catalogue as of
-2026-10-23. It is not the size of the network. A network's own site list
+2026-10-24. It is not the size of the network. A network's own site list
 can be longer than what the catalogue holds. A zero means only that no catalogued
 facility carries that tag yet. The vocabulary has no sphere column. The
 grouping below is only to make the list easier to read.
@@ -59,8 +59,8 @@ grouping below is only to make the list easier to read.
 
 | Slug | Full name | Level | Facilities | URL |
 |---|---|---|---:|---|
-| `lter` | Long-Term Ecological Research Network | us-national | 59 | <https://lternet.edu> |
-| `lter-site` | Long-Term Ecological Research member site | us-regional | 11 | <https://lternet.edu/site/> |
+| `lter` | Long-Term Ecological Research Network | us-national | 51 | <https://lternet.edu> |
+| `lter-site` | Long-Term Ecological Research member site | us-regional | 2 | <https://lternet.edu/site/> |
 | `neon` | National Ecological Observatory Network | us-national | 82 | <https://www.neonscience.org> |
 | `ltreb` | Long-term Research in Environmental Biology | us-national | 23 | <https://www.nsf.gov/funding/opportunities/long-term-research-environmental-biology-ltreb> |
 | `usfs-rna-ef` | USFS Research Natural Area / Experimental Forest network | us-national | 36 | <https://www.fs.usda.gov/research/rmrs/research-natural-areas> |
@@ -69,9 +69,11 @@ grouping below is only to make the list easier to read.
 | `nrs` | University of California Natural Reserve System | us-regional | 3 | <https://ucnrs.org> |
 | `ltrr` | Laboratory of Tree-Ring Research / ITRDB | us-national | 1 | <https://ltrr.arizona.edu> |
 
-`lter-site` is a second tag on 11 facilities that also carry `lter`: nine
-coastal and marine LTER sites, North Temperate Lakes LTER and the UW
-Trout Lake Station. To get every LTER record, filter on `lter`.
+`lter-site` is a second tag on 2 facilities that also carry `lter`: Santa
+Barbara Coastal LTER and the UW Trout Lake Station. It came in with the
+COMPASS synthesis-networks import; the eight LTER site duplicates that import
+created were merged into their LTER site rows on 2026-10-24, and the tag was
+not carried over. To get every LTER record, filter on `lter`.
 
 ## Agriculture
 

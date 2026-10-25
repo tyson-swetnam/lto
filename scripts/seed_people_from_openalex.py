@@ -110,7 +110,8 @@ def load_overrides() -> dict[str, str]:
         for row in csv.DictReader(fh):
             if not row or list(row.values())[0].strip().startswith("#"):
                 continue
-            key = (row.get("facility_acronym") or row.get("facility_id") or "").strip()
+            key = ((row.get("facility_acronym") or "").strip()
+                   or lto_db.canonical_facility_id((row.get("facility_id") or "").strip()) or "")
             inst = (row.get("openalex_institution_id") or "").strip()
             if key and inst:
                 out[key] = inst
