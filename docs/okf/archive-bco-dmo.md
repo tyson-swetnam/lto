@@ -4,7 +4,7 @@ title: "Biological and Chemical Oceanography Data Management Office"
 description: "Woods Hole Oceanographic Institution / NSF OCE — repository holding long-term observatory records."
 resource: "https://www.bco-dmo.org/"
 tags: [repository, rest, cc0]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-10-25T04:20:50Z }
 status: stable
 ---
 
@@ -27,22 +27,22 @@ NSF-funded NSF/OCE biological + chemical oceanography data office hosted at WHOI
 
 # Depositing facilities
 
-- **LTER** California Current LTER (primary)
-- **LTER** Northeast US Margin LTER (primary)
-- **LTER** Northern Gulf of Alaska LTER (primary)
+- **CCE** California Current Ecosystem LTER (primary)
+- **NES** Northeast U.S. Shelf LTER (primary)
+- **NGA** Northern Gulf of Alaska LTER (primary)
 - **WHOI** Woods Hole Oceanographic Institution (host)
-- **LTER** Beaufort Lagoon LTER (secondary)
+- **BLE** Beaufort Lagoon Ecosystems LTER (secondary)
 - **Bigelow** Bigelow Laboratory for Ocean Sciences (secondary)
 - **BML** Bodega Marine Laboratory (secondary)
-- **LTER** Florida Coast LTER (secondary)
-- **LTER** Georgia Coast LTER (secondary)
+- **FCE** Florida Coastal Everglades LTER (secondary)
+- **GCE** Georgia Coastal Ecosystems LTER (secondary)
 - **URI-GSO** Graduate School of Oceanography (secondary)
 - **HMSC** Hatfield Marine Science Center (secondary)
 - **HIMB** Hawaiʻi Institute of Marine Biology (secondary)
 - **MBARI** Monterey Bay Aquarium Research Institute (secondary)
-- **LTER** Plum Island LTER (secondary)
+- **PIE** Plum Island Ecosystems LTER (secondary)
 - **RSMAES** Rosenstiel School of Marine, Atmospheric, and Earth Science (secondary)
 - **SBC** Santa Barbara Coastal LTER (secondary)
 - **SkIO** Skidaway Institute of Oceanography (secondary)
-- **LTER** Virginia Coast LTER (secondary)
+- **VCR** Virginia Coast Reserve LTER (secondary)
 - **VIMS** Virginia Institute of Marine Science (secondary)

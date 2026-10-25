@@ -28,15 +28,15 @@ facility_acronym,facility_id,openalex_institution_id,notes
 # they're stable across rebuilds.
 #
 # ,a3250b6ee5b1e18e,I5023651,SBC LTER  -> University of California, Santa Barbara (verify ID)
-# ,b6ad40b6cd18f42e,I150209017,CCE LTER -> Scripps Institution of Oceanography
-# ,b93f51cc632277b0,I1338920048,PIE LTER -> Marine Biological Laboratory
-# ,8ae383aa534d8fe9,I1319452651,GCE LTER -> University of Georgia (verify ID)
-# ,b3c4acfee79eb573,I71614873,VCR LTER -> University of Virginia (verify ID)
-# ,50642bf3064308c8,I1265232110,NGA LTER -> University of Alaska Fairbanks (verify ID)
-# ,01ef51b8abf6f751,I114027177,BLE LTER -> University of Texas at Austin (verify ID)
-# ,1496a5fc3a668206,I145311948,FCE LTER -> Florida International University (verify ID)
+# ,39c749224b574218,I150209017,CCE LTER -> Scripps Institution of Oceanography
+# ,bed592638b95b7e5,I1338920048,PIE LTER -> Marine Biological Laboratory
+# ,c8f0ec54accbd4fd,I1319452651,GCE LTER -> University of Georgia (verify ID)
+# ,ee98ac1a90620cf5,I71614873,VCR LTER -> University of Virginia (verify ID)
+# ,024de417014c4567,I1265232110,NGA LTER -> University of Alaska Fairbanks (verify ID)
+# ,07a6f90011ac0705,I114027177,BLE LTER -> University of Texas at Austin (verify ID)
+# ,449b4b7b64e59122,I145311948,FCE LTER -> Florida International University (verify ID)
 # ,d8e10a908168815c,I135310074,NTL LTER -> University of Wisconsin-Madison (verify ID)
-# ,4b897473a3d94b82,I161318765,NES LTER -> Woods Hole Oceanographic Institution / WHOI
+# ,33d9cc3f89ec9a3a,I161318765,NES LTER -> Woods Hole Oceanographic Institution / WHOI
 #
 # University-hosted marine labs that didn't auto-resolve:
 # BML,,I25066019,Bodega Marine Lab -> University of California, Davis (verify ID)

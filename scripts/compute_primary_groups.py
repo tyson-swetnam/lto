@@ -61,7 +61,11 @@ def compute_facility_primaries(conn) -> list[tuple]:
             JOIN   person_areas       pa ON pa.person_id = fp.person_id
         ),
         summed AS (
-            SELECT facility_id, area_id, SUM(score) AS total
+            -- Rounded: a DOUBLE SUM depends on the order rows arrive in,
+            -- which changes across a lake rebuild; 6 places keeps every
+            -- real difference and drops the last-digit noise, so the
+            -- ranking and the exported score are stable.
+            SELECT facility_id, area_id, round(SUM(score), 6) AS total
             FROM   facility_area_score
             GROUP  BY facility_id, area_id
         ),

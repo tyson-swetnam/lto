@@ -103,6 +103,23 @@ def assign_ids(records: list[Record]) -> None:
         r.fid = facility_id(r.raw.get("canonical_name", ""), r.raw.get("acronym"))
 
 
+def drop_merged(records: list[Record]) -> list[Record]:
+    """Drop records whose id merge_facilities.py merged away
+    (data/seed/facility_merge_log.csv). Not redirected: insert_records
+    replaces the facility's columns and facets with the record's, so a
+    regenerated duplicate would overwrite the kept facility's curated
+    values with its own."""
+    merged = lto_db.facility_merge_redirects()
+    kept = []
+    for r in records:
+        if r.fid in merged:
+            print(f"[merged] skip {r.raw.get('canonical_name')!r} ({r.fid} was merged into "
+                  f"{merged[r.fid]}; {r.raw.get('_source_file')})")
+            continue
+        kept.append(r)
+    return kept
+
+
 def dedup(records: list[Record]) -> list[Record]:
     """Merge records across agents using id / url / fuzzy-name + proximity."""
     by_key: dict[str, Record] = {}
@@ -454,6 +471,7 @@ def main() -> int:
     if not records:
         print("[info] no raw records found — refreshing schema and vocab only")
     assign_ids(records)
+    records = drop_merged(records)
     records = dedup(records)
     geocode_missing(records, args.skip_geocode)
 

@@ -4,7 +4,7 @@ okf_version: "0.2"
 
 # LTO data access — OKF bundle
 
-How to reach the data behind the catalogue: 78 archives, each with a generated concept document listing its machine access points, depositing facilities, and addressable products. All figures are re-derivable from `public/parquet/` (`scripts/build_okf_bundle.py`); the access-method guides are curated by hand.
+How to reach the data behind the catalogue: 80 archives, each with a generated concept document listing its machine access points, depositing facilities, and addressable products. All figures are re-derivable from `public/parquet/` (`scripts/build_okf_bundle.py`); the access-method guides are curated by hand.
 
 ## Access-method guides
 
@@ -49,11 +49,12 @@ How to reach the data behind the catalogue: 78 archives, each with a generated c
 - [WHOI Open Access Server](./archive-whoi-oa.md)
 - [Water Quality Portal](./archive-usgs-wqp.md)
 
-### data-portal (13)
+### data-portal (14)
 
 - [AERONET (AErosol RObotic NETwork)](./archive-aeronet.md)
 - [Clean Air Status and Trends Network](./archive-castnet.md)
 - [DOE ARM Data Discovery (Atmospheric Radiation Measurement)](./archive-arm-adc.md)
+- [EnviroData-NM — New Mexico Environmental Data Portal](./archive-envirodata-nm.md)
 - [IMPROVE Aerosol Network Archive](./archive-improve.md)
 - [NASA Ocean Biology Distributed Active Archive Center (OB.DAAC) / OceanColor Web](./archive-nasa-obdaac.md)
 - [NMFS Marine Fisheries Stock Assessment / Stock SMART](./archive-nmfs-mfscs.md)
@@ -105,8 +106,9 @@ How to reach the data behind the catalogue: 78 archives, each with a generated c
 - [NRCS Air & Water Database (SCAN / SNOTEL / SNOLITE / CSAS)](./archive-nrcs-awdb.md)
 - [Ocean Observatories Initiative Data Explorer](./archive-ooi-data-explorer.md)
 
-### aggregator (2)
+### aggregator (3)
 
+- [Arizona Water Observatory (AWO)](./archive-arizona-water-observatory.md)
 - [Global Biodiversity Information Facility](./archive-gbif.md)
 - [Ocean Biodiversity Information System](./archive-obis.md)
 

@@ -17,7 +17,9 @@ Writes (idempotent — a second run changes nothing)
 
 Rules
   * facility_id is authoritative: no name or acronym resolution. An unknown
-    facility_id stops the load.
+    facility_id stops the load. A facility_id that merge_facilities.py
+    merged away (data/seed/facility_merge_log.csv) is read as the facility
+    it was kept as (lto_db.canonical_facility_id).
   * A person is matched, in order, on existing_person_id; on exact ORCID
     equality; on an exact normalised full-name match among the people
     already attached to one of the same facilities (failing that, a unique
@@ -554,11 +556,17 @@ def load_research(con, path: Path, doc: dict, roles, verbose: bool,
     warn: list[str] = []
     stats: Counter = Counter()
 
-    # Ids that dedupe_people.py merged away point at the kept person.
+    # Ids that dedupe_people.py merged away point at the kept person, and
+    # facility ids merge_facilities.py merged away at the kept facility.
+    fac_id = lto_db.canonical_facility_id
     people = {p["key"]: dict(p, existing_person_id=canonical_person_id(p.get("existing_person_id")))
               for p in doc.get("people", [])}
-    affs = doc.get("affiliations", [])
-    vers = [dict(v, person_id=canonical_person_id(v.get("person_id")))
+    doc = dict(doc, facilities=[dict(f, facility_id=fac_id(f.get("facility_id")))
+                                for f in doc.get("facilities", [])])
+    affs = [dict(a, facility_id=fac_id(a.get("facility_id")))
+            for a in doc.get("affiliations", [])]
+    vers = [dict(v, person_id=canonical_person_id(v.get("person_id")),
+                 facility_id=fac_id(v.get("facility_id")))
             for v in doc.get("verifications", [])]
 
     # 1. Everything that stops the load, collected so one run lists it all.
@@ -994,7 +1002,7 @@ def main() -> int:
             for v in json.loads(path.read_text()).get("verifications") or []:
                 if v.get("status") == "confirmed":
                     confirmed_elsewhere.add((canonical_person_id(v.get("person_id")),
-                                             v.get("facility_id"),
+                                             lto_db.canonical_facility_id(v.get("facility_id")),
                                              v.get("existing_role")))
         except (OSError, json.JSONDecodeError):
             pass

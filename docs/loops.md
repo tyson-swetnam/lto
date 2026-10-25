@@ -81,9 +81,9 @@ As of 2026-10-23 the committed batches are 51 research files covering
 
 | Loop | What it does | State as of 2026-10-24 |
 |---|---|---|
-| `R-PEOPLE2` research | Re-researches each facility's leaders from fetched pages and rules on the rows already there | 51 batches, 267 facilities. 862 of 1,537 affiliation rows come from this pass |
+| `R-PEOPLE2` research | Re-researches each facility's leaders from fetched pages and rules on the rows already there | 51 batches, 267 facilities. 851 of 1,519 affiliation rows come from this pass |
 | `R-PEOPLE2-BIO` | Sourced bio, interests, ORCID and status for existing people | 31 batches, 290 updates; 780 people have a bio |
-| `dedupe_people.py` | Merges duplicate people on identifier or page evidence | 56 merges logged |
+| `dedupe_people.py` | Merges duplicate people on identifier or page evidence | 57 merges logged |
 | `enrich_people_orcid.py` | Strict ORCID backfill: family name, given name and an employment at a known facility must all match; a person with no facility on file is matched only when the name resolves to exactly one ORCID (34 such matches logged `accept-name-only`) | 611 people have an ORCID. 79 wrong or dead iDs are logged `cleared-*` in `data/seed/orcid_resolution_log.csv` and are never re-attached; `qa.py` fails if a cleared-wrong iD comes back |
 | `enrich_people_openalex.py` | Attaches OpenAlex ids and publication lists by stored id or ORCID only; name search is disabled, and research interests are fill-only | Complete: all 1,302 people in the queue processed (378 in pass 1, 924 in pass 2); 560 people have an OpenAlex id and 745 do not (679 with neither an ORCID nor an OpenAlex id, 66 with an ORCID only). In pass 2, 517 of 924 could not be matched: 478 with neither identifier, 39 with an ORCID OpenAlex does not know. Reviews are in `data/seed/openalex_attribution_review_2026-10-23.csv` and `…_2026-10-24.csv` (338 rows: 322 keep, 5 keep-disputed, 11 remove) |
 | `url-health.yml` (weekly) | HEAD sweep of every stored URL, then pattern rewrites | The 2026-10-23 sweep nulled 66 junk homepage URLs |

@@ -342,8 +342,10 @@ def apply_log(conn, dry_run: bool) -> int:
         print(f"[ror] no decision log at {DECISION_LOG}", file=sys.stderr)
         return 2
     with DECISION_LOG.open(encoding="utf-8") as fh:
-        promoted = [(r["ror"].rstrip("/").rsplit("/", 1)[-1], r["facility_id"],
-                     r["canonical_name"])
+        # The log is history: a facility merged away since a row was written
+        # is read as the facility it was kept as.
+        promoted = [(r["ror"].rstrip("/").rsplit("/", 1)[-1],
+                     lto_db.canonical_facility_id(r["facility_id"]), r["canonical_name"])
                     for r in csv.DictReader(fh)
                     if r.get("decision", "").strip().lower() == "accept"
                     and r.get("ror", "").strip()]
