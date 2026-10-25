@@ -93,7 +93,7 @@ LTO additions noted below.
 | `provenance` | `(record_type, record_id, source_url, retrieved_at, confidence, agent)`: where each record (mostly facilities) came from, keyed by `record_type` and `record_id`. QA requires one for every facility. |
 | `locations` | One row per HQ + satellite location. `facility_id`, `label`, `address`, `lat`, `lng`, `role` (headquarters / field-station / observatory / office / vessel / mooring-array / buoy / lab / weather-station / streamgage / flux-tower / glacier-site / snow-station). |
 | `funders` | Funder catalogue (NSF, USDA, NOAA, DOE, USGS, NASA, EPA …). |
-| `funding_events` | One row per funder → facility allocation: `funder_id`, `facility_id`, `amount_usd`, `fiscal_year`, `period_start`, `period_end`, `award_id`, `program`, `relation`, `source`, `source_url`, `retrieved_at`, `confidence`. Filled by the funding research agents in May 2026. As of 2026-10-23 every dollar amount in it (341 of 909 rows) is labelled as recall in `source` (mostly "training-data recall"), not fetched from an award database. The other 568 rows carry no amount. |
+| `funding_events` | One row per funder → facility allocation: `funder_id`, `facility_id`, `amount_usd`, `fiscal_year`, `period_start`, `period_end`, `award_id`, `program`, `relation`, `source`, `source_url`, `retrieved_at`, `confidence`. Filled by the funding research agents in May 2026. As of 2026-10-25 it has 937 rows, 383 of them with a dollar amount. 340 of those amounts are labelled as recall in `source` (mostly "training-data recall"), not fetched from an award database; the other 43 are the four LTREB award series, fetched from the NSF Award API on 2026-10-25 (`source` 'NSF Award Search', by `scripts/fetch_funding_nsf.py`). The other 554 rows carry no amount. |
 | `networks` | Controlled vocabulary from `schema/vocab/networks.csv`. |
 | `network_membership` | `(facility_id, network_id, role)` join table. |
 | `research_areas` | `area_id` slugs from `schema/vocab/research_areas.csv` (GCMD-aligned). |
@@ -176,8 +176,8 @@ of the 611 stored ORCID iDs carry `orcid_source_url`.
   still ahead. The People tab labels a role *current* only when
   `is_current = true`, and *former* when it is `false` or the `end_date`
   has passed. Browse cards mark a role *former* when `is_current = false`
-  and list those holders last. As of 2026-10-24, of 1,519 rows, 736 are
-  `true`, 177 `false` and 606 `NULL`.
+  and list those holders last. As of 2026-10-25, of 1,519 rows, 743 are
+  `true`, 178 `false` and 598 `NULL`.
 - **`confidence`** rates how directly the source supports the row, not how
   important the person is. The researching agent sets it, and the verifier
   lowers it when the page supports less than claimed. `agents/R-PEOPLE.md`
@@ -191,8 +191,9 @@ of the 611 stored ORCID iDs carry `orcid_source_url`.
 
   Rows from before R-PEOPLE2 were mostly recalled rather than fetched. Their
   `confidence` is the agent's own rating and is not backed by `evidence`.
-  As of 2026-10-24, 851 rows were fetched on 2026-10-22 and all of them
-  carry `evidence`; 647 older rows and 21 undated rows do not.
+  As of 2026-10-25, 858 rows were fetched (851 on 2026-10-22, 7 on
+  2026-10-25) and all of them carry `evidence`; 641 older rows and 20
+  undated rows do not.
 - **Roles** are slugs from `schema/vocab/personnel_roles.csv` (copied to
   `public/vocab/` for display labels). Its `is_leadership` column marks
   the roles that one batch can supersede at a facility: `director`,

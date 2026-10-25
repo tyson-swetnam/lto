@@ -1,9 +1,10 @@
 # Coverage
 
-Snapshot as of **2026-10-24**. Every number on this page was counted from
+Snapshot as of **2026-10-25**. Every number on this page was counted from
 the committed `public/parquet/` files, the same tables the site loads, after
 the merges of PR #13 (fetched-source people), PR #16 and PR #18 (the two
-OpenAlex passes) and PR #15 (URL-health sweep). The counts change whenever the data is
+OpenAlex passes), PR #15 (URL-health sweep), PR #20 (LTER duplicates) and
+the 2026-10-25 MarineGEO / LTREB fixes. The counts change whenever the data is
 re-exported. To recount, query the tables on the [SQL tab](#/sql). For
 example:
 
@@ -14,39 +15,44 @@ WHERE role = 'primary' GROUP BY 1 ORDER BY 2 DESC;
 
 ## Total facilities
 
-The catalogue holds **448 facilities**: US 433, Puerto Rico 10,
+The catalogue holds **446 facilities**: US 431, Puerto Rico 10,
 Antarctica 3, American Samoa 1 and US Virgin Islands 1. Every facility has
 coordinates, and every US facility has a state.
 
-- **316** meet the Peters et al. 2013 long-term threshold (≥10 years of
-  record), 121 do not, and 11 are unclassified. 59 facilities have no
-  record length at all, and 48 of those are counted as not meeting the
+- **320** meet the Peters et al. 2013 long-term threshold (≥10 years of
+  record), 115 do not, and 11 are unclassified. 53 facilities have no
+  record length at all, and 42 of those are counted as not meeting the
   threshold. The "≥10y" filter is off by default.
 - Scope lenses: ARID Institute & partners **12**, New Mexico **19**,
-  Southwest drylands (the default view) **67**, All U.S. **448**. See
+  Southwest drylands (the default view) **67**, All U.S. **446**. See
   [ARID & New Mexico](./arid.md).
 
 Eight LTER sites used to appear twice: once as their LTER site row and once
 as a COMPASS synthesis-networks import under a near-duplicate name (Plum
 Island LTER, Georgia Coast LTER, Florida Coast LTER and others). On
 2026-10-24 `scripts/merge_facilities.py` merged each import into its site
-row on reviewed, cited pairs (`data/seed/facility_merge_seed.csv`). The
-merge does not search for duplicates; other near-duplicates may remain.
+row on reviewed, cited pairs (`data/seed/facility_merge_seed.csv`). On
+2026-10-25 two MarineGEO imports went the same way: "Indian River Lagoon
+MarineGEO" into the Smithsonian Marine Station at Fort Pierce and "SERC,
+GCREW MarineGEO" into the Smithsonian Environmental Research Center. Each
+MarineGEO site page names that Smithsonian unit as its only participating
+institution. The merge does not search for duplicates; other
+near-duplicates may remain.
 
 ## By primary sphere
 
 | Sphere | Primary | Tagged in any role |
 |---|---:|---:|
-| ocean-estuarine | 144 | 151 |
-| terrestrial | 112 | 288 |
+| ocean-estuarine | 142 | 149 |
+| terrestrial | 112 | 286 |
 | freshwater | 62 | 125 |
 | agriculture | 59 | 66 |
 | cryosphere | 31 | 55 |
 | atmosphere | 23 | 99 |
 | arid | 11 | 31 |
-| **total** | **442** | |
+| **total** | **440** | |
 
-That accounts for 442 facilities. The other **6** have no primary sphere.
+That accounts for 440 facilities. The other **6** have no primary sphere.
 All six are ARID partner institutes at UNM: METALS, the Public Policy
 Program, the SW Environmental Finance Center, Sustainability Studies, the
 Center for Health Equity and the Utton Center. By primary sphere,
@@ -69,20 +75,21 @@ These are counts from the catalogue. `qa.py` does not check them.
 
 ## People
 
-As of 2026-10-24 the people table holds **1,304 people**. Of these,
-**1,216** have at least one facility affiliation. There are 1,519
-affiliation rows across 433 facilities.
+As of 2026-10-25 the people table holds **1,310 people**. Of these,
+**1,221** have at least one facility affiliation. There are 1,519
+affiliation rows across 431 facilities.
 
 How the affiliation rows were made:
 
 - **851 rows** were fetched on 2026-10-22 by the R-PEOPLE2 wave. Each was
   read from a cited page, carries a quote of the evidence, and was checked
-  by an adversarial re-fetch. See [Methods](./methods.md).
-- **647 rows** are older, dated 2026-04-24 to 2026-10-09, and 21 rows have
+  by an adversarial re-fetch. See [Methods](./methods.md). Seven more
+  (batch R-PEOPLE2-MARINEGEO-01) were fetched on 2026-10-25.
+- **641 rows** are older, dated 2026-04-24 to 2026-10-09, and 20 rows have
   no date. Many come from the earlier recall-based people waves. Some were
   repaired or ended by the 2026-10-22 pass, but most have **not been
   re-verified** against a fetched page.
-- `is_current` is true on 736 rows and false on 177. It is not set on 606
+- `is_current` is true on 743 rows and false on 178. It is not set on 598
   rows, which are mostly older rows that nobody has marked as current or
   former.
 
@@ -90,11 +97,11 @@ Rows by role (a person can hold several):
 
 | Role | Rows |
 |---|---:|
-| director | 209 |
-| lead-PI | 201 |
-| co-PI | 192 |
+| director | 204 |
+| lead-PI | 203 |
+| co-PI | 191 |
 | manager | 104 |
-| scientist | 91 |
+| scientist | 95 |
 | leadership-team | 83 |
 | founding-PI | 75 |
 | faculty | 74 |
@@ -108,20 +115,20 @@ and site-manager (12).
 
 **Biographies:** 780 people have a bio, and every one cites its source page.
 
-**Research interests:** 974 people have research interests. 650 of them
+**Research interests:** 973 people have research interests. 649 of them
 cite a source page, 98 of those an OpenAlex author page.
 
-**[Knowledge Map](./knowledge-map.md):** 1,252 people are placed under a
+**[Knowledge Map](./knowledge-map.md):** 1,257 people are placed under a
 primary research area.
 
 ## Identifier validation
 
-- **ORCID**: **611** people (46.8%). The ORCID log
+- **ORCID**: **611** people (46.6%). The ORCID log
   (`data/seed/orcid_resolution_log.csv`) records 79 stored iDs that were
   later cleared: 68 no longer resolved, and 11 belonged to someone else.
   PR #16 also cleared two wrong iDs and replaced a third, and PR #18
   cleared one more (Pat Burke's iD belonged to a meteorologist).
-- **OpenAlex Author ID**: **560** people (42.9%). The OpenAlex passes
+- **OpenAlex Author ID**: **560** people (42.7%). The OpenAlex passes
   matched people only through a stored OpenAlex id or a confirmed ORCID.
   Name search is disabled. Two passes (PR #16: 378 people; PR #18: the
   remaining 924) have now taken all 1,302 people in the queue through
@@ -133,7 +140,7 @@ primary research area.
   (`data/seed/openalex_attribution_review_2026-10-23.csv` and
   `…_2026-10-24.csv`) have 338 entries between them: 322 kept, 5 kept but
   disputed, and 11 removed.
-- **`homepage_url`**: **771** people (59.1%). On 2026-10-23 the weekly URL
+- **`homepage_url`**: **772** people (58.9%). On 2026-10-23 the weekly URL
   sweep removed 66 homepages that pointed only at a bare domain (51) or a
   generic staff, about or contact page (15).
 - **Google Scholar user ID**: 1 person. `scripts/enrich_people_gscholar.py`
@@ -178,19 +185,22 @@ come from OpenAlex.
     Facility (LTREB), NPS-IM Klamath Network, South Cascade Glacier, Kings
     River Experimental Watersheds, North Carolina Sentinel Site and Swan's
     Island LTREB.
-- **745 people have no OpenAlex id**, so their publication and co-author
-  counts are missing or incomplete: 679 have neither an ORCID nor an
+- **750 people have no OpenAlex id**, so their publication and co-author
+  counts are missing or incomplete: 684 have neither an ORCID nor an
   OpenAlex id, and 66 have an ORCID but no OpenAlex id (8 of them had one
   removed in review). In the second pass alone, 517 of 924 could not be
   matched: 478 with no identifier, 39 whose ORCID OpenAlex does not know.
-- **Older people rows have not been re-verified.** The 654 affiliation rows
-  dated before 2026-10-22, plus the 21 undated ones, still rest on the
+- **Older people rows have not been re-verified.** The 641 affiliation rows
+  dated before 2026-10-22, plus the 20 undated ones, still rest on the
   earlier, mostly recall-based research.
 - **720 publications are recalled, not fetched.** Their `source` labels
   them as training-data recall. They are older rows from before the
   OpenAlex pass and have not been checked against a bibliographic record.
-- **Funding amounts are recalled, not fetched.** All 341 `funding_events`
-  rows that carry a dollar amount are labelled as training-data recall in
-  their `source`. Treat them as rough indications.
+- **Most funding amounts are recalled, not fetched.** Of the 383
+  `funding_events` rows that carry a dollar amount, 340 are labelled as
+  training-data recall in their `source`; treat them as rough indications.
+  The other 43 are the per-fiscal-year obligations of the four LTREB award
+  series (North Inlet, GCReW, Swan's Island, West Falmouth Harbor), fetched
+  from the NSF Award API on 2026-10-25 (`source` 'NSF Award Search').
 - **Regions are empty.** The `regions` and `facility_regions` tables have
   no rows.

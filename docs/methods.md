@@ -97,9 +97,9 @@ continuous-record threshold**, stored as `long_term_threshold_met`
 (`record_length_years >= 10`). Records below it are kept in the
 database with `long_term_threshold_met = false` and are **shown** by
 default: the "Show only facilities with ≥10y record" checkbox is off
-until a visitor ticks it. As of 2026-10-24, 316 of 448 facilities meet
-the threshold and 73 have a record shorter than 10 years. The other 59
-have no record length: 48 of them are flagged `false` all the same, so
+until a visitor ticks it. As of 2026-10-25, 320 of 446 facilities meet
+the threshold and 73 have a record shorter than 10 years. The other 53
+have no record length: 42 of them are flagged `false` all the same, so
 "not ≥10y" can mean "unknown", and 11 carry no flag at all. The default
 view is narrowed instead by the Southwest drylands scope lens (see
 [ARID & New Mexico](./arid.md)).
@@ -121,7 +121,7 @@ A real row:
 
 - **`source_url`** is the page the record rests on. It is meant to be
   present on every record, but QA does not yet enforce it: as of
-  2026-10-24, 46 of 448 facilities have no provenance row with a
+  2026-10-25, 46 of 446 facilities have no provenance row with a
   `source_url`.
 - **`retrieved_at`** is the date the agent observed the source. For the
   recall-era waves it is the run date, not a fetch date.
@@ -130,11 +130,11 @@ A real row:
   Low-confidence records are kept and surfaced for manual review.
 
 People rows carry their own provenance: `facility_personnel` has
-`source_url`, `retrieved_at` and `confidence` columns. As of 2026-10-24,
-of its 1,519 rows, 851 come from R-PEOPLE2 (fetched 2026-10-22) and also
-quote the page in `evidence`, and 30 from R-ARID (fetched 2026-10-09). 617
-are recall-era rows dated 2026-04-24 to 2026-05-06, 31 of them with no
-`source_url`, and 21 rows have no date. Every
+`source_url`, `retrieved_at` and `confidence` columns. As of 2026-10-25,
+of its 1,519 rows, 858 come from R-PEOPLE2 (851 fetched 2026-10-22, 7 on
+2026-10-25) and also quote the page in `evidence`, and 30 from R-ARID
+(fetched 2026-10-09). 611 are recall-era rows dated 2026-04-24 to
+2026-05-06, 31 of them with no `source_url`, and 20 rows have no date. Every
 bio, research-interests line and ORCID written by R-PEOPLE2 names its
 source in a `*_source_url` column.
 
@@ -187,7 +187,7 @@ For the people side:
   407 resolved; 478 have neither an ORCID nor an OpenAlex id and 39 have
   an ORCID that OpenAlex does not know, so this method cannot reach them.
 - The enrichment scripts are run by hand, following `RUNBOOK.md`. No CI
-  workflow runs them. As of 2026-10-24, 611 of 1,304 people have an
+  workflow runs them. As of 2026-10-25, 611 of 1,310 people have an
   ORCID and 560 an OpenAlex id.
 
 ## Weekly loops

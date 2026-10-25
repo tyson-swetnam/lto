@@ -370,32 +370,6 @@
 "geometry": {
 "type": "Point",
 "coordinates": [
--76.54,
-38.887
-]
-},
-"properties": {
-"id": "084d7f39d7bf0630",
-"name": "SERC, GCREW MarineGEO",
-"acronym": null,
-"type": "network",
-"country": "US",
-"url": null,
-"parent_org": "Smithsonian Tennenbaum Marine Observatories Network",
-"established": null,
-"record_length_years": null,
-"long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine",
-"state": "MD",
-"has_arid_sphere": false,
-"in_arid_network": false
-}
-},
-{
-"type": "Feature",
-"geometry": {
-"type": "Point",
-"coordinates": [
 -121.9519,
 45.8197
 ]
@@ -708,21 +682,21 @@
 "geometry": {
 "type": "Point",
 "coordinates": [
--76.5466181,
-38.8853928
+-76.550138,
+38.8743618
 ]
 },
 "properties": {
 "id": "0cc368787cd559c3",
-"name": "SERC GCREW LTREB",
-"acronym": "LTREB",
-"type": "network",
+"name": "Global Change Research Wetland",
+"acronym": "GCReW",
+"type": "federal",
 "country": "US",
-"url": null,
-"parent_org": "NSF Long-term Research in Environmental Biology",
-"established": null,
-"record_length_years": null,
-"long_term_threshold_met": false,
+"url": "https://serc.si.edu/gcrew",
+"parent_org": "Smithsonian Institution",
+"established": 1987,
+"record_length_years": 39,
+"long_term_threshold_met": true,
 "primary_sphere": "ocean-estuarine",
 "state": "MD",
 "has_arid_sphere": false,
@@ -777,32 +751,6 @@
 "long_term_threshold_met": true,
 "primary_sphere": "ocean-estuarine",
 "state": "NC",
-"has_arid_sphere": false,
-"in_arid_network": false
-}
-},
-{
-"type": "Feature",
-"geometry": {
-"type": "Point",
-"coordinates": [
--80.31134,
-27.460121
-]
-},
-"properties": {
-"id": "10086fa6647815a9",
-"name": "Indian River Lagoon MarineGEO",
-"acronym": null,
-"type": "network",
-"country": "US",
-"url": null,
-"parent_org": "Smithsonian Tennenbaum Marine Observatories Network",
-"established": null,
-"record_length_years": null,
-"long_term_threshold_met": false,
-"primary_sphere": "ocean-estuarine",
-"state": "FL",
 "has_arid_sphere": false,
 "in_arid_network": false
 }
@@ -1722,8 +1670,8 @@
 "geometry": {
 "type": "Point",
 "coordinates": [
--122.3070573,
-37.6734062
+-122.449906,
+37.891394
 ]
 },
 "properties": {
@@ -1732,7 +1680,7 @@
 "acronym": "NERR",
 "type": "federal",
 "country": "US",
-"url": null,
+"url": "https://sfbaynerr.sfsu.edu/",
 "parent_org": "NOAA Office for Coastal Management",
 "established": null,
 "record_length_years": null,
@@ -3263,14 +3211,14 @@
 "properties": {
 "id": "46598db0265aaa38",
 "name": "North Inlet LTREB",
-"acronym": "LTREB",
-"type": "network",
+"acronym": null,
+"type": "university-marine-lab",
 "country": "US",
-"url": null,
-"parent_org": "NSF Long-term Research in Environmental Biology",
-"established": null,
-"record_length_years": null,
-"long_term_threshold_met": false,
+"url": "https://www.nsf.gov/awardsearch/showAward?AWD_ID=2348767",
+"parent_org": "University of South Carolina at Columbia",
+"established": 1984,
+"record_length_years": 42,
+"long_term_threshold_met": true,
 "primary_sphere": "ocean-estuarine",
 "state": "SC",
 "has_arid_sphere": false,
@@ -3627,14 +3575,14 @@
 "properties": {
 "id": "5173db142db727f4",
 "name": "Swan's Island LTREB",
-"acronym": "LTREB",
-"type": "network",
+"acronym": null,
+"type": "university-marine-lab",
 "country": "US",
-"url": null,
-"parent_org": "NSF Long-term Research in Environmental Biology",
-"established": null,
-"record_length_years": null,
-"long_term_threshold_met": false,
+"url": "https://www.nsf.gov/awardsearch/showAward?AWD_ID=1555641",
+"parent_org": "The University Corporation, Northridge",
+"established": 1996,
+"record_length_years": 30,
+"long_term_threshold_met": true,
 "primary_sphere": "ocean-estuarine",
 "state": "ME",
 "has_arid_sphere": false,
@@ -6045,14 +5993,14 @@
 "properties": {
 "id": "8b17ffd2b418fb60",
 "name": "West Falmouth Harbor LTREB",
-"acronym": "LTREB",
-"type": "network",
+"acronym": null,
+"type": "university-marine-lab",
 "country": "US",
-"url": null,
-"parent_org": "NSF Long-term Research in Environmental Biology",
-"established": null,
-"record_length_years": null,
-"long_term_threshold_met": false,
+"url": "https://www.nsf.gov/awardsearch/showAward?AWD_ID=2311106",
+"parent_org": "Marine Biological Laboratory",
+"established": 2004,
+"record_length_years": 22,
+"long_term_threshold_met": true,
 "primary_sphere": "ocean-estuarine",
 "state": "MA",
 "has_arid_sphere": false,
@@ -8726,7 +8674,7 @@
 "acronym": "NERR",
 "type": "federal",
 "country": "US",
-"url": null,
+"url": "https://northinlet.sc.edu/",
 "parent_org": "NOAA Office for Coastal Management",
 "established": null,
 "record_length_years": null,
@@ -8802,9 +8750,9 @@
 "id": "c54df27d3d5ff656",
 "name": "San Francisco Bay MarineGEO",
 "acronym": null,
-"type": "network",
+"type": "university-marine-lab",
 "country": "US",
-"url": null,
+"url": "https://marinegeo.si.edu/network/san-francisco-bay",
 "parent_org": "Smithsonian Tennenbaum Marine Observatories Network",
 "established": null,
 "record_length_years": null,
@@ -9242,11 +9190,11 @@
 },
 "properties": {
 "id": "cc181c7953452ffc",
-"name": "Gulf Coast MarineGEO",
+"name": "Gulf Coast Texas MarineGEO",
 "acronym": null,
-"type": "network",
+"type": "university-marine-lab",
 "country": "US",
-"url": null,
+"url": "https://marinegeo.si.edu/network/gulf-coast-texas",
 "parent_org": "Smithsonian Tennenbaum Marine Observatories Network",
 "established": null,
 "record_length_years": null,

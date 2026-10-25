@@ -15,13 +15,13 @@ NEON points already show the result. The scope lens, country, research
 area, the ≥10y toggle and the established-year range leave it on. Turning an overlay back on
 by hand keeps it on until those filters are cleared.
 
-As of 2026-10-24 there are 579 membership rows. 57 of the 66 networks have
-at least one member. 399 of the 448 facilities belong to one or more
-networks. The other 49 belong to none, and you find them by sphere, type
+As of 2026-10-25 there are 578 membership rows. 57 of the 66 networks have
+at least one member. 398 of the 446 facilities belong to one or more
+networks. The other 48 belong to none, and you find them by sphere, type
 or research area instead.
 
 The **Facilities** column counts facility records in this catalogue as of
-2026-10-24. It is not the size of the network. A network's own site list
+2026-10-25. It is not the size of the network. A network's own site list
 can be longer than what the catalogue holds. A zero means only that no catalogued
 facility carries that tag yet. The vocabulary has no sphere column. The
 grouping below is only to make the list easier to read.
@@ -110,7 +110,7 @@ ARID scope lens. See [ARID & New Mexico](./arid.md).
 | `sentinel-site` | NOAA Sentinel Site Program | us-national | 3 | <https://oceanservice.noaa.gov/sentinel-sites/> |
 | `seagrant` | National Sea Grant College Program | us-national | 0 | <https://seagrant.noaa.gov> |
 | `naml` | National Association of Marine Laboratories | us-national | 1 | <https://www.naml.org> |
-| `marinegeo` | Tennenbaum Marine Observatories Network / Marine Global Earth Observatory | international | 6 | <https://marinegeo.si.edu> |
+| `marinegeo` | Tennenbaum Marine Observatories Network / Marine Global Earth Observatory | international | 5 | <https://marinegeo.si.edu> |
 
 ## IOOS Regional Associations
 

@@ -693,9 +693,11 @@ async function fetchData() {
         GROUP BY person_id
       ),
       per_fund AS (
+        -- One count per (person, facility): two roles at one facility must
+        -- not add its funding twice (same rule as the People cards).
         SELECT fp.person_id,
                CAST(SUM(faf.total_usd_nominal) AS DOUBLE) AS facility_funding_usd
-        FROM facility_personnel fp
+        FROM (SELECT DISTINCT person_id, facility_id FROM facility_personnel) fp
         JOIN facility_area_funding faf ON faf.facility_id = fp.facility_id
         GROUP BY fp.person_id
       )

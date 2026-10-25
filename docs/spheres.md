@@ -17,12 +17,12 @@ in August 2026 so dryland research sites — a coherent research community
 with its own LTERs, NEON domains, and rangeland networks — stopped being
 invisible inside Terrestrial, the sphere with the most tagged records.
 
-As of 2026-10-24 the catalogue's 448 facilities break down like this:
+As of 2026-10-25 the catalogue's 446 facilities break down like this:
 
 | Sphere | Primary | Tagged in any role |
 |---|---:|---:|
-| Aquatic — Ocean & Estuarine | 144 | 151 |
-| Terrestrial / Ecological | 112 | 288 |
+| Aquatic — Ocean & Estuarine | 142 | 149 |
+| Terrestrial / Ecological | 112 | 286 |
 | Aquatic — Freshwater | 62 | 125 |
 | Agriculture | 59 | 66 |
 | Cryosphere | 31 | 55 |
@@ -141,8 +141,8 @@ sphere this is the largest sphere.
   Padilla Bay NERR (WA), Gray's Reef NMS (GA), Stellwagen Bank NMS (MA),
   Santa Barbara Coastal LTER (CA).
 - **Cross-sphere ties**: every NERR and National Marine Sanctuary record
-  carries a terrestrial secondary. SERC's GCREW
-  MarineGEO site sits on the ocean / terrestrial boundary. Palmer Station
+  carries a terrestrial secondary, as do the Gulf Coast Texas and San
+  Francisco Bay MarineGEO observatories. Palmer Station
   LTER is filed under cryosphere, with ocean-estuarine as its secondary.
 
 ## Aquatic — Freshwater

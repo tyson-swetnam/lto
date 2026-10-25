@@ -3,18 +3,29 @@
 
 Input
   data/seed/facility_merge_seed.csv   survivor_id, duplicate_id, evidence,
-                                      location_label: one reviewed pair per
-                                      row, the evidence cited (the site's
-                                      official page, a shared ROR, an archive
-                                      scope naming it); location_label
-                                      (optional) names the duplicate's own
-                                      point when it is moved (see locations)
+                                      location_label, drop_personnel: one
+                                      reviewed pair per row, the evidence
+                                      cited (the site's official page, a
+                                      shared ROR, an archive scope naming
+                                      it); location_label (optional) names
+                                      the duplicate's own point when it is
+                                      moved (see locations); drop_personnel
+                                      (optional) lists the duplicate's
+                                      facility_personnel rows that must not
+                                      move, as space-separated
+                                      person_id:role pairs (see below)
 
 For each pair whose duplicate is still in the lake, everything that names
 the duplicate is moved onto the survivor or dropped, then the duplicate is
 deleted:
 
-  facility_personnel   repointed; where the survivor already has the same
+  facility_personnel   rows named in the seed's drop_personnel are deleted
+                       first, not moved (a network-level role the bulk
+                       import attached to every node, e.g. a network
+                       director, is not a role at the survivor); a pair
+                       that names a row the duplicate does not have stops
+                       the run. The rest are
+                       repointed; where the survivor already has the same
                        (person_id, role) the better-attested row survives:
                        a row with evidence first, then dedupe_people's
                        _FP_RANK (is_current true over unknown over false,
@@ -186,8 +197,16 @@ def read_seed(path: Path) -> list[dict]:
         for r in csv.DictReader(fh):
             keep, dup = (r.get("survivor_id") or "").strip(), (r.get("duplicate_id") or "").strip()
             if keep and dup and keep != dup:
+                drop = []
+                for item in (r.get("drop_personnel") or "").split():
+                    pid, sep, role = item.partition(":")
+                    if not (pid and sep and role):
+                        raise SystemExit(f"[error] {path.name}: drop_personnel {item!r} of {dup} "
+                                         f"is not person_id:role")
+                    drop.append((pid, role))
                 out.append({"keep": keep, "dup": dup, "evidence": (r.get("evidence") or "").strip(),
-                            "location_label": (r.get("location_label") or "").strip()})
+                            "location_label": (r.get("location_label") or "").strip(),
+                            "drop_personnel": drop})
         return out
 
 
@@ -200,7 +219,8 @@ def facility_id_columns(con) -> list[tuple[str, str]]:
         [lto_db.LAKE, lto_db.LAKE])
 
 
-def merge_pair(con, keep: str, dup: str, location_label: str = "") -> tuple[Counter, dict]:
+def merge_pair(con, keep: str, dup: str, location_label: str = "",
+               drop_personnel: list[tuple[str, str]] | None = None) -> tuple[Counter, dict]:
     """Move or drop every row naming ``dup`` (module docstring). Call inside
     a transaction. Returns per-table counts and the survivor columns filled
     from the duplicate."""
@@ -209,6 +229,16 @@ def merge_pair(con, keep: str, dup: str, location_label: str = "") -> tuple[Coun
 
     def count(sql: str, params) -> int:
         return lto_db.scalar(con, sql, params) or 0
+
+    # facility_personnel the seed says not to move (network-level roles).
+    for pid, role in drop_personnel or []:
+        if not count("SELECT count(*) FROM facility_personnel WHERE person_id = ? "
+                     "AND facility_id = ? AND role = ?", [pid, dup, role]):
+            raise RuntimeError(f"drop_personnel {pid}:{role}: {dup} has no such "
+                               f"facility_personnel row")
+        con.execute("DELETE FROM facility_personnel WHERE person_id = ? AND facility_id = ? "
+                    "AND role = ?", [pid, dup, role])
+        n["facility_personnel.not_moved"] += 1
 
     # facility_personnel: the better-attested copy of one (person, role) wins.
     n["facility_personnel.replaced"] = count(
@@ -400,7 +430,8 @@ def main() -> int:
         with lto_db.transaction(con, f"merge_facilities: {len(todo)} duplicate facilities merged "
                                      f"into their survivors ({args.seed.name})"):
             for p in todo:
-                n, filled = merge_pair(con, p["keep"], p["dup"], p["location_label"])
+                n, filled = merge_pair(con, p["keep"], p["dup"], p["location_label"],
+                                       p["drop_personnel"])
                 total.update(n)
                 moved = ", ".join(f"{k} {v}" for k, v in sorted(n.items()) if v)
                 print(f"  keep {have[p['keep']]} ({p['keep']})")

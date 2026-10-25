@@ -240,11 +240,13 @@ CPRA,,Michael H. Hare,Executive Director,"Executive Director, Louisiana Coastal 
 ,Fondation pour la Protection de la Biodiversité Marine,Jean Wiener,Executive Director,"Founder & Executive Director, FoProBiM Haiti; 2025 CBF BEACH Award",true,,,,https://www.foprobim.org/,facility-webpage,https://www.goldmanprize.org/blog/prize-winners-today-jean-wiener-champions-sustainable-development-and-marine-conservation-in-haiti/,high
 CICY-UCIA,,Manuel Luis Robert Díaz,Director General,"Director General, Centro de Investigación Científica de Yucatán",true,,,dirgen@cicy.mx,https://www.cicy.mx/quienes-somos,facility-webpage,https://www.cicy.mx/,medium
 #
-# Smithsonian MarineGEO (new Director 2026)
-,GCREW MarineGEO,Steve Canty,Director,"Director, Smithsonian MarineGEO network (succeeding Emmett Duffy in 2026)",true,,,,https://marinegeo.si.edu/about-us/who-we-are,press-release,https://sercblog.si.edu/celebrating-the-retirement-of-marinegeos-founding-director-emmett-duffy/,high
-,Gulf Coast MarineGEO,Steve Canty,Director,"Director, MarineGEO Network (covers Gulf Coast site)",true,,,,https://marinegeo.si.edu/,press-release,https://sercblog.si.edu/celebrating-the-retirement-of-marinegeos-founding-director-emmett-duffy/,high
-,Indian River Lagoon MarineGEO,Steve Canty,Director,"Director, MarineGEO Network",true,,,,https://marinegeo.si.edu/,press-release,https://sercblog.si.edu/celebrating-the-retirement-of-marinegeos-founding-director-emmett-duffy/,high
-,San Francisco Bay MarineGEO,Steve Canty,Director,"Director, MarineGEO Network",true,,,,https://marinegeo.si.edu/,press-release,https://sercblog.si.edu/celebrating-the-retirement-of-marinegeos-founding-director-emmett-duffy/,high
+# Smithsonian MarineGEO (new Director 2026). Disabled 2026-10-25: Canty directs the
+# MarineGEO network, not these sites; the rows put him on every site as its director
+# (data/seed/facility_fixes.csv removes them; merge seed drops them on IRL and SERC).
+#,GCREW MarineGEO,Steve Canty,Director,"Director, Smithsonian MarineGEO network (succeeding Emmett Duffy in 2026)",true,,,,https://marinegeo.si.edu/about-us/who-we-are,press-release,https://sercblog.si.edu/celebrating-the-retirement-of-marinegeos-founding-director-emmett-duffy/,high
+#,Gulf Coast MarineGEO,Steve Canty,Director,"Director, MarineGEO Network (covers Gulf Coast site)",true,,,,https://marinegeo.si.edu/,press-release,https://sercblog.si.edu/celebrating-the-retirement-of-marinegeos-founding-director-emmett-duffy/,high
+#,Indian River Lagoon MarineGEO,Steve Canty,Director,"Director, MarineGEO Network",true,,,,https://marinegeo.si.edu/,press-release,https://sercblog.si.edu/celebrating-the-retirement-of-marinegeos-founding-director-emmett-duffy/,high
+#,San Francisco Bay MarineGEO,Steve Canty,Director,"Director, MarineGEO Network",true,,,,https://marinegeo.si.edu/,press-release,https://sercblog.si.edu/celebrating-the-retirement-of-marinegeos-founding-director-emmett-duffy/,high
 #
 # Massachusetts CZM
 ,Massachusetts Office of Coastal Zone Management,Alison Brizius,Director,"Assistant Secretary & Director, Massachusetts CZM (Healey-Driscoll admin)",true,,,,https://www.mass.gov/info-details/czm-staff-directory,press-release,https://www.mass.gov/news/healey-driscoll-administration-names-alison-brizius-new-coastal-zone-management-director,high
