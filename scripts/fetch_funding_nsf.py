@@ -353,7 +353,7 @@ def parse_funds_obligated(funds: list[str] | None) -> list[tuple[int, float]]:
 def ensure_nsf_funder(buf: LakeBuffer) -> str:
     """Queue the NSF funder row; flush() inserts it, or fills its NULL
     type/country/url if it already exists."""
-    fid = funder_id_for_nsf()
+    fid = lto_db.canonical_funder_id(funder_id_for_nsf())
     buf.funders[fid] = (NSF_FUNDER_NAME, NSF_FUNDER_TYPE, NSF_FUNDER_COUNTRY,
                         NSF_FUNDER_URL)
     return fid

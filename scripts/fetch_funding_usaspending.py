@@ -416,7 +416,8 @@ def fy_for_date(iso: str | None) -> int | None:
 def ensure_funder(buf: LakeBuffer, name: str, kind: str = "federal") -> str:
     """Queue a funder row; flush() inserts it, or fills its NULL
     type/country if it already exists. The first name seen for an id wins."""
-    fid = funder_id_for(name)
+    # A merged-away funder lands on its survivor, under its name.
+    fid, name = lto_db.canonical_funder(funder_id_for(name), name)
     buf.funders.setdefault(fid, (name, kind, "US", None))
     return fid
 

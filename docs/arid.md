@@ -14,9 +14,9 @@ view. Nothing is removed from the data to make the narrower views.
 | Scope | What it shows | Facilities |
 |---|---|---:|
 | ARID Institute & partners | The institute and the UNM centers and sites it lists | 12 |
-| New Mexico | Every catalogued facility whose location falls in the state | 19 |
-| Southwest drylands (default) | NM, AZ, UT, CO, NV, Texas west of 100°W, and any facility with an `arid` sphere | 67 |
-| All U.S. | The whole catalogue | 446 |
+| New Mexico | Every catalogued facility whose location falls in the state | 18 |
+| Southwest drylands (default) | NM, AZ, UT, CO, NV, Texas west of 100°W, and any facility with an `arid` sphere | 66 |
+| All U.S. | The whole catalogue | 444 |
 
 Counts are as of 2026-10-25. The ≥10-year filter is a separate checkbox,
 off by default, so the opening view shows every record length.

@@ -72,7 +72,8 @@ def event_id_for(funder_id: str, facility_id: str,
 
 
 def ensure_funder(conn, name: str, ftype: str) -> str:
-    fid = funder_id_for(name)
+    # A merged-away funder lands on its survivor, under its name.
+    fid, name = lto_db.canonical_funder(funder_id_for(name), name)
     hit = conn.execute(
         "SELECT funder_id FROM funders WHERE funder_id = ?", [fid]
     ).fetchone()

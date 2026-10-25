@@ -1425,7 +1425,7 @@
 "established": 2010,
 "record_length_years": 16,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine",
+"primary_sphere": "freshwater",
 "state": "WI",
 "has_arid_sphere": false,
 "in_arid_network": false
@@ -2320,32 +2320,6 @@
 "geometry": {
 "type": "Point",
 "coordinates": [
--104.8869,
-41.1949
-]
-},
-"properties": {
-"id": "330af0daf3a6dea2",
-"name": "Central Plains Experimental Range (USDA-ARS historic)",
-"acronym": "CPER-ER",
-"type": "experimental-forest-range",
-"country": "US",
-"url": "https://www.ars.usda.gov/plains-area/cheyenne-wy/rangeland-resources-systems-research/",
-"parent_org": "USDA Agricultural Research Service Rangeland Resources and Systems Research Unit",
-"established": 1939,
-"record_length_years": 87,
-"long_term_threshold_met": true,
-"primary_sphere": "agriculture",
-"state": "WY",
-"has_arid_sphere": false,
-"in_arid_network": false
-}
-},
-{
-"type": "Feature",
-"geometry": {
-"type": "Point",
-"coordinates": [
 -156.6114,
 71.323
 ]
@@ -2780,32 +2754,6 @@
 "primary_sphere": "freshwater",
 "state": "NH",
 "has_arid_sphere": false,
-"in_arid_network": false
-}
-},
-{
-"type": "Feature",
-"geometry": {
-"type": "Point",
-"coordinates": [
--106.7406,
-32.6178
-]
-},
-"properties": {
-"id": "3e98815b872eae15",
-"name": "Jornada Experimental Range (USDA-ARS historic)",
-"acronym": "JER-ER",
-"type": "experimental-forest-range",
-"country": "US",
-"url": "https://jornada.nmsu.edu/",
-"parent_org": "USDA Agricultural Research Service",
-"established": 1912,
-"record_length_years": 114,
-"long_term_threshold_met": true,
-"primary_sphere": "agriculture",
-"state": "NM",
-"has_arid_sphere": true,
 "in_arid_network": false
 }
 },
@@ -8794,8 +8742,8 @@
 "geometry": {
 "type": "Point",
 "coordinates": [
--105.0844,
-40.5728
+-104.74559,
+40.815536
 ]
 },
 "properties": {
@@ -8806,8 +8754,8 @@
 "country": "US",
 "url": "https://www.ars.usda.gov/plains-area/fort-collins-co/center-for-agricultural-resources-research/rangeland-resources-systems-research/",
 "parent_org": "USDA Agricultural Research Service Rangeland Resources and Systems Research Unit",
-"established": 1939,
-"record_length_years": 86,
+"established": 1937,
+"record_length_years": 88,
 "long_term_threshold_met": true,
 "primary_sphere": "agriculture",
 "state": "CO",
@@ -11201,7 +11149,7 @@
 "established": 1980,
 "record_length_years": 46,
 "long_term_threshold_met": true,
-"primary_sphere": "ocean-estuarine",
+"primary_sphere": "freshwater",
 "state": "OH",
 "has_arid_sphere": false,
 "in_arid_network": false

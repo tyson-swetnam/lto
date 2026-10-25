@@ -17,17 +17,17 @@ in August 2026 so dryland research sites — a coherent research community
 with its own LTERs, NEON domains, and rangeland networks — stopped being
 invisible inside Terrestrial, the sphere with the most tagged records.
 
-As of 2026-10-25 the catalogue's 446 facilities break down like this:
+As of 2026-10-25 the catalogue's 444 facilities break down like this:
 
 | Sphere | Primary | Tagged in any role |
 |---|---:|---:|
-| Aquatic — Ocean & Estuarine | 142 | 149 |
-| Terrestrial / Ecological | 112 | 286 |
-| Aquatic — Freshwater | 62 | 125 |
-| Agriculture | 59 | 66 |
+| Aquatic — Ocean & Estuarine | 140 | 147 |
+| Terrestrial / Ecological | 112 | 284 |
+| Aquatic — Freshwater | 64 | 127 |
+| Agriculture | 57 | 64 |
 | Cryosphere | 31 | 55 |
 | Atmosphere | 23 | 99 |
-| Arid | 11 | 31 |
+| Arid | 11 | 30 |
 
 Six facilities have no primary sphere. They are ARID Institute partner
 programmes at UNM, such as the Utton Transboundary Resources Center and
@@ -80,8 +80,8 @@ counted.
 
 - **Anchor networks**: NSF LTER, NEON, USFS Experimental Forests & Ranges
   (EFR; Lugo et al. 2006 list 77), LTREB, NPS Inventory & Monitoring, MAB
-  Biosphere Reserves, OBFS, UC-NRS. As of 2026-10-23 the catalogue holds
-  82 NEON member records and 40 records typed as experimental forests
+  Biosphere Reserves, OBFS, UC-NRS. As of 2026-10-25 the catalogue holds
+  82 NEON member records and 38 records typed as experimental forests
   or ranges (USFS sites plus USDA-ARS range and research units); the
   USFS EFR network itself has 36 member records.
 - **Landmark sites**: Harvard Forest (MA), H.J. Andrews (OR), Coweeta
@@ -134,7 +134,7 @@ culled to U.S. + territory + U.S.-funded Antarctic stations). By primary
 sphere this is the largest sphere.
 
 - **Anchor networks**: IOOS Regional Associations (10 of the 11 as of
-  2026-10-23; GLOS is not yet catalogued), OOI, NERRS (29 reserves),
+  2026-10-23; GLOS is not yet catalogued), OOI, NERRS (27 coastal reserves; the two Great Lakes reserves are filed under freshwater),
   National Marine Sanctuaries, EPA NEP, MarineGEO Smithsonian, NOAA NMFS
   science centres, NAML labs.
 - **Landmark sites**: Chesapeake Bay (MD/VA), Apalachicola NERR (FL),
@@ -159,5 +159,5 @@ Rivers, lakes, watersheds, and groundwater.
   with a terrestrial secondary, and its deposition record sits in
   Atmosphere. Sleepers River and Loch Vale pair freshwater with
   cryosphere snowmelt. NOAA GLERL is filed under freshwater only. North
-  Temperate Lakes LTER is currently mis-filed under ocean-estuarine in
-  the data; it belongs here.
+  Temperate Lakes LTER and the two Great Lakes reserves, Old Woman Creek
+  (Lake Erie) and Lake Superior NERR, are freshwater-primary.

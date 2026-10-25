@@ -110,8 +110,8 @@ def migrate_rows(conn: duckdb.DuckDBPyConnection) -> int:
     """)
     conn.executemany(
         "INSERT INTO _stage_legacy_events VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-        [(event_id(funder_id, facility_id, award_id, fiscal_year),
-          funder_id, facility_id, amount_usd, fiscal_year, award_id,
+        [(event_id(lto_db.canonical_funder_id(funder_id), facility_id, award_id, fiscal_year),
+          lto_db.canonical_funder_id(funder_id), facility_id, amount_usd, fiscal_year, award_id,
           relation, source_url, "legacy:funding_links", "medium", i)
          for i, (funder_id, facility_id, amount_usd, fiscal_year, award_id,
                  relation, source_url) in enumerate(rows)])

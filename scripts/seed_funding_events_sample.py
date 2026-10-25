@@ -102,6 +102,12 @@ def event_id(funder_id: str, facility_id: str, award_id: str | None,
 def resolve_ids(conn, funder_name: str, facility_like: str):
     f = conn.execute("SELECT funder_id FROM funders WHERE name = ?",
                      [funder_name]).fetchone()
+    if not f:
+        # A merged-away name ('NSF') resolves to its survivor.
+        ids = {lto_db.canonical_funder_id(i) for i in lto_db.funder_name_ids(funder_name)}
+        f = conn.execute("SELECT funder_id FROM funders WHERE funder_id IN "
+                         "(SELECT unnest(?::VARCHAR[])) ORDER BY 1 LIMIT 1",
+                         [sorted(ids)]).fetchone()
     fc = conn.execute(
         "SELECT facility_id FROM facilities WHERE canonical_name ILIKE ?",
         [f"%{facility_like}%"],

@@ -134,7 +134,8 @@ def main() -> int:
                 if not fname:
                     skipped += 1
                     continue
-                fuid = funder_id(fname)
+                # A merged-away funder lands on its survivor, under its name.
+                fuid, fname = lto_db.canonical_funder(funder_id(fname), fname)
                 # Upsert funder dimension (written below, before the events).
                 funder_rows.append([
                     fuid, fname,
@@ -167,8 +168,11 @@ def main() -> int:
 
         # Funders first, so the events' funder_id check finds them.
         stage(conn, "_funders", "funders", FUNDER_COLS, funder_rows)
+        # coalesce: a NULL in a record never erases a value already there. A
+        # merged name ('NSF') now lands on its survivor, whose fetched url /
+        # type the raw record does not carry.
         f_stats = lto_db.merge_upsert(conn, "funders", ["funder_id"], "_funders",
-                                      order_by="_seq DESC")
+                                      order_by="_seq DESC", coalesce=True)
         event_rows: list[list] = []
         for label, row in pending:
             err = row_error(conn, "funding_events", dict(zip(EVENT_COLS, row)))

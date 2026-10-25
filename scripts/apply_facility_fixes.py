@@ -12,6 +12,7 @@ Input
     facility_spheres    -        remove  (blank)         sphere slug
     network_membership  -        add|remove (blank)      network_id
     area_links          -        add|remove (blank)      research area slug
+    facility_ecosystems -        add|remove (blank)      ecosystem type slug
     provenance          -        add     <confidence>    <agent>: a provenance row for the
                                                          facility citing source_url. The
                                                          facility's rows of that agent become
@@ -24,8 +25,24 @@ Input
     facility_personnel  person_id:role  set <column>     new value (title, is_current,
                                                          end_date, ...; blank = NULL)
     facility_personnel  person_id:role  remove (blank)   (blank)
+    facility_personnel  person_id:role  set role         new role slug: the row's role
+                                                         is renamed (a key change; the
+                                                         other rows for that person then
+                                                         name the new role in their key).
+                                                         Applied before every other set;
+                                                         a no-op once the old key is gone
+                                                         and the new one is there
     facility_archives   archive_id   set <column>        new value (role, scope_url,
                                                          scope_id, sample_doi, notes)
+    facility_archives   archive_id   remove (blank)      (blank)
+    data_products       product_id   set <column>        new value (url, title, ...)
+    data_products       product_id   remove (blank)      (blank)
+    data_products       product_id   assign (blank)      (blank): the product belongs to
+                                                         this row's facility_id; it is
+                                                         moved there from whichever
+                                                         facility holds it (no-op once it
+                                                         is there)
+    funding_events      event_id     set <column>        new value (source_url, ...)
     funding_events      event_id     remove (blank)      (blank): delete the event
     funding_events      event_id     remove superseded-by-award  <source>: delete the
                                                          event only once the facility has
@@ -74,14 +91,16 @@ LINKS = {
     "facility_spheres": ("sphere_slug", "spheres", "slug"),
     "network_membership": ("network_id", "networks", "network_id"),
     "area_links": ("area_id", "research_areas", "area_id"),
+    "facility_ecosystems": ("ecosystem_slug", "ecosystem_types", "slug"),
 }
 # Keyed tables: the key column(s) the CSV `key` names (':'-separated), the
 # actions each takes, and the columns a `set` may not touch.
 KEYED = {
     "locations": (["location_id"], {"set", "remove"}),
     "facility_personnel": (["person_id", "role"], {"set", "remove"}),
-    "facility_archives": (["archive_id"], {"set"}),
-    "funding_events": (["event_id"], {"remove"}),
+    "facility_archives": (["archive_id"], {"set", "remove"}),
+    "data_products": (["product_id"], {"set", "remove", "assign"}),
+    "funding_events": (["event_id"], {"set", "remove"}),
 }
 REMOVE_GUARDS = {"", "superseded-by-award"}
 NO_SET = {"facility_id", "created_at"}
@@ -108,10 +127,21 @@ def key_where(table: str, key: str) -> tuple[str, list[str]]:
     return " AND ".join(f"{c} = ?" for c in cols), parts
 
 
+def is_role_rename(f: dict) -> bool:
+    return f["table"] == "facility_personnel" and f["action"] == "set" and f["field"] == "role"
+
+
+def renamed_keys(fixes: list[dict]) -> set[tuple[str, str]]:
+    """(facility_id, person_id:new_role) for every role rename in the file."""
+    return {(f["facility_id"], f"{f['key'].split(':', 1)[0]}:{f['value']}")
+            for f in fixes if is_role_rename(f)}
+
+
 def validate(con, fixes: list[dict]) -> list[str]:
     errors = []
     types = {t: column_types(con, t) for t in ["facilities", *KEYED]}
     have = {r[0] for r in lto_db.rows(con, "SELECT facility_id FROM facilities")}
+    renamed = renamed_keys(fixes)
     for i, f in enumerate(fixes, start=2):
         where = (f"line {i} ({f.get('table')} {f.get('key') or ''} {f.get('action')} "
                  f"{f.get('field')} {f.get('value')!r})")
@@ -144,14 +174,36 @@ def validate(con, fixes: list[dict]) -> list[str]:
                     f["key"].split(":", len(cols) - 1)):
                 errors.append(f"{where}: {t} needs key {':'.join(cols)}")
                 continue
-            if a == "set":
+            if a == "set" and is_role_rename(f):
+                cond, params = key_where(t, f["key"])
+                new_key = f"{f['key'].split(':', 1)[0]}:{f['value']}"
+                ncond, nparams = key_where(t, new_key)
+                old_n = lto_db.scalar(con, f"SELECT count(*) FROM {t} WHERE facility_id = ? "
+                                           f"AND {cond}", [f["facility_id"], *params])
+                new_n = lto_db.scalar(con, f"SELECT count(*) FROM {t} WHERE facility_id = ? "
+                                           f"AND {ncond}", [f["facility_id"], *nparams])
+                roles = {r["slug"] for r in csv.DictReader(
+                    (ROOT / "schema" / "vocab" / "personnel_roles.csv").open(encoding="utf-8"))}
+                if f["value"] not in roles:
+                    errors.append(f"{where}: {f['value']!r} not in personnel_roles.csv")
+                if not f["value"] or (old_n and new_n) or not (old_n or new_n):
+                    errors.append(f"{where}: a role rename needs the old row and not the new "
+                                  f"one (or, once applied, only the new one)")
+            elif a == "set":
                 if f["field"] not in types[t] or f["field"] in NO_SET | set(cols):
                     errors.append(f"{where}: {t} takes 'set <column>' (not a key column)")
                     continue
                 cond, params = key_where(t, f["key"])
                 if not lto_db.scalar(con, f"SELECT count(*) FROM {t} WHERE facility_id = ? "
-                                          f"AND {cond}", [f["facility_id"], *params]):
+                                          f"AND {cond}", [f["facility_id"], *params]) \
+                        and (f["facility_id"], f["key"]) not in renamed:
                     errors.append(f"{where}: {f['facility_id']} has no {t} row {f['key']}")
+            elif a == "assign":
+                if f["field"] or f["value"]:
+                    errors.append(f"{where}: {t} assign takes no field / value")
+                elif not lto_db.scalar(con, f"SELECT count(*) FROM {t} WHERE product_id = ?",
+                                       [f["key"]]):
+                    errors.append(f"{where}: no {t} row {f['key']}")
             elif t == "funding_events":
                 if f["field"] not in REMOVE_GUARDS or bool(f["field"]) != bool(f["value"]):
                     errors.append(f"{where}: funding_events remove takes field and value "
@@ -172,12 +224,31 @@ def apply(con, fixes: list[dict], absent: list[str] | None = None) -> Counter:
     def changed(sql: str, params) -> int:
         return lto_db.scalar(con, sql, params) or 0
 
-    # Removals first, so a primary sphere can be swapped in one file.
-    order = sorted(fixes, key=lambda f: (f["action"] != "remove"))
+    # Removals first, so a primary sphere can be swapped in one file; then
+    # role renames, so a set keyed on the new role finds its row.
+    order = sorted(fixes, key=lambda f: (f["action"] != "remove", not is_role_rename(f)))
     for f in order:
         fid, t, a, field, value = (f["facility_id"], f["table"], f["action"],
                                    f["field"], f["value"])
-        if t == "facilities" or (t in KEYED and a == "set"):
+        if is_role_rename(f):
+            cond, params = key_where(t, f["key"])
+            if changed(f"SELECT count(*) FROM {t} WHERE facility_id = ? AND {cond}",
+                       [fid, *params]):
+                pid = f["key"].split(":", 1)[0]
+                if changed(f"SELECT count(*) FROM {t} WHERE facility_id = ? AND person_id = ? "
+                           f"AND role = ?", [fid, pid, value]):
+                    raise RuntimeError(f"{fid} {t} {f['key']}: role rename to {value!r} "
+                                       f"collides with an existing row")
+                con.execute(f"UPDATE {t} SET role = ? WHERE facility_id = ? AND {cond}",
+                            [value, fid, *params])
+                n[f"{t}.role"] += 1
+        elif t == "data_products" and a == "assign":
+            if changed("SELECT count(*) FROM data_products WHERE product_id = ? "
+                       "AND facility_id IS DISTINCT FROM ?", [f["key"], fid]):
+                con.execute("UPDATE data_products SET facility_id = ? WHERE product_id = ?",
+                            [fid, f["key"]])
+                n[f"{t}.assigned"] += 1
+        elif t == "facilities" or (t in KEYED and a == "set"):
             typ = types[t][field]
             val = value if value != "" else None
             cond, params = ("1 = 1", []) if t == "facilities" else key_where(t, f["key"])

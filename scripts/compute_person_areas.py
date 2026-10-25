@@ -189,6 +189,20 @@ def main() -> int:
     with lto_db.transaction(conn, f"compute_person_areas: {len(out_rows)} "
                                   f"openalex_topics rows (min_evidence="
                                   f"{args.min_evidence}, top_areas={args.top_areas})"):
+        # A facility-inherited area (compute_lto_person_metrics.py) needs the
+        # facility link it came from: once a merge or fix drops the person's
+        # role, or the facility's area, the row is unsupported. Pruned first,
+        # so a topic row for the same pair can take its place in this run.
+        pruned = conn.execute("""
+            DELETE FROM person_areas pa
+            WHERE source = 'facility-area-inheritance'
+              AND NOT EXISTS (SELECT 1 FROM facility_personnel fp
+                              JOIN area_links al ON al.facility_id = fp.facility_id
+                              WHERE fp.person_id = pa.person_id
+                                AND al.area_id = pa.area_id)""").fetchone()[0]
+        if pruned:
+            print(f"[prune] {pruned} facility-area-inheritance rows with no facility "
+                  f"link carrying that area")
         conn.execute("DELETE FROM person_areas WHERE source = 'openalex_topics'")
         if out_rows:
             # Bulk insert via a temp table, dedupe to be safe (in case the
