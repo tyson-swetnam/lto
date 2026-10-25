@@ -1,0 +1,7 @@
+provider,bucket_name,successor_bucket,successor_prefix,source_url,reason
+s3,noaa-nexrad-level2,unidata-nexrad-level2,,https://registry.opendata.aws/noaa-nexrad/,"The registry says the NEXRAD Level II archive moved to unidata-nexrad-level2 and the old bucket is deprecated, unavailable from 2025-09-01."
+s3,era5-pds,nsf-ncar-era5,,https://registry.opendata.aws/nsf-ncar-era5/,"The registry marks ecmwf-era5 (era5-pds) deprecated: the provider no longer maintains it and NSF NCAR rehosts the dataset in nsf-ncar-era5."
+s3,sentinel-s2-l2a-cogs,sentinel-cogs,,https://registry.opendata.aws/sentinel-2-l2a-cogs/,"No bucket named sentinel-s2-l2a-cogs exists; the registry's Sentinel-2 L2A COGs dataset is in sentinel-cogs."
+s3,noaa-ncei-wod,noaa-wod-pds,,https://registry.opendata.aws/noaa-wod/,"No bucket named noaa-ncei-wod exists; the registry's NOAA World Ocean Database is in noaa-wod-pds."
+s3,asf-cumulus-prod-s1-slc,asf-ngap2w-p-s1-slc-7b420b89,,https://registry.opendata.aws/nasa-sentinel-1aslc/,"No bucket named asf-cumulus-prod-s1-slc exists; the registry lists ASF's Sentinel-1 SLC data in asf-ngap2w-p-s1-slc-7b420b89."
+s3,daymet-v4-daily,ornl-cumulus-prod-protected,daymet/,https://registry.opendata.aws/nasa-daymet/,"No bucket named daymet-v4-daily exists; the registry lists Daymet under ornl-cumulus-prod-protected/daymet/."
