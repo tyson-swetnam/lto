@@ -105,6 +105,11 @@ AUTO_RECIPIENT_BLOCKLIST = (
     "u.s. department of the interior",
     "noaa", "nsf", "epa region",
 )
+# Matched against the facility's own name, as fetch_funding_nsf does: a reserve
+# or estuary program whose parent_org is its lead agency or host (a university,
+# per NOAA or the program's homepage) is not that university's federal portfolio.
+# One list for both fetchers.
+from fetch_funding_nsf import AUTO_AWARDEE_NAME_BLOCKLIST as AUTO_RECIPIENT_NAME_BLOCKLIST  # noqa: E402
 
 
 def _hash(s: str) -> str:
@@ -499,11 +504,13 @@ def _relation_for_type(award: dict) -> str:
     return "grant"
 
 
-def _auto_recipient(parent: str) -> str | None:
+def _auto_recipient(parent: str, name: str = "") -> str | None:
     if not parent:
         return None
     p = parent.lower()
     if any(b in p for b in AUTO_RECIPIENT_BLOCKLIST):
+        return None
+    if any(b in (name or "").lower() for b in AUTO_RECIPIENT_NAME_BLOCKLIST):
         return None
     if any(h in p for h in AUTO_RECIPIENT_HINTS):
         return parent
@@ -556,7 +563,7 @@ def process_facility(buf: LakeBuffer, sess: requests.Session, facility: dict,
     ov = overrides.get(fid, {})
     recipients: list[str] = list(ov.get("recipients") or [])
     if not recipients:
-        auto = _auto_recipient(parent)
+        auto = _auto_recipient(parent, facility.get("canonical_name") or "")
         if auto:
             recipients = [auto]
     if not recipients and not ov.get("award_ids"):

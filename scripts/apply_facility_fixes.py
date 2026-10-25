@@ -13,8 +13,11 @@ Input
     network_membership  -        add|remove (blank)      network_id
     area_links          -        add|remove (blank)      research area slug
     provenance          -        add     <confidence>    <agent>: a provenance row for the
-                                                         facility citing source_url, replacing
-                                                         an earlier row of the same agent
+                                                         facility citing source_url. The
+                                                         facility's rows of that agent become
+                                                         exactly the CSV's rows for it and that
+                                                         agent (one row replaces an earlier
+                                                         row; several rows are all kept)
     locations           location_id  set <column>        new value (label, address, lat,
                                                          lng, role; blank = NULL)
     locations           location_id  remove (blank)      (blank)
@@ -221,18 +224,27 @@ def apply(con, fixes: list[dict], absent: list[str] | None = None) -> Counter:
                              [fid, value]):
                 con.execute(f"INSERT INTO {t} (facility_id, {slug}) VALUES (?, ?)", [fid, value])
                 n[f"{t}.added"] += 1
-        elif t == "provenance":
-            row = [f["source_url"], f["retrieved_at"] or None, field]
-            if not changed("SELECT count(*) FROM provenance WHERE record_type = 'facility' "
-                           "AND record_id = ? AND agent = ? AND source_url = ? "
-                           "AND retrieved_at IS NOT DISTINCT FROM CAST(? AS DATE) "
-                           "AND confidence = ?", [fid, value, *row]):
-                con.execute("DELETE FROM provenance WHERE record_type = 'facility' "
-                            "AND record_id = ? AND agent = ?", [fid, value])
-                con.execute("INSERT INTO provenance (record_type, record_id, source_url, "
-                            "retrieved_at, confidence, agent) VALUES ('facility', ?, ?, "
-                            "CAST(? AS DATE), ?, ?)", [fid, *row, value])
-                n["provenance.added"] += 1
+    # Provenance: per (facility, agent), the lake's rows become the CSV's rows.
+    want: dict[tuple[str, str], list[tuple]] = {}
+    for f in fixes:
+        if f["table"] == "provenance":
+            row = (f["source_url"], f["retrieved_at"] or None, f["field"])
+            rows_ = want.setdefault((f["facility_id"], f["value"]), [])
+            if row not in rows_:
+                rows_.append(row)
+    for (fid, agent), rows_ in want.items():
+        have = lto_db.rows(con, "SELECT source_url, CAST(retrieved_at AS VARCHAR), confidence "
+                                "FROM provenance WHERE record_type = 'facility' "
+                                "AND record_id = ? AND agent = ?", [fid, agent])
+        if sorted(map(tuple, have), key=str) == sorted(rows_, key=str):
+            continue
+        con.execute("DELETE FROM provenance WHERE record_type = 'facility' "
+                    "AND record_id = ? AND agent = ?", [fid, agent])
+        for row in rows_:
+            con.execute("INSERT INTO provenance (record_type, record_id, source_url, "
+                        "retrieved_at, confidence, agent) VALUES ('facility', ?, ?, "
+                        "CAST(? AS DATE), ?, ?)", [fid, *row, agent])
+        n["provenance.added"] += len(rows_)
     return n
 
 

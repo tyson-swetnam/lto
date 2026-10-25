@@ -4,7 +4,7 @@ title: "AOOS ERDDAP"
 description: "Alaska Ocean Observing System — erddap holding long-term observatory records."
 resource: "http://erddap.aoos.org/erddap/"
 tags: [erddap, erddap, noaa-public]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-10-25T15:22:13Z }
 status: stable
 ---
 
@@ -26,7 +26,7 @@ Alaska Region ERDDAP run by Axiom Data Science for AOOS; gliders, moorings, HF r
 # Depositing facilities
 
 - **AOOS** Alaska Ocean Observing System (primary)
-- **NERR** Kachemak Bay NERR (secondary)
+- **KBNERR** Kachemak Bay National Estuarine Research Reserve (secondary)
 
 # Data products
 

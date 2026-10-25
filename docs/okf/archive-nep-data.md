@@ -4,7 +4,7 @@ title: "EPA National Estuary Program Data"
 description: "U.S. Environmental Protection Agency / Office of Water — program holding long-term observatory records."
 resource: "https://www.epa.gov/nep/local-estuary-programs"
 tags: [program, rest, epa-public]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-10-25T15:22:13Z }
 status: stable
 ---
 
@@ -18,33 +18,33 @@ status: stable
 
 # Depositing facilities
 
-- **NEP** Albemarle-Pamlico National Estuary Partnership NEP (primary)
-- Barataria-Terrebonne National Estuary Program (primary)
-- **NEP** Barnegat Bay Partnership NEP (primary)
-- Buzzards Bay National Estuary Program (primary)
-- **NEP** Casco Bay Estuary Partnership NEP (primary)
-- **NEP** Coastal Bend Bays and Estuaries Program NEP (primary)
-- **NEP** Delaware Center for the Inland Bays NEP (primary)
-- **NEP** Galveston Bay Estuary Program NEP (primary)
-- Indian River Lagoon National Estuary Program (primary)
-- **NEP** Long Island Sound Study NEP (primary)
-- **NEP** Lower Columbia Estuary Partnership NEP (primary)
-- **NEP** Maryland Coastal Bays Program NEP (primary)
-- Massachusetts Bays National Estuary Program (primary)
-- Mobile Bay National Estuary Program (primary)
+- **APNEP** Albemarle-Pamlico National Estuary Partnership (primary)
+- **BTNEP** Barataria-Terrebonne National Estuary Program (primary)
+- **BBP** Barnegat Bay Partnership (primary)
+- **BBNEP** Buzzards Bay National Estuary Program (primary)
+- **CBEP** Casco Bay Estuary Partnership (primary)
+- **CBBEP** Coastal Bend Bays and Estuaries Program (primary)
+- Delaware Center for the Inland Bays (primary)
+- **GBEP** Galveston Bay Estuary Program (primary)
+- **IRLNEP** Indian River Lagoon National Estuary Program (primary)
+- Long Island Sound Partnership (primary)
+- Lower Columbia Estuary Partnership (primary)
+- **MCBP** Maryland Coastal Bays Program (primary)
+- **MassBays** Massachusetts Bays National Estuary Program (primary)
+- **MBNEP** Mobile Bay National Estuary Program (primary)
 - Morro Bay National Estuary Program (primary)
-- **NEP** Narragansett Bay Estuary Program NEP (primary)
-- **NEP** New York-New Jersey Harbor Estuary Program NEP (primary)
-- **NEP** Partnership for the Delaware Estuary NEP (primary)
-- **NEP** Peconic Estuary Program NEP (primary)
-- **NEP** Piscataqua Region Estuaries Partnership NEP (primary)
-- **NEP** Puget Sound Partnership NEP (primary)
-- **NEP** San Francisco Estuary Partnership NEP (primary)
+- **NBEP** Narragansett Bay Estuary Program (primary)
+- **HEP** New York-New Jersey Harbor and Estuary Program (primary)
+- **PDE** Partnership for the Delaware Estuary (primary)
+- **PEP** Peconic Estuary Partnership (primary)
+- **PREP** Piscataqua Region Estuaries Partnership (primary)
+- Puget Sound Partnership (primary)
+- **SFEP** San Francisco Estuary Partnership (primary)
 - San Juan Bay Estuary Program (primary)
-- Santa Monica Bay National Estuary Program (primary)
-- **NEP** Sarasota Bay Estuary Program NEP (primary)
-- **NEP** Tampa Bay Estuary Program NEP (primary)
-- **NEP** Tillamook Estuaries Partnership NEP (primary)
+- **SMBNEP** Santa Monica Bay National Estuary Program (primary)
+- **SBEP** Sarasota Bay Estuary Program (primary)
+- **TBEP** Tampa Bay Estuary Program (primary)
+- **TEP** Tillamook Estuaries Partnership (primary)
 
 # Data products
 

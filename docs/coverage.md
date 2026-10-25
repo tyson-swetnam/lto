@@ -19,9 +19,9 @@ The catalogue holds **446 facilities**: US 431, Puerto Rico 10,
 Antarctica 3, American Samoa 1 and US Virgin Islands 1. Every facility has
 coordinates, and every US facility has a state.
 
-- **320** meet the Peters et al. 2013 long-term threshold (≥10 years of
-  record), 115 do not, and 11 are unclassified. 53 facilities have no
-  record length at all, and 42 of those are counted as not meeting the
+- **348** meet the Peters et al. 2013 long-term threshold (≥10 years of
+  record), 87 do not, and 11 are unclassified. 24 facilities have no
+  record length at all, and 13 of those are counted as not meeting the
   threshold. The "≥10y" filter is off by default.
 - Scope lenses: ARID Institute & partners **12**, New Mexico **19**,
   Southwest drylands (the default view) **67**, All U.S. **446**. See
@@ -68,7 +68,8 @@ These are counts from the catalogue. `qa.py` does not check them.
 | **NEON** | 82 facilities in network `neon` | 77 of them are named "… NEON Site". The others are NEON members under other names. |
 | **LTER** | 51 in network `lter` (2 of them also tagged `lter-site`) | Also holds NEON, NADP, AmeriFlux and field-station rows at LTER sites, so this is not a count of LTER sites. **26** LTER sites have a current lead PI that matches the LTER Network's site page (lternet.edu) or the site's own page. |
 | **LTAR** | 26 in network `ltar` | 19 of them are of type `ltar-site`. |
-| **NERRS** | 29 of 30 reserves | Network `nerrs` also includes NOAA's Office for Coastal Management. Connecticut is missing. Guana Tolomato Matanzas and Mission-Aransas, missing in May 2026, are now present. |
+| **NERRS** | 29 of 30 reserves | Network `nerrs` also includes NOAA's Office for Coastal Management. Connecticut is missing. Guana Tolomato Matanzas and Mission-Aransas, missing in May 2026, are now present. Names, designation years, lead agencies and websites follow each reserve's NOAA page (2026-10-25). Facility type follows NOAA's lead agency: `state` for a state agency (20 reserves), `university-marine-lab` for a university marine lab or institute (6), `university-institute` for another university unit (Kachemak Bay, Lake Superior), and `federal` for Tijuana River, whose lead is California State Parks together with the U.S. Fish and Wildlife Service. |
+| **National Estuary Programs** | 27 of 28 on EPA's list | Network `nep`. The Coastal and Heartland National Estuary Partnership (CHNEP) is missing. Names and websites follow EPA's program list (2026-10-25). Only three establishment years are confirmed by a fetched page: Buzzards Bay (1985), Mobile Bay (1995) and Lower Columbia (1995). The other programs' years, and the ≥10y flags that follow from them, are unverified values from the original cull. |
 | **IOOS Regional Associations** | 10 of 11 | GLOS is missing. |
 | **EcoTrends (Peters 2013 Table 1-1)** | Not re-run since 2026-05-05 (then 44 / 49 by name) | A facility named "H.J. Andrews Experimental Forest" is now present. No facility is named for Shortgrass Steppe, Coram EF, Tallgrass Prairie or Bandelier. A name match can miss a site that is catalogued under a different name. |
 | **USFS Experimental Forests & Ranges** | 40 of type `experimental-forest-range`; 36 in network `usfs-rna-ef`; 49 in either | Still short of the 77 on the Lugo 2006 list that the May check used. No pass since then has added EFRs. |

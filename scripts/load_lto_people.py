@@ -84,9 +84,11 @@ def resolve_facility(conn, canonical_name: str, acronym: str | None,
     falling back to a token-set fuzzy match scored ≥85.
 
     An acronym is only trusted when exactly one facility carries it. 29
-    facilities share "NERR" (19 "NEP", 9 "LTER", ...); the old LIMIT 1 put
-    27 reserve managers from 27 reserves on Mission Aransas NERR. A shared
-    acronym falls through to the name steps instead.
+    facilities once shared "NERR" (19 "NEP", 9 "LTER"), and the
+    old LIMIT 1 put 27 reserve managers from 27 reserves on Mission Aransas
+    NERR. data/seed/facility_fixes.csv has since given each reserve and
+    estuary program its own acronym or NULL. A shared acronym falls through
+    to the name steps instead.
     """
     warn = warn if warn is not None else []
     if not canonical_name and not acronym:
