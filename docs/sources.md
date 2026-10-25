@@ -37,7 +37,7 @@ counts are facilities in this catalogue tagged with that network as of
 - **USGS Water Mission Area** — <https://www.usgs.gov/mission-areas/water-resources> — NWIS, WEBB, HBN, Benchmark Glaciers.
 - **NOAA Global Monitoring Laboratory** — <https://gml.noaa.gov/> — atmospheric baseline observatories (5) and the WLEF tall tower.
 - **DOE ARM** — <https://www.arm.gov/> — Atmospheric Radiation Measurement sites (3).
-- **EPA** — <https://www.epa.gov/> — CASTNET (6), National Estuary Programs (27).
+- **EPA** — <https://www.epa.gov/> — CASTNET (6), National Estuary Programs (28).
 - **NOAA NOS / IOOS** — <https://ioos.noaa.gov/> — IOOS (15, 10 of them Regional Associations), NERRS (30), NMS (5).
 - **Smithsonian MarineGEO** — <https://marinegeo.si.edu/> — coastal biodiversity sites (5).
 - **NRCS** — SNOTEL snow-telemetry (12) and SCAN soil-climate (11) sites.

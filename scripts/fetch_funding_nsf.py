@@ -105,6 +105,11 @@ AUTO_AWARDEE_NAME_BLOCKLIST = (
     "estuarine research reserve", "estuary program", "estuary partnership",
     "estuaries partnership",
 )
+# The same rule keyed on network membership, so it holds for a reserve or
+# program whose name says neither (Barnegat Bay Partnership, hosted by Ocean
+# County College; Delaware Center for the Inland Bays). NEPs are typed by host
+# (docs/coverage.md), so their parent_org is often a university or college.
+AUTO_AWARDEE_NETWORK_BLOCKLIST = ("nep", "nerrs")
 
 
 def _hash(s: str) -> str:
@@ -406,7 +411,7 @@ def write_award(buf: LakeBuffer, funder_id: str, facility_id: str, award: dict,
     return inserted
 
 
-def _auto_awardee(parent: str, name: str = "") -> str | None:
+def _auto_awardee(parent: str, name: str = "", networks=()) -> str | None:
     """Decide whether to treat parent_org as an NSF awardee."""
     if not parent:
         return None
@@ -414,6 +419,8 @@ def _auto_awardee(parent: str, name: str = "") -> str | None:
     if any(b in p for b in AUTO_AWARDEE_BLOCKLIST):
         return None
     if any(b in (name or "").lower() for b in AUTO_AWARDEE_NAME_BLOCKLIST):
+        return None
+    if any(n in AUTO_AWARDEE_NETWORK_BLOCKLIST for n in (networks or ())):
         return None
     if any(h in p for h in AUTO_AWARDEE_HINTS):
         return parent
@@ -450,7 +457,8 @@ def process_facility(buf: LakeBuffer, sess: requests.Session, funder_id: str,
     # parent_org auto-awardee would attach every award the host
     # institution holds (an LTREB plot study hosted by a university).
     if not awardees and not ov.get("award_ids"):
-        auto = _auto_awardee(parent, facility.get("canonical_name") or "")
+        auto = _auto_awardee(parent, facility.get("canonical_name") or "",
+                             facility.get("networks") or ())
         if auto:
             awardees = [auto]
     if not awardees and not ov.get("award_ids"):
@@ -529,14 +537,16 @@ def main() -> int:
     overrides = load_overrides(args.overrides)
 
     rows = conn.execute("""
-        SELECT facility_id, canonical_name, acronym, parent_org, country
-        FROM facilities
+        SELECT facility_id, canonical_name, acronym, parent_org, country,
+               (SELECT list(m.network_id ORDER BY m.network_id)
+                FROM network_membership m WHERE m.facility_id = f.facility_id)
+        FROM facilities f
         WHERE country IN ('US','USA') OR country IS NULL
         ORDER BY canonical_name
     """).fetchall()
     facilities = [
         {"facility_id": r[0], "canonical_name": r[1], "acronym": r[2],
-         "parent_org": r[3], "country": r[4]}
+         "parent_org": r[3], "country": r[4], "networks": list(r[5] or [])}
         for r in rows
     ]
     if args.facility_id:
