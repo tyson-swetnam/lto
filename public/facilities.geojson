@@ -292,8 +292,8 @@
 "geometry": {
 "type": "Point",
 "coordinates": [
--97.0497,
-27.8339
+-156.4165,
+71.3379
 ]
 },
 "properties": {
@@ -308,7 +308,7 @@
 "record_length_years": 9,
 "long_term_threshold_met": false,
 "primary_sphere": "ocean-estuarine",
-"state": "TX",
+"state": "AK",
 "has_arid_sphere": false,
 "in_arid_network": false
 }
@@ -4842,8 +4842,8 @@
 "geometry": {
 "type": "Point",
 "coordinates": [
--119.8419,
-34.4133
+-149.826,
+-17.4909
 ]
 },
 "properties": {
@@ -4851,14 +4851,14 @@
 "name": "Moorea Coral Reef LTER",
 "acronym": "MCR",
 "type": "university-marine-lab",
-"country": "US",
+"country": "PF",
 "url": "https://mcr.lternet.edu/",
 "parent_org": "UC Santa Barbara / California State University Northridge",
 "established": 2004,
 "record_length_years": 22,
 "long_term_threshold_met": true,
 "primary_sphere": "ocean-estuarine",
-"state": "CA",
+"state": null,
 "has_arid_sphere": false,
 "in_arid_network": false
 }

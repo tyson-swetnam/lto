@@ -95,6 +95,11 @@ BBOX_BY_COUNTRY = {
     "TT": (10.0, 11.5, -62.0, -60.4),
     "KY": (19.2, 19.9, -81.5, -79.7),
     "TC": (20.9, 22.0, -72.5, -71.0),
+    # French Polynesia (Moorea Coral Reef LTER): OSM relation 3412620
+    # "Polynésie Française" boundingbox -28.0990..-7.6592, -154.9361..-134.2448
+    # (nominatim.openstreetmap.org/search?q=French+Polynesia, fetched 2026-10-25),
+    # rounded outward.
+    "PF": (-28.2, -7.5, -155.0, -134.2),
 }
 
 

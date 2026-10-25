@@ -28,7 +28,7 @@ For every facility row in `facilities`, a "complete" record needs:
 ### 1. Identity (✅ done, Wave 0–B)
 
 - [x] canonical_name, acronym, parent_org
-- [x] country (US + territories + AQ for U.S.-funded Antarctic stations)
+- [x] country (US + territories + AQ for U.S.-funded Antarctic stations, PF for Moorea Coral Reef LTER)
 - [x] hq.lat / hq.lng (or address for geocoding)
 - [x] established (founding year)
 - [x] record_length_years + long_term_threshold_met (≥10y per Peters 2013)

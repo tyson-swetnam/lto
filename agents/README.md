@@ -111,8 +111,11 @@ as an array of records matching this schema:
 - **record_id** — `<AGENT_ID>-<4-digit-seq>`, stable across runs where possible.
 - **facility_type** — must be a value from `schema/vocab/facility_types.csv`.
 - **country** — ISO 3166-1 alpha-2 (US, plus territory codes PR, VI, AS, GU, MP).
-  U.S.-funded Antarctic stations (PAL, MCM) use `AQ` for the geographic country
-  and set `parent_org` / `funders` to the funding agency.
+  U.S.-funded sites outside U.S. territory use the ISO code of where the site
+  physically is and set `parent_org` / `funders` to the funding agency:
+  Antarctic stations (PAL, MCM) use `AQ`; Moorea Coral Reef LTER uses `PF`
+  (French Polynesia). Never use `US` for a site abroad because its lead
+  institution or funder is American.
 - **hq.lat/lng** — decimal degrees, WGS84. Leave null if you cannot find
   coordinates and let D2 geocode from `hq.address`.
 - **locations** — list of 1..N sites. First entry should mirror `hq` when
@@ -174,8 +177,9 @@ A handful of facilities that MUST appear in the output (for QA).
 ## Rules for every R-agent
 
 1. **U.S. scope.** Include facilities physically in the U.S., its territories
-   (PR, VI, AS, GU, MP), and U.S.-funded Antarctic stations. Drop everything
-   else.
+   (PR, VI, AS, GU, MP), and U.S.-funded sites abroad that a U.S. network
+   runs (Antarctic stations, `AQ`; Moorea Coral Reef LTER, `PF`). Drop
+   everything else.
 2. **Long-term threshold.** Default inclusion is `record_length_years >= 10`
    (Peters et al. 2013). You may include shorter-record facilities if they
    are members of a long-running network (LTER, NEON, LTAR), but mark
