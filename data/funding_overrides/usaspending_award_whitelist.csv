@@ -1,0 +1,1080 @@
+# USAspending.gov award-id whitelist, read by scripts/fetch_funding_usaspending.py
+# (in addition to usaspending_recipient_overrides.csv).
+#
+# One row pins one award to one facility. A facility with rows here and no
+# recipient row gets exactly these awards (spending_by_transaction filtered by
+# award_ids), never a recipient or parent_org search.
+#   cfda       only transactions coded with this Assistance Listing count
+#              (96457406 carries one 66.461 action; it is not counted)
+#   funder_id  the funders row the events go under (11.420 -> NOAA Office for
+#              Coastal Management 3b95f3a57b9acc66; 66.456 -> U.S. Environmental
+#              Protection Agency 0aecd67acddb43e9); blank = the awarding agency
+#
+# NERR (CFDA 11.420) and NEP (CFDA 66.456) rows, 2026-10-25: awards attributed
+# certain/likely to one reserve or program whose recipient is its lead agency,
+# host, or the program's own entity/foundation. Every award considered, with
+# the reason it is in or out, is in usaspending_estuary_review.csv.
+# The test is the recipient, not the award's purpose: a graduate research
+# fellowship (11.420, $20k-$120k) counts when it goes to the reserve's lead
+# university (VIMS, Rutgers, UConn, UT Austin, USC/SCRF, SF State, UH) and is
+# excluded when it goes to any other institution. At most 34 included 11.420
+# awards to a host university are $125k or less (about $2.4M, 0.2% of the total).
+# Puget Sound Partnership's total is mostly two pass-through awards (01J97401,
+# 02J98701, ~$37M each, 42 and 13 subawards), counted uncapped.
+# Re-fetch (adds nothing when nothing changed at USAspending):
+#   python scripts/fetch_funding_usaspending.py --network nerrs,nep --start-fy 2008 --end-fy 2026
+facility_id,award_id,cfda,funder_id,notes
+062a60fa77fbac44,NA08NOS4200416,11.420,3b95f3a57b9acc66,"NERR Jobos Bay National Estuarine Research Reserve; NATURAL AND ENVIRONMENTAL RESOURCES, DEPARTMENT OF; certain"
+062a60fa77fbac44,NA09NOS4200155,11.420,3b95f3a57b9acc66,"NERR Jobos Bay National Estuarine Research Reserve; NATURAL AND ENVIRONMENTAL RESOURCES, DEPARTMENT OF; certain"
+062a60fa77fbac44,NA10NOS4200101,11.420,3b95f3a57b9acc66,"NERR Jobos Bay National Estuarine Research Reserve; NATURAL AND ENVIRONMENTAL RESOURCES, DEPARTMENT OF; likely"
+062a60fa77fbac44,NA10NOS4200186,11.420,3b95f3a57b9acc66,"NERR Jobos Bay National Estuarine Research Reserve; NATURAL AND ENVIRONMENTAL RESOURCES, DEPARTMENT OF; certain"
+062a60fa77fbac44,NA11NOS4200150,11.420,3b95f3a57b9acc66,"NERR Jobos Bay National Estuarine Research Reserve; NATURAL AND ENVIRONMENTAL RESOURCES, DEPARTMENT OF; certain"
+062a60fa77fbac44,NA12NOS4200157,11.420,3b95f3a57b9acc66,"NERR Jobos Bay National Estuarine Research Reserve; NATURAL AND ENVIRONMENTAL RESOURCES, DEPARTMENT OF; certain"
+062a60fa77fbac44,NA13NOS4200129,11.420,3b95f3a57b9acc66,"NERR Jobos Bay National Estuarine Research Reserve; NATURAL AND ENVIRONMENTAL RESOURCES, DEPARTMENT OF; certain"
+062a60fa77fbac44,NA14NOS4200135,11.420,3b95f3a57b9acc66,"NERR Jobos Bay National Estuarine Research Reserve; NATURAL AND ENVIRONMENTAL RESOURCES, DEPARTMENT OF; certain"
+062a60fa77fbac44,NA15NOS4200138,11.420,3b95f3a57b9acc66,"NERR Jobos Bay National Estuarine Research Reserve; NATURAL AND ENVIRONMENTAL RESOURCES, DEPARTMENT OF; certain"
+062a60fa77fbac44,NA16NOS4200164,11.420,3b95f3a57b9acc66,"NERR Jobos Bay National Estuarine Research Reserve; NATURAL AND ENVIRONMENTAL RESOURCES, DEPARTMENT OF; certain"
+062a60fa77fbac44,NA17NOS4200115,11.420,3b95f3a57b9acc66,"NERR Jobos Bay National Estuarine Research Reserve; NATURAL AND ENVIRONMENTAL RESOURCES, DEPARTMENT OF; certain"
+062a60fa77fbac44,NA17NOS4200158,11.420,3b95f3a57b9acc66,"NERR Jobos Bay National Estuarine Research Reserve; NATURAL AND ENVIRONMENTAL RESOURCES, DEPARTMENT OF; likely"
+062a60fa77fbac44,NA18NOS4200117,11.420,3b95f3a57b9acc66,"NERR Jobos Bay National Estuarine Research Reserve; NATURAL AND ENVIRONMENTAL RESOURCES, DEPARTMENT OF; certain"
+062a60fa77fbac44,NA19NOS4200152,11.420,3b95f3a57b9acc66,"NERR Jobos Bay National Estuarine Research Reserve; NATURAL AND ENVIRONMENTAL RESOURCES, DEPARTMENT OF; certain"
+062a60fa77fbac44,NA20NOS4200172,11.420,3b95f3a57b9acc66,"NERR Jobos Bay National Estuarine Research Reserve; NATURAL AND ENVIRONMENTAL RESOURCES, DEPARTMENT OF; likely"
+062a60fa77fbac44,NA21NOS4200138,11.420,3b95f3a57b9acc66,"NERR Jobos Bay National Estuarine Research Reserve; NATURAL AND ENVIRONMENTAL RESOURCES, DEPARTMENT OF; certain"
+062a60fa77fbac44,NA22NOS4200191,11.420,3b95f3a57b9acc66,"NERR Jobos Bay National Estuarine Research Reserve; NATURAL AND ENVIRONMENTAL RESOURCES, DEPARTMENT OF; certain"
+062a60fa77fbac44,NA24NOSX420C0064,11.420,3b95f3a57b9acc66,"NERR Jobos Bay National Estuarine Research Reserve; NATURAL AND ENVIRONMENTAL RESOURCES, DEPARTMENT OF; certain"
+0ac30d8999613919,NA08NOS4200412,11.420,3b95f3a57b9acc66,NERR Sapelo Island National Estuarine Research Reserve; DEPARTMENT OF NATURAL RESOURCES; certain
+0ac30d8999613919,NA09NOS4200156,11.420,3b95f3a57b9acc66,NERR Sapelo Island National Estuarine Research Reserve; DEPARTMENT OF NATURAL RESOURCES; certain
+0ac30d8999613919,NA10NOS4200181,11.420,3b95f3a57b9acc66,NERR Sapelo Island National Estuarine Research Reserve; DEPARTMENT OF NATURAL RESOURCES; certain
+0ac30d8999613919,NA11NOS4200051,11.420,3b95f3a57b9acc66,NERR Sapelo Island National Estuarine Research Reserve; DEPARTMENT OF NATURAL RESOURCES; certain
+0ac30d8999613919,NA11NOS4200117,11.420,3b95f3a57b9acc66,NERR Sapelo Island National Estuarine Research Reserve; DEPARTMENT OF NATURAL RESOURCES; certain
+0ac30d8999613919,NA12NOS4200154,11.420,3b95f3a57b9acc66,NERR Sapelo Island National Estuarine Research Reserve; DEPARTMENT OF NATURAL RESOURCES; certain
+0ac30d8999613919,NA13NOS4200122,11.420,3b95f3a57b9acc66,NERR Sapelo Island National Estuarine Research Reserve; DEPARTMENT OF NATURAL RESOURCES; certain
+0ac30d8999613919,NA14NOS4200127,11.420,3b95f3a57b9acc66,NERR Sapelo Island National Estuarine Research Reserve; DEPARTMENT OF NATURAL RESOURCES; certain
+0ac30d8999613919,NA15NOS4200131,11.420,3b95f3a57b9acc66,NERR Sapelo Island National Estuarine Research Reserve; DEPARTMENT OF NATURAL RESOURCES; certain
+0ac30d8999613919,NA16NOS4200107,11.420,3b95f3a57b9acc66,NERR Sapelo Island National Estuarine Research Reserve; DEPARTMENT OF NATURAL RESOURCES; certain
+0ac30d8999613919,NA17NOS4200103,11.420,3b95f3a57b9acc66,NERR Sapelo Island National Estuarine Research Reserve; DEPARTMENT OF NATURAL RESOURCES; certain
+0ac30d8999613919,NA18NOS4200098,11.420,3b95f3a57b9acc66,NERR Sapelo Island National Estuarine Research Reserve; DEPARTMENT OF NATURAL RESOURCES; certain
+0ac30d8999613919,NA19NOS4200070,11.420,3b95f3a57b9acc66,NERR Sapelo Island National Estuarine Research Reserve; DEPARTMENT OF NATURAL RESOURCES; certain
+0ac30d8999613919,NA20NOS4200029,11.420,3b95f3a57b9acc66,NERR Sapelo Island National Estuarine Research Reserve; DEPARTMENT OF NATURAL RESOURCES; certain
+0ac30d8999613919,NA21NOS4200043,11.420,3b95f3a57b9acc66,NERR Sapelo Island National Estuarine Research Reserve; DEPARTMENT OF NATURAL RESOURCES; certain
+0ac30d8999613919,NA21NOS4200057,11.420,3b95f3a57b9acc66,NERR Sapelo Island National Estuarine Research Reserve; DEPARTMENT OF NATURAL RESOURCES; certain
+0ac30d8999613919,NA22NOS4200029,11.420,3b95f3a57b9acc66,NERR Sapelo Island National Estuarine Research Reserve; DEPARTMENT OF NATURAL RESOURCES; certain
+0ac30d8999613919,NA23NOS4200186,11.420,3b95f3a57b9acc66,NERR Sapelo Island National Estuarine Research Reserve; DEPARTMENT OF NATURAL RESOURCES; certain
+0ac30d8999613919,NA23NOS4200209,11.420,3b95f3a57b9acc66,NERR Sapelo Island National Estuarine Research Reserve; DEPARTMENT OF NATURAL RESOURCES; certain
+0ac30d8999613919,NA24NOSX420C0049,11.420,3b95f3a57b9acc66,NERR Sapelo Island National Estuarine Research Reserve; DEPARTMENT OF NATURAL RESOURCES; certain
+0ac30d8999613919,NA25NOSX420C0005,11.420,3b95f3a57b9acc66,NERR Sapelo Island National Estuarine Research Reserve; DEPARTMENT OF NATURAL RESOURCES; certain
+0ac30d8999613919,NA25NOSX420G0008,11.420,3b95f3a57b9acc66,NERR Sapelo Island National Estuarine Research Reserve; DEPARTMENT OF NATURAL RESOURCES; certain
+0ac30d8999613919,NA26NOSX420C0006,11.420,3b95f3a57b9acc66,NERR Sapelo Island National Estuarine Research Reserve; DEPARTMENT OF NATURAL RESOURCES; certain
+0d6b1e55d4c3c23d,00D20614,66.456,0aecd67acddb43e9,NEP Albemarle-Pamlico National Estuary Partnership; NORTH CAROLINA DEPARTMENT OF ENVIRONMENTAL QUALITY; certain
+0d6b1e55d4c3c23d,00D95519,66.456,0aecd67acddb43e9,NEP Albemarle-Pamlico National Estuary Partnership; NORTH CAROLINA DEPARTMENT OF ENVIRONMENTAL QUALITY; certain
+0d6b1e55d4c3c23d,02D41823,66.456,0aecd67acddb43e9,NEP Albemarle-Pamlico National Estuary Partnership; NORTH CAROLINA DEPARTMENT OF ENVIRONMENTAL QUALITY; certain
+0d6b1e55d4c3c23d,03D20024,66.456,0aecd67acddb43e9,NEP Albemarle-Pamlico National Estuary Partnership; NORTH CAROLINA DEPARTMENT OF ENVIRONMENTAL QUALITY; certain
+0d6b1e55d4c3c23d,03D20025,66.456,0aecd67acddb43e9,NEP Albemarle-Pamlico National Estuary Partnership; NORTH CAROLINA DEPARTMENT OF ENVIRONMENTAL QUALITY; certain
+0d6b1e55d4c3c23d,05D55925,66.456,0aecd67acddb43e9,NEP Albemarle-Pamlico National Estuary Partnership; NORTH CAROLINA DEPARTMENT OF ENVIRONMENTAL QUALITY; certain
+0d6b1e55d4c3c23d,95451210,66.456,0aecd67acddb43e9,NEP Albemarle-Pamlico National Estuary Partnership; NORTH CAROLINA DEPARTMENT OF ENVIRONMENTAL QUALITY; certain
+0d6b1e55d4c3c23d,97464802,66.456,0aecd67acddb43e9,NEP Albemarle-Pamlico National Estuary Partnership; NORTH CAROLINA DEPARTMENT OF ENVIRONMENTAL QUALITY; certain
+14fa1197ed4975e3,96214400,66.456,0aecd67acddb43e9,"NEP Peconic Estuary Partnership; SUFFOLK, COUNTY OF; certain"
+14fa1197ed4975e3,96235922,66.456,0aecd67acddb43e9,NEP Peconic Estuary Partnership; THE RESEARCH FOUNDATION FOR THE STATE UNIVERSITY OF NEW YORK; certain
+14fa1197ed4975e3,96247000,66.456,0aecd67acddb43e9,NEP Peconic Estuary Partnership; THE RESEARCH FOUNDATION FOR THE STATE UNIVERSITY OF NEW YORK; certain
+14fa1197ed4975e3,96247001,66.456,0aecd67acddb43e9,NEP Peconic Estuary Partnership; THE RESEARCH FOUNDATION FOR THE STATE UNIVERSITY OF NEW YORK; certain
+14fa1197ed4975e3,96247002,66.456,0aecd67acddb43e9,NEP Peconic Estuary Partnership; THE RESEARCH FOUNDATION FOR THE STATE UNIVERSITY OF NEW YORK; certain
+14fa1197ed4975e3,96282325,66.456,0aecd67acddb43e9,NEP Peconic Estuary Partnership; THE RESEARCH FOUNDATION FOR THE STATE UNIVERSITY OF NEW YORK; certain
+14fa1197ed4975e3,99200216,66.456,0aecd67acddb43e9,"NEP Peconic Estuary Partnership; SUFFOLK, COUNTY OF; likely"
+14fa1197ed4975e3,99200217,66.456,0aecd67acddb43e9,"NEP Peconic Estuary Partnership; SUFFOLK, COUNTY OF; likely"
+14fa1197ed4975e3,99200218,66.456,0aecd67acddb43e9,"NEP Peconic Estuary Partnership; SUFFOLK, COUNTY OF; certain"
+14fa1197ed4975e3,99200219,66.456,0aecd67acddb43e9,"NEP Peconic Estuary Partnership; SUFFOLK, COUNTY OF; certain"
+14fa1197ed4975e3,99200220,66.456,0aecd67acddb43e9,"NEP Peconic Estuary Partnership; SUFFOLK, COUNTY OF; certain"
+14fa1197ed4975e3,99200221,66.456,0aecd67acddb43e9,"NEP Peconic Estuary Partnership; SUFFOLK, COUNTY OF; certain"
+14fa1197ed4975e3,99200222,66.456,0aecd67acddb43e9,"NEP Peconic Estuary Partnership; SUFFOLK, COUNTY OF; certain"
+1a8028552b3cd284,00A00063,66.456,0aecd67acddb43e9,NEP Casco Bay Estuary Partnership; UNIVERSITY OF MAINE SYSTEM; certain
+1a8028552b3cd284,00A00299,66.456,0aecd67acddb43e9,NEP Casco Bay Estuary Partnership; UNIVERSITY OF MAINE SYSTEM; certain
+1a8028552b3cd284,00A00319,66.456,0aecd67acddb43e9,NEP Casco Bay Estuary Partnership; UNIVERSITY OF MAINE SYSTEM; certain
+1a8028552b3cd284,00A00348,66.456,0aecd67acddb43e9,NEP Casco Bay Estuary Partnership; UNIVERSITY OF MAINE SYSTEM; certain
+1a8028552b3cd284,00A00662,66.456,0aecd67acddb43e9,NEP Casco Bay Estuary Partnership; UNIVERSITY OF MAINE SYSTEM; certain
+1a8028552b3cd284,00A00673,66.456,0aecd67acddb43e9,NEP Casco Bay Estuary Partnership; UNIVERSITY OF MAINE SYSTEM; certain
+1a8028552b3cd284,00A00682,66.456,0aecd67acddb43e9,NEP Casco Bay Estuary Partnership; UNIVERSITY OF MAINE SYSTEM; certain
+1a8028552b3cd284,00A00844,66.456,0aecd67acddb43e9,NEP Casco Bay Estuary Partnership; UNIVERSITY OF MAINE SYSTEM; certain
+1a8028552b3cd284,00A00926,66.456,0aecd67acddb43e9,NEP Casco Bay Estuary Partnership; UNIVERSITY OF MAINE SYSTEM; certain
+1a8028552b3cd284,00A01151,66.456,0aecd67acddb43e9,NEP Casco Bay Estuary Partnership; UNIVERSITY OF MAINE SYSTEM; certain
+1a8028552b3cd284,00A01198,66.456,0aecd67acddb43e9,NEP Casco Bay Estuary Partnership; UNIVERSITY OF MAINE SYSTEM; certain
+1a8028552b3cd284,00A01562,66.456,0aecd67acddb43e9,NEP Casco Bay Estuary Partnership; UNIVERSITY OF MAINE SYSTEM; certain
+1a8028552b3cd284,00A01593,66.456,0aecd67acddb43e9,NEP Casco Bay Estuary Partnership; UNIVERSITY OF MAINE SYSTEM; certain
+1a8028552b3cd284,00A01996,66.456,0aecd67acddb43e9,NEP Casco Bay Estuary Partnership; UNIVERSITY OF MAINE SYSTEM; certain
+1a8028552b3cd284,96105601,66.456,0aecd67acddb43e9,NEP Casco Bay Estuary Partnership; UNIVERSITY OF MAINE SYSTEM; likely
+1a8028552b3cd284,96127201,66.456,0aecd67acddb43e9,NEP Casco Bay Estuary Partnership; UNIVERSITY OF MAINE SYSTEM; likely
+1a8028552b3cd284,96141301,66.456,0aecd67acddb43e9,NEP Casco Bay Estuary Partnership; UNIVERSITY OF MAINE SYSTEM; likely
+1a8028552b3cd284,96160501,66.456,0aecd67acddb43e9,NEP Casco Bay Estuary Partnership; UNIVERSITY OF MAINE SYSTEM; likely
+1a8028552b3cd284,96173101,66.456,0aecd67acddb43e9,NEP Casco Bay Estuary Partnership; UNIVERSITY OF MAINE SYSTEM; likely
+1a8028552b3cd284,96185501,66.456,0aecd67acddb43e9,NEP Casco Bay Estuary Partnership; UNIVERSITY OF MAINE SYSTEM; certain
+1a8028552b3cd284,96190301,66.456,0aecd67acddb43e9,NEP Casco Bay Estuary Partnership; UNIVERSITY OF MAINE SYSTEM; likely
+1a8028552b3cd284,97134601,66.456,0aecd67acddb43e9,NEP Casco Bay Estuary Partnership; UNIVERSITY OF MAINE SYSTEM; likely
+1ebdb6e51e3d1712,NA08NOS4200405,11.420,3b95f3a57b9acc66,NERR Lake Superior National Estuarine Research Reserve; STATE OF WISCONSIN DEPT OF ADMIN; certain
+1ebdb6e51e3d1712,NA12NOS4200153,11.420,3b95f3a57b9acc66,NERR Lake Superior National Estuarine Research Reserve; UNIVERSITY OF WISCONSIN SYSTEM; certain
+1ebdb6e51e3d1712,NA13NOS4200126,11.420,3b95f3a57b9acc66,NERR Lake Superior National Estuarine Research Reserve; UNIVERSITY OF WISCONSIN SYSTEM; certain
+1ebdb6e51e3d1712,NA14NOS4200132,11.420,3b95f3a57b9acc66,NERR Lake Superior National Estuarine Research Reserve; UNIVERSITY OF WISCONSIN SYSTEM; certain
+1ebdb6e51e3d1712,NA15NOS4200047,11.420,3b95f3a57b9acc66,NERR Lake Superior National Estuarine Research Reserve; UNIVERSITY OF WISCONSIN SYSTEM; certain
+1ebdb6e51e3d1712,NA15NOS4200141,11.420,3b95f3a57b9acc66,NERR Lake Superior National Estuarine Research Reserve; UNIVERSITY OF WISCONSIN SYSTEM; certain
+1ebdb6e51e3d1712,NA16NOS4200159,11.420,3b95f3a57b9acc66,NERR Lake Superior National Estuarine Research Reserve; UNIVERSITY OF WISCONSIN SYSTEM; certain
+1ebdb6e51e3d1712,NA17NOS4200122,11.420,3b95f3a57b9acc66,NERR Lake Superior National Estuarine Research Reserve; UNIVERSITY OF WISCONSIN SYSTEM; certain
+1ebdb6e51e3d1712,NA18NOS4200151,11.420,3b95f3a57b9acc66,NERR Lake Superior National Estuarine Research Reserve; UNIVERSITY OF WISCONSIN SYSTEM; certain
+1ebdb6e51e3d1712,NA20NOS4200058,11.420,3b95f3a57b9acc66,NERR Lake Superior National Estuarine Research Reserve; UNIVERSITY OF WISCONSIN SYSTEM; certain
+1ebdb6e51e3d1712,NA20NOS4200171,11.420,3b95f3a57b9acc66,NERR Lake Superior National Estuarine Research Reserve; UNIVERSITY OF WISCONSIN SYSTEM; certain
+1ebdb6e51e3d1712,NA22NOS4200130,11.420,3b95f3a57b9acc66,NERR Lake Superior National Estuarine Research Reserve; UNIVERSITY OF WISCONSIN SYSTEM; certain
+1ebdb6e51e3d1712,NA22NOS4200201,11.420,3b95f3a57b9acc66,NERR Lake Superior National Estuarine Research Reserve; UNIVERSITY OF WISCONSIN SYSTEM; certain
+1ebdb6e51e3d1712,NA24NOSX420C0059,11.420,3b95f3a57b9acc66,NERR Lake Superior National Estuarine Research Reserve; UNIVERSITY OF WISCONSIN SYSTEM; certain
+1ebdb6e51e3d1712,NA25NOSX420G0012,11.420,3b95f3a57b9acc66,NERR Lake Superior National Estuarine Research Reserve; UNIVERSITY OF WISCONSIN SYSTEM; certain
+1ebdb6e51e3d1712,NA26NOSX420C0026,11.420,3b95f3a57b9acc66,NERR Lake Superior National Estuarine Research Reserve; UNIVERSITY OF WISCONSIN SYSTEM; certain
+22defb4a3ee37d8a,NA08NOS4200397,11.420,3b95f3a57b9acc66,NERR San Francisco Bay National Estuarine Research Reserve; SAN FRANCISCO STATE UNIVERSITY; certain
+22defb4a3ee37d8a,NA09NOS4200141,11.420,3b95f3a57b9acc66,NERR San Francisco Bay National Estuarine Research Reserve; SAN FRANCISCO STATE UNIVERSITY; likely
+22defb4a3ee37d8a,NA10NOS4200127,11.420,3b95f3a57b9acc66,NERR San Francisco Bay National Estuarine Research Reserve; SAN FRANCISCO STATE UNIVERSITY; likely
+22defb4a3ee37d8a,NA11NOS4200093,11.420,3b95f3a57b9acc66,NERR San Francisco Bay National Estuarine Research Reserve; SAN FRANCISCO STATE UNIVERSITY; likely
+22defb4a3ee37d8a,NA11NOS4200129,11.420,3b95f3a57b9acc66,NERR San Francisco Bay National Estuarine Research Reserve; SAN FRANCISCO STATE UNIVERSITY; certain
+22defb4a3ee37d8a,NA12NOS4200121,11.420,3b95f3a57b9acc66,NERR San Francisco Bay National Estuarine Research Reserve; SAN FRANCISCO STATE UNIVERSITY; certain
+22defb4a3ee37d8a,NA13NOS4200076,11.420,3b95f3a57b9acc66,NERR San Francisco Bay National Estuarine Research Reserve; SAN FRANCISCO STATE UNIVERSITY; certain
+22defb4a3ee37d8a,NA14NOS4200035,11.420,3b95f3a57b9acc66,NERR San Francisco Bay National Estuarine Research Reserve; SAN FRANCISCO STATE UNIVERSITY; certain
+22defb4a3ee37d8a,NA15NOS4200109,11.420,3b95f3a57b9acc66,NERR San Francisco Bay National Estuarine Research Reserve; SAN FRANCISCO STATE UNIVERSITY; certain
+22defb4a3ee37d8a,NA16NOS4200076,11.420,3b95f3a57b9acc66,NERR San Francisco Bay National Estuarine Research Reserve; SAN FRANCISCO STATE UNIVERSITY; certain
+22defb4a3ee37d8a,NA17NOS4200070,11.420,3b95f3a57b9acc66,NERR San Francisco Bay National Estuarine Research Reserve; SAN FRANCISCO STATE UNIVERSITY; likely
+22defb4a3ee37d8a,NA18NOS4200078,11.420,3b95f3a57b9acc66,NERR San Francisco Bay National Estuarine Research Reserve; SAN FRANCISCO STATE UNIVERSITY; certain
+22defb4a3ee37d8a,NA18NOS4200150,11.420,3b95f3a57b9acc66,NERR San Francisco Bay National Estuarine Research Reserve; SAN FRANCISCO STATE UNIVERSITY; certain
+22defb4a3ee37d8a,NA19NOS4200077,11.420,3b95f3a57b9acc66,NERR San Francisco Bay National Estuarine Research Reserve; SAN FRANCISCO STATE UNIVERSITY; likely
+22defb4a3ee37d8a,NA20NOS4200098,11.420,3b95f3a57b9acc66,NERR San Francisco Bay National Estuarine Research Reserve; SAN FRANCISCO STATE UNIVERSITY; certain
+22defb4a3ee37d8a,NA21NOS4200053,11.420,3b95f3a57b9acc66,NERR San Francisco Bay National Estuarine Research Reserve; SAN FRANCISCO STATE UNIVERSITY; certain
+22defb4a3ee37d8a,NA22NOS4200036,11.420,3b95f3a57b9acc66,NERR San Francisco Bay National Estuarine Research Reserve; SAN FRANCISCO STATE UNIVERSITY; certain
+22defb4a3ee37d8a,NA23NOS4200176,11.420,3b95f3a57b9acc66,NERR San Francisco Bay National Estuarine Research Reserve; SAN FRANCISCO STATE UNIVERSITY; certain
+22defb4a3ee37d8a,NA24NOSX420C0041,11.420,3b95f3a57b9acc66,NERR San Francisco Bay National Estuarine Research Reserve; SAN FRANCISCO STATE UNIVERSITY; certain
+22defb4a3ee37d8a,NA24NOSX420G0023,11.420,3b95f3a57b9acc66,NERR San Francisco Bay National Estuarine Research Reserve; SAN FRANCISCO STATE UNIVERSITY; certain
+22defb4a3ee37d8a,NA25NOSX420C0012,11.420,3b95f3a57b9acc66,NERR San Francisco Bay National Estuarine Research Reserve; SAN FRANCISCO STATE UNIVERSITY; certain
+22defb4a3ee37d8a,NA26NOSX420C0034,11.420,3b95f3a57b9acc66,NERR San Francisco Bay National Estuarine Research Reserve; SAN FRANCISCO STATE UNIVERSITY; certain
+2adc72ff42d9de08,96236122,66.456,0aecd67acddb43e9,NEP Barnegat Bay Partnership; OCEAN COUNTY COLLEGE; certain
+2adc72ff42d9de08,96268724,66.456,0aecd67acddb43e9,NEP Barnegat Bay Partnership; OCEAN COUNTY COLLEGE; certain
+2adc72ff42d9de08,96287126,66.456,0aecd67acddb43e9,NEP Barnegat Bay Partnership; OCEAN COUNTY COLLEGE; certain
+2adc72ff42d9de08,98212309,66.456,0aecd67acddb43e9,NEP Barnegat Bay Partnership; OCEAN COUNTY COLLEGE; certain
+2adc72ff42d9de08,98212310,66.456,0aecd67acddb43e9,NEP Barnegat Bay Partnership; OCEAN COUNTY COLLEGE; likely
+2adc72ff42d9de08,98212311,66.456,0aecd67acddb43e9,NEP Barnegat Bay Partnership; OCEAN COUNTY COLLEGE; likely
+2adc72ff42d9de08,98212312,66.456,0aecd67acddb43e9,NEP Barnegat Bay Partnership; OCEAN COUNTY COLLEGE; certain
+2adc72ff42d9de08,98212313,66.456,0aecd67acddb43e9,NEP Barnegat Bay Partnership; OCEAN COUNTY COLLEGE; certain
+2adc72ff42d9de08,98212314,66.456,0aecd67acddb43e9,NEP Barnegat Bay Partnership; OCEAN COUNTY COLLEGE; certain
+2adc72ff42d9de08,98212315,66.456,0aecd67acddb43e9,NEP Barnegat Bay Partnership; OCEAN COUNTY COLLEGE; certain
+347afc985afeade9,NA08NOS4200304,11.420,3b95f3a57b9acc66,NERR Padilla Bay National Estuarine Research Reserve; STATE OF WASHINGTON; certain
+347afc985afeade9,NA08NOS4200355,11.420,3b95f3a57b9acc66,NERR Padilla Bay National Estuarine Research Reserve; STATE OF WASHINGTON; certain
+347afc985afeade9,NA09NOS4200125,11.420,3b95f3a57b9acc66,NERR Padilla Bay National Estuarine Research Reserve; STATE OF WASHINGTON; certain
+347afc985afeade9,NA10NOS4200099,11.420,3b95f3a57b9acc66,NERR Padilla Bay National Estuarine Research Reserve; STATE OF WASHINGTON; likely
+347afc985afeade9,NA10NOS4200108,11.420,3b95f3a57b9acc66,NERR Padilla Bay National Estuarine Research Reserve; STATE OF WASHINGTON; certain
+347afc985afeade9,NA11NOS4200159,11.420,3b95f3a57b9acc66,NERR Padilla Bay National Estuarine Research Reserve; STATE OF WASHINGTON; certain
+347afc985afeade9,NA12NOS4200046,11.420,3b95f3a57b9acc66,NERR Padilla Bay National Estuarine Research Reserve; STATE OF WASHINGTON; likely
+347afc985afeade9,NA12NOS4200112,11.420,3b95f3a57b9acc66,NERR Padilla Bay National Estuarine Research Reserve; STATE OF WASHINGTON; certain
+347afc985afeade9,NA13NOS4200085,11.420,3b95f3a57b9acc66,NERR Padilla Bay National Estuarine Research Reserve; STATE OF WASHINGTON; certain
+347afc985afeade9,NA14NOS4200057,11.420,3b95f3a57b9acc66,NERR Padilla Bay National Estuarine Research Reserve; STATE OF WASHINGTON; certain
+347afc985afeade9,NA15NOS4200110,11.420,3b95f3a57b9acc66,NERR Padilla Bay National Estuarine Research Reserve; STATE OF WASHINGTON; certain
+347afc985afeade9,NA16NOS4200084,11.420,3b95f3a57b9acc66,NERR Padilla Bay National Estuarine Research Reserve; STATE OF WASHINGTON; certain
+347afc985afeade9,NA17NOS4200161,11.420,3b95f3a57b9acc66,NERR Padilla Bay National Estuarine Research Reserve; STATE OF WASHINGTON; likely
+347afc985afeade9,NA18NOS4200076,11.420,3b95f3a57b9acc66,NERR Padilla Bay National Estuarine Research Reserve; STATE OF WASHINGTON; certain
+347afc985afeade9,NA18NOS4200148,11.420,3b95f3a57b9acc66,NERR Padilla Bay National Estuarine Research Reserve; STATE OF WASHINGTON; likely
+347afc985afeade9,NA20NOS4200094,11.420,3b95f3a57b9acc66,NERR Padilla Bay National Estuarine Research Reserve; STATE OF WASHINGTON; certain
+347afc985afeade9,NA21NOS4200058,11.420,3b95f3a57b9acc66,NERR Padilla Bay National Estuarine Research Reserve; STATE OF WASHINGTON; certain
+347afc985afeade9,NA22NOS4200096,11.420,3b95f3a57b9acc66,NERR Padilla Bay National Estuarine Research Reserve; STATE OF WASHINGTON; certain
+347afc985afeade9,NA24NOSX420C0047,11.420,3b95f3a57b9acc66,NERR Padilla Bay National Estuarine Research Reserve; STATE OF WASHINGTON; certain
+347afc985afeade9,NA26NOSX420C0018,11.420,3b95f3a57b9acc66,NERR Padilla Bay National Estuarine Research Reserve; STATE OF WASHINGTON; certain
+3cce246f72e42148,95308701,66.456,0aecd67acddb43e9,"NEP Maryland Coastal Bays Program; MARYLAND COASTAL BAYS FOUNDATION, INC.; certain"
+3cce246f72e42148,95333301,66.456,0aecd67acddb43e9,"NEP Maryland Coastal Bays Program; MARYLAND COASTAL BAYS FOUNDATION, INC.; certain"
+3cce246f72e42148,953A0073,66.456,0aecd67acddb43e9,"NEP Maryland Coastal Bays Program; MARYLAND COASTAL BAYS FOUNDATION, INC.; certain"
+3cce246f72e42148,953A0286,66.456,0aecd67acddb43e9,"NEP Maryland Coastal Bays Program; MARYLAND COASTAL BAYS FOUNDATION, INC.; certain"
+3cce246f72e42148,98320908,66.456,0aecd67acddb43e9,"NEP Maryland Coastal Bays Program; MARYLAND COASTAL BAYS FOUNDATION, INC.; certain"
+3cce246f72e42148,98320909,66.456,0aecd67acddb43e9,"NEP Maryland Coastal Bays Program; MARYLAND COASTAL BAYS FOUNDATION, INC.; certain"
+3cce246f72e42148,98320910,66.456,0aecd67acddb43e9,"NEP Maryland Coastal Bays Program; MARYLAND COASTAL BAYS FOUNDATION, INC.; certain"
+3cce246f72e42148,98320911,66.456,0aecd67acddb43e9,"NEP Maryland Coastal Bays Program; MARYLAND COASTAL BAYS FOUNDATION, INC.; certain"
+3cce246f72e42148,98320912,66.456,0aecd67acddb43e9,"NEP Maryland Coastal Bays Program; MARYLAND COASTAL BAYS FOUNDATION, INC.; certain"
+3cce246f72e42148,98320913,66.456,0aecd67acddb43e9,"NEP Maryland Coastal Bays Program; MARYLAND COASTAL BAYS FOUNDATION, INC.; certain"
+3cce246f72e42148,98320914,66.456,0aecd67acddb43e9,"NEP Maryland Coastal Bays Program; MARYLAND COASTAL BAYS FOUNDATION, INC.; certain"
+3cce246f72e42148,98320916,66.456,0aecd67acddb43e9,"NEP Maryland Coastal Bays Program; MARYLAND COASTAL BAYS FOUNDATION, INC.; certain"
+3cce246f72e42148,98320917,66.456,0aecd67acddb43e9,"NEP Maryland Coastal Bays Program; MARYLAND COASTAL BAYS FOUNDATION, INC.; certain"
+3cce246f72e42148,98320918,66.456,0aecd67acddb43e9,"NEP Maryland Coastal Bays Program; MARYLAND COASTAL BAYS FOUNDATION, INC.; certain"
+402ccdf886fa609d,00F21401,66.456,0aecd67acddb43e9,"NEP Coastal Bend Bays and Estuaries Program; COASTAL BEND BAYS & ESTUARIES PROGRAM, INC.; likely"
+402ccdf886fa609d,00F39301,66.456,0aecd67acddb43e9,"NEP Coastal Bend Bays and Estuaries Program; COASTAL BEND BAYS & ESTUARIES PROGRAM, INC.; likely"
+402ccdf886fa609d,00F90501,66.456,0aecd67acddb43e9,"NEP Coastal Bend Bays and Estuaries Program; COASTAL BEND BAYS & ESTUARIES PROGRAM, INC.; likely"
+402ccdf886fa609d,02F24501,66.456,0aecd67acddb43e9,"NEP Coastal Bend Bays and Estuaries Program; COASTAL BEND BAYS & ESTUARIES PROGRAM, INC.; certain"
+402ccdf886fa609d,02F49201,66.456,0aecd67acddb43e9,"NEP Coastal Bend Bays and Estuaries Program; COASTAL BEND BAYS & ESTUARIES PROGRAM, INC.; certain"
+402ccdf886fa609d,02F77201,66.456,0aecd67acddb43e9,"NEP Coastal Bend Bays and Estuaries Program; COASTAL BEND BAYS & ESTUARIES PROGRAM, INC.; certain"
+402ccdf886fa609d,02F99701,66.456,0aecd67acddb43e9,"NEP Coastal Bend Bays and Estuaries Program; COASTAL BEND BAYS & ESTUARIES PROGRAM, INC.; certain"
+402ccdf886fa609d,98685808,66.456,0aecd67acddb43e9,"NEP Coastal Bend Bays and Estuaries Program; COASTAL BEND BAYS & ESTUARIES PROGRAM, INC.; likely"
+402ccdf886fa609d,98685809,66.456,0aecd67acddb43e9,"NEP Coastal Bend Bays and Estuaries Program; COASTAL BEND BAYS & ESTUARIES PROGRAM, INC.; likely"
+402ccdf886fa609d,98685810,66.456,0aecd67acddb43e9,"NEP Coastal Bend Bays and Estuaries Program; COASTAL BEND BAYS & ESTUARIES PROGRAM, INC.; likely"
+402ccdf886fa609d,98685811,66.456,0aecd67acddb43e9,"NEP Coastal Bend Bays and Estuaries Program; COASTAL BEND BAYS & ESTUARIES PROGRAM, INC.; likely"
+402ccdf886fa609d,98685812,66.456,0aecd67acddb43e9,"NEP Coastal Bend Bays and Estuaries Program; COASTAL BEND BAYS & ESTUARIES PROGRAM, INC.; likely"
+402ccdf886fa609d,98685813,66.456,0aecd67acddb43e9,"NEP Coastal Bend Bays and Estuaries Program; COASTAL BEND BAYS & ESTUARIES PROGRAM, INC.; likely"
+402ccdf886fa609d,98685814,66.456,0aecd67acddb43e9,"NEP Coastal Bend Bays and Estuaries Program; COASTAL BEND BAYS & ESTUARIES PROGRAM, INC.; certain"
+402ccdf886fa609d,98685815,66.456,0aecd67acddb43e9,"NEP Coastal Bend Bays and Estuaries Program; COASTAL BEND BAYS & ESTUARIES PROGRAM, INC.; certain"
+402ccdf886fa609d,98685816,66.456,0aecd67acddb43e9,"NEP Coastal Bend Bays and Estuaries Program; COASTAL BEND BAYS & ESTUARIES PROGRAM, INC.; certain"
+402ccdf886fa609d,98685817,66.456,0aecd67acddb43e9,"NEP Coastal Bend Bays and Estuaries Program; COASTAL BEND BAYS & ESTUARIES PROGRAM, INC.; certain"
+402ccdf886fa609d,98685818,66.456,0aecd67acddb43e9,"NEP Coastal Bend Bays and Estuaries Program; COASTAL BEND BAYS & ESTUARIES PROGRAM, INC.; certain"
+402ccdf886fa609d,98685819,66.456,0aecd67acddb43e9,"NEP Coastal Bend Bays and Estuaries Program; COASTAL BEND BAYS & ESTUARIES PROGRAM, INC.; certain"
+402ccdf886fa609d,98685820,66.456,0aecd67acddb43e9,"NEP Coastal Bend Bays and Estuaries Program; COASTAL BEND BAYS & ESTUARIES PROGRAM, INC.; certain"
+402ccdf886fa609d,98685821,66.456,0aecd67acddb43e9,"NEP Coastal Bend Bays and Estuaries Program; COASTAL BEND BAYS & ESTUARIES PROGRAM, INC.; certain"
+402ccdf886fa609d,98685822,66.456,0aecd67acddb43e9,"NEP Coastal Bend Bays and Estuaries Program; COASTAL BEND BAYS & ESTUARIES PROGRAM, INC.; certain"
+402ccdf886fa609d,98685824,66.456,0aecd67acddb43e9,"NEP Coastal Bend Bays and Estuaries Program; COASTAL BEND BAYS & ESTUARIES PROGRAM, INC.; certain"
+449c081d421f2116,NA08NOS4200401,11.420,3b95f3a57b9acc66,NERR Elkhorn Slough National Estuarine Research Reserve; STATE COASTAL CONSERVANCY; certain
+449c081d421f2116,NA08NOS4200403,11.420,3b95f3a57b9acc66,NERR Elkhorn Slough National Estuarine Research Reserve; ELKHORN SLOUGH FOUNDATION; likely
+449c081d421f2116,NA09NOS4200144,11.420,3b95f3a57b9acc66,NERR Elkhorn Slough National Estuarine Research Reserve; STATE COASTAL CONSERVANCY; certain
+449c081d421f2116,NA10NOS4200128,11.420,3b95f3a57b9acc66,NERR Elkhorn Slough National Estuarine Research Reserve; STATE COASTAL CONSERVANCY; certain
+449c081d421f2116,NA11NOS4200127,11.420,3b95f3a57b9acc66,NERR Elkhorn Slough National Estuarine Research Reserve; STATE COASTAL CONSERVANCY; certain
+449c081d421f2116,NA12NOS4200124,11.420,3b95f3a57b9acc66,NERR Elkhorn Slough National Estuarine Research Reserve; STATE COASTAL CONSERVANCY; certain
+449c081d421f2116,NA13NOS4200078,11.420,3b95f3a57b9acc66,NERR Elkhorn Slough National Estuarine Research Reserve; STATE COASTAL CONSERVANCY; certain
+449c081d421f2116,NA14NOS4200034,11.420,3b95f3a57b9acc66,NERR Elkhorn Slough National Estuarine Research Reserve; STATE COASTAL CONSERVANCY; certain
+449c081d421f2116,NA15NOS4200070,11.420,3b95f3a57b9acc66,NERR Elkhorn Slough National Estuarine Research Reserve; STATE COASTAL CONSERVANCY; certain
+449c081d421f2116,NA16NOS4200073,11.420,3b95f3a57b9acc66,NERR Elkhorn Slough National Estuarine Research Reserve; STATE COASTAL CONSERVANCY; certain
+449c081d421f2116,NA16NOS4200113,11.420,3b95f3a57b9acc66,NERR Elkhorn Slough National Estuarine Research Reserve; ELKHORN SLOUGH FOUNDATION; certain
+449c081d421f2116,NA17NOS4200041,11.420,3b95f3a57b9acc66,NERR Elkhorn Slough National Estuarine Research Reserve; STATE COASTAL CONSERVANCY; certain
+449c081d421f2116,NA18NOS4200075,11.420,3b95f3a57b9acc66,NERR Elkhorn Slough National Estuarine Research Reserve; STATE COASTAL CONSERVANCY; certain
+449c081d421f2116,NA18NOS4200149,11.420,3b95f3a57b9acc66,NERR Elkhorn Slough National Estuarine Research Reserve; ELKHORN SLOUGH FOUNDATION; certain
+449c081d421f2116,NA19NOS4200044,11.420,3b95f3a57b9acc66,NERR Elkhorn Slough National Estuarine Research Reserve; ELKHORN SLOUGH FOUNDATION; certain
+449c081d421f2116,NA19NOS4200050,11.420,3b95f3a57b9acc66,NERR Elkhorn Slough National Estuarine Research Reserve; STATE COASTAL CONSERVANCY; certain
+449c081d421f2116,NA20NOS4200053,11.420,3b95f3a57b9acc66,NERR Elkhorn Slough National Estuarine Research Reserve; ELKHORN SLOUGH FOUNDATION; certain
+449c081d421f2116,NA20NOS4200097,11.420,3b95f3a57b9acc66,NERR Elkhorn Slough National Estuarine Research Reserve; STATE COASTAL CONSERVANCY; certain
+449c081d421f2116,NA21NOS4200042,11.420,3b95f3a57b9acc66,NERR Elkhorn Slough National Estuarine Research Reserve; STATE COASTAL CONSERVANCY; certain
+449c081d421f2116,NA21NOS4200059,11.420,3b95f3a57b9acc66,NERR Elkhorn Slough National Estuarine Research Reserve; ELKHORN SLOUGH FOUNDATION; certain
+449c081d421f2116,NA22NOS4200039,11.420,3b95f3a57b9acc66,NERR Elkhorn Slough National Estuarine Research Reserve; STATE COASTAL CONSERVANCY; certain
+449c081d421f2116,NA23NOS4200174,11.420,3b95f3a57b9acc66,NERR Elkhorn Slough National Estuarine Research Reserve; STATE COASTAL CONSERVANCY; certain
+449c081d421f2116,NA24NOSX420C0040,11.420,3b95f3a57b9acc66,NERR Elkhorn Slough National Estuarine Research Reserve; STATE COASTAL CONSERVANCY; certain
+449c081d421f2116,NA24NOSX420G0017,11.420,3b95f3a57b9acc66,NERR Elkhorn Slough National Estuarine Research Reserve; ELKHORN SLOUGH FOUNDATION; certain
+449c081d421f2116,NA25NOSX420C0019,11.420,3b95f3a57b9acc66,NERR Elkhorn Slough National Estuarine Research Reserve; STATE COASTAL CONSERVANCY; certain
+449c081d421f2116,NA25NOSX420G0005,11.420,3b95f3a57b9acc66,NERR Elkhorn Slough National Estuarine Research Reserve; ELKHORN SLOUGH FOUNDATION; certain
+449c081d421f2116,NA26NOSX420C0030,11.420,3b95f3a57b9acc66,NERR Elkhorn Slough National Estuarine Research Reserve; STATE COASTAL CONSERVANCY; certain
+458e96ead560e429,00T47801,66.456,0aecd67acddb43e9,NEP San Francisco Estuary Partnership; ASSOCIATION OF BAY AREA GOVERNMENTS; certain
+458e96ead560e429,96949401,66.456,0aecd67acddb43e9,NEP San Francisco Estuary Partnership; ASSOCIATION OF BAY AREA GOVERNMENTS; certain
+458e96ead560e429,97T08201,66.456,0aecd67acddb43e9,NEP San Francisco Estuary Partnership; ASSOCIATION OF BAY AREA GOVERNMENTS; certain
+458e96ead560e429,98T45901,66.456,0aecd67acddb43e9,NEP San Francisco Estuary Partnership; ASSOCIATION OF BAY AREA GOVERNMENTS; certain
+458e96ead560e429,99T59901,66.456,0aecd67acddb43e9,NEP San Francisco Estuary Partnership; ASSOCIATION OF BAY AREA GOVERNMENTS; certain
+4ac94e4e5da49682,NA08NOS4200302,11.420,3b95f3a57b9acc66,NERR North Carolina National Estuarine Research Reserve; NORTH CAROLINA DEPARTMENT OF ENVIRONMENTAL QUALITY; certain
+4ac94e4e5da49682,NA08NOS4200352,11.420,3b95f3a57b9acc66,NERR North Carolina National Estuarine Research Reserve; NORTH CAROLINA DEPARTMENT OF ENVIRONMENTAL QUALITY; certain
+4ac94e4e5da49682,NA09NOS4200148,11.420,3b95f3a57b9acc66,NERR North Carolina National Estuarine Research Reserve; NORTH CAROLINA DEPARTMENT OF ENVIRONMENTAL QUALITY; certain
+4ac94e4e5da49682,NA10NOS4200110,11.420,3b95f3a57b9acc66,NERR North Carolina National Estuarine Research Reserve; NORTH CAROLINA DEPARTMENT OF ENVIRONMENTAL QUALITY; certain
+4ac94e4e5da49682,NA10NOS4200125,11.420,3b95f3a57b9acc66,NERR North Carolina National Estuarine Research Reserve; NORTH CAROLINA DEPARTMENT OF ENVIRONMENTAL QUALITY; certain
+4ac94e4e5da49682,NA11NOS4200156,11.420,3b95f3a57b9acc66,NERR North Carolina National Estuarine Research Reserve; NORTH CAROLINA DEPARTMENT OF ENVIRONMENTAL QUALITY; certain
+4ac94e4e5da49682,NA12NOS4200102,11.420,3b95f3a57b9acc66,NERR North Carolina National Estuarine Research Reserve; NORTH CAROLINA DEPARTMENT OF ENVIRONMENTAL QUALITY; certain
+4ac94e4e5da49682,NA13NOS4200080,11.420,3b95f3a57b9acc66,NERR North Carolina National Estuarine Research Reserve; NORTH CAROLINA DEPARTMENT OF ENVIRONMENTAL QUALITY; certain
+4ac94e4e5da49682,NA14NOS4200051,11.420,3b95f3a57b9acc66,NERR North Carolina National Estuarine Research Reserve; NORTH CAROLINA DEPARTMENT OF ENVIRONMENTAL QUALITY; certain
+4ac94e4e5da49682,NA15NOS4200108,11.420,3b95f3a57b9acc66,NERR North Carolina National Estuarine Research Reserve; NORTH CAROLINA DEPARTMENT OF ENVIRONMENTAL QUALITY; certain
+4ac94e4e5da49682,NA16NOS4200091,11.420,3b95f3a57b9acc66,NERR North Carolina National Estuarine Research Reserve; NORTH CAROLINA DEPARTMENT OF ENVIRONMENTAL QUALITY; certain
+4ac94e4e5da49682,NA17NOS4200046,11.420,3b95f3a57b9acc66,NERR North Carolina National Estuarine Research Reserve; NORTH CAROLINA DEPARTMENT OF ENVIRONMENTAL QUALITY; certain
+4ac94e4e5da49682,NA18NOS4200012,11.420,3b95f3a57b9acc66,NERR North Carolina National Estuarine Research Reserve; NORTH CAROLINA DEPARTMENT OF ENVIRONMENTAL QUALITY; certain
+4ac94e4e5da49682,NA19NOS4200072,11.420,3b95f3a57b9acc66,NERR North Carolina National Estuarine Research Reserve; NORTH CAROLINA DEPARTMENT OF ENVIRONMENTAL QUALITY; certain
+4ac94e4e5da49682,NA20NOS4200016,11.420,3b95f3a57b9acc66,NERR North Carolina National Estuarine Research Reserve; NORTH CAROLINA DEPARTMENT OF ENVIRONMENTAL QUALITY; certain
+4ac94e4e5da49682,NA20NOS4200069,11.420,3b95f3a57b9acc66,NERR North Carolina National Estuarine Research Reserve; NORTH CAROLINA DEPARTMENT OF ENVIRONMENTAL QUALITY; certain
+4ac94e4e5da49682,NA21NOS4200065,11.420,3b95f3a57b9acc66,NERR North Carolina National Estuarine Research Reserve; NORTH CAROLINA DEPARTMENT OF ENVIRONMENTAL QUALITY; certain
+4ac94e4e5da49682,NA21NOS4200071,11.420,3b95f3a57b9acc66,NERR North Carolina National Estuarine Research Reserve; NORTH CAROLINA DEPARTMENT OF ENVIRONMENTAL QUALITY; certain
+4ac94e4e5da49682,NA22NOS4200074,11.420,3b95f3a57b9acc66,NERR North Carolina National Estuarine Research Reserve; NORTH CAROLINA DEPARTMENT OF ENVIRONMENTAL QUALITY; certain
+4ac94e4e5da49682,NA24NOSX420C0038,11.420,3b95f3a57b9acc66,NERR North Carolina National Estuarine Research Reserve; NORTH CAROLINA DEPARTMENT OF ENVIRONMENTAL QUALITY; certain
+4ac94e4e5da49682,NA26NOSX420C0027,11.420,3b95f3a57b9acc66,NERR North Carolina National Estuarine Research Reserve; NORTH CAROLINA DEPARTMENT OF ENVIRONMENTAL QUALITY; certain
+4da06ce200c54800,NA17NOS4200128,11.420,3b95f3a57b9acc66,NERR Connecticut National Estuarine Research Reserve; DEPT OF ENERGY & ENVIRONMENTAL PROTECTION; certain
+4da06ce200c54800,NA19NOS4200133,11.420,3b95f3a57b9acc66,NERR Connecticut National Estuarine Research Reserve; DEPT OF ENERGY & ENVIRONMENTAL PROTECTION; certain
+4da06ce200c54800,NA22NOS4200038,11.420,3b95f3a57b9acc66,NERR Connecticut National Estuarine Research Reserve; UNIVERSITY OF CONNECTICUT; certain
+4da06ce200c54800,NA23NOS4200169,11.420,3b95f3a57b9acc66,NERR Connecticut National Estuarine Research Reserve; UNIVERSITY OF CONNECTICUT; likely
+4da06ce200c54800,NA23NOS4200184,11.420,3b95f3a57b9acc66,NERR Connecticut National Estuarine Research Reserve; UNIVERSITY OF CONNECTICUT; certain
+4da06ce200c54800,NA24NOSX420C0036,11.420,3b95f3a57b9acc66,NERR Connecticut National Estuarine Research Reserve; UNIVERSITY OF CONNECTICUT; certain
+4da06ce200c54800,NA25NOSX420C0018,11.420,3b95f3a57b9acc66,NERR Connecticut National Estuarine Research Reserve; UNIVERSITY OF CONNECTICUT; certain
+4da06ce200c54800,NA26NOSX420C0024,11.420,3b95f3a57b9acc66,NERR Connecticut National Estuarine Research Reserve; UNIVERSITY OF CONNECTICUT; certain
+51767bd943f43bf0,00D22214,66.456,0aecd67acddb43e9,NEP Coastal and Heartland National Estuary Partnership; CITY OF PUNTA GORDA; certain
+51767bd943f43bf0,00D90019,66.456,0aecd67acddb43e9,NEP Coastal and Heartland National Estuary Partnership; CITY OF PUNTA GORDA; certain
+51767bd943f43bf0,02D41623,66.456,0aecd67acddb43e9,NEP Coastal and Heartland National Estuary Partnership; COUNTY OF CHARLOTTE; certain
+51767bd943f43bf0,02D41625,66.456,0aecd67acddb43e9,NEP Coastal and Heartland National Estuary Partnership; COUNTY OF CHARLOTTE; certain
+51767bd943f43bf0,02D42123,66.456,0aecd67acddb43e9,NEP Coastal and Heartland National Estuary Partnership; COUNTY OF CHARLOTTE; certain
+51767bd943f43bf0,02D42125,66.456,0aecd67acddb43e9,NEP Coastal and Heartland National Estuary Partnership; COUNTY OF CHARLOTTE; certain
+51767bd943f43bf0,95483611,66.456,0aecd67acddb43e9,NEP Coastal and Heartland National Estuary Partnership; SOUTHWEST FLORIDA REGIONAL PLANNING COUNCIL; likely
+51767bd943f43bf0,96457406,66.456,0aecd67acddb43e9,NEP Coastal and Heartland National Estuary Partnership; SOUTHWEST FLORIDA REGIONAL PLANNING COUNCIL; certain
+575fa84330e60c4b,NA08NOS4200347,11.420,3b95f3a57b9acc66,NERR Kachemak Bay National Estuarine Research Reserve; ALASKA DEPARTMENT OF FISH & GAME; certain
+575fa84330e60c4b,NA09NOS4200124,11.420,3b95f3a57b9acc66,NERR Kachemak Bay National Estuarine Research Reserve; ALASKA DEPARTMENT OF FISH & GAME; certain
+575fa84330e60c4b,NA10NOS4200106,11.420,3b95f3a57b9acc66,NERR Kachemak Bay National Estuarine Research Reserve; ALASKA DEPARTMENT OF FISH & GAME; certain
+575fa84330e60c4b,NA11NOS4200160,11.420,3b95f3a57b9acc66,NERR Kachemak Bay National Estuarine Research Reserve; ALASKA DEPARTMENT OF FISH & GAME; certain
+575fa84330e60c4b,NA12NOS4200111,11.420,3b95f3a57b9acc66,NERR Kachemak Bay National Estuarine Research Reserve; ALASKA DEPARTMENT OF FISH & GAME; certain
+575fa84330e60c4b,NA13NOS4200086,11.420,3b95f3a57b9acc66,NERR Kachemak Bay National Estuarine Research Reserve; ALASKA DEPARTMENT OF FISH & GAME; certain
+575fa84330e60c4b,NA14NOS4200058,11.420,3b95f3a57b9acc66,NERR Kachemak Bay National Estuarine Research Reserve; ALASKA DEPARTMENT OF FISH & GAME; certain
+575fa84330e60c4b,NA15NOS4200129,11.420,3b95f3a57b9acc66,NERR Kachemak Bay National Estuarine Research Reserve; UNIVERSITY OF ALASKA ANCHORAGE; certain
+575fa84330e60c4b,NA16NOS4200083,11.420,3b95f3a57b9acc66,NERR Kachemak Bay National Estuarine Research Reserve; UNIVERSITY OF ALASKA ANCHORAGE; certain
+575fa84330e60c4b,NA17NOS4200068,11.420,3b95f3a57b9acc66,NERR Kachemak Bay National Estuarine Research Reserve; UNIVERSITY OF ALASKA ANCHORAGE; certain
+575fa84330e60c4b,NA19NOS4200075,11.420,3b95f3a57b9acc66,NERR Kachemak Bay National Estuarine Research Reserve; UNIVERSITY OF ALASKA ANCHORAGE; certain
+575fa84330e60c4b,NA20NOS4200093,11.420,3b95f3a57b9acc66,NERR Kachemak Bay National Estuarine Research Reserve; UNIVERSITY OF ALASKA ANCHORAGE; certain
+575fa84330e60c4b,NA21NOS4200051,11.420,3b95f3a57b9acc66,NERR Kachemak Bay National Estuarine Research Reserve; UNIVERSITY OF ALASKA ANCHORAGE; certain
+575fa84330e60c4b,NA22NOS4200098,11.420,3b95f3a57b9acc66,NERR Kachemak Bay National Estuarine Research Reserve; UNIVERSITY OF ALASKA ANCHORAGE; certain
+575fa84330e60c4b,NA23NOS4200217,11.420,3b95f3a57b9acc66,NERR Kachemak Bay National Estuarine Research Reserve; UNIVERSITY OF ALASKA ANCHORAGE; certain
+575fa84330e60c4b,NA24NOSX420C0052,11.420,3b95f3a57b9acc66,NERR Kachemak Bay National Estuarine Research Reserve; UNIVERSITY OF ALASKA ANCHORAGE; certain
+575fa84330e60c4b,NA24NOSX420G0018,11.420,3b95f3a57b9acc66,NERR Kachemak Bay National Estuarine Research Reserve; UNIVERSITY OF ALASKA ANCHORAGE; certain
+575fa84330e60c4b,NA25NOSX420C0020,11.420,3b95f3a57b9acc66,NERR Kachemak Bay National Estuarine Research Reserve; UNIVERSITY OF ALASKA ANCHORAGE; certain
+575fa84330e60c4b,NA26NOSX420C0017,11.420,3b95f3a57b9acc66,NERR Kachemak Bay National Estuarine Research Reserve; UNIVERSITY OF ALASKA ANCHORAGE; certain
+682babf9e6b9ee22,NA07NOS4200044,11.420,3b95f3a57b9acc66,"NERR Jacques Cousteau National Estuarine Research Reserve; RUTGERS, THE STATE UNIVERSITY; certain"
+682babf9e6b9ee22,NA08NOS4200419,11.420,3b95f3a57b9acc66,"NERR Jacques Cousteau National Estuarine Research Reserve; RUTGERS, THE STATE UNIVERSITY; certain"
+682babf9e6b9ee22,NA09NOS4200038,11.420,3b95f3a57b9acc66,"NERR Jacques Cousteau National Estuarine Research Reserve; RUTGERS, THE STATE UNIVERSITY; likely"
+682babf9e6b9ee22,NA09NOS4200151,11.420,3b95f3a57b9acc66,"NERR Jacques Cousteau National Estuarine Research Reserve; RUTGERS, THE STATE UNIVERSITY; certain"
+682babf9e6b9ee22,NA10NOS4200024,11.420,3b95f3a57b9acc66,"NERR Jacques Cousteau National Estuarine Research Reserve; RUTGERS, THE STATE UNIVERSITY; likely"
+682babf9e6b9ee22,NA10NOS4200098,11.420,3b95f3a57b9acc66,"NERR Jacques Cousteau National Estuarine Research Reserve; RUTGERS, THE STATE UNIVERSITY; certain"
+682babf9e6b9ee22,NA10NOS4200198,11.420,3b95f3a57b9acc66,"NERR Jacques Cousteau National Estuarine Research Reserve; RUTGERS, THE STATE UNIVERSITY; certain"
+682babf9e6b9ee22,NA11NOS4200065,11.420,3b95f3a57b9acc66,"NERR Jacques Cousteau National Estuarine Research Reserve; RUTGERS, THE STATE UNIVERSITY; likely"
+682babf9e6b9ee22,NA11NOS4200067,11.420,3b95f3a57b9acc66,"NERR Jacques Cousteau National Estuarine Research Reserve; RUTGERS, THE STATE UNIVERSITY; likely"
+682babf9e6b9ee22,NA11NOS4200126,11.420,3b95f3a57b9acc66,"NERR Jacques Cousteau National Estuarine Research Reserve; RUTGERS, THE STATE UNIVERSITY; certain"
+682babf9e6b9ee22,NA12NOS4200043,11.420,3b95f3a57b9acc66,"NERR Jacques Cousteau National Estuarine Research Reserve; RUTGERS, THE STATE UNIVERSITY; certain"
+682babf9e6b9ee22,NA12NOS4200152,11.420,3b95f3a57b9acc66,"NERR Jacques Cousteau National Estuarine Research Reserve; RUTGERS, THE STATE UNIVERSITY; certain"
+682babf9e6b9ee22,NA13NOS4200118,11.420,3b95f3a57b9acc66,"NERR Jacques Cousteau National Estuarine Research Reserve; RUTGERS, THE STATE UNIVERSITY; certain"
+682babf9e6b9ee22,NA14NOS4200131,11.420,3b95f3a57b9acc66,"NERR Jacques Cousteau National Estuarine Research Reserve; RUTGERS, THE STATE UNIVERSITY; certain"
+682babf9e6b9ee22,NA15NOS4200052,11.420,3b95f3a57b9acc66,"NERR Jacques Cousteau National Estuarine Research Reserve; RUTGERS, THE STATE UNIVERSITY; likely"
+682babf9e6b9ee22,NA15NOS4200139,11.420,3b95f3a57b9acc66,"NERR Jacques Cousteau National Estuarine Research Reserve; RUTGERS, THE STATE UNIVERSITY; certain"
+682babf9e6b9ee22,NA16NOS4200117,11.420,3b95f3a57b9acc66,"NERR Jacques Cousteau National Estuarine Research Reserve; RUTGERS, THE STATE UNIVERSITY; certain"
+682babf9e6b9ee22,NA16NOS4200162,11.420,3b95f3a57b9acc66,"NERR Jacques Cousteau National Estuarine Research Reserve; RUTGERS, THE STATE UNIVERSITY; certain"
+682babf9e6b9ee22,NA17NOS4200118,11.420,3b95f3a57b9acc66,"NERR Jacques Cousteau National Estuarine Research Reserve; RUTGERS, THE STATE UNIVERSITY; certain"
+682babf9e6b9ee22,NA17NOS4200160,11.420,3b95f3a57b9acc66,"NERR Jacques Cousteau National Estuarine Research Reserve; RUTGERS, THE STATE UNIVERSITY; likely"
+682babf9e6b9ee22,NA18NOS4200119,11.420,3b95f3a57b9acc66,"NERR Jacques Cousteau National Estuarine Research Reserve; RUTGERS, THE STATE UNIVERSITY; certain"
+682babf9e6b9ee22,NA20NOS4200061,11.420,3b95f3a57b9acc66,"NERR Jacques Cousteau National Estuarine Research Reserve; RUTGERS, THE STATE UNIVERSITY; certain"
+682babf9e6b9ee22,NA20NOS4200168,11.420,3b95f3a57b9acc66,"NERR Jacques Cousteau National Estuarine Research Reserve; RUTGERS, THE STATE UNIVERSITY; certain"
+682babf9e6b9ee22,NA21NOS4200060,11.420,3b95f3a57b9acc66,"NERR Jacques Cousteau National Estuarine Research Reserve; RUTGERS, THE STATE UNIVERSITY; certain"
+682babf9e6b9ee22,NA22NOS4200056,11.420,3b95f3a57b9acc66,"NERR Jacques Cousteau National Estuarine Research Reserve; RUTGERS, THE STATE UNIVERSITY; certain"
+682babf9e6b9ee22,NA22NOS4200197,11.420,3b95f3a57b9acc66,"NERR Jacques Cousteau National Estuarine Research Reserve; RUTGERS, THE STATE UNIVERSITY; certain"
+682babf9e6b9ee22,NA22NOS4200211,11.420,3b95f3a57b9acc66,"NERR Jacques Cousteau National Estuarine Research Reserve; RUTGERS, THE STATE UNIVERSITY; certain"
+682babf9e6b9ee22,NA24NOSX420C0007,11.420,3b95f3a57b9acc66,"NERR Jacques Cousteau National Estuarine Research Reserve; RUTGERS, THE STATE UNIVERSITY; certain"
+682babf9e6b9ee22,NA24NOSX420C0066,11.420,3b95f3a57b9acc66,"NERR Jacques Cousteau National Estuarine Research Reserve; RUTGERS, THE STATE UNIVERSITY; certain"
+682babf9e6b9ee22,NA24NOSX420G0021,11.420,3b95f3a57b9acc66,"NERR Jacques Cousteau National Estuarine Research Reserve; RUTGERS, THE STATE UNIVERSITY; certain"
+682babf9e6b9ee22,NA25NOSX420G0003,11.420,3b95f3a57b9acc66,"NERR Jacques Cousteau National Estuarine Research Reserve; RUTGERS, THE STATE UNIVERSITY; certain"
+682babf9e6b9ee22,NA26NOSX420C0032,11.420,3b95f3a57b9acc66,"NERR Jacques Cousteau National Estuarine Research Reserve; RUTGERS, THE STATE UNIVERSITY; certain"
+6aa3e3a88696247f,00D03512,66.456,0aecd67acddb43e9,NEP Tampa Bay Estuary Program; TAMPA BAY ESTUARY PROGRAM; certain
+6aa3e3a88696247f,00D08513,66.456,0aecd67acddb43e9,NEP Tampa Bay Estuary Program; TAMPA BAY ESTUARY PROGRAM; certain
+6aa3e3a88696247f,00D20514,66.456,0aecd67acddb43e9,NEP Tampa Bay Estuary Program; TAMPA BAY ESTUARY PROGRAM; certain
+6aa3e3a88696247f,00D31115,66.456,0aecd67acddb43e9,NEP Tampa Bay Estuary Program; TAMPA BAY ESTUARY PROGRAM; certain
+6aa3e3a88696247f,00D48416,66.456,0aecd67acddb43e9,NEP Tampa Bay Estuary Program; TAMPA BAY ESTUARY PROGRAM; certain
+6aa3e3a88696247f,00D55817,66.456,0aecd67acddb43e9,NEP Tampa Bay Estuary Program; TAMPA BAY ESTUARY PROGRAM; certain
+6aa3e3a88696247f,00D80818,66.456,0aecd67acddb43e9,NEP Tampa Bay Estuary Program; TAMPA BAY ESTUARY PROGRAM; certain
+6aa3e3a88696247f,00D89319,66.456,0aecd67acddb43e9,NEP Tampa Bay Estuary Program; TAMPA BAY ESTUARY PROGRAM; certain
+6aa3e3a88696247f,01D14220,66.456,0aecd67acddb43e9,NEP Tampa Bay Estuary Program; TAMPA BAY ESTUARY PROGRAM; certain
+6aa3e3a88696247f,02D10321,66.456,0aecd67acddb43e9,NEP Tampa Bay Estuary Program; TAMPA BAY ESTUARY PROGRAM; certain
+6aa3e3a88696247f,02D10322,66.456,0aecd67acddb43e9,NEP Tampa Bay Estuary Program; TAMPA BAY ESTUARY PROGRAM; certain
+6aa3e3a88696247f,02D41923,66.456,0aecd67acddb43e9,NEP Tampa Bay Estuary Program; TAMPA BAY ESTUARY PROGRAM; certain
+6aa3e3a88696247f,02D41925,66.456,0aecd67acddb43e9,NEP Tampa Bay Estuary Program; TAMPA BAY ESTUARY PROGRAM; certain
+6aa3e3a88696247f,02D57723,66.456,0aecd67acddb43e9,NEP Tampa Bay Estuary Program; TAMPA BAY ESTUARY PROGRAM; certain
+6aa3e3a88696247f,03D18424,66.456,0aecd67acddb43e9,NEP Tampa Bay Estuary Program; TAMPA BAY ESTUARY PROGRAM; certain
+6aa3e3a88696247f,03D18425,66.456,0aecd67acddb43e9,NEP Tampa Bay Estuary Program; TAMPA BAY ESTUARY PROGRAM; certain
+6aa3e3a88696247f,03D18426,66.456,0aecd67acddb43e9,NEP Tampa Bay Estuary Program; TAMPA BAY ESTUARY PROGRAM; certain
+6aa3e3a88696247f,95410508,66.456,0aecd67acddb43e9,NEP Tampa Bay Estuary Program; TAMPA BAY ESTUARY PROGRAM; certain
+6aa3e3a88696247f,95443009,66.456,0aecd67acddb43e9,NEP Tampa Bay Estuary Program; TAMPA BAY ESTUARY PROGRAM; certain
+6aa3e3a88696247f,95464710,66.456,0aecd67acddb43e9,NEP Tampa Bay Estuary Program; TAMPA BAY ESTUARY PROGRAM; certain
+6aa3e3a88696247f,95483511,66.456,0aecd67acddb43e9,NEP Tampa Bay Estuary Program; TAMPA BAY ESTUARY PROGRAM; certain
+6b49d19b5accaf76,00A00748,66.456,0aecd67acddb43e9,NEP Piscataqua Region Estuaries Partnership; UNIVERSITY SYSTEM OF NEW HAMPSHIRE; certain
+6b49d19b5accaf76,00A00938,66.456,0aecd67acddb43e9,NEP Piscataqua Region Estuaries Partnership; UNIVERSITY SYSTEM OF NEW HAMPSHIRE; certain
+6b49d19b5accaf76,00A01009,66.456,0aecd67acddb43e9,NEP Piscataqua Region Estuaries Partnership; UNIVERSITY SYSTEM OF NEW HAMPSHIRE; certain
+6b49d19b5accaf76,00A01344,66.456,0aecd67acddb43e9,NEP Piscataqua Region Estuaries Partnership; UNIVERSITY SYSTEM OF NEW HAMPSHIRE; certain
+6b49d19b5accaf76,00A01381,66.456,0aecd67acddb43e9,NEP Piscataqua Region Estuaries Partnership; UNIVERSITY SYSTEM OF NEW HAMPSHIRE; certain
+6b49d19b5accaf76,00A01753,66.456,0aecd67acddb43e9,NEP Piscataqua Region Estuaries Partnership; UNIVERSITY SYSTEM OF NEW HAMPSHIRE; certain
+6b49d19b5accaf76,00A01754,66.456,0aecd67acddb43e9,NEP Piscataqua Region Estuaries Partnership; UNIVERSITY SYSTEM OF NEW HAMPSHIRE; certain
+6b49d19b5accaf76,00A01777,66.456,0aecd67acddb43e9,NEP Piscataqua Region Estuaries Partnership; UNIVERSITY SYSTEM OF NEW HAMPSHIRE; certain
+6b49d19b5accaf76,00A01778,66.456,0aecd67acddb43e9,NEP Piscataqua Region Estuaries Partnership; UNIVERSITY SYSTEM OF NEW HAMPSHIRE; certain
+6b49d19b5accaf76,00A01788,66.456,0aecd67acddb43e9,NEP Piscataqua Region Estuaries Partnership; UNIVERSITY SYSTEM OF NEW HAMPSHIRE; certain
+6b49d19b5accaf76,99171112,66.456,0aecd67acddb43e9,NEP Piscataqua Region Estuaries Partnership; UNIVERSITY SYSTEM OF NEW HAMPSHIRE; likely
+6b49d19b5accaf76,99171113,66.456,0aecd67acddb43e9,NEP Piscataqua Region Estuaries Partnership; UNIVERSITY SYSTEM OF NEW HAMPSHIRE; likely
+6b49d19b5accaf76,99171114,66.456,0aecd67acddb43e9,NEP Piscataqua Region Estuaries Partnership; UNIVERSITY SYSTEM OF NEW HAMPSHIRE; certain
+6b49d19b5accaf76,99171115,66.456,0aecd67acddb43e9,NEP Piscataqua Region Estuaries Partnership; UNIVERSITY SYSTEM OF NEW HAMPSHIRE; certain
+6b49d19b5accaf76,99171116,66.456,0aecd67acddb43e9,NEP Piscataqua Region Estuaries Partnership; UNIVERSITY SYSTEM OF NEW HAMPSHIRE; certain
+6b49d19b5accaf76,99171117,66.456,0aecd67acddb43e9,NEP Piscataqua Region Estuaries Partnership; UNIVERSITY SYSTEM OF NEW HAMPSHIRE; certain
+6b49d19b5accaf76,99171118,66.456,0aecd67acddb43e9,NEP Piscataqua Region Estuaries Partnership; UNIVERSITY SYSTEM OF NEW HAMPSHIRE; certain
+6b49d19b5accaf76,99171119,66.456,0aecd67acddb43e9,NEP Piscataqua Region Estuaries Partnership; UNIVERSITY SYSTEM OF NEW HAMPSHIRE; certain
+6b49d19b5accaf76,99171120,66.456,0aecd67acddb43e9,NEP Piscataqua Region Estuaries Partnership; UNIVERSITY SYSTEM OF NEW HAMPSHIRE; certain
+6b49d19b5accaf76,99171121,66.456,0aecd67acddb43e9,NEP Piscataqua Region Estuaries Partnership; UNIVERSITY SYSTEM OF NEW HAMPSHIRE; certain
+6b49d19b5accaf76,99171122,66.456,0aecd67acddb43e9,NEP Piscataqua Region Estuaries Partnership; UNIVERSITY SYSTEM OF NEW HAMPSHIRE; certain
+6b49d19b5accaf76,99171123,66.456,0aecd67acddb43e9,NEP Piscataqua Region Estuaries Partnership; UNIVERSITY SYSTEM OF NEW HAMPSHIRE; certain
+6b49d19b5accaf76,99171124,66.456,0aecd67acddb43e9,NEP Piscataqua Region Estuaries Partnership; UNIVERSITY SYSTEM OF NEW HAMPSHIRE; certain
+6b49d19b5accaf76,99171125,66.456,0aecd67acddb43e9,NEP Piscataqua Region Estuaries Partnership; UNIVERSITY SYSTEM OF NEW HAMPSHIRE; certain
+6d6ffba21e24b77d,00J62301,66.456,0aecd67acddb43e9,NEP Tillamook Estuaries Partnership; TILLAMOOK ESTUARIES PARTNERSHIP; certain
+6d6ffba21e24b77d,01J04301,66.456,0aecd67acddb43e9,NEP Tillamook Estuaries Partnership; TILLAMOOK ESTUARIES PARTNERSHIP; certain
+6d6ffba21e24b77d,01J47901,66.456,0aecd67acddb43e9,NEP Tillamook Estuaries Partnership; TILLAMOOK ESTUARIES PARTNERSHIP; certain
+6d6ffba21e24b77d,02J11701,66.456,0aecd67acddb43e9,NEP Tillamook Estuaries Partnership; TILLAMOOK ESTUARIES PARTNERSHIP; certain
+6d6ffba21e24b77d,02J32201,66.456,0aecd67acddb43e9,NEP Tillamook Estuaries Partnership; TILLAMOOK ESTUARIES PARTNERSHIP; certain
+6d6ffba21e24b77d,02J96001,66.456,0aecd67acddb43e9,NEP Tillamook Estuaries Partnership; TILLAMOOK ESTUARIES PARTNERSHIP; certain
+6d6ffba21e24b77d,02J96401,66.456,0aecd67acddb43e9,NEP Tillamook Estuaries Partnership; TILLAMOOK ESTUARIES PARTNERSHIP; certain
+6d6ffba21e24b77d,96035701,66.456,0aecd67acddb43e9,NEP Tillamook Estuaries Partnership; TILLAMOOK ESTUARIES PARTNERSHIP; certain
+6d6ffba21e24b77d,96095201,66.456,0aecd67acddb43e9,NEP Tillamook Estuaries Partnership; TILLAMOOK ESTUARIES PARTNERSHIP; certain
+6fa9e6e6a2bb24ad,96211800,66.456,0aecd67acddb43e9,NEP New York-New Jersey Harbor and Estuary Program; HUDSON RIVER FOUNDATION FOR SCIENCE & ENVIRONMENTAL RESEARCH INC; certain
+6fa9e6e6a2bb24ad,96215823,66.456,0aecd67acddb43e9,NEP New York-New Jersey Harbor and Estuary Program; HUDSON RIVER FOUNDATION FOR SCIENCE & ENVIRONMENTAL RESEARCH INC; certain
+6fa9e6e6a2bb24ad,96215825,66.456,0aecd67acddb43e9,NEP New York-New Jersey Harbor and Estuary Program; HUDSON RIVER FOUNDATION FOR SCIENCE & ENVIRONMENTAL RESEARCH INC; certain
+6fa9e6e6a2bb24ad,96282525,66.456,0aecd67acddb43e9,NEP New York-New Jersey Harbor and Estuary Program; HUDSON RIVER FOUNDATION FOR SCIENCE & ENVIRONMENTAL RESEARCH INC; certain
+6fa9e6e6a2bb24ad,96290926,66.456,0aecd67acddb43e9,NEP New York-New Jersey Harbor and Estuary Program; HUDSON RIVER FOUNDATION FOR SCIENCE & ENVIRONMENTAL RESEARCH INC; certain
+6fa9e6e6a2bb24ad,97207000,66.456,0aecd67acddb43e9,NEP New York-New Jersey Harbor and Estuary Program; HUDSON RIVER FOUNDATION FOR SCIENCE & ENVIRONMENTAL RESEARCH INC; certain
+6fa9e6e6a2bb24ad,97207001,66.456,0aecd67acddb43e9,NEP New York-New Jersey Harbor and Estuary Program; HUDSON RIVER FOUNDATION FOR SCIENCE & ENVIRONMENTAL RESEARCH INC; certain
+6fa9e6e6a2bb24ad,97207002,66.456,0aecd67acddb43e9,NEP New York-New Jersey Harbor and Estuary Program; HUDSON RIVER FOUNDATION FOR SCIENCE & ENVIRONMENTAL RESEARCH INC; certain
+6fa9e6e6a2bb24ad,97207003,66.456,0aecd67acddb43e9,NEP New York-New Jersey Harbor and Estuary Program; HUDSON RIVER FOUNDATION FOR SCIENCE & ENVIRONMENTAL RESEARCH INC; certain
+6fa9e6e6a2bb24ad,98272003,66.456,0aecd67acddb43e9,NEP New York-New Jersey Harbor and Estuary Program; HUDSON RIVER FOUNDATION FOR SCIENCE & ENVIRONMENTAL RESEARCH INC; certain
+6fa9e6e6a2bb24ad,98272004,66.456,0aecd67acddb43e9,NEP New York-New Jersey Harbor and Estuary Program; HUDSON RIVER FOUNDATION FOR SCIENCE & ENVIRONMENTAL RESEARCH INC; certain
+7ddbc5ef577648ee,NA08NOS4200391,11.420,3b95f3a57b9acc66,NERR Great Bay National Estuarine Research Reserve; NEW HAMPSHIRE FISH & GAME; certain
+7ddbc5ef577648ee,NA09NOS4200129,11.420,3b95f3a57b9acc66,NERR Great Bay National Estuarine Research Reserve; NEW HAMPSHIRE FISH & GAME; certain
+7ddbc5ef577648ee,NA10NOS4200095,11.420,3b95f3a57b9acc66,NERR Great Bay National Estuarine Research Reserve; NEW HAMPSHIRE FISH & GAME; certain
+7ddbc5ef577648ee,NA10NOS4200117,11.420,3b95f3a57b9acc66,NERR Great Bay National Estuarine Research Reserve; NEW HAMPSHIRE FISH & GAME; certain
+7ddbc5ef577648ee,NA11NOS4200136,11.420,3b95f3a57b9acc66,NERR Great Bay National Estuarine Research Reserve; NEW HAMPSHIRE FISH & GAME; certain
+7ddbc5ef577648ee,NA12NOS4200109,11.420,3b95f3a57b9acc66,NERR Great Bay National Estuarine Research Reserve; NEW HAMPSHIRE FISH & GAME; certain
+7ddbc5ef577648ee,NA13NOS4200059,11.420,3b95f3a57b9acc66,NERR Great Bay National Estuarine Research Reserve; NEW HAMPSHIRE FISH & GAME; certain
+7ddbc5ef577648ee,NA14NOS4200013,11.420,3b95f3a57b9acc66,NERR Great Bay National Estuarine Research Reserve; NEW HAMPSHIRE FISH & GAME; certain
+7ddbc5ef577648ee,NA14NOS4200033,11.420,3b95f3a57b9acc66,NERR Great Bay National Estuarine Research Reserve; NEW HAMPSHIRE FISH & GAME; certain
+7ddbc5ef577648ee,NA15NOS4200049,11.420,3b95f3a57b9acc66,NERR Great Bay National Estuarine Research Reserve; NEW HAMPSHIRE FISH & GAME; certain
+7ddbc5ef577648ee,NA15NOS4200103,11.420,3b95f3a57b9acc66,NERR Great Bay National Estuarine Research Reserve; NEW HAMPSHIRE FISH & GAME; certain
+7ddbc5ef577648ee,NA16NOS4200079,11.420,3b95f3a57b9acc66,NERR Great Bay National Estuarine Research Reserve; NEW HAMPSHIRE FISH & GAME; certain
+7ddbc5ef577648ee,NA17NOS4200051,11.420,3b95f3a57b9acc66,NERR Great Bay National Estuarine Research Reserve; NEW HAMPSHIRE FISH & GAME; certain
+7ddbc5ef577648ee,NA18NOS4200018,11.420,3b95f3a57b9acc66,NERR Great Bay National Estuarine Research Reserve; NEW HAMPSHIRE FISH & GAME; certain
+7ddbc5ef577648ee,NA20NOS4200051,11.420,3b95f3a57b9acc66,NERR Great Bay National Estuarine Research Reserve; NEW HAMPSHIRE FISH & GAME; certain
+7ddbc5ef577648ee,NA20NOS4200083,11.420,3b95f3a57b9acc66,NERR Great Bay National Estuarine Research Reserve; NEW HAMPSHIRE FISH & GAME; certain
+7ddbc5ef577648ee,NA22NOS4200079,11.420,3b95f3a57b9acc66,NERR Great Bay National Estuarine Research Reserve; NEW HAMPSHIRE FISH & GAME; certain
+7ddbc5ef577648ee,NA22NOS4200195,11.420,3b95f3a57b9acc66,NERR Great Bay National Estuarine Research Reserve; NEW HAMPSHIRE FISH & GAME; certain
+7ddbc5ef577648ee,NA23NOS4200188,11.420,3b95f3a57b9acc66,NERR Great Bay National Estuarine Research Reserve; NEW HAMPSHIRE FISH & GAME; certain
+7ddbc5ef577648ee,NA24NOSX420C0045,11.420,3b95f3a57b9acc66,NERR Great Bay National Estuarine Research Reserve; NEW HAMPSHIRE FISH & GAME; certain
+7ddbc5ef577648ee,NA26NOSX420C0009,11.420,3b95f3a57b9acc66,NERR Great Bay National Estuarine Research Reserve; NEW HAMPSHIRE FISH & GAME; certain
+80edf691ec74a1ad,NA08NOS4200301,11.420,3b95f3a57b9acc66,NERR Wells National Estuarine Research Reserve; WELLS NATIONAL ESTUARINE RESEARCH RESERV; certain
+80edf691ec74a1ad,NA08NOS4200390,11.420,3b95f3a57b9acc66,NERR Wells National Estuarine Research Reserve; WELLS NATIONAL ESTUARINE RESEARCH RESERV; certain
+80edf691ec74a1ad,NA09NOS4200108,11.420,3b95f3a57b9acc66,NERR Wells National Estuarine Research Reserve; WELLS NATIONAL ESTUARINE RESEARCH RESERV; likely
+80edf691ec74a1ad,NA09NOS4200135,11.420,3b95f3a57b9acc66,NERR Wells National Estuarine Research Reserve; WELLS NATIONAL ESTUARINE RESEARCH RESERV; certain
+80edf691ec74a1ad,NA10NOS4200114,11.420,3b95f3a57b9acc66,NERR Wells National Estuarine Research Reserve; WELLS NATIONAL ESTUARINE RESEARCH RESERV; certain
+80edf691ec74a1ad,NA11NOS4200132,11.420,3b95f3a57b9acc66,NERR Wells National Estuarine Research Reserve; WELLS NATIONAL ESTUARINE RESEARCH RESERV; certain
+80edf691ec74a1ad,NA12NOS4200045,11.420,3b95f3a57b9acc66,NERR Wells National Estuarine Research Reserve; WELLS NATIONAL ESTUARINE RESEARCH RESERV; likely
+80edf691ec74a1ad,NA12NOS4200120,11.420,3b95f3a57b9acc66,NERR Wells National Estuarine Research Reserve; WELLS NATIONAL ESTUARINE RESEARCH RESERV; certain
+80edf691ec74a1ad,NA13NOS4200084,11.420,3b95f3a57b9acc66,NERR Wells National Estuarine Research Reserve; WELLS NATIONAL ESTUARINE RESEARCH RESERV; certain
+80edf691ec74a1ad,NA14NOS4200014,11.420,3b95f3a57b9acc66,NERR Wells National Estuarine Research Reserve; WELLS NATIONAL ESTUARINE RESEARCH RESERV; likely
+80edf691ec74a1ad,NA14NOS4200036,11.420,3b95f3a57b9acc66,NERR Wells National Estuarine Research Reserve; WELLS NATIONAL ESTUARINE RESEARCH RESERV; certain
+80edf691ec74a1ad,NA15NOS4200046,11.420,3b95f3a57b9acc66,NERR Wells National Estuarine Research Reserve; WELLS NATIONAL ESTUARINE RESEARCH RESERV; certain
+80edf691ec74a1ad,NA15NOS4200115,11.420,3b95f3a57b9acc66,NERR Wells National Estuarine Research Reserve; WELLS NATIONAL ESTUARINE RESEARCH RESERV; certain
+80edf691ec74a1ad,NA16NOS4200078,11.420,3b95f3a57b9acc66,NERR Wells National Estuarine Research Reserve; WELLS NATIONAL ESTUARINE RESEARCH RESERV; certain
+80edf691ec74a1ad,NA16NOS4200112,11.420,3b95f3a57b9acc66,NERR Wells National Estuarine Research Reserve; WELLS NATIONAL ESTUARINE RESEARCH RESERV; likely
+80edf691ec74a1ad,NA17NOS4200048,11.420,3b95f3a57b9acc66,NERR Wells National Estuarine Research Reserve; WELLS NATIONAL ESTUARINE RESEARCH RESERV; certain
+80edf691ec74a1ad,NA17NOS4200159,11.420,3b95f3a57b9acc66,NERR Wells National Estuarine Research Reserve; WELLS NATIONAL ESTUARINE RESEARCH RESERV; likely
+80edf691ec74a1ad,NA18NOS4200013,11.420,3b95f3a57b9acc66,NERR Wells National Estuarine Research Reserve; WELLS NATIONAL ESTUARINE RESEARCH RESERV; likely
+80edf691ec74a1ad,NA19NOS4200047,11.420,3b95f3a57b9acc66,NERR Wells National Estuarine Research Reserve; WELLS NATIONAL ESTUARINE RESEARCH RESERV; certain
+80edf691ec74a1ad,NA19NOS4200065,11.420,3b95f3a57b9acc66,NERR Wells National Estuarine Research Reserve; WELLS NATIONAL ESTUARINE RESEARCH RESERV; likely
+80edf691ec74a1ad,NA20NOS4200035,11.420,3b95f3a57b9acc66,NERR Wells National Estuarine Research Reserve; WELLS NATIONAL ESTUARINE RESEARCH RESERV; likely
+80edf691ec74a1ad,NA21NOS4200038,11.420,3b95f3a57b9acc66,NERR Wells National Estuarine Research Reserve; WELLS NATIONAL ESTUARINE RESEARCH RESERV; certain
+80edf691ec74a1ad,NA21NOS4200056,11.420,3b95f3a57b9acc66,NERR Wells National Estuarine Research Reserve; WELLS NATIONAL ESTUARINE RESEARCH RESERV; likely
+80edf691ec74a1ad,NA22NOS4200072,11.420,3b95f3a57b9acc66,NERR Wells National Estuarine Research Reserve; WELLS NATIONAL ESTUARINE RESEARCH RESERV; certain
+80edf691ec74a1ad,NA22NOS4200199,11.420,3b95f3a57b9acc66,NERR Wells National Estuarine Research Reserve; WELLS NATIONAL ESTUARINE RESEARCH RESERV; certain
+80edf691ec74a1ad,NA23NOS4200175,11.420,3b95f3a57b9acc66,NERR Wells National Estuarine Research Reserve; WELLS NATIONAL ESTUARINE RESEARCH RESERV; certain
+80edf691ec74a1ad,NA23NOS4200192,11.420,3b95f3a57b9acc66,NERR Wells National Estuarine Research Reserve; WELLS NATIONAL ESTUARINE RESEARCH RESERV; certain
+80edf691ec74a1ad,NA24NOSX420C0033,11.420,3b95f3a57b9acc66,NERR Wells National Estuarine Research Reserve; WELLS NATIONAL ESTUARINE RESEARCH RESERV; certain
+80edf691ec74a1ad,NA25NOSX420C0009,11.420,3b95f3a57b9acc66,NERR Wells National Estuarine Research Reserve; WELLS NATIONAL ESTUARINE RESEARCH RESERV; certain
+80edf691ec74a1ad,NA25NOSX420G0004,11.420,3b95f3a57b9acc66,NERR Wells National Estuarine Research Reserve; WELLS NATIONAL ESTUARINE RESEARCH RESERV; certain
+80edf691ec74a1ad,NA26NOSX420C0008,11.420,3b95f3a57b9acc66,NERR Wells National Estuarine Research Reserve; WELLS NATIONAL ESTUARINE RESEARCH RESERV; certain
+88a71bec0521cfdb,NA08NOS4200377,11.420,3b95f3a57b9acc66,NERR Apalachicola National Estuarine Research Reserve; FLORIDA DEPARTMENT OF ENVIRONMENTAL PROTECTION; certain
+88a71bec0521cfdb,NA09NOS4200133,11.420,3b95f3a57b9acc66,NERR Apalachicola National Estuarine Research Reserve; FLORIDA DEPARTMENT OF ENVIRONMENTAL PROTECTION; certain
+88a71bec0521cfdb,NA10NOS4200111,11.420,3b95f3a57b9acc66,NERR Apalachicola National Estuarine Research Reserve; FLORIDA DEPARTMENT OF ENVIRONMENTAL PROTECTION; certain
+88a71bec0521cfdb,NA11NOS4200112,11.420,3b95f3a57b9acc66,NERR Apalachicola National Estuarine Research Reserve; FLORIDA DEPARTMENT OF ENVIRONMENTAL PROTECTION; certain
+88a71bec0521cfdb,NA12NOS4200107,11.420,3b95f3a57b9acc66,NERR Apalachicola National Estuarine Research Reserve; FLORIDA DEPARTMENT OF ENVIRONMENTAL PROTECTION; certain
+88a71bec0521cfdb,NA13NOS4200087,11.420,3b95f3a57b9acc66,NERR Apalachicola National Estuarine Research Reserve; FLORIDA DEPARTMENT OF ENVIRONMENTAL PROTECTION; certain
+88a71bec0521cfdb,NA14NOS4200041,11.420,3b95f3a57b9acc66,NERR Apalachicola National Estuarine Research Reserve; FLORIDA DEPARTMENT OF ENVIRONMENTAL PROTECTION; certain
+88a71bec0521cfdb,NA15NOS4200102,11.420,3b95f3a57b9acc66,NERR Apalachicola National Estuarine Research Reserve; FLORIDA DEPARTMENT OF ENVIRONMENTAL PROTECTION; certain
+88a71bec0521cfdb,NA16NOS4200087,11.420,3b95f3a57b9acc66,NERR Apalachicola National Estuarine Research Reserve; FLORIDA DEPARTMENT OF ENVIRONMENTAL PROTECTION; certain
+88a71bec0521cfdb,NA17NOS4200042,11.420,3b95f3a57b9acc66,NERR Apalachicola National Estuarine Research Reserve; FLORIDA DEPARTMENT OF ENVIRONMENTAL PROTECTION; certain
+88a71bec0521cfdb,NA18NOS4200065,11.420,3b95f3a57b9acc66,NERR Apalachicola National Estuarine Research Reserve; FLORIDA DEPARTMENT OF ENVIRONMENTAL PROTECTION; certain
+88a71bec0521cfdb,NA19NOS4200067,11.420,3b95f3a57b9acc66,NERR Apalachicola National Estuarine Research Reserve; FLORIDA DEPARTMENT OF ENVIRONMENTAL PROTECTION; certain
+88a71bec0521cfdb,NA20NOS4200015,11.420,3b95f3a57b9acc66,NERR Apalachicola National Estuarine Research Reserve; FLORIDA DEPARTMENT OF ENVIRONMENTAL PROTECTION; certain
+88a71bec0521cfdb,NA20NOS4200072,11.420,3b95f3a57b9acc66,NERR Apalachicola National Estuarine Research Reserve; FLORIDA DEPARTMENT OF ENVIRONMENTAL PROTECTION; certain
+88a71bec0521cfdb,NA21NOS4200044,11.420,3b95f3a57b9acc66,NERR Apalachicola National Estuarine Research Reserve; FLORIDA DEPARTMENT OF ENVIRONMENTAL PROTECTION; certain
+88a71bec0521cfdb,NA22NOS4200069,11.420,3b95f3a57b9acc66,NERR Apalachicola National Estuarine Research Reserve; FLORIDA DEPARTMENT OF ENVIRONMENTAL PROTECTION; certain
+88a71bec0521cfdb,NA23NOS4200161,11.420,3b95f3a57b9acc66,NERR Apalachicola National Estuarine Research Reserve; FLORIDA DEPARTMENT OF ENVIRONMENTAL PROTECTION; certain
+88a71bec0521cfdb,NA24NOSX420C0031,11.420,3b95f3a57b9acc66,NERR Apalachicola National Estuarine Research Reserve; FLORIDA DEPARTMENT OF ENVIRONMENTAL PROTECTION; certain
+88a71bec0521cfdb,NA25NOSX420C0010,11.420,3b95f3a57b9acc66,NERR Apalachicola National Estuarine Research Reserve; FLORIDA DEPARTMENT OF ENVIRONMENTAL PROTECTION; certain
+88a71bec0521cfdb,NA26NOSX420C0028,11.420,3b95f3a57b9acc66,NERR Apalachicola National Estuarine Research Reserve; FLORIDA DEPARTMENT OF ENVIRONMENTAL PROTECTION; certain
+8cb1dfe4421dcd93,00D55717,66.456,0aecd67acddb43e9,NEP Sarasota Bay Estuary Program; SARASOTA BAY ESTUARY PROGRAM; certain
+8cb1dfe4421dcd93,00D55723,66.456,0aecd67acddb43e9,NEP Sarasota Bay Estuary Program; SARASOTA BAY ESTUARY PROGRAM; certain
+8cb1dfe4421dcd93,00D55725,66.456,0aecd67acddb43e9,NEP Sarasota Bay Estuary Program; SARASOTA BAY ESTUARY PROGRAM; likely
+8cb1dfe4421dcd93,02D41323,66.456,0aecd67acddb43e9,NEP Sarasota Bay Estuary Program; SARASOTA BAY ESTUARY PROGRAM; certain
+8cb1dfe4421dcd93,02D41325,66.456,0aecd67acddb43e9,NEP Sarasota Bay Estuary Program; SARASOTA BAY ESTUARY PROGRAM; certain
+8cb1dfe4421dcd93,95464610,66.456,0aecd67acddb43e9,NEP Sarasota Bay Estuary Program; SARASOTA BAY ESTUARY PROGRAM; certain
+8cb1dfe4421dcd93,96416404,66.456,0aecd67acddb43e9,NEP Sarasota Bay Estuary Program; SARASOTA BAY ESTUARY PROGRAM; certain
+8ef9ffb2262d2832,00A00176,66.456,0aecd67acddb43e9,"NEP Massachusetts Bays National Estuary Program; ENERGY & ENVIRONMENTAL AFFAIRS, MASSACHUSETTS EXECUTIVE OFFICE OF; likely"
+8ef9ffb2262d2832,00A00202,66.456,0aecd67acddb43e9,"NEP Massachusetts Bays National Estuary Program; ENERGY & ENVIRONMENTAL AFFAIRS, MASSACHUSETTS EXECUTIVE OFFICE OF; likely"
+8ef9ffb2262d2832,00A00436,66.456,0aecd67acddb43e9,"NEP Massachusetts Bays National Estuary Program; ENERGY & ENVIRONMENTAL AFFAIRS, MASSACHUSETTS EXECUTIVE OFFICE OF; likely"
+8ef9ffb2262d2832,00A00464,66.456,0aecd67acddb43e9,"NEP Massachusetts Bays National Estuary Program; ENERGY & ENVIRONMENTAL AFFAIRS, MASSACHUSETTS EXECUTIVE OFFICE OF; certain"
+8ef9ffb2262d2832,00A00522,66.456,0aecd67acddb43e9,"NEP Massachusetts Bays National Estuary Program; ENERGY & ENVIRONMENTAL AFFAIRS, MASSACHUSETTS EXECUTIVE OFFICE OF; certain"
+8ef9ffb2262d2832,00A00621,66.456,0aecd67acddb43e9,"NEP Massachusetts Bays National Estuary Program; ENERGY & ENVIRONMENTAL AFFAIRS, MASSACHUSETTS EXECUTIVE OFFICE OF; certain"
+8ef9ffb2262d2832,00A00815,66.456,0aecd67acddb43e9,NEP Massachusetts Bays National Estuary Program; UNIVERSITY OF MASS AT BOSTON; certain
+8ef9ffb2262d2832,00A00865,66.456,0aecd67acddb43e9,"NEP Massachusetts Bays National Estuary Program; ENERGY & ENVIRONMENTAL AFFAIRS, MASSACHUSETTS EXECUTIVE OFFICE OF; certain"
+8ef9ffb2262d2832,00A01085,66.456,0aecd67acddb43e9,NEP Massachusetts Bays National Estuary Program; UNIVERSITY OF MASS AT BOSTON; certain
+8ef9ffb2262d2832,00A01546,66.456,0aecd67acddb43e9,NEP Massachusetts Bays National Estuary Program; UNIVERSITY OF MASS AT BOSTON; certain
+8ef9ffb2262d2832,00A01549,66.456,0aecd67acddb43e9,NEP Massachusetts Bays National Estuary Program; UNIVERSITY OF MASS AT BOSTON; certain
+8ef9ffb2262d2832,96128701,66.456,0aecd67acddb43e9,"NEP Massachusetts Bays National Estuary Program; ENERGY & ENVIRONMENTAL AFFAIRS, MASSACHUSETTS EXECUTIVE OFFICE OF; likely"
+8ef9ffb2262d2832,96152401,66.456,0aecd67acddb43e9,"NEP Massachusetts Bays National Estuary Program; ENERGY & ENVIRONMENTAL AFFAIRS, MASSACHUSETTS EXECUTIVE OFFICE OF; likely"
+8ef9ffb2262d2832,96160901,66.456,0aecd67acddb43e9,"NEP Massachusetts Bays National Estuary Program; ENERGY & ENVIRONMENTAL AFFAIRS, MASSACHUSETTS EXECUTIVE OFFICE OF; likely"
+8ef9ffb2262d2832,96173901,66.456,0aecd67acddb43e9,"NEP Massachusetts Bays National Estuary Program; ENERGY & ENVIRONMENTAL AFFAIRS, MASSACHUSETTS EXECUTIVE OFFICE OF; likely"
+8ef9ffb2262d2832,96197001,66.456,0aecd67acddb43e9,"NEP Massachusetts Bays National Estuary Program; ENERGY & ENVIRONMENTAL AFFAIRS, MASSACHUSETTS EXECUTIVE OFFICE OF; likely"
+8ef9ffb2262d2832,97167601,66.456,0aecd67acddb43e9,"NEP Massachusetts Bays National Estuary Program; ENERGY & ENVIRONMENTAL AFFAIRS, MASSACHUSETTS EXECUTIVE OFFICE OF; likely"
+8f8db306000bd353,NA08NOS4200300,11.420,3b95f3a57b9acc66,NERR Waquoit Bay National Estuarine Research Reserve; THE COMMONWEALTH OF MASSACHUSETTS; likely
+8f8db306000bd353,NA08NOS4200372,11.420,3b95f3a57b9acc66,NERR Waquoit Bay National Estuarine Research Reserve; THE COMMONWEALTH OF MASSACHUSETTS; certain
+8f8db306000bd353,NA09NOS4200145,11.420,3b95f3a57b9acc66,NERR Waquoit Bay National Estuarine Research Reserve; COMMONWEALTH OF MASSACHUSETTS DEPT. OF CONSERVATION & RECREATION; certain
+8f8db306000bd353,NA10NOS4200113,11.420,3b95f3a57b9acc66,NERR Waquoit Bay National Estuarine Research Reserve; COMMONWEALTH OF MASSACHUSETTS DEPT. OF CONSERVATION & RECREATION; certain
+8f8db306000bd353,NA11NOS4200047,11.420,3b95f3a57b9acc66,NERR Waquoit Bay National Estuarine Research Reserve; COMMONWEALTH OF MASSACHUSETTS DEPT. OF CONSERVATION & RECREATION; certain
+8f8db306000bd353,NA11NOS4200133,11.420,3b95f3a57b9acc66,NERR Waquoit Bay National Estuarine Research Reserve; COMMONWEALTH OF MASSACHUSETTS DEPT. OF CONSERVATION & RECREATION; certain
+8f8db306000bd353,NA12NOS4200044,11.420,3b95f3a57b9acc66,NERR Waquoit Bay National Estuarine Research Reserve; COMMONWEALTH OF MASSACHUSETTS DEPT. OF CONSERVATION & RECREATION; certain
+8f8db306000bd353,NA12NOS4200118,11.420,3b95f3a57b9acc66,NERR Waquoit Bay National Estuarine Research Reserve; COMMONWEALTH OF MASSACHUSETTS DEPT. OF CONSERVATION & RECREATION; certain
+8f8db306000bd353,NA13NOS4200082,11.420,3b95f3a57b9acc66,NERR Waquoit Bay National Estuarine Research Reserve; COMMONWEALTH OF MASSACHUSETTS DEPT. OF CONSERVATION & RECREATION; certain
+8f8db306000bd353,NA14NOS4200037,11.420,3b95f3a57b9acc66,NERR Waquoit Bay National Estuarine Research Reserve; COMMONWEALTH OF MASSACHUSETTS DEPT. OF CONSERVATION & RECREATION; certain
+8f8db306000bd353,NA15NOS4200114,11.420,3b95f3a57b9acc66,NERR Waquoit Bay National Estuarine Research Reserve; COMMONWEALTH OF MASSACHUSETTS DEPT. OF CONSERVATION & RECREATION; certain
+8f8db306000bd353,NA16NOS4200102,11.420,3b95f3a57b9acc66,NERR Waquoit Bay National Estuarine Research Reserve; COMMONWEALTH OF MASSACHUSETTS DEPT. OF CONSERVATION & RECREATION; certain
+8f8db306000bd353,NA17NOS4200071,11.420,3b95f3a57b9acc66,NERR Waquoit Bay National Estuarine Research Reserve; COMMONWEALTH OF MASSACHUSETTS DEPT. OF CONSERVATION & RECREATION; certain
+8f8db306000bd353,NA18NOS4200093,11.420,3b95f3a57b9acc66,NERR Waquoit Bay National Estuarine Research Reserve; COMMONWEALTH OF MASSACHUSETTS DEPT. OF CONSERVATION & RECREATION; certain
+8f8db306000bd353,NA19NOS4200090,11.420,3b95f3a57b9acc66,NERR Waquoit Bay National Estuarine Research Reserve; COMMONWEALTH OF MASSACHUSETTS DEPT. OF CONSERVATION & RECREATION; certain
+8f8db306000bd353,NA20NOS4200090,11.420,3b95f3a57b9acc66,NERR Waquoit Bay National Estuarine Research Reserve; COMMONWEALTH OF MASSACHUSETTS DEPT. OF CONSERVATION & RECREATION; certain
+8f8db306000bd353,NA21NOS4200049,11.420,3b95f3a57b9acc66,NERR Waquoit Bay National Estuarine Research Reserve; COMMONWEALTH OF MASSACHUSETTS DEPT. OF CONSERVATION & RECREATION; certain
+8f8db306000bd353,NA22NOS4200090,11.420,3b95f3a57b9acc66,NERR Waquoit Bay National Estuarine Research Reserve; COMMONWEALTH OF MASSACHUSETTS DEPT. OF CONSERVATION & RECREATION; certain
+8f8db306000bd353,NA23NOS4200201,11.420,3b95f3a57b9acc66,NERR Waquoit Bay National Estuarine Research Reserve; COMMONWEALTH OF MASSACHUSETTS DEPT. OF CONSERVATION & RECREATION; certain
+8f8db306000bd353,NA24NOSX420C0048,11.420,3b95f3a57b9acc66,NERR Waquoit Bay National Estuarine Research Reserve; COMMONWEALTH OF MASSACHUSETTS DEPT. OF CONSERVATION & RECREATION; certain
+8f8db306000bd353,NA25NOSX420C0025,11.420,3b95f3a57b9acc66,NERR Waquoit Bay National Estuarine Research Reserve; COMMONWEALTH OF MASSACHUSETTS DEPT. OF CONSERVATION & RECREATION; certain
+8f8db306000bd353,NA26NOSX420C0021,11.420,3b95f3a57b9acc66,NERR Waquoit Bay National Estuarine Research Reserve; COMMONWEALTH OF MASSACHUSETTS DEPT. OF CONSERVATION & RECREATION; certain
+960fc51b86672cc2,NA08NOS4200381,11.420,3b95f3a57b9acc66,NERR Grand Bay National Estuarine Research Reserve; MISSISSIPPI DEPARTMENT OF MARINE RESOURCES; certain
+960fc51b86672cc2,NA09NOS4200132,11.420,3b95f3a57b9acc66,NERR Grand Bay National Estuarine Research Reserve; MISSISSIPPI DEPARTMENT OF MARINE RESOURCES; certain
+960fc51b86672cc2,NA10NOS4200075,11.420,3b95f3a57b9acc66,NERR Grand Bay National Estuarine Research Reserve; MISSISSIPPI DEPARTMENT OF MARINE RESOURCES; certain
+960fc51b86672cc2,NA11NOS4200145,11.420,3b95f3a57b9acc66,NERR Grand Bay National Estuarine Research Reserve; MISSISSIPPI DEPARTMENT OF MARINE RESOURCES; certain
+960fc51b86672cc2,NA12NOS4200106,11.420,3b95f3a57b9acc66,NERR Grand Bay National Estuarine Research Reserve; MISSISSIPPI DEPARTMENT OF MARINE RESOURCES; certain
+960fc51b86672cc2,NA13NOS4200072,11.420,3b95f3a57b9acc66,NERR Grand Bay National Estuarine Research Reserve; MISSISSIPPI DEPARTMENT OF MARINE RESOURCES; certain
+960fc51b86672cc2,NA14NOS4200011,11.420,3b95f3a57b9acc66,NERR Grand Bay National Estuarine Research Reserve; MISSISSIPPI DEPARTMENT OF MARINE RESOURCES; certain
+960fc51b86672cc2,NA14NOS4200040,11.420,3b95f3a57b9acc66,NERR Grand Bay National Estuarine Research Reserve; MISSISSIPPI DEPARTMENT OF MARINE RESOURCES; certain
+960fc51b86672cc2,NA15NOS4200100,11.420,3b95f3a57b9acc66,NERR Grand Bay National Estuarine Research Reserve; MISSISSIPPI DEPARTMENT OF MARINE RESOURCES; certain
+960fc51b86672cc2,NA16NOS4200088,11.420,3b95f3a57b9acc66,NERR Grand Bay National Estuarine Research Reserve; MISSISSIPPI DEPARTMENT OF MARINE RESOURCES; certain
+960fc51b86672cc2,NA17NOS4200045,11.420,3b95f3a57b9acc66,NERR Grand Bay National Estuarine Research Reserve; MISSISSIPPI DEPARTMENT OF MARINE RESOURCES; certain
+960fc51b86672cc2,NA18NOS4200063,11.420,3b95f3a57b9acc66,NERR Grand Bay National Estuarine Research Reserve; MISSISSIPPI DEPARTMENT OF MARINE RESOURCES; likely
+960fc51b86672cc2,NA19NOS4200066,11.420,3b95f3a57b9acc66,NERR Grand Bay National Estuarine Research Reserve; MISSISSIPPI DEPARTMENT OF MARINE RESOURCES; likely
+960fc51b86672cc2,NA20NOS4200070,11.420,3b95f3a57b9acc66,NERR Grand Bay National Estuarine Research Reserve; MISSISSIPPI DEPARTMENT OF MARINE RESOURCES; certain
+960fc51b86672cc2,NA21NOS4200046,11.420,3b95f3a57b9acc66,NERR Grand Bay National Estuarine Research Reserve; MISSISSIPPI DEPARTMENT OF MARINE RESOURCES; likely
+960fc51b86672cc2,NA22NOS4200071,11.420,3b95f3a57b9acc66,NERR Grand Bay National Estuarine Research Reserve; MISSISSIPPI DEPARTMENT OF MARINE RESOURCES; certain
+960fc51b86672cc2,NA22NOS4200218,11.420,3b95f3a57b9acc66,NERR Grand Bay National Estuarine Research Reserve; MISSISSIPPI DEPARTMENT OF MARINE RESOURCES; certain
+960fc51b86672cc2,NA23NOS4200160,11.420,3b95f3a57b9acc66,NERR Grand Bay National Estuarine Research Reserve; MISSISSIPPI DEPARTMENT OF MARINE RESOURCES; certain
+960fc51b86672cc2,NA24NOSX420C0050,11.420,3b95f3a57b9acc66,NERR Grand Bay National Estuarine Research Reserve; MISSISSIPPI DEPARTMENT OF MARINE RESOURCES; certain
+960fc51b86672cc2,NA24NOSX420G0020,11.420,3b95f3a57b9acc66,NERR Grand Bay National Estuarine Research Reserve; MISSISSIPPI DEPARTMENT OF MARINE RESOURCES; certain
+960fc51b86672cc2,NA25NOSX420C0007,11.420,3b95f3a57b9acc66,NERR Grand Bay National Estuarine Research Reserve; MISSISSIPPI DEPARTMENT OF MARINE RESOURCES; certain
+960fc51b86672cc2,NA26NOSX420C0010,11.420,3b95f3a57b9acc66,NERR Grand Bay National Estuarine Research Reserve; MISSISSIPPI DEPARTMENT OF MARINE RESOURCES; certain
+99abeaaed73bfb99,00D36215,66.456,0aecd67acddb43e9,NEP Indian River Lagoon National Estuary Program; IRL COUNCIL; certain
+99abeaaed73bfb99,00D90119,66.456,0aecd67acddb43e9,NEP Indian River Lagoon National Estuary Program; IRL COUNCIL; certain
+99abeaaed73bfb99,02D39922,66.456,0aecd67acddb43e9,NEP Indian River Lagoon National Estuary Program; IRL COUNCIL; certain
+99abeaaed73bfb99,02D39925,66.456,0aecd67acddb43e9,NEP Indian River Lagoon National Estuary Program; IRL COUNCIL; certain
+99abeaaed73bfb99,02D56923,66.456,0aecd67acddb43e9,NEP Indian River Lagoon National Estuary Program; IRL COUNCIL; certain
+99abeaaed73bfb99,02D56925,66.456,0aecd67acddb43e9,NEP Indian River Lagoon National Estuary Program; IRL COUNCIL; certain
+99abeaaed73bfb99,95483411,66.456,0aecd67acddb43e9,NEP Indian River Lagoon National Estuary Program; ST JOHNS RIVER WATER MANAGEMENT DISTRICT; likely
+99abeaaed73bfb99,96453806,66.456,0aecd67acddb43e9,NEP Indian River Lagoon National Estuary Program; ST JOHNS RIVER WATER MANAGEMENT DISTRICT; certain
+9b4911f8fe1a9ebd,NA08NOS4200417,11.420,3b95f3a57b9acc66,"NERR Delaware National Estuarine Research Reserve; WATERSHED STEWARDSHIP, DELAWARE DIVISION OF; certain"
+9b4911f8fe1a9ebd,NA09NOS4200149,11.420,3b95f3a57b9acc66,"NERR Delaware National Estuarine Research Reserve; WATERSHED STEWARDSHIP, DELAWARE DIVISION OF; certain"
+9b4911f8fe1a9ebd,NA10NOS4200185,11.420,3b95f3a57b9acc66,"NERR Delaware National Estuarine Research Reserve; WATERSHED STEWARDSHIP, DELAWARE DIVISION OF; certain"
+9b4911f8fe1a9ebd,NA11NOS4200108,11.420,3b95f3a57b9acc66,"NERR Delaware National Estuarine Research Reserve; WATERSHED STEWARDSHIP, DELAWARE DIVISION OF; certain"
+9b4911f8fe1a9ebd,NA12NOS4200151,11.420,3b95f3a57b9acc66,"NERR Delaware National Estuarine Research Reserve; WATERSHED STEWARDSHIP, DELAWARE DIVISION OF; certain"
+9b4911f8fe1a9ebd,NA13NOS4200120,11.420,3b95f3a57b9acc66,"NERR Delaware National Estuarine Research Reserve; WATERSHED STEWARDSHIP, DELAWARE DIVISION OF; certain"
+9b4911f8fe1a9ebd,NA14NOS4200137,11.420,3b95f3a57b9acc66,"NERR Delaware National Estuarine Research Reserve; WATERSHED STEWARDSHIP, DELAWARE DIVISION OF; certain"
+9b4911f8fe1a9ebd,NA15NOS4200042,11.420,3b95f3a57b9acc66,"NERR Delaware National Estuarine Research Reserve; WATERSHED STEWARDSHIP, DELAWARE DIVISION OF; certain"
+9b4911f8fe1a9ebd,NA15NOS4200050,11.420,3b95f3a57b9acc66,"NERR Delaware National Estuarine Research Reserve; WATERSHED STEWARDSHIP, DELAWARE DIVISION OF; certain"
+9b4911f8fe1a9ebd,NA16NOS4200160,11.420,3b95f3a57b9acc66,"NERR Delaware National Estuarine Research Reserve; STATE OF DELAWARE, DNREC; certain"
+9b4911f8fe1a9ebd,NA17NOS4200119,11.420,3b95f3a57b9acc66,"NERR Delaware National Estuarine Research Reserve; STATE OF DELAWARE, DNREC; certain"
+9b4911f8fe1a9ebd,NA17NOS4200162,11.420,3b95f3a57b9acc66,"NERR Delaware National Estuarine Research Reserve; STATE OF DELAWARE, DNREC; certain"
+9b4911f8fe1a9ebd,NA18NOS4200118,11.420,3b95f3a57b9acc66,"NERR Delaware National Estuarine Research Reserve; STATE OF DELAWARE, DNREC; certain"
+9b4911f8fe1a9ebd,NA20NOS4200167,11.420,3b95f3a57b9acc66,"NERR Delaware National Estuarine Research Reserve; STATE OF DELAWARE, DNREC; certain"
+9b4911f8fe1a9ebd,NA21NOS4200062,11.420,3b95f3a57b9acc66,"NERR Delaware National Estuarine Research Reserve; STATE OF DELAWARE, DNREC; certain"
+9b4911f8fe1a9ebd,NA22NOS4200150,11.420,3b95f3a57b9acc66,"NERR Delaware National Estuarine Research Reserve; STATE OF DELAWARE, DNREC; certain"
+9b4911f8fe1a9ebd,NA24NOSX420C0069,11.420,3b95f3a57b9acc66,"NERR Delaware National Estuarine Research Reserve; STATE OF DELAWARE, DNREC; certain"
+9b4911f8fe1a9ebd,NA26NOSX420C0005,11.420,3b95f3a57b9acc66,"NERR Delaware National Estuarine Research Reserve; STATE OF DELAWARE, DNREC; certain"
+9d4583c180914ac0,00A00004,66.456,0aecd67acddb43e9,NEP Narragansett Bay Estuary Program; NEW ENGLAND INTERSTATE WATER POLLUTION CONTROL COMMISSION; certain
+9d4583c180914ac0,00A00127,66.456,0aecd67acddb43e9,NEP Narragansett Bay Estuary Program; NEW ENGLAND INTERSTATE WATER POLLUTION CONTROL COMMISSION; certain
+9d4583c180914ac0,00A00366,66.456,0aecd67acddb43e9,NEP Narragansett Bay Estuary Program; NEW ENGLAND INTERSTATE WATER POLLUTION CONTROL COMMISSION; certain
+9d4583c180914ac0,00A00393,66.456,0aecd67acddb43e9,NEP Narragansett Bay Estuary Program; NEW ENGLAND INTERSTATE WATER POLLUTION CONTROL COMMISSION; certain
+9d4583c180914ac0,00A00407,66.456,0aecd67acddb43e9,NEP Narragansett Bay Estuary Program; NEW ENGLAND INTERSTATE WATER POLLUTION CONTROL COMMISSION; certain
+9d4583c180914ac0,00A00846,66.456,0aecd67acddb43e9,NEP Narragansett Bay Estuary Program; ROGER WILLIAMS UNIVERSITY; certain
+9d4583c180914ac0,00A00967,66.456,0aecd67acddb43e9,NEP Narragansett Bay Estuary Program; ROGER WILLIAMS UNIVERSITY; certain
+9d4583c180914ac0,00A01306,66.456,0aecd67acddb43e9,NEP Narragansett Bay Estuary Program; ROGER WILLIAMS UNIVERSITY; certain
+9d4583c180914ac0,00A01336,66.456,0aecd67acddb43e9,NEP Narragansett Bay Estuary Program; ROGER WILLIAMS UNIVERSITY; certain
+9d4583c180914ac0,00A01716,66.456,0aecd67acddb43e9,NEP Narragansett Bay Estuary Program; ROGER WILLIAMS UNIVERSITY; certain
+9d4583c180914ac0,00A01721,66.456,0aecd67acddb43e9,NEP Narragansett Bay Estuary Program; ROGER WILLIAMS UNIVERSITY; certain
+9d4583c180914ac0,96172201,66.456,0aecd67acddb43e9,NEP Narragansett Bay Estuary Program; NEW ENGLAND INTERSTATE WATER POLLUTION CONTROL COMMISSION; likely
+9d4583c180914ac0,96184201,66.456,0aecd67acddb43e9,NEP Narragansett Bay Estuary Program; NEW ENGLAND INTERSTATE WATER POLLUTION CONTROL COMMISSION; certain
+a3df950de95bd5e8,00J76201,66.456,0aecd67acddb43e9,NEP Lower Columbia Estuary Partnership; LOWER COLUMBIA ESTUARY PARTNERSHIP; certain
+a3df950de95bd5e8,01J00001,66.456,0aecd67acddb43e9,NEP Lower Columbia Estuary Partnership; LOWER COLUMBIA ESTUARY PARTNERSHIP; certain
+a3df950de95bd5e8,01J56601,66.456,0aecd67acddb43e9,NEP Lower Columbia Estuary Partnership; LOWER COLUMBIA ESTUARY PARTNERSHIP; certain
+a3df950de95bd5e8,02J12101,66.456,0aecd67acddb43e9,NEP Lower Columbia Estuary Partnership; LOWER COLUMBIA ESTUARY PARTNERSHIP; certain
+a3df950de95bd5e8,02J36801,66.456,0aecd67acddb43e9,NEP Lower Columbia Estuary Partnership; LOWER COLUMBIA ESTUARY PARTNERSHIP; certain
+a3df950de95bd5e8,02J55401,66.456,0aecd67acddb43e9,NEP Lower Columbia Estuary Partnership; LOWER COLUMBIA ESTUARY PARTNERSHIP; certain
+a3df950de95bd5e8,03J08401,66.456,0aecd67acddb43e9,NEP Lower Columbia Estuary Partnership; LOWER COLUMBIA ESTUARY PARTNERSHIP; certain
+a3df950de95bd5e8,96010601,66.456,0aecd67acddb43e9,NEP Lower Columbia Estuary Partnership; LOWER COLUMBIA ESTUARY PARTNERSHIP; certain
+a3df950de95bd5e8,96097301,66.456,0aecd67acddb43e9,NEP Lower Columbia Estuary Partnership; LOWER COLUMBIA ESTUARY PARTNERSHIP; certain
+a90fce0f33af9666,NA08NOS4200351,11.420,3b95f3a57b9acc66,"NERR ACE Basin National Estuarine Research Reserve; NATURAL RESOURCES, SOUTH CAROLINA DEPARTMENT OF; certain"
+a90fce0f33af9666,NA09NOS4200136,11.420,3b95f3a57b9acc66,"NERR ACE Basin National Estuarine Research Reserve; NATURAL RESOURCES, SOUTH CAROLINA DEPARTMENT OF; certain"
+a90fce0f33af9666,NA10NOS4200124,11.420,3b95f3a57b9acc66,"NERR ACE Basin National Estuarine Research Reserve; NATURAL RESOURCES, SOUTH CAROLINA DEPARTMENT OF; certain"
+a90fce0f33af9666,NA11NOS4200118,11.420,3b95f3a57b9acc66,NERR ACE Basin National Estuarine Research Reserve; NATURAL RESOURCES SOUTH CAROLINA DEPARTMENT; certain
+a90fce0f33af9666,NA12NOS4200100,11.420,3b95f3a57b9acc66,"NERR ACE Basin National Estuarine Research Reserve; NATURAL RESOURCES, SOUTH CAROLINA DEPARTMENT OF; certain"
+a90fce0f33af9666,NA13NOS4200079,11.420,3b95f3a57b9acc66,"NERR ACE Basin National Estuarine Research Reserve; NATURAL RESOURCES, SOUTH CAROLINA DEPARTMENT OF; certain"
+a90fce0f33af9666,NA14NOS4200073,11.420,3b95f3a57b9acc66,"NERR ACE Basin National Estuarine Research Reserve; NATURAL RESOURCES, SOUTH CAROLINA DEPARTMENT OF; certain"
+a90fce0f33af9666,NA15NOS4200119,11.420,3b95f3a57b9acc66,NERR ACE Basin National Estuarine Research Reserve; NATURAL RESOURCES SOUTH CAROLINA DEPARTMENT; certain
+a90fce0f33af9666,NA16NOS4200075,11.420,3b95f3a57b9acc66,NERR ACE Basin National Estuarine Research Reserve; NATURAL RESOURCES SOUTH CAROLINA DEPARTMENT; certain
+a90fce0f33af9666,NA17NOS4200063,11.420,3b95f3a57b9acc66,NERR ACE Basin National Estuarine Research Reserve; NATURAL RESOURCES SOUTH CAROLINA DEPARTMENT; certain
+a90fce0f33af9666,NA17NOS4200157,11.420,3b95f3a57b9acc66,NERR ACE Basin National Estuarine Research Reserve; NATURAL RESOURCES SOUTH CAROLINA DEPARTMENT; certain
+a90fce0f33af9666,NA18NOS4200021,11.420,3b95f3a57b9acc66,NERR ACE Basin National Estuarine Research Reserve; NATURAL RESOURCES SOUTH CAROLINA DEPARTMENT; certain
+a90fce0f33af9666,NA19NOS4200042,11.420,3b95f3a57b9acc66,NERR ACE Basin National Estuarine Research Reserve; NATURAL RESOURCES SOUTH CAROLINA DEPARTMENT; certain
+a90fce0f33af9666,NA20NOS4200037,11.420,3b95f3a57b9acc66,NERR ACE Basin National Estuarine Research Reserve; NATURAL RESOURCES SOUTH CAROLINA DEPARTMENT; certain
+a90fce0f33af9666,NA20NOS4200059,11.420,3b95f3a57b9acc66,NERR ACE Basin National Estuarine Research Reserve; NATURAL RESOURCES SOUTH CAROLINA DEPARTMENT; certain
+a90fce0f33af9666,NA21NOS4200070,11.420,3b95f3a57b9acc66,NERR ACE Basin National Estuarine Research Reserve; NATURAL RESOURCES SOUTH CAROLINA DEPARTMENT; certain
+a90fce0f33af9666,NA22NOS4200037,11.420,3b95f3a57b9acc66,NERR ACE Basin National Estuarine Research Reserve; NATURAL RESOURCES SOUTH CAROLINA DEPARTMENT; certain
+a90fce0f33af9666,NA23NOS4200185,11.420,3b95f3a57b9acc66,NERR ACE Basin National Estuarine Research Reserve; NATURAL RESOURCES SOUTH CAROLINA DEPARTMENT; certain
+a90fce0f33af9666,NA23NOS4200191,11.420,3b95f3a57b9acc66,NERR ACE Basin National Estuarine Research Reserve; NATURAL RESOURCES SOUTH CAROLINA DEPARTMENT; certain
+a90fce0f33af9666,NA24NOSX420C0039,11.420,3b95f3a57b9acc66,NERR ACE Basin National Estuarine Research Reserve; NATURAL RESOURCES SOUTH CAROLINA DEPARTMENT; certain
+a90fce0f33af9666,NA25NOSX420G0018,11.420,3b95f3a57b9acc66,NERR ACE Basin National Estuarine Research Reserve; NATURAL RESOURCES SOUTH CAROLINA DEPARTMENT; certain
+a90fce0f33af9666,NA26NOSX420C0003,11.420,3b95f3a57b9acc66,NERR ACE Basin National Estuarine Research Reserve; NATURAL RESOURCES SOUTH CAROLINA DEPARTMENT; certain
+acfc1994d0e6cc5e,NA12NOS4200114,11.420,3b95f3a57b9acc66,NERR Guana Tolomato Matanzas National Estuarine Research Reserve; FLORIDA DEPARTMENT OF ENVIRONMENTAL PROTECTION; certain
+acfc1994d0e6cc5e,NA13NOS4200090,11.420,3b95f3a57b9acc66,NERR Guana Tolomato Matanzas National Estuarine Research Reserve; FLORIDA DEPARTMENT OF ENVIRONMENTAL PROTECTION; certain
+acfc1994d0e6cc5e,NA14NOS4200012,11.420,3b95f3a57b9acc66,NERR Guana Tolomato Matanzas National Estuarine Research Reserve; FLORIDA DEPARTMENT OF ENVIRONMENTAL PROTECTION; certain
+acfc1994d0e6cc5e,NA14NOS4200050,11.420,3b95f3a57b9acc66,NERR Guana Tolomato Matanzas National Estuarine Research Reserve; FLORIDA DEPARTMENT OF ENVIRONMENTAL PROTECTION; certain
+acfc1994d0e6cc5e,NA15NOS4200113,11.420,3b95f3a57b9acc66,NERR Guana Tolomato Matanzas National Estuarine Research Reserve; FLORIDA DEPARTMENT OF ENVIRONMENTAL PROTECTION; certain
+acfc1994d0e6cc5e,NA16NOS4200095,11.420,3b95f3a57b9acc66,NERR Guana Tolomato Matanzas National Estuarine Research Reserve; FLORIDA DEPARTMENT OF ENVIRONMENTAL PROTECTION; certain
+acfc1994d0e6cc5e,NA17NOS4200049,11.420,3b95f3a57b9acc66,NERR Guana Tolomato Matanzas National Estuarine Research Reserve; FLORIDA DEPARTMENT OF ENVIRONMENTAL PROTECTION; certain
+acfc1994d0e6cc5e,NA18NOS4200052,11.420,3b95f3a57b9acc66,NERR Guana Tolomato Matanzas National Estuarine Research Reserve; FLORIDA DEPARTMENT OF ENVIRONMENTAL PROTECTION; certain
+acfc1994d0e6cc5e,NA19NOS4200045,11.420,3b95f3a57b9acc66,NERR Guana Tolomato Matanzas National Estuarine Research Reserve; FLORIDA DEPARTMENT OF ENVIRONMENTAL PROTECTION; certain
+acfc1994d0e6cc5e,NA19NOS4200061,11.420,3b95f3a57b9acc66,NERR Guana Tolomato Matanzas National Estuarine Research Reserve; FLORIDA DEPARTMENT OF ENVIRONMENTAL PROTECTION; certain
+acfc1994d0e6cc5e,NA20NOS4200062,11.420,3b95f3a57b9acc66,NERR Guana Tolomato Matanzas National Estuarine Research Reserve; FLORIDA DEPARTMENT OF ENVIRONMENTAL PROTECTION; certain
+acfc1994d0e6cc5e,NA21NOS4200047,11.420,3b95f3a57b9acc66,NERR Guana Tolomato Matanzas National Estuarine Research Reserve; FLORIDA DEPARTMENT OF ENVIRONMENTAL PROTECTION; certain
+acfc1994d0e6cc5e,NA22NOS4200034,11.420,3b95f3a57b9acc66,NERR Guana Tolomato Matanzas National Estuarine Research Reserve; FLORIDA DEPARTMENT OF ENVIRONMENTAL PROTECTION; certain
+acfc1994d0e6cc5e,NA23NOS4200189,11.420,3b95f3a57b9acc66,NERR Guana Tolomato Matanzas National Estuarine Research Reserve; FLORIDA DEPARTMENT OF ENVIRONMENTAL PROTECTION; certain
+acfc1994d0e6cc5e,NA23NOS4200200,11.420,3b95f3a57b9acc66,NERR Guana Tolomato Matanzas National Estuarine Research Reserve; FLORIDA DEPARTMENT OF ENVIRONMENTAL PROTECTION; certain
+acfc1994d0e6cc5e,NA24NOSX420C0034,11.420,3b95f3a57b9acc66,NERR Guana Tolomato Matanzas National Estuarine Research Reserve; FLORIDA DEPARTMENT OF ENVIRONMENTAL PROTECTION; certain
+acfc1994d0e6cc5e,NA25NOSX420C0011,11.420,3b95f3a57b9acc66,NERR Guana Tolomato Matanzas National Estuarine Research Reserve; FLORIDA DEPARTMENT OF ENVIRONMENTAL PROTECTION; certain
+acfc1994d0e6cc5e,NA25NOSX420G0010,11.420,3b95f3a57b9acc66,NERR Guana Tolomato Matanzas National Estuarine Research Reserve; FLORIDA DEPARTMENT OF ENVIRONMENTAL PROTECTION; certain
+acfc1994d0e6cc5e,NA26NOSX420C0013,11.420,3b95f3a57b9acc66,NERR Guana Tolomato Matanzas National Estuarine Research Reserve; FLORIDA DEPARTMENT OF ENVIRONMENTAL PROTECTION; certain
+b18d4e304929d1f3,95309101,66.456,0aecd67acddb43e9,"NEP Partnership for the Delaware Estuary; PARTNERSHIP FOR THE DELAWARE ESTUARY, INC; certain"
+b18d4e304929d1f3,95331601,66.456,0aecd67acddb43e9,"NEP Partnership for the Delaware Estuary; PARTNERSHIP FOR THE DELAWARE ESTUARY, INC; certain"
+b18d4e304929d1f3,953A0054,66.456,0aecd67acddb43e9,"NEP Partnership for the Delaware Estuary; PARTNERSHIP FOR THE DELAWARE ESTUARY, INC; certain"
+b18d4e304929d1f3,953A0318,66.456,0aecd67acddb43e9,"NEP Partnership for the Delaware Estuary; PARTNERSHIP FOR THE DELAWARE ESTUARY, INC; certain"
+b18d4e304929d1f3,99398509,66.456,0aecd67acddb43e9,"NEP Partnership for the Delaware Estuary; PARTNERSHIP FOR THE DELAWARE ESTUARY, INC; certain"
+b18d4e304929d1f3,99398510,66.456,0aecd67acddb43e9,"NEP Partnership for the Delaware Estuary; PARTNERSHIP FOR THE DELAWARE ESTUARY, INC; certain"
+b18d4e304929d1f3,99398511,66.456,0aecd67acddb43e9,"NEP Partnership for the Delaware Estuary; PARTNERSHIP FOR THE DELAWARE ESTUARY, INC; certain"
+b18d4e304929d1f3,99398512,66.456,0aecd67acddb43e9,"NEP Partnership for the Delaware Estuary; PARTNERSHIP FOR THE DELAWARE ESTUARY, INC; certain"
+b18d4e304929d1f3,99398513,66.456,0aecd67acddb43e9,"NEP Partnership for the Delaware Estuary; PARTNERSHIP FOR THE DELAWARE ESTUARY, INC; certain"
+b18d4e304929d1f3,99398514,66.456,0aecd67acddb43e9,"NEP Partnership for the Delaware Estuary; PARTNERSHIP FOR THE DELAWARE ESTUARY, INC; certain"
+b18d4e304929d1f3,99398515,66.456,0aecd67acddb43e9,"NEP Partnership for the Delaware Estuary; PARTNERSHIP FOR THE DELAWARE ESTUARY, INC; certain"
+b18d4e304929d1f3,99398516,66.456,0aecd67acddb43e9,"NEP Partnership for the Delaware Estuary; PARTNERSHIP FOR THE DELAWARE ESTUARY, INC; certain"
+b18d4e304929d1f3,99398517,66.456,0aecd67acddb43e9,"NEP Partnership for the Delaware Estuary; PARTNERSHIP FOR THE DELAWARE ESTUARY, INC; certain"
+b18d4e304929d1f3,99398518,66.456,0aecd67acddb43e9,"NEP Partnership for the Delaware Estuary; PARTNERSHIP FOR THE DELAWARE ESTUARY, INC; certain"
+b18d4e304929d1f3,99398519,66.456,0aecd67acddb43e9,"NEP Partnership for the Delaware Estuary; PARTNERSHIP FOR THE DELAWARE ESTUARY, INC; certain"
+b4519c13bf6c6b9d,NA08NOS4200430,11.420,3b95f3a57b9acc66,NERR Chesapeake Bay-Maryland National Estuarine Research Reserve; STATE OF MARYLAND DEPARTMENT OF NATURAL RESOURCES; certain
+b4519c13bf6c6b9d,NA09NOS4200150,11.420,3b95f3a57b9acc66,NERR Chesapeake Bay-Maryland National Estuarine Research Reserve; STATE OF MARYLAND DEPARTMENT OF NATURAL RESOURCES; certain
+b4519c13bf6c6b9d,NA10NOS4200094,11.420,3b95f3a57b9acc66,NERR Chesapeake Bay-Maryland National Estuarine Research Reserve; STATE OF MARYLAND DEPARTMENT OF NATURAL RESOURCES; certain
+b4519c13bf6c6b9d,NA10NOS4200096,11.420,3b95f3a57b9acc66,NERR Chesapeake Bay-Maryland National Estuarine Research Reserve; STATE OF MARYLAND DEPARTMENT OF NATURAL RESOURCES; certain
+b4519c13bf6c6b9d,NA10NOS4200195,11.420,3b95f3a57b9acc66,NERR Chesapeake Bay-Maryland National Estuarine Research Reserve; STATE OF MARYLAND DEPARTMENT OF NATURAL RESOURCES; certain
+b4519c13bf6c6b9d,NA11NOS4200119,11.420,3b95f3a57b9acc66,NERR Chesapeake Bay-Maryland National Estuarine Research Reserve; STATE OF MARYLAND DEPARTMENT OF NATURAL RESOURCES; certain
+b4519c13bf6c6b9d,NA12NOS4200156,11.420,3b95f3a57b9acc66,NERR Chesapeake Bay-Maryland National Estuarine Research Reserve; STATE OF MARYLAND DEPARTMENT OF NATURAL RESOURCES; certain
+b4519c13bf6c6b9d,NA13NOS4200127,11.420,3b95f3a57b9acc66,NERR Chesapeake Bay-Maryland National Estuarine Research Reserve; STATE OF MARYLAND DEPARTMENT OF NATURAL RESOURCES; certain
+b4519c13bf6c6b9d,NA14NOS4200128,11.420,3b95f3a57b9acc66,NERR Chesapeake Bay-Maryland National Estuarine Research Reserve; STATE OF MARYLAND DEPARTMENT OF NATURAL RESOURCES; likely
+b4519c13bf6c6b9d,NA15NOS4200134,11.420,3b95f3a57b9acc66,NERR Chesapeake Bay-Maryland National Estuarine Research Reserve; STATE OF MARYLAND DEPARTMENT OF NATURAL RESOURCES; certain
+b4519c13bf6c6b9d,NA16NOS4200163,11.420,3b95f3a57b9acc66,NERR Chesapeake Bay-Maryland National Estuarine Research Reserve; STATE OF MARYLAND DEPARTMENT OF NATURAL RESOURCES; certain
+b4519c13bf6c6b9d,NA17NOS4200126,11.420,3b95f3a57b9acc66,NERR Chesapeake Bay-Maryland National Estuarine Research Reserve; STATE OF MARYLAND DEPARTMENT OF NATURAL RESOURCES; certain
+b4519c13bf6c6b9d,NA17NOS4200156,11.420,3b95f3a57b9acc66,NERR Chesapeake Bay-Maryland National Estuarine Research Reserve; STATE OF MARYLAND DEPARTMENT OF NATURAL RESOURCES; certain
+b4519c13bf6c6b9d,NA18NOS4200182,11.420,3b95f3a57b9acc66,NERR Chesapeake Bay-Maryland National Estuarine Research Reserve; STATE OF MARYLAND DEPARTMENT OF NATURAL RESOURCES; certain
+b4519c13bf6c6b9d,NA19NOS4200096,11.420,3b95f3a57b9acc66,NERR Chesapeake Bay-Maryland National Estuarine Research Reserve; STATE OF MARYLAND DEPARTMENT OF NATURAL RESOURCES; certain
+b4519c13bf6c6b9d,NA20NOS4200052,11.420,3b95f3a57b9acc66,NERR Chesapeake Bay-Maryland National Estuarine Research Reserve; STATE OF MARYLAND DEPARTMENT OF NATURAL RESOURCES; certain
+b4519c13bf6c6b9d,NA20NOS4200197,11.420,3b95f3a57b9acc66,NERR Chesapeake Bay-Maryland National Estuarine Research Reserve; STATE OF MARYLAND DEPARTMENT OF NATURAL RESOURCES; certain
+b4519c13bf6c6b9d,NA21NOS4200128,11.420,3b95f3a57b9acc66,NERR Chesapeake Bay-Maryland National Estuarine Research Reserve; STATE OF MARYLAND DEPARTMENT OF NATURAL RESOURCES; certain
+b4519c13bf6c6b9d,NA22NOS4200131,11.420,3b95f3a57b9acc66,NERR Chesapeake Bay-Maryland National Estuarine Research Reserve; STATE OF MARYLAND DEPARTMENT OF NATURAL RESOURCES; certain
+b4519c13bf6c6b9d,NA23NOS4200193,11.420,3b95f3a57b9acc66,NERR Chesapeake Bay-Maryland National Estuarine Research Reserve; STATE OF MARYLAND DEPARTMENT OF NATURAL RESOURCES; certain
+b4519c13bf6c6b9d,NA23NOS4200233,11.420,3b95f3a57b9acc66,NERR Chesapeake Bay-Maryland National Estuarine Research Reserve; STATE OF MARYLAND DEPARTMENT OF NATURAL RESOURCES; certain
+b4519c13bf6c6b9d,NA24NOSX420C0057,11.420,3b95f3a57b9acc66,NERR Chesapeake Bay-Maryland National Estuarine Research Reserve; STATE OF MARYLAND DEPARTMENT OF NATURAL RESOURCES; certain
+b4519c13bf6c6b9d,NA25NOSX420C0016,11.420,3b95f3a57b9acc66,NERR Chesapeake Bay-Maryland National Estuarine Research Reserve; STATE OF MARYLAND DEPARTMENT OF NATURAL RESOURCES; certain
+b4519c13bf6c6b9d,NA25NOSX420G0019,11.420,3b95f3a57b9acc66,NERR Chesapeake Bay-Maryland National Estuarine Research Reserve; STATE OF MARYLAND DEPARTMENT OF NATURAL RESOURCES; certain
+b4519c13bf6c6b9d,NA26NOSX420C0012,11.420,3b95f3a57b9acc66,NERR Chesapeake Bay-Maryland National Estuarine Research Reserve; STATE OF MARYLAND DEPARTMENT OF NATURAL RESOURCES; certain
+b5ba4ac41401a0b9,NA08NOS4200400,11.420,3b95f3a57b9acc66,NERR Tijuana River National Estuarine Research Reserve; TIJUANA ESTUARY FOUNDATION; certain
+b5ba4ac41401a0b9,NA09NOS4200142,11.420,3b95f3a57b9acc66,NERR Tijuana River National Estuarine Research Reserve; TIJUANA ESTUARY FOUNDATION; certain
+b5ba4ac41401a0b9,NA09NOS4200143,11.420,3b95f3a57b9acc66,NERR Tijuana River National Estuarine Research Reserve; CALIFORNIA DEPARTMENT OF PARKS & RECREATION; certain
+b5ba4ac41401a0b9,NA10NOS4200129,11.420,3b95f3a57b9acc66,NERR Tijuana River National Estuarine Research Reserve; CALIFORNIA DEPARTMENT OF PARKS & RECREATION; certain
+b5ba4ac41401a0b9,NA10NOS4200130,11.420,3b95f3a57b9acc66,NERR Tijuana River National Estuarine Research Reserve; TIJUANA ESTUARY FOUNDATION; certain
+b5ba4ac41401a0b9,NA11NOS4200124,11.420,3b95f3a57b9acc66,NERR Tijuana River National Estuarine Research Reserve; CALIFORNIA DEPARTMENT OF PARKS & RECREATION; certain
+b5ba4ac41401a0b9,NA11NOS4200125,11.420,3b95f3a57b9acc66,NERR Tijuana River National Estuarine Research Reserve; TIJUANA ESTUARY FOUNDATION; certain
+b5ba4ac41401a0b9,NA12NOS4200122,11.420,3b95f3a57b9acc66,NERR Tijuana River National Estuarine Research Reserve; CALIFORNIA DEPARTMENT OF PARKS & RECREATION; certain
+b5ba4ac41401a0b9,NA12NOS4200123,11.420,3b95f3a57b9acc66,NERR Tijuana River National Estuarine Research Reserve; TIJUANA ESTUARY FOUNDATION; certain
+b5ba4ac41401a0b9,NA13NOS4200077,11.420,3b95f3a57b9acc66,NERR Tijuana River National Estuarine Research Reserve; TIJUANA ESTUARY FOUNDATION; certain
+b5ba4ac41401a0b9,NA13NOS4200083,11.420,3b95f3a57b9acc66,NERR Tijuana River National Estuarine Research Reserve; CALIFORNIA DEPARTMENT OF PARKS & RECREATION; certain
+b5ba4ac41401a0b9,NA14NOS4200039,11.420,3b95f3a57b9acc66,NERR Tijuana River National Estuarine Research Reserve; CALIFORNIA DEPARTMENT OF PARKS & RECREATION; certain
+b5ba4ac41401a0b9,NA14NOS4200075,11.420,3b95f3a57b9acc66,NERR Tijuana River National Estuarine Research Reserve; TIJUANA ESTUARY FOUNDATION; certain
+b5ba4ac41401a0b9,NA15NOS4200093,11.420,3b95f3a57b9acc66,NERR Tijuana River National Estuarine Research Reserve; CALIFORNIA DEPARTMENT OF PARKS & RECREATION; certain
+b5ba4ac41401a0b9,NA15NOS4200124,11.420,3b95f3a57b9acc66,NERR Tijuana River National Estuarine Research Reserve; TIJUANA ESTUARY FOUNDATION; certain
+b5ba4ac41401a0b9,NA16NOS4200068,11.420,3b95f3a57b9acc66,NERR Tijuana River National Estuarine Research Reserve; TIJUANA ESTUARY FOUNDATION; certain
+b5ba4ac41401a0b9,NA16NOS4200072,11.420,3b95f3a57b9acc66,NERR Tijuana River National Estuarine Research Reserve; CALIFORNIA DEPARTMENT OF PARKS & RECREATION; certain
+b5ba4ac41401a0b9,NA17NOS4200064,11.420,3b95f3a57b9acc66,NERR Tijuana River National Estuarine Research Reserve; TIJUANA ESTUARY FOUNDATION; certain
+b5ba4ac41401a0b9,NA17NOS4200065,11.420,3b95f3a57b9acc66,NERR Tijuana River National Estuarine Research Reserve; CALIFORNIA DEPARTMENT OF PARKS & RECREATION; certain
+b5ba4ac41401a0b9,NA18NOS4200022,11.420,3b95f3a57b9acc66,NERR Tijuana River National Estuarine Research Reserve; TIJUANA ESTUARY FOUNDATION; certain
+b5ba4ac41401a0b9,NA18NOS4200053,11.420,3b95f3a57b9acc66,NERR Tijuana River National Estuarine Research Reserve; CALIFORNIA DEPARTMENT OF PARKS & RECREATION; certain
+b5ba4ac41401a0b9,NA19NOS4200071,11.420,3b95f3a57b9acc66,NERR Tijuana River National Estuarine Research Reserve; TIJUANA ESTUARY FOUNDATION; certain
+b5ba4ac41401a0b9,NA19NOS4200079,11.420,3b95f3a57b9acc66,NERR Tijuana River National Estuarine Research Reserve; CALIFORNIA DEPARTMENT OF PARKS & RECREATION; certain
+b5ba4ac41401a0b9,NA20NOS4200099,11.420,3b95f3a57b9acc66,NERR Tijuana River National Estuarine Research Reserve; CALIFORNIA DEPARTMENT OF PARKS & RECREATION; certain
+b5ba4ac41401a0b9,NA20NOS4200100,11.420,3b95f3a57b9acc66,NERR Tijuana River National Estuarine Research Reserve; TIJUANA ESTUARY FOUNDATION; certain
+b5ba4ac41401a0b9,NA21NOS4200054,11.420,3b95f3a57b9acc66,NERR Tijuana River National Estuarine Research Reserve; CALIFORNIA DEPARTMENT OF PARKS & RECREATION; certain
+b5ba4ac41401a0b9,NA21NOS4200055,11.420,3b95f3a57b9acc66,NERR Tijuana River National Estuarine Research Reserve; TIJUANA ESTUARY FOUNDATION; certain
+b5ba4ac41401a0b9,NA22NOS4200082,11.420,3b95f3a57b9acc66,NERR Tijuana River National Estuarine Research Reserve; TIJUANA ESTUARY FOUNDATION; certain
+b5ba4ac41401a0b9,NA22NOS4200084,11.420,3b95f3a57b9acc66,NERR Tijuana River National Estuarine Research Reserve; CALIFORNIA DEPARTMENT OF PARKS & RECREATION; certain
+b5ba4ac41401a0b9,NA23NOS4200171,11.420,3b95f3a57b9acc66,NERR Tijuana River National Estuarine Research Reserve; TIJUANA ESTUARY FOUNDATION; certain
+b5ba4ac41401a0b9,NA23NOS4200172,11.420,3b95f3a57b9acc66,NERR Tijuana River National Estuarine Research Reserve; CALIFORNIA DEPARTMENT OF PARKS & RECREATION; certain
+b5ba4ac41401a0b9,NA24NOSX420C0042,11.420,3b95f3a57b9acc66,NERR Tijuana River National Estuarine Research Reserve; CALIFORNIA DEPARTMENT OF PARKS & RECREATION; certain
+b5ba4ac41401a0b9,NA24NOSX420C0043,11.420,3b95f3a57b9acc66,NERR Tijuana River National Estuarine Research Reserve; TIJUANA ESTUARY FOUNDATION; certain
+b5ba4ac41401a0b9,NA25NOSX420C0014,11.420,3b95f3a57b9acc66,NERR Tijuana River National Estuarine Research Reserve; TIJUANA ESTUARY FOUNDATION; certain
+b5ba4ac41401a0b9,NA25NOSX420C0023,11.420,3b95f3a57b9acc66,NERR Tijuana River National Estuarine Research Reserve; CALIFORNIA DEPARTMENT OF PARKS & RECREATION; certain
+b5ba4ac41401a0b9,NA25NOSX420G0007,11.420,3b95f3a57b9acc66,NERR Tijuana River National Estuarine Research Reserve; CALIFORNIA DEPARTMENT OF PARKS & RECREATION; certain
+b5ba4ac41401a0b9,NA26NOSX420C0019,11.420,3b95f3a57b9acc66,NERR Tijuana River National Estuarine Research Reserve; TIJUANA ESTUARY FOUNDATION; certain
+b5ba4ac41401a0b9,NA26NOSX420C0031,11.420,3b95f3a57b9acc66,NERR Tijuana River National Estuarine Research Reserve; CALIFORNIA DEPARTMENT OF PARKS & RECREATION; certain
+b989d5d297c3dec3,NA08NOS4200378,11.420,3b95f3a57b9acc66,NERR Rookery Bay National Estuarine Research Reserve; FLORIDA DEPARTMENT OF ENVIRONMENTAL PROTECTION; certain
+b989d5d297c3dec3,NA09NOS4200134,11.420,3b95f3a57b9acc66,NERR Rookery Bay National Estuarine Research Reserve; FLORIDA DEPARTMENT OF ENVIRONMENTAL PROTECTION; certain
+b989d5d297c3dec3,NA10NOS4200112,11.420,3b95f3a57b9acc66,NERR Rookery Bay National Estuarine Research Reserve; FLORIDA DEPARTMENT OF ENVIRONMENTAL PROTECTION; certain
+b989d5d297c3dec3,NA11NOS4200148,11.420,3b95f3a57b9acc66,NERR Rookery Bay National Estuarine Research Reserve; FLORIDA DEPARTMENT OF ENVIRONMENTAL PROTECTION; certain
+b989d5d297c3dec3,NA12NOS4200113,11.420,3b95f3a57b9acc66,NERR Rookery Bay National Estuarine Research Reserve; FLORIDA DEPARTMENT OF ENVIRONMENTAL PROTECTION; certain
+b989d5d297c3dec3,NA13NOS4200089,11.420,3b95f3a57b9acc66,NERR Rookery Bay National Estuarine Research Reserve; FLORIDA DEPARTMENT OF ENVIRONMENTAL PROTECTION; certain
+b989d5d297c3dec3,NA14NOS4200042,11.420,3b95f3a57b9acc66,NERR Rookery Bay National Estuarine Research Reserve; FLORIDA DEPARTMENT OF ENVIRONMENTAL PROTECTION; certain
+b989d5d297c3dec3,NA15NOS4200048,11.420,3b95f3a57b9acc66,NERR Rookery Bay National Estuarine Research Reserve; FLORIDA DEPARTMENT OF ENVIRONMENTAL PROTECTION; certain
+b989d5d297c3dec3,NA15NOS4200101,11.420,3b95f3a57b9acc66,NERR Rookery Bay National Estuarine Research Reserve; FLORIDA DEPARTMENT OF ENVIRONMENTAL PROTECTION; certain
+b989d5d297c3dec3,NA16NOS4200089,11.420,3b95f3a57b9acc66,NERR Rookery Bay National Estuarine Research Reserve; FLORIDA DEPARTMENT OF ENVIRONMENTAL PROTECTION; certain
+b989d5d297c3dec3,NA16NOS4200114,11.420,3b95f3a57b9acc66,NERR Rookery Bay National Estuarine Research Reserve; FLORIDA DEPARTMENT OF ENVIRONMENTAL PROTECTION; certain
+b989d5d297c3dec3,NA17NOS4200043,11.420,3b95f3a57b9acc66,NERR Rookery Bay National Estuarine Research Reserve; FLORIDA DEPARTMENT OF ENVIRONMENTAL PROTECTION; certain
+b989d5d297c3dec3,NA18NOS4200064,11.420,3b95f3a57b9acc66,NERR Rookery Bay National Estuarine Research Reserve; FLORIDA DEPARTMENT OF ENVIRONMENTAL PROTECTION; certain
+b989d5d297c3dec3,NA19NOS4200068,11.420,3b95f3a57b9acc66,NERR Rookery Bay National Estuarine Research Reserve; FLORIDA DEPARTMENT OF ENVIRONMENTAL PROTECTION; certain
+b989d5d297c3dec3,NA20NOS4200073,11.420,3b95f3a57b9acc66,NERR Rookery Bay National Estuarine Research Reserve; FLORIDA DEPARTMENT OF ENVIRONMENTAL PROTECTION; certain
+b989d5d297c3dec3,NA21NOS4200045,11.420,3b95f3a57b9acc66,NERR Rookery Bay National Estuarine Research Reserve; FLORIDA DEPARTMENT OF ENVIRONMENTAL PROTECTION; certain
+b989d5d297c3dec3,NA22NOS4200070,11.420,3b95f3a57b9acc66,NERR Rookery Bay National Estuarine Research Reserve; FLORIDA DEPARTMENT OF ENVIRONMENTAL PROTECTION; certain
+b989d5d297c3dec3,NA22NOS4200198,11.420,3b95f3a57b9acc66,NERR Rookery Bay National Estuarine Research Reserve; FLORIDA DEPARTMENT OF ENVIRONMENTAL PROTECTION; certain
+b989d5d297c3dec3,NA23NOS4200173,11.420,3b95f3a57b9acc66,NERR Rookery Bay National Estuarine Research Reserve; FLORIDA DEPARTMENT OF ENVIRONMENTAL PROTECTION; certain
+b989d5d297c3dec3,NA24NOSX420C0051,11.420,3b95f3a57b9acc66,NERR Rookery Bay National Estuarine Research Reserve; FLORIDA DEPARTMENT OF ENVIRONMENTAL PROTECTION; certain
+b989d5d297c3dec3,NA25NOSX420C0004,11.420,3b95f3a57b9acc66,NERR Rookery Bay National Estuarine Research Reserve; FLORIDA DEPARTMENT OF ENVIRONMENTAL PROTECTION; certain
+b989d5d297c3dec3,NA26NOSX420C0033,11.420,3b95f3a57b9acc66,NERR Rookery Bay National Estuarine Research Reserve; FLORIDA DEPARTMENT OF ENVIRONMENTAL PROTECTION; certain
+bf2c2c67551f218f,NA08NOS4200307,11.420,3b95f3a57b9acc66,NERR Mission-Aransas National Estuarine Research Reserve; UNIVERSITY OF TEXAS AT AUSTIN; certain
+bf2c2c67551f218f,NA08NOS4200385,11.420,3b95f3a57b9acc66,NERR Mission-Aransas National Estuarine Research Reserve; UNIVERSITY OF TEXAS AT AUSTIN; certain
+bf2c2c67551f218f,NA09NOS4200027,11.420,3b95f3a57b9acc66,NERR Mission-Aransas National Estuarine Research Reserve; UNIVERSITY OF TEXAS AT AUSTIN; certain
+bf2c2c67551f218f,NA09NOS4200113,11.420,3b95f3a57b9acc66,NERR Mission-Aransas National Estuarine Research Reserve; UNIVERSITY OF TEXAS AT AUSTIN; certain
+bf2c2c67551f218f,NA09NOS4200140,11.420,3b95f3a57b9acc66,NERR Mission-Aransas National Estuarine Research Reserve; UNIVERSITY OF TEXAS AT AUSTIN; certain
+bf2c2c67551f218f,NA10NOS4200076,11.420,3b95f3a57b9acc66,NERR Mission-Aransas National Estuarine Research Reserve; UNIVERSITY OF TEXAS AT AUSTIN; certain
+bf2c2c67551f218f,NA10NOS4200105,11.420,3b95f3a57b9acc66,NERR Mission-Aransas National Estuarine Research Reserve; UNIVERSITY OF TEXAS AT AUSTIN; likely
+bf2c2c67551f218f,NA11NOS4200111,11.420,3b95f3a57b9acc66,NERR Mission-Aransas National Estuarine Research Reserve; UNIVERSITY OF TEXAS AT AUSTIN; certain
+bf2c2c67551f218f,NA12NOS4200042,11.420,3b95f3a57b9acc66,NERR Mission-Aransas National Estuarine Research Reserve; UNIVERSITY OF TEXAS AT AUSTIN; likely
+bf2c2c67551f218f,NA12NOS4200110,11.420,3b95f3a57b9acc66,NERR Mission-Aransas National Estuarine Research Reserve; UNIVERSITY OF TEXAS AT AUSTIN; certain
+bf2c2c67551f218f,NA13NOS4200119,11.420,3b95f3a57b9acc66,NERR Mission-Aransas National Estuarine Research Reserve; UNIVERSITY OF TEXAS AT AUSTIN; certain
+bf2c2c67551f218f,NA14NOS4200129,11.420,3b95f3a57b9acc66,NERR Mission-Aransas National Estuarine Research Reserve; UNIVERSITY OF TEXAS AT AUSTIN; certain
+bf2c2c67551f218f,NA15NOS4200043,11.420,3b95f3a57b9acc66,NERR Mission-Aransas National Estuarine Research Reserve; UNIVERSITY OF TEXAS AT AUSTIN; certain
+bf2c2c67551f218f,NA15NOS4200133,11.420,3b95f3a57b9acc66,NERR Mission-Aransas National Estuarine Research Reserve; UNIVERSITY OF TEXAS AT AUSTIN; certain
+bf2c2c67551f218f,NA16NOS4200140,11.420,3b95f3a57b9acc66,NERR Mission-Aransas National Estuarine Research Reserve; UNIVERSITY OF TEXAS AT AUSTIN; certain
+bf2c2c67551f218f,NA18NOS4200103,11.420,3b95f3a57b9acc66,NERR Mission-Aransas National Estuarine Research Reserve; UNIVERSITY OF TEXAS AT AUSTIN; certain
+bf2c2c67551f218f,NA20NOS4200117,11.420,3b95f3a57b9acc66,NERR Mission-Aransas National Estuarine Research Reserve; UNIVERSITY OF TEXAS AT AUSTIN; certain
+bf2c2c67551f218f,NA20NOS4200144,11.420,3b95f3a57b9acc66,NERR Mission-Aransas National Estuarine Research Reserve; UNIVERSITY OF TEXAS AT AUSTIN; certain
+bf2c2c67551f218f,NA22NOS4200060,11.420,3b95f3a57b9acc66,NERR Mission-Aransas National Estuarine Research Reserve; UNIVERSITY OF TEXAS AT AUSTIN; certain
+bf2c2c67551f218f,NA22NOS4200126,11.420,3b95f3a57b9acc66,NERR Mission-Aransas National Estuarine Research Reserve; UNIVERSITY OF TEXAS AT AUSTIN; certain
+bf2c2c67551f218f,NA24NOSX420C0058,11.420,3b95f3a57b9acc66,NERR Mission-Aransas National Estuarine Research Reserve; UNIVERSITY OF TEXAS AT AUSTIN; certain
+bf2c2c67551f218f,NA26NOSX420C0025,11.420,3b95f3a57b9acc66,NERR Mission-Aransas National Estuarine Research Reserve; UNIVERSITY OF TEXAS AT AUSTIN; certain
+c19eea5e35c4ff35,00666009,66.456,0aecd67acddb43e9,NEP Barataria-Terrebonne National Estuary Program; LOUISIANA UNIVERSITIES MARINE CONSORTIUM; likely
+c19eea5e35c4ff35,00666010,66.456,0aecd67acddb43e9,NEP Barataria-Terrebonne National Estuary Program; LOUISIANA UNIVERSITIES MARINE CONSORTIUM; likely
+c19eea5e35c4ff35,00666011,66.456,0aecd67acddb43e9,NEP Barataria-Terrebonne National Estuary Program; LOUISIANA UNIVERSITIES MARINE CONSORTIUM; likely
+c19eea5e35c4ff35,00666012,66.456,0aecd67acddb43e9,NEP Barataria-Terrebonne National Estuary Program; LOUISIANA UNIVERSITIES MARINE CONSORTIUM; likely
+c19eea5e35c4ff35,00666013,66.456,0aecd67acddb43e9,NEP Barataria-Terrebonne National Estuary Program; LOUISIANA UNIVERSITIES MARINE CONSORTIUM; likely
+c19eea5e35c4ff35,00666014,66.456,0aecd67acddb43e9,NEP Barataria-Terrebonne National Estuary Program; LOUISIANA UNIVERSITIES MARINE CONSORTIUM; certain
+c19eea5e35c4ff35,00666015,66.456,0aecd67acddb43e9,NEP Barataria-Terrebonne National Estuary Program; LOUISIANA UNIVERSITIES MARINE CONSORTIUM; certain
+c19eea5e35c4ff35,00666016,66.456,0aecd67acddb43e9,NEP Barataria-Terrebonne National Estuary Program; LOUISIANA UNIVERSITIES MARINE CONSORTIUM; certain
+c19eea5e35c4ff35,00666017,66.456,0aecd67acddb43e9,NEP Barataria-Terrebonne National Estuary Program; LOUISIANA UNIVERSITIES MARINE CONSORTIUM; certain
+c19eea5e35c4ff35,00666018,66.456,0aecd67acddb43e9,NEP Barataria-Terrebonne National Estuary Program; LOUISIANA UNIVERSITIES MARINE CONSORTIUM; certain
+c19eea5e35c4ff35,00666019,66.456,0aecd67acddb43e9,NEP Barataria-Terrebonne National Estuary Program; LOUISIANA UNIVERSITIES MARINE CONSORTIUM; certain
+c19eea5e35c4ff35,00666020,66.456,0aecd67acddb43e9,NEP Barataria-Terrebonne National Estuary Program; LOUISIANA UNIVERSITIES MARINE CONSORTIUM; certain
+c19eea5e35c4ff35,00666022,66.456,0aecd67acddb43e9,NEP Barataria-Terrebonne National Estuary Program; LOUISIANA UNIVERSITIES MARINE CONSORTIUM; certain
+c19eea5e35c4ff35,00F05001,66.456,0aecd67acddb43e9,"NEP Barataria-Terrebonne National Estuary Program; RABALAIS, NANCY; likely"
+c19eea5e35c4ff35,00F21101,66.456,0aecd67acddb43e9,NEP Barataria-Terrebonne National Estuary Program; ILLINOIS ENVIRONMENTAL PROTECTION AGENCY; likely
+c19eea5e35c4ff35,00F40801,66.456,0aecd67acddb43e9,NEP Barataria-Terrebonne National Estuary Program; LOUISIANA UNIVERSITIES MARINE CONSORTIUM; likely
+c19eea5e35c4ff35,01F68001,66.456,0aecd67acddb43e9,NEP Barataria-Terrebonne National Estuary Program; LOUISIANA UNIVERSITIES MARINE CONSORTIUM; certain
+c19eea5e35c4ff35,01F83101,66.456,0aecd67acddb43e9,NEP Barataria-Terrebonne National Estuary Program; LOUISIANA UNIVERSITIES MARINE CONSORTIUM; certain
+c19eea5e35c4ff35,02F25101,66.456,0aecd67acddb43e9,NEP Barataria-Terrebonne National Estuary Program; LOUISIANA UNIVERSITIES MARINE CONSORTIUM; certain
+c19eea5e35c4ff35,02F46301,66.456,0aecd67acddb43e9,NEP Barataria-Terrebonne National Estuary Program; LOUISIANA UNIVERSITIES MARINE CONSORTIUM; certain
+c19eea5e35c4ff35,02F62801,66.456,0aecd67acddb43e9,NEP Barataria-Terrebonne National Estuary Program; LOUISIANA UNIVERSITIES MARINE CONSORTIUM; certain
+c19eea5e35c4ff35,02F88501,66.456,0aecd67acddb43e9,NEP Barataria-Terrebonne National Estuary Program; LOUISIANA UNIVERSITIES MARINE CONSORTIUM; certain
+c19eea5e35c4ff35,03F08901,66.456,0aecd67acddb43e9,NEP Barataria-Terrebonne National Estuary Program; LOUISIANA UNIVERSITIES MARINE CONSORTIUM; certain
+c19eea5e35c4ff35,96679101,66.456,0aecd67acddb43e9,NEP Barataria-Terrebonne National Estuary Program; LOUISIANA UNIVERSITIES MARINE CONSORTIUM; certain
+c1b0708dda943534,00A00189,66.456,0aecd67acddb43e9,"NEP Buzzards Bay National Estuary Program; ENERGY & ENVIRONMENTAL AFFAIRS, MASSACHUSETTS EXECUTIVE OFFICE OF; certain"
+c1b0708dda943534,00A00240,66.456,0aecd67acddb43e9,"NEP Buzzards Bay National Estuary Program; ENERGY & ENVIRONMENTAL AFFAIRS, MASSACHUSETTS EXECUTIVE OFFICE OF; certain"
+c1b0708dda943534,00A00456,66.456,0aecd67acddb43e9,"NEP Buzzards Bay National Estuary Program; ENERGY & ENVIRONMENTAL AFFAIRS, MASSACHUSETTS EXECUTIVE OFFICE OF; certain"
+c1b0708dda943534,00A00515,66.456,0aecd67acddb43e9,"NEP Buzzards Bay National Estuary Program; ENERGY & ENVIRONMENTAL AFFAIRS, MASSACHUSETTS EXECUTIVE OFFICE OF; certain"
+c1b0708dda943534,00A00623,66.456,0aecd67acddb43e9,"NEP Buzzards Bay National Estuary Program; ENERGY & ENVIRONMENTAL AFFAIRS, MASSACHUSETTS EXECUTIVE OFFICE OF; certain"
+c1b0708dda943534,00A00887,66.456,0aecd67acddb43e9,"NEP Buzzards Bay National Estuary Program; ENERGY & ENVIRONMENTAL AFFAIRS, MASSACHUSETTS EXECUTIVE OFFICE OF; certain"
+c1b0708dda943534,00A00900,66.456,0aecd67acddb43e9,"NEP Buzzards Bay National Estuary Program; ENERGY & ENVIRONMENTAL AFFAIRS, MASSACHUSETTS EXECUTIVE OFFICE OF; certain"
+c1b0708dda943534,00A01214,66.456,0aecd67acddb43e9,"NEP Buzzards Bay National Estuary Program; ENERGY & ENVIRONMENTAL AFFAIRS, MASSACHUSETTS EXECUTIVE OFFICE OF; certain"
+c1b0708dda943534,00A01217,66.456,0aecd67acddb43e9,"NEP Buzzards Bay National Estuary Program; ENERGY & ENVIRONMENTAL AFFAIRS, MASSACHUSETTS EXECUTIVE OFFICE OF; certain"
+c1b0708dda943534,00A01238,66.456,0aecd67acddb43e9,"NEP Buzzards Bay National Estuary Program; ENERGY & ENVIRONMENTAL AFFAIRS, MASSACHUSETTS EXECUTIVE OFFICE OF; certain"
+c1b0708dda943534,00A01614,66.456,0aecd67acddb43e9,"NEP Buzzards Bay National Estuary Program; ENERGY & ENVIRONMENTAL AFFAIRS, MASSACHUSETTS EXECUTIVE OFFICE OF; certain"
+c1b0708dda943534,00A01622,66.456,0aecd67acddb43e9,"NEP Buzzards Bay National Estuary Program; ENERGY & ENVIRONMENTAL AFFAIRS, MASSACHUSETTS EXECUTIVE OFFICE OF; certain"
+c1b0708dda943534,00A01634,66.456,0aecd67acddb43e9,"NEP Buzzards Bay National Estuary Program; ENERGY & ENVIRONMENTAL AFFAIRS, MASSACHUSETTS EXECUTIVE OFFICE OF; certain"
+c1b0708dda943534,00A01647,66.456,0aecd67acddb43e9,"NEP Buzzards Bay National Estuary Program; ENERGY & ENVIRONMENTAL AFFAIRS, MASSACHUSETTS EXECUTIVE OFFICE OF; certain"
+c1b0708dda943534,00A01650,66.456,0aecd67acddb43e9,"NEP Buzzards Bay National Estuary Program; ENERGY & ENVIRONMENTAL AFFAIRS, MASSACHUSETTS EXECUTIVE OFFICE OF; certain"
+c1b0708dda943534,96144201,66.456,0aecd67acddb43e9,"NEP Buzzards Bay National Estuary Program; ENERGY & ENVIRONMENTAL AFFAIRS, MASSACHUSETTS EXECUTIVE OFFICE OF; certain"
+c1b0708dda943534,96185701,66.456,0aecd67acddb43e9,"NEP Buzzards Bay National Estuary Program; ENERGY & ENVIRONMENTAL AFFAIRS, MASSACHUSETTS EXECUTIVE OFFICE OF; likely"
+c1b0708dda943534,96198501,66.456,0aecd67acddb43e9,"NEP Buzzards Bay National Estuary Program; ENERGY & ENVIRONMENTAL AFFAIRS, MASSACHUSETTS EXECUTIVE OFFICE OF; certain"
+c1b0708dda943534,98164503,66.456,0aecd67acddb43e9,"NEP Buzzards Bay National Estuary Program; ENERGY & ENVIRONMENTAL AFFAIRS, MASSACHUSETTS EXECUTIVE OFFICE OF; certain"
+c42a82d1eef0f701,NA08NOS4200305,11.420,3b95f3a57b9acc66,NERR North Inlet-Winyah Bay National Estuarine Research Reserve; SOUTH CAROLINA RESEARCH FOUNDATION; likely
+c42a82d1eef0f701,NA08NOS4200353,11.420,3b95f3a57b9acc66,NERR North Inlet-Winyah Bay National Estuarine Research Reserve; SOUTH CAROLINA RESEARCH FOUNDATION; certain
+c42a82d1eef0f701,NA09NOS4200051,11.420,3b95f3a57b9acc66,NERR North Inlet-Winyah Bay National Estuarine Research Reserve; SOUTH CAROLINA RESEARCH FOUNDATION; certain
+c42a82d1eef0f701,NA09NOS4200130,11.420,3b95f3a57b9acc66,NERR North Inlet-Winyah Bay National Estuarine Research Reserve; SOUTH CAROLINA RESEARCH FOUNDATION; certain
+c42a82d1eef0f701,NA10NOS4200123,11.420,3b95f3a57b9acc66,NERR North Inlet-Winyah Bay National Estuarine Research Reserve; SOUTH CAROLINA RESEARCH FOUNDATION; certain
+c42a82d1eef0f701,NA11NOS4200116,11.420,3b95f3a57b9acc66,NERR North Inlet-Winyah Bay National Estuarine Research Reserve; SOUTH CAROLINA RESEARCH FOUNDATION; certain
+c42a82d1eef0f701,NA12NOS4200101,11.420,3b95f3a57b9acc66,NERR North Inlet-Winyah Bay National Estuarine Research Reserve; SOUTH CAROLINA RESEARCH FOUNDATION; certain
+c42a82d1eef0f701,NA13NOS4200081,11.420,3b95f3a57b9acc66,NERR North Inlet-Winyah Bay National Estuarine Research Reserve; UNIVERSITY OF SOUTH CAROLINA; certain
+c42a82d1eef0f701,NA14NOS4200054,11.420,3b95f3a57b9acc66,NERR North Inlet-Winyah Bay National Estuarine Research Reserve; UNIVERSITY OF SOUTH CAROLINA; certain
+c42a82d1eef0f701,NA15NOS4200120,11.420,3b95f3a57b9acc66,NERR North Inlet-Winyah Bay National Estuarine Research Reserve; UNIVERSITY OF SOUTH CAROLINA; certain
+c42a82d1eef0f701,NA16NOS4200074,11.420,3b95f3a57b9acc66,NERR North Inlet-Winyah Bay National Estuarine Research Reserve; UNIVERSITY OF SOUTH CAROLINA; certain
+c42a82d1eef0f701,NA16NOS4200116,11.420,3b95f3a57b9acc66,NERR North Inlet-Winyah Bay National Estuarine Research Reserve; UNIVERSITY OF SOUTH CAROLINA; certain
+c42a82d1eef0f701,NA17NOS4200061,11.420,3b95f3a57b9acc66,NERR North Inlet-Winyah Bay National Estuarine Research Reserve; UNIVERSITY OF SOUTH CAROLINA; certain
+c42a82d1eef0f701,NA18NOS4200009,11.420,3b95f3a57b9acc66,NERR North Inlet-Winyah Bay National Estuarine Research Reserve; UNIVERSITY OF SOUTH CAROLINA; certain
+c42a82d1eef0f701,NA19NOS4200069,11.420,3b95f3a57b9acc66,NERR North Inlet-Winyah Bay National Estuarine Research Reserve; UNIVERSITY OF SOUTH CAROLINA; certain
+c42a82d1eef0f701,NA20NOS4200030,11.420,3b95f3a57b9acc66,NERR North Inlet-Winyah Bay National Estuarine Research Reserve; UNIVERSITY OF SOUTH CAROLINA; certain
+c42a82d1eef0f701,NA20NOS4200055,11.420,3b95f3a57b9acc66,NERR North Inlet-Winyah Bay National Estuarine Research Reserve; UNIVERSITY OF SOUTH CAROLINA; certain
+c42a82d1eef0f701,NA21NOS4200039,11.420,3b95f3a57b9acc66,NERR North Inlet-Winyah Bay National Estuarine Research Reserve; UNIVERSITY OF SOUTH CAROLINA; certain
+c42a82d1eef0f701,NA22NOS4200028,11.420,3b95f3a57b9acc66,NERR North Inlet-Winyah Bay National Estuarine Research Reserve; UNIVERSITY OF SOUTH CAROLINA; certain
+c42a82d1eef0f701,NA22NOS4200042,11.420,3b95f3a57b9acc66,NERR North Inlet-Winyah Bay National Estuarine Research Reserve; UNIVERSITY OF SOUTH CAROLINA; certain
+c42a82d1eef0f701,NA23NOS4200197,11.420,3b95f3a57b9acc66,NERR North Inlet-Winyah Bay National Estuarine Research Reserve; UNIVERSITY OF SOUTH CAROLINA; certain
+c42a82d1eef0f701,NA24NOSX420C0046,11.420,3b95f3a57b9acc66,NERR North Inlet-Winyah Bay National Estuarine Research Reserve; UNIVERSITY OF SOUTH CAROLINA; certain
+c42a82d1eef0f701,NA25NOSX420C0002,11.420,3b95f3a57b9acc66,NERR North Inlet-Winyah Bay National Estuarine Research Reserve; UNIVERSITY OF SOUTH CAROLINA; certain
+c42a82d1eef0f701,NA25NOSX420C0015,11.420,3b95f3a57b9acc66,NERR North Inlet-Winyah Bay National Estuarine Research Reserve; UNIVERSITY OF SOUTH CAROLINA; certain
+c42a82d1eef0f701,NA26NOSX420C0014,11.420,3b95f3a57b9acc66,NERR North Inlet-Winyah Bay National Estuarine Research Reserve; UNIVERSITY OF SOUTH CAROLINA; certain
+c8a214243eb16597,00J00101,66.456,0aecd67acddb43e9,NEP Puget Sound Partnership; PUGET SOUND PARTNERSHIP; certain
+c8a214243eb16597,00J31701,66.456,0aecd67acddb43e9,NEP Puget Sound Partnership; PUGET SOUND PARTNERSHIP; certain
+c8a214243eb16597,00J63701,66.456,0aecd67acddb43e9,NEP Puget Sound Partnership; PUGET SOUND PARTNERSHIP; likely
+c8a214243eb16597,01J07301,66.456,0aecd67acddb43e9,NEP Puget Sound Partnership; PUGET SOUND PARTNERSHIP; certain
+c8a214243eb16597,01J31901,66.456,0aecd67acddb43e9,NEP Puget Sound Partnership; PUGET SOUND PARTNERSHIP; certain
+c8a214243eb16597,01J65401,66.456,0aecd67acddb43e9,NEP Puget Sound Partnership; PUGET SOUND PARTNERSHIP; certain
+c8a214243eb16597,01J97401,66.456,0aecd67acddb43e9,NEP Puget Sound Partnership; PUGET SOUND PARTNERSHIP; certain
+c8a214243eb16597,02J24301,66.456,0aecd67acddb43e9,NEP Puget Sound Partnership; PUGET SOUND PARTNERSHIP; certain
+c8a214243eb16597,02J98701,66.456,0aecd67acddb43e9,NEP Puget Sound Partnership; PUGET SOUND PARTNERSHIP; certain
+c8a214243eb16597,96055501,66.456,0aecd67acddb43e9,NEP Puget Sound Partnership; PUGET SOUND PARTNERSHIP; certain
+d2beef812eb53bc7,NA14NOS4200130,11.420,3b95f3a57b9acc66,NERR He‘eia National Estuarine Research Reserve; DEPARTMENT OF BUSINESS ECONOMIC DEVELOPMENT & TOURISM HAWAII; likely
+d2beef812eb53bc7,NA17NOS4200067,11.420,3b95f3a57b9acc66,NERR He‘eia National Estuarine Research Reserve; UNIVERSITY OF HAWAII; certain
+d2beef812eb53bc7,NA18NOS4200025,11.420,3b95f3a57b9acc66,NERR He‘eia National Estuarine Research Reserve; UNIVERSITY OF HAWAII; certain
+d2beef812eb53bc7,NA19NOS4200078,11.420,3b95f3a57b9acc66,NERR He‘eia National Estuarine Research Reserve; UNIVERSITY OF HAWAII; certain
+d2beef812eb53bc7,NA20NOS4200095,11.420,3b95f3a57b9acc66,NERR He‘eia National Estuarine Research Reserve; UNIVERSITY OF HAWAII; certain
+d2beef812eb53bc7,NA20NOS4200123,11.420,3b95f3a57b9acc66,NERR He‘eia National Estuarine Research Reserve; UNIVERSITY OF HAWAII; certain
+d2beef812eb53bc7,NA21NOS4200050,11.420,3b95f3a57b9acc66,NERR He‘eia National Estuarine Research Reserve; UNIVERSITY OF HAWAII; certain
+d2beef812eb53bc7,NA21NOS4200063,11.420,3b95f3a57b9acc66,NERR He‘eia National Estuarine Research Reserve; UNIVERSITY OF HAWAII; certain
+d2beef812eb53bc7,NA21NOS4200069,11.420,3b95f3a57b9acc66,NERR He‘eia National Estuarine Research Reserve; UNIVERSITY OF HAWAII; certain
+d2beef812eb53bc7,NA22NOS4200062,11.420,3b95f3a57b9acc66,NERR He‘eia National Estuarine Research Reserve; UNIVERSITY OF HAWAII; certain
+d2beef812eb53bc7,NA22NOS4200083,11.420,3b95f3a57b9acc66,NERR He‘eia National Estuarine Research Reserve; UNIVERSITY OF HAWAII; certain
+d2beef812eb53bc7,NA22NOS4200202,11.420,3b95f3a57b9acc66,NERR He‘eia National Estuarine Research Reserve; UNIVERSITY OF HAWAII; certain
+d2beef812eb53bc7,NA23NOS4200216,11.420,3b95f3a57b9acc66,NERR He‘eia National Estuarine Research Reserve; UNIVERSITY OF HAWAII; certain
+d2beef812eb53bc7,NA24NOSX420C0032,11.420,3b95f3a57b9acc66,NERR He‘eia National Estuarine Research Reserve; UNIVERSITY OF HAWAII; certain
+d2beef812eb53bc7,NA24NOSX420G0015,11.420,3b95f3a57b9acc66,NERR He‘eia National Estuarine Research Reserve; UNIVERSITY OF HAWAII; certain
+d2beef812eb53bc7,NA25NOSX420C0021,11.420,3b95f3a57b9acc66,NERR He‘eia National Estuarine Research Reserve; UNIVERSITY OF HAWAII; certain
+d2beef812eb53bc7,NA25NOSX420G0009,11.420,3b95f3a57b9acc66,NERR He‘eia National Estuarine Research Reserve; UNIVERSITY OF HAWAII; certain
+d2beef812eb53bc7,NA26NOSX420C0020,11.420,3b95f3a57b9acc66,NERR He‘eia National Estuarine Research Reserve; UNIVERSITY OF HAWAII; certain
+d2d962156f88888d,NA08NOS4200278,11.420,3b95f3a57b9acc66,NERR Chesapeake Bay-Virginia National Estuarine Research Reserve; VIRGINIA INSTITUTE OF MARINE SCIENCE; likely
+d2d962156f88888d,NA08NOS4200386,11.420,3b95f3a57b9acc66,NERR Chesapeake Bay-Virginia National Estuarine Research Reserve; VIRGINIA INSTITUTE OF MARINE SCIENCE; certain
+d2d962156f88888d,NA09NOS4200037,11.420,3b95f3a57b9acc66,NERR Chesapeake Bay-Virginia National Estuarine Research Reserve; VIRGINIA INSTITUTE OF MARINE SCIENCE; likely
+d2d962156f88888d,NA09NOS4200127,11.420,3b95f3a57b9acc66,NERR Chesapeake Bay-Virginia National Estuarine Research Reserve; VIRGINIA INSTITUTE OF MARINE SCIENCE; certain
+d2d962156f88888d,NA10NOS4200026,11.420,3b95f3a57b9acc66,NERR Chesapeake Bay-Virginia National Estuarine Research Reserve; VIRGINIA INSTITUTE OF MARINE SCIENCE; likely
+d2d962156f88888d,NA10NOS4200072,11.420,3b95f3a57b9acc66,NERR Chesapeake Bay-Virginia National Estuarine Research Reserve; VIRGINIA INSTITUTE OF MARINE SCIENCE; certain
+d2d962156f88888d,NA11NOS4200121,11.420,3b95f3a57b9acc66,NERR Chesapeake Bay-Virginia National Estuarine Research Reserve; VIRGINIA INSTITUTE OF MARINE SCIENCE; certain
+d2d962156f88888d,NA12NOS4200104,11.420,3b95f3a57b9acc66,NERR Chesapeake Bay-Virginia National Estuarine Research Reserve; VIRGINIA INSTITUTE OF MARINE SCIENCE; certain
+d2d962156f88888d,NA13NOS4200121,11.420,3b95f3a57b9acc66,NERR Chesapeake Bay-Virginia National Estuarine Research Reserve; VIRGINIA INSTITUTE OF MARINE SCIENCE; certain
+d2d962156f88888d,NA14NOS4200133,11.420,3b95f3a57b9acc66,NERR Chesapeake Bay-Virginia National Estuarine Research Reserve; VIRGINIA INSTITUTE OF MARINE SCIENCE; certain
+d2d962156f88888d,NA15NOS4200044,11.420,3b95f3a57b9acc66,NERR Chesapeake Bay-Virginia National Estuarine Research Reserve; VIRGINIA INSTITUTE OF MARINE SCIENCE; certain
+d2d962156f88888d,NA15NOS4200135,11.420,3b95f3a57b9acc66,NERR Chesapeake Bay-Virginia National Estuarine Research Reserve; VIRGINIA INSTITUTE OF MARINE SCIENCE; certain
+d2d962156f88888d,NA16NOS4200161,11.420,3b95f3a57b9acc66,NERR Chesapeake Bay-Virginia National Estuarine Research Reserve; VIRGINIA INSTITUTE OF MARINE SCIENCE; certain
+d2d962156f88888d,NA17NOS4200127,11.420,3b95f3a57b9acc66,NERR Chesapeake Bay-Virginia National Estuarine Research Reserve; VIRGINIA INSTITUTE OF MARINE SCIENCE; certain
+d2d962156f88888d,NA17NOS4200155,11.420,3b95f3a57b9acc66,NERR Chesapeake Bay-Virginia National Estuarine Research Reserve; VIRGINIA INSTITUTE OF MARINE SCIENCE; certain
+d2d962156f88888d,NA18NOS4200183,11.420,3b95f3a57b9acc66,NERR Chesapeake Bay-Virginia National Estuarine Research Reserve; VIRGINIA INSTITUTE OF MARINE SCIENCE; certain
+d2d962156f88888d,NA19NOS4200164,11.420,3b95f3a57b9acc66,NERR Chesapeake Bay-Virginia National Estuarine Research Reserve; VIRGINIA INSTITUTE OF MARINE SCIENCE; certain
+d2d962156f88888d,NA20NOS4200142,11.420,3b95f3a57b9acc66,NERR Chesapeake Bay-Virginia National Estuarine Research Reserve; VIRGINIA INSTITUTE OF MARINE SCIENCE; likely
+d2d962156f88888d,NA20NOS4200205,11.420,3b95f3a57b9acc66,NERR Chesapeake Bay-Virginia National Estuarine Research Reserve; VIRGINIA INSTITUTE OF MARINE SCIENCE; certain
+d2d962156f88888d,NA21NOS4200127,11.420,3b95f3a57b9acc66,NERR Chesapeake Bay-Virginia National Estuarine Research Reserve; VIRGINIA INSTITUTE OF MARINE SCIENCE; likely
+d2d962156f88888d,NA22NOS4200046,11.420,3b95f3a57b9acc66,NERR Chesapeake Bay-Virginia National Estuarine Research Reserve; VIRGINIA INSTITUTE OF MARINE SCIENCE; certain
+d2d962156f88888d,NA22NOS4200132,11.420,3b95f3a57b9acc66,NERR Chesapeake Bay-Virginia National Estuarine Research Reserve; VIRGINIA INSTITUTE OF MARINE SCIENCE; certain
+d2d962156f88888d,NA23NOS4200187,11.420,3b95f3a57b9acc66,NERR Chesapeake Bay-Virginia National Estuarine Research Reserve; VIRGINIA INSTITUTE OF MARINE SCIENCE; likely
+d2d962156f88888d,NA23NOS4200237,11.420,3b95f3a57b9acc66,NERR Chesapeake Bay-Virginia National Estuarine Research Reserve; VIRGINIA INSTITUTE OF MARINE SCIENCE; certain
+d2d962156f88888d,NA24NOSX420C0055,11.420,3b95f3a57b9acc66,NERR Chesapeake Bay-Virginia National Estuarine Research Reserve; VIRGINIA INSTITUTE OF MARINE SCIENCE; certain
+d2d962156f88888d,NA24NOSX420G0019,11.420,3b95f3a57b9acc66,NERR Chesapeake Bay-Virginia National Estuarine Research Reserve; VIRGINIA INSTITUTE OF MARINE SCIENCE; certain
+d2d962156f88888d,NA25NOSX420C0022,11.420,3b95f3a57b9acc66,NERR Chesapeake Bay-Virginia National Estuarine Research Reserve; VIRGINIA INSTITUTE OF MARINE SCIENCE; certain
+d2d962156f88888d,NA26NOSX420C0022,11.420,3b95f3a57b9acc66,NERR Chesapeake Bay-Virginia National Estuarine Research Reserve; VIRGINIA INSTITUTE OF MARINE SCIENCE; certain
+d9bad8026c38e336,00T66101,66.456,0aecd67acddb43e9,"NEP Morro Bay National Estuary Program; THE BAY FOUNDATION OF MORRO BAY, CALIFORNIA, SAN LUIS OBISPO COUNTY; certain"
+d9bad8026c38e336,96974801,66.456,0aecd67acddb43e9,"NEP Morro Bay National Estuary Program; THE BAY FOUNDATION OF MORRO BAY, CALIFORNIA, SAN LUIS OBISPO COUNTY; certain"
+d9bad8026c38e336,98T25101,66.456,0aecd67acddb43e9,"NEP Morro Bay National Estuary Program; THE BAY FOUNDATION OF MORRO BAY, CALIFORNIA, SAN LUIS OBISPO COUNTY; certain"
+d9bad8026c38e336,98T47301,66.456,0aecd67acddb43e9,"NEP Morro Bay National Estuary Program; THE BAY FOUNDATION OF MORRO BAY, CALIFORNIA, SAN LUIS OBISPO COUNTY; certain"
+d9bad8026c38e336,99T43601,66.456,0aecd67acddb43e9,"NEP Morro Bay National Estuary Program; THE BAY FOUNDATION OF MORRO BAY, CALIFORNIA, SAN LUIS OBISPO COUNTY; certain"
+db36727508052028,00D09513,66.456,0aecd67acddb43e9,NEP Mobile Bay National Estuary Program; MARINE ENVIRONMENTAL SCIENCES CONSORTIUM; certain
+db36727508052028,00D81018,66.456,0aecd67acddb43e9,NEP Mobile Bay National Estuary Program; MARINE ENVIRONMENTAL SCIENCES CONSORTIUM; certain
+db36727508052028,02D40122,66.456,0aecd67acddb43e9,NEP Mobile Bay National Estuary Program; MARINE ENVIRONMENTAL SCIENCES CONSORTIUM; certain
+db36727508052028,02D40126,66.456,0aecd67acddb43e9,NEP Mobile Bay National Estuary Program; MARINE ENVIRONMENTAL SCIENCES CONSORTIUM; likely
+db36727508052028,02D57623,66.456,0aecd67acddb43e9,NEP Mobile Bay National Estuary Program; MARINE ENVIRONMENTAL SCIENCES CONSORTIUM; certain
+db36727508052028,02D57625,66.456,0aecd67acddb43e9,NEP Mobile Bay National Estuary Program; MARINE ENVIRONMENTAL SCIENCES CONSORTIUM; certain
+db36727508052028,95464510,66.456,0aecd67acddb43e9,NEP Mobile Bay National Estuary Program; MARINE ENVIRONMENTAL SCIENCES CONSORTIUM; likely
+db36727508052028,96456906,66.456,0aecd67acddb43e9,NEP Mobile Bay National Estuary Program; MARINE ENVIRONMENTAL SCIENCES CONSORTIUM; certain
+dd32c151b310b8ae,NA08NOS4200373,11.420,3b95f3a57b9acc66,NERR Narragansett Bay National Estuarine Research Reserve; RHODE ISLAND. DEPARTMENT OF ENVIRONMENTAL MANAGEMENT; certain
+dd32c151b310b8ae,NA09NOS4200131,11.420,3b95f3a57b9acc66,NERR Narragansett Bay National Estuarine Research Reserve; RHODE ISLAND. DEPARTMENT OF ENVIRONMENTAL MANAGEMENT; certain
+dd32c151b310b8ae,NA10NOS4200116,11.420,3b95f3a57b9acc66,NERR Narragansett Bay National Estuarine Research Reserve; RHODE ISLAND. DEPARTMENT OF ENVIRONMENTAL MANAGEMENT; certain
+dd32c151b310b8ae,NA11NOS4200135,11.420,3b95f3a57b9acc66,NERR Narragansett Bay National Estuarine Research Reserve; RHODE ISLAND. DEPARTMENT OF ENVIRONMENTAL MANAGEMENT; certain
+dd32c151b310b8ae,NA12NOS4200119,11.420,3b95f3a57b9acc66,NERR Narragansett Bay National Estuarine Research Reserve; RHODE ISLAND. DEPARTMENT OF ENVIRONMENTAL MANAGEMENT; certain
+dd32c151b310b8ae,NA13NOS4200123,11.420,3b95f3a57b9acc66,NERR Narragansett Bay National Estuarine Research Reserve; RHODE ISLAND. DEPARTMENT OF ENVIRONMENTAL MANAGEMENT; certain
+dd32c151b310b8ae,NA14NOS4200015,11.420,3b95f3a57b9acc66,NERR Narragansett Bay National Estuarine Research Reserve; RHODE ISLAND. DEPARTMENT OF ENVIRONMENTAL MANAGEMENT; certain
+dd32c151b310b8ae,NA14NOS4200136,11.420,3b95f3a57b9acc66,NERR Narragansett Bay National Estuarine Research Reserve; RHODE ISLAND. DEPARTMENT OF ENVIRONMENTAL MANAGEMENT; certain
+dd32c151b310b8ae,NA15NOS4200045,11.420,3b95f3a57b9acc66,NERR Narragansett Bay National Estuarine Research Reserve; RHODE ISLAND. DEPARTMENT OF ENVIRONMENTAL MANAGEMENT; certain
+dd32c151b310b8ae,NA15NOS4200132,11.420,3b95f3a57b9acc66,NERR Narragansett Bay National Estuarine Research Reserve; RHODE ISLAND. DEPARTMENT OF ENVIRONMENTAL MANAGEMENT; certain
+dd32c151b310b8ae,NA16NOS4200122,11.420,3b95f3a57b9acc66,NERR Narragansett Bay National Estuarine Research Reserve; RHODE ISLAND. DEPARTMENT OF ENVIRONMENTAL MANAGEMENT; certain
+dd32c151b310b8ae,NA17NOS4200117,11.420,3b95f3a57b9acc66,NERR Narragansett Bay National Estuarine Research Reserve; RHODE ISLAND. DEPARTMENT OF ENVIRONMENTAL MANAGEMENT; certain
+dd32c151b310b8ae,NA18NOS4200132,11.420,3b95f3a57b9acc66,NERR Narragansett Bay National Estuarine Research Reserve; RHODE ISLAND. DEPARTMENT OF ENVIRONMENTAL MANAGEMENT; certain
+dd32c151b310b8ae,NA19NOS4200103,11.420,3b95f3a57b9acc66,NERR Narragansett Bay National Estuarine Research Reserve; RHODE ISLAND. DEPARTMENT OF ENVIRONMENTAL MANAGEMENT; certain
+dd32c151b310b8ae,NA20NOS4200176,11.420,3b95f3a57b9acc66,NERR Narragansett Bay National Estuarine Research Reserve; RHODE ISLAND. DEPARTMENT OF ENVIRONMENTAL MANAGEMENT; certain
+dd32c151b310b8ae,NA21NOS4200108,11.420,3b95f3a57b9acc66,NERR Narragansett Bay National Estuarine Research Reserve; RHODE ISLAND. DEPARTMENT OF ENVIRONMENTAL MANAGEMENT; certain
+dd32c151b310b8ae,NA22NOS4200147,11.420,3b95f3a57b9acc66,NERR Narragansett Bay National Estuarine Research Reserve; RHODE ISLAND. DEPARTMENT OF ENVIRONMENTAL MANAGEMENT; certain
+dd32c151b310b8ae,NA22NOS4200200,11.420,3b95f3a57b9acc66,NERR Narragansett Bay National Estuarine Research Reserve; RHODE ISLAND. DEPARTMENT OF ENVIRONMENTAL MANAGEMENT; certain
+dd32c151b310b8ae,NA23NOS4200247,11.420,3b95f3a57b9acc66,NERR Narragansett Bay National Estuarine Research Reserve; RHODE ISLAND. DEPARTMENT OF ENVIRONMENTAL MANAGEMENT; certain
+dd32c151b310b8ae,NA24NOSX420C0056,11.420,3b95f3a57b9acc66,NERR Narragansett Bay National Estuarine Research Reserve; RHODE ISLAND. DEPARTMENT OF ENVIRONMENTAL MANAGEMENT; certain
+dd32c151b310b8ae,NA25NOSX420C0024,11.420,3b95f3a57b9acc66,NERR Narragansett Bay National Estuarine Research Reserve; RHODE ISLAND. DEPARTMENT OF ENVIRONMENTAL MANAGEMENT; certain
+dd32c151b310b8ae,NA25NOSX420G0011,11.420,3b95f3a57b9acc66,NERR Narragansett Bay National Estuarine Research Reserve; RHODE ISLAND. DEPARTMENT OF ENVIRONMENTAL MANAGEMENT; certain
+dd32c151b310b8ae,NA26NOSX420C0016,11.420,3b95f3a57b9acc66,NERR Narragansett Bay National Estuarine Research Reserve; RHODE ISLAND. DEPARTMENT OF ENVIRONMENTAL MANAGEMENT; certain
+def52201a4873868,NA08NOS4200308,11.420,3b95f3a57b9acc66,NERR Weeks Bay National Estuarine Research Reserve; ALABAMA DEPARTMENT OF CONSERVATION AND NATURAL RESOURCES; likely
+def52201a4873868,NA08NOS4200425,11.420,3b95f3a57b9acc66,NERR Weeks Bay National Estuarine Research Reserve; ALABAMA DEPARTMENT OF CONSERVATION AND NATURAL RESOURCES; certain
+def52201a4873868,NA09NOS4200154,11.420,3b95f3a57b9acc66,NERR Weeks Bay National Estuarine Research Reserve; ALABAMA DEPARTMENT OF CONSERVATION AND NATURAL RESOURCES; certain
+def52201a4873868,NA10NOS4200103,11.420,3b95f3a57b9acc66,NERR Weeks Bay National Estuarine Research Reserve; ALABAMA DEPARTMENT OF CONSERVATION AND NATURAL RESOURCES; likely
+def52201a4873868,NA10NOS4200194,11.420,3b95f3a57b9acc66,NERR Weeks Bay National Estuarine Research Reserve; ALABAMA DEPARTMENT OF CONSERVATION AND NATURAL RESOURCES; certain
+def52201a4873868,NA11NOS4200146,11.420,3b95f3a57b9acc66,NERR Weeks Bay National Estuarine Research Reserve; ALABAMA DEPARTMENT OF CONSERVATION AND NATURAL RESOURCES; certain
+def52201a4873868,NA12NOS4200047,11.420,3b95f3a57b9acc66,NERR Weeks Bay National Estuarine Research Reserve; ALABAMA DEPARTMENT OF CONSERVATION AND NATURAL RESOURCES; certain
+def52201a4873868,NA12NOS4200155,11.420,3b95f3a57b9acc66,NERR Weeks Bay National Estuarine Research Reserve; ALABAMA DEPARTMENT OF CONSERVATION AND NATURAL RESOURCES; certain
+def52201a4873868,NA13NOS4200117,11.420,3b95f3a57b9acc66,NERR Weeks Bay National Estuarine Research Reserve; ALABAMA DEPARTMENT OF CONSERVATION AND NATURAL RESOURCES; certain
+def52201a4873868,NA14NOS4200010,11.420,3b95f3a57b9acc66,NERR Weeks Bay National Estuarine Research Reserve; ALABAMA DEPARTMENT OF CONSERVATION AND NATURAL RESOURCES; certain
+def52201a4873868,NA14NOS4200126,11.420,3b95f3a57b9acc66,NERR Weeks Bay National Estuarine Research Reserve; ALABAMA DEPARTMENT OF CONSERVATION AND NATURAL RESOURCES; certain
+def52201a4873868,NA15NOS4200051,11.420,3b95f3a57b9acc66,NERR Weeks Bay National Estuarine Research Reserve; ALABAMA DEPARTMENT OF CONSERVATION AND NATURAL RESOURCES; certain
+def52201a4873868,NA15NOS4200130,11.420,3b95f3a57b9acc66,NERR Weeks Bay National Estuarine Research Reserve; ALABAMA DEPARTMENT OF CONSERVATION AND NATURAL RESOURCES; certain
+def52201a4873868,NA16NOS4200124,11.420,3b95f3a57b9acc66,NERR Weeks Bay National Estuarine Research Reserve; ALABAMA DEPARTMENT OF CONSERVATION AND NATURAL RESOURCES; certain
+def52201a4873868,NA17NOS4200107,11.420,3b95f3a57b9acc66,NERR Weeks Bay National Estuarine Research Reserve; ALABAMA DEPARTMENT OF CONSERVATION AND NATURAL RESOURCES; certain
+def52201a4873868,NA18NOS4200099,11.420,3b95f3a57b9acc66,NERR Weeks Bay National Estuarine Research Reserve; ALABAMA DEPARTMENT OF CONSERVATION AND NATURAL RESOURCES; certain
+def52201a4873868,NA19NOS4200097,11.420,3b95f3a57b9acc66,NERR Weeks Bay National Estuarine Research Reserve; ALABAMA DEPARTMENT OF CONSERVATION AND NATURAL RESOURCES; certain
+def52201a4873868,NA20NOS4200056,11.420,3b95f3a57b9acc66,NERR Weeks Bay National Estuarine Research Reserve; ALABAMA DEPARTMENT OF CONSERVATION AND NATURAL RESOURCES; certain
+def52201a4873868,NA20NOS4200165,11.420,3b95f3a57b9acc66,NERR Weeks Bay National Estuarine Research Reserve; ALABAMA DEPARTMENT OF CONSERVATION AND NATURAL RESOURCES; certain
+def52201a4873868,NA21NOS4200067,11.420,3b95f3a57b9acc66,NERR Weeks Bay National Estuarine Research Reserve; ALABAMA DEPARTMENT OF CONSERVATION AND NATURAL RESOURCES; likely
+def52201a4873868,NA21NOS4200068,11.420,3b95f3a57b9acc66,NERR Weeks Bay National Estuarine Research Reserve; ALABAMA DEPARTMENT OF CONSERVATION AND NATURAL RESOURCES; certain
+def52201a4873868,NA21NOS4200107,11.420,3b95f3a57b9acc66,NERR Weeks Bay National Estuarine Research Reserve; ALABAMA DEPARTMENT OF CONSERVATION AND NATURAL RESOURCES; certain
+def52201a4873868,NA22NOS4200127,11.420,3b95f3a57b9acc66,NERR Weeks Bay National Estuarine Research Reserve; ALABAMA DEPARTMENT OF CONSERVATION AND NATURAL RESOURCES; certain
+def52201a4873868,NA22NOS4200196,11.420,3b95f3a57b9acc66,NERR Weeks Bay National Estuarine Research Reserve; ALABAMA DEPARTMENT OF CONSERVATION AND NATURAL RESOURCES; certain
+def52201a4873868,NA22NOS4200217,11.420,3b95f3a57b9acc66,NERR Weeks Bay National Estuarine Research Reserve; ALABAMA DEPARTMENT OF CONSERVATION AND NATURAL RESOURCES; certain
+def52201a4873868,NA23NOS4200231,11.420,3b95f3a57b9acc66,NERR Weeks Bay National Estuarine Research Reserve; ALABAMA DEPARTMENT OF CONSERVATION AND NATURAL RESOURCES; certain
+def52201a4873868,NA24NOSX420C0067,11.420,3b95f3a57b9acc66,NERR Weeks Bay National Estuarine Research Reserve; ALABAMA DEPARTMENT OF CONSERVATION AND NATURAL RESOURCES; certain
+def52201a4873868,NA24NOSX420G0022,11.420,3b95f3a57b9acc66,NERR Weeks Bay National Estuarine Research Reserve; ALABAMA DEPARTMENT OF CONSERVATION AND NATURAL RESOURCES; certain
+def52201a4873868,NA25NOSX420C0006,11.420,3b95f3a57b9acc66,NERR Weeks Bay National Estuarine Research Reserve; ALABAMA DEPARTMENT OF CONSERVATION AND NATURAL RESOURCES; certain
+def52201a4873868,NA25NOSX420G0016,11.420,3b95f3a57b9acc66,NERR Weeks Bay National Estuarine Research Reserve; ALABAMA DEPARTMENT OF CONSERVATION AND NATURAL RESOURCES; certain
+def52201a4873868,NA26NOSX420C0011,11.420,3b95f3a57b9acc66,NERR Weeks Bay National Estuarine Research Reserve; ALABAMA DEPARTMENT OF CONSERVATION AND NATURAL RESOURCES; certain
+e1a7385483473434,00655004,66.456,0aecd67acddb43e9,NEP Galveston Bay Estuary Program; TEXAS COMMISSION ON ENVIRONMENTAL QUALITY; likely
+e1a7385483473434,00655005,66.456,0aecd67acddb43e9,NEP Galveston Bay Estuary Program; TEXAS COMMISSION ON ENVIRONMENTAL QUALITY; likely
+e1a7385483473434,00655006,66.456,0aecd67acddb43e9,NEP Galveston Bay Estuary Program; TEXAS COMMISSION ON ENVIRONMENTAL QUALITY; certain
+e1a7385483473434,00655007,66.456,0aecd67acddb43e9,NEP Galveston Bay Estuary Program; TEXAS COMMISSION ON ENVIRONMENTAL QUALITY; certain
+e1a7385483473434,00655008,66.456,0aecd67acddb43e9,NEP Galveston Bay Estuary Program; TEXAS COMMISSION ON ENVIRONMENTAL QUALITY; certain
+e1a7385483473434,00655009,66.456,0aecd67acddb43e9,NEP Galveston Bay Estuary Program; TEXAS COMMISSION ON ENVIRONMENTAL QUALITY; certain
+e1a7385483473434,00F20801,66.456,0aecd67acddb43e9,NEP Galveston Bay Estuary Program; TEXAS COMMISSION ON ENVIRONMENTAL QUALITY; likely
+e1a7385483473434,02F24301,66.456,0aecd67acddb43e9,NEP Galveston Bay Estuary Program; TEXAS COMMISSION ON ENVIRONMENTAL QUALITY; certain
+e1a7385483473434,02F61501,66.456,0aecd67acddb43e9,NEP Galveston Bay Estuary Program; TEXAS COMMISSION ON ENVIRONMENTAL QUALITY; certain
+e1a7385483473434,03F11401,66.456,0aecd67acddb43e9,NEP Galveston Bay Estuary Program; TEXAS COMMISSION ON ENVIRONMENTAL QUALITY; certain
+e588b74d29fe8c36,00T74501,66.456,0aecd67acddb43e9,NEP Santa Monica Bay National Estuary Program; SANTA MONICA BAY RESTORATION FOUNDATION; certain
+e588b74d29fe8c36,96971401,66.456,0aecd67acddb43e9,NEP Santa Monica Bay National Estuary Program; SANTA MONICA BAY RESTORATION FOUND; certain
+e588b74d29fe8c36,98T25001,66.456,0aecd67acddb43e9,NEP Santa Monica Bay National Estuary Program; SANTA MONICA BAY RESTORATION FOUNDATION; certain
+e588b74d29fe8c36,98T43201,66.456,0aecd67acddb43e9,NEP Santa Monica Bay National Estuary Program; SANTA MONICA BAY RESTORATION FOUNDATION; certain
+e588b74d29fe8c36,99T51301,66.456,0aecd67acddb43e9,NEP Santa Monica Bay National Estuary Program; SANTA MONICA BAY RESTORATION FOUNDATION; certain
+ec5c32126ce47483,95308901,66.456,0aecd67acddb43e9,NEP Delaware Center for the Inland Bays; CENTER FOR INLAND BAYS; certain
+ec5c32126ce47483,95333501,66.456,0aecd67acddb43e9,NEP Delaware Center for the Inland Bays; CENTER FOR INLAND BAYS; certain
+ec5c32126ce47483,953A0101,66.456,0aecd67acddb43e9,NEP Delaware Center for the Inland Bays; CENTER FOR INLAND BAYS; certain
+ec5c32126ce47483,953A0287,66.456,0aecd67acddb43e9,NEP Delaware Center for the Inland Bays; CENTER FOR INLAND BAYS; certain
+ec5c32126ce47483,99399009,66.456,0aecd67acddb43e9,NEP Delaware Center for the Inland Bays; CENTER FOR INLAND BAYS; certain
+ec5c32126ce47483,99399010,66.456,0aecd67acddb43e9,NEP Delaware Center for the Inland Bays; CENTER FOR INLAND BAYS; certain
+ec5c32126ce47483,99399011,66.456,0aecd67acddb43e9,NEP Delaware Center for the Inland Bays; CENTER FOR INLAND BAYS; certain
+ec5c32126ce47483,99399012,66.456,0aecd67acddb43e9,NEP Delaware Center for the Inland Bays; CENTER FOR INLAND BAYS; certain
+ec5c32126ce47483,99399013,66.456,0aecd67acddb43e9,NEP Delaware Center for the Inland Bays; CENTER FOR INLAND BAYS; certain
+ec5c32126ce47483,99399014,66.456,0aecd67acddb43e9,NEP Delaware Center for the Inland Bays; CENTER FOR INLAND BAYS; certain
+ec5c32126ce47483,99399015,66.456,0aecd67acddb43e9,NEP Delaware Center for the Inland Bays; CENTER FOR INLAND BAYS; certain
+ec5c32126ce47483,99399016,66.456,0aecd67acddb43e9,NEP Delaware Center for the Inland Bays; CENTER FOR INLAND BAYS; certain
+ec5c32126ce47483,99399017,66.456,0aecd67acddb43e9,NEP Delaware Center for the Inland Bays; CENTER FOR INLAND BAYS; certain
+ec5c32126ce47483,99399018,66.456,0aecd67acddb43e9,NEP Delaware Center for the Inland Bays; CENTER FOR INLAND BAYS; certain
+ec5c32126ce47483,99399019,66.456,0aecd67acddb43e9,NEP Delaware Center for the Inland Bays; CENTER FOR INLAND BAYS; certain
+f01f6bcc9502e905,NA08NOS4200306,11.420,3b95f3a57b9acc66,NERR Hudson River National Estuarine Research Reserve; DEPARTMENT OF ENVIRONMENTAL CONSERVATION NEW YORK; certain
+f01f6bcc9502e905,NA08NOS4200370,11.420,3b95f3a57b9acc66,NERR Hudson River National Estuarine Research Reserve; DEPARTMENT OF ENVIRONMENTAL CONSERVATION NEW YORK; certain
+f01f6bcc9502e905,NA08NOS4200402,11.420,3b95f3a57b9acc66,"NERR Hudson River National Estuarine Research Reserve; GREENWAY HERITAGE CONSERVANCY HRV, INC.; certain"
+f01f6bcc9502e905,NA09NOS4200138,11.420,3b95f3a57b9acc66,"NERR Hudson River National Estuarine Research Reserve; GREENWAY HERITAGE CONSERVANCY HRV, INC.; certain"
+f01f6bcc9502e905,NA09NOS4200147,11.420,3b95f3a57b9acc66,NERR Hudson River National Estuarine Research Reserve; DEPARTMENT OF ENVIRONMENTAL CONSERVATION NEW YORK; certain
+f01f6bcc9502e905,NA10NOS4200071,11.420,3b95f3a57b9acc66,"NERR Hudson River National Estuarine Research Reserve; GREENWAY HERITAGE CONSERVANCY HRV, INC.; certain"
+f01f6bcc9502e905,NA10NOS4200133,11.420,3b95f3a57b9acc66,NERR Hudson River National Estuarine Research Reserve; DEPARTMENT OF ENVIRONMENTAL CONSERVATION NEW YORK; certain
+f01f6bcc9502e905,NA11NOS4200134,11.420,3b95f3a57b9acc66,NERR Hudson River National Estuarine Research Reserve; DEPARTMENT OF ENVIRONMENTAL CONSERVATION NEW YORK; certain
+f01f6bcc9502e905,NA11NOS4200137,11.420,3b95f3a57b9acc66,"NERR Hudson River National Estuarine Research Reserve; GREENWAY HERITAGE CONSERVANCY HRV, INC.; certain"
+f01f6bcc9502e905,NA12NOS4200096,11.420,3b95f3a57b9acc66,"NERR Hudson River National Estuarine Research Reserve; GREENWAY HERITAGE CONSERVANCY HRV, INC.; certain"
+f01f6bcc9502e905,NA12NOS4200125,11.420,3b95f3a57b9acc66,NERR Hudson River National Estuarine Research Reserve; DEPARTMENT OF ENVIRONMENTAL CONSERVATION NEW YORK; certain
+f01f6bcc9502e905,NA13NOS4200073,11.420,3b95f3a57b9acc66,"NERR Hudson River National Estuarine Research Reserve; GREENWAY HERITAGE CONSERVANCY HRV, INC.; certain"
+f01f6bcc9502e905,NA13NOS4200075,11.420,3b95f3a57b9acc66,NERR Hudson River National Estuarine Research Reserve; DEPARTMENT OF ENVIRONMENTAL CONSERVATION NEW YORK; certain
+f01f6bcc9502e905,NA14NOS4200038,11.420,3b95f3a57b9acc66,NERR Hudson River National Estuarine Research Reserve; GREENWAY CONSERVANCY FOR THE H; certain
+f01f6bcc9502e905,NA14NOS4200074,11.420,3b95f3a57b9acc66,NERR Hudson River National Estuarine Research Reserve; DEPARTMENT OF ENVIRONMENTAL CONSERVATION NEW YORK; certain
+f01f6bcc9502e905,NA15NOS4200121,11.420,3b95f3a57b9acc66,NERR Hudson River National Estuarine Research Reserve; DEPARTMENT OF ENVIRONMENTAL CONSERVATION NEW YORK; certain
+f01f6bcc9502e905,NA15NOS4200122,11.420,3b95f3a57b9acc66,NERR Hudson River National Estuarine Research Reserve; GREENWAY CONSERVANCY FOR THE H; certain
+f01f6bcc9502e905,NA16NOS4200063,11.420,3b95f3a57b9acc66,NERR Hudson River National Estuarine Research Reserve; GREENWAY CONSERVANCY FOR THE H; certain
+f01f6bcc9502e905,NA16NOS4200103,11.420,3b95f3a57b9acc66,NERR Hudson River National Estuarine Research Reserve; DEPARTMENT OF ENVIRONMENTAL CONSERVATION NEW YORK; certain
+f01f6bcc9502e905,NA17NOS4200053,11.420,3b95f3a57b9acc66,NERR Hudson River National Estuarine Research Reserve; GREENWAY CONSERVANCY FOR THE H; certain
+f01f6bcc9502e905,NA17NOS4200054,11.420,3b95f3a57b9acc66,NERR Hudson River National Estuarine Research Reserve; DEPARTMENT OF ENVIRONMENTAL CONSERVATION NEW YORK; certain
+f01f6bcc9502e905,NA18NOS4200027,11.420,3b95f3a57b9acc66,NERR Hudson River National Estuarine Research Reserve; GREENWAY CONSERVANCY FOR THE H; certain
+f01f6bcc9502e905,NA18NOS4200070,11.420,3b95f3a57b9acc66,NERR Hudson River National Estuarine Research Reserve; DEPARTMENT OF ENVIRONMENTAL CONSERVATION NEW YORK; certain
+f01f6bcc9502e905,NA19NOS4200046,11.420,3b95f3a57b9acc66,NERR Hudson River National Estuarine Research Reserve; DEPARTMENT OF ENVIRONMENTAL CONSERVATION NEW YORK; certain
+f01f6bcc9502e905,NA19NOS4200080,11.420,3b95f3a57b9acc66,NERR Hudson River National Estuarine Research Reserve; GREENWAY CONSERVANCY FOR THE H; certain
+f01f6bcc9502e905,NA19NOS4200081,11.420,3b95f3a57b9acc66,NERR Hudson River National Estuarine Research Reserve; DEPARTMENT OF ENVIRONMENTAL CONSERVATION NEW YORK; certain
+f01f6bcc9502e905,NA20NOS4200028,11.420,3b95f3a57b9acc66,NERR Hudson River National Estuarine Research Reserve; GREENWAY CONSERVANCY FOR THE H; certain
+f01f6bcc9502e905,NA20NOS4200060,11.420,3b95f3a57b9acc66,NERR Hudson River National Estuarine Research Reserve; DEPARTMENT OF ENVIRONMENTAL CONSERVATION NEW YORK; certain
+f01f6bcc9502e905,NA20NOS4200089,11.420,3b95f3a57b9acc66,NERR Hudson River National Estuarine Research Reserve; DEPARTMENT OF ENVIRONMENTAL CONSERVATION NEW YORK; certain
+f01f6bcc9502e905,NA21NOS4200040,11.420,3b95f3a57b9acc66,NERR Hudson River National Estuarine Research Reserve; GREENWAY CONSERVANCY FOR THE H; certain
+f01f6bcc9502e905,NA21NOS4200066,11.420,3b95f3a57b9acc66,NERR Hudson River National Estuarine Research Reserve; DEPARTMENT OF ENVIRONMENTAL CONSERVATION NEW YORK; certain
+f01f6bcc9502e905,NA22NOS4200027,11.420,3b95f3a57b9acc66,NERR Hudson River National Estuarine Research Reserve; GREENWAY CONSERVANCY FOR THE H; certain
+f01f6bcc9502e905,NA22NOS4200032,11.420,3b95f3a57b9acc66,NERR Hudson River National Estuarine Research Reserve; DEPARTMENT OF ENVIRONMENTAL CONSERVATION NEW YORK; certain
+f01f6bcc9502e905,NA22NOS4200194,11.420,3b95f3a57b9acc66,NERR Hudson River National Estuarine Research Reserve; DEPARTMENT OF ENVIRONMENTAL CONSERVATION NEW YORK; certain
+f01f6bcc9502e905,NA23NOS4200190,11.420,3b95f3a57b9acc66,NERR Hudson River National Estuarine Research Reserve; DEPARTMENT OF ENVIRONMENTAL CONSERVATION NEW YORK; certain
+f01f6bcc9502e905,NA23NOS4200210,11.420,3b95f3a57b9acc66,NERR Hudson River National Estuarine Research Reserve; GREENWAY CONSERVANCY FOR THE H; likely
+f01f6bcc9502e905,NA23NOS4200211,11.420,3b95f3a57b9acc66,NERR Hudson River National Estuarine Research Reserve; DEPARTMENT OF ENVIRONMENTAL CONSERVATION NEW YORK; certain
+f01f6bcc9502e905,NA24NOSX420C0053,11.420,3b95f3a57b9acc66,NERR Hudson River National Estuarine Research Reserve; DEPARTMENT OF ENVIRONMENTAL CONSERVATION NEW YORK; certain
+f01f6bcc9502e905,NA24NOSX420C0054,11.420,3b95f3a57b9acc66,NERR Hudson River National Estuarine Research Reserve; GREENWAY CONSERVANCY FOR THE H; likely
+f01f6bcc9502e905,NA25NOSX420C0003,11.420,3b95f3a57b9acc66,NERR Hudson River National Estuarine Research Reserve; DEPARTMENT OF ENVIRONMENTAL CONSERVATION NEW YORK; certain
+f01f6bcc9502e905,NA25NOSX420C0008,11.420,3b95f3a57b9acc66,NERR Hudson River National Estuarine Research Reserve; GREENWAY CONSERVANCY FOR THE H; likely
+f01f6bcc9502e905,NA25NOSX420G0013,11.420,3b95f3a57b9acc66,NERR Hudson River National Estuarine Research Reserve; DEPARTMENT OF ENVIRONMENTAL CONSERVATION NEW YORK; certain
+f01f6bcc9502e905,NA26NOSX420C0004,11.420,3b95f3a57b9acc66,NERR Hudson River National Estuarine Research Reserve; GREENWAY CONSERVANCY FOR THE H; likely
+f01f6bcc9502e905,NA26NOSX420C0029,11.420,3b95f3a57b9acc66,NERR Hudson River National Estuarine Research Reserve; DEPARTMENT OF ENVIRONMENTAL CONSERVATION NEW YORK; certain
+f16c0b7401a72b61,NA08NOS4200303,11.420,3b95f3a57b9acc66,NERR South Slough National Estuarine Research Reserve; OREGON DEPARTMENT OF STATE LANDS; likely
+f16c0b7401a72b61,NA08NOS4200354,11.420,3b95f3a57b9acc66,NERR South Slough National Estuarine Research Reserve; OREGON DEPARTMENT OF STATE LANDS; likely
+f16c0b7401a72b61,NA09NOS4200101,11.420,3b95f3a57b9acc66,NERR South Slough National Estuarine Research Reserve; OREGON DEPARTMENT OF STATE LANDS; certain
+f16c0b7401a72b61,NA09NOS4200126,11.420,3b95f3a57b9acc66,NERR South Slough National Estuarine Research Reserve; OREGON DEPARTMENT OF STATE LANDS; certain
+f16c0b7401a72b61,NA10NOS4200102,11.420,3b95f3a57b9acc66,NERR South Slough National Estuarine Research Reserve; OREGON DEPARTMENT OF STATE LANDS; certain
+f16c0b7401a72b61,NA10NOS4200107,11.420,3b95f3a57b9acc66,NERR South Slough National Estuarine Research Reserve; OREGON DEPARTMENT OF STATE LANDS; certain
+f16c0b7401a72b61,NA11NOS4200046,11.420,3b95f3a57b9acc66,NERR South Slough National Estuarine Research Reserve; OREGON DEPARTMENT OF STATE LANDS; certain
+f16c0b7401a72b61,NA11NOS4200158,11.420,3b95f3a57b9acc66,NERR South Slough National Estuarine Research Reserve; SOUTH SLOUGH RESERVE; certain
+f16c0b7401a72b61,NA12NOS4200116,11.420,3b95f3a57b9acc66,NERR South Slough National Estuarine Research Reserve; OREGON DEPARTMENT OF STATE LANDS; certain
+f16c0b7401a72b61,NA13NOS4200088,11.420,3b95f3a57b9acc66,NERR South Slough National Estuarine Research Reserve; OREGON DEPARTMENT OF STATE LANDS; certain
+f16c0b7401a72b61,NA14NOS4200059,11.420,3b95f3a57b9acc66,NERR South Slough National Estuarine Research Reserve; OREGON DEPARTMENT OF STATE LANDS; certain
+f16c0b7401a72b61,NA15NOS4200111,11.420,3b95f3a57b9acc66,NERR South Slough National Estuarine Research Reserve; SOUTH SLOUGH RESERVE; certain
+f16c0b7401a72b61,NA16NOS4200082,11.420,3b95f3a57b9acc66,NERR South Slough National Estuarine Research Reserve; OREGON DEPARTMENT OF STATE LANDS; certain
+f16c0b7401a72b61,NA16NOS4200115,11.420,3b95f3a57b9acc66,NERR South Slough National Estuarine Research Reserve; OREGON DEPARTMENT OF STATE LANDS; certain
+f16c0b7401a72b61,NA17NOS4200069,11.420,3b95f3a57b9acc66,NERR South Slough National Estuarine Research Reserve; OREGON DEPARTMENT OF STATE LANDS; certain
+f16c0b7401a72b61,NA18NOS4200074,11.420,3b95f3a57b9acc66,NERR South Slough National Estuarine Research Reserve; OREGON DEPARTMENT OF STATE LANDS; certain
+f16c0b7401a72b61,NA18NOS4200147,11.420,3b95f3a57b9acc66,NERR South Slough National Estuarine Research Reserve; OREGON DEPARTMENT OF STATE LANDS; certain
+f16c0b7401a72b61,NA19NOS4200043,11.420,3b95f3a57b9acc66,NERR South Slough National Estuarine Research Reserve; OREGON DEPARTMENT OF STATE LANDS; certain
+f16c0b7401a72b61,NA19NOS4200076,11.420,3b95f3a57b9acc66,NERR South Slough National Estuarine Research Reserve; OREGON DEPARTMENT OF STATE LANDS; certain
+f16c0b7401a72b61,NA20NOS4200054,11.420,3b95f3a57b9acc66,NERR South Slough National Estuarine Research Reserve; OREGON DEPARTMENT OF STATE LANDS; certain
+f16c0b7401a72b61,NA20NOS4200057,11.420,3b95f3a57b9acc66,NERR South Slough National Estuarine Research Reserve; OREGON DEPARTMENT OF STATE LANDS; certain
+f16c0b7401a72b61,NA20NOS4200075,11.420,3b95f3a57b9acc66,NERR South Slough National Estuarine Research Reserve; OREGON DEPARTMENT OF STATE LANDS; certain
+f16c0b7401a72b61,NA21NOS4200052,11.420,3b95f3a57b9acc66,NERR South Slough National Estuarine Research Reserve; OREGON DEPARTMENT OF STATE LANDS; likely
+f16c0b7401a72b61,NA21NOS4200061,11.420,3b95f3a57b9acc66,NERR South Slough National Estuarine Research Reserve; OREGON DEPARTMENT OF STATE LANDS; certain
+f16c0b7401a72b61,NA22NOS4200091,11.420,3b95f3a57b9acc66,NERR South Slough National Estuarine Research Reserve; OREGON DEPARTMENT OF STATE LANDS; certain
+f16c0b7401a72b61,NA23NOS4200215,11.420,3b95f3a57b9acc66,NERR South Slough National Estuarine Research Reserve; OREGON DEPARTMENT OF STATE LANDS; certain
+f16c0b7401a72b61,NA24NOSX420C0037,11.420,3b95f3a57b9acc66,NERR South Slough National Estuarine Research Reserve; OREGON DEPARTMENT OF STATE LANDS; certain
+f16c0b7401a72b61,NA24NOSX420G0016,11.420,3b95f3a57b9acc66,NERR South Slough National Estuarine Research Reserve; OREGON DEPARTMENT OF STATE LANDS; certain
+f16c0b7401a72b61,NA25NOSX420C0013,11.420,3b95f3a57b9acc66,NERR South Slough National Estuarine Research Reserve; OREGON DEPARTMENT OF STATE LANDS; certain
+f16c0b7401a72b61,NA26NOSX420C0023,11.420,3b95f3a57b9acc66,NERR South Slough National Estuarine Research Reserve; OREGON DEPARTMENT OF STATE LANDS; certain
+f668c822976512fe,NA08NOS4200384,11.420,3b95f3a57b9acc66,"NERR Old Woman Creek National Estuarine Research Reserve; NATURAL RESOURCES, OHIO DEPARTMENT OF, DIVISION OF WILDLIFE; certain"
+f668c822976512fe,NA09NOS4200139,11.420,3b95f3a57b9acc66,"NERR Old Woman Creek National Estuarine Research Reserve; NATURAL RESOURCES, OHIO DEPARTMENT OF, DIVISION OF WILDLIFE; certain"
+f668c822976512fe,NA11NOS4200139,11.420,3b95f3a57b9acc66,"NERR Old Woman Creek National Estuarine Research Reserve; NATURAL RESOURCES, OHIO DEPARTMENT OF, DIVISION OF WILDLIFE; certain"
+f668c822976512fe,NA12NOS4200138,11.420,3b95f3a57b9acc66,"NERR Old Woman Creek National Estuarine Research Reserve; NATURAL RESOURCES, OHIO DEPARTMENT OF, DIVISION OF WILDLIFE; certain"
+f668c822976512fe,NA13NOS4200091,11.420,3b95f3a57b9acc66,"NERR Old Woman Creek National Estuarine Research Reserve; NATURAL RESOURCES, OHIO DEPARTMENT OF, DIVISION OF WILDLIFE; certain"
+f668c822976512fe,NA14NOS4200077,11.420,3b95f3a57b9acc66,"NERR Old Woman Creek National Estuarine Research Reserve; NATURAL RESOURCES, OHIO DEPARTMENT OF, DIVISION OF WILDLIFE; certain"
+f668c822976512fe,NA15NOS4200123,11.420,3b95f3a57b9acc66,"NERR Old Woman Creek National Estuarine Research Reserve; NATURAL RESOURCES, OHIO DEPARTMENT OF, DIVISION OF WILDLIFE; certain"
+f668c822976512fe,NA16NOS4200104,11.420,3b95f3a57b9acc66,"NERR Old Woman Creek National Estuarine Research Reserve; NATURAL RESOURCES, OHIO DEPARTMENT OF, DIVISION OF WILDLIFE; certain"
+f668c822976512fe,NA17NOS4200060,11.420,3b95f3a57b9acc66,"NERR Old Woman Creek National Estuarine Research Reserve; NATURAL RESOURCES, OHIO DEPARTMENT OF, DIVISION OF WILDLIFE; certain"
+f668c822976512fe,NA18NOS4200079,11.420,3b95f3a57b9acc66,"NERR Old Woman Creek National Estuarine Research Reserve; OHIO DEPARTMENT OF NATURAL RESOURCES, OFFICE OF COASTAL MANAGEMENT; certain"
+f668c822976512fe,NA19NOS4200041,11.420,3b95f3a57b9acc66,"NERR Old Woman Creek National Estuarine Research Reserve; OHIO DEPARTMENT OF NATURAL RESOURCES, OFFICE OF COASTAL MANAGEMENT; certain"
+f668c822976512fe,NA20NOS4200063,11.420,3b95f3a57b9acc66,"NERR Old Woman Creek National Estuarine Research Reserve; OHIO DEPARTMENT OF NATURAL RESOURCES, OFFICE OF COASTAL MANAGEMENT; certain"
+f668c822976512fe,NA22NOS4200097,11.420,3b95f3a57b9acc66,"NERR Old Woman Creek National Estuarine Research Reserve; OHIO DEPARTMENT OF NATURAL RESOURCES, OFFICE OF COASTAL MANAGEMENT; certain"
+f668c822976512fe,NA24NOSX420C0044,11.420,3b95f3a57b9acc66,"NERR Old Woman Creek National Estuarine Research Reserve; OHIO DEPARTMENT OF NATURAL RESOURCES, OFFICE OF COASTAL MANAGEMENT; certain"
+f668c822976512fe,NA25NOSX420G0014,11.420,3b95f3a57b9acc66,"NERR Old Woman Creek National Estuarine Research Reserve; OHIO DEPARTMENT OF NATURAL RESOURCES, OFFICE OF COASTAL MANAGEMENT; certain"
+f668c822976512fe,NA26NOSX420C0007,11.420,3b95f3a57b9acc66,"NERR Old Woman Creek National Estuarine Research Reserve; OHIO DEPARTMENT OF NATURAL RESOURCES, OFFICE OF COASTAL MANAGEMENT; certain"
+f858cc0d008257c3,96213322,66.456,0aecd67acddb43e9,NEP San Juan Bay Estuary Program; CORPORATION FOR THE CONSERVATION OF THE SAN JUAN BAY ESTUARY; certain
+f858cc0d008257c3,99206914,66.456,0aecd67acddb43e9,NEP San Juan Bay Estuary Program; CORPORATION FOR THE CONSERVATION OF THE SAN JUAN BAY ESTUARY; certain
+f858cc0d008257c3,99206915,66.456,0aecd67acddb43e9,NEP San Juan Bay Estuary Program; CORPORATION FOR THE CONSERVATION OF THE SAN JUAN BAY ESTUARY; certain
+f858cc0d008257c3,99206916,66.456,0aecd67acddb43e9,NEP San Juan Bay Estuary Program; CORPORATION FOR THE CONSERVATION OF THE SAN JUAN BAY ESTUARY; certain
+f858cc0d008257c3,99206917,66.456,0aecd67acddb43e9,NEP San Juan Bay Estuary Program; CORPORATION FOR THE CONSERVATION OF THE SAN JUAN BAY ESTUARY; certain
+f858cc0d008257c3,99206918,66.456,0aecd67acddb43e9,NEP San Juan Bay Estuary Program; CORPORATION FOR THE CONSERVATION OF THE SAN JUAN BAY ESTUARY; certain
+f858cc0d008257c3,99206919,66.456,0aecd67acddb43e9,NEP San Juan Bay Estuary Program; CORPORATION FOR THE CONSERVATION OF THE SAN JUAN BAY ESTUARY; certain
+f858cc0d008257c3,99206920,66.456,0aecd67acddb43e9,NEP San Juan Bay Estuary Program; CORPORATION FOR THE CONSERVATION OF THE SAN JUAN BAY ESTUARY; certain
+f858cc0d008257c3,99206921,66.456,0aecd67acddb43e9,NEP San Juan Bay Estuary Program; CORPORATION FOR THE CONSERVATION OF THE SAN JUAN BAY ESTUARY; certain
+f858cc0d008257c3,99206922,66.456,0aecd67acddb43e9,NEP San Juan Bay Estuary Program; CORPORATION FOR THE CONSERVATION OF THE SAN JUAN BAY ESTUARY; certain
+f858cc0d008257c3,99206923,66.456,0aecd67acddb43e9,NEP San Juan Bay Estuary Program; CORPORATION FOR THE CONSERVATION OF THE SAN JUAN BAY ESTUARY; certain
+f858cc0d008257c3,99206924,66.456,0aecd67acddb43e9,NEP San Juan Bay Estuary Program; CORPORATION FOR THE CONSERVATION OF THE SAN JUAN BAY ESTUARY; certain
+f858cc0d008257c3,99206925,66.456,0aecd67acddb43e9,NEP San Juan Bay Estuary Program; CORPORATION FOR THE CONSERVATION OF THE SAN JUAN BAY ESTUARY; certain
+f858cc0d008257c3,99206926,66.456,0aecd67acddb43e9,NEP San Juan Bay Estuary Program; CORPORATION FOR THE CONSERVATION OF THE SAN JUAN BAY ESTUARY; certain
+f858cc0d008257c3,99206927,66.456,0aecd67acddb43e9,NEP San Juan Bay Estuary Program; CORPORATION FOR THE CONSERVATION OF THE SAN JUAN BAY ESTUARY; certain
+f858cc0d008257c3,99206928,66.456,0aecd67acddb43e9,NEP San Juan Bay Estuary Program; CORPORATION FOR THE CONSERVATION OF THE SAN JUAN BAY ESTUARY; certain
+f858cc0d008257c3,99206929,66.456,0aecd67acddb43e9,NEP San Juan Bay Estuary Program; CORPORATION FOR THE CONSERVATION OF THE SAN JUAN BAY ESTUARY; certain
+f858cc0d008257c3,99206930,66.456,0aecd67acddb43e9,NEP San Juan Bay Estuary Program; CORPORATION FOR THE CONSERVATION OF THE SAN JUAN BAY ESTUARY; certain

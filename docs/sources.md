@@ -102,11 +102,16 @@ Identifiers and publications come from two open APIs:
 From all of these we store identifiers, links and short paraphrases, not
 copied page text.
 
-**Mostly not from fetched sources:** funding amounts. Of the 380 funding
-events with a dollar amount, 337 are labelled as recalled rather than
-fetched. The other 43 are the four LTREB award series (North Inlet, GCReW,
-Swan's Island, West Falmouth Harbor), fetched from the NSF Award API on
-2026-10-25. Treat any funding total as provisional.
+**Partly from fetched sources:** funding amounts. Of the 1,844 funding
+events with a dollar amount, 1,555 were fetched from award databases on
+2026-10-25 and 289 are labelled as recalled. The fetched rows are the four
+LTREB award series (North Inlet, GCReW, Swan's Island, West Falmouth
+Harbor; 43 rows from the NSF Award API) and the NOAA (CFDA 11.420) and EPA
+(CFDA 66.456) awards of the National Estuarine Research Reserves and
+National Estuary Programs, FY2008–FY2026 (1,512 rows from USAspending.gov,
+pinned award by award in `data/funding_overrides/usaspending_award_whitelist.csv`).
+The recalled rows still hold most of the dollars ($3.31B of $4.31B), so
+treat any total that includes them as provisional.
 
 ## Engine attribution
 

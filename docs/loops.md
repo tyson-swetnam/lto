@@ -133,10 +133,12 @@ cleared 75 wrong stored ORCIDs (figures from the PR #13 summary).
 Two older layers are still recall-based, and the site should be read
 with that in mind:
 
-- **Funding.** The `source` of 337 of the 380 `funding_events` rows that
-  have a dollar amount marks them as recalled, not fetched. The other 43,
-  the four LTREB award series, were fetched from the NSF Award API on
-  2026-10-25.
+- **Funding.** The `source` of 289 of the 1,844 `funding_events` rows
+  that have a dollar amount marks them as recalled, not fetched, and they
+  still carry most of the dollars ($3.31B of $4.31B). The other 1,555 were
+  fetched on 2026-10-25: the four LTREB award series from the NSF Award
+  API, and the reserves' and estuary programs' own NOAA and EPA awards
+  from USAspending.gov, which replaced their recalled rows.
 - **Personnel rows from the May 2026 recall pass.** 555 rows are dated
   2026-05-05 or 2026-05-06; R-PEOPLE2 has ruled on 75 of them, and the
   rest have not been re-checked. The ARID rows are not in this group:
