@@ -110,6 +110,7 @@ AUTO_RECIPIENT_BLOCKLIST = (
 # per NOAA or the program's homepage) is not that university's federal portfolio.
 # One list for both fetchers.
 from fetch_funding_nsf import AUTO_AWARDEE_NAME_BLOCKLIST as AUTO_RECIPIENT_NAME_BLOCKLIST  # noqa: E402
+from fetch_funding_nsf import AUTO_AWARDEE_NETWORK_BLOCKLIST as AUTO_RECIPIENT_NETWORK_BLOCKLIST  # noqa: E402
 
 
 def _hash(s: str) -> str:
@@ -504,13 +505,15 @@ def _relation_for_type(award: dict) -> str:
     return "grant"
 
 
-def _auto_recipient(parent: str, name: str = "") -> str | None:
+def _auto_recipient(parent: str, name: str = "", networks=()) -> str | None:
     if not parent:
         return None
     p = parent.lower()
     if any(b in p for b in AUTO_RECIPIENT_BLOCKLIST):
         return None
     if any(b in (name or "").lower() for b in AUTO_RECIPIENT_NAME_BLOCKLIST):
+        return None
+    if any(n in AUTO_RECIPIENT_NETWORK_BLOCKLIST for n in (networks or ())):
         return None
     if any(h in p for h in AUTO_RECIPIENT_HINTS):
         return parent
@@ -563,7 +566,8 @@ def process_facility(buf: LakeBuffer, sess: requests.Session, facility: dict,
     ov = overrides.get(fid, {})
     recipients: list[str] = list(ov.get("recipients") or [])
     if not recipients:
-        auto = _auto_recipient(parent, facility.get("canonical_name") or "")
+        auto = _auto_recipient(parent, facility.get("canonical_name") or "",
+                               facility.get("networks") or ())
         if auto:
             recipients = [auto]
     if not recipients and not ov.get("award_ids"):
@@ -738,14 +742,16 @@ def main() -> int:
     overrides = load_overrides(args.overrides)
 
     rows = conn.execute("""
-        SELECT facility_id, canonical_name, acronym, parent_org, country
-        FROM facilities
+        SELECT facility_id, canonical_name, acronym, parent_org, country,
+               (SELECT list(m.network_id ORDER BY m.network_id)
+                FROM network_membership m WHERE m.facility_id = f.facility_id)
+        FROM facilities f
         WHERE country IN ('US','USA') OR country IS NULL
         ORDER BY canonical_name
     """).fetchall()
     facilities = [
         {"facility_id": r[0], "canonical_name": r[1], "acronym": r[2],
-         "parent_org": r[3], "country": r[4]}
+         "parent_org": r[3], "country": r[4], "networks": list(r[5] or [])}
         for r in rows
     ]
     if args.facility_id:
