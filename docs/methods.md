@@ -13,9 +13,10 @@ The agents worked in two modes, and the data still shows both:
   without web access, so agents wrote records from model knowledge,
   each citing the source page it named.
 - **Fetched (from 2026-10).** The ARID Institute layer, the
-  EnviroData-NM and Arizona Water Observatory catalogues, and the
-  second people pass (R-PEOPLE2) take every value from a page fetched
-  in that run. Nothing in them is filled from recall; a missing value
+  EnviroData-NM and Arizona Water Observatory catalogues, the
+  second people pass (R-PEOPLE2), and the LTREB (NSF Award API) and
+  NERR / NEP (USAspending.gov) award fetches take every value from a
+  page fetched in that run. Nothing in them is filled from recall; a missing value
   stays null.
 
 ## Wave model

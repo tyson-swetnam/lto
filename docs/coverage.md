@@ -7,8 +7,9 @@ OpenAlex passes), PR #15 (URL-health sweep), PR #20 (LTER duplicates) and
 the 2026-10-25 MarineGEO / LTREB fixes, the 2026-10-25 LTAR and funder
 merges, the 2026-10-25 Reynolds Creek / Walnut Gulch merges, and the
 2026-10-25 Fort Keogh / Northern Plains / Southern Plains merges, and the
-2026-10-25 National Estuary Program host typing, and the 2026-10-25 BLE and
-MCR map-point fixes. The counts
+2026-10-25 National Estuary Program host typing, the 2026-10-25 BLE and
+MCR map-point fixes, and the 2026-10-25 NERR / NEP award fetch from
+USAspending.gov. The counts
 change whenever the data is
 re-exported. To recount, query the tables on the [SQL tab](#/sql). For
 example:
@@ -85,6 +86,42 @@ governments listed both as "X Government" and as "State of X" or
 "Commonwealth of X". The table now holds **128 funders**. No dollar amount
 changed: the merge re-keyed 373 `funding_events` rows and dropped two
 award-less stubs that duplicated a stub the survivor already had.
+
+The reserves' and estuary programs' funding was then fetched from
+USAspending.gov (2026-10-25). 1,054 awards are pinned one by one in
+`data/funding_overrides/usaspending_award_whitelist.csv`: NOAA CFDA 11.420
+awards to 30 reserves (703 awards, filed under NOAA Office for Coastal
+Management) and EPA CFDA 66.456 awards to 27 programs (351 awards), FY2008
+to FY2026. An award counts only when it was attributed (certain or likely)
+to one reserve or program and its recipient is that facility's lead agency
+or host, or the program's own entity or foundation. The test is the
+recipient, not the award's purpose, so a small graduate research
+fellowship counts when it goes to a reserve's lead university (VIMS,
+Rutgers, UT Austin and others; at most about $2.4M in all) and not when it
+goes to another institution. Of the 291 awards left out, 113 are research,
+fellowship or partner awards to other institutions and 37 more are
+partner awards or the three-way Narragansett Bay split; 21 are
+system-wide (the 19 NERRS data-office awards and 2 to Restore America's
+Estuaries); 81 name no single reserve or program; 33 have a net
+obligation of zero or less in the window; 4 are for proposed reserves; 2
+are ambiguous or another program's money. All 1,345 awards considered,
+with the reason for each, are in
+`data/funding_overrides/usaspending_estuary_review.csv`. Puget Sound
+Partnership is the outlier: $105.3M of the $989.0M, most of it two
+pass-through awards (01J97401 and 02J98701, about $37M each, with 42 and
+13 subawards), one of which was obligated in a single FY2026 action. They
+are counted uncapped, so Puget Sound dominates FY2026 and the
+coastal-processes area total. Each award gives
+one row per fiscal year of its actions, with the net obligation, so a
+closeout de-obligation shows as a negative row (120 rows). The 48 recalled
+rows these awards replace were removed in `data/seed/facility_fixes.csv`:
+the $700,000 NOAA "base funding" row on 29 reserves, the $700,000 EPA
+"Section 320" row on 18 programs, and a $30M "appropriation" to the NOAA
+Office for Coastal Management itself (the office that makes these
+awards). Long Island Sound has no award rows: its 66.456 awards are
+partner awards, and its program money is CFDA 66.437, not fetched here.
+The table now holds 2,397 `funding_events` rows, 1,844 of them with an
+amount, $4.31B in all (was 933, 380 and $3.38B).
 
 ## By primary sphere
 
@@ -250,11 +287,14 @@ come from OpenAlex.
 - **720 publications are recalled, not fetched.** Their `source` labels
   them as training-data recall. They are older rows from before the
   OpenAlex pass and have not been checked against a bibliographic record.
-- **Most funding amounts are recalled, not fetched.** Of the 380
-  `funding_events` rows that carry a dollar amount, 337 are labelled as
-  training-data recall in their `source`; treat them as rough indications.
-  The other 43 are the per-fiscal-year obligations of the four LTREB award
-  series (North Inlet, GCReW, Swan's Island, West Falmouth Harbor), fetched
-  from the NSF Award API on 2026-10-25 (`source` 'NSF Award Search').
+- **Most funding dollars are still recalled, not fetched.** Of the 1,844
+  `funding_events` rows that carry a dollar amount, 289 are labelled as
+  recall in their `source` and hold $3.31B of the $4.31B total; treat them
+  as rough indications. The other 1,555 are fetched per-fiscal-year
+  obligations: the four LTREB award series (North Inlet, GCReW, Swan's
+  Island, West Falmouth Harbor; 43 rows from the NSF Award API, `source`
+  'NSF Award Search') and the reserves' and estuary programs' own awards
+  (1,512 rows, $989.0M, `source` 'USAspending.gov'; see the funders
+  section above). All were fetched on 2026-10-25.
 - **Regions are empty.** The `regions` and `facility_regions` tables have
   no rows.

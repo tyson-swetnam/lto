@@ -353,6 +353,62 @@ def check_funder_merges(conn, failures: list[str], warnings: list[str]) -> None:
                                             for n, k in sorted(stale)[:5]))
 
 
+ESTUARY_NETWORKS = ("nerrs", "nep")
+USASPENDING_WHITELIST = "data/funding_overrides/usaspending_award_whitelist.csv"
+
+
+def check_estuary_funding(conn, failures: list[str]) -> None:
+    """NERR / NEP money is fetched award by award from USAspending.gov
+    (fetch_funding_usaspending.py, pinned in usaspending_award_whitelist.csv).
+
+    * No 'training-data recall' amount may sit on a reserve or estuary
+      program: the 2026-10-25 recall rows were removed in facility_fixes.csv.
+    * Every USAspending row on one of them names an award the whitelist pins
+      to that facility (the nep / nerrs guard: never a recipient search).
+    * No facility may carry an 'agency budget research' row and a
+      USAspending row for the same funder and year: agency_budgets/
+      noaa_nerr.csv rolls the same 11.420 awards up, so both would count
+      the money twice.
+    """
+    nets = list(ESTUARY_NETWORKS)
+    recall = conn.execute(
+        """SELECT count(*) FROM funding_events fe
+           WHERE fe.source ILIKE '%training-data recall%'
+             AND fe.facility_id IN (SELECT facility_id FROM network_membership
+                                    WHERE network_id IN (SELECT unnest(?::VARCHAR[])))""",
+        [nets]).fetchone()[0]
+    assert_true(not recall, f"{recall} funding_events rows on a nerrs/nep facility cite "
+                            f"'training-data recall' (fetch the awards instead: "
+                            f"fetch_funding_usaspending.py --network nerrs,nep)", failures)
+    path = Path(__file__).resolve().parent.parent / USASPENDING_WHITELIST
+    pinned: set[tuple[str, str]] = set()
+    if path.exists():
+        with path.open(newline="", encoding="utf-8") as fh:
+            for r in csv.DictReader(l for l in fh if not l.lstrip().startswith("#")):
+                pinned.add((lto_db.canonical_facility_id(r["facility_id"].strip()),
+                            r["award_id"].strip()))
+    rows = conn.execute(
+        """SELECT DISTINCT fe.facility_id, fe.award_id FROM funding_events fe
+           WHERE fe.source = 'USAspending.gov'
+             AND fe.facility_id IN (SELECT facility_id FROM network_membership
+                                    WHERE network_id IN (SELECT unnest(?::VARCHAR[])))
+           ORDER BY 1, 2""", [nets]).fetchall()
+    stray = [(f, a) for f, a in rows if (f, a) not in pinned]
+    assert_true(not stray, f"{len(stray)} USAspending awards on nerrs/nep facilities are not "
+                           f"pinned to them in {USASPENDING_WHITELIST}: "
+                + ", ".join(f"{f}:{a}" for f, a in stray[:5]), failures)
+    dup = conn.execute(
+        """SELECT count(*) FROM (
+               SELECT facility_id, funder_id, fiscal_year FROM funding_events
+               WHERE source = 'agency budget research' AND amount_usd IS NOT NULL
+               INTERSECT
+               SELECT facility_id, funder_id, fiscal_year FROM funding_events
+               WHERE source = 'USAspending.gov')""").fetchone()[0]
+    assert_true(not dup, f"{dup} facility/funder/fiscal-year cells carry both an 'agency budget "
+                         f"research' row and USAspending.gov award rows (the same money "
+                         f"twice)", failures)
+
+
 def check_states(conn, failures: list[str]) -> None:
     """Once any facility carries a state, every locatable US one must.
 
@@ -1084,6 +1140,7 @@ def main() -> int:
             (check_topic_crosswalk, ()), (check_person_registry, ()),
             (check_registry_edges, ()), (check_people, (warnings,)),
             (check_facility_merges, (warnings,)), (check_funder_merges, (warnings,)),
+            (check_estuary_funding, ()),
         ):
             try:
                 check(conn, failures, *extra)

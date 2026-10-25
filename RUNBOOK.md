@@ -179,11 +179,26 @@ universe (USDA, NOAA, DOE, EPA, USGS, NPS, FWS, NASA, USACE).
 # Hits the public api.nsf.gov; no key required. ~2 minutes.
 python scripts/fetch_funding_nsf.py --start-fy 2015 --end-fy 2024
 
-# USAspending — covers everything else federal. Slower (~10 minutes for
-# a full fleet pass at the default rate). Use --include-contracts only
-# if you want to capture USDA-FS / NOAA contracted research separately
-# from grants.
-python scripts/fetch_funding_usaspending.py --include-contracts
+# USAspending — covers everything else federal. DO NOT write a fleet-wide
+# run until its output has been reviewed. A recipient search attributes the
+# recipient's whole portfolio to the facility: the parent_org auto search
+# (now opt-in, --allow-auto-recipient) puts every University of California
+# award on White Mountain Research Center and every UNM award on each UNM
+# facility, and a recipient override's description_match is not applied in
+# the transaction fast path. With F001/F002 in the grant codes a window
+# past FY2024 adds far more (a dry probe on 2026-10-25: >=1,620 rows,
+# >=$789M across 182 facilities to FY2026; >=43 rows, $4.9M, to FY2024).
+# Always dry-run first and read the per-facility counts:
+python scripts/fetch_funding_usaspending.py --dry-run
+# (--include-contracts also pulls USDA-FS / NOAA contracts.)
+
+# NERR / NEP awards (NOAA CFDA 11.420, EPA CFDA 66.456), pinned award by
+# award in data/funding_overrides/usaspending_award_whitelist.csv: these
+# facilities never get a recipient or parent_org search. ~10 seconds.
+# A re-run adds nothing unless USAspending has new actions on those awards.
+python scripts/fetch_funding_usaspending.py --network nerrs,nep --start-fy 2008 --end-fy 2026
+# then python scripts/apply_facility_fixes.py (its superseded-by-award rows
+# drop the recalled amounts the awards replace)
 
 # Foundation funding from IRS Form 990 via ProPublica Nonprofit Explorer.
 # Mostly relevant for Cary, MBARI, Archbold, Patuxent, RMBL, Mountain
@@ -191,10 +206,24 @@ python scripts/fetch_funding_usaspending.py --include-contracts
 python scripts/fetch_funding_990.py
 ```
 
-Each script `MERGE`s into the lake's `funding_events`; existing rows are
-updated rather than duplicated
-(`event_id = sha1(funder||facility||award_id||fiscal_year)`). Nothing
-reaches `public/parquet/` until Step 6.
+Each script `MERGE`s into the lake's `funding_events` on a deterministic
+`event_id = hash(funder||facility||award_id||fiscal_year)`, so a re-run
+never duplicates a row. `fetch_funding_usaspending.py` is insert-only:
+an existing event is never updated, so a year whose obligations change at
+USAspending keeps its old amount until that event is removed. It writes
+one row per award per fiscal year of its actions (net obligation, so a
+de-obligation year can be negative), counts award type codes 02-05 plus
+F001/F002 (the API's grants group; F001/F002 carry the FY2025-on awards),
+and with `--dry-run` prints per facility how many rows a real run would
+write and how many are new. `--facility-id` takes a comma-separated list
+and `--network` limits the run to network members. Without
+`--allow-auto-recipient` it queries only facilities with a recipient
+override or whitelisted award ids. Any failed query (a dropped
+connection, a 5xx) fails that facility: nothing is written for it, the
+`[done]` line counts it under `failed=`, and the script exits 1 naming
+the `--facility-id` list to re-run. A clean `new=0` therefore means every
+facility was actually queried. Nothing reaches
+`public/parquet/` until Step 6.
 
 ## Step 5 — Recompute derived tables
 

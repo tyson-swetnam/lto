@@ -19,14 +19,29 @@ Pipeline per facility:
 
 Recipient resolution:
 
-  * AUTO mode: use facility.parent_org as recipient_search_text when
-    it looks like a real institution name (university / research
-    institute / aquarium / lab). Skipped for generic parents
-    ("EPA National Estuary Program", "Independent 501(c)(3)").
+  * AUTO mode (opt-in, --allow-auto-recipient): use facility.parent_org
+    as recipient_search_text when it looks like a real institution name
+    (university / research institute / aquarium / lab). Skipped for
+    generic parents ("EPA National Estuary Program", "Independent
+    501(c)(3)") and never used for nep / nerrs facilities. It is off by
+    default because it attributes a whole parent's portfolio to one
+    facility (every University of California award to White Mountain
+    Research Center, every UNM award to each UNM facility); review its
+    output before writing it.
   * OVERRIDE: data/funding_overrides/usaspending_recipient_overrides.csv
     pins the exact recipient string and (optionally) award-id whitelist
     or description-substring filter for facilities whose USAspending
     name differs from their canonical name.
+  * AWARD WHITELIST: data/funding_overrides/usaspending_award_whitelist.csv
+    pins awards by award_id (facility_id, award_id, cfda, funder_id). A
+    facility with award ids and no recipient row gets exactly those awards:
+    spending_by_transaction is queried with filters.award_ids (no recipient
+    or parent_org search), as fetch_funding_nsf does for its award_id rows.
+    `cfda` keeps only that Assistance Listing's transactions; `funder_id`
+    names the funders row the events go under (e.g. NOAA Office for Coastal
+    Management for CFDA 11.420, instead of minting 'Department of Commerce').
+    The NERR (11.420) and NEP (66.456) awards live there; the review of every
+    award considered is usaspending_estuary_review.csv next to it.
 
 Funder identity:
 
@@ -48,6 +63,19 @@ Usage::
     python scripts/fetch_funding_usaspending.py --include-contracts
     python scripts/fetch_funding_usaspending.py --skip-done
     python scripts/fetch_funding_usaspending.py --dry-run
+    python scripts/fetch_funding_usaspending.py --network nerrs,nep --start-fy 2008 --end-fy 2026
+    python scripts/fetch_funding_usaspending.py --allow-auto-recipient --dry-run  # review first
+
+Without --allow-auto-recipient a run queries only the facilities that have a
+recipient override or whitelisted award ids. A facility whose queries fail is
+reported in the [done] line and makes the run exit 1 (nothing is written for
+that facility on that run); re-run it.
+
+Grants are award type codes 02-05 plus F001/F002 (the API's "grants" group,
+/api/v2/references/award_types/); awards coded F001/F002 (FY2025 on) are
+missed without them. Amounts are rounded to the cent. A dry run opens the
+lake read-only and reports, per facility, how many rows a real run would
+write and how many of them are new.
 """
 from __future__ import annotations
 
@@ -73,6 +101,7 @@ except ImportError:
 
 ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_OVERRIDES = ROOT / "data" / "funding_overrides" / "usaspending_recipient_overrides.csv"
+DEFAULT_WHITELIST = ROOT / "data" / "funding_overrides" / "usaspending_award_whitelist.csv"
 API_SEARCH = "https://api.usaspending.gov/api/v2/search/spending_by_award/"
 API_TRANSACTIONS = "https://api.usaspending.gov/api/v2/transactions/"
 API_TXN_SEARCH = "https://api.usaspending.gov/api/v2/search/spending_by_transaction/"
@@ -84,13 +113,17 @@ SEARCH_FIELDS = [
 TXN_SEARCH_FIELDS = [
     "Transaction Amount", "Action Date", "Award ID",
     "Awarding Agency", "Awarding Sub Agency",
-    "Recipient Name",
+    "Recipient Name", "Assistance Listing",
 ]
-GRANT_TYPE_CODES = ["02", "03", "04", "05"]
+# The API's "grants" group (/api/v2/references/award_types/, 2026-10-25):
+# Block / Formula / Project Grant, Cooperative Agreement, and the newer
+# F001 Grant / F002 Cooperative Agreement codes.
+GRANT_TYPE_CODES = ["02", "03", "04", "05", "F001", "F002"]
 CONTRACT_TYPE_CODES = ["A", "B", "C", "D"]
 PER_PAGE = 100  # USAspending caps at 100/page
 SAFETY_PAGE_CAP = 100  # 10000 awards per facility — far beyond any real recipient
 RETRY_MAX = 3
+AWARD_ID_CHUNK = 25  # award ids per spending_by_transaction query (halved on hasNext)
 
 AUTO_RECIPIENT_HINTS = (
     "university", "college", "institut", "laborator", "observatory",
@@ -231,6 +264,7 @@ def load_overrides(path: Path) -> dict[str, dict]:
                 continue
             entry = out.setdefault(fid, {
                 "recipients": [], "award_ids": [], "description_matches": [],
+                "award_meta": {},
             })
             for col, key in (
                 ("recipient_search_text", "recipients"),
@@ -244,6 +278,48 @@ def load_overrides(path: Path) -> dict[str, dict]:
     return out
 
 
+def load_whitelist(path: Path, out: dict[str, dict]) -> int:
+    """Add the award-id whitelist (facility_id, award_id, cfda, funder_id,
+    notes) to ``out``; returns the number of awards read. An award pinned
+    to two facilities stops the run (its dollars would count twice)."""
+    if not path.exists():
+        print(f"[whitelist] none found at {path} (this is fine)")
+        return 0
+    n = 0
+    owner: dict[str, str] = {}
+    with path.open(newline="", encoding="utf-8") as fh:
+        reader = csv.DictReader(
+            (line for line in fh if not line.lstrip().startswith("#")),
+        )
+        for row in reader:
+            fid = lto_db.canonical_facility_id((row.get("facility_id") or "").strip())
+            aid = (row.get("award_id") or "").strip()
+            if not fid or not aid:
+                continue
+            if owner.setdefault(aid, fid) != fid:
+                raise SystemExit(f"[whitelist] award {aid} is pinned to both "
+                                 f"{owner[aid]} and {fid}")
+            entry = out.setdefault(fid, {
+                "recipients": [], "award_ids": [], "description_matches": [],
+                "award_meta": {},
+            })
+            if aid not in entry["award_ids"]:
+                entry["award_ids"].append(aid)
+            entry["award_meta"][aid] = {
+                "cfda": (row.get("cfda") or "").strip() or None,
+                "funder_id": (row.get("funder_id") or "").strip() or None,
+            }
+            n += 1
+    print(f"[whitelist] {n} pinned awards for "
+          f"{sum(1 for e in out.values() if e.get('award_meta'))} facilities")
+    return n
+
+
+def _window(start_fy: int, end_fy: int) -> list[dict]:
+    return [{"start_date": f"{start_fy - 1}-10-01",
+             "end_date":   f"{end_fy}-09-30"}]
+
+
 def search_transactions(sess: requests.Session, recipient: str,
                         start_fy: int, end_fy: int,
                         type_codes: list[str]) -> list[dict]:
@@ -255,21 +331,59 @@ def search_transactions(sess: requests.Session, recipient: str,
     Sort by action_date so transactions within an award arrive in
     chronological order — easier to debug logs.
     """
+    rows, _ = _txn_pages(sess, {
+        "recipient_search_text": [recipient],
+        "time_period": _window(start_fy, end_fy),
+        "award_type_codes": type_codes,
+    }, f"recipient={recipient}")
+    return rows
+
+
+def search_award_ids(sess: requests.Session, award_ids: list[str],
+                     cfda: str | None, start_fy: int, end_fy: int,
+                     type_codes: list[str]) -> tuple[list[dict], int]:
+    """Every transaction of the pinned awards in the FY window, as
+    (rows, queries). Awards go AWARD_ID_CHUNK at a time; a chunk whose
+    first page says hasNext is halved and asked again, so each query fits
+    one page (paging on a tied sort key can repeat or skip rows) unless a
+    single award has more than a page of actions. The filter can match an
+    award id partially; the caller's whitelist filter drops those rows."""
+    out: list[dict] = []
+    queries = 0
+    todo = [award_ids[i:i + AWARD_ID_CHUNK]
+            for i in range(0, len(award_ids), AWARD_ID_CHUNK)]
+    while todo:
+        chunk = todo.pop(0)
+        filters = {"award_ids": chunk, "time_period": _window(start_fy, end_fy),
+                   "award_type_codes": type_codes}
+        if cfda:
+            filters["program_numbers"] = [cfda]
+        rows, more = _txn_pages(sess, filters, f"award_ids[{chunk[0]}..]",
+                                stop_if_more=len(chunk) > 1)
+        queries += 1
+        if more and len(chunk) > 1:
+            half = len(chunk) // 2
+            todo[:0] = [chunk[:half], chunk[half:]]
+            continue
+        out.extend(rows)
+    return out, queries
+
+
+def _txn_pages(sess: requests.Session, payload_filters: dict, label: str,
+               stop_if_more: bool = False) -> tuple[list[dict], bool]:
+    """(rows, more): all pages of one spending_by_transaction query, or,
+    with ``stop_if_more``, the first page and whether more follow. A query
+    that fails raises instead of returning a short list (inserts never
+    update, so a short year would stay short); main() reports the facility
+    as failed and exits 1."""
     out: list[dict] = []
     page = 1
     safety = 0
-    payload_filters = {
-        "recipient_search_text": [recipient],
-        "time_period": [{
-            "start_date": f"{start_fy - 1}-10-01",
-            "end_date":   f"{end_fy}-09-30",
-        }],
-        "award_type_codes": type_codes,
-    }
+    strict = True
     while True:
         safety += 1
         if safety > SAFETY_PAGE_CAP:
-            print(f"[warn] hit safety page cap (txns) for recipient={recipient}")
+            print(f"[warn] hit safety page cap (txns) for {label}")
             break
         body = {
             "limit": PER_PAGE,
@@ -288,25 +402,32 @@ def search_transactions(sess: requests.Session, recipient: str,
                     continue
                 if not r.ok:
                     print(f"[warn] txn search {r.status_code}: {r.text[:200]}")
-                    return out
+                    if strict:
+                        raise RuntimeError(f"txn search {r.status_code} for {label}")
+                    return out, False
                 data = r.json()
                 break
             except Exception as e:
                 if attempt == RETRY_MAX - 1:
-                    print(f"[warn] txn search failed for {recipient}: {e}")
-                    return out
+                    print(f"[warn] txn search failed for {label}: {e}")
+                    if strict:
+                        raise
+                    return out, False
                 time.sleep(0.5 + attempt)
         if data is None:
-            return out
+            if strict:
+                raise RuntimeError(f"txn search throttled for {label}")
+            return out, False
         results = data.get("results", [])
         out.extend(results)
-        if not data.get("page_metadata", {}).get("hasNext"):
+        more = bool(data.get("page_metadata", {}).get("hasNext")) and bool(results)
+        if not more:
             break
-        if not results:
-            break
+        if stop_if_more:
+            return out, True
         page += 1
         time.sleep(0.05)
-    return out
+    return out, False
 
 
 def search_awards(sess: requests.Session, recipient: str,
@@ -559,13 +680,16 @@ def _signed_fy(award: dict) -> int | None:
 def process_facility(buf: LakeBuffer, sess: requests.Session, facility: dict,
                      overrides: dict, start_fy: int, end_fy: int,
                      include_contracts: bool, no_transactions: bool,
-                     dry: bool) -> dict:
+                     dry: bool, existing: set[str] | None = None,
+                     allow_auto: bool = False) -> dict:
     fid = facility["facility_id"]
     parent = facility.get("parent_org") or ""
 
     ov = overrides.get(fid, {})
     recipients: list[str] = list(ov.get("recipients") or [])
-    if not recipients:
+    # Pinned award ids with no recipient row are the whole answer: no
+    # parent_org auto search (the nep / nerrs guard holds either way).
+    if allow_auto and not recipients and not ov.get("award_ids"):
         auto = _auto_recipient(parent, facility.get("canonical_name") or "",
                                facility.get("networks") or ())
         if auto:
@@ -592,6 +716,19 @@ def process_facility(buf: LakeBuffer, sess: requests.Session, facility: dict,
             txn_rows.extend(
                 search_transactions(sess, rec, start_fy, end_fy, type_codes)
             )
+    # Award-id whitelist with no recipient: ask for exactly those awards
+    # (grouped by their pinned Assistance Listing), never a name search.
+    meta = ov.get("award_meta") or {}
+    if not recipients and ov.get("award_ids"):
+        by_cfda: dict[str | None, list[str]] = defaultdict(list)
+        for aid in ov["award_ids"]:
+            by_cfda[(meta.get(aid) or {}).get("cfda")].append(aid)
+        for cfda, aids in sorted(by_cfda.items(), key=lambda kv: kv[0] or ""):
+            for type_codes in type_groups:
+                rows_, q = search_award_ids(sess, aids, cfda, start_fy, end_fy,
+                                            type_codes)
+                queries += q
+                txn_rows.extend(rows_)
 
     # description_match isn't applicable to transaction rows (they
     # don't carry the Description field), so we only honor award_id
@@ -600,6 +737,17 @@ def process_facility(buf: LakeBuffer, sess: requests.Session, facility: dict,
     if ov.get("award_ids"):
         whitelist = set(ov["award_ids"])
         txn_rows = [t for t in txn_rows if t.get("Award ID") in whitelist]
+
+    def _cfda_ok(t: dict) -> bool:
+        # A pinned cfda keeps only that Assistance Listing's actions (an
+        # award can carry another program's modification).
+        want = (meta.get((t.get("Award ID") or "").strip()) or {}).get("cfda")
+        if not want:
+            return True
+        got = t.get("Assistance Listing") or {}
+        got = got.get("cfda_number") if isinstance(got, dict) else got
+        return got == want
+    txn_rows = [t for t in txn_rows if _cfda_ok(t)]
 
     # Group by (Award ID, fiscal_year). Track the agency / sub-agency
     # of the FIRST transaction we see for each award (consistent
@@ -633,11 +781,26 @@ def process_facility(buf: LakeBuffer, sess: requests.Session, facility: dict,
             g["last_action"] = t["Action Date"]
 
     inserted = 0
-    if not dry:
+    would_new = 0
+    for grp in by_award_fy.values():
+        grp["amount"] = round(grp["amount"], 2)
+    if dry:
         for grp in by_award_fy.values():
             if grp["amount"] == 0:
                 continue
-            funder_id = ensure_funder(buf, grp["agency"], "federal")
+            fixed = (meta.get(grp["award_id"]) or {}).get("funder_id")
+            funder_id = fixed or lto_db.canonical_funder(
+                funder_id_for(grp["agency"]), grp["agency"])[0]
+            inserted += 1
+            if existing is not None and event_id_for(
+                    funder_id, fid, grp["award_id"], grp["fy"]) not in existing:
+                would_new += 1
+    else:
+        for grp in by_award_fy.values():
+            if grp["amount"] == 0:
+                continue
+            fixed = (meta.get(grp["award_id"]) or {}).get("funder_id")
+            funder_id = fixed or ensure_funder(buf, grp["agency"], "federal")
             program = (grp["sub_agency"] or "")[:200]
             src_url = (
                 f"https://www.usaspending.gov/award/{grp['internal_id']}/"
@@ -701,6 +864,7 @@ def process_facility(buf: LakeBuffer, sess: requests.Session, facility: dict,
         "awards": matched_n,
         "candidates": candidates_n,
         "inserted": inserted,
+        "new": would_new,
         "queries": queries,
         "skipped": False,
     }
@@ -712,10 +876,17 @@ def main() -> int:
     ap.add_argument("--db", dest="catalog", type=Path,
                     help="deprecated alias of --catalog")
     ap.add_argument("--overrides", type=Path, default=DEFAULT_OVERRIDES)
+    ap.add_argument("--whitelist", type=Path, default=DEFAULT_WHITELIST,
+                    help="award-id whitelist CSV (facility_id, award_id, cfda, "
+                         "funder_id, notes)")
     ap.add_argument("--start-fy", type=int, default=2015)
     ap.add_argument("--end-fy",   type=int, default=2024)
     ap.add_argument("--limit", type=int, default=0)
-    ap.add_argument("--facility-id", type=str, default=None)
+    ap.add_argument("--facility-id", type=str, default=None,
+                    help="one facility_id, or a comma-separated list")
+    ap.add_argument("--network", type=str, default=None,
+                    help="only facilities in these networks (comma-separated "
+                         "network_ids, e.g. nerrs,nep)")
     ap.add_argument("--include-contracts", action="store_true",
                     help="Also pull federal contracts (codes A/B/C/D). "
                          "Off by default — most science money is in "
@@ -728,6 +899,11 @@ def main() -> int:
     ap.add_argument("--skip-done", action="store_true",
                     help="Skip facilities that already have at least one "
                          "USAspending row in funding_events.")
+    ap.add_argument("--allow-auto-recipient", action="store_true",
+                    help="Also search facilities with no override or whitelist "
+                         "row by their parent_org (AUTO mode). Off by default: "
+                         "it attributes a parent's whole portfolio to each "
+                         "facility. Run with --dry-run and review first.")
     ap.add_argument("--dry-run", action="store_true")
     args = ap.parse_args()
 
@@ -740,6 +916,14 @@ def main() -> int:
     sess = session()
     buf = LakeBuffer()
     overrides = load_overrides(args.overrides)
+    load_whitelist(args.whitelist, overrides)
+    pinned = {m["funder_id"] for ov in overrides.values()
+              for m in (ov.get("award_meta") or {}).values() if m.get("funder_id")}
+    known = {r[0] for r in conn.execute("SELECT funder_id FROM funders").fetchall()}
+    if pinned - known:
+        print(f"[error] whitelist funder_id(s) not in funders: "
+              f"{sorted(pinned - known)}", file=sys.stderr)
+        return 2
 
     rows = conn.execute("""
         SELECT facility_id, canonical_name, acronym, parent_org, country,
@@ -755,7 +939,12 @@ def main() -> int:
         for r in rows
     ]
     if args.facility_id:
-        facilities = [f for f in facilities if f["facility_id"] == args.facility_id]
+        want = {lto_db.canonical_facility_id(x.strip())
+                for x in args.facility_id.split(",") if x.strip()}
+        facilities = [f for f in facilities if f["facility_id"] in want]
+    if args.network:
+        nets = {x.strip() for x in args.network.split(",") if x.strip()}
+        facilities = [f for f in facilities if nets & set(f["networks"])]
     if args.skip_done:
         done = {r[0] for r in conn.execute(
             "SELECT DISTINCT facility_id FROM funding_events "
@@ -771,8 +960,13 @@ def main() -> int:
           f"{'(grants+contracts)' if args.include_contracts else '(grants only)'}"
           f"{'  (dry-run)' if args.dry_run else ''}")
 
-    totals = {"awards": 0, "inserted": 0, "queries": 0,
+    existing: set[str] | None = None
+    if args.dry_run:
+        existing = {r[0] for r in conn.execute(
+            "SELECT event_id FROM funding_events").fetchall()}
+    totals = {"awards": 0, "inserted": 0, "new": 0, "queries": 0,
               "processed": 0, "skipped": 0}
+    failed: list[str] = []
     # Checkpoint: one snapshot per FLUSH_EVERY facilities, plus the rest
     # in `finally` (a crash or Ctrl-C keeps what was fetched).
     span = f"FY{args.start_fy}-FY{args.end_fy}"
@@ -787,21 +981,26 @@ def main() -> int:
                 r = process_facility(buf, sess, fac, overrides,
                                      args.start_fy, args.end_fy,
                                      args.include_contracts,
-                                     args.no_transactions, args.dry_run)
+                                     args.no_transactions, args.dry_run,
+                                     existing, args.allow_auto_recipient)
             except Exception as e:
                 print(f"  [{i}/{len(facilities)}] {(fac['acronym'] or ''):10s} "
                       f"{fac['canonical_name'][:50]:50s}  ERROR: {e}")
+                failed.append(fac["facility_id"])
                 continue
             if r.get("skipped"):
                 totals["skipped"] += 1
                 continue
             totals["awards"] += r["awards"]
             totals["inserted"] += r["inserted"]
+            totals["new"] += r.get("new", 0)
             totals["queries"] += r["queries"]
             totals["processed"] += 1
             print(f"  [{i}/{len(facilities)}] {(fac['acronym'] or ''):10s} "
                   f"{fac['canonical_name'][:50]:50s}  q={r['queries']:2d}  "
-                  f"matched={r['awards']:4d}  wrote={r['inserted']:4d}")
+                  f"matched={r['awards']:4d}  "
+                  + (f"would-write={r['inserted']:4d}  new={r['new']:4d}"
+                     if args.dry_run else f"staged={r['inserted']:4d}"))
     finally:
         if not args.dry_run:
             flush(conn, buf, f"fetch_funding_usaspending: {span}, facilities "
@@ -809,8 +1008,17 @@ def main() -> int:
 
     print(f"[done] processed={totals['processed']}  "
           f"skipped={totals['skipped']}  queries={totals['queries']}  "
-          f"matched_awards={totals['awards']}  inserted={totals['inserted']}")
+          f"matched_awards={totals['awards']}  "
+          + (f"would-write={totals['inserted']}  new={totals['new']}"
+             if args.dry_run else
+             f"staged={totals['inserted']} (new vs already-present: see [lake] lines)")
+          + f"  failed={len(failed)}")
     conn.close()
+    if failed:
+        print(f"[error] {len(failed)} facilit{'y' if len(failed) == 1 else 'ies'} "
+              f"failed and wrote nothing this run; re-run with "
+              f"--facility-id {','.join(failed)}", file=sys.stderr)
+        return 1
     return 0
 
 

@@ -106,11 +106,12 @@ async function fetchAll() {
         SELECT *,
                ROW_NUMBER() OVER (
                  PARTITION BY area_id
-                 ORDER BY total_usd_nominal DESC
+                 ORDER BY total_usd_nominal DESC, facility_id
                ) AS rk
         FROM facility_area_funding
       )
-      WHERE rk <= ${TOP_N_FACILITIES}`,
+      WHERE rk <= ${TOP_N_FACILITIES}
+      ORDER BY area_id, rk`,
 
     // Top researchers by composite_z per area (TOP_N each).
     top_researchers: `
@@ -121,11 +122,12 @@ async function fetchAll() {
         SELECT *,
                ROW_NUMBER() OVER (
                  PARTITION BY area_id
-                 ORDER BY composite_z DESC, n_publications DESC
+                 ORDER BY composite_z DESC, n_publications DESC, person_id
                ) AS rk
         FROM person_area_metrics
       )
-      WHERE rk <= ${TOP_N_RESEARCHERS}`,
+      WHERE rk <= ${TOP_N_RESEARCHERS}
+      ORDER BY area_id, rk`,
 
     // Top funders by total_usd per area.
     top_funders: `
@@ -135,11 +137,12 @@ async function fetchAll() {
         SELECT *,
                ROW_NUMBER() OVER (
                  PARTITION BY area_id
-                 ORDER BY total_usd DESC
+                 ORDER BY total_usd DESC, funder_id
                ) AS rk
         FROM funder_area_funding
       )
-      WHERE rk <= ${TOP_N_FUNDERS}`,
+      WHERE rk <= ${TOP_N_FUNDERS}
+      ORDER BY area_id, rk`,
 
     // Coverage matrix: per area × dimension.
     coverage: `
