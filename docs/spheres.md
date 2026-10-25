@@ -17,17 +17,17 @@ in August 2026 so dryland research sites — a coherent research community
 with its own LTERs, NEON domains, and rangeland networks — stopped being
 invisible inside Terrestrial, the sphere with the most tagged records.
 
-As of 2026-10-25 the catalogue's 446 facilities break down like this:
+As of 2026-10-25 the catalogue's 440 facilities break down like this:
 
 | Sphere | Primary | Tagged in any role |
 |---|---:|---:|
 | Aquatic — Ocean & Estuarine | 142 | 149 |
-| Terrestrial / Ecological | 112 | 286 |
-| Aquatic — Freshwater | 64 | 127 |
-| Agriculture | 57 | 64 |
+| Terrestrial / Ecological | 112 | 281 |
+| Aquatic — Freshwater | 64 | 126 |
+| Agriculture | 51 | 58 |
 | Cryosphere | 31 | 55 |
 | Atmosphere | 23 | 99 |
-| Arid | 11 | 30 |
+| Arid | 11 | 27 |
 
 Six facilities have no primary sphere. They are ARID Institute partner
 programmes at UNM, such as the Utton Transboundary Resources Center and
@@ -116,15 +116,15 @@ shrublands and grasslands.
 Long-term cropping, rangeland, and soil-monitoring networks.
 
 - **Anchor networks**: USDA-ARS Long-Term Agroecosystem Research (LTAR;
-  19 LTAR site records as of 2026-10-23), ARS Rangelands, USDA Climate
+  18 LTAR site records as of 2026-10-25), ARS Rangelands, USDA Climate
   Hubs, NRCS SCAN, Kellogg Biological Station, ARS long-term experiments.
 - **Landmark sites**: Jornada Experimental Range LTAR (NM), Walnut Gulch
   LTAR (AZ), Reynolds Creek LTAR (ID), Kellogg Biological Station LTAR
   (MI), Central Plains Experimental Range LTAR (CO).
 - **Cross-sphere ties**: several LTAR sites share a location with a NEON
   site (Jornada, Central Plains, Santa Rita). Jornada and Kellogg are
-  also LTERs. Reynolds Creek's USDA-ARS record carries cryosphere
-  (mountain snowpack) among its secondaries, and its SCAN station is a
+  also LTERs. Reynolds Creek's LTAR record carries cryosphere
+  (mountain snowpack) and freshwater among its secondaries, and its SCAN station is a
   separate agriculture-primary record.
 
 ## Aquatic — Ocean & Estuarine

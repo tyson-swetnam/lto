@@ -15,9 +15,9 @@ NEON points already show the result. The scope lens, country, research
 area, the ≥10y toggle and the established-year range leave it on. Turning an overlay back on
 by hand keeps it on until those filters are cleared.
 
-As of 2026-10-25 there are 578 membership rows. 57 of the 66 networks have
-at least one member. 399 of the 446 facilities belong to one or more
-networks. The other 47 belong to none, and you find them by sphere, type
+As of 2026-10-25 there are 575 membership rows. 57 of the 66 networks have
+at least one member. 394 of the 440 facilities belong to one or more
+networks. The other 46 belong to none, and you find them by sphere, type
 or research area instead.
 
 The **Facilities** column counts facility records in this catalogue as of
@@ -79,7 +79,7 @@ not carried over. To get every LTER record, filter on `lter`.
 
 | Slug | Full name | Level | Facilities | URL |
 |---|---|---|---:|---|
-| `ltar` | USDA-ARS Long-Term Agroecosystem Research network | us-national | 26 | <https://ltar.ars.usda.gov> |
+| `ltar` | USDA-ARS Long-Term Agroecosystem Research network | us-national | 23 | <https://ltar.ars.usda.gov> |
 | `ars-lt-experiments` | USDA-ARS long-term agricultural experiments | us-national | 8 | <https://www.ars.usda.gov> |
 | `scan` | NRCS Soil Climate Analysis Network | us-national | 11 | <https://www.nrcs.usda.gov/wps/portal/wcc/home/aboutScan/> |
 | `climate-hubs` | USDA Regional Climate Hubs | us-national | 10 | <https://www.climatehubs.usda.gov> |

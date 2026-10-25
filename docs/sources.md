@@ -10,7 +10,7 @@ database.
   2013.** *Long-Term Trends in Ecological Systems: A Basis for
   Understanding Responses to Global Change.* USDA ARS Technical
   Bulletin 1931. Source of the **≥10-year continuous-record threshold**
-  behind the map's optional "≥10y" filter (off by default; 347 of 446
+  behind the map's optional "≥10y" filter (off by default; 341 of 440
   facilities meet it as of 2026-10-25), and of the **EcoTrends 50** site
   list (Table 1-1) that we check landmark coverage against.
 
@@ -89,7 +89,7 @@ Identifiers and publications come from two open APIs:
   matches and either a fetched profile or an employment at the right
   institution confirms it, or, for people with no facility on file, the
   name resolves to exactly one ORCID record. A wrong ORCID is worse than a missing one, so
-  unmatched people stay blank (611 of 1,330 people carry one as of
+  unmatched people stay blank (611 of 1,329 people carry one as of
   2026-10-25).
 - **OpenAlex** — <https://api.openalex.org/> — publications, citations
   and topics. People are matched only through their ORCID or a stored
@@ -102,8 +102,8 @@ Identifiers and publications come from two open APIs:
 From all of these we store identifiers, links and short paraphrases, not
 copied page text.
 
-**Mostly not from fetched sources:** funding amounts. Of the 383 funding
-events with a dollar amount, 340 are labelled as recalled rather than
+**Mostly not from fetched sources:** funding amounts. Of the 380 funding
+events with a dollar amount, 337 are labelled as recalled rather than
 fetched. The other 43 are the four LTREB award series (North Inlet, GCReW,
 Swan's Island, West Falmouth Harbor), fetched from the NSF Award API on
 2026-10-25. Treat any funding total as provisional.
