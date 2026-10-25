@@ -7,7 +7,8 @@ OpenAlex passes), PR #15 (URL-health sweep), PR #20 (LTER duplicates) and
 the 2026-10-25 MarineGEO / LTREB fixes, the 2026-10-25 LTAR and funder
 merges, the 2026-10-25 Reynolds Creek / Walnut Gulch merges, and the
 2026-10-25 Fort Keogh / Northern Plains / Southern Plains merges, and the
-2026-10-25 National Estuary Program host typing. The counts
+2026-10-25 National Estuary Program host typing, and the 2026-10-25 BLE and
+MCR map-point fixes. The counts
 change whenever the data is
 re-exported. To recount, query the tables on the [SQL tab](#/sql). For
 example:
@@ -19,9 +20,9 @@ WHERE role = 'primary' GROUP BY 1 ORDER BY 2 DESC;
 
 ## Total facilities
 
-The catalogue holds **440 facilities**: US 425, Puerto Rico 10,
-Antarctica 3, American Samoa 1 and US Virgin Islands 1. Every facility has
-coordinates, and every US facility has a state.
+The catalogue holds **440 facilities**: US 424, Puerto Rico 10,
+Antarctica 3, American Samoa 1, French Polynesia 1 and US Virgin Islands 1.
+Every facility has coordinates, and every US facility has a state.
 
 - **341** meet the Peters et al. 2013 long-term threshold (≥10 years of
   record), 88 do not, and 11 are unclassified. 24 facilities have no
@@ -30,6 +31,17 @@ coordinates, and every US facility has a state.
 - Scope lenses: ARID Institute & partners **12**, New Mexico **18**,
   Southwest drylands (the default view) **63**, All U.S. **440**. See
   [ARID & New Mexico](./arid.md).
+
+Two LTER sites used to sit on their lead institution's office instead of
+the site. Beaufort Lagoon Ecosystems (BLE) was mapped at the UT Marine
+Science Institute in Port Aransas, TX, and Moorea Coral Reef (MCR) at the
+UCSB Marine Science Institute, on the same point as Santa Barbara Coastal.
+On 2026-10-25 both moved to the point their lternet.edu site profile gives:
+BLE to the Alaskan Beaufort Sea coast (state AK), and MCR to Moorea,
+French Polynesia (country PF, no state, like the Antarctic LTER sites).
+The two offices stay on as `office` locations
+(`data/seed/facility_fixes.csv`). MCR still shows in the All U.S. lens,
+as McMurdo and Palmer do.
 
 Eight LTER sites used to appear twice: once as their LTER site row and once
 as a COMPASS synthesis-networks import under a near-duplicate name (Plum

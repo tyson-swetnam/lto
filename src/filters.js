@@ -36,6 +36,7 @@ const COUNTRIES = [
   ['BB', 'Barbados'],
   ['KY', 'Cayman Islands'],
   ['TC', 'Turks and Caicos Islands'],
+  ['PF', 'French Polynesia'],
 ];
 
 // ── Scope lens ───────────────────────────────────────────────────────

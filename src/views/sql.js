@@ -133,7 +133,8 @@ LIMIT  25;`,
     title: 'Facilities by country',
     description:
       'Geographic distribution of the catalogue: the United States, its ' +
-      'territories, and U.S.-funded Antarctic stations.',
+      'territories, and U.S.-funded sites abroad (Antarctic stations, AQ; ' +
+      'Moorea Coral Reef LTER, PF).',
     sql: `-- Countries ranked by facility count
 SELECT f.country                 AS iso_2,
        COUNT(*)                  AS facilities

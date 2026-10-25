@@ -130,7 +130,8 @@ Long-term cropping, rangeland, and soil-monitoring networks.
 ## Aquatic — Ocean & Estuarine
 
 Coastal, ocean, and estuarine networks (largely vendored from cod-kmap and
-culled to U.S. + territory + U.S.-funded Antarctic stations). By primary
+culled to U.S. + territory + U.S.-funded sites abroad: the Antarctic
+stations and Moorea Coral Reef LTER in French Polynesia). By primary
 sphere this is the largest sphere.
 
 - **Anchor networks**: IOOS Regional Associations (10 of the 11 as of
