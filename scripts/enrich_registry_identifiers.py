@@ -447,9 +447,9 @@ def _finish(conn, prov, hydrate_rows, found, args) -> None:
             conn, f"enrich_registry_identifiers: hydrated {len(hydrate_rows)}, "
                   f"resolved {len(found)}, {len(prov)} provenance row(s)"):
         if hydrate_rows:
-            conn.execute(
-                "CREATE OR REPLACE TEMP TABLE _hydrate AS SELECT canonical_id, "
-                + ", ".join(HYDRATE_COLS) + " FROM person_registry LIMIT 0")
+            lto_db.create_temp_like(
+                conn, "_hydrate", "SELECT canonical_id, "
+                + ", ".join(HYDRATE_COLS) + " FROM person_registry")
             conn.executemany(
                 f"INSERT INTO _hydrate VALUES ({', '.join('?' * (1 + len(HYDRATE_COLS)))})",
                 hydrate_rows)

@@ -207,8 +207,7 @@ def main() -> int:
     # slow, and DELETE + INSERT in one transaction is one snapshot.
     cols = ("canonical_id_a, canonical_id_b, co_pub_count, first_year, "
             "last_year, shared_areas, shared_facilities")
-    conn.execute(f"CREATE OR REPLACE TEMP TABLE _rc_stage AS "
-                 f"SELECT {cols} FROM registry_collaborations LIMIT 0")
+    lto_db.create_temp_like(conn, "_rc_stage", f"SELECT {cols} FROM registry_collaborations")
     if rows:
         conn.executemany(f"INSERT INTO _rc_stage ({cols}) VALUES (?,?,?,?,?,?,?)", rows)
     with lto_db.transaction(conn, f"compute_registry_collaborations: {len(rows)} "

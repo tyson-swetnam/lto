@@ -90,8 +90,7 @@ EVENT_COLS = ["event_id", "funder_id", "facility_id", "amount_usd", "amount_curr
 
 def stage(conn, name: str, table: str, cols: list[str], rows: list[list]) -> None:
     """TEMP table typed like `table`'s `cols`, plus `_seq` in input order."""
-    conn.execute(f"CREATE OR REPLACE TEMP TABLE {name} AS "
-                 f"SELECT {', '.join(cols)}, 0 AS _seq FROM {table} LIMIT 0")
+    lto_db.create_temp_like(conn, name, f"SELECT {', '.join(cols)}, 0 AS _seq FROM {table}")
     if rows:
         conn.executemany(f"INSERT INTO {name} VALUES ({', '.join('?' * (len(cols) + 1))})",
                          [[*r, i] for i, r in enumerate(rows)])

@@ -273,17 +273,20 @@ STAGE_DDL = [
     "(person_id VARCHAR, openalex_id VARCHAR, research_interests VARCHAR, "
     "research_interests_source_url VARCHAR, ri_before VARCHAR, "
     "ri_src_before VARCHAR)",
-    # Only the columns staged below: merge_upsert inserts every column the
-    # stage shares with the target, so a staged created_at (NULL) would
-    # override the column's DEFAULT CURRENT_TIMESTAMP.
-    "CREATE OR REPLACE TEMP TABLE _stage_publications AS "
-    "SELECT publication_id, doi, title, pub_year, pub_type, journal, cited_by_count, "
-    "openalex_id, url, source, retrieved_at FROM publications LIMIT 0",
-    "CREATE OR REPLACE TEMP TABLE _stage_authorship AS "
-    "SELECT person_id, publication_id, raw_name, 0 AS _seq FROM authorship LIMIT 0",
-    "CREATE OR REPLACE TEMP TABLE _stage_topics AS "
-    "SELECT publication_id, concept_id, concept_name, score, level, kind, source, "
-    "0 AS _seq FROM publication_topics LIMIT 0",
+]
+# Only the columns staged below: merge_upsert inserts every column the
+# stage shares with the target, so a staged created_at (NULL) would
+# override the column's DEFAULT CURRENT_TIMESTAMP. Created through
+# lto_db.create_temp_like (explicit DDL), never an empty CTAS.
+STAGE_LIKE = [
+    ("_stage_publications",
+     "SELECT publication_id, doi, title, pub_year, pub_type, journal, cited_by_count, "
+     "openalex_id, url, source, retrieved_at FROM publications"),
+    ("_stage_authorship",
+     "SELECT person_id, publication_id, raw_name, 0 AS _seq FROM authorship"),
+    ("_stage_topics",
+     "SELECT publication_id, concept_id, concept_name, score, level, kind, source, "
+     "0 AS _seq FROM publication_topics"),
 ]
 _seq = 0
 
@@ -530,6 +533,8 @@ def main() -> int:
     if not args.dry_run:
         for ddl in STAGE_DDL:
             conn.execute(ddl)
+        for name, like in STAGE_LIKE:
+            lto_db.create_temp_like(conn, name, like)
 
     # .fetchall() + manual dict build is more portable across DuckDB
     # versions than .fetchdf() (pandas bridge varies) and avoids a
