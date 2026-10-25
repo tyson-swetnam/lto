@@ -1,9 +1,9 @@
 # Coverage
 
-Snapshot as of **2026-10-23**. Every number on this page was counted from
+Snapshot as of **2026-10-24**. Every number on this page was counted from
 the committed `public/parquet/` files, the same tables the site loads, after
-the merges of PR #13 (fetched-source people), PR #16 (partial OpenAlex
-pass) and PR #15 (URL-health sweep). The counts change whenever the data is
+the merges of PR #13 (fetched-source people), PR #16 and PR #18 (the two
+OpenAlex passes) and PR #15 (URL-health sweep). The counts change whenever the data is
 re-exported. To recount, query the tables on the [SQL tab](#/sql). For
 example:
 
@@ -106,27 +106,31 @@ and site-manager (12).
 
 **Biographies:** 780 people have a bio, and every one cites its source page.
 
-**Research interests:** 921 people have research interests. 552 of them
-cite a source page.
+**Research interests:** 974 people have research interests. 650 of them
+cite a source page, 98 of those an OpenAlex author page.
 
-**[Knowledge Map](./knowledge-map.md):** 1,234 people are placed under a
+**[Knowledge Map](./knowledge-map.md):** 1,252 people are placed under a
 primary research area.
 
 ## Identifier validation
 
-- **ORCID**: **612** people (46.9%). The ORCID log
-  (`data/seed/orcid_resolution_log.csv`) records 78 stored iDs that were
-  later cleared: 68 no longer resolved, and 10 belonged to someone else.
-  PR #16 also cleared two wrong iDs and replaced a third.
-- **OpenAlex Author ID**: **333** people (25.5%). The OpenAlex pass on
-  2026-10-23 matched people only through a stored OpenAlex id or a
-  confirmed ORCID. Name search is disabled. The pass processed 378 of the
-  1,302 people in its queue before the daily OpenAlex credit ran out, so
-  **924 have not yet been through it**. Every new attribution was checked
-  against its OpenAlex author record, and disputed ones got a second,
-  independent review. The review log
-  (`data/seed/openalex_attribution_review_2026-10-23.csv`) has 106 entries:
-  97 kept, 2 kept but disputed, and 7 removed.
+- **ORCID**: **611** people (46.8%). The ORCID log
+  (`data/seed/orcid_resolution_log.csv`) records 79 stored iDs that were
+  later cleared: 68 no longer resolved, and 11 belonged to someone else.
+  PR #16 also cleared two wrong iDs and replaced a third, and PR #18
+  cleared one more (Pat Burke's iD belonged to a meteorologist).
+- **OpenAlex Author ID**: **560** people (42.9%). The OpenAlex passes
+  matched people only through a stored OpenAlex id or a confirmed ORCID.
+  Name search is disabled. Two passes (PR #16: 378 people; PR #18: the
+  remaining 924) have now taken all 1,302 people in the queue through
+  OpenAlex. The second pass resolved 407 of its 924; the other 517 cannot
+  be matched this way: 478 have neither an ORCID nor an OpenAlex id, and
+  39 have an ORCID that OpenAlex does not know. Every new attribution was
+  checked against its OpenAlex author record, and disputed ones got a
+  second, independent review. The two review logs
+  (`data/seed/openalex_attribution_review_2026-10-23.csv` and
+  `…_2026-10-24.csv`) have 338 entries between them: 322 kept, 5 kept but
+  disputed, and 11 removed.
 - **`homepage_url`**: **771** people (59.1%). On 2026-10-23 the weekly URL
   sweep removed 66 homepages that pointed only at a bare domain (51) or a
   generic staff, about or contact page (15).
@@ -146,17 +150,17 @@ an unmatched person keeps an empty field.
 
 | Table | Rows |
 |---|---:|
-| publications (37,519 from OpenAlex, 720 recalled) | 38,239 |
-| authorship (links to 489 people) | 41,710 |
-| co-author pairs (`collaborations`) | 4,355 |
+| publications (63,511 from OpenAlex, 720 recalled) | 64,231 |
+| authorship (links to 689 people) | 73,423 |
+| co-author pairs (`collaborations`) | 6,686 |
 | data archives | 80 |
 | data products | 634 |
 | API endpoints | 158 |
 
-Most publication and co-author links cover only the people OpenAlex has
-reached so far (see above). 316 of the 489 linked people have an OpenAlex
-id. The other 173 are linked only through 333 older authorship rows that
-did not come from OpenAlex.
+Most publication and co-author links cover only the people OpenAlex could
+match (see above). 560 of the 689 linked people have an OpenAlex id. The
+other 129 are linked only through 241 older authorship rows that did not
+come from OpenAlex.
 
 ## Known gaps
 
@@ -172,8 +176,11 @@ did not come from OpenAlex.
     Facility (LTREB), NPS-IM Klamath Network, South Cascade Glacier, Kings
     River Experimental Watersheds, North Carolina Sentinel Site and Swan's
     Island LTREB.
-- **924 people have not been through OpenAlex**, so their publication and
-  co-author counts are missing or incomplete.
+- **745 people have no OpenAlex id**, so their publication and co-author
+  counts are missing or incomplete: 679 have neither an ORCID nor an
+  OpenAlex id, and 66 have an ORCID but no OpenAlex id (8 of them had one
+  removed in review). In the second pass alone, 517 of 924 could not be
+  matched: 478 with no identifier, 39 whose ORCID OpenAlex does not know.
 - **Older people rows have not been re-verified.** The 654 affiliation rows
   dated before 2026-10-22, plus the 21 undated ones, still rest on the
   earlier, mostly recall-based research.
