@@ -61,7 +61,11 @@ Input
 Every row needs a source_url and evidence (what the source says); a row
 without them, a slug missing from its vocab table, an unknown column or an
 unknown facility stops the run. A facility merged away is read as the
-facility it was kept as (lto_db.canonical_facility_id). Values are written
+facility it was kept as (lto_db.canonical_facility_id), except a keyed
+remove on the duplicate: that is cleanup run before the merge
+(data/seed/facility_fixes_premerge.csv, passed with --fixes), applied to the duplicate while it is in the lake and skipped
+once it is gone, since its key may name a row the survivor holds itself.
+Values are written
 as given — this script never derives one.
 
 One lake transaction (one snapshot), checked with lto_db.assert_integrity.
@@ -327,9 +331,32 @@ def main() -> int:
     ap.add_argument("--fixes", type=Path, default=FIXES)
     args = ap.parse_args()
 
-    fixes = [dict(f, facility_id=lto_db.canonical_facility_id(f["facility_id"]))
-             for f in read_fixes(args.fixes)]
     con = lto_db.connect(catalog=args.catalog, data=args.lake_data)
+    present = {r[0] for r in lto_db.rows(con, "SELECT facility_id FROM facilities")}
+
+    def target(f: dict) -> str | None:
+        # A keyed remove on a merged duplicate is pre-merge cleanup (a row
+        # merge_facilities must not move): while the duplicate is still in
+        # the lake it applies there, even once the merge log already names
+        # the merge (a replay from older parquet). Once the duplicate is gone
+        # the row is skipped, never redirected: its key (an archive_id, a
+        # person_id:role) can name a row the survivor holds in its own right.
+        # Every other row follows the merge log to the survivor.
+        fid = (f["facility_id"] or "").strip()
+        if f["action"] == "remove" and f["table"] in KEYED:
+            if fid in present:
+                return fid
+            if lto_db.canonical_facility_id(fid) != fid:
+                return None
+        return lto_db.canonical_facility_id(fid)
+
+    fixes, skipped = [], []
+    for f in read_fixes(args.fixes):
+        t = target(f)
+        if t is None:
+            skipped.append(f)
+        else:
+            fixes.append(dict(f, facility_id=t))
     errors = validate(con, fixes)
     if errors:
         for e in errors:
@@ -348,6 +375,11 @@ def main() -> int:
     except _DryRun:
         pass
     summary = ", ".join(f"{k} {v}" for k, v in sorted(n.items()) if v) or "nothing to change"
+    if skipped:
+        print(f"[{'dry-run' if args.dry_run else 'skip'}] {len(skipped)} pre-merge "
+              f"remove(s) skipped (their facility is merged away):")
+        for f in skipped:
+            print(f"    {f['facility_id']} {f['table']} {f['key']}")
     if args.dry_run and absent:
         print(f"[dry-run] {len(absent)} remove(s) name a row that is not there (already "
               f"removed, or a mistyped key):")

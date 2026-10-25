@@ -4,7 +4,7 @@ title: "Long-Term Agroecosystem Research (LTAR) Network Data"
 description: "USDA Agricultural Research Service — network holding long-term observatory records."
 resource: "https://ltar.ars.usda.gov/data/"
 tags: [network, ckan, usda-ars]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-10-25T17:07:27Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-10-25T18:17:08Z }
 status: stable
 ---
 
@@ -30,7 +30,6 @@ LTAR Network of 18 sites; each site publishes datasets to Ag Data Commons under 
 - **CMRB** Central Mississippi River Basin LTAR (primary)
 - **CPER** Central Plains Experimental Range LTAR (primary)
 - **ECB** Eastern Corn Belt LTAR (primary)
-- **GB** Great Basin LTAR (primary)
 - **GACP** Gulf Atlantic Coastal Plain LTAR (primary)
 - **JER** Jornada Experimental Range LTAR (primary)
 - **KBS** Kellogg Biological Station LTAR (primary)
@@ -49,7 +48,7 @@ LTAR Network of 18 sites; each site publishes datasets to Ag Data Commons under 
 
 # Data products
 
-26 addressable products catalogued. Top by citations:
+25 addressable products catalogued. Top by citations:
 
 | Product | Format | Coverage | Citations |
 |---|---|---|---|
@@ -59,7 +58,7 @@ LTAR Network of 18 sites; each site publishes datasets to Ag Data Commons under 
 | [Central Plains Experimental Range Long-Term Grazing Treatments Vegetation and Cattle Performance](https://agdatacommons.nal.usda.gov/search?q=Central+Plains+grazing) | csv | 1939-01-01–present | n/a |
 | [Cook Agronomy Farm Long-term Soil Properties and Crop Yield Database](https://agdatacommons.nal.usda.gov/search?q=Cook+Agronomy+Farm) | csv | 1998-01-01–present | n/a |
 | [Eastern Corn Belt LTAR Common Experiment - Cropping systems, water quality, GHG fluxes](https://ltar.ars.usda.gov/sites/eastern-corn-belt/) | csv | 2014-01-01–present | n/a |
-| [Great Basin LTAR Common Experiment - Sagebrush-steppe meteorology, vegetation, livestock](https://ltar.ars.usda.gov/sites/great-basin/) | csv | 2014-01-01–present | n/a |
 | [Gulf Atlantic Coastal Plain LTAR Common Experiment - Cropping systems, soil, water quality](https://ltar.ars.usda.gov/sites/gulf-atlantic-coastal-plain/) | csv | 2014-01-01–present | n/a |
 | [Jornada Experimental Range NPP Quadrat Data, 1989-present](https://agdatacommons.nal.usda.gov/search?q=Jornada+NPP) | csv | 1989-01-01–present | n/a |
 | [Jornada LTAR Common Experiment - Long-term meteorology, vegetation, soil, livestock](https://ltar.ars.usda.gov/sites/jer/) | csv | 2014-01-01–present | n/a |
+| [Kellogg Biological Station LTAR Common Experiment - Cropping systems, soil C/N, GHG fluxes, yield](https://ltar.ars.usda.gov/sites/kellogg-biological-station/) | csv | 2014-01-01–present | n/a |

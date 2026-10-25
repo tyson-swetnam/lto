@@ -48,6 +48,7 @@ import duckdb
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import lto_db  # noqa: E402
 from load_people_research import merge_redirects, same_person_name  # noqa: E402
+from apply_facility_fixes import KEYED as FIX_KEYED  # noqa: E402
 
 # Territories that fall outside their country's main bounding box. Guam
 # and the Northern Marianas sit at ~+145 EAST longitude and Palmyra at
@@ -267,8 +268,20 @@ def check_facility_merges(conn, failures: list[str], warnings: list[str]) -> Non
         path = root / rel
         if not path.exists():
             continue
-        hits = sorted({fid for line in path.read_text(encoding="utf-8").splitlines()
-                       for fid in merged if fid in line})
+        lines = path.read_text(encoding="utf-8").splitlines()
+        if rel == "data/seed/facility_fixes.csv":
+            # A keyed remove on the duplicate itself is cleanup that ran
+            # before its merge (e.g. a point merge_facilities would otherwise
+            # move): it can only name the duplicate, and apply_facility_fixes
+            # skips it once the duplicate is gone. A facet remove (spheres,
+            # networks, ...) on a merged id is still redirected to the
+            # survivor, so it keeps the warning.
+            with path.open(newline="", encoding="utf-8") as fh:
+                rows = list(csv.reader(fh))
+            lines = [",".join(r) for r in rows[1:]
+                     if not (len(r) > 3 and r[3] == "remove" and r[1] in FIX_KEYED
+                             and r[0] in merged)]
+        hits = sorted({fid for line in lines for fid in merged if fid in line})
         if hits:
             warnings.append(f"{rel} still names {len(hits)} merged facility id(s) "
                             f"(rewrite to the kept id): "

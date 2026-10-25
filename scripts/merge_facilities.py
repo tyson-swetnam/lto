@@ -470,6 +470,8 @@ def main() -> int:
     print(f"[merge] merged {len(todo)} facilities; totals: "
           + ", ".join(f"{k} {v}" for k, v in sorted(total.items()) if v)
           + f"; log {args.log}")
+    print("[note] rows a merge must not move are removed beforehand, from "
+          "data/seed/facility_fixes_premerge.csv (apply_facility_fixes.py --fixes)")
     print("[next] backfill_facility_state.py; compute_collaborations -> compute_person_areas -> "
           "compute_primary_groups -> compute_area_metrics -> build_mvg_layout; qa.py; "
           "export_parquet.py; export_view_caches.py")

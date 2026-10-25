@@ -4,7 +4,7 @@ title: "ESS-DIVE — Environmental System Science Data Infrastructure for a Virt
 description: "Lawrence Berkeley National Laboratory / U.S. DOE Office of Biological and Environmental Research (BER) — repository holding long-term observatory records."
 resource: "https://ess-dive.lbl.gov/"
 tags: [repository, rest, cc-by-4.0]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-10-25T18:55:07Z }
 status: stable
 ---
 
@@ -31,6 +31,5 @@ Primary repository for DOE BER Earth and Environmental Systems Sciences (terrest
 - **ORNL-NERP** Oak Ridge National Environmental Research Park (primary)
 - **GUAN-SF** Bosque Estatal de Guánica (Guánica State Forest) (secondary)
 - **MAR** Marcell Experimental Forest (secondary)
-- **USDA-ARS-EL-RENO** USDA-ARS Grazinglands Research Laboratory (El Reno) (secondary)
 - **USDA-ARS-AK** USDA-ARS Subarctic Agricultural Research Unit (Fairbanks) (secondary)
 - **WBW-LTHS** Walker Branch Watershed Long-Term Hydrologic Station (secondary)

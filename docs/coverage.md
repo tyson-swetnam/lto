@@ -4,8 +4,10 @@ Snapshot as of **2026-10-25**. Every number on this page was counted from
 the committed `public/parquet/` files, the same tables the site loads, after
 the merges of PR #13 (fetched-source people), PR #16 and PR #18 (the two
 OpenAlex passes), PR #15 (URL-health sweep), PR #20 (LTER duplicates) and
-the 2026-10-25 MarineGEO / LTREB fixes, and the 2026-10-25 LTAR and funder
-merges. The counts change whenever the data is
+the 2026-10-25 MarineGEO / LTREB fixes, the 2026-10-25 LTAR and funder
+merges, the 2026-10-25 Reynolds Creek / Walnut Gulch merges, and the
+2026-10-25 Fort Keogh / Northern Plains / Southern Plains merges. The counts
+change whenever the data is
 re-exported. To recount, query the tables on the [SQL tab](#/sql). For
 example:
 
@@ -16,16 +18,16 @@ WHERE role = 'primary' GROUP BY 1 ORDER BY 2 DESC;
 
 ## Total facilities
 
-The catalogue holds **446 facilities**: US 431, Puerto Rico 10,
+The catalogue holds **440 facilities**: US 425, Puerto Rico 10,
 Antarctica 3, American Samoa 1 and US Virgin Islands 1. Every facility has
 coordinates, and every US facility has a state.
 
-- **347** meet the Peters et al. 2013 long-term threshold (≥10 years of
+- **341** meet the Peters et al. 2013 long-term threshold (≥10 years of
   record), 88 do not, and 11 are unclassified. 24 facilities have no
   record length at all, and 13 of those are counted as not meeting the
   threshold. The "≥10y" filter is off by default.
 - Scope lenses: ARID Institute & partners **12**, New Mexico **18**,
-  Southwest drylands (the default view) **66**, All U.S. **446**. See
+  Southwest drylands (the default view) **63**, All U.S. **440**. See
   [ARID & New Mexico](./arid.md).
 
 Eight LTER sites used to appear twice: once as their LTER site row and once
@@ -41,7 +43,23 @@ institution. Also on 2026-10-25, two "(USDA-ARS historic)" rows from a
 knowledge-only enrichment pass were merged into their LTAR site rows:
 Jornada Experimental Range into Jornada Experimental Range LTAR, and
 Central Plains Experimental Range into Central Plains Experimental Range
-LTAR. The LTAR site pages show that each LTAR site is the range itself. The
+LTAR. The LTAR site pages show that each LTAR site is the range itself.
+Later the same day three more rows went into their LTAR sites: the
+Reynolds Creek and Walnut Gulch "(USDA-ARS historic)" rows into Reynolds
+Creek Experimental Watershed LTAR and Walnut Gulch Experimental Watershed
+LTAR, and a "Great Basin LTAR" row placed at Reno, NV into Reynolds Creek.
+LTAR lists one Great Basin site, and its site page names Reynolds Creek as
+that site; the Reno row's own LTAR and ARS links returned 404. Three more
+followed: "Fort Keogh Livestock and Range Research Laboratory (USDA-ARS
+historic)" into Fort Keogh Livestock and Range Research Laboratory (one
+ARS lab at one address), "Northern Great Plains Research Laboratory
+(Mandan)" into Northern Plains LTAR, and "USDA-ARS Grazinglands Research
+Laboratory (El Reno)" into Southern Plains LTAR. The LTAR Northern Plains
+page describes only the Mandan laboratory, and the Southern Plains page
+says the Grazinglands Research Laboratory manages that site. A recalled
+AmeriFlux funding event that came with the El Reno row was removed: the
+towers it names are ARM Southern Great Plains sites about 145 km north.
+Fort Keogh is not part of an LTAR site. The
 merge does not search for duplicates; other near-duplicates may remain.
 
 Funders get the same treatment. On 2026-10-25 `scripts/merge_funders.py`
@@ -59,16 +77,16 @@ award-less stubs that duplicated a stub the survivor already had.
 
 | Sphere | Primary | Tagged in any role |
 |---|---:|---:|
-| ocean-estuarine | 140 | 147 |
-| terrestrial | 112 | 284 |
-| freshwater | 64 | 127 |
-| agriculture | 57 | 64 |
+| ocean-estuarine | 142 | 149 |
+| terrestrial | 112 | 281 |
+| freshwater | 64 | 126 |
+| agriculture | 51 | 58 |
 | cryosphere | 31 | 55 |
 | atmosphere | 23 | 99 |
-| arid | 11 | 30 |
-| **total** | **438** | |
+| arid | 11 | 27 |
+| **total** | **434** | |
 
-That accounts for 438 facilities. The other **6** have no primary sphere.
+That accounts for 434 facilities. The other **6** have no primary sphere.
 All six are ARID partner institutes at UNM: METALS, the Public Policy
 Program, the SW Environmental Finance Center, Sustainability Studies, the
 Center for Health Equity and the Utton Center. By primary sphere,
@@ -83,18 +101,18 @@ These are counts from the catalogue. `qa.py` does not check them.
 |---|---|---|
 | **NEON** | 82 facilities in network `neon` | 77 of them are named "… NEON Site". The others are NEON members under other names. |
 | **LTER** | 50 in network `lter` (2 of them also tagged `lter-site`) | Also holds NEON, NADP, AmeriFlux and field-station rows at LTER sites, so this is not a count of LTER sites. **26** LTER sites have a current lead PI that matches the LTER Network's site page (lternet.edu) or the site's own page. |
-| **LTAR** | 26 in network `ltar` | 19 of them are of type `ltar-site`. |
+| **LTAR** | 23 in network `ltar` | 18 of them are of type `ltar-site`, one row per LTAR site except Northern Headwaters (NH), which is not catalogued. |
 | **NERRS** | 30 of 30 reserves | Network `nerrs` also includes NOAA's Office for Coastal Management. Connecticut, the 30th reserve (designated 2022), was added on 2026-10-25 from its NOAA page and the reserve's own site (`data/raw/R-ESTUARY/`). Guana Tolomato Matanzas and Mission-Aransas, missing in May 2026, are now present. Names, designation years, lead agencies and websites follow each reserve's NOAA page (2026-10-25). Facility type follows NOAA's lead agency: `state` for a state agency (20 reserves), `university-marine-lab` for a university marine lab or institute (6), `university-institute` for another university unit (Kachemak Bay, Lake Superior, Connecticut), and `federal` for Tijuana River, whose lead is California State Parks together with the U.S. Fish and Wildlife Service. |
 | **National Estuary Programs** | 28 of 28 on EPA's list | Network `nep`. The Coastal and Heartland National Estuary Partnership (CHNEP) was added on 2026-10-25 from EPA's list and chnep.org (`data/raw/R-ESTUARY/`); it is typed `local-gov`, after Charlotte County, the recipient of its current EPA awards. Names and websites follow EPA's program list (2026-10-25). Only four establishment years are confirmed by a fetched page: Buzzards Bay (1985), Mobile Bay (1995), Lower Columbia (1995) and CHNEP (1995). The other programs' years, and the ≥10y flags that follow from them, are unverified values from the original cull. |
 | **IOOS Regional Associations** | 10 of 11 | GLOS is missing. |
 | **EcoTrends (Peters 2013 Table 1-1)** | Not re-run since 2026-05-05 (then 44 / 49 by name) | A facility named "H.J. Andrews Experimental Forest" is now present. No facility is named for Shortgrass Steppe, Coram EF, Tallgrass Prairie or Bandelier. A name match can miss a site that is catalogued under a different name. |
-| **USFS Experimental Forests & Ranges** | 38 of type `experimental-forest-range`; 36 in network `usfs-rna-ef`; 47 in either | Still short of the 77 on the Lugo 2006 list that the May check used. No pass since then has added EFRs. |
+| **USFS Experimental Forests & Ranges** | 33 of type `experimental-forest-range`; 36 in network `usfs-rna-ef`; 42 in either | Still short of the 77 on the Lugo 2006 list that the May check used. No pass since then has added EFRs. |
 
 ## People
 
-As of 2026-10-25 the people table holds **1,330 people**. Of these,
-**1,239** have at least one facility affiliation. There are 1,536
-affiliation rows across 431 facilities.
+As of 2026-10-25 the people table holds **1,329 people**. Of these,
+**1,236** have at least one facility affiliation. There are 1,529
+affiliation rows across 425 facilities.
 
 How the affiliation rows were made:
 
@@ -103,14 +121,14 @@ How the affiliation rows were made:
   by an adversarial re-fetch. See [Methods](./methods.md). Seven more
   (batch R-PEOPLE2-MARINEGEO-01) and 20 for the Connecticut NERR and
   CHNEP (batch R-PEOPLE2-ESTUARY-01) were fetched on 2026-10-25.
-- **5 rows** from the spring passes were re-cited on 2026-10-25 from
-  fetched LTAR and Jornada pages (`data/seed/facility_fixes.csv`), each with
-  an `evidence` quote.
-- **633 rows** are older, dated 2026-04-24 to 2026-10-09, and 20 rows have
+- **14 rows** from the spring passes were re-cited on 2026-10-25 from
+  fetched LTAR, Jornada, ARS (Southwest Watershed Research Center, Fort
+  Keogh Livestock and Range Research Laboratory) and ORCID pages (`data/seed/facility_fixes.csv`), each with an `evidence` quote.
+- **617 rows** are older, dated 2026-04-24 to 2026-10-09, and 20 rows have
   no date. Many come from the earlier recall-based people waves. Some were
   repaired or ended by the 2026-10-22 pass, but most have **not been
   re-verified** against a fetched page.
-- `is_current` is true on 764 rows and false on 180. It is not set on 592
+- `is_current` is true on 767 rows and false on 182. It is not set on 580
   rows, which are mostly older rows that nobody has marked as current or
   former.
 
@@ -118,16 +136,16 @@ Rows by role (a person can hold several):
 
 | Role | Rows |
 |---|---:|
-| director | 206 |
-| lead-PI | 202 |
-| co-PI | 188 |
+| director | 205 |
+| lead-PI | 196 |
+| co-PI | 187 |
 | manager | 107 |
-| scientist | 97 |
+| scientist | 101 |
 | leadership-team | 83 |
-| founding-PI | 75 |
 | faculty | 74 |
+| founding-PI | 74 |
 | domain-manager | 73 |
-| emeritus | 59 |
+| emeritus | 57 |
 | coordinator | 45 |
 | former-director | 44 |
 | 15 other roles | 283 |
@@ -137,20 +155,20 @@ and site-manager (12).
 
 **Biographies:** 780 people have a bio, and every one cites its source page.
 
-**Research interests:** 973 people have research interests. 649 of them
+**Research interests:** 972 people have research interests. 649 of them
 cite a source page, 98 of those an OpenAlex author page.
 
-**[Knowledge Map](./knowledge-map.md):** 1,270 people are placed under a
+**[Knowledge Map](./knowledge-map.md):** 1,268 people are placed under a
 primary research area.
 
 ## Identifier validation
 
-- **ORCID**: **611** people (45.9%). The ORCID log
+- **ORCID**: **611** people (46.0%). The ORCID log
   (`data/seed/orcid_resolution_log.csv`) records 79 stored iDs that were
   later cleared: 68 no longer resolved, and 11 belonged to someone else.
   PR #16 also cleared two wrong iDs and replaced a third, and PR #18
   cleared one more (Pat Burke's iD belonged to a meteorologist).
-- **OpenAlex Author ID**: **560** people (42.7%). The OpenAlex passes
+- **OpenAlex Author ID**: **560** people (42.1%). The OpenAlex passes
   matched people only through a stored OpenAlex id or a confirmed ORCID.
   Name search is disabled. Two passes (PR #16: 378 people; PR #18: the
   remaining 924) have now taken all 1,302 people in the queue through
@@ -162,9 +180,10 @@ primary research area.
   (`data/seed/openalex_attribution_review_2026-10-23.csv` and
   `…_2026-10-24.csv`) have 338 entries between them: 322 kept, 5 kept but
   disputed, and 11 removed.
-- **`homepage_url`**: **772** people (58.9%). On 2026-10-23 the weekly URL
+- **`homepage_url`**: **804** people (60.5%). On 2026-10-23 the weekly URL
   sweep removed 66 homepages that pointed only at a bare domain (51) or a
-  generic staff, about or contact page (15).
+  generic staff, about or contact page (15); on 2026-10-25, 32 of them that
+  were personal or lab sites rather than bare roots were restored.
 - **Google Scholar user ID**: 1 person. `scripts/enrich_people_gscholar.py`
   is optional and rate-limited.
 - **Email**: none. Email addresses are never published.
@@ -185,7 +204,7 @@ an unmatched person keeps an empty field.
 | authorship (links to 689 people) | 73,423 |
 | co-author pairs (`collaborations`) | 6,686 |
 | data archives | 80 |
-| data products | 630 |
+| data products | 628 |
 | API endpoints | 158 |
 
 Most publication and co-author links cover only the people OpenAlex could
@@ -207,19 +226,19 @@ come from OpenAlex.
     Facility (LTREB), NPS-IM Klamath Network, South Cascade Glacier, Kings
     River Experimental Watersheds, North Carolina Sentinel Site and Swan's
     Island LTREB.
-- **750 people have no OpenAlex id**, so their publication and co-author
-  counts are missing or incomplete: 684 have neither an ORCID nor an
+- **769 people have no OpenAlex id**, so their publication and co-author
+  counts are missing or incomplete: 703 have neither an ORCID nor an
   OpenAlex id, and 66 have an ORCID but no OpenAlex id (8 of them had one
   removed in review). In the second pass alone, 517 of 924 could not be
   matched: 478 with no identifier, 39 whose ORCID OpenAlex does not know.
-- **Older people rows have not been re-verified.** The 633 affiliation rows
+- **Older people rows have not been re-verified.** The 617 affiliation rows
   dated before 2026-10-22, plus the 20 undated ones, still rest on the
   earlier, mostly recall-based research.
 - **720 publications are recalled, not fetched.** Their `source` labels
   them as training-data recall. They are older rows from before the
   OpenAlex pass and have not been checked against a bibliographic record.
-- **Most funding amounts are recalled, not fetched.** Of the 383
-  `funding_events` rows that carry a dollar amount, 340 are labelled as
+- **Most funding amounts are recalled, not fetched.** Of the 380
+  `funding_events` rows that carry a dollar amount, 337 are labelled as
   training-data recall in their `source`; treat them as rough indications.
   The other 43 are the per-fiscal-year obligations of the four LTREB award
   series (North Inlet, GCReW, Swan's Island, West Falmouth Harbor), fetched

@@ -4,7 +4,7 @@ title: "USDA Ag Data Commons"
 description: "USDA Agricultural Research Service / National Agricultural Library — repository holding long-term observatory records."
 resource: "https://agdatacommons.nal.usda.gov/"
 tags: [repository, ckan, usda-ars]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-10-25T18:55:07Z }
 status: stable
 ---
 
@@ -29,7 +29,7 @@ CKAN-based federal repository for USDA-funded research data. DOIs minted under 1
 - **EOARC** Eastern Oregon Agricultural Research Center (primary)
 - **FKLRRL** Fort Keogh Livestock and Range Research Laboratory (primary)
 - **JER** Jornada Experimental Range LTAR (primary)
+- **SP** Southern Plains LTAR (primary)
 - **USSES** U.S. Sheep Experiment Station (primary)
-- **USDA-ARS-EL-RENO** USDA-ARS Grazinglands Research Laboratory (El Reno) (primary)
 - **USDA-ARS-AK** USDA-ARS Subarctic Agricultural Research Unit (Fairbanks) (primary)
 - **KLEMME-RRS** Marvin Klemme Range Research Station (secondary)

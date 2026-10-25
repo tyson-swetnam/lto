@@ -4,7 +4,7 @@ title: "AmeriFlux Network Data Archive"
 description: "Lawrence Berkeley National Laboratory (DOE BER) — repository holding long-term observatory records."
 resource: "https://ameriflux.lbl.gov/"
 tags: [repository, rest, ameriflux-data-policy]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-10-25T18:55:07Z }
 status: stable
 ---
 
@@ -38,17 +38,15 @@ AmeriFlux Management Project (AMP) at LBNL. Hosts BASE format (CSV, half-hourly)
 - **GUAN-SF** Bosque Estatal de Guánica (Guánica State Forest) (secondary)
 - **JIE-CTR** Jones Center at Ichauway (secondary)
 - **ORNL-NERP** Oak Ridge National Environmental Research Park (secondary)
-- **USDA-ARS-EL-RENO** USDA-ARS Grazinglands Research Laboratory (El Reno) (secondary)
 - **WBW-LTHS** Walker Branch Watershed Long-Term Hydrologic Station (secondary)
 - **WREF-EF** Wind River Experimental Forest (secondary)
 
 # Data products
 
-10 addressable products catalogued. Top by citations:
+9 addressable products catalogued. Top by citations:
 
 | Product | Format | Coverage | Citations |
 |---|---|---|---|
-| [AmeriFlux US-AR1 / US-AR2 ARS-El Reno tallgrass-prairie eddy-covariance towers](https://ameriflux.lbl.gov/sites/siteinfo/US-AR1) | csv | 2009-01-01–present | n/a |
 | [AmeriFlux US-Bo1 Bondville BASE + FLUXNET2015](https://ameriflux.lbl.gov/sites/siteinfo/US-Bo1) | csv | 1996-01-01–2008-12-31 | n/a |
 | [AmeriFlux US-Ha1 Harvard Forest EMS Tower BASE + FLUXNET2015 release](https://ameriflux.lbl.gov/sites/siteinfo/US-Ha1) | csv | 1991-01-01–present | n/a |
 | [AmeriFlux US-Ho1 Howland Forest Main Tower BASE](https://ameriflux.lbl.gov/sites/siteinfo/US-Ho1) | csv | 1996-01-01–present | n/a |

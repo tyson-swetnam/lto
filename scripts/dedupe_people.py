@@ -35,7 +35,12 @@ For each group the kept row is the one with an ORCID, then an OpenAlex id,
 then the most authorship rows, then the most affiliations, then the most
 filled fields (ties: lowest person_id). Empty fields on it are filled from
 the merged rows (bio with its source and date, research_interests with its
-source, ORCID with its source, homepage with its check date). Every row that
+source, ORCID with its source, homepage with its check date; a sourced
+value is preferred over an unsourced one from another merged row), and a
+bio, research_interests or ORCID the kept row holds without a source URL is
+replaced by a merged row's sourced one (load_people_research's rule). The
+kept row's updated_at becomes the newest updated_at of the merged rows (not
+the wall clock), so a replay from older parquet is byte-identical. Every row that
 names a merged person is repointed — facility_personnel, authorship,
 person_areas, project_personnel, collaborations (both ends) and
 person_registry.person_id; where the kept person already has the same key
@@ -304,22 +309,39 @@ def merge(conn, g: dict) -> None:
     keep, rows = g["keep"], g["rows"]
     k = rows[keep]
     sets: dict[str, object] = {}
+    def has(r, c):
+        return r.get(c) not in (None, "")
+
     for cols in FILL_GROUPS:
-        if k.get(cols[0]) not in (None, ""):
+        # A group with a source column (bio, research_interests, ORCID): a
+        # merged row's sourced value replaces the kept row's unsourced one,
+        # the same rule load_people_research applies, so a re-load of the
+        # research file is a no-op after the merge.
+        src = cols[1] if len(cols) > 1 and cols[1].endswith("_source_url") else None
+        if has(k, cols[0]) and not (src and not has(k, src)):
             continue
-        for d in g["drops"]:
-            if rows[d].get(cols[0]) not in (None, ""):
-                sets.update({c: rows[d].get(c) for c in cols})
-                break
+        cands = [d for d in g["drops"] if has(rows[d], cols[0])]
+        sourced = [d for d in cands if src and has(rows[d], src)]
+        # Kept row unsourced: only a sourced value replaces it. Kept row
+        # empty: the first sourced value, else the first value at all.
+        pick = sourced if has(k, cols[0]) else (sourced or cands)
+        if pick:
+            sets.update({c: rows[pick[0]].get(c) for c in cols})
     note = " ".join(f"[dedupe] merged {rows[d]['name']} ({d}): {'; '.join(g['evidence'][d])}."
                     for d in g["drops"])
     other_notes = " ".join(rows[d]["notes"] for d in g["drops"] if rows[d].get("notes"))
     sets["notes"] = " ".join(x for x in (k.get("notes"), other_notes, note) if x)
+    # updated_at: the newest of the merged rows' own stamps, not the wall
+    # clock, so replaying a merge from older parquet reproduces the row
+    # byte for byte (the merge itself is dated in people_merge_log.csv's
+    # evidence and the notes).
+    stamps = [r.get("updated_at") for r in rows.values() if r.get("updated_at") is not None]
     for d in g["drops"]:
         repoint(conn, keep, d)
         conn.execute("DELETE FROM people WHERE person_id = ?", [d])
-    conn.execute(f"UPDATE people SET {', '.join(f'{c} = ?' for c in sets)}, updated_at = now() "
-                 f"WHERE person_id = ?", [*sets.values(), keep])
+    conn.execute(f"UPDATE people SET {', '.join(f'{c} = ?' for c in sets)}, "
+                 f"updated_at = COALESCE(CAST(? AS TIMESTAMP), CAST(now() AS TIMESTAMP)) "
+                 f"WHERE person_id = ?", [*sets.values(), max(stamps) if stamps else None, keep])
 
 
 def catalog_arg(args) -> Path | None:

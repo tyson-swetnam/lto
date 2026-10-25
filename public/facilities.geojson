@@ -266,32 +266,6 @@
 "geometry": {
 "type": "Point",
 "coordinates": [
--119.8047,
-39.5388
-]
-},
-"properties": {
-"id": "07019f2cab76fa4d",
-"name": "Great Basin LTAR",
-"acronym": "GB",
-"type": "ltar-site",
-"country": "US",
-"url": "https://www.ars.usda.gov/pacific-west-area/reno-nevada/great-basin-rangelands-research/",
-"parent_org": "USDA Agricultural Research Service Great Basin Rangelands Research Unit",
-"established": 2014,
-"record_length_years": 11,
-"long_term_threshold_met": true,
-"primary_sphere": "agriculture",
-"state": "NV",
-"has_arid_sphere": true,
-"in_arid_network": false
-}
-},
-{
-"type": "Feature",
-"geometry": {
-"type": "Point",
-"coordinates": [
 -156.609,
 71.323
 ]
@@ -1800,32 +1774,6 @@
 "geometry": {
 "type": "Point",
 "coordinates": [
--100.9536,
-46.7714
-]
-},
-"properties": {
-"id": "24cd3c19daa326ac",
-"name": "Northern Great Plains Research Laboratory (Mandan)",
-"acronym": "NGPRL",
-"type": "experimental-forest-range",
-"country": "US",
-"url": "https://www.ars.usda.gov/plains-area/mandan-nd/ngprl/",
-"parent_org": "USDA Agricultural Research Service",
-"established": 1912,
-"record_length_years": 114,
-"long_term_threshold_met": true,
-"primary_sphere": "agriculture",
-"state": "ND",
-"has_arid_sphere": false,
-"in_arid_network": false
-}
-},
-{
-"type": "Feature",
-"geometry": {
-"type": "Point",
-"coordinates": [
 -100.95,
 46.77
 ]
@@ -1838,8 +1786,8 @@
 "country": "US",
 "url": "https://www.ars.usda.gov/plains-area/mandan-nd/ngprl/",
 "parent_org": "USDA Agricultural Research Service Northern Great Plains Research Laboratory",
-"established": 2012,
-"record_length_years": 13,
+"established": 1912,
+"record_length_years": 113,
 "long_term_threshold_met": true,
 "primary_sphere": "agriculture",
 "state": "ND",
@@ -3880,32 +3828,6 @@
 "geometry": {
 "type": "Point",
 "coordinates": [
--116.2035,
-43.6135
-]
-},
-"properties": {
-"id": "5d2a691e96528f5a",
-"name": "Reynolds Creek Experimental Watershed (USDA-ARS historic)",
-"acronym": "RCEW-ER",
-"type": "experimental-forest-range",
-"country": "US",
-"url": "https://www.ars.usda.gov/pacific-west-area/boise-id/northwest-watershed-research-center/",
-"parent_org": "USDA Agricultural Research Service Northwest Watershed Research Center",
-"established": 1962,
-"record_length_years": 64,
-"long_term_threshold_met": true,
-"primary_sphere": "agriculture",
-"state": "ID",
-"has_arid_sphere": true,
-"in_arid_network": false
-}
-},
-{
-"type": "Feature",
-"geometry": {
-"type": "Point",
-"coordinates": [
 -75.7472,
 36.1839
 ]
@@ -4204,8 +4126,8 @@
 "country": "US",
 "url": "https://www.ars.usda.gov/plains-area/el-reno-ok/grazinglands-research-laboratory/",
 "parent_org": "USDA Agricultural Research Service Grazinglands Research Laboratory",
-"established": 2012,
-"record_length_years": 13,
+"established": 1961,
+"record_length_years": 64,
 "long_term_threshold_met": true,
 "primary_sphere": "agriculture",
 "state": "OK",
@@ -5093,32 +5015,6 @@
 "long_term_threshold_met": true,
 "primary_sphere": "freshwater",
 "state": "CO",
-"has_arid_sphere": false,
-"in_arid_network": false
-}
-},
-{
-"type": "Feature",
-"geometry": {
-"type": "Point",
-"coordinates": [
--105.8806,
-46.3936
-]
-},
-"properties": {
-"id": "783bfab4c758857f",
-"name": "Fort Keogh Livestock and Range Research Laboratory (USDA-ARS historic)",
-"acronym": "FKLRRL-ER",
-"type": "experimental-forest-range",
-"country": "US",
-"url": "https://www.ars.usda.gov/pacific-west-area/miles-city-mt/livestock-and-range-research-laboratory/",
-"parent_org": "USDA Agricultural Research Service",
-"established": 1924,
-"record_length_years": 102,
-"long_term_threshold_met": true,
-"primary_sphere": "agriculture",
-"state": "MT",
 "has_arid_sphere": false,
 "in_arid_network": false
 }
@@ -7754,32 +7650,6 @@
 "geometry": {
 "type": "Point",
 "coordinates": [
--98.0386,
-35.5481
-]
-},
-"properties": {
-"id": "b2959b33183bb2ad",
-"name": "USDA-ARS Grazinglands Research Laboratory (El Reno)",
-"acronym": "USDA-ARS-EL-RENO",
-"type": "experimental-forest-range",
-"country": "US",
-"url": "https://www.ars.usda.gov/plains-area/el-reno-ok/grazinglands-research-laboratory/",
-"parent_org": "USDA Agricultural Research Service",
-"established": 1948,
-"record_length_years": 78,
-"long_term_threshold_met": true,
-"primary_sphere": "agriculture",
-"state": "OK",
-"has_arid_sphere": false,
-"in_arid_network": false
-}
-},
-{
-"type": "Feature",
-"geometry": {
-"type": "Point",
-"coordinates": [
 -109.9783,
 43.7567
 ]
@@ -8846,32 +8716,6 @@
 "geometry": {
 "type": "Point",
 "coordinates": [
--110.9395,
-32.2811
-]
-},
-"properties": {
-"id": "c74c7d56771332b7",
-"name": "Walnut Gulch Experimental Watershed (USDA-ARS historic)",
-"acronym": "WGEW-ER",
-"type": "experimental-forest-range",
-"country": "US",
-"url": "https://www.tucson.ars.ag.gov/dap/",
-"parent_org": "USDA Agricultural Research Service Southwest Watershed Research Center",
-"established": 1953,
-"record_length_years": 73,
-"long_term_threshold_met": true,
-"primary_sphere": "agriculture",
-"state": "AZ",
-"has_arid_sphere": true,
-"in_arid_network": false
-}
-},
-{
-"type": "Feature",
-"geometry": {
-"type": "Point",
-"coordinates": [
 -96.6661,
 40.8344
 ]
@@ -9274,8 +9118,8 @@
 "country": "US",
 "url": "https://www.ars.usda.gov/pacific-west-area/boise-id/northwest-watershed-research-center/",
 "parent_org": "USDA Agricultural Research Service Northwest Watershed Research Center",
-"established": 1962,
-"record_length_years": 63,
+"established": 1960,
+"record_length_years": 65,
 "long_term_threshold_met": true,
 "primary_sphere": "agriculture",
 "state": "ID",
@@ -11378,7 +11222,7 @@
 "acronym": "FKLRRL",
 "type": "experimental-forest-range",
 "country": "US",
-"url": "https://www.ars.usda.gov/pacific-west-area/miles-city-mt/range-and-livestock-research/",
+"url": "https://www.ars.usda.gov/plains-area/miles-city-mt/larrl/",
 "parent_org": "USDA Agricultural Research Service",
 "established": 1924,
 "record_length_years": 101,
