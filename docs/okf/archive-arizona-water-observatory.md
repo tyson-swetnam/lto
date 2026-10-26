@@ -4,7 +4,7 @@ title: "Arizona Water Observatory (AWO)"
 description: "Arizona State University, with the Internet of Water (Center for Geospatial Solutions, Lincoln Institute of Land Policy) — aggregator holding long-term observatory records."
 resource: "https://arizonawaterobservatory.asu.edu/"
 tags: [aggregator, ogc-api, unknown]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-10-25T04:20:50Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-10-26T01:52:50Z }
 status: stable
 ---
 
@@ -20,12 +20,12 @@ The Arizona Water Observatory (AWO) provides water quality and water supply info
 
 | Purpose | Method | Format | URL | Example |
 |---|---|---|---|---|
-| download | GET | geojson | <https://arizonawaterobservatory-api.rtd.asu.edu/collections/{collectionId}/items> | curl -s 'https://arizonawaterobservatory-api.rtd.asu.edu/collections/National_Water_Model_Channel_Routing_Output/items?f=json&limit=10' |
 | download | GET | json | <https://arizonawaterobservatory-api.rtd.asu.edu/collections/{collectionId}/cube> | curl -s 'https://arizonawaterobservatory-api.rtd.asu.edu/collections/National_Water_Model_Channel_Routing_Output/cube?f=json&bbox=-112.5,33.2,-111.5,33.8&datetime=2023-01-01/2023-01-31' |
-| metadata | GET | json | <https://arizonawaterobservatory-api.rtd.asu.edu/openapi> | curl -s 'https://arizonawaterobservatory-api.rtd.asu.edu/openapi?f=json' |
-| metadata | GET | json | <https://arizonawaterobservatory-api.rtd.asu.edu/collections/{collectionId}/queryables> | curl -s 'https://arizonawaterobservatory-api.rtd.asu.edu/collections/National_Water_Model_Channel_Routing_Output/queryables?f=json' |
-| metadata | GET | json | <https://arizonawaterobservatory-api.rtd.asu.edu/processes> | curl -s 'https://arizonawaterobservatory-api.rtd.asu.edu/processes?f=json' |
+| download | GET | geojson | <https://arizonawaterobservatory-api.rtd.asu.edu/collections/{collectionId}/items> | curl -s 'https://arizonawaterobservatory-api.rtd.asu.edu/collections/National_Water_Model_Channel_Routing_Output/items?f=json&limit=10' |
 | metadata | GET | json | <https://arizonawaterobservatory-api.rtd.asu.edu/collections> | curl -s 'https://arizonawaterobservatory-api.rtd.asu.edu/collections?f=json' |
+| metadata | GET | json | <https://arizonawaterobservatory-api.rtd.asu.edu/collections/{collectionId}/queryables> | curl -s 'https://arizonawaterobservatory-api.rtd.asu.edu/collections/National_Water_Model_Channel_Routing_Output/queryables?f=json' |
+| metadata | GET | json | <https://arizonawaterobservatory-api.rtd.asu.edu/openapi> | curl -s 'https://arizonawaterobservatory-api.rtd.asu.edu/openapi?f=json' |
+| metadata | GET | json | <https://arizonawaterobservatory-api.rtd.asu.edu/processes> | curl -s 'https://arizonawaterobservatory-api.rtd.asu.edu/processes?f=json' |
 | search | GET | geojson | <https://arizonawaterobservatory-api.rtd.asu.edu/collections/{collectionId}/locations> | curl -s 'https://arizonawaterobservatory-api.rtd.asu.edu/collections/National_Water_Model_Channel_Routing_Output/locations?f=json' |
 
 # Data products

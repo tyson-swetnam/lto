@@ -4,7 +4,7 @@ title: "NASA Earthdata Search / Common Metadata Repository"
 description: "NASA Earth Science Data Systems — federation holding long-term observatory records."
 resource: "https://search.earthdata.nasa.gov/"
 tags: [federation, rest, nasa-public]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-10-26T01:52:50Z }
 status: stable
 ---
 
@@ -31,6 +31,5 @@ See the [cloud-bucket guide](./access-buckets.md) for anonymous / requester-pays
 
 | Provider | Bucket | Region | Access | Sample prefix |
 |---|---|---|---|---|
-| s3 | [asf-cumulus-prod-s1-slc](https://asf.alaska.edu/datasets/daac/sentinel-1/) | us-west-2 | registered-users | `S1A_IW_SLC__1SDV_20240101/` |
-| s3 | [ornldaac-cumulus-prod-public](https://daac.ornl.gov/cgi-bin/dsviewer.pl) | us-west-2 | public-anon-egress | `above/ABoVE_AirSWOT/` |
-| s3 | [podaac-ops-cumulus-public](https://podaac.jpl.nasa.gov/CloudFAQ) | us-west-2 | public-anon-egress | `L2/SWOT_KARIN/` |
+| s3 | [asf-ngap2w-p-s1-slc-7b420b89](https://registry.opendata.aws/nasa-sentinel-1aslc/) | us-west-2 | registered-users | `—` |
+| s3 | [podaac-ops-cumulus-public](https://podaac.jpl.nasa.gov/CloudFAQ) | us-west-2 | registered-users | `L2/SWOT_KARIN/` |

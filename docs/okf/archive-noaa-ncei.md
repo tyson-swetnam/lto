@@ -4,7 +4,7 @@ title: "NOAA National Centers for Environmental Information"
 description: "NOAA / NESDIS — repository holding long-term observatory records."
 resource: "https://www.ncei.noaa.gov/"
 tags: [repository, rest, noaa-public]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-10-25T15:22:13Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-10-26T01:52:50Z }
 status: stable
 ---
 
@@ -35,14 +35,14 @@ See the [cloud-bucket guide](./access-buckets.md) for anonymous / requester-pays
 | s3 | [noaa-gfs-bdp-pds](https://registry.opendata.aws/noaa-gfs-bdp-pds/) | us-east-1 | public-anon-egress | `gfs.20240101/00/atmos/` |
 | s3 | [noaa-ghcn-pds](https://registry.opendata.aws/noaa-ghcn/) | us-east-1 | public-anon-egress | `—` |
 | s3 | [noaa-goes16](https://registry.opendata.aws/noaa-goes/) | us-east-1 | public-anon-egress | `ABI-L2-CMIPC/` |
-| s3 | [noaa-goes17](https://registry.opendata.aws/noaa-goes/) | us-west-2 | public-anon-egress | `ABI-L2-CMIPC/` |
+| s3 | [noaa-goes17](https://registry.opendata.aws/noaa-goes/) | us-east-1 | public-anon-egress | `ABI-L2-CMIPC/` |
 | s3 | [noaa-goes18](https://registry.opendata.aws/noaa-goes18/) | us-east-1 | public-anon-egress | `ABI-L2-CMIPC/` |
 | s3 | [noaa-himawari8](https://registry.opendata.aws/noaa-himawari/) | us-east-1 | public-anon-egress | `AHI-L1b-FLDK/` |
 | s3 | [noaa-hrrr-bdp-pds](https://registry.opendata.aws/noaa-hrrr-pds/) | us-east-1 | public-anon-egress | `hrrr.20240101/conus/` |
 | s3 | [noaa-isd-pds](https://registry.opendata.aws/noaa-isd/) | us-east-1 | public-anon-egress | `—` |
-| s3 | [noaa-jpss](https://registry.opendata.aws/noaa-jpss/) | us-east-1 | public-anon-egress | `JPSS1/VIIRS/L1B/` |
-| s3 | [noaa-nexrad-level2](https://registry.opendata.aws/noaa-nexrad/) | us-east-1 | public-anon-egress | `2024/01/01/KOKX/` |
+| s3 | [noaa-jpss](https://registry.opendata.aws/noaa-jpss/) | us-east-1 | public-anon-egress | `—` |
 | s3 | [noaa-rtma-pds](https://registry.opendata.aws/noaa-rtma/) | us-east-1 | public-anon-egress | `rtma2p5.20240101/` |
+| s3 | [unidata-nexrad-level2](https://registry.opendata.aws/noaa-nexrad/) | us-east-1 | public-anon-egress | `2024/01/01/KOKX/` |
 
 # Depositing facilities
 

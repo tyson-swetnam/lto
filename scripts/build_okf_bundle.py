@@ -16,17 +16,26 @@ the lake — so every figure in the generated docs is re-derivable from
 committed parquet, the repo's standing rule for documentation claims.
 Run it after export_parquet.py, or it documents the previous export.
 
-Idempotent: output depends only on the parquet inputs and the pinned
-generator id; re-running on unchanged data rewrites identical files
-(the `generated.at` stamp is derived from the newest input parquet's
-mtime, not the wall clock, precisely so re-runs don't churn git).
+Idempotent: page content depends only on the parquet inputs and the
+pinned generator id, and every query orders on a full key. A page is
+rewritten only when something other than its `generated.at` stamp would
+change; it then gets the current UTC time, and an unchanged page keeps the
+stamp it has. (The stamp used to come from the newest input parquet's
+mtime, which a checkout resets, so every run rewrote all 80 pages and the
+real changes were lost in the noise.) A page whose archive is gone from
+data_archives is deleted.
+
+`--check` writes nothing and exits 1 if any page is stale, missing or
+orphaned; qa.py fails on the same test (`stale_pages`).
 
 Usage::
 
     python scripts/build_okf_bundle.py
+    python scripts/build_okf_bundle.py --check
 """
 from __future__ import annotations
 
+import argparse
 import datetime as dt
 import re
 import sys
@@ -38,6 +47,9 @@ ROOT = Path(__file__).resolve().parent.parent
 PARQUET = ROOT / "public" / "parquet"
 OUT = ROOT / "docs" / "okf"
 GENERATOR = "claude-opus-5/lto-okf-generator"
+# Rendered pages carry this in place of the stamp until they are written.
+STAMP = "@@generated-at@@"
+_STAMP_LINE = re.compile(r"^(generated: \{ by: .*, at: ).*( \})$", re.M)
 
 # api_type → curated access guide (None: no guide; the URL stands alone).
 GUIDE = {
@@ -74,22 +86,14 @@ def esc_cell(s) -> str:
     return str(s).replace("|", "\\|").replace("\n", " ").strip()
 
 
-def main() -> int:
-    if not PARQUET.is_dir():
-        print(f"[error] {PARQUET} not found", file=sys.stderr)
-        return 2
-    OUT.mkdir(parents=True, exist_ok=True)
+def render(parquet: Path = PARQUET) -> dict[str, str]:
+    """Every generated page (index.md + archive-*.md), keyed by file name,
+    with STAMP in place of the `generated.at` value."""
     conn = duckdb.connect()
+    pages: dict[str, str] = {}
 
     def pq(name: str) -> str:
-        return f"read_parquet('{PARQUET / name}.parquet')"
-
-    # generated.at from input mtimes — see module docstring.
-    inputs = ["data_archives", "api_endpoints", "cloud_buckets",
-              "facility_archives", "data_products", "facilities"]
-    stamp = dt.datetime.fromtimestamp(
-        max((PARQUET / f"{t}.parquet").stat().st_mtime for t in inputs),
-        tz=dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+        return f"read_parquet('{parquet / name}.parquet')"
 
     archives = conn.execute(f"""
         SELECT a.*,
@@ -117,7 +121,9 @@ def main() -> int:
     for r in conn.execute(f"""
         SELECT archive_id, purpose, method, response_format, path_or_url,
                example_call
-        FROM {pq('api_endpoints')} ORDER BY archive_id, purpose
+        FROM {pq('api_endpoints')}
+        ORDER BY archive_id, purpose, path_or_url, method, response_format,
+                 example_call
     """).fetchall():
         eps.setdefault(r[0], []).append(r[1:])
 
@@ -125,7 +131,9 @@ def main() -> int:
     for r in conn.execute(f"""
         SELECT archive_id, provider, bucket_name, region, access_mode,
                documentation_url, sample_prefix
-        FROM {pq('cloud_buckets')} ORDER BY archive_id, provider, bucket_name
+        FROM {pq('cloud_buckets')}
+        ORDER BY archive_id, provider, bucket_name, region, access_mode,
+                 documentation_url, sample_prefix
     """).fetchall():
         buckets.setdefault(r[0], []).append(r[1:])
 
@@ -137,7 +145,7 @@ def main() -> int:
         ORDER BY fa.archive_id,
                  CASE fa.role WHEN 'primary' THEN 0 WHEN 'host' THEN 1
                               WHEN 'secondary' THEN 2 ELSE 3 END,
-                 f.canonical_name
+                 f.canonical_name, f.acronym, fa.role
     """).fetchall():
         facs.setdefault(r[0], []).append(r[1:])
 
@@ -148,7 +156,7 @@ def main() -> int:
         FROM (
           SELECT *, ROW_NUMBER() OVER (
             PARTITION BY archive_id
-            ORDER BY cited_by_count DESC NULLS LAST, title) AS rk
+            ORDER BY cited_by_count DESC NULLS LAST, title, product_id) AS rk
           FROM {pq('data_products')} WHERE archive_id IS NOT NULL
         ) WHERE rk <= 10
         ORDER BY archive_id, rk
@@ -171,7 +179,7 @@ def main() -> int:
             f"tags: [{a['archive_type'] or 'archive'}"
             + (f", {api_type}" if api_type else "")
             + (f", {a['license_slug']}" if a.get("license_slug") else "") + "]",
-            f"generated: {{ by: {yq(GENERATOR)}, at: {stamp} }}",
+            f"generated: {{ by: {yq(GENERATOR)}, at: {STAMP} }}",
             "status: stable",
             "---",
             "",
@@ -241,7 +249,7 @@ def main() -> int:
                              f"| {int(cited) if cited is not None else 'n/a'} |")
             lines.append("")
 
-        (OUT / f"{slug}.md").write_text("\n".join(lines))
+        pages[f"{slug}.md"] = "\n".join(lines)
 
     # Bundle root. Per spec §reserved-filenames, index.md carries no
     # frontmatter except okf_version at the bundle root.
@@ -270,9 +278,68 @@ def main() -> int:
         for name, link in sorted(by_type[atype]):
             idx.append(f"- [{name}]({link})")
         idx.append("")
-    (OUT / "index.md").write_text("\n".join(idx))
+    pages["index.md"] = "\n".join(idx)
+    conn.close()
+    return pages
 
-    # log.md — date-grouped history; append today's entry once per day.
+
+def _unstamped(text: str) -> str:
+    return _STAMP_LINE.sub(lambda m: m.group(1) + STAMP + m.group(2), text)
+
+
+def stale_pages(pages: dict[str, str] | None = None,
+                out: Path = OUT) -> tuple[list[str], list[str]]:
+    """(pages to write, orphaned archive pages to delete) — a page is
+    stale when it is missing or differs in anything but its stamp."""
+    if pages is None:
+        pages = render()
+    write = [name for name, text in sorted(pages.items())
+             if not (out / name).is_file()
+             or _unstamped((out / name).read_text()) != text]
+    orphans = sorted(p.name for p in out.glob("archive-*.md")
+                     if p.name not in pages)
+    return write, orphans
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
+    ap.add_argument("--check", action="store_true",
+                    help="write nothing; exit 1 if any page is stale")
+    args = ap.parse_args()
+    if not PARQUET.is_dir():
+        print(f"[error] {PARQUET} not found", file=sys.stderr)
+        return 2
+    pages = render()
+    n_arch = sum(1 for n in pages if n.startswith("archive-"))
+    write, orphans = stale_pages(pages)
+
+    if args.check:
+        for name in write:
+            print(f"[stale] {name}")
+        for name in orphans:
+            print(f"[orphan] {name}")
+        if write or orphans:
+            print(f"[check] {len(write)} stale, {len(orphans)} orphaned of "
+                  f"{n_arch} archive pages + index — run "
+                  "scripts/build_okf_bundle.py")
+            return 1
+        print(f"[check] OKF bundle up to date ({n_arch} archive pages)")
+        return 0
+
+    if not (write or orphans):
+        print(f"[ok] OKF bundle up to date ({n_arch} archive pages); "
+              "nothing written")
+        return 0
+
+    OUT.mkdir(parents=True, exist_ok=True)
+    stamp = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    for name in write:
+        (OUT / name).write_text(pages[name].replace(STAMP, stamp))
+    for name in orphans:
+        (OUT / name).unlink()
+
+    # log.md — date-grouped history; append today's entry once per day,
+    # only on a run that changed something.
     log = OUT / "log.md"
     today = dt.date.today().isoformat()
     entry = (f"## {today}\n\n- Regenerated {n_arch} archive concept docs "
@@ -282,7 +349,8 @@ def main() -> int:
     elif f"## {today}" not in log.read_text():
         log.write_text(log.read_text().rstrip() + "\n\n" + entry)
 
-    print(f"[ok] wrote {n_arch} archive concept docs + index + log -> {OUT}")
+    print(f"[ok] wrote {len(write)} changed page(s), removed {len(orphans)} "
+          f"orphan(s) of {n_arch} archive pages + index -> {OUT}")
     return 0
 
 

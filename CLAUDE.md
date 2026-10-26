@@ -26,6 +26,7 @@ python scripts/ingest.py --skip-geocode  # use .geocode_cache.json only
 python scripts/qa.py                   # data-quality + integrity gate (exits non-zero on failure)
 python scripts/export_parquet.py       # lake → public/parquet/*, public/facilities.geojson (--db-out db/parquet for a local copy)
 python scripts/export_view_caches.py   # → public/cache/{browse_cards,people_cards,project_cards,site_groups}.json
+python scripts/build_okf_bundle.py     # public/parquet → docs/okf/archive-*.md + index.md (--check: exit 1 if stale)
 python scripts/lake_maintenance.py     # compact files, expire snapshots > 90 days (optional, before export)
 python scripts/build_web_overlays.py   # network_synth_spatial_analysis/ → public/overlays/*.geojson + manifest.json
 
@@ -33,9 +34,9 @@ python scripts/build_web_overlays.py   # network_synth_spatial_analysis/ → pub
 python -m http.server 5173             # then open http://localhost:5173/
 ```
 
-The canonical post-edit sequence is: mutate the lake → `qa.py` → `export_parquet.py` → `export_view_caches.py`. Skipping the last step leaves the Browse, People and Projects tabs showing stale data. `rebuild_db_from_parquet.py` is a deprecated shim that runs the lake rebuild.
+The canonical post-edit sequence is: mutate the lake → `qa.py` → `export_parquet.py` → `export_view_caches.py` → `build_okf_bundle.py`. Skipping the caches leaves the Browse, People and Projects tabs showing stale data; skipping the bundle leaves the Docs tab's data-access pages documenting the previous export, and the next `qa.py` fails. The bundle rewrites only pages whose content changed (an unchanged page keeps its `generated.at` stamp) and deletes the page of an archive that is gone, so its diff is the real change: commit it whole. `rebuild_db_from_parquet.py` is a deprecated shim that runs the lake rebuild.
 
-There is no test framework. `qa.py` is the only correctness gate; add new invariants there rather than introducing pytest. Its JS parse check needs `node` on PATH and is skipped without it (`pip install nodejs-wheel-binaries` provides one). Its first database check re-enforces every PRIMARY KEY / UNIQUE / FOREIGN KEY / CHECK / NOT NULL in `schema/schema.sql` against the lake (see gotchas). It also asserts: no null `facility_type`/`country`, every `facility_type` resolves against the vocab table, every facility has a `provenance` row, and every geocoded facility falls inside its country's bbox (`BBOX_BY_COUNTRY`).
+There is no test framework. `qa.py` is the only correctness gate; add new invariants there rather than introducing pytest. Its JS parse check needs `node` on PATH and is skipped without it (`pip install nodejs-wheel-binaries` provides one). Its first database check re-enforces every PRIMARY KEY / UNIQUE / FOREIGN KEY / CHECK / NOT NULL in `schema/schema.sql` against the lake (see gotchas). It fails if `docs/okf/` differs from what `build_okf_bundle.py` renders from the committed `public/parquet/`. It also asserts: no null `facility_type`/`country`, every `facility_type` resolves against the vocab table, every facility has a `provenance` row, and every geocoded facility falls inside its country's bbox (`BBOX_BY_COUNTRY`).
 
 `RUNBOOK.md` is the operator guide for the external-API enrichment passes (ORCID → OpenAlex → NSF/USAspending/990 → recompute derived tables). Follow it rather than re-deriving the order; those scripts need real network access and `OPENALEX_API_KEY` set.
 
@@ -171,8 +172,8 @@ The site degrades in three tiers: GeoJSON fallback → JSON view caches → full
 ## CI workflows
 
 - `deploy.yml` (push to `main`) — stages only `index.html`, `favicon.svg`, `src/`, `public/`, `docs/`. Anything outside those paths (agents, scripts, schema, data/raw) is **not** on the live site. Adding a new runtime-fetched directory means editing this staging step.
-- `refresh-data.yml` (weekly, Sun 06:00 UTC) — rebuild lake from parquet → `load_arid` → `load_lto_archives` → `backfill_facility_state` → qa → export_parquet → export_view_caches, opens a PR. It does not run `ingest.py` (no raw national inputs in CI).
-- `url-health.yml` (weekly, Mon 07:00 UTC) — rebuild lake from parquet → HEAD sweep → hygiene → qa → re-export, opens a PR.
+- `refresh-data.yml` (weekly, Sun 06:00 UTC) — rebuild lake from parquet → `load_arid` → `load_lto_archives` → `backfill_facility_state` → qa → export_parquet → export_view_caches → build_okf_bundle, opens a PR. It does not run `ingest.py` (no raw national inputs in CI).
+- `url-health.yml` (weekly, Mon 07:00 UTC) — rebuild lake from parquet → HEAD sweep → hygiene → qa → re-export (parquet, caches, OKF pages), opens a PR.
 
 Both scheduled workflows run Python 3.12, rebuild the lake from scratch each run (nothing but pip is cached; the ducklake/sqlite extensions download from extensions.duckdb.org), and open PRs rather than pushing; review the data diffs before merging. The loaders they re-run keep `created_at`/`updated_at` on unchanged rows, so a week with no input change opens no data diff.
 

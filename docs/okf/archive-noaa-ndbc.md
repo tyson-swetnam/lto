@@ -4,7 +4,7 @@ title: "NOAA National Data Buoy Center"
 description: "NOAA / NWS — repository holding long-term observatory records."
 resource: "https://www.ndbc.noaa.gov/"
 tags: [repository, rest, noaa-public]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-10-26T01:52:50Z }
 status: stable
 ---
 
@@ -20,8 +20,8 @@ Realtime + historical moored buoy and C-MAN station observations (wind, waves, S
 
 | Purpose | Method | Format | URL | Example |
 |---|---|---|---|---|
-| data-download | GET | text/plain | <https://www.ndbc.noaa.gov/data/realtime2/{station}.txt> | curl https://www.ndbc.noaa.gov/data/realtime2/41008.txt |
 | data-download | GET | application/gzip | <https://www.ndbc.noaa.gov/data/historical/stdmet/{station}h{year}.txt.gz> | curl -O https://www.ndbc.noaa.gov/data/historical/stdmet/41008h2023.txt.gz |
+| data-download | GET | text/plain | <https://www.ndbc.noaa.gov/data/realtime2/{station}.txt> | curl https://www.ndbc.noaa.gov/data/realtime2/41008.txt |
 
 # Depositing facilities
 

@@ -4,7 +4,7 @@ title: "NPS IRMA Datastore"
 description: "U.S. National Park Service / Integrated Resource Management Applications — data-portal holding long-term observatory records."
 resource: "https://irma.nps.gov/DataStore/"
 tags: [data-portal, rest, public-domain-us]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-10-26T01:52:50Z }
 status: stable
 ---
 
@@ -21,10 +21,10 @@ NPS IRMA (Integrated Resource Management Applications) Data Store; canonical NPS
 | Purpose | Method | Format | URL | Example |
 |---|---|---|---|---|
 | data-download | GET | application/octet-stream | <https://irma.nps.gov/DataStore/DownloadFile/{digital_file_id}> | curl -O 'https://irma.nps.gov/DataStore/DownloadFile/753819' |
-| metadata | GET | application/json | <https://irmaservices.nps.gov/datastore/v7/rest/Profile?q={reference_id}> | curl 'https://irmaservices.nps.gov/datastore/v7/rest/Profile?q=2316688' |
 | metadata | GET | text/html | <https://irma.nps.gov/DataStore/Reference/Profile/{reference_id}> | curl 'https://irma.nps.gov/DataStore/Reference/Profile/2270195' |
-| search | GET | application/json | <https://irmaservices.nps.gov/datastore/v7/rest/QuickSearch?q={query}&top={n}> | curl 'https://irmaservices.nps.gov/datastore/v7/rest/QuickSearch?q=CACO&top=5' |
+| metadata | GET | application/json | <https://irmaservices.nps.gov/datastore/v7/rest/Profile?q={reference_id}> | curl 'https://irmaservices.nps.gov/datastore/v7/rest/Profile?q=2316688' |
 | search | GET | text/html | <https://irma.nps.gov/DataStore/Search/Quick?SearchType=Q&Query={unit_code}> | curl 'https://irma.nps.gov/DataStore/Search/Quick?SearchType=Q&Query=CACO' |
+| search | GET | application/json | <https://irmaservices.nps.gov/datastore/v7/rest/QuickSearch?q={query}&top={n}> | curl 'https://irmaservices.nps.gov/datastore/v7/rest/QuickSearch?q=CACO&top=5' |
 
 # Depositing facilities
 
