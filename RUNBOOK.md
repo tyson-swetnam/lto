@@ -180,15 +180,23 @@ universe (USDA, NOAA, DOE, EPA, USGS, NPS, FWS, NASA, USACE).
 python scripts/fetch_funding_nsf.py --start-fy 2015 --end-fy 2024
 
 # USAspending — covers everything else federal. DO NOT write a fleet-wide
-# run until its output has been reviewed. A recipient search attributes the
-# recipient's whole portfolio to the facility: the parent_org auto search
-# (now opt-in, --allow-auto-recipient) puts every University of California
-# award on White Mountain Research Center and every UNM award on each UNM
-# facility, and a recipient override's description_match is not applied in
-# the transaction fast path. With F001/F002 in the grant codes a window
-# past FY2024 adds far more (a dry probe on 2026-10-25: >=1,620 rows,
-# >=$789M across 182 facilities to FY2026; >=43 rows, $4.9M, to FY2024).
-# Always dry-run first and read the per-facility counts:
+# run until its output has been reviewed. Recipient searches run at award
+# level and keep an award only when its Recipient Name contains the search
+# string and, for a row with a description_match (every university-hosted
+# lab or LTER), its Description contains the match; only an override row
+# with no match (a facility that IS the recipient: WHOI, MBL, Bigelow) takes
+# the recipient's portfolio. Until 2026-10-26 the fast path ignored
+# description_match (a default run gave Friday Harbor all 7,439 UW grants
+# of FY2015-24, Hatfield 2,804 OSU grants, ...) and the parent_org auto
+# search took whole portfolios (every University of California award on
+# White Mountain, every UNM award on each UNM facility). Auto mode
+# (--allow-auto-recipient) now needs the facility's canonical_name in the
+# award Description. Transactions are matched to a searched award by its
+# generated_internal_id, an award goes to one facility, and a
+# whole-recipient search skips awards naming another facility's match. A dry run on 2026-10-26 (FY2015-24, grants): 75
+# facilities, would-write 3,668 rows, 2,820 new, 2,745 of them on WHOI, MBL,
+# Bigelow and the Monterey Bay Aquarium. Always dry-run first and read the
+# per-facility counts and the "searched:" / "other recipients:" lines:
 python scripts/fetch_funding_usaspending.py --dry-run
 # (--include-contracts also pulls USDA-FS / NOAA contracts.)
 

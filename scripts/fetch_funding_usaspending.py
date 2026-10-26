@@ -19,19 +19,43 @@ Pipeline per facility:
 
 Recipient resolution:
 
-  * AUTO mode (opt-in, --allow-auto-recipient): use facility.parent_org
-    as recipient_search_text when it looks like a real institution name
-    (university / research institute / aquarium / lab). Skipped for
-    generic parents ("EPA National Estuary Program", "Independent
-    501(c)(3)") and never used for nep / nerrs facilities. It is off by
-    default because it attributes a whole parent's portfolio to one
-    facility (every University of California award to White Mountain
-    Research Center, every UNM award to each UNM facility); review its
-    output before writing it.
+  A recipient search never hands a recipient's portfolio to a facility
+  wholesale. It runs at award level (spending_by_award, which carries each
+  award's Description), keeps an award only if
+    - its Recipient Name contains the search string as a run of words
+      (recipient_search_text is fuzzy: "University of Rhode Island" also
+      returns Rhode Island state agencies, "University of Virginia" returns
+      Virginia Tech), and
+    - its Description contains the row's match string, when the row has one
+      (asked server-side as a keyword, then checked on the Description),
+  and only then fetches the transactions of the kept awards, matched on
+  generated_internal_id (a display Award ID is not unique: contract PIID
+  "0001" belongs to dozens of contractors). An award found by a search goes
+  to one facility: one already held by another facility (in the lake, the
+  whitelist or earlier in the run) is skipped and counted. A whole-recipient
+  search also leaves alone any award whose Description holds another
+  facility's match for the same recipient (its override rows, or the
+  canonical_name an auto search would use), whether or not that facility is
+  in the run or succeeded: MBL never takes PIE's Plum Island awards. In a
+  run, facilities whose searches all carry a match go first.
+
   * OVERRIDE: data/funding_overrides/usaspending_recipient_overrides.csv
-    pins the exact recipient string and (optionally) award-id whitelist
-    or description-substring filter for facilities whose USAspending
-    name differs from their canonical name.
+    pairs a recipient string with a description_match. A row without one
+    takes the recipient's whole (name-checked) portfolio and is only for a
+    facility that IS the recipient (WHOI, MBL, Bigelow). The rows for a
+    university-hosted lab or LTER carry a match ("Friday Harbor", "Plum
+    Island"). Until 2026-10-26 the transaction fast path ignored
+    description_match, so a default run gave Friday Harbor all 7,439 UW
+    grants in FY2015-24, Hatfield 2,804 OSU grants, and so on.
+  * AUTO mode (opt-in, --allow-auto-recipient): a facility with no override
+    or whitelist row is searched under its parent_org when that looks like
+    an institution (university / research institute / aquarium / lab),
+    narrowed like an override row whose match is the facility's own
+    canonical_name. Never for nep / nerrs facilities or generic parents
+    ("EPA National Estuary Program", "Independent 501(c)(3)"). It used to
+    take the parent's whole portfolio (every University of California award
+    on White Mountain, every UNM award on each UNM facility). Still review a
+    --dry-run first: a description can name a facility it did not fund.
   * AWARD WHITELIST: data/funding_overrides/usaspending_award_whitelist.csv
     pins awards by award_id (facility_id, award_id, cfda, funder_id). A
     facility with award ids and no recipient row gets exactly those awards:
@@ -67,7 +91,10 @@ Usage::
     python scripts/fetch_funding_usaspending.py --allow-auto-recipient --dry-run  # review first
 
 Without --allow-auto-recipient a run queries only the facilities that have a
-recipient override or whitelisted award ids. A facility whose queries fail is
+recipient override or whitelisted award ids. Each searched facility prints
+how many awards it kept and how many it dropped, and why: wrong recipient
+(with the names, so a dead or loose override string shows), no match in the
+Description, or claimed by another facility. A facility whose queries fail is
 reported in the [done] line and makes the run exit 1 (nothing is written for
 that facility on that run); re-run it.
 
@@ -113,7 +140,7 @@ SEARCH_FIELDS = [
 TXN_SEARCH_FIELDS = [
     "Transaction Amount", "Action Date", "Award ID",
     "Awarding Agency", "Awarding Sub Agency",
-    "Recipient Name", "Assistance Listing",
+    "Recipient Name", "Assistance Listing", "generated_internal_id",
 ]
 # The API's "grants" group (/api/v2/references/award_types/, 2026-10-25):
 # Block / Formula / Project Grant, Cooperative Agreement, and the newer
@@ -124,6 +151,11 @@ PER_PAGE = 100  # USAspending caps at 100/page
 SAFETY_PAGE_CAP = 100  # 10000 awards per facility — far beyond any real recipient
 RETRY_MAX = 3
 AWARD_ID_CHUNK = 25  # award ids per spending_by_transaction query (halved on hasNext)
+
+# Words dropped before a recipient name is compared: "Marine Biological
+# Laboratory" is "THE MARINE BIOLOGICAL LABORATORY", "University of Georgia
+# Research Foundation" is "... FOUNDATION, INC.".
+_NAME_STOPWORDS = {"the", "inc"}
 
 AUTO_RECIPIENT_HINTS = (
     "university", "college", "institut", "laborator", "observatory",
@@ -245,9 +277,14 @@ def flush(conn, buf: LakeBuffer, message: str) -> None:
     buf.funders.clear()
 
 
+def _new_entry() -> dict:
+    return {"searches": [], "award_ids": [], "award_meta": {}}
+
+
 def load_overrides(path: Path) -> dict[str, dict]:
-    """facility_id -> {recipients: [...], award_ids: [...],
-                       description_matches: [...]}."""
+    """facility_id -> {searches: [(recipient, description_match | None)],
+                       award_ids: [...], award_meta: {}}. A row's match
+    narrows only its own recipient."""
     out: dict[str, dict] = {}
     if not path.exists():
         print(f"[overrides] none found at {path} (this is fine)")
@@ -262,18 +299,14 @@ def load_overrides(path: Path) -> dict[str, dict]:
             fid = lto_db.canonical_facility_id((row.get("facility_id") or "").strip())
             if not fid:
                 continue
-            entry = out.setdefault(fid, {
-                "recipients": [], "award_ids": [], "description_matches": [],
-                "award_meta": {},
-            })
-            for col, key in (
-                ("recipient_search_text", "recipients"),
-                ("award_id", "award_ids"),
-                ("description_match", "description_matches"),
-            ):
-                v = (row.get(col) or "").strip()
-                if v and v not in entry[key]:
-                    entry[key].append(v)
+            entry = out.setdefault(fid, _new_entry())
+            rec = (row.get("recipient_search_text") or "").strip()
+            match = (row.get("description_match") or "").strip() or None
+            if rec and (rec, match) not in entry["searches"]:
+                entry["searches"].append((rec, match))
+            aid = (row.get("award_id") or "").strip()
+            if aid and aid not in entry["award_ids"]:
+                entry["award_ids"].append(aid)
     print(f"[overrides] loaded {len(out)} facility-specific overrides")
     return out
 
@@ -299,10 +332,7 @@ def load_whitelist(path: Path, out: dict[str, dict]) -> int:
             if owner.setdefault(aid, fid) != fid:
                 raise SystemExit(f"[whitelist] award {aid} is pinned to both "
                                  f"{owner[aid]} and {fid}")
-            entry = out.setdefault(fid, {
-                "recipients": [], "award_ids": [], "description_matches": [],
-                "award_meta": {},
-            })
+            entry = out.setdefault(fid, _new_entry())
             if aid not in entry["award_ids"]:
                 entry["award_ids"].append(aid)
             entry["award_meta"][aid] = {
@@ -318,25 +348,6 @@ def load_whitelist(path: Path, out: dict[str, dict]) -> int:
 def _window(start_fy: int, end_fy: int) -> list[dict]:
     return [{"start_date": f"{start_fy - 1}-10-01",
              "end_date":   f"{end_fy}-09-30"}]
-
-
-def search_transactions(sess: requests.Session, recipient: str,
-                        start_fy: int, end_fy: int,
-                        type_codes: list[str]) -> list[dict]:
-    """Paginate every transaction matching recipient + FY window + type
-    codes. This is the *fast path* — one API hit per page (100 txns)
-    gives us the per-FY truth that would otherwise require N per-award
-    /transactions/ lookups (which USAspending throttles aggressively).
-
-    Sort by action_date so transactions within an award arrive in
-    chronological order — easier to debug logs.
-    """
-    rows, _ = _txn_pages(sess, {
-        "recipient_search_text": [recipient],
-        "time_period": _window(start_fy, end_fy),
-        "award_type_codes": type_codes,
-    }, f"recipient={recipient}")
-    return rows
 
 
 def search_award_ids(sess: requests.Session, award_ids: list[str],
@@ -383,8 +394,9 @@ def _txn_pages(sess: requests.Session, payload_filters: dict, label: str,
     while True:
         safety += 1
         if safety > SAFETY_PAGE_CAP:
-            print(f"[warn] hit safety page cap (txns) for {label}")
-            break
+            # A truncated list would write short years that never update.
+            raise RuntimeError(f"transaction search passed {SAFETY_PAGE_CAP} "
+                               f"pages for {label}")
         body = {
             "limit": PER_PAGE,
             "page": page,
@@ -431,58 +443,80 @@ def _txn_pages(sess: requests.Session, payload_filters: dict, label: str,
 
 
 def search_awards(sess: requests.Session, recipient: str,
-                  start_fy: int, end_fy: int,
-                  type_codes: list[str]) -> list[dict]:
-    """Page through every award matching the recipient+time+type filters."""
+                  start_fy: int, end_fy: int, type_codes: list[str],
+                  keyword: str | None = None) -> tuple[list[dict], int]:
+    """(awards, pages): every award matching the recipient + FY window +
+    type filters, narrowed server-side to ``keyword`` when given. Awards
+    carry their Description and Recipient Name for the caller's checks. A
+    query that fails raises (main() reports the facility as failed and
+    writes nothing for it), as _txn_pages does."""
     out: list[dict] = []
     page = 1
-    safety = 0
     payload_filters = {
         "recipient_search_text": [recipient],
-        "time_period": [{
-            "start_date": f"{start_fy - 1}-10-01",
-            "end_date":   f"{end_fy}-09-30",
-        }],
+        "time_period": _window(start_fy, end_fy),
         "award_type_codes": type_codes,
     }
+    if keyword:
+        payload_filters["keywords"] = [keyword]
+    label = f"recipient={recipient}" + (f" keyword={keyword}" if keyword else "")
     while True:
-        safety += 1
-        if safety > SAFETY_PAGE_CAP:
-            print(f"[warn] hit safety page cap for recipient={recipient}")
-            break
+        if page > SAFETY_PAGE_CAP:
+            raise RuntimeError(f"award search passed {SAFETY_PAGE_CAP} pages "
+                               f"for {label}")
         body = {
             "subawards": False,
             "limit": PER_PAGE,
             "page": page,
+            "sort": "Award ID",
+            "order": "asc",
             "filters": payload_filters,
             "fields": SEARCH_FIELDS,
         }
+        data = None
         for attempt in range(RETRY_MAX):
             try:
-                r = sess.post(API_SEARCH, json=body, timeout=30)
+                r = sess.post(API_SEARCH, json=body, timeout=60)
                 if r.status_code == 429:
                     time.sleep(3 + attempt * 2)
                     continue
                 if not r.ok:
-                    print(f"[warn] USAspending search {r.status_code}: "
-                          f"{r.text[:200]}")
-                    return out
+                    raise RuntimeError(f"award search {r.status_code} for "
+                                       f"{label}: {r.text[:200]}")
                 data = r.json()
                 break
+            except RuntimeError:
+                raise
             except Exception as e:
-                print(f"[warn] USAspending search failed ({attempt+1}/{RETRY_MAX}): {e}")
+                if attempt == RETRY_MAX - 1:
+                    raise RuntimeError(f"award search failed for {label}: {e}")
                 time.sleep(1 + attempt)
-        else:
-            return out
+        if data is None:
+            raise RuntimeError(f"award search throttled for {label}")
         results = data.get("results", [])
         out.extend(results)
-        if not data.get("page_metadata", {}).get("hasNext"):
-            break
-        if not results:
+        if not data.get("page_metadata", {}).get("hasNext") or not results:
             break
         page += 1
         time.sleep(0.05)
-    return out
+    return out, page
+
+
+def _name_words(name: str) -> list[str]:
+    words = re.findall(r"[a-z0-9]+", (name or "").lower().replace("&", " and "))
+    return [w[:-1] if len(w) > 4 and w.endswith("s") else w
+            for w in words if w not in _NAME_STOPWORDS]
+
+
+def recipient_matches(search: str, recipient_name: str | None) -> bool:
+    """True when the award's Recipient Name contains the search string as a
+    run of words (case, punctuation, plurals and _NAME_STOPWORDS aside):
+    "University of Virginia" matches "RECTOR & VISITORS OF THE UNIVERSITY
+    OF VIRGINIA" but not "VIRGINIA POLYTECHNIC INSTITUTE & STATE
+    UNIVERSITY"."""
+    want, got = _name_words(search), _name_words(recipient_name or "")
+    n = len(want)
+    return n > 0 and any(got[i:i + n] == want for i in range(len(got) - n + 1))
 
 
 def fetch_transactions(sess: requests.Session, internal_id: str
@@ -641,17 +675,6 @@ def _auto_recipient(parent: str, name: str = "", networks=()) -> str | None:
     return None
 
 
-def _award_matches_filters(award: dict, ov: dict) -> bool:
-    if ov.get("award_ids") and award.get("Award ID") in ov["award_ids"]:
-        return True
-    dm = [m.lower() for m in (ov.get("description_matches") or [])]
-    if dm:
-        desc = (award.get("Description") or "").lower()
-        if not any(d in desc for d in dm):
-            return False
-    return True
-
-
 def _signed_fy(award: dict) -> int | None:
     """Date the award was first signed → US FY. Best-effort proxy for
     no-transactions mode. The search endpoint doesn't return signing
@@ -677,66 +700,107 @@ def _signed_fy(award: dict) -> int | None:
     return None
 
 
+def facility_searches(facility: dict, ov: dict,
+                      allow_auto: bool) -> list[tuple[str, str | None]]:
+    """(recipient, description_match) pairs to search for a facility: its
+    override rows, else (AUTO mode, no whitelist) its parent_org narrowed
+    to its own canonical_name."""
+    searches = list(ov.get("searches") or [])
+    if allow_auto and not searches and not ov.get("award_ids"):
+        name = facility.get("canonical_name") or ""
+        auto = _auto_recipient(facility.get("parent_org") or "", name,
+                               facility.get("networks") or ())
+        if auto and name:
+            searches = [(auto, name)]
+    return searches
+
+
 def process_facility(buf: LakeBuffer, sess: requests.Session, facility: dict,
                      overrides: dict, start_fy: int, end_fy: int,
                      include_contracts: bool, no_transactions: bool,
                      dry: bool, existing: set[str] | None = None,
-                     allow_auto: bool = False) -> dict:
+                     allow_auto: bool = False,
+                     claims: dict[str, str] | None = None,
+                     reserved: list[tuple[str, str, str]] | None = None) -> dict:
     fid = facility["facility_id"]
-    parent = facility.get("parent_org") or ""
-
     ov = overrides.get(fid, {})
-    recipients: list[str] = list(ov.get("recipients") or [])
-    # Pinned award ids with no recipient row are the whole answer: no
-    # parent_org auto search (the nep / nerrs guard holds either way).
-    if allow_auto and not recipients and not ov.get("award_ids"):
-        auto = _auto_recipient(parent, facility.get("canonical_name") or "",
-                               facility.get("networks") or ())
-        if auto:
-            recipients = [auto]
-    if not recipients and not ov.get("award_ids"):
+    searches = facility_searches(facility, ov, allow_auto)
+    if not searches and not ov.get("award_ids"):
         return {"awards": 0, "candidates": 0, "inserted": 0,
                 "queries": 0, "skipped": True}
+    if claims is None:
+        claims = {}
 
     type_groups = [GRANT_TYPE_CODES]
     if include_contracts:
         type_groups.append(CONTRACT_TYPE_CODES)
 
-    # FAST PATH (default): query spending_by_transaction directly per
-    # recipient × type-group. Each transaction already has Action Date
-    # + Transaction Amount + Award ID + Awarding Agency; we group by
-    # (Award ID, FY) and emit one funding_events row per group with
-    # SUM(Transaction Amount). This avoids the per-award /transactions/
-    # endpoint entirely — for WHOI it cuts ~600 API calls down to ~20.
+    # 1. Recipient searches pick award ids, at award level: the award
+    #    carries its Description and Recipient Name, transactions do not.
     queries = 0
-    txn_rows: list[dict] = []
-    for rec in recipients:
+    # award_id -> the generated_internal_ids the award search returned for it
+    picked: dict[str, set[str]] = {}
+    dropped = {"recipient": 0, "description": 0, "claimed": 0, "reserved": 0}
+    others = [(r, m.lower()) for r, m, f in (reserved or ()) if f != fid]
+    wrong_names: dict[str, int] = defaultdict(int)
+    for rec, match in searches:
         for type_codes in type_groups:
-            queries += 1
-            txn_rows.extend(
-                search_transactions(sess, rec, start_fy, end_fy, type_codes)
-            )
-    # Award-id whitelist with no recipient: ask for exactly those awards
-    # (grouped by their pinned Assistance Listing), never a name search.
-    meta = ov.get("award_meta") or {}
-    if not recipients and ov.get("award_ids"):
-        by_cfda: dict[str | None, list[str]] = defaultdict(list)
-        for aid in ov["award_ids"]:
-            by_cfda[(meta.get(aid) or {}).get("cfda")].append(aid)
-        for cfda, aids in sorted(by_cfda.items(), key=lambda kv: kv[0] or ""):
-            for type_codes in type_groups:
-                rows_, q = search_award_ids(sess, aids, cfda, start_fy, end_fy,
-                                            type_codes)
-                queries += q
-                txn_rows.extend(rows_)
+            awards, q = search_awards(sess, rec, start_fy, end_fy, type_codes,
+                                      keyword=match)
+            queries += q
+            for a in awards:
+                aid = (a.get("Award ID") or "").strip()
+                gid = a.get("generated_internal_id") or ""
+                if not aid or not gid or gid in picked.get(aid, ()):
+                    continue
+                name = a.get("Recipient Name")
+                desc = (a.get("Description") or "").lower()
+                if not recipient_matches(rec, name):
+                    dropped["recipient"] += 1
+                    wrong_names[name or "?"] += 1
+                    continue
+                if match and match.lower() not in desc:
+                    dropped["description"] += 1
+                    continue
+                if match is None and any(
+                        m in desc and recipient_matches(r, name) for r, m in others):
+                    dropped["reserved"] += 1
+                    continue
+                if claims.get(aid, fid) != fid:
+                    dropped["claimed"] += 1
+                    continue
+                picked.setdefault(aid, set()).add(gid)
 
-    # description_match isn't applicable to transaction rows (they
-    # don't carry the Description field), so we only honor award_id
-    # whitelists in this code path. Description filters still apply
-    # in the slow legacy path below.
-    if ov.get("award_ids"):
-        whitelist = set(ov["award_ids"])
-        txn_rows = [t for t in txn_rows if t.get("Award ID") in whitelist]
+    # 2. Transactions of exactly the picked awards plus the whitelisted
+    #    ones (grouped by their pinned Assistance Listing). Spending by
+    #    transaction gives per-FY truth without a /transactions/ call per
+    #    award.
+    meta = ov.get("award_meta") or {}
+    by_cfda: dict[str | None, list[str]] = defaultdict(list)
+    for aid in ov.get("award_ids") or []:
+        by_cfda[(meta.get(aid) or {}).get("cfda")].append(aid)
+    pinned = set(ov.get("award_ids") or [])
+    for aid in picked:
+        if aid not in pinned:            # a pinned id is fetched once, above
+            by_cfda[None].append(aid)
+    txn_rows: list[dict] = []
+    for cfda, aids in sorted(by_cfda.items(), key=lambda kv: kv[0] or ""):
+        for type_codes in type_groups:
+            rows_, q = search_award_ids(sess, aids, cfda, start_fy, end_fy,
+                                        type_codes)
+            queries += q
+            txn_rows.extend(rows_)
+    # The award_ids filter can match partially and a display id is shared
+    # (contract PIIDs): keep a pinned award's exact id, and a searched award's
+    # rows only under the internal ids the award search returned.
+    def _ours(t: dict) -> bool:
+        aid = (t.get("Award ID") or "").strip()
+        if aid in pinned:
+            return True
+        return (t.get("generated_internal_id") or "") in picked.get(aid, ())
+    txn_rows = [t for t in txn_rows if _ours(t)]
+    for aid in pinned | set(picked):
+        claims.setdefault(aid, fid)
 
     def _cfda_ok(t: dict) -> bool:
         # A pinned cfda keeps only that Assistance Listing's actions (an
@@ -867,6 +931,9 @@ def process_facility(buf: LakeBuffer, sess: requests.Session, facility: dict,
         "new": would_new,
         "queries": queries,
         "skipped": False,
+        "picked": len(picked),
+        "dropped": dropped,
+        "wrong_names": dict(wrong_names),
     }
 
 
@@ -901,9 +968,11 @@ def main() -> int:
                          "USAspending row in funding_events.")
     ap.add_argument("--allow-auto-recipient", action="store_true",
                     help="Also search facilities with no override or whitelist "
-                         "row by their parent_org (AUTO mode). Off by default: "
-                         "it attributes a parent's whole portfolio to each "
-                         "facility. Run with --dry-run and review first.")
+                         "row by their parent_org (AUTO mode), keeping only "
+                         "awards whose Description names the facility "
+                         "(canonical_name). Off by default; run with "
+                         "--dry-run and review first: a description can name "
+                         "a facility it did not fund.")
     ap.add_argument("--dry-run", action="store_true")
     args = ap.parse_args()
 
@@ -938,6 +1007,13 @@ def main() -> int:
          "parent_org": r[3], "country": r[4], "networks": list(r[5] or [])}
         for r in rows
     ]
+    # Every (recipient, match, facility) a narrowed search could claim, over
+    # all facilities and as if AUTO mode were on, whatever this run selects:
+    # a whole-recipient search leaves those awards alone, so a facility that
+    # failed or was not in the run does not lose them to its host.
+    reserved = [(rec, m, f["facility_id"]) for f in facilities
+                for rec, m in facility_searches(
+                    f, overrides.get(f["facility_id"], {}), True) if m]
     if args.facility_id:
         want = {lto_db.canonical_facility_id(x.strip())
                 for x in args.facility_id.split(",") if x.strip()}
@@ -953,8 +1029,24 @@ def main() -> int:
         before = len(facilities)
         facilities = [f for f in facilities if f["facility_id"] not in done]
         print(f"[skip-done] dropped {before - len(facilities)} already-fetched facilities")
+    # A facility whose every search carries a description match (or that
+    # has only pinned awards) claims its awards before a whole-recipient
+    # facility searches the same recipient: PIE before MBL.
+    facilities.sort(key=lambda f: any(
+        m is None for _, m in facility_searches(
+            f, overrides.get(f["facility_id"], {}), args.allow_auto_recipient)))
     if args.limit:
         facilities = facilities[: args.limit]
+    # award_id -> facility_id: who already holds each award (the lake's
+    # USAspending rows, then the whitelist). Filled in as facilities run.
+    claims: dict[str, str] = {}
+    for aid, f in conn.execute(
+            "SELECT DISTINCT award_id, facility_id FROM funding_events "
+            "WHERE source = 'USAspending.gov' AND award_id IS NOT NULL").fetchall():
+        claims.setdefault(aid, f)
+    for f, ov in overrides.items():
+        for aid in ov.get("award_ids") or []:
+            claims.setdefault(aid, f)
     print(f"[usaspending] FY{args.start_fy}-FY{args.end_fy}  "
           f"{len(facilities)} facilities  "
           f"{'(grants+contracts)' if args.include_contracts else '(grants only)'}"
@@ -982,7 +1074,8 @@ def main() -> int:
                                      args.start_fy, args.end_fy,
                                      args.include_contracts,
                                      args.no_transactions, args.dry_run,
-                                     existing, args.allow_auto_recipient)
+                                     existing, args.allow_auto_recipient,
+                                     claims, reserved)
             except Exception as e:
                 print(f"  [{i}/{len(facilities)}] {(fac['acronym'] or ''):10s} "
                       f"{fac['canonical_name'][:50]:50s}  ERROR: {e}")
@@ -1001,6 +1094,17 @@ def main() -> int:
                   f"matched={r['awards']:4d}  "
                   + (f"would-write={r['inserted']:4d}  new={r['new']:4d}"
                      if args.dry_run else f"staged={r['inserted']:4d}"))
+            d = r["dropped"]
+            if r["picked"] or any(d.values()):
+                print(f"      searched: kept {r['picked']} award(s); dropped "
+                      f"{d['recipient']} other recipient, {d['description']} "
+                      f"no match in Description, {d['claimed']} held by "
+                      f"another facility, {d['reserved']} naming another "
+                      f"facility")
+            if r["wrong_names"]:
+                top = sorted(r["wrong_names"].items(), key=lambda kv: -kv[1])[:5]
+                print("      other recipients: "
+                      + "; ".join(f"{n} x{c}" for n, c in top))
     finally:
         if not args.dry_run:
             flush(conn, buf, f"fetch_funding_usaspending: {span}, facilities "
