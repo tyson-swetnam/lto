@@ -1,0 +1,153 @@
+{
+ "batch_id": "R-PEOPLE2-BIO-40",
+ "retrieved_at": "2026-10-26",
+ "verified_by": "adversarial-verifier 2026-10-26",
+ "updates": [
+  {
+   "person_id": "9425d4c5f125c7f8",
+   "name": "James H. Mather",
+   "homepage_url": null,
+   "bio": "Atmospheric scientist at Pacific Northwest National Laboratory who joined DOE's ARM program in 1994 as a Penn State postdoc and moved to PNNL in 2001. Directed the ARM user facility from 2007, leading a team of over 300 spread across nine DOE laboratories and other institutions; had recently retired as director per an August 2026 PNNL item.",
+   "bio_source_url": "https://www.pnnl.gov/news-media/longtime-arm-director-jim-mather-honored-distinguished-service",
+   "research_interests": null,
+   "research_interests_source_url": null,
+   "orcid": "0000-0002-8469-5852",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-8469-5852/employments",
+   "current_title": "Atmospheric scientist, PNNL; former director, DOE ARM user facility",
+   "current_affiliation": "Pacific Northwest National Laboratory",
+   "status": null,
+   "status_source_url": null,
+   "evidence": "Mather, who recently retired after nearly 20 years as director of the Department of Energy’s (DOE’s) Atmospheric Radiation Measurement (ARM) User Facility",
+   "evidence_source_url": "https://www.pnnl.gov/news-media/longtime-arm-director-jim-mather-honored-distinguished-service",
+   "notes": "Existing homepage https://www.pnnl.gov/people/james-h-mather returns 404 and https://www.pnnl.gov/people/jim-mather now lands on PNNL's Contact Us page, so homepage_url is left null (the lake's dead link should be cleared by a reviewer). The ARM staff page https://www.arm.gov/about/staff also returns 404. PNNL news item of 12 Aug 2026 (re-fetched 200) says he 'recently retired after nearly 20 years as director' of ARM and 'will retire from PNNL this fall'; status is NOT set (still employed at PNNL on the page's date). His ARM-NSA and ARM-SGP 'director' rows are therefore stale; a research batch should record the successor (none named on the fetched page). Corroborating profile: https://www.energy.gov/science/articles/meet-director-jim-mather-arm-user-facility (2019; 'Jim Mather is the director of DOE's Atmospheric Radiation Measurement user facility'; PhD in meteorology, Penn State). ORCID 0000-0002-8469-5852: pub.orcid.org person record name James Mather, researcher URL arm.gov; employments: Pacific Northwest National Laboratory, 'Director, ARM user facility' (2007-), PNNL Senior Scientist 2001-2007, Northland College 1999-2001, Penn State 1994-1999 (all consistent). No Google Scholar link found on any official page. Verifier: bio rewritten (original said he 'stepped down in 2026' and attributed cloud/aerosol/precipitation field work to him, which the page does not state; it ties those processes to ARM's data, not his campaigns). research_interests removed: the page describes service and leadership, not his research interests. ORCID re-checked at pub.orcid.org: name James Mather; PNNL employment 'Director, ARM user facility' from 2007. DOE Office of Science 2019 profile now redirects to /science/articles/meet-director-jim-mather (200). Verifier 2 (2026-10-26): bio was 65 words, cut to under 60 and reworded (mobile observatory / 2006 campaign detail dropped for length); evidence replaced with a contiguous quote (the old one spliced two passages with an ellipsis). Re-checked: PNNL item 200, ORCID person record James Mather with PNNL 'Director, ARM user facility' 2007-, pnnl.gov/people/james-h-mather 404, arm.gov/about/staff 404, DOE 2019 profile 200.",
+   "retrieved_at": "2026-10-26"
+  },
+  {
+   "person_id": "beb1db31d15bfe4c",
+   "name": "Laurel Sullivan",
+   "homepage_url": null,
+   "bio": "Serves the Delaware National Estuarine Research Reserve as its Education Coordinator, responsible for coordinating education programs for the public, K-12 schools and teachers, and co-hosts Skimmer Says, the podcast run by the reserve's education team.",
+   "bio_source_url": "https://www.buzzsprout.com/2435823/contributors",
+   "research_interests": null,
+   "research_interests_source_url": null,
+   "orcid": null,
+   "orcid_source_url": null,
+   "current_title": "Education Coordinator",
+   "current_affiliation": "Delaware National Estuarine Research Reserve",
+   "status": "active",
+   "status_source_url": "https://news.delaware.gov/2026/09/28/blackbird-creek-fall-festival-set-for-october-17/",
+   "evidence": "said Laurel Sullivan, education coordinator at DNERR.",
+   "evidence_source_url": "https://news.delaware.gov/2026/09/28/blackbird-creek-fall-festival-set-for-october-17/",
+   "notes": "Bio kept short: the only page describing her is the DNERR 'Skimmer Says' podcast contributors page (200), which states 'Laurel is the Education Coordinator at the Delaware National Estuarine Research Reserve' and that her role is to coordinate public, K-12 and teacher education programs; it uses 'Her'. The Sept 2026 Delaware news release (200) confirms the current title. No individual profile page exists (DNREC reserve page names no staff), so homepage_url is null. No ORCID, research interests or Google Scholar link appear on the fetched pages. Verifier: '(DNREC)' removed from the bio and affiliation, since the podcast page does not tie her to DNREC (it names DNREC only for other guests); status now cites the Sept 2026 news release, the dated page that shows her current title. Verifier 2 (2026-10-26): cited pages re-fetched (200); bio, evidence quote and status confirmed unchanged.",
+   "retrieved_at": "2026-10-26"
+  },
+  {
+   "person_id": "9d3301b5bedc7bb0",
+   "name": "Carl A. Roland",
+   "homepage_url": "https://www.nps.gov/articles/carl-roland.htm",
+   "bio": "Plant ecologist with the National Park Service at Denali National Park and Preserve since 2000, and principal investigator for the Central Alaska Network's vegetation monitoring and plant inventory, which also covers Wrangell-St. Elias and Yukon-Charley Rivers. Listed papers address boreal and treeline vegetation change, plant and lichen diversity, wildfire and spruce. Holds an M.Sc. in botany from UAF.",
+   "bio_source_url": "https://www.nps.gov/articles/carl-roland.htm",
+   "research_interests": "boreal forest and treeline vegetation change; plant and lichen diversity and floristics; wildfire effects on boreal vegetation; spruce growth and climate sensitivity; long-term vegetation monitoring in interior Alaska parks",
+   "research_interests_source_url": "https://www.nps.gov/articles/carl-roland.htm",
+   "orcid": null,
+   "orcid_source_url": null,
+   "current_title": "Plant Ecologist, Denali National Park and Preserve",
+   "current_affiliation": "U.S. National Park Service",
+   "status": "active",
+   "status_source_url": "https://www.nps.gov/articles/carl-roland.htm",
+   "evidence": "Denali plant ecologist and principal investigator for Central Alaska Network vegetation monitoring program",
+   "evidence_source_url": "https://www.nps.gov/articles/carl-roland.htm",
+   "notes": "NPS profile (200) names 'Carl A. Roland, M.S.', Plant Ecologist, Denali NP&P; research interests paraphrased from its publication list. The page links a ResearchGate profile only; no ORCID or Google Scholar link. ORCID on file (0000-0002-6073-4183): pub.orcid.org record name 'Carl Roland', no employment entries; its works (e.g. 'Tree and shrub expansion at treeline drive contrasting responses in a subarctic passerine community', 'Dynamic disequilibrium: ... subarctic floodplains of Interior Alaska') match titles on the NPS page, but since no employment or official page ties it, the iD is not re-asserted here (orcid left null; the lake keeps its value). The nps.gov/im/cakn home and contact pages name no staff. Verifier: page re-fetched (200; last updated November 2023, lists the plant-ecologist post as 2000-present, which is the basis for status active). Bio lightly reworded. ORCID 0000-0002-6073-4183 re-checked: name Carl Roland, no employments, so still not asserted. Verifier 2 (2026-10-26): bio was 61 words, shortened; 'bryophyte' removed from research_interests and 'white and black spruce climate' generalised, since the page's publication list mentions lichens and spruce but no bryophytes/mosses.",
+   "retrieved_at": "2026-10-26"
+  },
+  {
+   "person_id": "35c72178f3d305b3",
+   "name": "Wayne R. Munns",
+   "homepage_url": null,
+   "bio": "Scientist with the U.S. EPA for nearly 30 years, including more than 12 years as director of the Narragansett, Rhode Island laboratory now named the Atlantic Coastal Environmental Sciences Division, and later senior science advisor at EPA's Center for Environmental Measurement and Modeling. Published widely on population-level ecological risk assessment and on bringing ecosystem services into decisions. Died June 2026.",
+   "bio_source_url": "https://www.setac.org/resource/in-memoriam-wayne-r-munns-jr.html",
+   "research_interests": "population-level ecological risk assessment; ecosystem services in environmental decision-making",
+   "research_interests_source_url": "https://www.setac.org/resource/in-memoriam-wayne-r-munns-jr.html",
+   "orcid": "0000-0002-1529-0210",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-1529-0210/employments",
+   "current_title": "Former Division Director, EPA Atlantic Coastal Environmental Sciences Division; later Senior Science Advisor, EPA CEMM",
+   "current_affiliation": "U.S. Environmental Protection Agency (deceased June 2026)",
+   "status": "deceased",
+   "status_source_url": "https://www.setac.org/resource/in-memoriam-wayne-r-munns-jr.html",
+   "evidence": "served as the Division Director for more than 12 years",
+   "evidence_source_url": "https://www.setac.org/resource/in-memoriam-wayne-r-munns-jr.html",
+   "notes": "SETAC 'In Memoriam: Wayne R. Munns Jr.' (June 2026, 200): recruited to EPA 1995 (SAIC 1983-1995 supporting the lab), Division Director >12 years at the Narragansett lab 'now known as the Atlantic Coastal Environmental Sciences Division', then Senior Science Advisor at CEMM, RTP; BS Zoology Univ. Washington 1977, PhD Biological Sciences URI 1984; died June 2026. Family details deliberately not used. Existing homepage (epa.gov/aboutepa/about-atlantic-coastal-environmental-sciences-division) now returns 404, so homepage_url not set. His ACESD 'leadership-team' row is no longer current. ORCID 0000-0002-1529-0210: pub.orcid.org person name 'Wayne R. Munns, Jr.', external id US EPA VIVO munns.wayne; employment U.S. Environmental Protection Agency (consistent). Suffix 'Jr.' omitted from name so the family name stays Munns. Verifier: SETAC page re-fetched (200); bio facts and evidence quote confirmed. ORCID person record re-checked: 'Wayne R.' / 'Munns, Jr.', EPA-sourced external id US EPA VIVO munns.wayne. status 'deceased' is accepted by the loader's STATUS_MAP. The lake's EPA homepage still 404s. Verifier 2 (2026-10-26): cited pages re-fetched (200); bio, evidence quote and status confirmed unchanged; ORCID person record re-checked ('Wayne R.' 'Munns, Jr.', US EPA VIVO munns.wayne, EPA employment).",
+   "retrieved_at": "2026-10-26"
+  },
+  {
+   "person_id": "60f17309b7c7d295",
+   "name": "Christopher J. Korleski",
+   "homepage_url": null,
+   "bio": "Per a 2022 conference biography, head of the EPA's Great Lakes National Program Office since August 2011, apart from 2016-2018 leading EPA Region 5's Water Division. Earlier he directed the Ohio EPA (2007-2011), was in-house environmental counsel for Honda of America and worked on environmental enforcement for the Ohio Attorney General. Trained in soil science and law.",
+   "bio_source_url": "https://iaglr.org/sol/sole22/speakers/chris-korleski/",
+   "research_interests": null,
+   "research_interests_source_url": null,
+   "orcid": null,
+   "orcid_source_url": null,
+   "current_title": null,
+   "current_affiliation": "U.S. Environmental Protection Agency",
+   "status": null,
+   "status_source_url": null,
+   "evidence": "Chris Korleski became director of U.S. EPA’s Great Lakes National Program Office (GLNPO) in August 2011.",
+   "evidence_source_url": "https://iaglr.org/sol/sole22/speakers/chris-korleski/",
+   "notes": "Bio source is the IAGLR State of Lake Erie 2022 speaker page (200): GLNPO director since Aug 2011 except Region 5 Water Division director Oct 2016-Jun 2018; Ohio EPA director 2007-2011; Honda of America in-house environmental counsel 1996-2007; Ohio AG Environmental Enforcement Section 1988-1996; BS soil science Ohio State 1981, MS soil science Univ. Nebraska 1984, law degree Ohio State 1987. IMPORTANT: the current EPA GLNPO page https://www.epa.gov/aboutepa/about-great-lakes-national-program-office-glnpo (fetched 2026-10-26, 200) lists 'Teresa Seidel, Director, Great Lakes National Program Office', so Korleski's GLNPO 'director' row is stale; a research batch should mark it stale with Seidel as current holder. current_title and status left null: no fetched page says what he does now or that he retired. No ORCID found (ORCID search for family name Korleski: no matching record). Verifier: IAGLR page re-fetched (200; it uses 'He'); bio dated to the 2022 page, since the current EPA GLNPO page (re-fetched 200) names Teresa Seidel as director. Verifier 2 (2026-10-26): bio reworded to break an 8-word run copied from the IAGLR page ('U.S. EPA Great Lakes National Program Office'); 'he' kept because the page uses it. EPA GLNPO page re-fetched (200), still names Teresa Seidel as director.",
+   "retrieved_at": "2026-10-26"
+  },
+  {
+   "person_id": "e087b1c054add359",
+   "name": "Philip R. Kaufmann",
+   "homepage_url": "https://anrs.oregonstate.edu/directory/people/philip-kaufmann",
+   "bio": "Holds a courtesy appointment in Oregon State University's Department of Fisheries, Wildlife, and Conservation Sciences. Works on stream channel form and hydraulics, sediment transport and its effects on biota, natural and human influences on aquatic habitat, field methods for measuring biota and habitat, and physical habitat structure in streams, rivers and lakes. PhD in forest hydrology, Oregon State University, 1987.",
+   "bio_source_url": "https://anrs.oregonstate.edu/directory/people/philip-kaufmann",
+   "research_interests": "stream channel form and hydraulics; quantitative field methods for aquatic biota and habitat; natural and human controls on aquatic habitat and biota; stream sediment transport and its biological effects; physical habitat complexity in streams, rivers and lakes",
+   "research_interests_source_url": "https://anrs.oregonstate.edu/directory/people/philip-kaufmann",
+   "orcid": null,
+   "orcid_source_url": null,
+   "current_title": "Courtesy appointment, Department of Fisheries, Wildlife, and Conservation Sciences",
+   "current_affiliation": "Oregon State University",
+   "status": null,
+   "status_source_url": null,
+   "evidence": "Philip Kaufmann Courtesy Appointment",
+   "evidence_source_url": "https://anrs.oregonstate.edu/directory/people/philip-kaufmann",
+   "notes": "Confidence medium on identity: the OSU directory profile (200) does not mention EPA, but its name and specialism (physical habitat in streams, rivers and lakes; field methods) match the EPA NLA/NRSA physical-habitat lead in the work list, and EPA ORD Corvallis sits beside OSU. No EPA staff page for him could be fetched (old homepage is the generic ORD 'about' page, not a profile). ORCID 0000-0003-2888-6061 (pub.orcid.org name 'Philip Kaufmann', no employment entries; works include 'Physical habitat in conterminous US streams and Rivers' parts 1-2 and 'Natural and anthropogenic controls on lake water-level decline ... conterminous' US) is very likely his but is NOT recorded: no official page links it and the record has no employment. No Google Scholar link on the OSU page. status not set. Verifier: OSU page re-fetched (200). Evidence quote shortened to text that appears verbatim (the old quote's last clause was reworded from the page). Identity corroborated by OpenAlex author A5040904364 'Philip Robert Kaufmann' (ORCID 0000-0003-2888-6061), whose institutions are both the Environmental Protection Agency and Oregon State University; ORCID still not recorded because the record has no employment and no official page links it. Verifier 2 (2026-10-26): research_interests reworded to break an 8-word run copied from the OSU page. OpenAlex A5040904364 re-fetched: 'Philip Robert Kaufmann', ORCID 0000-0003-2888-6061, affiliations EPA and Oregon State University (2023-2025); identity kept at medium.",
+   "retrieved_at": "2026-10-26"
+  }
+ ],
+ "dropped": [
+  {
+   "person_id": "6d90f82d85ef16e7",
+   "name": "Rachael Phillos",
+   "reason": "No page naming her could be found: the DNREC research-reserve page (the cited affiliation source, 200) names no staff, the DNERR podcast contributors page lists other reserve staff but not her, and web searches for 'Rachael Phillos' with DNERR/DNREC return nothing. Her 'manager' row is unverified."
+  },
+  {
+   "person_id": "504dc47213217627",
+   "name": "Margaret R. MacCluskie",
+   "reason": "No page about her as an individual: nps.gov/im/cakn home and contact pages name no staff; searches only show her as co-author (as Margaret C. MacCluskie) of the 2005 Central Alaska Network vital signs monitoring plan. Current role cannot be confirmed; note middle initial differs (C. in USGS citation vs R. in lake)."
+  },
+  {
+   "person_id": "77bdf6f68d188012",
+   "name": "Lindsay J. Cross",
+   "reason": "Identity not confirmed and affiliation likely wrong: the only Florida Lindsay Cross found in searches is a Trust for Public Land state director, former Florida legislator and ex-Tampa Bay Estuary Program staffer, with no Nature Conservancy or Disney Wilderness Preserve connection. The work-list row came from model recall; a reviewer should check whether this DWP lead-PI row should exist at all."
+  },
+  {
+   "person_id": "fc4c024faf7e902a",
+   "name": "Steve Morrison",
+   "reason": "No official page; the only profile found (Haven Magazines, 2020) describes a 'Sticky' Steve Morrison who managed Tiger Creek and other TNC Lake Wales Ridge preserves with a prescribed-fire focus and retired after ~30 years, but it never mentions Disney Wilderness Preserve, so identity with the DWP lead-PI row (recall-era) cannot be confirmed."
+  },
+  {
+   "person_id": "7125e2c15eb448a5",
+   "name": "Glenn J. Warren",
+   "reason": "No current page: epa.gov/great-lakes-monitoring (cited source, 200) names no people; the only mention found is a 2004 GLNPO activity report (search snippet; host unreachable). Current role and status unknown."
+  },
+  {
+   "person_id": "d3e058f5c2515bdb",
+   "name": "Pixie A. Hamilton",
+   "reason": "USGS staff profile https://www.usgs.gov/staff-profiles/pixie-hamilton returned 403 to the fetcher; only bibliographic records found (co-author of USGS Circular 1265, 2004, NAWQA). No page tying her to the EPA National Lakes Assessment; her NLA co-PI row looks doubtful (NAWQA is a USGS program)."
+  }
+ ]
+}

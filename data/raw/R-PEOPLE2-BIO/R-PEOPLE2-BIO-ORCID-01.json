@@ -1,0 +1,82 @@
+{
+ "batch_id": "R-PEOPLE2-BIO-ORCID-01",
+ "retrieved_at": "2026-10-26",
+ "verified_by": "two adversarial verifiers per ORCID 2026-10-26",
+ "updates": [
+  {
+   "person_id": "00dda128a464e846",
+   "name": "Brian L. McGlynn",
+   "orcid": "0000-0001-5266-4894",
+   "orcid_source_url": "https://orcid.org/0000-0001-5266-4894",
+   "notes": "ORCID proposed by enrich_people_orcid.py and confirmed by two independent checks of the pub.orcid.org record against the catalogue affiliation"
+  },
+  {
+   "person_id": "fd1a07d3b4b419fe",
+   "name": "Erik Smith",
+   "orcid": "0000-0002-7550-4276",
+   "orcid_source_url": "https://orcid.org/0000-0002-7550-4276",
+   "notes": "ORCID proposed by enrich_people_orcid.py and confirmed by two independent checks of the pub.orcid.org record against the catalogue affiliation"
+  },
+  {
+   "person_id": "c34a1c5f933f1380",
+   "name": "Jace Tunnell",
+   "orcid": "0000-0002-7430-466X",
+   "orcid_source_url": "https://orcid.org/0000-0002-7430-466X",
+   "notes": "ORCID proposed by enrich_people_orcid.py and confirmed by two independent checks of the pub.orcid.org record against the catalogue affiliation"
+  },
+  {
+   "person_id": "0c6c940407166244",
+   "name": "Lia Sansom",
+   "orcid": "0009-0007-3808-6777",
+   "orcid_source_url": "https://orcid.org/0009-0007-3808-6777",
+   "notes": "ORCID proposed by enrich_people_orcid.py and confirmed by two independent checks of the pub.orcid.org record against the catalogue affiliation"
+  },
+  {
+   "person_id": "a89d5a435c38232c",
+   "name": "Nathan McTigue",
+   "orcid": "0000-0002-7686-7095",
+   "orcid_source_url": "https://orcid.org/0000-0002-7686-7095",
+   "notes": "ORCID proposed by enrich_people_orcid.py and confirmed by two independent checks of the pub.orcid.org record against the catalogue affiliation"
+  },
+  {
+   "person_id": "234d5914488a8ee1",
+   "name": "Nicole Burnett",
+   "orcid": "0009-0002-2495-8718",
+   "orcid_source_url": "https://orcid.org/0009-0002-2495-8718",
+   "notes": "ORCID proposed by enrich_people_orcid.py and confirmed by two independent checks of the pub.orcid.org record against the catalogue affiliation"
+  }
+ ],
+ "dropped": [
+  {
+   "person_id": "6b5037ecc7044cab",
+   "name": "Daniel Fisher",
+   "reason": "resolver proposed 0000-0001-7164-731X; rejected on verification: I fetched the public ORCID record 0000-0001-7164-731X. It is a bare record: the name is Daniel Fisher and the only employment is \"USDA Agricultural Research Service\", with no role, department o"
+  },
+  {
+   "person_id": "35489949d8a4eddd",
+   "name": "Laura F. Huenneke",
+   "reason": "resolver proposed 0000-0002-2562-6822; rejected on verification: The public ORCID record 0000-0002-2562-6822 (fetched from pub.orcid.org v3.0) holds only a name, Laura Huenneke. It was created and last modified on the same day in 2016 and has no other names,"
+  },
+  {
+   "person_id": "689e809d832c92be",
+   "name": "Lauren White",
+   "reason": "resolver proposed 0009-0001-0806-9948; rejected on verification: ORCID public record (pub.orcid.org v3.0, fetched now): given name Lauren, family name White. It has one employment, Biologist at New Hampshire Fish and Game Department, starting 2025-01. It has "
+  },
+  {
+   "person_id": "f268c83b267b5e5d",
+   "name": "Molly Wick",
+   "reason": "resolver proposed 0000-0002-5879-0696; rejected on verification: The ORCID record (pub.orcid.org v3.0, fetched) is for Molly Wick. Her current employment there is Wisconsin Department of Natural Resources, Office of Great Waters - Lake Superior Team, from 20"
+  },
+  {
+   "person_id": "ebb4846a95cda597",
+   "name": "Pat Burke",
+   "reason": "resolver proposed 0000-0001-6265-5385; rejected on verification: The ORCID record (fetched from pub.orcid.org) belongs to Patrick Burke, a meteorologist. His listed employment is Warn-on-Forecast Program Lead at OAR's National Severe Storms Laboratory (from "
+  },
+  {
+   "person_id": "d1c39e3d5ff9d8e3",
+   "name": "William P. Bowman",
+   "reason": "resolver proposed 0000-0003-4381-5245; rejected on verification: ORCID 0000-0003-4381-5245 (William Bowman) is an astronomer: PhD in Astronomy and Astrophysics, Penn State (2016); employed at Yale University (2022-); 47 works, all astrophysics (HETDEX, Drago"
+  }
+ ],
+ "notes": "Nine further accepted ORCIDs (same iD) are written, with their own source, by the 2026-10-26 bio batches: Chris Bowser (R-PEOPLE2-BIO-45.json), George McManus (R-PEOPLE2-BIO-38.json), Jamie Vaudrey (R-PEOPLE2-BIO-39.json), Jason Krumholz (R-PEOPLE2-BIO-39.json), Jessica Kinsella (R-PEOPLE2-BIO-32.json), Katharyn Boyer (R-PEOPLE2-BIO-57.json), Lauren Barrett (R-PEOPLE2-BIO-39.json), Margot Buchbinder (R-PEOPLE2-BIO-57.json), Simon Brandl (R-PEOPLE2-BIO-43.json)"
+}

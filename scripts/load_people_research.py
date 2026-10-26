@@ -155,7 +155,9 @@ STATUS_MAP = {"active": "active", "emeritus": "emeritus", "former": "former",
               "retired": "former", "deceased": "deceased", "unknown": None}
 
 PEOPLE_COLS = ["bio_source_url", "bio_retrieved_at", "research_interests_source_url",
-               "orcid_source_url", "homepage_checked_at"]
+               "orcid_source_url", "homepage_checked_at", "google_scholar_source_url"]
+# A Google Scholar profile id: the user= value of scholar.google.com/citations.
+SCHOLAR_ID = re.compile(r"^[A-Za-z0-9_-]{12}$")
 PERSONNEL_COLS = ["is_current", "evidence"]
 
 
@@ -416,6 +418,7 @@ STAGE_PEOPLE_DDL = """
 CREATE OR REPLACE TEMP TABLE _stage_people (
     person_id VARCHAR, name VARCHAR, name_given VARCHAR, name_family VARCHAR,
     orcid VARCHAR, orcid_source_url VARCHAR,
+    google_scholar_id VARCHAR, google_scholar_source_url VARCHAR,
     homepage_url VARCHAR, homepage_checked_at DATE,
     bio VARCHAR, bio_source_url VARCHAR, bio_retrieved_at DATE,
     research_interests VARCHAR, research_interests_source_url VARCHAR,
@@ -445,6 +448,16 @@ def _people_set(authoritative: bool) -> dict[str, str]:
             else "COALESCE(t.orcid_source_url, s.orcid_source_url)")
     return {
         "orcid": "COALESCE(t.orcid, s.orcid)",
+        # Fill-only, like the ORCID: a Scholar id on file is never replaced.
+        "google_scholar_id": "COALESCE(t.google_scholar_id, s.google_scholar_id)",
+        # ... and an id on file without a source takes the source of a file
+        # that gives the same id.
+        "google_scholar_source_url": "CASE WHEN s.google_scholar_id IS NOT NULL AND "
+                                     "(t.google_scholar_id IS NULL OR "
+                                     "(t.google_scholar_id = s.google_scholar_id AND "
+                                     "t.google_scholar_source_url IS NULL)) THEN "
+                                     "s.google_scholar_source_url "
+                                     "ELSE t.google_scholar_source_url END",
         "orcid_source_url": f"CASE WHEN s.orcid IS NOT NULL THEN {osrc} "
                             f"ELSE t.orcid_source_url END",
         "homepage_url": f"CASE WHEN {home} THEN s.homepage_url ELSE t.homepage_url END",
@@ -484,9 +497,11 @@ def merge_people(con, authoritative: bool = False) -> dict:
         WHEN MATCHED AND ({changed}) THEN UPDATE SET {sets}, updated_at = now()
         WHEN NOT MATCHED THEN INSERT
             (person_id, name, name_given, name_family, orcid, orcid_source_url,
+             google_scholar_id, google_scholar_source_url,
              homepage_url, homepage_checked_at, bio, bio_source_url, bio_retrieved_at,
              research_interests, research_interests_source_url, status, notes)
         VALUES (s.person_id, s.name, s.name_given, s.name_family, s.orcid, s.orcid_source_url,
+                s.google_scholar_id, s.google_scholar_source_url,
                 s.homepage_url, s.homepage_checked_at, s.bio, s.bio_source_url,
                 s.bio_retrieved_at, s.research_interests, s.research_interests_source_url,
                 s.status, s.note_add)""")
@@ -512,6 +527,27 @@ def person_fields(con, pid: str, rec: dict, retrieved_at: str, fetched_ok: set[s
             warn.append(f"ORCID {orcid} for {rec.get('name')!r} ({pid}) is already on "
                         f"{other[0][1]!r} ({other[0][0]}) — not written; merge the two")
             orcid = None
+    gs, gs_src = blank(rec.get("google_scholar_id")), blank(rec.get("google_scholar_source_url"))
+    if gs and not SCHOLAR_ID.match(gs):
+        warn.append(f"google_scholar_id {gs!r} for {rec.get('name')!r} is not a Scholar "
+                    f"user id — not written")
+        gs = None
+    if gs and not gs_src:
+        warn.append(f"google_scholar_id for {rec.get('name')!r} has no "
+                    f"google_scholar_source_url — not written")
+        gs = None
+    if gs:
+        have = lto_db.scalar(con, "SELECT google_scholar_id FROM people WHERE person_id = ?", [pid])
+        other = lto_db.rows(con, "SELECT person_id, name FROM people WHERE google_scholar_id = ? "
+                                 "AND person_id <> ? ORDER BY person_id LIMIT 1", [gs, pid])
+        if have and have != gs:
+            warn.append(f"Scholar id conflict for {rec.get('name')!r}: file {gs}, lake {have} "
+                        f"— kept the lake's")
+            gs = None
+        elif other:
+            warn.append(f"Scholar id {gs} for {rec.get('name')!r} ({pid}) is already on "
+                        f"{other[0][1]!r} ({other[0][0]}) — not written; merge the two")
+            gs = None
     bio, bio_src = blank(rec.get("bio")), blank(rec.get("bio_source_url"))
     if bio and not bio_src:
         warn.append(f"bio for {rec.get('name')!r} has no bio_source_url — not written")
@@ -526,6 +562,7 @@ def person_fields(con, pid: str, rec: dict, retrieved_at: str, fetched_ok: set[s
     return {
         "orcid": orcid,
         "orcid_source_url": blank(rec.get("orcid_source_url")) if orcid else None,
+        "google_scholar_id": gs, "google_scholar_source_url": gs_src if gs else None,
         "homepage_url": home,
         "homepage_checked_at": retrieved_at if home and home in cited else None,
         "bio": bio, "bio_source_url": bio_src if bio else None,
@@ -537,7 +574,8 @@ def person_fields(con, pid: str, rec: dict, retrieved_at: str, fetched_ok: set[s
 def stage_people(con, rows: list[dict]) -> None:
     con.execute(STAGE_PEOPLE_DDL)
     cols = ["person_id", "name", "name_given", "name_family", "orcid", "orcid_source_url",
-            "homepage_url", "homepage_checked_at", "bio", "bio_source_url", "bio_retrieved_at",
+            "google_scholar_id", "google_scholar_source_url", "homepage_url",
+            "homepage_checked_at", "bio", "bio_source_url", "bio_retrieved_at",
             "research_interests", "research_interests_source_url", "status", "note_add"]
     if rows:                              # executemany rejects an empty list
         con.executemany(

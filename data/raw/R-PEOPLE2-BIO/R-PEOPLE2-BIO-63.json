@@ -1,0 +1,153 @@
+{
+ "batch_id": "R-PEOPLE2-BIO-63",
+ "retrieved_at": "2026-10-26",
+ "verified_by": "adversarial-verifier 2026-10-26",
+ "updates": [
+  {
+   "person_id": "586bca6b0aeec537",
+   "name": "Henry S. Fitch",
+   "homepage_url": null,
+   "bio": "University of Kansas herpetologist who lived on the KU Field Station reserve now called the Fitch Reservation from 1948 until not long before he died in 2009. KU calls his herpetological study there, which spanned over 50 years, the longest-running in the world; he also set the reserve's public trail.",
+   "bio_source_url": "https://biosurvey.ku.edu/fitch-natural-history-reservation",
+   "research_interests": "herpetology; long-term herpetological field study at the KU Field Station",
+   "research_interests_source_url": "https://biosurvey.ku.edu/fitch-natural-history-reservation",
+   "orcid": null,
+   "orcid_source_url": null,
+   "current_title": null,
+   "current_affiliation": "University of Kansas (Kansas Biological Survey & Center for Ecological Research, KU Field Station)",
+   "status": "deceased",
+   "status_source_url": "https://biosurvey.ku.edu/fitch-natural-history-reservation",
+   "evidence": "public trail set by Henry Fitch, KU herpetologist, who lived with his family here from 1948 until shortly before his death in 2009",
+   "evidence_source_url": "https://biosurvey.ku.edu/fitch-natural-history-reservation",
+   "notes": "Kansas Biological Survey page on the Fitch Natural History Reservation (200). The page does not use the title 'superintendent'; it says the 590-acre reserve was established in 1947 and that Fitch's study spanned more than 50 years. No personal profile page exists (deceased). No ORCID or Scholar link found on a fetched page.",
+   "retrieved_at": "2026-10-26"
+  },
+  {
+   "person_id": "05fea7471289a5d7",
+   "name": "Arthur D. Hasler",
+   "homepage_url": null,
+   "bio": "Zoology faculty member at the University of Wisconsin from 1937, full professor from 1948 and emeritus after retiring in 1978, who expanded the Wisconsin School of Limnology and was central to building the Lake Mendota limnology laboratory and Trout Lake Station. He showed that salmon find natal streams by olfactory imprinting and pioneered whole-lake experiments. He died in 2001.",
+   "bio_source_url": "https://limnology.wisc.edu/about-cfl/arthur-davis-hasler/",
+   "research_interests": "salmon homing and olfactory imprinting; whole-lake experimental manipulations; land-water interactions and lake water quality; cultural eutrophication",
+   "research_interests_source_url": "https://limnology.wisc.edu/about-cfl/arthur-davis-hasler/",
+   "orcid": null,
+   "orcid_source_url": null,
+   "current_title": "Professor of Zoology (emeritus; deceased 2001)",
+   "current_affiliation": "University of Wisconsin-Madison, Center for Limnology",
+   "status": "deceased",
+   "status_source_url": "https://limnology.wisc.edu/about-cfl/arthur-davis-hasler/",
+   "evidence": "Hasler played the key role in the construction of the Laboratory of Limnology on Lake Mendota, and the Trout Lake Station on Trout Lake.",
+   "evidence_source_url": "https://limnology.wisc.edu/about-cfl/arthur-davis-hasler/",
+   "notes": "UW-Madison Center for Limnology page 'Arthur Davis Hasler' (200). The page credits him with the key role in building Trout Lake Station but does not call him its director; the lake's role 'former-director' at Trout Lake Station is not confirmed by this page (a research batch should review it). Page also states he was a founder and first director of the Institute for Ecology, NAS member (1969), and died March 23, 2001 aged 93. No ORCID (pre-ORCID era).",
+   "retrieved_at": "2026-10-26"
+  },
+  {
+   "person_id": "896f3b68fdbaac04",
+   "name": "Amber Packard",
+   "homepage_url": null,
+   "bio": "Laboratory manager of the Environmental Analysis Lab at the University of the Virgin Islands' Center for Marine and Environmental Studies. The lab supports environmental projects with land- and boat-based sampling, in-situ water testing and analyses of bacteria, suspended solids and nutrients.",
+   "bio_source_url": "https://www.uvi.edu/research/center-for-marine-environmental-studies/environmental_analysis_lab.html",
+   "research_interests": null,
+   "research_interests_source_url": null,
+   "orcid": "0009-0008-0774-2791",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0009-0008-0774-2791/person",
+   "current_title": "Laboratory Manager, Environmental Analysis Lab",
+   "current_affiliation": "University of the Virgin Islands, Center for Marine and Environmental Studies",
+   "status": "active",
+   "status_source_url": "https://www.uvi.edu/research/center-for-marine-environmental-studies/facilities-and-support/index.html",
+   "evidence": "Environmental Analysis Lab Amber Packard",
+   "evidence_source_url": "https://www.uvi.edu/research/center-for-marine-environmental-studies/facilities-and-support/index.html",
+   "notes": "The EAL page (200) names the laboratory manager only by a UVI contact address; the CMES facilities-and-support page (200) lists Amber Packard as Contact/Lead for the Environmental Analysis Lab in its Facility Contacts table. No individual profile page found, so homepage_url left null and the bio is limited to the role and the lab's services. ORCID 0009-0008-0774-2791 checked at pub.orcid.org: name Amber Packard, employment University of the Virgin Islands, CMES, 'Researcher/Lab Manager' (consistent).",
+   "retrieved_at": "2026-10-26"
+  },
+  {
+   "person_id": "a5556c93f8f72fd3",
+   "name": "Connor White",
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null,
+   "orcid": "0000-0001-8260-290X",
+   "orcid_source_url": "https://lternet.edu/directory/?user=16233",
+   "current_title": "Information Manager",
+   "current_affiliation": "Virginia Coast Reserve LTER (University of Virginia)",
+   "status": "active",
+   "status_source_url": "https://lternet.edu/directory/?user=16233",
+   "evidence": "LTER Directory: Connor White Title: Information Manager Sites: Virginia Coast Reserve LTER Orcid: https://orcid.org/0000-0001-8260-290X",
+   "evidence_source_url": "https://lternet.edu/directory/?user=16233",
+   "notes": "LTER Network directory entry (200) and the VCR LTER site personnel record https://www.vcrlter.virginia.edu/data/personnel/person.php?QID=cwhite (200; 'Connor F White', LTER affiliation IM) both link ORCID 0000-0001-8260-290X, confirming the existing value. Neither page states a research focus, so no bio written. The ORCID record lists no employment, only education (Harvard OEB from 2019, MS CSU Long Beach 2013, BS William and Mary 2009). No Scholar link found.",
+   "retrieved_at": "2026-10-26"
+  },
+  {
+   "person_id": "59b3a5cd268d809e",
+   "name": "George R. Aiken",
+   "homepage_url": null,
+   "bio": "USGS scientist who joined the National Research Program's Central Region in Denver in 1976. The research addressed how natural organic matter, especially dissolved organic carbon, governs groundwater and surface-water biogeochemistry, including permafrost thaw and DOC transport in the Yukon Basin and mercury availability in the Florida Everglades. Continued as a USGS Scientist Emeritus after retiring in 2016.",
+   "bio_source_url": "https://wayback.archive-it.org/12313/20210527125749/https://www.colorado.edu/cwest/2016/12/08/distinguished-usgs-scientists-george-aiken-retiring",
+   "research_interests": "dissolved organic carbon and natural organic matter in groundwater and surface water; permafrost thaw and organic carbon in the Yukon River Basin; organic matter and mercury availability in the Florida Everglades",
+   "research_interests_source_url": "https://wayback.archive-it.org/12313/20210527125749/https://www.colorado.edu/cwest/2016/12/08/distinguished-usgs-scientists-george-aiken-retiring",
+   "orcid": null,
+   "orcid_source_url": null,
+   "current_title": "Scientist Emeritus, USGS National Research Program (as of 2016)",
+   "current_affiliation": "U.S. Geological Survey, National Research Program",
+   "status": null,
+   "status_source_url": null,
+   "evidence": "George will continue this next phase as a Scientist Emeritus for the USGS National Research Program",
+   "evidence_source_url": "https://wayback.archive-it.org/12313/20210527125749/https://www.colorado.edu/cwest/2016/12/08/distinguished-usgs-scientists-george-aiken-retiring",
+   "notes": "Source is the University of Colorado CWEST news item 'Distinguished USGS Scientists, George Aiken, is Retiring' (Dec. 8, 2016); colorado.edu redirects it to the CU Archive-It copy, read with WebFetch (200). USGS staff profile george-aiken returned 403 (george-r-aiken 404). Status left null: the page gives Scientist Emeritus as of 2016 and no fetched page states a later status. The page does not mention Sleepers River, so the WEBB-SLR affiliation is unconfirmed here. No ORCID or Scholar link found.",
+   "retrieved_at": "2026-10-26"
+  },
+  {
+   "person_id": "3e526feccea9f69c",
+   "name": "Ray Bryant",
+   "homepage_url": null,
+   "bio": "Research soil scientist with USDA-ARS at University Park, Pennsylvania, and a former research leader there, per a 2011 American Society of Agronomy Fellows release. His program studies how soil and landscape processes drive nutrient losses. He earned B.S. and M.S. degrees at Texas Tech and a Ph.D. at Purdue.",
+   "bio_source_url": "https://www.sciencesocieties.org/news/media-releases/releases/2011/0824/499/",
+   "research_interests": "soil and landscape processes controlling nutrient losses from agricultural land",
+   "research_interests_source_url": "https://www.sciencesocieties.org/news/media-releases/releases/2011/0824/499/",
+   "orcid": null,
+   "orcid_source_url": null,
+   "current_title": "Site Coordinator, Upper Chesapeake Bay LTAR; Research Soil Scientist (2011)",
+   "current_affiliation": "USDA Agricultural Research Service, University Park, Pennsylvania",
+   "status": "active",
+   "status_source_url": "https://ltar.ars.usda.gov/sites/ucb/",
+   "evidence": "Lead investigators: Ray Bryant (site coordinator), Kathy Soder (Grazinglands Lead)",
+   "evidence_source_url": "https://ltar.ars.usda.gov/sites/ucb/",
+   "notes": "Bio from the 2011 ASA Fellows news release (sciencesocieties.org, 200), the only fetched page with his role and focus; it describes him as a research soil scientist and former research leader at ARS University Park. Current role from the LTAR UCB site page (200), which names Carrie Laboski as Site Lead and him as site coordinator. ARS people pages /northeast-area/up-pa/pswmru/people/ray-bryant and the unit people list returned 404. ORCID 0000-0002-7464-4138 (pub.orcid.org record 'Ray Bryant', linked by OpenAlex A5084953787) has no employment, URLs or biography, so it was not recorded. No Scholar link found.",
+   "retrieved_at": "2026-10-26"
+  }
+ ],
+ "dropped": [
+  {
+   "person_id": "a0acf3d092ae31d9",
+   "name": "Christopher J. McCabe",
+   "reason": "USGS staff profile christopher-mccabe returns 404 (WebFetch, 2026-10-26); no other page about a USGS hydrologist of this name could be found. The stored notes (PRMS / Monthly Water Balance Model) fit Gregory J. McCabe of USGS, so the record is likely misnamed and needs human review; usgs.gov profile pages otherwise returned 403 to this agent. Re-checked 2026-10-26: usgs.gov staff-profiles christopher-mccabe and gregory-j-mccabe both 404; a web search finds no Christopher J. McCabe at USGS."
+  },
+  {
+   "person_id": "935e5ba30c1d80ab",
+   "name": "Donald H. Campbell",
+   "reason": "USGS staff profile donald-h-campbell (the affiliation source) and donald-campbell return 404; the Loch Vale Watershed project site (nrel.colostate.edu/projects/lvws) redirects to an unreachable host. No page about him could be fetched; emeritus status unverified. Re-checked 2026-10-26: web search finds only USGS reports he co-authored (Loch Vale fact sheet FS-164-99, Rocky Mountain snowpack chemistry OFRs), none stating his title or status."
+  },
+  {
+   "person_id": "525dc8c26b0ce4b0",
+   "name": "Eugene J. Stallings",
+   "reason": "No official page about him could be found or fetched (no homepage on record; ORCID registry has no match). Existing notes are from model recall and are unsourced. Re-checked 2026-10-26: web search on USGS Office of Surface Water pages finds no mention of him."
+  },
+  {
+   "person_id": "8fc81e5e1f88d158",
+   "name": "James R. Slack",
+   "reason": "No official page about him could be found or fetched; ORCID registry search for James Slack returns only unrelated people (non-USGS employers). Existing notes are unsourced. Re-checked 2026-10-26: web search finds only HCDN reports he co-authored (OFR 92-129, WRI 93-4076), none describing him."
+  },
+  {
+   "person_id": "19ab590e73a53cfe",
+   "name": "Owen W. Bricker III",
+   "reason": "No official page about him could be found or fetched (no homepage on record). Existing notes are unsourced. Re-checked 2026-10-26: a web search finds only a 2014 Aquatic Geochemistry special-issue preface honouring 'Owen P. Bricker III' (Crossref DOI 10.1007/s10498-014-9229-8); Springer page blocked to this agent, so nothing could be read. Note the middle initial differs from the lake's 'Owen W.'."
+  },
+  {
+   "person_id": "8725eea7c9249b7d",
+   "name": "Paul D. Jobsis",
+   "reason": "Only a 2025 UVI news release names him ('UVI Director of the Center for Marine and Environmental Studies') with no research focus; no UVI profile page exists (CMES pages carry only a contact address). His ORCID 0000-0002-1152-2889 (pub.orcid.org, fetched; OpenAlex A5052523676 links it) lists employment as Executive Director, CWORI (Coral World Ocean and Reef Initiative), St. Thomas, from 2025-11, not UVI, so the ORCID was not recorded and the UVI director role may now be stale; cwori.org returned a bot challenge (202) and could not be read. Needs a research-batch check of the current CMES director. Re-checked 2026-10-26: archived UVI faculty profile (archive.uvi.edu/directory/profiles/faculty/jobsis-paul.aspx) returns 401; a 2022 UVI news item (200) only names him CMES director, with no research focus."
+  }
+ ]
+}

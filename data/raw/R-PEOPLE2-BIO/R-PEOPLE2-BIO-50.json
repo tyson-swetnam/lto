@@ -1,0 +1,134 @@
+{
+ "batch_id": "R-PEOPLE2-BIO-50",
+ "retrieved_at": "2026-10-26",
+ "verified_by": "adversarial-verifier 2026-10-26",
+ "updates": [
+  {
+   "person_id": "1b2336f0683e42ee",
+   "name": "Peter J. Edmunds",
+   "homepage_url": null,
+   "bio": "California State University Northridge biologist whose lab studies the physiological ecology of tropical reef corals through combined laboratory and field experiments. The lab follows long-term reef dynamics alongside individual coral biology, aiming to project how coral populations will respond to global climate change. NSF supports its LTER work in Moorea and LTREB work in St. John, USVI.",
+   "bio_source_url": "https://www.moorea.berkeley.edu/people/peter-edmunds",
+   "research_interests": "physiological ecology of tropical reef corals; long-term coral reef dynamics; cellular and subcellular processes in corals; projecting coral population change under climate change",
+   "research_interests_source_url": "https://www.moorea.berkeley.edu/people/peter-edmunds",
+   "orcid": "0000-0002-9039-9347",
+   "orcid_source_url": "https://www.moorea.berkeley.edu/people/peter-edmunds",
+   "current_title": "Co-Principal Investigator, Moorea Coral Reef LTER",
+   "current_affiliation": "California State University Northridge",
+   "status": null,
+   "status_source_url": null,
+   "evidence": "Name: Peter Edmunds ... Title: Co-Principal Investigator Sites: Moorea Coral Reef LTER",
+   "evidence_source_url": "https://lternet.edu/directory/?user=2531",
+   "notes": "Bio from the UC Berkeley Gump Station people page (affiliation California State University Northridge; links orcid.org/0000-0002-9039-9347). The LTER directory (user=2531) lists the same ORCID with title Co-Principal Investigator, Moorea Coral Reef LTER. pub.orcid.org record name: Peter Edmunds (no public employments). Existing homepage (CSUN personal page) returned a CSUN scheduled-maintenance page on 2026-10-26, so it was not re-checked; homepage left unchanged. No Google Scholar link on any fetched page."
+  },
+  {
+   "person_id": "f10d54c012bfeafa",
+   "name": "Robert C. Carpenter",
+   "homepage_url": "https://www.moorea.berkeley.edu/people/robert-carpenter",
+   "bio": "California State University Northridge ecologist studying marine benthic communities: how light and water flow shape algal physiology, and how herbivore-algae interactions scale up to communities, comparing coral reefs with kelp forests. One of four PIs of the Moorea Coral Reef LTER, measuring long-term change in reef structure and function and hydrodynamic controls on reef metabolism.",
+   "bio_source_url": "https://www.moorea.berkeley.edu/people/robert-carpenter",
+   "research_interests": "marine benthic community ecology; light and water flow effects on algal physiology; herbivore-algae interactions; coral reef metabolism and hydrodynamics; coral reef versus kelp forest communities",
+   "research_interests_source_url": "https://www.moorea.berkeley.edu/people/robert-carpenter",
+   "orcid": "0000-0003-4232-1868",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0003-4232-1868/person",
+   "current_title": "Professor",
+   "current_affiliation": "California State University Northridge",
+   "status": null,
+   "status_source_url": null,
+   "evidence": "As one of 4 PIs on this project, I am involved in quantifying long-term changes in coral reef community structure and function.",
+   "evidence_source_url": "https://www.moorea.berkeley.edu/people/robert-carpenter",
+   "notes": "Gump Station people page (Moorea) is a profile of this person at California State University Northridge and names the NSF LTER coral reef site in Moorea. Existing ORCID 0000-0003-4232-1868 checked at pub.orcid.org: name Robert Carpenter, employment California State University Northridge, Professor, 1988-present (consistent); title taken from that employment. No Google Scholar link found. No page states active/emeritus, so status left null."
+  },
+  {
+   "person_id": "6fb68a3669c1026c",
+   "name": "Adam Davis",
+   "homepage_url": "https://cropsciences.illinois.edu/directory/asdavis1",
+   "bio": "Heads the Department of Crop Sciences at the University of Illinois, where he is a professor recognized internationally for agroecology centred on ecological approaches to weed control. He uses field experiments and models to tackle applied weed problems in crop production, including herbicide resistance evolution and spread, multi-tactic integrated weed management, weed seedbank ecology and diversified cropping systems.",
+   "bio_source_url": "https://cropsciences.illinois.edu/directory/asdavis1",
+   "research_interests": "diversified cropping systems and agroecosystem sustainability; spatial ecology of agricultural risk and plant invasions; herbicide resistance evolution; integrated weed management; weed seedbank ecology",
+   "research_interests_source_url": "https://cropsciences.illinois.edu/directory/asdavis1",
+   "orcid": null,
+   "orcid_source_url": null,
+   "current_title": "Professor and Department Head, Department of Crop Sciences",
+   "current_affiliation": "University of Illinois Urbana-Champaign",
+   "status": "active",
+   "status_source_url": "https://cropsciences.illinois.edu/directory/asdavis1",
+   "evidence": "Dr. Adam Davis is professor and head of the University of Illinois Department of Crop Sciences.",
+   "evidence_source_url": "https://cropsciences.illinois.edu/directory/asdavis1",
+   "notes": "Profile body is filled client-side from the university directory service (ws.engr.illinois.edu/directory/item.asp?unit=1802&id=asdavis1), fetched 200; it names Adam Davis, Professor and Department Head. The Morrow Plots page names department head Adam Davis as overseeing the plots. No ORCID or Google Scholar link on the profile."
+  },
+  {
+   "person_id": "5fb976591e85e9aa",
+   "name": "Frederick E. Below",
+   "homepage_url": "https://cropsciences.illinois.edu/directory/fbelow",
+   "bio": "Crop physiology professor in Crop Sciences at the University of Illinois. His research asks what limits the productivity of corn and soybean. He teaches crop courses from introductory to graduate level and devised the corn 'Seven Wonders' and soybean 'Six Secrets' frameworks to show farmers and agricultural professionals how each management decision affects yield.",
+   "bio_source_url": "https://cropphysiology.cropsci.illinois.edu/staff/",
+   "research_interests": "grain quality for processing; nitrogen use efficiency and nutrient uptake and partitioning; corn and soybean production management; fertilizer placement and timing; crop rotation and tillage effects",
+   "research_interests_source_url": "https://cropsciences.illinois.edu/directory/fbelow",
+   "orcid": "0000-0001-7696-3688",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0001-7696-3688/person",
+   "current_title": "Professor of Crop Physiology, Department of Crop Sciences",
+   "current_affiliation": "University of Illinois Urbana-Champaign",
+   "status": "active",
+   "status_source_url": "https://cropphysiology.cropsci.illinois.edu/staff/",
+   "evidence": "Frederick E. Below, Professor Dr. Below is a Professor of Crop Physiology in the Department of Crop Sciences.",
+   "evidence_source_url": "https://cropphysiology.cropsci.illinois.edu/staff/",
+   "notes": "Old homepage /directory/profile/fbelow now 404; the Crop Physiology Lab staff page links the current profile /directory/fbelow (body served by ws.engr.illinois.edu directory service, unit 1802, id fbelow; title Professor; lists Orcid 0000-0001-7696-3688). pub.orcid.org: name Frederick Below, employment University of Illinois System, Professor; researcher URL cropphysiology.cropsci.illinois.edu. The lake held status 'emeritus'; the lab's 2026-27 faculty and staff page and the university directory both list him as Professor, so status set to active. No Google Scholar link found. Verifier 2026-10-26: orcid_source_url moved to the ORCID record (name Frederick Below; employment University of Illinois System, Professor; researcher URL is the Crop Physiology Lab), because the profile page renders its ORCID only client-side."
+  },
+  {
+   "person_id": "bbf49085f718c480",
+   "name": "Jonathan Coppess",
+   "homepage_url": "https://ace.illinois.edu/directory/jwcoppes",
+   "bio": "Associate Professor of law and policy in Agricultural and Consumer Economics at the University of Illinois Urbana-Champaign and director of its Gardner Agriculture Policy Program. Research centres on agricultural law and policy, covering farm support, risk management, natural resource conservation and biofuels. Teaches the department's agricultural law course.",
+   "bio_source_url": "https://ace.illinois.edu/directory/jwcoppes",
+   "research_interests": "agricultural law and policy; farm support programs and risk management; conservation of natural resources; biofuels",
+   "research_interests_source_url": "https://ace.illinois.edu/directory/jwcoppes",
+   "orcid": "0000-0002-1504-6621",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-1504-6621/person",
+   "current_title": "Associate Professor; Director of the Gardner Agriculture Policy Program",
+   "current_affiliation": "Department of Agricultural and Consumer Economics, University of Illinois Urbana-Champaign",
+   "status": "active",
+   "status_source_url": "https://ace.illinois.edu/directory/jwcoppes",
+   "evidence": "Jonathan W Coppess Associate Professor; Director of the Gardner Agriculture Policy Program",
+   "evidence_source_url": "https://ace.illinois.edu/directory/jwcoppes",
+   "notes": "Profile body is filled client-side from the university directory service (ws.engr.illinois.edu/directory/item.asp?unit=1470&id=jwcoppes), fetched 200. Existing ORCID 0000-0002-1504-6621 checked at pub.orcid.org: name Jonathan Coppess, employment University of Illinois System, Associate Professor, 2013-present (consistent). The profile does not mention the Morrow Plots. No Google Scholar link found. Verifier 2026-10-26: the previous bio stated prior federal policymaking experience, extension work and a farm-policy-history focus, none of which appears on the profile or the directory-service record; rewritten from what the record states (title, research interests, ACE 403 Agricultural Law)."
+  }
+ ],
+ "dropped": [
+  {
+   "person_id": "ef0e2a71b56ef90d",
+   "name": "Joanne Kuestner",
+   "reason": "Only page found is the MSB contact staff list (http://www.msb.unm.edu/contact-us/index.html), which gives the title Museum Administrator and nothing on focus; no individual profile could be found (web search budget exhausted this session)."
+  },
+  {
+   "person_id": "9b219c96c5e7c2a2",
+   "name": "Kemp Howell",
+   "reason": "The NADP contacts page (https://nadp.slh.wisc.edu/about/contacts/, fetched 2026-10-26) no longer lists this name; no individual profile found. The coordinator affiliation may be stale."
+  },
+  {
+   "person_id": "48dd772cc537f42a",
+   "name": "Norman Kuring",
+   "reason": "No profile page found: guessed GSFC bio URLs returned 404 and the Ocean Color site home, about and staff pages do not name him; web search budget exhausted this session."
+  },
+  {
+   "person_id": "8b90261a1a25f495",
+   "name": "Audra Luscher",
+   "reason": "Only source is the CO-OPS org chart image (role only); the CO-OPS About Us leadership section and Coastal Hazards page do not name her and no individual profile was found."
+  },
+  {
+   "person_id": "0e448ac84a1add93",
+   "name": "Katie Collins Garrett",
+   "reason": "Only source is the CO-OPS org chart image (role only); the CO-OPS About Us page profiles only the Director, and no individual profile was found."
+  },
+  {
+   "person_id": "ebb4846a95cda597",
+   "name": "Pat Burke",
+   "reason": "Only source is the CO-OPS org chart image (role only); no individual profile found on CO-OPS pages fetched."
+  },
+  {
+   "person_id": "136f58805a3aa1d0",
+   "name": "Carlos Del Castillo",
+   "reason": "Verifier 2026-10-26: the only source, the GSFC bio page (science.gsfc.nasa.gov/earth/oceanecology/bio/carlos.e.delcastillo), and the Ocean Ecology Laboratory home and management pages returned HTTP 502 or timed out on repeated fetches, so the bio, title, status and homepage could not be re-checked. The previous note that the lab home page names another person as Chief was also unverifiable, so it is not carried forward."
+  }
+ ]
+}

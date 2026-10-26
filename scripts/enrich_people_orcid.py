@@ -417,7 +417,10 @@ def main() -> int:
                     help="Resolution log: read for cleared- rejections, "
                          "appended with this run's decisions.")
     args = ap.parse_args()
-    rejected = load_rejections(args.log_csv)
+    # The committed log's rejections always apply, even when --log-csv
+    # points a trial run at a scratch file (on 2026-10-26 such a dry run
+    # re-proposed three iDs the committed log had already cleared).
+    rejected = {**load_rejections(LOG_CSV), **load_rejections(args.log_csv)}
 
     try:
         conn = lto_db.connect(catalog=args.catalog, data=args.lake_data)
@@ -532,7 +535,9 @@ def main() -> int:
                          "(person_id VARCHAR, orcid VARCHAR)")
             conn.executemany("INSERT INTO _orcid VALUES (?, ?)", resolved)
             conn.execute("""
-                UPDATE people SET orcid = s.orcid, updated_at = now()
+                UPDATE people SET orcid = s.orcid,
+                                  orcid_source_url = 'https://orcid.org/' || s.orcid,
+                                  updated_at = now()
                 FROM   _orcid s WHERE people.person_id = s.person_id
             """)
             lto_db.assert_integrity(conn, ["people"])

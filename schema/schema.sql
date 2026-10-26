@@ -678,7 +678,10 @@ CREATE OR REPLACE TABLE people (
     bio_retrieved_at    DATE,
     research_interests_source_url VARCHAR,
     orcid_source_url    VARCHAR,                   -- page that ties this ORCID to this person
-    homepage_checked_at DATE                       -- last date homepage_url was fetched and resolved
+    homepage_checked_at DATE,                      -- last date homepage_url was fetched and resolved
+    google_scholar_source_url VARCHAR              -- page that ties google_scholar_id to this person:
+                                                   -- a profile page linking it, or the OpenAlex /
+                                                   -- ORCID record it was read from
 );
 
 -- Role a person plays at a facility. A single person can hold multiple

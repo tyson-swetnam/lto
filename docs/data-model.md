@@ -151,14 +151,16 @@ one, so a field and its source arrive together or not at all.
 | `people.bio` | `bio_source_url` | `bio_retrieved_at` |
 | `people.research_interests` | `research_interests_source_url` | — |
 | `people.orcid` | `orcid_source_url`: the page that ties this iD to this person | — |
+| `people.google_scholar_id` | `google_scholar_source_url`: the profile page or ORCID record that links this Scholar id as the person's own | — |
 | `people.homepage_url` | — | `homepage_checked_at`: the last date it was fetched and resolved |
 | a `facility_personnel` row | `source_url`, plus `evidence`, a short quote from that page | `retrieved_at` |
 
 Values written before that rule, or by the enrichment scripts, may lack
-a source column. As of 2026-10-24 all 780 bios carry `bio_source_url`.
-650 of the 974 research-interest lines carry a source; when the OpenAlex
-pass fills one, the source is the author's OpenAlex page (98 lines). 373
-of the 611 stored ORCID iDs carry `orcid_source_url`.
+a source column. As of 2026-10-26 all 1,013 bios carry `bio_source_url`.
+757 of the 1,034 research-interest lines carry a source; when the OpenAlex
+pass fills one, the source is the author's OpenAlex page (84 lines). 464
+of the 663 stored ORCID iDs carry `orcid_source_url`, and all 88 Google
+Scholar ids carry `google_scholar_source_url`.
 
 - **Bios** paraphrase the cited page in 60 words or fewer. They contain no
   email address, phone number or photo, and no run of 8 or more words is

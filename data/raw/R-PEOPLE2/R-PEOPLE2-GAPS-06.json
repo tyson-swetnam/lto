@@ -1,0 +1,338 @@
+{
+ "batch_id": "R-PEOPLE2-GAPS-06",
+ "retrieved_at": "2026-10-26",
+ "verified_by": "adversarial-verifier 2026-10-26",
+ "facilities": [
+  {
+   "facility_id": "c11080f46fb910cf",
+   "pages_fetched": [
+    {
+     "url": "https://waterdata.usgs.gov/nwis/inventory/?site_no=14191000",
+     "status": 301
+    },
+    {
+     "url": "http://waterdata.usgs.gov/monitoring-location/USGS-14191000/",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/centers/oregon-water-science-center/connect",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/centers/oregon-water-science-center",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/staff-profiles/eric-janney",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/staff-profiles/marc-a-stewart",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/staff-profiles/alexandra-etheridge",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/centers/idaho-water-science-center/connect",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-0228-2174/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0003-1140-6316/person",
+     "status": 200
+    }
+   ],
+   "notes": "Gauge page (WILLAMETTE RIVER AT SALEM, OR; Marion County) gives District 'Oregon' and cooperators US Army Corps of Engineers Portland District and USGS Federal Priority Streamgages; it names no person. The gauge is operated by the USGS Oregon Water Science Center, so its leadership is attached (as was done for NJ gauges): Eric Janney, Acting Oregon Water Science Center Director, and Marc A Stewart, Deputy Director for Data (whose profile also names him Willamette NGWOS Project Manager). Confidence medium: center-level pages, not a gauge-specific page. Alexandra Etheridge (Associate Director for Hydrologic Studies) leads studies rather than gauge operations, so she is not recorded. Existing director row David L. Mauzy is wrong state: his source was the Idaho WSC, and the Idaho WSC connect page no longer lists him (its Center Director is Roy C Bartholomay); marked stale with Janney as the Oregon holder. Existing Donna N. Myers row is an 'emeritus' (non-leadership) row and was not re-checked. curl to usgs.gov returned CloudFront 403, so profile text was read through WebFetch only."
+  },
+  {
+   "facility_id": "d3b581d212824656",
+   "pages_fetched": [
+    {
+     "url": "http://waterdata.usgs.gov/monitoring-location/USGS-01400500/",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/centers/new-jersey-water-science-center/connect",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/centers/new-jersey-water-science-center/science/long-term-water-monitoring-networks-new-jersey",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/staff-profiles/timothy-d-oden",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/staff-profiles/heidi-l-hoppe",
+     "status": 200
+    }
+   ],
+   "notes": "Gauge page (Raritan River at Manville NJ, Somerset County) gives District 'New Jersey' and cooperators NJ DEP, NJ Water Supply Authority, USGS Cooperative Matching Funds and USGS Federal Priority Streamgages; it names no person. The NJ Water Science Center's monitoring-networks page describes 'The USGS New Jersey Water Science Center streamgage program'. Connect page still lists Timothy D Oden (Center Director) and Heidi L. Hoppe (Associate Director); Hoppe's profile says she oversees NJ data collection operations. Both confirmed and re-listed at medium (center program pages support the gauge link by inference; the earlier low rested on the gauge page alone). Bios and ORCIDs for both are already in the lake from R-PEOPLE2-HYDRO-CRYO-02 and are not repeated. Jason Shvanda (Supervisory Hydrologist, Surface Water Science Team) and John Trainor (Supervisory Hydrologic Technician) are on the connect page but hold no leadership role and are not recorded."
+  },
+  {
+   "facility_id": "d4111f5729db974a",
+   "pages_fetched": [
+    {
+     "url": "https://www.fws.gov/refuge/aransas/contact-us",
+     "status": 200
+    },
+    {
+     "url": "https://www.fws.gov/refuge/aransas/about-us",
+     "status": 200
+    },
+    {
+     "url": "https://www.fws.gov/refuge/aransas/news",
+     "status": 200
+    },
+    {
+     "url": "https://www.fws.gov/story/2026-03/coastal-resilience-aransas-national-wildlife-refuge",
+     "status": 200
+    },
+    {
+     "url": "https://www.fws.gov/story/2026-04/view-above-supporting-whooping-crane-winter-survey-texas",
+     "status": 200
+    },
+    {
+     "url": "https://www.fws.gov/press-release/2026-06/service-estimates-540-whooping-cranes-wintered-texas-coast-2025-2026",
+     "status": 200
+    },
+    {
+     "url": "https://www.fws.gov/press-release/2025-06/2025-wintering-whooping-crane-count",
+     "status": 200
+    },
+    {
+     "url": "https://www.fws.gov/press-release/2024-04/service-finalizes-land-protection-plans-expanding-aransas-and-big-boggy",
+     "status": 200
+    }
+   ],
+   "notes": "No person recorded. The FWS refuge contact, about and news pages name no refuge manager, deputy or project leader. The 2024-2026 refuge news items name only Felipe Prieto (Wildlife Refuge Specialist at Aransas, 2026-03 story), Matthew Butler (Service biologist), Kevin McAbee (Whooping Crane Recovery Coordinator), Amy Lueders (Southwest Regional Director) and media contacts; none is a refuge leadership role, so none is recorded. Web searches turned up only the 2024 KRIS-TV story and a 2018 KSAT story naming Joe Saenz as Refuge Manager, and a 2011 Federal Register notice naming Dan Alonso as Refuge Manager of the Aransas NWR Complex (not fetched; not recorded). The existing Saenz row is therefore unverifiable from official pages and stays low."
+  },
+  {
+   "facility_id": "db737b212afb72fd",
+   "pages_fetched": [
+    {
+     "url": "https://research.fs.usda.gov/iitf/about/rd",
+     "status": 200
+    },
+    {
+     "url": "https://research.fs.usda.gov/iitf/people",
+     "status": 200
+    },
+    {
+     "url": "https://research.fs.usda.gov/iitf/people?page=1",
+     "status": 200
+    },
+    {
+     "url": "https://research.fs.usda.gov/about/people/grizelle.gonzalez",
+     "status": 200
+    },
+    {
+     "url": "https://czo-archive.criticalzone.org/luquillo/infrastructure/field-area/sabana-field-station1/",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0003-3007-5540/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0003-3007-5540/employments",
+     "status": 200
+    }
+   ],
+   "notes": "The IITF research-and-development page describes the Sabana Field Research Station in Luquillo as a facility of the USDA Forest Service's International Institute of Tropical Forestry; no IITF page names a station manager (the IITF people directory, both pages, lists only Grizelle Gonzalez as Director, Gerald Bauer as Director International Cooperation and Yariliz Quiles-Martinez as Library Director). Gonzalez's profile (updated 2026-03-10) gives her title as Director, IITF; the archived Luquillo CZO Sabana page (archive banner December 2020) lists 'Grizelle Gonzalez - Project Leader, Research Unit' as the station contact. Re-listed as director at medium (operator's director plus a station page naming her as contact). Her bio, interests and ORCID are already in the lake (R-PEOPLE2-BIO-11). Existing Ariel E. Lugo row is a non-leadership co-PI row already marked not current; not re-checked."
+  }
+ ],
+ "people": [
+  {
+   "key": "eric-janney",
+   "existing_person_id": null,
+   "name": "Eric Janney",
+   "name_given": "Eric",
+   "name_family": "Janney",
+   "orcid": "0000-0002-0228-2174",
+   "orcid_source_url": "https://www.usgs.gov/staff-profiles/eric-janney",
+   "homepage_url": "https://www.usgs.gov/staff-profiles/eric-janney",
+   "bio": "Klamath senior science advisor in the USGS Northwest-Pacific Islands regional office who is also acting center director of the USGS Oregon Water Science Center. Listed areas of expertise include fishery resources, freshwater ecosystems, statistical analysis and mathematical modeling. Earned an M.S. in wildlife and fisheries resources at West Virginia University.",
+   "bio_source_url": "https://www.usgs.gov/staff-profiles/eric-janney",
+   "research_interests": "Fishery resources; freshwater ecosystems; ecological processes; mathematical modeling; remote sensing; statistical analysis",
+   "research_interests_source_url": "https://www.usgs.gov/staff-profiles/eric-janney"
+  },
+  {
+   "key": "marc-stewart",
+   "existing_person_id": null,
+   "name": "Marc A. Stewart",
+   "name_given": "Marc",
+   "name_family": "Stewart",
+   "orcid": "0000-0003-1140-6316",
+   "orcid_source_url": "https://www.usgs.gov/staff-profiles/marc-a-stewart",
+   "homepage_url": "https://www.usgs.gov/staff-profiles/marc-a-stewart",
+   "bio": "Has served since 2023 as the Oregon Water Science Center's deputy director for data and manages the Willamette NGWOS project. Began a USGS career in 1998 as a hydrologic technician in Florida after leaving the National Park Service, moved to the Oregon center in 2005 as a supervisory technician focused on hydroacoustic methods, and from 2014 led its quality-assurance team.",
+   "bio_source_url": "https://www.usgs.gov/staff-profiles/marc-a-stewart",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "timothy-oden",
+   "existing_person_id": "c94e2f4b6017b4e8",
+   "name": "Timothy D. Oden",
+   "name_given": "Timothy",
+   "name_family": "Oden",
+   "orcid": "0000-0003-1455-1076",
+   "orcid_source_url": "https://www.usgs.gov/staff-profiles/timothy-d-oden",
+   "homepage_url": "https://www.usgs.gov/staff-profiles/timothy-d-oden",
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "heidi-hoppe",
+   "existing_person_id": "009a3f7c036915f9",
+   "name": "Heidi L. Hoppe",
+   "name_given": "Heidi",
+   "name_family": "Hoppe",
+   "orcid": "0000-0002-8126-1119",
+   "orcid_source_url": "https://www.usgs.gov/staff-profiles/heidi-l-hoppe",
+   "homepage_url": "https://www.usgs.gov/staff-profiles/heidi-l-hoppe",
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "grizelle-gonzalez",
+   "existing_person_id": "539cfeb351fd826e",
+   "name": "Grizelle Gonzalez",
+   "name_given": "Grizelle",
+   "name_family": "Gonzalez",
+   "orcid": "0000-0003-3007-5540",
+   "orcid_source_url": "https://research.fs.usda.gov/about/people/grizelle.gonzalez",
+   "homepage_url": "https://research.fs.usda.gov/about/people/grizelle.gonzalez",
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  }
+ ],
+ "affiliations": [
+  {
+   "facility_id": "c11080f46fb910cf",
+   "person_key": "eric-janney",
+   "role": "director",
+   "title": "Acting Director, USGS Oregon Water Science Center (operator of this gauge)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.usgs.gov/staff-profiles/eric-janney",
+   "evidence": "Klamath Senior Science Advisor, Acting Oregon Water Science Center Director",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "c11080f46fb910cf",
+   "person_key": "marc-stewart",
+   "role": "deputy-director",
+   "title": "Deputy Director for Data, USGS Oregon Water Science Center; Willamette NGWOS Project Manager",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2023,
+   "end_year": null,
+   "source_url": "https://www.usgs.gov/staff-profiles/marc-a-stewart",
+   "evidence": "Marc Stewart is the Deputy Director for Data at the USGS Oregon Water Science Center.",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "d3b581d212824656",
+   "person_key": "timothy-oden",
+   "role": "director",
+   "title": "Center Director, USGS New Jersey Water Science Center",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.usgs.gov/staff-profiles/timothy-d-oden",
+   "evidence": "Tim Oden leads the New Jersey Water Science Center.",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "d3b581d212824656",
+   "person_key": "heidi-hoppe",
+   "role": "associate-director",
+   "title": "Associate Director, USGS New Jersey Water Science Center (supervises its Science Quality Branch and NJ data collection operations)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.usgs.gov/staff-profiles/heidi-l-hoppe",
+   "evidence": "She oversees the New Jersey data collection operations",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "db737b212afb72fd",
+   "person_key": "grizelle-gonzalez",
+   "role": "director",
+   "title": "Director, USDA Forest Service International Institute of Tropical Forestry (operator of Sabana Field Research Station)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://research.fs.usda.gov/about/people/grizelle.gonzalez",
+   "evidence": "Grizelle Gonzalez, PhD Director International Institute of Tropical Forestry",
+   "confidence": "medium"
+  }
+ ],
+ "verifications": [
+  {
+   "facility_id": "c11080f46fb910cf",
+   "person_id": "94cc79fe26b40c43",
+   "existing_role": "director",
+   "status": "stale",
+   "current_holder_key": "eric-janney",
+   "source_url": "https://www.usgs.gov/centers/oregon-water-science-center/connect",
+   "evidence": "Eric Janney Klamath Senior Science Advisor, Acting Oregon Water Science Center Director"
+  },
+  {
+   "facility_id": "d3b581d212824656",
+   "person_id": "c94e2f4b6017b4e8",
+   "existing_role": "director",
+   "status": "confirmed",
+   "current_holder_key": "timothy-oden",
+   "source_url": "https://www.usgs.gov/centers/new-jersey-water-science-center/connect",
+   "evidence": "Timothy D Oden Center Director New Jersey Water Science Center"
+  },
+  {
+   "facility_id": "d3b581d212824656",
+   "person_id": "009a3f7c036915f9",
+   "existing_role": "associate-director",
+   "status": "confirmed",
+   "current_holder_key": "heidi-hoppe",
+   "source_url": "https://www.usgs.gov/centers/new-jersey-water-science-center/connect",
+   "evidence": "Heidi L. Hoppe Associate Director New Jersey Water Science Center"
+  },
+  {
+   "facility_id": "d4111f5729db974a",
+   "person_id": "b4eea8d2d37c0a9b",
+   "existing_role": "manager",
+   "status": "unverifiable",
+   "current_holder_key": null,
+   "source_url": "https://www.fws.gov/refuge/aransas/contact-us",
+   "evidence": null
+  },
+  {
+   "facility_id": "db737b212afb72fd",
+   "person_id": "539cfeb351fd826e",
+   "existing_role": "director",
+   "status": "confirmed",
+   "current_holder_key": "grizelle-gonzalez",
+   "source_url": "https://research.fs.usda.gov/about/people/grizelle.gonzalez",
+   "evidence": "Grizelle Gonzalez, PhD Director International Institute of Tropical Forestry"
+  }
+ ],
+ "verification_notes": "Re-fetched 2026-10-26: all five USGS/USFS profiles, both USGS connect pages, the Idaho WSC connect page, both gauge pages, the NJ monitoring-networks page, the IITF R&D page, the archived CZO Sabana page and the Aransas contact page; all returned content supporting the notes. Every evidence quote was found on its source_url. All five ORCIDs are linked from the person's official profile and pub.orcid.org /person names match (Janney: USGS employment; Hoppe: USGS Associate Director for Data; Gonzalez: USDA FS IITF Director; Stewart and Oden list no employments but are profile-linked). No Google Scholar links on any profile. Changes: Janney bio rewritten to drop the Klamath Falls Field Station location, which the profile gives only in its office address block; Stewart bio rewritten because it described the QA team as 'for surface-water and sediment data', which conflates the page's separate statements, and paraphrase re-checked; Hoppe title reworded to match the profile (Science Quality Branch is in the bio, not the title line). Notes: the Idaho WSC connect page lists Roy C Bartholomay as Center Director and Christopher Mebane as Acting Center Director."
+}

@@ -1,0 +1,160 @@
+{
+ "batch_id": "R-PEOPLE2-BIO-38",
+ "retrieved_at": "2026-10-26",
+ "verified_by": "adversarial-verifier 2026-10-26",
+ "updates": [
+  {
+   "person_id": "245e5996ab712ced",
+   "name": "Jennifer Hecker",
+   "homepage_url": null,
+   "bio": "Executive Director of the Coastal & Heartland National Estuary Partnership, appointed by its Policy Committee. She previously spent twelve years directing natural resources policy and advocacy at the Conservancy of Southwest Florida, after work as a project ecologist at WilsonMiller and an environmental specialist for Hillsborough County. Her degrees are from Prescott College and the University of Missouri.",
+   "bio_source_url": "https://chnep.wateratlas.usf.edu/news/details/15892",
+   "research_interests": null,
+   "research_interests_source_url": null,
+   "orcid": null,
+   "orcid_source_url": null,
+   "current_title": "Executive Director",
+   "current_affiliation": "Coastal & Heartland National Estuary Partnership (CHNEP)",
+   "status": null,
+   "status_source_url": null,
+   "evidence": "Jennifer Hecker Executive Director",
+   "evidence_source_url": "https://www.chnep.org/about-the-chnep",
+   "notes": "Bio source is CHNEP's Water Atlas news item of 9/21/2016 announcing her hire (USF Water Institute host); chnep.org/about-the-chnep (HTTP 200, re-fetched 2026-10-26) still lists her as Executive Director but has no individual bio pages. ORCID search found only a Jennifer Hecker with University of Texas library/archives employments (not this person); no ORCID recorded. No homepage found."
+  },
+  {
+   "person_id": "8746ca3b28c09bf1",
+   "name": "Jennifer Mercer",
+   "homepage_url": null,
+   "bio": "Scientist with Arctic and Antarctic fieldwork, named head of NSF's Office of Polar Programs Arctic Sciences Section in October 2021 after serving as an Arctic program director from 2016. She came to the Army's CRREL in 2009 after Antarctic atmospheric research at the University of Wyoming, chairs the Forum of Arctic Research Operators, and holds a Dartmouth Earth Sciences doctorate.",
+   "bio_source_url": "https://www.nsf.gov/geo/opp/updates/appointment-dr-jennifer-mercer-section-head-arctic-sciences",
+   "research_interests": null,
+   "research_interests_source_url": null,
+   "orcid": null,
+   "orcid_source_url": null,
+   "current_title": "Section Head, Arctic Sciences Section, NSF Office of Polar Programs (as of the 2021 appointment notice)",
+   "current_affiliation": "U.S. National Science Foundation, Office of Polar Programs",
+   "status": null,
+   "status_source_url": null,
+   "evidence": "In 2009, Dr. Mercer joined the U.S. Army Cold Regions Research and Engineering Laboratory (CRREL). She became a permanent NSF employee in 2016",
+   "evidence_source_url": "https://www.nsf.gov/geo/opp/updates/appointment-dr-jennifer-mercer-section-head-arctic-sciences",
+   "notes": "Identity tied by name plus the CRREL affiliation stated on the NSF page (dated 2021-12-21). That page says she joined CRREL in 2009 and became a permanent NSF employee in 2016, so the lake's current CRREL 'Polar Research Scientist' row (affiliation source erdc.usace.army.mil, HTTP 403 on 2026-10-26) looks stale and should be reviewed in a research batch. No 2025-2026 page found. ORCID search returned two 'Jennifer Mercer' records with no employment data; none recorded."
+  },
+  {
+   "person_id": "5c24f583a36eed3c",
+   "name": "Ashley Hamilton",
+   "homepage_url": "https://estuarineresearchreserve.center.uconn.edu/person/ashley-hamilton/",
+   "bio": "Leads the System Wide Monitoring Program at the Connecticut National Estuarine Research Reserve, which she is helping to start in Connecticut. She studied marine sciences at UConn Avery Point and earned a University of Rhode Island master's on human-caused stressors to commercial bivalves, and since 2016 has worked in shellfish and seaweed aquaculture as farm hand, hatchery worker and researcher.",
+   "bio_source_url": "https://estuarineresearchreserve.center.uconn.edu/person/ashley-hamilton/",
+   "research_interests": null,
+   "research_interests_source_url": null,
+   "orcid": null,
+   "orcid_source_url": null,
+   "current_title": "System Wide Monitoring Program Lead",
+   "current_affiliation": "Connecticut National Estuarine Research Reserve (UConn)",
+   "status": null,
+   "status_source_url": null,
+   "evidence": "Ashley Hamilton System Wide Monitoring Program Lead",
+   "evidence_source_url": "https://estuarineresearchreserve.center.uconn.edu/person/ashley-hamilton/",
+   "notes": "Reserve profile page, which returned 200, uses she/her. ORCID search returned several 'Ashley Hamilton' records with no employment data; none could be tied, so none recorded. No ORCID/Scholar link on the profile."
+  },
+  {
+   "person_id": "20cfcd28101283d5",
+   "name": "Craig Tobias",
+   "homepage_url": "https://marinesciences.uconn.edu/person/craig-tobias/",
+   "bio": "UConn Center Director for the Connecticut National Estuarine Research Reserve since 2024, combining ecosystem ecology with marine chemistry. After a William & Mary marine science PhD and posts at the Marine Biological Laboratory, USGS and UNC Wilmington, he joined UConn in 2009 and has coordinated its undergraduate marine science program. He studies coastal habitat responses to nutrient pollution.",
+   "bio_source_url": "https://estuarineresearchreserve.center.uconn.edu/person/craig-tobias/",
+   "research_interests": "coastal nutrient pollution; nutrient cycling and transport from watersheds to the sea; isotope and hydrologic tracer methods; in situ element processing rates; N, C, O, S and P cycling in tidal creeks, estuaries, embayments and salt marshes",
+   "research_interests_source_url": "https://marinesciences.uconn.edu/person/craig-tobias/",
+   "orcid": null,
+   "orcid_source_url": null,
+   "current_title": "Professor of Marine Sciences; Reserve UConn Director, Connecticut NERR",
+   "current_affiliation": "University of Connecticut, Department of Marine Sciences",
+   "status": null,
+   "status_source_url": null,
+   "evidence": "Craig became the UConn Center Director for the Reserve in 2024.",
+   "evidence_source_url": "https://estuarineresearchreserve.center.uconn.edu/person/craig-tobias/",
+   "notes": "Marine Sciences profile (HTTP 200) gives title 'Professor of Marine Sciences'; lab site tobias.lab.uconn.edu/people (HTTP 200) repeats the research text. No ORCID or Google Scholar link on any of the three pages. ORCID search found 0000-0003-0120-9984 ('craig tobias') with no employment or works, so it could not be tied; not recorded."
+  },
+  {
+   "person_id": "7da0359295f5ce6d",
+   "name": "Falyn Newfield",
+   "homepage_url": "https://estuarineresearchreserve.center.uconn.edu/person/falyn-mcquarrie/",
+   "bio": "Assistant Coordinator at the Connecticut National Estuarine Research Reserve. She earned a master's in marine policy and management at the University of New Haven, researching recycled oyster shell in living shorelines to curb erosion, and previously handled conservation and land-use permitting work for Greenwich and Old Lyme. She brings interests in coastal resilience, restoring habitat and environmental education.",
+   "bio_source_url": "https://estuarineresearchreserve.center.uconn.edu/person/falyn-mcquarrie/",
+   "research_interests": "coastal resilience; habitat restoration; environmental education; living shorelines using recycled oyster shell",
+   "research_interests_source_url": "https://estuarineresearchreserve.center.uconn.edu/person/falyn-mcquarrie/",
+   "orcid": null,
+   "orcid_source_url": null,
+   "current_title": "Assistant Coordinator",
+   "current_affiliation": "Connecticut National Estuarine Research Reserve (UConn)",
+   "status": null,
+   "status_source_url": null,
+   "evidence": "Falyn Newfield Assistant Coordinator Connecticut National Estuarine Research Reserve",
+   "evidence_source_url": "https://estuarineresearchreserve.center.uconn.edu/person/falyn-mcquarrie/",
+   "notes": "Profile URL slug is 'falyn-mcquarrie' but the page heading reads Falyn Newfield, linked from the reserve's Our Team list under that name. Page uses she/her. No ORCID found."
+  },
+  {
+   "person_id": "f68ac47277a5af0c",
+   "name": "Francesca Holland",
+   "homepage_url": "https://estuarineresearchreserve.center.uconn.edu/person/francesca-holland/",
+   "bio": "Stewardship Technician II on the Connecticut NERR stewardship team, working on green stormwater and shoreline resiliency, invasive species management, fieldwork and mapping. She holds a UConn chemical engineering B.S. and a 2025 Brown University/RISD master's in design engineering focused on environmental systems, and spent five years in corrosion mitigation engineering for marine structures at General Dynamics Electric Boat.",
+   "bio_source_url": "https://estuarineresearchreserve.center.uconn.edu/person/francesca-holland/",
+   "research_interests": null,
+   "research_interests_source_url": null,
+   "orcid": null,
+   "orcid_source_url": null,
+   "current_title": "Stewardship Technician II",
+   "current_affiliation": "Connecticut National Estuarine Research Reserve (UConn)",
+   "status": null,
+   "status_source_url": null,
+   "evidence": "Francesca Holland Stewardship Technician II",
+   "evidence_source_url": "https://estuarineresearchreserve.center.uconn.edu/person/francesca-holland/",
+   "notes": "Page uses she/her. ORCID 0000-0003-0469-1198 ('Francesca Holland') has no employment, education or works, so it could not be tied; not recorded."
+  },
+  {
+   "person_id": "90594fac6e05d056",
+   "name": "George McManus",
+   "homepage_url": "https://estuarineresearchreserve.center.uconn.edu/person/george-mcmanus/",
+   "bio": "Retired biological oceanographer and Director Emeritus of the Connecticut NERR, having served as its interim manager and center director through 2023/2024. Trained at Stony Brook, he held posts at the Cary Institute, University of Maryland and Dauphin Island Sea Lab, then taught 28 years at UConn, studying which coastal microbial plankton, from bacteria to ciliates, occur where.",
+   "bio_source_url": "https://estuarineresearchreserve.center.uconn.edu/person/george-mcmanus/",
+   "research_interests": "plankton populations and physical processes; food-web roles of protozoa and microzooplankton; biogeography of microbial eukaryotes",
+   "research_interests_source_url": "https://microzooplankton.uconn.edu/people",
+   "orcid": "0000-0002-2768-1286",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-2768-1286/employments",
+   "current_title": "Director Emeritus, Connecticut National Estuarine Research Reserve",
+   "current_affiliation": "University of Connecticut, Department of Marine Sciences (retired)",
+   "status": "emeritus",
+   "status_source_url": "https://estuarineresearchreserve.center.uconn.edu/person/george-mcmanus/",
+   "evidence": "George is a biological oceanographer, now retired.",
+   "evidence_source_url": "https://estuarineresearchreserve.center.uconn.edu/person/george-mcmanus/",
+   "notes": "ORCID 0000-0002-2768-1286: pub.orcid.org /person name George McManus; /employments shows University of Connecticut, Marine Sciences, Professor Emeritus from 2024-02-01; educations Stony Brook PhD and Cornell AB, consistent with the reserve profile (Stony Brook PhD) and the Microzooplankton lab page (UConn since 1995). No Google Scholar link on any official page."
+  }
+ ],
+ "dropped": [
+  {
+   "person_id": "7441c63f6fdd4823",
+   "name": "Debra Woithe",
+   "reason": "Only the chnep.org 'Our Team' line (name, title 'Research & GIS Manager') was found; no individual bio, profile or news page about her. Role-only line states no focus, so no bio written."
+  },
+  {
+   "person_id": "e3246e8667197b74",
+   "name": "Keara Abel",
+   "reason": "Only the chnep.org 'Our Team' line (Administrative Specialist) was found; no page about her individually."
+  },
+  {
+   "person_id": "a87ea1eacf9b0de3",
+   "name": "Sarah Jooste",
+   "reason": "Only the chnep.org 'Our Team' line (Restoration Manager) was found; searches returned no page about her."
+  },
+  {
+   "person_id": "78852f173226855d",
+   "name": "Sequoia Lipman",
+   "reason": "Only the chnep.org 'Our Team' line (Conservation Specialist) was found; searches returned no page about this person."
+  },
+  {
+   "person_id": "9396fa6213aab905",
+   "name": "Gary Koh",
+   "reason": "No page naming Gary Koh at CRREL could be found; erdc.usace.army.mil (the affiliation source) did not resolve. A DVIDS release (https://www.dvidshub.net/news/printable/487989, HTTP 200) says Ivan Beckman was named CRREL director on 2024-12-19, so the lake's 'Director, USACE CRREL' row for Koh looks stale (likely recall-era) and should be reviewed in a research batch."
+  }
+ ]
+}

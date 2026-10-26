@@ -157,16 +157,27 @@ table. Useful for capturing co-authors who aren't yet in `people`.
 
 ## Step 3 — Google Scholar (optional, slow)
 
-Google Scholar rate-limits aggressively (~1 req every 30s if you're
-polite, with frequent CAPTCHAs). Skip unless you specifically need
-Scholar IDs for the people page links.
+Google Scholar itself is never queried (it blocks automated access and
+answers with CAPTCHAs). Scholar user ids come from places that link them:
 
 ```bash
-# Routes via the `scholarly` library when --source scholarly; otherwise
-# uses OpenAlex / ORCID metadata to find Scholar IDs (much faster).
-python scripts/enrich_people_gscholar.py --source openalex --batch 50
-python scripts/enrich_people_gscholar.py --source scholarly --batch 20  # slow path
+# ORCID records: external identifiers and "Websites & social links" (the
+# person put the link there themselves). Safe to write directly.
+python scripts/enrich_people_gscholar.py --source orcid
+# The person's own homepage_url: kept only when the page links exactly one
+# Scholar id and names the person. Dry-run and review every hit first: a
+# lab or site footer can link someone else's profile (on 2026-10-26 the NTL
+# person pages all linked one id). Write reviewed hits through an
+# R-PEOPLE2-BIO batch (google_scholar_id + google_scholar_source_url).
+python scripts/enrich_people_gscholar.py --source homepage --dry-run
+# OpenAlex author records (ids.scholar) — empty for every author we hold as
+# of 2026-10-26, kept for when OpenAlex fills it again.
+python scripts/enrich_people_gscholar.py --source openalex
 ```
+
+Every id is stored with `people.google_scholar_source_url`. The bio and
+research batches (`agents/R-PEOPLE.md`) also record a Scholar id when an
+official profile page links it.
 
 ## Step 4 — Funding API enrichment
 

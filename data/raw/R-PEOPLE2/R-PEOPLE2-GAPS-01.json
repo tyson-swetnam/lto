@@ -1,0 +1,448 @@
+{
+ "batch_id": "R-PEOPLE2-GAPS-01",
+ "retrieved_at": "2026-10-26",
+ "verified_by": "adversarial-verifier 2026-10-26",
+ "facilities": [
+  {
+   "facility_id": "146e9515733ddedd",
+   "pages_fetched": [
+    {
+     "url": "https://wcc.sc.egov.usda.gov/nwcc/site?sitenum=904",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/nwcc/site?sitenum=1171",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/stations?stationTriplets=1171:WA:SNTL&returnStationElements=false&activeOnly=false",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/stations?stationTriplets=*:WA:*&returnStationElements=false&activeOnly=false",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/reference-data?referenceLists=dcos",
+     "status": 200
+    },
+    {
+     "url": "https://www.nrcs.usda.gov/state-offices/oregon/oregon-snow-survey/contact-oregon-data-collection-office",
+     "status": 200
+    },
+    {
+     "url": "https://www.nrcs.usda.gov/state-offices/oregon/news/nrcs-associate-chief-louis-aspey-visits-mt",
+     "status": 200
+    },
+    {
+     "url": "https://www.nrcs.usda.gov/washington/snow-survey",
+     "status": 200
+    },
+    {
+     "url": "https://www.nrcs.usda.gov/sites/default/files/2026-04/April%202026%20WSOR.pdf",
+     "status": 200
+    },
+    {
+     "url": "https://www.nrcs.usda.gov/conservation-basics/conservation-by-state/washington/washington-snow-survey",
+     "status": 404
+    }
+   ],
+   "notes": "Facility identity is still unresolved (see R-PEOPLE2-HYDRO-CRYO-02): sitenum=904 is Columbus Basin, CO. The only Washington SNOTEL named Trinity is 1171:WA:SNTL (Chelan Co., since 2010-08-18), about 45 km from the stored point (48.05,-121.45, Snohomish Co.); the nearest AWDB stations to that point are discontinued snow courses and Decline Creek SNOTEL (1319, since 2018). Every one of those Washington candidates has AWDB dcoCode OR. An NRCS Oregon news item says the Portland Data Collection Office's operational area covers Oregon and Washington, and the Oregon Data Collection Office contact page lists Matt Warbritton as Supervisory Hydrologist, so he is recorded as manager at LOW confidence because the station itself is not pinned down. The Washington snow survey page and April 2026 Washington outlook report name Toby Rodgers as Water Supply Specialist (report contact), a forecasting role, not station operations; not recorded. No ORCID tied (Warbritton's ORCID record lists no employment)."
+  },
+  {
+   "facility_id": "1ca0ee8b5874566d",
+   "pages_fetched": [
+    {
+     "url": "https://wcc.sc.egov.usda.gov/nwcc/site?sitenum=685",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/nwcc/site?sitenum=606",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/stations?stationTriplets=606:WA:SNTL&returnStationElements=false&activeOnly=false",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/stations?stationTriplets=*:WA:*&returnStationElements=false&activeOnly=false",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/reference-data?referenceLists=dcos",
+     "status": 200
+    },
+    {
+     "url": "https://www.nrcs.usda.gov/state-offices/oregon/oregon-snow-survey/contact-oregon-data-collection-office",
+     "status": 200
+    },
+    {
+     "url": "https://www.nrcs.usda.gov/state-offices/oregon/news/nrcs-associate-chief-louis-aspey-visits-mt",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-0286-4940/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-0286-4940/employments",
+     "status": 200
+    }
+   ],
+   "notes": "Facility URL sitenum=685 is still Patterson Hollow #1, CO (see R-PEOPLE2-HYDRO-CRYO-01a); the real station is Lyman Lake 606:WA:SNTL, Chelan Co., since 1978-10-01, 1.3 km from the stored point, so the identity is clear. AWDB gives it dcoCode OR (Oregon). The NRCS Oregon news item (June 2023) says the Portland Data Collection Office's operational area covers Oregon and Washington; the current Oregon Data Collection Office contact page lists Matt Warbritton as Supervisory Hydrologist. Recorded as manager, MEDIUM: office-level, no page names a station manager. The 2023 news item named Sean Fleming as Portland DCO Supervisory Hydrologist; no page says he has left, so he is not recorded as a past holder. ORCID 0000-0002-0286-4940 (Matthew Warbritton) has no employment or education entries, so it is not tied to him."
+  },
+  {
+   "facility_id": "3ef8f8206b3af64b",
+   "pages_fetched": [
+    {
+     "url": "https://wcc.sc.egov.usda.gov/nwcc/site?sitenum=2026",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/stations?stationTriplets=2026:AZ:SCAN&returnStationElements=false&activeOnly=false",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/reference-data?referenceLists=dcos",
+     "status": 200
+    },
+    {
+     "url": "https://www.nrcs.usda.gov/resources/data-and-reports/soil-climate-analysis-network",
+     "status": 200
+    },
+    {
+     "url": "https://www.nrcs.usda.gov/programs-initiatives/sswsf-snow-survey-and-water-supply-forecasting-program/national-water-and",
+     "status": 200
+    },
+    {
+     "url": "https://www.nrcs.usda.gov/contact/national-office-contacts/national-water-and-climate-center-contact-information",
+     "status": 200
+    },
+    {
+     "url": "https://catalog.data.gov/dataset/us-department-of-agriculture-soil-climate-analysis-network-scan-site-2026-data-walnut-gulc",
+     "status": 200
+    },
+    {
+     "url": "https://www.nrcs.usda.gov/contact/state-office-contacts/arizona-state-office",
+     "status": 200
+    }
+   ],
+   "notes": "SCAN is administered nationally, not by a state snow survey office: AWDB gives the station dcoCode 'GC', which the AWDB dcos reference list names 'SCAN'. The NRCS SCAN page says the National Water and Climate Center administers SCAN, and the NWCC program page says NWCC co-administers SCAN with the National Soil Survey Center. No fetched NRCS page names a person responsible for SCAN stations or for SCAN data collection: the NWCC contact page names a Director of the Snow Survey and Water Supply Forecasting Program and a Water and Climate Monitoring Team Lead, but neither is tied to SCAN on any page, so nobody is recorded. The NWCC station page and site notes name no people. Walnut Gulch #1 (Cochise Co.) has reported since 1999-03-19. Existing data-manager row for Dino DeSimone: the data.gov record (modified 2025-11-22, publisher Agricultural Research Service) still names him as the dataset contact point, so it is confirmed but kept LOW (a dataset contact, not a station role); he is not on the NRCS Arizona state office contacts page, whose snow survey contact is a Water Supply Specialist not tied to SCAN. No ORCID found for him."
+  },
+  {
+   "facility_id": "6966c758bebef0f1",
+   "pages_fetched": [
+    {
+     "url": "https://wcc.sc.egov.usda.gov/nwcc/site?sitenum=957",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/stations?stationTriplets=957:AK:SNTL&returnStationElements=false&activeOnly=false",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/reference-data?referenceLists=dcos",
+     "status": 200
+    },
+    {
+     "url": "https://www.nrcs.usda.gov/contact/state-office-contacts/alaska-state-office",
+     "status": 200
+    },
+    {
+     "url": "https://nrcs-prod.azureedge.us/sites/default/files/2026-04/April_2026_WSOR.pdf",
+     "status": 200
+    }
+   ],
+   "notes": "Atigun Pass 957:AK:SNTL (North Slope, since 1981-10-01) has AWDB dcoCode AK, the Alaska snow survey office. The NRCS Alaska state office contacts page lists Daniel Fisher as Alaska Snow Survey Program Manager, and the April 2026 Alaska Water Supply Outlook Report (published by him as Snow Survey Program Manager) carries Atigun Pass SNOTEL in its data tables. Existing manager row confirmed and raised from low to MEDIUM: program-level, no page names a station manager. ORCID search found only a Daniel Fisher at USDA ARS, not tied to NRCS Alaska; none recorded."
+  },
+  {
+   "facility_id": "6b8f4ab20b0c821d",
+   "pages_fetched": [
+    {
+     "url": "https://wcc.sc.egov.usda.gov/nwcc/site?sitenum=2001",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/nwcc/site?sitenum=2015",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/stations?stationTriplets=2015:NM:SCAN&returnStationElements=false&activeOnly=false",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/reference-data?referenceLists=dcos",
+     "status": 200
+    },
+    {
+     "url": "https://www.nrcs.usda.gov/resources/data-and-reports/soil-climate-analysis-network",
+     "status": 200
+    },
+    {
+     "url": "https://www.nrcs.usda.gov/programs-initiatives/sswsf-snow-survey-and-water-supply-forecasting-program/national-water-and",
+     "status": 200
+    },
+    {
+     "url": "https://www.nrcs.usda.gov/contact/national-office-contacts/national-water-and-climate-center-contact-information",
+     "status": 200
+    }
+   ],
+   "notes": "SCAN is administered nationally, not by a state snow survey office: AWDB gives the station dcoCode 'GC', which the AWDB dcos reference list names 'SCAN'. The NRCS SCAN page says the National Water and Climate Center administers SCAN, and the NWCC program page says NWCC co-administers SCAN with the National Soil Survey Center. No fetched NRCS page names a person responsible for SCAN stations or for SCAN data collection: the NWCC contact page names a Director of the Snow Survey and Water Supply Forecasting Program and a Water and Climate Monitoring Team Lead, but neither is tied to SCAN on any page, so nobody is recorded. The NWCC station page and site notes name no people. Facility URL sitenum=2001 is still Rogers Farm #1, NE (see R-PEOPLE2-ARID-NM-02); the station is Adams Ranch #1, 2015:NM:SCAN, Lincoln Co., since 1993-10-25."
+  },
+  {
+   "facility_id": "7f64827854c9c9ce",
+   "pages_fetched": [
+    {
+     "url": "https://wcc.sc.egov.usda.gov/nwcc/site?sitenum=522",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/nwcc/site?sitenum=1102",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/stations?stationTriplets=1102:CO:SNTL&returnStationElements=false&activeOnly=false",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/reference-data?referenceLists=dcos",
+     "status": 200
+    },
+    {
+     "url": "https://www.nrcs.usda.gov/colorado/colorado-snow-survey/contact-colorado-snow-survey",
+     "status": 200
+    }
+   ],
+   "notes": "Nobody recorded. Facility identity is broken, as found in R-PEOPLE2-HYDRO-CRYO-01b: the stored point is in Park Co., WY (44.67,-110.43), the URL sitenum=522 is another station, and the only Hayden Pass SNOTEL is 1102:CO:SNTL (Saguache Co., since 2007-08-28; dcoCode CO). The Colorado Snow Survey contact page lists Brian Domonkos as Snow Survey Supervisor, which would apply only if this facility is re-pointed to the Colorado station; the earlier verifier dropped that link for the same reason."
+  },
+  {
+   "facility_id": "96e8914dc5bde58c",
+   "pages_fetched": [
+    {
+     "url": "https://wcc.sc.egov.usda.gov/nwcc/site?sitenum=2031",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/nwcc/site?sitenum=2079",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/nwcc/sitenotes?sitenum=2079",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/stations?stationTriplets=2079:KY:SCAN&returnStationElements=false&activeOnly=false",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/reference-data?referenceLists=dcos",
+     "status": 200
+    },
+    {
+     "url": "https://www.nrcs.usda.gov/resources/data-and-reports/soil-climate-analysis-network",
+     "status": 200
+    },
+    {
+     "url": "https://www.nrcs.usda.gov/programs-initiatives/sswsf-snow-survey-and-water-supply-forecasting-program/national-water-and",
+     "status": 200
+    },
+    {
+     "url": "https://www.nrcs.usda.gov/contact/national-office-contacts/national-water-and-climate-center-contact-information",
+     "status": 200
+    }
+   ],
+   "notes": "SCAN is administered nationally, not by a state snow survey office: AWDB gives the station dcoCode 'GC', which the AWDB dcos reference list names 'SCAN'. The NRCS SCAN page says the National Water and Climate Center administers SCAN, and the NWCC program page says NWCC co-administers SCAN with the National Soil Survey Center. No fetched NRCS page names a person responsible for SCAN stations or for SCAN data collection: the NWCC contact page names a Director of the Snow Survey and Water Supply Forecasting Program and a Water and Climate Monitoring Team Lead, but neither is tied to SCAN on any page, so nobody is recorded. The NWCC station page and site notes name no people. Facility URL sitenum=2031 is still Ames, IA (see R-PEOPLE2-HYDRO-CRYO-01b); the station is Mammoth Cave 2079:KY:SCAN, Hart Co., since 2003-08-28. Its site notes page credits only the NRCS National Water and Climate Center."
+  },
+  {
+   "facility_id": "99988c194cd66757",
+   "pages_fetched": [
+    {
+     "url": "https://wcc.sc.egov.usda.gov/nwcc/site?sitenum=2003",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/nwcc/site?sitenum=2107",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/stations?stationTriplets=2107:NM:SCAN&returnStationElements=false&activeOnly=false",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/reference-data?referenceLists=dcos",
+     "status": 200
+    },
+    {
+     "url": "https://www.nrcs.usda.gov/resources/data-and-reports/soil-climate-analysis-network",
+     "status": 200
+    },
+    {
+     "url": "https://www.nrcs.usda.gov/programs-initiatives/sswsf-snow-survey-and-water-supply-forecasting-program/national-water-and",
+     "status": 200
+    },
+    {
+     "url": "https://www.nrcs.usda.gov/contact/national-office-contacts/national-water-and-climate-center-contact-information",
+     "status": 200
+    }
+   ],
+   "notes": "SCAN is administered nationally, not by a state snow survey office: AWDB gives the station dcoCode 'GC', which the AWDB dcos reference list names 'SCAN'. The NRCS SCAN page says the National Water and Climate Center administers SCAN, and the NWCC program page says NWCC co-administers SCAN with the National Soil Survey Center. No fetched NRCS page names a person responsible for SCAN stations or for SCAN data collection: the NWCC contact page names a Director of the Snow Survey and Water Supply Forecasting Program and a Water and Climate Monitoring Team Lead, but neither is tied to SCAN on any page, so nobody is recorded. The NWCC station page and site notes name no people. Facility URL sitenum=2003 is still Wabeno #1, WI (see R-PEOPLE2-ARID-NM-02); the station is Crossroads 2107:NM:SCAN, Lea Co., since 2005-03-12."
+  },
+  {
+   "facility_id": "9b7758a08f12bd51",
+   "pages_fetched": [
+    {
+     "url": "https://wcc.sc.egov.usda.gov/nwcc/site?sitenum=2037",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/nwcc/site?sitenum=2029",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/stations?stationTriplets=2029:ID:SNTL&returnStationElements=false&activeOnly=false",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/stations?stationTriplets=*:ID:*&returnStationElements=false&activeOnly=false",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/reference-data?referenceLists=dcos",
+     "status": 200
+    },
+    {
+     "url": "https://www.nrcs.usda.gov/state-offices/idaho/contact-idaho-snow-survey",
+     "status": 200
+    },
+    {
+     "url": "https://www.nrcs.usda.gov/resources/data-and-reports/soil-climate-analysis-network",
+     "status": 200
+    }
+   ],
+   "notes": "Nobody recorded: the station cannot be identified. Facility URL sitenum=2037 is Pee Dee, SC (see R-PEOPLE2-DRYLANDS-SW-02b). AWDB lists no Idaho SCAN station named Reynolds (Idaho SCAN stations are Jordan Valley CWMA 2148 and Orchard Range Site 674). The Reynolds Creek station in AWDB is SNOTEL 2029:ID:SNTL (Owyhee Co., since 1999-08-31, dcoCode ID), about 12 km from the stored point. If the facility is re-pointed to that SNOTEL, the Idaho Snow Survey contact page lists Patrick Kormos as Supervisory Hydrologist (Boise) and David Eiriksson as Data Collection Officer; if it is a SCAN station it is run nationally and no page names a lead. Not attached while the network and station are unresolved."
+  }
+ ],
+ "people": [
+  {
+   "key": "warbritton-matt",
+   "existing_person_id": null,
+   "name": "Matt Warbritton",
+   "name_given": "Matt",
+   "name_family": "Warbritton",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Supervisory hydrologist and media and partner liaison for the Oregon Data Collection Office of the USDA Natural Resources Conservation Service's Oregon Snow Survey Program, based in Portland, Oregon.",
+   "bio_source_url": "https://www.nrcs.usda.gov/state-offices/oregon/oregon-snow-survey/contact-oregon-data-collection-office",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "fisher-daniel",
+   "existing_person_id": "6b5037ecc7044cab",
+   "name": "Daniel Fisher",
+   "name_given": "Daniel",
+   "name_family": "Fisher",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "desimone-dino",
+   "existing_person_id": "4e884614e4297d6b",
+   "name": "Dino DeSimone",
+   "name_given": "Dino",
+   "name_family": "DeSimone",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  }
+ ],
+ "affiliations": [
+  {
+   "facility_id": "1ca0ee8b5874566d",
+   "person_key": "warbritton-matt",
+   "role": "manager",
+   "title": "Supervisory Hydrologist, Media and Partner Liaison, NRCS Oregon Data Collection Office (Portland)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.nrcs.usda.gov/state-offices/oregon/oregon-snow-survey/contact-oregon-data-collection-office",
+   "evidence": "Matt Warbritton Supervisory Hydrologist, Media and Partner Liason",
+   "confidence": "medium",
+   "notes": "Office-level: AWDB gives Lyman Lake (606:WA:SNTL) dcoCode OR, and the NRCS Oregon news item says the Portland DCO's operational area covers Oregon, Washington, and a part of northern CA. No page names a station manager; the Oregon contact page also lists a (vacant) Washington Water Supply Specialist post."
+  },
+  {
+   "facility_id": "146e9515733ddedd",
+   "person_key": "warbritton-matt",
+   "role": "manager",
+   "title": "Supervisory Hydrologist, Media and Partner Liaison, NRCS Oregon Data Collection Office (Portland)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.nrcs.usda.gov/state-offices/oregon/oregon-snow-survey/contact-oregon-data-collection-office",
+   "evidence": "Matt Warbritton Supervisory Hydrologist, Media and Partner Liason",
+   "confidence": "low",
+   "notes": "Low because the facility's station is unresolved (URL points to a Colorado station; the only Washington 'Trinity' SNOTEL is 1171, ~45 km from the stored point). Every Washington candidate has AWDB dcoCode OR, and the Portland DCO covers Washington per the NRCS Oregon news item."
+  },
+  {
+   "facility_id": "6966c758bebef0f1",
+   "person_key": "fisher-daniel",
+   "role": "manager",
+   "title": "Alaska Snow Survey Program Manager, NRCS Alaska (Alaska data collection office, which runs Atigun Pass SNOTEL)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.nrcs.usda.gov/contact/state-office-contacts/alaska-state-office",
+   "evidence": "Daniel Fisher Alaska Snow Survey Program Manager",
+   "confidence": "medium",
+   "notes": "Program-level: AWDB gives Atigun Pass (957:AK:SNTL) dcoCode AK, and the April 2026 Alaska Water Supply Outlook Report, published by Fisher as Snow Survey Program Manager, lists Atigun Pass SNOTEL in its tables."
+  },
+  {
+   "facility_id": "3ef8f8206b3af64b",
+   "person_key": "desimone-dino",
+   "role": "data-manager",
+   "title": "Listed contact point for the data.gov dataset record of SCAN site 2026 (Walnut Gulch #1)",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://catalog.data.gov/dataset/us-department-of-agriculture-soil-climate-analysis-network-scan-site-2026-data-walnut-gulc",
+   "evidence": "Have questions or suggestions about this dataset? Reach out to the contact below. Name DeSimone, Dino",
+   "confidence": "low",
+   "notes": "Dataset contact on a record published by the Agricultural Research Service (modified 2025-11-22); not a station role. Re-sourced here so the confirmation below does not raise it above low."
+  }
+ ],
+ "verifications": [
+  {
+   "facility_id": "6966c758bebef0f1",
+   "person_id": "6b5037ecc7044cab",
+   "existing_role": "manager",
+   "status": "confirmed",
+   "current_holder_key": null,
+   "source_url": "https://www.nrcs.usda.gov/contact/state-office-contacts/alaska-state-office",
+   "evidence": "Daniel Fisher Alaska Snow Survey Program Manager"
+  },
+  {
+   "facility_id": "3ef8f8206b3af64b",
+   "person_id": "4e884614e4297d6b",
+   "existing_role": "data-manager",
+   "status": "confirmed",
+   "current_holder_key": null,
+   "source_url": "https://catalog.data.gov/dataset/us-department-of-agriculture-soil-climate-analysis-network-scan-site-2026-data-walnut-gulc",
+   "evidence": "Have questions or suggestions about this dataset? Reach out to the contact below. Name DeSimone, Dino"
+  }
+ ],
+ "verification_notes": "Adversarial check 2026-10-26: re-fetched the Oregon DCO contact page, NRCS Oregon news item (2023-06-15), NRCS Alaska state office contacts, April 2026 Alaska WSOR, data.gov SCAN 2026 record and AWDB station records (606:WA, 1171:WA, *:WA, 957:AK, 2026:AZ, dcos); www.nrcs.usda.gov timed out and was read via its nrcs-prod.azureedge.us mirror. All evidence quotes, roles and identities held. Warbritton bio rewritten more tightly to page facts; his two affiliation titles reduced to the job title as listed (station-operation inference kept in notes). 453 of 465 AWDB Washington stations, and every candidate near the Trinity point, carry dcoCode OR. No ORCID, Scholar id, homepage or personal contact data recorded."
+}

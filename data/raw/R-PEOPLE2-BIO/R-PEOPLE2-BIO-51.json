@@ -1,0 +1,139 @@
+{
+ "batch_id": "R-PEOPLE2-BIO-51",
+ "retrieved_at": "2026-10-26",
+ "verified_by": "adversarial-verifier 2026-10-26",
+ "updates": [
+  {
+   "person_id": "8a7e67eac9601475",
+   "name": "Brent M. Lofgren",
+   "homepage_url": null,
+   "bio": "Physical scientist at NOAA's Great Lakes Environmental Research Laboratory since 1996, per a GLERL-hosted CV dated December 2015, with a Princeton PhD in atmospheric and oceanic sciences. Research covers atmospheric models coupled to land and water surfaces, Great Lakes regional climate and hydrology across years to decades, East African land use and climate, and communicating climate change.",
+   "bio_source_url": "https://www.glerl.noaa.gov/about/pers/cv/lofgren/LofgrenCV_2page_Dec15.pdf",
+   "research_interests": "regional atmospheric modeling coupled to land and lake surfaces; interannual to interdecadal climate of the Laurentian Great Lakes basin; regional climate modeling and its interaction with hydrology; land use and climate interactions in East Africa; climate change communication",
+   "research_interests_source_url": "https://www.glerl.noaa.gov/about/pers/cv/lofgren/LofgrenCV_2page_Dec15.pdf",
+   "orcid": "0000-0003-2189-0914",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0003-2189-0914/employments",
+   "current_title": "Physical Scientist",
+   "current_affiliation": "NOAA Great Lakes Environmental Research Laboratory",
+   "status": null,
+   "status_source_url": null,
+   "evidence": "Physical Scientist, NOAA Great Lakes Environmental Research Laboratory, Ann Arbor, MI, June 1996- present.",
+   "evidence_source_url": "https://www.glerl.noaa.gov/about/pers/cv/lofgren/LofgrenCV_2page_Dec15.pdf",
+   "notes": "GLERL people page (www.glerl.noaa.gov/people/) and profiles/lofgren.html return 404; the GLERL-hosted 2-page CV (file named Dec15) is the only page about this person found, so title is as of that CV and status left null. Existing ORCID 0000-0003-2189-0914 checked at pub.orcid.org: name Brent Lofgren; employment Great Lakes Environmental Research Laboratory, Physical Scientist, Meteorology, from 1996-06-16, no end date (consistent). No Google Scholar link found on a fetched page. VERIFIER 2026-10-26: CV re-fetched (200) and ORCID person/employments re-fetched; bio and evidence confirmed; research-interests item 'climate change impacts on Great Lakes hydrology' replaced by the CV's 'regional climate modeling and interaction with hydrology'.",
+   "retrieved_at": "2026-10-26"
+  },
+  {
+   "person_id": "6acb040916741ebd",
+   "name": "Erin Shanahan",
+   "homepage_url": null,
+   "bio": "Vegetation ecologist on the staff of the National Park Service Greater Yellowstone Inventory and Monitoring Network, whose office is in Bozeman, Montana. The network collaborates with Montana State University, a USGS science center and other partners.",
+   "bio_source_url": "https://www.nps.gov/im/gryn/contactus.htm",
+   "research_interests": null,
+   "research_interests_source_url": null,
+   "orcid": null,
+   "orcid_source_url": null,
+   "current_title": "Ecologist (Vegetation)",
+   "current_affiliation": "National Park Service, Greater Yellowstone Inventory & Monitoring Network",
+   "status": "active",
+   "status_source_url": "https://www.nps.gov/im/gryn/contactus.htm",
+   "evidence": "Ecologist (Vegetation): Erin Shanahan",
+   "evidence_source_url": "https://www.nps.gov/im/gryn/contactus.htm",
+   "notes": "Short bio from the GRYN staff list alone (page last updated August 7, 2026), which states role and focus (vegetation); no individual profile page found. GRYN whitebark pine page (nps.gov/im/gryn/whitebark-pine.htm) carries the name only in an image credit. No ORCID or Google Scholar on a fetched page. VERIFIER 2026-10-26: contact page re-fetched (200); bio reworded so Bozeman is stated as the network office location (the page does not give an individual work location).",
+   "retrieved_at": "2026-10-26"
+  },
+  {
+   "person_id": "c3b93845ce50b80a",
+   "name": "Caitlin Chaffee",
+   "homepage_url": null,
+   "bio": "Reserve Manager of the Narragansett Bay National Estuarine Research Reserve, as listed on the reserve's staff page.",
+   "bio_source_url": "https://nbnerr.org/_our-team_/",
+   "research_interests": null,
+   "research_interests_source_url": null,
+   "orcid": null,
+   "orcid_source_url": null,
+   "current_title": "Reserve Manager",
+   "current_affiliation": "Narragansett Bay National Estuarine Research Reserve (RI DEM)",
+   "status": "active",
+   "status_source_url": "https://nbnerr.org/_our-team_/",
+   "evidence": "Caitlin Chaffee Reserve Manager",
+   "evidence_source_url": "https://nbnerr.org/_our-team_/",
+   "notes": "Short bio from the reserve's Our Team list (role only). https://nbnerr.org/about-us/ (200) states the reserve is a NOAA and RIDEM partnership. No individual profile page on nbnerr.org. Listed as co-author (C. Chaffee) on a 2022 salt-marsh sediment placement paper on https://nbnerr.org/research-and-monitoring/research-and-monitoring-staff/. No ORCID or Google Scholar found. VERIFIER 2026-10-26: removed 'based on Prudence Island' from the bio: the Our Team page gives Providence, not Prudence, as this person's location; bio limited to the role the team page states.",
+   "retrieved_at": "2026-10-26"
+  },
+  {
+   "person_id": "f7e44deee1750f73",
+   "name": "Jon Mitchell",
+   "homepage_url": null,
+   "bio": "Stewardship Coordinator at the Narragansett Bay National Estuarine Research Reserve and the listed contact for its Wood Steward Program. The reserve's stewardship program manages grassland, salt marsh and pine barren habitats through cutting, prescribed burns, invasive plant removal and monitoring of marsh change.",
+   "bio_source_url": "https://nbnerr.org/stewardship-2/",
+   "research_interests": null,
+   "research_interests_source_url": null,
+   "orcid": null,
+   "orcid_source_url": null,
+   "current_title": "Stewardship Coordinator",
+   "current_affiliation": "Narragansett Bay National Estuarine Research Reserve (RI DEM)",
+   "status": "active",
+   "status_source_url": "https://nbnerr.org/_our-team_/",
+   "evidence": "Contact Jon Mitchell, NBNERR Stewardship Coordinator",
+   "evidence_source_url": "https://nbnerr.org/stewardship-2/",
+   "notes": "No individual profile page; bio built from the Stewardship page, which names Jon Mitchell as Stewardship Coordinator (contact under the 2026 Wood Steward Program heading) and describes the stewardship program. Also listed on https://nbnerr.org/_our-team_/ as Stewardship Coordinator. No ORCID or Google Scholar found. VERIFIER 2026-10-26: stewardship and team pages re-fetched (200); bio claims confirmed on the stewardship page.",
+   "retrieved_at": "2026-10-26"
+  },
+  {
+   "person_id": "02c3c62b9463e314",
+   "name": "Maureen Dewire",
+   "homepage_url": null,
+   "bio": "Education Coordinator at the Narragansett Bay National Estuarine Research Reserve and the contact for its education programs, which include place-based K-12 field trips, group visits and professional development workshops for teachers.",
+   "bio_source_url": "https://nbnerr.org/education-2/",
+   "research_interests": null,
+   "research_interests_source_url": null,
+   "orcid": null,
+   "orcid_source_url": null,
+   "current_title": "Education Coordinator",
+   "current_affiliation": "Narragansett Bay National Estuarine Research Reserve (RI DEM)",
+   "status": "active",
+   "status_source_url": "https://nbnerr.org/_our-team_/",
+   "evidence": "please contact Maureen Dewire, Education Coordinator",
+   "evidence_source_url": "https://nbnerr.org/education-2/",
+   "notes": "No individual profile page; bio built from the Education and Outreach page, which names Maureen Dewire as Education Coordinator and the contact for education questions. Also on https://nbnerr.org/_our-team_/. No ORCID or Google Scholar found. VERIFIER 2026-10-26: education and team pages re-fetched (200); bio claims confirmed.",
+   "retrieved_at": "2026-10-26"
+  }
+ ],
+ "dropped": [
+  {
+   "person_id": "00dc1f8dee64d571",
+   "name": "Robert Heitsenrether",
+   "reason": "No page about this person could be fetched (CO-OPS about page and site carry no staff profiles; org chart is an image). Existing ORCID 0009-0005-4381-5650 checked at pub.orcid.org: name Robert Heitsenrether, employment NOAA National Ocean Service, Scientist (no biography). Web search unavailable this run."
+  },
+  {
+   "person_id": "1d93c46c78f6a3b4",
+   "name": "Scott Mowery",
+   "reason": "No page about this person could be fetched; tidesandcurrents.noaa.gov/about_us.html does not name Scott Mowery and the CO-OPS org chart is an image. Web search unavailable this run."
+  },
+  {
+   "person_id": "d123e2d9aa872f88",
+   "name": "Catherine M. Riseng",
+   "reason": "Homepage https://seas.umich.edu/research/faculty/catherine-riseng and CIGLR staff pages return 403 to both curl and WebFetch; no other page about this person could be fetched. Web search unavailable this run."
+  },
+  {
+   "person_id": "35eaa2830b9374cd",
+   "name": "Stephen B. Brandt",
+   "reason": "Homepage https://ceoas.oregonstate.edu/people/stephen-brandt returns 404 and the name is not in the CEOAS directory (directory/list-condensed, 2026-10-26); other guessed OSU profile URLs returned 401/403/404. Web search unavailable this run."
+  },
+  {
+   "person_id": "97c9f8b0a50a7751",
+   "name": "Steve A. Fancy",
+   "reason": "Not named on https://www.nps.gov/im/, /im/contactus.htm, /im/about.htm or the SIEN pages; no page about this person could be fetched. Web search unavailable this run."
+  },
+  {
+   "person_id": "dd8f6330cf10998b",
+   "name": "Thomas P. Philippi",
+   "reason": "Not named on https://www.nps.gov/im/, /im/contactus.htm, /im/about.htm or the SIEN pages; no page about this person could be fetched. Web search unavailable this run."
+  },
+  {
+   "person_id": "2a664828edac77cd",
+   "name": "Kim Penn",
+   "reason": "Homepage https://coastalscience.noaa.gov/about/leadership/ now returns 404 (re-checked 2026-10-26) and the NCCOS site has no staff page for Kim Penn. The current NCCOS org chart (https://cdn.coastalscience.noaa.gov/page-attachments/about/NCCOSOrgChart_current.pdf, created 2026-09-08, re-fetched) lists Sean Corson as Director and David Kidwell as Deputy Director, so the NCCOS director row looks stale and needs a research-batch verdict."
+  }
+ ]
+}

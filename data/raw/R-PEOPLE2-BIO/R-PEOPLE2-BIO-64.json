@@ -1,0 +1,95 @@
+{
+ "batch_id": "R-PEOPLE2-BIO-64",
+ "retrieved_at": "2026-10-26",
+ "verified_by": "adversarial-verifier 2026-10-26",
+ "updates": [
+  {
+   "person_id": "a24d29f916e1b2ee",
+   "name": "Matthew A. Reidenbach",
+   "homepage_url": "https://reidenbach.evsc.virginia.edu/",
+   "bio": "Chairs the University of Virginia's Department of Environmental Sciences, where he is a professor, and holds a courtesy appointment in Mechanical and Aerospace Engineering. His coastal oceanography research examines hydrodynamic influences on marine life: how flow and turbulence shape coral reef nutrient exchange, estuarine larval transport, chemical dispersal at sea, waves, and nature-based protection of coastlines.",
+   "bio_source_url": "https://reidenbach.evsc.virginia.edu/",
+   "research_interests": "coastal oceanography; flow and turbulence controls on coral reef nutrient exchange; estuarine larval transport; chemical dispersal in the ocean; wave dynamics; nature-based coastal protection and resilience",
+   "research_interests_source_url": "https://reidenbach.evsc.virginia.edu/",
+   "orcid": "0000-0002-5592-920X",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-5592-920X/person",
+   "current_title": "Professor and Department Chair, Department of Environmental Sciences",
+   "current_affiliation": "University of Virginia",
+   "status": "active",
+   "status_source_url": "https://evsc.as.virginia.edu/people/matthew-reidenbach",
+   "evidence": "Matthew A. Reidenbach Department Chair, Professor",
+   "evidence_source_url": "https://evsc.as.virginia.edu/people/matthew-reidenbach",
+   "notes": "Lab page reidenbach.evsc.virginia.edu (200) and UVA EVSC profile evsc.as.virginia.edu/people/matthew-reidenbach (200) both name him Professor and Chair, Environmental Sciences, UVA; neither mentions VCR LTER (affiliation rests on NSF award 2425178). ORCID already on file re-checked at pub.orcid.org: name Matthew Reidenbach, employment University of Virginia, Environmental Sciences (consistent). No Google Scholar link on either page. evsc.as.virginia.edu/people/profile/reidenbach returned 404. Verifier 2026-10-26: re-fetched both pages (200) and the ORCID record; bio and research_interests rewritten (original bio copied an 8-word run and interests a 9-word run from the lab page); evidence replaced with the exact text on the EVSC profile (the earlier quote was not on the page). Lab page uses 'he' for him."
+  },
+  {
+   "person_id": "9b1ee2717dfe0f43",
+   "name": "Carl L. Unkrich",
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null,
+   "orcid": "0009-0001-9959-0674",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0009-0001-9959-0674/person",
+   "current_title": "Hydrologist",
+   "current_affiliation": "USDA-ARS Southwest Watershed Research Center, Tucson AZ",
+   "status": null,
+   "status_source_url": null,
+   "evidence": "Unkrich, Carl Hydrologist",
+   "evidence_source_url": "https://www.ars.usda.gov/pacific-west-area/tucson-az/southwest-watershed-research-center/docs/staff/",
+   "notes": "Listed on the SWRC staff page (200) as Hydrologist with no profile link or description, so no bio written (staff-list line gives role but no research focus). ORCID found via the ORCID registry search and fetched: pub.orcid.org record name Carl Unkrich, employment United States Department of Agriculture, Agricultural Research Service, Hydrologist, from 1997-02, no end date; consistent with the ARS Tucson hydrologist role. No Google Scholar link found. Web search budget was exhausted during this batch, so no further profile pages were sought. Verifier 2026-10-26: staff page re-fetched (200), 'Unkrich, Carl Hydrologist' present; ORCID record re-fetched: name Carl Unkrich, employment USDA Agricultural Research Service, Hydrologist, 1997-, consistent."
+  }
+ ],
+ "dropped": [
+  {
+   "person_id": "1f1d9e29d7172eca",
+   "name": "James W. Elwood",
+   "reason": "walkerbranch.ornl.gov home, history, about-us and associated-research pages fetched (200 via WebFetch) and none names him; no profile or memorial page could be located (web search budget exhausted)."
+  },
+  {
+   "person_id": "cb9e576165d749c3",
+   "name": "Patrick J. Mulholland",
+   "reason": "walkerbranch.ornl.gov home, history, about-us and associated-research pages fetched and none names him; no profile or memorial page could be located (web search budget exhausted)."
+  },
+  {
+   "person_id": "4e884614e4297d6b",
+   "name": "Dino DeSimone",
+   "reason": "Only source is the data.gov SCAN 2026 dataset record naming 'DeSimone, Dino' as contact, with no title or affiliation; no profile page found."
+  },
+  {
+   "person_id": "8a0fe85d82bed6a6",
+   "name": "Mark A. Nearing",
+   "reason": "Homepage on file (ars.usda.gov .../southwest-watershed-research/people/mark-nearing/) and the -center/ variants return 404; he is not on the current SWRC staff page; ltar.ars.usda.gov/sites/walnut-gulch/ returned 404. ORCID registry candidate 0000-0003-2444-4960 (Mark Nearing) has no employment listed, so not recorded."
+  },
+  {
+   "person_id": "d018ea3ff889d482",
+   "name": "Kristen Weir",
+   "reason": "Waquoit Bay staff page lists only 'Kristen Weir, Ph.D., Coastal Training Program Coordinator' (title plus contact details); coastal-training and other reserve pages checked do not describe her; no individual profile page found."
+  },
+  {
+   "person_id": "3f3b58cdee8b9891",
+   "name": "Ryan Clark",
+   "reason": "Waquoit Bay staff page lists only title 'Stewardship Coordinator'; no individual profile page found."
+  },
+  {
+   "person_id": "9bccb101562be0a2",
+   "name": "Sonia Ahrabi-Nejad",
+   "reason": "Waquoit Bay staff page lists only title 'Education Coordinator'; no individual profile page found."
+  },
+  {
+   "person_id": "b45f8af5a4ea7fee",
+   "name": "Tonna-Marie Surgeon Rogers",
+   "reason": "Waquoit Bay staff page lists 'Reserve Manager'; the reserve's Ask Our Researchers page says only 'Manager, Waquoit Bay National Estuarine Research Reserve. Check back for more info later.' No page states a research focus or background."
+  },
+  {
+   "person_id": "bbdccc43f66c9d35",
+   "name": "Angela Underwood",
+   "reason": "outdooralabama.com Weeks Bay Reserve page lists her only as 'Manager'; weeksbay.org and the NOAA NERRS Weeks Bay page do not name her; no profile page found."
+  },
+  {
+   "person_id": "8c4f4421f34b9507",
+   "name": "Ashley Griffin",
+   "reason": "outdooralabama.com Weeks Bay Reserve page lists only 'Research and Monitoring Technician'; no profile page found."
+  }
+ ]
+}

@@ -1,0 +1,111 @@
+{
+ "batch_id": "R-PEOPLE2-BIO-54",
+ "retrieved_at": "2026-10-26",
+ "verified_by": "adversarial-verifier 2026-10-26",
+ "updates": [
+  {
+   "person_id": "9edcb400387ce56b",
+   "name": "Deb Kelley",
+   "homepage_url": "https://www.ocean.washington.edu/home/Deborah_Kelley",
+   "bio": "Directs the NSF Ocean Observatories Initiative's Regional Cabled Array at the University of Washington, overseeing the UW oceanography and Applied Physics Laboratory group that runs about 900 km of seafloor fiber-optic cable across the Juan de Fuca plate. Studies links among submarine volcanoes, hydrothermal vents and their biological communities; has taken over 150 undergraduates to sea through RCA-UW VISIONS.",
+   "bio_source_url": "https://oceanobservatories.org/staff/deborah-kelley/",
+   "research_interests": "geology and microbiology of submarine volcanoes and hydrothermal vents; Axial Volcano and Endeavour Segment hydrothermal systems; Lost City Hydrothermal Field; methane seeps (Pythias Oasis); cabled ocean observatories",
+   "research_interests_source_url": "https://www.ocean.washington.edu/home/Deborah_Kelley",
+   "orcid": "0000-0002-0753-481X",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-0753-481X/employments",
+   "current_title": "Professor; Director, Regional Cabled Array (Ocean Observatories Initiative)",
+   "current_affiliation": "School of Oceanography, University of Washington",
+   "status": "active",
+   "status_source_url": "https://www.ocean.washington.edu/home/Deborah_Kelley",
+   "evidence": "OOI Regional Cabled Array Director Deb Kelley Receives 2026 Wallace S. Broecker Medal",
+   "evidence_source_url": "https://oceanobservatories.org/2026/02/ooi-regional-cabled-array-director-deb-kelley-receives-2026-wallace-s-broecker-medal/",
+   "notes": "Same person: OOI staff page (Leadership) names Deborah Kelley, UW, director of the Regional Cabled Array; OOI 2026 news calls Deb Kelley RCA Director and professor of oceanography at UW. UW Oceanography profile lists Deborah Kelley, Professor, MG&G. ORCID 0000-0002-0753-481X found via ORCID public search; pub.orcid.org person record name Deborah Kelley (researcher URL interactiveoceans.washington.edu, the RCA site) and employment University of Washington, School of Oceanography, Professor, from 1991, no end date - consistent. No Google Scholar link on any fetched official page or the ORCID record. Bio written without pronouns. VERIFIER 2026-10-26: all cited pages re-fetched (200). Bio rewritten: the OOI staff page (bio_source_url) does not call her professor or say she leads VISIONS (it says she has taken >150 undergraduates to sea as part of it), so those claims were reworded to what the page states; professor title rests on the UW profile (current_title). Research-interests first item reworded (was a 9-word copy of the UW 'Specialty' line). ORCID re-checked: /person given Deborah, family Kelley; /employments University of Washington, School of Oceanography, Professor, 1991-06-15, no end. Evidence quote is the 2026 OOI news headline, present on the page.",
+   "retrieved_at": "2026-10-26"
+  },
+  {
+   "person_id": "77b887731b3aeef5",
+   "name": "Jeremy Rusin",
+   "homepage_url": "https://www.fisheries.noaa.gov/contact/jeremy-d-rusin",
+   "bio": "Introduced in a January 2018 NOAA Fisheries feature as the new Deputy Director of the Alaska Fisheries Science Center. Joined the agency in 2003 in fisheries management, later serving as deputy director of Southwest Fisheries Science Center's Protected Resources and Antarctic Ecosystem Research divisions. Biology B.S., Davidson College; marine affairs master's, University of Washington.",
+   "bio_source_url": "https://www.fisheries.noaa.gov/feature-story/new-faces-alaska-fisheries-science-center-leadership",
+   "research_interests": null,
+   "research_interests_source_url": null,
+   "orcid": null,
+   "orcid_source_url": null,
+   "current_title": "Science Director, Northwest Fisheries Science Center",
+   "current_affiliation": "NOAA Fisheries, Northwest Fisheries Science Center",
+   "status": "active",
+   "status_source_url": "https://www.fisheries.noaa.gov/contact/northwest-fisheries-science-center",
+   "evidence": "Jeremy D. Rusin Science Director",
+   "evidence_source_url": "https://www.fisheries.noaa.gov/about/northwest-fisheries-science-center",
+   "notes": "Current role confirmed on NWFSC about page (Our Leadership) and NWFSC contact page, both 200. Old homepage nwfsc.noaa.gov/about/directors_bio.cfm 301-redirects to the generic NWFSC about page; his NOAA contact page (/contact/jeremy-d-rusin, 200) names him Science Director, NWFSC, but carries no biography, so the bio is from the 2018 AFSC leadership feature story (dated 2018-01-10) and is phrased in the past. Identity link between the 2018 story (Jeremy Rusin, NOAA Fisheries) and the current NWFSC Science Director (Jeremy D. Rusin) is by name within the same agency; no page fetched states both. ORCID public search for Rusin/Jeremy returned no record. No Google Scholar link found. VERIFIER 2026-10-26: all cited pages re-fetched (200). The 2018 story is dated January 10, 2018 and does not give the appointment date (he replaced a deputy who retired June 2017), so 'named ... in 2018' was reworded to 'introduced in a January 2018 feature'. Identity tie between the 2018 AFSC Deputy Director and the current NWFSC Science Director is still name-plus-agency only: searches found no page stating both (Columbia Basin Bulletin 2017 item names Kevin Werner as the earlier NWFSC director; NW Council Aug 2026 slide deck lists 'Jeremy Rusin, NWFSC Science Director' with no career history; archived directors_bio.cfm snapshots end in 2019). Kept because the name is distinctive and both pages are NOAA Fisheries; drop the bio if a reviewer wants a page-level tie.",
+   "retrieved_at": "2026-10-26"
+  },
+  {
+   "person_id": "953bd1afb851c8e4",
+   "name": "Jacob Cianci-Gaskill",
+   "homepage_url": null,
+   "bio": "System Wide Monitoring Coordinator at Old Woman Creek National Estuarine Research Reserve on Lake Erie. The reserve's 2026 events program lists a talk by Dr. Cianci-Gaskill on how phytoplankton drive nutrient cycling in the estuary.",
+   "bio_source_url": "https://dam.assets.ohio.gov/image/upload/v1775577597/odnr/coastal/owc/EstuaryExplorations_2026.pdf",
+   "research_interests": "phytoplankton and nutrient cycling in the Old Woman Creek estuary",
+   "research_interests_source_url": "https://dam.assets.ohio.gov/image/upload/v1775577597/odnr/coastal/owc/EstuaryExplorations_2026.pdf",
+   "orcid": null,
+   "orcid_source_url": null,
+   "current_title": "System Wide Monitoring Coordinator",
+   "current_affiliation": "Old Woman Creek National Estuarine Research Reserve (Ohio Department of Natural Resources)",
+   "status": "active",
+   "status_source_url": "https://dam.assets.ohio.gov/image/upload/v1775577597/odnr/coastal/owc/EstuaryExplorations_2026.pdf",
+   "evidence": "Dr. Jacob Cianci-Gaskill, OWC's System Wide Monitoring Coordinator",
+   "evidence_source_url": "https://dam.assets.ohio.gov/image/upload/v1775577597/odnr/coastal/owc/EstuaryExplorations_2026.pdf",
+   "notes": "Short bio from the reserve's Estuary Explorations 2026 program (ODNR PDF, fetched 200, text extracted). ORCID 0000-0002-6778-6170 (Jacob Cianci-Gaskill, other name Jacob A. Gaskill) exists, but the record lists no employment (institutions in search are GVSU, SUNY ESF, Univ. of Missouri, likely education) and nothing tying it to Old Woman Creek or ODNR, so not recorded. No Google Scholar link found. Ohio Sea Grant seminar page cited in R-PEOPLE2-NERR-02b returned 500. VERIFIER 2026-10-26: PDF re-fetched (200, application/pdf); quote present (PDF uses a curly apostrophe in OWC's) and the PDF places the reserve in Huron, Ohio, on Lake Erie. Correction: the affiliation source https://ohiodnr.gov/discover-and-learn/safety-conservation/about-odnr/coastal-management/owc-nerr/research-resources-owc returned 200 on re-fetch and lists 'System Wide Monitoring Coordinator Jacob Cianci-Gaskill, Ph.D.', confirming the role; the earlier claim that it was 404 was wrong. Research interests are a single talk topic, kept as a narrow line.",
+   "retrieved_at": "2026-10-26"
+  }
+ ],
+ "dropped": [
+  {
+   "person_id": "5e5229e6c0234d0e",
+   "name": "James K. Ringelman",
+   "reason": "No affiliation source_url; no official profile or memorial page about him could be fetched (web search budget exhausted after first queries). ORCID public search for Ringelman returned only Anna and Kevin Ringelman."
+  },
+  {
+   "person_id": "a519f85e80dc9957",
+   "name": "Robert E. Stewart",
+   "reason": "No affiliation source_url; guessed USGS NPWRC history and Wikipedia URLs returned 404 and web search budget was exhausted; no page about him fetched."
+  },
+  {
+   "person_id": "f64884e40d3a566d",
+   "name": "Robert J. Luxmoore",
+   "reason": "Affiliation source https://www.ornl.gov/division/cssed returns 404 (403 on verifier re-fetch); ornl.gov/staff-profile/robert-j-luxmoore 404; ORCID public search for Luxmoore has no Robert. No page about him fetched."
+  },
+  {
+   "person_id": "d90c6a55bc89a44c",
+   "name": "Janice Kerns",
+   "reason": "Not on the ODNR OWC research-resources page (200 on verifier re-fetch; it lists only the research and SWMP coordinators); coast.noaa.gov OWC reserve page names no staff; no individual profile found. ORCID 0000-0002-3848-080X (Janice Kerns) has no institution, so not linked."
+  },
+  {
+   "person_id": "d1facc52f914575a",
+   "name": "Jennifer Bucheit",
+   "reason": "Not on the ODNR OWC research-resources page (200 on verifier re-fetch; it lists only the research and SWMP coordinators); no individual profile found; staff-list line alone gives no focus."
+  },
+  {
+   "person_id": "d59c6ddd34eecc08",
+   "name": "Veronica Hardy",
+   "reason": "Not on the ODNR OWC research-resources page (200 on verifier re-fetch; it lists only the research and SWMP coordinators); no individual profile found; staff-list line alone gives no focus."
+  },
+  {
+   "person_id": "99a61eb50799a9ff",
+   "name": "Bill Baccus",
+   "reason": "NCCN about page (200) lists only 'Bill Baccus, Ecologist, Olympic National Park' with no focus; Olympic NP science page shows only a photo credit; no profile page found. ORCID search for Baccus has no William/Bill."
+  },
+  {
+   "person_id": "ae73071c992c8188",
+   "name": "Jerald Weaver",
+   "reason": "NCCN about page (200) lists only 'Jerald Weaver, Chief of Resources Management - Olympic National Park'; no profile page found and no focus stated."
+  },
+  {
+   "person_id": "716d3647e2d78669",
+   "name": "Stephen W. Coates",
+   "reason": "No page about him fetched. Ordway-Swisher contact page (https://ordway-swisher.ufl.edu/about/contact/, 200) lists John Davis as Director and Tracey Sleek as Assistant Director and does not name Coates, so the lake's current 'director' row for him looks stale (a 2008 UF Explore article in search results called him the station's research coordinator; not fetched). ORCID search for Stephen Coates shows no UF record."
+  }
+ ]
+}

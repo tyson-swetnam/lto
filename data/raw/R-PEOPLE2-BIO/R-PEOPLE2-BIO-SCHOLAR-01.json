@@ -1,0 +1,414 @@
+{
+ "batch_id": "R-PEOPLE2-BIO-SCHOLAR-01",
+ "retrieved_at": "2026-10-26",
+ "verified_by": "two adversarial verifiers per Scholar id 2026-10-26",
+ "updates": [
+  {
+   "person_id": "496b5c9924f3db4b",
+   "name": "(Patricia) Danielle Shannon",
+   "google_scholar_id": "BxfWIekAAAAJ",
+   "google_scholar_source_url": "https://www.climatehubs.usda.gov/hubs/northern-forests/people/patricia-danielle-shannon",
+   "notes": "Google Scholar profile linked from the person's own profile page; confirmed by two independent checks of the page 2026-10-26"
+  },
+  {
+   "person_id": "3afd97deee775519",
+   "name": "Adrienne J. Sutton",
+   "google_scholar_id": "U-4Tg2wAAAAJ",
+   "google_scholar_source_url": "https://www.pmel.noaa.gov/co2/story/Adrienne%2BJ.%2BSutton%252C%2BPh.D.",
+   "notes": "Google Scholar profile linked from the person's own profile page; confirmed by two independent checks of the page 2026-10-26"
+  },
+  {
+   "person_id": "0149f5a9b57536e1",
+   "name": "Alexander Smirnov",
+   "google_scholar_id": "fFAsPfAAAAAJ",
+   "google_scholar_source_url": "https://science.gsfc.nasa.gov/sed/bio/alexander.smirnov-1",
+   "notes": "Google Scholar profile linked from the person's own profile page; confirmed by two independent checks of the page 2026-10-26"
+  },
+  {
+   "person_id": "425a59ea5ae3366d",
+   "name": "Amanda C. Spivak",
+   "google_scholar_id": "D4GozSIAAAAJ",
+   "google_scholar_source_url": "https://marsci.uga.edu/directory/people/amanda-spivak",
+   "notes": "Google Scholar profile linked from the person's own profile page; confirmed by two independent checks of the page 2026-10-26"
+  },
+  {
+   "person_id": "f1cb0b2c46e0de8b",
+   "name": "Beverly E. Law",
+   "google_scholar_id": "J2KWqAoAAAAJ",
+   "google_scholar_source_url": "https://terraweb.forestry.oregonstate.edu/beverly-law",
+   "notes": "Google Scholar profile linked from the person's own profile page; confirmed by two independent checks of the page 2026-10-26"
+  },
+  {
+   "person_id": "ed554b481bba9f6c",
+   "name": "Bruce Pfirrmann",
+   "google_scholar_id": "yGhRRRcAAAAJ",
+   "google_scholar_source_url": "https://sc.edu/study/colleges_schools/artsandsciences/baruch_institute/faculty-staff/pfirrmann_bruce.php",
+   "notes": "Google Scholar profile linked from the person's own profile page; confirmed by two independent checks of the page 2026-10-26"
+  },
+  {
+   "person_id": "5548180ddeb75ee7",
+   "name": "Carl J. Bernacchi",
+   "google_scholar_id": "jB_SrVoAAAAJ",
+   "google_scholar_source_url": "https://experts.illinois.edu/en/persons/carl-bernacchi/",
+   "notes": "Google Scholar profile linked from the person's own profile page; confirmed by two independent checks of the page 2026-10-26"
+  },
+  {
+   "person_id": "c96be3c9ff63597c",
+   "name": "Cassia Pianca",
+   "google_scholar_id": "lLSmsOwAAAAJ",
+   "google_scholar_source_url": "https://www.vims.edu/cbnerr/about/people/pianca_c.php",
+   "notes": "Google Scholar profile linked from the person's own profile page; confirmed by two independent checks of the page 2026-10-26"
+  },
+  {
+   "person_id": "202bbb8a3332595a",
+   "name": "Catherine M. Pringle",
+   "google_scholar_id": "RR12clgAAAAJ",
+   "google_scholar_source_url": "https://ecology.uga.edu/directory/catherine-pringle/",
+   "notes": "Google Scholar profile linked from the person's own profile page; confirmed by two independent checks of the page 2026-10-26"
+  },
+  {
+   "person_id": "8c4bc85f4261ad8c",
+   "name": "Cayelan C. Carey",
+   "google_scholar_id": "ZGoLxF8AAAAJ",
+   "google_scholar_source_url": "https://carey.biol.vt.edu/?page_id=15",
+   "notes": "Google Scholar profile linked from the person's own profile page; confirmed by two independent checks of the page 2026-10-26"
+  },
+  {
+   "person_id": "7d22ef20e12d37ed",
+   "name": "Charles W. Wood",
+   "google_scholar_id": "eGZy2cAAAAAJ",
+   "google_scholar_source_url": "https://wfrec.ifas.ufl.edu/directory/dr-c-wesley-wood/",
+   "notes": "Google Scholar profile linked from the person's own profile page; confirmed by two independent checks of the page 2026-10-26"
+  },
+  {
+   "person_id": "9e008ea3b82ccf90",
+   "name": "Clarissa Anderson",
+   "google_scholar_id": "y1CSJMgAAAAJ",
+   "google_scholar_source_url": "https://cra002.scrippsprofiles.ucsd.edu/",
+   "notes": "Google Scholar profile linked from the person's own profile page; confirmed by two independent checks of the page 2026-10-26"
+  },
+  {
+   "person_id": "7f6cca3cdbce9ccc",
+   "name": "Daniel E. Schindler",
+   "google_scholar_id": "4RaKDygAAAAJ",
+   "google_scholar_source_url": "https://fish.uw.edu/faculty/daniel-schindler/",
+   "notes": "Google Scholar profile linked from the person's own profile page; confirmed by two independent checks of the page 2026-10-26"
+  },
+  {
+   "person_id": "e02b17e5fbdd8eb7",
+   "name": "David C. Goodrich",
+   "google_scholar_id": "csn8FM0AAAAJ",
+   "google_scholar_source_url": "https://www.ars.usda.gov/pacific-west-area/tucson-az/southwest-watershed-research-center/people/david-goodrich/",
+   "notes": "Google Scholar profile linked from the person's own profile page; confirmed by two independent checks of the page 2026-10-26"
+  },
+  {
+   "person_id": "97afc747bd02c879",
+   "name": "David Parrish",
+   "google_scholar_id": "MaiFwycAAAAJ",
+   "google_scholar_source_url": "https://www.vims.edu/cbnerr/about/people/parrish_d.php",
+   "notes": "Google Scholar profile linked from the person's own profile page; confirmed by two independent checks of the page 2026-10-26"
+  },
+  {
+   "person_id": "b6bbef2c3541c61c",
+   "name": "David W. Bohnert",
+   "google_scholar_id": "J8skWPcAAAAJ",
+   "google_scholar_source_url": "https://agsci.oregonstate.edu/directory/people/david-bohnert",
+   "notes": "Google Scholar profile linked from the person's own profile page; confirmed by two independent checks of the page 2026-10-26"
+  },
+  {
+   "person_id": "c2a019e5580fd153",
+   "name": "David W. Inouye",
+   "google_scholar_id": "fGdaU0IAAAAJ",
+   "google_scholar_source_url": "https://biology.umd.edu/people/david-inouye",
+   "notes": "Google Scholar profile linked from the person's own profile page; confirmed by two independent checks of the page 2026-10-26"
+  },
+  {
+   "person_id": "c54bdef5ba9d9fb2",
+   "name": "Dmitry Streletskiy",
+   "google_scholar_id": "z18hQEMAAAAJ",
+   "google_scholar_source_url": "https://geography.columbian.gwu.edu/dmitry-streletskiy",
+   "notes": "Google Scholar profile linked from the person's own profile page; confirmed by two independent checks of the page 2026-10-26"
+  },
+  {
+   "person_id": "1231eddda70feb0c",
+   "name": "Donatella Zona",
+   "google_scholar_id": "Qw1L18EAAAAJ",
+   "google_scholar_source_url": "https://sciences.sdsu.edu/people/donatella-zona",
+   "notes": "Google Scholar profile linked from the person's own profile page; confirmed by two independent checks of the page 2026-10-26"
+  },
+  {
+   "person_id": "929709eda7006fc3",
+   "name": "Edward A.G. Schuur",
+   "google_scholar_id": "A59UgVkAAAAJ",
+   "google_scholar_source_url": "https://www2.nau.edu/schuurlab-p/Schuur.html",
+   "notes": "Google Scholar profile linked from the person's own profile page; confirmed by two independent checks of the page 2026-10-26"
+  },
+  {
+   "person_id": "fe0072077a50ecc3",
+   "name": "Ellen D. Ketterson",
+   "google_scholar_id": "kiZj3UcAAAAJ",
+   "google_scholar_source_url": "https://biology.indiana.edu/about/faculty/retired-emeriti/ketterson-ellen.html",
+   "notes": "Google Scholar profile linked from the person's own profile page; confirmed by two independent checks of the page 2026-10-26"
+  },
+  {
+   "person_id": "388e5afcd98c2f24",
+   "name": "Emily H. Stanley",
+   "google_scholar_id": "S6UR-pkAAAAJ",
+   "google_scholar_source_url": "https://biology.wisc.edu/staff/stanley-emily/",
+   "notes": "Google Scholar profile linked from the person's own profile page; confirmed by two independent checks of the page 2026-10-26"
+  },
+  {
+   "person_id": "ccd7fd10acc51006",
+   "name": "Gregory C. Johnson",
+   "google_scholar_id": "eCiBAxYAAAAJ",
+   "google_scholar_source_url": "https://floats.pmel.noaa.gov/gregory-c-johnson-home-page/",
+   "notes": "Google Scholar profile linked from the person's own profile page; confirmed by two independent checks of the page 2026-10-26"
+  },
+  {
+   "person_id": "e28ef32a2bcb35fb",
+   "name": "James T. Morris",
+   "google_scholar_id": "QghVU2IAAAAJ",
+   "google_scholar_source_url": "https://research.cas.sc.edu/morris/",
+   "notes": "Google Scholar profile linked from the person's own profile page; confirmed by two independent checks of the page 2026-10-26"
+  },
+  {
+   "person_id": "52be9ecce4839b9c",
+   "name": "James W. Kirchner",
+   "google_scholar_id": "xSkCtK8AAAAJ",
+   "google_scholar_source_url": "https://www.wsl.ch/en/staff/kirchner",
+   "notes": "Google Scholar profile linked from the person's own profile page; confirmed by two independent checks of the page 2026-10-26"
+  },
+  {
+   "person_id": "555356e0213a2c78",
+   "name": "Jingjing Wang",
+   "google_scholar_id": "9vfAWFEAAAAJ",
+   "google_scholar_source_url": "https://sites.google.com/view/jingjingwang",
+   "notes": "Google Scholar profile linked from the person's own profile page; confirmed by two independent checks of the page 2026-10-26"
+  },
+  {
+   "person_id": "170a65c4c4f81ea0",
+   "name": "John Blair",
+   "google_scholar_id": "F1LkfVIAAAAJ",
+   "google_scholar_source_url": "https://www.k-state.edu/biology/about/people/faculty/blair/",
+   "notes": "Google Scholar profile linked from the person's own profile page; confirmed by two independent checks of the page 2026-10-26"
+  },
+  {
+   "person_id": "ecee4fbb12414fd9",
+   "name": "Jonathan Hare",
+   "google_scholar_id": "d_HvmVsAAAAJ",
+   "google_scholar_source_url": "https://www.fisheries.noaa.gov/contact/jon-hare-phd",
+   "notes": "Google Scholar profile linked from the person's own profile page; confirmed by two independent checks of the page 2026-10-26"
+  },
+  {
+   "person_id": "3ea69074f58b32a0",
+   "name": "Joseph A. Cook",
+   "google_scholar_id": "WSfSPbgAAAAJ",
+   "google_scholar_source_url": "https://msb.unm.edu/research/faculty-labs/cook-lab/index.html",
+   "notes": "Google Scholar profile linked from the person's own profile page; confirmed by two independent checks of the page 2026-10-26"
+  },
+  {
+   "person_id": "3632fce83b016d2a",
+   "name": "Kerstin Wasson",
+   "google_scholar_id": "gHfPDCEAAAAJ",
+   "google_scholar_source_url": "https://wasson.eeb.ucsc.edu/people/kerstin-wasson/",
+   "notes": "Google Scholar profile linked from the person's own profile page; confirmed by two independent checks of the page 2026-10-26"
+  },
+  {
+   "person_id": "36c2104a3ae92990",
+   "name": "Kevin W. King",
+   "google_scholar_id": "xpjjcEQAAAAJ",
+   "google_scholar_source_url": "https://www.ars.usda.gov/midwest-area/columbus-oh/soil-drainage-research/people/kevin-king/",
+   "notes": "Google Scholar profile linked from the person's own profile page; confirmed by two independent checks of the page 2026-10-26"
+  },
+  {
+   "person_id": "db9a0176780876fb",
+   "name": "Kimberly A. Novick",
+   "google_scholar_id": "K5tffpEAAAAJ",
+   "google_scholar_source_url": "https://oneill.indiana.edu/faculty-research/directory/profiles/faculty/full-time/novick-kimberly.html",
+   "notes": "Google Scholar profile linked from the person's own profile page; confirmed by two independent checks of the page 2026-10-26"
+  },
+  {
+   "person_id": "0af8db0e40a0b192",
+   "name": "Maria Janowiak",
+   "google_scholar_id": "IwguRXIAAAAJ",
+   "google_scholar_source_url": "https://www.climatehubs.usda.gov/hubs/northern-forests/people/maria-janowiak",
+   "notes": "Google Scholar profile linked from the person's own profile page; confirmed by two independent checks of the page 2026-10-26"
+  },
+  {
+   "person_id": "7aadc8fb74f0dd95",
+   "name": "Martin Locke",
+   "google_scholar_id": "M8HW9kgAAAAJ",
+   "google_scholar_source_url": "https://www.ars.usda.gov/southeast-area/oxford-ms/national-sedimentation-laboratory/people/martin-locke/",
+   "notes": "Google Scholar profile linked from the person's own profile page; confirmed by two independent checks of the page 2026-10-26"
+  },
+  {
+   "person_id": "e79529f7db6ab5c6",
+   "name": "Marty R. Schmer",
+   "google_scholar_id": "9t5TgJYAAAAJ",
+   "google_scholar_source_url": "https://agronomy.unl.edu/schmer/",
+   "notes": "Google Scholar profile linked from the person's own profile page; confirmed by two independent checks of the page 2026-10-26"
+  },
+  {
+   "person_id": "fad663f35fe553cf",
+   "name": "Michael L. Pace",
+   "google_scholar_id": "IkXEUf8AAAAJ",
+   "google_scholar_source_url": "https://evsc.as.virginia.edu/people/michael-l-pace",
+   "notes": "Google Scholar profile linked from the person's own profile page; confirmed by two independent checks of the page 2026-10-26"
+  },
+  {
+   "person_id": "f4494c5a205afa79",
+   "name": "Michelle C. Mack",
+   "google_scholar_id": "YmHJ_n0AAAAJ",
+   "google_scholar_source_url": "https://macklab.nau.edu/",
+   "notes": "Google Scholar profile linked from the person's own profile page; confirmed by two independent checks of the page 2026-10-26"
+  },
+  {
+   "person_id": "bc3e328a4a4e526d",
+   "name": "Monica G. Turner",
+   "google_scholar_id": "aiP-d04AAAAJ",
+   "google_scholar_source_url": "https://biology.wisc.edu/staff/turner-monica/",
+   "notes": "Google Scholar profile linked from the person's own profile page; confirmed by two independent checks of the page 2026-10-26"
+  },
+  {
+   "person_id": "0f268aefcc08bf2b",
+   "name": "Neil D. Tsutsui",
+   "google_scholar_id": "HT71E-QAAAAJ",
+   "google_scholar_source_url": "https://ourenvironment.berkeley.edu/people/neil-d-tsutsui",
+   "notes": "Google Scholar profile linked from the person's own profile page; confirmed by two independent checks of the page 2026-10-26"
+  },
+  {
+   "person_id": "5648f44a42c898ce",
+   "name": "Niall Hanan",
+   "google_scholar_id": "pquBjdEAAAAJ",
+   "google_scholar_source_url": "https://pes.nmsu.edu/faculty-staff/environmental/niall-hanan.html",
+   "notes": "Google Scholar profile linked from the person's own profile page; confirmed by two independent checks of the page 2026-10-26"
+  },
+  {
+   "person_id": "92ed867947f8fdb0",
+   "name": "Paul C. Hanson",
+   "google_scholar_id": "0WZOHCwAAAAJ",
+   "google_scholar_source_url": "https://hanson.limnology.wisc.edu/",
+   "notes": "Google Scholar profile linked from the person's own profile page; confirmed by two independent checks of the page 2026-10-26"
+  },
+  {
+   "person_id": "73db89b775d287c1",
+   "name": "Peter G. Kennedy",
+   "google_scholar_id": "EI_fvD4AAAAJ",
+   "google_scholar_source_url": "https://cbs.umn.edu/directory/peter-kennedy",
+   "notes": "Google Scholar profile linked from the person's own profile page; confirmed by two independent checks of the page 2026-10-26"
+  },
+  {
+   "person_id": "ec07589b9c0057ea",
+   "name": "Robert B. Waide",
+   "google_scholar_id": "em4jFR0AAAAJ",
+   "google_scholar_source_url": "https://biology.unm.edu/people/faculty/profile/waide_robert-b.html",
+   "notes": "Google Scholar profile linked from the person's own profile page; confirmed by two independent checks of the page 2026-10-26"
+  },
+  {
+   "person_id": "791cd33e5e3e6645",
+   "name": "Russell J. Schmitt",
+   "google_scholar_id": "sFIZSUYAAAAJ",
+   "google_scholar_source_url": "https://www.eemb.ucsb.edu/people/emeriti/schmitt",
+   "notes": "Google Scholar profile linked from the person's own profile page; confirmed by two independent checks of the page 2026-10-26"
+  },
+  {
+   "person_id": "3347897d0ee4cca1",
+   "name": "Russell R. Hopcroft",
+   "google_scholar_id": "ejJ8-EwAAAAJ",
+   "google_scholar_source_url": "https://www.uaf.edu/cfos/people/faculty/detail/russell-hopcroft.php",
+   "notes": "Google Scholar profile linked from the person's own profile page; confirmed by two independent checks of the page 2026-10-26"
+  },
+  {
+   "person_id": "f7d5a851ece50276",
+   "name": "Sally J. Holbrook",
+   "google_scholar_id": "LtUBsnwAAAAJ",
+   "google_scholar_source_url": "https://www.eemb.ucsb.edu/people/emeriti/holbrook",
+   "notes": "Google Scholar profile linked from the person's own profile page; confirmed by two independent checks of the page 2026-10-26"
+  },
+  {
+   "person_id": "40147e9b2dd665ce",
+   "name": "Sarah E. Hobbie",
+   "google_scholar_id": "m4NpPpcAAAAJ",
+   "google_scholar_source_url": "https://cbs.umn.edu/directory/sarah-e-hobbie",
+   "notes": "Google Scholar profile linked from the person's own profile page; confirmed by two independent checks of the page 2026-10-26"
+  },
+  {
+   "person_id": "1eb3771506b20c11",
+   "name": "Scott L. Collins",
+   "google_scholar_id": "qCMFRpoAAAAJ",
+   "google_scholar_source_url": "https://biology.unm.edu/people/faculty/profile/collins_scott.html",
+   "notes": "Google Scholar profile linked from the person's own profile page; confirmed by two independent checks of the page 2026-10-26"
+  },
+  {
+   "person_id": "29a1de7b8d63fec3",
+   "name": "Sherry L. Larkin",
+   "google_scholar_id": "NwrL42EAAAAJ",
+   "google_scholar_source_url": "https://www.flseagrant.org/fsg-directory/dr-sherry-larkin/",
+   "notes": "Google Scholar profile linked from the person's own profile page; confirmed by two independent checks of the page 2026-10-26"
+  },
+  {
+   "person_id": "766c502c78914ff7",
+   "name": "Steven Pennings",
+   "google_scholar_id": "fabI4mQAAAAJ",
+   "google_scholar_source_url": "https://www.uh.edu/nsm/biology-biochemistry/people/profiles/steven-pennings/",
+   "notes": "Google Scholar profile linked from the person's own profile page; confirmed by two independent checks of the page 2026-10-26"
+  },
+  {
+   "person_id": "5df1db781f402ca4",
+   "name": "Virginia Jin",
+   "google_scholar_id": "31fhYaEAAAAJ",
+   "google_scholar_source_url": "https://agronomy.unl.edu/jin/",
+   "notes": "Google Scholar profile linked from the person's own profile page; confirmed by two independent checks of the page 2026-10-26"
+  },
+  {
+   "person_id": "ba1cb0b7411a819d",
+   "name": "Walt Meier",
+   "google_scholar_id": "0xTmlr0AAAAJ",
+   "google_scholar_source_url": "https://cires.colorado.edu/people/walter-meier",
+   "notes": "Google Scholar profile linked from the person's own profile page; confirmed by two independent checks of the page 2026-10-26"
+  },
+  {
+   "person_id": "322788d234d58301",
+   "name": "Will Wieder",
+   "google_scholar_id": "Qt4bMqAAAAAJ",
+   "google_scholar_source_url": "https://www.colorado.edu/instaar/will-wieder",
+   "notes": "Google Scholar profile linked from the person's own profile page; confirmed by two independent checks of the page 2026-10-26"
+  },
+  {
+   "person_id": "29c2ed03c667e8dd",
+   "name": "William T. Pockman",
+   "google_scholar_id": "K9sCqdkAAAAJ",
+   "google_scholar_source_url": "https://biology.unm.edu/people/faculty/profile/pockman_william-t.html",
+   "notes": "Google Scholar profile linked from the person's own profile page; confirmed by two independent checks of the page 2026-10-26"
+  },
+  {
+   "person_id": "eca6ff165f1b829f",
+   "name": "Yoshimi (Shimi) Rii",
+   "google_scholar_id": "yeH3A1UAAAAJ",
+   "google_scholar_source_url": "https://www.himb.hawaii.edu/people/yoshimi-shimi-rii/",
+   "notes": "Google Scholar profile linked from the person's own profile page; confirmed by two independent checks of the page 2026-10-26"
+  }
+ ],
+ "dropped": [
+  {
+   "person_id": "123c0fa4ecf45be8",
+   "name": "Anne Kinsinger",
+   "reason": "homepage links Scholar wSJ6cxcAAAAJ but not as this person's own profile: The page is the ARID Institute leadership-team page, which lists many people. The only Scholar link on it (user=wSJ6cxcAAAAJ, labelled \"Website\") is in Sang Han's bio block (Regents Professor o"
+  },
+  {
+   "person_id": "5c500d8dabe6aa18",
+   "name": "Hilary A. Dugan",
+   "reason": "homepage links Scholar JxLua90AAAAJ but not as this person's own profile: On limnology.wisc.edu/staff/dugan-hilary/, the only Scholar link is a site-wide navigation menu item (menu-item-13749) labelled \"CFL Google Scholar\". It points to the Center for Limnology's ins"
+  },
+  {
+   "person_id": "537821125bc1ba2a",
+   "name": "John J. Magnuson",
+   "reason": "homepage links Scholar JxLua90AAAAJ but not as this person's own profile: The link appears only once on the page, as a menu item labelled \"CFL Google Scholar\" (menu-item-13749) in the site-wide navigation of limnology.wisc.edu. It is the Center for Limnology's group "
+  },
+  {
+   "person_id": "8d06dff30e60db1b",
+   "name": "M. Jake Vander Zanden",
+   "reason": "homepage links Scholar JxLua90AAAAJ but not as this person's own profile: On limnology.wisc.edu/staff/vander-zanden-jake/ the link scholar.google.com/citations?user=JxLua90AAAAJ appears only in the site-wide navigation menu (Research submenu), labelled \"CFL Google Sc"
+  }
+ ]
+}

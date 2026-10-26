@@ -1,0 +1,159 @@
+{
+ "batch_id": "R-PEOPLE2-BIO-57",
+ "retrieved_at": "2026-10-26",
+ "verified_by": "adversarial-verifier 2026-10-26",
+ "updates": [
+  {
+   "person_id": "d1c39e3d5ff9d8e3",
+   "name": "William P. Bowman",
+   "homepage_url": "https://www.colorado.edu/ebio/william-bowman",
+   "bio": "Retired (June 2021) University of Colorado Boulder plant ecologist. The Bowman lab examined how alpine plants interact with soil resources, including limits on primary production, competition and facilitation, symbiotic nitrogen fixation and plant effects on nitrogen cycling, work used to predict nitrogen deposition impacts and to inform mountain air quality standards in the western U.S. and central Europe.",
+   "bio_source_url": "https://www.colorado.edu/bowmanlab/",
+   "research_interests": "plant ecology; terrestrial ecosystem science; nutrient relations of alpine plants; resource use in plant communities; controls on alpine primary production and nutrient fluxes; competition and facilitation among plants",
+   "research_interests_source_url": "https://www.colorado.edu/ebio/william-bowman",
+   "orcid": "0000-0003-0158-4039",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0003-0158-4039/employments",
+   "google_scholar_id": null,
+   "google_scholar_source_url": null,
+   "current_title": "Professor Emeritus, Ecology and Evolutionary Biology",
+   "current_affiliation": "University of Colorado Boulder",
+   "status": "emeritus",
+   "status_source_url": "https://www.colorado.edu/ebio/william-bowman",
+   "evidence": "Professor Bowman retired in June 2021 and is no longer carrying out research or teaching.",
+   "evidence_source_url": "https://www.colorado.edu/bowmanlab/",
+   "notes": "EBIO profile (200) lists 'Professor Emeritus, EBIO' with research interests and links the lab site www.colorado.edu/bowmanlab/ (200), which states the June 2021 retirement. ORCID 0000-0003-0158-4039: pub.orcid.org person record name 'WILLIAM BOWMAN', employment University of Colorado Boulder (no department given); its works (alpine sedge responses to nitrogen deposition 2019; limited ecosystem recovery from simulated chronic N deposition 2018; stochasticity and biotic interactions in alpine plant patterning 2018) match the EBIO profile's selected publications. Neither page links Google Scholar. Neither page mentions Rocky Mountain National Park; the ROMO collaborator row was not re-checked here."
+  },
+  {
+   "person_id": "9bb2966b8154ec72",
+   "name": "Keith Laakkonen",
+   "homepage_url": null,
+   "bio": "Sanctuary Director of the National Audubon Society's Corkscrew Swamp Sanctuary in Naples, Florida, appointed in January 2023. Before that, as a Florida Department of Environmental Protection employee, he directed Rookery Bay National Estuarine Research Reserve, overseeing 110,000 acres, and served as National Estuarine Research Reserve Association president. His interests include watershed management, wildlife ecology, prescribed fire and hydrologic restoration.",
+   "bio_source_url": "https://www.audubon.org/florida/news/audubon-names-keith-laakkonen-director-corkscrew-swamp-sanctuary",
+   "research_interests": "watershed restoration and management; managing species and wildlife ecology; prescribed burning; restoring hydrology; exotic plant and animal control; environmental education and outreach",
+   "research_interests_source_url": "https://rookerybay.org/rookery-bay-news/rookery-bays-keith-laakkonen-selected-as-new-president-of-national-reserve-association/",
+   "orcid": null,
+   "orcid_source_url": null,
+   "google_scholar_id": null,
+   "google_scholar_source_url": null,
+   "current_title": "Sanctuary Director, Corkscrew Swamp Sanctuary",
+   "current_affiliation": "National Audubon Society",
+   "status": null,
+   "status_source_url": null,
+   "evidence": "most recently worked for the Florida Department of Environmental Protection as Director at Rookery Bay National Estuarine Research Reserve in Naples",
+   "evidence_source_url": "https://www.audubon.org/florida/news/audubon-names-keith-laakkonen-director-corkscrew-swamp-sanctuary",
+   "notes": "VERIFIER: the earlier bio called him current Rookery Bay director and NERRA president 'in 2025', from a Rookery Bay news post that its page dates June 2, 2025 (a repost date). Audubon Florida's announcement of January 9, 2023 (200) says Audubon named him Director of Corkscrew Swamp Sanctuary and that he most recently was Director at Rookery Bay NERR for Florida DEP and had been NERRA president; his Audubon people page (https://www.audubon.org/people/keith-laakkonen, 200) still lists him as Sanctuary Director. The Rookery Bay staff directory (fetched 2026-10-26) does not list him. His Rookery Bay director row is therefore stale (left by January 2023); a research batch should mark it so. Status left null (the people.status field would read as current at Rookery Bay). Research interests are from the Rookery Bay post (200). No ORCID found; homepage left null (news pages are not a profile)."
+  },
+  {
+   "person_id": "19fb486e54087cba",
+   "name": "Tim Brown",
+   "homepage_url": null,
+   "bio": "Director of both Sagehen Creek Field Station and Chickering American River Reserve, UC Nature reserves on opposite slopes of the Sierra Nevada. In 2025 Brown expected to finish a doctorate in ecology and evolutionary biology at UC Santa Cruz and announced a new Sagehen grant for UC graduate field research that adds support for mentoring undergraduates.",
+   "bio_source_url": "https://ucnature.org/sagehen-creek-field-station-launches-student-research-grant-program/",
+   "research_interests": null,
+   "research_interests_source_url": null,
+   "orcid": null,
+   "orcid_source_url": null,
+   "google_scholar_id": null,
+   "google_scholar_source_url": null,
+   "current_title": "Reserve Director, Central Sierra Field Stations",
+   "current_affiliation": "University of California, Berkeley",
+   "status": "active",
+   "status_source_url": "https://sagehen.ucnature.org/staff/",
+   "evidence": "says Tim Brown, director of both Sagehen and Chickering reserves",
+   "evidence_source_url": "https://ucnature.org/sagehen-creek-field-station-launches-student-research-grant-program/",
+   "notes": "Sagehen staff page (200) lists 'Reserve Director Tim Brown, Central Sierra Field Stations, University of California, Berkeley'. Bio from the UC Nature post of July 17, 2025 (200). VERIFIER: removed 'sharing reserve leadership with faculty director Neil Tsutsui' (stated on the staff page, not on bio_source_url). Removed research_interests sourced from a 2021 UC Nature profile of a UC Santa Cruz graduate student named Tim Brown (rosy finch work): no fetched page states that he is the Sagehen director, and a search found none. ORCID 0000-0002-5334-0768 (Timothy Tyler Brown, UC Berkeley) rejected: its works are health economics/public health, not this person. No profile page found; homepage left null."
+  },
+  {
+   "person_id": "937c2a1e384a3760",
+   "name": "Katharyn Boyer",
+   "homepage_url": "https://biology.sfsu.edu/faculty/boyer",
+   "bio": "San Francisco State University biology professor since 2004 and interim executive director of its Estuary & Ocean Science Center. A coastal ecologist working chiefly in salt marshes and seagrass beds, Boyer studies how species shape habitats and ecosystem processes and applies that to restoration, leading living-shoreline projects that restore eelgrass and native oysters and test their shore-protection value.",
+   "bio_source_url": "https://biology.sfsu.edu/faculty/boyer",
+   "research_interests": "coastal wetland restoration; community ecology; biodiversity effects on ecosystem function; nutrient dynamics; food-web interactions; habitat structure; living shorelines",
+   "research_interests_source_url": "https://biology.sfsu.edu/faculty/boyer",
+   "orcid": "0000-0003-2680-2493",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0003-2680-2493/employments",
+   "google_scholar_id": null,
+   "google_scholar_source_url": null,
+   "current_title": "Professor; Interim Executive Director, Estuary & Ocean Science Center",
+   "current_affiliation": "San Francisco State University",
+   "status": "active",
+   "status_source_url": "https://biology.sfsu.edu/faculty/boyer",
+   "evidence": "Katharyn Boyer Professor; Interim Executive Director, EOS Center",
+   "evidence_source_url": "https://biology.sfsu.edu/faculty/boyer",
+   "notes": "SFSU Biology profile (200) gives title, specialties and research description and links the Boyer Lab site www.katboyerlab.org (200; 'Meet' page says she became interim executive director of the EOS Center in June 2022). ORCID 0000-0003-2680-2493: pub.orcid.org record name Katharyn Boyer, employment Estuary & Ocean Science Center, San Francisco State U., Biology, Professor, from 2004; researcher URL www.katboyerlab.org matches the lab site linked from the profile. No Google Scholar link on the profile, the lab site or the ORCID record. The profile does not mention MarineGEO; that affiliation was not re-checked here."
+  },
+  {
+   "person_id": "bc698b268ad167d3",
+   "name": "Margot Buchbinder",
+   "homepage_url": "https://eoscenter.sfsu.edu/people/margot-buchbinder",
+   "bio": "Lead technician and lab manager of the Boyer Lab since 2018. Runs the lab's daily operations, manages several living-shoreline projects and studies on eelgrass, California sea-blite and cordgrass ecology and restoration, and helps lab members with R programming.",
+   "bio_source_url": "https://www.katboyerlab.org/staff",
+   "research_interests": null,
+   "research_interests_source_url": null,
+   "orcid": "0000-0002-0197-8014",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-0197-8014/employments",
+   "google_scholar_id": null,
+   "google_scholar_source_url": null,
+   "current_title": "Lead Research Technician (Boyer Lab)",
+   "current_affiliation": "Estuary & Ocean Science Center, San Francisco State University",
+   "status": "active",
+   "status_source_url": "https://www.katboyerlab.org/staff",
+   "evidence": "Lead Tech & Lab Manager, 2018 - present",
+   "evidence_source_url": "https://www.katboyerlab.org/staff",
+   "notes": "EOS Center profile (200) lists 'Lead Research Technician (Boyer)', MS Marine Science, and links the Boyer Lab; used as homepage. Bio from the Boyer Lab staff page (200). ORCID 0000-0002-0197-8014: pub.orcid.org record name Margot Buchbinder, employment San Francisco State University, Estuary & Ocean Science Center, Research Technician (consistent). No Google Scholar link found on either page or the ORCID record."
+  },
+  {
+   "person_id": "d8571ec2ec37a6ae",
+   "name": "Anna Deck",
+   "homepage_url": null,
+   "bio": "Lead research technician with San Francisco Bay National Estuarine Research Reserve, coordinating System-Wide Monitoring Program work and its data and contributing to other Bay research. Holds UC Davis ecology degrees (B.S., M.Sc.); thesis research at Bodega Marine Laboratory examined native bivalves along estuarine gradients. Has since studied invertebrates, fish and water quality in several California estuaries, favouring management-relevant research.",
+   "bio_source_url": "https://sfbaynerr.sfsu.edu/who-we-are/people",
+   "research_interests": "estuarine invertebrate and fish communities; water quality; management-relevant ecological research",
+   "research_interests_source_url": "https://sfbaynerr.sfsu.edu/who-we-are/people",
+   "orcid": null,
+   "orcid_source_url": null,
+   "google_scholar_id": null,
+   "google_scholar_source_url": null,
+   "current_title": "Lead Research Technician",
+   "current_affiliation": "San Francisco Bay National Estuarine Research Reserve (San Francisco State University)",
+   "status": "active",
+   "status_source_url": "https://sfbaynerr.sfsu.edu/who-we-are/people",
+   "evidence": "Anna focuses on coordination and data management for the System-Wide Monitoring Program",
+   "evidence_source_url": "https://sfbaynerr.sfsu.edu/who-we-are/people",
+   "notes": "SF Bay NERR People page (200) carries a staff bio paragraph; staff who have left are marked '(former)' there and she is not, hence status active. No individual profile page found, so homepage left null. ORCID 0000-0003-1940-2897 (Anna Deck) not recorded: the record has no employment and mixes unrelated works (lupus mHealth app, bone scaffolds, oyster-bed microbiome), and no official page links it."
+  }
+ ],
+ "dropped": [
+  {
+   "person_id": "52a0f9399f14526c",
+   "name": "Jared Franklin",
+   "reason": "Only the Rookery Bay staff directory line (Stewardship Coordinator) was found; it states role but no focus, and the rookerybay.org site search (WordPress API) returns only that directory page. ORCID 0009-0001-4575-8582 already on file was re-checked: employment Florida DEP, Rookery Bay NERR, Stewardship Coordinator (consistent). Web search budget was exhausted during this batch."
+  },
+  {
+   "person_id": "d587b867d2f39b6d",
+   "name": "Jeffrey A. Carter",
+   "reason": "No page about the individual. Staff directory lists 'Environmental Administrator: Jeffrey A. Carter' (role only). Rookery Bay news posts quote a 'Jeff Carter' as Resource Management Coordinator (2019 prescribed burns) and Stewardship Coordinator (python Lunch & Learn), but those are older roles and the name form differs, so no bio was written. Web search budget was exhausted."
+  },
+  {
+   "person_id": "291a49641ec49ef0",
+   "name": "Nerea Ubierna",
+   "reason": "Only the staff directory line (Research Coordinator) was found; site search returns nothing else. An ORCID 0000-0002-1730-9253 (Nerea Ubierna, plant carbon-isotope physiology) exists but lists no employment and no official page links it, so it is not tied to the Rookery Bay role and was not recorded. Web search budget was exhausted."
+  },
+  {
+   "person_id": "44328b4717857303",
+   "name": "Sarah Falkowski",
+   "reason": "Only the staff directory line (Education Coordinator) was found; site search returns nothing else. The only ORCID for the name lists University of Glasgow / University of Tübingen, not Rookery Bay. Web search budget was exhausted."
+  },
+  {
+   "person_id": "78b64e10ad81a25f",
+   "name": "Douglas D. McCreary",
+   "reason": "No page could be fetched: ucanr.edu and its subsites return 403 to both curl and WebFetch, and web search budget was exhausted. ORCID registry search found no record for the name."
+  },
+  {
+   "person_id": "3d5a241777af4abe",
+   "name": "William D. Tietje",
+   "reason": "No page could be fetched: ucanr.edu and its subsites return 403 to both curl and WebFetch, and web search budget was exhausted. ORCID registry search found no matching record."
+  }
+ ]
+}

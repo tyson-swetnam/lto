@@ -1,0 +1,153 @@
+{
+ "batch_id": "R-PEOPLE2-BIO-60",
+ "retrieved_at": "2026-10-26",
+ "verified_by": "adversarial-verifier 2026-10-26",
+ "updates": [
+  {
+   "person_id": "d8c601099de23ef4",
+   "name": "Jennifer Dorton",
+   "homepage_url": null,
+   "bio": "Joined SECOORA in 2017 as manager of its Regional Coastal Ocean Observing System, charged with the updated regional observing plan, data management and communications, and coordinating the association's investigators. Earlier she spent over 13 years leading grant-funded work at UNC Wilmington, as a PI on its Coastal Ocean Research and Monitoring Program and lead PI on the Marine Weather Portal.",
+   "bio_source_url": "https://secoora.org/introducing-jennifer-dorton-as-secooras-rcoos-manager/",
+   "research_interests": null,
+   "research_interests_source_url": null,
+   "orcid": "0009-0001-2786-7582",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0009-0001-2786-7582/person",
+   "current_title": "Deputy Director",
+   "current_affiliation": "Southeast Coastal Ocean Observing Regional Association (SECOORA)",
+   "status": "active",
+   "status_source_url": "https://secoora.org/about/contact/",
+   "evidence": "Jennifer Dorton Deputy Director",
+   "evidence_source_url": "https://secoora.org/about/contact/",
+   "notes": "Bio from the SECOORA announcement of 2017-08-23 (her RCOOS Manager hire); current title Deputy Director from secoora.org/about/contact/ (fetched 200). Existing ORCID 0009-0001-2786-7582 re-checked on pub.orcid.org: name Jennifer Dorton, employment SECOORA, Deputy Director, 2017-present; no change. No individual profile page found, so homepage_url left null. No Google Scholar link on any fetched page.",
+   "retrieved_at": "2026-10-26"
+  },
+  {
+   "person_id": "4fca6713d4b3ba94",
+   "name": "Trika Gerard",
+   "homepage_url": "https://www.fisheries.noaa.gov/contact/trika-gerard-phd",
+   "bio": "Deputy Director for Science and Operations in the NOAA Southeast Fisheries Science Center directorate. A marine ecologist at the Center since 2007, she studies early life stages of coral reef and highly migratory fishes in the Gulf and Caribbean, covering larval transport, food webs, otolith microstructure and recruitment connectivity, and leads a RESTORE-funded study of bluefin tuna larval habitat.",
+   "bio_source_url": "https://www.fisheries.noaa.gov/contact/trika-gerard-phd",
+   "research_interests": "larval fish ecology; coral reef and highly migratory fishes; larval distribution and transport; otolith microstructure; recruitment connectivity; bluefin tuna larval trophic ecology",
+   "research_interests_source_url": "https://www.fisheries.noaa.gov/contact/trika-gerard-phd",
+   "orcid": "0000-0003-3214-241X",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0003-3214-241X/person",
+   "current_title": "Deputy Director for Science and Operations",
+   "current_affiliation": "NOAA Fisheries Southeast Fisheries Science Center",
+   "status": "active",
+   "status_source_url": "https://www.fisheries.noaa.gov/contact/trika-gerard-phd",
+   "evidence": "Trika Gerard, Ph.D. Deputy Director for Science and Operations Southeast Fisheries Science Center",
+   "evidence_source_url": "https://www.fisheries.noaa.gov/contact/trika-gerard-phd",
+   "notes": "Existing homepage (NOAA Fisheries contact profile) fetched 200 and is her own profile. Existing ORCID 0000-0003-3214-241X re-checked on pub.orcid.org: name Trika Gerard, employment NOAA NMFS Southeast Fisheries Science Center (from 2002); no change. Profile has no ORCID or Google Scholar link.",
+   "retrieved_at": "2026-10-26"
+  },
+  {
+   "person_id": "9d0c1da64e27d162",
+   "name": "Megan Medina",
+   "homepage_url": "https://scripps.ucsd.edu/profiles/memedina",
+   "bio": "Ecologist whose background is in the biodiversity and composition of fisheries, working for SCCOOS, the IOOS regional association for Southern California, at Scripps Institution of Oceanography. As program coordinator she builds partnerships with decision-makers, scientists and stakeholders to co-develop value-added products for users, after research-assistant work for NOAA's Office of National Marine Sanctuaries on Florida Keys reef fish biodiversity.",
+   "bio_source_url": "https://scripps.ucsd.edu/profiles/memedina",
+   "research_interests": null,
+   "research_interests_source_url": null,
+   "orcid": "0000-0001-5865-3504",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0001-5865-3504/person",
+   "current_title": "Deputy Director, SCCOOS",
+   "current_affiliation": "Southern California Coastal Ocean Observing System, Scripps Institution of Oceanography, UC San Diego",
+   "status": "active",
+   "status_source_url": "https://sccoos.org/committee/",
+   "evidence": "Megan Medina, SCCOOS Deputy Director",
+   "evidence_source_url": "https://sccoos.org/committee/",
+   "notes": "Identity: Scripps profile (scripps.ucsd.edu/profiles/memedina, 200) describes her as SCCOOS Program Coordinator; SCCOOS committee page (sccoos.org/?p=16021 -> sccoos.org/committee/, 200) lists 'Megan Medina, SCCOOS Deputy Director'. ORCID 0000-0001-5865-3504 found by ORCID registry search: pub.orcid.org record name Megan Medina, employment University of California San Diego, Scripps Institution of Oceanography (2017-present); its education (University of South Florida, University of Maryland) also matches the degrees on the Scripps profile. No Google Scholar link found.",
+   "retrieved_at": "2026-10-26"
+  },
+  {
+   "person_id": "3b2ab78f43494bc5",
+   "name": "Krisa Arzayus",
+   "homepage_url": "https://oceanservice.noaa.gov/profiles/2023/krisa-arzayus.html",
+   "bio": "Deputy director of NOAA's U.S. Integrated Ocean Observing System office, managing its strategic planning and implementation, including budget and staffing, with regional and national partners. Trained in chemistry, with a marine science PhD from William & Mary, she started at NOAA as a Knauss Sea Grant Fellow and later led data stewardship and oceanographic science units at NODC and NCEI.",
+   "bio_source_url": "https://oceanservice.noaa.gov/profiles/2023/krisa-arzayus.html",
+   "research_interests": null,
+   "research_interests_source_url": null,
+   "orcid": null,
+   "orcid_source_url": null,
+   "current_title": "Acting Director (Federal), U.S. IOOS Program Office",
+   "current_affiliation": "NOAA National Ocean Service, U.S. Integrated Ocean Observing System Office",
+   "status": "active",
+   "status_source_url": "https://ioos.noaa.gov/about/meet-the-ioos-program-office/",
+   "evidence": "Krisa Arzayus, Ph.D., Acting Director (Federal)",
+   "evidence_source_url": "https://ioos.noaa.gov/about/meet-the-ioos-program-office/",
+   "notes": "Bio from the 2023 NOS career profile (titled Deputy Director). The IOOS February 2026 newsletter (ioos.noaa.gov/?p=24296, 200) says she moved into the acting Director role on 2026-01-26 after Jeffrey Payne retired; the program office page lists her as Acting Director (Federal). Existing homepage (ioos program-office staff list) replaced by her own NOS profile page. No ORCID found: ORCID registry search on family name Arzayus returned no Krisa Arzayus. No Google Scholar link found.",
+   "retrieved_at": "2026-10-26"
+  },
+  {
+   "person_id": "cf320973302a31e3",
+   "name": "Daniel B. Fagre",
+   "homepage_url": null,
+   "bio": "USGS research ecologist with the Northern Rocky Mountain Science Center, based at its Glacier Field Station in Glacier National Park. In 2018 he headed the USGS mountain-ecosystems climate change project and the Benchmark Glacier Program, studying glaciers, avalanches, alpine plants, snow chemistry and paleoclimates, and won the USGS Shoemaker award for science communication.",
+   "bio_source_url": "https://www.usgs.gov/news/norock-scientist-receives-usgs-award-lifetime-achievement-science-communications",
+   "research_interests": "climate change in mountain ecosystems; glacier monitoring; snow avalanches; alpine vegetation; snow chemistry; paleoclimates; bioregional ecosystem dynamics",
+   "research_interests_source_url": "https://www.usgs.gov/news/norock-scientist-receives-usgs-award-lifetime-achievement-science-communications",
+   "orcid": "0000-0001-8552-9461",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0001-8552-9461/person",
+   "current_title": null,
+   "current_affiliation": null,
+   "status": null,
+   "status_source_url": null,
+   "evidence": "Research Ecologist Dan Fagre is the recipient of the 2017 Eugene M. Shoemaker Award",
+   "evidence_source_url": "https://www.usgs.gov/news/norock-scientist-receives-usgs-award-lifetime-achievement-science-communications",
+   "notes": "Bio from the USGS NOROCK news item of 2018-04-11 about him (200), date-bound. Lake homepage www.usgs.gov/staff-profiles/daniel-fagre returns 404; a web search shows the profile at www.usgs.gov/staff-profiles/daniel-b-fagre titled 'Daniel B. Fagre, Ph.D. (Former Employee)', but it returned 403 to this agent, so homepage and status were not written from it. heldvmontana.ourchildrenstrust.org/people/dr-dan-fagre/ (third-party expert-witness page) says he retired from USGS in 2020 and continues as Scientist Emeritus, consistent with the lake's emeritus status; not used as status source. Existing ORCID re-checked: name Daniel Fagre, USGS Northern Rocky Mountain Science Center, Research Ecologist, from 1991; no change.",
+   "retrieved_at": "2026-10-26"
+  },
+  {
+   "person_id": "c544c1a394290b9c",
+   "name": "Marc Macias-Fauria",
+   "homepage_url": "https://www.spri.cam.ac.uk/people/macias-fauria/",
+   "bio": "Professor of Physical Geography at the Scott Polar Research Institute, University of Cambridge, leading the Biogeosciences group. Research examines how physical and biological components of the Earth system interact in Arctic and alpine regions, including links among vegetation, large herbivores and climate and the influence of sea ice on Arctic life, drawing on remote sensing, observations and palaeo-ecological records.",
+   "bio_source_url": "https://www.spri.cam.ac.uk/people/macias-fauria/",
+   "research_interests": "Arctic and alpine biogeosciences; vegetation-herbivore-climate interactions; sea-ice effects on Arctic biota; remote sensing of Arctic greening and browning; long-term Arctic biodiversity and palaeoecology",
+   "research_interests_source_url": "https://www.spri.cam.ac.uk/people/macias-fauria/",
+   "orcid": "0000-0002-8438-2223",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-8438-2223/person",
+   "current_title": "Professor of Physical Geography",
+   "current_affiliation": "Scott Polar Research Institute and Department of Geography, University of Cambridge",
+   "status": "active",
+   "status_source_url": "https://www.spri.cam.ac.uk/people/macias-fauria/",
+   "evidence": "Prof Marc Macias-Fauria BSc, MSc, PhD 2001 Professor of Physical Geography",
+   "evidence_source_url": "https://www.spri.cam.ac.uk/people/macias-fauria/",
+   "notes": "Lake homepage www.geog.ox.ac.uk/staff/mmaciasfauria.html returned 403; SPRI profile (200) lists his Oxford career to 2023, so it replaces the Oxford page. Cambridge Centre for Climate Repair profile (climaterepair.cam.ac.uk/people/marc-macias-fauria, 200) agrees on title. ORCID 0000-0002-8438-2223 from ORCID registry search: pub.orcid.org record name Marc Macias-Fauria, employment University of Cambridge, Scott Polar Research Institute, Professor of Physical Geography, from 2024. No Google Scholar link on any fetched page. No fetched page ties him to Toolik Field Station; the lake's Toolik 'faculty' affiliation was not re-verified. SPRI page heading reads '2001 Professor of Physical Geography' (the named chair); evidence quoted verbatim.",
+   "retrieved_at": "2026-10-26"
+  }
+ ],
+ "dropped": [
+  {
+   "person_id": "6b6c4eab8ee2670f",
+   "name": "Shon Schooler",
+   "reason": "No page about him beyond the South Slough Reserve science pages (oregon.gov/dsl/ss/Pages/Science-Resources.aspx and science-research.aspx, both 200), which give only his title, Lead Scientist and Research Coordinator, and name him as the contact for data requests and research partnerships; no research focus stated, so no bio written. Existing ORCID 0000-0003-4779-5640 re-checked (name Shon Schooler; employment South Slough NERR, Lead Scientist, 2018-present); no change needed."
+  },
+  {
+   "person_id": "0d1afff8b02b132d",
+   "name": "Joanne Lyczkowski-Shultz",
+   "reason": "No profile page found: exact-name web search returned no page about her, and NOAA results are only co-authored reports (SEAMAP ichthyoplankton). No ORCID in the ORCID registry. Lake homepage is the generic SEFSC about page, not hers."
+  },
+  {
+   "person_id": "321c02fed2f30692",
+   "name": "Kathryn R. Greenberg",
+   "reason": "Identity uncertain. The only matching official page, research.fs.usda.gov/about/people/katie.greenberg (200), is 'Katie H. Greenberg, PhD, Former Employee, Research Ecologist, Southern Research Station' (ORCID 0009-0004-8239-1144, record name Cathryn Greenberg), with a different middle initial from the lake's 'Kathryn R.'; it does not mention Talladega National Forest, and a search found no Greenberg study at Talladega. The lake's Talladega lead-PI row may be wrong; needs review before a bio or ORCID is attached."
+  },
+  {
+   "person_id": "43a5e54111b9cfb0",
+   "name": "Roland P. Roberts",
+   "reason": "No page found naming a Roland Roberts as silviculturist on the Talladega National Forest or Region 8; two searches returned only unrelated people. The lake's affiliation (source fs.usda.gov/alabama, confidence medium) may be unsupported."
+  },
+  {
+   "person_id": "a908d07a36c31944",
+   "name": "Brett Biebuyck",
+   "reason": "Not listed on the current Toolik Field Station people page (uaf.edu/toolik/about/people.php and its people.js data, 200), whose directors are Donie Bret-Harte and Brian Barnes. The old staff.php source returns 404. Only a third-party eu-interact.org contact page (503 when fetched) mentions him. No ORCID found. The lake's 'Station Director / Lead' row looks stale."
+  },
+  {
+   "person_id": "a6321f1fe1240ee8",
+   "name": "J. Bret Taylor",
+   "reason": "Lake homepage (ARS Dubois people/bret-taylor) returns 404 and the ARS unit people list renders no names. Only news items (2018-2022) and old ARS articles name him at USSES. The ARS Ombudsman page (ars.usda.gov/about-ars/ombudsman/) lists a Dr. Joshua (Bret) Taylor as ARS Animal Welfare Ombudsman, which may mean a role change, but no page ties the two. Research Leader status not confirmed."
+  }
+ ]
+}
