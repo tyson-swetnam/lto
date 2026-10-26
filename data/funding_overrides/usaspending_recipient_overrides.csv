@@ -3,9 +3,17 @@ facility_id,recipient_search_text,award_id,description_match,notes
 # Used by scripts/fetch_funding_usaspending.py.
 #
 # Each row pins a recipient_search_text string for a facility. Multiple
-# rows per facility = multiple recipients to query. award_id whitelists
-# specific known awards; description_match narrows to awards whose
-# Description contains a substring (case-insensitive).
+# rows per facility = multiple searches. A row's description_match keeps
+# only that search's awards whose Description contains it (case-insensitive;
+# also sent to the API as a keyword). A row WITHOUT one takes the recipient's
+# whole portfolio: leave it blank only when the facility IS the recipient
+# (WHOI, MBL, Bigelow), never for a lab or LTER hosted by a university.
+# Either way an award is kept only if its Recipient Name contains the search
+# string as a run of words ("University of Virginia" matches "RECTOR &
+# VISITORS OF THE UNIVERSITY OF VIRGINIA", not Virginia Tech), so the string
+# must be the recipient's USAspending name; a dry run prints the names it
+# rejected. An award goes to one facility; rows with a match claim first.
+# award_id adds specific known awards.
 #
 # === Independent research institutes ===
 4851cdabf00d14dc,Woods Hole Oceanographic Institution,,,WHOI

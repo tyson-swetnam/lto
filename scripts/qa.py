@@ -373,6 +373,7 @@ def check_estuary_funding(conn, failures: list[str]) -> None:
       USAspending row for the same funder and year: agency_budgets/
       noaa_nerr.csv rolls the same 11.420 awards up, so both would count
       the money twice.
+    * On any facility, a USAspending award may sit on only one facility.
     """
     nets = list(ESTUARY_NETWORKS)
     recall = conn.execute(
@@ -411,6 +412,18 @@ def check_estuary_funding(conn, failures: list[str]) -> None:
     assert_true(not dup, f"{dup} facility/funder/fiscal-year cells carry both an 'agency budget "
                          f"research' row and USAspending.gov award rows (the same money "
                          f"twice)", failures)
+    # One award, one facility, whatever the network: a recipient search
+    # that hands a host's award to two of its facilities counts it twice
+    # (fetch_funding_usaspending.py skips an award another facility holds).
+    shared = conn.execute(
+        """SELECT award_id, string_agg(DISTINCT facility_id, ',' ORDER BY facility_id)
+           FROM funding_events
+           WHERE source = 'USAspending.gov' AND award_id IS NOT NULL
+           GROUP BY award_id HAVING count(DISTINCT facility_id) > 1
+           ORDER BY 1""").fetchall()
+    assert_true(not shared, f"{len(shared)} USAspending awards sit on more than one facility "
+                            f"(the same money counted twice): "
+                + ", ".join(f"{a} on {f}" for a, f in shared[:5]), failures)
 
 
 def check_states(conn, failures: list[str]) -> None:
