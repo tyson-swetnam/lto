@@ -4,7 +4,7 @@ title: "USGS Landsat Archive (EROS Center)"
 description: "U.S. Geological Survey, Earth Resources Observation and Science Center — repository holding long-term observatory records."
 resource: "https://earthexplorer.usgs.gov/"
 tags: [repository, rest, usgs-public]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-10-26T01:52:50Z }
 status: stable
 ---
 
@@ -29,7 +29,6 @@ See the [cloud-bucket guide](./access-buckets.md) for anonymous / requester-pays
 
 | Provider | Bucket | Region | Access | Sample prefix |
 |---|---|---|---|---|
-| s3 | [nasa-3dep-snapshot](https://registry.opendata.aws/nasa-3dep-snapshot/) | us-west-2 | public-read | `Projects/` |
 | s3 | [usgs-landsat](https://registry.opendata.aws/usgs-landsat/) | us-west-2 | requester-pays | `collection02/level-2/standard/oli-tirs/` |
 
 # Data products

@@ -2,8 +2,8 @@
 
 Exits non-zero on any failure so CI workflows can gate deploys.
 
-Two checks read source files rather than the database and run even on a
-checkout with no data:
+Three checks read files rather than the database and run even on a
+checkout with no lake:
 
   * check_frontend_parses — every src/**/*.js must parse as an ES module
     (node vm.SourceTextModule; skipped with a warning when node is absent).
@@ -11,8 +11,11 @@ checkout with no data:
     return DECIMAL/HUGEINT to the browser (duckdb-wasm hands those to JS
     as non-numbers; the silent failure mode is a blank view).
 
-Both are ported from cod-kmap, where each exists because of a shipped
-incident documented in its docstring.
+  * check_okf_bundle — docs/okf/archive-*.md and index.md must match what
+    build_okf_bundle.py renders from the committed public/parquet.
+
+The first two are ported from cod-kmap, where each exists because of a
+shipped incident documented in its docstring.
 
 The store is a DuckLake (scripts/lto_db.py), opened read-only. DuckLake
 cannot hold PRIMARY KEY / UNIQUE / FOREIGN KEY / CHECK constraints, so
@@ -49,6 +52,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import lto_db  # noqa: E402
 from load_people_research import merge_redirects, same_person_name  # noqa: E402
 from apply_facility_fixes import KEYED as FIX_KEYED  # noqa: E402
+import build_okf_bundle  # noqa: E402
 
 # Territories that fall outside their country's main bounding box. Guam
 # and the Northern Marianas sit at ~+145 EAST longitude and Palmyra at
@@ -1049,6 +1053,32 @@ process.stdout.write(JSON.stringify(out));
                     failures)
 
 
+def check_okf_bundle(failures: list[str]) -> None:
+    """The generated OKF pages must match the committed parquet.
+
+    PR #26 deleted 14 cloud buckets that do not exist and re-pointed six,
+    but nobody re-ran build_okf_bundle.py, so the Docs tab kept publishing
+    the dead buckets for archives such as NEON and NASA OB.DAAC. Reads
+    public/parquet (what the pages document), not the lake, so run
+    build_okf_bundle.py after export_parquet.py.
+    """
+    if not build_okf_bundle.PARQUET.is_dir():
+        return
+    try:
+        write, orphans = build_okf_bundle.stale_pages()
+    except duckdb.Error as e:
+        failures.append(f"check_okf_bundle could not run: "
+                        f"{str(e).splitlines()[0][:200]}")
+        return
+    if write or orphans:
+        names = ", ".join((write + orphans)[:6])
+        more = f" (+{len(write) + len(orphans) - 6} more)" if len(write) + len(orphans) > 6 else ""
+        failures.append(
+            f"docs/okf is stale against public/parquet: {len(write)} page(s) "
+            f"to rewrite, {len(orphans)} orphaned ({names}{more}) — run "
+            "scripts/build_okf_bundle.py")
+
+
 def check_integrity(conn, failures: list[str]) -> None:
     """Every PRIMARY KEY, UNIQUE, FOREIGN KEY, CHECK and NOT NULL in schema.sql.
 
@@ -1153,6 +1183,7 @@ def main() -> int:
     # and must run even on a checkout with no data.
     check_frontend_parses(failures)
     check_view_sql_types(failures)
+    check_okf_bundle(failures)
 
     for w in warnings:
         print(f"[qa] WARNING: {w}")

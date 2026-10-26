@@ -4,7 +4,7 @@ title: "NASA Ocean Biology Distributed Active Archive Center (OB.DAAC) / OceanCo
 description: "NASA / GSFC Ocean Biology Processing Group — data-portal holding long-term observatory records."
 resource: "https://oceancolor.gsfc.nasa.gov/"
 tags: [data-portal, rest, nasa-public]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-10-26T01:52:50Z }
 status: stable
 ---
 
@@ -23,15 +23,6 @@ OBPG produces ocean-color L1/L2/L3 products from CZCS, OCTS, SeaWiFS, MODIS Aqua
 |---|---|---|---|---|
 | data-download | GET | application/x-netcdf | <https://oceandata.sci.gsfc.nasa.gov/getfile/{filename}> | wget --user={EDL_USER} --password={EDL_PASS} 'https://oceandata.sci.gsfc.nasa.gov/getfile/AQUA_MODIS.20240101.L3m.DAY.CHL.chlor_a.4km.nc' |
 | search | POST | text/plain | <https://oceandata.sci.gsfc.nasa.gov/file_search> | curl -X POST -d 'sensor_id=7&dtid=1043&sdate=2024-01-01&edate=2024-01-05&period=DAY&results_as_file=1&addurl=1' https://oceandata.sci.gsfc.nasa.gov/file_search |
-
-# Cloud buckets
-
-See the [cloud-bucket guide](./access-buckets.md) for anonymous / requester-pays recipes.
-
-| Provider | Bucket | Region | Access | Sample prefix |
-|---|---|---|---|---|
-| s3 | [nasa-obpg-prod](https://oceancolor.gsfc.nasa.gov/data/download_methods/) | us-west-2 | public-anon-egress | `MODISA/L3m/CHL/` |
-| s3 | [nasa-pace-prod](https://oceancolor.gsfc.nasa.gov/data/pace/) | us-west-2 | public-anon-egress | `PACE_OCI/L2/OC/` |
 
 # Depositing facilities
 

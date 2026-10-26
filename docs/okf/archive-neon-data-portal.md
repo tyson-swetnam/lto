@@ -4,7 +4,7 @@ title: "NEON Data Portal"
 description: "Battelle / National Ecological Observatory Network (NSF) — repository holding long-term observatory records."
 resource: "https://data.neonscience.org/"
 tags: [repository, rest, neon-data-policy]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-10-26T01:52:50Z }
 status: stable
 ---
 
@@ -25,22 +25,13 @@ NEON publishes ~180 standardized data products (DPID format DP[1-4].YYYYY.NNN) a
 | catalog | GET | application/json | <https://data.neonscience.org/api/v0/products/{productCode}> | curl https://data.neonscience.org/api/v0/products/DP1.10003.001 |
 | catalog | GET | application/json | <https://data.neonscience.org/api/v0/releases> | curl https://data.neonscience.org/api/v0/releases |
 | catalog | GET | application/json | <https://data.neonscience.org/api/v0/sites> | curl https://data.neonscience.org/api/v0/sites |
-| data | GET | application/json | <https://data.neonscience.org/api/v0/data/{productCode}/{siteCode}/{year-month}> | curl https://data.neonscience.org/api/v0/data/DP1.10003.001/HARV/2019-06 |
 | data | GET | application/json | <https://data.neonscience.org/api/v0/data/query> | curl 'https://data.neonscience.org/api/v0/data/query?productCode=DP1.10003.001&siteCode=HARV&startDateMonth=2019-01&endDateMonth=2019-12&package=basic&release=RELEASE-2024' |
+| data | GET | application/json | <https://data.neonscience.org/api/v0/data/{productCode}/{siteCode}/{year-month}> | curl https://data.neonscience.org/api/v0/data/DP1.10003.001/HARV/2019-06 |
 | human-ui | GET | text/html | <https://data.neonscience.org/data-products/explore?siteCodes={siteCode}> | https://data.neonscience.org/data-products/explore?siteCodes=HARV |
-| metadata | GET | application/json | <https://data.neonscience.org/api/v0/sites/{siteCode}> | curl https://data.neonscience.org/api/v0/sites/HARV |
 | metadata | GET | application/json | <https://data.neonscience.org/api/v0/locations/{namedLocation}> | curl https://data.neonscience.org/api/v0/locations/HARV_001.basePlot.bgc |
-| vocabulary | GET | application/json | <https://data.neonscience.org/api/v0/taxonomy> | curl 'https://data.neonscience.org/api/v0/taxonomy?taxonTypeCode=BIRD' |
+| metadata | GET | application/json | <https://data.neonscience.org/api/v0/sites/{siteCode}> | curl https://data.neonscience.org/api/v0/sites/HARV |
 | vocabulary | GET | application/json | <https://data.neonscience.org/api/v0/samples/supportedClasses> | curl 'https://data.neonscience.org/api/v0/samples/supportedClasses' |
-
-# Cloud buckets
-
-See the [cloud-bucket guide](./access-buckets.md) for anonymous / requester-pays recipes.
-
-| Provider | Bucket | Region | Access | Sample prefix |
-|---|---|---|---|---|
-| s3 | [neon-aop-products](https://www.neonscience.org/data-collection/airborne-remote-sensing) | us-west-2 | public-read | `2019/FullSite/D14/2019_JORN_3/L3/DiscreteLidar/CanopyHeightModelGtif/` |
-| s3 | [neon-prod-pub-1](https://data.neonscience.org/data-products/explore) | us-west-2 | public-read | `—` |
+| vocabulary | GET | application/json | <https://data.neonscience.org/api/v0/taxonomy> | curl 'https://data.neonscience.org/api/v0/taxonomy?taxonTypeCode=BIRD' |
 
 # Depositing facilities
 

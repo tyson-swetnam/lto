@@ -4,7 +4,7 @@ title: "USGS 3D Elevation Program"
 description: "U.S. Geological Survey, National Geospatial Program — program holding long-term observatory records."
 resource: "https://www.usgs.gov/3d-elevation-program"
 tags: [program, rest, usgs-public]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-10-26T01:52:50Z }
 status: stable
 ---
 
@@ -29,7 +29,7 @@ See the [cloud-bucket guide](./access-buckets.md) for anonymous / requester-pays
 | Provider | Bucket | Region | Access | Sample prefix |
 |---|---|---|---|---|
 | s3 | [prd-tnm](https://www.usgs.gov/the-national-map-data-delivery) | us-west-2 | public-read | `StagedProducts/Elevation/1m/Projects/` |
-| s3 | [usgs-lidar-public](https://registry.opendata.aws/usgs-lidar/) | us-west-2 | requester-pays | `Projects/` |
+| s3 | [usgs-lidar-public](https://registry.opendata.aws/usgs-lidar/) | us-west-2 | public-read | `—` |
 
 # Data products
 

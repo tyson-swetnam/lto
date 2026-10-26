@@ -4,7 +4,7 @@ title: "NOAA National Marine Sanctuaries Data"
 description: "NOAA Office of National Marine Sanctuaries — program holding long-term observatory records."
 resource: "https://sanctuaries.noaa.gov/science/data.html"
 tags: [program, noaa-public]
-generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-08-15T03:43:53Z }
+generated: { by: "claude-opus-5/lto-okf-generator", at: 2026-10-26T01:52:50Z }
 status: stable
 ---
 
@@ -14,14 +14,7 @@ ONMS science portal aggregates condition reports + per-sanctuary monitoring data
 
 - Archive home: <https://sanctuaries.noaa.gov/science/data.html>
 - API documentation: <https://sanctuaries.noaa.gov/science/condition/>
-
-# Cloud buckets
-
-See the [cloud-bucket guide](./access-buckets.md) for anonymous / requester-pays recipes.
-
-| Provider | Bucket | Region | Access | Sample prefix |
-|---|---|---|---|---|
-| s3 | [noaa-coastwatch-pds](https://registry.opendata.aws/noaa-coastwatch/) | us-east-1 | public-read | `noaa-coastwatch-pds/coastwatch/products/` |
+- No machine access recorded — landing page only.
 
 # Depositing facilities
 
