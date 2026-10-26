@@ -1,0 +1,230 @@
+{
+ "batch_id": "R-PEOPLE2-GAPS-03",
+ "retrieved_at": "2026-10-26",
+ "verified_by": "adversarial-verifier 2026-10-26",
+ "facilities": [
+  {
+   "facility_id": "02a62062148246a9",
+   "pages_fetched": [
+    {
+     "url": "https://ncseagrant.ncsu.edu/dorton-named-coordinator-for-nc-sentinel-site-cooperative/",
+     "status": 200
+    },
+    {
+     "url": "https://ncseagrant.ncsu.edu/wp-content/uploads/2021/10/SSQ-Volume-9-Issue-1-Oct-2021.pdf",
+     "status": 200
+    },
+    {
+     "url": "https://ncseagrant.ncsu.edu/cayla-cothron-joins-nc-sea-grant/",
+     "status": 200
+    },
+    {
+     "url": "https://ncseagrant.ncsu.edu/people/",
+     "status": 200
+    },
+    {
+     "url": "https://ncseagrant.ncsu.edu/people/john-fear/",
+     "status": 200
+    },
+    {
+     "url": "https://ncseagrant.ncsu.edu/people/sarah-spiegler/",
+     "status": 200
+    },
+    {
+     "url": "https://ncseagrant.ncsu.edu/people/cayla-cothron/",
+     "status": 404
+    },
+    {
+     "url": "https://oceanservice.noaa.gov/sentinelsites/",
+     "status": 301,
+     "note": "redirects to the NOAA Sea Grant 'Resilient Communities & Economies' page; no Sentinel Site content"
+    },
+    {
+     "url": "https://oceanservice.noaa.gov/sentinelsites/northcarolina.html",
+     "status": 301,
+     "note": "same redirect as the program page"
+    },
+    {
+     "url": "https://www.deq.nc.gov/about/divisions/coastal-management/nc-coastal-reserve",
+     "status": 200
+    },
+    {
+     "url": "https://www.deq.nc.gov/about/divisions/coastal-management/nc-coastal-reserve/about-reserve/contact-us",
+     "status": 200
+    },
+    {
+     "url": "https://uncw.edu/people/jennifer-dorton",
+     "status": 404,
+     "note": "soft 404 (page title '404: Page Not Found')"
+    }
+   ],
+   "notes": "No current leader recorded. The October 2021 Sentinel Site Quarterly (the cooperative's final newsletter) says the N.C. Sentinel Site Cooperative was transitioning into the N.C. Sea Grant extension program, and NOAA's Sentinel Site Program pages now redirect to a general Sea Grant resilience page, so no fetched page lists a current coordinator, chair or management team. The existing coordinator rows (Dorton 2014, Spiegler 2018-2020, Cothron 2021) are already is_current=false and were left alone; Cothron's 2021 announcement says she would continue the program's partnerships but does not name her coordinator. The 2014 core management team rows (Fear, Ellin) get 'unverifiable' because no page listing a current team exists. Bios added for Cayla Cothron (2021 NC Sea Grant announcement) and Rebecca Ellin (N.C. Coastal Reserve contact page, where she is listed as Program Manager). No profile page found for Jennifer Dorton (UNCW URL is a soft 404). No ORCID or Google Scholar link on any fetched page."
+  },
+  {
+   "facility_id": "40b6e6ea4fbbe95d",
+   "pages_fetched": [
+    {
+     "url": "https://www.dasnr.okstate.edu/magruder-plots/",
+     "status": 403,
+     "note": "Cloudflare challenge; also blocked when opened in the browser"
+    },
+    {
+     "url": "https://agresearch.okstate.edu/magruder-plots",
+     "status": 200,
+     "note": "curl and WebFetch got 403 (Cloudflare challenge); text read in Chrome via the browser extension"
+    },
+    {
+     "url": "https://nue.okstate.edu/Magruder.htm",
+     "status": 0,
+     "note": "connection refused / no response (https and http)"
+    }
+   ],
+   "notes": "No current manager or lead recorded. OSU's Ag Research page on the plots gives only history: planted in fall 1892 by Alexander C. Magruder; Billy Tucker and Bob Westerman led the 1970s National Register listing campaign (a campaign, not management of the plots, so not recorded). It names no current PI, superintendent or station manager, and the department's own Magruder page and the NUE site could not be fetched. Bio added for A. C. Magruder from the Ag Research page. The existing founding-PI row is historical and was not re-verified through the loader, whose 'confirmed' would set is_current=true; the Ag Research page does still state his founding role."
+  },
+  {
+   "facility_id": "427b0906a9107a87",
+   "pages_fetched": [
+    {
+     "url": "https://www.nps.gov/im/klmn/contactus.htm",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/im/klmn/",
+     "status": 200
+    },
+    {
+     "url": "https://www.nps.gov/im/klmn/staff.htm",
+     "status": 404
+    }
+   ],
+   "notes": "The network's Contact Us page (last updated May 22, 2025) lists the Program Manager position as 'Vacant', so no current manager is recorded. Daniel A. Sarr is not on the page (not-found). The other staff on the page (Berrian, Daw, Dinger, Niziolek, Snyder, Weiss, Youngblood) are technical or science staff; Dinger, Snyder and Youngblood are already in the lake and are 'program lead' for individual monitoring protocols only, not network leadership, so no leadership role was added. No individual profile pages, ORCID or Scholar links found."
+  },
+  {
+   "facility_id": "4cc7f52b5d75691c",
+   "pages_fetched": [
+    {
+     "url": "https://www.usgs.gov/centers/werc/science/mojave-global-change-facility",
+     "status": 404
+    },
+    {
+     "url": "https://www.dri.edu/nevada-desert-research-center",
+     "status": 404
+    },
+    {
+     "url": "https://www.dri.edu/directory/lynn-fenstermaker/",
+     "status": 200
+    },
+    {
+     "url": "https://www.unlv.edu/news/article/prestigious-professors-stan-smith",
+     "status": 200
+    },
+    {
+     "url": "https://www.osti.gov/biblio/920615",
+     "status": 200
+    },
+    {
+     "url": "https://www.unr.edu/nres/people/robert-nowak",
+     "status": 404
+    },
+    {
+     "url": "https://naes.unr.edu/nowak/",
+     "status": 404,
+     "note": "soft 404 (page title 'Page Not Found')"
+    },
+    {
+     "url": "https://www.unr.edu/nres/faculty-staff",
+     "status": 404
+    }
+   ],
+   "notes": "No current director or lead PI recorded. The facility's USGS page and DRI's Nevada Desert Research Center page both return 404, and no fetched page describes MGCF as active or names a current leader. Lynn Fenstermaker's DRI profile still names her among the past directors of MGCF (existing former-director row, already is_current=false; not re-verified through the loader because 'confirmed' would set is_current=true). The OSTI report (2007) still states the 2001 establishment that backs Robert Nowak's founding-PI row. Stanley D. Smith's lead-PI row rests on an UNLV feature dated November 1, 2005; with no current MGCF page it is 'unverifiable'. No profile page could be fetched for Robert Nowak. Fenstermaker and Smith already have bios; no ORCID or Google Scholar link appears on the DRI or UNLV pages."
+  }
+ ],
+ "people": [
+  {
+   "key": "cothron-cayla",
+   "existing_person_id": "2be9dcd027cb5f4c",
+   "name": "Cayla Cothron",
+   "name_given": "Cayla",
+   "name_family": "Cothron",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Joined North Carolina Sea Grant's extension team in 2021 as a climate resilience extension associate, to engage coastal towns and resource managers, assist graduate fellows studying coastal resilience, and continue the state's Sentinel Site program partnerships. Previously worked in community planning; holds degrees in environmental studies (Florida State) and urban and regional planning (University of Colorado Denver).",
+   "bio_source_url": "https://ncseagrant.ncsu.edu/cayla-cothron-joins-nc-sea-grant/",
+   "research_interests": "Coastal and watershed resilience; climate risk communication; community planning",
+   "research_interests_source_url": "https://ncseagrant.ncsu.edu/cayla-cothron-joins-nc-sea-grant/"
+  },
+  {
+   "key": "ellin-rebecca",
+   "existing_person_id": "378c9c78a6fd4a90",
+   "name": "Rebecca Ellin",
+   "name_given": "Rebecca",
+   "name_family": "Ellin",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Program Manager of North Carolina's Coastal Reserve and National Estuarine Research Reserve, a program of the state Department of Environmental Quality; listed at the reserve's headquarters office.",
+   "bio_source_url": "https://www.deq.nc.gov/about/divisions/coastal-management/nc-coastal-reserve/about-reserve/contact-us",
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "magruder-ac",
+   "existing_person_id": "2c518d7d1d1c51bb",
+   "name": "A. C. Magruder",
+   "name_given": "A. C.",
+   "name_family": "Magruder",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": "Alexander C. Magruder was Oklahoma A&M's first agriculture professor (the college is now Oklahoma State University). Planted the Magruder Plots in fall 1892 to learn whether the soil could keep giving good wheat yields with no fertilizer applied.",
+   "bio_source_url": "https://agresearch.okstate.edu/magruder-plots",
+   "research_interests": null,
+   "research_interests_source_url": null
+  }
+ ],
+ "affiliations": [],
+ "verifications": [
+  {
+   "facility_id": "02a62062148246a9",
+   "person_id": "d8bacd22d85b96eb",
+   "existing_role": "leadership-team",
+   "status": "unverifiable",
+   "current_holder_key": null,
+   "source_url": "https://ncseagrant.ncsu.edu/wp-content/uploads/2021/10/SSQ-Volume-9-Issue-1-Oct-2021.pdf",
+   "evidence": "the Cooperative is officially transitioning to become part of the N.C. Sea Grant extension program",
+   "notes": "No page listing a current NCSSC management team exists; the 2014 article still names him a core management team member. NC Sea Grant's people page lists him as Deputy Director of NC Sea Grant."
+  },
+  {
+   "facility_id": "02a62062148246a9",
+   "person_id": "378c9c78a6fd4a90",
+   "existing_role": "leadership-team",
+   "status": "unverifiable",
+   "current_holder_key": null,
+   "source_url": "https://ncseagrant.ncsu.edu/wp-content/uploads/2021/10/SSQ-Volume-9-Issue-1-Oct-2021.pdf",
+   "evidence": "the Cooperative is officially transitioning to become part of the N.C. Sea Grant extension program",
+   "notes": "No page listing a current NCSSC chair or team exists; the 2014 article names her chair of the NCSSC. The N.C. Coastal Reserve contact page lists her as Program Manager of the reserve."
+  },
+  {
+   "facility_id": "427b0906a9107a87",
+   "person_id": "9a8ebcbfb9e8a8d6",
+   "existing_role": "coordinator",
+   "status": "not-found",
+   "current_holder_key": null,
+   "source_url": "https://www.nps.gov/im/klmn/contactus.htm",
+   "evidence": "Klamath Network Staff and Affiliates Vacant Program Manager",
+   "notes": "Sarr is not on the network staff list; the Program Manager position is listed as vacant (page last updated May 22, 2025)."
+  },
+  {
+   "facility_id": "4cc7f52b5d75691c",
+   "person_id": "219e236efa37b569",
+   "existing_role": "lead-PI",
+   "status": "unverifiable",
+   "current_holder_key": null,
+   "source_url": "https://www.unlv.edu/news/article/prestigious-professors-stan-smith",
+   "evidence": "Currently, Smith is working as UNLV’s lead principal investigator with the Nevada Desert Research Center (NDRC)",
+   "notes": "The UNLV feature (dated November 1, 2005, marked as an archive item) still shows the historical role, but no current MGCF or NDRC page could be fetched (USGS and DRI pages 404). Row stays is_current=false; 'confirmed' was not used because the loader would set is_current=true."
+  }
+ ],
+ "verification_notes": "2026-10-26 verifier: re-fetched every cited URL. ncseagrant Cothron article, DEQ Coastal Reserve contact page, SSQ Oct 2021 PDF, NPS KLMN contact page, UNLV Stan Smith feature, DRI Fenstermaker profile, OSTI 920615, NC Sea Grant people and John Fear pages, 2014 Dorton article: all 200 and support the cited values and notes. agresearch.okstate.edu/magruder-plots returns 403 to curl/WebFetch (Cloudflare) but was read in Chrome; it supports the Magruder bio. All person_ids match the lake (Fear, Ellin, Sarr, Smith, Cothron, Magruder); all evidence quotes appear verbatim on their pages and are <=25 words. Changed: Cothron bio reworded (it shared a 7-word run with the page and read as a current title; it now states the 2021 hire as past). UNLV feature date set to November 1, 2005 (the page's own date) instead of 'c. 2003-2005'. Bios checked by script: <=60 words, longest copied run <=7, no pronouns. No ORCID or Scholar ids in the file; no emails, phones, addresses or photos."
+}

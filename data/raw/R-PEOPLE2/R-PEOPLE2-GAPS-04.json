@@ -1,0 +1,355 @@
+{
+ "batch_id": "R-PEOPLE2-GAPS-04",
+ "retrieved_at": "2026-10-26",
+ "verified_by": "adversarial-verifier 2026-10-26",
+ "facilities": [
+  {
+   "facility_id": "5173db142db727f4",
+   "pages_fetched": [
+    {
+     "url": "https://api.nsf.gov/services/v1/awards/1555641.json?printFields=id,title,pdPIName,coPDPI,awardeeName,startDate,expDate",
+     "status": 200
+    },
+    {
+     "url": "https://api.nsf.gov/services/v1/awards/1020480.json?printFields=id,title,pdPIName,coPDPI,awardeeName,startDate,expDate",
+     "status": 200
+    },
+    {
+     "url": "https://api.nsf.gov/services/v1/awards.json?pdPIName=Kubler&printFields=id,title,pdPIName,coPDPI,awardeeName,startDate,expDate",
+     "status": 200
+    },
+    {
+     "url": "https://api.nsf.gov/services/v1/awards.json?pdPIName=Dudgeon&printFields=id,title,pdPIName,coPDPI,awardeeName,startDate,expDate",
+     "status": 200
+    },
+    {
+     "url": "https://api.nsf.gov/services/v1/awards.json?pdPIName=Petraitis&printFields=id,title,pdPIName,coPDPI,awardeeName,startDate,expDate",
+     "status": 200
+    },
+    {
+     "url": "https://www.csun.edu/~sd51881/ltrebcontact.htm",
+     "status": 302
+    },
+    {
+     "url": "https://www.csun.edu/~sd51881/overview.htm",
+     "status": 302
+    },
+    {
+     "url": "https://csunshinetoday.csun.edu/faculty-and-staff-news/steve-dudgeon-national-science-foundation-ltreb-renewal-experimental-tests-of-alternative-states-on-rocky-intertidal-shores/",
+     "status": 302
+    },
+    {
+     "url": "https://live-sas-bio.pantheon.sas.upenn.edu/people/peter-petraitis",
+     "status": 200
+    },
+    {
+     "url": "https://catalog.csun.edu/academics/biol/faculty/dudgeon-steven-r/",
+     "status": 200
+    },
+    {
+     "url": "https://catalog.csun.edu/academics/biol/faculty/kubler-janet-e/",
+     "status": 404
+    }
+   ],
+   "notes": "No current leader found. The NSF Award API shows the LTREB award history: 1020480 (PI Peter S Petraitis, co-PI Steven R Dudgeon, 2010-08-01 to 2016-07-31) and the renewal 1555641 (PI Janet E Kubler, 'Steven R Dudgeon (Former)' as PI, co-PI Petraitis, 2016-05-01 to 2023-04-30, activeAwd false). PI-name searches for Kubler, Dudgeon and Petraitis return no later award, so the Swans Island experiment has no active NSF LTREB award on record. The project site on csun.edu (~sd51881, ltrebcontact.htm, overview.htm) and the CSUN news item redirected to a CSUN 'scheduled-maintenance' page (302) on 2026-10-26, so the site's own contact page could not be read. The three lead-PI rows are marked stale with the award end dates; no current holder is named. Petraitis's Penn Biology profile (served from its Pantheon host; bio.sas.upenn.edu failed a TLS check) still lists him as Professor of Biology studying Gulf of Maine rockweed and mussel communities but does not mention LTREB; it links no ORCID or Google Scholar. Bios and ORCIDs for Petraitis, Dudgeon and Kubler are already in the lake."
+  },
+  {
+   "facility_id": "53c5bb60afd13bc5",
+   "pages_fetched": [
+    {
+     "url": "https://research.fs.usda.gov/psw/projects/krew",
+     "status": 404
+    },
+    {
+     "url": "https://research.fs.usda.gov/psw/projects/kingsriver",
+     "status": 404
+    },
+    {
+     "url": "https://research.fs.usda.gov/psw/projects/kings-river-experimental-watersheds",
+     "status": 404
+    },
+    {
+     "url": "https://www.fs.usda.gov/rds/archive/products/RDS-2018-0028/_metadata_RDS-2018-0028.html",
+     "status": 200
+    },
+    {
+     "url": "https://www.fs.usda.gov/rds/archive/products/RDS-2017-0040/_metadata_RDS-2017-0040.html",
+     "status": 200
+    },
+    {
+     "url": "https://research.fs.usda.gov/about/people/joseph.wagenbrenner",
+     "status": 200
+    },
+    {
+     "url": "https://research.fs.usda.gov/about/people/carolyn.hunsaker",
+     "status": 200
+    },
+    {
+     "url": "https://csdms.colorado.edu/w/images/Outreach_PSW_ResearchHydrologist.pdf",
+     "status": 200
+    },
+    {
+     "url": "https://czo-archive.criticalzone.org/sierra/news/story/fs-partner-krew-receives-national-award/",
+     "status": 200
+    },
+    {
+     "url": "https://mailman.ucar.edu/pipermail/es_jobs_net/2017-March/003803.html",
+     "status": 403
+    },
+    {
+     "url": "https://es.ucmerced.edu/people/martha-conklin",
+     "status": 403
+    },
+    {
+     "url": "https://es.ucmerced.edu/people/roger-bales",
+     "status": 403
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-0811-8535/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-0811-8535/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-9627-2427/person",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-9627-2427/employments",
+     "status": 200
+    }
+   ],
+   "notes": "No current director or lead found. The facility URL (research.fs.usda.gov/psw/projects/krew) and guessed variants return 404; no current KREW project page exists on research.fs.usda.gov. A 2019 PSW outreach notice (csdms.colorado.edu) advertised a Research Hydrologist position that 'oversees research efforts' including KREW, but names no holder. The Research Data Archive metadata (RDS-2018-0028, metadata 2021; RDS-2017-0040, metadata 2019) list Carolyn Hunsaker and Joe Wagenbrenner as data contacts only, which is not a leadership role. Hunsaker's PSW profile now reads 'Volunteer Scientist Emerita'; a 2015 CZO archive news item says the KREW group was 'led by Dr. Carolyn Hunsaker', recorded as a past lead-PI (is_current false, low: news item). A 2017 job notice reportedly naming Wagenbrenner as KREW lead scientist returned 403 and is not used. No existing row here has a leadership role, so no verifications. ORCIDs added for the UC Merced co-PIs Roger C. Bales and Martha H. Conklin from their ORCID records (same name; employment at UC Merced matching the lake's titles); their UC Merced profile pages returned 403, so no bios. Wagenbrenner's ORCID 0000-0003-3317-5141 (linked on his PSW profile) and Hunsaker's are already in the lake."
+  },
+  {
+   "facility_id": "694f72e231a5b4d9",
+   "pages_fetched": [
+    {
+     "url": "https://www.fs.usda.gov/es/node/761926562",
+     "status": 200
+    },
+    {
+     "url": "https://www.fs.usda.gov/r08/texas/offices/caddo-lyndon-b-johnson-national-grasslands",
+     "status": 200
+    },
+    {
+     "url": "https://www.fs.usda.gov/r08/texas/offices/national-forests-and-grasslands-texas",
+     "status": 200
+    },
+    {
+     "url": "https://www.fs.usda.gov/r08/texas/offices",
+     "status": 200
+    },
+    {
+     "url": "https://www.fs.usda.gov/r08/texas/about-area",
+     "status": 200
+    },
+    {
+     "url": "https://www.fs.usda.gov/r08/texas/contact-us",
+     "status": 200
+    },
+    {
+     "url": "https://www.fs.usda.gov/r08/texas/recreation/caddo-lbj-national-grasslands",
+     "status": 200
+    },
+    {
+     "url": "https://www.fs.usda.gov/r08/texas/newsroom/releases",
+     "status": 200
+    },
+    {
+     "url": "https://www.fs.usda.gov/r08/texas/newsroom/releases/black-creek-lake-recreation-area-and-boat-ramp-temporarily-closed-road",
+     "status": 200
+    },
+    {
+     "url": "https://www.fs.usda.gov/media/271708",
+     "status": 200
+    },
+    {
+     "url": "https://www.fs.usda.gov/sites/nfs/files/r08/texas/publication/National%20Forests%20and%20Grasslands%20Fingertip%20Facts_03262025.docx",
+     "status": 200
+    },
+    {
+     "url": "https://www.fs.usda.gov/r08/texas/about-area/leadership",
+     "status": 404
+    }
+   ],
+   "notes": "The Caddo/LBJ ranger-district office page (last updated March 24, 2026) and the supervisor's office page name no staff. The only page naming the district ranger is the June 17, 2024 Forest Service feature story (Jeff Stoney, district ranger; Greg Deimel, natural resources and planning team lead); no 2025-2026 official page could be found to confirm either, Greg Deimel's row is marked unverifiable rather than confirmed. Verifier: the June 2026 Fingertip Facts contact table lists the Caddo/LBJ National Grasslands 'Ranger' with no name (Davy Crockett and Sam Houston rangers are named), so Jeff Stoney is not on the current page that lists the role and his row is marked not-found. The National Forests & Grasslands in Texas 'Fingertip Facts' sheet (fs.usda.gov/media/271708, dated June 2026 in its text although the file name reads 03262025) names Kimpton Cooper as Forest Supervisor over the four forests and two grasslands including LBJ; recorded as land-manager (medium: unit-level page, not the grassland's own) so it does not supersede the district-level manager row. Bob Wells (recall row, no source) appears on none of the fetched pages. No profile pages, bios or ORCIDs found."
+  },
+  {
+   "facility_id": "73f6c5479cd6dc9e",
+   "pages_fetched": [
+    {
+     "url": "https://www.usgs.gov/programs/climate-research-and-development-program/science/south-cascade-glacier",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/programs/climate-research-and-development-program/science/glaciers-and-climate-project",
+     "status": 200
+    },
+    {
+     "url": "https://www.pdx.edu/profile/andrew-fountain",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0001-5299-2273/person",
+     "status": 200
+    }
+   ],
+   "notes": "The USGS South Cascade Glacier page (dated March 6, 2026; status 200 via a fetch tool, 403 to plain curl) lists one contact, Caitlyn Florentine, Research Physical Scientist, Northern Rocky Mountain Science Center; her scientist row is confirmed. Neither that page nor the Glaciers and Climate Project page (contacts Florentine, Louis Sass III, Christopher McNeil, Zanden Frederick) names a project chief or lead, so no director/lead-PI is recorded; the benchmark glacier work is run as a USGS project, not a directed site. Andrew G. Fountain's PDX profile links no ORCID or Scholar; the only ORCID search hit with his name and no institution (0000-0001-5299-2273) is an empty record and was not used."
+  }
+ ],
+ "people": [
+  {
+   "key": "hunsaker-carolyn",
+   "existing_person_id": "7bae5581771793bb",
+   "name": "Carolyn T. Hunsaker",
+   "name_given": "Carolyn",
+   "name_family": "Hunsaker",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://research.fs.usda.gov/about/people/carolyn.hunsaker",
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "bales-roger",
+   "existing_person_id": "e2f1087ef1255876",
+   "name": "Roger C. Bales",
+   "name_given": "Roger",
+   "name_family": "Bales",
+   "orcid": "0000-0002-0811-8535",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-0811-8535/employments",
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "conklin-martha",
+   "existing_person_id": "c9f3ab63499d8381",
+   "name": "Martha H. Conklin",
+   "name_given": "Martha",
+   "name_family": "Conklin",
+   "orcid": "0000-0002-9627-2427",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-9627-2427/employments",
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "cooper-kimpton",
+   "existing_person_id": null,
+   "name": "Kimpton Cooper",
+   "name_given": "Kimpton",
+   "name_family": "Cooper",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  }
+ ],
+ "affiliations": [
+  {
+   "facility_id": "53c5bb60afd13bc5",
+   "person_key": "hunsaker-carolyn",
+   "role": "lead-PI",
+   "title": "Leader, Kings River Experimental Watershed (KREW) Group, Pacific Southwest Research Station (2015 news item)",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://czo-archive.criticalzone.org/sierra/news/story/fs-partner-krew-receives-national-award/",
+   "evidence": "The Kings River Experimental Watershed (KREW) Group led by Dr. Carolyn Hunsaker form the Pacific Southwest Research Station",
+   "confidence": "low"
+  },
+  {
+   "facility_id": "694f72e231a5b4d9",
+   "person_key": "cooper-kimpton",
+   "role": "land-manager",
+   "title": "Forest Supervisor, National Forests & Grasslands in Texas (USDA Forest Service)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.fs.usda.gov/sites/nfs/files/r08/texas/publication/National%20Forests%20and%20Grasslands%20Fingertip%20Facts_03262025.docx",
+   "evidence": "FOREST SUPERVISOR – Kimpton Cooper",
+   "confidence": "medium"
+  }
+ ],
+ "verifications": [
+  {
+   "facility_id": "5173db142db727f4",
+   "person_id": "98797e4d14fe5d81",
+   "existing_role": "lead-PI",
+   "status": "stale",
+   "current_holder_key": null,
+   "source_url": "https://api.nsf.gov/services/v1/awards/1555641.json?printFields=id,title,pdPIName,coPDPI,awardeeName,startDate,expDate",
+   "evidence": "\"expDate\":\"04/30/2023\""
+  },
+  {
+   "facility_id": "5173db142db727f4",
+   "person_id": "1e622fca11327615",
+   "existing_role": "lead-PI",
+   "status": "stale",
+   "current_holder_key": null,
+   "source_url": "https://api.nsf.gov/services/v1/awards/1555641.json?printFields=id,title,pdPIName,coPDPI,awardeeName,startDate,expDate",
+   "evidence": "Steven R Dudgeon (Former)"
+  },
+  {
+   "facility_id": "5173db142db727f4",
+   "person_id": "ba9bded68d12e243",
+   "existing_role": "lead-PI",
+   "status": "stale",
+   "current_holder_key": null,
+   "source_url": "https://api.nsf.gov/services/v1/awards/1020480.json?printFields=id,title,pdPIName,coPDPI,awardeeName,startDate,expDate",
+   "evidence": "\"expDate\":\"07/31/2016\""
+  },
+  {
+   "facility_id": "694f72e231a5b4d9",
+   "person_id": "13bdb0f49ffbd83a",
+   "existing_role": "manager",
+   "status": "not-found",
+   "current_holder_key": null,
+   "source_url": "https://www.fs.usda.gov/sites/nfs/files/r08/texas/publication/National%20Forests%20and%20Grasslands%20Fingertip%20Facts_03262025.docx",
+   "evidence": null
+  },
+  {
+   "facility_id": "694f72e231a5b4d9",
+   "person_id": "28cab7db55d06ebd",
+   "existing_role": "leadership-team",
+   "status": "unverifiable",
+   "current_holder_key": null,
+   "source_url": "https://www.fs.usda.gov/es/node/761926562",
+   "evidence": null
+  },
+  {
+   "facility_id": "694f72e231a5b4d9",
+   "person_id": "3da3ce9c04654670",
+   "existing_role": "land-manager",
+   "status": "not-found",
+   "current_holder_key": null,
+   "source_url": "https://www.fs.usda.gov/r08/texas/offices/caddo-lyndon-b-johnson-national-grasslands",
+   "evidence": null
+  },
+  {
+   "facility_id": "73f6c5479cd6dc9e",
+   "person_id": "ad5aa257094e5048",
+   "existing_role": "scientist",
+   "status": "confirmed",
+   "current_holder_key": null,
+   "source_url": "https://www.usgs.gov/programs/climate-research-and-development-program/science/south-cascade-glacier",
+   "evidence": "Caitlyn Florentine, Ph.D. Research Physical Scientist Northern Rocky Mountain Science Center"
+  }
+ ],
+ "verification_notes": "adversarial-verifier 2026-10-26: re-fetched every cited URL. NSF awards 1020480 and 1555641 (dates, PI/co-PI, 'Steven R Dudgeon (Former)', activeAwd false) confirmed; ORCID 0000-0002-0811-8535 (Roger Bales; UC Merced, Professor and Director, Sierra Nevada Research Institute, 2003-) and 0000-0002-9627-2427 (Martha Conklin; University of California Merced, Professor, 2003-) re-fetched at pub.orcid.org /person and /employments, names and institution match, neither iD is held by another person in the lake; CZO archive story (13 Mar 2015) quote confirmed verbatim, Hunsaker affiliation title rewritten to what that page states (the 'Volunteer Scientist Emerita' detail is from her PSW profile, not the cited page); Fingertip Facts docx (identical to fs.usda.gov/media/271708, dated June 2026) confirms 'FOREST SUPERVISOR – Kimpton Cooper'; its contact table leaves the Caddo/LBJ ranger blank, so Jeff Stoney changed unverifiable -> not-found (source: that docx); USGS South Cascade Glacier page (March 6, 2026) confirms the Florentine contact quote; Hunsaker PSW profile (homepage) returns 200 and links ORCID 0000-0002-5662-2402, matching the lake; csun.edu ~sd51881 pages still redirect to a maintenance page. No bios in this batch; no emails, phone numbers, addresses or photos recorded. Second verifier pass 2026-10-26: re-fetched NSF awards 1555641/1020480, ORCID /person and /employments for Bales and Conklin, the CZO story, Hunsaker and Wagenbrenner PSW profiles, the Fingertip Facts docx (both URLs, byte-identical), the June 17, 2024 feature, the Caddo/LBJ office page (names no staff), the USGS South Cascade page, Petraitis's Penn profile and the RDS-2018-0028 metadata; every quote, name, ORCID and status holds, and no change was needed. Greg Deimel stays unverifiable: only the 2024 feature names him and no current page lists the role. Every role is in the vocabulary."
+}

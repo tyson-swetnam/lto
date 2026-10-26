@@ -1,0 +1,153 @@
+{
+ "batch_id": "R-PEOPLE2-BIO-56",
+ "retrieved_at": "2026-10-26",
+ "verified_by": "adversarial-verifier 2026-10-26",
+ "updates": [
+  {
+   "person_id": "1aff212c403b269f",
+   "name": "Risa McNellis",
+   "homepage_url": "https://pie-lter.mbl.edu/people/risa-mcnellis/",
+   "bio": "Information Manager for the Plum Island Ecosystems LTER, based at the Marine Biological Laboratory, and a member of the project's Data and Information Management committee and its Executive committee.",
+   "bio_source_url": "https://pie-lter.mbl.edu/people/risa-mcnellis/",
+   "research_interests": null,
+   "research_interests_source_url": null,
+   "orcid": "0000-0002-3538-9269",
+   "orcid_source_url": "https://pie-lter.mbl.edu/people/risa-mcnellis/",
+   "current_title": "Information Manager",
+   "current_affiliation": "Plum Island Ecosystems LTER, Marine Biological Laboratory",
+   "status": null,
+   "status_source_url": null,
+   "evidence": "Risa McNellis Information Manager ... Institution Marine Biological Laboratory ... Committees Data & Information Management, Executive",
+   "evidence_source_url": "https://pie-lter.mbl.edu/people/risa-mcnellis/",
+   "notes": "PIE profile page (200) gives title, institution, committees and links ORCID 0000-0002-3538-9269 (matches existing). PIE people page lists her as Lead of the Data & Information Management committee. pub.orcid.org record: name Risa McNellis, no employments or biography. LTER directory (user=15413) also titles her Information Manager, PIE LTER. No page states research interests; left null. Verifier 2026-10-26: bio no longer says she leads the Data & Information Management committee, because that is stated only on the PIE people page, not on bio_source_url (her profile lists committee membership only).",
+   "retrieved_at": "2026-10-26"
+  },
+  {
+   "person_id": "db162c82929caf91",
+   "name": "Samuel Kelsey",
+   "homepage_url": "https://pie-lter.mbl.edu/people/samuel-kelsey/",
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null,
+   "orcid": "0000-0002-3683-1848",
+   "orcid_source_url": "https://pie-lter.mbl.edu/people/samuel-kelsey/",
+   "current_title": "Research Staff",
+   "current_affiliation": "Plum Island Ecosystems LTER, Marine Biological Laboratory",
+   "status": null,
+   "status_source_url": null,
+   "evidence": "Samuel Kelsey Research Staff ... Institution Marine Biological Laboratory ... ORCID https://orcid.org/0000-0002-3683-1848",
+   "evidence_source_url": "https://pie-lter.mbl.edu/people/samuel-kelsey/",
+   "notes": "Bio left null: the PIE profile page (200) gives only 'Research Staff', institution MBL and ORCID, with no research focus; the LTER Network site page (lternet.edu/site/plum-island-ecosystems-lter/) lists 'Research/Site Coordinator: Sam Kelsey' and the LTER directory (user=4906) titles him 'Other Professional'. pub.orcid.org record: name Samuel Kelsey, employment Marine Biological Laboratory, Ecosystems Center (consistent; ORCID unchanged). No bio or keywords on ORCID.",
+   "retrieved_at": "2026-10-26"
+  },
+  {
+   "person_id": "5639a992d91e194d",
+   "name": "Mindy Roberts",
+   "homepage_url": null,
+   "bio": "Executive Director of the Puget Sound Partnership, Washington's state agency for Puget Sound recovery, appointed in March 2026. She previously directed Washington Conservation Action's Puget Sound program for ten years and worked 16 years at Washington's Department of Ecology as an environmental engineer, where she led Salish Sea water-quality modeling.",
+   "bio_source_url": "https://governor.wa.gov/news/2026/governor-ferguson-appoints-mindy-roberts-serve-puget-sound-partnership-executive-director",
+   "research_interests": null,
+   "research_interests_source_url": null,
+   "orcid": null,
+   "orcid_source_url": null,
+   "current_title": "Executive Director",
+   "current_affiliation": "Puget Sound Partnership",
+   "status": "active",
+   "status_source_url": "https://psp.wa.gov/staff.php",
+   "evidence": "EXECUTIVE DIRECTOR'S OFFICE Mindy Roberts Executive Director",
+   "evidence_source_url": "https://psp.wa.gov/staff.php",
+   "notes": "Governor's release of March 5, 2026 (200) announces her appointment as PSP executive director and gives prior roles; PSP staff page (200) lists her as Executive Director. Existing homepage psp.wa.gov/staff.php is a staff list, not a personal page; no individual PSP page found, so homepage not changed. No ORCID or research-interests page found.",
+   "retrieved_at": "2026-10-26"
+  },
+  {
+   "person_id": "897bec74e4b16b19",
+   "name": "Carol Anda",
+   "homepage_url": "https://mpp.unm.edu/people/staff/profile/carol-anda.html",
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null,
+   "orcid": null,
+   "orcid_source_url": null,
+   "current_title": "Unit Administrator",
+   "current_affiliation": "Master of Public Policy program, University of New Mexico",
+   "status": null,
+   "status_source_url": null,
+   "evidence": "Carol Anda Unit Administrator",
+   "evidence_source_url": "https://mpp.unm.edu/people/staff/profile/carol-anda.html",
+   "notes": "UNM MPP staff profile (200) gives only the title 'Unit Administrator' and a placeholder bio line, with no role description or focus, so no bio was written. Also listed on https://mpp.unm.edu/people/staff/index.html.",
+   "retrieved_at": "2026-10-26"
+  },
+  {
+   "person_id": "22bc4f4a9ca43e24",
+   "name": "Mark S. Seyfried",
+   "homepage_url": null,
+   "bio": "Soil scientist with the USDA Agricultural Research Service and investigator at the Reynolds Creek Critical Zone Observatory, holding a University of Florida PhD in soil physics. Research examines how soils vary across semiarid mountain landscapes and how that shapes water movement and plant growth, along with soil water and temperature instruments and process models that bridge scales.",
+   "bio_source_url": "https://czo-archive.criticalzone.org/reynolds/people/person/seyfried-mark-s/",
+   "research_interests": "spatial variation of soils; soil water and temperature measurement; soil water modeling; soil physics; hydrology",
+   "research_interests_source_url": "https://czo-archive.criticalzone.org/reynolds/people/person/seyfried-mark-s/",
+   "orcid": "0000-0001-8081-0713",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0001-8081-0713/person",
+   "current_title": "Soil Scientist",
+   "current_affiliation": "USDA Agricultural Research Service",
+   "status": null,
+   "status_source_url": null,
+   "evidence": "Mark S. Seyfried ... INVESTIGATOR ... Reynolds ... Soil Scientist, USDA-Agricultural Research Service",
+   "evidence_source_url": "https://czo-archive.criticalzone.org/reynolds/people/person/seyfried-mark-s/",
+   "notes": "Bio source is the archived Reynolds Creek CZO profile (200; the CZO program ended, page is an archive, latest listed paper 2020), so it is not set as homepage. The Reynolds CZO people page (czo-archive.criticalzone.org/reynolds/people/) lists him as a contact and investigator. Existing ORCID checked at pub.orcid.org: name Mark Seyfried, employment USDA-ARS 1988-present (consistent; unchanged). No fetched page states emeritus/retired, so status not written. ARS NWRC people list renders no names server-side; ARS person page not found. Verifier 2026-10-26: current_affiliation trimmed to what the cited profile states ('Soil Scientist, USDA-Agricultural Research Service'); it does not name the Northwest Watershed Research Center.",
+   "retrieved_at": "2026-10-26"
+  },
+  {
+   "person_id": "b5dde250a33b002b",
+   "name": "Rosemary G. Gillespie",
+   "homepage_url": "https://ourenvironment.berkeley.edu/people/rosemary-gillespie",
+   "bio": "Professor in UC Berkeley's Department of Environmental Science, Policy and Management (Organisms and Environment division). Research centers on evolutionary ecology, systematics and spider biology, using Pacific hotspot archipelagoes such as Hawaii, the Marquesas and the Society Islands, whose islands differ in age, to trace how species diversify and communities assemble over time.",
+   "bio_source_url": "https://ourenvironment.berkeley.edu/people/rosemary-gillespie",
+   "research_interests": "evolutionary ecology; systematics; spiders; conservation; diversification and community assembly on Pacific hotspot islands",
+   "research_interests_source_url": "https://ourenvironment.berkeley.edu/people/rosemary-gillespie",
+   "orcid": "0000-0003-0086-7424",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0003-0086-7424/person",
+   "current_title": "Professor",
+   "current_affiliation": "Department of Environmental Science, Policy & Management, University of California, Berkeley",
+   "status": null,
+   "status_source_url": null,
+   "evidence": "Rosemary Gillespie Title: Professor ... Research interests: Evolutionary ecology, systematics, spider biology, conservation Role: Faculty Organisms & Environment",
+   "evidence_source_url": "https://ourenvironment.berkeley.edu/people/rosemary-gillespie",
+   "notes": "Existing homepage nature.berkeley.edu/gillespielab/ returns 404; replaced with ESPM faculty profile (200). Existing ORCID checked: pub.orcid.org name Rosemary Gillespie, employment UC Berkeley ESPM Professor 1999-present (consistent; unchanged). No fetched page confirms the RMBL board/visiting-investigator affiliation; that row was not re-verified here.",
+   "retrieved_at": "2026-10-26"
+  }
+ ],
+ "dropped": [
+  {
+   "person_id": "154ecdb4d33cebbe",
+   "name": "Dawn Adams",
+   "reason": "No page about her found. The SFAN home page (nps.gov/im/sfan/, 200) does not name her, and the SFAN contact page (nps.gov/im/sfan/contactus.htm, 200, updated April 25, 2025) lists Jena R. Hickey for Program Management; her coordinator role looks stale. Web search budget was exhausted, so no wider search was possible."
+  },
+  {
+   "person_id": "874ee60be65d5d32",
+   "name": "Sarah Allen",
+   "reason": "No page about her could be fetched: nps.gov/pore/ (200) does not mention her and the web search budget was exhausted. Identity and current status not confirmed."
+  },
+  {
+   "person_id": "171583167ac1fa98",
+   "name": "Laura Blackmore",
+   "reason": "No page about her found. The PSP staff page (psp.wa.gov/staff.php, 200) now lists Mindy Roberts as Executive Director, and the Governor's release of March 5, 2026 announces Roberts' appointment; old homepage www.psp.wa.gov/about_staff.php is 404. Her executive-officer row looks stale (neither page names her, so status 'former' is not written)."
+  },
+  {
+   "person_id": "643815430fe614b5",
+   "name": "David R. Huggins",
+   "reason": "ARS profile URL (ars.usda.gov/.../nfsprcru/people/david-huggins/) returns 404 and the ARS unit people list renders no names server-side. Only staff-list lines found (ltar.ars.usda.gov/resources/people/: 'David Huggins ... Soil Scientist CAF'; ltar.ars.usda.gov/sites/caf/: 'Leader(s) Dave Huggins (USDA-ARS)'), which give no research focus. ORCID 0000-0003-0441-8677 re-checked: David Huggins, USDA-ARS Northwest Sustainable Agroecosystem Research Unit, Soil Scientist 1997- (consistent)."
+  },
+  {
+   "person_id": "862d6b054dad1e29",
+   "name": "Danny J. Marks",
+   "reason": "No profile page found: ARS NWRC people list renders no names, guessed ARS and CZO-archive profile URLs 404, and he is not on the Reynolds CZO people or alumni pages. ORCID 0000-0003-3105-8427 re-checked: Danny Marks, USDA ARS Northwest Watershed Research Center, Research Hydrologist 1998- (no end date)."
+  },
+  {
+   "person_id": "413ae75281f8da75",
+   "name": "Mike Britten",
+   "reason": "No page about him found. The ROMN contact page (nps.gov/im/romn/contactus.htm, 200, updated April 28, 2026) lists Dana Witwicki as Program Manager and does not name him; his coordinator role looks stale."
+  }
+ ]
+}

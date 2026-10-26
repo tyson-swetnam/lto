@@ -1,0 +1,97 @@
+{
+ "batch_id": "R-PEOPLE2-BIO-61",
+ "retrieved_at": "2026-10-26",
+ "verified_by": "adversarial-verifier 2026-10-26",
+ "updates": [
+  {
+   "person_id": "f56548cde83f673a",
+   "name": "Alan J. Wallcraft",
+   "homepage_url": "https://coaps.fsu.edu/people/alan-wallcraft",
+   "bio": "Senior Research Scientist at Florida State University's Center for Ocean-Atmospheric Prediction Studies (COAPS), on staff there since October 2017 after 37 years supporting the Naval Research Laboratory's global ocean prediction systems for the Navy. Leads development of the HYbrid Coordinate Ocean Model (HYCOM); research spans numerical methods for eddy-resolving ocean circulation models, model coupling and supercomputing.",
+   "bio_source_url": "https://coaps.fsu.edu/people/alan-wallcraft",
+   "research_interests": "finite-difference and finite-volume numerical methods for PDEs; eddy-resolving ocean circulation modeling; building and maintaining ocean models; running ocean models on scalable supercomputers; model coupling",
+   "research_interests_source_url": "https://coaps.fsu.edu/people/alan-wallcraft",
+   "orcid": "0009-0006-6896-4377",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0009-0006-6896-4377/employments",
+   "current_title": "Senior Research Scientist",
+   "current_affiliation": "Center for Ocean-Atmospheric Prediction Studies (COAPS), Florida State University",
+   "status": "active",
+   "status_source_url": "https://www.coaps.fsu.edu/about-us/our-people/scientists",
+   "evidence": "Alan Wallcraft Senior Research Scientist",
+   "evidence_source_url": "https://www.coaps.fsu.edu/about-us/our-people/scientists",
+   "notes": "COAPS Scientists page lists Alan Wallcraft as Senior Research Scientist and links the profile coaps.fsu.edu/people/alan-wallcraft (200). The profile says the move to COAPS came in Oct 2017 after 37 years with/for NRL, so the NRL-SSC 'faculty' affiliation is likely no longer current and needs a research batch to revise. ORCID 0009-0006-6896-4377 (pub.orcid.org person record fetched: Alan Wallcraft; employment Florida State University, department COAPS) is consistent with the profile. hycom.org/contact-info names Alan Wallcraft as the Model Code contact. Profile's Google Scholar link is a keyword search, not a citations?user= profile, so no google_scholar_id recorded. Verifier rewrote the bio and research_interests to remove copied runs.",
+   "retrieved_at": "2026-10-26"
+  },
+  {
+   "person_id": "bb2f8436b7f970d6",
+   "name": "Peter T. Raimondi",
+   "homepage_url": "https://campusdirectory.ucsc.edu/cd_detail?uid=raimondi",
+   "bio": "Professor of Ecology & Evolutionary Biology at UC Santa Cruz, also affiliated with the Institute of Marine Sciences. Studies what drives the formation and persistence of marine biological communities, pairing field observations with short-term experiments; recent work examines the causes and effects of variable dispersal using giant kelp as a model, alongside applied ecology.",
+   "bio_source_url": "https://campusdirectory.ucsc.edu/cd_detail?uid=raimondi",
+   "research_interests": "marine community ecology; dispersal variability and its consequences; giant kelp (Macrocystis pyrifera) as a model species; field experiments testing theory; applied ecology",
+   "research_interests_source_url": "https://campusdirectory.ucsc.edu/cd_detail?uid=raimondi",
+   "orcid": null,
+   "orcid_source_url": null,
+   "current_title": "Professor",
+   "current_affiliation": "Ecology & Evolutionary Biology Department, University of California, Santa Cruz",
+   "status": "active",
+   "status_source_url": "https://eeb.ucsc.edu/people/",
+   "evidence": "The Principal Investigator for this group is Pete Raimondi",
+   "evidence_source_url": "https://marine.ucsc.edu/",
+   "notes": "Old homepage https://www.eeb.ucsc.edu/faculty/raimondi.html returns 404 and is replaced by the UCSC campus directory profile (200 with normal TLS on re-fetch), which gives title Professor, Ecology & Evolutionary Biology, a biography and research interests, and links the shared Raimondi/Carr Lab site rclab.ucsc.edu. eeb.ucsc.edu/people/ lists 'Peter T Raimondi', Professor. marine.ucsc.edu names Pete Raimondi as Principal Investigator of the UCSC rocky intertidal group that built the MARINe website. ORCID 0000-0001-5235-1441 (name Peter Raimondi) has no employments and no fetched official page links it, so not recorded. Verifier replaced the bio with one from the faculty profile.",
+   "retrieved_at": "2026-10-26"
+  }
+ ],
+ "dropped": [
+  {
+   "person_id": "b8b8b8f5bc41b221",
+   "name": "Jay D. Anderson",
+   "reason": "No individual page could be found: web search budget exhausted this session and no affiliation source_url on file; no Idaho State University profile or obituary fetched."
+  },
+  {
+   "person_id": "e7e84f11f7f0073c",
+   "name": "Steven DeVanzo",
+   "reason": "WMRC profile https://www.wmrc.edu/person/steven-devanzo/ exists (in sitemap) but its content is rendered client-side; the page text and the site's WordPress REST record (wp-json/wp/v2/person?slug=steven-devanzo) carry only the name, no title or bio."
+  },
+  {
+   "person_id": "1d9e6fc76edb64ed",
+   "name": "E. Joseph Metzger",
+   "reason": "No profile page fetchable: www.7320.nrlssc.navy.mil does not resolve and nrl.navy.mil returns 403. ORCID on file (0000-0003-2029-036X, name E Metzger / Joe Metzger) has no biography or employments."
+  },
+  {
+   "person_id": "b1cee2aeeee49b93",
+   "name": "Elias Ioup",
+   "reason": "Only source is a GulfSCEI news item naming him Director of the Geospatial Science Center (no research focus); nrl.navy.mil 403. ORCID 0009-0002-3699-6762 (name only, no employment) cannot be tied to NRL, so not recorded."
+  },
+  {
+   "person_id": "69156925c600ef3b",
+   "name": "Gregg Jacobs",
+   "reason": "No profile page fetchable (NRL site 403, 7320 host does not resolve). ORCID 0000-0001-8948-0618 named Gregg Jacobs has no employments, so it cannot be tied to NRL."
+  },
+  {
+   "person_id": "73584002653ed352",
+   "name": "John T. Sample",
+   "reason": "Only source is a GulfSCEI news item naming him Superintendent of the Ocean Science Division at NRL-SSC, without research focus; NRL site 403. ORCID candidates (0009-0007-8975-0666 is an FSU education professor; 0000-0002-9516-9292 has no employment) not matched."
+  },
+  {
+   "person_id": "74a615f95073ea1e",
+   "name": "Jeffrey A. Melby",
+   "reason": "ERDC pages return 403 to the fetcher; chs.erdc.dren.mil Contacts page lists the current CHS team without him. ORCID 0000-0003-4553-1190 (Jeffrey Melby) has no employments, so not recorded."
+  },
+  {
+   "person_id": "8a7043ba5f9e0280",
+   "name": "Ty V. Wamsley",
+   "reason": "ERDC leadership bio page (erdc.usace.army.mil Article 1756561) returns 403 to the fetcher; no other page about him could be fetched. No matching ORCID among 31 Wamsley records."
+  },
+  {
+   "person_id": "0cb9a516d7e2e402",
+   "name": "Jeffrey P. Waters",
+   "reason": "ERDC leadership bio page (Article 2547699) returns 403 to the fetcher. ORCID 0000-0002-5843-7710 (Jeffrey Waters) has no employments, so not recorded."
+  },
+  {
+   "person_id": "bb85a672de1df35f",
+   "name": "Jesse McNinch",
+   "reason": "erdc.usace.army.mil/Locations/FRF/ returns 403, frf.usace.army.mil refuses connections and frfdataportal returns 410; no page about him fetched. No Jesse McNinch ORCID record found."
+  }
+ ]
+}

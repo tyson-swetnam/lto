@@ -1,0 +1,160 @@
+{
+ "batch_id": "R-PEOPLE2-BIO-41",
+ "retrieved_at": "2026-10-26",
+ "verified_by": "adversarial-verifier 2026-10-26",
+ "updates": [
+  {
+   "person_id": "d90cc032915ccd63",
+   "name": "Jennifer Rehage",
+   "homepage_url": "https://case.fiu.edu/about/directory/profiles/rehage-jennifer-schopf.html",
+   "bio": "Associate professor in Florida International University's Earth and Environment department and Institute of Environment, and a coastal fish ecologist whose Rehage coastal fisheries lab studies how hydroclimatic variation, natural flow regimes and water management decisions affect fish behavior, space use and populations, and the recreational fisheries of the Everglades and South Florida, involving anglers and their local knowledge.",
+   "bio_source_url": "https://case.fiu.edu/about/directory/profiles/rehage-jennifer-schopf.html",
+   "research_interests": "coastal fish ecology; recreational fisheries; effects of water management, flow regimes and climate on fish; fish space use and populations; Everglades and South Florida fisheries (snook, Florida largemouth bass, bonefish, juvenile tarpon, jack crevalle); angler local ecological knowledge",
+   "research_interests_source_url": "https://case.fiu.edu/about/directory/profiles/rehage-jennifer-schopf.html",
+   "orcid": "0000-0003-0009-6906",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0003-0009-6906/employments",
+   "current_title": "Associate Professor",
+   "current_affiliation": "Department of Earth and Environment and Institute of Environment, Florida International University",
+   "status": null,
+   "status_source_url": null,
+   "evidence": "Dr. Jennifer Rehage is a coastal and fish ecologist and associate professor at the Institute of Environment",
+   "evidence_source_url": "https://case.fiu.edu/about/directory/profiles/rehage-jennifer-schopf.html",
+   "notes": "Profile (200) names her Jennifer Schopf Rehage, Associate Professor, Earth and Environment; Institute of Environment, FIU; it links the lab site https://myweb.fiu.edu/rehagej/ (200). FCE LTER profile (https://fce-lter.fiu.edu/about/personnel/profiles/index.php?resnum=152, 200) lists her as FCE Principal Investigator, FIU, research 'Aquatic ecology'. Existing ORCID re-checked: pub.orcid.org person record name Jennifer Rehage, employment Florida International University. No Google Scholar link on the profile, lab site or ORCID record. Status left null: no page uses active/emeritus wording. Verifier 2026-10-26: bio and interests rewritten to stay within the CASE profile (the earlier text named a lab title and fish 'movement' that come from the lab site, not the cited profile). ORCID re-fetched: person name Jennifer Rehage; employments Florida International University."
+  },
+  {
+   "person_id": "3ed20ddcd7b1909b",
+   "name": "Charles C. Rhoades",
+   "homepage_url": "https://research.fs.usda.gov/about/people/charles.c.rhoades",
+   "bio": "Research biogeochemist with the USDA Forest Service Rocky Mountain Research Station, educated at Colorado State University (forest management, forest ecology) and the University of Georgia (PhD in forest biogeochemistry and soil ecology). Recent publications listed on the station profile address wildfire, pile burning and bark-beetle effects on soils, soil microbes and headwater stream chemistry in Colorado subalpine forests.",
+   "bio_source_url": "https://research.fs.usda.gov/about/people/charles.c.rhoades",
+   "research_interests": null,
+   "research_interests_source_url": null,
+   "orcid": "0000-0002-3336-2257",
+   "orcid_source_url": "https://research.fs.usda.gov/about/people/charles.c.rhoades",
+   "current_title": "Research Biogeochemist",
+   "current_affiliation": "USDA Forest Service, Rocky Mountain Research Station",
+   "status": null,
+   "status_source_url": null,
+   "evidence": "Charles C. Rhoades, PhD Research Biogeochemist Rocky Mountain Research Station",
+   "evidence_source_url": "https://research.fs.usda.gov/about/people/charles.c.rhoades",
+   "notes": "Profile (200) shows title, station, education and Treesearch publication list; it has no biography or interests section, so the bio's research focus is drawn from the publication titles listed there. The profile shows ORCID '0000 0002 3336 2257' (same as on file); pub.orcid.org person record name Charles Rhoades (no employments listed). Old homepage https://research.fs.usda.gov/people/charles-rhoades returns 404 and https://www.fs.usda.gov/rmrs/people/crhoades redirects to the station home page; replaced with the current profile. No Google Scholar link found. Verifier 2026-10-26: profile re-fetched (200, last updated August 24, 2026); education and publication topics confirmed; ORCID link on profile and pub.orcid.org name Charles Rhoades confirmed."
+  },
+  {
+   "person_id": "069819363768ffc9",
+   "name": "Robert M. Musselman",
+   "homepage_url": "https://research.fs.usda.gov/about/people/robert.musselman",
+   "bio": "Emeritus scientist of the USDA Forest Service Rocky Mountain Research Station, with a PhD in botany and forestry from the University of Wisconsin-Madison. Publications listed on the station profile centre on the Glacier Lakes Ecosystem Experiments Site in Wyoming, ozone and air quality at remote high-elevation sites, alpine lake and snow chemistry, and carbon dioxide flux through snowpack.",
+   "bio_source_url": "https://research.fs.usda.gov/about/people/robert.musselman",
+   "research_interests": null,
+   "research_interests_source_url": null,
+   "orcid": null,
+   "orcid_source_url": null,
+   "current_title": "Emeritus Scientist",
+   "current_affiliation": "USDA Forest Service, Rocky Mountain Research Station",
+   "status": "emeritus",
+   "status_source_url": "https://research.fs.usda.gov/about/people/robert.musselman",
+   "evidence": "Robert C. Musselman, PhD Former Employee Emeritus Scientist Rocky Mountain Research Station",
+   "evidence_source_url": "https://research.fs.usda.gov/about/people/robert.musselman",
+   "notes": "The profile (200, last updated March 30, 2026) gives the name as Robert C. Musselman, not Robert M.; the lake's middle initial looks wrong. Identity judged the same person: same family name, RMRS, and the profile lists GLEES publications (e.g. 1994 'The Glacier Lakes Ecosystem Experiments Site'; 2021 GLEES chapter), matching the GLEES founding-PI affiliation. The profile does not state a job title beyond Emeritus Scientist, so 'plant physiologist' is unconfirmed. No ORCID or Google Scholar link on the page. Verifier 2026-10-26: profile re-fetched (200); 'Former Employee Emeritus Scientist', Wisconsin PhD (Botany & Forestry, 1972) and GLEES, ozone, lake/snow chemistry and snowpack CO2 publications confirmed."
+  },
+  {
+   "person_id": "b62aa4cdcf06f782",
+   "name": "Sarah Fangman",
+   "homepage_url": null,
+   "bio": "Profiled by NOAA's Office of National Marine Sanctuaries while heading Florida Keys National Marine Sanctuary as its superintendent, working with partners to protect and restore the Keys' barrier coral reef through efforts such as Mission: Iconic Reefs and a Restoration Blueprint. She earlier spent eight years as research coordinator at Channel Islands and later led Gray's Reef sanctuary.",
+   "bio_source_url": "https://sanctuaries.noaa.gov/magazine/6/saving-iconic-reefs.html",
+   "research_interests": null,
+   "research_interests_source_url": null,
+   "orcid": null,
+   "orcid_source_url": null,
+   "current_title": "West Coast Region Director, NOAA Office of National Marine Sanctuaries",
+   "current_affiliation": "NOAA Office of National Marine Sanctuaries",
+   "status": null,
+   "status_source_url": null,
+   "evidence": "NOAA's Office of National Marine Sanctuaries has selected Sarah Fangman, superintendent at Florida Keys National Marine Sanctuary, as West Coast region director.",
+   "evidence_source_url": "https://keysweekly.com/42/keys-marine-sanctuary-superintendent-lands-new-job-on-the-west-coast/",
+   "notes": "Bio from the NOAA sanctuaries magazine 'Stories from the Blue' page (200), which describes her as FKNMS superintendent. NOAA's 2017 release (https://floridakeys.noaa.gov/whatsnew/releases/2017/20170701staff.html, 200) records her move from Gray's Reef superintendent to FKNMS superintendent effective July 23, 2017. Her FKNMS staff profile (https://floridakeys.noaa.gov/about/staff/fangman.html) now returns a not-found page. current_title is taken from a Keys Weekly article dated August 20, 2024 (200), which reports her selection as ONMS West Coast region director; Keys Weekly (https://keysweekly.com/42/keys-national-marine-sanctuary-names-acting-superintendent, 200, September 12, 2024) says she would leave the Keys in November 2024 for that role. No NOAA page confirming the new title was fetched. The FKNMS superintendent affiliation is therefore no longer current and needs a research batch to mark it stale. No ORCID or Scholar link found. Verifier 2026-10-26: bio reworded so it does not assert her current status beyond what the cited magazine page says."
+  },
+  {
+   "person_id": "065ae200269c6713",
+   "name": "David Burke",
+   "homepage_url": null,
+   "bio": "Former U.S. Navy helicopter pilot and officer who was named deputy superintendent of Florida Keys National Marine Sanctuary. In that post he handled operations, partner agreements, budgets and staff supervision, and took part in community outreach on the sanctuary's Restoration Blueprint management plan.",
+   "bio_source_url": "https://visitfloridakeys.com/plan-your-trip/plan-book/insiders-guide/stewards-of-the-keys/david-burke",
+   "research_interests": null,
+   "research_interests_source_url": null,
+   "orcid": null,
+   "orcid_source_url": null,
+   "current_title": "Chief Administrative Officer, Visit Florida Keys & Key West",
+   "current_affiliation": "Visit Florida Keys & Key West",
+   "status": null,
+   "status_source_url": null,
+   "evidence": "Burke previously was at the Florida Keys National Marine Sanctuary, where he served as deputy superintendent and, most recently, acting superintendent",
+   "evidence_source_url": "https://keysweekly.com/42/visit-florida-keys-appoints-burke-as-chief-administrative-officer/",
+   "notes": "No NOAA profile survives: https://floridakeys.noaa.gov/about/staff/burke.html returns a not-found page. Bio source is the Florida Keys tourism council's 'Stewards of the Keys' feature (200), written when he was deputy superintendent; family details on that page were not used. Keys Weekly (200, dated April 24, 2026) reports his appointment as Chief Administrative Officer of Visit Florida Keys & Key West, starting May 18, and that he previously served as FKNMS deputy and then acting superintendent, so the FKNMS acting-superintendent affiliation is no longer current and needs a research batch to mark it stale. Verifier 2026-10-26: removed an uncited Keys News claim about his start dates."
+  },
+  {
+   "person_id": "b19bb75e9cef1f67",
+   "name": "Sarah Lehmann",
+   "homepage_url": null,
+   "bio": "Listed by EPA in 2017 as team leader for the National Aquatic Resource Surveys (NARS) within the Monitoring Branch of the agency's Office of Water in Washington, DC, providing leadership across the national lake, river and stream, coastal and wetland surveys.",
+   "bio_source_url": "https://www.epa.gov/sites/default/files/2017-03/documents/nars_webcast_flyer.pdf",
+   "research_interests": null,
+   "research_interests_source_url": null,
+   "orcid": null,
+   "orcid_source_url": null,
+   "current_title": null,
+   "current_affiliation": null,
+   "status": null,
+   "status_source_url": null,
+   "evidence": "Sarah Lehmann provides leadership for each of the national surveys including lakes, rivers and streams, coastal waters, and wetlands.",
+   "evidence_source_url": "https://www.epa.gov/sites/default/files/2017-03/documents/nars_webcast_flyer.pdf",
+   "notes": "Only EPA source found is the March 2017 Watershed Academy webcast (page https://www.epa.gov/watershedacademy/watershed-academy-webcast-condition-us-lakes-and-streams-findings-national-aquatic, 200, spells her 'Sarah Lehman'; its flyer PDF, 200, spells 'Lehmann'). No current EPA profile found; the NARS program page (200) names no staff, so it is not a homepage and current_title/status are left null. Existing note calls her 'Program Director'; no fetched page uses that title. Verifier 2026-10-26: flyer PDF and webcast page re-fetched (200); title and evidence quote confirmed."
+  },
+  {
+   "person_id": "5b719947c145e31b",
+   "name": "Dave Feliz",
+   "homepage_url": null,
+   "bio": "A 2018 Humboldt State wildlife alumni note (class of 1983) lists Dave Feliz as reserve manager of Elkhorn Slough National Estuarine Research Reserve, a Monterey County, California partnership between NOAA and California's Department of Fish and Wildlife, and says Feliz had worked for that department since 1984, managing lands across California.",
+   "bio_source_url": "https://www.humboldt.edu/wildlife/alumni-updates?page=3",
+   "research_interests": null,
+   "research_interests_source_url": null,
+   "orcid": null,
+   "orcid_source_url": null,
+   "current_title": null,
+   "current_affiliation": null,
+   "status": null,
+   "status_source_url": null,
+   "evidence": "Dave Feliz, Wildlife, 1983, is the Reserve Manager for the Elkhorn Slough National Estuarine Research Reserve in Monterey County, California.",
+   "evidence_source_url": "https://www.humboldt.edu/wildlife/alumni-updates?page=3",
+   "notes": "The only page found describing him individually is a Humboldt State wildlife alumni update submitted July 6, 2018 (200); it is not a staff profile and may be dated. elkhornslough.org/reserve/ and the CDFW Elkhorn Slough Ecological Reserve page (both 200) do not name him; elkhornslough.org staff URL 404; the FWS 2018 release returned 403. Current role not confirmed, so current_title and status left null. No pronoun used: the source does not use one. Verifier 2026-10-26: bio reworded to lead with the 2018 date and to say 'lands' rather than 'state lands' (the page says only lands)."
+  }
+ ],
+ "dropped": [
+  {
+   "person_id": "f1df87d51034c8bb",
+   "name": "Cara Fritz",
+   "reason": "Not found: the LSPA staff page (https://www.lakesunapee.org/staff, 200) and about page do not list her, and no other page about this person could be found (web-search budget exhausted during this run). Identity and role unconfirmed. Verifier 2026-10-26: LSPA staff page re-fetched (200), name still absent; a further web search found no page about this person."
+  },
+  {
+   "person_id": "033c692c6a03f8d7",
+   "name": "Kathleen K. Le Quesne",
+   "reason": "Not found: the LSPA staff page (https://www.lakesunapee.org/staff, 200) lists no Le Quesne (its only Kathleen is Kathleen Stowell, Education Director, a different person). No other page found (web-search budget exhausted during this run). Verifier 2026-10-26: LSPA staff page re-fetched (200), name still absent; a further web search found no page about this person."
+  },
+  {
+   "person_id": "0c8551cf466dd7b4",
+   "name": "Celina Gauthier Lowry",
+   "reason": "Only the GBEP contacts page (https://gbep.texas.gov/contacts/, 200) names this person, with title 'Technical Program Coordinator' and no focus; no individual profile found (GBEP staff/about URLs 404). Title-only staff line, per earlier batches' practice. Verifier 2026-10-26: contacts page re-fetched (200), title confirmed; still no profile."
+  },
+  {
+   "person_id": "6c37455000ff790e",
+   "name": "Christian Rines",
+   "reason": "Only the GBEP contacts page (https://gbep.texas.gov/contacts/, 200) names this person with title 'Water & Sediment Quality Coordinator'; no individual profile found. Title-only staff line. Verifier 2026-10-26: contacts page re-fetched (200), title confirmed; still no profile."
+  },
+  {
+   "person_id": "362a693d1fa61051",
+   "name": "Jenelle Estrada",
+   "reason": "Only the GBEP contacts page (https://gbep.texas.gov/contacts/, 200) names this person with title 'Monitoring and Research Coordinator'; no individual profile found. Title-only staff line. Verifier 2026-10-26: contacts page re-fetched (200), title confirmed; still no profile."
+  }
+ ]
+}

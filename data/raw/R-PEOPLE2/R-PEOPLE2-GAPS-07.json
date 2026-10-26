@@ -1,0 +1,496 @@
+{
+ "batch_id": "R-PEOPLE2-GAPS-07",
+ "retrieved_at": "2026-10-26",
+ "verified_by": "adversarial-verifier 2026-10-26",
+ "facilities": [
+  {
+   "facility_id": "def3b244cd0760d1",
+   "pages_fetched": [
+    {
+     "url": "https://research.fs.usda.gov/srs/forestsandranges/locations/calhoun",
+     "status": 200
+    },
+    {
+     "url": "https://research.fs.usda.gov/about/people/mac.a.callaham",
+     "status": 200
+    },
+    {
+     "url": "https://research.fs.usda.gov/about/people/callaham",
+     "status": 404
+    },
+    {
+     "url": "https://www.climatehubs.usda.gov/hubs/southeast/people/mac-callaham",
+     "status": 200
+    },
+    {
+     "url": "https://czo-archive.criticalzone.org/calhoun/news/story/the-calhoun-experimental-forest-featured-in-usfs-publication/",
+     "status": 200
+    },
+    {
+     "url": "https://czo-archive.criticalzone.org/calhoun/people/",
+     "status": 200
+    },
+    {
+     "url": "https://scholars.duke.edu/person/drichter",
+     "status": 200
+    },
+    {
+     "url": "https://nicholas.duke.edu/people/faculty/richter",
+     "status": 403
+    },
+    {
+     "url": "https://warnell.uga.edu/profiles/dr-daniel-markewitz",
+     "status": 404
+    },
+    {
+     "url": "https://warnell.uga.edu/team-member/daniel-markewitz/",
+     "status": 200
+    },
+    {
+     "url": "https://news.uga.edu/uga-receives-14m-to-study-critical-zone-in-national-forest/",
+     "status": 200
+    },
+    {
+     "url": "https://api.nsf.gov/services/v1/awards/1331846.json",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0001-7915-427X/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0003-3547-433X/employments",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0002-2697-9865/employments",
+     "status": 200
+    }
+   ],
+   "notes": "The Forest Service Calhoun page lists Mac A. Callaham (Team Leader/Research Ecologist) as the only Key Personnel point of contact; a 30 Mar 2016 Calhoun CZO archive story says he became director of the experimental forest in 2016 and that Louis Metz was its first director, so Callaham is recorded as director (medium: the director title comes from a 2016 page, the current page shows him as point of contact) and Metz as former-director. Daniel Richter's Duke Scholars profile says he has directed the Long-Term Calhoun Soil-Ecosystem Experiment since 1988, recorded as lead-PI (medium: an experiment within the forest, not the forest itself). His existing founding-PI row is not supported: the Forest Service page dates the soil/vegetation archive to 1957 and the Duke page gives 1988 as when he began; left for review as not-found. The Calhoun CZO (NSF 1331846, Richter PI, co-PIs Porporato, McGlynn, Palmroth, Kumar; ended 2021) is archived and no current co-PI list was found; Markewitz's Warnell profile still lists Calhoun CZO work but no page names him co-PI. No NSF LTREB award for Calhoun was found in the NSF award API keyword results. ORCIDs: Callaham's is printed on his Forest Service profile; Richter's and Markewitz's were matched by name plus employment (Duke; UGA Warnell) on pub.orcid.org. Markewitz's Google Scholar link is on his official Warnell profile. Nicholas School profile returned 403."
+  },
+  {
+   "facility_id": "df254973e6b80cf4",
+   "pages_fetched": [
+    {
+     "url": "https://agriculture.auburn.edu/research/cullars-rotation/",
+     "status": 302
+    },
+    {
+     "url": "https://agriculture.auburn.edu/cses/cullars-rotation.php",
+     "status": 200
+    },
+    {
+     "url": "https://agriculture.auburn.edu/cses/old-rotation.php",
+     "status": 200
+    },
+    {
+     "url": "https://agriculture.auburn.edu/150-years-celebration-ag-engineering/living-history/",
+     "status": 302
+    },
+    {
+     "url": "https://www.cottonfarming.com/cover-story/the-oldest-rotations-in-the-south/",
+     "status": 200
+    },
+    {
+     "url": "https://agriculture.auburn.edu/directory/index.php",
+     "status": 200
+    },
+    {
+     "url": "https://agriculture.auburn.edu/directory/profile.php?id=avg0001",
+     "status": 200
+    },
+    {
+     "url": "https://agriculture.auburn.edu/directory/profile.php?id=jcb0092",
+     "status": 200
+    },
+    {
+     "url": "https://pub.orcid.org/v3.0/0000-0001-9874-745X/employments",
+     "status": 200
+    }
+   ],
+   "notes": "The facility URL now redirects (302) to the College of Agriculture home page; the current Auburn Cullars Rotation page (cses/cullars-rotation.php) names only the managing bodies (Auburn CSES, Alabama Agricultural Experiment Station, USDA-ARS National Soil Dynamics Laboratory), no person. A Cotton Farming cover story (1 Sep 2024) states Audrey Gamble has oversight of the Old Rotation and Cullars Rotation studies and Joseph Burch performs day-to-day management; recorded as lead-PI and site-manager at medium confidence (trade-press page, titles mapped onto roles). Both appear in the current Auburn College of Agriculture directory (Gamble: Associate Professor, Soil Fertility/Soil Conservation; Burch: Research Assistant, CSES). Gamble's ORCID record shows Auburn University, Crop, Soil and Environmental Sciences, Associate Professor. A Joseph Burch ORCID lists Auburn University with no role or department; not recorded as too thin to tie. The Auburn 'Living History' article URL also redirects to the home page."
+  },
+  {
+   "facility_id": "fd948907a55e5aa0",
+   "pages_fetched": [
+    {
+     "url": "https://www.nature.org/en-us/get-involved/how-to-help/places-we-protect/disney-wilderness-preserve/",
+     "status": 404
+    },
+    {
+     "url": "https://www.nature.org/en-us/get-involved/how-to-help/places-we-protect/the-disney-wilderness-preserve/",
+     "status": 200
+    },
+    {
+     "url": "https://www.nature.org/en-us/about-us/where-we-work/united-states/florida/stories-in-florida/center-for-conservation-initiatives/",
+     "status": 200
+    }
+   ],
+   "notes": "The facility URL is now 404; the current TNC preserve page (the-disney-wilderness-preserve) names no staff and says the preserve is one of four campus preserves under TNC Florida's Center for Conservation Initiatives (CCI). The CCI page is signed by Steve Coates, CCI Program Director, recorded as director of the program that runs the preserve (medium). Photo captions on the CCI page name land conservation coordinator Cody-Marie Miller at a prescribed burn on the preserve and Central Florida land conservation manager Adam Peterson monitoring the wood stork rookery on Lake Russell (which the preserve page places in the preserve); both recorded at low confidence. No named Disney Wilderness Preserve Manager was found on any TNC page; job postings for that position (2024) were seen only in search results and not used. Neither Lindsay J. Cross nor Steve Morrison appears on the preserve or CCI pages (both rows came from the 2026-05-05 recall wave)."
+  },
+  {
+   "facility_id": "fe150287423eeeb2",
+   "pages_fetched": [
+    {
+     "url": "https://www.mdsg.umd.edu/node/4324",
+     "status": 301
+    },
+    {
+     "url": "https://www.mdsg.umd.edu/topics/climate-change-coastal-flooding-sea-level-rise/chesapeake-bay-sentinel-site-cooperative",
+     "status": 200
+    },
+    {
+     "url": "https://www.mdsg.umd.edu/taryn-sudol",
+     "status": 200
+    },
+    {
+     "url": "https://www.mdsg.umd.edu/news/maryland-sea-grant-hires-first-coordinator-chesapeake-bay-sentinel-site-cooperative",
+     "status": 200
+    },
+    {
+     "url": "https://www.vims.edu/cbnerr/cbssc/",
+     "status": 404
+    },
+    {
+     "url": "https://home.nps.gov/articles/chesapeake-bay-sentinel-site-cooperation.htm",
+     "status": 200
+    },
+    {
+     "url": "https://oceanservice.noaa.gov/sentinelsites/chesapeake/",
+     "status": 301
+    },
+    {
+     "url": "https://seagrant.noaa.gov/how-we-work/topics/resilient-communities-economies/",
+     "status": 200
+    }
+   ],
+   "notes": "The cooperative has no director: Maryland Sea Grant hosts its coordinator, and the Sea Grant cooperative page names Taryn Sudol as Coordinator for the Chesapeake Bay Sentinel Site Cooperative (existing row confirmed; bio added from her Maryland Sea Grant profile). Sarah Wilkins was hired in October 2015 as the first coordinator (existing past row; Sudol holds the role now). The VIMS CBSSC page that once listed an interim steering committee is now 404, NOAA's sentinel-site page redirects to a general Sea Grant topic page, and the NPS article names no people, so no steering-committee or lead is recorded. Sudol's ORCID record (0000-0002-7889-525X) shows the name but no employment; not recorded. Web search budget ran out before a further search for a current steering committee."
+  }
+ ],
+ "people": [
+  {
+   "key": "callaham-mac",
+   "existing_person_id": "b1a8652b8bcfa9d1",
+   "name": "Mac A. Callaham",
+   "name_given": "Mac",
+   "name_family": "Callaham",
+   "orcid": "0000-0001-7915-427X",
+   "orcid_source_url": "https://research.fs.usda.gov/about/people/mac.a.callaham",
+   "homepage_url": "https://research.fs.usda.gov/about/people/mac.a.callaham",
+   "bio": "Research ecologist and team leader with the Forest Service's Center for Forest Disturbance Science, Georgia, who also serves as the USDA Southeast Climate Hub's acting director. His work looks at how soils respond to shifting weather and environmental conditions, drawing on zoology, microbial ecology, biogeochemistry, invasion biology and restoration, especially soils under land management.",
+   "bio_source_url": "https://www.climatehubs.usda.gov/hubs/southeast/people/mac-callaham",
+   "research_interests": "Soil ecology; soil responses to weather variability; microbial ecology; biogeochemistry; invasion biology; ecosystem restoration",
+   "research_interests_source_url": "https://www.climatehubs.usda.gov/hubs/southeast/people/mac-callaham"
+  },
+  {
+   "key": "metz-louis",
+   "existing_person_id": null,
+   "name": "Louis Metz",
+   "name_given": "Louis",
+   "name_family": "Metz",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "richter-daniel",
+   "existing_person_id": "390c0c0202494942",
+   "name": "Daniel D. Richter",
+   "name_given": "Daniel",
+   "name_family": "Richter",
+   "orcid": "0000-0003-3547-433X",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0003-3547-433X/employments",
+   "homepage_url": "https://scholars.duke.edu/person/drichter",
+   "bio": "Theodore S. Coile Distinguished Professor of Earth and Climate Sciences at Duke University's Nicholas School. Studies how human land use reshapes soils over decades to millennia, and has led the Long-Term Calhoun Soil-Ecosystem Experiment, a joint project with the USDA Forest Service in South Carolina's Piedmont, since 1988.",
+   "bio_source_url": "https://scholars.duke.edu/person/drichter",
+   "research_interests": "Soil change under land use; Critical Zone science; long-term soil-ecosystem experiments; soil biogeochemistry",
+   "research_interests_source_url": "https://scholars.duke.edu/person/drichter"
+  },
+  {
+   "key": "markewitz-daniel",
+   "existing_person_id": "6771bf636098b7c5",
+   "name": "Daniel Markewitz",
+   "name_given": "Daniel",
+   "name_family": "Markewitz",
+   "orcid": "0000-0002-2697-9865",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-2697-9865/employments",
+   "homepage_url": "https://warnell.uga.edu/team-member/daniel-markewitz/",
+   "bio": "Professor of soil-site productivity in the Warnell School, University of Georgia. Researches how nutrient and water cycling governs forest soil chemistry, drainage water and tree growth, and how soils can be managed for productivity; current projects include Calhoun CZO critical zone science, forest soil health, carbon balance of southern pine bioenergy and Amazon land-use change.",
+   "bio_source_url": "https://warnell.uga.edu/team-member/daniel-markewitz/",
+   "research_interests": "Forest soil nutrient and hydrologic cycling; soil-site productivity; soil health metrics; bioenergy carbon balance in southern pines; Amazon land-use change and agroforestry",
+   "research_interests_source_url": "https://warnell.uga.edu/team-member/daniel-markewitz/",
+   "google_scholar_id": "KR7_Zl8AAAAJ",
+   "google_scholar_source_url": "https://warnell.uga.edu/team-member/daniel-markewitz/"
+  },
+  {
+   "key": "gamble-audrey",
+   "existing_person_id": "de717ba911e0df7e",
+   "name": "Audrey Gamble",
+   "name_given": "Audrey",
+   "name_family": "Gamble",
+   "orcid": "0000-0001-9874-745X",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0001-9874-745X/employments",
+   "homepage_url": "https://agriculture.auburn.edu/directory/profile.php?id=avg0001",
+   "bio": "Associate professor of soil fertility and soil conservation in Auburn University's Department of Crop, Soil and Environmental Sciences. Research evaluates cover crops and conservation cropping systems for soil health, short-term soil health indicators as predictors of lasting gains, and nutrient recommendations for Alabama row crops.",
+   "bio_source_url": "https://agriculture.auburn.edu/directory/profile.php?id=avg0001",
+   "research_interests": "Cover crops and conservation cropping systems; soil health indicators; macro- and micronutrient fertility recommendations for row crops",
+   "research_interests_source_url": "https://agriculture.auburn.edu/directory/profile.php?id=avg0001"
+  },
+  {
+   "key": "burch-joseph",
+   "existing_person_id": null,
+   "name": "Joseph Burch",
+   "name_given": "Joseph",
+   "name_family": "Burch",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://agriculture.auburn.edu/directory/profile.php?id=jcb0092",
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "coates-steve",
+   "existing_person_id": null,
+   "name": "Steve Coates",
+   "name_given": "Steve",
+   "name_family": "Coates",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "miller-cody-marie",
+   "existing_person_id": null,
+   "name": "Cody-Marie Miller",
+   "name_given": "Cody-Marie",
+   "name_family": "Miller",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "peterson-adam",
+   "existing_person_id": null,
+   "name": "Adam Peterson",
+   "name_given": "Adam",
+   "name_family": "Peterson",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  },
+  {
+   "key": "sudol-taryn",
+   "existing_person_id": "d0ec2af621012d95",
+   "name": "Taryn Sudol",
+   "name_given": "Taryn",
+   "name_family": "Sudol",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": "https://www.mdsg.umd.edu/taryn-sudol",
+   "bio": "Coordinates the Chesapeake Bay Sentinel Site Cooperative for Maryland Sea Grant, working to link research with outreach among the federal coastal reserves of the Chesapeake region and the coastal bays. She trained in conservation biology and sustainable development (MS, University of Maryland).",
+   "bio_source_url": "https://www.mdsg.umd.edu/taryn-sudol",
+   "research_interests": null,
+   "research_interests_source_url": null
+  }
+ ],
+ "affiliations": [
+  {
+   "facility_id": "def3b244cd0760d1",
+   "person_key": "callaham-mac",
+   "role": "director",
+   "title": "Director, Calhoun Experimental Forest; Team Leader/Research Ecologist, USFS Southern Research Station",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 2016,
+   "end_year": null,
+   "source_url": "https://czo-archive.criticalzone.org/calhoun/news/story/the-calhoun-experimental-forest-featured-in-usfs-publication/",
+   "evidence": "Louis Metz was the first director of the experimental forest, and, beginning in 2016, the CCZO's own Mac Callaham is the current director.",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "def3b244cd0760d1",
+   "person_key": "metz-louis",
+   "role": "former-director",
+   "title": "First director, Calhoun Experimental Forest",
+   "is_key_personnel": false,
+   "is_current": false,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://czo-archive.criticalzone.org/calhoun/news/story/the-calhoun-experimental-forest-featured-in-usfs-publication/",
+   "evidence": "Louis Metz was the first director of the experimental forest",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "def3b244cd0760d1",
+   "person_key": "richter-daniel",
+   "role": "lead-PI",
+   "title": "Director, Long-Term Calhoun Soil-Ecosystem Experiment (Duke University)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": 1988,
+   "end_year": null,
+   "source_url": "https://scholars.duke.edu/person/drichter",
+   "evidence": "Since 1988, Richter has worked at and directed the Long-Term Calhoun Soil-Ecosystem Experiment (LTSE) in the Piedmont of South Carolina",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "df254973e6b80cf4",
+   "person_key": "gamble-audrey",
+   "role": "lead-PI",
+   "title": "Faculty lead with oversight of the Old Rotation and Cullars Rotation studies; Associate Professor, Auburn CSES",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.cottonfarming.com/cover-story/the-oldest-rotations-in-the-south/",
+   "evidence": "Dr. Audrey Gamble, associate professor for soil fertility and soil conservation at Auburn University, has oversight of the rotation studies",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "df254973e6b80cf4",
+   "person_key": "burch-joseph",
+   "role": "site-manager",
+   "title": "Research Assistant, Auburn CSES; day-to-day management of the rotation studies",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.cottonfarming.com/cover-story/the-oldest-rotations-in-the-south/",
+   "evidence": "Joseph Burch, research assistant at Auburn University, performs day-to-day management.",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "fd948907a55e5aa0",
+   "person_key": "coates-steve",
+   "role": "director",
+   "title": "CCI Program Director, TNC Florida Center for Conservation Initiatives (runs the Disney Wilderness campus preserve)",
+   "is_key_personnel": true,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.nature.org/en-us/about-us/where-we-work/united-states/florida/stories-in-florida/center-for-conservation-initiatives/",
+   "evidence": "Steve Coates, CCI Program Director",
+   "confidence": "medium"
+  },
+  {
+   "facility_id": "fd948907a55e5aa0",
+   "person_key": "miller-cody-marie",
+   "role": "stewardship-coordinator",
+   "title": "Land Conservation Coordinator, TNC Florida",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.nature.org/en-us/about-us/where-we-work/united-states/florida/stories-in-florida/center-for-conservation-initiatives/",
+   "evidence": "Land conservation coordinator Cody-Marie Miller sets the woods alight with a drip torch during a prescribed burn at The Disney Wilderness Preserve.",
+   "confidence": "low"
+  },
+  {
+   "facility_id": "fd948907a55e5aa0",
+   "person_key": "peterson-adam",
+   "role": "land-manager",
+   "title": "Central Florida Land Conservation Manager, TNC Florida",
+   "is_key_personnel": false,
+   "is_current": true,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.nature.org/en-us/about-us/where-we-work/united-states/florida/stories-in-florida/center-for-conservation-initiatives/",
+   "evidence": "Central Florida land conservation manager Adam Peterson and coordinator Cody-Marie Miller row a canoe on Lake Russell",
+   "confidence": "low"
+  }
+ ],
+ "verifications": [
+  {
+   "facility_id": "def3b244cd0760d1",
+   "person_id": "b1a8652b8bcfa9d1",
+   "existing_role": "scientist",
+   "status": "confirmed",
+   "current_holder_key": null,
+   "source_url": "https://research.fs.usda.gov/srs/forestsandranges/locations/calhoun",
+   "evidence": "Key Personnel Point of Contact Person Mac A. Callaham, PhD Team Leader/Research Ecologist"
+  },
+  {
+   "facility_id": "def3b244cd0760d1",
+   "person_id": "390c0c0202494942",
+   "existing_role": "founding-PI",
+   "status": "not-found",
+   "current_holder_key": null,
+   "source_url": "https://scholars.duke.edu/person/drichter",
+   "evidence": "Since 1988, Richter has worked at and directed the Long-Term Calhoun Soil-Ecosystem Experiment (LTSE)"
+  },
+  {
+   "facility_id": "def3b244cd0760d1",
+   "person_id": "6771bf636098b7c5",
+   "existing_role": "co-PI",
+   "status": "not-found",
+   "current_holder_key": null,
+   "source_url": "https://warnell.uga.edu/team-member/daniel-markewitz/",
+   "evidence": "My current research includes: 1. Critical Zone Science at the Calhoun CZO"
+  },
+  {
+   "facility_id": "df254973e6b80cf4",
+   "person_id": "de717ba911e0df7e",
+   "existing_role": "scientist",
+   "status": "confirmed",
+   "current_holder_key": null,
+   "source_url": "https://www.cottonfarming.com/cover-story/the-oldest-rotations-in-the-south/",
+   "evidence": "Dr. Audrey Gamble, associate professor for soil fertility and soil conservation at Auburn University, has oversight of the rotation studies"
+  },
+  {
+   "facility_id": "fd948907a55e5aa0",
+   "person_id": "77bdf6f68d188012",
+   "existing_role": "lead-PI",
+   "status": "not-found",
+   "current_holder_key": null,
+   "source_url": "https://www.nature.org/en-us/get-involved/how-to-help/places-we-protect/the-disney-wilderness-preserve/",
+   "evidence": "Disney Wilderness Preserve is one of four campus preserves under TNC Florida's Center for Conservation Initiatives"
+  },
+  {
+   "facility_id": "fd948907a55e5aa0",
+   "person_id": "fc4c024faf7e902a",
+   "existing_role": "lead-PI",
+   "status": "not-found",
+   "current_holder_key": null,
+   "source_url": "https://www.nature.org/en-us/get-involved/how-to-help/places-we-protect/the-disney-wilderness-preserve/",
+   "evidence": "Disney Wilderness Preserve is one of four campus preserves under TNC Florida's Center for Conservation Initiatives"
+  },
+  {
+   "facility_id": "fe150287423eeeb2",
+   "person_id": "d0ec2af621012d95",
+   "existing_role": "coordinator",
+   "status": "confirmed",
+   "current_holder_key": null,
+   "source_url": "https://www.mdsg.umd.edu/topics/climate-change-coastal-flooding-sea-level-rise/chesapeake-bay-sentinel-site-cooperative",
+   "evidence": "Taryn Sudol Coordinator for the Chesapeake Bay Sentinel Site Cooperative"
+  },
+  {
+   "facility_id": "fe150287423eeeb2",
+   "person_id": "0b81c332f0f273fc",
+   "existing_role": "coordinator",
+   "status": "stale",
+   "current_holder_key": "sudol-taryn",
+   "source_url": "https://www.mdsg.umd.edu/topics/climate-change-coastal-flooding-sea-level-rise/chesapeake-bay-sentinel-site-cooperative",
+   "evidence": "Taryn Sudol Coordinator for the Chesapeake Bay Sentinel Site Cooperative"
+  }
+ ],
+ "verification_notes": "Adversarial verification 2026-10-26: re-fetched all 13 cited pages (all HTTP 200) and checked every evidence quote verbatim on its source_url (all present, all <=25 words); ORCID person/employments re-fetched for Callaham (also printed on his Forest Service profile), Richter (Duke; his ORCID lists the Calhoun CZO site), Markewitz (UGA Warnell) and Gamble (Auburn CSES): names match, kept. Markewitz Scholar id KR7_Zl8AAAAJ confirmed linked from his Warnell profile. NSF award 1331846 re-fetched: PI Richter, co-PIs Porporato, McGlynn, Palmroth, Kumar (no Markewitz), so the co-PI not-found verdict stands. Bios: all <=60 words, longest run copied from the source 7 words; pronouns only where the source uses them (Callaham, Sudol). Changes: stripped the drafter's parenthetical annotations from four verification evidence strings so each is a verbatim quote (Richter, Markewitz, Cross, Morrison); added Sudol's Maryland Sea Grant profile as homepage_url (fetched, 200, her own page). Wilkins' 2015 hiring as first coordinator confirmed on the fetched Maryland Sea Grant news page. Confidence levels left as drafted: Callaham director is medium (2016 news item, corroborated by the current Forest Service page naming him key personnel); Gamble/Burch rest on a 2024 Cotton Farming feature with titles mapped onto roles; TNC caption-based rows stay low."
+}

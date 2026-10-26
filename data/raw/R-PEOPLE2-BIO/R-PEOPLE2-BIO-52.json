@@ -1,0 +1,155 @@
+{
+ "batch_id": "R-PEOPLE2-BIO-52",
+ "retrieved_at": "2026-10-26",
+ "verified_by": "adversarial-verifier 2026-10-26",
+ "updates": [
+  {
+   "homepage_url": "https://oceanservice.noaa.gov/profiles/2024/erica-seiden.html",
+   "bio": "Program Manager at NOAA's Office for Coastal Management who heads its Ecosystems Program, the office that implements the 30-site National Estuarine Research Reserve System. Works with teams nationwide on program development and technical assistance to improve coastal management. Studied estuaries and the interplay of science and policy; holds bachelor's and master's degrees in marine biology.",
+   "bio_source_url": "https://oceanservice.noaa.gov/profiles/2024/erica-seiden.html",
+   "research_interests": null,
+   "research_interests_source_url": null,
+   "orcid": null,
+   "orcid_source_url": null,
+   "current_title": "Program Manager, Ecosystems Program (implements the National Estuarine Research Reserve System)",
+   "current_affiliation": "NOAA Office for Coastal Management",
+   "status": null,
+   "status_source_url": null,
+   "evidence": "I am the manager of the Office for Coastal Management's (OCM) Ecosystems Program. We implement the National Estuarine Research Reserve System",
+   "evidence_source_url": "https://oceanservice.noaa.gov/profiles/2024/erica-seiden.html",
+   "notes": "NOS career profile (page last updated 09/23/26), written in first person, so the bio uses no pronoun. A career-timeline block (B.S. Atmospheric Science, 2005 data analyst) sits inside an HTML comment on the page and does not match the stated marine biology education; not used. No ORCID: pub.orcid.org expanded search for Erica Seiden returned 0 results. No Google Scholar link on the page. Status left null (no current-status statement). Verifier 2026-10-26: bio rewritten so education focus (estuaries, science-policy) is not attributed to her current work.",
+   "retrieved_at": "2026-10-26",
+   "person_id": "bf45e655d9307d6d",
+   "name": "Erica Seiden"
+  },
+  {
+   "homepage_url": "https://www.nrel.colostate.edu/staff/jill-baron/",
+   "bio": "Senior Research Ecologist at Colorado State University's Natural Resource Ecology Laboratory and, per that lab's biography, a U.S. Geological Survey senior scientist. She founded the Loch Vale Watershed long-term monitoring effort in Rocky Mountain National Park and is its principal investigator, and studies how climate change and nitrogen deposition affect mountain ecosystems. She was ESA President in 2014.",
+   "bio_source_url": "https://www.nrel.colostate.edu/staff/jill-baron/",
+   "research_interests": "climate change effects on mountain ecosystems; atmospheric nitrogen deposition and biogeochemistry; reactive nitrogen pollution; ecosystem concepts for managing human-dominated regions; long-term watershed monitoring",
+   "research_interests_source_url": "https://www.nrel.colostate.edu/staff/jill-baron/",
+   "orcid": "0000-0002-5902-6251",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-5902-6251/employments",
+   "current_title": "Senior Research Ecologist, Natural Resource Ecology Laboratory",
+   "current_affiliation": "Colorado State University",
+   "status": null,
+   "status_source_url": null,
+   "evidence": "She is founder and Principal Investigator of the Loch Vale Watershed long-term monitoring and research program in Rocky Mountain National Park",
+   "evidence_source_url": "https://www.nrel.colostate.edu/staff/jill-baron/",
+   "notes": "CSU NREL biography page (200) carries the bio; it cites 34 years of Loch Vale records, so it dates from about 2017. Google Scholar id taken from the person-specific sidebar link on that page (the other scholar link on the page, user=z43HJtsAAAAJ, is the NREL site-wide header link and was not used). Existing ORCID confirmed: pub.orcid.org person record name Jill Baron; employment US Geological Survey, Senior Scientist. Existing homepage https://www.usgs.gov/staff-profiles/jill-baron (200) labels her 'Jill S Baron, PhD (Former Employee)', Research Ecologist, Senior Scientist (ST), Fort Collins Science Center, with no bio text; switched homepage to the CSU page. Status not written: USGS calls her a former employee but no page states retired/emeritus or her current CSU standing; orchestrator may wish to review the lake's status 'active'. https://www.usgs.gov/staff-profiles/jill-s-baron returned 404. Verifier 2026-10-26: USGS profile (fetched via WebFetch; curl got 403) heads her 'Jill S Baron, PhD (Former Employee)', so USGS was removed from current_title/current_affiliation and the bio attributes the USGS title to the CSU biography. Scholar id gFTJqNYAAAAJ re-confirmed in the page's socialiconsbar link (person-specific); z43HJtsAAAAJ is in the site header/footer. ORCID re-confirmed: person record given-names Jill, family-name Baron; one employment, US Geological Survey, Senior Scientist.",
+   "retrieved_at": "2026-10-26",
+   "person_id": "9d94c5958c706b29",
+   "name": "Jill S. Baron",
+   "google_scholar_id": "gFTJqNYAAAAJ",
+   "google_scholar_source_url": "https://www.nrel.colostate.edu/staff/jill-baron/"
+  },
+  {
+   "homepage_url": null,
+   "bio": "Research Coordinator for North Carolina's Coastal Reserve and National Estuarine Research Reserve, listed as the contact for its research program. That program grants permits for field studies at reserve sites, provides long-term environmental monitoring data and graduate fellowships, and offers its sites as reference areas for comparative coastal research.",
+   "bio_source_url": "https://deq.nc.gov/about/divisions/coastal-management/nc-coastal-reserve/research",
+   "research_interests": null,
+   "research_interests_source_url": null,
+   "orcid": null,
+   "orcid_source_url": null,
+   "current_title": "Research Coordinator",
+   "current_affiliation": "N.C. Coastal Reserve and National Estuarine Research Reserve, N.C. Division of Coastal Management",
+   "status": "active",
+   "status_source_url": "https://deq.nc.gov/about/divisions/coastal-management/nc-coastal-reserve/research",
+   "evidence": "Contact Us Justin Ridge, Research Coordinator",
+   "evidence_source_url": "https://deq.nc.gov/about/divisions/coastal-management/nc-coastal-reserve/research",
+   "notes": "Bio is role-based from the reserve research page; no individual profile page was found (web search budget ran out during this batch). The reserve's research-publications page lists Ridge et al. 2015/2016/2019 oyster-reef papers from UNC-CH IMS, and a 2023 Davidson Fellowship handout names him as research coordinator, but no fetched page ties those papers to him, so they are not used. ORCID not recorded: pub.orcid.org search found 4 'Justin Ridge' records; 0000-0001-9744-4588 lists an NC DEQ contact but has no employment entries, so it does not meet the name+employment rule. Verifier 2026-10-26: bio rewritten to drop claims (habitat-mapping data shared, a publications table) the research page does not state in those terms; also listed as Research Coordinator on the reserve contact page. Existing homepage (reserve landing page) is not a personal page; left unchanged (null here).",
+   "retrieved_at": "2026-10-26",
+   "person_id": "385bed296fd4a378",
+   "name": "Justin Ridge"
+  },
+  {
+   "homepage_url": null,
+   "bio": "Education Coordinator for North Carolina's Coastal Reserve and National Estuarine Research Reserve, listed as the contact for its education program. That program serves K-12 groups, teachers, the public and coastal decision-makers through field trips, summer camps, outreach talks, educator workshops and curriculum materials on estuaries.",
+   "bio_source_url": "https://www.deq.nc.gov/about/divisions/coastal-management/nc-coastal-reserve/education",
+   "research_interests": null,
+   "research_interests_source_url": null,
+   "orcid": null,
+   "orcid_source_url": null,
+   "current_title": "Education Coordinator",
+   "current_affiliation": "N.C. Coastal Reserve and National Estuarine Research Reserve, N.C. Division of Coastal Management",
+   "status": "active",
+   "status_source_url": "https://deq.nc.gov/about/divisions/coastal-management/nc-coastal-reserve/about-reserve/contact-us",
+   "evidence": "Contact Us Lori Davis, Education Coordinator",
+   "evidence_source_url": "https://www.deq.nc.gov/about/divisions/coastal-management/nc-coastal-reserve/education",
+   "notes": "Role-based bio from the reserve education page (200); no individual profile found. Also listed as Education Coordinator on the reserve contact page.",
+   "retrieved_at": "2026-10-26",
+   "person_id": "c98b676a4cdf316b",
+   "name": "Lori Davis"
+  },
+  {
+   "homepage_url": null,
+   "bio": "Stewardship Coordinator for North Carolina's Coastal Reserve and National Estuarine Research Reserve, named as the contact for its volunteer stewardship activities, including the Pony Patrol program at the Rachel Carson Reserve.",
+   "bio_source_url": "https://www.deq.nc.gov/about/divisions/coastal-management/nc-coastal-reserve/stewardship/get-involved",
+   "research_interests": null,
+   "research_interests_source_url": null,
+   "orcid": null,
+   "orcid_source_url": null,
+   "current_title": "Stewardship Coordinator",
+   "current_affiliation": "N.C. Coastal Reserve and National Estuarine Research Reserve, N.C. Division of Coastal Management",
+   "status": "active",
+   "status_source_url": "https://deq.nc.gov/about/divisions/coastal-management/nc-coastal-reserve/about-reserve/contact-us",
+   "evidence": "Contact Stewardship Coordinator Paula Gillikin",
+   "evidence_source_url": "https://www.deq.nc.gov/about/divisions/coastal-management/nc-coastal-reserve/stewardship/get-involved",
+   "notes": "Short role-based bio from the reserve Get Involved page (200); the local-advisory-committees page also names her as the person to ask for LAC minutes and member lists from 2026 on. No individual profile found.",
+   "retrieved_at": "2026-10-26",
+   "person_id": "59fd78a27267ea06",
+   "name": "Paula Gillikin"
+  },
+  {
+   "homepage_url": null,
+   "bio": "Manager since 2005 of North Carolina's Coastal Reserve and National Estuarine Research Reserve program, part of the state Division of Coastal Management, overseeing research, education, training and stewardship across its 10 sites. She holds marine biology and marine science degrees, championed NOAA's Davidson Graduate Fellowship, and formerly led the National Estuarine Research Reserve Association as president.",
+   "bio_source_url": "https://thecoastalsociety.org/wp-content/uploads/2024/12/10-8-24-Beaufort-MAD-Workshop-Combined-Speaker-Bios-Jefferson-Flood.pdf",
+   "research_interests": null,
+   "research_interests_source_url": null,
+   "orcid": null,
+   "orcid_source_url": null,
+   "current_title": "Program Manager, N.C. Coastal Reserve and National Estuarine Research Reserve",
+   "current_affiliation": "N.C. Division of Coastal Management, N.C. Department of Environmental Quality",
+   "status": "active",
+   "status_source_url": "https://deq.nc.gov/about/divisions/coastal-management/nc-coastal-reserve/about-reserve/contact-us",
+   "evidence": "Rebecca Ellin is the Manager of the N.C. Coastal Reserve and National Estuarine Research Reserve",
+   "evidence_source_url": "https://thecoastalsociety.org/wp-content/uploads/2024/12/10-8-24-Beaufort-MAD-Workshop-Combined-Speaker-Bios-Jefferson-Flood.pdf",
+   "notes": "Bio from The Coastal Society speaker-bio PDF for an Oct 2024 Beaufort workshop (200). Current role also confirmed on the reserve contact page and a 16 May 2025 NC DEQ press release (Program Manager). No ORCID: pub.orcid.org search for Rebecca Ellin returned 0. Existing homepage is the reserve landing page, not a personal page; no personal page found, so homepage left null here.",
+   "retrieved_at": "2026-10-26",
+   "person_id": "378c9c78a6fd4a90",
+   "name": "Rebecca Ellin"
+  }
+ ],
+ "dropped": [
+  {
+   "person_id": "67b967142a53ce4a",
+   "name": "Jeffrey L. Payne",
+   "reason": "No page about him could be fetched. The listed source https://coast.noaa.gov/about/director/ now carries a bio of Keelin Kuipers, Director (Acting), and https://coast.noaa.gov/about/organization lists Kuipers as Director (Acting) and does not name Payne. His OCM director affiliation looks stale and should be reviewed in a research batch. Web search budget was exhausted."
+  },
+  {
+   "person_id": "3ef416c55fbc8805",
+   "name": "Jonathan Pennock",
+   "reason": "https://seagrant.noaa.gov/jonathan-pennock/ and https://seagrant.noaa.gov/about/leadership/ returned HTTP 403 to WebFetch; no other official page found (colsa.unh.edu guess 404). pub.orcid.org search for Jonathan Pennock returned 0 results."
+  },
+  {
+   "person_id": "58f5d430b3c884a1",
+   "name": "Isabelle Stinnette",
+   "reason": "https://hudsonriver.org/about-us/ serves a bot-challenge (sgcaptcha) redirect, which was not bypassed; the NEIWPCC staff page is members-only. No other page about her could be fetched (web search budget exhausted)."
+  },
+  {
+   "person_id": "6e6add1c6be04a9b",
+   "name": "Rosana Pedra Nobre",
+   "reason": "https://hudsonriver.org/about-us/ serves a bot-challenge (sgcaptcha) redirect, which was not bypassed; the NEIWPCC staff page is members-only. No other page about her could be fetched (web search budget exhausted)."
+  },
+  {
+   "person_id": "517a62bbfa5de4f9",
+   "name": "Mark W. Williams",
+   "reason": "https://www.colorado.edu/instaar/mark-williams returns 404; https://www.colorado.edu/geography/mark-williams (200) carries only his name with no title or profile text; CU emeritus listings render without names in static HTML. NWT alumni page lists him only as Department of Geography, CU Boulder. No page with role and research focus found."
+  },
+  {
+   "person_id": "82d9a41288c87b8a",
+   "name": "Tom Pagano",
+   "reason": "The listed NRCS snow-survey page timed out and is a program page, not a profile; no page about him could be fetched (web search budget exhausted). Affiliation as NRCS site-manager for three SNOTEL sites is unverified."
+  }
+ ]
+}

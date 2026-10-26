@@ -10,7 +10,8 @@ merges, the 2026-10-25 Reynolds Creek / Walnut Gulch merges, and the
 2026-10-25 National Estuary Program host typing, the 2026-10-25 BLE and
 MCR map-point fixes, the 2026-10-25 NERR / NEP award fetch from
 USAspending.gov, and the 2026-10-25 map-point fixes for eight more LTER
-sites. The counts
+sites. The People, Identifier validation and Publications sections, and the
+people gaps, were recounted on 2026-10-26 after that day's people sweep. The counts
 change whenever the data is
 re-exported. To recount, query the tables on the [SQL tab](#/sql). For
 example:
@@ -191,17 +192,22 @@ These are counts from the catalogue. `qa.py` does not check them.
 
 ## People
 
-As of 2026-10-25 the people table holds **1,329 people**. Of these,
-**1,236** have at least one facility affiliation. There are 1,529
-affiliation rows across 425 facilities.
+As of 2026-10-26 the people table holds **1,338 people**. Of these,
+**1,245** have at least one facility affiliation. There are 1,544
+affiliation rows across 427 facilities.
 
 How the affiliation rows were made:
 
-- **851 rows** were fetched on 2026-10-22 by the R-PEOPLE2 wave. Each was
+- **840 rows** were fetched on 2026-10-22 by the R-PEOPLE2 wave. Each was
   read from a cited page, carries a quote of the evidence, and was checked
   by an adversarial re-fetch. See [Methods](./methods.md). Seven more
   (batch R-PEOPLE2-MARINEGEO-01) and 20 for the Connecticut NERR and
   CHNEP (batch R-PEOPLE2-ESTUARY-01) were fetched on 2026-10-25.
+- **15 rows** were added on 2026-10-26 by batches R-PEOPLE2-GAPS-01..07
+  (`data/raw/R-PEOPLE2/`), which researched 37 facilities that had no
+  current leader or only low-confidence leaders. The same batches
+  re-confirmed 11 rows from 2026-10-22 against fetched pages and marked one
+  superseded director as former, so 26 rows now carry the 2026-10-26 date.
 - **14 rows** from the spring passes were re-cited on 2026-10-25 from
   fetched LTAR, Jornada, ARS (Southwest Watershed Research Center, Fort
   Keogh Livestock and Range Research Laboratory) and ORCID pages (`data/seed/facility_fixes.csv`), each with an `evidence` quote.
@@ -209,7 +215,7 @@ How the affiliation rows were made:
   no date. Many come from the earlier recall-based people waves. Some were
   repaired or ended by the 2026-10-22 pass, but most have **not been
   re-verified** against a fetched page.
-- `is_current` is true on 767 rows and false on 182. It is not set on 580
+- `is_current` is true on 779 rows and false on 186. It is not set on 579
   rows, which are mostly older rows that nobody has marked as current or
   former.
 
@@ -217,10 +223,10 @@ Rows by role (a person can hold several):
 
 | Role | Rows |
 |---|---:|
-| director | 205 |
-| lead-PI | 196 |
+| director | 208 |
+| lead-PI | 199 |
 | co-PI | 187 |
-| manager | 107 |
+| manager | 110 |
 | scientist | 101 |
 | leadership-team | 83 |
 | faculty | 74 |
@@ -228,28 +234,35 @@ Rows by role (a person can hold several):
 | domain-manager | 73 |
 | emeritus | 57 |
 | coordinator | 45 |
-| former-director | 44 |
-| 15 other roles | 283 |
+| former-director | 45 |
+| 15 other roles | 288 |
 
 The 15 other roles include information-manager (27), superintendent (23)
-and site-manager (12).
+and site-manager (13).
 
-**Biographies:** 780 people have a bio, and every one cites its source page.
+**Biographies:** 1,013 people have a bio, and every one cites its source page.
 
-**Research interests:** 972 people have research interests. 649 of them
-cite a source page, 98 of those an OpenAlex author page.
+**Research interests:** 1,034 people have research interests. 757 of them
+cite a source page, 84 of those an OpenAlex author page.
 
-**[Knowledge Map](./knowledge-map.md):** 1,268 people are placed under a
+**[Knowledge Map](./knowledge-map.md):** 1,278 people are placed under a
 primary research area.
 
 ## Identifier validation
 
-- **ORCID**: **611** people (46.0%). The ORCID log
+- **ORCID**: **663** people (49.6%). The ORCID log
   (`data/seed/orcid_resolution_log.csv`) records 79 stored iDs that were
   later cleared: 68 no longer resolved, and 11 belonged to someone else.
   PR #16 also cleared two wrong iDs and replaced a third, and PR #18
-  cleared one more (Pat Burke's iD belonged to a meteorologist).
-- **OpenAlex Author ID**: **560** people (42.1%). The OpenAlex passes
+  cleared one more (Pat Burke's iD belonged to a meteorologist). On
+  2026-10-26 a dry run of the strict resolver proposed 21 ORCIDs, and two
+  independent reviewers accepted 15. Three of the six rejected (a Yale
+  astronomer for William P. Bowman, a NOAA meteorologist for Pat Burke, a
+  USDA-ARS Mississippi record for Daniel Fisher) were iDs the log had
+  already cleared: the dry run had been pointed at a scratch log, and the
+  resolver now always applies the committed log's rejections. So the count
+  of cleared iDs is unchanged.
+- **OpenAlex Author ID**: **608** people (45.4%). The OpenAlex passes
   matched people only through a stored OpenAlex id or a confirmed ORCID.
   Name search is disabled. Two passes (PR #16: 378 people; PR #18: the
   remaining 924) have now taken all 1,302 people in the queue through
@@ -260,13 +273,26 @@ primary research area.
   second, independent review. The two review logs
   (`data/seed/openalex_attribution_review_2026-10-23.csv` and
   `…_2026-10-24.csv`) have 338 entries between them: 322 kept, 5 kept but
-  disputed, and 11 removed.
-- **`homepage_url`**: **804** people (60.5%). On 2026-10-23 the weekly URL
+  disputed, and 11 removed. On 2026-10-26 a further pass took the 117
+  people with an ORCID but no OpenAlex id through OpenAlex and attached 49
+  (2,510 new publications). One of those attributions (Daniel D. Richter →
+  A5057773873, an author carrying a different ORCID) was removed the same
+  day, with its 100 publications, and added to the misattribution roster in
+  `scripts/wipe_misattributed_identifiers.py`.
+- **`homepage_url`**: **876** people (65.5%). On 2026-10-23 the weekly URL
   sweep removed 66 homepages that pointed only at a bare domain (51) or a
   generic staff, about or contact page (15); on 2026-10-25, 32 of them that
   were personal or lab sites rather than bare roots were restored.
-- **Google Scholar user ID**: 1 person. `scripts/enrich_people_gscholar.py`
-  is optional and rate-limited.
+- **Google Scholar user ID**: **88** people (6.6%). Each id is stored with
+  the page it came from in `people.google_scholar_source_url`. 13 came from
+  the researcher URLs on people's ORCID records. 55 came from people's own
+  profile pages, each confirmed by two independent reviewers
+  (`R-PEOPLE2-BIO-SCHOLAR-01`); 4 were rejected, among them a site-wide
+  "CFL Google Scholar" menu link on Center for Limnology pages. 19 came from
+  official profile pages found by the 2026-10-26 bio batches (one of them
+  cites the person's ORCID employment record). The 88th, Sang Han's, came
+  from the ARID people seed; it now cites his UNM faculty profile, which a
+  bio batch confirmed links it.
 - **Email**: none. Email addresses are never published.
 
 Enrichment is not automatic. No scheduled workflow runs the
@@ -281,37 +307,37 @@ an unmatched person keeps an empty field.
 
 | Table | Rows |
 |---|---:|
-| publications (63,511 from OpenAlex, 720 recalled) | 64,231 |
-| authorship (links to 689 people) | 73,423 |
-| co-author pairs (`collaborations`) | 6,686 |
+| publications (65,921 from OpenAlex, 720 recalled) | 66,641 |
+| authorship (links to 725 people) | 76,368 |
+| co-author pairs (`collaborations`) | 6,976 |
 | data archives | 80 |
 | data products | 628 |
 | API endpoints | 158 |
 
 Most publication and co-author links cover only the people OpenAlex could
-match (see above). 560 of the 689 linked people have an OpenAlex id. The
-other 129 are linked only through 241 older authorship rows that did not
+match (see above). 608 of the 725 linked people have an OpenAlex id. The
+other 117 are linked only through 219 older authorship rows that did not
 come from OpenAlex.
 
 ## Known gaps
 
-- **29 facilities have no current leader on record.** A current leader is
+- **25 facilities have no current leader on record.** A current leader is
   a leadership role that a fetched page lists as current, or an older row
   that nobody has marked as former.
-  - 15 of the 29 have no personnel at all: 10 SCAN stations, 4 SNOTEL sites
-    and the Glacier Peak / Lyman Lake snow pillow.
-  - The other 14 list only non-leadership or former roles: Cullars
-    Rotation, Dead Lake NEON Site, Magruder Plots, USDA-ARS Subarctic
-    Agricultural Research Unit, Walnut Gulch #1 SCAN, Chesapeake Bay
-    Sentinel Site, USGS WEBB Trout Lake, Calhoun EF, Mojave Global Change
-    Facility (LTREB), NPS-IM Klamath Network, South Cascade Glacier, Kings
-    River Experimental Watersheds, North Carolina Sentinel Site and Swan's
-    Island LTREB.
-- **769 people have no OpenAlex id**, so their publication and co-author
-  counts are missing or incomplete: 703 have neither an ORCID nor an
-  OpenAlex id, and 66 have an ORCID but no OpenAlex id (8 of them had one
-  removed in review). In the second pass alone, 517 of 924 could not be
-  matched: 478 with no identifier, 39 whose ORCID OpenAlex does not know.
+  - 13 of the 25 have no personnel at all: 10 SCAN stations and 3 SNOTEL
+    sites.
+  - The other 12 list only non-leadership or former roles: Dead Lake NEON
+    Site, Magruder Plots, USDA-ARS Subarctic Agricultural Research Unit,
+    Walnut Gulch #1 SCAN, Chesapeake Bay Sentinel Site, USGS WEBB Trout
+    Lake, Mojave Global Change Facility (LTREB), NPS-IM Klamath Network,
+    South Cascade Glacier, Kings River Experimental Watersheds, North
+    Carolina Sentinel Site and Swan's Island LTREB.
+- **730 people have no OpenAlex id**, so their publication and co-author
+  counts are missing or incomplete: 661 have neither an ORCID nor an
+  OpenAlex id, and 69 have an ORCID but no OpenAlex id (8 of them had one
+  removed: 7 in review and Daniel D. Richter's on 2026-10-26). In the
+  second pass alone, 517 of 924 could not be matched: 478 with no
+  identifier, 39 whose ORCID OpenAlex does not know.
 - **Older people rows have not been re-verified.** The 617 affiliation rows
   dated before 2026-10-22, plus the 20 undated ones, still rest on the
   earlier, mostly recall-based research.

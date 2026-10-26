@@ -1,0 +1,294 @@
+{
+ "batch_id": "R-PEOPLE2-GAPS-02",
+ "retrieved_at": "2026-10-26",
+ "verified_by": "adversarial-verifier 2026-10-26",
+ "facilities": [
+  {
+   "facility_id": "9e331afaa2ea7a45",
+   "pages_fetched": [
+    {
+     "url": "https://wcc.sc.egov.usda.gov/nwcc/site?sitenum=2002",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/nwcc/site?sitenum=2006",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/stations?returnStationElements=false&activeOnly=false&stationTriplets=2002:*:SCAN",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/stations?returnStationElements=false&activeOnly=false&stationTriplets=*:TX:SCAN",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/stations?returnStationElements=false&activeOnly=false&stationTriplets=*:*:SCAN,*:*:SNTL",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/stations?returnStationElements=false&activeOnly=false&stationNames=*Brook*,*Mammoth*,*Goodwell*,*Bushland*",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/reference-data?referenceLists=dcos",
+     "status": 200
+    },
+    {
+     "url": "https://nrcs-prod.azureedge.us/resources/data-and-reports/soil-climate-analysis-network",
+     "status": 200
+    },
+    {
+     "url": "https://nrcs-prod.azureedge.us/contact/state-office-contacts/national-water-and-climate-center",
+     "status": 200
+    },
+    {
+     "url": "https://www.nrcs.usda.gov/resources/data-and-reports/soil-climate-analysis-network",
+     "status": 0
+    }
+   ],
+   "notes": "DATA ISSUE (still open): sitenum=2002 is Crescent Lake #1 (Sherburne Co., MN). AWDB lists no 'Bushland #2'; the only Bushland station is Bushland #1 (2006:TX:SCAN, Randall Co., 35.17459,-102.09452, reporting since 1993-10-01, operator NRCS), about 1.4 km from the facility's coordinates, so the facility is probably that station and its URL should be sitenum=2006. No people recorded. SCAN stations are automated; the NWCC station page names no PI, operator or site contact (only a generic 'Questions about this site' link to the wcc.nrcs.usda.gov contact page, which timed out). The AWDB station API gives SCAN stations dcoCode GC, and the AWDB DCO reference list names GC simply 'SCAN'. The NRCS SCAN page says the National Water and Climate Center administers SCAN, but neither it nor the NWCC contact page names anyone as responsible for SCAN, the SCAN data collection office or this station (the NWCC page lists a Snow Survey and Water Supply Forecasting Program director and branch team leads, none tied to SCAN), so no program-level person was attached. No data.gov station dataset with a contact was found for this site. Host-site (USDA-ARS) leaders are not SCAN operators and were not attached, as in earlier verified batches."
+  },
+  {
+   "facility_id": "9fe52abe466eb473",
+   "pages_fetched": [
+    {
+     "url": "https://wcc.sc.egov.usda.gov/nwcc/site?sitenum=614",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/stations?returnStationElements=false&activeOnly=false&stationTriplets=*:*:SCAN,*:*:SNTL",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/stations?returnStationElements=false&activeOnly=false&stationNames=*Brook*,*Mammoth*,*Goodwell*,*Bushland*",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/reference-data?referenceLists=dcos",
+     "status": 200
+    },
+    {
+     "url": "https://cdec.water.ca.gov/dynamicapp/staMeta?station_id=MHP",
+     "status": 0
+    },
+    {
+     "url": "https://cdec.water.ca.gov/dynamicapp/staMeta?station_id=MAM",
+     "status": 0
+    }
+   ],
+   "notes": "No people recorded. NOT AN NRCS SNOTEL STATION: sitenum=614 is Marion Forks (Linn Co., OR) and AWDB lists no Mammoth Pass SNOTEL. AWDB does list 'Mammoth Pass (ladwp)' (MAM:CA:SNOW, Mono Co., 37.61,-119.033, record from 1928-03-01, matching the facility's established=1928) and a California snow sensor 'Mammoth Pass' (MHP:CA:MSNT, from 1990). The facility appears to be the LADWP snow course / California cooperative snow survey site; AWDB gives MAM and MHP no operator and DCO codes UN/GC rather than an NRCS state snow survey office, so no NRCS supervisor can be attached; the CDEC metadata pages (which an earlier batch read as operator US Bureau of Reclamation, maintenance CA DWR) timed out today and no operator staff page naming a person for this site was fetched. Facility record should be re-attributed and its URL changed."
+  },
+  {
+   "facility_id": "b38889c610495c68",
+   "pages_fetched": [
+    {
+     "url": "https://wcc.sc.egov.usda.gov/nwcc/site?sitenum=352",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/nwcc/site?sitenum=367",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/nwcc/site?sitenum=822",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/stations?returnStationElements=false&activeOnly=false&stationTriplets=*:WY:SNTL",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/stations?returnStationElements=false&activeOnly=false&stationTriplets=*:*:SCAN,*:*:SNTL",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/stations?returnStationElements=false&activeOnly=false&stationNames=*Brook*,*Mammoth*,*Goodwell*,*Bushland*",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/reference-data?referenceLists=dcos",
+     "status": 200
+    },
+    {
+     "url": "https://nrcs-prod.azureedge.us/wyoming/snow-survey",
+     "status": 200
+    }
+   ],
+   "notes": "No people recorded. DATA ISSUE (still open): sitenum=352 is Blewett Pass (WA). AWDB has no station of any network named 'Brooks Lake'; the WY 'Brook*' stations are Brooklyn Lake (367:WY:SNTL and snow course 06H13, Albany Co., 41.36,-106.23, far from the facility's 43.7567,-109.9783). The nearest SNOTEL stations to those coordinates are Togwotee Pass (822:WY:SNTL, dcoCode MT), Younts Peak and Burroughs Creek, none named Brooks Lake. With the station's identity unresolved, no state snow survey supervisor can be tied to it."
+  },
+  {
+   "facility_id": "c2777e772491be5e",
+   "pages_fetched": [
+    {
+     "url": "https://wcc.sc.egov.usda.gov/nwcc/site?sitenum=2017",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/stations?returnStationElements=false&activeOnly=false&stationTriplets=2017:CO:SCAN",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/reference-data?referenceLists=dcos",
+     "status": 200
+    },
+    {
+     "url": "https://nrcs-prod.azureedge.us/resources/data-and-reports/soil-climate-analysis-network",
+     "status": 200
+    },
+    {
+     "url": "https://nrcs-prod.azureedge.us/contact/state-office-contacts/national-water-and-climate-center",
+     "status": 200
+    },
+    {
+     "url": "https://www.nrcs.usda.gov/resources/data-and-reports/soil-climate-analysis-network",
+     "status": 0
+    }
+   ],
+   "notes": "Station confirmed: Nunn #1 (2017:CO:SCAN, Weld Co., 40.85989,-104.74033, reporting since 1993-10-20, operator NRCS). No people recorded. SCAN stations are automated; the NWCC station page names no PI, operator or site contact (only a generic 'Questions about this site' link to the wcc.nrcs.usda.gov contact page, which timed out). The AWDB station API gives SCAN stations dcoCode GC, and the AWDB DCO reference list names GC simply 'SCAN'. The NRCS SCAN page says the National Water and Climate Center administers SCAN, but neither it nor the NWCC contact page names anyone as responsible for SCAN, the SCAN data collection office or this station (the NWCC page lists a Snow Survey and Water Supply Forecasting Program director and branch team leads, none tied to SCAN), so no program-level person was attached. No data.gov station dataset with a contact was found for this site. Host-site (USDA-ARS) leaders are not SCAN operators and were not attached, as in earlier verified batches."
+  },
+  {
+   "facility_id": "c8a6589def6b6865",
+   "pages_fetched": [
+    {
+     "url": "https://wcc.sc.egov.usda.gov/nwcc/site?sitenum=2034",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/stations?returnStationElements=false&activeOnly=false&stationTriplets=*:OK:SCAN",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/stations?returnStationElements=false&activeOnly=false&stationTriplets=*:*:SCAN,*:*:SNTL",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/stations?returnStationElements=false&activeOnly=false&stationNames=*Brook*,*Mammoth*,*Goodwell*,*Bushland*",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/reference-data?referenceLists=dcos",
+     "status": 200
+    },
+    {
+     "url": "https://nrcs-prod.azureedge.us/resources/data-and-reports/soil-climate-analysis-network",
+     "status": 200
+    },
+    {
+     "url": "https://nrcs-prod.azureedge.us/contact/state-office-contacts/national-water-and-climate-center",
+     "status": 200
+    },
+    {
+     "url": "https://www.nrcs.usda.gov/resources/data-and-reports/soil-climate-analysis-network",
+     "status": 0
+    }
+   ],
+   "notes": "DATA ISSUE (still open): sitenum=2034 is Tunica (MS). AWDB lists no station of any network named Goodwell, and no SCAN or SNOTEL station lies near the facility's coordinates (36.6,-101.6; nearest is Bushland #1, TX, ~160 km). The facility may not be an NRCS SCAN station at all; its identity should be reviewed. No people recorded. SCAN stations are automated; the NWCC station page names no PI, operator or site contact (only a generic 'Questions about this site' link to the wcc.nrcs.usda.gov contact page, which timed out). The AWDB station API gives SCAN stations dcoCode GC, and the AWDB DCO reference list names GC simply 'SCAN'. The NRCS SCAN page says the National Water and Climate Center administers SCAN, but neither it nor the NWCC contact page names anyone as responsible for SCAN, the SCAN data collection office or this station (the NWCC page lists a Snow Survey and Water Supply Forecasting Program director and branch team leads, none tied to SCAN), so no program-level person was attached. No data.gov station dataset with a contact was found for this site. Host-site (USDA-ARS) leaders are not SCAN operators and were not attached, as in earlier verified batches."
+  },
+  {
+   "facility_id": "ca47109d352ad2d8",
+   "pages_fetched": [
+    {
+     "url": "https://wcc.sc.egov.usda.gov/nwcc/site?sitenum=2009",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/nwcc/site?sitenum=2027",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/stations?returnStationElements=false&activeOnly=false&stationTriplets=2027:GA:SCAN",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/reference-data?referenceLists=dcos",
+     "status": 200
+    },
+    {
+     "url": "https://nrcs-prod.azureedge.us/resources/data-and-reports/soil-climate-analysis-network",
+     "status": 200
+    },
+    {
+     "url": "https://nrcs-prod.azureedge.us/contact/state-office-contacts/national-water-and-climate-center",
+     "status": 200
+    },
+    {
+     "url": "https://www.nrcs.usda.gov/resources/data-and-reports/soil-climate-analysis-network",
+     "status": 0
+    }
+   ],
+   "notes": "DATA ISSUE (still open): sitenum=2009 is Wakulla #1 (FL). Little River is 2027:GA:SCAN (Tift Co., 31.5,-83.55, reporting since 1999-05-19, DISCONTINUED 2025-12-10 per its station page). No people recorded. SCAN stations are automated; the NWCC station page names no PI, operator or site contact (only a generic 'Questions about this site' link to the wcc.nrcs.usda.gov contact page, which timed out). The AWDB station API gives SCAN stations dcoCode GC, and the AWDB DCO reference list names GC simply 'SCAN'. The NRCS SCAN page says the National Water and Climate Center administers SCAN, but neither it nor the NWCC contact page names anyone as responsible for SCAN, the SCAN data collection office or this station (the NWCC page lists a Snow Survey and Water Supply Forecasting Program director and branch team leads, none tied to SCAN), so no program-level person was attached. No data.gov station dataset with a contact was found for this site. Host-site (USDA-ARS) leaders are not SCAN operators and were not attached, as in earlier verified batches."
+  },
+  {
+   "facility_id": "d752f899a8130021",
+   "pages_fetched": [
+    {
+     "url": "https://wcc.sc.egov.usda.gov/nwcc/site?sitenum=2027",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/nwcc/site?sitenum=2049",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/stations?returnStationElements=false&activeOnly=false&stationTriplets=2049:MD:SCAN",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/reference-data?referenceLists=dcos",
+     "status": 200
+    },
+    {
+     "url": "https://nrcs-prod.azureedge.us/resources/data-and-reports/soil-climate-analysis-network",
+     "status": 200
+    },
+    {
+     "url": "https://nrcs-prod.azureedge.us/contact/state-office-contacts/national-water-and-climate-center",
+     "status": 200
+    },
+    {
+     "url": "https://www.nrcs.usda.gov/resources/data-and-reports/soil-climate-analysis-network",
+     "status": 0
+    }
+   ],
+   "notes": "DATA ISSUE (still open): sitenum=2027 is Little River (GA). Powder Mill is 2049:MD:SCAN (39.02621,-76.84736, reporting since 2001-10-30, operator NRCS); URL should be sitenum=2049. No people recorded. SCAN stations are automated; the NWCC station page names no PI, operator or site contact (only a generic 'Questions about this site' link to the wcc.nrcs.usda.gov contact page, which timed out). The AWDB station API gives SCAN stations dcoCode GC, and the AWDB DCO reference list names GC simply 'SCAN'. The NRCS SCAN page says the National Water and Climate Center administers SCAN, but neither it nor the NWCC contact page names anyone as responsible for SCAN, the SCAN data collection office or this station (the NWCC page lists a Snow Survey and Water Supply Forecasting Program director and branch team leads, none tied to SCAN), so no program-level person was attached. No data.gov station dataset with a contact was found for this site. Host-site (USDA-ARS) leaders are not SCAN operators and were not attached, as in earlier verified batches."
+  },
+  {
+   "facility_id": "f04cb9aa1708ed19",
+   "pages_fetched": [
+    {
+     "url": "https://wcc.sc.egov.usda.gov/nwcc/site?sitenum=2030",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/nwcc/site?sitenum=2028",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/stations?returnStationElements=false&activeOnly=false&stationTriplets=2028:PA:SCAN",
+     "status": 200
+    },
+    {
+     "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/reference-data?referenceLists=dcos",
+     "status": 200
+    },
+    {
+     "url": "https://nrcs-prod.azureedge.us/resources/data-and-reports/soil-climate-analysis-network",
+     "status": 200
+    },
+    {
+     "url": "https://nrcs-prod.azureedge.us/contact/state-office-contacts/national-water-and-climate-center",
+     "status": 200
+    },
+    {
+     "url": "https://www.nrcs.usda.gov/resources/data-and-reports/soil-climate-analysis-network",
+     "status": 0
+    }
+   ],
+   "notes": "DATA ISSUE (still open): sitenum=2030 is Uapb-Lonoke Farm (AR). Mahantango Creek is 2028:PA:SCAN ('Mahantango Ck', Northumberland Co., 40.67309,-76.66702, reporting since 1999-04-27, operator NRCS); URL should be sitenum=2028. No people recorded. SCAN stations are automated; the NWCC station page names no PI, operator or site contact (only a generic 'Questions about this site' link to the wcc.nrcs.usda.gov contact page, which timed out). The AWDB station API gives SCAN stations dcoCode GC, and the AWDB DCO reference list names GC simply 'SCAN'. The NRCS SCAN page says the National Water and Climate Center administers SCAN, but neither it nor the NWCC contact page names anyone as responsible for SCAN, the SCAN data collection office or this station (the NWCC page lists a Snow Survey and Water Supply Forecasting Program director and branch team leads, none tied to SCAN), so no program-level person was attached. No data.gov station dataset with a contact was found for this site. Host-site (USDA-ARS) leaders are not SCAN operators and were not attached, as in earlier verified batches."
+  }
+ ],
+ "people": [],
+ "affiliations": [],
+ "verifications": []
+}

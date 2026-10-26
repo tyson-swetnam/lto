@@ -1,0 +1,107 @@
+{
+ "batch_id": "R-PEOPLE2-BIO-65",
+ "retrieved_at": "2026-10-26",
+ "verified_by": "adversarial-verifier 2026-10-26",
+ "updates": [
+  {
+   "person_id": "149b2fc4d19cc39e",
+   "name": "Cathy Whitlock",
+   "homepage_url": "https://www.montana.edu/earthsciences/directory/cathy_whitlock.html",
+   "bio": "Regents Professor Emerita in Montana State University's Department of Earth Sciences, a Fellow of the Montana Institute on Ecosystems and past director of the MSU Paleoecology Lab. Research addresses Quaternary environmental change, reconstructing past vegetation, fire regimes and climate across the western United States and southern South America, and applying paleoecology to conservation.",
+   "bio_source_url": "https://www.montana.edu/earthsciences/directory/cathy_whitlock.html",
+   "research_interests": "Quaternary paleoecology and environmental change; vegetation, fire and climate history of the western US and southern South America; conservation uses of paleoecology; Cenozoic climate variability; comparing past-climate data with models",
+   "research_interests_source_url": "https://www.montana.edu/earthsciences/directory/cathy_whitlock.html",
+   "orcid": null,
+   "orcid_source_url": null,
+   "current_title": "Regents Professor Emerita; Fellow, Montana Institute on Ecosystems; Past Director, MSU Paleoecology Lab",
+   "current_affiliation": "Department of Earth Sciences, Montana State University",
+   "status": "emeritus",
+   "status_source_url": "https://www.montana.edu/earthsciences/directory/cathy_whitlock.html",
+   "evidence": "Dr. Cathy Whitlock Regents Professor Emerita Fellow, Montana Institute on Ecosystems Past Director, MSU Paleoecology Lab",
+   "evidence_source_url": "https://www.montana.edu/earthsciences/directory/cathy_whitlock.html",
+   "notes": "Existing homepage https://www.montana.edu/earthsciences/faculty/whitlock.html now 404; the department directory page /earthsciences/directory/cathy_whitlock.html (200) lists her as Regents Professor Emerita. Its selected contributions include Yellowstone work (2024 fecal-biomarker record from a northern Yellowstone catchment; 2020 Yellowstone Lake radiocarbon paper), consistent with the YNP-LT collaborator row. The older MSU Paleoecology Lab Google Site page still shows 'Regents Professor' and 'Lead Investigator, NSF WildFIRE PIRE'. No ORCID or Google Scholar link on either page. ORCID 0000-0002-1585-1209 (Cathy Whitlock) has no employments or URLs, so it could not be tied to MSU and was not recorded. Verifier 2026-10-26: re-fetched both pages; dropped the unsupported 'Paleoecologist' label from the bio and corrected the note that cited a 2020 fire-history paper whose listed authors do not include her.",
+   "retrieved_at": "2026-10-26"
+  },
+  {
+   "person_id": "8c5d344181a3f975",
+   "name": "Erin Whorton",
+   "homepage_url": null,
+   "bio": "ORCID record lists a glaciologist position at the U.S. Geological Survey's Washington Water Science Center in Tacoma, Washington, beginning March 2016, with no end date given.",
+   "bio_source_url": "https://pub.orcid.org/v3.0/0000-0002-1395-3084/employments",
+   "research_interests": null,
+   "research_interests_source_url": null,
+   "orcid": "0000-0002-1395-3084",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0002-1395-3084/employments",
+   "current_title": null,
+   "current_affiliation": null,
+   "status": null,
+   "status_source_url": null,
+   "evidence": "US Geological Survey Washington Water Science Center Glaciologist 2016-03",
+   "evidence_source_url": "https://pub.orcid.org/v3.0/0000-0002-1395-3084/employments",
+   "notes": "ORCID 0000-0002-1395-3084 re-fetched 2026-10-26: /person name 'Erin Whorton' (no biography, URLs or keywords); /employments US Geological Survey, Washington Water Science Center, Glaciologist, Tacoma WA, from 2016-03, no end date; /works empty. Existing homepage https://www.usgs.gov/staff-profiles/erin-n-whorton returns 404 (403 to curl), so homepage left null (lake value should be cleared). Verifier: an Erin Whorton is a USDA-NRCS hydrologist in Idaho on a May 2026 farmers.gov page (https://www.farmers.gov/node/30253), and an undated exploreice.org page says an Erin Whorton (M.S. Univ. of Washington 2008) moved to Alaska DGGS; no fetched page ties either to the USGS glaciologist, so the ORCID post may not be current. current_title/current_affiliation set to null and the bio reworded as what the ORCID record lists. Status left null.",
+   "retrieved_at": "2026-10-26"
+  },
+  {
+   "person_id": "8fe1d70043b5f99c",
+   "name": "Richard L. Woodsmith",
+   "homepage_url": null,
+   "bio": "ORCID record lists research hydrologist posts with the USDA Forest Service Pacific Northwest Research Station's Aquatic and Land Interactions Program, first in Juneau, Alaska (1987-2001) and then in Wenatchee, Washington (2001-2010), followed by principal hydrologist at Woodsmith Watershed Consulting in Florence, Oregon (2011-2019).",
+   "bio_source_url": "https://pub.orcid.org/v3.0/0000-0003-3557-164X/employments",
+   "research_interests": "hydrologic recovery after wildfire; post-fire forest management in the interior Pacific Northwest",
+   "research_interests_source_url": "https://pub.orcid.org/v3.0/0000-0003-3557-164X/works",
+   "orcid": "0000-0003-3557-164X",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0003-3557-164X/employments",
+   "current_title": null,
+   "current_affiliation": null,
+   "status": null,
+   "status_source_url": null,
+   "evidence": "USDA Forest Service, Pacific Northwest Research Station Research Hydrologist Aquatic and Land Interactions Program Wenatchee 2001-10 to 2010-12",
+   "evidence_source_url": "https://pub.orcid.org/v3.0/0000-0003-3557-164X/employments",
+   "notes": "Existing ORCID re-checked: /person name 'Richard Woodsmith' (no biography, URLs or other names); /employments as in bio; /works lists one item, 'Long-term hydrologic recovery after wildfire and post-fire forest management in the interior Pacific Northwest' (2020). Existing homepage https://www.fs.usda.gov/research/pnw is the station home page, not a personal profile, so homepage_url left null (lake value should be cleared). The lake's status 'emeritus' and title 'Research Hydrologist (emeritus)' are not supported by any fetched page: ORCID shows the PNW post ending 2010-12 and consulting to 2019; status left null. No fetched page ties him to Wind River Experimental Forest; the WREF affiliation rows need a research-batch verdict. Web search budget was exhausted for this run, so no USFS/Treesearch profile was located. Verifier 2026-10-26: re-fetched ORCID /person, /employments, /works (all 200, name 'Richard Woodsmith'); removed the sentence about the 2020 paper from the bio because it comes from /works, not the bio_source_url /employments page, and removed 'forest and watershed hydrology' from research_interests (not stated on /works). One web search found no USFS profile.",
+   "retrieved_at": "2026-10-26"
+  },
+  {
+   "person_id": "3ceffad485f4226d",
+   "name": "Paul D. Brooks",
+   "homepage_url": "https://profiles.faculty.utah.edu/u0982409",
+   "bio": "Professor of Geology and Geophysics at the University of Utah since July 2014, also listed with the Interdisciplinary Program in Hydrology and Water Resources. The research group studies how water, energy and nutrients cycle through catchments with seasonal snow cover, and works with stakeholders to forecast climate and land-use effects on snowpack, melt and downstream water supplies.",
+   "bio_source_url": "https://profiles.faculty.utah.edu/u0982409",
+   "research_interests": "water, energy and biogeochemical cycling in seasonally snow-covered catchments; climate and land-use effects on snow accumulation, ablation and snowmelt-fed water resources; stakeholder-engaged prediction",
+   "research_interests_source_url": "https://profiles.faculty.utah.edu/u0982409",
+   "orcid": "0000-0001-9201-1062",
+   "orcid_source_url": "https://profiles.faculty.utah.edu/u0982409",
+   "google_scholar_id": "cJndGdYAAAAJ",
+   "google_scholar_source_url": "https://profiles.faculty.utah.edu/u0982409",
+   "current_title": "Professor, Geology & Geophysics",
+   "current_affiliation": "Department of Geology & Geophysics, University of Utah",
+   "status": "active",
+   "status_source_url": "https://profiles.faculty.utah.edu/u0982409",
+   "evidence": "Professor Geology & Geophysics 1 Jul 2014 - present",
+   "evidence_source_url": "https://profiles.faculty.utah.edu/u0982409",
+   "notes": "Rescued by verifier 2026-10-26 from the dropped list. The old profile id u0935015 404s, but the University of Utah Symplectic profile https://profiles.faculty.utah.edu/u0982409 (200; faculty.utah.edu/u0982409-PAUL_D_BROOKS/... redirects there) is 'PAUL BROOKS, Professor Geology & Geophysics', Interdisciplinary Program in Hydrology and Water Resources, appointment 1 Jul 2014 - present. It links ORCID 0000-0001-9201-1062 (same as the lake's; pub.orcid.org /person 'Paul Brooks', /employments University of Utah) and scholar.google.com/citations?user=cJndGdYAAAAJ. The lake's OpenAlex-derived research_interests are replaced by the profile's own description.",
+   "retrieved_at": "2026-10-26"
+  }
+ ],
+ "dropped": [
+  {
+   "person_id": "6a51b6eeba187b4f",
+   "name": "Eric Brunden",
+   "reason": "Only source is the Weeks Bay Reserve staff list (outdooralabama.com/weeks-bay-reserve), which gives 'Eric Brunden, Stewardship Coordinator' with a mailto link and no profile page or research focus; the stewardship sub-page names no staff. ORCID registry search for family name Brunden found only an unrelated person (University of Pennsylvania). Web search budget exhausted for this run."
+  },
+  {
+   "person_id": "576db074331c3a94",
+   "name": "Johanna Gertsch",
+   "reason": "Only source is the Weeks Bay Reserve staff list line 'Johanna Gertsch, CTP Coordinator' (mailto link, no profile); the Coastal Training Program sub-page names no staff. No ORCID record found for Johanna Gertsch. Web search budget exhausted for this run."
+  },
+  {
+   "person_id": "50763cbeebec10e6",
+   "name": "Kathy Hicks",
+   "reason": "Only source is the Weeks Bay Reserve staff list line 'Kathy Hicks, Education Coordinator' (mailto link, no profile); the education program sub-page names no staff. Web search budget exhausted for this run."
+  },
+  {
+   "person_id": "1dd50c0f8252e0af",
+   "name": "P.J. White",
+   "reason": "Affiliation source https://www.nps.gov/yell/learn/management/yellowstone-center-for-resources.htm now returns 404 and no NPS profile could be fetched (web search budget exhausted). ORCID registry search found 0009-0002-8263-9803 ('P J White', employment National Park Service, wildlife biologist, department 'retired', location Washington, US, no dates, no works); it is plausibly him but nothing ties it to Yellowstone, so it was not recorded. Verifier 2026-10-26: the NPS page still 404s; web search found only news and book listings (no official profile), so the drop stands."
+  }
+ ]
+}

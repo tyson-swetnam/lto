@@ -1,0 +1,155 @@
+{
+ "batch_id": "R-PEOPLE2-BIO-58",
+ "retrieved_at": "2026-10-26",
+ "verified_by": "adversarial-verifier 2026-10-26",
+ "updates": [
+  {
+   "person_id": "d51e3ce2bec208f8",
+   "name": "Rachel Guy",
+   "homepage_url": null,
+   "bio": "A 2022 SEERS profile names her research and monitoring coordinator at Sapelo Island National Estuarine Research Reserve, a post she took in 2016. Her 2018 University of Georgia doctorate built spatial models of juvenile fish distribution in estuaries and projected habitat change under sea-level rise. Interests include spatial ecology, estuarine fish and climate effects on coastal ecosystems.",
+   "bio_source_url": "https://seers.org/featured/meet-our-local-host-rachel-guy/",
+   "research_interests": "spatial ecology; estuarine fish communities; climate change effects on ecosystem processes; sustainable and resilient coastal communities",
+   "research_interests_source_url": "https://seers.org/featured/meet-our-local-host-rachel-guy/",
+   "orcid": null,
+   "orcid_source_url": null,
+   "current_title": "Reserve Manager",
+   "current_affiliation": "Sapelo Island National Estuarine Research Reserve (Georgia DNR)",
+   "status": "active",
+   "status_source_url": "https://sapelonerr.org/about-us/",
+   "notes": "Current title from the SINERR 'Meet Our Team' list (about-us). The bio source (SEERS 'Meet our Local Host', published 2022-01-13, updated 2022-06-01) predates her move to Reserve Manager, so the bio is dated to it; sapelonerr.org/research/ now welcomes Ethan Bourque as Research Coordinator, consistent with her having moved up. NOAA reserve page names no staff. ORCID expanded search for Rachel Guy returned two iDs (0009-0005-1912-0621, 0009-0007-0625-940X) with empty employment records, so neither can be tied; ORCID left null. No individual staff/homepage page found (team names link to javascript placeholders). Web search budget was exhausted during this batch. [verifier 2026-10-26] Bio rewritten: the earlier text put her 2016 start after her 2018 doctorate.",
+   "evidence": "Rachel Guy Reserve Manager",
+   "retrieved_at": "2026-10-26",
+   "evidence_source_url": "https://sapelonerr.org/about-us/"
+  },
+  {
+   "person_id": "4aed1ce5cc970aa5",
+   "name": "Lynn M. Russell",
+   "homepage_url": "https://scripps.ucsd.edu/profiles/lmrussell",
+   "bio": "Distinguished Professor of Atmospheric Chemistry at Scripps Institution of Oceanography, UC San Diego. Her Scripps research profile lists aerosol chemistry and physics, interactions between aerosols and clouds, air-sea exchange, organic aerosols and atmospheric nanoparticles; the Scripps profile adds topics such as cloud physics, the boundary layer, and the role of ice in climate.",
+   "bio_source_url": "https://scripps.ucsd.edu/profiles/lmrussell",
+   "research_interests": "aerosol chemistry and physics; aerosol-cloud interactions; air-sea exchange; organic aerosols; atmospheric nanoparticles",
+   "research_interests_source_url": "https://lmrussell.scrippsprofiles.ucsd.edu/",
+   "orcid": null,
+   "orcid_source_url": null,
+   "current_title": "Distinguished Professor of Atmospheric Chemistry",
+   "current_affiliation": "Scripps Institution of Oceanography, UC San Diego",
+   "status": "active",
+   "status_source_url": "https://scripps.ucsd.edu/profiles/lmrussell",
+   "notes": "Neither profile page carries biography text, so the bio is limited to title, unit and the listed research areas. Existing ORCID 0000-0002-6108-2375 checked: pub.orcid.org name Lynn Russell (credit name Lynn M Russell), researcher URLs aerosols.ucsd.edu and lmrussell.scrippsprofiles.ucsd.edu (consistent); no Google Scholar link on the ORCID record, the Scripps profile, the research profile or the group site aerosols.ucsd.edu. Group site lists her as contact for the Atmospheric Aerosol Group. [verifier 2026-10-26] Bio rewritten (an 11-word run of the topic list was copied, and the 'climate, atmospheric science and physical oceanography area' came from a mailing-address line); evidence quote shortened to the contiguous text on the page.",
+   "evidence": "RUSSELL, LYNN Distinguished Professor",
+   "retrieved_at": "2026-10-26",
+   "evidence_source_url": "https://scripps.ucsd.edu/profiles/lmrussell"
+  },
+  {
+   "person_id": "a1104835a815a107",
+   "name": "Steven Constable",
+   "homepage_url": "https://scripps.ucsd.edu/profiles/sconstable",
+   "bio": "Professor in the Institute of Geophysics and Planetary Physics at Scripps Institution of Oceanography, UC San Diego. The Scripps profile lists research on the electrical conductivity of Earth's crust and mantle, instruments for the seafloor, and the analysis and inversion of geophysical data.",
+   "bio_source_url": "https://scripps.ucsd.edu/profiles/sconstable",
+   "research_interests": "electrical conductivity of the crust and mantle; seafloor instrumentation; geophysical data analysis and inversion",
+   "research_interests_source_url": "https://scripps.ucsd.edu/profiles/sconstable",
+   "orcid": null,
+   "orcid_source_url": null,
+   "current_title": "Professor",
+   "current_affiliation": "Institute of Geophysics and Planetary Physics, Scripps Institution of Oceanography, UC San Diego",
+   "status": "active",
+   "status_source_url": "https://scripps.ucsd.edu/profiles/sconstable",
+   "notes": "Profile title reads 'Professor' (the lake's title 'Distinguished Professor of Geophysics' is not on the fetched page). No biography text on scripps.ucsd.edu/profiles/sconstable or sconstable.scrippsprofiles.ucsd.edu. Existing ORCID 0000-0001-6324-3470 checked: pub.orcid.org name Steven Constable, no researcher URLs;  [verifier 2026-10-26] marineemlab.ucsd.edu/steve/ (linked from the Scripps profile; 'a home page for Steve Constable', Professor of Geophysics, IGPP) fetched 200 and links scholar.google.com/citations?user=tL5YjvsAAAAJ, so the Scholar id is added; mahi.ucsd.edu/Steve/ returned an empty page. Removed 'geophysics program' from the bio (not on the profile); evidence quote shortened to the contiguous page text.",
+   "evidence": "CONSTABLE, STEVEN Professor",
+   "retrieved_at": "2026-10-26",
+   "evidence_source_url": "https://scripps.ucsd.edu/profiles/sconstable",
+   "google_scholar_id": "tL5YjvsAAAAJ",
+   "google_scholar_source_url": "https://marineemlab.ucsd.edu/steve/"
+  },
+  {
+   "person_id": "1debaf119dd6bdf0",
+   "name": "Meenakshi Wadhwa",
+   "homepage_url": "https://scripps.ucsd.edu/about/leadership/directors-biography",
+   "bio": "Planetary scientist who became Scripps Institution of Oceanography's 12th director in October 2025, also serving as UC San Diego's marine sciences vice chancellor and dean of its marine, earth and atmospheric sciences school. She earlier directed Arizona State University's School of Earth and Space Exploration. She dates early solar system events with isotope methods and studies water on rocky bodies.",
+   "bio_source_url": "https://scripps.ucsd.edu/about/leadership/directors-biography",
+   "research_interests": "planetary science; timing and processes of solar system and planet formation and evolution; high-precision isotope analysis and chronometry; origin and abundance of water and other volatiles on rocky bodies",
+   "research_interests_source_url": "https://scripps.ucsd.edu/about/leadership/directors-biography",
+   "orcid": "0000-0001-9187-1255",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0001-9187-1255/person",
+   "current_title": "Director, Scripps Institution of Oceanography; Vice Chancellor for Marine Sciences; Dean, School of Marine, Earth, and Atmospheric Sciences; Charles F. Kennel Director's Endowed Chair",
+   "current_affiliation": "Scripps Institution of Oceanography, UC San Diego",
+   "status": "active",
+   "status_source_url": "https://scripps.ucsd.edu/about/leadership",
+   "notes": "ORCID: pub.orcid.org expanded search for given Meenakshi / family Wadhwa returned exactly one iD, 0000-0001-9187-1255 (name MEENAKSHI WADHWA); its one employment is Arizona State University from 2006-09-01, matching the Scripps directors-biography (ASU Center for Meteorite Studies director 2006-2019, SESE director 2019-2025). The record has no researcher URLs and no Scholar link, and does not yet list UC San Diego. today.ucsd.edu interview (2025-11-21) confirms the 12th-director role and her research areas. Homepage switched from the leadership list to her directors-biography page. [verifier 2026-10-26] ORCID re-checked: pub.orcid.org person record name MEENAKSHI WADHWA, sole expanded-search hit for that name, employment Arizona State University from 2006 (matches the Scripps biography), works include Ryugu and Jezero crater papers. Bio rewritten to remove an 8-word copied run and 'named' (the page says 'joined').",
+   "evidence": "Meenakshi Wadhwa is Director of Scripps Institution of Oceanography",
+   "retrieved_at": "2026-10-26",
+   "evidence_source_url": "https://scripps.ucsd.edu/about/leadership"
+  },
+  {
+   "person_id": "354088fac0c8bdf1",
+   "name": "Charles David Keeling",
+   "homepage_url": null,
+   "bio": "Geochemist at Scripps Institution of Oceanography who started the Keeling Curve, the record of carbon dioxide concentration in the atmosphere, with measurements from 1958 at a station on Hawaii's Mauna Loa.",
+   "bio_source_url": "https://keelingcurve.ucsd.edu/2018/02/08/new-keeling-curve-prize-inspired-by-scripps-research-icon/",
+   "research_interests": null,
+   "research_interests_source_url": null,
+   "orcid": null,
+   "orcid_source_url": null,
+   "current_title": "Geochemist (historical)",
+   "current_affiliation": "Scripps Institution of Oceanography",
+   "status": null,
+   "status_source_url": null,
+   "notes": "Old source scripps.ucsd.edu/programs/keelingcurve/ now 301-redirects to keelingcurve.ucsd.edu, which does not name him; the Keeling Curve Prize post does. Scripps history page confirms Revelle recruited him to the Scripps faculty. No fetched page states his death, so status is not written (lake already holds 'deceased', which is outside the bio-batch status vocabulary).",
+   "evidence": "Among Revelle's recruits to the Scripps faculty around that time was Charles David Keeling.",
+   "retrieved_at": "2026-10-26",
+   "evidence_source_url": "https://scripps.ucsd.edu/about/history"
+  },
+  {
+   "person_id": "666de6d5c0619ae4",
+   "name": "Roger R. Revelle",
+   "homepage_url": null,
+   "bio": "Former Scripps postdoctoral researcher who became director of Scripps Institution of Oceanography in 1950. A 1957 paper with Hans Suess stated that humans were running an unprecedented large-scale geophysical experiment, work credited with helping start modern climate change research. Charles David Keeling was among the faculty recruited to Scripps under Revelle.",
+   "bio_source_url": "https://scripps.ucsd.edu/about/history",
+   "research_interests": null,
+   "research_interests_source_url": null,
+   "orcid": null,
+   "orcid_source_url": null,
+   "current_title": "Director (historical)",
+   "current_affiliation": "Scripps Institution of Oceanography",
+   "status": null,
+   "status_source_url": null,
+   "notes": "Dates disagree between Scripps pages: the history page says he became director in 1950, the past-directors list gives 1951-1964. Neither page states his death, so status is not written (lake holds 'deceased'). No individual biography page found on scripps.ucsd.edu (only the Revelle Prize award page).",
+   "evidence": "Roger Revelle 1951–1964",
+   "retrieved_at": "2026-10-26",
+   "evidence_source_url": "https://scripps.ucsd.edu/about/leadership/past-directors"
+  }
+ ],
+ "dropped": [
+  {
+   "person_id": "bf4db011789b0f60",
+   "name": "Maricela Perryman",
+   "reason": "Only a staff-list line on estuario.org/que-es-la-corporacion-del-estuario/ ('Gerente sénior de programa'), no focus or bio; no individual page reachable and ORCID search (Maricela Perryman) found nothing. Web search budget was exhausted, so no wider search was possible."
+  },
+  {
+   "person_id": "39559165265fbe74",
+   "name": "Sahid Rosado Lausell",
+   "reason": "Only a staff-list line on estuario.org ('Gerente de educación y ciencia ciudadana'), no bio; ORCID searches found no matching record. Web search budget exhausted before a profile could be looked for."
+  },
+  {
+   "person_id": "8e856d667615d3d1",
+   "name": "Adam Mackinnon",
+   "reason": "sapelonerr.org/about-us/ lists him only as 'Education Coordinator' (no bio, name links are javascript placeholders); /education/ names no staff. The lake's note calling him reserve manager conflicts with that page, which lists Rachel Guy as Reserve Manager. Web search budget exhausted."
+  },
+  {
+   "person_id": "63c5b0cc0fefbf7f",
+   "name": "Brittany Dodge",
+   "reason": "Only 'Collaboration & Training Coordinator' on sapelonerr.org/about-us/; /training-2/ refers to unnamed 'CTP Staff'. No individual page found; web search budget exhausted."
+  },
+  {
+   "person_id": "c7f13b855924fb6a",
+   "name": "Colby Peffer",
+   "reason": "Only 'Stewardship Coordinator' on sapelonerr.org/about-us/; /stewardship/ names no staff. No individual page found; web search budget exhausted."
+  },
+  {
+   "person_id": "b1f96fce80f6e58a",
+   "name": "David Garen",
+   "reason": "The recorded NRCS snow-survey page timed out on three fetches; ORCID search (David Garen) returned no record; web search budget exhausted, so no page about him was fetched."
+  }
+ ]
+}

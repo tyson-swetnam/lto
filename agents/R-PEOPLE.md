@@ -185,8 +185,18 @@ they are an exception to the `data/raw/**` gitignore.
 - **Identifiers:** ORCID must match `^\d{4}-\d{4}-\d{4}-\d{3}[\dX]$` and be
   confirmed at pub.orcid.org as described above. If an ORCID conflicts
   with the one on file, the loader reports it and keeps the lake's. A
-  wrong ORCID is worse than a missing one. OpenAlex and Google Scholar
-  ids are left to the enrichment scripts.
+  wrong ORCID is worse than a missing one. OpenAlex ids are left to the
+  enrichment scripts.
+- **Google Scholar:** a person record or bio update may carry
+  `google_scholar_id` (the 12-character `user=` value) with
+  `google_scholar_source_url`, only when an official page about this person
+  (their profile, lab site or institutional CV) or their ORCID record links
+  `scholar.google.*/citations?user=<id>` as their own profile. Never fetch
+  scholar.google.com itself. The loader fills it only when empty, and skips
+  an id another person already carries. `enrich_people_gscholar.py` finds
+  more from ORCID researcher URLs (`--source orcid`) and from homepages
+  (`--source homepage`, which needs review: a page can link a co-author's
+  or the lab's profile).
 
 ## Roles
 

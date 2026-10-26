@@ -1,0 +1,133 @@
+{
+ "batch_id": "R-PEOPLE2-BIO-45",
+ "retrieved_at": "2026-10-26",
+ "verified_by": "adversarial-verifier 2026-10-26",
+ "updates": [
+  {
+   "person_id": "e41a1d39ade9d873",
+   "name": "Jeffrey L. Collett Jr.",
+   "homepage_url": "https://www.atmos.colostate.edu/people/faculty/collett/",
+   "bio": "University Distinguished Professor of Atmospheric Science at Colorado State University, on the faculty since 1994 and department head from 2011 to 2022. His field-based research covers cloud and fog chemistry, nitrogen deposition, aerosol chemistry and haze, and air pollution from oil and gas development, agriculture and wildland fires, along with instrument development.",
+   "bio_source_url": "https://www.atmos.colostate.edu/people/faculty/collett/",
+   "research_interests": "cloud and fog chemistry; nitrogen deposition; aerosol chemistry; air quality effects of unconventional oil and gas development; wild and prescribed fire emissions; precipitation and dew chemistry; ammonia exchange between atmosphere and surface; aerosol effects on visibility; instrument development",
+   "research_interests_source_url": "https://www.atmos.colostate.edu/people/faculty/collett/",
+   "orcid": "0000-0001-9180-508X",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0000-0001-9180-508X/employments",
+   "google_scholar_id": null,
+   "google_scholar_source_url": null,
+   "current_title": "University Distinguished Professor",
+   "current_affiliation": "Department of Atmospheric Science, Colorado State University",
+   "status": "active",
+   "status_source_url": "https://www.atmos.colostate.edu/people/faculty/collett/",
+   "evidence": "Jeffrey L. Collett, Jr. – University Distinguished Professor",
+   "evidence_source_url": "https://www.atmos.colostate.edu/people/faculty/collett/",
+   "notes": "The homepage on file (atmos.colostate.edu/people/jeffrey-collett/) now redirects to a 2025 award news item, so it is replaced by the department faculty profile (200). Lab site https://collett.atmos.colostate.edu/ (200) lists 'Air quality in U.S. National Parks' among research themes. ORCID on file re-checked: pub.orcid.org name Jeffrey Collett, employment Colorado State University, Professor, Atmospheric Science, 1994-present. The bio pronoun follows the profile page, which uses 'His interests'. Neither page links Google Scholar.",
+   "retrieved_at": "2026-10-26"
+  },
+  {
+   "person_id": "cddc8a8fc64bc7df",
+   "name": "Christopher Bowser",
+   "homepage_url": "https://cals.cornell.edu/water-resources-institute/about/people/christopher-bowser",
+   "bio": "Leads education work for the NYSDEC Hudson River Estuary Program and the Hudson River Reserve, running community-science efforts such as the Eel Project and student projects under the Day in the Life program for the Hudson and Harbor. Earlier roles: Peace Corps reforestation volunteer in West Africa, Sloop Clearwater education director, and environmental science instructor at Marist and Bard.",
+   "bio_source_url": "https://cals.cornell.edu/water-resources-institute/about/people/christopher-bowser",
+   "research_interests": null,
+   "research_interests_source_url": null,
+   "orcid": "0009-0002-1698-2371",
+   "orcid_source_url": "https://pub.orcid.org/v3.0/0009-0002-1698-2371/employments",
+   "google_scholar_id": null,
+   "google_scholar_source_url": null,
+   "current_title": "Education and Citizen Science Lead",
+   "current_affiliation": "NYSDEC Hudson River Estuary Program / Hudson River National Estuarine Research Reserve (New York State Water Resources Institute, Cornell University)",
+   "status": "active",
+   "status_source_url": "https://cals.cornell.edu/water-resources-institute/about/people/christopher-bowser",
+   "evidence": "Chris Bowser coordinates the education team at the NYSDEC Hudson River Estuary Program and Hudson River National Estuarine Research Reserve.",
+   "evidence_source_url": "https://cals.cornell.edu/water-resources-institute/about/people/christopher-bowser",
+   "notes": "Profile is on the Cornell WRI people list (wri-people page lists 'Chris Bowser Education and Citizen Science Lead Hudson River Estuary Program'). ORCID 0009-0002-1698-2371 found via the ORCID public registry search; record name Christopher Bowser, employment New York State Department of Environmental Conservation, Education Coordinator, Cornell WRI, consistent with the HRNERR Education Coordinator row. hrnerr.org/staff/ returned 202 (bot challenge, no content) and was not used.",
+   "retrieved_at": "2026-10-26"
+  },
+  {
+   "person_id": "27f61faf31572c71",
+   "name": "Emily K. Youcha",
+   "homepage_url": null,
+   "bio": "Research staff member in hydrology at the Water and Environmental Research Center, University of Alaska Fairbanks.",
+   "bio_source_url": "https://ine.uaf.edu/werc/people/",
+   "research_interests": null,
+   "research_interests_source_url": null,
+   "orcid": null,
+   "orcid_source_url": null,
+   "google_scholar_id": null,
+   "google_scholar_source_url": null,
+   "current_title": "Research Staff, Hydrology",
+   "current_affiliation": "Water and Environmental Research Center, University of Alaska Fairbanks",
+   "status": "active",
+   "status_source_url": "https://ine.uaf.edu/werc/people/",
+   "evidence": "Emily Youcha Research Staff, Hydrology",
+   "evidence_source_url": "https://ine.uaf.edu/werc/people/",
+   "notes": "Identity: the WERC people page lists 'Emily Youcha Research Staff, Hydrology' and the WERC Imnavait page's citation names 'Youcha, E.K.' as co-author of the Imnavait/Kuparuk hydrology dataset; Bio is short because only the staff-list line describes her (role and field). ORCID registry has 0000-0003-2873-3647 named Emily Youcha but with no employment or other tie to UAF, and no fetched page links it, so it is not recorded. No individual profile page found; homepage left null. Verifier: evidence switched from the Imnavait dataset citation to the WERC people-page line, which states the title directly.",
+   "retrieved_at": "2026-10-26"
+  },
+  {
+   "person_id": "da275fa6bfc97a50",
+   "name": "Lindsay R. Boring",
+   "homepage_url": null,
+   "bio": "First director of the Jones Center at Ichauway in southwest Georgia, chosen from a junior faculty post in forestry and natural resources (Warnell School) at the University of Georgia. Dr. Boring built the center's programs, staff and infrastructure, described its goal of research partnered with land managers so management is science based, and was succeeded by Kier Klepzig in 2017.",
+   "bio_source_url": "https://www.jonesctr.org/wp-content/uploads/2025/07/Historical_ICHJWJERC_2021_Final-r.pdf",
+   "research_interests": null,
+   "research_interests_source_url": null,
+   "orcid": null,
+   "orcid_source_url": null,
+   "google_scholar_id": null,
+   "google_scholar_source_url": null,
+   "current_title": "Former Director (first Director), Jones Center at Ichauway",
+   "current_affiliation": "Jones Center at Ichauway",
+   "status": null,
+   "status_source_url": null,
+   "evidence": "identifying the Center’s first Director, Dr. Lindsay Boring, who was a young faculty member at the University of Georgia’s Warnell School",
+   "evidence_source_url": "https://www.jonesctr.org/wp-content/uploads/2025/07/Historical_ICHJWJERC_2021_Final-r.pdf",
+   "notes": "Source is the Center's report 'The History and Legacy of The Jones Center at Ichauway' (Bogue 2019, doi.org/10.58497/64952), linked from https://www.jonesctr.org/history-jones-center-at-ichauway-pub/ (200). It says 'Dr. Kier Klepzig succeeded Dr. Boring as Director of The Jones Center in 2017', which conflicts with the 1991-2014 tenure in the lake's title; the lake row should be checked. The report does not state emeritus or retired status, so status is left null. Boring is not on the current jonesctr.org staff list. The bio uses no pronoun. Verifier: bio reworded so it no longer says Dr. Boring 'championed' science-based management; the report only quotes a chapter describing that goal.",
+   "retrieved_at": "2026-10-26"
+  }
+ ],
+ "dropped": [
+  {
+   "person_id": "3f19b5e2c0a7af7d",
+   "name": "William E. Reed",
+   "reason": "Not found. The Hubbard Brook people page (https://hubbardbrook.org/people/, 200) lists no William E. Reed (only Ryan Reed, a UNH graduate student, a different person) and the cited hubbardbrook.org home page does not name him. The affiliation looks unsupported and should be reviewed."
+  },
+  {
+   "person_id": "2d91d4703fe581ef",
+   "name": "Brian DeGasperis",
+   "reason": "hrnerr.org/staff/ (the affiliation source) and hrnerr.org/ returned HTTP 202 with an empty bot-challenge body, so no page about this person could be read; the Cornell WRI people list, HRECOS about page, NOAA NERRS Hudson River page and NYSDEC estuary program page were fetched and do not name this person; web search was unavailable (session search budget exhausted). The ORCID registry search found no matching DeGasperis."
+  },
+  {
+   "person_id": "a742f200b6049ad5",
+   "name": "Brittney Flaten",
+   "reason": "hrnerr.org/staff/ (the affiliation source) and hrnerr.org/ returned HTTP 202 with an empty bot-challenge body, so no page about this person could be read; the Cornell WRI people list, HRECOS about page, NOAA NERRS Hudson River page and NYSDEC estuary program page were fetched and do not name this person; web search was unavailable (session search budget exhausted). The ORCID registry search found no match."
+  },
+  {
+   "person_id": "48a4aed7aca7cad3",
+   "name": "Chris Mitchell",
+   "reason": "hrnerr.org/staff/ (the affiliation source) and hrnerr.org/ returned HTTP 202 with an empty bot-challenge body, so no page about this person could be read; the Cornell WRI people list, HRECOS about page, NOAA NERRS Hudson River page and NYSDEC estuary program page were fetched and do not name this person; web search was unavailable (session search budget exhausted). Name too common to identify from an ORCID search."
+  },
+  {
+   "person_id": "820647e48e2e96f8",
+   "name": "Sarah Fernald",
+   "reason": "hrnerr.org/staff/ (the affiliation source) and hrnerr.org/ returned HTTP 202 with an empty bot-challenge body, so no page about this person could be read; the Cornell WRI people list, HRECOS about page, NOAA NERRS Hudson River page and NYSDEC estuary program page were fetched and do not name this person; web search was unavailable (session search budget exhausted). The ORCID on file (0000-0001-8314-0102) was re-checked: pub.orcid.org name Sarah Fernald, employment Hudson River National Estuarine Research Reserve, Research Coordinator. It is consistent, but the record has no biography, so no bio was written."
+  },
+  {
+   "person_id": "a2c0fec200c421f9",
+   "name": "Melinda Beaver",
+   "reason": "Only the IMPROVE contacts page (200) names her: 'EPA. Melinda Beaver (Vice Chair; Chair of Network Operations Subcommittee)'. That gives a committee role but no research focus, and no EPA profile page could be found without web search. The ORCID registry search found no match."
+  },
+  {
+   "person_id": "3da4c7c04f891352",
+   "name": "Colin Edgar",
+   "reason": "No individual profile page found. The UAF IAB people, staff and research-scientists pages (200) do not list him. The AmeriFlux US-ICt site page lists only 'FluxContact: Colin Edgar - University of Alaska Fairbanks'. The ORCID on file (0000-0002-7026-8358) is consistent (name Colin Edgar; employment University of Alaska Fairbanks, Research Professional, Institute of Arctic Biology, 2010-present), but it has no biography."
+  },
+  {
+   "person_id": "b884729a62f348fe",
+   "name": "Robert J. Mitchell",
+   "reason": "Not on the current jonesctr.org staff listings (about-us and home pages, 200; only a Sarah Mitchell and an Allie Mitchell, both different people). Not named in the Center's history report PDF, and /staff-members/robert-j-mitchell/ returned 404. Identity and status could not be sourced."
+  }
+ ]
+}

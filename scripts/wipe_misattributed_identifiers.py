@@ -159,6 +159,13 @@ BAD = {
 # (people can share a name: there were two "Kathleen C. Weathers" rows).
 # person_id -> (bad orcid or None, bad openalex_id or None, evidence)
 BAD_BY_ID = {
+    "390c0c0202494942": (
+        "", "A5057773873",
+        "Daniel D. Richter (Duke soils, ORCID 0000-0003-3547-433X): OpenAlex "
+        "returned author A5057773873 for that ORCID on 2026-10-26, but the author "
+        "carries ORCID 0000-0003-1681-727X, a Daniel Richter at the Max Planck "
+        "Institute for Evolutionary Anthropology / Mainz. Its 100 authorships "
+        "were removed the same day."),
     "b45b83f6ff14d22b": (
         "0000-0002-9622-3318", "A5048108051",
         "Jan A. Newton (UW APL / NANOOS): the ORCID record and OpenAlex author "

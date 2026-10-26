@@ -1,0 +1,158 @@
+{
+ "batch_id": "R-PEOPLE2-GAPS-05",
+ "retrieved_at": "2026-10-26",
+ "verified_by": "adversarial-verifier 2026-10-26",
+ "facilities": [
+  {
+   "facility_id": "7512cf5fb679f50c",
+   "pages_fetched": [
+    {
+     "url": "https://www.fws.gov/refuge/hakalau-forest/about-us",
+     "status": 200
+    },
+    {
+     "url": "https://www.fws.gov/refuge/hakalau-forest/contact-us",
+     "status": 200
+    },
+    {
+     "url": "https://www.hawaiipublicradio.org/the-conversation/2025-11-20/hakalau-refuge-marks-4-decades-of-conservation-amid-funding-threats",
+     "status": 200
+    },
+    {
+     "url": "https://friendsofhakalauforest.org/about-us/",
+     "status": 200
+    },
+    {
+     "url": "https://bigislandnow.com/?p=393662",
+     "status": 200
+    },
+    {
+     "url": "https://www.staradvertiser.com/?p=433091",
+     "status": 200
+    },
+    {
+     "url": "https://www.staradvertiser.com/?p=435064",
+     "status": 200
+    },
+    {
+     "url": "https://www.sierraclub.org/sierra/haven-honeycreepers-visit-hakalau-forest-national-wildlife-refuge",
+     "status": 200
+    }
+   ],
+   "notes": "FWS refuge pages (about-us, contact-us) name no staff; the refuge is managed as part of the Big Island NWR Complex, which has no staff page found. No current permanent refuge manager or complex project leader found on any fetched page. Springer Kaye still the most recent named manager (interim, Hawaii Public Radio, Nov 20 2025; low). The Friends of Hakalau Forest page still describes Donna Ball's Deputy Refuge Manager role as 2020-2025 (past). Neither is sent as a 'confirmed' verification (see verification_notes). Added former Refuge Manager Jim Kraus from a Dec 2 2012 Star-Advertiser story (is_current=false, low). A Big Island Now story (Feb 2025) reports five refuge staff fired but names none. The Sierra Club article returned no readable text. No profile page found for Jim Kraus or Eric-Preston Hamren, so no bio or ORCID. Richard Camp (non-leadership, USGS) not re-verified."
+  },
+  {
+   "facility_id": "7921395351f74974",
+   "pages_fetched": [
+    {
+     "url": "https://www.neonscience.org/field-sites/dela",
+     "status": 200
+    },
+    {
+     "url": "https://www.neonscience.org/person/beth-fugate",
+     "status": 200
+    }
+   ],
+   "notes": "NEON site page: DELA is being decommissioned; IS data collection discontinued Oct 6 2025, OS ended Dec 2025, AOP continues; site host U.S. Army Corps of Engineers; Domain 08 Ozarks Complex. The site page names no person. Beth Fugate re-confirmed as D08 Field Operations Manager (since 2023) on her NEON person page; her DELA row should stay is_current=false because the site is decommissioned, so no 'confirmed' verification is sent (see verification_notes). Her person page links no ORCID or Google Scholar profile. No other leader to record for a decommissioned site."
+  },
+  {
+   "facility_id": "7b551249dcfba4fa",
+   "pages_fetched": [
+    {
+     "url": "https://www.ars.usda.gov/pacific-west-area/fairbanks-alaska/subarctic-agricultural-research-unit/",
+     "status": 404
+    },
+    {
+     "url": "https://www.usda.gov/node/15885",
+     "status": 403
+    },
+    {
+     "url": "https://alaskapublic.org/2011/06/09/alaskas-usda-research-station-to-close",
+     "status": 200
+    },
+    {
+     "url": "https://alaskapublic.org/2011/09/13/states-agricultural-research-center-may-be-cut",
+     "status": 200
+    }
+   ],
+   "notes": "Nobody recorded. The ARS unit page still returns 404. Alaska Public Media (June and Sept 2011) report the USDA ARS station in Alaska slated to close; neither article names any ARS staff (only 'two federal scientists'). Search results point to a 2012 USDA notice listing 'Subarctic Agricultural Research in Fairbanks, Alaska' among ARS closures, but that page returned 403 and the NRCS-hosted ARS Update February 2012 PDF timed out, so the closure is not cited as fetched. No ARS research leader for the unit was found on any fetched page; the facility appears closed (since about 2012). Existing row Mingchu Zhang (collaborator, UAF) is not a leadership row and was not re-verified."
+  },
+  {
+   "facility_id": "ae0beda05f19885a",
+   "pages_fetched": [
+    {
+     "url": "https://www.usgs.gov/centers/upper-midwest-water-science-center/science/water-energy-and-biogeochemical-budgets-webb",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/staff-profiles/randall-j-hunt",
+     "status": 200
+    },
+    {
+     "url": "https://www.usgs.gov/staff-profiles/krista-a-hood",
+     "status": 200
+    }
+   ],
+   "notes": "USGS WEBB Trout Lake project page (status Active, posted Jan 21 2019) lists only two contacts, Randall J. Hunt (Scientist Emeritus, Research Hydrologist) and Krista A. Hood (Hydrologist); it names no project chief, lead or site coordinator, so no leadership row is added. Both scientist rows confirmed. Hunt's staff profile lists past center leadership (Chief Science Officer 2018-2021, Associate Director of Science 2015-2018, USGS Upper Midwest Water Science Center) but no Trout Lake leadership, so it is not recorded as a facility role. Both profiles link ORCIDs already on file; neither links Google Scholar. North Temperate Lakes LTER leads are a separate program and are not attributed here."
+  }
+ ],
+ "people": [
+  {
+   "key": "jim-kraus",
+   "existing_person_id": null,
+   "name": "Jim Kraus",
+   "name_given": "Jim",
+   "name_family": "Kraus",
+   "orcid": null,
+   "orcid_source_url": null,
+   "homepage_url": null,
+   "bio": null,
+   "bio_source_url": null,
+   "research_interests": null,
+   "research_interests_source_url": null
+  }
+ ],
+ "affiliations": [
+  {
+   "facility_id": "7512cf5fb679f50c",
+   "person_key": "jim-kraus",
+   "role": "manager",
+   "title": "Refuge Manager, Hakalau Forest National Wildlife Refuge (as of 2012)",
+   "is_key_personnel": true,
+   "is_current": false,
+   "start_year": null,
+   "end_year": null,
+   "source_url": "https://www.staradvertiser.com/?p=435064",
+   "evidence": "Refuge Manager Jim Kraus said the plan lays the groundwork for future acquisitions from \"willing sellers.\"",
+   "confidence": "low"
+  }
+ ],
+ "verifications": [
+  {
+   "facility_id": "ae0beda05f19885a",
+   "person_id": "7213b913a0c6ac8f",
+   "existing_role": "scientist",
+   "status": "confirmed",
+   "current_holder_key": null,
+   "source_url": "https://www.usgs.gov/centers/upper-midwest-water-science-center/science/water-energy-and-biogeochemical-budgets-webb",
+   "evidence": "Randall J Hunt, Ph.D. Scientist Emeritus, Research Hydrologist"
+  },
+  {
+   "facility_id": "ae0beda05f19885a",
+   "person_id": "8be0e31cce19b57b",
+   "existing_role": "scientist",
+   "status": "confirmed",
+   "current_holder_key": null,
+   "source_url": "https://www.usgs.gov/centers/upper-midwest-water-science-center/science/water-energy-and-biogeochemical-budgets-webb",
+   "evidence": "Krista A Hood Hydrologist"
+  }
+ ],
+ "verification_notes": [
+  "All cited URLs re-fetched 2026-10-26 (Star-Advertiser ?p=435064, Hawaii Public Radio 2025-11-20, Friends of Hakalau Forest about-us, NEON person/beth-fugate, USGS WEBB page); every evidence quote found on its page, person_ids checked against the lake names.",
+  "Jim Kraus affiliation kept as is (manager, is_current=false, low): the Dec 2 2012 Star-Advertiser story 'Plan gives refuge, forest room to grow' quotes 'Refuge Manager Jim Kraus' on the Hakalau Forest refuge plan. No bio, ORCID, Scholar or homepage recorded.",
+  "Dropped 'confirmed' verification of Donna Ball (8f5268fd048544ef, deputy-director): the page gives the role as 2020-2025, a past role, and the loader's 'confirmed' sets is_current=true and confidence=high; the lake row is already is_current=false.",
+  "Dropped 'confirmed' verification of Beth Fugate (97f9c981bbf3cf09, domain-manager @ DELA): her page confirms the D08 role but DELA is decommissioned; 'confirmed' would set the DELA row is_current=true, contradicting the batch notes.",
+  "Dropped 'confirmed' verifications of Springer Kaye (65b5dbfaa6ada432, manager) and Eric-Preston Hamren (cc1aa5e904aa4d9a, technical-staff): the only source is a Nov 2025 news item (spec: low), and 'confirmed' would raise both rows to confidence=high; the lake rows already cite the same page and evidence.",
+  "Kept 'confirmed' verifications of Randall J. Hunt and Krista A. Hood: the USGS WEBB Trout Lake project page lists both as its contacts with the quoted titles."
+ ]
+}
