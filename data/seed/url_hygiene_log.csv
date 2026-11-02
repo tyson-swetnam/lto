@@ -583,3 +583,7 @@ people,efbb6cbe883dcb6f,Michael J. Andersen,homepage_url,,https://www.andersenla
 people,f2d526f99f53d312,Thomas De Pree,homepage_url,,https://thomasdepree.com/,restore:keep-list,2026-10-25
 people,f4494c5a205afa79,Michelle C. Mack,homepage_url,,https://macklab.nau.edu/,restore:keep-list,2026-10-25
 people,f4cb8eeebc939f37,Stuart E. Jones,homepage_url,,https://www.stuartjoneslab.com/,restore:keep-list,2026-10-25
+people,7e9779770e0b4608,Arthur J. Miller,homepage_url,https://ajmiller.scrippsprofiles.ucsd.edu/,,null:^https?://[^/]+/?$,2026-11-02
+people,a24d29f916e1b2ee,Matthew A. Reidenbach,homepage_url,https://reidenbach.evsc.virginia.edu/,,null:^https?://[^/]+/?$,2026-11-02
+people,a3f9a44934787b69,Jamie Vaudrey,homepage_url,https://vaudrey.lab.uconn.edu/,,null:^https?://[^/]+/?$,2026-11-02
+people,e4bf810e811737f5,Peter Franks,homepage_url,https://pjfranks.scrippsprofiles.ucsd.edu/,,null:^https?://[^/]+/?$,2026-11-02
